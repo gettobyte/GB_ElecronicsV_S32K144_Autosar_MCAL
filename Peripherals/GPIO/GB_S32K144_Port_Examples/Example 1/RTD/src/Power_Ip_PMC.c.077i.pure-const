@@ -1,0 +1,145 @@
+
+
+ local analysis of Power_Ip_PMC_PowerInit
+   scanning: Tmp_5 ={v} MEM[(struct PMC_Type *)1074253824B].LVDSC1;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: Tmp_6 = Tmp_5 & 15;
+  scanning: _1 = ConfigPtr_7(D)->Lvdsc1;
+    Indirect ref read is not const
+  scanning: Tmp_8 = _1 | Tmp_6;
+  scanning: MEM[(struct PMC_Type *)1074253824B].LVDSC1 ={v} Tmp_8;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: Tmp_10 ={v} MEM[(struct PMC_Type *)1074253824B].LVDSC2;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: Tmp_11 = Tmp_10 & 31;
+  scanning: _2 = ConfigPtr_7(D)->Lvdsc2;
+    Indirect ref read is not const
+  scanning: Tmp_12 = _2 | Tmp_11;
+  scanning: MEM[(struct PMC_Type *)1074253824B].LVDSC2 ={v} Tmp_12;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: Tmp_14 ={v} MEM[(struct PMC_Type *)1074253824B].REGSC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: Tmp_15 = Tmp_14 & 56;
+  scanning: _3 = ConfigPtr_7(D)->Regsc;
+    Indirect ref read is not const
+  scanning: Tmp_16 = _3 | Tmp_15;
+  scanning: MEM[(struct PMC_Type *)1074253824B].REGSC ={v} Tmp_16;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+callgraph:
+
+Power_Ip_PMC_PowerInit/0 (Power_Ip_PMC_PowerInit) @0671f380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06324cb0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+Power_Ip_PMC_PowerInit/0 (Power_Ip_PMC_PowerInit) @0671f380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06324cb0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+Power_Ip_PMC_PowerInit: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Power_Ip_PMC_PowerInit: malloc_bottom
+callgraph:
+
+Power_Ip_PMC_PowerInit/0 (Power_Ip_PMC_PowerInit) @0671f380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06324c90
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+Power_Ip_PMC_PowerInit/0 (Power_Ip_PMC_PowerInit) @0671f380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06324c90
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: Power_Ip_PMC_PowerInit
+Power_Ip_PMC_PowerInit (const struct Power_Ip_PMC_ConfigType * ConfigPtr)
+{
+  uint8 Tmp;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Tmp_5 ={v} MEM[(struct PMC_Type *)1074253824B].LVDSC1;
+  # DEBUG Tmp => Tmp_5
+  # DEBUG BEGIN_STMT
+  Tmp_6 = Tmp_5 & 15;
+  # DEBUG Tmp => Tmp_6
+  # DEBUG BEGIN_STMT
+  _1 = ConfigPtr_7(D)->Lvdsc1;
+  Tmp_8 = _1 | Tmp_6;
+  # DEBUG Tmp => Tmp_8
+  # DEBUG BEGIN_STMT
+  MEM[(struct PMC_Type *)1074253824B].LVDSC1 ={v} Tmp_8;
+  # DEBUG BEGIN_STMT
+  Tmp_10 ={v} MEM[(struct PMC_Type *)1074253824B].LVDSC2;
+  # DEBUG Tmp => Tmp_10
+  # DEBUG BEGIN_STMT
+  Tmp_11 = Tmp_10 & 31;
+  # DEBUG Tmp => Tmp_11
+  # DEBUG BEGIN_STMT
+  _2 = ConfigPtr_7(D)->Lvdsc2;
+  Tmp_12 = _2 | Tmp_11;
+  # DEBUG Tmp => Tmp_12
+  # DEBUG BEGIN_STMT
+  MEM[(struct PMC_Type *)1074253824B].LVDSC2 ={v} Tmp_12;
+  # DEBUG BEGIN_STMT
+  Tmp_14 ={v} MEM[(struct PMC_Type *)1074253824B].REGSC;
+  # DEBUG Tmp => Tmp_14
+  # DEBUG BEGIN_STMT
+  Tmp_15 = Tmp_14 & 56;
+  # DEBUG Tmp => Tmp_15
+  # DEBUG BEGIN_STMT
+  _3 = ConfigPtr_7(D)->Regsc;
+  Tmp_16 = _3 | Tmp_15;
+  # DEBUG Tmp => Tmp_16
+  # DEBUG BEGIN_STMT
+  MEM[(struct PMC_Type *)1074253824B].REGSC ={v} Tmp_16;
+  return;
+
+}
+
+

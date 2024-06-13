@@ -1,0 +1,184 @@
+Power_Ip_InstallNotificationsCallback (void (*Power_Ip_ReportErrorsCallbackType) (Power_Ip_ReportErrorType, uint8) ReportErrorsCallback)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Power_Ip_pfReportErrorsCallback = ReportErrorsCallback_2(D);
+  return;
+
+}
+
+
+Power_Ip_EnableSleepOnExit ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Power_Ip_CM4_EnableSleepOnExit ();
+  return;
+
+}
+
+
+Power_Ip_DisableSleepOnExit ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Power_Ip_CM4_DisableSleepOnExit ();
+  return;
+
+}
+
+
+Power_Ip_Init (const struct Power_Ip_HwIPsConfigType * HwIPsConfigPtr)
+{
+  const struct Power_Ip_RCM_ConfigType * _1;
+  const struct Power_Ip_PMC_ConfigType * _2;
+  const struct Power_Ip_SMC_ConfigType * _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = HwIPsConfigPtr_5(D)->RCMConfigPtr;
+  Power_Ip_RCM_ResetInit (_1);
+  # DEBUG BEGIN_STMT
+  _2 = HwIPsConfigPtr_5(D)->PMCConfigPtr;
+  Power_Ip_PMC_PowerInit (_2);
+  # DEBUG BEGIN_STMT
+  _3 = HwIPsConfigPtr_5(D)->SMCConfigPtr;
+  Power_Ip_SMC_AllowedModesConfig (_3);
+  return;
+
+}
+
+
+Power_Ip_GetResetRawValue ()
+{
+  Power_Ip_RawResetType ResetReason;
+  Power_Ip_RawResetType _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ResetReason_3 = Power_Ip_RCM_GetResetRawValue ();
+  # DEBUG ResetReason => ResetReason_3
+  # DEBUG BEGIN_STMT
+  _4 = ResetReason_3;
+  return _4;
+
+}
+
+
+Power_Ip_GetResetReason ()
+{
+  uint32 ResetVal;
+  Power_Ip_ResetType ResetReason;
+  Power_Ip_ResetType _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetReason_1 = 14;
+  # DEBUG ResetReason => ResetReason_1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ResetVal_4 = Power_Ip_RCM_GetResetReason ();
+  # DEBUG ResetVal => ResetVal_4
+  # DEBUG BEGIN_STMT
+  ResetReason_6 = Power_Ip_ConvertIntergeToResetType (ResetVal_4);
+  # DEBUG ResetReason => ResetReason_6
+  # DEBUG BEGIN_STMT
+  _7 = ResetReason_6;
+  return _7;
+
+}
+
+
+Power_Ip_ConvertIntergeToResetType (uint32 ResetReasonIndex)
+{
+  static const Power_Ip_ResetType ResetReasonArray[15] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+  Power_Ip_ResetType ResetReason;
+  <unnamed type> _1;
+  Power_Ip_ResetType _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetReason_3 = 12;
+  # DEBUG ResetReason => ResetReason_3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = ResetReasonArray[ResetReasonIndex_5(D)];
+  if (_1 <= 14)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ResetReason_7 = ResetReasonArray[ResetReasonIndex_5(D)];
+  # DEBUG ResetReason => ResetReason_7
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ResetReason_6 = 12;
+  # DEBUG ResetReason => ResetReason_6
+
+  <bb 5> :
+  # ResetReason_2 = PHI <ResetReason_7(3), ResetReason_6(4)>
+  # DEBUG ResetReason => ResetReason_2
+  # DEBUG BEGIN_STMT
+  _8 = ResetReason_2;
+  return _8;
+
+}
+
+
+Power_Ip_SetMode (const struct Power_Ip_ModeConfigType * ModeConfigPtr)
+{
+  Power_Ip_PowerModeType PowerMode;
+  uint32 PowerSwitchMode;
+  <unnamed type> _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  PowerMode_7 = ModeConfigPtr_6(D)->PowerMode;
+  # DEBUG PowerMode => PowerMode_7
+  # DEBUG BEGIN_STMT
+  _1 = Power_Ip_SMC_ModeCheckEntry (PowerMode_7);
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  PowerSwitchMode_11 = 1;
+  # DEBUG PowerSwitchMode => PowerSwitchMode_11
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  PowerSwitchMode_10 = Power_Ip_SMC_ModeConfig (ModeConfigPtr_6(D));
+  # DEBUG PowerSwitchMode => PowerSwitchMode_10
+
+  <bb 5> :
+  # PowerSwitchMode_2 = PHI <PowerSwitchMode_11(3), PowerSwitchMode_10(4)>
+  # DEBUG PowerSwitchMode => PowerSwitchMode_2
+  # DEBUG BEGIN_STMT
+  if (PowerSwitchMode_2 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Power_Ip_ReportPowerErrors (3, 255);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

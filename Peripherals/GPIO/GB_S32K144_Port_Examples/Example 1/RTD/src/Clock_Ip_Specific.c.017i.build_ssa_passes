@@ -1,0 +1,1482 @@
+Clock_Ip_Command (const struct Clock_Ip_ClockConfigType * Config, Clock_Ip_CommandType Command)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  switch (Command) <default: <L5> [INV], case 1: <L1> [INV], case 2: <L0> [INV], case 4: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_ClockInitializeObjects ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_SpecificPlatformInitClock (Config);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  DisableSafeClock (Config);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L5>:
+  return;
+
+}
+
+
+Clock_Ip_ClockPowerModeChangeNotification (Clock_Ip_PowerModesType PowerMode, Clock_Ip_PowerNotificationType Notification)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  switch (PowerMode) <default: <L12> [INV], case 0: <L4> [INV], case 1 ... 2: <L0> [INV], case 3: <L7> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  if (Notification == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxScsRunClockSelector.0_1 = Clock_Ip_pxScsRunClockSelector;
+  _2 = Clock_Ip_pxScsRunClockSelector.0_1->Set;
+  Clock_Ip_pxScsConfigVlprMode.1_3 = Clock_Ip_pxScsConfigVlprMode;
+  _2 (Clock_Ip_pxScsConfigVlprMode.1_3);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxCoreRunClockDivider.2_4 = Clock_Ip_pxCoreRunClockDivider;
+  _5 = Clock_Ip_pxCoreRunClockDivider.2_4->Set;
+  Clock_Ip_pxCoreConfigVlprMode.3_6 = Clock_Ip_pxCoreConfigVlprMode;
+  _5 (Clock_Ip_pxCoreConfigVlprMode.3_6);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxBusRunClockDivider.4_7 = Clock_Ip_pxBusRunClockDivider;
+  _8 = Clock_Ip_pxBusRunClockDivider.4_7->Set;
+  Clock_Ip_pxBusConfigVlprMode.5_9 = Clock_Ip_pxBusConfigVlprMode;
+  _8 (Clock_Ip_pxBusConfigVlprMode.5_9);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSlowRunClockDivider.6_10 = Clock_Ip_pxSlowRunClockDivider;
+  _11 = Clock_Ip_pxSlowRunClockDivider.6_10->Set;
+  Clock_Ip_pxSlowConfigVlprMode.7_12 = Clock_Ip_pxSlowConfigVlprMode;
+  _11 (Clock_Ip_pxSlowConfigVlprMode.7_12);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.8_13 = Clock_Ip_pxSpllClock;
+  _14 = Clock_Ip_pxSpllClock.8_13->Disable;
+  Clock_Ip_pxSpllConfig.9_15 = Clock_Ip_pxSpllConfig;
+  _16 = Clock_Ip_pxSpllConfig.9_15->Name;
+  _14 (_16);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.10_17 = Clock_Ip_pxSoscClock;
+  _18 = Clock_Ip_pxSoscClock.10_17->Disable;
+  Clock_Ip_pxSoscConfig.11_19 = Clock_Ip_pxSoscConfig;
+  _20 = Clock_Ip_pxSoscConfig.11_19->Name;
+  _18 (_20);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxFircClock.12_21 = Clock_Ip_pxFircClock;
+  _22 = Clock_Ip_pxFircClock.12_21->Disable;
+  Clock_Ip_pxFircConfig.13_23 = Clock_Ip_pxFircConfig;
+  _24 = Clock_Ip_pxFircConfig.13_23->Name;
+  _22 (_24);
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  if (Notification == 2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxFircClock.14_25 = Clock_Ip_pxFircClock;
+  _26 = Clock_Ip_pxFircClock.14_25->Enable;
+  Clock_Ip_pxFircConfig.15_27 = Clock_Ip_pxFircConfig;
+  _26 (Clock_Ip_pxFircConfig.15_27);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.16_28 = Clock_Ip_pxSoscClock;
+  _29 = Clock_Ip_pxSoscClock.16_28->Enable;
+  Clock_Ip_pxSoscConfig.17_30 = Clock_Ip_pxSoscConfig;
+  _29 (Clock_Ip_pxSoscConfig.17_30);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.18_31 = Clock_Ip_pxSoscClock;
+  _32 = Clock_Ip_pxSoscClock.18_31->Complete;
+  Clock_Ip_pxSoscConfig.19_33 = Clock_Ip_pxSoscConfig;
+  _32 (Clock_Ip_pxSoscConfig.19_33);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.20_34 = Clock_Ip_pxSpllClock;
+  _35 = Clock_Ip_pxSpllClock.20_34->Enable;
+  Clock_Ip_pxSpllConfig.21_36 = Clock_Ip_pxSpllConfig;
+  _35 (Clock_Ip_pxSpllConfig.21_36);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.22_37 = Clock_Ip_pxSpllClock;
+  _38 = Clock_Ip_pxSpllClock.22_37->Complete;
+  Clock_Ip_pxSpllConfig.23_39 = Clock_Ip_pxSpllConfig;
+  _40 = Clock_Ip_pxSpllConfig.23_39->Name;
+  _38 (_40);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxScsRunClockSelector.24_41 = Clock_Ip_pxScsRunClockSelector;
+  _42 = Clock_Ip_pxScsRunClockSelector.24_41->Set;
+  Clock_Ip_pxScsConfigRunMode.25_43 = Clock_Ip_pxScsConfigRunMode;
+  _42 (Clock_Ip_pxScsConfigRunMode.25_43);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxCoreRunClockDivider.26_44 = Clock_Ip_pxCoreRunClockDivider;
+  _45 = Clock_Ip_pxCoreRunClockDivider.26_44->Set;
+  Clock_Ip_pxCoreConfigRunMode.27_46 = Clock_Ip_pxCoreConfigRunMode;
+  _45 (Clock_Ip_pxCoreConfigRunMode.27_46);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxBusRunClockDivider.28_47 = Clock_Ip_pxBusRunClockDivider;
+  _48 = Clock_Ip_pxBusRunClockDivider.28_47->Set;
+  Clock_Ip_pxBusConfigRunMode.29_49 = Clock_Ip_pxBusConfigRunMode;
+  _48 (Clock_Ip_pxBusConfigRunMode.29_49);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSlowRunClockDivider.30_50 = Clock_Ip_pxSlowRunClockDivider;
+  _51 = Clock_Ip_pxSlowRunClockDivider.30_50->Set;
+  Clock_Ip_pxSlowConfigRunMode.31_52 = Clock_Ip_pxSlowConfigRunMode;
+  _51 (Clock_Ip_pxSlowConfigRunMode.31_52);
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  if (Notification == 2)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxFircClock.32_53 = Clock_Ip_pxFircClock;
+  _54 = Clock_Ip_pxFircClock.32_53->Enable;
+  Clock_Ip_pxFircConfig.33_55 = Clock_Ip_pxFircConfig;
+  _54 (Clock_Ip_pxFircConfig.33_55);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.34_56 = Clock_Ip_pxSoscClock;
+  _57 = Clock_Ip_pxSoscClock.34_56->Enable;
+  Clock_Ip_pxSoscConfig.35_58 = Clock_Ip_pxSoscConfig;
+  _57 (Clock_Ip_pxSoscConfig.35_58);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.36_59 = Clock_Ip_pxSoscClock;
+  _60 = Clock_Ip_pxSoscClock.36_59->Complete;
+  Clock_Ip_pxSoscConfig.37_61 = Clock_Ip_pxSoscConfig;
+  _60 (Clock_Ip_pxSoscConfig.37_61);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.38_62 = Clock_Ip_pxSpllClock;
+  _63 = Clock_Ip_pxSpllClock.38_62->Enable;
+  Clock_Ip_pxSpllConfig.39_64 = Clock_Ip_pxSpllConfig;
+  _63 (Clock_Ip_pxSpllConfig.39_64);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.40_65 = Clock_Ip_pxSpllClock;
+  _66 = Clock_Ip_pxSpllClock.40_65->Complete;
+  Clock_Ip_pxSpllConfig.41_67 = Clock_Ip_pxSpllConfig;
+  _68 = Clock_Ip_pxSpllConfig.41_67->Name;
+  _66 (_68);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxScsHsrunClockSelector.42_69 = Clock_Ip_pxScsHsrunClockSelector;
+  _70 = Clock_Ip_pxScsHsrunClockSelector.42_69->Set;
+  Clock_Ip_pxScsConfigHsrunMode.43_71 = Clock_Ip_pxScsConfigHsrunMode;
+  _70 (Clock_Ip_pxScsConfigHsrunMode.43_71);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxCoreHsrunClockDivider.44_72 = Clock_Ip_pxCoreHsrunClockDivider;
+  _73 = Clock_Ip_pxCoreHsrunClockDivider.44_72->Set;
+  Clock_Ip_pxCoreConfigHsrunMode.45_74 = Clock_Ip_pxCoreConfigHsrunMode;
+  _73 (Clock_Ip_pxCoreConfigHsrunMode.45_74);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxBusHsrunClockDivider.46_75 = Clock_Ip_pxBusHsrunClockDivider;
+  _76 = Clock_Ip_pxBusHsrunClockDivider.46_75->Set;
+  Clock_Ip_pxBusConfigHsrunMode.47_77 = Clock_Ip_pxBusConfigHsrunMode;
+  _76 (Clock_Ip_pxBusConfigHsrunMode.47_77);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSlowHsrunClockDivider.48_78 = Clock_Ip_pxSlowHsrunClockDivider;
+  _79 = Clock_Ip_pxSlowHsrunClockDivider.48_78->Set;
+  Clock_Ip_pxSlowConfigHsrunMode.49_80 = Clock_Ip_pxSlowConfigHsrunMode;
+  _79 (Clock_Ip_pxSlowConfigHsrunMode.49_80);
+
+  <bb 9> :
+<L12>:
+  return;
+
+}
+
+
+Clock_Ip_ClockInitializeObjects ()
+{
+  static boolean Clock_Ip_bObjsAreInitialized = 0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_bObjsAreInitialized.50_1 = Clock_Ip_bObjsAreInitialized;
+  _2 = ~Clock_Ip_bObjsAreInitialized.50_1;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_bObjsAreInitialized = 1;
+  # DEBUG BEGIN_STMT
+  _3 = Clock_Ip_au8PllCallbackIndex[1];
+  _4 = (int) _3;
+  _5 = &Clock_Ip_axPllCallbacks[_4];
+  Clock_Ip_pxSpllClock = _5;
+  # DEBUG BEGIN_STMT
+  _6 = Clock_Ip_au8XoscCallbackIndex[1];
+  _7 = (int) _6;
+  _8 = &Clock_Ip_axExtOscCallbacks[_7];
+  Clock_Ip_pxSoscClock = _8;
+  # DEBUG BEGIN_STMT
+  _9 = Clock_Ip_au8IrcoscCallbackIndex[4];
+  _10 = (int) _9;
+  _11 = &Clock_Ip_axIntOscCallbacks[_10];
+  Clock_Ip_pxFircClock = _11;
+  # DEBUG BEGIN_STMT
+  _12 = Clock_Ip_au8SelectorCallbackIndex[5];
+  _13 = (int) _12;
+  _14 = &Clock_Ip_axSelectorCallbacks[_13];
+  Clock_Ip_pxScsRunClockSelector = _14;
+  # DEBUG BEGIN_STMT
+  _15 = Clock_Ip_au8SelectorCallbackIndex[7];
+  _16 = (int) _15;
+  _17 = &Clock_Ip_axSelectorCallbacks[_16];
+  Clock_Ip_pxScsHsrunClockSelector = _17;
+  # DEBUG BEGIN_STMT
+  _18 = Clock_Ip_au8DividerCallbackIndex[6];
+  _19 = (int) _18;
+  _20 = &Clock_Ip_axDividerCallbacks[_19];
+  Clock_Ip_pxCoreRunClockDivider = _20;
+  # DEBUG BEGIN_STMT
+  _21 = Clock_Ip_au8DividerCallbackIndex[8];
+  _22 = (int) _21;
+  _23 = &Clock_Ip_axDividerCallbacks[_22];
+  Clock_Ip_pxCoreHsrunClockDivider = _23;
+  # DEBUG BEGIN_STMT
+  _24 = Clock_Ip_au8DividerCallbackIndex[9];
+  _25 = (int) _24;
+  _26 = &Clock_Ip_axDividerCallbacks[_25];
+  Clock_Ip_pxBusRunClockDivider = _26;
+  # DEBUG BEGIN_STMT
+  _27 = Clock_Ip_au8DividerCallbackIndex[11];
+  _28 = (int) _27;
+  _29 = &Clock_Ip_axDividerCallbacks[_28];
+  Clock_Ip_pxBusHsrunClockDivider = _29;
+  # DEBUG BEGIN_STMT
+  _30 = Clock_Ip_au8DividerCallbackIndex[12];
+  _31 = (int) _30;
+  _32 = &Clock_Ip_axDividerCallbacks[_31];
+  Clock_Ip_pxSlowRunClockDivider = _32;
+  # DEBUG BEGIN_STMT
+  _33 = Clock_Ip_au8DividerCallbackIndex[14];
+  _34 = (int) _33;
+  _35 = &Clock_Ip_axDividerCallbacks[_34];
+  Clock_Ip_pxSlowHsrunClockDivider = _35;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _36 = getFircConfig ();
+  Clock_Ip_pxFircConfig = _36;
+  # DEBUG BEGIN_STMT
+  _37 = getSoscConfig ();
+  Clock_Ip_pxSoscConfig = _37;
+  # DEBUG BEGIN_STMT
+  _38 = getSpllConfig ();
+  Clock_Ip_pxSpllConfig = _38;
+  # DEBUG BEGIN_STMT
+  _39 = getSelectorConfig (25);
+  Clock_Ip_pxScsConfigRunMode = _39;
+  # DEBUG BEGIN_STMT
+  _40 = getSelectorConfig (26);
+  Clock_Ip_pxScsConfigVlprMode = _40;
+  # DEBUG BEGIN_STMT
+  _41 = getSelectorConfig (27);
+  Clock_Ip_pxScsConfigHsrunMode = _41;
+  # DEBUG BEGIN_STMT
+  _42 = getCoreDividerConfig (29);
+  Clock_Ip_pxCoreConfigRunMode = _42;
+  # DEBUG BEGIN_STMT
+  _43 = getCoreDividerConfig (30);
+  Clock_Ip_pxCoreConfigVlprMode = _43;
+  # DEBUG BEGIN_STMT
+  _44 = getCoreDividerConfig (31);
+  Clock_Ip_pxCoreConfigHsrunMode = _44;
+  # DEBUG BEGIN_STMT
+  _45 = getBusDividerConfig (33);
+  Clock_Ip_pxBusConfigRunMode = _45;
+  # DEBUG BEGIN_STMT
+  _46 = getBusDividerConfig (34);
+  Clock_Ip_pxBusConfigVlprMode = _46;
+  # DEBUG BEGIN_STMT
+  _47 = getBusDividerConfig (35);
+  Clock_Ip_pxBusConfigHsrunMode = _47;
+  # DEBUG BEGIN_STMT
+  _48 = getSlowDividerConfig (37);
+  Clock_Ip_pxSlowConfigRunMode = _48;
+  # DEBUG BEGIN_STMT
+  _49 = getSlowDividerConfig (38);
+  Clock_Ip_pxSlowConfigVlprMode = _49;
+  # DEBUG BEGIN_STMT
+  _50 = getSlowDividerConfig (39);
+  Clock_Ip_pxSlowConfigHsrunMode = _50;
+  return;
+
+}
+
+
+getSlowDividerConfig (Clock_Ip_NameType Name)
+{
+  uint32 Index;
+  uint32 DividerConfigIndex;
+  static struct Clock_Ip_DividerConfigType DividerConfigurations[3];
+  const struct Clock_Ip_DividerConfigType * ReturnValue;
+  const struct Clock_Ip_DividerConfigType * D.6351;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (Name) <default: <L20> [INV], case 37: <L0> [INV], case 38: <L1> [INV], case 39: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 2;
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L20>:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.75_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.75_1 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.76_2 = Clock_Ip_apConfig;
+  _3 = Clock_Ip_apConfig.76_2->Dividers[Index].Name;
+  if (Name == _3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.77_4 = Clock_Ip_apConfig;
+  ReturnValue = &Clock_Ip_apConfig.77_4->Dividers[Index];
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.78_5 = Clock_Ip_apConfig;
+  _6 = Clock_Ip_apConfig.78_5->DividersCount;
+  _7 = (long unsigned int) _6;
+  if (Index < _7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (ReturnValue == 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = &DividerConfigurations[DividerConfigIndex];
+  # DEBUG BEGIN_STMT
+  DividerConfigurations[DividerConfigIndex].Name = Name;
+  # DEBUG BEGIN_STMT
+  switch (Name) <default: <L21> [INV], case 37: <L13> [INV], case 38: <L14> [INV], case 39: <L15> [INV]>
+
+  <bb 14> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 = _8->RCCR;
+  _10 = _9 & 15;
+  _11 = _10 + 1;
+  DividerConfigurations[DividerConfigIndex].Value = _11;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  _12 = 1074151424B;
+  _13 = _12->VCCR;
+  _14 = _13 & 15;
+  _15 = _14 + 1;
+  DividerConfigurations[DividerConfigIndex].Value = _15;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  _16 = 1074151424B;
+  _17 = _16->HCCR;
+  _18 = _17 & 15;
+  _19 = _18 + 1;
+  DividerConfigurations[DividerConfigIndex].Value = _19;
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+<L21>:
+  # DEBUG BEGIN_STMT
+  D.6351 = ReturnValue;
+  return D.6351;
+
+}
+
+
+getBusDividerConfig (Clock_Ip_NameType Name)
+{
+  uint32 Index;
+  uint32 DividerConfigIndex;
+  static struct Clock_Ip_DividerConfigType DividerConfigurations[3];
+  const struct Clock_Ip_DividerConfigType * ReturnValue;
+  const struct Clock_Ip_DividerConfigType * D.6341;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (Name) <default: <L20> [INV], case 33: <L0> [INV], case 34: <L1> [INV], case 35: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 2;
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L20>:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.71_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.71_1 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.72_2 = Clock_Ip_apConfig;
+  _3 = Clock_Ip_apConfig.72_2->Dividers[Index].Name;
+  if (Name == _3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.73_4 = Clock_Ip_apConfig;
+  ReturnValue = &Clock_Ip_apConfig.73_4->Dividers[Index];
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.74_5 = Clock_Ip_apConfig;
+  _6 = Clock_Ip_apConfig.74_5->DividersCount;
+  _7 = (long unsigned int) _6;
+  if (Index < _7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (ReturnValue == 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = &DividerConfigurations[DividerConfigIndex];
+  # DEBUG BEGIN_STMT
+  DividerConfigurations[DividerConfigIndex].Name = Name;
+  # DEBUG BEGIN_STMT
+  switch (Name) <default: <L21> [INV], case 33: <L13> [INV], case 34: <L14> [INV], case 35: <L15> [INV]>
+
+  <bb 14> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 = _8->RCCR;
+  _10 = _9 >> 4;
+  _11 = _10 & 15;
+  _12 = _11 + 1;
+  DividerConfigurations[DividerConfigIndex].Value = _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  _13 = 1074151424B;
+  _14 = _13->VCCR;
+  _15 = _14 >> 4;
+  _16 = _15 & 15;
+  _17 = _16 + 1;
+  DividerConfigurations[DividerConfigIndex].Value = _17;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  _18 = 1074151424B;
+  _19 = _18->HCCR;
+  _20 = _19 >> 4;
+  _21 = _20 & 15;
+  _22 = _21 + 1;
+  DividerConfigurations[DividerConfigIndex].Value = _22;
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+<L21>:
+  # DEBUG BEGIN_STMT
+  D.6341 = ReturnValue;
+  return D.6341;
+
+}
+
+
+getCoreDividerConfig (Clock_Ip_NameType Name)
+{
+  uint32 Index;
+  uint32 DividerConfigIndex;
+  static struct Clock_Ip_DividerConfigType DividerConfigurations[3];
+  const struct Clock_Ip_DividerConfigType * ReturnValue;
+  const struct Clock_Ip_DividerConfigType * D.6331;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (Name) <default: <L20> [INV], case 29: <L0> [INV], case 30: <L1> [INV], case 31: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  DividerConfigIndex = 2;
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L20>:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.67_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.67_1 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.68_2 = Clock_Ip_apConfig;
+  _3 = Clock_Ip_apConfig.68_2->Dividers[Index].Name;
+  if (Name == _3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.69_4 = Clock_Ip_apConfig;
+  ReturnValue = &Clock_Ip_apConfig.69_4->Dividers[Index];
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.70_5 = Clock_Ip_apConfig;
+  _6 = Clock_Ip_apConfig.70_5->DividersCount;
+  _7 = (long unsigned int) _6;
+  if (Index < _7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (ReturnValue == 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = &DividerConfigurations[DividerConfigIndex];
+  # DEBUG BEGIN_STMT
+  DividerConfigurations[DividerConfigIndex].Name = Name;
+  # DEBUG BEGIN_STMT
+  switch (Name) <default: <L21> [INV], case 29: <L13> [INV], case 30: <L14> [INV], case 31: <L15> [INV]>
+
+  <bb 14> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 = _8->RCCR;
+  _10 = _9 >> 16;
+  _11 = _10 & 15;
+  _12 = _11 + 1;
+  DividerConfigurations[DividerConfigIndex].Value = _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  _13 = 1074151424B;
+  _14 = _13->VCCR;
+  _15 = _14 >> 16;
+  _16 = _15 & 15;
+  _17 = _16 + 1;
+  DividerConfigurations[DividerConfigIndex].Value = _17;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  _18 = 1074151424B;
+  _19 = _18->HCCR;
+  _20 = _19 >> 16;
+  _21 = _20 & 15;
+  _22 = _21 + 1;
+  DividerConfigurations[DividerConfigIndex].Value = _22;
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+<L21>:
+  # DEBUG BEGIN_STMT
+  D.6331 = ReturnValue;
+  return D.6331;
+
+}
+
+
+getSelectorConfig (Clock_Ip_NameType Name)
+{
+  static const Clock_Ip_NameType ClockSource[7] = {0, 8, 2, 5, 0, 0, 9};
+  uint32 Index;
+  uint32 SelectorConfigIndex;
+  static struct Clock_Ip_SelectorConfigType SelectorConfigurations[3];
+  const struct Clock_Ip_SelectorConfigType * ReturnValue;
+  const struct Clock_Ip_SelectorConfigType * D.6322;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (Name) <default: <L3> [INV], case 25: <L0> [INV], case 26: <L1> [INV], case 27: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  SelectorConfigIndex = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  SelectorConfigIndex = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  SelectorConfigIndex = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  SelectorConfigIndex = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.63_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.63_1 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.64_2 = Clock_Ip_apConfig;
+  _3 = Clock_Ip_apConfig.64_2->Selectors[Index].Name;
+  if (Name == _3)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.65_4 = Clock_Ip_apConfig;
+  ReturnValue = &Clock_Ip_apConfig.65_4->Selectors[Index];
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.66_5 = Clock_Ip_apConfig;
+  _6 = Clock_Ip_apConfig.66_5->SelectorsCount;
+  _7 = (long unsigned int) _6;
+  if (Index < _7)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  if (ReturnValue == 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = &SelectorConfigurations[SelectorConfigIndex];
+  # DEBUG BEGIN_STMT
+  SelectorConfigurations[SelectorConfigIndex].Name = Name;
+  # DEBUG BEGIN_STMT
+  switch (Name) <default: <L20> [INV], case 25: <L13> [INV], case 26: <L14> [INV], case 27: <L15> [INV]>
+
+  <bb 15> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 = _8->RCCR;
+  _10 = _9 >> 24;
+  _11 = _10 & 15;
+  _12 = ClockSource[_11];
+  SelectorConfigurations[SelectorConfigIndex].Value = _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  _13 = 1074151424B;
+  _14 = _13->VCCR;
+  _15 = _14 >> 24;
+  _16 = _15 & 15;
+  _17 = ClockSource[_16];
+  SelectorConfigurations[SelectorConfigIndex].Value = _17;
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  _18 = 1074151424B;
+  _19 = _18->HCCR;
+  _20 = _19 >> 24;
+  _21 = _20 & 15;
+  _22 = ClockSource[_21];
+  SelectorConfigurations[SelectorConfigIndex].Value = _22;
+  # DEBUG BEGIN_STMT
+
+  <bb 18> :
+<L20>:
+  # DEBUG BEGIN_STMT
+  D.6322 = ReturnValue;
+  return D.6322;
+
+}
+
+
+getSpllConfig ()
+{
+  static struct Clock_Ip_PllConfigType SpllConfiguration;
+  const struct Clock_Ip_PllConfigType * ReturnValue;
+  uint32 Index;
+  const struct Clock_Ip_PllConfigType * D.6314;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ReturnValue = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.59_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.59_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.60_2 = Clock_Ip_apConfig;
+  _3 = Clock_Ip_apConfig.60_2->Plls[Index].Name;
+  if (_3 == 9)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.61_4 = Clock_Ip_apConfig;
+  ReturnValue = &Clock_Ip_apConfig.61_4->Plls[Index];
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.62_5 = Clock_Ip_apConfig;
+  _6 = Clock_Ip_apConfig.62_5->PllsCount;
+  _7 = (long unsigned int) _6;
+  if (Index < _7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ReturnValue == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = &SpllConfiguration;
+  # DEBUG BEGIN_STMT
+  SpllConfiguration.Name = 9;
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 = _8->SPLLCSR;
+  _10 = (short unsigned int) _9;
+  _11 = _10 & 1;
+  SpllConfiguration.Enable = _11;
+  # DEBUG BEGIN_STMT
+  _12 = 1074151424B;
+  _13 = _12->SPLLCFG;
+  _14 = _13 >> 8;
+  _15 = (unsigned char) _14;
+  _16 = _15 & 7;
+  SpllConfiguration.Predivider = _16;
+  # DEBUG BEGIN_STMT
+  _17 = 1074151424B;
+  _18 = _17->SPLLCFG;
+  _19 = _18 >> 16;
+  _20 = (unsigned char) _19;
+  _21 = _20 & 31;
+  SpllConfiguration.MulFactorDiv = _21;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.6314 = ReturnValue;
+  return D.6314;
+
+}
+
+
+getSoscConfig ()
+{
+  static struct Clock_Ip_XoscConfigType SoscConfiguration;
+  const struct Clock_Ip_XoscConfigType * ReturnValue;
+  uint32 Index;
+  const struct Clock_Ip_XoscConfigType * D.6306;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ReturnValue = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.55_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.55_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.56_2 = Clock_Ip_apConfig;
+  _3 = Clock_Ip_apConfig.56_2->Xoscs[Index].Name;
+  if (_3 == 8)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.57_4 = Clock_Ip_apConfig;
+  ReturnValue = &Clock_Ip_apConfig.57_4->Xoscs[Index];
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.58_5 = Clock_Ip_apConfig;
+  _6 = Clock_Ip_apConfig.58_5->XoscsCount;
+  _7 = (long unsigned int) _6;
+  if (Index < _7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ReturnValue == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = &SoscConfiguration;
+  # DEBUG BEGIN_STMT
+  SoscConfiguration.Name = 8;
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 = _8->SOSCCSR;
+  _10 = (short unsigned int) _9;
+  _11 = _10 & 1;
+  SoscConfiguration.Enable = _11;
+  # DEBUG BEGIN_STMT
+  SoscConfiguration.Freq = 40000000;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.6306 = ReturnValue;
+  return D.6306;
+
+}
+
+
+getFircConfig ()
+{
+  static struct Clock_Ip_IrcoscConfigType FircConfiguration;
+  const struct Clock_Ip_IrcoscConfigType * ReturnValue;
+  uint32 Index;
+  const struct Clock_Ip_IrcoscConfigType * D.6298;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ReturnValue = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.51_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.51_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.52_2 = Clock_Ip_apConfig;
+  _3 = Clock_Ip_apConfig.52_2->Ircoscs[Index].Name;
+  if (_3 == 5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.53_4 = Clock_Ip_apConfig;
+  ReturnValue = &Clock_Ip_apConfig.53_4->Ircoscs[Index];
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.54_5 = Clock_Ip_apConfig;
+  _6 = Clock_Ip_apConfig.54_5->IrcoscsCount;
+  _7 = (long unsigned int) _6;
+  if (Index < _7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ReturnValue == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ReturnValue = &FircConfiguration;
+  # DEBUG BEGIN_STMT
+  FircConfiguration.Name = 5;
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 = _8->FIRCCSR;
+  _10 = (short unsigned int) _9;
+  _11 = _10 & 1;
+  FircConfiguration.Enable = _11;
+  # DEBUG BEGIN_STMT
+  _12 = 1074151424B;
+  _13 = _12->FIRCCFG;
+  _14 = (unsigned char) _13;
+  _15 = _14 & 3;
+  FircConfiguration.Range = _15;
+  # DEBUG BEGIN_STMT
+  _16 = 1074151424B;
+  _17 = _16->FIRCCSR;
+  _18 = (unsigned char) _17;
+  _19 = (int) _18;
+  _20 = _19 >> 3;
+  _21 = (unsigned char) _20;
+  _22 = _21 & 1;
+  FircConfiguration.Regulator = _22;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.6298 = ReturnValue;
+  return D.6298;
+
+}
+
+
+Clock_Ip_SpecificPlatformInitClock (const struct Clock_Ip_ClockConfigType * Config)
+{
+  uint32 IrcoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  TimeoutOccurred = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig = Config;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074151424B;
+  _2 = _1->FIRCCSR;
+  _3 = _2 & 1;
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_bFircWasEnabledBeforeMcuInit = 0;
+  # DEBUG BEGIN_STMT
+  SetFircToResetValue_TrustedCall ();
+  # DEBUG BEGIN_STMT
+  Clock_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = 1074151424B;
+  _5 = _4->FIRCCSR;
+  _6 = _5 >> 24;
+  IrcoscStatus = _6 & 1;
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.79_7 = TimeoutTicks;
+  TimeoutOccurred = Clock_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.79_7);
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _8 = ~TimeoutOccurred;
+  if (_8 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_ReportClockErrors (1, 5);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_bFircWasEnabledBeforeMcuInit = 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  SetSimLpoclksRegister_TrustedCall (Config);
+  StartTime = {CLOBBER};
+  ElapsedTime = {CLOBBER};
+  TimeoutTicks = {CLOBBER};
+  return;
+
+}
+
+
+SetSimLpoclksRegister_TrustedCall (const struct Clock_Ip_ClockConfigType * Config)
+{
+  uint32 Index;
+  uint32 SimLpoValue;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SimLpoValue = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = Config->Selectors[Index].Name;
+  if (_1 == 40)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = Config->Selectors[Index].Value;
+  _3 = Clock_Ip_au16SelectorEntryHardwareValue[_2];
+  _4 = (long unsigned int) _3;
+  _5 = _4 << 4;
+  SimLpoValue = SimLpoValue | _5;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _6 = Config->Selectors[Index].Name;
+  if (_6 == 41)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _7 = Config->Selectors[Index].Value;
+  _8 = Clock_Ip_au8SelectorEntryPcsHardwareValue[_7];
+  _9 = (long unsigned int) _8;
+  _10 = _9 << 2;
+  SimLpoValue = SimLpoValue | _10;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _11 = Config->SelectorsCount;
+  _12 = (long unsigned int) _11;
+  if (Index < _12)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _13 = Config->Gates[Index].Name;
+  if (_13 == 18)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _14 = Config->Gates[Index].Enable;
+  _15 = (long unsigned int) _14;
+  _16 = _15 << 1;
+  SimLpoValue = SimLpoValue | _16;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _17 = Config->Gates[Index].Name;
+  if (_17 == 19)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _18 = Config->Gates[Index].Enable;
+  _19 = (long unsigned int) _18;
+  SimLpoValue = SimLpoValue | _19;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _20 = Config->GatesCount;
+  _21 = (long unsigned int) _20;
+  if (Index < _21)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _22 = 1074036736B;
+  _22->LPOCLKS = SimLpoValue;
+  return;
+
+}
+
+
+SetFircToResetValue_TrustedCall ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1074151424B;
+  _1->FIRCCFG = 0;
+  # DEBUG BEGIN_STMT
+  _2 = 1074151424B;
+  _3 = _2->FIRCCSR;
+  _4 = 1074151424B;
+  _5 = _3 | 1;
+  _4->FIRCCSR = _5;
+  return;
+
+}
+
+
+DisableSafeClock (const struct Clock_Ip_ClockConfigType * Config)
+{
+  boolean FircConfigFound;
+  uint32 Index;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  FircConfigFound = 0;
+  # DEBUG BEGIN_STMT
+  if (Config != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.80_1 = Clock_Ip_apConfig;
+  _2 = Clock_Ip_apConfig.80_1->Ircoscs[Index].Name;
+  if (_2 == 5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  FircConfigFound = 1;
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.81_3 = Clock_Ip_apConfig;
+  _4 = Clock_Ip_apConfig.81_3->Ircoscs[Index].Enable;
+  if (_4 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _5 = Clock_Ip_au8IrcoscCallbackIndex[4];
+  _6 = (int) _5;
+  _7 = Clock_Ip_axIntOscCallbacks[_6].Disable;
+  _7 (5);
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.82_8 = Clock_Ip_apConfig;
+  _9 = Clock_Ip_apConfig.82_8->IrcoscsCount;
+  _10 = (long unsigned int) _9;
+  if (Index < _10)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _11 = ~FircConfigFound;
+  if (_11 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  Clock_Ip_bFircWasEnabledBeforeMcuInit.83_12 = Clock_Ip_bFircWasEnabledBeforeMcuInit;
+  _13 = ~Clock_Ip_bFircWasEnabledBeforeMcuInit.83_12;
+  if (_13 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _14 = Clock_Ip_au8IrcoscCallbackIndex[4];
+  _15 = (int) _14;
+  _16 = Clock_Ip_axIntOscCallbacks[_15].Disable;
+  _16 (5);
+
+  <bb 12> :
+  return;
+
+}
+
+

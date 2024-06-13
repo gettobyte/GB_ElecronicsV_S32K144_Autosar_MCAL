@@ -1,0 +1,824 @@
+Port_Ci_Port_Ip_SetGlobalPinControl (struct PORT_Type * const base, uint16 pins, uint16 value, Port_Ci_Port_Ip_PortGlobalControlPins halfPort)
+{
+  uint16 mask;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  mask_10 = 0;
+  # DEBUG mask => mask_10
+  # DEBUG BEGIN_STMT
+  mask_11 = mask_10 | 1;
+  # DEBUG mask => mask_11
+  # DEBUG BEGIN_STMT
+  mask_12 = mask_11 | 2;
+  # DEBUG mask => mask_12
+  # DEBUG BEGIN_STMT
+  mask_13 = mask_12 | 16;
+  # DEBUG mask => mask_13
+  # DEBUG BEGIN_STMT
+  mask_14 = mask_13 | 64;
+  # DEBUG mask => mask_14
+  # DEBUG BEGIN_STMT
+  mask_15 = mask_14 | 1792;
+  # DEBUG mask => mask_15
+  # DEBUG BEGIN_STMT
+  mask_16 = mask_15 | 32768;
+  # DEBUG mask => mask_16
+  # DEBUG BEGIN_STMT
+  mask_18 = mask_16 & value_17(D);
+  # DEBUG mask => mask_18
+  # DEBUG BEGIN_STMT
+  switch (halfPort_19(D)) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) pins_20(D);
+  _2 = _1 << 16;
+  _3 = (long unsigned int) mask_18;
+  _4 = _2 | _3;
+  base_22(D)->GPCLR ={v} _4;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _5 = (long unsigned int) pins_20(D);
+  _6 = _5 << 16;
+  _7 = (long unsigned int) mask_18;
+  _8 = _6 | _7;
+  base_22(D)->GPCHR ={v} _8;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  DevAssert (0);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_ConfigDigitalFilter (struct PORT_Type * const base, const struct Port_Ci_Port_Ip_DigitalFilterConfigType * config)
+{
+  unsigned char _1;
+  _Bool _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned char _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = config_10(D)->u8Width;
+  _2 = _1 <= 31;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = config_10(D)->u8Clock;
+  _4 = (long unsigned int) _3;
+  _5 = _4 & 1;
+  base_12(D)->DFCR ={v} _5;
+  # DEBUG BEGIN_STMT
+  _6 = config_10(D)->u8Width;
+  _7 = (long unsigned int) _6;
+  _8 = _7 & 31;
+  base_12(D)->DFWR ={v} _8;
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_DisableDigitalFilter (struct PORT_Type * const base, uint32 pin)
+{
+  _Bool _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pin_6(D) <= 31;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08 ();
+  # DEBUG BEGIN_STMT
+  _2 ={v} base_10(D)->DFER;
+  _3 = 1 << pin_6(D);
+  _4 = ~_3;
+  _5 = _2 & _4;
+  base_10(D)->DFER ={v} _5;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_EnableDigitalFilter (struct PORT_Type * const base, uint32 pin)
+{
+  _Bool _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pin_5(D) <= 31;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07 ();
+  # DEBUG BEGIN_STMT
+  _2 ={v} base_9(D)->DFER;
+  _3 = 1 << pin_5(D);
+  _4 = _2 | _3;
+  base_9(D)->DFER ={v} _4;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetMuxModeSel (struct PORT_Type * const base, uint32 pin, Port_Ci_Port_Ip_PortMux mux)
+{
+  Port_Ci_Port_Ip_PortMux muxing;
+  uint32 regValue;
+  _Bool _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  _Bool _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pin_7(D) <= 31;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 ={v} base_10(D)->PCR[pin_7(D)];
+  _3 = _2 & 32768;
+  _4 = _3 == 0;
+  DevAssert (_4);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  muxing_13 = mux_12(D);
+  # DEBUG muxing => muxing_13
+  # DEBUG BEGIN_STMT
+  muxing_15 = Port_Ci_Port_Ip_ConfigureInterleave (base_10(D), pin_7(D), mux_12(D));
+  # DEBUG muxing => muxing_15
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06 ();
+  # DEBUG BEGIN_STMT
+  regValue_17 ={v} base_10(D)->PCR[pin_7(D)];
+  # DEBUG regValue => regValue_17
+  # DEBUG BEGIN_STMT
+  regValue_18 = regValue_17 & 4294965503;
+  # DEBUG regValue => regValue_18
+  # DEBUG BEGIN_STMT
+  _5 = muxing_15 << 8;
+  _6 = _5 & 1792;
+  regValue_19 = regValue_18 | _6;
+  # DEBUG regValue => regValue_19
+  # DEBUG BEGIN_STMT
+  base_10(D)->PCR[pin_7(D)] ={v} regValue_19;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_Init (uint32 pinCount, const struct Port_Ci_Port_Ip_PinSettingsConfig * config)
+{
+  uint32 i;
+  long unsigned int _1;
+  const struct Port_Ci_Port_Ip_PinSettingsConfig * _2;
+  Port_Ci_Port_Ip_PortStatusType _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i_5 = 0;
+  # DEBUG i => i_5
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = i_3 * 40;
+  _2 = config_9(D) + _1;
+  Port_Ci_Port_Ip_PinInit (_2);
+  # DEBUG BEGIN_STMT
+  i_11 = i_3 + 1;
+  # DEBUG i => i_11
+
+  <bb 4> :
+  # i_3 = PHI <i_5(2), i_11(3)>
+  # DEBUG i => i_3
+  # DEBUG BEGIN_STMT
+  if (i_3 < pinCount_7(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _8 = 0;
+  return _8;
+
+}
+
+
+Port_Ci_Port_Ip_PinInit (const struct Port_Ci_Port_Ip_PinSettingsConfig * config)
+{
+  Port_Ci_Port_Ip_PortMux retMuxing;
+  Port_Ci_Port_Ip_PortMux muxing;
+  uint32 digitalFilters;
+  uint32 pinsValues;
+  _Bool _1;
+  long unsigned int _2;
+  _Bool _3;
+  struct PORT_Type * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  _Bool _8;
+  <unnamed type> _9;
+  <unnamed type> _10;
+  long unsigned int _11;
+  <unnamed type> _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  <unnamed type> _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  _Bool _18;
+  struct PORT_Type * _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  struct PORT_Type * _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  _Bool _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  struct PORT_Type * _30;
+  <unnamed type> _31;
+  unsigned char _32;
+  struct GPIO_Type * _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  struct GPIO_Type * _37;
+  long unsigned int _38;
+  unsigned char _39;
+  struct GPIO_Type * _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  struct GPIO_Type * _44;
+  long unsigned int _45;
+  struct GPIO_Type * _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  struct GPIO_Type * _50;
+  long unsigned int _51;
+  struct GPIO_Type * _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  struct GPIO_Type * _57;
+  long unsigned int _58;
+  struct GPIO_Type * _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  struct GPIO_Type * _64;
+  long unsigned int _65;
+  <unnamed type> _66;
+  struct GPIO_Type * _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  struct GPIO_Type * _71;
+  long unsigned int _72;
+  struct PORT_Type * _73;
+  long unsigned int _74;
+  long unsigned int iftmp.0_76;
+  long unsigned int iftmp.1_77;
+  long unsigned int iftmp.0_93;
+  long unsigned int iftmp.0_94;
+  long unsigned int iftmp.1_104;
+  long unsigned int iftmp.1_105;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pinsValues_81 = 0;
+  # DEBUG pinsValues => pinsValues_81
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  muxing_82 = 0;
+  # DEBUG muxing => muxing_82
+  # DEBUG BEGIN_STMT
+  retMuxing_83 = 0;
+  # DEBUG retMuxing => retMuxing_83
+  # DEBUG BEGIN_STMT
+  _1 = config_84(D) != 0B;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = config_84(D)->pinPortIdx;
+  _3 = _2 <= 31;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = config_84(D)->portBase;
+  _5 = config_84(D)->pinPortIdx;
+  _6 ={v} _4->PCR[_5];
+  _7 = _6 & 32768;
+  _8 = _7 == 0;
+  DevAssert (_8);
+  # DEBUG BEGIN_STMT
+  _9 = config_84(D)->pullConfig;
+  if (_9 != 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pinsValues_89 = pinsValues_81 | 2;
+  # DEBUG pinsValues => pinsValues_89
+  # DEBUG BEGIN_STMT
+  _10 = config_84(D)->pullConfig;
+  _11 = _10 & 1;
+  pinsValues_90 = pinsValues_89 | _11;
+  # DEBUG pinsValues => pinsValues_90
+
+  <bb 4> :
+  # pinsValues_75 = PHI <pinsValues_81(2), pinsValues_90(3)>
+  # DEBUG pinsValues => pinsValues_75
+  # DEBUG BEGIN_STMT
+  _12 = config_84(D)->driveStrength;
+  _13 = _12 << 6;
+  _14 = _13 & 64;
+  pinsValues_91 = pinsValues_75 | _14;
+  # DEBUG pinsValues => pinsValues_91
+  # DEBUG BEGIN_STMT
+  _15 = config_84(D)->lockRegister;
+  _16 = _15 << 15;
+  _17 = _16 & 65535;
+  pinsValues_92 = pinsValues_91 | _17;
+  # DEBUG pinsValues => pinsValues_92
+  # DEBUG BEGIN_STMT
+  _18 = config_84(D)->passiveFilter;
+  if (_18 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.0_94 = 16;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.0_93 = 0;
+
+  <bb 7> :
+  # iftmp.0_76 = PHI <iftmp.0_94(5), iftmp.0_93(6)>
+  pinsValues_95 = iftmp.0_76 | pinsValues_92;
+  # DEBUG pinsValues => pinsValues_95
+  # DEBUG BEGIN_STMT
+  muxing_96 = config_84(D)->mux;
+  # DEBUG muxing => muxing_96
+  # DEBUG BEGIN_STMT
+  _19 = config_84(D)->portBase;
+  _20 = config_84(D)->pinPortIdx;
+  retMuxing_98 = Port_Ci_Port_Ip_ConfigureInterleave (_19, _20, muxing_96);
+  # DEBUG retMuxing => retMuxing_98
+  # DEBUG BEGIN_STMT
+  muxing_99 = retMuxing_98;
+  # DEBUG muxing => muxing_99
+  # DEBUG BEGIN_STMT
+  _21 = muxing_99 << 8;
+  _22 = _21 & 1792;
+  pinsValues_100 = pinsValues_95 | _22;
+  # DEBUG pinsValues => pinsValues_100
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  _23 = config_84(D)->portBase;
+  digitalFilters_102 ={v} _23->DFER;
+  # DEBUG digitalFilters => digitalFilters_102
+  # DEBUG BEGIN_STMT
+  _24 = config_84(D)->pinPortIdx;
+  _25 = 1 << _24;
+  _26 = ~_25;
+  digitalFilters_103 = digitalFilters_102 & _26;
+  # DEBUG digitalFilters => digitalFilters_103
+  # DEBUG BEGIN_STMT
+  _27 = config_84(D)->digitalFilter;
+  if (_27 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.1_105 = 1;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.1_104 = 0;
+
+  <bb 10> :
+  # iftmp.1_77 = PHI <iftmp.1_105(8), iftmp.1_104(9)>
+  _28 = config_84(D)->pinPortIdx;
+  _29 = iftmp.1_77 << _28;
+  digitalFilters_106 = digitalFilters_103 | _29;
+  # DEBUG digitalFilters => digitalFilters_106
+  # DEBUG BEGIN_STMT
+  _30 = config_84(D)->portBase;
+  _30->DFER ={v} digitalFilters_106;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  if (muxing_99 == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _31 = config_84(D)->direction;
+  if (_31 == 2)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _32 = config_84(D)->initValue;
+  if (_32 == 1)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  _33 = config_84(D)->gpioBase;
+  _34 ={v} _33->PSOR;
+  _35 = config_84(D)->pinPortIdx;
+  _36 = 1 << _35;
+  _37 = config_84(D)->gpioBase;
+  _38 = _34 | _36;
+  _37->PSOR ={v} _38;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01 ();
+  goto <bb 16>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _39 = config_84(D)->initValue;
+  if (_39 == 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  _40 = config_84(D)->gpioBase;
+  _41 ={v} _40->PCOR;
+  _42 = config_84(D)->pinPortIdx;
+  _43 = 1 << _42;
+  _44 = config_84(D)->gpioBase;
+  _45 = _41 | _43;
+  _44->PCOR ={v} _45;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02 ();
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  _46 = config_84(D)->gpioBase;
+  _47 ={v} _46->PDDR;
+  _48 = config_84(D)->pinPortIdx;
+  _49 = 1 << _48;
+  _50 = config_84(D)->gpioBase;
+  _51 = _47 | _49;
+  _50->PDDR ={v} _51;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03 ();
+  goto <bb 20>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  _52 = config_84(D)->gpioBase;
+  _53 ={v} _52->PDDR;
+  _54 = config_84(D)->pinPortIdx;
+  _55 = 1 << _54;
+  _56 = ~_55;
+  _57 = config_84(D)->gpioBase;
+  _58 = _53 & _56;
+  _57->PDDR ={v} _58;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04 ();
+  # DEBUG BEGIN_STMT
+  _59 = config_84(D)->gpioBase;
+  _60 ={v} _59->PIDR;
+  _61 = config_84(D)->pinPortIdx;
+  _62 = 1 << _61;
+  _63 = ~_62;
+  _64 = config_84(D)->gpioBase;
+  _65 = _60 & _63;
+  _64->PIDR ={v} _65;
+  # DEBUG BEGIN_STMT
+  _66 = config_84(D)->direction;
+  if (_66 == 3)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  _67 = config_84(D)->gpioBase;
+  _68 ={v} _67->PIDR;
+  _69 = config_84(D)->pinPortIdx;
+  _70 = 1 << _69;
+  _71 = config_84(D)->gpioBase;
+  _72 = _68 | _70;
+  _71->PIDR ={v} _72;
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04 ();
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  _73 = config_84(D)->portBase;
+  _74 = config_84(D)->pinPortIdx;
+  _73->PCR[_74] ={v} pinsValues_100;
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_ConfigureInterleave (struct PORT_Type * const base, uint32 pin, Port_Ci_Port_Ip_PortMux muxing)
+{
+  Port_Ci_Port_Ip_InterleaveMux interleaveVal;
+  uint32 chipCtlReg;
+  Port_Ci_Port_Ip_PortMux retMuxing;
+  struct SIM_Type * _1;
+  long unsigned int _2;
+  struct SIM_Type * _3;
+  long unsigned int _4;
+  struct SIM_Type * _5;
+  long unsigned int _6;
+  struct SIM_Type * _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  struct SIM_Type * _10;
+  long unsigned int _11;
+  Port_Ci_Port_Ip_PortMux _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  retMuxing_16 = muxing_15(D);
+  # DEBUG retMuxing => retMuxing_16
+  # DEBUG BEGIN_STMT
+  if (muxing_15(D) == 8)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = 1074036736B;
+  _2 ={v} _1->CHIPCTL;
+  chipCtlReg_18 = _2 & 15;
+  # DEBUG chipCtlReg => chipCtlReg_18
+  # DEBUG BEGIN_STMT
+  interleaveVal_22 = Port_Ci_Port_Ip_GetAdcInterleaveVal (base_19(D), pin_20(D), chipCtlReg_18);
+  # DEBUG interleaveVal => interleaveVal_22
+  # DEBUG BEGIN_STMT
+  if (interleaveVal_22 != 255)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05 ();
+  # DEBUG BEGIN_STMT
+  _3 = 1074036736B;
+  _4 ={v} _3->CHIPCTL;
+  _5 = 1074036736B;
+  _6 = _4 & 4294967280;
+  _5->CHIPCTL ={v} _6;
+  # DEBUG BEGIN_STMT
+  _7 = 1074036736B;
+  _8 ={v} _7->CHIPCTL;
+  _9 = interleaveVal_22 & 15;
+  _10 = 1074036736B;
+  _11 = _8 | _9;
+  _10->CHIPCTL ={v} _11;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05 ();
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  retMuxing_27 = 0;
+  # DEBUG retMuxing => retMuxing_27
+
+  <bb 6> :
+  # retMuxing_12 = PHI <retMuxing_16(2), retMuxing_27(5)>
+  # DEBUG retMuxing => retMuxing_12
+  # DEBUG BEGIN_STMT
+  _28 = retMuxing_12;
+  return _28;
+
+}
+
+
+Port_Ci_Port_Ip_GetAdcInterleaveVal (const struct PORT_Type * base, const uint32 pinPortIdx, const uint32 currentVal)
+{
+  uint32 adcInterleaveVal;
+  uint32 _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_2 = 255;
+  # DEBUG adcInterleaveVal => adcInterleaveVal_2
+  # DEBUG BEGIN_STMT
+  if (base_3(D) == 1074044928B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  switch (pinPortIdx_4(D)) <default: <L20> [INV], case 0: <L1> [INV], case 1: <L2> [INV], case 13: <L3> [INV], case 14: <L4> [INV], case 15: <L5> [INV], case 16: <L6> [INV]>
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_20 = 1;
+  # DEBUG adcInterleaveVal => adcInterleaveVal_20
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_21 = adcInterleaveVal_20 | currentVal_6(D);
+  # DEBUG adcInterleaveVal => adcInterleaveVal_21
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_18 = 2;
+  # DEBUG adcInterleaveVal => adcInterleaveVal_18
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_19 = adcInterleaveVal_18 | currentVal_6(D);
+  # DEBUG adcInterleaveVal => adcInterleaveVal_19
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_16 = 4;
+  # DEBUG adcInterleaveVal => adcInterleaveVal_16
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_17 = adcInterleaveVal_16 | currentVal_6(D);
+  # DEBUG adcInterleaveVal => adcInterleaveVal_17
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_14 = 8;
+  # DEBUG adcInterleaveVal => adcInterleaveVal_14
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_15 = adcInterleaveVal_14 | currentVal_6(D);
+  # DEBUG adcInterleaveVal => adcInterleaveVal_15
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_12 = 14;
+  # DEBUG adcInterleaveVal => adcInterleaveVal_12
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_13 = adcInterleaveVal_12 & currentVal_6(D);
+  # DEBUG adcInterleaveVal => adcInterleaveVal_13
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 9> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_10 = 13;
+  # DEBUG adcInterleaveVal => adcInterleaveVal_10
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_11 = adcInterleaveVal_10 & currentVal_6(D);
+  # DEBUG adcInterleaveVal => adcInterleaveVal_11
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (base_3(D) == 1074049024B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  switch (pinPortIdx_4(D)) <default: <L20> [INV], case 0: <L11> [INV], case 1: <L12> [INV]>
+
+  <bb 12> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_8 = 11;
+  # DEBUG adcInterleaveVal => adcInterleaveVal_8
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_9 = adcInterleaveVal_8 & currentVal_6(D);
+  # DEBUG adcInterleaveVal => adcInterleaveVal_9
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_5 = 7;
+  # DEBUG adcInterleaveVal => adcInterleaveVal_5
+  # DEBUG BEGIN_STMT
+  adcInterleaveVal_7 = adcInterleaveVal_5 & currentVal_6(D);
+  # DEBUG adcInterleaveVal => adcInterleaveVal_7
+  # DEBUG BEGIN_STMT
+
+  <bb 14> :
+  # adcInterleaveVal_1 = PHI <adcInterleaveVal_19(5), adcInterleaveVal_2(10), adcInterleaveVal_7(13), adcInterleaveVal_21(4), adcInterleaveVal_2(3), adcInterleaveVal_11(9), adcInterleaveVal_13(8), adcInterleaveVal_15(7), adcInterleaveVal_17(6), adcInterleaveVal_9(12), adcInterleaveVal_2(11)>
+<L20>:
+  # DEBUG adcInterleaveVal => adcInterleaveVal_1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = adcInterleaveVal_1;
+  return _22;
+
+}
+
+
+DevAssert (volatile boolean x)
+{
+  _Bool x.2_1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  x.2_1 ={v} x;
+  if (x.2_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0");
+  # DEBUG BEGIN_STMT
+  goto <bb 3>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

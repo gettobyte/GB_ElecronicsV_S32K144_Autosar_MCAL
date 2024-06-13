@@ -1,0 +1,328 @@
+Power_Ip_SMC_ModeConfig (const struct Power_Ip_ModeConfigType * ModeConfigPtr)
+{
+  boolean TimeoutOccurred;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  uint32 PowerModeStatus;
+  uint32 TempValue;
+  Power_Ip_PowerModeType PowerMode;
+  uint32 PowerSwitchMode;
+  struct SMC_Type * _1;
+  struct SMC_Type * _2;
+  long unsigned int TimeoutTicks.0_3;
+  struct SMC_Type * _4;
+  long unsigned int _5;
+  _Bool _6;
+  struct SMC_Type * _7;
+  struct SMC_Type * _8;
+  long unsigned int TimeoutTicks.1_9;
+  struct SMC_Type * _10;
+  long unsigned int _11;
+  _Bool _12;
+  struct SMC_Type * _13;
+  struct SMC_Type * _14;
+  long unsigned int TimeoutTicks.2_15;
+  struct SMC_Type * _16;
+  long unsigned int _17;
+  _Bool _18;
+  uint32 _58;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  PowerSwitchMode_24 = 0;
+  # DEBUG PowerSwitchMode => PowerSwitchMode_24
+  # DEBUG BEGIN_STMT
+  PowerMode_25 = 0;
+  # DEBUG PowerMode => PowerMode_25
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutOccurred_26 = 0;
+  # DEBUG TimeoutOccurred => TimeoutOccurred_26
+  # DEBUG BEGIN_STMT
+  PowerMode_29 = ModeConfigPtr_28(D)->PowerMode;
+  # DEBUG PowerMode => PowerMode_29
+  # DEBUG BEGIN_STMT
+  switch (PowerMode_29) <default: <L18> [INV], case 0: <L0> [INV], case 1: <L6> [INV], case 2: <L12> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = 1074257920B;
+  TempValue_48 ={v} _1->PMCTRL;
+  # DEBUG TempValue => TempValue_48
+  # DEBUG BEGIN_STMT
+  TempValue_49 = TempValue_48 & 4294967199;
+  # DEBUG TempValue => TempValue_49
+  # DEBUG BEGIN_STMT
+  TempValue_50 = TempValue_49;
+  # DEBUG TempValue => TempValue_50
+  # DEBUG BEGIN_STMT
+  _2 = 1074257920B;
+  _2->PMCTRL ={v} TempValue_50;
+  # DEBUG BEGIN_STMT
+  Power_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_3 = TimeoutTicks;
+  TimeoutOccurred_54 = Power_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_3);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_54
+  # DEBUG BEGIN_STMT
+  _4 = 1074257920B;
+  _5 ={v} _4->PMSTAT;
+  PowerModeStatus_55 = _5 & 1;
+  # DEBUG PowerModeStatus => PowerModeStatus_55
+  # DEBUG BEGIN_STMT
+  if (PowerModeStatus_55 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _6 = ~TimeoutOccurred_54;
+  if (_6 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_54 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  PowerSwitchMode_56 = 1;
+  # DEBUG PowerSwitchMode => PowerSwitchMode_56
+  goto <bb 19>; [INV]
+
+  <bb 8> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _7 = 1074257920B;
+  TempValue_39 ={v} _7->PMCTRL;
+  # DEBUG TempValue => TempValue_39
+  # DEBUG BEGIN_STMT
+  TempValue_40 = TempValue_39 & 4294967199;
+  # DEBUG TempValue => TempValue_40
+  # DEBUG BEGIN_STMT
+  TempValue_41 = TempValue_40 | 96;
+  # DEBUG TempValue => TempValue_41
+  # DEBUG BEGIN_STMT
+  _8 = 1074257920B;
+  _8->PMCTRL ={v} TempValue_41;
+  # DEBUG BEGIN_STMT
+  Power_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.1_9 = TimeoutTicks;
+  TimeoutOccurred_45 = Power_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.1_9);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_45
+  # DEBUG BEGIN_STMT
+  _10 = 1074257920B;
+  _11 ={v} _10->PMSTAT;
+  PowerModeStatus_46 = _11 & 128;
+  # DEBUG PowerModeStatus => PowerModeStatus_46
+  # DEBUG BEGIN_STMT
+  if (PowerModeStatus_46 != 128)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _12 = ~TimeoutOccurred_45;
+  if (_12 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_45 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  PowerSwitchMode_47 = 1;
+  # DEBUG PowerSwitchMode => PowerSwitchMode_47
+  goto <bb 19>; [INV]
+
+  <bb 13> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  _13 = 1074257920B;
+  TempValue_30 ={v} _13->PMCTRL;
+  # DEBUG TempValue => TempValue_30
+  # DEBUG BEGIN_STMT
+  TempValue_31 = TempValue_30 & 4294967199;
+  # DEBUG TempValue => TempValue_31
+  # DEBUG BEGIN_STMT
+  TempValue_32 = TempValue_31 | 64;
+  # DEBUG TempValue => TempValue_32
+  # DEBUG BEGIN_STMT
+  _14 = 1074257920B;
+  _14->PMCTRL ={v} TempValue_32;
+  # DEBUG BEGIN_STMT
+  Power_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.2_15 = TimeoutTicks;
+  TimeoutOccurred_36 = Power_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.2_15);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_36
+  # DEBUG BEGIN_STMT
+  _16 = 1074257920B;
+  _17 ={v} _16->PMSTAT;
+  PowerModeStatus_37 = _17 & 4;
+  # DEBUG PowerModeStatus => PowerModeStatus_37
+  # DEBUG BEGIN_STMT
+  if (PowerModeStatus_37 != 4)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _18 = ~TimeoutOccurred_36;
+  if (_18 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_36 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  PowerSwitchMode_38 = 1;
+  # DEBUG PowerSwitchMode => PowerSwitchMode_38
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+<L18>:
+  # DEBUG BEGIN_STMT
+  PowerSwitchMode_57 = 1;
+  # DEBUG PowerSwitchMode => PowerSwitchMode_57
+  # DEBUG BEGIN_STMT
+
+  <bb 19> :
+  # PowerSwitchMode_19 = PHI <PowerSwitchMode_56(7), PowerSwitchMode_47(12), PowerSwitchMode_38(17), PowerSwitchMode_57(18), PowerSwitchMode_24(6), PowerSwitchMode_24(11), PowerSwitchMode_24(16)>
+  # DEBUG PowerSwitchMode => PowerSwitchMode_19
+  # DEBUG BEGIN_STMT
+  _58 = PowerSwitchMode_19;
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return _58;
+
+}
+
+
+Power_Ip_SMC_ModeCheckEntry (Power_Ip_PowerModeType PowerMode)
+{
+  uint32 CurrentPowerMode;
+  Power_Ip_SMC_ModeStatusType PowerModeCheck;
+  struct SMC_Type * _1;
+  long unsigned int _2;
+  Power_Ip_SMC_ModeStatusType _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  PowerModeCheck_4 = 1;
+  # DEBUG PowerModeCheck => PowerModeCheck_4
+  # DEBUG BEGIN_STMT
+  CurrentPowerMode_5 = 1;
+  # DEBUG CurrentPowerMode => CurrentPowerMode_5
+  # DEBUG BEGIN_STMT
+  _1 = 1074257920B;
+  _2 ={v} _1->PMSTAT;
+  CurrentPowerMode_7 = _2 & 255;
+  # DEBUG CurrentPowerMode => CurrentPowerMode_7
+  # DEBUG BEGIN_STMT
+  switch (PowerMode_8(D)) <default: <L11> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L4> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  PowerModeCheck_11 = 0;
+  # DEBUG PowerModeCheck => PowerModeCheck_11
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  if (CurrentPowerMode_7 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  PowerModeCheck_10 = 0;
+  # DEBUG PowerModeCheck => PowerModeCheck_10
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  if (CurrentPowerMode_7 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  if (CurrentPowerMode_7 == 16)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  PowerModeCheck_9 = 0;
+  # DEBUG PowerModeCheck => PowerModeCheck_9
+
+  <bb 9> :
+  # PowerModeCheck_3 = PHI <PowerModeCheck_11(3), PowerModeCheck_10(5), PowerModeCheck_9(8), PowerModeCheck_4(2), PowerModeCheck_4(4), PowerModeCheck_4(7)>
+<L11>:
+  # DEBUG PowerModeCheck => PowerModeCheck_3
+  # DEBUG BEGIN_STMT
+  _12 = PowerModeCheck_3;
+  return _12;
+
+}
+
+
+Power_Ip_SMC_AllowedModesConfig (const struct Power_Ip_SMC_ConfigType * ConfigPtr)
+{
+  long unsigned int _1;
+  struct SMC_Type * _2;
+  long unsigned int _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = ConfigPtr_5(D)->AllowedModes;
+  _2 = 1074257920B;
+  _3 = _1 & 160;
+  _2->PMPROT ={v} _3;
+  return;
+
+}
+
+

@@ -1,0 +1,326 @@
+
+
+ local analysis of Power_Ip_CM4_DisableDeepSleep
+   scanning: Power_Ip_pxCM4.6_1 = Power_Ip_pxCM4;
+  scanning: TempValue_3 ={v} Power_Ip_pxCM4.6_1->SCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: TempValue_4 = TempValue_3 & 4294967291;
+  scanning: Power_Ip_pxCM4.6_1->SCR ={v} TempValue_4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of Power_Ip_CM4_EnableDeepSleep
+   scanning: Power_Ip_pxCM4.4_1 = Power_Ip_pxCM4;
+  scanning: TempValue_3 ={v} Power_Ip_pxCM4.4_1->SCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: TempValue_4 = TempValue_3 | 4;
+  scanning: Power_Ip_pxCM4.4_1->SCR ={v} TempValue_4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of Power_Ip_CM4_EnableSleepOnExit
+   scanning: Power_Ip_pxCM4.2_1 = Power_Ip_pxCM4;
+  scanning: TempValue_3 ={v} Power_Ip_pxCM4.2_1->SCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: TempValue_4 = TempValue_3 | 2;
+  scanning: Power_Ip_pxCM4.2_1->SCR ={v} TempValue_4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of Power_Ip_CM4_DisableSleepOnExit
+   scanning: Power_Ip_pxCM4.0_1 = Power_Ip_pxCM4;
+  scanning: TempValue_3 ={v} Power_Ip_pxCM4.0_1->SCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: TempValue_4 = TempValue_3 & 4294967293;
+  scanning: Power_Ip_pxCM4.0_1->SCR ={v} TempValue_4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+callgraph:
+
+Power_Ip_CM4_DisableDeepSleep/4 (Power_Ip_CM4_DisableDeepSleep) @0681ba80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44e78
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_EnableDeepSleep/3 (Power_Ip_CM4_EnableDeepSleep) @0681bee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44bd8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_EnableSleepOnExit/2 (Power_Ip_CM4_EnableSleepOnExit) @0681bc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44dd8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_DisableSleepOnExit/1 (Power_Ip_CM4_DisableSleepOnExit) @0681b9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44cb8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+Power_Ip_CM4_DisableDeepSleep/4 (Power_Ip_CM4_DisableDeepSleep) @0681ba80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44e78
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_EnableDeepSleep/3 (Power_Ip_CM4_EnableDeepSleep) @0681bee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44bd8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_EnableSleepOnExit/2 (Power_Ip_CM4_EnableSleepOnExit) @0681bc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44dd8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_DisableSleepOnExit/1 (Power_Ip_CM4_DisableSleepOnExit) @0681b9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44cb8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+Power_Ip_CM4_DisableDeepSleep: malloc_bottom
+Power_Ip_CM4_EnableDeepSleep: malloc_bottom
+Power_Ip_CM4_EnableSleepOnExit: malloc_bottom
+Power_Ip_CM4_DisableSleepOnExit: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Power_Ip_CM4_DisableDeepSleep: malloc_bottom
+Power_Ip_CM4_EnableDeepSleep: malloc_bottom
+Power_Ip_CM4_EnableSleepOnExit: malloc_bottom
+Power_Ip_CM4_DisableSleepOnExit: malloc_bottom
+callgraph:
+
+Power_Ip_CM4_DisableDeepSleep/4 (Power_Ip_CM4_DisableDeepSleep) @0681ba80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44bf8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_EnableDeepSleep/3 (Power_Ip_CM4_EnableDeepSleep) @0681bee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44c18
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_EnableSleepOnExit/2 (Power_Ip_CM4_EnableSleepOnExit) @0681bc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44db8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_DisableSleepOnExit/1 (Power_Ip_CM4_DisableSleepOnExit) @0681b9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44c58
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+Power_Ip_CM4_DisableDeepSleep/4 (Power_Ip_CM4_DisableDeepSleep) @0681ba80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44bf8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_EnableDeepSleep/3 (Power_Ip_CM4_EnableDeepSleep) @0681bee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44c18
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_EnableSleepOnExit/2 (Power_Ip_CM4_EnableSleepOnExit) @0681bc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44db8
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM4_DisableSleepOnExit/1 (Power_Ip_CM4_DisableSleepOnExit) @0681b9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04c44c58
+  References: Power_Ip_pxCM4/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: Power_Ip_CM4_DisableSleepOnExit
+Function found not to call free: Power_Ip_CM4_EnableSleepOnExit
+Function found not to call free: Power_Ip_CM4_EnableDeepSleep
+Function found not to call free: Power_Ip_CM4_DisableDeepSleep
+Power_Ip_CM4_DisableDeepSleep ()
+{
+  uint32 TempValue;
+  struct Power_Ip_CM4_Type * Power_Ip_pxCM4.6_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TempValue => 0
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxCM4.6_1 = Power_Ip_pxCM4;
+  TempValue_3 ={v} Power_Ip_pxCM4.6_1->SCR;
+  # DEBUG TempValue => TempValue_3
+  # DEBUG BEGIN_STMT
+  TempValue_4 = TempValue_3 & 4294967291;
+  # DEBUG TempValue => TempValue_4
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxCM4.6_1->SCR ={v} TempValue_4;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableDeepSleep ()
+{
+  uint32 TempValue;
+  struct Power_Ip_CM4_Type * Power_Ip_pxCM4.4_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TempValue => 0
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxCM4.4_1 = Power_Ip_pxCM4;
+  TempValue_3 ={v} Power_Ip_pxCM4.4_1->SCR;
+  # DEBUG TempValue => TempValue_3
+  # DEBUG BEGIN_STMT
+  TempValue_4 = TempValue_3 | 4;
+  # DEBUG TempValue => TempValue_4
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxCM4.4_1->SCR ={v} TempValue_4;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableSleepOnExit ()
+{
+  uint32 TempValue;
+  struct Power_Ip_CM4_Type * Power_Ip_pxCM4.2_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TempValue => 0
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxCM4.2_1 = Power_Ip_pxCM4;
+  TempValue_3 ={v} Power_Ip_pxCM4.2_1->SCR;
+  # DEBUG TempValue => TempValue_3
+  # DEBUG BEGIN_STMT
+  TempValue_4 = TempValue_3 | 2;
+  # DEBUG TempValue => TempValue_4
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxCM4.2_1->SCR ={v} TempValue_4;
+  return;
+
+}
+
+
+Power_Ip_CM4_DisableSleepOnExit ()
+{
+  uint32 TempValue;
+  struct Power_Ip_CM4_Type * Power_Ip_pxCM4.0_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TempValue => 0
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxCM4.0_1 = Power_Ip_pxCM4;
+  TempValue_3 ={v} Power_Ip_pxCM4.0_1->SCR;
+  # DEBUG TempValue => TempValue_3
+  # DEBUG BEGIN_STMT
+  TempValue_4 = TempValue_3 & 4294967293;
+  # DEBUG TempValue => TempValue_4
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxCM4.0_1->SCR ={v} TempValue_4;
+  return;
+
+}
+
+

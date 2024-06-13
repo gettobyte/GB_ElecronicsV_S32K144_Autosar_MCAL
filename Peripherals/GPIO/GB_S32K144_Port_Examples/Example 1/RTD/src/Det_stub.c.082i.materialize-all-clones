@@ -1,0 +1,402 @@
+Det_TestNoTransientFault ()
+{
+  uint32 u32CoreId;
+  boolean result;
+  unsigned char _1;
+  short unsigned int _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+  _Bool _6;
+  int iftmp.5_7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_10 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_10
+  # DEBUG BEGIN_STMT
+  _2 = Det_TransientModuleId[u32CoreId_10];
+  if (_2 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  _3 = Det_TransientInstanceId[u32CoreId_10];
+  if (_3 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+  _4 = Det_TransientApiId[u32CoreId_10];
+  if (_4 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 134217728]:
+  _5 = Det_TransientFaultId[u32CoreId_10];
+  if (_5 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 67108864]:
+
+  <bb 7> [local count: 1073741824]:
+  # iftmp.5_7 = PHI <1(3), 0(6), 1(2), 1(5), 1(4)>
+  result_11 = (boolean) iftmp.5_7;
+  # DEBUG result => result_11
+  # DEBUG BEGIN_STMT
+  Det_TransientModuleId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  Det_TransientInstanceId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  Det_TransientApiId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  Det_TransientFaultId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  _6 = ~result_11;
+  return _6;
+
+}
+
+
+Det_TestNoRuntimeError ()
+{
+  uint32 u32CoreId;
+  boolean result;
+  unsigned char _1;
+  short unsigned int _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+  _Bool _6;
+  int iftmp.4_7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_10 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_10
+  # DEBUG BEGIN_STMT
+  _2 = Det_RuntimeModuleId[u32CoreId_10];
+  if (_2 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  _3 = Det_RuntimeInstanceId[u32CoreId_10];
+  if (_3 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+  _4 = Det_RuntimeApiId[u32CoreId_10];
+  if (_4 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 134217728]:
+  _5 = Det_RuntimeErrorId[u32CoreId_10];
+  if (_5 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 67108864]:
+
+  <bb 7> [local count: 1073741824]:
+  # iftmp.4_7 = PHI <1(3), 0(6), 1(2), 1(5), 1(4)>
+  result_11 = (boolean) iftmp.4_7;
+  # DEBUG result => result_11
+  # DEBUG BEGIN_STMT
+  Det_RuntimeModuleId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  Det_RuntimeInstanceId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  Det_RuntimeApiId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  Det_RuntimeErrorId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  _6 = ~result_11;
+  return _6;
+
+}
+
+
+Det_TestNoError ()
+{
+  uint32 u32CoreId;
+  boolean result;
+  unsigned char _1;
+  short unsigned int _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+  _Bool _6;
+  int iftmp.3_7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_10 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_10
+  # DEBUG BEGIN_STMT
+  _2 = Det_ModuleId[u32CoreId_10];
+  if (_2 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  _3 = Det_InstanceId[u32CoreId_10];
+  if (_3 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+  _4 = Det_ApiId[u32CoreId_10];
+  if (_4 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 134217728]:
+  _5 = Det_ErrorId[u32CoreId_10];
+  if (_5 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 67108864]:
+
+  <bb 7> [local count: 1073741824]:
+  # iftmp.3_7 = PHI <1(3), 0(6), 1(2), 1(5), 1(4)>
+  result_11 = (boolean) iftmp.3_7;
+  # DEBUG result => result_11
+  # DEBUG BEGIN_STMT
+  Det_ModuleId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  Det_InstanceId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  Det_ApiId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  Det_ErrorId[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  _6 = ~result_11;
+  return _6;
+
+}
+
+
+Det_TestLastReportTransientFault (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 FaultId)
+{
+  uint32 u32CoreId;
+  boolean result;
+  unsigned char _1;
+  short unsigned int _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+  int iftmp.2_6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_9 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_9
+  # DEBUG BEGIN_STMT
+  _2 = Det_TransientModuleId[u32CoreId_9];
+  if (_2 == ModuleId_10(D))
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  _3 = Det_TransientInstanceId[u32CoreId_9];
+  if (_3 == InstanceId_11(D))
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 4> [local count: 124124555]:
+  _4 = Det_TransientApiId[u32CoreId_9];
+  if (_4 == ApiId_12(D))
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 42202349]:
+  _5 = Det_TransientFaultId[u32CoreId_9];
+  if (_5 == FaultId_13(D))
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 6> [local count: 1059393026]:
+
+  <bb 7> [local count: 1073741824]:
+  # iftmp.2_6 = PHI <1(5), 0(6)>
+  result_14 = (boolean) iftmp.2_6;
+  # DEBUG result => result_14
+  # DEBUG BEGIN_STMT
+  Det_TransientModuleId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  Det_TransientInstanceId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  Det_TransientApiId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  Det_TransientFaultId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  return result_14;
+
+}
+
+
+Det_TestLastReportRuntimeError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
+{
+  uint32 u32CoreId;
+  boolean result;
+  unsigned char _1;
+  short unsigned int _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+  int iftmp.1_6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_9 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_9
+  # DEBUG BEGIN_STMT
+  _2 = Det_RuntimeModuleId[u32CoreId_9];
+  if (_2 == ModuleId_10(D))
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  _3 = Det_RuntimeInstanceId[u32CoreId_9];
+  if (_3 == InstanceId_11(D))
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 4> [local count: 124124555]:
+  _4 = Det_RuntimeApiId[u32CoreId_9];
+  if (_4 == ApiId_12(D))
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 42202349]:
+  _5 = Det_RuntimeErrorId[u32CoreId_9];
+  if (_5 == ErrorId_13(D))
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 6> [local count: 1059393026]:
+
+  <bb 7> [local count: 1073741824]:
+  # iftmp.1_6 = PHI <1(5), 0(6)>
+  result_14 = (boolean) iftmp.1_6;
+  # DEBUG result => result_14
+  # DEBUG BEGIN_STMT
+  Det_RuntimeModuleId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  Det_RuntimeInstanceId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  Det_RuntimeApiId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  Det_RuntimeErrorId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  return result_14;
+
+}
+
+
+Det_TestLastReportError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
+{
+  uint32 u32CoreId;
+  boolean result;
+  unsigned char _1;
+  short unsigned int _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+  int iftmp.0_6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_9 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_9
+  # DEBUG BEGIN_STMT
+  _2 = Det_ModuleId[u32CoreId_9];
+  if (_2 == ModuleId_10(D))
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  _3 = Det_InstanceId[u32CoreId_9];
+  if (_3 == InstanceId_11(D))
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 4> [local count: 124124555]:
+  _4 = Det_ApiId[u32CoreId_9];
+  if (_4 == ApiId_12(D))
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 42202349]:
+  _5 = Det_ErrorId[u32CoreId_9];
+  if (_5 == ErrorId_13(D))
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 6> [local count: 1059393026]:
+
+  <bb 7> [local count: 1073741824]:
+  # iftmp.0_6 = PHI <1(5), 0(6)>
+  result_14 = (boolean) iftmp.0_6;
+  # DEBUG result => result_14
+  # DEBUG BEGIN_STMT
+  Det_ModuleId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  Det_InstanceId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  Det_ApiId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  Det_ErrorId[u32CoreId_9] = 0;
+  # DEBUG BEGIN_STMT
+  return result_14;
+
+}
+
+

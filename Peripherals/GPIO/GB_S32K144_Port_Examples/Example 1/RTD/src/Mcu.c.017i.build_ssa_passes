@@ -1,0 +1,200 @@
+Mcu_SleepOnExit (Mcu_SleepOnExitType SleepOnExit)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Mcu_Ipw_SleepOnExit (SleepOnExit);
+  return;
+
+}
+
+
+Mcu_GetResetRawValue ()
+{
+  Mcu_RawResetType RawResetValue;
+  Mcu_RawResetType D.6036;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RawResetValue = Mcu_Ipw_GetResetRawValue ();
+  # DEBUG BEGIN_STMT
+  D.6036 = RawResetValue;
+  return D.6036;
+
+}
+
+
+Mcu_GetResetReason ()
+{
+  Mcu_ResetType ResetReason;
+  Mcu_ResetType D.6034;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ResetReason = Mcu_Ipw_GetResetReason ();
+  # DEBUG BEGIN_STMT
+  D.6034 = ResetReason;
+  return D.6034;
+
+}
+
+
+Mcu_GetPllStatus ()
+{
+  Mcu_PllStatusType PllStatus;
+  Mcu_PllStatusType D.6032;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  PllStatus = Mcu_Ipw_GetPllStatus ();
+  # DEBUG BEGIN_STMT
+  D.6032 = PllStatus;
+  return D.6032;
+
+}
+
+
+Mcu_DistributePllClock ()
+{
+  Std_ReturnType PllStatus;
+  Std_ReturnType D.6030;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  PllStatus = 1;
+  # DEBUG BEGIN_STMT
+  Mcu_Ipw_DistributePllClock ();
+  # DEBUG BEGIN_STMT
+  PllStatus = 0;
+  # DEBUG BEGIN_STMT
+  D.6030 = PllStatus;
+  return D.6030;
+
+}
+
+
+Mcu_SetMode (Mcu_ModeType McuMode)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  Mcu_pConfigPtr.6_1 = Mcu_pConfigPtr;
+  _2 = Mcu_pConfigPtr.6_1->ModeConfigArrayPtr;
+  _3 = Mcu_au8ModeConfigIds[McuMode];
+  _4 = (int) _3;
+  _5 = &*_2[_4];
+  Mcu_Ipw_SetMode (_5);
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00 ();
+  return;
+
+}
+
+
+Mcu_InitClock (Mcu_ClockType ClockSetting)
+{
+  Std_ReturnType ClockStatus;
+  Std_ReturnType D.6028;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Mcu_pConfigPtr.5_1 = Mcu_pConfigPtr;
+  _2 = Mcu_pConfigPtr.5_1->ClockConfigArrayPtr;
+  _3 = Mcu_au8ClockConfigIds[ClockSetting];
+  _4 = (int) _3;
+  _5 = &*_2[_4];
+  Mcu_Ipw_InitClock (_5);
+  # DEBUG BEGIN_STMT
+  ClockStatus = 0;
+  # DEBUG BEGIN_STMT
+  D.6028 = ClockStatus;
+  return D.6028;
+
+}
+
+
+Mcu_InitRamSection (Mcu_RamSectionType RamSection)
+{
+  Std_ReturnType RamStatus;
+  Std_ReturnType D.6026;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RamStatus = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6026 = RamStatus;
+  return D.6026;
+
+}
+
+
+Mcu_Init (const struct Mcu_ConfigType * ConfigPtr)
+{
+  uint32 NoConfigs;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Mcu_pConfigPtr = ConfigPtr;
+  # DEBUG BEGIN_STMT
+  NoConfigs = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Mcu_pConfigPtr.0_1 = Mcu_pConfigPtr;
+  _2 = Mcu_pConfigPtr.0_1->ModeConfigArrayPtr;
+  _3 = *_2[NoConfigs].ModeConfigId;
+  _4 = (unsigned char) NoConfigs;
+  Mcu_au8ModeConfigIds[_3] = _4;
+  # DEBUG BEGIN_STMT
+  NoConfigs = NoConfigs + 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Mcu_pConfigPtr.1_5 = Mcu_pConfigPtr;
+  _6 = Mcu_pConfigPtr.1_5->NoModeConfigs;
+  if (NoConfigs < _6)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  NoConfigs = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Mcu_pConfigPtr.2_7 = Mcu_pConfigPtr;
+  _8 = Mcu_pConfigPtr.2_7->ClockConfigArrayPtr;
+  _9 = *_8[NoConfigs].ClkConfigId;
+  _10 = (unsigned char) NoConfigs;
+  Mcu_au8ClockConfigIds[_9] = _10;
+  # DEBUG BEGIN_STMT
+  NoConfigs = NoConfigs + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Mcu_pConfigPtr.3_11 = Mcu_pConfigPtr;
+  _12 = Mcu_pConfigPtr.3_11->NoClkConfigs;
+  if (NoConfigs < _12)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Mcu_pConfigPtr.4_13 = Mcu_pConfigPtr;
+  _14 = Mcu_pConfigPtr.4_13->HwIPsConfigPtr;
+  Mcu_Ipw_Init (_14);
+  return;
+
+}
+
+

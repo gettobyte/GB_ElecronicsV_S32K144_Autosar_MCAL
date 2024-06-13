@@ -1,0 +1,161 @@
+Dio_Ipw_WriteChannelGroup (const struct Dio_ChannelGroupType * pChannelGroupIdPtr, Dio_PortLevelType Level)
+{
+  struct GPIO_Type * GpioBase;
+  Dio_PortLevelType ValueClear;
+  Dio_PortLevelType ValueSet;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pChannelGroupIdPtr->port;
+  _2 = (int) _1;
+  _3 = GpioBaseAdresses[_2];
+  GpioBase = (struct GPIO_Type *) _3;
+  # DEBUG BEGIN_STMT
+  _4 = pChannelGroupIdPtr->u8offset;
+  _5 = (int) _4;
+  _6 = Level << _5;
+  _7 = pChannelGroupIdPtr->mask;
+  ValueSet = _6 & _7;
+  # DEBUG BEGIN_STMT
+  Gpio_Dio_Ip_SetPins (GpioBase, ValueSet);
+  # DEBUG BEGIN_STMT
+  _8 = ~ValueSet;
+  _9 = pChannelGroupIdPtr->mask;
+  ValueClear = _8 & _9;
+  # DEBUG BEGIN_STMT
+  Gpio_Dio_Ip_ClearPins (GpioBase, ValueClear);
+  return;
+
+}
+
+
+Dio_Ipw_ReadChannelGroup (const struct Dio_ChannelGroupType * pChannelGroupIdPtr)
+{
+  const struct GPIO_Type * GpioBase;
+  Dio_PortLevelType pinsValue;
+  Dio_PortLevelType PortLevel;
+  Dio_PortLevelType D.5625;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  PortLevel = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pChannelGroupIdPtr->port;
+  _2 = (int) _1;
+  _3 = GpioBaseAdresses[_2];
+  GpioBase = (const struct GPIO_Type *) _3;
+  # DEBUG BEGIN_STMT
+  pinsValue = Gpio_Dio_Ip_ReadPins (GpioBase);
+  # DEBUG BEGIN_STMT
+  _4 = pChannelGroupIdPtr->mask;
+  _5 = pinsValue & _4;
+  _6 = pChannelGroupIdPtr->u8offset;
+  _7 = (int) _6;
+  PortLevel = _5 >> _7;
+  # DEBUG BEGIN_STMT
+  D.5625 = PortLevel;
+  return D.5625;
+
+}
+
+
+Dio_Ipw_WritePort (Dio_PortType PortId, Dio_PortLevelType Level)
+{
+  struct GPIO_Type * GpioBase;
+  Dio_PortLevelType CrtLevel;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  CrtLevel = Level;
+  # DEBUG BEGIN_STMT
+  _1 = (int) PortId;
+  _2 = GpioBaseAdresses[_1];
+  GpioBase = (struct GPIO_Type *) _2;
+  # DEBUG BEGIN_STMT
+  Gpio_Dio_Ip_WritePins (GpioBase, CrtLevel);
+  return;
+
+}
+
+
+Dio_Ipw_ReadPort (Dio_PortType PortId)
+{
+  const struct GPIO_Type * GpioBase;
+  Dio_PortLevelType PortLevel;
+  Dio_PortLevelType D.5623;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  PortLevel = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) PortId;
+  _2 = GpioBaseAdresses[_1];
+  GpioBase = (const struct GPIO_Type *) _2;
+  # DEBUG BEGIN_STMT
+  PortLevel = Gpio_Dio_Ip_ReadPins (GpioBase);
+  # DEBUG BEGIN_STMT
+  D.5623 = PortLevel;
+  return D.5623;
+
+}
+
+
+Dio_Ipw_WriteChannel (Dio_ChannelType ChannelId, Dio_LevelType Level)
+{
+  struct GPIO_Type * GpioBase;
+  uint32 u32PinIndex;
+  uint32 u32GpioInstance;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = ChannelId >> 5;
+  u32GpioInstance = (uint32) _1;
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) ChannelId;
+  u32PinIndex = _2 & 31;
+  # DEBUG BEGIN_STMT
+  _3 = GpioBaseAdresses[u32GpioInstance];
+  GpioBase = (struct GPIO_Type *) _3;
+  # DEBUG BEGIN_STMT
+  Gpio_Dio_Ip_WritePin (GpioBase, u32PinIndex, Level);
+  return;
+
+}
+
+
+Dio_Ipw_ReadChannel (Dio_ChannelType ChannelId)
+{
+  const struct GPIO_Type * GpioBase;
+  uint32 u32PinIndex;
+  uint32 u32GpioInstance;
+  Dio_LevelType ChannelLevel;
+  Dio_LevelType D.5621;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ChannelLevel = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = ChannelId >> 5;
+  u32GpioInstance = (uint32) _1;
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) ChannelId;
+  u32PinIndex = _2 & 31;
+  # DEBUG BEGIN_STMT
+  _3 = GpioBaseAdresses[u32GpioInstance];
+  GpioBase = (const struct GPIO_Type *) _3;
+  # DEBUG BEGIN_STMT
+  ChannelLevel = Gpio_Dio_Ip_ReadPin (GpioBase, u32PinIndex);
+  # DEBUG BEGIN_STMT
+  D.5621 = ChannelLevel;
+  return D.5621;
+
+}
+
+
