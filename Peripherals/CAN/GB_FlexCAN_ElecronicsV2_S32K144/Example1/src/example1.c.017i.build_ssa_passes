@@ -1,12 +1,10 @@
 main ()
 {
-  struct Flexcan_Ip_MsgBuffType rxData;
   struct Flexcan_Ip_DataInfoType rx_info;
-  Flexcan_Ip_StatusType x;
-  int D.6989;
+  Flexcan_Ip_StatusType FlexCAN_Api_Status;
+  int D.6997;
 
   <bb 2> :
-  x = 0;
   Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
 
   <bb 3> :
@@ -23,11 +21,38 @@ main ()
   rx_info.data_length = 8;
   rx_info.is_polling = 1;
   FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
-  x = FlexCAN_Ip_SetStartMode_Privileged (0);
+  FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode_Privileged (0);
 
   <bb 5> :
-  x = FlexCAN_Ip_SendBlocking (0, 0, &rx_info, 800, &dummyData, 1000);
+  FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking (0, 0, &rx_info, 800, &dummyData, 1000);
+  TestDelay (2000000);
   goto <bb 5>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer = 0;
+  return;
 
 }
 

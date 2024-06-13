@@ -109,6 +109,28 @@ extern "C"{
 /*==================================================================================================
 *                                      GLOBAL VARIABLES
 ==================================================================================================*/
+#define BASE_START_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Base_MemMap.h"
+
+static const OsIf_ConfigType OsIf_xPredefinedConfig =
+{
+        /* .counterId = */ 0U,
+        /* .counterFrequency = */ 48000000U
+};
+
+#define BASE_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Base_MemMap.h"
+
+#define BASE_START_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Base_MemMap.h"
+
+const OsIf_ConfigType *const OsIf_apxPredefinedConfig[1U] =
+{
+    &OsIf_xPredefinedConfig
+};
+
+#define BASE_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Base_MemMap.h"
 
 /*==================================================================================================
 *                                      GLOBAL CONSTANTS

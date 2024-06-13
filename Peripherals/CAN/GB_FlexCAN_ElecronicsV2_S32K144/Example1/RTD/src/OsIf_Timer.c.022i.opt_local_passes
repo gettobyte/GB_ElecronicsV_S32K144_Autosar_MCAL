@@ -1,31 +1,33 @@
 OsIf_MicrosToTicks (uint32 Micros, OsIf_CounterType SelectedCounter)
 {
   uint32 Value;
-  uint32 D.5612;
-  uint32 _9;
+  uint32 D.5627;
+  uint32 _11;
 
   <bb 2> :
   Value_3 = 0;
-  if (SelectedCounter_4(D) == 0)
-    goto <bb 3>; [INV]
-  else
-    goto <bb 4>; [INV]
+  switch (SelectedCounter_4(D)) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
 
   <bb 3> :
 <L0>:
-  Value_8 = OsIf_Timer_Dummy_MicrosToTicks (Micros_6(D));
-  goto <bb 5>; [INV]
+  Value_10 = OsIf_Timer_Dummy_MicrosToTicks (Micros_6(D));
+  goto <bb 6>; [INV]
 
   <bb 4> :
 <L1>:
+  Value_8 = OsIf_Timer_System_MicrosToTicks (Micros_6(D));
+  goto <bb 6>; [INV]
 
   <bb 5> :
-  # Value_1 = PHI <Value_8(3), Value_3(4)>
-  _9 = Value_1;
+<L2>:
 
   <bb 6> :
-<L3>:
-  return _9;
+  # Value_1 = PHI <Value_10(3), Value_8(4), Value_3(5)>
+  _11 = Value_1;
+
+  <bb 7> :
+<L4>:
+  return _11;
 
 }
 
@@ -33,20 +35,22 @@ OsIf_MicrosToTicks (uint32 Micros, OsIf_CounterType SelectedCounter)
 OsIf_SetTimerFrequency (uint32 Freq, OsIf_CounterType SelectedCounter)
 {
   <bb 2> :
-  if (SelectedCounter_2(D) == 0)
-    goto <bb 3>; [INV]
-  else
-    goto <bb 4>; [INV]
+  switch (SelectedCounter_2(D)) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
 
   <bb 3> :
 <L0>:
   OsIf_Timer_Dummy_SetTimerFrequency (Freq_4(D));
-  goto <bb 5>; [INV]
+  goto <bb 6>; [INV]
 
   <bb 4> :
 <L1>:
+  OsIf_Timer_System_SetTimerFrequency (Freq_4(D));
+  goto <bb 6>; [INV]
 
   <bb 5> :
+<L2>:
+
+  <bb 6> :
   return;
 
 }
@@ -55,31 +59,33 @@ OsIf_SetTimerFrequency (uint32 Freq, OsIf_CounterType SelectedCounter)
 OsIf_GetElapsed (uint32 * const CurrentRef, OsIf_CounterType SelectedCounter)
 {
   uint32 Value;
-  uint32 D.5608;
-  uint32 _9;
+  uint32 D.5623;
+  uint32 _11;
 
   <bb 2> :
   Value_3 = 0;
-  if (SelectedCounter_4(D) == 0)
-    goto <bb 3>; [INV]
-  else
-    goto <bb 4>; [INV]
+  switch (SelectedCounter_4(D)) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
 
   <bb 3> :
 <L0>:
-  Value_8 = OsIf_Timer_Dummy_GetElapsed (CurrentRef_6(D));
-  goto <bb 5>; [INV]
+  Value_10 = OsIf_Timer_Dummy_GetElapsed (CurrentRef_6(D));
+  goto <bb 6>; [INV]
 
   <bb 4> :
 <L1>:
+  Value_8 = OsIf_Timer_System_GetElapsed (CurrentRef_6(D));
+  goto <bb 6>; [INV]
 
   <bb 5> :
-  # Value_1 = PHI <Value_8(3), Value_3(4)>
-  _9 = Value_1;
+<L2>:
 
   <bb 6> :
-<L3>:
-  return _9;
+  # Value_1 = PHI <Value_10(3), Value_8(4), Value_3(5)>
+  _11 = Value_1;
+
+  <bb 7> :
+<L4>:
+  return _11;
 
 }
 
@@ -87,31 +93,33 @@ OsIf_GetElapsed (uint32 * const CurrentRef, OsIf_CounterType SelectedCounter)
 OsIf_GetCounter (OsIf_CounterType SelectedCounter)
 {
   uint32 Value;
-  uint32 D.5604;
-  uint32 _8;
+  uint32 D.5619;
+  uint32 _10;
 
   <bb 2> :
   Value_3 = 0;
-  if (SelectedCounter_4(D) == 0)
-    goto <bb 3>; [INV]
-  else
-    goto <bb 4>; [INV]
+  switch (SelectedCounter_4(D)) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
 
   <bb 3> :
 <L0>:
-  Value_7 = OsIf_Timer_Dummy_GetCounter ();
-  goto <bb 5>; [INV]
+  Value_9 = OsIf_Timer_Dummy_GetCounter ();
+  goto <bb 6>; [INV]
 
   <bb 4> :
 <L1>:
+  Value_7 = OsIf_Timer_System_GetCounter ();
+  goto <bb 6>; [INV]
 
   <bb 5> :
-  # Value_1 = PHI <Value_7(3), Value_3(4)>
-  _8 = Value_1;
+<L2>:
 
   <bb 6> :
-<L3>:
-  return _8;
+  # Value_1 = PHI <Value_9(3), Value_7(4), Value_3(5)>
+  _10 = Value_1;
+
+  <bb 7> :
+<L4>:
+  return _10;
 
 }
 
@@ -128,6 +136,7 @@ OsIf_Init (const void * Config)
   DevAssert (0);
 
   <bb 4> :
+  OsIf_Timer_System_Init ();
   return;
 
 }
@@ -135,7 +144,7 @@ OsIf_Init (const void * Config)
 
 OsIf_Timer_Dummy_MicrosToTicks (uint32 Micros)
 {
-  uint32 D.5614;
+  uint32 D.5629;
   uint32 _2;
 
   <bb 2> :
@@ -158,7 +167,7 @@ OsIf_Timer_Dummy_SetTimerFrequency (uint32 Freq)
 
 OsIf_Timer_Dummy_GetElapsed (const uint32 * const CurrentRef)
 {
-  uint32 D.5610;
+  uint32 D.5625;
   uint32 _1;
 
   <bb 2> :
@@ -173,7 +182,7 @@ OsIf_Timer_Dummy_GetElapsed (const uint32 * const CurrentRef)
 
 OsIf_Timer_Dummy_GetCounter ()
 {
-  uint32 D.5606;
+  uint32 D.5621;
   uint32 _1;
 
   <bb 2> :

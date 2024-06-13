@@ -181,20 +181,20 @@ UpdateDriverContext (const struct Clock_Ip_ClockConfigType * config)
 
 ClockTimeoutExpired (uint32 * startTimeInOut, uint32 * elapsedTimeInOut, uint32 TimeoutTicks)
 {
-  boolean D.6258;
-  long unsigned int D.6257;
+  boolean D.6259;
+  long unsigned int D.6258;
 
   <bb 2> :
-  D.6257 = OsIf_GetElapsed (startTimeInOut, 0);
+  D.6258 = OsIf_GetElapsed (startTimeInOut, 0);
   _1 = *elapsedTimeInOut;
-  _2 = D.6257 + _1;
+  _2 = D.6258 + _1;
   *elapsedTimeInOut = _2;
   _3 = *elapsedTimeInOut;
-  D.6258 = TimeoutTicks <= _3;
+  D.6259 = TimeoutTicks <= _3;
 
   <bb 3> :
 <L0>:
-  return D.6258;
+  return D.6259;
 
 }
 
@@ -311,7 +311,7 @@ Clock_Ip_ClearClockMonitorStatus (Clock_Ip_NameType clockName)
 Clock_Ip_GetClockMonitorStatus (Clock_Ip_NameType clockName)
 {
   uint32 callbackIndex;
-  Clock_Ip_CmuStatusType D.6253;
+  Clock_Ip_CmuStatusType D.6254;
 
   <bb 2> :
   _1 = clockFeatures[clockName][1];
@@ -319,11 +319,11 @@ Clock_Ip_GetClockMonitorStatus (Clock_Ip_NameType clockName)
   _3 = cmuCallbackIndex[_2];
   callbackIndex = (uint32) _3;
   _4 = cmuCallbacks[callbackIndex].GetStatus;
-  D.6253 = _4 (clockName);
+  D.6254 = _4 (clockName);
 
   <bb 3> :
 <L0>:
-  return D.6253;
+  return D.6254;
 
 }
 
@@ -471,7 +471,7 @@ Clock_Ip_GetPllStatus ()
   uint32 i;
   clock_pll_status_t pllStatus;
   Clock_Ip_PllStatusType retValue;
-  Clock_Ip_PllStatusType D.6245;
+  Clock_Ip_PllStatusType D.6246;
 
   <bb 2> :
   retValue = 2;
@@ -515,11 +515,11 @@ Clock_Ip_GetPllStatus ()
     goto <bb 9>; [INV]
 
   <bb 9> :
-  D.6245 = retValue;
+  D.6246 = retValue;
 
   <bb 10> :
 <L7>:
-  return D.6245;
+  return D.6246;
 
 }
 
@@ -923,7 +923,7 @@ Clock_Ip_Init (const struct Clock_Ip_ClockConfigType * config)
 {
   Clock_Ip_PllStatusType pllStatus;
   Clock_Ip_StatusType clockStatus;
-  Clock_Ip_StatusType D.6231;
+  Clock_Ip_StatusType D.6232;
 
   <bb 2> :
   clockStatus = 1;
@@ -950,11 +950,11 @@ Clock_Ip_Init (const struct Clock_Ip_ClockConfigType * config)
   clockStatus = 0;
 
   <bb 6> :
-  D.6231 = clockStatus;
+  D.6232 = clockStatus;
 
   <bb 7> :
 <L5>:
-  return D.6231;
+  return D.6232;
 
 }
 

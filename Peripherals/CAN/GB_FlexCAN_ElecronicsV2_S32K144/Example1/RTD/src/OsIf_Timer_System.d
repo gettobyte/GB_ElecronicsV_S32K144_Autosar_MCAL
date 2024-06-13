@@ -16,7 +16,9 @@ RTD/src/OsIf_Timer_System.o: ../RTD/src/OsIf_Timer_System.c \
  C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/Base_MemMap.h \
  ../RTD/include/OsIf_Cfg_TypesDef.h \
  C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/Devassert.h \
- ../RTD/include/OsIf_Timer_System.h
+ ../RTD/include/OsIf_Timer_System.h \
+ ../RTD/include/OsIf_Timer_System_Internal_Systick.h \
+ ../RTD/include/OsIf_DeviceRegisters.h
 
 ../RTD/include/OsIf.h:
 
@@ -55,3 +57,7 @@ C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D
 C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/Devassert.h:
 
 ../RTD/include/OsIf_Timer_System.h:
+
+../RTD/include/OsIf_Timer_System_Internal_Systick.h:
+
+../RTD/include/OsIf_DeviceRegisters.h:
