@@ -1,0 +1,1913 @@
+GetFreq (Clock_Ip_NameType clockName)
+{
+  static uint32 (*getFreqType) (void) freqTable[87] = {get_Zero_Frequency, get_LPO_128K_CLK_Frequency, get_SIRC_CLK_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_FIRC_CLK_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_SOSC_CLK_Frequency, get_SPLL_CLK_Frequency, get_SIRCDIV1_CLK_Frequency, get_SIRCDIV2_CLK_Frequency, get_FIRCDIV1_CLK_Frequency, get_FIRCDIV2_CLK_Frequency, get_SOSCDIV1_CLK_Frequency, get_SOSCDIV2_CLK_Frequency, get_SPLLDIV1_CLK_Frequency, get_SPLLDIV2_CLK_Frequency, get_LPO_32K_CLK_Frequency, get_LPO_1K_CLK_Frequency, get_tclk0_ref_Frequency, get_tclk1_ref_Frequency, get_tclk2_ref_Frequency, get_rtc_clkin_Frequency, get_SCS_CLK_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_CORE_CLK_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_BUS_CLK_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_SLOW_CLK_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_RTC_CLK_Frequency, get_LPO_CLK_Frequency, get_SCG_CLKOUT_CLK_Frequency, get_FTM0_EXT_CLK_Frequency, get_FTM1_EXT_CLK_Frequency, get_FTM2_EXT_CLK_Frequency, get_FTM3_EXT_CLK_Frequency, 0B, get_ADC0_CLK_Frequency, get_ADC1_CLK_Frequency, get_CLKOUT0_CLK_Frequency, get_CMP0_CLK_Frequency, get_CRC0_CLK_Frequency, get_DMA0_CLK_Frequency, get_DMAMUX0_CLK_Frequency, get_EIM0_CLK_Frequency, get_ERM0_CLK_Frequency, get_EWM0_CLK_Frequency, get_FLEXCAN0_CLK_Frequency, get_FLEXCAN1_CLK_Frequency, get_FLEXCAN2_CLK_Frequency, get_FlexIO_CLK_Frequency, get_FTFC_CLK_Frequency, get_FTM0_CLK_Frequency, get_FTM1_CLK_Frequency, get_FTM2_CLK_Frequency, get_FTM3_CLK_Frequency, get_LPI2C0_CLK_Frequency, get_LPIT0_CLK_Frequency, get_LPSPI0_CLK_Frequency, get_LPSPI1_CLK_Frequency, get_LPSPI2_CLK_Frequency, get_LPTMR0_CLK_Frequency, get_LPUART0_CLK_Frequency, get_LPUART1_CLK_Frequency, get_LPUART2_CLK_Frequency, get_MPU0_CLK_Frequency, get_MSCM0_CLK_Frequency, get_PDB0_CLK_Frequency, get_PDB1_CLK_Frequency, get_PORTA_CLK_Frequency, get_PORTB_CLK_Frequency, get_PORTC_CLK_Frequency, get_PORTD_CLK_Frequency, get_PORTE_CLK_Frequency, get_RTC0_CLK_Frequency, get_TRACE_CLK_Frequency};
+  uint32 D.6744;
+
+  <bb 2> :
+  _1 = freqTable[clockName];
+  D.6744 = _1 ();
+
+  <bb 3> :
+<L0>:
+  return D.6744;
+
+}
+
+
+SetExternalSignalFrequency (Clock_Ip_NameType signalName, uint32 frequency)
+{
+  uint32 i;
+
+  <bb 2> :
+  i = 0;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  _1 = extSignalFreqEntries[i].name;
+  if (signalName == _1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  extSignalFreqEntries[i].frequency = frequency;
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  i = i + 1;
+
+  <bb 6> :
+  if (i <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+
+SetExternalOscillatorFrequency (Clock_Ip_NameType extOscName, uint32 frequency)
+{
+  <bb 2> :
+  sosc = frequency;
+  return;
+
+}
+
+
+PLL_VCO (const struct SCG_Type * base)
+{
+  uint32 var2;
+  uint32 var1;
+  uint32 fout;
+  uint32 mul;
+  uint32 prediv;
+  uint32 fin;
+  uint32 D.6740;
+
+  <bb 2> :
+  fin = get_SOSC_CLK_Frequency ();
+  _1 = base->SPLLCFG;
+  _2 = _1 >> 8;
+  _3 = _2 & 7;
+  _4 = _3 + 1;
+  prediv = _4 << 1;
+  _5 = base->SPLLCFG;
+  _6 = _5 >> 16;
+  _7 = _6 & 31;
+  mul = _7 + 16;
+  var1 = mul / prediv;
+  _8 = var1 * prediv;
+  var2 = mul - _8;
+  fout = var1 * fin;
+  _9 = fin * var2;
+  _10 = _9 / prediv;
+  fout = fout + _10;
+  D.6740 = fout;
+
+  <bb 3> :
+<L0>:
+  return D.6740;
+
+}
+
+
+get_TRACE_CLK_Frequency ()
+{
+  uint32 mulValue;
+  uint32 divValue;
+  uint32 frequency;
+  uint32 D.6738;
+  long unsigned int D.6737;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074036736B;
+  _2 = _1->CLKDIV4;
+  _3 = _2 >> 28;
+  _4 = _3 & 1;
+  D.6737 = enableGate[_4];
+  frequency = D.6737 & frequency;
+  _5 = 1074036736B;
+  _6 = _5->CLKDIV4;
+  _7 = _6 >> 1;
+  _8 = _7 & 7;
+  divValue = _8 + 1;
+  _9 = 1074036736B;
+  _10 = _9->CLKDIV4;
+  _11 = _10 & 1;
+  mulValue = _11 + 1;
+  _12 = frequency * mulValue;
+  D.6738 = _12 / divValue;
+
+  <bb 3> :
+<L0>:
+  return D.6738;
+
+}
+
+
+get_RTC0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6735;
+  long unsigned int D.6734;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[61];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6734 = enableGate[_4];
+  frequency = D.6734 & frequency;
+  D.6735 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6735;
+
+}
+
+
+get_PORTE_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6732;
+  long unsigned int D.6731;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[77];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6731 = enableGate[_4];
+  frequency = D.6731 & frequency;
+  D.6732 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6732;
+
+}
+
+
+get_PORTD_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6729;
+  long unsigned int D.6728;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[76];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6728 = enableGate[_4];
+  frequency = D.6728 & frequency;
+  D.6729 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6729;
+
+}
+
+
+get_PORTC_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6726;
+  long unsigned int D.6725;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[75];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6725 = enableGate[_4];
+  frequency = D.6725 & frequency;
+  D.6726 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6726;
+
+}
+
+
+get_PORTB_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6723;
+  long unsigned int D.6722;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[74];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6722 = enableGate[_4];
+  frequency = D.6722 & frequency;
+  D.6723 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6723;
+
+}
+
+
+get_PORTA_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6720;
+  long unsigned int D.6719;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[73];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6719 = enableGate[_4];
+  frequency = D.6719 & frequency;
+  D.6720 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6720;
+
+}
+
+
+get_PDB1_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6717;
+  long unsigned int D.6716;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[49];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6716 = enableGate[_4];
+  frequency = D.6716 & frequency;
+  D.6717 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6717;
+
+}
+
+
+get_PDB0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6714;
+  long unsigned int D.6713;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[54];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6713 = enableGate[_4];
+  frequency = D.6713 & frequency;
+  D.6714 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6714;
+
+}
+
+
+get_MSCM0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6711;
+  long unsigned int D.6710;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074036736B;
+  _2 = _1->PLATCGC;
+  _3 = _2 & 1;
+  D.6710 = enableGate[_3];
+  frequency = D.6710 & frequency;
+  D.6711 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6711;
+
+}
+
+
+get_MPU0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6708;
+  long unsigned int D.6707;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074036736B;
+  _2 = _1->PLATCGC;
+  _3 = _2 >> 1;
+  _4 = _3 & 1;
+  D.6707 = enableGate[_4];
+  frequency = D.6707 & frequency;
+  D.6708 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6708;
+
+}
+
+
+get_LPUART2_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6705;
+  long unsigned int D.6704;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[108];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[108];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6704 = enableGate[_9];
+  frequency = D.6704 & frequency;
+  D.6705 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6705;
+
+}
+
+
+get_LPUART1_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6702;
+  long unsigned int D.6701;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[107];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[107];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6701 = enableGate[_9];
+  frequency = D.6701 & frequency;
+  D.6702 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6702;
+
+}
+
+
+get_LPUART0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6699;
+  long unsigned int D.6698;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[106];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[106];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6698 = enableGate[_9];
+  frequency = D.6698 & frequency;
+  D.6699 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6699;
+
+}
+
+
+get_LPTMR0_CLK_Frequency ()
+{
+  uint32 mulValue;
+  uint32 divValue;
+  uint32 frequency;
+  uint32 D.6696;
+  long unsigned int D.6695;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[64];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[64];
+  _8 = _7 & 7;
+  divValue = _8 + 1;
+  _9 = 1074155520B;
+  _10 = _9->PCCn[64];
+  _11 = _10 >> 3;
+  _12 = _11 & 1;
+  mulValue = _12 + 1;
+  _13 = 1074155520B;
+  _14 = _13->PCCn[64];
+  _15 = _14 >> 30;
+  _16 = _15 & 1;
+  D.6695 = enableGate[_16];
+  frequency = D.6695 & frequency;
+  _17 = frequency * mulValue;
+  D.6696 = _17 / divValue;
+
+  <bb 3> :
+<L0>:
+  return D.6696;
+
+}
+
+
+get_LPSPI2_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6693;
+  long unsigned int D.6692;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[45];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[45];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6692 = enableGate[_9];
+  frequency = D.6692 & frequency;
+  D.6693 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6693;
+
+}
+
+
+get_LPSPI1_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6690;
+  long unsigned int D.6689;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[45];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[45];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6689 = enableGate[_9];
+  frequency = D.6689 & frequency;
+  D.6690 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6690;
+
+}
+
+
+get_LPSPI0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6687;
+  long unsigned int D.6686;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[44];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[44];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6686 = enableGate[_9];
+  frequency = D.6686 & frequency;
+  D.6687 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6687;
+
+}
+
+
+get_LPIT0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6684;
+  long unsigned int D.6683;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[55];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[55];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6683 = enableGate[_9];
+  frequency = D.6683 & frequency;
+  D.6684 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6684;
+
+}
+
+
+get_LPI2C0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6681;
+  long unsigned int D.6680;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[102];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[102];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6680 = enableGate[_9];
+  frequency = D.6680 & frequency;
+  D.6681 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6681;
+
+}
+
+
+get_FTFC_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6678;
+  long unsigned int D.6677;
+
+  <bb 2> :
+  frequency = get_SLOW_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[32];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6677 = enableGate[_4];
+  frequency = D.6677 & frequency;
+  D.6678 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6678;
+
+}
+
+
+get_FlexIO_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6675;
+  long unsigned int D.6674;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[90];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[90];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6674 = enableGate[_9];
+  frequency = D.6674 & frequency;
+  D.6675 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6675;
+
+}
+
+
+get_FTM3_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6672;
+  long unsigned int D.6671;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[38];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  if (_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _5 = 1074155520B;
+  _6 = _5->PCCn[38];
+  _7 = _6 >> 24;
+  _8 = _7 & 7;
+  _9 = freqTablePcs1[_8];
+  frequency = _9 ();
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  frequency = get_FTM3_EXT_CLK_Frequency ();
+
+  <bb 5> :
+  _10 = 1074155520B;
+  _11 = _10->PCCn[38];
+  _12 = _11 >> 30;
+  _13 = _12 & 1;
+  D.6671 = enableGate[_13];
+  frequency = D.6671 & frequency;
+  D.6672 = frequency;
+
+  <bb 6> :
+<L3>:
+  return D.6672;
+
+}
+
+
+get_FTM2_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6666;
+  long unsigned int D.6665;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[58];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  if (_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _5 = 1074155520B;
+  _6 = _5->PCCn[58];
+  _7 = _6 >> 24;
+  _8 = _7 & 7;
+  _9 = freqTablePcs1[_8];
+  frequency = _9 ();
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  frequency = get_FTM2_EXT_CLK_Frequency ();
+
+  <bb 5> :
+  _10 = 1074155520B;
+  _11 = _10->PCCn[58];
+  _12 = _11 >> 30;
+  _13 = _12 & 1;
+  D.6665 = enableGate[_13];
+  frequency = D.6665 & frequency;
+  D.6666 = frequency;
+
+  <bb 6> :
+<L3>:
+  return D.6666;
+
+}
+
+
+get_FTM1_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6660;
+  long unsigned int D.6659;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[57];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  if (_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _5 = 1074155520B;
+  _6 = _5->PCCn[57];
+  _7 = _6 >> 24;
+  _8 = _7 & 7;
+  _9 = freqTablePcs1[_8];
+  frequency = _9 ();
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  frequency = get_FTM1_EXT_CLK_Frequency ();
+
+  <bb 5> :
+  _10 = 1074155520B;
+  _11 = _10->PCCn[57];
+  _12 = _11 >> 30;
+  _13 = _12 & 1;
+  D.6659 = enableGate[_13];
+  frequency = D.6659 & frequency;
+  D.6660 = frequency;
+
+  <bb 6> :
+<L3>:
+  return D.6660;
+
+}
+
+
+get_FTM0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6654;
+  long unsigned int D.6653;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[56];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  if (_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _5 = 1074155520B;
+  _6 = _5->PCCn[56];
+  _7 = _6 >> 24;
+  _8 = _7 & 7;
+  _9 = freqTablePcs1[_8];
+  frequency = _9 ();
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  frequency = get_FTM0_EXT_CLK_Frequency ();
+
+  <bb 5> :
+  _10 = 1074155520B;
+  _11 = _10->PCCn[56];
+  _12 = _11 >> 30;
+  _13 = _12 & 1;
+  D.6653 = enableGate[_13];
+  frequency = D.6653 & frequency;
+  D.6654 = frequency;
+
+  <bb 6> :
+<L3>:
+  return D.6654;
+
+}
+
+
+get_FLEXCAN2_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6648;
+  long unsigned int D.6647;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[43];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6647 = enableGate[_4];
+  frequency = D.6647 & frequency;
+  D.6648 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6648;
+
+}
+
+
+get_FLEXCAN1_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6645;
+  long unsigned int D.6644;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[37];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6644 = enableGate[_4];
+  frequency = D.6644 & frequency;
+  D.6645 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6645;
+
+}
+
+
+get_FLEXCAN0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6642;
+  long unsigned int D.6641;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[36];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6641 = enableGate[_4];
+  frequency = D.6641 & frequency;
+  D.6642 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6642;
+
+}
+
+
+get_EWM0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6639;
+  long unsigned int D.6638;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[97];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6638 = enableGate[_4];
+  frequency = D.6638 & frequency;
+  D.6639 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6639;
+
+}
+
+
+get_ERM0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6636;
+  long unsigned int D.6635;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074036736B;
+  _2 = _1->PLATCGC;
+  _3 = _2 >> 3;
+  _4 = _3 & 1;
+  D.6635 = enableGate[_4];
+  frequency = D.6635 & frequency;
+  D.6636 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6636;
+
+}
+
+
+get_EIM0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6633;
+  long unsigned int D.6632;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074036736B;
+  _2 = _1->PLATCGC;
+  _3 = _2 >> 4;
+  _4 = _3 & 1;
+  D.6632 = enableGate[_4];
+  frequency = D.6632 & frequency;
+  D.6633 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6633;
+
+}
+
+
+get_DMAMUX0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6630;
+  long unsigned int D.6629;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[33];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6629 = enableGate[_4];
+  frequency = D.6629 & frequency;
+  D.6630 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6630;
+
+}
+
+
+get_DMA0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6627;
+  long unsigned int D.6626;
+
+  <bb 2> :
+  frequency = get_CORE_CLK_Frequency ();
+  _1 = 1074036736B;
+  _2 = _1->PLATCGC;
+  _3 = _2 >> 2;
+  _4 = _3 & 1;
+  D.6626 = enableGate[_4];
+  frequency = D.6626 & frequency;
+  D.6627 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6627;
+
+}
+
+
+get_CRC0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6624;
+  long unsigned int D.6623;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[50];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6623 = enableGate[_4];
+  frequency = D.6623 & frequency;
+  D.6624 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6624;
+
+}
+
+
+get_CMP0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6621;
+  long unsigned int D.6620;
+
+  <bb 2> :
+  frequency = get_BUS_CLK_Frequency ();
+  _1 = 1074155520B;
+  _2 = _1->PCCn[115];
+  _3 = _2 >> 30;
+  _4 = _3 & 1;
+  D.6620 = enableGate[_4];
+  frequency = D.6620 & frequency;
+  D.6621 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6621;
+
+}
+
+
+get_CLKOUT0_CLK_Frequency ()
+{
+  uint32 frequency;
+  const uint32 enableDivider[2];
+  static uint32 (*getFreqType) (void) freqTableClkOut[16] = {get_SCG_CLKOUT_CLK_Frequency, get_Zero_Frequency, get_SOSCDIV2_CLK_Frequency, get_Zero_Frequency, get_SIRCDIV2_CLK_Frequency, get_Zero_Frequency, get_FIRCDIV2_CLK_Frequency, get_CORE_CLK_Frequency, get_SPLLDIV2_CLK_Frequency, get_BUS_CLK_Frequency, get_LPO_128K_CLK_Frequency, get_Zero_Frequency, get_LPO_CLK_Frequency, get_Zero_Frequency, get_RTC_CLK_Frequency, get_Zero_Frequency};
+  uint32 D.6617;
+  long unsigned int D.6616;
+  long unsigned int D.6615;
+
+  <bb 2> :
+  enableDivider[0] = 0;
+  enableDivider[1] = 4294967295;
+  _1 = 1074036736B;
+  _2 = _1->CHIPCTL;
+  _3 = _2 >> 4;
+  _4 = _3 & 15;
+  _5 = freqTableClkOut[_4];
+  frequency = _5 ();
+  _6 = 1074036736B;
+  _7 = _6->CHIPCTL;
+  _8 = _7 >> 11;
+  _9 = _8 & 1;
+  D.6615 = enableDivider[_9];
+  frequency = D.6615 & frequency;
+  _10 = 1074036736B;
+  _11 = _10->CHIPCTL;
+  _12 = _11 >> 8;
+  _13 = _12 & 7;
+  D.6616 = _13 + 1;
+  frequency = frequency / D.6616;
+  D.6617 = frequency;
+  enableDivider = {CLOBBER};
+
+  <bb 3> :
+<L1>:
+  return D.6617;
+
+}
+
+
+get_ADC1_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6613;
+  long unsigned int D.6612;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[39];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[39];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6612 = enableGate[_9];
+  frequency = D.6612 & frequency;
+  D.6613 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6613;
+
+}
+
+
+get_ADC0_CLK_Frequency ()
+{
+  uint32 frequency;
+  uint32 D.6610;
+  long unsigned int D.6609;
+
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = _1->PCCn[59];
+  _3 = _2 >> 24;
+  _4 = _3 & 7;
+  _5 = freqTablePcs2[_4];
+  frequency = _5 ();
+  _6 = 1074155520B;
+  _7 = _6->PCCn[59];
+  _8 = _7 >> 30;
+  _9 = _8 & 1;
+  D.6609 = enableGate[_9];
+  frequency = D.6609 & frequency;
+  D.6610 = frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6610;
+
+}
+
+
+get_FTM3_EXT_CLK_Frequency ()
+{
+  uint32 D.6607;
+
+  <bb 2> :
+  _1 = 1074036736B;
+  _2 = _1->FTMOPT0;
+  _3 = _2 >> 30;
+  _4 = _3 & 3;
+  _5 = freqTableSimFtm[_4];
+  D.6607 = _5 ();
+
+  <bb 3> :
+<L0>:
+  return D.6607;
+
+}
+
+
+get_FTM2_EXT_CLK_Frequency ()
+{
+  uint32 D.6605;
+
+  <bb 2> :
+  _1 = 1074036736B;
+  _2 = _1->FTMOPT0;
+  _3 = _2 >> 28;
+  _4 = _3 & 3;
+  _5 = freqTableSimFtm[_4];
+  D.6605 = _5 ();
+
+  <bb 3> :
+<L0>:
+  return D.6605;
+
+}
+
+
+get_FTM1_EXT_CLK_Frequency ()
+{
+  uint32 D.6603;
+
+  <bb 2> :
+  _1 = 1074036736B;
+  _2 = _1->FTMOPT0;
+  _3 = _2 >> 26;
+  _4 = _3 & 3;
+  _5 = freqTableSimFtm[_4];
+  D.6603 = _5 ();
+
+  <bb 3> :
+<L0>:
+  return D.6603;
+
+}
+
+
+get_FTM0_EXT_CLK_Frequency ()
+{
+  uint32 D.6601;
+
+  <bb 2> :
+  _1 = 1074036736B;
+  _2 = _1->FTMOPT0;
+  _3 = _2 >> 24;
+  _4 = _3 & 3;
+  _5 = freqTableSimFtm[_4];
+  D.6601 = _5 ();
+
+  <bb 3> :
+<L0>:
+  return D.6601;
+
+}
+
+
+get_SCG_CLKOUT_CLK_Frequency ()
+{
+  static uint32 (*getFreqType) (void) freqTableScg[8] = {get_SLOW_CLK_Frequency, get_SOSC_CLK_Frequency, get_SIRC_CLK_Frequency, get_FIRC_CLK_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_SPLL_CLK_Frequency, get_Zero_Frequency};
+  uint32 D.6599;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->CLKOUTCNFG;
+  _3 = _2 >> 24;
+  _4 = _3 & 15;
+  _5 = freqTableScg[_4];
+  D.6599 = _5 ();
+
+  <bb 3> :
+<L0>:
+  return D.6599;
+
+}
+
+
+get_LPO_CLK_Frequency ()
+{
+  static uint32 (*getFreqType) (void) freqTableLpo[4] = {get_LPO_128K_CLK_Frequency, get_Zero_Frequency, get_LPO_32K_CLK_Frequency, get_LPO_1K_CLK_Frequency};
+  uint32 D.6597;
+
+  <bb 2> :
+  _1 = 1074036736B;
+  _2 = _1->LPOCLKS;
+  _3 = _2 >> 2;
+  _4 = _3 & 3;
+  _5 = freqTableLpo[_4];
+  D.6597 = _5 ();
+
+  <bb 3> :
+<L0>:
+  return D.6597;
+
+}
+
+
+get_RTC_CLK_Frequency ()
+{
+  static uint32 (*getFreqType) (void) freqTableRtc[4] = {get_SOSCDIV1_CLK_Frequency, get_LPO_32K_CLK_Frequency, get_rtc_clkin_Frequency, get_FIRCDIV1_CLK_Frequency};
+  uint32 D.6595;
+
+  <bb 2> :
+  _1 = 1074036736B;
+  _2 = _1->LPOCLKS;
+  _3 = _2 >> 4;
+  _4 = _3 & 3;
+  _5 = freqTableRtc[_4];
+  D.6595 = _5 ();
+
+  <bb 3> :
+<L0>:
+  return D.6595;
+
+}
+
+
+get_SLOW_CLK_Frequency ()
+{
+  uint32 D.6593;
+
+  <bb 2> :
+  _1 = get_CORE_CLK_Frequency ();
+  _2 = 1074151424B;
+  _3 = _2->CSR;
+  _4 = _3 & 15;
+  _5 = _4 + 1;
+  D.6593 = _1 / _5;
+
+  <bb 3> :
+<L0>:
+  return D.6593;
+
+}
+
+
+get_BUS_CLK_Frequency ()
+{
+  uint32 D.6591;
+
+  <bb 2> :
+  _1 = get_CORE_CLK_Frequency ();
+  _2 = 1074151424B;
+  _3 = _2->CSR;
+  _4 = _3 >> 4;
+  _5 = _4 & 15;
+  _6 = _5 + 1;
+  D.6591 = _1 / _6;
+
+  <bb 3> :
+<L0>:
+  return D.6591;
+
+}
+
+
+get_CORE_CLK_Frequency ()
+{
+  uint32 D.6589;
+
+  <bb 2> :
+  _1 = get_SCS_CLK_Frequency ();
+  _2 = 1074151424B;
+  _3 = _2->CSR;
+  _4 = _3 >> 16;
+  _5 = _4 & 15;
+  _6 = _5 + 1;
+  D.6589 = _1 / _6;
+
+  <bb 3> :
+<L0>:
+  return D.6589;
+
+}
+
+
+get_SCS_CLK_Frequency ()
+{
+  static uint32 (*getFreqType) (void) freqTableSCS[7] = {get_Zero_Frequency, get_SOSC_CLK_Frequency, get_SIRC_CLK_Frequency, get_FIRC_CLK_Frequency, get_Zero_Frequency, get_Zero_Frequency, get_SPLL_CLK_Frequency};
+  uint32 D.6587;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->CSR;
+  _3 = _2 >> 24;
+  _4 = _3 & 15;
+  _5 = freqTableSCS[_4];
+  D.6587 = _5 ();
+
+  <bb 3> :
+<L0>:
+  return D.6587;
+
+}
+
+
+get_rtc_clkin_Frequency ()
+{
+  uint32 D.6585;
+
+  <bb 2> :
+  D.6585 = extSignalFreqEntries[3].frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6585;
+
+}
+
+
+get_tclk2_ref_Frequency ()
+{
+  uint32 D.6583;
+
+  <bb 2> :
+  D.6583 = extSignalFreqEntries[2].frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6583;
+
+}
+
+
+get_tclk1_ref_Frequency ()
+{
+  uint32 D.6581;
+
+  <bb 2> :
+  D.6581 = extSignalFreqEntries[1].frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6581;
+
+}
+
+
+get_tclk0_ref_Frequency ()
+{
+  uint32 D.6579;
+
+  <bb 2> :
+  D.6579 = extSignalFreqEntries[0].frequency;
+
+  <bb 3> :
+<L0>:
+  return D.6579;
+
+}
+
+
+get_LPO_1K_CLK_Frequency ()
+{
+  uint32 D.6577;
+
+  <bb 2> :
+  _1 = get_LPO_128K_CLK_Frequency ();
+  _2 = _1 >> 7;
+  _3 = 1074036736B;
+  _4 = _3->LPOCLKS;
+  _5 = _4 & 1;
+  _6 = enableGate[_5];
+  D.6577 = _2 & _6;
+
+  <bb 3> :
+<L0>:
+  return D.6577;
+
+}
+
+
+get_LPO_32K_CLK_Frequency ()
+{
+  uint32 D.6575;
+
+  <bb 2> :
+  _1 = get_LPO_128K_CLK_Frequency ();
+  _2 = _1 >> 2;
+  _3 = 1074036736B;
+  _4 = _3->LPOCLKS;
+  _5 = _4 >> 1;
+  _6 = _5 & 1;
+  _7 = enableGate[_6];
+  D.6575 = _2 & _7;
+
+  <bb 3> :
+<L0>:
+  return D.6575;
+
+}
+
+
+get_SPLLDIV2_CLK_Frequency ()
+{
+  uint32 divValue;
+  uint32 iftmp.11;
+  uint32 D.6569;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->SPLLDIV;
+  _3 = _2 >> 8;
+  _4 = _3 & 7;
+  _5 = dividerMappingValue[_4];
+  divValue = (uint32) _5;
+  if (divValue != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _6 = get_SPLL_CLK_Frequency ();
+  iftmp.11 = _6 / divValue;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.11 = 0;
+
+  <bb 5> :
+  D.6569 = iftmp.11;
+
+  <bb 6> :
+<L3>:
+  return D.6569;
+
+}
+
+
+get_SPLLDIV1_CLK_Frequency ()
+{
+  uint32 divValue;
+  uint32 iftmp.10;
+  uint32 D.6563;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->SPLLDIV;
+  _3 = _2 & 7;
+  _4 = dividerMappingValue[_3];
+  divValue = (uint32) _4;
+  if (divValue != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _5 = get_SPLL_CLK_Frequency ();
+  iftmp.10 = _5 / divValue;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.10 = 0;
+
+  <bb 5> :
+  D.6563 = iftmp.10;
+
+  <bb 6> :
+<L3>:
+  return D.6563;
+
+}
+
+
+get_SOSCDIV2_CLK_Frequency ()
+{
+  uint32 divValue;
+  uint32 iftmp.9;
+  uint32 D.6557;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->SOSCDIV;
+  _3 = _2 >> 8;
+  _4 = _3 & 7;
+  _5 = dividerMappingValue[_4];
+  divValue = (uint32) _5;
+  if (divValue != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _6 = get_SOSC_CLK_Frequency ();
+  iftmp.9 = _6 / divValue;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.9 = 0;
+
+  <bb 5> :
+  D.6557 = iftmp.9;
+
+  <bb 6> :
+<L3>:
+  return D.6557;
+
+}
+
+
+get_SOSCDIV1_CLK_Frequency ()
+{
+  uint32 divValue;
+  uint32 iftmp.8;
+  uint32 D.6551;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->SOSCDIV;
+  _3 = _2 & 7;
+  _4 = dividerMappingValue[_3];
+  divValue = (uint32) _4;
+  if (divValue != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _5 = get_SOSC_CLK_Frequency ();
+  iftmp.8 = _5 / divValue;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.8 = 0;
+
+  <bb 5> :
+  D.6551 = iftmp.8;
+
+  <bb 6> :
+<L3>:
+  return D.6551;
+
+}
+
+
+get_FIRCDIV2_CLK_Frequency ()
+{
+  uint32 divValue;
+  uint32 iftmp.7;
+  uint32 D.6545;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->FIRCDIV;
+  _3 = _2 >> 8;
+  _4 = _3 & 7;
+  _5 = dividerMappingValue[_4];
+  divValue = (uint32) _5;
+  if (divValue != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _6 = get_FIRC_CLK_Frequency ();
+  iftmp.7 = _6 / divValue;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.7 = 0;
+
+  <bb 5> :
+  D.6545 = iftmp.7;
+
+  <bb 6> :
+<L3>:
+  return D.6545;
+
+}
+
+
+get_FIRCDIV1_CLK_Frequency ()
+{
+  uint32 divValue;
+  uint32 iftmp.6;
+  uint32 D.6539;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->FIRCDIV;
+  _3 = _2 & 7;
+  _4 = dividerMappingValue[_3];
+  divValue = (uint32) _4;
+  if (divValue != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _5 = get_FIRC_CLK_Frequency ();
+  iftmp.6 = _5 / divValue;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.6 = 0;
+
+  <bb 5> :
+  D.6539 = iftmp.6;
+
+  <bb 6> :
+<L3>:
+  return D.6539;
+
+}
+
+
+get_SIRCDIV2_CLK_Frequency ()
+{
+  uint32 divValue;
+  uint32 iftmp.5;
+  uint32 D.6533;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->SIRCDIV;
+  _3 = _2 >> 8;
+  _4 = _3 & 7;
+  _5 = dividerMappingValue[_4];
+  divValue = (uint32) _5;
+  if (divValue != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _6 = get_SIRC_CLK_Frequency ();
+  iftmp.5 = _6 / divValue;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.5 = 0;
+
+  <bb 5> :
+  D.6533 = iftmp.5;
+
+  <bb 6> :
+<L3>:
+  return D.6533;
+
+}
+
+
+get_SIRCDIV1_CLK_Frequency ()
+{
+  uint32 divValue;
+  uint32 iftmp.4;
+  uint32 D.6527;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->SIRCDIV;
+  _3 = _2 & 7;
+  _4 = dividerMappingValue[_3];
+  divValue = (uint32) _4;
+  if (divValue != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _5 = get_SIRC_CLK_Frequency ();
+  iftmp.4 = _5 / divValue;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.4 = 0;
+
+  <bb 5> :
+  D.6527 = iftmp.4;
+
+  <bb 6> :
+<L3>:
+  return D.6527;
+
+}
+
+
+get_SPLL_CLK_Frequency ()
+{
+  static uint32 spll_checksum = 1572864;
+  static uint32 spll_Freq = 160000000;
+  uint32 iftmp.3;
+  uint32 D.6521;
+  long unsigned int D.6520;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->SPLLCFG;
+  spll_checksum.1_3 = spll_checksum;
+  if (_2 != spll_checksum.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _4 = 1074151424B;
+  _5 = _4->SPLLCFG;
+  spll_checksum = _5;
+  _6 = PLL_VCO (1074151424B);
+  spll_Freq = _6;
+  _7 = 1074151424B;
+  _8 = _7->SPLLCSR;
+  _9 = _8 & 1;
+  D.6520 = enableClock[_9];
+  spll_Freq.2_10 = spll_Freq;
+  _11 = D.6520 & spll_Freq.2_10;
+  spll_Freq = _11;
+
+  <bb 4> :
+  _12 = 1074151424B;
+  _13 = _12->SPLLCSR;
+  _14 = _13 & 16777216;
+  if (_14 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.3 = spll_Freq;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.3 = 0;
+
+  <bb 7> :
+  D.6521 = iftmp.3;
+
+  <bb 8> :
+<L5>:
+  return D.6521;
+
+}
+
+
+get_SIRC_CLK_Frequency ()
+{
+  uint32 D.6516;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->SIRCCSR;
+  _3 = _2 & 1;
+  _4 = enableClock[_3];
+  D.6516 = _4 & 8000000;
+
+  <bb 3> :
+<L0>:
+  return D.6516;
+
+}
+
+
+get_SOSC_CLK_Frequency ()
+{
+  uint32 D.6514;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->SOSCCSR;
+  _3 = _2 & 1;
+  _4 = enableClock[_3];
+  sosc.0_5 = sosc;
+  D.6514 = _4 & sosc.0_5;
+
+  <bb 3> :
+<L0>:
+  return D.6514;
+
+}
+
+
+get_FIRC_CLK_Frequency ()
+{
+  uint32 D.6512;
+
+  <bb 2> :
+  _1 = 1074151424B;
+  _2 = _1->FIRCCSR;
+  _3 = _2 & 1;
+  _4 = enableClock[_3];
+  D.6512 = _4 & 48000000;
+
+  <bb 3> :
+<L0>:
+  return D.6512;
+
+}
+
+
+get_LPO_128K_CLK_Frequency ()
+{
+  uint32 D.6510;
+
+  <bb 2> :
+  D.6510 = 128000;
+
+  <bb 3> :
+<L0>:
+  return D.6510;
+
+}
+
+
+get_Zero_Frequency ()
+{
+  uint32 D.6508;
+
+  <bb 2> :
+  D.6508 = 0;
+
+  <bb 3> :
+<L0>:
+  return D.6508;
+
+}
+
+

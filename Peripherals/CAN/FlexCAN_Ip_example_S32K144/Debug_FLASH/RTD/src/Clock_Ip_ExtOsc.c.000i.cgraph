@@ -1,0 +1,883 @@
+Trivially needed symbols: EnableSOSC EnableSOSC_TrustedCall DisableSOSC DisableSOSC_TrustedCall CompleteSOSC SetSOSC SetSOSC_TrustedCall ResetSOSC ResetSOSC_TrustedCall DisableExternalOscillatorEmpty ExternalOscillatorEmpty extOscCallbacks
+
+
+Initial Symbol table:
+
+ReportClockErrors/15 (ReportClockErrors) @069a8c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockTimeoutExpired/14 (ClockTimeoutExpired) @069a8b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockStartTimeout/13 (ClockStartTimeout) @069a8a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+SetExternalOscillatorFrequency/12 (SetExternalOscillatorFrequency) @069a87e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: SetSOSC/6 SetSOSC_TrustedCall/5 
+  Calls: 
+EnableSOSC/11 (EnableSOSC) @069a1b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @01733ea0
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: EnableSOSC_TrustedCall/10 
+EnableSOSC_TrustedCall/10 (EnableSOSC_TrustedCall) @069a1380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @069a1b60
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: EnableSOSC/11 
+  Calls: 
+DisableSOSC/9 (DisableSOSC) @069a1d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @069a1380
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: DisableSOSC_TrustedCall/8 
+DisableSOSC_TrustedCall/8 (DisableSOSC_TrustedCall) @069a1a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @069a1d20
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: DisableSOSC/9 
+  Calls: 
+CompleteSOSC/7 (CompleteSOSC) @069a17e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @069a1a80
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: ReportClockErrors/15 ClockTimeoutExpired/14 ClockStartTimeout/13 
+SetSOSC/6 (SetSOSC) @069a1540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @069a17e0
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: SetExternalOscillatorFrequency/12 SetSOSC_TrustedCall/5 
+SetSOSC_TrustedCall/5 (SetSOSC_TrustedCall) @069a12a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @069a1540
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: SetSOSC/6 
+  Calls: SetExternalOscillatorFrequency/12 
+ResetSOSC/4 (ResetSOSC) @068a27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @069a12a0
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: ResetSOSC_TrustedCall/3 
+ResetSOSC_TrustedCall/3 (ResetSOSC_TrustedCall) @068a2540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @068a27e0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ResetSOSC/4 
+  Calls: 
+DisableExternalOscillatorEmpty/2 (DisableExternalOscillatorEmpty) @068a22a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @068a2540
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+ExternalOscillatorEmpty/1 (ExternalOscillatorEmpty) @068a2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @068a22a0
+  References: 
+  Referring: extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+extOscCallbacks/0 (extOscCallbacks) @0689f678
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @068a2000
+  References: ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)DisableExternalOscillatorEmpty/2 (addr)ExternalOscillatorEmpty/1 (addr)ResetSOSC/4 (addr)SetSOSC/6 (addr)CompleteSOSC/7 (addr)DisableSOSC/9 (addr)EnableSOSC/11 (addr)
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+ReportClockErrors/15 (ReportClockErrors) @069a8c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockTimeoutExpired/14 (ClockTimeoutExpired) @069a8b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockStartTimeout/13 (ClockStartTimeout) @069a8a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+SetExternalOscillatorFrequency/12 (SetExternalOscillatorFrequency) @069a87e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: SetSOSC/6 SetSOSC_TrustedCall/5 
+  Calls: 
+EnableSOSC/11 (EnableSOSC) @069a1b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: EnableSOSC_TrustedCall/10 
+EnableSOSC_TrustedCall/10 (EnableSOSC_TrustedCall) @069a1380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: EnableSOSC/11 
+  Calls: 
+DisableSOSC/9 (DisableSOSC) @069a1d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: DisableSOSC_TrustedCall/8 
+DisableSOSC_TrustedCall/8 (DisableSOSC_TrustedCall) @069a1a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: DisableSOSC/9 
+  Calls: 
+CompleteSOSC/7 (CompleteSOSC) @069a17e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: ReportClockErrors/15 ClockTimeoutExpired/14 ClockStartTimeout/13 
+SetSOSC/6 (SetSOSC) @069a1540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: SetExternalOscillatorFrequency/12 SetSOSC_TrustedCall/5 
+SetSOSC_TrustedCall/5 (SetSOSC_TrustedCall) @069a12a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: SetSOSC/6 
+  Calls: SetExternalOscillatorFrequency/12 
+ResetSOSC/4 (ResetSOSC) @068a27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: ResetSOSC_TrustedCall/3 
+ResetSOSC_TrustedCall/3 (ResetSOSC_TrustedCall) @068a2540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ResetSOSC/4 
+  Calls: 
+DisableExternalOscillatorEmpty/2 (DisableExternalOscillatorEmpty) @068a22a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+ExternalOscillatorEmpty/1 (ExternalOscillatorEmpty) @068a2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+extOscCallbacks/0 (extOscCallbacks) @0689f678
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)DisableExternalOscillatorEmpty/2 (addr)ExternalOscillatorEmpty/1 (addr)ResetSOSC/4 (addr)SetSOSC/6 (addr)CompleteSOSC/7 (addr)DisableSOSC/9 (addr)EnableSOSC/11 (addr)
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+
+
+Initial Symbol table:
+
+ReportClockErrors/15 (ReportClockErrors) @069a8c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockTimeoutExpired/14 (ClockTimeoutExpired) @069a8b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockStartTimeout/13 (ClockStartTimeout) @069a8a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+SetExternalOscillatorFrequency/12 (SetExternalOscillatorFrequency) @069a87e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: SetSOSC/6 SetSOSC_TrustedCall/5 
+  Calls: 
+EnableSOSC/11 (EnableSOSC) @069a1b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: EnableSOSC_TrustedCall/10 
+EnableSOSC_TrustedCall/10 (EnableSOSC_TrustedCall) @069a1380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: EnableSOSC/11 
+  Calls: 
+DisableSOSC/9 (DisableSOSC) @069a1d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: DisableSOSC_TrustedCall/8 
+DisableSOSC_TrustedCall/8 (DisableSOSC_TrustedCall) @069a1a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: DisableSOSC/9 
+  Calls: 
+CompleteSOSC/7 (CompleteSOSC) @069a17e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: ReportClockErrors/15 ClockTimeoutExpired/14 ClockStartTimeout/13 
+SetSOSC/6 (SetSOSC) @069a1540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: SetExternalOscillatorFrequency/12 SetSOSC_TrustedCall/5 
+SetSOSC_TrustedCall/5 (SetSOSC_TrustedCall) @069a12a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: SetSOSC/6 
+  Calls: SetExternalOscillatorFrequency/12 
+ResetSOSC/4 (ResetSOSC) @068a27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: ResetSOSC_TrustedCall/3 
+ResetSOSC_TrustedCall/3 (ResetSOSC_TrustedCall) @068a2540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ResetSOSC/4 
+  Calls: 
+DisableExternalOscillatorEmpty/2 (DisableExternalOscillatorEmpty) @068a22a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+ExternalOscillatorEmpty/1 (ExternalOscillatorEmpty) @068a2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+extOscCallbacks/0 (extOscCallbacks) @0689f678
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)DisableExternalOscillatorEmpty/2 (addr)ExternalOscillatorEmpty/1 (addr)ResetSOSC/4 (addr)SetSOSC/6 (addr)CompleteSOSC/7 (addr)DisableSOSC/9 (addr)EnableSOSC/11 (addr)
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+ReportClockErrors/15 (ReportClockErrors) @069a8c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockTimeoutExpired/14 (ClockTimeoutExpired) @069a8b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockStartTimeout/13 (ClockStartTimeout) @069a8a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+SetExternalOscillatorFrequency/12 (SetExternalOscillatorFrequency) @069a87e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: SetSOSC/6 SetSOSC_TrustedCall/5 
+  Calls: 
+EnableSOSC/11 (EnableSOSC) @069a1b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: EnableSOSC_TrustedCall/10 
+EnableSOSC_TrustedCall/10 (EnableSOSC_TrustedCall) @069a1380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: EnableSOSC/11 
+  Calls: 
+DisableSOSC/9 (DisableSOSC) @069a1d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: DisableSOSC_TrustedCall/8 
+DisableSOSC_TrustedCall/8 (DisableSOSC_TrustedCall) @069a1a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: DisableSOSC/9 
+  Calls: 
+CompleteSOSC/7 (CompleteSOSC) @069a17e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: ReportClockErrors/15 ClockTimeoutExpired/14 ClockStartTimeout/13 
+SetSOSC/6 (SetSOSC) @069a1540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: SetExternalOscillatorFrequency/12 SetSOSC_TrustedCall/5 
+SetSOSC_TrustedCall/5 (SetSOSC_TrustedCall) @069a12a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: SetSOSC/6 
+  Calls: SetExternalOscillatorFrequency/12 
+ResetSOSC/4 (ResetSOSC) @068a27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: ResetSOSC_TrustedCall/3 
+ResetSOSC_TrustedCall/3 (ResetSOSC_TrustedCall) @068a2540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ResetSOSC/4 
+  Calls: 
+DisableExternalOscillatorEmpty/2 (DisableExternalOscillatorEmpty) @068a22a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+ExternalOscillatorEmpty/1 (ExternalOscillatorEmpty) @068a2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+extOscCallbacks/0 (extOscCallbacks) @0689f678
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)DisableExternalOscillatorEmpty/2 (addr)ExternalOscillatorEmpty/1 (addr)ResetSOSC/4 (addr)SetSOSC/6 (addr)CompleteSOSC/7 (addr)DisableSOSC/9 (addr)EnableSOSC/11 (addr)
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+ReportClockErrors/15 (ReportClockErrors) @069a8c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockTimeoutExpired/14 (ClockTimeoutExpired) @069a8b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+ClockStartTimeout/13 (ClockStartTimeout) @069a8a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: CompleteSOSC/7 
+  Calls: 
+SetExternalOscillatorFrequency/12 (SetExternalOscillatorFrequency) @069a87e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: SetSOSC/6 SetSOSC_TrustedCall/5 
+  Calls: 
+EnableSOSC/11 (EnableSOSC) @069a1b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: EnableSOSC_TrustedCall/10 
+EnableSOSC_TrustedCall/10 (EnableSOSC_TrustedCall) @069a1380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: EnableSOSC/11 
+  Calls: 
+DisableSOSC/9 (DisableSOSC) @069a1d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: DisableSOSC_TrustedCall/8 
+DisableSOSC_TrustedCall/8 (DisableSOSC_TrustedCall) @069a1a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: DisableSOSC/9 
+  Calls: 
+CompleteSOSC/7 (CompleteSOSC) @069a17e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: ReportClockErrors/15 ClockTimeoutExpired/14 ClockStartTimeout/13 
+SetSOSC/6 (SetSOSC) @069a1540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: SetExternalOscillatorFrequency/12 SetSOSC_TrustedCall/5 
+SetSOSC_TrustedCall/5 (SetSOSC_TrustedCall) @069a12a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: SetSOSC/6 
+  Calls: SetExternalOscillatorFrequency/12 
+ResetSOSC/4 (ResetSOSC) @068a27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: ResetSOSC_TrustedCall/3 
+ResetSOSC_TrustedCall/3 (ResetSOSC_TrustedCall) @068a2540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: ResetSOSC/4 
+  Calls: 
+DisableExternalOscillatorEmpty/2 (DisableExternalOscillatorEmpty) @068a22a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+ExternalOscillatorEmpty/1 (ExternalOscillatorEmpty) @068a2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+extOscCallbacks/0 (extOscCallbacks) @0689f678
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)DisableExternalOscillatorEmpty/2 (addr)ExternalOscillatorEmpty/1 (addr)ResetSOSC/4 (addr)SetSOSC/6 (addr)CompleteSOSC/7 (addr)DisableSOSC/9 (addr)EnableSOSC/11 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Trivially needed variables: extOscCallbacks
+Removing variables:
+
+Final Symbol table:
+
+ReportClockErrors/15 (ReportClockErrors) @069a8c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+ClockTimeoutExpired/14 (ClockTimeoutExpired) @069a8b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+ClockStartTimeout/13 (ClockStartTimeout) @069a8a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+SetExternalOscillatorFrequency/12 (SetExternalOscillatorFrequency) @069a87e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+EnableSOSC/11 (EnableSOSC) @069a1b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+EnableSOSC_TrustedCall/10 (EnableSOSC_TrustedCall) @069a1380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+DisableSOSC/9 (DisableSOSC) @069a1d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+DisableSOSC_TrustedCall/8 (DisableSOSC_TrustedCall) @069a1a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+CompleteSOSC/7 (CompleteSOSC) @069a17e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+SetSOSC/6 (SetSOSC) @069a1540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+SetSOSC_TrustedCall/5 (SetSOSC_TrustedCall) @069a12a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+ResetSOSC/4 (ResetSOSC) @068a27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+ResetSOSC_TrustedCall/3 (ResetSOSC_TrustedCall) @068a2540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+DisableExternalOscillatorEmpty/2 (DisableExternalOscillatorEmpty) @068a22a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+ExternalOscillatorEmpty/1 (ExternalOscillatorEmpty) @068a2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+extOscCallbacks/0 (extOscCallbacks) @0689f678
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @00000001
+  References: ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)DisableExternalOscillatorEmpty/2 (addr)ExternalOscillatorEmpty/1 (addr)ResetSOSC/4 (addr)SetSOSC/6 (addr)CompleteSOSC/7 (addr)DisableSOSC/9 (addr)EnableSOSC/11 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known

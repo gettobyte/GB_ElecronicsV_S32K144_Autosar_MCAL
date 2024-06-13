@@ -1,0 +1,2998 @@
+
+
+ local analysis of EnableSirc_TrustedCall.isra.0
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 | 1;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 | 4;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+  scanning: _5 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _6 = _5 >> 24;
+  scanning: IrcoscStatus_7 = _6 & 1;
+  scanning: TimeoutTicks.5_8 = TimeoutTicks;
+  scanning: TimeoutOccurred_9 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.5_8);
+  scanning: if (IrcoscStatus_7 == 0)
+  scanning: if (TimeoutOccurred_9 != 0)
+  scanning: if (TimeoutOccurred_10 != 0)
+  scanning: _12 = *ISRA.33_24(D);
+    Indirect ref read is not const
+  scanning: ReportClockErrors (1, _12);
+  scanning: return;
+
+
+ local analysis of SetInputSouceSytemClock.part.0
+   scanning: ReportClockErrors (1, 5);
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of DisableFirc_TrustedCall.isra.0
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4294967294;
+  scanning: MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of DisableSircStop_TrustedCall.isra.0
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4294967293;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of EnableSircStop_TrustedCall.isra.0
+   scanning: _2 = ISRA.23_8(D);
+  scanning: if (_2 == 1)
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 | 2;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetSircStop_TrustedCall.isra.0
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4286578687;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 & 4294967293;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _5 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _7 = ISRA.20_16(D);
+  scanning: _8 = (long unsigned int) _7;
+  scanning: _9 = _8 << 1;
+  scanning: _10 = _9 & 2;
+  scanning: _11 = _5 | _10;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _11;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of DisableSircVlp_TrustedCall.isra.0
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4294967291;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of EnableSircVlp_TrustedCall.isra.0
+   scanning: _2 = ISRA.15_8(D);
+  scanning: if (_2 == 1)
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 | 4;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetSircVlp_TrustedCall.isra.0
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4286578687;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 & 4294967291;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _5 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _7 = ISRA.12_16(D);
+  scanning: _8 = (long unsigned int) _7;
+  scanning: _9 = _8 << 2;
+  scanning: _10 = _9 & 4;
+  scanning: _11 = _5 | _10;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _11;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of DisableSirc_TrustedCall.isra.0
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4294967294;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 & 4294967291;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of DisableFirc
+   scanning: DisableFirc_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of EnableFirc
+   scanning: EnableFirc_TrustedCall (config_2(D));
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of EnableFirc_TrustedCall
+   scanning: _1 = config_12(D)->enable;
+    Indirect ref read is not const
+  scanning: if (_1 == 1)
+  scanning: _2 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _3 = _2 | 1;
+  scanning: MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _3;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+  scanning: _4 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _5 = _4 >> 24;
+  scanning: IrcoscStatus_15 = _5 & 1;
+  scanning: TimeoutTicks.0_6 = TimeoutTicks;
+  scanning: TimeoutOccurred_17 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_6);
+  scanning: if (IrcoscStatus_15 == 0)
+  scanning: if (TimeoutOccurred_17 != 0)
+  scanning: if (TimeoutOccurred_10 != 0)
+  scanning: _7 = config_12(D)->name;
+    Indirect ref read is not const
+  scanning: ReportClockErrors (1, _7);
+  scanning: return;
+
+
+ local analysis of SetFirc
+   scanning: SetFirc_TrustedCall (config_2(D));
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetFirc_TrustedCall
+   scanning: _2 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _2 & 4286578687;
+  scanning: MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _5 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _6 = _5 & 33554432;
+  scanning: if (_6 != 0)
+  scanning: _7 = config_57(D)->range;
+    Indirect ref read is not const
+  scanning: _8 = (long unsigned int) _7;
+  scanning: _9 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCFG;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _10 = _9 & 3;
+  scanning: if (_8 != _10)
+  scanning: _11 = config_57(D)->regulator;
+    Indirect ref read is not const
+  scanning: _12 = (long unsigned int) _11;
+  scanning: _13 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _14 = _13 >> 3;
+  scanning: _15 = _14 & 1;
+  scanning: if (_12 != _15)
+  scanning: _16 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _17 = _16 & 1;
+  scanning: if (_17 == 0)
+  scanning: SetSirc_TrustedCall (0B);
+  scanning: SetInputSouceSytemClock (2);
+  scanning: _18 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _19 = _18 & 4294967294;
+  scanning: MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _19;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _20 = config_57(D)->enable;
+    Indirect ref read is not const
+  scanning: if (_20 == 1)
+  scanning: _21 = config_57(D)->range;
+    Indirect ref read is not const
+  scanning: _59 = _21 & 3;
+  scanning: _22 = (long unsigned int) _59;
+  scanning: MEM[(struct SCG_Type *)1074151424B].FIRCCFG ={v} _22;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _23 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _24 = config_57(D)->regulator;
+    Indirect ref read is not const
+  scanning: _25 = (long unsigned int) _24;
+  scanning: _26 = _25 << 3;
+  scanning: _27 = _26 & 8;
+  scanning: _28 = _23 | _27;
+  scanning: _29 = _28 | 1;
+  scanning: MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _29;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+  scanning: _30 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _31 = _30 >> 24;
+  scanning: IrcoscStatus_74 = _31 & 1;
+  scanning: TimeoutTicks.1_32 = TimeoutTicks;
+  scanning: TimeoutOccurred_76 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.1_32);
+  scanning: if (IrcoscStatus_74 == 0)
+  scanning: if (TimeoutOccurred_76 != 0)
+  scanning: if (TimeoutOccurred_3 != 0)
+  scanning: _33 = config_57(D)->name;
+    Indirect ref read is not const
+  scanning: ReportClockErrors (1, _33);
+  scanning: SetInputSouceSytemClock (3);
+  scanning: if (SircWasDisabled_50 != 0)
+  scanning: DisableSirc_TrustedCall.isra.0 ();
+  scanning: _34 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _35 = _34 & 4294967294;
+  scanning: MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _35;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _36 = config_57(D)->enable;
+    Indirect ref read is not const
+  scanning: if (_36 == 1)
+  scanning: _37 = config_57(D)->range;
+    Indirect ref read is not const
+  scanning: _58 = _37 & 3;
+  scanning: _38 = (long unsigned int) _58;
+  scanning: MEM[(struct SCG_Type *)1074151424B].FIRCCFG ={v} _38;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _39 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _40 = config_57(D)->regulator;
+    Indirect ref read is not const
+  scanning: _41 = (long unsigned int) _40;
+  scanning: _42 = _41 << 3;
+  scanning: _43 = _42 & 8;
+  scanning: _44 = _39 | _43;
+  scanning: _45 = _44 | 1;
+  scanning: MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _45;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+  scanning: _46 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _47 = _46 >> 24;
+  scanning: IrcoscStatus_65 = _47 & 1;
+  scanning: TimeoutTicks.2_48 = TimeoutTicks;
+  scanning: TimeoutOccurred_67 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.2_48);
+  scanning: if (IrcoscStatus_65 == 0)
+  scanning: if (TimeoutOccurred_67 != 0)
+  scanning: if (TimeoutOccurred_1 != 0)
+  scanning: _49 = config_57(D)->name;
+    Indirect ref read is not const
+  scanning: ReportClockErrors (1, _49);
+  scanning: return;
+
+
+ local analysis of SetInputSouceSytemClock
+   scanning: regValue_11 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_12 = regValue_11 & 4043309055;
+  scanning: _1 = sourceClock_13(D) << 24;
+  scanning: regValue_14 = _1 | regValue_12;
+  scanning: MEM[(struct SCG_Type *)1074151424B].RCCR ={v} regValue_14;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+  scanning: _2 ={v} MEM[(struct SCG_Type *)1074151424B].CSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _3 = _2 >> 24;
+  scanning: _4 = _3 & 15;
+  scanning: if (_4 != sourceClock_13(D))
+  scanning: TimeoutTicks.4_5 = TimeoutTicks;
+  scanning: TimeoutOccurred_19 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.4_5);
+  scanning: if (iftmp.3_7 == 0)
+  scanning: if (TimeoutOccurred_19 != 0)
+  scanning: if (TimeoutOccurred_17 != 0)
+  scanning: SetInputSouceSytemClock.part.0 ();
+  scanning: return;
+
+
+ local analysis of DisableSircStop
+   scanning: DisableSircStop_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of EnableSircStop
+   scanning: _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: EnableSircStop_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of SetSircStop
+   scanning: _4 = MEM[(unsigned char *)config_2(D) + 9B];
+    Indirect ref read is not const
+  scanning: SetSircStop_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of DisableSircVlp
+   scanning: DisableSircVlp_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of EnableSircVlp
+   scanning: _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: EnableSircVlp_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of SetSircVlp
+   scanning: _4 = MEM[(unsigned char *)config_2(D) + 8B];
+    Indirect ref read is not const
+  scanning: SetSircVlp_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of DisableSirc
+   scanning: DisableSirc_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of EnableSirc
+   scanning: EnableSirc_TrustedCall.isra.0 (config_2(D));
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetSirc
+   scanning: SetSirc_TrustedCall (config_2(D));
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetSirc_TrustedCall
+   scanning: if (config_30(D) == 0B)
+  scanning: _1 = config_30(D)->name;
+    Indirect ref read is not const
+  scanning: _2 = config_30(D)->range;
+    Indirect ref read is not const
+  scanning: _3 = config_30(D)->enable;
+    Indirect ref read is not const
+  scanning: _4 = config_30(D)->lowPowerModeEnable;
+    Indirect ref read is not const
+  scanning: _6 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _8 = _6 & 4286578687;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _8;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _10 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _12 = _10 & 4294967294;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _12;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _14 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _15 = _14 & 4294967291;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _15;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: if (sircConfig$enable_7 == 1)
+  scanning: _29 = sircConfig$range_9 & 1;
+  scanning: _16 = (long unsigned int) _29;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCFG ={v} _16;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _17 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _18 = _17 | 1;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _18;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _19 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _20 = (long unsigned int) sircConfig$lowPowerModeEnable_11;
+  scanning: _21 = _20 << 2;
+  scanning: _22 = _21 & 4;
+  scanning: _23 = _19 | _22;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _23;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+  scanning: _24 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _25 = _24 >> 24;
+  scanning: IrcoscStatus_39 = _25 & 1;
+  scanning: TimeoutTicks.6_26 = TimeoutTicks;
+  scanning: TimeoutOccurred_41 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.6_26);
+  scanning: if (IrcoscStatus_39 == 0)
+  scanning: if (TimeoutOccurred_41 != 0)
+  scanning: if (TimeoutOccurred_13 != 0)
+  scanning: ReportClockErrors (1, sircConfig_5);
+  scanning: return;
+
+
+ local analysis of InternalOscillatorEmpty_Disable
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of InternalOscillatorEmpty
+   scanning: return;
+Function is locally const.
+callgraph:
+
+EnableSirc_TrustedCall.isra.0/41 (EnableSirc_TrustedCall.isra.0) @07697000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edf68
+  References: 
+  Referring: 
+  Function EnableSirc_TrustedCall.isra.0/41 is inline copy in EnableSirc/6
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSirc/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (354334797 (estimated locally),0.33 per call) ClockTimeoutExpired/29 (10037315452 (estimated locally),9.35 per call) ClockStartTimeout/28 (1073741824 (estimated locally),1.00 per call) 
+SetInputSouceSytemClock.part.0/40 (SetInputSouceSytemClock.part.0) @0768ad20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edf28
+  References: 
+  Referring: 
+  Function SetInputSouceSytemClock.part.0/40 is inline copy in SetInputSouceSytemClock/21
+  Availability: local
+  Function flags: count:37904965 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: SetInputSouceSytemClock/21 (inlined) (37904965 (estimated locally),0.33 per call) 
+  Calls: ReportClockErrors/30 (37904965 (estimated locally),0.33 per call) 
+DisableFirc_TrustedCall.isra.0/39 (DisableFirc_TrustedCall.isra.0) @0768a700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee068
+  References: 
+  Referring: 
+  Function DisableFirc_TrustedCall.isra.0/39 is inline copy in DisableFirc/27
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableFirc/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSircStop_TrustedCall.isra.0/38 (DisableSircStop_TrustedCall.isra.0) @0768a380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edf88
+  References: 
+  Referring: 
+  Function DisableSircStop_TrustedCall.isra.0/38 is inline copy in DisableSircStop/20
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSircStop/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSircStop_TrustedCall.isra.0/37 (EnableSircStop_TrustedCall.isra.0) @075de0e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee228
+  References: 
+  Referring: 
+  Function EnableSircStop_TrustedCall.isra.0/37 is inline copy in EnableSircStop/18
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSircStop/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSircStop_TrustedCall.isra.0/36 (SetSircStop_TrustedCall.isra.0) @075de9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee1c8
+  References: 
+  Referring: 
+  Function SetSircStop_TrustedCall.isra.0/36 is inline copy in SetSircStop/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSircStop/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSircVlp_TrustedCall.isra.0/35 (DisableSircVlp_TrustedCall.isra.0) @075de540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee088
+  References: 
+  Referring: 
+  Function DisableSircVlp_TrustedCall.isra.0/35 is inline copy in DisableSircVlp/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSircVlp/14 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSircVlp_TrustedCall.isra.0/34 (EnableSircVlp_TrustedCall.isra.0) @075de000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee2e8
+  References: 
+  Referring: 
+  Function EnableSircVlp_TrustedCall.isra.0/34 is inline copy in EnableSircVlp/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSircVlp/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSircVlp_TrustedCall.isra.0/33 (SetSircVlp_TrustedCall.isra.0) @075a5a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edfa8
+  References: 
+  Referring: 
+  Function SetSircVlp_TrustedCall.isra.0/33 is inline copy in SetSircVlp/10
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSircVlp/10 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSirc_TrustedCall.isra.0/32 (DisableSirc_TrustedCall.isra.0) @075a5620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee108
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (31713418 (estimated locally),0.03 per call) DisableSirc/8 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ReportClockErrors/30 (ReportClockErrors) @06998700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SetFirc_TrustedCall/22 (35858682 (estimated locally),0.03 per call) SetFirc_TrustedCall/22 (31713418 (estimated locally),0.03 per call) SetSirc_TrustedCall/3 (37904965 (estimated locally),0.07 per call) EnableSirc_TrustedCall.isra.0/41 (354334797 (estimated locally),0.33 per call) SetInputSouceSytemClock.part.0/40 (37904965 (estimated locally),0.33 per call) EnableFirc_TrustedCall/24 (71717363 (estimated locally),0.07 per call) 
+  Calls: 
+ClockTimeoutExpired/29 (ClockTimeoutExpired) @06998620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SetFirc_TrustedCall/22 (1015776324 (estimated locally),0.95 per call) SetFirc_TrustedCall/22 (898352582 (estimated locally),0.84 per call) SetSirc_TrustedCall/3 (1073741824 (estimated locally),1.89 per call) EnableSirc_TrustedCall.isra.0/41 (10037315452 (estimated locally),9.35 per call) SetInputSouceSytemClock/21 (1073741824 (estimated locally),9.35 per call) EnableFirc_TrustedCall/24 (2031552641 (estimated locally),1.89 per call) 
+  Calls: 
+ClockStartTimeout/28 (ClockStartTimeout) @06998540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SetFirc_TrustedCall/22 (108662673 (estimated locally),0.10 per call) SetFirc_TrustedCall/22 (96101268 (estimated locally),0.09 per call) SetSirc_TrustedCall/3 (114863532 (estimated locally),0.20 per call) EnableSirc_TrustedCall.isra.0/41 (1073741824 (estimated locally),1.00 per call) SetInputSouceSytemClock/21 (114863532 (estimated locally),1.00 per call) EnableFirc_TrustedCall/24 (217325344 (estimated locally),0.20 per call) 
+  Calls: 
+DisableFirc/27 (DisableFirc) @069949a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065edfc8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableFirc_TrustedCall.isra.0/39 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableFirc/25 (EnableFirc) @06994b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee248
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableFirc_TrustedCall/24 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableFirc_TrustedCall/24 (EnableFirc_TrustedCall) @069948c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065edfe8
+  References: 
+  Referring: 
+  Function EnableFirc_TrustedCall/24 is inline copy in EnableFirc/25
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableFirc/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (71717363 (estimated locally),0.07 per call) ClockTimeoutExpired/29 (2031552641 (estimated locally),1.89 per call) ClockStartTimeout/28 (217325344 (estimated locally),0.20 per call) 
+SetFirc/23 (SetFirc) @06994540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee308
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetFirc_TrustedCall/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetFirc_TrustedCall/22 (SetFirc_TrustedCall) @069942a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee168
+  References: 
+  Referring: 
+  Function SetFirc_TrustedCall/22 is inline copy in SetFirc/23
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetFirc/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (35858682 (estimated locally),0.03 per call) ClockTimeoutExpired/29 (1015776324 (estimated locally),0.95 per call) ClockStartTimeout/28 (108662673 (estimated locally),0.10 per call) DisableSirc_TrustedCall.isra.0/32 (31713418 (estimated locally),0.03 per call) SetInputSouceSytemClock/21 (96101267 (estimated locally),0.09 per call) ReportClockErrors/30 (31713418 (estimated locally),0.03 per call) ClockTimeoutExpired/29 (898352582 (estimated locally),0.84 per call) ClockStartTimeout/28 (96101268 (estimated locally),0.09 per call) SetInputSouceSytemClock/21 (474808635 (estimated locally),0.44 per call) SetSirc_TrustedCall/3 (156686850 (estimated locally),0.15 per call) 
+SetInputSouceSytemClock/21 (SetInputSouceSytemClock) @0698ac40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee0a8
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:114863532 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (96101267 (estimated locally),0.09 per call) SetFirc_TrustedCall/22 (474808635 (estimated locally),0.44 per call) 
+  Calls: SetInputSouceSytemClock.part.0/40 (inlined) (37904965 (estimated locally),0.33 per call) ClockTimeoutExpired/29 (1073741824 (estimated locally),9.35 per call) ClockStartTimeout/28 (114863532 (estimated locally),1.00 per call) 
+DisableSircStop/20 (DisableSircStop) @0698a9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee0c8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSircStop_TrustedCall.isra.0/38 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSircStop/18 (EnableSircStop) @0698a460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee188
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSircStop_TrustedCall.isra.0/37 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSircStop/16 (SetSircStop) @069868c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee1a8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSircStop_TrustedCall.isra.0/36 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSircVlp/14 (DisableSircVlp) @06986a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee0e8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSircVlp_TrustedCall.isra.0/35 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSircVlp/12 (EnableSircVlp) @06986540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee008
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSircVlp_TrustedCall.isra.0/34 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSircVlp/10 (SetSircVlp) @069829a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee128
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSircVlp_TrustedCall.isra.0/33 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSirc/8 (DisableSirc) @06982b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee028
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSirc_TrustedCall.isra.0/32 (1073741824 (estimated locally),1.00 per call) 
+EnableSirc/6 (EnableSirc) @06982620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee148
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSirc_TrustedCall.isra.0/41 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSirc/4 (SetSirc) @068607e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee1e8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSirc_TrustedCall/3 (1073741824 (estimated locally),1.00 per call) 
+SetSirc_TrustedCall/3 (SetSirc_TrustedCall) @06860ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee208
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:567507571 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (156686850 (estimated locally),0.15 per call) SetSirc/4 (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (37904965 (estimated locally),0.07 per call) ClockTimeoutExpired/29 (1073741824 (estimated locally),1.89 per call) ClockStartTimeout/28 (114863532 (estimated locally),0.20 per call) 
+InternalOscillatorEmpty_Disable/2 (InternalOscillatorEmpty_Disable) @068609a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee268
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+InternalOscillatorEmpty/1 (InternalOscillatorEmpty) @06860700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee288
+  References: 
+  Referring: intOscCallbacks/0 (addr)intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+EnableSirc_TrustedCall.isra.0/41 (EnableSirc_TrustedCall.isra.0) @07697000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edf68
+  References: 
+  Referring: 
+  Function EnableSirc_TrustedCall.isra.0/41 is inline copy in EnableSirc/6
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSirc/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (354334797 (estimated locally),0.33 per call) ClockTimeoutExpired/29 (10037315452 (estimated locally),9.35 per call) ClockStartTimeout/28 (1073741824 (estimated locally),1.00 per call) 
+SetInputSouceSytemClock.part.0/40 (SetInputSouceSytemClock.part.0) @0768ad20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edf28
+  References: 
+  Referring: 
+  Function SetInputSouceSytemClock.part.0/40 is inline copy in SetInputSouceSytemClock/21
+  Availability: local
+  Function flags: count:37904965 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: SetInputSouceSytemClock/21 (inlined) (37904965 (estimated locally),0.33 per call) 
+  Calls: ReportClockErrors/30 (37904965 (estimated locally),0.33 per call) 
+DisableFirc_TrustedCall.isra.0/39 (DisableFirc_TrustedCall.isra.0) @0768a700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee068
+  References: 
+  Referring: 
+  Function DisableFirc_TrustedCall.isra.0/39 is inline copy in DisableFirc/27
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableFirc/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSircStop_TrustedCall.isra.0/38 (DisableSircStop_TrustedCall.isra.0) @0768a380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edf88
+  References: 
+  Referring: 
+  Function DisableSircStop_TrustedCall.isra.0/38 is inline copy in DisableSircStop/20
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSircStop/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSircStop_TrustedCall.isra.0/37 (EnableSircStop_TrustedCall.isra.0) @075de0e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee228
+  References: 
+  Referring: 
+  Function EnableSircStop_TrustedCall.isra.0/37 is inline copy in EnableSircStop/18
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSircStop/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSircStop_TrustedCall.isra.0/36 (SetSircStop_TrustedCall.isra.0) @075de9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee1c8
+  References: 
+  Referring: 
+  Function SetSircStop_TrustedCall.isra.0/36 is inline copy in SetSircStop/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSircStop/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSircVlp_TrustedCall.isra.0/35 (DisableSircVlp_TrustedCall.isra.0) @075de540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee088
+  References: 
+  Referring: 
+  Function DisableSircVlp_TrustedCall.isra.0/35 is inline copy in DisableSircVlp/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSircVlp/14 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSircVlp_TrustedCall.isra.0/34 (EnableSircVlp_TrustedCall.isra.0) @075de000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee2e8
+  References: 
+  Referring: 
+  Function EnableSircVlp_TrustedCall.isra.0/34 is inline copy in EnableSircVlp/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSircVlp/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSircVlp_TrustedCall.isra.0/33 (SetSircVlp_TrustedCall.isra.0) @075a5a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edfa8
+  References: 
+  Referring: 
+  Function SetSircVlp_TrustedCall.isra.0/33 is inline copy in SetSircVlp/10
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSircVlp/10 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSirc_TrustedCall.isra.0/32 (DisableSirc_TrustedCall.isra.0) @075a5620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee108
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (31713418 (estimated locally),0.03 per call) DisableSirc/8 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableFirc/27 (DisableFirc) @069949a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065edfc8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableFirc_TrustedCall.isra.0/39 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableFirc/25 (EnableFirc) @06994b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee248
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableFirc_TrustedCall/24 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableFirc_TrustedCall/24 (EnableFirc_TrustedCall) @069948c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065edfe8
+  References: 
+  Referring: 
+  Function EnableFirc_TrustedCall/24 is inline copy in EnableFirc/25
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableFirc/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (71717363 (estimated locally),0.07 per call) ClockTimeoutExpired/29 (2031552641 (estimated locally),1.89 per call) ClockStartTimeout/28 (217325344 (estimated locally),0.20 per call) 
+SetFirc/23 (SetFirc) @06994540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee308
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetFirc_TrustedCall/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetFirc_TrustedCall/22 (SetFirc_TrustedCall) @069942a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee168
+  References: 
+  Referring: 
+  Function SetFirc_TrustedCall/22 is inline copy in SetFirc/23
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetFirc/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (35858682 (estimated locally),0.03 per call) ClockTimeoutExpired/29 (1015776324 (estimated locally),0.95 per call) ClockStartTimeout/28 (108662673 (estimated locally),0.10 per call) DisableSirc_TrustedCall.isra.0/32 (31713418 (estimated locally),0.03 per call) SetInputSouceSytemClock/21 (96101267 (estimated locally),0.09 per call) ReportClockErrors/30 (31713418 (estimated locally),0.03 per call) ClockTimeoutExpired/29 (898352582 (estimated locally),0.84 per call) ClockStartTimeout/28 (96101268 (estimated locally),0.09 per call) SetInputSouceSytemClock/21 (474808635 (estimated locally),0.44 per call) SetSirc_TrustedCall/3 (156686850 (estimated locally),0.15 per call) 
+SetInputSouceSytemClock/21 (SetInputSouceSytemClock) @0698ac40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee0a8
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:114863532 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (96101267 (estimated locally),0.09 per call) SetFirc_TrustedCall/22 (474808635 (estimated locally),0.44 per call) 
+  Calls: SetInputSouceSytemClock.part.0/40 (inlined) (37904965 (estimated locally),0.33 per call) ClockTimeoutExpired/29 (1073741824 (estimated locally),9.35 per call) ClockStartTimeout/28 (114863532 (estimated locally),1.00 per call) 
+DisableSircStop/20 (DisableSircStop) @0698a9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee0c8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSircStop_TrustedCall.isra.0/38 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSircStop/18 (EnableSircStop) @0698a460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee188
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSircStop_TrustedCall.isra.0/37 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSircStop/16 (SetSircStop) @069868c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee1a8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSircStop_TrustedCall.isra.0/36 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSircVlp/14 (DisableSircVlp) @06986a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee0e8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSircVlp_TrustedCall.isra.0/35 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSircVlp/12 (EnableSircVlp) @06986540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee008
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSircVlp_TrustedCall.isra.0/34 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSircVlp/10 (SetSircVlp) @069829a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee128
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSircVlp_TrustedCall.isra.0/33 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSirc/8 (DisableSirc) @06982b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee028
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSirc_TrustedCall.isra.0/32 (1073741824 (estimated locally),1.00 per call) 
+EnableSirc/6 (EnableSirc) @06982620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee148
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSirc_TrustedCall.isra.0/41 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSirc/4 (SetSirc) @068607e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee1e8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSirc_TrustedCall/3 (1073741824 (estimated locally),1.00 per call) 
+SetSirc_TrustedCall/3 (SetSirc_TrustedCall) @06860ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee208
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:567507571 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (156686850 (estimated locally),0.15 per call) SetSirc/4 (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (37904965 (estimated locally),0.07 per call) ClockTimeoutExpired/29 (1073741824 (estimated locally),1.89 per call) ClockStartTimeout/28 (114863532 (estimated locally),0.20 per call) 
+InternalOscillatorEmpty_Disable/2 (InternalOscillatorEmpty_Disable) @068609a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee268
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+InternalOscillatorEmpty/1 (InternalOscillatorEmpty) @06860700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee288
+  References: 
+  Referring: intOscCallbacks/0 (addr)intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+EnableSirc_TrustedCall.isra.0: malloc_bottom
+SetInputSouceSytemClock.part.0: malloc_bottom
+DisableFirc_TrustedCall.isra.0: malloc_bottom
+DisableSircStop_TrustedCall.isra.0: malloc_bottom
+EnableSircStop_TrustedCall.isra.0: malloc_bottom
+SetSircStop_TrustedCall.isra.0: malloc_bottom
+DisableSircVlp_TrustedCall.isra.0: malloc_bottom
+EnableSircVlp_TrustedCall.isra.0: malloc_bottom
+SetSircVlp_TrustedCall.isra.0: malloc_bottom
+DisableSirc_TrustedCall.isra.0: malloc_bottom
+DisableFirc: malloc_bottom
+EnableFirc: malloc_bottom
+EnableFirc_TrustedCall: malloc_bottom
+SetFirc: malloc_bottom
+SetFirc_TrustedCall: malloc_bottom
+SetInputSouceSytemClock: malloc_bottom
+DisableSircStop: malloc_bottom
+EnableSircStop: malloc_bottom
+SetSircStop: malloc_bottom
+DisableSircVlp: malloc_bottom
+EnableSircVlp: malloc_bottom
+SetSircVlp: malloc_bottom
+DisableSirc: malloc_bottom
+EnableSirc: malloc_bottom
+SetSirc: malloc_bottom
+SetSirc_TrustedCall: malloc_bottom
+InternalOscillatorEmpty_Disable: malloc_bottom
+InternalOscillatorEmpty: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+EnableSirc_TrustedCall.isra.0: malloc_bottom
+SetInputSouceSytemClock.part.0: malloc_bottom
+DisableFirc_TrustedCall.isra.0: malloc_bottom
+DisableSircStop_TrustedCall.isra.0: malloc_bottom
+EnableSircStop_TrustedCall.isra.0: malloc_bottom
+SetSircStop_TrustedCall.isra.0: malloc_bottom
+DisableSircVlp_TrustedCall.isra.0: malloc_bottom
+EnableSircVlp_TrustedCall.isra.0: malloc_bottom
+SetSircVlp_TrustedCall.isra.0: malloc_bottom
+DisableSirc_TrustedCall.isra.0: malloc_bottom
+DisableFirc: malloc_bottom
+EnableFirc: malloc_bottom
+EnableFirc_TrustedCall: malloc_bottom
+SetFirc: malloc_bottom
+SetFirc_TrustedCall: malloc_bottom
+SetInputSouceSytemClock: malloc_bottom
+DisableSircStop: malloc_bottom
+EnableSircStop: malloc_bottom
+SetSircStop: malloc_bottom
+DisableSircVlp: malloc_bottom
+EnableSircVlp: malloc_bottom
+SetSircVlp: malloc_bottom
+DisableSirc: malloc_bottom
+EnableSirc: malloc_bottom
+SetSirc: malloc_bottom
+SetSirc_TrustedCall: malloc_bottom
+InternalOscillatorEmpty_Disable: malloc_bottom
+InternalOscillatorEmpty: malloc_bottom
+callgraph:
+
+EnableSirc_TrustedCall.isra.0/41 (EnableSirc_TrustedCall.isra.0) @07697000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edfc8
+  References: 
+  Referring: 
+  Function EnableSirc_TrustedCall.isra.0/41 is inline copy in EnableSirc/6
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSirc/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (354334797 (estimated locally),0.33 per call) ClockTimeoutExpired/29 (10037315452 (estimated locally),9.35 per call) ClockStartTimeout/28 (1073741824 (estimated locally),1.00 per call) 
+SetInputSouceSytemClock.part.0/40 (SetInputSouceSytemClock.part.0) @0768ad20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edfa8
+  References: 
+  Referring: 
+  Function SetInputSouceSytemClock.part.0/40 is inline copy in SetInputSouceSytemClock/21
+  Availability: local
+  Function flags: count:37904965 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: SetInputSouceSytemClock/21 (inlined) (37904965 (estimated locally),0.33 per call) 
+  Calls: ReportClockErrors/30 (37904965 (estimated locally),0.33 per call) 
+DisableFirc_TrustedCall.isra.0/39 (DisableFirc_TrustedCall.isra.0) @0768a700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee208
+  References: 
+  Referring: 
+  Function DisableFirc_TrustedCall.isra.0/39 is inline copy in DisableFirc/27
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableFirc/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSircStop_TrustedCall.isra.0/38 (DisableSircStop_TrustedCall.isra.0) @0768a380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee0c8
+  References: 
+  Referring: 
+  Function DisableSircStop_TrustedCall.isra.0/38 is inline copy in DisableSircStop/20
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSircStop/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSircStop_TrustedCall.isra.0/37 (EnableSircStop_TrustedCall.isra.0) @075de0e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee1c8
+  References: 
+  Referring: 
+  Function EnableSircStop_TrustedCall.isra.0/37 is inline copy in EnableSircStop/18
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSircStop/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSircStop_TrustedCall.isra.0/36 (SetSircStop_TrustedCall.isra.0) @075de9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee168
+  References: 
+  Referring: 
+  Function SetSircStop_TrustedCall.isra.0/36 is inline copy in SetSircStop/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSircStop/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSircVlp_TrustedCall.isra.0/35 (DisableSircVlp_TrustedCall.isra.0) @075de540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edfe8
+  References: 
+  Referring: 
+  Function DisableSircVlp_TrustedCall.isra.0/35 is inline copy in DisableSircVlp/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSircVlp/14 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSircVlp_TrustedCall.isra.0/34 (EnableSircVlp_TrustedCall.isra.0) @075de000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee108
+  References: 
+  Referring: 
+  Function EnableSircVlp_TrustedCall.isra.0/34 is inline copy in EnableSircVlp/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSircVlp/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSircVlp_TrustedCall.isra.0/33 (SetSircVlp_TrustedCall.isra.0) @075a5a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edf88
+  References: 
+  Referring: 
+  Function SetSircVlp_TrustedCall.isra.0/33 is inline copy in SetSircVlp/10
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSircVlp/10 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSirc_TrustedCall.isra.0/32 (DisableSirc_TrustedCall.isra.0) @075a5620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee068
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (31713418 (estimated locally),0.03 per call) DisableSirc/8 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ReportClockErrors/30 (ReportClockErrors) @06998700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SetFirc_TrustedCall/22 (35858682 (estimated locally),0.03 per call) SetFirc_TrustedCall/22 (31713418 (estimated locally),0.03 per call) SetSirc_TrustedCall/3 (37904965 (estimated locally),0.07 per call) EnableSirc_TrustedCall.isra.0/41 (354334797 (estimated locally),0.33 per call) SetInputSouceSytemClock.part.0/40 (37904965 (estimated locally),0.33 per call) EnableFirc_TrustedCall/24 (71717363 (estimated locally),0.07 per call) 
+  Calls: 
+ClockTimeoutExpired/29 (ClockTimeoutExpired) @06998620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SetFirc_TrustedCall/22 (1015776324 (estimated locally),0.95 per call) SetFirc_TrustedCall/22 (898352582 (estimated locally),0.84 per call) SetSirc_TrustedCall/3 (1073741824 (estimated locally),1.89 per call) EnableSirc_TrustedCall.isra.0/41 (10037315452 (estimated locally),9.35 per call) SetInputSouceSytemClock/21 (1073741824 (estimated locally),9.35 per call) EnableFirc_TrustedCall/24 (2031552641 (estimated locally),1.89 per call) 
+  Calls: 
+ClockStartTimeout/28 (ClockStartTimeout) @06998540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SetFirc_TrustedCall/22 (108662673 (estimated locally),0.10 per call) SetFirc_TrustedCall/22 (96101268 (estimated locally),0.09 per call) SetSirc_TrustedCall/3 (114863532 (estimated locally),0.20 per call) EnableSirc_TrustedCall.isra.0/41 (1073741824 (estimated locally),1.00 per call) SetInputSouceSytemClock/21 (114863532 (estimated locally),1.00 per call) EnableFirc_TrustedCall/24 (217325344 (estimated locally),0.20 per call) 
+  Calls: 
+DisableFirc/27 (DisableFirc) @069949a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee0a8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableFirc_TrustedCall.isra.0/39 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableFirc/25 (EnableFirc) @06994b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee128
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableFirc_TrustedCall/24 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableFirc_TrustedCall/24 (EnableFirc_TrustedCall) @069948c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee2e8
+  References: 
+  Referring: 
+  Function EnableFirc_TrustedCall/24 is inline copy in EnableFirc/25
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableFirc/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (71717363 (estimated locally),0.07 per call) ClockTimeoutExpired/29 (2031552641 (estimated locally),1.89 per call) ClockStartTimeout/28 (217325344 (estimated locally),0.20 per call) 
+SetFirc/23 (SetFirc) @06994540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee008
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetFirc_TrustedCall/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetFirc_TrustedCall/22 (SetFirc_TrustedCall) @069942a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee0e8
+  References: 
+  Referring: 
+  Function SetFirc_TrustedCall/22 is inline copy in SetFirc/23
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetFirc/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (35858682 (estimated locally),0.03 per call) ClockTimeoutExpired/29 (1015776324 (estimated locally),0.95 per call) ClockStartTimeout/28 (108662673 (estimated locally),0.10 per call) DisableSirc_TrustedCall.isra.0/32 (31713418 (estimated locally),0.03 per call) SetInputSouceSytemClock/21 (96101267 (estimated locally),0.09 per call) ReportClockErrors/30 (31713418 (estimated locally),0.03 per call) ClockTimeoutExpired/29 (898352582 (estimated locally),0.84 per call) ClockStartTimeout/28 (96101268 (estimated locally),0.09 per call) SetInputSouceSytemClock/21 (474808635 (estimated locally),0.44 per call) SetSirc_TrustedCall/3 (156686850 (estimated locally),0.15 per call) 
+SetInputSouceSytemClock/21 (SetInputSouceSytemClock) @0698ac40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee1e8
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:114863532 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (96101267 (estimated locally),0.09 per call) SetFirc_TrustedCall/22 (474808635 (estimated locally),0.44 per call) 
+  Calls: SetInputSouceSytemClock.part.0/40 (inlined) (37904965 (estimated locally),0.33 per call) ClockTimeoutExpired/29 (1073741824 (estimated locally),9.35 per call) ClockStartTimeout/28 (114863532 (estimated locally),1.00 per call) 
+DisableSircStop/20 (DisableSircStop) @0698a9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee028
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSircStop_TrustedCall.isra.0/38 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSircStop/18 (EnableSircStop) @0698a460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee088
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSircStop_TrustedCall.isra.0/37 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSircStop/16 (SetSircStop) @069868c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee288
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSircStop_TrustedCall.isra.0/36 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSircVlp/14 (DisableSircVlp) @06986a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee148
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSircVlp_TrustedCall.isra.0/35 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSircVlp/12 (EnableSircVlp) @06986540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee188
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSircVlp_TrustedCall.isra.0/34 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSircVlp/10 (SetSircVlp) @069829a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee308
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSircVlp_TrustedCall.isra.0/33 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSirc/8 (DisableSirc) @06982b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee1a8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSirc_TrustedCall.isra.0/32 (1073741824 (estimated locally),1.00 per call) 
+EnableSirc/6 (EnableSirc) @06982620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee268
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSirc_TrustedCall.isra.0/41 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSirc/4 (SetSirc) @068607e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee228
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSirc_TrustedCall/3 (1073741824 (estimated locally),1.00 per call) 
+SetSirc_TrustedCall/3 (SetSirc_TrustedCall) @06860ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee2a8
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:567507571 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (156686850 (estimated locally),0.15 per call) SetSirc/4 (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (37904965 (estimated locally),0.07 per call) ClockTimeoutExpired/29 (1073741824 (estimated locally),1.89 per call) ClockStartTimeout/28 (114863532 (estimated locally),0.20 per call) 
+InternalOscillatorEmpty_Disable/2 (InternalOscillatorEmpty_Disable) @068609a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee248
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+InternalOscillatorEmpty/1 (InternalOscillatorEmpty) @06860700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee2c8
+  References: 
+  Referring: intOscCallbacks/0 (addr)intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+DisableFirc/27 (DisableFirc) @069949a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee0a8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableFirc_TrustedCall.isra.0/39 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableFirc_TrustedCall.isra.0/39 (DisableFirc_TrustedCall.isra.0) @0768a700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee208
+  References: 
+  Referring: 
+  Function DisableFirc_TrustedCall.isra.0/39 is inline copy in DisableFirc/27
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableFirc/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableFirc/25 (EnableFirc) @06994b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee128
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableFirc_TrustedCall/24 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableFirc_TrustedCall/24 (EnableFirc_TrustedCall) @069948c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee2e8
+  References: 
+  Referring: 
+  Function EnableFirc_TrustedCall/24 is inline copy in EnableFirc/25
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableFirc/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (71717363 (estimated locally),0.07 per call) ClockTimeoutExpired/29 (2031552641 (estimated locally),1.89 per call) ClockStartTimeout/28 (217325344 (estimated locally),0.20 per call) 
+SetFirc/23 (SetFirc) @06994540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee008
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetFirc_TrustedCall/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetFirc_TrustedCall/22 (SetFirc_TrustedCall) @069942a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee0e8
+  References: 
+  Referring: 
+  Function SetFirc_TrustedCall/22 is inline copy in SetFirc/23
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetFirc/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (35858682 (estimated locally),0.03 per call) ClockTimeoutExpired/29 (1015776324 (estimated locally),0.95 per call) ClockStartTimeout/28 (108662673 (estimated locally),0.10 per call) DisableSirc_TrustedCall.isra.0/32 (31713418 (estimated locally),0.03 per call) SetInputSouceSytemClock/21 (96101267 (estimated locally),0.09 per call) ReportClockErrors/30 (31713418 (estimated locally),0.03 per call) ClockTimeoutExpired/29 (898352582 (estimated locally),0.84 per call) ClockStartTimeout/28 (96101268 (estimated locally),0.09 per call) SetInputSouceSytemClock/21 (474808635 (estimated locally),0.44 per call) SetSirc_TrustedCall/3 (156686850 (estimated locally),0.15 per call) 
+SetInputSouceSytemClock/21 (SetInputSouceSytemClock) @0698ac40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee1e8
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:114863532 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (96101267 (estimated locally),0.09 per call) SetFirc_TrustedCall/22 (474808635 (estimated locally),0.44 per call) 
+  Calls: SetInputSouceSytemClock.part.0/40 (inlined) (37904965 (estimated locally),0.33 per call) ClockTimeoutExpired/29 (1073741824 (estimated locally),9.35 per call) ClockStartTimeout/28 (114863532 (estimated locally),1.00 per call) 
+SetInputSouceSytemClock.part.0/40 (SetInputSouceSytemClock.part.0) @0768ad20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edfa8
+  References: 
+  Referring: 
+  Function SetInputSouceSytemClock.part.0/40 is inline copy in SetInputSouceSytemClock/21
+  Availability: local
+  Function flags: count:37904965 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: SetInputSouceSytemClock/21 (inlined) (37904965 (estimated locally),0.33 per call) 
+  Calls: ReportClockErrors/30 (37904965 (estimated locally),0.33 per call) 
+DisableSircStop/20 (DisableSircStop) @0698a9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee028
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSircStop_TrustedCall.isra.0/38 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSircStop_TrustedCall.isra.0/38 (DisableSircStop_TrustedCall.isra.0) @0768a380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee0c8
+  References: 
+  Referring: 
+  Function DisableSircStop_TrustedCall.isra.0/38 is inline copy in DisableSircStop/20
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSircStop/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSircStop/18 (EnableSircStop) @0698a460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee088
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSircStop_TrustedCall.isra.0/37 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSircStop_TrustedCall.isra.0/37 (EnableSircStop_TrustedCall.isra.0) @075de0e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee1c8
+  References: 
+  Referring: 
+  Function EnableSircStop_TrustedCall.isra.0/37 is inline copy in EnableSircStop/18
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSircStop/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSircStop/16 (SetSircStop) @069868c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee288
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSircStop_TrustedCall.isra.0/36 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSircStop_TrustedCall.isra.0/36 (SetSircStop_TrustedCall.isra.0) @075de9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee168
+  References: 
+  Referring: 
+  Function SetSircStop_TrustedCall.isra.0/36 is inline copy in SetSircStop/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSircStop/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSircVlp/14 (DisableSircVlp) @06986a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee148
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSircVlp_TrustedCall.isra.0/35 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSircVlp_TrustedCall.isra.0/35 (DisableSircVlp_TrustedCall.isra.0) @075de540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edfe8
+  References: 
+  Referring: 
+  Function DisableSircVlp_TrustedCall.isra.0/35 is inline copy in DisableSircVlp/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSircVlp/14 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSircVlp/12 (EnableSircVlp) @06986540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee188
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSircVlp_TrustedCall.isra.0/34 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSircVlp_TrustedCall.isra.0/34 (EnableSircVlp_TrustedCall.isra.0) @075de000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee108
+  References: 
+  Referring: 
+  Function EnableSircVlp_TrustedCall.isra.0/34 is inline copy in EnableSircVlp/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSircVlp/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSircVlp/10 (SetSircVlp) @069829a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee308
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSircVlp_TrustedCall.isra.0/33 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSircVlp_TrustedCall.isra.0/33 (SetSircVlp_TrustedCall.isra.0) @075a5a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edf88
+  References: 
+  Referring: 
+  Function SetSircVlp_TrustedCall.isra.0/33 is inline copy in SetSircVlp/10
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSircVlp/10 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSirc/8 (DisableSirc) @06982b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee1a8
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSirc_TrustedCall.isra.0/32 (1073741824 (estimated locally),1.00 per call) 
+DisableSirc_TrustedCall.isra.0/32 (DisableSirc_TrustedCall.isra.0) @075a5620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065ee068
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (31713418 (estimated locally),0.03 per call) DisableSirc/8 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSirc/6 (EnableSirc) @06982620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee268
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSirc_TrustedCall.isra.0/41 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSirc_TrustedCall.isra.0/41 (EnableSirc_TrustedCall.isra.0) @07697000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @065edfc8
+  References: 
+  Referring: 
+  Function EnableSirc_TrustedCall.isra.0/41 is inline copy in EnableSirc/6
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSirc/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (354334797 (estimated locally),0.33 per call) ClockTimeoutExpired/29 (10037315452 (estimated locally),9.35 per call) ClockStartTimeout/28 (1073741824 (estimated locally),1.00 per call) 
+SetSirc/4 (SetSirc) @068607e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee228
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSirc_TrustedCall/3 (1073741824 (estimated locally),1.00 per call) 
+SetSirc_TrustedCall/3 (SetSirc_TrustedCall) @06860ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065ee2a8
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:567507571 (estimated locally) body local optimize_size
+  Called by: SetFirc_TrustedCall/22 (156686850 (estimated locally),0.15 per call) SetSirc/4 (1073741824 (estimated locally),1.00 per call) 
+  Calls: ReportClockErrors/30 (37904965 (estimated locally),0.07 per call) ClockTimeoutExpired/29 (1073741824 (estimated locally),1.89 per call) ClockStartTimeout/28 (114863532 (estimated locally),0.20 per call) 
+InternalOscillatorEmpty_Disable/2 (InternalOscillatorEmpty_Disable) @068609a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee248
+  References: 
+  Referring: intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+InternalOscillatorEmpty/1 (InternalOscillatorEmpty) @06860700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065ee2c8
+  References: 
+  Referring: intOscCallbacks/0 (addr)intOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: InternalOscillatorEmpty
+Function found not to call free: InternalOscillatorEmpty_Disable
+Function found not to call free: DisableSirc_TrustedCall.isra.0
+Function found not to call free: DisableSirc
+Function found not to call free: SetSircVlp_TrustedCall.isra.0
+Function found not to call free: SetSircVlp
+Function found not to call free: EnableSircVlp_TrustedCall.isra.0
+Function found not to call free: EnableSircVlp
+Function found not to call free: DisableSircVlp_TrustedCall.isra.0
+Function found not to call free: DisableSircVlp
+Function found not to call free: SetSircStop_TrustedCall.isra.0
+Function found not to call free: SetSircStop
+Function found not to call free: EnableSircStop_TrustedCall.isra.0
+Function found not to call free: EnableSircStop
+Function found not to call free: DisableSircStop_TrustedCall.isra.0
+Function found not to call free: DisableSircStop
+Function found not to call free: DisableFirc_TrustedCall.isra.0
+Function found not to call free: DisableFirc
+EnableSirc_TrustedCall.isra.0 (const Clock_Ip_NameType * ISRA.33)
+{
+  boolean TimeoutOccurred;
+  uint32 StartTime;
+  uint32 ElapsedTime;
+  uint32 TimeoutTicks;
+  uint32 IrcoscStatus;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int TimeoutTicks.5_8;
+  <unnamed type> _12;
+
+  <bb 8> [local count: 114863532]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 | 1;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 | 4;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _6 = _5 >> 24;
+  IrcoscStatus_7 = _6 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_7
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.5_8 = TimeoutTicks;
+  TimeoutOccurred_9 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.5_8);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_9
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_7 == 0)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 5>; [5.50%]
+
+  <bb 4> [local count: 1014686025]:
+  if (TimeoutOccurred_9 != 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 9>; [94.50%]
+
+  <bb 9> [local count: 958878293]:
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 114863532]:
+  # TimeoutOccurred_10 = PHI <TimeoutOccurred_9(3), TimeoutOccurred_9(4)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_10 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  _12 = *ISRA.33_24(D);
+  ReportClockErrors (1, _12);
+
+  <bb 7> [local count: 114863532]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetInputSouceSytemClock.part.0 ()
+{
+  uint32 regValue;
+  boolean TimeoutOccurred;
+  uint32 StartTime;
+  uint32 ElapsedTime;
+  uint32 TimeoutTicks;
+  uint32 ScsStatus;
+  uint32 sourceClock;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#10 s=> sourceClock
+  # DEBUG sourceClock => D#10
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ReportClockErrors (1, 5);
+
+  <bb 3> [local count: 1073741824]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+DisableFirc_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG name s=> name
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _2 = _1 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _2;
+  return;
+
+}
+
+
+DisableSircStop_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG name s=> name
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4294967293;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  return;
+
+}
+
+
+EnableSircStop_TrustedCall.isra.0 (const uint16 ISRA.23)
+{
+  short unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.23_8(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 | 2;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+SetSircStop_TrustedCall.isra.0 (const uint8 ISRA.20)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned char _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 & 4294967293;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _7 = ISRA.20_16(D);
+  _8 = (long unsigned int) _7;
+  _9 = _8 << 1;
+  _10 = _9 & 2;
+  _11 = _5 | _10;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _11;
+  return;
+
+}
+
+
+DisableSircVlp_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG name s=> name
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4294967291;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  return;
+
+}
+
+
+EnableSircVlp_TrustedCall.isra.0 (const uint16 ISRA.15)
+{
+  short unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.15_8(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 | 4;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+SetSircVlp_TrustedCall.isra.0 (const uint8 ISRA.12)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned char _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 & 4294967291;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _7 = ISRA.12_16(D);
+  _8 = (long unsigned int) _7;
+  _9 = _8 << 2;
+  _10 = _9 & 4;
+  _11 = _5 | _10;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _11;
+  return;
+
+}
+
+
+DisableSirc_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG name s=> name
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 & 4294967291;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+  return;
+
+}
+
+
+DisableFirc (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#8 => name_2(D)
+  DisableFirc_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+EnableFirc (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  EnableFirc_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+EnableFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  uint32 IrcoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  short unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int TimeoutTicks.0_6;
+  <unnamed type> _7;
+
+  <bb 2> [local count: 567507571]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_12(D)->enable;
+  if (_1 == 1)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 8>; [79.76%]
+
+  <bb 3> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _3 = _2 | 1;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _3;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _5 = _4 >> 24;
+  IrcoscStatus_15 = _5 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_15
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_6 = TimeoutTicks;
+  TimeoutOccurred_17 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_6);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_17
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_15 == 0)
+    goto <bb 5>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 5> [local count: 1014686025]:
+  if (TimeoutOccurred_17 != 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 9>; [94.50%]
+
+  <bb 9> [local count: 958878293]:
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 114863532]:
+  # TimeoutOccurred_10 = PHI <TimeoutOccurred_17(4), TimeoutOccurred_17(5)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_10 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 7> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  _7 = config_12(D)->name;
+  ReportClockErrors (1, _7);
+
+  <bb 8> [local count: 567507571]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetFirc (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SetFirc_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  uint32 IrcoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean SircWasDisabled;
+  boolean TimeoutOccurred;
+  long unsigned int _2;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned char _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned char _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  short unsigned int _20;
+  unsigned char _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  unsigned char _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int TimeoutTicks.1_32;
+  <unnamed type> _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  short unsigned int _36;
+  unsigned char _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  unsigned char _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int TimeoutTicks.2_48;
+  <unnamed type> _49;
+  unsigned char _58;
+  unsigned char _59;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#13 => config_57(D)->name
+  # DEBUG D#12 => clockFeatures[D#13][0]
+  # DEBUG instance => (uint32) D#12
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG SircWasDisabled => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _4 = _2 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _6 = _5 & 33554432;
+  if (_6 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _7 = config_57(D)->range;
+  _8 = (long unsigned int) _7;
+  _9 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCFG;
+  _10 = _9 & 3;
+  if (_8 != _10)
+    goto <bb 5>; [66.00%]
+  else
+    goto <bb 4>; [34.00%]
+
+  <bb 4> [local count: 182536110]:
+  _11 = config_57(D)->regulator;
+  _12 = (long unsigned int) _11;
+  _13 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _14 = _13 >> 3;
+  _15 = _14 & 1;
+  if (_12 != _15)
+    goto <bb 5>; [66.00%]
+  else
+    goto <bb 21>; [34.00%]
+
+  <bb 5> [local count: 474808635]:
+  # DEBUG BEGIN_STMT
+  _16 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _17 = _16 & 1;
+  if (_17 == 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 156686850]:
+  # DEBUG BEGIN_STMT
+  # DEBUG SircWasDisabled => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG config => 0B
+  # DEBUG INLINE_ENTRY SetSirc
+  # DEBUG BEGIN_STMT
+  SetSirc_TrustedCall (0B);
+
+  <bb 7> [local count: 474808635]:
+  # SircWasDisabled_50 = PHI <0(5), 1(6)>
+  # DEBUG config => NULL
+  # DEBUG SircWasDisabled => SircWasDisabled_50
+  # DEBUG BEGIN_STMT
+  SetInputSouceSytemClock (2);
+  # DEBUG BEGIN_STMT
+  _18 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _19 = _18 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _19;
+  # DEBUG BEGIN_STMT
+  _20 = config_57(D)->enable;
+  if (_20 == 1)
+    goto <bb 8>; [20.24%]
+  else
+    goto <bb 21>; [79.76%]
+
+  <bb 8> [local count: 96101268]:
+  # DEBUG BEGIN_STMT
+  _21 = config_57(D)->range;
+  _59 = _21 & 3;
+  _22 = (long unsigned int) _59;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCFG ={v} _22;
+  # DEBUG BEGIN_STMT
+  _23 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _24 = config_57(D)->regulator;
+  _25 = (long unsigned int) _24;
+  _26 = _25 << 3;
+  _27 = _26 & 8;
+  _28 = _23 | _27;
+  _29 = _28 | 1;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _29;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 9> [local count: 898352582]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _30 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _31 = _30 >> 24;
+  IrcoscStatus_74 = _31 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_74
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.1_32 = TimeoutTicks;
+  TimeoutOccurred_76 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.1_32);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_76
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_74 == 0)
+    goto <bb 10>; [94.50%]
+  else
+    goto <bb 11>; [5.50%]
+
+  <bb 10> [local count: 848943190]:
+  if (TimeoutOccurred_76 != 0)
+    goto <bb 11>; [5.50%]
+  else
+    goto <bb 22>; [94.50%]
+
+  <bb 22> [local count: 802251315]:
+  goto <bb 9>; [100.00%]
+
+  <bb 11> [local count: 96101267]:
+  # TimeoutOccurred_3 = PHI <TimeoutOccurred_76(9), TimeoutOccurred_76(10)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_3 != 0)
+    goto <bb 12>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 12> [local count: 31713418]:
+  # DEBUG BEGIN_STMT
+  _33 = config_57(D)->name;
+  ReportClockErrors (1, _33);
+
+  <bb 13> [local count: 96101267]:
+  # DEBUG BEGIN_STMT
+  SetInputSouceSytemClock (3);
+  # DEBUG BEGIN_STMT
+  if (SircWasDisabled_50 != 0)
+    goto <bb 14>; [33.00%]
+  else
+    goto <bb 21>; [67.00%]
+
+  <bb 14> [local count: 31713418]:
+  # DEBUG BEGIN_STMT
+  # DEBUG name => 2
+  # DEBUG INLINE_ENTRY DisableSirc
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => 2
+  DisableSirc_TrustedCall.isra.0 ();
+  goto <bb 21>; [100.00%]
+
+  <bb 15> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _34 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _35 = _34 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _35;
+  # DEBUG BEGIN_STMT
+  _36 = config_57(D)->enable;
+  if (_36 == 1)
+    goto <bb 16>; [20.24%]
+  else
+    goto <bb 21>; [79.76%]
+
+  <bb 16> [local count: 108662673]:
+  # DEBUG BEGIN_STMT
+  _37 = config_57(D)->range;
+  _58 = _37 & 3;
+  _38 = (long unsigned int) _58;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCFG ={v} _38;
+  # DEBUG BEGIN_STMT
+  _39 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _40 = config_57(D)->regulator;
+  _41 = (long unsigned int) _40;
+  _42 = _41 << 3;
+  _43 = _42 & 8;
+  _44 = _39 | _43;
+  _45 = _44 | 1;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _45;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 17> [local count: 1015776324]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _46 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _47 = _46 >> 24;
+  IrcoscStatus_65 = _47 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_65
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.2_48 = TimeoutTicks;
+  TimeoutOccurred_67 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.2_48);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_67
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_65 == 0)
+    goto <bb 18>; [94.50%]
+  else
+    goto <bb 19>; [5.50%]
+
+  <bb 18> [local count: 959908626]:
+  if (TimeoutOccurred_67 != 0)
+    goto <bb 19>; [5.50%]
+  else
+    goto <bb 23>; [94.50%]
+
+  <bb 23> [local count: 907113651]:
+  goto <bb 17>; [100.00%]
+
+  <bb 19> [local count: 108662672]:
+  # TimeoutOccurred_1 = PHI <TimeoutOccurred_67(17), TimeoutOccurred_67(18)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_1 != 0)
+    goto <bb 20>; [33.00%]
+  else
+    goto <bb 21>; [67.00%]
+
+  <bb 20> [local count: 35858682]:
+  # DEBUG BEGIN_STMT
+  _49 = config_57(D)->name;
+  ReportClockErrors (1, _49);
+
+  <bb 21> [local count: 1073741823]:
+  # DEBUG name => NULL
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetInputSouceSytemClock (uint32 sourceClock)
+{
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  uint32 regValue;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int TimeoutTicks.4_5;
+  uint32 iftmp.3_7;
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_11 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  regValue_12 = regValue_11 & 4043309055;
+  # DEBUG regValue => regValue_12
+  # DEBUG BEGIN_STMT
+  _1 = sourceClock_13(D) << 24;
+  regValue_14 = _1 | regValue_12;
+  # DEBUG regValue => regValue_14
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].RCCR ={v} regValue_14;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct SCG_Type *)1074151424B].CSR;
+  _3 = _2 >> 24;
+  _4 = _3 & 15;
+  if (_4 != sourceClock_13(D))
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 4> [local count: 719407023]:
+
+  <bb 5> [local count: 1073741824]:
+  # iftmp.3_7 = PHI <1(3), 0(4)>
+  # DEBUG ScsStatus => iftmp.3_7
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.4_5 = TimeoutTicks;
+  TimeoutOccurred_19 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.4_5);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_19
+  # DEBUG BEGIN_STMT
+  if (iftmp.3_7 == 0)
+    goto <bb 6>; [94.50%]
+  else
+    goto <bb 7>; [5.50%]
+
+  <bb 6> [local count: 1014686025]:
+  if (TimeoutOccurred_19 != 0)
+    goto <bb 7>; [5.50%]
+  else
+    goto <bb 10>; [94.50%]
+
+  <bb 10> [local count: 958878294]:
+  goto <bb 3>; [100.00%]
+
+  <bb 7> [local count: 114863532]:
+  # TimeoutOccurred_17 = PHI <TimeoutOccurred_19(5), TimeoutOccurred_19(6)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_17 != 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 8> [local count: 37904965]:
+  # DEBUG D#9 => sourceClock_13(D)
+  SetInputSouceSytemClock.part.0 ();
+
+  <bb 9> [local count: 114863532]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+DisableSircStop (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#7 => name_2(D)
+  DisableSircStop_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+EnableSircStop (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#6 => config_2(D)
+  EnableSircStop_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+SetSircStop (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(unsigned char *)config_2(D) + 9B];
+  # DEBUG D#5 => config_2(D)
+  SetSircStop_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+DisableSircVlp (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#4 => name_2(D)
+  DisableSircVlp_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+EnableSircVlp (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#3 => config_2(D)
+  EnableSircVlp_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+SetSircVlp (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(unsigned char *)config_2(D) + 8B];
+  # DEBUG D#2 => config_2(D)
+  SetSircVlp_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+DisableSirc (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => name_2(D)
+  DisableSirc_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+EnableSirc (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#11 => config_2(D)
+  EnableSirc_TrustedCall.isra.0 (config_2(D));
+  return;
+
+}
+
+
+SetSirc (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SetSirc_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  unsigned char sircConfig$lowPowerModeEnable;
+  unsigned char sircConfig$range;
+  short unsigned int sircConfig$enable;
+  unsigned int sircConfig;
+  uint32 IrcoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  <unnamed type> _1;
+  unsigned char _2;
+  short unsigned int _3;
+  unsigned char _4;
+  long unsigned int _6;
+  long unsigned int _8;
+  long unsigned int _10;
+  long unsigned int _12;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int TimeoutTicks.6_26;
+  unsigned char _29;
+
+  <bb 2> [local count: 567507571]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (config_30(D) == 0B)
+    goto <bb 4>; [30.00%]
+  else
+    goto <bb 3>; [70.00%]
+
+  <bb 3> [local count: 397255299]:
+  # DEBUG BEGIN_STMT
+  _1 = config_30(D)->name;
+  # DEBUG sircConfig => _1
+  # DEBUG BEGIN_STMT
+  _2 = config_30(D)->range;
+  # DEBUG sircConfig$range => _2
+  # DEBUG BEGIN_STMT
+  _3 = config_30(D)->enable;
+  # DEBUG sircConfig$enable => _3
+  # DEBUG BEGIN_STMT
+  _4 = config_30(D)->lowPowerModeEnable;
+  # DEBUG sircConfig$lowPowerModeEnable => _4
+
+  <bb 4> [local count: 567507571]:
+  # sircConfig_5 = PHI <5(2), _1(3)>
+  # sircConfig$enable_7 = PHI <1(2), _3(3)>
+  # sircConfig$range_9 = PHI <1(2), _2(3)>
+  # sircConfig$lowPowerModeEnable_11 = PHI <1(2), _4(3)>
+  # DEBUG sircConfig$lowPowerModeEnable => sircConfig$lowPowerModeEnable_11
+  # DEBUG sircConfig$range => sircConfig$range_9
+  # DEBUG sircConfig$enable => sircConfig$enable_7
+  # DEBUG sircConfig => sircConfig_5
+  # DEBUG BEGIN_STMT
+  _6 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _8 = _6 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _8;
+  # DEBUG BEGIN_STMT
+  _10 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _12 = _10 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _12;
+  # DEBUG BEGIN_STMT
+  _14 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _15 = _14 & 4294967291;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _15;
+  # DEBUG BEGIN_STMT
+  if (sircConfig$enable_7 == 1)
+    goto <bb 5>; [20.24%]
+  else
+    goto <bb 10>; [79.76%]
+
+  <bb 5> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  _29 = sircConfig$range_9 & 1;
+  _16 = (long unsigned int) _29;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCFG ={v} _16;
+  # DEBUG BEGIN_STMT
+  _17 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _18 = _17 | 1;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _18;
+  # DEBUG BEGIN_STMT
+  _19 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _20 = (long unsigned int) sircConfig$lowPowerModeEnable_11;
+  _21 = _20 << 2;
+  _22 = _21 & 4;
+  _23 = _19 | _22;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _23;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _25 = _24 >> 24;
+  IrcoscStatus_39 = _25 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_39
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.6_26 = TimeoutTicks;
+  TimeoutOccurred_41 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.6_26);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_41
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_39 == 0)
+    goto <bb 7>; [94.50%]
+  else
+    goto <bb 8>; [5.50%]
+
+  <bb 7> [local count: 1014686025]:
+  if (TimeoutOccurred_41 != 0)
+    goto <bb 8>; [5.50%]
+  else
+    goto <bb 11>; [94.50%]
+
+  <bb 11> [local count: 958878293]:
+  goto <bb 6>; [100.00%]
+
+  <bb 8> [local count: 114863532]:
+  # TimeoutOccurred_13 = PHI <TimeoutOccurred_41(6), TimeoutOccurred_41(7)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_13 != 0)
+    goto <bb 9>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 9> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  ReportClockErrors (1, sircConfig_5);
+
+  <bb 10> [local count: 567507571]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+InternalOscillatorEmpty_Disable (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+InternalOscillatorEmpty (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
