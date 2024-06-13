@@ -1,0 +1,151 @@
+callgraph:
+
+FlexCAN_Ip_SendBlocking/13 (FlexCAN_Ip_SendBlocking) @060f37e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/3 (1073741824 (estimated locally),10000.02 per call) 
+  Calls: 
+FlexCAN_Ip_SetStartMode_Privileged/12 (FlexCAN_Ip_SetStartMode_Privileged) @060f3700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+FlexCAN_Ip_Init_Privileged/9 (FlexCAN_Ip_Init_Privileged) @060f3620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Port_Init/8 (Port_Init) @060f3540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Clock_Ip_DistributePll/7 (Clock_Ip_DistributePll) @060f3460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Clock_Ip_GetPllStatus/6 (Clock_Ip_GetPllStatus) @060f3380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/3 (976127 (estimated locally),9.09 per call) 
+  Calls: 
+Clock_Ip_Init/4 (Clock_Ip_Init) @060f32a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+main/3 (main) @06021e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcu_aClockConfigPB/5 (addr)FlexCAN_State0/10 (addr)FlexCAN_Config0/11 (addr)dummyData/2 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: FlexCAN_Ip_SendBlocking/13 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_SetStartMode_Privileged/12 (107374 (estimated locally),1.00 per call) FlexCAN_Ip_Init_Privileged/9 (107374 (estimated locally),1.00 per call) Port_Init/8 (107374 (estimated locally),1.00 per call) Clock_Ip_DistributePll/7 (107374 (estimated locally),1.00 per call) Clock_Ip_GetPllStatus/6 (976127 (estimated locally),9.09 per call) Clock_Ip_Init/4 (107374 (estimated locally),1.00 per call) 
+Clearing variable flags:
+
+Function name:main/3:
+  locals read: 
+  locals written: 
+
+ ordered call graph: reduced
+main/3 (main) @06021e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05e16078
+  References: Mcu_aClockConfigPB/5 (addr)FlexCAN_State0/10 (addr)FlexCAN_Config0/11 (addr)dummyData/2 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: FlexCAN_Ip_SendBlocking/13 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_SetStartMode_Privileged/12 (107374 (estimated locally),1.00 per call) FlexCAN_Ip_Init_Privileged/9 (107374 (estimated locally),1.00 per call) Port_Init/8 (107374 (estimated locally),1.00 per call) Clock_Ip_DistributePll/7 (107374 (estimated locally),1.00 per call) Clock_Ip_GetPllStatus/6 (976127 (estimated locally),9.09 per call) Clock_Ip_Init/4 (107374 (estimated locally),1.00 per call) 
+
+
+Function name:main/3:
+    locals read: 
+    locals written: 
+  globals read: ALL
+  globals written: ALL
+main ()
+{
+  struct Flexcan_Ip_DataInfoType rx_info;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG x => 0
+  # DEBUG BEGIN_STMT
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 976127]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 4>; [11.00%]
+
+  <bb 7> [local count: 868753]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  rx_info = {};
+  rx_info.data_length = 8;
+  rx_info.is_polling = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_SetStartMode_Privileged (0);
+  # DEBUG x => NULL
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_SendBlocking (0, 0, &rx_info, 800, &dummyData, 1000);
+  # DEBUG x => NULL
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 5>; [100.00%]
+
+}
+
+

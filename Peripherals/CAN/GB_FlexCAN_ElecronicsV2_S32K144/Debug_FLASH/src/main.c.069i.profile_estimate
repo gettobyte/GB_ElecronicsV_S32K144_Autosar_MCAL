@@ -1,0 +1,54 @@
+Histogram:
+main ()
+{
+  struct Flexcan_Ip_DataInfoType rx_info;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG x => 0
+  # DEBUG BEGIN_STMT
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 976127]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 4>; [11.00%]
+
+  <bb 7> [local count: 868753]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  rx_info = {};
+  rx_info.data_length = 8;
+  rx_info.is_polling = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_SetStartMode_Privileged (0);
+  # DEBUG x => NULL
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_SendBlocking (0, 0, &rx_info, 800, &dummyData, 1000);
+  # DEBUG x => NULL
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 5>; [100.00%]
+
+}
+
+

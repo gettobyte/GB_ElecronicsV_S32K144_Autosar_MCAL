@@ -1,0 +1,510 @@
+
+
+ local analysis of SystemInit
+   scanning: _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CPACR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 | 15728640;
+  scanning: MEM[(struct S32_SCB_Type *)3758153728B].CPACR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: __asm__ __volatile__("dsb");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: __asm__ __volatile__("isb");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: _3 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 | 1;
+  scanning: MEM[(struct S32_SCB_Type *)3758153728B].CCR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _5 ={v} MEM[(struct S32_SCB_Type *)3758153728B].SHPR3;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _6 = _5 & 4278255615;
+  scanning: MEM[(struct S32_SCB_Type *)3758153728B].SHPR3 ={v} _6;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].MPRA ={v} 2004318071;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].PACRA ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].PACRB ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].PACRD ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[0] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[1] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[2] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[3] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[4] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[5] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[6] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[7] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[8] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[9] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[10] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct AIPS_Type *)1073741824B].OPACR[11] ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: __asm__ __volatile__("dsb");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: __asm__ __volatile__("isb");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: sys_m4_cache_init (0);
+  scanning: return;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of Sys_GetCoreID
+   scanning: return 0;
+Function is locally const.
+
+
+ local analysis of default_interrupt_routine
+ ;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4
+;;
+;; Loop 1
+;;  header 3, latch 4
+;;  depth 1, outer 0
+;;  nodes: 3 4
+;; 2 succs { 3 }
+;; 3 succs { 4 }
+;; 4 succs { 3 }
+    cannot prove finiteness of loop 1
+Function is locally looping.
+Function is locally const.
+
+
+ local analysis of startup_go_to_user_mode
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of sys_m4_cache_init
+   scanning: if (cache_9(D) == 0)
+  scanning: MEM[(struct LMEM_Type *)3758628864B].PCCCR ={v} 83886080;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _1 ={v} MEM[(struct LMEM_Type *)3758628864B].PCCCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 | 2147483648;
+  scanning: MEM[(struct LMEM_Type *)3758628864B].PCCCR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _3 ={v} MEM[(struct LMEM_Type *)3758628864B].PCCCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _8 = (signed int) _3;
+  scanning: if (_8 < 0)
+  scanning: _4 ={v} MEM[(struct LMEM_Type *)3758628864B].PCCCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _5 = _4 | 1;
+  scanning: MEM[(struct LMEM_Type *)3758628864B].PCCCR ={v} _5;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return RetValue_6;
+callgraph:
+
+sys_m4_cache_init.constprop.0/7 (sys_m4_cache_init.constprop) @06adaee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06384970
+  References: 
+  Referring: 
+  Function sys_m4_cache_init.constprop/7 is inline copy in SystemInit/6
+  Clone of sys_m4_cache_init/1
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: SystemInit/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SystemInit/6 (SystemInit) @06ada0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public section:.systeminit
+  Aux: @063848b0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: sys_m4_cache_init.constprop/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Sys_GetCoreID/4 (Sys_GetCoreID) @06adad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @063847f0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+default_interrupt_routine/3 (default_interrupt_routine) @06adaa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @063848d0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body executed_once optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/2 (startup_go_to_user_mode) @06ada7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384890
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sys_m4_cache_init/1 (sys_m4_cache_init) @06ada460
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:236223200 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+sys_m4_cache_init.constprop.0/7 (sys_m4_cache_init.constprop) @06adaee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06384970
+  References: 
+  Referring: 
+  Function sys_m4_cache_init.constprop/7 is inline copy in SystemInit/6
+  Clone of sys_m4_cache_init/1
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: SystemInit/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SystemInit/6 (SystemInit) @06ada0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public section:.systeminit
+  Aux: @063848b0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: sys_m4_cache_init.constprop/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Sys_GetCoreID/4 (Sys_GetCoreID) @06adad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @063847f0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+default_interrupt_routine/3 (default_interrupt_routine) @06adaa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @063848d0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body executed_once optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/2 (startup_go_to_user_mode) @06ada7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384890
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+sys_m4_cache_init.constprop: malloc_bottom
+SystemInit: malloc_bottom
+Sys_GetCoreID: malloc_bottom
+default_interrupt_routine: malloc_bottom
+startup_go_to_user_mode: malloc_bottom
+sys_m4_cache_init: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+sys_m4_cache_init.constprop: malloc_bottom
+SystemInit: malloc_bottom
+Sys_GetCoreID: malloc_bottom
+default_interrupt_routine: malloc_bottom
+startup_go_to_user_mode: malloc_bottom
+sys_m4_cache_init: malloc_bottom
+callgraph:
+
+sys_m4_cache_init.constprop.0/7 (sys_m4_cache_init.constprop) @06adaee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @063849d0
+  References: 
+  Referring: 
+  Function sys_m4_cache_init.constprop/7 is inline copy in SystemInit/6
+  Clone of sys_m4_cache_init/1
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: SystemInit/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SystemInit/6 (SystemInit) @06ada0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public section:.systeminit
+  Aux: @06384970
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: sys_m4_cache_init.constprop/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Sys_GetCoreID/4 (Sys_GetCoreID) @06adad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384890
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+default_interrupt_routine/3 (default_interrupt_routine) @06adaa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384ab0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body executed_once optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/2 (startup_go_to_user_mode) @06ada7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @063848b0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sys_m4_cache_init/1 (sys_m4_cache_init) @06ada460
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:236223200 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+SystemInit/6 (SystemInit) @06ada0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public section:.systeminit
+  Aux: @06384970
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: sys_m4_cache_init.constprop/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+sys_m4_cache_init.constprop.0/7 (sys_m4_cache_init.constprop) @06adaee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @063849d0
+  References: 
+  Referring: 
+  Function sys_m4_cache_init.constprop/7 is inline copy in SystemInit/6
+  Clone of sys_m4_cache_init/1
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: SystemInit/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Sys_GetCoreID/4 (Sys_GetCoreID) @06adad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384890
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+default_interrupt_routine/3 (default_interrupt_routine) @06adaa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384ab0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body executed_once optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/2 (startup_go_to_user_mode) @06ada7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @063848b0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: startup_go_to_user_mode
+Function found not to call free: default_interrupt_routine
+Function found not to call free: Sys_GetCoreID
+Function found not to call free: sys_m4_cache_init.constprop
+__attribute__((section (".systeminit")))
+SystemInit ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CPACR;
+  _2 = _1 | 15728640;
+  MEM[(struct S32_SCB_Type *)3758153728B].CPACR ={v} _2;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CCR;
+  _4 = _3 | 1;
+  MEM[(struct S32_SCB_Type *)3758153728B].CCR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct S32_SCB_Type *)3758153728B].SHPR3;
+  _6 = _5 & 4278255615;
+  MEM[(struct S32_SCB_Type *)3758153728B].SHPR3 ={v} _6;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].MPRA ={v} 2004318071;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].PACRA ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].PACRB ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].PACRD ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[0] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[1] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[2] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[3] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[4] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[5] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[6] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[7] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[8] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[9] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[10] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[11] ={v} 0;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  sys_m4_cache_init (0);
+  return;
+
+}
+
+
+Sys_GetCoreID ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+default_interrupt_routine ()
+{
+  <bb 2> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+}
+
+
+startup_go_to_user_mode ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

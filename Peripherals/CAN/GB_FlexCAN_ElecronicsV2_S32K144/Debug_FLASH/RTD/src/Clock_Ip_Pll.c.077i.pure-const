@@ -1,0 +1,1195 @@
+
+
+ local analysis of CompleteSpll.part.0
+   scanning: ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+  scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 >> 24;
+  scanning: SPLLStatus_3 = _2 & 1;
+  scanning: TimeoutTicks.0_4 = TimeoutTicks;
+  scanning: TimeoutOccurred_5 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_4);
+  scanning: if (SPLLStatus_3 == 0)
+  scanning: if (TimeoutOccurred_5 != 0)
+  scanning: if (TimeoutOccurred_6 != 0)
+  scanning: ReportClockErrors (1, pllName_7(D));
+  scanning: return pllStatus_8;
+
+
+ local analysis of EnableSpll_TrustedCall.isra.0
+   scanning: _2 = ISRA.11_8(D);
+  scanning: if (_2 == 1)
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 | 1;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of DisableSpll_TrustedCall.isra.0
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4286578687;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 & 4294967294;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetSpll_TrustedCall.isra.0
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4286578687;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 & 4294967294;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _5 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _6 = _5 & 4294965503;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCFG ={v} _6;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _7 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _8 = _7 & 4292935679;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCFG ={v} _8;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of EnableSpll
+   scanning: _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: EnableSpll_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of DisableSpll
+   scanning: DisableSpll_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of CompleteSpll
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 1;
+  scanning: if (_2 != 0)
+  scanning: pllStatus_4 = CompleteSpll.part.0 (pllName_8(D));
+  scanning: return pllStatus_5;
+
+
+ local analysis of SetSpll
+   scanning: SetSpll_TrustedCall (config_2(D));
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetSpll_TrustedCall
+   scanning: _1 = config_18(D)->enable;
+    Indirect ref read is not const
+  scanning: if (_1 == 1)
+  scanning: _2 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _3 = config_18(D)->predivider;
+    Indirect ref read is not const
+  scanning: _4 = (long unsigned int) _3;
+  scanning: _5 = _4 + 4294967295;
+  scanning: _6 = _5 << 8;
+  scanning: _7 = _6 & 1792;
+  scanning: _8 = config_18(D)->mulFactorDiv;
+    Indirect ref read is not const
+  scanning: _9 = (long unsigned int) _8;
+  scanning: _10 = _9 + 4294967280;
+  scanning: _11 = _10 << 16;
+  scanning: _12 = _11 & 2031616;
+  scanning: _13 = _7 | _12;
+  scanning: _14 = _2 | _13;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCFG ={v} _14;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _15 = config_18(D)->monitor;
+    Indirect ref read is not const
+  scanning: switch (_15) <default: <L7> [25.00%], case 0: <L1> [25.00%], case 1: <L2> [25.00%], case 2: <L3> [25.00%]>
+  scanning: <L1>:
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} 0;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: <L2>:
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} 65536;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: <L3>:
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} 196608;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: <L7>:
+  scanning: return;
+
+
+ local analysis of ResetSpll
+   scanning: ResetSpll_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of Callback_PllEmptyDisable
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of Callback_PllEmptyComplete
+   scanning: return 0;
+Function is locally const.
+
+
+ local analysis of Callback_PllEmpty
+   scanning: return;
+Function is locally const.
+callgraph:
+
+CompleteSpll.part.0/19 (CompleteSpll.part.0) @076692a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa220
+  References: 
+  Referring: 
+  Function CompleteSpll.part.0/19 is inline copy in CompleteSpll/8
+  Availability: local
+  Function flags: count:114863531 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: CompleteSpll/8 (inlined) (114863531 (estimated locally),0.33 per call) 
+  Calls: ClockStartTimeout/13 (114863531 (estimated locally),0.33 per call) ClockTimeoutExpired/14 (1073741815 (estimated locally),3.08 per call) ReportClockErrors/15 (54870309 (estimated locally),0.16 per call) 
+EnableSpll_TrustedCall.isra.0/18 (EnableSpll_TrustedCall.isra.0) @075c9ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa240
+  References: 
+  Referring: 
+  Function EnableSpll_TrustedCall.isra.0/18 is inline copy in EnableSpll/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSpll/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSpll_TrustedCall.isra.0/17 (DisableSpll_TrustedCall.isra.0) @075c9a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa2a0
+  References: 
+  Referring: 
+  Function DisableSpll_TrustedCall.isra.0/17 is inline copy in DisableSpll/10
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSpll/10 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSpll_TrustedCall.isra.0/16 (ResetSpll_TrustedCall.isra.0) @075c9540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa320
+  References: 
+  Referring: 
+  Function ResetSpll_TrustedCall.isra.0/16 is inline copy in ResetSpll/5
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSpll/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ReportClockErrors/15 (ReportClockErrors) @069cb2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: CompleteSpll.part.0/19 (54870309 (estimated locally),0.16 per call) 
+  Calls: 
+ClockTimeoutExpired/14 (ClockTimeoutExpired) @069cb1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: CompleteSpll.part.0/19 (1073741815 (estimated locally),3.08 per call) 
+  Calls: 
+ClockStartTimeout/13 (ClockStartTimeout) @069cb0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: CompleteSpll.part.0/19 (114863531 (estimated locally),0.33 per call) 
+  Calls: 
+EnableSpll/12 (EnableSpll) @069c2a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa380
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSpll_TrustedCall.isra.0/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSpll/10 (DisableSpll) @069c2460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa120
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSpll_TrustedCall.isra.0/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+CompleteSpll/8 (CompleteSpll) @068c2d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3a0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:348071309 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CompleteSpll.part.0/19 (inlined) (114863531 (estimated locally),0.33 per call) 
+SetSpll/7 (SetSpll) @068c2ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa400
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSpll_TrustedCall/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSpll_TrustedCall/6 (SetSpll_TrustedCall) @068c2c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @066aa140
+  References: 
+  Referring: 
+  Function SetSpll_TrustedCall/6 is inline copy in SetSpll/7
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSpll/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSpll/5 (ResetSpll) @068c2460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3c0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSpll_TrustedCall.isra.0/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Callback_PllEmptyDisable/3 (Callback_PllEmptyDisable) @068bbd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa260
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Callback_PllEmptyComplete/2 (Callback_PllEmptyComplete) @068bbee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa4a0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Callback_PllEmpty/1 (Callback_PllEmpty) @068bbc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3e0
+  References: 
+  Referring: pllCallbacks/0 (addr)pllCallbacks/0 (addr)pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+CompleteSpll.part.0/19 (CompleteSpll.part.0) @076692a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa220
+  References: 
+  Referring: 
+  Function CompleteSpll.part.0/19 is inline copy in CompleteSpll/8
+  Availability: local
+  Function flags: count:114863531 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: CompleteSpll/8 (inlined) (114863531 (estimated locally),0.33 per call) 
+  Calls: ClockStartTimeout/13 (114863531 (estimated locally),0.33 per call) ClockTimeoutExpired/14 (1073741815 (estimated locally),3.08 per call) ReportClockErrors/15 (54870309 (estimated locally),0.16 per call) 
+EnableSpll_TrustedCall.isra.0/18 (EnableSpll_TrustedCall.isra.0) @075c9ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa240
+  References: 
+  Referring: 
+  Function EnableSpll_TrustedCall.isra.0/18 is inline copy in EnableSpll/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSpll/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSpll_TrustedCall.isra.0/17 (DisableSpll_TrustedCall.isra.0) @075c9a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa2a0
+  References: 
+  Referring: 
+  Function DisableSpll_TrustedCall.isra.0/17 is inline copy in DisableSpll/10
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSpll/10 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSpll_TrustedCall.isra.0/16 (ResetSpll_TrustedCall.isra.0) @075c9540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa320
+  References: 
+  Referring: 
+  Function ResetSpll_TrustedCall.isra.0/16 is inline copy in ResetSpll/5
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSpll/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EnableSpll/12 (EnableSpll) @069c2a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa380
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSpll_TrustedCall.isra.0/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSpll/10 (DisableSpll) @069c2460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa120
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSpll_TrustedCall.isra.0/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+CompleteSpll/8 (CompleteSpll) @068c2d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3a0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:348071309 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CompleteSpll.part.0/19 (inlined) (114863531 (estimated locally),0.33 per call) 
+SetSpll/7 (SetSpll) @068c2ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa400
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSpll_TrustedCall/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSpll_TrustedCall/6 (SetSpll_TrustedCall) @068c2c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @066aa140
+  References: 
+  Referring: 
+  Function SetSpll_TrustedCall/6 is inline copy in SetSpll/7
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSpll/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSpll/5 (ResetSpll) @068c2460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3c0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSpll_TrustedCall.isra.0/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Callback_PllEmptyDisable/3 (Callback_PllEmptyDisable) @068bbd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa260
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Callback_PllEmptyComplete/2 (Callback_PllEmptyComplete) @068bbee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa4a0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Callback_PllEmpty/1 (Callback_PllEmpty) @068bbc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3e0
+  References: 
+  Referring: pllCallbacks/0 (addr)pllCallbacks/0 (addr)pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+CompleteSpll.part.0: malloc_bottom
+EnableSpll_TrustedCall.isra.0: malloc_bottom
+DisableSpll_TrustedCall.isra.0: malloc_bottom
+ResetSpll_TrustedCall.isra.0: malloc_bottom
+EnableSpll: malloc_bottom
+DisableSpll: malloc_bottom
+CompleteSpll: malloc_bottom
+SetSpll: malloc_bottom
+SetSpll_TrustedCall: malloc_bottom
+ResetSpll: malloc_bottom
+Callback_PllEmptyDisable: malloc_bottom
+Callback_PllEmptyComplete: malloc_bottom
+Callback_PllEmpty: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+CompleteSpll.part.0: malloc_bottom
+EnableSpll_TrustedCall.isra.0: malloc_bottom
+DisableSpll_TrustedCall.isra.0: malloc_bottom
+ResetSpll_TrustedCall.isra.0: malloc_bottom
+EnableSpll: malloc_bottom
+DisableSpll: malloc_bottom
+CompleteSpll: malloc_bottom
+SetSpll: malloc_bottom
+SetSpll_TrustedCall: malloc_bottom
+ResetSpll: malloc_bottom
+Callback_PllEmptyDisable: malloc_bottom
+Callback_PllEmptyComplete: malloc_bottom
+Callback_PllEmpty: malloc_bottom
+callgraph:
+
+CompleteSpll.part.0/19 (CompleteSpll.part.0) @076692a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa4a0
+  References: 
+  Referring: 
+  Function CompleteSpll.part.0/19 is inline copy in CompleteSpll/8
+  Availability: local
+  Function flags: count:114863531 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: CompleteSpll/8 (inlined) (114863531 (estimated locally),0.33 per call) 
+  Calls: ClockStartTimeout/13 (114863531 (estimated locally),0.33 per call) ClockTimeoutExpired/14 (1073741815 (estimated locally),3.08 per call) ReportClockErrors/15 (54870309 (estimated locally),0.16 per call) 
+EnableSpll_TrustedCall.isra.0/18 (EnableSpll_TrustedCall.isra.0) @075c9ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa460
+  References: 
+  Referring: 
+  Function EnableSpll_TrustedCall.isra.0/18 is inline copy in EnableSpll/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSpll/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSpll_TrustedCall.isra.0/17 (DisableSpll_TrustedCall.isra.0) @075c9a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa380
+  References: 
+  Referring: 
+  Function DisableSpll_TrustedCall.isra.0/17 is inline copy in DisableSpll/10
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSpll/10 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSpll_TrustedCall.isra.0/16 (ResetSpll_TrustedCall.isra.0) @075c9540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa220
+  References: 
+  Referring: 
+  Function ResetSpll_TrustedCall.isra.0/16 is inline copy in ResetSpll/5
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSpll/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ReportClockErrors/15 (ReportClockErrors) @069cb2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: CompleteSpll.part.0/19 (54870309 (estimated locally),0.16 per call) 
+  Calls: 
+ClockTimeoutExpired/14 (ClockTimeoutExpired) @069cb1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: CompleteSpll.part.0/19 (1073741815 (estimated locally),3.08 per call) 
+  Calls: 
+ClockStartTimeout/13 (ClockStartTimeout) @069cb0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: CompleteSpll.part.0/19 (114863531 (estimated locally),0.33 per call) 
+  Calls: 
+EnableSpll/12 (EnableSpll) @069c2a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa240
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSpll_TrustedCall.isra.0/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSpll/10 (DisableSpll) @069c2460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3c0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSpll_TrustedCall.isra.0/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+CompleteSpll/8 (CompleteSpll) @068c2d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa260
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:348071309 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CompleteSpll.part.0/19 (inlined) (114863531 (estimated locally),0.33 per call) 
+SetSpll/7 (SetSpll) @068c2ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa120
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSpll_TrustedCall/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSpll_TrustedCall/6 (SetSpll_TrustedCall) @068c2c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @066aa480
+  References: 
+  Referring: 
+  Function SetSpll_TrustedCall/6 is inline copy in SetSpll/7
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSpll/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSpll/5 (ResetSpll) @068c2460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa140
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSpll_TrustedCall.isra.0/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Callback_PllEmptyDisable/3 (Callback_PllEmptyDisable) @068bbd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3a0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Callback_PllEmptyComplete/2 (Callback_PllEmptyComplete) @068bbee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa2a0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Callback_PllEmpty/1 (Callback_PllEmpty) @068bbc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa320
+  References: 
+  Referring: pllCallbacks/0 (addr)pllCallbacks/0 (addr)pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+EnableSpll/12 (EnableSpll) @069c2a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa240
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSpll_TrustedCall.isra.0/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EnableSpll_TrustedCall.isra.0/18 (EnableSpll_TrustedCall.isra.0) @075c9ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa460
+  References: 
+  Referring: 
+  Function EnableSpll_TrustedCall.isra.0/18 is inline copy in EnableSpll/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSpll/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSpll/10 (DisableSpll) @069c2460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3c0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSpll_TrustedCall.isra.0/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+DisableSpll_TrustedCall.isra.0/17 (DisableSpll_TrustedCall.isra.0) @075c9a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa380
+  References: 
+  Referring: 
+  Function DisableSpll_TrustedCall.isra.0/17 is inline copy in DisableSpll/10
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSpll/10 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+CompleteSpll/8 (CompleteSpll) @068c2d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa260
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:348071309 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CompleteSpll.part.0/19 (inlined) (114863531 (estimated locally),0.33 per call) 
+CompleteSpll.part.0/19 (CompleteSpll.part.0) @076692a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa4a0
+  References: 
+  Referring: 
+  Function CompleteSpll.part.0/19 is inline copy in CompleteSpll/8
+  Availability: local
+  Function flags: count:114863531 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: CompleteSpll/8 (inlined) (114863531 (estimated locally),0.33 per call) 
+  Calls: ClockStartTimeout/13 (114863531 (estimated locally),0.33 per call) ClockTimeoutExpired/14 (1073741815 (estimated locally),3.08 per call) ReportClockErrors/15 (54870309 (estimated locally),0.16 per call) 
+SetSpll/7 (SetSpll) @068c2ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa120
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSpll_TrustedCall/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSpll_TrustedCall/6 (SetSpll_TrustedCall) @068c2c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @066aa480
+  References: 
+  Referring: 
+  Function SetSpll_TrustedCall/6 is inline copy in SetSpll/7
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSpll/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSpll/5 (ResetSpll) @068c2460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa140
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSpll_TrustedCall.isra.0/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSpll_TrustedCall.isra.0/16 (ResetSpll_TrustedCall.isra.0) @075c9540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @066aa220
+  References: 
+  Referring: 
+  Function ResetSpll_TrustedCall.isra.0/16 is inline copy in ResetSpll/5
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSpll/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Callback_PllEmptyDisable/3 (Callback_PllEmptyDisable) @068bbd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa3a0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Callback_PllEmptyComplete/2 (Callback_PllEmptyComplete) @068bbee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa2a0
+  References: 
+  Referring: pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Callback_PllEmpty/1 (Callback_PllEmpty) @068bbc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @066aa320
+  References: 
+  Referring: pllCallbacks/0 (addr)pllCallbacks/0 (addr)pllCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: Callback_PllEmpty
+Function found not to call free: Callback_PllEmptyComplete
+Function found not to call free: Callback_PllEmptyDisable
+Function found not to call free: ResetSpll_TrustedCall.isra.0
+Function found not to call free: ResetSpll
+Function found not to call free: SetSpll_TrustedCall
+Function found not to call free: SetSpll
+Function found not to call free: DisableSpll_TrustedCall.isra.0
+Function found not to call free: DisableSpll
+Function found not to call free: EnableSpll_TrustedCall.isra.0
+Function found not to call free: EnableSpll
+CompleteSpll.part.0 (Clock_Ip_NameType pllName)
+{
+  clock_pll_status_t pllStatus;
+  boolean TimeoutOccurred;
+  uint32 StartTime;
+  uint32 ElapsedTime;
+  uint32 TimeoutTicks;
+  uint32 SPLLStatus;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int TimeoutTicks.0_4;
+
+  <bb 9> [local count: 114863532]:
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 >> 24;
+  SPLLStatus_3 = _2 & 1;
+  # DEBUG SPLLStatus => SPLLStatus_3
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_4 = TimeoutTicks;
+  TimeoutOccurred_5 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_4);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_5
+  # DEBUG BEGIN_STMT
+  if (SPLLStatus_3 == 0)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 4> [local count: 1014686025]:
+  if (TimeoutOccurred_5 != 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 5>; [94.50%]
+
+  <bb 5> [local count: 958878293]:
+  goto <bb 3>; [100.00%]
+
+  <bb 6> [local count: 114863532]:
+  # TimeoutOccurred_6 = PHI <TimeoutOccurred_5(3), TimeoutOccurred_5(4)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_6 != 0)
+    goto <bb 7>; [47.77%]
+  else
+    goto <bb 8>; [52.23%]
+
+  <bb 7> [local count: 54870309]:
+  # DEBUG BEGIN_STMT
+  ReportClockErrors (1, pllName_7(D));
+
+  <bb 8> [local count: 114863532]:
+  # pllStatus_8 = PHI <2(6), 1(7)>
+  # DEBUG pllStatus => pllStatus_8
+  # DEBUG BEGIN_STMT
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return pllStatus_8;
+
+}
+
+
+EnableSpll_TrustedCall.isra.0 (const uint16 ISRA.11)
+{
+  short unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.11_8(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _4 = _3 | 1;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+DisableSpll_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG PllName s=> PllName
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _4 = _3 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+  return;
+
+}
+
+
+ResetSpll_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _4 = _3 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+  _6 = _5 & 4294965503;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCFG ={v} _6;
+  # DEBUG BEGIN_STMT
+  _7 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+  _8 = _7 & 4292935679;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCFG ={v} _8;
+  return;
+
+}
+
+
+EnableSpll (const struct Clock_Ip_PllConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#3 => config_2(D)
+  EnableSpll_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+DisableSpll (Clock_Ip_NameType PllName)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#2 => PllName_2(D)
+  DisableSpll_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+CompleteSpll (Clock_Ip_NameType pllName)
+{
+  clock_pll_status_t pllStatus;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 348071309]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pllStatus => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 & 1;
+  if (_2 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 114863531]:
+  pllStatus_4 = CompleteSpll.part.0 (pllName_8(D));
+
+  <bb 4> [local count: 348071309]:
+  # pllStatus_5 = PHI <pllStatus_4(3), 0(2)>
+  # DEBUG pllStatus => pllStatus_5
+  # DEBUG BEGIN_STMT
+  return pllStatus_5;
+
+}
+
+
+SetSpll (const struct Clock_Ip_PllConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SetSpll_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
+{
+  short unsigned int _1;
+  long unsigned int _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned char _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  unsigned char _15;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = config_18(D)->enable;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+  _3 = config_18(D)->predivider;
+  _4 = (long unsigned int) _3;
+  _5 = _4 + 4294967295;
+  _6 = _5 << 8;
+  _7 = _6 & 1792;
+  _8 = config_18(D)->mulFactorDiv;
+  _9 = (long unsigned int) _8;
+  _10 = _9 + 4294967280;
+  _11 = _10 << 16;
+  _12 = _11 & 2031616;
+  _13 = _7 | _12;
+  _14 = _2 | _13;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCFG ={v} _14;
+  # DEBUG BEGIN_STMT
+  _15 = config_18(D)->monitor;
+  switch (_15) <default: <L7> [25.00%], case 0: <L1> [25.00%], case 1: <L2> [25.00%], case 2: <L3> [25.00%]>
+
+  <bb 4> [local count: 91268055]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 91268055]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} 65536;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 91268055]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} 196608;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1073741824]:
+<L7>:
+  return;
+
+}
+
+
+ResetSpll (const struct Clock_Ip_PllConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => config_2(D)
+  ResetSpll_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+Callback_PllEmptyDisable (Clock_Ip_NameType PllName)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Callback_PllEmptyComplete (Clock_Ip_NameType PllName)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Callback_PllEmpty (const struct Clock_Ip_PllConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
