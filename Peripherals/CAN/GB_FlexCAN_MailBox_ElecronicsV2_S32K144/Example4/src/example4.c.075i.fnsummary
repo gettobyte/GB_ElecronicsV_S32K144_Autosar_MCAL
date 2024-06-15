@@ -1,0 +1,213 @@
+Symbol table:
+
+FlexCAN_Ip_Send/17 (FlexCAN_Ip_Send) @06d9cb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/3 
+  Calls: 
+FlexCAN_Ip_SetStartMode_Privileged/16 (FlexCAN_Ip_SetStartMode_Privileged) @06d9ca80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/3 
+  Calls: 
+FlexCAN_Config0/15 (FlexCAN_Config0) @06d9e630
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/3 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+FlexCAN_State0/14 (FlexCAN_State0) @06d9e5e8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/3 (addr)
+  Availability: not_available
+  Varpool flags:
+FlexCAN_Ip_Init_Privileged/13 (FlexCAN_Ip_Init_Privileged) @06d9c9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/3 
+  Calls: 
+Port_Init/12 (Port_Init) @06d9c8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/3 
+  Calls: 
+CAN0_ORED_0_15_MB_IRQHandler/11 (CAN0_ORED_0_15_MB_IRQHandler) @06d9c7e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/3 (addr)
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/10 (IntCtrl_Ip_InstallHandler) @06d9c700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/3 
+  Calls: 
+IntCtrl_Ip_EnableIrq/9 (IntCtrl_Ip_EnableIrq) @06d9c620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/3 
+  Calls: 
+Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06d9c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/3 
+  Calls: 
+Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06d9c460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/3 
+  Calls: 
+Mcu_aClockConfigPB/6 (Mcu_aClockConfigPB) @06d9e3f0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/3 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/5 (Clock_Ip_Init) @06d9c380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/3 
+  Calls: 
+DelayTimer.7035/4 (DelayTimer) @06d9e000
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: TestDelay/2 (read)TestDelay/2 (write)TestDelay/2 (read)TestDelay/2 (write)
+  Availability: available
+  Varpool flags: initialized
+main/3 (main) @06d98ee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcu_aClockConfigPB/6 (addr)CAN0_ORED_0_15_MB_IRQHandler/11 (addr)FlexCAN_State0/14 (addr)FlexCAN_Config0/15 (addr)dummyData/1 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/2 FlexCAN_Ip_Send/17 FlexCAN_Ip_SetStartMode_Privileged/16 FlexCAN_Ip_Init_Privileged/13 Port_Init/12 IntCtrl_Ip_InstallHandler/10 IntCtrl_Ip_EnableIrq/9 Clock_Ip_DistributePll/8 Clock_Ip_GetPllStatus/7 Clock_Ip_Init/5 
+TestDelay/2 (TestDelay) @06d98b60
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: DelayTimer.7035/4 (read)DelayTimer.7035/4 (write)DelayTimer.7035/4 (read)DelayTimer.7035/4 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: main/3 
+  Calls: 
+dummyData/1 (dummyData) @06d949d8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: main/3 (addr)
+  Availability: available
+  Varpool flags: initialized
+main ()
+{
+  struct Flexcan_Ip_DataInfoType rx_info;
+  Flexcan_Ip_StatusType FlexCAN_Api_Status;
+  int D.7052;
+  <unnamed type> _1;
+
+  <bb 2> :
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 3> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  Clock_Ip_DistributePll ();
+  IntCtrl_Ip_EnableIrq (81);
+  IntCtrl_Ip_InstallHandler (81, CAN0_ORED_0_15_MB_IRQHandler, 0B);
+  Port_Init (0B);
+  rx_info = {};
+  rx_info.data_length = 8;
+  FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
+  FlexCAN_Api_Status_15 = FlexCAN_Ip_SetStartMode_Privileged (0);
+
+  <bb 5> :
+  FlexCAN_Api_Status_17 = FlexCAN_Ip_Send (0, 0, &rx_info, 800, &dummyData);
+  TestDelay (2000000);
+  goto <bb 5>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+  long unsigned int DelayTimer.0_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.1_3;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 ={v} DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  DelayTimer.1_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer ={v} 0;
+  return;
+
+}
+
+
