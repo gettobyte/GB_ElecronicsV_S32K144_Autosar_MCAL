@@ -1,0 +1,211 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: main
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+memset/16 (memset) @06ecb460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+FlexCAN_Ip_Receive/15 (FlexCAN_Ip_Receive) @06ecb380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+FlexCAN_Ip_ConfigRxMb/14 (FlexCAN_Ip_ConfigRxMb) @06ecb2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+FlexCAN_Ip_SetStartMode_Privileged/13 (FlexCAN_Ip_SetStartMode_Privileged) @06ecb1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+FlexCAN_Config0/12 (FlexCAN_Config0) @06ec2cf0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/1 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+FlexCAN_State0/11 (FlexCAN_State0) @06ec2ca8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/1 (addr)
+  Availability: not_available
+  Varpool flags:
+FlexCAN_Ip_Init_Privileged/10 (FlexCAN_Ip_Init_Privileged) @06ecb0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+Port_Init/9 (Port_Init) @06ecb000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+CAN0_ORED_0_15_MB_IRQHandler/8 (CAN0_ORED_0_15_MB_IRQHandler) @06ec3ee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/7 (IntCtrl_Ip_InstallHandler) @06ec3e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+IntCtrl_Ip_EnableIrq/6 (IntCtrl_Ip_EnableIrq) @06ec3d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+Clock_Ip_DistributePll/5 (Clock_Ip_DistributePll) @06ec3c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+Clock_Ip_GetPllStatus/4 (Clock_Ip_GetPllStatus) @06ec3b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+Mcu_aClockConfigPB/3 (Mcu_aClockConfigPB) @06ec2ab0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/1 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/2 (Clock_Ip_Init) @06ec3a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/1 
+  Calls: 
+main/1 (main) @06ec3620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcu_aClockConfigPB/3 (addr)CAN0_ORED_0_15_MB_IRQHandler/8 (addr)FlexCAN_State0/11 (addr)FlexCAN_Config0/12 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memset/16 FlexCAN_Ip_Receive/15 FlexCAN_Ip_ConfigRxMb/14 FlexCAN_Ip_SetStartMode_Privileged/13 FlexCAN_Ip_Init_Privileged/10 Port_Init/9 IntCtrl_Ip_InstallHandler/7 IntCtrl_Ip_EnableIrq/6 Clock_Ip_DistributePll/5 Clock_Ip_GetPllStatus/4 Clock_Ip_Init/2 
+main ()
+{
+  struct Flexcan_Ip_MsgBuffType rxData;
+  struct Flexcan_Ip_DataInfoType rx_info;
+  Flexcan_Ip_StatusType FlexCAN_Api_Status;
+  int D.7308;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG BEGIN_STMT
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_EnableIrq (81);
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_InstallHandler (81, CAN0_ORED_0_15_MB_IRQHandler, 0B);
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  rx_info = {};
+  rx_info.data_length = 8;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
+  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode_Privileged (0);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb (0, 1, &rx_info, 800);
+  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status = FlexCAN_Ip_Receive (0, 1, &rxData, 0);
+  # DEBUG BEGIN_STMT
+  memset (&rxData.data, 0, 64);
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+}
+
+

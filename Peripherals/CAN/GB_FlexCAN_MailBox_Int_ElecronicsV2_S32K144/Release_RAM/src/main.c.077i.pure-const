@@ -1,0 +1,99 @@
+
+
+ local analysis of main
+   scanning: exit_code.0_1 ={v} exit_code;
+    Volatile stmt is not const/pure
+    Volatile operand is not const/pure
+  scanning: if (exit_code.0_1 != 0)
+  scanning: _3 ={v} exit_code;
+    Volatile stmt is not const/pure
+    Volatile operand is not const/pure
+  scanning: return _3;
+callgraph:
+
+main/1 (main) @05bb22a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057f4e70
+  References: exit_code/0 (read)exit_code/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+main/1 (main) @05bb22a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057f4e70
+  References: exit_code/0 (read)exit_code/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+main: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+main: malloc_bottom
+callgraph:
+
+main/1 (main) @05bb22a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057f4eb0
+  References: exit_code/0 (read)exit_code/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+main/1 (main) @05bb22a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057f4eb0
+  References: exit_code/0 (read)exit_code/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: main
+main ()
+{
+  int exit_code.0_1;
+  int _3;
+
+  <bb 2> [local count: 118111600]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  exit_code.0_1 ={v} exit_code;
+  if (exit_code.0_1 != 0)
+    goto <bb 4>; [11.00%]
+  else
+    goto <bb 5>; [89.00%]
+
+  <bb 5> [local count: 955630223]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} exit_code;
+  return _3;
+
+}
+
+
