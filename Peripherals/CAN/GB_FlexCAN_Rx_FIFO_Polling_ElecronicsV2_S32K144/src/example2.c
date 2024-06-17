@@ -18,52 +18,91 @@
 #include "FlexCAN_Ip.h"
 #include "Port.h"
 
-
-#define MSG_ID 800u
-
 // RX FIFO Filter table structure
-const Flexcan_Ip_IdTableType x[8] = {
+const Flexcan_Ip_IdTableType GB_FlexCAN_IdFilterTable[16] = {
     		{
     		.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x320
-    		},
+			.id = 0x320  //0x1900
+			},
 			{
 			.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x330
+			.id = 0x321  //0x1908
 			 },
 			 {
 			.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x340
+			.id = 0x322  //0x1910
 			 },
 			 {
 			.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x350
+			.id = 0x323  //0x1918
 			 },
 			 {
 			.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x360
+			.id = 0x324  //0x1920
 			 },
 			 {
 			.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x370
-			 },
-
-			 {
-			.isRemoteFrame = FALSE,
-			.isExtendedFrame = FALSE,
-			.id = 0x380
+			.id = 0x325  //0x1928
 			 },
 
 			 {
 			.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x390
+			.id = 0x326 //0x1930
+			 },
+
+			 {
+			.isRemoteFrame = FALSE,
+			.isExtendedFrame = FALSE,
+			.id = 0x327  //0x1938
+			 },
+     		{
+			.isRemoteFrame = FALSE,
+			.isExtendedFrame = FALSE,
+			.id = 0x328 //0x1940
+			},
+			{
+			.isRemoteFrame = FALSE,
+			.isExtendedFrame = FALSE,
+			.id = 0x329  //0x1948
+			 },
+			 {
+			.isRemoteFrame = FALSE,
+			.isExtendedFrame = FALSE,
+			.id = 0x330  //0x1980
+			 },
+			 {
+			.isRemoteFrame = FALSE,
+			.isExtendedFrame = FALSE,
+			.id = 0x331  //0x1988
+			 },
+			 {
+			.isRemoteFrame = FALSE,
+			.isExtendedFrame = FALSE,
+			.id = 0x332  //0x1990
+			 },
+			 {
+			.isRemoteFrame = FALSE,
+			.isExtendedFrame = FALSE,
+			.id = 0x333  //0x1998
+			 },
+
+			 {
+			.isRemoteFrame = FALSE,
+			.isExtendedFrame = FALSE,
+			.id = 0x334  //0x19a0
+			 },
+
+			 {
+			.isRemoteFrame = FALSE,
+			.isExtendedFrame = FALSE,
+			.id = 0x335 //0x19a8
 			 }
 
     };
@@ -92,7 +131,7 @@ int main(void)
     FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
 
     /* Configure the RxFIFO with corresponding ID filter table acceptance format and acceptance message ID's*/
-    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxFifo_Privileged(INST_FLEXCAN_0, FLEXCAN_RX_FIFO_ID_FORMAT_B, &x);
+    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxFifo_Privileged(INST_FLEXCAN_0, FLEXCAN_RX_FIFO_ID_FORMAT_B, &GB_FlexCAN_IdFilterTable);
 
     /* Start the FlexCAN Module */
     FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);

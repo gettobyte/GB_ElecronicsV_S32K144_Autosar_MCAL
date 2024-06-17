@@ -3986,7 +3986,7 @@ END GROUP
  *(.flash_config)
  .flash_config  0x00000400       0x10 ./Project_Settings/Startup_Code/startup_cm4.o
 
-.flash          0x00000410     0xcd80
+.flash          0x00000410     0xcdc0
                 0x00000410                . = ALIGN (0x4)
  *(.startup)
  .startup       0x00000410       0xb8 ./Project_Settings/Startup_Code/startup_cm4.o
@@ -4346,114 +4346,114 @@ END GROUP
  *(.rodata)
  .rodata        0x0000bc70       0x1c ./RTD/src/Clock_Ip_Specific.o
  .rodata        0x0000bc8c       0x60 ./RTD/src/FlexCAN_Ip_HwAccess.o
- .rodata        0x0000bcec       0x40 ./src/example2.o
+ .rodata        0x0000bcec       0x80 ./src/example2.o
                 0x0000bcec                GB_FlexCAN_IdFilterTable
  *(.rodata*)
-                0x0000bd2c                . = ALIGN (0x4)
+                0x0000bd6c                . = ALIGN (0x4)
  *(.mcal_const_cfg)
  .mcal_const_cfg
-                0x0000bd2c      0x3dc ./board/Clock_Ip_PBcfg.o
-                0x0000bd2c                Mcu_aClockConfigPB
+                0x0000bd6c      0x3dc ./board/Clock_Ip_PBcfg.o
+                0x0000bd6c                Mcu_aClockConfigPB
  .mcal_const_cfg
-                0x0000c108       0x50 ./generate/src/FlexCAN_Ip_Sa_BOARD_InitPeripherals_PBcfg.o
-                0x0000c108                FlexCAN_Config0
+                0x0000c148       0x50 ./generate/src/FlexCAN_Ip_Sa_BOARD_InitPeripherals_PBcfg.o
+                0x0000c148                FlexCAN_Config0
  .mcal_const_cfg
-                0x0000c158      0x704 ./generate/src/IntCtrl_Ip_Cfg.o
-                0x0000c420                IntCtrlConfig_0
-                0x0000c854                intRouteConfig
+                0x0000c198      0x704 ./generate/src/IntCtrl_Ip_Cfg.o
+                0x0000c460                IntCtrlConfig_0
+                0x0000c894                intRouteConfig
  .mcal_const_cfg
-                0x0000c85c      0x108 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
-                0x0000c85c                au8Port_PartitionList_BOARD_InitPeripherals
-                0x0000c940                Port_Config
+                0x0000c89c      0x108 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
+                0x0000c89c                au8Port_PartitionList_BOARD_InitPeripherals
+                0x0000c980                Port_Config
  .mcal_const_cfg
-                0x0000c964       0x50 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
-                0x0000c964                g_pin_mux_InitConfigArr_BOARD_InitPeripherals
-                0x0000c9b4                . = ALIGN (0x4)
+                0x0000c9a4       0x50 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
+                0x0000c9a4                g_pin_mux_InitConfigArr_BOARD_InitPeripherals
+                0x0000c9f4                . = ALIGN (0x4)
  *(.mcal_const)
- .mcal_const    0x0000c9b4      0x580 ./RTD/src/Clock_Ip_Data.o
-                0x0000c9b4                dividerCallbackIndex
-                0x0000c9c4                dividertriggerCallbackIndex
-                0x0000c9d4                xoscCallbackIndex
-                0x0000c9e4                ircoscCallbackIndex
-                0x0000c9f4                gateCallbackIndex
-                0x0000ca04                fractional_dividerCallbackIndex
-                0x0000ca14                pllCallbackIndex
-                0x0000ca24                selectorCallbackIndex
-                0x0000ca34                pcfsCallbackIndex
-                0x0000ca44                cmuCallbackIndex
-                0x0000ca54                clockFeatures
-                0x0000cd64                selectorEntry_hardwareValue
-                0x0000cdbc                selectorEntrySCS_hardwareValue
-                0x0000cdec                selectorEntryPCS_hardwareValue
-                0x0000ce1c                dividerValue_hardwareValue
-                0x0000ce60                scgPeriphAsyncDivs
-                0x0000ce70                sourceType_clockName
-                0x0000cf30                HwPllName
- .mcal_const    0x0000cf34       0x3c ./RTD/src/Clock_Ip_Divider.o
-                0x0000cf34                dividerCallbacks
- .mcal_const    0x0000cf70        0x8 ./RTD/src/Clock_Ip_DividerTrigger.o
-                0x0000cf70                dividerTriggerCallbacks
- .mcal_const    0x0000cf78       0x28 ./RTD/src/Clock_Ip_ExtOsc.o
-                0x0000cf78                extOscCallbacks
- .mcal_const    0x0000cfa0        0xc ./RTD/src/Clock_Ip_FracDiv.o
-                0x0000cfa0                fracDivCallbacks
- .mcal_const    0x0000cfac       0x38 ./RTD/src/Clock_Ip_Gate.o
-                0x0000cfac                gateCallbacks
- .mcal_const    0x0000cfe4       0x3c ./RTD/src/Clock_Ip_IntOsc.o
-                0x0000cfe4                intOscCallbacks
- .mcal_const    0x0000d020       0x18 ./RTD/src/Clock_Ip_Monitor.o
-                0x0000d020                cmuCallbacks
- .mcal_const    0x0000d038       0x28 ./RTD/src/Clock_Ip_Pll.o
-                0x0000d038                pllCallbacks
- .mcal_const    0x0000d060        0x4 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
-                0x0000d060                pcfsCallbacks
- .mcal_const    0x0000d064       0x58 ./RTD/src/Clock_Ip_Selector.o
-                0x0000d064                selectorCallbacks
- .mcal_const    0x0000d0bc        0xc ./RTD/src/FlexCAN_Ip.o
- .mcal_const    0x0000d0c8       0xa0 ./generate/src/Port_Cfg.o
-                0x0000d0c8                Port_au16PinDescription
-                0x0000d168                . = ALIGN (0x4)
+ .mcal_const    0x0000c9f4      0x580 ./RTD/src/Clock_Ip_Data.o
+                0x0000c9f4                dividerCallbackIndex
+                0x0000ca04                dividertriggerCallbackIndex
+                0x0000ca14                xoscCallbackIndex
+                0x0000ca24                ircoscCallbackIndex
+                0x0000ca34                gateCallbackIndex
+                0x0000ca44                fractional_dividerCallbackIndex
+                0x0000ca54                pllCallbackIndex
+                0x0000ca64                selectorCallbackIndex
+                0x0000ca74                pcfsCallbackIndex
+                0x0000ca84                cmuCallbackIndex
+                0x0000ca94                clockFeatures
+                0x0000cda4                selectorEntry_hardwareValue
+                0x0000cdfc                selectorEntrySCS_hardwareValue
+                0x0000ce2c                selectorEntryPCS_hardwareValue
+                0x0000ce5c                dividerValue_hardwareValue
+                0x0000cea0                scgPeriphAsyncDivs
+                0x0000ceb0                sourceType_clockName
+                0x0000cf70                HwPllName
+ .mcal_const    0x0000cf74       0x3c ./RTD/src/Clock_Ip_Divider.o
+                0x0000cf74                dividerCallbacks
+ .mcal_const    0x0000cfb0        0x8 ./RTD/src/Clock_Ip_DividerTrigger.o
+                0x0000cfb0                dividerTriggerCallbacks
+ .mcal_const    0x0000cfb8       0x28 ./RTD/src/Clock_Ip_ExtOsc.o
+                0x0000cfb8                extOscCallbacks
+ .mcal_const    0x0000cfe0        0xc ./RTD/src/Clock_Ip_FracDiv.o
+                0x0000cfe0                fracDivCallbacks
+ .mcal_const    0x0000cfec       0x38 ./RTD/src/Clock_Ip_Gate.o
+                0x0000cfec                gateCallbacks
+ .mcal_const    0x0000d024       0x3c ./RTD/src/Clock_Ip_IntOsc.o
+                0x0000d024                intOscCallbacks
+ .mcal_const    0x0000d060       0x18 ./RTD/src/Clock_Ip_Monitor.o
+                0x0000d060                cmuCallbacks
+ .mcal_const    0x0000d078       0x28 ./RTD/src/Clock_Ip_Pll.o
+                0x0000d078                pllCallbacks
+ .mcal_const    0x0000d0a0        0x4 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+                0x0000d0a0                pcfsCallbacks
+ .mcal_const    0x0000d0a4       0x58 ./RTD/src/Clock_Ip_Selector.o
+                0x0000d0a4                selectorCallbacks
+ .mcal_const    0x0000d0fc        0xc ./RTD/src/FlexCAN_Ip.o
+ .mcal_const    0x0000d108       0xa0 ./generate/src/Port_Cfg.o
+                0x0000d108                Port_au16PinDescription
+                0x0000d1a8                . = ALIGN (0x4)
  *(.mcal_const_no_cacheable)
-                0x0000d168                . = ALIGN (0x4)
-                0x0000d168                __init_table = .
+                0x0000d1a8                . = ALIGN (0x4)
+                0x0000d1a8                __init_table = .
  *(.init_table)
- .init_table    0x0000d168       0x1c ./Project_Settings/Startup_Code/startup_cm4.o
-                0x0000d184                . = ALIGN (0x4)
-                0x0000d184                __zero_table = .
+ .init_table    0x0000d1a8       0x1c ./Project_Settings/Startup_Code/startup_cm4.o
+                0x0000d1c4                . = ALIGN (0x4)
+                0x0000d1c4                __zero_table = .
  *(.zero_table)
- .zero_table    0x0000d184        0xc ./Project_Settings/Startup_Code/startup_cm4.o
-                0x0000d190                . = ALIGN (0x4)
+ .zero_table    0x0000d1c4        0xc ./Project_Settings/Startup_Code/startup_cm4.o
+                0x0000d1d0                . = ALIGN (0x4)
  *(.acmcu_code_rom)
-                0x0000d190                . = ALIGN (0x4)
-                0x0000d190                _etext = .
-                0x0000d190                __DATA_ROM = .
+                0x0000d1d0                . = ALIGN (0x4)
+                0x0000d1d0                _etext = .
+                0x0000d1d0                __DATA_ROM = .
 
-.glue_7         0x0000d190        0x0
- .glue_7        0x0000d190        0x0 linker stubs
+.glue_7         0x0000d1d0        0x0
+ .glue_7        0x0000d1d0        0x0 linker stubs
 
-.glue_7t        0x0000d190        0x0
- .glue_7t       0x0000d190        0x0 linker stubs
+.glue_7t        0x0000d1d0        0x0
+ .glue_7t       0x0000d1d0        0x0 linker stubs
 
-.vfp11_veneer   0x0000d190        0x0
- .vfp11_veneer  0x0000d190        0x0 linker stubs
+.vfp11_veneer   0x0000d1d0        0x0
+ .vfp11_veneer  0x0000d1d0        0x0 linker stubs
 
-.v4_bx          0x0000d190        0x0
- .v4_bx         0x0000d190        0x0 linker stubs
+.v4_bx          0x0000d1d0        0x0
+ .v4_bx         0x0000d1d0        0x0 linker stubs
 
-.iplt           0x0000d190        0x0
- .iplt          0x0000d190        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
+.iplt           0x0000d1d0        0x0
+ .iplt          0x0000d1d0        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
 
-.igot.plt       0x0000d190        0x0
- .igot.plt      0x0000d190        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
+.igot.plt       0x0000d1d0        0x0
+ .igot.plt      0x0000d1d0        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
 
-.rel.dyn        0x0000d190        0x0
- .rel.iplt      0x0000d190        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
-                0x0000d190                . = ALIGN (0x4)
+.rel.dyn        0x0000d1d0        0x0
+ .rel.iplt      0x0000d1d0        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
+                0x0000d1d0                . = ALIGN (0x4)
                 [!provide]                PROVIDE (__exidx_start = .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000d190                . = ALIGN (0x4)
+                0x0000d1d0                . = ALIGN (0x4)
                 [!provide]                PROVIDE (__exidx_end = .)
 
 .ARM.extab      0x1fff8100        0x0
@@ -4470,7 +4470,7 @@ END GROUP
                 0x1fff9310                . = ALIGN (0x4)
                 0x1fff9310                __interrupts_ram_end = .
 
-.sram_data      0x1fff9310       0x7c load address 0x0000d190
+.sram_data      0x1fff9310       0x7c load address 0x0000d1d0
                 0x1fff9310                . = ALIGN (0x4)
                 0x1fff9310                __data_ram_start = .
  *(.ramcode)
@@ -4532,9 +4532,9 @@ END GROUP
  *(.mcal_data_no_cacheable)
                 0x1fff938c                . = ALIGN (0x4)
                 0x1fff938c                __data_ram_end = .
-                0x0000d20c                __DATA_ROM_END = (__DATA_ROM + (__data_ram_end - __data_ram_start))
+                0x0000d24c                __DATA_ROM_END = (__DATA_ROM + (__data_ram_end - __data_ram_start))
 
-.sram_bss       0x1fff938c      0x59c load address 0x0000d20c
+.sram_bss       0x1fff938c      0x59c load address 0x0000d24c
                 0x1fff9390                . = ALIGN (0x10)
  *fill*         0x1fff938c        0x4 
                 0x1fff9390                __sram_bss_start = .
@@ -4618,7 +4618,7 @@ END GROUP
                 0x1fff9928        0x0
                 0x1fff9928                . = (. + (acfls_code_rom_end - acfls_code_rom_start))
 
-.heap           0x1fff9928      0x200 load address 0x0000d7a8
+.heap           0x1fff9928      0x200 load address 0x0000d7e8
                 0x1fff9928                . = ALIGN (0x4)
                 0x1fff9928                _end = .
                 0x1fff9928                end = .
@@ -4638,16 +4638,16 @@ int_results     0x1fff8000      0x100
                 0x20007000                __INT_SRAM_END = ORIGIN (ram_rsvd2)
                 0x1fff9310                __RAM_INIT_START = __data_ram_start
                 0x1fff938c                __RAM_INIT_END = __data_ram_end
-                0x0000d190                __ROM_INIT_START = __DATA_ROM
-                0x0000d20c                __ROM_INIT_END = __DATA_ROM_END
+                0x0000d1d0                __ROM_INIT_START = __DATA_ROM
+                0x0000d24c                __ROM_INIT_END = __DATA_ROM_END
                 0x1fff9390                __BSS_SRAM_START = __sram_bss_start
                 0x1fff9928                __BSS_SRAM_END = __sram_bss_end
                 0x00000598                __BSS_SRAM_SIZE = (__sram_bss_end - __sram_bss_start)
                 0x1fff9000                __RAM_INTERRUPT_START = __interrupts_ram_start
                 0x00000000                __ROM_INTERRUPT_START = __interrupts_rom_start
                 0x00000310                __ROM_INTERRUPT_END = __interrupts_rom_end
-                0x0000d168                __INIT_TABLE = __init_table
-                0x0000d184                __ZERO_TABLE = __zero_table
+                0x0000d1a8                __INIT_TABLE = __init_table
+                0x0000d1c4                __ZERO_TABLE = __zero_table
                 0x00000001                __RAM_INIT = 0x1
                 0x0000bc70                Fls_ACEraseRomStart = acfls_code_rom_start
                 0x0000bc70                Fls_ACEraseRomEnd = acfls_code_rom_end
@@ -5010,7 +5010,7 @@ OUTPUT(GB_FlexCAN_Rx_FIFO_Int_ElecronicsV2_S32K144.elf elf32-littlearm)
  .debug_ranges  0x00000e98       0x40 ./RTD/src/SchM_Mcu.o
  .debug_ranges  0x00000ed8       0xa0 ./RTD/src/SchM_Port.o
 
-.debug_macro    0x00000000    0x1d52c
+.debug_macro    0x00000000    0x1d526
  .debug_macro   0x00000000      0x13f ./Project_Settings/Startup_Code/exceptions.o
  .debug_macro   0x0000013f      0xab4 ./Project_Settings/Startup_Code/exceptions.o
  .debug_macro   0x00000bf3       0x22 ./Project_Settings/Startup_Code/exceptions.o
@@ -5223,10 +5223,10 @@ OUTPUT(GB_FlexCAN_Rx_FIFO_Int_ElecronicsV2_S32K144.elf elf32-littlearm)
  .debug_macro   0x0001c983       0x50 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
  .debug_macro   0x0001c9d3      0x300 ./generate/src/Port_Cfg.o
  .debug_macro   0x0001ccd3      0x1dd ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
- .debug_macro   0x0001ceb0      0x5f4 ./src/example2.o
- .debug_macro   0x0001d4a4       0x88 ./src/example2.o
+ .debug_macro   0x0001ceb0      0x5ee ./src/example2.o
+ .debug_macro   0x0001d49e       0x88 ./src/example2.o
 
-.debug_line     0x00000000    0x1618b
+.debug_line     0x00000000    0x1618c
  .debug_line    0x00000000      0x53d ./Project_Settings/Startup_Code/exceptions.o
  .debug_line    0x0000053d      0x756 ./Project_Settings/Startup_Code/nvic.o
  .debug_line    0x00000c93      0x415 ./Project_Settings/Startup_Code/startup.o
@@ -5270,9 +5270,9 @@ OUTPUT(GB_FlexCAN_Rx_FIFO_Int_ElecronicsV2_S32K144.elf elf32-littlearm)
  .debug_line    0x0001447e      0x65d ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
  .debug_line    0x00014adb      0x645 ./generate/src/Port_Cfg.o
  .debug_line    0x00015120      0x5ac ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
- .debug_line    0x000156cc      0xabf ./src/example2.o
+ .debug_line    0x000156cc      0xac0 ./src/example2.o
 
-.debug_str      0x00000000    0x84a37
+.debug_str      0x00000000    0x84a2b
  .debug_str     0x00000000     0x7e85 ./Project_Settings/Startup_Code/exceptions.o
                                0x8055 (size before relaxing)
  .debug_str     0x00007e85    0x6377c ./Project_Settings/Startup_Code/nvic.o
@@ -5359,8 +5359,8 @@ OUTPUT(GB_FlexCAN_Rx_FIFO_Int_ElecronicsV2_S32K144.elf elf32-littlearm)
                                0xf976 (size before relaxing)
  .debug_str     0x00084754      0x21a ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
                                0x8bc5 (size before relaxing)
- .debug_str     0x0008496e       0xc9 ./src/example2.o
-                              0x780a7 (size before relaxing)
+ .debug_str     0x0008496e       0xbd ./src/example2.o
+                              0x7809b (size before relaxing)
 
 .debug_frame    0x00000000     0x3380
  .debug_frame   0x00000000       0xb0 ./Project_Settings/Startup_Code/exceptions.o

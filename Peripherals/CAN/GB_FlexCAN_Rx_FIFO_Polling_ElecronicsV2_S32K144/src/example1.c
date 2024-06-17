@@ -22,11 +22,13 @@
 #define MSG_ID 800u
 
 // RX FIFO Filter table structure
-const Flexcan_Ip_IdTableType x[8] = {
+const Flexcan_Ip_IdTableType GB_FlexCAN_IdFilterTable[8] = {
     		{
     		.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
 			.id = 0x320
+			//.id = 0b00011001000000000001100100001000  //0x320 and 0x321
+
     		},
 			{
 			.isRemoteFrame = FALSE,
@@ -57,13 +59,13 @@ const Flexcan_Ip_IdTableType x[8] = {
 			 {
 			.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x380
+			.id = 0x380    //0x1c00
 			 },
 
 			 {
 			.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x390
+			.id = 0x390    //0x1c80
 			 }
 
     };
@@ -92,7 +94,7 @@ int main(void)
     FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
 
     /* Configure the RxFIFO with corresponding ID filter table acceptance format and acceptance message ID's*/
-    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxFifo_Privileged(INST_FLEXCAN_0, FLEXCAN_RX_FIFO_ID_FORMAT_A, &x);
+    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxFifo_Privileged(INST_FLEXCAN_0, FLEXCAN_RX_FIFO_ID_FORMAT_A, &GB_FlexCAN_IdFilterTable);
 
     /* Start the FlexCAN Module */
     FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);

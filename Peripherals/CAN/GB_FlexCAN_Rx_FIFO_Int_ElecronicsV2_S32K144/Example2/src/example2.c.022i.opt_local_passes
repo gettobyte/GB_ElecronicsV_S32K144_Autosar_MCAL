@@ -20,7 +20,7 @@ main ()
   IntCtrl_Ip_InstallHandler (81, CAN0_ORED_0_15_MB_IRQHandler, 0B);
   Port_Init (0B);
   FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
-  FlexCAN_Api_Status_13 = FlexCAN_Ip_ConfigRxFifo_Privileged (0, 0, &GB_FlexCAN_IdFilterTable);
+  FlexCAN_Api_Status_13 = FlexCAN_Ip_ConfigRxFifo_Privileged (0, 1, &GB_FlexCAN_IdFilterTable);
   FlexCAN_Api_Status_15 = FlexCAN_Ip_SetStartMode_Privileged (0);
   FlexCAN_Api_Status_17 = FlexCAN_Ip_RxFifo (0, &GB_FlexCAN_Receive_Data);
 
