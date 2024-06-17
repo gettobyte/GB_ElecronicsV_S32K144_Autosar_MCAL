@@ -1,0 +1,255 @@
+IPA function summary for ClockMonitorEmpty_GetStatus/4 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+IPA function summary for ClockMonitorEmpty_ClearStatus/3 inlinable
+  global time:     13.000000
+  self size:       5
+  global size:     5
+  min size:       4
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    ClockMonitorEmpty_Disable/2 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 1 stack: 0
+
+IPA function summary for ClockMonitorEmpty_Disable/2 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+IPA function summary for ClockMonitorEmpty/1 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Flattening functions:
+Overall time estimate: 19.000000 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+Enqueueing calls in ClockMonitorEmpty_GetStatus/4.
+Enqueueing calls in ClockMonitorEmpty_ClearStatus/3.
+Enqueueing calls in ClockMonitorEmpty_Disable/2.
+Enqueueing calls in ClockMonitorEmpty/1.
+
+Considering ClockMonitorEmpty_Disable/2 with 3 size
+ to be inlined into ClockMonitorEmpty_ClearStatus/3 in unknown:0
+ Estimated badness is -inf, frequency 1.00.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 8.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+IPA function summary for ClockMonitorEmpty_GetStatus/4 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+IPA function summary for ClockMonitorEmpty_ClearStatus/3 inlinable
+  global time:     2.000000
+  self size:       5
+  global size:     3
+  min size:       4
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    ClockMonitorEmpty_Disable/5 inlined
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 1 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+
+IPA function summary for ClockMonitorEmpty_Disable/2 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+  estimated growth:-2
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+IPA function summary for ClockMonitorEmpty/1 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+Symbol table:
+
+ClockMonitorEmpty_Disable/5 (ClockMonitorEmpty_Disable) @069a5b60
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 2
+  References: 
+  Referring: 
+  Function ClockMonitorEmpty_Disable/5 is inline copy in ClockMonitorEmpty_ClearStatus/3
+  Clone of ClockMonitorEmpty_Disable/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: ClockMonitorEmpty_ClearStatus/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ClockMonitorEmpty_GetStatus/4 (ClockMonitorEmpty_GetStatus) @068c4c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: cmuCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+ClockMonitorEmpty_ClearStatus/3 (ClockMonitorEmpty_ClearStatus) @068c49a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: cmuCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: ClockMonitorEmpty_Disable/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ClockMonitorEmpty_Disable/2 (ClockMonitorEmpty_Disable) @068c4700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 5
+  Address is taken.
+  References: 
+  Referring: cmuCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+ClockMonitorEmpty/1 (ClockMonitorEmpty) @068c4460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: cmuCallbacks/0 (addr)cmuCallbacks/0 (addr)cmuCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+cmuCallbacks/0 (cmuCallbacks) @069a0000
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: ClockMonitorEmpty/1 (addr)ClockMonitorEmpty/1 (addr)ClockMonitorEmpty_Disable/2 (addr)ClockMonitorEmpty_ClearStatus/3 (addr)ClockMonitorEmpty_GetStatus/4 (addr)ClockMonitorEmpty/1 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+
+;; Function ClockMonitorEmpty (ClockMonitorEmpty, funcdef_no=0, decl_uid=6057, cgraph_uid=1, symbol_order=1)
+
+ClockMonitorEmpty (const struct Clock_Ip_CmuConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function ClockMonitorEmpty_Disable (ClockMonitorEmpty_Disable, funcdef_no=1, decl_uid=6059, cgraph_uid=2, symbol_order=2)
+
+
+Saving body of ClockMonitorEmpty_Disable for later reuse
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1
+
+Symbols to be put in SSA form
+{ D.6095 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 4
+Number of blocks to update: 3 ( 75%)
+
+
+ClockMonitorEmpty_Disable (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function ClockMonitorEmpty_GetStatus (ClockMonitorEmpty_GetStatus, funcdef_no=3, decl_uid=6063, cgraph_uid=4, symbol_order=4)
+
+ClockMonitorEmpty_GetStatus (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 3;
+
+}
+
+
+
+;; Function ClockMonitorEmpty_ClearStatus (ClockMonitorEmpty_ClearStatus, funcdef_no=5, decl_uid=6061, cgraph_uid=3, symbol_order=3)
+
+Merging blocks 2 and 4
+Removing basic block 5
+Merging blocks 2 and 3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+ClockMonitorEmpty_ClearStatus (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG name => name_1(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG name => NULL
+  return;
+
+}
+
+

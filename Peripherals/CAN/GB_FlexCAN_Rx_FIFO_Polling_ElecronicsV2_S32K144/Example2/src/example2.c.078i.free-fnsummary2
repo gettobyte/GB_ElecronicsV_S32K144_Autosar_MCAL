@@ -1,0 +1,30 @@
+main ()
+{
+  Flexcan_Ip_StatusType FlexCAN_Api_Status;
+  int D.6987;
+  <unnamed type> _1;
+
+  <bb 2> :
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 3> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
+  FlexCAN_Api_Status_11 = FlexCAN_Ip_ConfigRxFifo_Privileged (0, 1, &GB_FlexCAN_IdFilterTable);
+  FlexCAN_Api_Status_13 = FlexCAN_Ip_SetStartMode_Privileged (0);
+
+  <bb 5> :
+  FlexCAN_Api_Status_15 = FlexCAN_Ip_RxFifoBlocking (0, &GB_FlexCAN_Receive_Data, 10000);
+  goto <bb 5>; [INV]
+
+}
+
+

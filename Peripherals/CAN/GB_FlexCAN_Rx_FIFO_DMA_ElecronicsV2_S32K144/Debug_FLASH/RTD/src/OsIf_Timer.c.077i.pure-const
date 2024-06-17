@@ -1,0 +1,394 @@
+
+
+ local analysis of OsIf_MicrosToTicks
+   scanning: if (SelectedCounter_2(D) == 0)
+  scanning: return Value_1;
+Function is locally const.
+
+
+ local analysis of OsIf_SetTimerFrequency
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of OsIf_GetElapsed
+   scanning: if (SelectedCounter_2(D) == 0)
+  scanning: return Value_1;
+Function is locally const.
+
+
+ local analysis of OsIf_GetCounter
+   scanning: return 0;
+Function is locally const.
+
+
+ local analysis of OsIf_Init
+   scanning: if (Config_2(D) != 0B)
+  scanning: x ={v} 0;
+    Volatile stmt is not const/pure
+    Volatile operand is not const/pure
+  scanning: x.0_4 ={v} x;
+    Volatile stmt is not const/pure
+    Volatile operand is not const/pure
+  scanning: if (x.0_4 != 0)
+  scanning: return;
+callgraph:
+
+OsIf_MicrosToTicks/9 (OsIf_MicrosToTicks) @05bc5d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04034680
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_SetTimerFrequency/8 (OsIf_SetTimerFrequency) @05bc5a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @05bc57e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346c0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_GetCounter/6 (OsIf_GetCounter) @05bc5540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346e0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_Init/5 (OsIf_Init) @05bc52a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04034700
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:306783 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+OsIf_MicrosToTicks/9 (OsIf_MicrosToTicks) @05bc5d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04034680
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_SetTimerFrequency/8 (OsIf_SetTimerFrequency) @05bc5a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @05bc57e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346c0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_GetCounter/6 (OsIf_GetCounter) @05bc5540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346e0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_Init/5 (OsIf_Init) @05bc52a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04034700
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:306783 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+OsIf_MicrosToTicks: malloc_bottom
+OsIf_SetTimerFrequency: malloc_bottom
+OsIf_GetElapsed: malloc_bottom
+OsIf_GetCounter: malloc_bottom
+OsIf_Init: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+OsIf_MicrosToTicks: malloc_bottom
+OsIf_SetTimerFrequency: malloc_bottom
+OsIf_GetElapsed: malloc_bottom
+OsIf_GetCounter: malloc_bottom
+OsIf_Init: malloc_bottom
+callgraph:
+
+OsIf_MicrosToTicks/9 (OsIf_MicrosToTicks) @05bc5d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040349a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_SetTimerFrequency/8 (OsIf_SetTimerFrequency) @05bc5a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04034680
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @05bc57e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346c0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_GetCounter/6 (OsIf_GetCounter) @05bc5540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346e0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_Init/5 (OsIf_Init) @05bc52a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04034700
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:306783 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+OsIf_MicrosToTicks/9 (OsIf_MicrosToTicks) @05bc5d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040349a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_SetTimerFrequency/8 (OsIf_SetTimerFrequency) @05bc5a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04034680
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @05bc57e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346c0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_GetCounter/6 (OsIf_GetCounter) @05bc5540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @040346e0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+OsIf_Init/5 (OsIf_Init) @05bc52a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04034700
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:306783 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: OsIf_Init
+Function found not to call free: OsIf_GetCounter
+Function found not to call free: OsIf_GetElapsed
+Function found not to call free: OsIf_SetTimerFrequency
+Function found not to call free: OsIf_MicrosToTicks
+OsIf_MicrosToTicks (uint32 Micros, OsIf_CounterType SelectedCounter)
+{
+  uint32 Value;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 0
+  # DEBUG BEGIN_STMT
+  if (SelectedCounter_2(D) == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Micros => Micros_4(D)
+  # DEBUG INLINE_ENTRY NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG Micros => NULL
+  # DEBUG Value => Micros_4(D)
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # Value_1 = PHI <Micros_4(D)(3), 0(2)>
+  # DEBUG Value => Value_1
+  # DEBUG BEGIN_STMT
+  return Value_1;
+
+}
+
+
+OsIf_SetTimerFrequency (uint32 Freq, OsIf_CounterType SelectedCounter)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Freq => NULL
+  return;
+
+}
+
+
+OsIf_GetElapsed (uint32 * const CurrentRef, OsIf_CounterType SelectedCounter)
+{
+  uint32 Value;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 0
+  # DEBUG BEGIN_STMT
+  if (SelectedCounter_2(D) == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => CurrentRef_4(D)
+  # DEBUG INLINE_ENTRY NULL
+  # DEBUG CurrentRef => D#1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 1
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # Value_1 = PHI <1(3), 0(2)>
+  # DEBUG Value => Value_1
+  # DEBUG BEGIN_STMT
+  return Value_1;
+
+}
+
+
+OsIf_GetCounter (OsIf_CounterType SelectedCounter)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+OsIf_Init (const void * Config)
+{
+  volatile boolean x;
+  _Bool x.0_4;
+
+  <bb 2> [local count: 306783]:
+  # DEBUG BEGIN_STMT
+  if (Config_2(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 3> [local count: 214748]:
+  # DEBUG BEGIN_STMT
+  x ={v} 0;
+  # DEBUG x => x
+  # DEBUG INLINE_ENTRY DevAssert
+  # DEBUG BEGIN_STMT
+  x.0_4 ={v} x;
+  if (x.0_4 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 107374]:
+
+  <bb 4> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 199409]:
+  # DEBUG x => NULL
+  return;
+
+}
+
+

@@ -1,0 +1,1112 @@
+EnableSirc_TrustedCall.isra.0 (const Clock_Ip_NameType * ISRA.33)
+{
+  boolean TimeoutOccurred;
+  uint32 StartTime;
+  uint32 ElapsedTime;
+  uint32 TimeoutTicks;
+  uint32 IrcoscStatus;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int TimeoutTicks.5_8;
+  <unnamed type> _12;
+
+  <bb 8> [local count: 114863532]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 | 1;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 | 4;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _6 = _5 >> 24;
+  IrcoscStatus_7 = _6 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_7
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.5_8 = TimeoutTicks;
+  TimeoutOccurred_9 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.5_8);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_9
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_7 == 0)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 5>; [5.50%]
+
+  <bb 4> [local count: 1014686025]:
+  if (TimeoutOccurred_9 != 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 9>; [94.50%]
+
+  <bb 9> [local count: 958878293]:
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 114863532]:
+  # TimeoutOccurred_10 = PHI <TimeoutOccurred_9(3), TimeoutOccurred_9(4)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_10 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  _12 = *ISRA.33_24(D);
+  ReportClockErrors (1, _12);
+
+  <bb 7> [local count: 114863532]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetInputSouceSytemClock.part.0 ()
+{
+  uint32 regValue;
+  boolean TimeoutOccurred;
+  uint32 StartTime;
+  uint32 ElapsedTime;
+  uint32 TimeoutTicks;
+  uint32 ScsStatus;
+  uint32 sourceClock;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#10 s=> sourceClock
+  # DEBUG sourceClock => D#10
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ReportClockErrors (1, 5);
+
+  <bb 3> [local count: 1073741824]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+DisableFirc_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG name s=> name
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _2 = _1 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _2;
+  return;
+
+}
+
+
+DisableSircStop_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG name s=> name
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4294967293;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  return;
+
+}
+
+
+EnableSircStop_TrustedCall.isra.0 (const uint16 ISRA.23)
+{
+  short unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.23_8(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 | 2;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+SetSircStop_TrustedCall.isra.0 (const uint8 ISRA.20)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned char _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 & 4294967293;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _7 = ISRA.20_16(D);
+  _8 = (long unsigned int) _7;
+  _9 = _8 << 1;
+  _10 = _9 & 2;
+  _11 = _5 | _10;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _11;
+  return;
+
+}
+
+
+DisableSircVlp_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG name s=> name
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4294967291;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  return;
+
+}
+
+
+EnableSircVlp_TrustedCall.isra.0 (const uint16 ISRA.15)
+{
+  short unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.15_8(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 | 4;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+SetSircVlp_TrustedCall.isra.0 (const uint8 ISRA.12)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned char _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 & 4294967291;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _7 = ISRA.12_16(D);
+  _8 = (long unsigned int) _7;
+  _9 = _8 << 2;
+  _10 = _9 & 4;
+  _11 = _5 | _10;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _11;
+  return;
+
+}
+
+
+DisableSirc_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG name s=> name
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _2 = _1 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _4 = _3 & 4294967291;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _4;
+  return;
+
+}
+
+
+DisableFirc (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#8 => name_2(D)
+  DisableFirc_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+EnableFirc (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  EnableFirc_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+EnableFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  uint32 IrcoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  short unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int TimeoutTicks.0_6;
+  <unnamed type> _7;
+
+  <bb 2> [local count: 567507571]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_12(D)->enable;
+  if (_1 == 1)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 8>; [79.76%]
+
+  <bb 3> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _3 = _2 | 1;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _3;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _5 = _4 >> 24;
+  IrcoscStatus_15 = _5 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_15
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_6 = TimeoutTicks;
+  TimeoutOccurred_17 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_6);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_17
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_15 == 0)
+    goto <bb 5>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 5> [local count: 1014686025]:
+  if (TimeoutOccurred_17 != 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 9>; [94.50%]
+
+  <bb 9> [local count: 958878293]:
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 114863532]:
+  # TimeoutOccurred_10 = PHI <TimeoutOccurred_17(4), TimeoutOccurred_17(5)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_10 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 7> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  _7 = config_12(D)->name;
+  ReportClockErrors (1, _7);
+
+  <bb 8> [local count: 567507571]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetFirc (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SetFirc_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  uint32 IrcoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean SircWasDisabled;
+  boolean TimeoutOccurred;
+  long unsigned int _2;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned char _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned char _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  short unsigned int _20;
+  unsigned char _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  unsigned char _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int TimeoutTicks.1_32;
+  <unnamed type> _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  short unsigned int _36;
+  unsigned char _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  unsigned char _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int TimeoutTicks.2_48;
+  <unnamed type> _49;
+  unsigned char _58;
+  unsigned char _59;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#13 => config_57(D)->name
+  # DEBUG D#12 => clockFeatures[D#13][0]
+  # DEBUG instance => (uint32) D#12
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG SircWasDisabled => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _4 = _2 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _6 = _5 & 33554432;
+  if (_6 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _7 = config_57(D)->range;
+  _8 = (long unsigned int) _7;
+  _9 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCFG;
+  _10 = _9 & 3;
+  if (_8 != _10)
+    goto <bb 5>; [66.00%]
+  else
+    goto <bb 4>; [34.00%]
+
+  <bb 4> [local count: 182536110]:
+  _11 = config_57(D)->regulator;
+  _12 = (long unsigned int) _11;
+  _13 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _14 = _13 >> 3;
+  _15 = _14 & 1;
+  if (_12 != _15)
+    goto <bb 5>; [66.00%]
+  else
+    goto <bb 21>; [34.00%]
+
+  <bb 5> [local count: 474808635]:
+  # DEBUG BEGIN_STMT
+  _16 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _17 = _16 & 1;
+  if (_17 == 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 156686850]:
+  # DEBUG BEGIN_STMT
+  # DEBUG SircWasDisabled => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG config => 0B
+  # DEBUG INLINE_ENTRY SetSirc
+  # DEBUG BEGIN_STMT
+  SetSirc_TrustedCall (0B);
+
+  <bb 7> [local count: 474808635]:
+  # SircWasDisabled_50 = PHI <0(5), 1(6)>
+  # DEBUG config => NULL
+  # DEBUG SircWasDisabled => SircWasDisabled_50
+  # DEBUG BEGIN_STMT
+  SetInputSouceSytemClock (2);
+  # DEBUG BEGIN_STMT
+  _18 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _19 = _18 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _19;
+  # DEBUG BEGIN_STMT
+  _20 = config_57(D)->enable;
+  if (_20 == 1)
+    goto <bb 8>; [20.24%]
+  else
+    goto <bb 21>; [79.76%]
+
+  <bb 8> [local count: 96101268]:
+  # DEBUG BEGIN_STMT
+  _21 = config_57(D)->range;
+  _59 = _21 & 3;
+  _22 = (long unsigned int) _59;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCFG ={v} _22;
+  # DEBUG BEGIN_STMT
+  _23 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _24 = config_57(D)->regulator;
+  _25 = (long unsigned int) _24;
+  _26 = _25 << 3;
+  _27 = _26 & 8;
+  _28 = _23 | _27;
+  _29 = _28 | 1;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _29;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 9> [local count: 898352582]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _30 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _31 = _30 >> 24;
+  IrcoscStatus_74 = _31 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_74
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.1_32 = TimeoutTicks;
+  TimeoutOccurred_76 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.1_32);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_76
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_74 == 0)
+    goto <bb 10>; [94.50%]
+  else
+    goto <bb 11>; [5.50%]
+
+  <bb 10> [local count: 848943190]:
+  if (TimeoutOccurred_76 != 0)
+    goto <bb 11>; [5.50%]
+  else
+    goto <bb 22>; [94.50%]
+
+  <bb 22> [local count: 802251315]:
+  goto <bb 9>; [100.00%]
+
+  <bb 11> [local count: 96101267]:
+  # TimeoutOccurred_3 = PHI <TimeoutOccurred_76(9), TimeoutOccurred_76(10)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_3 != 0)
+    goto <bb 12>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 12> [local count: 31713418]:
+  # DEBUG BEGIN_STMT
+  _33 = config_57(D)->name;
+  ReportClockErrors (1, _33);
+
+  <bb 13> [local count: 96101267]:
+  # DEBUG BEGIN_STMT
+  SetInputSouceSytemClock (3);
+  # DEBUG BEGIN_STMT
+  if (SircWasDisabled_50 != 0)
+    goto <bb 14>; [33.00%]
+  else
+    goto <bb 21>; [67.00%]
+
+  <bb 14> [local count: 31713418]:
+  # DEBUG BEGIN_STMT
+  # DEBUG name => 2
+  # DEBUG INLINE_ENTRY DisableSirc
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => 2
+  DisableSirc_TrustedCall.isra.0 ();
+  goto <bb 21>; [100.00%]
+
+  <bb 15> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _34 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _35 = _34 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _35;
+  # DEBUG BEGIN_STMT
+  _36 = config_57(D)->enable;
+  if (_36 == 1)
+    goto <bb 16>; [20.24%]
+  else
+    goto <bb 21>; [79.76%]
+
+  <bb 16> [local count: 108662673]:
+  # DEBUG BEGIN_STMT
+  _37 = config_57(D)->range;
+  _58 = _37 & 3;
+  _38 = (long unsigned int) _58;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCFG ={v} _38;
+  # DEBUG BEGIN_STMT
+  _39 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _40 = config_57(D)->regulator;
+  _41 = (long unsigned int) _40;
+  _42 = _41 << 3;
+  _43 = _42 & 8;
+  _44 = _39 | _43;
+  _45 = _44 | 1;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _45;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 17> [local count: 1015776324]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _46 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _47 = _46 >> 24;
+  IrcoscStatus_65 = _47 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_65
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.2_48 = TimeoutTicks;
+  TimeoutOccurred_67 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.2_48);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_67
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_65 == 0)
+    goto <bb 18>; [94.50%]
+  else
+    goto <bb 19>; [5.50%]
+
+  <bb 18> [local count: 959908626]:
+  if (TimeoutOccurred_67 != 0)
+    goto <bb 19>; [5.50%]
+  else
+    goto <bb 23>; [94.50%]
+
+  <bb 23> [local count: 907113651]:
+  goto <bb 17>; [100.00%]
+
+  <bb 19> [local count: 108662672]:
+  # TimeoutOccurred_1 = PHI <TimeoutOccurred_67(17), TimeoutOccurred_67(18)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_1 != 0)
+    goto <bb 20>; [33.00%]
+  else
+    goto <bb 21>; [67.00%]
+
+  <bb 20> [local count: 35858682]:
+  # DEBUG BEGIN_STMT
+  _49 = config_57(D)->name;
+  ReportClockErrors (1, _49);
+
+  <bb 21> [local count: 1073741823]:
+  # DEBUG name => NULL
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetInputSouceSytemClock (uint32 sourceClock)
+{
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  uint32 regValue;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int TimeoutTicks.4_5;
+  uint32 iftmp.3_7;
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_11 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  regValue_12 = regValue_11 & 4043309055;
+  # DEBUG regValue => regValue_12
+  # DEBUG BEGIN_STMT
+  _1 = sourceClock_13(D) << 24;
+  regValue_14 = _1 | regValue_12;
+  # DEBUG regValue => regValue_14
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].RCCR ={v} regValue_14;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct SCG_Type *)1074151424B].CSR;
+  _3 = _2 >> 24;
+  _4 = _3 & 15;
+  if (_4 != sourceClock_13(D))
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 4> [local count: 719407023]:
+
+  <bb 5> [local count: 1073741824]:
+  # iftmp.3_7 = PHI <1(3), 0(4)>
+  # DEBUG ScsStatus => iftmp.3_7
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.4_5 = TimeoutTicks;
+  TimeoutOccurred_19 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.4_5);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_19
+  # DEBUG BEGIN_STMT
+  if (iftmp.3_7 == 0)
+    goto <bb 6>; [94.50%]
+  else
+    goto <bb 7>; [5.50%]
+
+  <bb 6> [local count: 1014686025]:
+  if (TimeoutOccurred_19 != 0)
+    goto <bb 7>; [5.50%]
+  else
+    goto <bb 3>; [94.50%]
+
+  <bb 7> [local count: 114863532]:
+  # TimeoutOccurred_17 = PHI <TimeoutOccurred_19(5), TimeoutOccurred_19(6)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_17 != 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 8> [local count: 37904965]:
+  # DEBUG D#9 => sourceClock_13(D)
+  SetInputSouceSytemClock.part.0 ();
+
+  <bb 9> [local count: 114863532]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+DisableSircStop (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#7 => name_2(D)
+  DisableSircStop_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+EnableSircStop (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#6 => config_2(D)
+  EnableSircStop_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+SetSircStop (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(unsigned char *)config_2(D) + 9B];
+  # DEBUG D#5 => config_2(D)
+  SetSircStop_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+DisableSircVlp (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#4 => name_2(D)
+  DisableSircVlp_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+EnableSircVlp (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#3 => config_2(D)
+  EnableSircVlp_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+SetSircVlp (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(unsigned char *)config_2(D) + 8B];
+  # DEBUG D#2 => config_2(D)
+  SetSircVlp_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+DisableSirc (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => name_2(D)
+  DisableSirc_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+EnableSirc (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#11 => config_2(D)
+  EnableSirc_TrustedCall.isra.0 (config_2(D));
+  return;
+
+}
+
+
+SetSirc (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SetSirc_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  unsigned char sircConfig$lowPowerModeEnable;
+  unsigned char sircConfig$range;
+  short unsigned int sircConfig$enable;
+  unsigned int sircConfig;
+  uint32 IrcoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  <unnamed type> _1;
+  unsigned char _2;
+  short unsigned int _3;
+  unsigned char _4;
+  long unsigned int _6;
+  long unsigned int _8;
+  long unsigned int _10;
+  long unsigned int _12;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int TimeoutTicks.6_26;
+  unsigned char _29;
+
+  <bb 2> [local count: 567507571]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (config_30(D) == 0B)
+    goto <bb 4>; [30.00%]
+  else
+    goto <bb 3>; [70.00%]
+
+  <bb 3> [local count: 397255299]:
+  # DEBUG BEGIN_STMT
+  _1 = config_30(D)->name;
+  # DEBUG sircConfig => _1
+  # DEBUG BEGIN_STMT
+  _2 = config_30(D)->range;
+  # DEBUG sircConfig$range => _2
+  # DEBUG BEGIN_STMT
+  _3 = config_30(D)->enable;
+  # DEBUG sircConfig$enable => _3
+  # DEBUG BEGIN_STMT
+  _4 = config_30(D)->lowPowerModeEnable;
+  # DEBUG sircConfig$lowPowerModeEnable => _4
+
+  <bb 4> [local count: 567507571]:
+  # sircConfig_5 = PHI <5(2), _1(3)>
+  # sircConfig$enable_7 = PHI <1(2), _3(3)>
+  # sircConfig$range_9 = PHI <1(2), _2(3)>
+  # sircConfig$lowPowerModeEnable_11 = PHI <1(2), _4(3)>
+  # DEBUG sircConfig$lowPowerModeEnable => sircConfig$lowPowerModeEnable_11
+  # DEBUG sircConfig$range => sircConfig$range_9
+  # DEBUG sircConfig$enable => sircConfig$enable_7
+  # DEBUG sircConfig => sircConfig_5
+  # DEBUG BEGIN_STMT
+  _6 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _8 = _6 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _8;
+  # DEBUG BEGIN_STMT
+  _10 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _12 = _10 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _12;
+  # DEBUG BEGIN_STMT
+  _14 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _15 = _14 & 4294967291;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _15;
+  # DEBUG BEGIN_STMT
+  if (sircConfig$enable_7 == 1)
+    goto <bb 5>; [20.24%]
+  else
+    goto <bb 10>; [79.76%]
+
+  <bb 5> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  _29 = sircConfig$range_9 & 1;
+  _16 = (long unsigned int) _29;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCFG ={v} _16;
+  # DEBUG BEGIN_STMT
+  _17 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _18 = _17 | 1;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _18;
+  # DEBUG BEGIN_STMT
+  _19 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _20 = (long unsigned int) sircConfig$lowPowerModeEnable_11;
+  _21 = _20 << 2;
+  _22 = _21 & 4;
+  _23 = _19 | _22;
+  MEM[(struct SCG_Type *)1074151424B].SIRCCSR ={v} _23;
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 ={v} MEM[(struct SCG_Type *)1074151424B].SIRCCSR;
+  _25 = _24 >> 24;
+  IrcoscStatus_39 = _25 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_39
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.6_26 = TimeoutTicks;
+  TimeoutOccurred_41 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.6_26);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_41
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_39 == 0)
+    goto <bb 7>; [94.50%]
+  else
+    goto <bb 8>; [5.50%]
+
+  <bb 7> [local count: 1014686025]:
+  if (TimeoutOccurred_41 != 0)
+    goto <bb 8>; [5.50%]
+  else
+    goto <bb 11>; [94.50%]
+
+  <bb 11> [local count: 958878293]:
+  goto <bb 6>; [100.00%]
+
+  <bb 8> [local count: 114863532]:
+  # TimeoutOccurred_13 = PHI <TimeoutOccurred_41(6), TimeoutOccurred_41(7)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_13 != 0)
+    goto <bb 9>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 9> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  ReportClockErrors (1, sircConfig_5);
+
+  <bb 10> [local count: 567507571]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+InternalOscillatorEmpty_Disable (Clock_Ip_NameType name)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+InternalOscillatorEmpty (const struct Clock_Ip_IrcoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
