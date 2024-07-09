@@ -17,7 +17,7 @@ main ()
   Clock_Ip_DistributePll ();
   Port_Init (0B);
   FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
-  FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxFifo_Privileged (0, 0, &x);
+  FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxFifo_Privileged (0, 0, &GB_FlexCAN_IdFilterTable);
   FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode_Privileged (0);
 
   <bb 5> :

@@ -1,5 +1,5 @@
 
-Analyzing function: main/3
+Analyzing function: main/4
 ;; 3 loops found
 ;;
 ;; Loop 0
@@ -25,7 +25,7 @@ Analyzing function: main/3
 
 Analyzing function body size: main
 
-IPA function summary for main/3 inlinable
+IPA function summary for main/4 inlinable
   global time:     260203.623291
   self size:       36
   global size:     0
@@ -38,39 +38,62 @@ IPA function summary for main/3 inlinable
     TestDelay/2 function not considered for inlining
       loop depth: 1 freq:10000.02 size: 2 time: 11
        op0 is compile time invariant
-    FlexCAN_Ip_Send/17 function body not available
+    FlexCAN_Ip_Send/18 function body not available
       loop depth: 1 freq:10000.02 size: 6 time: 15
        op0 is compile time invariant
        op1 is compile time invariant
        op2 is compile time invariant
        op3 is compile time invariant
        op4 is compile time invariant
-    FlexCAN_Ip_SetStartMode_Privileged/16 function body not available
+    FlexCAN_Ip_SetStartMode_Privileged/17 function body not available
       loop depth: 0 freq:1.00 size: 2 time: 11
        op0 is compile time invariant
-    FlexCAN_Ip_Init_Privileged/13 function body not available
+    FlexCAN_Ip_Init_Privileged/14 function body not available
       loop depth: 0 freq:1.00 size: 4 time: 13
        op0 is compile time invariant
        op1 is compile time invariant
        op2 is compile time invariant
-    Port_Init/12 function body not available
+    Port_Init/13 function body not available
       loop depth: 0 freq:1.00 size: 2 time: 11
        op0 is compile time invariant
-    IntCtrl_Ip_InstallHandler/10 function body not available
+    IntCtrl_Ip_InstallHandler/11 function body not available
       loop depth: 0 freq:1.00 size: 4 time: 13
        op0 is compile time invariant
        op1 is compile time invariant
        op2 is compile time invariant
-    IntCtrl_Ip_EnableIrq/9 function body not available
+    IntCtrl_Ip_EnableIrq/10 function body not available
       loop depth: 0 freq:1.00 size: 2 time: 11
        op0 is compile time invariant
-    Clock_Ip_DistributePll/8 function body not available
+    Clock_Ip_DistributePll/9 function body not available
       loop depth: 0 freq:1.00 size: 1 time: 10
-    Clock_Ip_GetPllStatus/7 function body not available
+    Clock_Ip_GetPllStatus/8 function body not available
       loop depth: 1 freq:9.09 size: 2 time: 11
-    Clock_Ip_Init/5 function body not available
+    Clock_Ip_Init/6 function body not available
       loop depth: 0 freq:1.00 size: 2 time: 11
        op0 is compile time invariant
+
+
+Analyzing function: GB_MailBox_CallBack/3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: GB_MailBox_CallBack
+
+IPA function summary for GB_MailBox_CallBack/3 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
 
 
 Analyzing function: TestDelay/2
@@ -105,151 +128,160 @@ IPA function summary for TestDelay/2 inlinable
 
 Symbol table:
 
-FlexCAN_Ip_Send/17 (FlexCAN_Ip_Send) @06d18460
+FlexCAN_Ip_Send/18 (FlexCAN_Ip_Send) @06d907e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags: optimize_size
-  Called by: main/3 (1073741824 (estimated locally),10000.02 per call) 
+  Called by: main/4 (1073741824 (estimated locally),10000.02 per call) 
   Calls: 
-FlexCAN_Ip_SetStartMode_Privileged/16 (FlexCAN_Ip_SetStartMode_Privileged) @06d18380
+FlexCAN_Ip_SetStartMode_Privileged/17 (FlexCAN_Ip_SetStartMode_Privileged) @06d90700
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags: optimize_size
-  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Called by: main/4 (107374 (estimated locally),1.00 per call) 
   Calls: 
-FlexCAN_Config0/15 (FlexCAN_Config0) @06d17630
+FlexCAN_Config0/16 (FlexCAN_Config0) @06d8d7e0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: main/3 (addr)
+  Referring: main/4 (addr)
   Availability: not_available
   Varpool flags: read-only
-FlexCAN_State0/14 (FlexCAN_State0) @06d175e8
+FlexCAN_State0/15 (FlexCAN_State0) @06d8d798
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: main/3 (addr)
+  Referring: main/4 (addr)
   Availability: not_available
   Varpool flags:
-FlexCAN_Ip_Init_Privileged/13 (FlexCAN_Ip_Init_Privileged) @06d182a0
+FlexCAN_Ip_Init_Privileged/14 (FlexCAN_Ip_Init_Privileged) @06d90620
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags: optimize_size
-  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Called by: main/4 (107374 (estimated locally),1.00 per call) 
   Calls: 
-Port_Init/12 (Port_Init) @06d181c0
+Port_Init/13 (Port_Init) @06d90540
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags: optimize_size
-  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Called by: main/4 (107374 (estimated locally),1.00 per call) 
   Calls: 
-CAN0_ORED_0_15_MB_IRQHandler/11 (CAN0_ORED_0_15_MB_IRQHandler) @06d180e0
+CAN0_ORED_0_15_MB_IRQHandler/12 (CAN0_ORED_0_15_MB_IRQHandler) @06d90460
   Type: function
   Visibility: external public
   Address is taken.
   References: 
-  Referring: main/3 (addr)
+  Referring: main/4 (addr)
   Availability: not_available
   Function flags: optimize_size
   Called by: 
   Calls: 
-IntCtrl_Ip_InstallHandler/10 (IntCtrl_Ip_InstallHandler) @06d18000
+IntCtrl_Ip_InstallHandler/11 (IntCtrl_Ip_InstallHandler) @06d90380
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags: optimize_size
-  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Called by: main/4 (107374 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_EnableIrq/9 (IntCtrl_Ip_EnableIrq) @06d132a0
+IntCtrl_Ip_EnableIrq/10 (IntCtrl_Ip_EnableIrq) @06d902a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags: optimize_size
-  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Called by: main/4 (107374 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06d13ee0
+Clock_Ip_DistributePll/9 (Clock_Ip_DistributePll) @06d901c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags: optimize_size
-  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Called by: main/4 (107374 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06d13e00
+Clock_Ip_GetPllStatus/8 (Clock_Ip_GetPllStatus) @06d900e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags: optimize_size
-  Called by: main/3 (976127 (estimated locally),9.09 per call) 
+  Called by: main/4 (976127 (estimated locally),9.09 per call) 
   Calls: 
-Mcu_aClockConfigPB/6 (Mcu_aClockConfigPB) @06d173f0
+Mcu_aClockConfigPB/7 (Mcu_aClockConfigPB) @06d8d5a0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: main/3 (addr)
+  Referring: main/4 (addr)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_Init/5 (Clock_Ip_Init) @06d13d20
+Clock_Ip_Init/6 (Clock_Ip_Init) @06d90000
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags: optimize_size
-  Called by: main/3 (107374 (estimated locally),1.00 per call) 
+  Called by: main/4 (107374 (estimated locally),1.00 per call) 
   Calls: 
-DelayTimer.7034/4 (DelayTimer) @06d17000
+DelayTimer.7034/5 (DelayTimer) @06d8d0d8
   Type: variable definition analyzed
   Visibility: force_output prevailing_def_ironly
   References: 
   Referring: TestDelay/2 (read)TestDelay/2 (write)TestDelay/2 (read)TestDelay/2 (write)
   Availability: available
   Varpool flags: initialized
-main/3 (main) @06d137e0
+main/4 (main) @06d89a80
   Type: function definition analyzed
   Visibility: externally_visible public
-  References: Mcu_aClockConfigPB/6 (addr)CAN0_ORED_0_15_MB_IRQHandler/11 (addr)FlexCAN_State0/14 (addr)FlexCAN_Config0/15 (addr)dummyData/1 (addr)
+  References: Mcu_aClockConfigPB/7 (addr)CAN0_ORED_0_15_MB_IRQHandler/12 (addr)FlexCAN_State0/15 (addr)FlexCAN_Config0/16 (addr)dummyData/1 (addr)
   Referring: 
   Availability: available
   Function flags: count:107374 (estimated locally) body only_called_at_startup executed_once optimize_size
   Called by: 
-  Calls: TestDelay/2 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_Send/17 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_SetStartMode_Privileged/16 (107374 (estimated locally),1.00 per call) FlexCAN_Ip_Init_Privileged/13 (107374 (estimated locally),1.00 per call) Port_Init/12 (107374 (estimated locally),1.00 per call) IntCtrl_Ip_InstallHandler/10 (107374 (estimated locally),1.00 per call) IntCtrl_Ip_EnableIrq/9 (107374 (estimated locally),1.00 per call) Clock_Ip_DistributePll/8 (107374 (estimated locally),1.00 per call) Clock_Ip_GetPllStatus/7 (976127 (estimated locally),9.09 per call) Clock_Ip_Init/5 (107374 (estimated locally),1.00 per call) 
-TestDelay/2 (TestDelay) @06d13460
+  Calls: TestDelay/2 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_Send/18 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_SetStartMode_Privileged/17 (107374 (estimated locally),1.00 per call) FlexCAN_Ip_Init_Privileged/14 (107374 (estimated locally),1.00 per call) Port_Init/13 (107374 (estimated locally),1.00 per call) IntCtrl_Ip_InstallHandler/11 (107374 (estimated locally),1.00 per call) IntCtrl_Ip_EnableIrq/10 (107374 (estimated locally),1.00 per call) Clock_Ip_DistributePll/9 (107374 (estimated locally),1.00 per call) Clock_Ip_GetPllStatus/8 (976127 (estimated locally),9.09 per call) Clock_Ip_Init/6 (107374 (estimated locally),1.00 per call) 
+GB_MailBox_CallBack/3 (GB_MailBox_CallBack) @06d89700
   Type: function definition analyzed
   Visibility: externally_visible public
-  References: DelayTimer.7034/4 (read)DelayTimer.7034/4 (write)DelayTimer.7034/4 (read)DelayTimer.7034/4 (write)
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+TestDelay/2 (TestDelay) @06d89460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: DelayTimer.7034/5 (read)DelayTimer.7034/5 (write)DelayTimer.7034/5 (read)DelayTimer.7034/5 (write)
   Referring: 
   Availability: available
   Function flags: count:118111600 (estimated locally) body optimize_size
-  Called by: main/3 (1073741824 (estimated locally),10000.02 per call) 
+  Called by: main/4 (1073741824 (estimated locally),10000.02 per call) 
   Calls: 
-dummyData/1 (dummyData) @06cfe9d8
+dummyData/1 (dummyData) @06d749d8
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
-  Referring: main/3 (addr)
+  Referring: main/4 (addr)
   Availability: available
   Varpool flags: initialized
 main ()
@@ -304,6 +336,16 @@ main ()
 
   <bb 6> [local count: 1073741824]:
   goto <bb 5>; [100.00%]
+
+}
+
+
+GB_MailBox_CallBack (uint8 instance, Flexcan_Ip_EventType eventType, uint32 buffIdx, const struct Flexcan_Ip_StateType * flexcanState)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG callback => 0
+  return;
 
 }
 

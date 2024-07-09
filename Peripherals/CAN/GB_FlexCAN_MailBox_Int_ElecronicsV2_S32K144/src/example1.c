@@ -39,6 +39,19 @@ void TestDelay(uint32 delay)
    DelayTimer=0;
 }
 
+GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
+                  uint32 buffIdx, const Flexcan_Ip_StateType * flexcanState)
+{
+#if GB_RxMailBox_CALLBACK
+	Flexcan_Ip_StateType * state = flexcanState;
+	state->mbs[buffIdx].state = FLEXCAN_MB_RX_BUSY;
+#else
+
+	uint8_t callback = 0;
+	/* Do Nothing */
+#endif
+}
+
 
 int main(void)
 {

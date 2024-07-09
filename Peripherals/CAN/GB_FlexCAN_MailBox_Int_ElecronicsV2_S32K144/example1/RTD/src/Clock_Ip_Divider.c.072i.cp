@@ -311,7 +311,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-SetSimClkoutDiv_TrustedCall.isra.0/42 (SetSimClkoutDiv_TrustedCall.isra.0) @076c1ee0
+SetSimClkoutDiv_TrustedCall.isra.0/42 (SetSimClkoutDiv_TrustedCall.isra.0) @076efb60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -320,7 +320,7 @@ SetSimClkoutDiv_TrustedCall.isra.0/42 (SetSimClkoutDiv_TrustedCall.isra.0) @076c
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetSimClkoutDiv/25 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgHsrunDivslow_TrustedCall.isra.0/41 (SetScgHsrunDivslow_TrustedCall.isra.0) @076c17e0
+SetScgHsrunDivslow_TrustedCall.isra.0/41 (SetScgHsrunDivslow_TrustedCall.isra.0) @076ef9a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -329,7 +329,7 @@ SetScgHsrunDivslow_TrustedCall.isra.0/41 (SetScgHsrunDivslow_TrustedCall.isra.0)
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgHsrunDivslow/23 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgHsrunDivbus_TrustedCall.isra.0/40 (SetScgHsrunDivbus_TrustedCall.isra.0) @076c11c0
+SetScgHsrunDivbus_TrustedCall.isra.0/40 (SetScgHsrunDivbus_TrustedCall.isra.0) @076ef380
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -338,7 +338,7 @@ SetScgHsrunDivbus_TrustedCall.isra.0/40 (SetScgHsrunDivbus_TrustedCall.isra.0) @
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgHsrunDivbus/21 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgHsrunDivcore_TrustedCall.isra.0/39 (SetScgHsrunDivcore_TrustedCall.isra.0) @076b6e00
+SetScgHsrunDivcore_TrustedCall.isra.0/39 (SetScgHsrunDivcore_TrustedCall.isra.0) @076e3ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -347,7 +347,7 @@ SetScgHsrunDivcore_TrustedCall.isra.0/39 (SetScgHsrunDivcore_TrustedCall.isra.0)
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgHsrunDivcore/19 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgVlprDivslow_TrustedCall.isra.0/38 (SetScgVlprDivslow_TrustedCall.isra.0) @076b67e0
+SetScgVlprDivslow_TrustedCall.isra.0/38 (SetScgVlprDivslow_TrustedCall.isra.0) @076e38c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -356,7 +356,7 @@ SetScgVlprDivslow_TrustedCall.isra.0/38 (SetScgVlprDivslow_TrustedCall.isra.0) @
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgVlprDivslow/17 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgVlprDivbus_TrustedCall.isra.0/37 (SetScgVlprDivbus_TrustedCall.isra.0) @076b61c0
+SetScgVlprDivbus_TrustedCall.isra.0/37 (SetScgVlprDivbus_TrustedCall.isra.0) @076e32a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -365,7 +365,7 @@ SetScgVlprDivbus_TrustedCall.isra.0/37 (SetScgVlprDivbus_TrustedCall.isra.0) @07
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgVlprDivbus/15 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgVlprDivcore_TrustedCall.isra.0/36 (SetScgVlprDivcore_TrustedCall.isra.0) @07609e00
+SetScgVlprDivcore_TrustedCall.isra.0/36 (SetScgVlprDivcore_TrustedCall.isra.0) @07648460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -374,7 +374,7 @@ SetScgVlprDivcore_TrustedCall.isra.0/36 (SetScgVlprDivcore_TrustedCall.isra.0) @
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgVlprDivcore/13 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgRunDivslow_TrustedCall.isra.0/35 (SetScgRunDivslow_TrustedCall.isra.0) @076097e0
+SetScgRunDivslow_TrustedCall.isra.0/35 (SetScgRunDivslow_TrustedCall.isra.0) @076489a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -383,7 +383,7 @@ SetScgRunDivslow_TrustedCall.isra.0/35 (SetScgRunDivslow_TrustedCall.isra.0) @07
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgRunDivslow/11 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgRunDivbus_TrustedCall.isra.0/34 (SetScgRunDivbus_TrustedCall.isra.0) @076091c0
+SetScgRunDivbus_TrustedCall.isra.0/34 (SetScgRunDivbus_TrustedCall.isra.0) @07648380
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -392,7 +392,7 @@ SetScgRunDivbus_TrustedCall.isra.0/34 (SetScgRunDivbus_TrustedCall.isra.0) @0760
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgRunDivbus/9 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgRunDivcore_TrustedCall.isra.0/33 (SetScgRunDivcore_TrustedCall.isra.0) @075d1e00
+SetScgRunDivcore_TrustedCall.isra.0/33 (SetScgRunDivcore_TrustedCall.isra.0) @07611ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -401,7 +401,7 @@ SetScgRunDivcore_TrustedCall.isra.0/33 (SetScgRunDivcore_TrustedCall.isra.0) @07
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgRunDivcore/7 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-scgPeriphAsyncDivs/32 (scgPeriphAsyncDivs) @075c5438
+scgPeriphAsyncDivs/32 (scgPeriphAsyncDivs) @07605438
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -409,7 +409,7 @@ scgPeriphAsyncDivs/32 (scgPeriphAsyncDivs) @075c5438
   Referring: SetScgAsyncDiv1_TrustedCall/2 (read)SetScgAsyncDiv2_TrustedCall/4 (read)
   Availability: not_available
   Varpool flags: read-only
-dividerValue_hardwareValue/31 (dividerValue_hardwareValue) @075c53f0
+dividerValue_hardwareValue/31 (dividerValue_hardwareValue) @076053f0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -417,7 +417,7 @@ dividerValue_hardwareValue/31 (dividerValue_hardwareValue) @075c53f0
   Referring: SetScgAsyncDiv1_TrustedCall/2 (read)SetScgAsyncDiv2_TrustedCall/4 (read)
   Availability: not_available
   Varpool flags: read-only
-clockFeatures/30 (clockFeatures) @069c57e0
+clockFeatures/30 (clockFeatures) @06a0e7e0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -425,7 +425,7 @@ clockFeatures/30 (clockFeatures) @069c57e0
   Referring: SetScgAsyncDiv2_TrustedCall/4 (read)SetScgAsyncDiv1_TrustedCall/2 (read)SetPccPcdDivFrac_TrustedCall/26 (read)
   Availability: not_available
   Varpool flags: read-only
-SetSimTraceDivMul/29 (SetSimTraceDivMul) @069c7a80
+SetSimTraceDivMul/29 (SetSimTraceDivMul) @06a10a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -435,7 +435,7 @@ SetSimTraceDivMul/29 (SetSimTraceDivMul) @069c7a80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetSimTraceDivMul_TrustedCall/28 (1073741824 (estimated locally),1.00 per call) 
-SetSimTraceDivMul_TrustedCall/28 (SetSimTraceDivMul_TrustedCall) @069c77e0
+SetSimTraceDivMul_TrustedCall/28 (SetSimTraceDivMul_TrustedCall) @06a107e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -444,7 +444,7 @@ SetSimTraceDivMul_TrustedCall/28 (SetSimTraceDivMul_TrustedCall) @069c77e0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetSimTraceDivMul/29 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetPccPcdDivFrac/27 (SetPccPcdDivFrac) @069c7540
+SetPccPcdDivFrac/27 (SetPccPcdDivFrac) @06a10540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -454,7 +454,7 @@ SetPccPcdDivFrac/27 (SetPccPcdDivFrac) @069c7540
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetPccPcdDivFrac_TrustedCall/26 (1073741824 (estimated locally),1.00 per call) 
-SetPccPcdDivFrac_TrustedCall/26 (SetPccPcdDivFrac_TrustedCall) @069c72a0
+SetPccPcdDivFrac_TrustedCall/26 (SetPccPcdDivFrac_TrustedCall) @06a102a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: clockFeatures/30 (read)
@@ -463,7 +463,7 @@ SetPccPcdDivFrac_TrustedCall/26 (SetPccPcdDivFrac_TrustedCall) @069c72a0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetPccPcdDivFrac/27 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetSimClkoutDiv/25 (SetSimClkoutDiv) @069c0a80
+SetSimClkoutDiv/25 (SetSimClkoutDiv) @06a09a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -473,7 +473,7 @@ SetSimClkoutDiv/25 (SetSimClkoutDiv) @069c0a80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetSimClkoutDiv_TrustedCall.isra.0/42 (1073741824 (estimated locally),1.00 per call) 
-SetScgHsrunDivslow/23 (SetScgHsrunDivslow) @069c0c40
+SetScgHsrunDivslow/23 (SetScgHsrunDivslow) @06a09c40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -483,7 +483,7 @@ SetScgHsrunDivslow/23 (SetScgHsrunDivslow) @069c0c40
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgHsrunDivslow_TrustedCall.isra.0/41 (1073741824 (estimated locally),1.00 per call) 
-SetScgHsrunDivbus/21 (SetScgHsrunDivbus) @069c0700
+SetScgHsrunDivbus/21 (SetScgHsrunDivbus) @06a09700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -493,7 +493,7 @@ SetScgHsrunDivbus/21 (SetScgHsrunDivbus) @069c0700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgHsrunDivbus_TrustedCall.isra.0/40 (1073741824 (estimated locally),1.00 per call) 
-SetScgHsrunDivcore/19 (SetScgHsrunDivcore) @069c01c0
+SetScgHsrunDivcore/19 (SetScgHsrunDivcore) @06a091c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -503,7 +503,7 @@ SetScgHsrunDivcore/19 (SetScgHsrunDivcore) @069c01c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgHsrunDivcore_TrustedCall.isra.0/39 (1073741824 (estimated locally),1.00 per call) 
-SetScgVlprDivslow/17 (SetScgVlprDivslow) @069bdee0
+SetScgVlprDivslow/17 (SetScgVlprDivslow) @06a06ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -513,7 +513,7 @@ SetScgVlprDivslow/17 (SetScgVlprDivslow) @069bdee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgVlprDivslow_TrustedCall.isra.0/38 (1073741824 (estimated locally),1.00 per call) 
-SetScgVlprDivbus/15 (SetScgVlprDivbus) @069bd9a0
+SetScgVlprDivbus/15 (SetScgVlprDivbus) @06a069a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -523,7 +523,7 @@ SetScgVlprDivbus/15 (SetScgVlprDivbus) @069bd9a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgVlprDivbus_TrustedCall.isra.0/37 (1073741824 (estimated locally),1.00 per call) 
-SetScgVlprDivcore/13 (SetScgVlprDivcore) @069bd460
+SetScgVlprDivcore/13 (SetScgVlprDivcore) @06a06460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -533,7 +533,7 @@ SetScgVlprDivcore/13 (SetScgVlprDivcore) @069bd460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgVlprDivcore_TrustedCall.isra.0/36 (1073741824 (estimated locally),1.00 per call) 
-SetScgRunDivslow/11 (SetScgRunDivslow) @069b8b60
+SetScgRunDivslow/11 (SetScgRunDivslow) @06a01b60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -543,7 +543,7 @@ SetScgRunDivslow/11 (SetScgRunDivslow) @069b8b60
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgRunDivslow_TrustedCall.isra.0/35 (1073741824 (estimated locally),1.00 per call) 
-SetScgRunDivbus/9 (SetScgRunDivbus) @069b8d20
+SetScgRunDivbus/9 (SetScgRunDivbus) @06a01d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -553,7 +553,7 @@ SetScgRunDivbus/9 (SetScgRunDivbus) @069b8d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgRunDivbus_TrustedCall.isra.0/34 (1073741824 (estimated locally),1.00 per call) 
-SetScgRunDivcore/7 (SetScgRunDivcore) @069b87e0
+SetScgRunDivcore/7 (SetScgRunDivcore) @06a017e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -563,7 +563,7 @@ SetScgRunDivcore/7 (SetScgRunDivcore) @069b87e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgRunDivcore_TrustedCall.isra.0/33 (1073741824 (estimated locally),1.00 per call) 
-SetScgAsyncDiv2/5 (SetScgAsyncDiv2) @069b82a0
+SetScgAsyncDiv2/5 (SetScgAsyncDiv2) @06a012a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -573,7 +573,7 @@ SetScgAsyncDiv2/5 (SetScgAsyncDiv2) @069b82a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgAsyncDiv2_TrustedCall/4 (1073741824 (estimated locally),1.00 per call) 
-SetScgAsyncDiv2_TrustedCall/4 (SetScgAsyncDiv2_TrustedCall) @069b8000
+SetScgAsyncDiv2_TrustedCall/4 (SetScgAsyncDiv2_TrustedCall) @06a01000
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: clockFeatures/30 (read)dividerValue_hardwareValue/31 (read)scgPeriphAsyncDivs/32 (read)
@@ -582,7 +582,7 @@ SetScgAsyncDiv2_TrustedCall/4 (SetScgAsyncDiv2_TrustedCall) @069b8000
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgAsyncDiv2/5 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgAsyncDiv1/3 (SetScgAsyncDiv1) @068b7ee0
+SetScgAsyncDiv1/3 (SetScgAsyncDiv1) @06900ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -592,7 +592,7 @@ SetScgAsyncDiv1/3 (SetScgAsyncDiv1) @068b7ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgAsyncDiv1_TrustedCall/2 (1073741824 (estimated locally),1.00 per call) 
-SetScgAsyncDiv1_TrustedCall/2 (SetScgAsyncDiv1_TrustedCall) @068b7c40
+SetScgAsyncDiv1_TrustedCall/2 (SetScgAsyncDiv1_TrustedCall) @06900c40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: clockFeatures/30 (read)dividerValue_hardwareValue/31 (read)scgPeriphAsyncDivs/32 (read)
@@ -601,7 +601,7 @@ SetScgAsyncDiv1_TrustedCall/2 (SetScgAsyncDiv1_TrustedCall) @068b7c40
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgAsyncDiv1/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Callback_DividerEmpty/1 (Callback_DividerEmpty) @068b79a0
+Callback_DividerEmpty/1 (Callback_DividerEmpty) @069009a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -611,7 +611,7 @@ Callback_DividerEmpty/1 (Callback_DividerEmpty) @068b79a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-dividerCallbacks/0 (dividerCallbacks) @068b5900
+dividerCallbacks/0 (dividerCallbacks) @068fe900
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Callback_DividerEmpty/1 (addr)SetScgAsyncDiv1/3 (addr)SetScgAsyncDiv2/5 (addr)SetScgRunDivcore/7 (addr)SetScgRunDivbus/9 (addr)SetScgRunDivslow/11 (addr)SetScgVlprDivcore/13 (addr)SetScgVlprDivbus/15 (addr)SetScgVlprDivslow/17 (addr)SetScgHsrunDivcore/19 (addr)SetScgHsrunDivbus/21 (addr)SetScgHsrunDivslow/23 (addr)SetSimClkoutDiv/25 (addr)SetPccPcdDivFrac/27 (addr)SetSimTraceDivMul/29 (addr)

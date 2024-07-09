@@ -218,16 +218,6 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.driver.port_ip" description="port_ip not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data type="Boolean">true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.driver.port_ip" description="Unsupported version of the port_ip in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="equivalent">
-                  <data type="Version">1.0.0</data>
-               </feature>
-            </dependency>
             <dependency resourceType="SWComponent" resourceId="platform.driver.FlexCAN" description="FlexCAN not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data type="Boolean">true</data>
@@ -301,14 +291,6 @@
                         <setting name="OsIfCounterFreq" value="48000000"/>
                      </config_set>
                   </instance>
-                  <instance name="Port_Ip_1" uuid="880cec75-8e44-42a4-a8f3-9c17761edc7e" type="Port_Ip" type_id="Port_Ip" mode="ip" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="Port_Ip">
-                        <struct name="PortGeneral">
-                           <setting name="PortCiPortIPDevErrorDetect" value="false"/>
-                           <setting name="PortEnableUserModeSupport" value="false"/>
-                        </struct>
-                     </config_set>
-                  </instance>
                   <instance name="FlexCAN_1" uuid="5573ef2f-ad92-449e-81b7-a8cb95fce06e" type="FlexCAN" type_id="FlexCAN" mode="ip" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="FlexCAN">
                         <setting name="Name" value="FlexCAN_Ip"/>
@@ -352,7 +334,7 @@
                                  <setting name="flexcan_cfg_preDivider" value="5"/>
                                  <setting name="flexcan_cfg_rJumpwidth" value="2"/>
                               </struct>
-                              <setting name="FlexCanCallback" value="NULL_PTR"/>
+                              <setting name="FlexCanCallback" value="GB_MailBox_CallBack"/>
                               <setting name="FlexCanErrorCallback" value="NULL_PTR"/>
                               <setting name="num_enhanced_std_id_filters" value="0"/>
                               <setting name="num_enhanced_ext_id_filters" value="0"/>
@@ -463,11 +445,11 @@
                               </struct>
                               <struct name="3">
                                  <setting name="Name" value="UnTouchedPortPin_3"/>
-                                 <setting name="PortPinPcr" value="64"/>
+                                 <setting name="PortPinPcr" value="68"/>
                               </struct>
                               <struct name="4">
                                  <setting name="Name" value="UnTouchedPortPin_4"/>
-                                 <setting name="PortPinPcr" value="65"/>
+                                 <setting name="PortPinPcr" value="69"/>
                               </struct>
                            </array>
                            <array name="DigitalFilter"/>

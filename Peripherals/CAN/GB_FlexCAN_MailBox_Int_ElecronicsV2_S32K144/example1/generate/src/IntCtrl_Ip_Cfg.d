@@ -1,7 +1,7 @@
 generate/src/IntCtrl_Ip_Cfg.o: ../generate/src/IntCtrl_Ip_Cfg.c \
- C:/Users/gettobyte_kunal/Documents/elecronicsv2_autosarMCAL_Workspace/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/generate/include/IntCtrl_Ip_Cfg.h \
+ C:/Users/gettobyte_kunal/Documents/ElecronicsV2_Autosar_MCAL/GB_ElecronicsV2_Autosar_MCAL/Peripherals/CAN/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/generate/include/IntCtrl_Ip_Cfg.h \
  ../RTD/include/IntCtrl_Ip_TypesDef.h \
- C:/Users/gettobyte_kunal/Documents/elecronicsv2_autosarMCAL_Workspace/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/generate/include/IntCtrl_Ip_CfgDefines.h \
+ C:/Users/gettobyte_kunal/Documents/ElecronicsV2_Autosar_MCAL/GB_ElecronicsV2_Autosar_MCAL/Peripherals/CAN/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/generate/include/IntCtrl_Ip_CfgDefines.h \
  C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/StandardTypes.h \
  C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/Platform_Types.h \
  C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/PlatformTypes.h \
@@ -51,11 +51,11 @@ generate/src/IntCtrl_Ip_Cfg.o: ../generate/src/IntCtrl_Ip_Cfg.c \
  C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/header/S32K144_COMMON.h \
  C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/Platform_MemMap.h
 
-C:/Users/gettobyte_kunal/Documents/elecronicsv2_autosarMCAL_Workspace/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/generate/include/IntCtrl_Ip_Cfg.h:
+C:/Users/gettobyte_kunal/Documents/ElecronicsV2_Autosar_MCAL/GB_ElecronicsV2_Autosar_MCAL/Peripherals/CAN/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/generate/include/IntCtrl_Ip_Cfg.h:
 
 ../RTD/include/IntCtrl_Ip_TypesDef.h:
 
-C:/Users/gettobyte_kunal/Documents/elecronicsv2_autosarMCAL_Workspace/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/generate/include/IntCtrl_Ip_CfgDefines.h:
+C:/Users/gettobyte_kunal/Documents/ElecronicsV2_Autosar_MCAL/GB_ElecronicsV2_Autosar_MCAL/Peripherals/CAN/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/generate/include/IntCtrl_Ip_CfgDefines.h:
 
 C:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/StandardTypes.h:
 

@@ -20,7 +20,7 @@
 
 
 #define MSG_ID 800u
-#define TX_MB_IDX 31
+#define TX_MB_IDX 1
 
 /* User includes */
 uint8 dummyData[8] = {1,2,3,4,5,6,7};

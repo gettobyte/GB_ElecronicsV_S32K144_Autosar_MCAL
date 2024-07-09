@@ -2,7 +2,7 @@ main ()
 {
   struct Flexcan_Ip_DataInfoType rx_info;
   Flexcan_Ip_StatusType FlexCAN_Api_Status;
-  int D.7051;
+  int D.7058;
 
   <bb 2> :
   # DEBUG BEGIN_STMT
@@ -44,6 +44,18 @@ main ()
   TestDelay (2000000);
   # DEBUG BEGIN_STMT
   goto <bb 5>; [INV]
+
+}
+
+
+GB_MailBox_CallBack (uint8 instance, Flexcan_Ip_EventType eventType, uint32 buffIdx, const struct Flexcan_Ip_StateType * flexcanState)
+{
+  uint8_t callback;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  callback = 0;
+  return;
 
 }
 

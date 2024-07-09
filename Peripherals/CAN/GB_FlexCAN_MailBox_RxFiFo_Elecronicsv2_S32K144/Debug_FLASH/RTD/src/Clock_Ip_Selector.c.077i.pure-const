@@ -1,0 +1,3328 @@
+
+
+ local analysis of SetSimTraceSel_TrustedCall.isra.0
+   scanning: _2 = ISRA.47_12(D);
+  scanning: _3 = selectorEntryPCS_hardwareValue[_2];
+  scanning: selectorValue_4 = (uint32) _3;
+  scanning: regValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_6 = regValue_5 & 4294963199;
+  scanning: _7 = selectorValue_4 << 12;
+  scanning: _8 = _7 & 4096;
+  scanning: regValue_9 = regValue_6 | _8;
+  scanning: MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} regValue_9;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetSimTraceSel_TrustedCall.isra.0
+   scanning: _1 = selectorEntryPCS_hardwareValue[28];
+  scanning: selectorValue_2 = (uint32) _1;
+  scanning: regValue_3 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_4 = regValue_3 & 4294963199;
+  scanning: _5 = selectorValue_2 << 12;
+  scanning: _6 = _5 & 4096;
+  scanning: regValue_7 = regValue_4 | _6;
+  scanning: MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} regValue_7;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetPccPcsSelect_TrustedCall.isra.0
+   scanning: _2 = ISRA.40_9(D);
+  scanning: _3 = clockFeatures[_2][4];
+  scanning: pccIndex_4 = (uint32) _3;
+  scanning: regValue_5 ={v} MEM[(struct PCC_Type *)1074155520B].PCCn[pccIndex_4];
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_6 = regValue_5 & 3103784959;
+  scanning: MEM[(struct PCC_Type *)1074155520B].PCCn[pccIndex_4] ={v} regValue_6;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetSimClkoutSel_TrustedCall.isra.0
+   scanning: _2 = ISRA.37_11(D);
+  scanning: _3 = selectorEntry_hardwareValue[_2];
+  scanning: selectorValue_4 = (uint32) _3;
+  scanning: regValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_6 = regValue_5 & 4294967055;
+  scanning: _7 = selectorValue_4 << 4;
+  scanning: regValue_8 = regValue_6 | _7;
+  scanning: MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} regValue_8;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetSimClkoutSel_TrustedCall.isra.0
+   scanning: regValue_1 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_2 = regValue_1 & 4294965007;
+  scanning: MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} regValue_2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetSimFtmoptSel_TrustedCall.isra.0
+   scanning: _1 = selectorEntry_hardwareValue[5];
+  scanning: selectorValue_2 = (uint32) _1;
+  scanning: _4 = ISRA.30_26(D);
+  scanning: _5 = clockFeatures[_4][0];
+  scanning: instance_6 = (uint32) _5;
+  scanning: regValue_7 ={v} MEM[(struct SIM_Type *)1074036736B].FTMOPT0;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: if (instance_6 <= 3)
+  scanning: _8 = instance_6 << 1;
+  scanning: _9 = _8 + 24;
+  scanning: _10 = 3 << _9;
+  scanning: _11 = ~_10;
+  scanning: regValue_12 = regValue_7 & _11;
+  scanning: _13 = selectorValue_2 << _9;
+  scanning: regValue_14 = regValue_12 | _13;
+  scanning: _15 = instance_6 + 4294967292;
+  scanning: _16 = _15 << 1;
+  scanning: _17 = _16 + 16;
+  scanning: _18 = 3 << _17;
+  scanning: _19 = ~_18;
+  scanning: regValue_20 = regValue_7 & _19;
+  scanning: _21 = selectorValue_2 << _17;
+  scanning: regValue_22 = regValue_20 | _21;
+  scanning: MEM[(struct SIM_Type *)1074036736B].FTMOPT0 ={v} regValue_23;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetScgClkoutSel_TrustedCall.isra.0
+   scanning: _2 = ISRA.27_11(D);
+  scanning: _3 = selectorEntrySCS_hardwareValue[_2];
+  scanning: selectorValue_4 = (uint32) _3;
+  scanning: regValue_5 ={v} MEM[(struct SCG_Type *)1074151424B].CLKOUTCNFG;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_6 = regValue_5 & 4043309055;
+  scanning: _7 = selectorValue_4 << 24;
+  scanning: regValue_8 = regValue_6 | _7;
+  scanning: MEM[(struct SCG_Type *)1074151424B].CLKOUTCNFG ={v} regValue_8;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetScgClkoutSel_TrustedCall.isra.0
+   scanning: _1 = selectorEntrySCS_hardwareValue[5];
+  scanning: selectorValue_2 = (uint32) _1;
+  scanning: regValue_3 ={v} MEM[(struct SCG_Type *)1074151424B].CLKOUTCNFG;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_4 = regValue_3 & 4043309055;
+  scanning: _5 = selectorValue_2 << 24;
+  scanning: regValue_6 = regValue_4 | _5;
+  scanning: MEM[(struct SCG_Type *)1074151424B].CLKOUTCNFG ={v} regValue_6;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetSimLpoSel_TrustedCall.isra.0
+   scanning: _2 = ISRA.22_11(D);
+  scanning: _3 = selectorEntryPCS_hardwareValue[_2];
+  scanning: selectorValue_4 = (uint32) _3;
+  scanning: regValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_6 = regValue_5 & 4294967283;
+  scanning: _7 = selectorValue_4 << 2;
+  scanning: regValue_8 = regValue_6 | _7;
+  scanning: MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_8;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetSimLpoSel_TrustedCall.isra.0
+   scanning: _1 = selectorEntryPCS_hardwareValue[1];
+  scanning: selectorValue_2 = (uint32) _1;
+  scanning: regValue_3 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_4 = regValue_3 & 4294967283;
+  scanning: _5 = selectorValue_2 << 2;
+  scanning: regValue_6 = regValue_4 | _5;
+  scanning: MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_6;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetSimRtcSel_TrustedCall.isra.0
+   scanning: _2 = ISRA.17_11(D);
+  scanning: _3 = selectorEntry_hardwareValue[_2];
+  scanning: selectorValue_4 = (uint32) _3;
+  scanning: regValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_6 = regValue_5 & 4294967247;
+  scanning: _7 = selectorValue_4 << 4;
+  scanning: regValue_8 = regValue_6 | _7;
+  scanning: MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_8;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetSimRtcSel_TrustedCall.isra.0
+   scanning: _1 = selectorEntry_hardwareValue[14];
+  scanning: selectorValue_2 = (uint32) _1;
+  scanning: regValue_3 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_4 = regValue_3 & 4294967247;
+  scanning: _5 = selectorValue_2 << 4;
+  scanning: regValue_6 = regValue_4 | _5;
+  scanning: MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_6;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetScgHsrunSel_TrustedCall.isra.0
+   scanning: _2 = ISRA.12_12(D);
+  scanning: _3 = selectorEntrySCS_hardwareValue[_2];
+  scanning: selectorValue_4 = (uint32) _3;
+  scanning: regValue_5 ={v} MEM[(struct SCG_Type *)1074151424B].HCCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_6 = regValue_5 & 4043309055;
+  scanning: _7 = selectorValue_4 << 24;
+  scanning: _8 = _7 & 251658240;
+  scanning: regValue_9 = regValue_6 | _8;
+  scanning: MEM[(struct SCG_Type *)1074151424B].HCCR ={v} regValue_9;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetScgHsrunSel_TrustedCall.isra.0
+   scanning: _1 = selectorEntrySCS_hardwareValue[5];
+  scanning: selectorValue_2 = (uint32) _1;
+  scanning: regValue_3 ={v} MEM[(struct SCG_Type *)1074151424B].HCCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_4 = regValue_3 & 4043309055;
+  scanning: _5 = selectorValue_2 << 24;
+  scanning: _6 = _5 & 251658240;
+  scanning: regValue_7 = regValue_4 | _6;
+  scanning: MEM[(struct SCG_Type *)1074151424B].HCCR ={v} regValue_7;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetScgVlprSel_TrustedCall.isra.0
+   scanning: _2 = ISRA.7_12(D);
+  scanning: _3 = selectorEntrySCS_hardwareValue[_2];
+  scanning: selectorValue_4 = (uint32) _3;
+  scanning: regValue_5 ={v} MEM[(struct SCG_Type *)1074151424B].VCCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_6 = regValue_5 & 4043309055;
+  scanning: _7 = selectorValue_4 << 24;
+  scanning: _8 = _7 & 251658240;
+  scanning: regValue_9 = regValue_6 | _8;
+  scanning: MEM[(struct SCG_Type *)1074151424B].VCCR ={v} regValue_9;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetScgRunSel_TrustedCall.isra.0
+   scanning: _2 = ISRA.4_12(D);
+  scanning: _3 = selectorEntrySCS_hardwareValue[_2];
+  scanning: selectorValue_4 = (uint32) _3;
+  scanning: regValue_5 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_6 = regValue_5 & 4043309055;
+  scanning: _7 = selectorValue_4 << 24;
+  scanning: _8 = _7 & 251658240;
+  scanning: regValue_9 = regValue_6 | _8;
+  scanning: MEM[(struct SCG_Type *)1074151424B].RCCR ={v} regValue_9;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetScgRunSel_TrustedCall.isra.0
+   scanning: _1 = selectorEntrySCS_hardwareValue[5];
+  scanning: selectorValue_2 = (uint32) _1;
+  scanning: regValue_3 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_4 = regValue_3 & 4043309055;
+  scanning: _5 = selectorValue_2 << 24;
+  scanning: _6 = _5 & 251658240;
+  scanning: regValue_7 = regValue_4 | _6;
+  scanning: MEM[(struct SCG_Type *)1074151424B].RCCR ={v} regValue_7;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of SetSimTraceSel
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: SetSimTraceSel_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of ResetSimTraceSel
+   scanning: ResetSimTraceSel_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetPccPcsSelect
+   scanning: SetPccPcsSelect_TrustedCall (config_2(D));
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetPccPcsSelect_TrustedCall
+   scanning: _1 = config_8(D)->name;
+    Indirect ref read is not const
+  scanning: _2 = clockFeatures[_1][4];
+  scanning: pccIndex_9 = (uint32) _2;
+  scanning: _3 = config_8(D)->value;
+    Indirect ref read is not const
+  scanning: _4 = selectorEntryPCS_hardwareValue[_3];
+  scanning: selectorValue_10 = (uint32) _4;
+  scanning: regValue_11 ={v} MEM[(struct PCC_Type *)1074155520B].PCCn[pccIndex_9];
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: regValue_12 = regValue_11 & 4177526783;
+  scanning: _5 = selectorValue_10 << 24;
+  scanning: _6 = _5 & 117440512;
+  scanning: regValue_13 = _6 | regValue_12;
+  scanning: MEM[(struct PCC_Type *)1074155520B].PCCn[pccIndex_9] ={v} regValue_13;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetPccPcsSelect
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D)];
+    Indirect ref read is not const
+  scanning: ResetPccPcsSelect_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of SetSimClkoutSel
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: SetSimClkoutSel_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of ResetSimClkoutSel
+   scanning: ResetSimClkoutSel_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetSimFtmoptSel
+   scanning: SetSimFtmoptSel_TrustedCall (config_2(D));
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetSimFtmoptSel_TrustedCall
+   scanning: _1 = config_18(D)->value;
+    Indirect ref read is not const
+  scanning: _2 = selectorEntry_hardwareValue[_1];
+  scanning: selectorValue_19 = (uint32) _2;
+  scanning: _3 = config_18(D)->name;
+    Indirect ref read is not const
+  scanning: _4 = clockFeatures[_3][0];
+  scanning: instance_20 = (uint32) _4;
+  scanning: regValue_21 ={v} MEM[(struct SIM_Type *)1074036736B].FTMOPT0;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: if (instance_20 <= 3)
+  scanning: _5 = instance_20 << 1;
+  scanning: _6 = _5 + 24;
+  scanning: _7 = 3 << _6;
+  scanning: _8 = ~_7;
+  scanning: regValue_24 = _8 & regValue_21;
+  scanning: _9 = selectorValue_19 << _6;
+  scanning: regValue_25 = _9 | regValue_24;
+  scanning: _10 = instance_20 + 4294967292;
+  scanning: _11 = _10 << 1;
+  scanning: _12 = _11 + 16;
+  scanning: _13 = 3 << _12;
+  scanning: _14 = ~_13;
+  scanning: regValue_22 = _14 & regValue_21;
+  scanning: _15 = selectorValue_19 << _12;
+  scanning: regValue_23 = _15 | regValue_22;
+  scanning: MEM[(struct SIM_Type *)1074036736B].FTMOPT0 ={v} regValue_16;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ResetSimFtmoptSel
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D)];
+    Indirect ref read is not const
+  scanning: ResetSimFtmoptSel_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of SetScgClkoutSel
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: SetScgClkoutSel_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of ResetScgClkoutSel
+   scanning: ResetScgClkoutSel_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetSimLpoSel
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: SetSimLpoSel_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of ResetSimLpoSel
+   scanning: ResetSimLpoSel_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetSimRtcSel
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: SetSimRtcSel_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of ResetSimRtcSel
+   scanning: ResetSimRtcSel_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetScgHsrunSel
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: SetScgHsrunSel_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of ResetScgHsrunSel
+   scanning: ResetScgHsrunSel_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of SetScgVlprSel
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: SetScgVlprSel_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of SetScgRunSel
+   scanning: _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+    Indirect ref read is not const
+  scanning: SetScgRunSel_TrustedCall.isra.0 (_4);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of ResetScgRunSel
+   scanning: ResetScgRunSel_TrustedCall.isra.0 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of Callback_SelectorEmpty
+   scanning: return;
+Function is locally const.
+callgraph:
+
+SetSimTraceSel_TrustedCall.isra.0/60 (SetSimTraceSel_TrustedCall.isra.0) @076ebb60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374938
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetSimTraceSel_TrustedCall.isra.0/60 is inline copy in SetSimTraceSel/39
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimTraceSel/39 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimTraceSel_TrustedCall.isra.0/59 (ResetSimTraceSel_TrustedCall.isra.0) @076ebe00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374978
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function ResetSimTraceSel_TrustedCall.isra.0/59 is inline copy in ResetSimTraceSel/37
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimTraceSel/37 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetPccPcsSelect_TrustedCall.isra.0/58 (ResetPccPcsSelect_TrustedCall.isra.0) @076eb460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374858
+  References: clockFeatures/41 (read)
+  Referring: 
+  Function ResetPccPcsSelect_TrustedCall.isra.0/58 is inline copy in ResetPccPcsSelect/33
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetPccPcsSelect/33 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimClkoutSel_TrustedCall.isra.0/57 (SetSimClkoutSel_TrustedCall.isra.0) @076deb60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374b78
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function SetSimClkoutSel_TrustedCall.isra.0/57 is inline copy in SetSimClkoutSel/31
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimClkoutSel/31 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimClkoutSel_TrustedCall.isra.0/56 (ResetSimClkoutSel_TrustedCall.isra.0) @076dee00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0428
+  References: 
+  Referring: 
+  Function ResetSimClkoutSel_TrustedCall.isra.0/56 is inline copy in ResetSimClkoutSel/29
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimClkoutSel/29 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimFtmoptSel_TrustedCall.isra.0/55 (ResetSimFtmoptSel_TrustedCall.isra.0) @076de460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0268
+  References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
+  Referring: 
+  Function ResetSimFtmoptSel_TrustedCall.isra.0/55 is inline copy in ResetSimFtmoptSel/25
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimFtmoptSel/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgClkoutSel_TrustedCall.isra.0/54 (SetScgClkoutSel_TrustedCall.isra.0) @076d5ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0468
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgClkoutSel_TrustedCall.isra.0/54 is inline copy in SetScgClkoutSel/23
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgClkoutSel/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgClkoutSel_TrustedCall.isra.0/53 (ResetScgClkoutSel_TrustedCall.isra.0) @076d59a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06370b20
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgClkoutSel_TrustedCall.isra.0/53 is inline copy in ResetScgClkoutSel/21
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgClkoutSel/21 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimLpoSel_TrustedCall.isra.0/52 (SetSimLpoSel_TrustedCall.isra.0) @076d5460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5640
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetSimLpoSel_TrustedCall.isra.0/52 is inline copy in SetSimLpoSel/19
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimLpoSel/19 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimLpoSel_TrustedCall.isra.0/51 (ResetSimLpoSel_TrustedCall.isra.0) @076d5000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5520
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function ResetSimLpoSel_TrustedCall.isra.0/51 is inline copy in ResetSimLpoSel/17
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimLpoSel/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimRtcSel_TrustedCall.isra.0/50 (SetSimRtcSel_TrustedCall.isra.0) @076c8c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5540
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function SetSimRtcSel_TrustedCall.isra.0/50 is inline copy in SetSimRtcSel/15
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimRtcSel/15 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimRtcSel_TrustedCall.isra.0/49 (ResetSimRtcSel_TrustedCall.isra.0) @076c87e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5460
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function ResetSimRtcSel_TrustedCall.isra.0/49 is inline copy in ResetSimRtcSel/13
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimRtcSel/13 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgHsrunSel_TrustedCall.isra.0/48 (SetScgHsrunSel_TrustedCall.isra.0) @076c82a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5440
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgHsrunSel_TrustedCall.isra.0/48 is inline copy in SetScgHsrunSel/11
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgHsrunSel/11 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgHsrunSel_TrustedCall.isra.0/47 (ResetScgHsrunSel_TrustedCall.isra.0) @0761c540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d57c0
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgHsrunSel_TrustedCall.isra.0/47 is inline copy in ResetScgHsrunSel/9
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgHsrunSel/9 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgVlprSel_TrustedCall.isra.0/46 (SetScgVlprSel_TrustedCall.isra.0) @0761ca80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5480
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgVlprSel_TrustedCall.isra.0/46 is inline copy in SetScgVlprSel/7
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgVlprSel/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgRunSel_TrustedCall.isra.0/45 (SetScgRunSel_TrustedCall.isra.0) @0761c460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d54e0
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgRunSel_TrustedCall.isra.0/45 is inline copy in SetScgRunSel/5
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgRunSel/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgRunSel_TrustedCall.isra.0/44 (ResetScgRunSel_TrustedCall.isra.0) @0761c000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5700
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgRunSel_TrustedCall.isra.0/44 is inline copy in ResetScgRunSel/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgRunSel/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimTraceSel/39 (SetSimTraceSel) @069ca9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5760
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimTraceSel_TrustedCall.isra.0/60 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimTraceSel/37 (ResetSimTraceSel) @069cab60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5720
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimTraceSel_TrustedCall.isra.0/59 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetPccPcsSelect/35 (SetPccPcsSelect) @069ca540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5740
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetPccPcsSelect_TrustedCall/34 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetPccPcsSelect_TrustedCall/34 (SetPccPcsSelect_TrustedCall) @069ca2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @069d55a0
+  References: clockFeatures/41 (read)selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetPccPcsSelect_TrustedCall/34 is inline copy in SetPccPcsSelect/35
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetPccPcsSelect/35 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetPccPcsSelect/33 (ResetPccPcsSelect) @069c6b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5600
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetPccPcsSelect_TrustedCall.isra.0/58 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimClkoutSel/31 (SetSimClkoutSel) @069c6d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5560
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimClkoutSel_TrustedCall.isra.0/57 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimClkoutSel/29 (ResetSimClkoutSel) @069c67e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d56a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimClkoutSel_TrustedCall.isra.0/56 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimFtmoptSel/27 (SetSimFtmoptSel) @069c62a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5780
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimFtmoptSel_TrustedCall/26 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimFtmoptSel_TrustedCall/26 (SetSimFtmoptSel_TrustedCall) @069c6000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @069d55c0
+  References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
+  Referring: 
+  Function SetSimFtmoptSel_TrustedCall/26 is inline copy in SetSimFtmoptSel/27
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimFtmoptSel/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimFtmoptSel/25 (ResetSimFtmoptSel) @069bdd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5620
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimFtmoptSel_TrustedCall.isra.0/55 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgClkoutSel/23 (SetScgClkoutSel) @069bd380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5660
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgClkoutSel_TrustedCall.isra.0/54 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgClkoutSel/21 (ResetScgClkoutSel) @069ba540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5680
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgClkoutSel_TrustedCall.isra.0/53 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimLpoSel/19 (SetSimLpoSel) @069bac40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d57a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimLpoSel_TrustedCall.isra.0/52 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimLpoSel/17 (ResetSimLpoSel) @069ba700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5580
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimLpoSel_TrustedCall.isra.0/51 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimRtcSel/15 (SetSimRtcSel) @069ba1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d54a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimRtcSel_TrustedCall.isra.0/50 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimRtcSel/13 (ResetSimRtcSel) @069b5ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d54c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimRtcSel_TrustedCall.isra.0/49 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgHsrunSel/11 (SetScgHsrunSel) @069b59a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d57e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgHsrunSel_TrustedCall.isra.0/48 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgHsrunSel/9 (ResetScgHsrunSel) @069b5380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5500
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgHsrunSel_TrustedCall.isra.0/47 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgVlprSel/7 (SetScgVlprSel) @069b31c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d55e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgVlprSel_TrustedCall.isra.0/46 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgRunSel/5 (SetScgRunSel) @069b39a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d56c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgRunSel_TrustedCall.isra.0/45 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgRunSel/3 (ResetScgRunSel) @069b3380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d56e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgRunSel_TrustedCall.isra.0/44 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Callback_SelectorEmpty/1 (Callback_SelectorEmpty) @068b3e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5060
+  References: 
+  Referring: selectorCallbacks/0 (addr)selectorCallbacks/0 (addr)selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+SetSimTraceSel_TrustedCall.isra.0/60 (SetSimTraceSel_TrustedCall.isra.0) @076ebb60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374938
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetSimTraceSel_TrustedCall.isra.0/60 is inline copy in SetSimTraceSel/39
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimTraceSel/39 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimTraceSel_TrustedCall.isra.0/59 (ResetSimTraceSel_TrustedCall.isra.0) @076ebe00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374978
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function ResetSimTraceSel_TrustedCall.isra.0/59 is inline copy in ResetSimTraceSel/37
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimTraceSel/37 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetPccPcsSelect_TrustedCall.isra.0/58 (ResetPccPcsSelect_TrustedCall.isra.0) @076eb460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374858
+  References: clockFeatures/41 (read)
+  Referring: 
+  Function ResetPccPcsSelect_TrustedCall.isra.0/58 is inline copy in ResetPccPcsSelect/33
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetPccPcsSelect/33 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimClkoutSel_TrustedCall.isra.0/57 (SetSimClkoutSel_TrustedCall.isra.0) @076deb60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374b78
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function SetSimClkoutSel_TrustedCall.isra.0/57 is inline copy in SetSimClkoutSel/31
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimClkoutSel/31 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimClkoutSel_TrustedCall.isra.0/56 (ResetSimClkoutSel_TrustedCall.isra.0) @076dee00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0428
+  References: 
+  Referring: 
+  Function ResetSimClkoutSel_TrustedCall.isra.0/56 is inline copy in ResetSimClkoutSel/29
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimClkoutSel/29 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimFtmoptSel_TrustedCall.isra.0/55 (ResetSimFtmoptSel_TrustedCall.isra.0) @076de460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0268
+  References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
+  Referring: 
+  Function ResetSimFtmoptSel_TrustedCall.isra.0/55 is inline copy in ResetSimFtmoptSel/25
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimFtmoptSel/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgClkoutSel_TrustedCall.isra.0/54 (SetScgClkoutSel_TrustedCall.isra.0) @076d5ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0468
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgClkoutSel_TrustedCall.isra.0/54 is inline copy in SetScgClkoutSel/23
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgClkoutSel/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgClkoutSel_TrustedCall.isra.0/53 (ResetScgClkoutSel_TrustedCall.isra.0) @076d59a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06370b20
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgClkoutSel_TrustedCall.isra.0/53 is inline copy in ResetScgClkoutSel/21
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgClkoutSel/21 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimLpoSel_TrustedCall.isra.0/52 (SetSimLpoSel_TrustedCall.isra.0) @076d5460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5640
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetSimLpoSel_TrustedCall.isra.0/52 is inline copy in SetSimLpoSel/19
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimLpoSel/19 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimLpoSel_TrustedCall.isra.0/51 (ResetSimLpoSel_TrustedCall.isra.0) @076d5000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5520
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function ResetSimLpoSel_TrustedCall.isra.0/51 is inline copy in ResetSimLpoSel/17
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimLpoSel/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimRtcSel_TrustedCall.isra.0/50 (SetSimRtcSel_TrustedCall.isra.0) @076c8c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5540
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function SetSimRtcSel_TrustedCall.isra.0/50 is inline copy in SetSimRtcSel/15
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimRtcSel/15 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimRtcSel_TrustedCall.isra.0/49 (ResetSimRtcSel_TrustedCall.isra.0) @076c87e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5460
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function ResetSimRtcSel_TrustedCall.isra.0/49 is inline copy in ResetSimRtcSel/13
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimRtcSel/13 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgHsrunSel_TrustedCall.isra.0/48 (SetScgHsrunSel_TrustedCall.isra.0) @076c82a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5440
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgHsrunSel_TrustedCall.isra.0/48 is inline copy in SetScgHsrunSel/11
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgHsrunSel/11 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgHsrunSel_TrustedCall.isra.0/47 (ResetScgHsrunSel_TrustedCall.isra.0) @0761c540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d57c0
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgHsrunSel_TrustedCall.isra.0/47 is inline copy in ResetScgHsrunSel/9
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgHsrunSel/9 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgVlprSel_TrustedCall.isra.0/46 (SetScgVlprSel_TrustedCall.isra.0) @0761ca80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5480
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgVlprSel_TrustedCall.isra.0/46 is inline copy in SetScgVlprSel/7
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgVlprSel/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgRunSel_TrustedCall.isra.0/45 (SetScgRunSel_TrustedCall.isra.0) @0761c460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d54e0
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgRunSel_TrustedCall.isra.0/45 is inline copy in SetScgRunSel/5
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgRunSel/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgRunSel_TrustedCall.isra.0/44 (ResetScgRunSel_TrustedCall.isra.0) @0761c000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5700
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgRunSel_TrustedCall.isra.0/44 is inline copy in ResetScgRunSel/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgRunSel/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimTraceSel/39 (SetSimTraceSel) @069ca9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5760
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimTraceSel_TrustedCall.isra.0/60 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimTraceSel/37 (ResetSimTraceSel) @069cab60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5720
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimTraceSel_TrustedCall.isra.0/59 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetPccPcsSelect/35 (SetPccPcsSelect) @069ca540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5740
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetPccPcsSelect_TrustedCall/34 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetPccPcsSelect_TrustedCall/34 (SetPccPcsSelect_TrustedCall) @069ca2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @069d55a0
+  References: clockFeatures/41 (read)selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetPccPcsSelect_TrustedCall/34 is inline copy in SetPccPcsSelect/35
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetPccPcsSelect/35 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetPccPcsSelect/33 (ResetPccPcsSelect) @069c6b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5600
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetPccPcsSelect_TrustedCall.isra.0/58 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimClkoutSel/31 (SetSimClkoutSel) @069c6d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5560
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimClkoutSel_TrustedCall.isra.0/57 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimClkoutSel/29 (ResetSimClkoutSel) @069c67e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d56a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimClkoutSel_TrustedCall.isra.0/56 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimFtmoptSel/27 (SetSimFtmoptSel) @069c62a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5780
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimFtmoptSel_TrustedCall/26 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimFtmoptSel_TrustedCall/26 (SetSimFtmoptSel_TrustedCall) @069c6000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @069d55c0
+  References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
+  Referring: 
+  Function SetSimFtmoptSel_TrustedCall/26 is inline copy in SetSimFtmoptSel/27
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimFtmoptSel/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimFtmoptSel/25 (ResetSimFtmoptSel) @069bdd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5620
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimFtmoptSel_TrustedCall.isra.0/55 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgClkoutSel/23 (SetScgClkoutSel) @069bd380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5660
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgClkoutSel_TrustedCall.isra.0/54 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgClkoutSel/21 (ResetScgClkoutSel) @069ba540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5680
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgClkoutSel_TrustedCall.isra.0/53 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimLpoSel/19 (SetSimLpoSel) @069bac40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d57a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimLpoSel_TrustedCall.isra.0/52 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimLpoSel/17 (ResetSimLpoSel) @069ba700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5580
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimLpoSel_TrustedCall.isra.0/51 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimRtcSel/15 (SetSimRtcSel) @069ba1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d54a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimRtcSel_TrustedCall.isra.0/50 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimRtcSel/13 (ResetSimRtcSel) @069b5ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d54c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimRtcSel_TrustedCall.isra.0/49 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgHsrunSel/11 (SetScgHsrunSel) @069b59a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d57e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgHsrunSel_TrustedCall.isra.0/48 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgHsrunSel/9 (ResetScgHsrunSel) @069b5380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5500
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgHsrunSel_TrustedCall.isra.0/47 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgVlprSel/7 (SetScgVlprSel) @069b31c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d55e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgVlprSel_TrustedCall.isra.0/46 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgRunSel/5 (SetScgRunSel) @069b39a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d56c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgRunSel_TrustedCall.isra.0/45 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgRunSel/3 (ResetScgRunSel) @069b3380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d56e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgRunSel_TrustedCall.isra.0/44 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Callback_SelectorEmpty/1 (Callback_SelectorEmpty) @068b3e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5060
+  References: 
+  Referring: selectorCallbacks/0 (addr)selectorCallbacks/0 (addr)selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+SetSimTraceSel_TrustedCall.isra.0: malloc_bottom
+ResetSimTraceSel_TrustedCall.isra.0: malloc_bottom
+ResetPccPcsSelect_TrustedCall.isra.0: malloc_bottom
+SetSimClkoutSel_TrustedCall.isra.0: malloc_bottom
+ResetSimClkoutSel_TrustedCall.isra.0: malloc_bottom
+ResetSimFtmoptSel_TrustedCall.isra.0: malloc_bottom
+SetScgClkoutSel_TrustedCall.isra.0: malloc_bottom
+ResetScgClkoutSel_TrustedCall.isra.0: malloc_bottom
+SetSimLpoSel_TrustedCall.isra.0: malloc_bottom
+ResetSimLpoSel_TrustedCall.isra.0: malloc_bottom
+SetSimRtcSel_TrustedCall.isra.0: malloc_bottom
+ResetSimRtcSel_TrustedCall.isra.0: malloc_bottom
+SetScgHsrunSel_TrustedCall.isra.0: malloc_bottom
+ResetScgHsrunSel_TrustedCall.isra.0: malloc_bottom
+SetScgVlprSel_TrustedCall.isra.0: malloc_bottom
+SetScgRunSel_TrustedCall.isra.0: malloc_bottom
+ResetScgRunSel_TrustedCall.isra.0: malloc_bottom
+SetSimTraceSel: malloc_bottom
+ResetSimTraceSel: malloc_bottom
+SetPccPcsSelect: malloc_bottom
+SetPccPcsSelect_TrustedCall: malloc_bottom
+ResetPccPcsSelect: malloc_bottom
+SetSimClkoutSel: malloc_bottom
+ResetSimClkoutSel: malloc_bottom
+SetSimFtmoptSel: malloc_bottom
+SetSimFtmoptSel_TrustedCall: malloc_bottom
+ResetSimFtmoptSel: malloc_bottom
+SetScgClkoutSel: malloc_bottom
+ResetScgClkoutSel: malloc_bottom
+SetSimLpoSel: malloc_bottom
+ResetSimLpoSel: malloc_bottom
+SetSimRtcSel: malloc_bottom
+ResetSimRtcSel: malloc_bottom
+SetScgHsrunSel: malloc_bottom
+ResetScgHsrunSel: malloc_bottom
+SetScgVlprSel: malloc_bottom
+SetScgRunSel: malloc_bottom
+ResetScgRunSel: malloc_bottom
+Callback_SelectorEmpty: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+SetSimTraceSel_TrustedCall.isra.0: malloc_bottom
+ResetSimTraceSel_TrustedCall.isra.0: malloc_bottom
+ResetPccPcsSelect_TrustedCall.isra.0: malloc_bottom
+SetSimClkoutSel_TrustedCall.isra.0: malloc_bottom
+ResetSimClkoutSel_TrustedCall.isra.0: malloc_bottom
+ResetSimFtmoptSel_TrustedCall.isra.0: malloc_bottom
+SetScgClkoutSel_TrustedCall.isra.0: malloc_bottom
+ResetScgClkoutSel_TrustedCall.isra.0: malloc_bottom
+SetSimLpoSel_TrustedCall.isra.0: malloc_bottom
+ResetSimLpoSel_TrustedCall.isra.0: malloc_bottom
+SetSimRtcSel_TrustedCall.isra.0: malloc_bottom
+ResetSimRtcSel_TrustedCall.isra.0: malloc_bottom
+SetScgHsrunSel_TrustedCall.isra.0: malloc_bottom
+ResetScgHsrunSel_TrustedCall.isra.0: malloc_bottom
+SetScgVlprSel_TrustedCall.isra.0: malloc_bottom
+SetScgRunSel_TrustedCall.isra.0: malloc_bottom
+ResetScgRunSel_TrustedCall.isra.0: malloc_bottom
+SetSimTraceSel: malloc_bottom
+ResetSimTraceSel: malloc_bottom
+SetPccPcsSelect: malloc_bottom
+SetPccPcsSelect_TrustedCall: malloc_bottom
+ResetPccPcsSelect: malloc_bottom
+SetSimClkoutSel: malloc_bottom
+ResetSimClkoutSel: malloc_bottom
+SetSimFtmoptSel: malloc_bottom
+SetSimFtmoptSel_TrustedCall: malloc_bottom
+ResetSimFtmoptSel: malloc_bottom
+SetScgClkoutSel: malloc_bottom
+ResetScgClkoutSel: malloc_bottom
+SetSimLpoSel: malloc_bottom
+ResetSimLpoSel: malloc_bottom
+SetSimRtcSel: malloc_bottom
+ResetSimRtcSel: malloc_bottom
+SetScgHsrunSel: malloc_bottom
+ResetScgHsrunSel: malloc_bottom
+SetScgVlprSel: malloc_bottom
+SetScgRunSel: malloc_bottom
+ResetScgRunSel: malloc_bottom
+Callback_SelectorEmpty: malloc_bottom
+callgraph:
+
+SetSimTraceSel_TrustedCall.isra.0/60 (SetSimTraceSel_TrustedCall.isra.0) @076ebb60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374b78
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetSimTraceSel_TrustedCall.isra.0/60 is inline copy in SetSimTraceSel/39
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimTraceSel/39 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimTraceSel_TrustedCall.isra.0/59 (ResetSimTraceSel_TrustedCall.isra.0) @076ebe00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374858
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function ResetSimTraceSel_TrustedCall.isra.0/59 is inline copy in ResetSimTraceSel/37
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimTraceSel/37 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetPccPcsSelect_TrustedCall.isra.0/58 (ResetPccPcsSelect_TrustedCall.isra.0) @076eb460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374938
+  References: clockFeatures/41 (read)
+  Referring: 
+  Function ResetPccPcsSelect_TrustedCall.isra.0/58 is inline copy in ResetPccPcsSelect/33
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetPccPcsSelect/33 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimClkoutSel_TrustedCall.isra.0/57 (SetSimClkoutSel_TrustedCall.isra.0) @076deb60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374978
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function SetSimClkoutSel_TrustedCall.isra.0/57 is inline copy in SetSimClkoutSel/31
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimClkoutSel/31 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimClkoutSel_TrustedCall.isra.0/56 (ResetSimClkoutSel_TrustedCall.isra.0) @076dee00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0268
+  References: 
+  Referring: 
+  Function ResetSimClkoutSel_TrustedCall.isra.0/56 is inline copy in ResetSimClkoutSel/29
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimClkoutSel/29 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimFtmoptSel_TrustedCall.isra.0/55 (ResetSimFtmoptSel_TrustedCall.isra.0) @076de460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0428
+  References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
+  Referring: 
+  Function ResetSimFtmoptSel_TrustedCall.isra.0/55 is inline copy in ResetSimFtmoptSel/25
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimFtmoptSel/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgClkoutSel_TrustedCall.isra.0/54 (SetScgClkoutSel_TrustedCall.isra.0) @076d5ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0468
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgClkoutSel_TrustedCall.isra.0/54 is inline copy in SetScgClkoutSel/23
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgClkoutSel/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgClkoutSel_TrustedCall.isra.0/53 (ResetScgClkoutSel_TrustedCall.isra.0) @076d59a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06370b20
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgClkoutSel_TrustedCall.isra.0/53 is inline copy in ResetScgClkoutSel/21
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgClkoutSel/21 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimLpoSel_TrustedCall.isra.0/52 (SetSimLpoSel_TrustedCall.isra.0) @076d5460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5200
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetSimLpoSel_TrustedCall.isra.0/52 is inline copy in SetSimLpoSel/19
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimLpoSel/19 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimLpoSel_TrustedCall.isra.0/51 (ResetSimLpoSel_TrustedCall.isra.0) @076d5000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5300
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function ResetSimLpoSel_TrustedCall.isra.0/51 is inline copy in ResetSimLpoSel/17
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimLpoSel/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimRtcSel_TrustedCall.isra.0/50 (SetSimRtcSel_TrustedCall.isra.0) @076c8c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5100
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function SetSimRtcSel_TrustedCall.isra.0/50 is inline copy in SetSimRtcSel/15
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimRtcSel/15 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimRtcSel_TrustedCall.isra.0/49 (ResetSimRtcSel_TrustedCall.isra.0) @076c87e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5180
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function ResetSimRtcSel_TrustedCall.isra.0/49 is inline copy in ResetSimRtcSel/13
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimRtcSel/13 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgHsrunSel_TrustedCall.isra.0/48 (SetScgHsrunSel_TrustedCall.isra.0) @076c82a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d51a0
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgHsrunSel_TrustedCall.isra.0/48 is inline copy in SetScgHsrunSel/11
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgHsrunSel/11 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgHsrunSel_TrustedCall.isra.0/47 (ResetScgHsrunSel_TrustedCall.isra.0) @0761c540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5280
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgHsrunSel_TrustedCall.isra.0/47 is inline copy in ResetScgHsrunSel/9
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgHsrunSel/9 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgVlprSel_TrustedCall.isra.0/46 (SetScgVlprSel_TrustedCall.isra.0) @0761ca80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5340
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgVlprSel_TrustedCall.isra.0/46 is inline copy in SetScgVlprSel/7
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgVlprSel/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgRunSel_TrustedCall.isra.0/45 (SetScgRunSel_TrustedCall.isra.0) @0761c460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d50e0
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgRunSel_TrustedCall.isra.0/45 is inline copy in SetScgRunSel/5
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgRunSel/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgRunSel_TrustedCall.isra.0/44 (ResetScgRunSel_TrustedCall.isra.0) @0761c000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5080
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgRunSel_TrustedCall.isra.0/44 is inline copy in ResetScgRunSel/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgRunSel/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimTraceSel/39 (SetSimTraceSel) @069ca9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d51c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimTraceSel_TrustedCall.isra.0/60 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimTraceSel/37 (ResetSimTraceSel) @069cab60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5160
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimTraceSel_TrustedCall.isra.0/59 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetPccPcsSelect/35 (SetPccPcsSelect) @069ca540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5380
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetPccPcsSelect_TrustedCall/34 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetPccPcsSelect_TrustedCall/34 (SetPccPcsSelect_TrustedCall) @069ca2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @069d5140
+  References: clockFeatures/41 (read)selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetPccPcsSelect_TrustedCall/34 is inline copy in SetPccPcsSelect/35
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetPccPcsSelect/35 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetPccPcsSelect/33 (ResetPccPcsSelect) @069c6b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5360
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetPccPcsSelect_TrustedCall.isra.0/58 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimClkoutSel/31 (SetSimClkoutSel) @069c6d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d53a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimClkoutSel_TrustedCall.isra.0/57 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimClkoutSel/29 (ResetSimClkoutSel) @069c67e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5040
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimClkoutSel_TrustedCall.isra.0/56 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimFtmoptSel/27 (SetSimFtmoptSel) @069c62a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5120
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimFtmoptSel_TrustedCall/26 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimFtmoptSel_TrustedCall/26 (SetSimFtmoptSel_TrustedCall) @069c6000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @069d53c0
+  References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
+  Referring: 
+  Function SetSimFtmoptSel_TrustedCall/26 is inline copy in SetSimFtmoptSel/27
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimFtmoptSel/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimFtmoptSel/25 (ResetSimFtmoptSel) @069bdd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5320
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimFtmoptSel_TrustedCall.isra.0/55 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgClkoutSel/23 (SetScgClkoutSel) @069bd380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d53e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgClkoutSel_TrustedCall.isra.0/54 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgClkoutSel/21 (ResetScgClkoutSel) @069ba540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5400
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgClkoutSel_TrustedCall.isra.0/53 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimLpoSel/19 (SetSimLpoSel) @069bac40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d51e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimLpoSel_TrustedCall.isra.0/52 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimLpoSel/17 (ResetSimLpoSel) @069ba700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5420
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimLpoSel_TrustedCall.isra.0/51 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimRtcSel/15 (SetSimRtcSel) @069ba1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5060
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimRtcSel_TrustedCall.isra.0/50 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimRtcSel/13 (ResetSimRtcSel) @069b5ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5220
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimRtcSel_TrustedCall.isra.0/49 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgHsrunSel/11 (SetScgHsrunSel) @069b59a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5240
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgHsrunSel_TrustedCall.isra.0/48 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgHsrunSel/9 (ResetScgHsrunSel) @069b5380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d50a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgHsrunSel_TrustedCall.isra.0/47 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgVlprSel/7 (SetScgVlprSel) @069b31c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d50c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgVlprSel_TrustedCall.isra.0/46 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgRunSel/5 (SetScgRunSel) @069b39a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5260
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgRunSel_TrustedCall.isra.0/45 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgRunSel/3 (ResetScgRunSel) @069b3380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d52a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgRunSel_TrustedCall.isra.0/44 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Callback_SelectorEmpty/1 (Callback_SelectorEmpty) @068b3e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d52c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)selectorCallbacks/0 (addr)selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+SetSimTraceSel/39 (SetSimTraceSel) @069ca9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d51c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimTraceSel_TrustedCall.isra.0/60 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimTraceSel_TrustedCall.isra.0/60 (SetSimTraceSel_TrustedCall.isra.0) @076ebb60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374b78
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetSimTraceSel_TrustedCall.isra.0/60 is inline copy in SetSimTraceSel/39
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimTraceSel/39 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimTraceSel/37 (ResetSimTraceSel) @069cab60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5160
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimTraceSel_TrustedCall.isra.0/59 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimTraceSel_TrustedCall.isra.0/59 (ResetSimTraceSel_TrustedCall.isra.0) @076ebe00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374858
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function ResetSimTraceSel_TrustedCall.isra.0/59 is inline copy in ResetSimTraceSel/37
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimTraceSel/37 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetPccPcsSelect/35 (SetPccPcsSelect) @069ca540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5380
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetPccPcsSelect_TrustedCall/34 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetPccPcsSelect_TrustedCall/34 (SetPccPcsSelect_TrustedCall) @069ca2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @069d5140
+  References: clockFeatures/41 (read)selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetPccPcsSelect_TrustedCall/34 is inline copy in SetPccPcsSelect/35
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetPccPcsSelect/35 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetPccPcsSelect/33 (ResetPccPcsSelect) @069c6b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5360
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetPccPcsSelect_TrustedCall.isra.0/58 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetPccPcsSelect_TrustedCall.isra.0/58 (ResetPccPcsSelect_TrustedCall.isra.0) @076eb460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374938
+  References: clockFeatures/41 (read)
+  Referring: 
+  Function ResetPccPcsSelect_TrustedCall.isra.0/58 is inline copy in ResetPccPcsSelect/33
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetPccPcsSelect/33 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimClkoutSel/31 (SetSimClkoutSel) @069c6d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d53a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimClkoutSel_TrustedCall.isra.0/57 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimClkoutSel_TrustedCall.isra.0/57 (SetSimClkoutSel_TrustedCall.isra.0) @076deb60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06374978
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function SetSimClkoutSel_TrustedCall.isra.0/57 is inline copy in SetSimClkoutSel/31
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimClkoutSel/31 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimClkoutSel/29 (ResetSimClkoutSel) @069c67e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5040
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimClkoutSel_TrustedCall.isra.0/56 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimClkoutSel_TrustedCall.isra.0/56 (ResetSimClkoutSel_TrustedCall.isra.0) @076dee00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0268
+  References: 
+  Referring: 
+  Function ResetSimClkoutSel_TrustedCall.isra.0/56 is inline copy in ResetSimClkoutSel/29
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimClkoutSel/29 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimFtmoptSel/27 (SetSimFtmoptSel) @069c62a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5120
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimFtmoptSel_TrustedCall/26 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimFtmoptSel_TrustedCall/26 (SetSimFtmoptSel_TrustedCall) @069c6000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @069d53c0
+  References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
+  Referring: 
+  Function SetSimFtmoptSel_TrustedCall/26 is inline copy in SetSimFtmoptSel/27
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimFtmoptSel/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimFtmoptSel/25 (ResetSimFtmoptSel) @069bdd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5320
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimFtmoptSel_TrustedCall.isra.0/55 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimFtmoptSel_TrustedCall.isra.0/55 (ResetSimFtmoptSel_TrustedCall.isra.0) @076de460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0428
+  References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
+  Referring: 
+  Function ResetSimFtmoptSel_TrustedCall.isra.0/55 is inline copy in ResetSimFtmoptSel/25
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimFtmoptSel/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgClkoutSel/23 (SetScgClkoutSel) @069bd380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d53e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgClkoutSel_TrustedCall.isra.0/54 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgClkoutSel_TrustedCall.isra.0/54 (SetScgClkoutSel_TrustedCall.isra.0) @076d5ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @076d0468
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgClkoutSel_TrustedCall.isra.0/54 is inline copy in SetScgClkoutSel/23
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgClkoutSel/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgClkoutSel/21 (ResetScgClkoutSel) @069ba540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5400
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgClkoutSel_TrustedCall.isra.0/53 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgClkoutSel_TrustedCall.isra.0/53 (ResetScgClkoutSel_TrustedCall.isra.0) @076d59a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06370b20
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgClkoutSel_TrustedCall.isra.0/53 is inline copy in ResetScgClkoutSel/21
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgClkoutSel/21 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimLpoSel/19 (SetSimLpoSel) @069bac40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d51e0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimLpoSel_TrustedCall.isra.0/52 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimLpoSel_TrustedCall.isra.0/52 (SetSimLpoSel_TrustedCall.isra.0) @076d5460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5200
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function SetSimLpoSel_TrustedCall.isra.0/52 is inline copy in SetSimLpoSel/19
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimLpoSel/19 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimLpoSel/17 (ResetSimLpoSel) @069ba700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5420
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimLpoSel_TrustedCall.isra.0/51 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimLpoSel_TrustedCall.isra.0/51 (ResetSimLpoSel_TrustedCall.isra.0) @076d5000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5300
+  References: selectorEntryPCS_hardwareValue/40 (read)
+  Referring: 
+  Function ResetSimLpoSel_TrustedCall.isra.0/51 is inline copy in ResetSimLpoSel/17
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimLpoSel/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetSimRtcSel/15 (SetSimRtcSel) @069ba1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5060
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSimRtcSel_TrustedCall.isra.0/50 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetSimRtcSel_TrustedCall.isra.0/50 (SetSimRtcSel_TrustedCall.isra.0) @076c8c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5100
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function SetSimRtcSel_TrustedCall.isra.0/50 is inline copy in SetSimRtcSel/15
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSimRtcSel/15 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSimRtcSel/13 (ResetSimRtcSel) @069b5ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5220
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSimRtcSel_TrustedCall.isra.0/49 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetSimRtcSel_TrustedCall.isra.0/49 (ResetSimRtcSel_TrustedCall.isra.0) @076c87e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5180
+  References: selectorEntry_hardwareValue/42 (read)
+  Referring: 
+  Function ResetSimRtcSel_TrustedCall.isra.0/49 is inline copy in ResetSimRtcSel/13
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSimRtcSel/13 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgHsrunSel/11 (SetScgHsrunSel) @069b59a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5240
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgHsrunSel_TrustedCall.isra.0/48 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgHsrunSel_TrustedCall.isra.0/48 (SetScgHsrunSel_TrustedCall.isra.0) @076c82a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d51a0
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgHsrunSel_TrustedCall.isra.0/48 is inline copy in SetScgHsrunSel/11
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgHsrunSel/11 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgHsrunSel/9 (ResetScgHsrunSel) @069b5380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d50a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgHsrunSel_TrustedCall.isra.0/47 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgHsrunSel_TrustedCall.isra.0/47 (ResetScgHsrunSel_TrustedCall.isra.0) @0761c540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5280
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgHsrunSel_TrustedCall.isra.0/47 is inline copy in ResetScgHsrunSel/9
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgHsrunSel/9 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgVlprSel/7 (SetScgVlprSel) @069b31c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d50c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgVlprSel_TrustedCall.isra.0/46 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgVlprSel_TrustedCall.isra.0/46 (SetScgVlprSel_TrustedCall.isra.0) @0761ca80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5340
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgVlprSel_TrustedCall.isra.0/46 is inline copy in SetScgVlprSel/7
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgVlprSel/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SetScgRunSel/5 (SetScgRunSel) @069b39a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d5260
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetScgRunSel_TrustedCall.isra.0/45 (inlined) (1073741824 (estimated locally),1.00 per call) 
+SetScgRunSel_TrustedCall.isra.0/45 (SetScgRunSel_TrustedCall.isra.0) @0761c460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d50e0
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function SetScgRunSel_TrustedCall.isra.0/45 is inline copy in SetScgRunSel/5
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetScgRunSel/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetScgRunSel/3 (ResetScgRunSel) @069b3380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d52a0
+  References: 
+  Referring: selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetScgRunSel_TrustedCall.isra.0/44 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ResetScgRunSel_TrustedCall.isra.0/44 (ResetScgRunSel_TrustedCall.isra.0) @0761c000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @069d5080
+  References: selectorEntrySCS_hardwareValue/43 (read)
+  Referring: 
+  Function ResetScgRunSel_TrustedCall.isra.0/44 is inline copy in ResetScgRunSel/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetScgRunSel/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Callback_SelectorEmpty/1 (Callback_SelectorEmpty) @068b3e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @069d52c0
+  References: 
+  Referring: selectorCallbacks/0 (addr)selectorCallbacks/0 (addr)selectorCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: Callback_SelectorEmpty
+Function found not to call free: ResetScgRunSel_TrustedCall.isra.0
+Function found not to call free: ResetScgRunSel
+Function found not to call free: SetScgRunSel_TrustedCall.isra.0
+Function found not to call free: SetScgRunSel
+Function found not to call free: SetScgVlprSel_TrustedCall.isra.0
+Function found not to call free: SetScgVlprSel
+Function found not to call free: ResetScgHsrunSel_TrustedCall.isra.0
+Function found not to call free: ResetScgHsrunSel
+Function found not to call free: SetScgHsrunSel_TrustedCall.isra.0
+Function found not to call free: SetScgHsrunSel
+Function found not to call free: ResetSimRtcSel_TrustedCall.isra.0
+Function found not to call free: ResetSimRtcSel
+Function found not to call free: SetSimRtcSel_TrustedCall.isra.0
+Function found not to call free: SetSimRtcSel
+Function found not to call free: ResetSimLpoSel_TrustedCall.isra.0
+Function found not to call free: ResetSimLpoSel
+Function found not to call free: SetSimLpoSel_TrustedCall.isra.0
+Function found not to call free: SetSimLpoSel
+Function found not to call free: ResetScgClkoutSel_TrustedCall.isra.0
+Function found not to call free: ResetScgClkoutSel
+Function found not to call free: SetScgClkoutSel_TrustedCall.isra.0
+Function found not to call free: SetScgClkoutSel
+Function found not to call free: ResetSimFtmoptSel_TrustedCall.isra.0
+Function found not to call free: ResetSimFtmoptSel
+Function found not to call free: SetSimFtmoptSel_TrustedCall
+Function found not to call free: SetSimFtmoptSel
+Function found not to call free: ResetSimClkoutSel_TrustedCall.isra.0
+Function found not to call free: ResetSimClkoutSel
+Function found not to call free: SetSimClkoutSel_TrustedCall.isra.0
+Function found not to call free: SetSimClkoutSel
+Function found not to call free: ResetPccPcsSelect_TrustedCall.isra.0
+Function found not to call free: ResetPccPcsSelect
+Function found not to call free: SetPccPcsSelect_TrustedCall
+Function found not to call free: SetPccPcsSelect
+Function found not to call free: ResetSimTraceSel_TrustedCall.isra.0
+Function found not to call free: ResetSimTraceSel
+Function found not to call free: SetSimTraceSel_TrustedCall.isra.0
+Function found not to call free: SetSimTraceSel
+SetSimTraceSel_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.47)
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.47_12(D);
+  _3 = selectorEntryPCS_hardwareValue[_2];
+  selectorValue_4 = (uint32) _3;
+  # DEBUG selectorValue => selectorValue_4
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4294963199;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  _7 = selectorValue_4 << 12;
+  _8 = _7 & 4096;
+  regValue_9 = regValue_6 | _8;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} regValue_9;
+  return;
+
+}
+
+
+ResetSimTraceSel_TrustedCall.isra.0 ()
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  unsigned char _1;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntryPCS_hardwareValue[28];
+  selectorValue_2 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_3 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
+  # DEBUG regValue => regValue_3
+  # DEBUG BEGIN_STMT
+  regValue_4 = regValue_3 & 4294963199;
+  # DEBUG regValue => regValue_4
+  # DEBUG BEGIN_STMT
+  _5 = selectorValue_2 << 12;
+  _6 = _5 & 4096;
+  regValue_7 = regValue_4 | _6;
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} regValue_7;
+  return;
+
+}
+
+
+ResetPccPcsSelect_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.40)
+{
+  uint32 regValue;
+  uint32 pccIndex;
+  <unnamed type> _2;
+  unsigned char _3;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.40_9(D);
+  _3 = clockFeatures[_2][4];
+  pccIndex_4 = (uint32) _3;
+  # DEBUG pccIndex => pccIndex_4
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} MEM[(struct PCC_Type *)1074155520B].PCCn[pccIndex_4];
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 3103784959;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  MEM[(struct PCC_Type *)1074155520B].PCCn[pccIndex_4] ={v} regValue_6;
+  return;
+
+}
+
+
+SetSimClkoutSel_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.37)
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _7;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.37_11(D);
+  _3 = selectorEntry_hardwareValue[_2];
+  selectorValue_4 = (uint32) _3;
+  # DEBUG selectorValue => selectorValue_4
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4294967055;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  _7 = selectorValue_4 << 4;
+  regValue_8 = regValue_6 | _7;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} regValue_8;
+  return;
+
+}
+
+
+ResetSimClkoutSel_TrustedCall.isra.0 ()
+{
+  uint32 regValue;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_1 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
+  # DEBUG regValue => regValue_1
+  # DEBUG BEGIN_STMT
+  regValue_2 = regValue_1 & 4294965007;
+  # DEBUG regValue => regValue_2
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} regValue_2;
+  return;
+
+}
+
+
+ResetSimFtmoptSel_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.30)
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  uint32 instance;
+  unsigned char _1;
+  <unnamed type> _4;
+  unsigned char _5;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _13;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _21;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntry_hardwareValue[5];
+  selectorValue_2 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_2
+  # DEBUG BEGIN_STMT
+  _4 = ISRA.30_26(D);
+  _5 = clockFeatures[_4][0];
+  instance_6 = (uint32) _5;
+  # DEBUG instance => instance_6
+  # DEBUG BEGIN_STMT
+  regValue_7 ={v} MEM[(struct SIM_Type *)1074036736B].FTMOPT0;
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  if (instance_6 <= 3)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _8 = instance_6 << 1;
+  _9 = _8 + 24;
+  _10 = 3 << _9;
+  _11 = ~_10;
+  regValue_12 = regValue_7 & _11;
+  # DEBUG regValue => regValue_12
+  # DEBUG BEGIN_STMT
+  _13 = selectorValue_2 << _9;
+  regValue_14 = regValue_12 | _13;
+  # DEBUG regValue => regValue_14
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _15 = instance_6 + 4294967292;
+  _16 = _15 << 1;
+  _17 = _16 + 16;
+  _18 = 3 << _17;
+  _19 = ~_18;
+  regValue_20 = regValue_7 & _19;
+  # DEBUG regValue => regValue_20
+  # DEBUG BEGIN_STMT
+  _21 = selectorValue_2 << _17;
+  regValue_22 = regValue_20 | _21;
+  # DEBUG regValue => regValue_22
+
+  <bb 5> [local count: 1073741824]:
+  # regValue_23 = PHI <regValue_14(3), regValue_22(4)>
+  # DEBUG regValue => regValue_23
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].FTMOPT0 ={v} regValue_23;
+  return;
+
+}
+
+
+SetScgClkoutSel_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.27)
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _7;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.27_11(D);
+  _3 = selectorEntrySCS_hardwareValue[_2];
+  selectorValue_4 = (uint32) _3;
+  # DEBUG selectorValue => selectorValue_4
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} MEM[(struct SCG_Type *)1074151424B].CLKOUTCNFG;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4043309055;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  _7 = selectorValue_4 << 24;
+  regValue_8 = regValue_6 | _7;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].CLKOUTCNFG ={v} regValue_8;
+  return;
+
+}
+
+
+ResetScgClkoutSel_TrustedCall.isra.0 ()
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  unsigned char _1;
+  long unsigned int _5;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntrySCS_hardwareValue[5];
+  selectorValue_2 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_3 ={v} MEM[(struct SCG_Type *)1074151424B].CLKOUTCNFG;
+  # DEBUG regValue => regValue_3
+  # DEBUG BEGIN_STMT
+  regValue_4 = regValue_3 & 4043309055;
+  # DEBUG regValue => regValue_4
+  # DEBUG BEGIN_STMT
+  _5 = selectorValue_2 << 24;
+  regValue_6 = regValue_4 | _5;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].CLKOUTCNFG ={v} regValue_6;
+  return;
+
+}
+
+
+SetSimLpoSel_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.22)
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _7;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.22_11(D);
+  _3 = selectorEntryPCS_hardwareValue[_2];
+  selectorValue_4 = (uint32) _3;
+  # DEBUG selectorValue => selectorValue_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4294967283;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  _7 = selectorValue_4 << 2;
+  regValue_8 = regValue_6 | _7;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_8;
+  return;
+
+}
+
+
+ResetSimLpoSel_TrustedCall.isra.0 ()
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  unsigned char _1;
+  long unsigned int _5;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntryPCS_hardwareValue[1];
+  selectorValue_2 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_3 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+  # DEBUG regValue => regValue_3
+  # DEBUG BEGIN_STMT
+  regValue_4 = regValue_3 & 4294967283;
+  # DEBUG regValue => regValue_4
+  # DEBUG BEGIN_STMT
+  _5 = selectorValue_2 << 2;
+  regValue_6 = regValue_4 | _5;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_6;
+  return;
+
+}
+
+
+SetSimRtcSel_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.17)
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _7;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.17_11(D);
+  _3 = selectorEntry_hardwareValue[_2];
+  selectorValue_4 = (uint32) _3;
+  # DEBUG selectorValue => selectorValue_4
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4294967247;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  _7 = selectorValue_4 << 4;
+  regValue_8 = regValue_6 | _7;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_8;
+  return;
+
+}
+
+
+ResetSimRtcSel_TrustedCall.isra.0 ()
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  unsigned char _1;
+  long unsigned int _5;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntry_hardwareValue[14];
+  selectorValue_2 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_3 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+  # DEBUG regValue => regValue_3
+  # DEBUG BEGIN_STMT
+  regValue_4 = regValue_3 & 4294967247;
+  # DEBUG regValue => regValue_4
+  # DEBUG BEGIN_STMT
+  _5 = selectorValue_2 << 4;
+  regValue_6 = regValue_4 | _5;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_6;
+  return;
+
+}
+
+
+SetScgHsrunSel_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.12)
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.12_12(D);
+  _3 = selectorEntrySCS_hardwareValue[_2];
+  selectorValue_4 = (uint32) _3;
+  # DEBUG selectorValue => selectorValue_4
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} MEM[(struct SCG_Type *)1074151424B].HCCR;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4043309055;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  _7 = selectorValue_4 << 24;
+  _8 = _7 & 251658240;
+  regValue_9 = regValue_6 | _8;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].HCCR ={v} regValue_9;
+  return;
+
+}
+
+
+ResetScgHsrunSel_TrustedCall.isra.0 ()
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  unsigned char _1;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntrySCS_hardwareValue[5];
+  selectorValue_2 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_3 ={v} MEM[(struct SCG_Type *)1074151424B].HCCR;
+  # DEBUG regValue => regValue_3
+  # DEBUG BEGIN_STMT
+  regValue_4 = regValue_3 & 4043309055;
+  # DEBUG regValue => regValue_4
+  # DEBUG BEGIN_STMT
+  _5 = selectorValue_2 << 24;
+  _6 = _5 & 251658240;
+  regValue_7 = regValue_4 | _6;
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].HCCR ={v} regValue_7;
+  return;
+
+}
+
+
+SetScgVlprSel_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.7)
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.7_12(D);
+  _3 = selectorEntrySCS_hardwareValue[_2];
+  selectorValue_4 = (uint32) _3;
+  # DEBUG selectorValue => selectorValue_4
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} MEM[(struct SCG_Type *)1074151424B].VCCR;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4043309055;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  _7 = selectorValue_4 << 24;
+  _8 = _7 & 251658240;
+  regValue_9 = regValue_6 | _8;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].VCCR ={v} regValue_9;
+  return;
+
+}
+
+
+SetScgRunSel_TrustedCall.isra.0 (const Clock_Ip_NameType ISRA.4)
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.4_12(D);
+  _3 = selectorEntrySCS_hardwareValue[_2];
+  selectorValue_4 = (uint32) _3;
+  # DEBUG selectorValue => selectorValue_4
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4043309055;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  _7 = selectorValue_4 << 24;
+  _8 = _7 & 251658240;
+  regValue_9 = regValue_6 | _8;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].RCCR ={v} regValue_9;
+  return;
+
+}
+
+
+ResetScgRunSel_TrustedCall.isra.0 ()
+{
+  uint32 regValue;
+  uint32 selectorValue;
+  unsigned char _1;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntrySCS_hardwareValue[5];
+  selectorValue_2 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_3 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+  # DEBUG regValue => regValue_3
+  # DEBUG BEGIN_STMT
+  regValue_4 = regValue_3 & 4043309055;
+  # DEBUG regValue => regValue_4
+  # DEBUG BEGIN_STMT
+  _5 = selectorValue_2 << 24;
+  _6 = _5 & 251658240;
+  regValue_7 = regValue_4 | _6;
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].RCCR ={v} regValue_7;
+  return;
+
+}
+
+
+SetSimTraceSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+  # DEBUG D#17 => config_2(D)
+  SetSimTraceSel_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ResetSimTraceSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#16 => config_2(D)
+  ResetSimTraceSel_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+SetPccPcsSelect (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SetPccPcsSelect_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetPccPcsSelect_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 pccIndex;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  <unnamed type> _3;
+  unsigned char _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_8(D)->name;
+  _2 = clockFeatures[_1][4];
+  pccIndex_9 = (uint32) _2;
+  # DEBUG pccIndex => pccIndex_9
+  # DEBUG BEGIN_STMT
+  _3 = config_8(D)->value;
+  _4 = selectorEntryPCS_hardwareValue[_3];
+  selectorValue_10 = (uint32) _4;
+  # DEBUG selectorValue => selectorValue_10
+  # DEBUG BEGIN_STMT
+  regValue_11 ={v} MEM[(struct PCC_Type *)1074155520B].PCCn[pccIndex_9];
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  regValue_12 = regValue_11 & 4177526783;
+  # DEBUG regValue => regValue_12
+  # DEBUG BEGIN_STMT
+  _5 = selectorValue_10 << 24;
+  _6 = _5 & 117440512;
+  regValue_13 = _6 | regValue_12;
+  # DEBUG regValue => regValue_13
+  # DEBUG BEGIN_STMT
+  MEM[(struct PCC_Type *)1074155520B].PCCn[pccIndex_9] ={v} regValue_13;
+  return;
+
+}
+
+
+ResetPccPcsSelect (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D)];
+  # DEBUG D#15 => config_2(D)
+  ResetPccPcsSelect_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+SetSimClkoutSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+  # DEBUG D#14 => config_2(D)
+  SetSimClkoutSel_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ResetSimClkoutSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#13 => config_2(D)
+  ResetSimClkoutSel_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+SetSimFtmoptSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SetSimFtmoptSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSimFtmoptSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 instance;
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  <unnamed type> _3;
+  unsigned char _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_18(D)->value;
+  _2 = selectorEntry_hardwareValue[_1];
+  selectorValue_19 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_19
+  # DEBUG BEGIN_STMT
+  _3 = config_18(D)->name;
+  _4 = clockFeatures[_3][0];
+  instance_20 = (uint32) _4;
+  # DEBUG instance => instance_20
+  # DEBUG BEGIN_STMT
+  regValue_21 ={v} MEM[(struct SIM_Type *)1074036736B].FTMOPT0;
+  # DEBUG regValue => regValue_21
+  # DEBUG BEGIN_STMT
+  if (instance_20 <= 3)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _5 = instance_20 << 1;
+  _6 = _5 + 24;
+  _7 = 3 << _6;
+  _8 = ~_7;
+  regValue_24 = _8 & regValue_21;
+  # DEBUG regValue => regValue_24
+  # DEBUG BEGIN_STMT
+  _9 = selectorValue_19 << _6;
+  regValue_25 = _9 | regValue_24;
+  # DEBUG regValue => regValue_25
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _10 = instance_20 + 4294967292;
+  _11 = _10 << 1;
+  _12 = _11 + 16;
+  _13 = 3 << _12;
+  _14 = ~_13;
+  regValue_22 = _14 & regValue_21;
+  # DEBUG regValue => regValue_22
+  # DEBUG BEGIN_STMT
+  _15 = selectorValue_19 << _12;
+  regValue_23 = _15 | regValue_22;
+  # DEBUG regValue => regValue_23
+
+  <bb 5> [local count: 1073741824]:
+  # regValue_16 = PHI <regValue_25(3), regValue_23(4)>
+  # DEBUG regValue => regValue_16
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].FTMOPT0 ={v} regValue_16;
+  return;
+
+}
+
+
+ResetSimFtmoptSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D)];
+  # DEBUG D#12 => config_2(D)
+  ResetSimFtmoptSel_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+SetScgClkoutSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+  # DEBUG D#11 => config_2(D)
+  SetScgClkoutSel_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ResetScgClkoutSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#10 => config_2(D)
+  ResetScgClkoutSel_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+SetSimLpoSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+  # DEBUG D#9 => config_2(D)
+  SetSimLpoSel_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ResetSimLpoSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#8 => config_2(D)
+  ResetSimLpoSel_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+SetSimRtcSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+  # DEBUG D#7 => config_2(D)
+  SetSimRtcSel_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ResetSimRtcSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#6 => config_2(D)
+  ResetSimRtcSel_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+SetScgHsrunSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+  # DEBUG D#5 => config_2(D)
+  SetScgHsrunSel_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ResetScgHsrunSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#4 => config_2(D)
+  ResetScgHsrunSel_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+SetScgVlprSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+  # DEBUG D#3 => config_2(D)
+  SetScgVlprSel_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+SetScgRunSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(<unnamed type> *)config_2(D) + 4B];
+  # DEBUG D#2 => config_2(D)
+  SetScgRunSel_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ResetScgRunSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => config_2(D)
+  ResetScgRunSel_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+Callback_SelectorEmpty (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

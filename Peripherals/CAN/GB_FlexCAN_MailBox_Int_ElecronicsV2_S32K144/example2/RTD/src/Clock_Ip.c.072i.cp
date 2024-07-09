@@ -764,7 +764,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Clock_Ip_DistributePll.part.0/55 (Clock_Ip_DistributePll.part.0) @06a2f380
+Clock_Ip_DistributePll.part.0/55 (Clock_Ip_DistributePll.part.0) @06a0e460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: clockFeatures/22 (read)gateCallbackIndex/43 (read)gateCallbacks/44 (read)clockConfig/3 (read)clockFeatures/22 (read)cmuCallbackIndex/23 (read)cmuCallbacks/24 (read)clockConfig/3 (read)
@@ -775,7 +775,7 @@ Clock_Ip_DistributePll.part.0/55 (Clock_Ip_DistributePll.part.0) @06a2f380
   Calls: SpecificPeripheralClockInitialization/45 (118111601 (estimated locally),1.00 per call) DisableSafeClock/46 (118111601 (estimated locally),1.00 per call) 
    Indirect call(955630223 (estimated locally),8.09 per call) 
    Indirect call(118111601 (estimated locally),1.00 per call) 
-UpdateDriverContext.isra.0/54 (UpdateDriverContext.isra.0) @06a2f620
+UpdateDriverContext.isra.0/54 (UpdateDriverContext.isra.0) @06a0e700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: clockObjectsAreInitialized/1 (read)clockObjectsAreInitialized/1 (write)
@@ -784,7 +784,7 @@ UpdateDriverContext.isra.0/54 (UpdateDriverContext.isra.0) @06a2f620
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Clock_Ip_InitClock/5 (118111600 (estimated locally),1.00 per call) 
   Calls: CallEmptyCallbacks/20 (1073741824 (estimated locally),1.00 per call) ClockInitializeObjects/47 (354334802 (estimated locally),0.33 per call) 
-OsIf_GetElapsed/53 (OsIf_GetElapsed) @06a1c000
+OsIf_GetElapsed/53 (OsIf_GetElapsed) @069fb000
   Type: function
   Visibility: external public
   References: 
@@ -793,7 +793,7 @@ OsIf_GetElapsed/53 (OsIf_GetElapsed) @06a1c000
   Function flags: optimize_size
   Called by: ClockTimeoutExpired/18 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-OsIf_MicrosToTicks/52 (OsIf_MicrosToTicks) @06a0c1c0
+OsIf_MicrosToTicks/52 (OsIf_MicrosToTicks) @069eb1c0
   Type: function
   Visibility: external public
   References: 
@@ -802,7 +802,7 @@ OsIf_MicrosToTicks/52 (OsIf_MicrosToTicks) @06a0c1c0
   Function flags: optimize_size
   Called by: ClockStartTimeout/17 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-OsIf_GetCounter/51 (OsIf_GetCounter) @06a0cee0
+OsIf_GetCounter/51 (OsIf_GetCounter) @069ebee0
   Type: function
   Visibility: external public
   References: 
@@ -811,7 +811,7 @@ OsIf_GetCounter/51 (OsIf_GetCounter) @06a0cee0
   Function flags: optimize_size
   Called by: ClockStartTimeout/17 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ClockPowerModeChangeNotification/50 (ClockPowerModeChangeNotification) @06a0c8c0
+ClockPowerModeChangeNotification/50 (ClockPowerModeChangeNotification) @069eb8c0
   Type: function
   Visibility: external public
   References: 
@@ -820,7 +820,7 @@ ClockPowerModeChangeNotification/50 (ClockPowerModeChangeNotification) @06a0c8c0
   Function flags: optimize_size
   Called by: Clock_Ip_PowerModeChangeNotification/11 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-HwPllName/49 (HwPllName) @06a10900
+HwPllName/49 (HwPllName) @069ef900
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -828,14 +828,14 @@ HwPllName/49 (HwPllName) @06a10900
   Referring: Clock_Ip_GetPllStatus/6 (read)
   Availability: not_available
   Varpool flags: read-only
-functionWasCalled.6204/48 (functionWasCalled) @06a06c60
+functionWasCalled.6204/48 (functionWasCalled) @069e5c60
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: CallEmptyCallbacks/20 (read)CallEmptyCallbacks/20 (write)
   Availability: available
   Varpool flags: initialized
-ClockInitializeObjects/47 (ClockInitializeObjects) @06a0c000
+ClockInitializeObjects/47 (ClockInitializeObjects) @069eb000
   Type: function
   Visibility: external public
   References: 
@@ -844,7 +844,7 @@ ClockInitializeObjects/47 (ClockInitializeObjects) @06a0c000
   Function flags: optimize_size
   Called by: Clock_Ip_PowerModeChangeNotification/11 (354334802 (estimated locally),0.33 per call) UpdateDriverContext.isra.0/54 (354334802 (estimated locally),0.33 per call) 
   Calls: 
-DisableSafeClock/46 (DisableSafeClock) @07490620
+DisableSafeClock/46 (DisableSafeClock) @07480620
   Type: function
   Visibility: external public
   References: 
@@ -853,7 +853,7 @@ DisableSafeClock/46 (DisableSafeClock) @07490620
   Function flags: optimize_size
   Called by: Clock_Ip_DistributePll.part.0/55 (118111601 (estimated locally),1.00 per call) Clock_Ip_InitClock/5 (59055800 (estimated locally),0.50 per call) 
   Calls: 
-SpecificPeripheralClockInitialization/45 (SpecificPeripheralClockInitialization) @07490380
+SpecificPeripheralClockInitialization/45 (SpecificPeripheralClockInitialization) @07480380
   Type: function
   Visibility: external public
   References: 
@@ -862,7 +862,7 @@ SpecificPeripheralClockInitialization/45 (SpecificPeripheralClockInitialization)
   Function flags: optimize_size
   Called by: Clock_Ip_DistributePll.part.0/55 (118111601 (estimated locally),1.00 per call) Clock_Ip_InitClock/5 (59055800 (estimated locally),0.50 per call) 
   Calls: 
-gateCallbacks/44 (gateCallbacks) @06a02f30
+gateCallbacks/44 (gateCallbacks) @069e1f30
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -870,7 +870,7 @@ gateCallbacks/44 (gateCallbacks) @06a02f30
   Referring: Clock_Ip_DisableModuleClock/13 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_DistributePll.part.0/55 (read)CallEmptyCallbacks/20 (read)CallEmptyCallbacks/20 (read)Clock_Ip_EnableModuleClock/14 (read)
   Availability: not_available
   Varpool flags: read-only
-gateCallbackIndex/43 (gateCallbackIndex) @06a02ee8
+gateCallbackIndex/43 (gateCallbackIndex) @069e1ee8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -878,7 +878,7 @@ gateCallbackIndex/43 (gateCallbackIndex) @06a02ee8
   Referring: Clock_Ip_DistributePll.part.0/55 (read)Clock_Ip_DisableModuleClock/13 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_EnableModuleClock/14 (read)
   Availability: not_available
   Varpool flags: read-only
-selectorCallbacks/42 (selectorCallbacks) @06a02e10
+selectorCallbacks/42 (selectorCallbacks) @069e1e10
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -886,7 +886,7 @@ selectorCallbacks/42 (selectorCallbacks) @06a02e10
   Referring: CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)ResetClockConfiguration/21 (read)Clock_Ip_DistributePll/7 (read)
   Availability: not_available
   Varpool flags: read-only
-selectorCallbackIndex/41 (selectorCallbackIndex) @06a02dc8
+selectorCallbackIndex/41 (selectorCallbackIndex) @069e1dc8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -894,7 +894,7 @@ selectorCallbackIndex/41 (selectorCallbackIndex) @06a02dc8
   Referring: Clock_Ip_InitClock/5 (read)ResetClockConfiguration/21 (read)Clock_Ip_DistributePll/7 (read)
   Availability: not_available
   Varpool flags: read-only
-sourceType_clockName/40 (sourceType_clockName) @06a02d80
+sourceType_clockName/40 (sourceType_clockName) @069e1d80
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -902,7 +902,7 @@ sourceType_clockName/40 (sourceType_clockName) @06a02d80
   Referring: Clock_Ip_InitClock/5 (read)Clock_Ip_DistributePll/7 (read)
   Availability: not_available
   Varpool flags: read-only
-fracDivCallbacks/39 (fracDivCallbacks) @06a02ca8
+fracDivCallbacks/39 (fracDivCallbacks) @069e1ca8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -910,7 +910,7 @@ fracDivCallbacks/39 (fracDivCallbacks) @06a02ca8
   Referring: CallEmptyCallbacks/20 (read)ResetClockConfiguration/21 (read)CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-fractional_dividerCallbackIndex/38 (fractional_dividerCallbackIndex) @06a02c60
+fractional_dividerCallbackIndex/38 (fractional_dividerCallbackIndex) @069e1c60
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -918,7 +918,7 @@ fractional_dividerCallbackIndex/38 (fractional_dividerCallbackIndex) @06a02c60
   Referring: ResetClockConfiguration/21 (read)Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-pllCallbacks/37 (pllCallbacks) @06a029d8
+pllCallbacks/37 (pllCallbacks) @069e19d8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -926,7 +926,7 @@ pllCallbacks/37 (pllCallbacks) @06a029d8
   Referring: CallEmptyCallbacks/20 (read)CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)ResetClockConfiguration/21 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_GetPllStatus/6 (read)
   Availability: not_available
   Varpool flags: read-only
-pllCallbackIndex/36 (pllCallbackIndex) @06a02990
+pllCallbackIndex/36 (pllCallbackIndex) @069e1990
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -934,7 +934,7 @@ pllCallbackIndex/36 (pllCallbackIndex) @06a02990
   Referring: ResetClockConfiguration/21 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_GetPllStatus/6 (read)
   Availability: not_available
   Varpool flags: read-only
-dividerCallbacks/35 (dividerCallbacks) @06a02828
+dividerCallbacks/35 (dividerCallbacks) @069e1828
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -942,7 +942,7 @@ dividerCallbacks/35 (dividerCallbacks) @06a02828
   Referring: CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-dividerCallbackIndex/34 (dividerCallbackIndex) @06a027e0
+dividerCallbackIndex/34 (dividerCallbackIndex) @069e17e0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -950,7 +950,7 @@ dividerCallbackIndex/34 (dividerCallbackIndex) @06a027e0
   Referring: Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-dividerTriggerCallbacks/33 (dividerTriggerCallbacks) @06a02708
+dividerTriggerCallbacks/33 (dividerTriggerCallbacks) @069e1708
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -958,7 +958,7 @@ dividerTriggerCallbacks/33 (dividerTriggerCallbacks) @06a02708
   Referring: CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-dividertriggerCallbackIndex/32 (dividertriggerCallbackIndex) @06a026c0
+dividertriggerCallbackIndex/32 (dividertriggerCallbackIndex) @069e16c0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -966,7 +966,7 @@ dividertriggerCallbackIndex/32 (dividertriggerCallbackIndex) @06a026c0
   Referring: Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-pcfsCallbacks/31 (pcfsCallbacks) @06a025e8
+pcfsCallbacks/31 (pcfsCallbacks) @069e15e8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -974,7 +974,7 @@ pcfsCallbacks/31 (pcfsCallbacks) @06a025e8
   Referring: CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-pcfsCallbackIndex/30 (pcfsCallbackIndex) @06a025a0
+pcfsCallbackIndex/30 (pcfsCallbackIndex) @069e15a0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -982,7 +982,7 @@ pcfsCallbackIndex/30 (pcfsCallbackIndex) @06a025a0
   Referring: Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-extOscCallbacks/29 (extOscCallbacks) @06a02480
+extOscCallbacks/29 (extOscCallbacks) @069e1480
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -990,7 +990,7 @@ extOscCallbacks/29 (extOscCallbacks) @06a02480
   Referring: ResetClockConfiguration/21 (read)CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-xoscCallbackIndex/28 (xoscCallbackIndex) @06a02438
+xoscCallbackIndex/28 (xoscCallbackIndex) @069e1438
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -998,7 +998,7 @@ xoscCallbackIndex/28 (xoscCallbackIndex) @06a02438
   Referring: ResetClockConfiguration/21 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-intOscCallbacks/27 (intOscCallbacks) @06a02360
+intOscCallbacks/27 (intOscCallbacks) @069e1360
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -1006,7 +1006,7 @@ intOscCallbacks/27 (intOscCallbacks) @06a02360
   Referring: CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-ircoscCallbackIndex/26 (ircoscCallbackIndex) @06a02318
+ircoscCallbackIndex/26 (ircoscCallbackIndex) @069e1318
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -1014,7 +1014,7 @@ ircoscCallbackIndex/26 (ircoscCallbackIndex) @06a02318
   Referring: Clock_Ip_InitClock/5 (read)
   Availability: not_available
   Varpool flags: read-only
-SpecificPlatformInitClock/25 (SpecificPlatformInitClock) @074900e0
+SpecificPlatformInitClock/25 (SpecificPlatformInitClock) @074800e0
   Type: function
   Visibility: external public
   References: 
@@ -1023,7 +1023,7 @@ SpecificPlatformInitClock/25 (SpecificPlatformInitClock) @074900e0
   Function flags: optimize_size
   Called by: Clock_Ip_InitClock/5 (118111600 (estimated locally),1.00 per call) 
   Calls: 
-cmuCallbacks/24 (cmuCallbacks) @06a021b0
+cmuCallbacks/24 (cmuCallbacks) @069e11b0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -1031,7 +1031,7 @@ cmuCallbacks/24 (cmuCallbacks) @06a021b0
   Referring: CallEmptyCallbacks/20 (read)CallEmptyCallbacks/20 (read)Clock_Ip_GetClockMonitorStatus/9 (read)CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_DistributePll.part.0/55 (read)Clock_Ip_DisableClockMonitor/8 (read)CallEmptyCallbacks/20 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_ClearClockMonitorStatus/10 (read)
   Availability: not_available
   Varpool flags: read-only
-cmuCallbackIndex/23 (cmuCallbackIndex) @06a02168
+cmuCallbackIndex/23 (cmuCallbackIndex) @069e1168
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -1039,7 +1039,7 @@ cmuCallbackIndex/23 (cmuCallbackIndex) @06a02168
   Referring: Clock_Ip_InitClock/5 (read)Clock_Ip_DistributePll.part.0/55 (read)Clock_Ip_DisableClockMonitor/8 (read)Clock_Ip_GetClockMonitorStatus/9 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_ClearClockMonitorStatus/10 (read)
   Availability: not_available
   Varpool flags: read-only
-clockFeatures/22 (clockFeatures) @06a02120
+clockFeatures/22 (clockFeatures) @069e1120
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -1047,7 +1047,7 @@ clockFeatures/22 (clockFeatures) @06a02120
   Referring: Clock_Ip_InitClock/5 (read)Clock_Ip_DisableModuleClock/13 (read)Clock_Ip_DistributePll/7 (read)Clock_Ip_DisableClockMonitor/8 (read)Clock_Ip_GetClockMonitorStatus/9 (read)Clock_Ip_ClearClockMonitorStatus/10 (read)ResetClockConfiguration/21 (read)ResetClockConfiguration/21 (read)ResetClockConfiguration/21 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_GetPllStatus/6 (read)ResetClockConfiguration/21 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (read)Clock_Ip_DistributePll.part.0/55 (read)Clock_Ip_DistributePll.part.0/55 (read)Clock_Ip_EnableModuleClock/14 (read)
   Availability: not_available
   Varpool flags: read-only
-ResetClockConfiguration/21 (ResetClockConfiguration) @07490a80
+ResetClockConfiguration/21 (ResetClockConfiguration) @07480a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: clockFeatures/22 (read)selectorCallbackIndex/41 (read)selectorCallbacks/42 (read)clockFeatures/22 (read)fractional_dividerCallbackIndex/38 (read)fracDivCallbacks/39 (read)clockFeatures/22 (read)pllCallbackIndex/36 (read)pllCallbacks/37 (read)clockFeatures/22 (read)xoscCallbackIndex/28 (read)extOscCallbacks/29 (read)
@@ -1060,7 +1060,7 @@ ResetClockConfiguration/21 (ResetClockConfiguration) @07490a80
    Indirect call(118111601 (estimated locally),1.00 per call) 
    Indirect call(118111601 (estimated locally),1.00 per call) 
    Indirect call(955630223 (estimated locally),8.09 per call) 
-CallEmptyCallbacks/20 (CallEmptyCallbacks) @074907e0
+CallEmptyCallbacks/20 (CallEmptyCallbacks) @074807e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: functionWasCalled.6204/48 (read)functionWasCalled.6204/48 (write)cmuCallbacks/24 (read)cmuCallbacks/24 (read)cmuCallbacks/24 (read)cmuCallbacks/24 (read)dividerCallbacks/35 (read)dividerTriggerCallbacks/33 (read)extOscCallbacks/29 (read)fracDivCallbacks/39 (read)fracDivCallbacks/39 (read)gateCallbacks/44 (read)gateCallbacks/44 (read)intOscCallbacks/27 (read)pllCallbacks/37 (read)pllCallbacks/37 (read)selectorCallbacks/42 (read)pcfsCallbacks/31 (read)
@@ -1085,7 +1085,7 @@ CallEmptyCallbacks/20 (CallEmptyCallbacks) @074907e0
    Indirect call(536870913 (estimated locally),0.50 per call) 
    Indirect call(536870913 (estimated locally),0.50 per call) 
    Indirect call(536870913 (estimated locally),0.50 per call) 
-ClockTimeoutExpired/18 (ClockTimeoutExpired) @074902a0
+ClockTimeoutExpired/18 (ClockTimeoutExpired) @074802a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -1094,7 +1094,7 @@ ClockTimeoutExpired/18 (ClockTimeoutExpired) @074902a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: OsIf_GetElapsed/53 (1073741824 (estimated locally),1.00 per call) 
-ClockStartTimeout/17 (ClockStartTimeout) @07490000
+ClockStartTimeout/17 (ClockStartTimeout) @07480000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -1103,7 +1103,7 @@ ClockStartTimeout/17 (ClockStartTimeout) @07490000
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: OsIf_MicrosToTicks/52 (1073741824 (estimated locally),1.00 per call) OsIf_GetCounter/51 (1073741824 (estimated locally),1.00 per call) 
-ReportClockErrors/16 (ReportClockErrors) @0748bb60
+ReportClockErrors/16 (ReportClockErrors) @0747bb60
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockNotificationsCallback/2 (read)
@@ -1113,7 +1113,7 @@ ReportClockErrors/16 (ReportClockErrors) @0748bb60
   Called by: 
   Calls: 
    Indirect call(1073741824 (estimated locally),1.00 per call) 
-ClockNotificatonsEmptyCallback/15 (ClockNotificatonsEmptyCallback) @0748b620
+ClockNotificatonsEmptyCallback/15 (ClockNotificatonsEmptyCallback) @0747b620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -1123,7 +1123,7 @@ ClockNotificatonsEmptyCallback/15 (ClockNotificatonsEmptyCallback) @0748b620
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Clock_Ip_EnableModuleClock/14 (Clock_Ip_EnableModuleClock) @0748b0e0
+Clock_Ip_EnableModuleClock/14 (Clock_Ip_EnableModuleClock) @0747b0e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockFeatures/22 (read)gateCallbackIndex/43 (read)gateCallbacks/44 (read)
@@ -1133,7 +1133,7 @@ Clock_Ip_EnableModuleClock/14 (Clock_Ip_EnableModuleClock) @0748b0e0
   Called by: 
   Calls: 
    Indirect call(1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_DisableModuleClock/13 (Clock_Ip_DisableModuleClock) @0748bd20
+Clock_Ip_DisableModuleClock/13 (Clock_Ip_DisableModuleClock) @0747bd20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockFeatures/22 (read)gateCallbackIndex/43 (read)gateCallbacks/44 (read)
@@ -1143,7 +1143,7 @@ Clock_Ip_DisableModuleClock/13 (Clock_Ip_DisableModuleClock) @0748bd20
   Called by: 
   Calls: 
    Indirect call(1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_InstallNotificationsCallback/12 (Clock_Ip_InstallNotificationsCallback) @0748ba80
+Clock_Ip_InstallNotificationsCallback/12 (Clock_Ip_InstallNotificationsCallback) @0747ba80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockNotificationsCallback/2 (write)
@@ -1152,7 +1152,7 @@ Clock_Ip_InstallNotificationsCallback/12 (Clock_Ip_InstallNotificationsCallback)
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Clock_Ip_PowerModeChangeNotification/11 (Clock_Ip_PowerModeChangeNotification) @0748b7e0
+Clock_Ip_PowerModeChangeNotification/11 (Clock_Ip_PowerModeChangeNotification) @0747b7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockObjectsAreInitialized/1 (read)clockObjectsAreInitialized/1 (write)
@@ -1161,7 +1161,7 @@ Clock_Ip_PowerModeChangeNotification/11 (Clock_Ip_PowerModeChangeNotification) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ClockPowerModeChangeNotification/50 (1073741824 (estimated locally),1.00 per call) ClockInitializeObjects/47 (354334802 (estimated locally),0.33 per call) 
-Clock_Ip_ClearClockMonitorStatus/10 (Clock_Ip_ClearClockMonitorStatus) @0748b540
+Clock_Ip_ClearClockMonitorStatus/10 (Clock_Ip_ClearClockMonitorStatus) @0747b540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockFeatures/22 (read)cmuCallbackIndex/23 (read)cmuCallbacks/24 (read)
@@ -1171,7 +1171,7 @@ Clock_Ip_ClearClockMonitorStatus/10 (Clock_Ip_ClearClockMonitorStatus) @0748b540
   Called by: 
   Calls: 
    Indirect call(1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_GetClockMonitorStatus/9 (Clock_Ip_GetClockMonitorStatus) @0748b2a0
+Clock_Ip_GetClockMonitorStatus/9 (Clock_Ip_GetClockMonitorStatus) @0747b2a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockFeatures/22 (read)cmuCallbackIndex/23 (read)cmuCallbacks/24 (read)
@@ -1181,7 +1181,7 @@ Clock_Ip_GetClockMonitorStatus/9 (Clock_Ip_GetClockMonitorStatus) @0748b2a0
   Called by: 
   Calls: 
    Indirect call(1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_DisableClockMonitor/8 (Clock_Ip_DisableClockMonitor) @0748b000
+Clock_Ip_DisableClockMonitor/8 (Clock_Ip_DisableClockMonitor) @0747b000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockFeatures/22 (read)cmuCallbackIndex/23 (read)cmuCallbacks/24 (read)
@@ -1191,7 +1191,7 @@ Clock_Ip_DisableClockMonitor/8 (Clock_Ip_DisableClockMonitor) @0748b000
   Called by: 
   Calls: 
    Indirect call(1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_DistributePll/7 (Clock_Ip_DistributePll) @06937a80
+Clock_Ip_DistributePll/7 (Clock_Ip_DistributePll) @06916a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockConfig/3 (read)sourceType_clockName/40 (read)clockFeatures/22 (read)selectorCallbackIndex/41 (read)selectorCallbacks/42 (read)clockConfig/3 (read)clockTreeIsConsumingPll/0 (read)
@@ -1201,7 +1201,7 @@ Clock_Ip_DistributePll/7 (Clock_Ip_DistributePll) @06937a80
   Called by: Clock_Ip_Init/4 (116930485 (estimated locally),0.11 per call) 
   Calls: Clock_Ip_DistributePll.part.0/55 (59055800 (estimated locally),0.35 per call) 
    Indirect call(324914276 (estimated locally),1.93 per call) 
-Clock_Ip_GetPllStatus/6 (Clock_Ip_GetPllStatus) @06937ee0
+Clock_Ip_GetPllStatus/6 (Clock_Ip_GetPllStatus) @06916ee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: HwPllName/49 (read)clockFeatures/22 (read)pllCallbackIndex/36 (read)pllCallbacks/37 (read)
@@ -1211,7 +1211,7 @@ Clock_Ip_GetPllStatus/6 (Clock_Ip_GetPllStatus) @06937ee0
   Called by: Clock_Ip_Init/4 (354334802 (estimated locally),0.33 per call) 
   Calls: 
    Indirect call(1014686025 (estimated locally),8.83 per call) 
-Clock_Ip_InitClock/5 (Clock_Ip_InitClock) @06937c40
+Clock_Ip_InitClock/5 (Clock_Ip_InitClock) @06916c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockConfig/3 (read)clockFeatures/22 (read)cmuCallbackIndex/23 (read)cmuCallbacks/24 (read)clockConfig/3 (write)clockFeatures/22 (read)ircoscCallbackIndex/26 (read)intOscCallbacks/27 (read)clockFeatures/22 (read)xoscCallbackIndex/28 (read)extOscCallbacks/29 (read)clockFeatures/22 (read)pcfsCallbackIndex/30 (read)pcfsCallbacks/31 (read)clockFeatures/22 (read)dividertriggerCallbackIndex/32 (read)dividerTriggerCallbacks/33 (read)clockFeatures/22 (read)dividerCallbackIndex/34 (read)dividerCallbacks/35 (read)clockFeatures/22 (read)dividertriggerCallbackIndex/32 (read)dividerTriggerCallbacks/33 (read)clockFeatures/22 (read)pllCallbackIndex/36 (read)pllCallbacks/37 (read)clockFeatures/22 (read)cmuCallbackIndex/23 (read)cmuCallbacks/24 (read)clockFeatures/22 (read)xoscCallbackIndex/28 (read)extOscCallbacks/29 (read)clockFeatures/22 (read)pllCallbackIndex/36 (read)pllCallbacks/37 (read)clockFeatures/22 (read)fractional_dividerCallbackIndex/38 (read)fracDivCallbacks/39 (read)clockTreeIsConsumingPll/0 (write)sourceType_clockName/40 (read)clockFeatures/22 (read)selectorCallbackIndex/41 (read)selectorCallbacks/42 (read)clockTreeIsConsumingPll/0 (write)clockTreeIsConsumingPll/0 (read)clockFeatures/22 (read)gateCallbackIndex/43 (read)gateCallbacks/44 (read)clockFeatures/22 (read)cmuCallbackIndex/23 (read)cmuCallbacks/24 (read)
@@ -1235,7 +1235,7 @@ Clock_Ip_InitClock/5 (Clock_Ip_InitClock) @06937c40
    Indirect call(118111600 (estimated locally),1.00 per call) 
    Indirect call(236258637 (estimated locally),2.00 per call) 
    Indirect call(82678120 (estimated locally),0.70 per call) 
-Clock_Ip_Init/4 (Clock_Ip_Init) @069379a0
+Clock_Ip_Init/4 (Clock_Ip_Init) @069169a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: clockTreeIsConsumingPll/0 (read)
@@ -1244,28 +1244,28 @@ Clock_Ip_Init/4 (Clock_Ip_Init) @069379a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_DistributePll/7 (116930485 (estimated locally),0.11 per call) Clock_Ip_GetPllStatus/6 (354334802 (estimated locally),0.33 per call) Clock_Ip_InitClock/5 (1073741824 (estimated locally),1.00 per call) 
-clockConfig/3 (clockConfig) @0697d168
+clockConfig/3 (clockConfig) @0695c168
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: Clock_Ip_InitClock/5 (read)Clock_Ip_InitClock/5 (write)Clock_Ip_DistributePll.part.0/55 (read)Clock_Ip_DistributePll.part.0/55 (read)Clock_Ip_DistributePll/7 (read)Clock_Ip_DistributePll/7 (read)
   Availability: available
   Varpool flags:
-clockNotificationsCallback/2 (clockNotificationsCallback) @0697d120
+clockNotificationsCallback/2 (clockNotificationsCallback) @0695c120
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: ClockNotificatonsEmptyCallback/15 (addr)
   Referring: Clock_Ip_InstallNotificationsCallback/12 (write)ReportClockErrors/16 (read)
   Availability: available
   Varpool flags: initialized
-clockObjectsAreInitialized/1 (clockObjectsAreInitialized) @0697d090
+clockObjectsAreInitialized/1 (clockObjectsAreInitialized) @0695c090
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: UpdateDriverContext.isra.0/54 (read)UpdateDriverContext.isra.0/54 (write)Clock_Ip_PowerModeChangeNotification/11 (read)Clock_Ip_PowerModeChangeNotification/11 (write)
   Availability: available
   Varpool flags:
-clockTreeIsConsumingPll/0 (clockTreeIsConsumingPll) @0697d000
+clockTreeIsConsumingPll/0 (clockTreeIsConsumingPll) @0695c000
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 

@@ -33,7 +33,7 @@ GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144.siz \
 all: GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144.elf secondary-outputs
 
 # Tool invocations
-GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144.elf: $(OBJS) C:/Users/gettobyte_kunal/Documents/elecronicsv2_autosarMCAL_Workspace/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/Project_Settings/Linker_Files/linker_ram_s32k144.ld $(USER_OBJS)
+GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144.elf: $(OBJS) C:/Users/gettobyte_kunal/Documents/ElecronicsV2_Autosar_MCAL/GB_ElecronicsV2_Autosar_MCAL/Peripherals/CAN/GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144/Project_Settings/Linker_Files/linker_ram_s32k144.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Standard S32DS C Linker'
 	arm-none-eabi-gcc -o "GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144.elf" "@GB_FlexCAN_MailBox_Int_ElecronicsV2_S32K144.args"  $(USER_OBJS)

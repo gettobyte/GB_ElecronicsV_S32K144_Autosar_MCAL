@@ -1,0 +1,43 @@
+main ()
+{
+  struct Flexcan_Ip_MsgBuffType rxData;
+  struct Flexcan_Ip_DataInfoType rx_info;
+  Flexcan_Ip_StatusType FlexCAN_Api_Status;
+  int D.7257;
+
+  <bb 2> :
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 3> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  rx_info = {};
+  rx_info.data_length = 8;
+  rx_info.is_polling = 1;
+  FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
+  FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode_Privileged (0);
+
+  <bb 5> :
+  FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb (0, 1, &rx_info, 800);
+
+  <bb 6> :
+  _2 = FlexCAN_Ip_ReceiveBlocking (0, 1, &rxData, 1, 1000);
+  if (_2 == 3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  memset (&rxData.data, 0, 64);
+  goto <bb 5>; [INV]
+
+}
+
+

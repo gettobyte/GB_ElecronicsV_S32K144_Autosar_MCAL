@@ -257,7 +257,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08/33 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08) @05daa2a0
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08/33 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08) @0693d2a0
   Type: function
   Visibility: external public
   References: 
@@ -266,7 +266,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08/33 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08)
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_DisableDigitalFilter/15 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08/32 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08) @05daa1c0
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08/32 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08) @0693d1c0
   Type: function
   Visibility: external public
   References: 
@@ -275,7 +275,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08/32 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_0
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_DisableDigitalFilter/15 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07/31 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07) @05daa000
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07/31 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07) @0693d000
   Type: function
   Visibility: external public
   References: 
@@ -284,7 +284,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07/31 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07)
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_EnableDigitalFilter/14 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07/30 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07) @05c158c0
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07/30 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07) @067b78c0
   Type: function
   Visibility: external public
   References: 
@@ -293,7 +293,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07/30 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_0
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_EnableDigitalFilter/14 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06/29 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06) @05c15e00
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06/29 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06) @067b7e00
   Type: function
   Visibility: external public
   References: 
@@ -302,7 +302,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06/29 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06)
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_SetMuxModeSel/13 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06/28 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06) @05c15d20
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06/28 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06) @067b7d20
   Type: function
   Visibility: external public
   References: 
@@ -311,7 +311,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06/28 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_0
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_SetMuxModeSel/13 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01/27 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01) @05c15b60
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01/27 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01) @067b7b60
   Type: function
   Visibility: external public
   References: 
@@ -320,7 +320,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01/27 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01)
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_PinInit/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01/26 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01) @05c15a80
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01/26 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01) @067b7a80
   Type: function
   Visibility: external public
   References: 
@@ -329,7 +329,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01/26 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_0
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_PinInit/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05/25 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05) @05c15700
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05/25 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05) @067b7700
   Type: function
   Visibility: external public
   References: 
@@ -338,7 +338,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05/25 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05)
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_SetDFER/11 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05/24 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05) @05c15620
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05/24 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05) @067b7620
   Type: function
   Visibility: external public
   References: 
@@ -347,7 +347,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05/24 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_0
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_SetDFER/11 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04/23 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04) @05c15460
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04/23 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04) @067b7460
   Type: function
   Visibility: external public
   References: 
@@ -356,7 +356,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04/23 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04)
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_SetPIDR/10 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04/22 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04) @05c15380
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04/22 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04) @067b7380
   Type: function
   Visibility: external public
   References: 
@@ -365,7 +365,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04/22 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_0
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_SetPIDR/10 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03/21 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03) @05c151c0
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03/21 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03) @067b71c0
   Type: function
   Visibility: external public
   References: 
@@ -374,7 +374,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03/21 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03)
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_ClearPDDR/9 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03/20 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03) @05c150e0
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03/20 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03) @067b70e0
   Type: function
   Visibility: external public
   References: 
@@ -383,7 +383,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03/20 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_0
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_ClearPDDR/9 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02/19 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02) @05c0e700
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02/19 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02) @067b0700
   Type: function
   Visibility: external public
   References: 
@@ -392,7 +392,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02/19 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02)
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_SetPDDR/8 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02/18 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02) @05c0e2a0
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02/18 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02) @067b02a0
   Type: function
   Visibility: external public
   References: 
@@ -401,7 +401,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02/18 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_0
   Function flags: optimize_size
   Called by: Port_Ci_Port_Ip_SetPDDR/8 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Port_Ci_Port_Ip_SetGlobalPinControl/17 (Port_Ci_Port_Ip_SetGlobalPinControl) @05c0e8c0
+Port_Ci_Port_Ip_SetGlobalPinControl/17 (Port_Ci_Port_Ip_SetGlobalPinControl) @067b08c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -410,7 +410,7 @@ Port_Ci_Port_Ip_SetGlobalPinControl/17 (Port_Ci_Port_Ip_SetGlobalPinControl) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Port_Ci_Port_Ip_ConfigDigitalFilter/16 (Port_Ci_Port_Ip_ConfigDigitalFilter) @05c0e620
+Port_Ci_Port_Ip_ConfigDigitalFilter/16 (Port_Ci_Port_Ip_ConfigDigitalFilter) @067b0620
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -419,7 +419,7 @@ Port_Ci_Port_Ip_ConfigDigitalFilter/16 (Port_Ci_Port_Ip_ConfigDigitalFilter) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Port_Ci_Port_Ip_DisableDigitalFilter/15 (Port_Ci_Port_Ip_DisableDigitalFilter) @05c0e1c0
+Port_Ci_Port_Ip_DisableDigitalFilter/15 (Port_Ci_Port_Ip_DisableDigitalFilter) @067b01c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -428,7 +428,7 @@ Port_Ci_Port_Ip_DisableDigitalFilter/15 (Port_Ci_Port_Ip_DisableDigitalFilter) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08/33 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08/32 (1073741824 (estimated locally),1.00 per call) 
-Port_Ci_Port_Ip_EnableDigitalFilter/14 (Port_Ci_Port_Ip_EnableDigitalFilter) @05ca3e00
+Port_Ci_Port_Ip_EnableDigitalFilter/14 (Port_Ci_Port_Ip_EnableDigitalFilter) @06846e00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -437,7 +437,7 @@ Port_Ci_Port_Ip_EnableDigitalFilter/14 (Port_Ci_Port_Ip_EnableDigitalFilter) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07/31 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07/30 (1073741824 (estimated locally),1.00 per call) 
-Port_Ci_Port_Ip_SetMuxModeSel/13 (Port_Ci_Port_Ip_SetMuxModeSel) @05ca38c0
+Port_Ci_Port_Ip_SetMuxModeSel/13 (Port_Ci_Port_Ip_SetMuxModeSel) @068468c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -446,7 +446,7 @@ Port_Ci_Port_Ip_SetMuxModeSel/13 (Port_Ci_Port_Ip_SetMuxModeSel) @05ca38c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06/29 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06/28 (1073741824 (estimated locally),1.00 per call) 
-Port_Ci_Port_Ip_Init/12 (Port_Ci_Port_Ip_Init) @05ca30e0
+Port_Ci_Port_Ip_Init/12 (Port_Ci_Port_Ip_Init) @068460e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -455,7 +455,7 @@ Port_Ci_Port_Ip_Init/12 (Port_Ci_Port_Ip_Init) @05ca30e0
   Function flags: count:118111600 (estimated locally) body optimize_size
   Called by: 
   Calls: Port_Ci_Port_Ip_PinInit/3 (955630223 (estimated locally),8.09 per call) 
-Port_Ci_Port_Ip_SetDFER/11 (Port_Ci_Port_Ip_SetDFER) @05ca3d20
+Port_Ci_Port_Ip_SetDFER/11 (Port_Ci_Port_Ip_SetDFER) @06846d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -464,7 +464,7 @@ Port_Ci_Port_Ip_SetDFER/11 (Port_Ci_Port_Ip_SetDFER) @05ca3d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05/25 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05/24 (1073741824 (estimated locally),1.00 per call) 
-Port_Ci_Port_Ip_SetPIDR/10 (Port_Ci_Port_Ip_SetPIDR) @05ca3a80
+Port_Ci_Port_Ip_SetPIDR/10 (Port_Ci_Port_Ip_SetPIDR) @06846a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -473,7 +473,7 @@ Port_Ci_Port_Ip_SetPIDR/10 (Port_Ci_Port_Ip_SetPIDR) @05ca3a80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04/23 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04/22 (1073741824 (estimated locally),1.00 per call) 
-Port_Ci_Port_Ip_ClearPDDR/9 (Port_Ci_Port_Ip_ClearPDDR) @05ca37e0
+Port_Ci_Port_Ip_ClearPDDR/9 (Port_Ci_Port_Ip_ClearPDDR) @068467e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -482,7 +482,7 @@ Port_Ci_Port_Ip_ClearPDDR/9 (Port_Ci_Port_Ip_ClearPDDR) @05ca37e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03/21 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03/20 (1073741824 (estimated locally),1.00 per call) 
-Port_Ci_Port_Ip_SetPDDR/8 (Port_Ci_Port_Ip_SetPDDR) @05ca3540
+Port_Ci_Port_Ip_SetPDDR/8 (Port_Ci_Port_Ip_SetPDDR) @06846540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -491,7 +491,7 @@ Port_Ci_Port_Ip_SetPDDR/8 (Port_Ci_Port_Ip_SetPDDR) @05ca3540
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02/19 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02/18 (1073741824 (estimated locally),1.00 per call) 
-Port_Ci_Port_Ip_SetPCOR/7 (Port_Ci_Port_Ip_SetPCOR) @05ca32a0
+Port_Ci_Port_Ip_SetPCOR/7 (Port_Ci_Port_Ip_SetPCOR) @068462a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -500,7 +500,7 @@ Port_Ci_Port_Ip_SetPCOR/7 (Port_Ci_Port_Ip_SetPCOR) @05ca32a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Port_Ci_Port_Ip_SetPSOR/6 (Port_Ci_Port_Ip_SetPSOR) @05ca3000
+Port_Ci_Port_Ip_SetPSOR/6 (Port_Ci_Port_Ip_SetPSOR) @06846000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -509,7 +509,7 @@ Port_Ci_Port_Ip_SetPSOR/6 (Port_Ci_Port_Ip_SetPSOR) @05ca3000
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Port_Ci_Port_Ip_SetPCR/5 (Port_Ci_Port_Ip_SetPCR) @05c9bc40
+Port_Ci_Port_Ip_SetPCR/5 (Port_Ci_Port_Ip_SetPCR) @0683ec40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -518,7 +518,7 @@ Port_Ci_Port_Ip_SetPCR/5 (Port_Ci_Port_Ip_SetPCR) @05c9bc40
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Port_Ci_Port_Ip_ReadPCR/4 (Port_Ci_Port_Ip_ReadPCR) @05c9be00
+Port_Ci_Port_Ip_ReadPCR/4 (Port_Ci_Port_Ip_ReadPCR) @0683ee00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -527,7 +527,7 @@ Port_Ci_Port_Ip_ReadPCR/4 (Port_Ci_Port_Ip_ReadPCR) @05c9be00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Port_Ci_Port_Ip_PinInit/3 (Port_Ci_Port_Ip_PinInit) @05c9bb60
+Port_Ci_Port_Ip_PinInit/3 (Port_Ci_Port_Ip_PinInit) @0683eb60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -536,14 +536,14 @@ Port_Ci_Port_Ip_PinInit/3 (Port_Ci_Port_Ip_PinInit) @05c9bb60
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Port_Ci_Port_Ip_Init/12 (955630223 (estimated locally),8.09 per call) 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01/27 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01/26 (1073741824 (estimated locally),1.00 per call) 
-Port_au32PortCiGpioBaseAddr/2 (Port_au32PortCiGpioBaseAddr) @05c9c318
+Port_au32PortCiGpioBaseAddr/2 (Port_au32PortCiGpioBaseAddr) @0683f318
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: 
   Availability: available
   Varpool flags: initialized
-Port_au32PortCiPortBaseAddr/1 (Port_au32PortCiPortBaseAddr) @05c9c288
+Port_au32PortCiPortBaseAddr/1 (Port_au32PortCiPortBaseAddr) @0683f288
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 

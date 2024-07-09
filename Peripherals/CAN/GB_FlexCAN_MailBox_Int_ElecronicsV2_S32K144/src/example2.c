@@ -22,9 +22,24 @@
 #include "IntCtrl_Ip.h"
 
 extern void CAN0_ORED_0_15_MB_IRQHandler(void);
+#define GB_RxMailBox_CALLBACK 1
 
 #define MSG_ID 800u
-#define RX_MB_IDX 1U
+#define RX_MB_IDX 0U
+
+GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
+                  uint32 buffIdx, const Flexcan_Ip_StateType * flexcanState)
+{
+#if GB_RxMailBox_CALLBACK
+	Flexcan_Ip_StateType * state = flexcanState;
+	state->mbs[buffIdx].state = FLEXCAN_MB_RX_BUSY;
+#else
+
+	uint8_t callback = 0;
+	/* Do Nothing */
+#endif
+}
+
 
 int main(void)
 {
@@ -57,13 +72,21 @@ int main(void)
     FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
 
     FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);
+    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX, &rx_info, MSG_ID);
+
+    FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX, &rxData, false);
+
 
    for(;;)
    {
-       FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX, &rx_info, MSG_ID);
-       FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX, &rxData, false);
-     // clear the data received in rx buffer to Null
-	 memset(rxData.data, NULL, 64);
+
+
+/****** Enable If no callback is installed*****************/
+
+//       FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX, &rx_info, MSG_ID);
+//       FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX, &rxData, false);
+//       // clear the data received in rx buffer to Null
+//	     memset(rxData.data, NULL, 64);
 
 
    }

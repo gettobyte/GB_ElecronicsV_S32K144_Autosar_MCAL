@@ -40,21 +40,32 @@ main ()
   # DEBUG BEGIN_STMT
   FlexCAN_Ip_SetStartMode_Privileged (0);
   # DEBUG FlexCAN_Api_Status => NULL
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_ConfigRxMb (0, 0, &rx_info, 800);
+  # DEBUG FlexCAN_Api_Status => NULL
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_Receive (0, 0, &rxData, 0);
+  # DEBUG FlexCAN_Api_Status => NULL
 
   <bb 5> [local count: 1073741824]:
   # DEBUG BEGIN_STMT
   # DEBUG BEGIN_STMT
-  FlexCAN_Ip_ConfigRxMb (0, 1, &rx_info, 800);
-  # DEBUG FlexCAN_Api_Status => NULL
-  # DEBUG BEGIN_STMT
-  FlexCAN_Ip_Receive (0, 1, &rxData, 0);
-  # DEBUG FlexCAN_Api_Status => NULL
-  # DEBUG BEGIN_STMT
-  memset (&rxData.data, 0, 64);
   # DEBUG BEGIN_STMT
 
   <bb 6> [local count: 1073741824]:
   goto <bb 5>; [100.00%]
+
+}
+
+
+GB_MailBox_CallBack (uint8 instance, Flexcan_Ip_EventType eventType, uint32 buffIdx, const struct Flexcan_Ip_StateType * flexcanState)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG state => flexcanState_1(D)
+  # DEBUG BEGIN_STMT
+  MEM[(struct Flexcan_Ip_StateType *)flexcanState_1(D)].mbs[buffIdx_3(D)].state ={v} 1;
+  return;
 
 }
 

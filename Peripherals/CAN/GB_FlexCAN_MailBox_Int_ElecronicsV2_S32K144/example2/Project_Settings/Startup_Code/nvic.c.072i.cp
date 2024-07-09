@@ -61,7 +61,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-NVIC_SetPriority/3 (NVIC_SetPriority) @06ad2620
+NVIC_SetPriority/3 (NVIC_SetPriority) @06af2620
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -70,7 +70,7 @@ NVIC_SetPriority/3 (NVIC_SetPriority) @06ad2620
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-NVIC_DisableIRQ/2 (NVIC_DisableIRQ) @06ad2d20
+NVIC_DisableIRQ/2 (NVIC_DisableIRQ) @06af2d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -79,7 +79,7 @@ NVIC_DisableIRQ/2 (NVIC_DisableIRQ) @06ad2d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-NVIC_EnableIRQ/1 (NVIC_EnableIRQ) @06ad2a80
+NVIC_EnableIRQ/1 (NVIC_EnableIRQ) @06af2a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -88,7 +88,7 @@ NVIC_EnableIRQ/1 (NVIC_EnableIRQ) @06ad2a80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-NVIC_SetPriorityGrouping/0 (NVIC_SetPriorityGrouping) @06ad27e0
+NVIC_SetPriorityGrouping/0 (NVIC_SetPriorityGrouping) @06af27e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 

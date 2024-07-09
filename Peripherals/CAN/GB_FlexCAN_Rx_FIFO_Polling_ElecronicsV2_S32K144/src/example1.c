@@ -19,16 +19,13 @@
 #include "Port.h"
 
 
-#define MSG_ID 800u
 
 // RX FIFO Filter table structure
 const Flexcan_Ip_IdTableType GB_FlexCAN_IdFilterTable[8] = {
     		{
     		.isRemoteFrame = FALSE,
 			.isExtendedFrame = FALSE,
-			.id = 0x320
-			//.id = 0b00011001000000000001100100001000  //0x320 and 0x321
-
+			.id = 0x320 // 0x1900
     		},
 			{
 			.isRemoteFrame = FALSE,
