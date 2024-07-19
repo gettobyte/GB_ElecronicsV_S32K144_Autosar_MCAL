@@ -1,0 +1,170 @@
+IPA summary for PowerTimeoutExpired/3 is missing.
+IPA summary for PowerStartTimeout/2 is missing.
+IPA summary for ReportPowerErrorsEmptyCallback/1 is missing.
+IPA summary for ReportPowerErrors/0 is missing.
+
+Flattening functions:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :        3 calls, 3.000000 freq, 0 count
+IPA summary for PowerTimeoutExpired/3 is missing.
+IPA summary for PowerStartTimeout/2 is missing.
+IPA summary for ReportPowerErrorsEmptyCallback/1 is missing.
+IPA summary for ReportPowerErrors/0 is missing.
+Symbol table:
+
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @06765000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: PowerTimeoutExpired/3 
+  Calls: 
+OsIf_MicrosToTicks/6 (OsIf_MicrosToTicks) @06765e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: PowerStartTimeout/2 
+  Calls: 
+OsIf_GetCounter/5 (OsIf_GetCounter) @06765d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: PowerStartTimeout/2 
+  Calls: 
+powerReportErrorsCallback/4 (powerReportErrorsCallback) @06768318
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: ReportPowerErrors/0 (read)
+  Availability: not_available
+  Varpool flags:
+PowerTimeoutExpired/3 (PowerTimeoutExpired) @06765700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: OsIf_GetElapsed/7 
+PowerStartTimeout/2 (PowerStartTimeout) @06765460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: OsIf_MicrosToTicks/6 OsIf_GetCounter/5 
+ReportPowerErrorsEmptyCallback/1 (ReportPowerErrorsEmptyCallback) @067651c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+ReportPowerErrors/0 (ReportPowerErrors) @06759ee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: powerReportErrorsCallback/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+   Indirect call
+
+;; Function ReportPowerErrors (ReportPowerErrors, funcdef_no=0, decl_uid=5640, cgraph_uid=1, symbol_order=0)
+
+ReportPowerErrors (Power_Ip_PowerReportErrorType error, uint8 u8ErrorCode)
+{
+  void (*<T4c6>) (Power_Ip_PowerReportErrorType, uint8) powerReportErrorsCallback.0_1;
+
+  <bb 2> :
+  powerReportErrorsCallback.0_1 = powerReportErrorsCallback;
+  powerReportErrorsCallback.0_1 (error_3(D), u8ErrorCode_4(D));
+  return;
+
+}
+
+
+
+;; Function ReportPowerErrorsEmptyCallback (ReportPowerErrorsEmptyCallback, funcdef_no=1, decl_uid=5643, cgraph_uid=2, symbol_order=1)
+
+ReportPowerErrorsEmptyCallback (Power_Ip_PowerReportErrorType error, uint8 u8ErrorCode)
+{
+  <bb 2> :
+  return;
+
+}
+
+
+
+;; Function PowerStartTimeout (PowerStartTimeout, funcdef_no=2, decl_uid=5648, cgraph_uid=3, symbol_order=2)
+
+PowerStartTimeout (uint32 * startTimeOut, uint32 * elapsedTimeOut, uint32 * timeoutTicksOut, uint32 timeoutUs)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> :
+  _1 = OsIf_GetCounter (0);
+  *startTimeOut_5(D) = _1;
+  *elapsedTimeOut_7(D) = 0;
+  _2 = OsIf_MicrosToTicks (timeoutUs_9(D), 0);
+  *timeoutTicksOut_11(D) = _2;
+  return;
+
+}
+
+
+
+;; Function PowerTimeoutExpired (PowerTimeoutExpired, funcdef_no=3, decl_uid=5652, cgraph_uid=4, symbol_order=3)
+
+PowerTimeoutExpired (uint32 * startTimeInOut, uint32 * elapsedTimeInOut, uint32 TimeoutTicks)
+{
+  boolean D.5693;
+  long unsigned int D.5692;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _7;
+  boolean _11;
+
+  <bb 2> :
+  _7 = OsIf_GetElapsed (startTimeInOut_5(D), 0);
+  _1 = *elapsedTimeInOut_8(D);
+  _2 = _7 + _1;
+  *elapsedTimeInOut_8(D) = _2;
+  _3 = *elapsedTimeInOut_8(D);
+  _11 = TimeoutTicks_10(D) <= _3;
+
+  <bb 3> :
+<L0>:
+  return _11;
+
+}
+
+
