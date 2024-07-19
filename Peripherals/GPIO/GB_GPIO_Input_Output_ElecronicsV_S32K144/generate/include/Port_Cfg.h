@@ -697,6 +697,8 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 #define GB_ElecronicsV3_Port_RGB_Port_Container_Red_Port_PIN 0
 #define GB_ElecronicsV3_Port_RGB_Port_Container_Green_Port_Pin 1
 #define GB_ElecronicsV3_Port_RGB_Port_Container_Blue_Port_Pin 2
+#define GB_ElecronicsV3_Port_RGB_Port_Container_PortPin_3 3
+#define GB_ElecronicsV3_Port_RGB_Port_Container_PortPin_4 4
 
 /**
 * @brief Number of available pad modes options
@@ -716,12 +718,12 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 /**
 * @brief The maximum number of configured pins
 */
-#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)3)
+#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)5)
 
 /**
  * @brief Number of UnUsed pin array
 */
-#define PORT_MAX_UNUSED_PADS_U16    (81U)
+#define PORT_MAX_UNUSED_PADS_U16    (79U)
 
 /**
 * @brief Port driver Pre-Compile configuration switch
