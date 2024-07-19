@@ -1,0 +1,2960 @@
+Lpuart_Uart_Ip_GetData (const uint8 Instance)
+{
+  uint16 Data16b;
+  const struct LPUART_Type * Base;
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_3];
+  # DEBUG BEGIN_STMT
+  _4 = UartUserCfg->BitCountPerChar;
+  if (_4 <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _5 = UartState->RxBuff;
+  _6 = Lpuart_Uart_Ip_Getchar (Base);
+  *_5 = _6;
+  # DEBUG BEGIN_STMT
+  _7 = UartUserCfg->BitCountPerChar;
+  if (_7 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _8 = UartState->RxBuff;
+  _9 = *_8;
+  _10 = UartState->RxBuff;
+  _11 = _9 & 127;
+  *_10 = _11;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _12 = UartState->RxBuff;
+  _13 = _12 + 1;
+  UartState->RxBuff = _13;
+  # DEBUG BEGIN_STMT
+  _14 = UartState->RxSize;
+  _15 = _14 + 4294967295;
+  UartState->RxSize = _15;
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _16 = UartUserCfg->BitCountPerChar;
+  if (_16 == 2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Data16b = Lpuart_Uart_Ip_Getchar9 (Base);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Data16b = Lpuart_Uart_Ip_Getchar10 (Base);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _17 = UartState->RxSize;
+  if (_17 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _18 = UartState->RxBuff;
+  _19 = (unsigned char) Data16b;
+  *_18 = _19;
+  # DEBUG BEGIN_STMT
+  _20 = UartState->RxBuff;
+  _21 = _20 + 1;
+  UartState->RxBuff = _21;
+  # DEBUG BEGIN_STMT
+  _22 = UartState->RxSize;
+  _23 = _22 + 4294967295;
+  UartState->RxSize = _23;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _24 = UartState->RxBuff;
+  _25 = (unsigned char) Data16b;
+  *_24 = _25;
+  # DEBUG BEGIN_STMT
+  _26 = UartState->RxBuff;
+  _27 = _26 + 1;
+  UartState->RxBuff = _27;
+  # DEBUG BEGIN_STMT
+  _28 = Data16b >> 8;
+  _29 = UartState->RxBuff;
+  _30 = (unsigned char) _28;
+  *_29 = _30;
+  # DEBUG BEGIN_STMT
+  _31 = UartState->RxBuff;
+  _32 = _31 + 1;
+  UartState->RxBuff = _32;
+  # DEBUG BEGIN_STMT
+  _33 = UartState->RxSize;
+  _34 = _33 + 4294967294;
+  UartState->RxSize = _34;
+
+  <bb 12> :
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_PutData (const uint8 Instance)
+{
+  uint8 Data8b;
+  uint16 Data16b;
+  struct LPUART_Type * Base;
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_3];
+  # DEBUG BEGIN_STMT
+  _4 = UartUserCfg->BitCountPerChar;
+  if (_4 <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _5 = UartState->TxBuff;
+  Data8b = *_5;
+  # DEBUG BEGIN_STMT
+  _6 = UartState->TxBuff;
+  _7 = _6 + 1;
+  UartState->TxBuff = _7;
+  # DEBUG BEGIN_STMT
+  _8 = UartState->TxSize;
+  _9 = _8 + 4294967295;
+  UartState->TxSize = _9;
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_Putchar (Base, Data8b);
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _10 = UartState->TxBuff;
+  _11 = *_10;
+  Data16b = (uint16) _11;
+  # DEBUG BEGIN_STMT
+  _12 = UartState->TxSize;
+  if (_12 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _13 = UartState->TxBuff;
+  _14 = _13 + 1;
+  UartState->TxBuff = _14;
+  # DEBUG BEGIN_STMT
+  _15 = UartState->TxSize;
+  _16 = _15 + 4294967295;
+  UartState->TxSize = _16;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _17 = UartState->TxBuff;
+  _18 = _17 + 1;
+  UartState->TxBuff = _18;
+  # DEBUG BEGIN_STMT
+  _19 = UartState->TxBuff;
+  _20 = *_19;
+  _21 = (short unsigned int) _20;
+  _22 = _21 << 8;
+  Data16b = Data16b | _22;
+  # DEBUG BEGIN_STMT
+  _23 = UartState->TxBuff;
+  _24 = _23 + 1;
+  UartState->TxBuff = _24;
+  # DEBUG BEGIN_STMT
+  _25 = UartState->TxSize;
+  _26 = _25 + 4294967294;
+  UartState->TxSize = _26;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _27 = UartUserCfg->BitCountPerChar;
+  if (_27 == 2)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_Putchar9 (Base, Data16b);
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_Putchar10 (Base, Data16b);
+
+  <bb 10> :
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_CompleteReceiveDataUsingInt (const uint8 Instance)
+{
+  uint32 ElapsedTicks;
+  uint32 TimeoutTicks;
+  uint32 StartTime;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  struct LPUART_Type * Base;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ElapsedTicks = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 27, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 24, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 26, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 25, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 21, 0);
+  # DEBUG BEGIN_STMT
+  _3 = UartState->ReceiveStatus;
+  if (_3 == 6)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_StartTimeout (&StartTime, &TimeoutTicks, 0, 0);
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = Lpuart_Uart_Ip_GetStatusFlag (Base, 21);
+  _5 = ~_4;
+  if (_5 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  TimeoutTicks.13_6 = TimeoutTicks;
+  _7 = Lpuart_Uart_Ip_CheckTimeout (&StartTime, &ElapsedTicks, TimeoutTicks.13_6, 0);
+  _8 = ~_7;
+  if (_8 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.14_9 = TimeoutTicks;
+  _10 = Lpuart_Uart_Ip_CheckTimeout (&StartTime, &ElapsedTicks, TimeoutTicks.14_9, 0);
+  if (_10 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetReceiverCmd (Base, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_Getchar (Base);
+  # DEBUG BEGIN_STMT
+  UartState->IsRxBusy = 0;
+  # DEBUG BEGIN_STMT
+  _11 = UartState->ReceiveStatus;
+  if (_11 == 2)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 0;
+
+  <bb 10> :
+  StartTime = {CLOBBER};
+  TimeoutTicks = {CLOBBER};
+  ElapsedTicks = {CLOBBER};
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_StartReceiveDataUsingInt (const uint8 Instance, uint8 * RxBuff, const uint32 RxSize)
+{
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  struct LPUART_Type * Base;
+  Lpuart_Uart_Ip_StatusType D.6284;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  UartState->IsRxBusy = 1;
+  # DEBUG BEGIN_STMT
+  UartState->RxBuff = RxBuff;
+  # DEBUG BEGIN_STMT
+  UartState->RxSize = RxSize;
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 2;
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ClearErrorFlags (Base);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_FlushRxBuffer (Base);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetReceiverCmd (Base, 1);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 27, 1);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 24, 1);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 26, 1);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 25, 1);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 21, 1);
+  # DEBUG BEGIN_STMT
+  D.6284 = 0;
+  return D.6284;
+
+}
+
+
+Lpuart_Uart_Ip_CompleteSendDataUsingInt (const uint8 Instance)
+{
+  uint32 ElapsedTicks;
+  uint32 TimeoutTicks;
+  uint32 StartTime;
+  struct LPUART_Type * Base;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ElapsedTicks = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  _3 = UartState->TransmitStatus;
+  if (_3 != 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 23, 0);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 22, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_StartTimeout (&StartTime, &TimeoutTicks, 0, 0);
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = Lpuart_Uart_Ip_GetStatusFlag (Base, 22);
+  _5 = ~_4;
+  if (_5 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  TimeoutTicks.7_6 = TimeoutTicks;
+  _7 = Lpuart_Uart_Ip_CheckTimeout (&StartTime, &ElapsedTicks, TimeoutTicks.7_6, 0);
+  _8 = ~_7;
+  if (_8 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.8_9 = TimeoutTicks;
+  _10 = Lpuart_Uart_Ip_CheckTimeout (&StartTime, &ElapsedTicks, TimeoutTicks.8_9, 0);
+  if (_10 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  UartState->TransmitStatus = 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetTransmitterCmd (Base, 0);
+  # DEBUG BEGIN_STMT
+  _11 = UartState->TransmitStatus;
+  if (_11 == 2)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  UartState->TransmitStatus = 0;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  UartState->IsTxBusy = 0;
+  StartTime = {CLOBBER};
+  TimeoutTicks = {CLOBBER};
+  ElapsedTicks = {CLOBBER};
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_StartSendDataUsingInt (const uint8 Instance, const uint8 * TxBuff, const uint32 TxSize)
+{
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  struct LPUART_Type * Base;
+  Lpuart_Uart_Ip_StatusType D.6202;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  UartState->TxBuff = TxBuff;
+  # DEBUG BEGIN_STMT
+  UartState->TxSize = TxSize;
+  # DEBUG BEGIN_STMT
+  UartState->TransmitStatus = 2;
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetTransmitterCmd (Base, 1);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 23, 1);
+  # DEBUG BEGIN_STMT
+  D.6202 = 0;
+  return D.6202;
+
+}
+
+
+Lpuart_Uart_Ip_ErrIrqHandler (const uint8 Instance)
+{
+  boolean IsReturn;
+  boolean IsError;
+  struct LPUART_Type * Base;
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  IsError = 0;
+  # DEBUG BEGIN_STMT
+  IsReturn = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_3];
+  # DEBUG BEGIN_STMT
+  _4 = Lpuart_Uart_Ip_GetStatusFlag (Base, 19);
+  if (_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ClearStatusFlag (Base, 19);
+  # DEBUG BEGIN_STMT
+  _5 = Lpuart_Uart_Ip_GetIntMode (Base, 27);
+  _6 = ~_5;
+  if (_6 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  IsError = 1;
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 5;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _7 = Lpuart_Uart_Ip_GetStatusFlag (Base, 17);
+  if (_7 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  _8 = ~IsReturn;
+  if (_8 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ClearStatusFlag (Base, 17);
+  # DEBUG BEGIN_STMT
+  _9 = Lpuart_Uart_Ip_GetIntMode (Base, 25);
+  _10 = ~_9;
+  if (_10 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  IsError = 1;
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 7;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _11 = Lpuart_Uart_Ip_GetStatusFlag (Base, 16);
+  if (_11 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 12> :
+  _12 = ~IsReturn;
+  if (_12 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ClearStatusFlag (Base, 16);
+  # DEBUG BEGIN_STMT
+  _13 = Lpuart_Uart_Ip_GetIntMode (Base, 24);
+  _14 = ~_13;
+  if (_14 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  IsError = 1;
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 8;
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _15 = Lpuart_Uart_Ip_GetStatusFlag (Base, 18);
+  if (_15 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 17> :
+  _16 = ~IsReturn;
+  if (_16 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ClearStatusFlag (Base, 18);
+  # DEBUG BEGIN_STMT
+  _17 = Lpuart_Uart_Ip_GetIntMode (Base, 26);
+  _18 = ~_17;
+  if (_18 != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+  goto <bb 21>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  IsError = 1;
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 9;
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  _19 = ~IsReturn;
+  if (_19 != 0)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  if (IsError != 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  _20 = UartUserCfg->TransferType;
+  if (_20 == 1)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_CompleteReceiveDataUsingInt (Instance);
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  _21 = UartUserCfg->Callback;
+  if (_21 != 0B)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  _22 = UartUserCfg->Callback;
+  _23 = UartUserCfg->CallbackParam;
+  _22 (Instance, 3, _23);
+
+  <bb 27> :
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_TxCompleteIrqHandler (const uint8 Instance)
+{
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  const struct Lpuart_Uart_Ip_StateStructureType * UartState;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_2];
+  # DEBUG BEGIN_STMT
+  _3 = UartState->TxSize;
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = UartUserCfg->TransferType;
+  if (_4 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_CompleteSendDataUsingInt (Instance);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _5 = UartUserCfg->Callback;
+  if (_5 != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _6 = UartUserCfg->Callback;
+  _7 = UartUserCfg->CallbackParam;
+  _6 (Instance, 2, _7);
+
+  <bb 7> :
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_TxEmptyIrqHandler (const uint8 Instance)
+{
+  struct LPUART_Type * Base;
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  const struct Lpuart_Uart_Ip_StateStructureType * UartState;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_3];
+  # DEBUG BEGIN_STMT
+  _4 = UartState->TxSize;
+  if (_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_PutData (Instance);
+  # DEBUG BEGIN_STMT
+  _5 = UartState->TxSize;
+  if (_5 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  _6 = UartUserCfg->Callback;
+  if (_6 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _7 = UartUserCfg->Callback;
+  _8 = UartUserCfg->CallbackParam;
+  _7 (Instance, 1, _8);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _9 = UartState->TxSize;
+  if (_9 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 23, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 22, 1);
+
+  <bb 8> :
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_RxIrqHandler (const uint8 Instance)
+{
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  const struct Lpuart_Uart_Ip_StateStructureType * UartState;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_2];
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_GetData (Instance);
+  # DEBUG BEGIN_STMT
+  _3 = UartState->RxSize;
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = UartUserCfg->Callback;
+  if (_4 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 = UartUserCfg->Callback;
+  _6 = UartUserCfg->CallbackParam;
+  _5 (Instance, 0, _6);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _7 = UartState->RxSize;
+  if (_7 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_CompleteReceiveDataUsingInt (Instance);
+  # DEBUG BEGIN_STMT
+  _8 = UartUserCfg->Callback;
+  if (_8 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _9 = UartUserCfg->Callback;
+  _10 = UartUserCfg->CallbackParam;
+  _9 (Instance, 2, _10);
+
+  <bb 8> :
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_IrqHandler (const uint8 Instance)
+{
+  boolean IsReturn;
+  const struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  struct LPUART_Type * Base;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  IsReturn = 0;
+  # DEBUG BEGIN_STMT
+  if (UartState == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_Getchar (Base);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ClearErrorFlags (Base);
+  goto <bb 17>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ErrIrqHandler (Instance);
+  # DEBUG BEGIN_STMT
+  _3 = Lpuart_Uart_Ip_GetStatusFlag (Base, 21);
+  if (_3 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = Lpuart_Uart_Ip_GetIntMode (Base, 21);
+  if (_4 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_RxIrqHandler (Instance);
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_Getchar (Base);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _5 = Lpuart_Uart_Ip_GetStatusFlag (Base, 23);
+  if (_5 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 10> :
+  _6 = ~IsReturn;
+  if (_6 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _7 = Lpuart_Uart_Ip_GetIntMode (Base, 23);
+  if (_7 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_TxEmptyIrqHandler (Instance);
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = Lpuart_Uart_Ip_GetStatusFlag (Base, 22);
+  if (_8 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 14> :
+  _9 = ~IsReturn;
+  if (_9 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _10 = Lpuart_Uart_Ip_GetIntMode (Base, 22);
+  if (_10 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_TxCompleteIrqHandler (Instance);
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SetRxBuffer (const uint8 Instance, uint8 * RxBuff, const uint32 RxSize)
+{
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  Lpuart_Uart_Ip_StatusType D.6332;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_1];
+  # DEBUG BEGIN_STMT
+  UartState->RxBuff = RxBuff;
+  # DEBUG BEGIN_STMT
+  UartState->RxSize = RxSize;
+  # DEBUG BEGIN_STMT
+  D.6332 = 0;
+  return D.6332;
+
+}
+
+
+Lpuart_Uart_Ip_SetTxBuffer (const uint8 Instance, const uint8 * TxBuff, const uint32 TxSize)
+{
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  Lpuart_Uart_Ip_StatusType D.6330;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_1];
+  # DEBUG BEGIN_STMT
+  UartState->TxBuff = TxBuff;
+  # DEBUG BEGIN_STMT
+  UartState->TxSize = TxSize;
+  # DEBUG BEGIN_STMT
+  D.6330 = 0;
+  return D.6330;
+
+}
+
+
+Lpuart_Uart_Ip_GetBaudRate (const uint8 Instance, uint32 * ConfiguredBaudRate)
+{
+  const struct Lpuart_Uart_Ip_StateStructureType * UartState;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_1];
+  # DEBUG BEGIN_STMT
+  _2 = UartState->BaudRate;
+  *ConfiguredBaudRate = _2;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SetBaudRate (const uint8 Instance, const Lpuart_Uart_Ip_BaudrateType DesiredBaudrate, const uint32 ClockFrequency)
+{
+  Lpuart_Uart_Ip_StatusType Status;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  struct LPUART_Type * Base;
+  uint32 ExpectedBaud;
+  uint32 MaxOsr;
+  uint32 BaudDiff;
+  uint32 CalculatedBaud;
+  uint32 TempDiff;
+  uint32 Osr;
+  uint16 SbrTemp;
+  uint16 Idx;
+  uint16 Sbr;
+  Lpuart_Uart_Ip_StatusType D.6328;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ExpectedBaud = DesiredBaudrate;
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  Status = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = UartState->IsTxBusy;
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _4 = UartState->IsRxBusy;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Status = 2;
+  goto <bb 22>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = ExpectedBaud * 5;
+  # DEBUG BEGIN_STMT
+  Osr = 4;
+  # DEBUG BEGIN_STMT
+  _6 = ExpectedBaud * Osr;
+  _7 = ClockFrequency / _6;
+  Sbr = (uint16) _7;
+  # DEBUG BEGIN_STMT
+  _8 = (long unsigned int) Sbr;
+  _9 = Osr * _8;
+  CalculatedBaud = ClockFrequency / _9;
+  # DEBUG BEGIN_STMT
+  if (CalculatedBaud > ExpectedBaud)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  BaudDiff = CalculatedBaud - ExpectedBaud;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  BaudDiff = ExpectedBaud - CalculatedBaud;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  MaxOsr = ClockFrequency / ExpectedBaud;
+  # DEBUG BEGIN_STMT
+  if (MaxOsr > 32)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  MaxOsr = 32;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (MaxOsr > 4)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Idx = 5;
+  goto <bb 18>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _10 = (long unsigned int) Idx;
+  _11 = ExpectedBaud * _10;
+  _12 = ClockFrequency / _11;
+  SbrTemp = (uint16) _12;
+  # DEBUG BEGIN_STMT
+  _13 = (long unsigned int) Idx;
+  _14 = (long unsigned int) SbrTemp;
+  _15 = _13 * _14;
+  CalculatedBaud = ClockFrequency / _15;
+  # DEBUG BEGIN_STMT
+  if (CalculatedBaud > ExpectedBaud)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  TempDiff = CalculatedBaud - ExpectedBaud;
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  TempDiff = ExpectedBaud - CalculatedBaud;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  if (TempDiff <= BaudDiff)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  BaudDiff = TempDiff;
+  # DEBUG BEGIN_STMT
+  Osr = (uint32) Idx;
+  # DEBUG BEGIN_STMT
+  Sbr = SbrTemp;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  Idx.15_16 = Idx;
+  Idx = Idx.15_16 + 1;
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  _17 = (long unsigned int) Idx;
+  if (MaxOsr >= _17)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  if (Osr <= 7)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_EnableBothEdgeSamplingCmd (Base);
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  _18 = Osr + 4294967295;
+  Lpuart_Uart_Ip_SetOversamplingRatio (Base, _18);
+  # DEBUG BEGIN_STMT
+  _19 = (long unsigned int) Sbr;
+  Lpuart_Uart_Ip_SetBaudRateDivisor (Base, _19);
+  # DEBUG BEGIN_STMT
+  UartState->BaudRate = CalculatedBaud;
+  # DEBUG BEGIN_STMT
+  Status = 0;
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  D.6328 = Status;
+  return D.6328;
+
+}
+
+
+Lpuart_Uart_Ip_AbortReceivingData (const uint8 Instance)
+{
+  Lpuart_Uart_Ip_StatusType RetVal;
+  boolean IsReturn;
+  struct LPUART_Type * Base;
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  Lpuart_Uart_Ip_StatusType D.6301;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_3];
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  IsReturn = 0;
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  _4 = UartState->IsRxBusy;
+  _5 = ~_4;
+  if (_5 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _6 = ~IsReturn;
+  if (_6 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 6;
+  # DEBUG BEGIN_STMT
+  _7 = UartUserCfg->TransferType;
+  if (_7 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_CompleteReceiveDataUsingInt (Instance);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ClearErrorFlags (Base);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_FlushRxBuffer (Base);
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6301 = RetVal;
+  return D.6301;
+
+}
+
+
+Lpuart_Uart_Ip_GetReceiveStatus (const uint8 Instance, uint32 * BytesRemaining)
+{
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  const struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  Lpuart_Uart_Ip_StatusType D.6293;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_2];
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (BytesRemaining != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = UartState->IsRxBusy;
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = UartUserCfg->TransferType;
+  if (_4 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _5 = UartState->RxSize;
+  *BytesRemaining = _5;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *BytesRemaining = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.6293 = UartState->ReceiveStatus;
+  return D.6293;
+
+}
+
+
+Lpuart_Uart_Ip_AsyncReceive (const uint8 Instance, uint8 * RxBuff, const uint32 RxSize)
+{
+  boolean IsReturn;
+  Lpuart_Uart_Ip_StatusType RetVal;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  Lpuart_Uart_Ip_StatusType D.6282;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  IsReturn = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Uart_UART_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  _3 = UartState->IsRxBusy;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Uart_UART_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  RetVal = 2;
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = ~IsReturn;
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  UartState->IsRxBusy = 1;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Uart_UART_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = UartUserCfg->TransferType;
+  # DEBUG BEGIN_STMT
+  _6 = UartUserCfg->TransferType;
+  if (_6 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = Lpuart_Uart_Ip_StartReceiveDataUsingInt (Instance, RxBuff, RxSize);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.6282 = RetVal;
+  return D.6282;
+
+}
+
+
+Lpuart_Uart_Ip_StartGetData (const uint8 Instance, uint32 * StartTime, uint32 * ElapsedTicks, uint32 TimeoutTicks)
+{
+  const uint32 Lpuart_Uart_Ip_StatusRegMask[4];
+  const Lpuart_Uart_Ip_StatusType Lpuart_Uart_Ip_ReceiveStatusArray[4];
+  const Lpuart_Uart_Ip_StatusFlagType Lpuart_Uart_Ip_StatusFlagTypeArray[4];
+  uint32 Mask;
+  uint8 StatusIndex;
+  struct LPUART_Type * Base;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_2];
+  # DEBUG BEGIN_STMT
+  StatusIndex = 0;
+  # DEBUG BEGIN_STMT
+  Mask = 0;
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_StatusFlagTypeArray = *.LC0;
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ReceiveStatusArray = *.LC1;
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_StatusRegMask = *.LC2;
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = Lpuart_Uart_Ip_GetStatusFlag (Base, 21);
+  _4 = ~_3;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _5 = Lpuart_Uart_Ip_CheckTimeout (StartTime, ElapsedTicks, TimeoutTicks, 0);
+  _6 = ~_5;
+  if (_6 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  StatusIndex = 0;
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _7 = (int) StatusIndex;
+  _8 = Lpuart_Uart_Ip_StatusFlagTypeArray[_7];
+  _9 = Lpuart_Uart_Ip_GetStatusFlag (Base, _8);
+  if (_9 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _10 = (int) StatusIndex;
+  _11 = Lpuart_Uart_Ip_ReceiveStatusArray[_10];
+  UartState->ReceiveStatus = _11;
+  # DEBUG BEGIN_STMT
+  _12 = (int) StatusIndex;
+  _13 = Lpuart_Uart_Ip_StatusRegMask[_12];
+  Mask = Mask | _13;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  StatusIndex.11_14 = StatusIndex;
+  StatusIndex = StatusIndex.11_14 + 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (StatusIndex <= 3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (Mask != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetReceiverCmd (Base, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_ClearStatusFlagWithMask (Base, Mask);
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_GetData (Instance);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _15 = UartState->RxSize;
+  if (_15 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  _16 = Lpuart_Uart_Ip_CheckTimeout (StartTime, ElapsedTicks, TimeoutTicks, 0);
+  _17 = ~_16;
+  if (_17 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  Lpuart_Uart_Ip_StatusFlagTypeArray = {CLOBBER};
+  Lpuart_Uart_Ip_ReceiveStatusArray = {CLOBBER};
+  Lpuart_Uart_Ip_StatusRegMask = {CLOBBER};
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SyncReceive (const uint8 Instance, uint8 * RxBuff, const uint32 RxSize, const uint32 Timeout)
+{
+  Lpuart_Uart_Ip_StatusType RetVal;
+  boolean IsReturn;
+  uint32 ElapsedTicks;
+  uint32 TimeoutTicks;
+  uint32 StartTime;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  struct LPUART_Type * Base;
+  Lpuart_Uart_Ip_StatusType D.6240;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ElapsedTicks = 0;
+  # DEBUG BEGIN_STMT
+  IsReturn = 0;
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Uart_UART_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  _3 = UartState->IsRxBusy;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Uart_UART_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  RetVal = 2;
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = ~IsReturn;
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  UartState->IsRxBusy = 1;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Uart_UART_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  UartState->RxBuff = RxBuff;
+  # DEBUG BEGIN_STMT
+  UartState->RxSize = RxSize;
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 2;
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 21, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetReceiverCmd (Base, 1);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_StartTimeout (&StartTime, &TimeoutTicks, Timeout, 0);
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.9_5 = TimeoutTicks;
+  Lpuart_Uart_Ip_StartGetData (Instance, &StartTime, &ElapsedTicks, TimeoutTicks.9_5);
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.10_6 = TimeoutTicks;
+  _7 = Lpuart_Uart_Ip_CheckTimeout (&StartTime, &ElapsedTicks, TimeoutTicks.10_6, 0);
+  if (_7 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 3;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _8 = UartState->ReceiveStatus;
+  if (_8 == 2)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 0;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _9 = UartState->RxSize;
+  if (_9 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  _10 = UartState->ReceiveStatus;
+  if (_10 == 5)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  UartState->ReceiveStatus = 0;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetReceiverCmd (Base, 0);
+  # DEBUG BEGIN_STMT
+  UartState->IsRxBusy = 0;
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_Getchar (Base);
+  # DEBUG BEGIN_STMT
+  RetVal = UartState->ReceiveStatus;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  D.6240 = RetVal;
+  StartTime = {CLOBBER};
+  TimeoutTicks = {CLOBBER};
+  ElapsedTicks = {CLOBBER};
+  return D.6240;
+
+}
+
+
+Lpuart_Uart_Ip_AbortSendingData (const uint8 Instance)
+{
+  Lpuart_Uart_Ip_StatusType RetVal;
+  boolean IsReturn;
+  struct LPUART_Type * Base;
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  Lpuart_Uart_Ip_StatusType D.6219;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  IsReturn = 0;
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_3];
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = UartState->IsTxBusy;
+  _5 = ~_4;
+  if (_5 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _6 = ~IsReturn;
+  if (_6 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  UartState->TransmitStatus = 6;
+  # DEBUG BEGIN_STMT
+  _7 = UartUserCfg->TransferType;
+  if (_7 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_CompleteSendDataUsingInt (Instance);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_FlushTxBuffer (Base);
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6219 = RetVal;
+  return D.6219;
+
+}
+
+
+Lpuart_Uart_Ip_GetTransmitStatus (const uint8 Instance, uint32 * BytesRemaining)
+{
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  const struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  Lpuart_Uart_Ip_StatusType D.6211;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_2];
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (BytesRemaining != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = UartState->IsTxBusy;
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = UartUserCfg->TransferType;
+  if (_4 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _5 = UartState->TxSize;
+  *BytesRemaining = _5;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *BytesRemaining = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.6211 = UartState->TransmitStatus;
+  return D.6211;
+
+}
+
+
+Lpuart_Uart_Ip_AsyncSend (const uint8 Instance, const uint8 * TxBuff, const uint32 TxSize)
+{
+  boolean IsReturn;
+  Lpuart_Uart_Ip_StatusType RetVal;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  const struct Lpuart_Uart_Ip_UserConfigType * UartUserCfg;
+  Lpuart_Uart_Ip_StatusType D.6200;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  UartUserCfg = Lpuart_Uart_Ip_apUserConfig[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  IsReturn = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Uart_UART_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  _3 = UartState->IsTxBusy;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Uart_UART_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  RetVal = 2;
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = ~IsReturn;
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  UartState->IsTxBusy = 1;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Uart_UART_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = UartUserCfg->TransferType;
+  # DEBUG BEGIN_STMT
+  _6 = UartUserCfg->TransferType;
+  if (_6 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = Lpuart_Uart_Ip_StartSendDataUsingInt (Instance, TxBuff, TxSize);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.6200 = RetVal;
+  return D.6200;
+
+}
+
+
+Lpuart_Uart_Ip_SyncSend (const uint8 Instance, const uint8 * TxBuff, const uint32 TxSize, const uint32 Timeout)
+{
+  Lpuart_Uart_Ip_StatusType RetVal;
+  boolean IsReturn;
+  uint32 ElapsedTicks;
+  uint32 TimeoutTicks;
+  uint32 StartTime;
+  struct Lpuart_Uart_Ip_StateStructureType * UartState;
+  struct LPUART_Type * Base;
+  Lpuart_Uart_Ip_StatusType D.6178;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ElapsedTicks = 0;
+  # DEBUG BEGIN_STMT
+  IsReturn = 0;
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  UartState = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Uart_UART_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  _3 = UartState->IsTxBusy;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Uart_UART_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  RetVal = 2;
+  # DEBUG BEGIN_STMT
+  IsReturn = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = ~IsReturn;
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  UartState->IsTxBusy = 1;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Uart_UART_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  UartState->TxBuff = TxBuff;
+  # DEBUG BEGIN_STMT
+  UartState->TxSize = TxSize;
+  # DEBUG BEGIN_STMT
+  UartState->TransmitStatus = 2;
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 23, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 22, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetTransmitterCmd (Base, 1);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_StartTimeout (&StartTime, &TimeoutTicks, Timeout, 0);
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_PutData (Instance);
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = Lpuart_Uart_Ip_GetStatusFlag (Base, 23);
+  _6 = ~_5;
+  if (_6 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  TimeoutTicks.3_7 = TimeoutTicks;
+  _8 = Lpuart_Uart_Ip_CheckTimeout (&StartTime, &ElapsedTicks, TimeoutTicks.3_7, 0);
+  _9 = ~_8;
+  if (_9 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _10 = UartState->TxSize;
+  if (_10 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  TimeoutTicks.4_11 = TimeoutTicks;
+  _12 = Lpuart_Uart_Ip_CheckTimeout (&StartTime, &ElapsedTicks, TimeoutTicks.4_11, 0);
+  _13 = ~_12;
+  if (_13 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetTransmitterCmd (Base, 0);
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.5_14 = TimeoutTicks;
+  _15 = Lpuart_Uart_Ip_CheckTimeout (&StartTime, &ElapsedTicks, TimeoutTicks.5_14, 0);
+  if (_15 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  UartState->TransmitStatus = 3;
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  UartState->TransmitStatus = 0;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  UartState->IsTxBusy = 0;
+  # DEBUG BEGIN_STMT
+  RetVal = UartState->TransmitStatus;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  D.6178 = RetVal;
+  StartTime = {CLOBBER};
+  TimeoutTicks = {CLOBBER};
+  ElapsedTicks = {CLOBBER};
+  return D.6178;
+
+}
+
+
+Lpuart_Uart_Ip_Deinit (const uint8 Instance)
+{
+  struct LPUART_Type * Base;
+  uint32 ElapsedTicks;
+  uint32 TimeoutTicks;
+  uint32 StartTime;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ElapsedTicks = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance;
+  _3 = Lpuart_Uart_Ip_apStateStructuresArray[_2];
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_StartTimeout (&StartTime, &TimeoutTicks, 0, 0);
+  # DEBUG BEGIN_STMT
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = Lpuart_Uart_Ip_GetStatusFlag (Base, 22);
+  _5 = ~_4;
+  if (_5 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  TimeoutTicks.1_6 = TimeoutTicks;
+  _7 = Lpuart_Uart_Ip_CheckTimeout (&StartTime, &ElapsedTicks, TimeoutTicks.1_6, 0);
+  _8 = ~_7;
+  if (_8 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 23, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 22, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 21, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 27, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 24, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 26, 0);
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_SetIntMode (Base, 25, 0);
+  # DEBUG BEGIN_STMT
+  _9 = (int) Instance;
+  Lpuart_Uart_Ip_apStateStructuresArray[_9] = 0B;
+  StartTime = {CLOBBER};
+  TimeoutTicks = {CLOBBER};
+  ElapsedTicks = {CLOBBER};
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_Init (const uint8 Instance, const struct Lpuart_Uart_Ip_UserConfigType * UserConfig)
+{
+  uint8 * ClearStructPtr;
+  uint32 Index;
+  struct Lpuart_Uart_Ip_StateStructureType * UartStatePtr;
+  struct LPUART_Type * Base;
+  int iftmp.0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance;
+  _2 = Lpuart_Uart_Ip_apStateStructuresArray[_1];
+  # DEBUG BEGIN_STMT
+  _3 = UserConfig->BaudOverSamplingRatio;
+  # DEBUG BEGIN_STMT
+  _4 = UserConfig->BaudRateDivisor;
+  _5 = _4 + 4294967295;
+  # DEBUG BEGIN_STMT
+  _6 = (int) Instance;
+  Base = Lpuart_Uart_Ip_apBases[_6];
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = (int) Instance;
+  _8 = UserConfig->StateStruct;
+  Lpuart_Uart_Ip_apStateStructuresArray[_7] = _8;
+  # DEBUG BEGIN_STMT
+  _9 = (int) Instance;
+  UartStatePtr = Lpuart_Uart_Ip_apStateStructuresArray[_9];
+  # DEBUG BEGIN_STMT
+  _10 = (int) Instance;
+  Lpuart_Uart_Ip_apUserConfig[_10] = UserConfig;
+  # DEBUG BEGIN_STMT
+  ClearStructPtr = UartStatePtr;
+  # DEBUG BEGIN_STMT
+  _11 = UserConfig->BitCountPerChar;
+  if (_11 != 3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _12 = UserConfig->ParityMode;
+  if (_12 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.0 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.0 = 0;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Index = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _13 = ClearStructPtr + Index;
+  *_13 = 0;
+  # DEBUG BEGIN_STMT
+  Index = Index + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (Index <= 31)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_Hw_Init (Base);
+  # DEBUG BEGIN_STMT
+  _14 = UserConfig->BaudOverSamplingRatio;
+  if (_14 <= 7)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Lpuart_Uart_Ip_EnableBothEdgeSamplingCmd (Base);
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _15 = UserConfig->BaudOverSamplingRatio;
+  _16 = (long unsigned int) _15;
+  _17 = _16 + 4294967295;
+  Lpuart_Uart_Ip_SetOversamplingRatio (Base, _17);
+  # DEBUG BEGIN_STMT
+  _18 = UserConfig->BaudRateDivisor;
+  Lpuart_Uart_Ip_SetBaudRateDivisor (Base, _18);
+  # DEBUG BEGIN_STMT
+  _19 = UserConfig->ParityMode;
+  if (_19 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _20 = UserConfig->BitCountPerChar;
+  Lpuart_Uart_Ip_SetBitCountPerChar (Base, _20, 1);
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _21 = UserConfig->BitCountPerChar;
+  Lpuart_Uart_Ip_SetBitCountPerChar (Base, _21, 0);
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _22 = UserConfig->ParityMode;
+  Lpuart_Uart_Ip_SetParityMode (Base, _22);
+  # DEBUG BEGIN_STMT
+  _23 = UserConfig->StopBitsCount;
+  Lpuart_Uart_Ip_SetStopBitCount (Base, _23);
+  # DEBUG BEGIN_STMT
+  UartStatePtr->TransmitStatus = 0;
+  # DEBUG BEGIN_STMT
+  UartStatePtr->ReceiveStatus = 0;
+  # DEBUG BEGIN_STMT
+  _24 = UserConfig->BaudRate;
+  UartStatePtr->BaudRate = _24;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_FlushRxBuffer (struct LPUART_Type * Base)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->FIFO;
+  _2 = _1 | 16384;
+  Base->FIFO = _2;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_FlushTxBuffer (struct LPUART_Type * Base)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->FIFO;
+  _2 = _1 | 32768;
+  Base->FIFO = _2;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_CheckTimeout (uint32 * StartTime, uint32 * ElapsedTicks, uint32 TimeoutTicks, OsIf_CounterType OsifCounter)
+{
+  uint32 CurrentElapsedTicks;
+  boolean D.6163;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  CurrentElapsedTicks = OsIf_GetElapsed (StartTime, OsifCounter);
+  # DEBUG BEGIN_STMT
+  _1 = *ElapsedTicks;
+  _2 = CurrentElapsedTicks + _1;
+  *ElapsedTicks = _2;
+  # DEBUG BEGIN_STMT
+  _3 = *ElapsedTicks;
+  D.6163 = TimeoutTicks <= _3;
+  return D.6163;
+
+}
+
+
+Lpuart_Uart_Ip_StartTimeout (uint32 * StartTimeOut, uint32 * TimeoutTicksOut, uint32 TimeoutUs, OsIf_CounterType OsifCounter)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = OsIf_GetCounter (OsifCounter);
+  *StartTimeOut = _1;
+  # DEBUG BEGIN_STMT
+  _2 = OsIf_MicrosToTicks (TimeoutUs, OsifCounter);
+  *TimeoutTicksOut = _2;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_ClearErrorFlags (struct LPUART_Type * Base)
+{
+  uint32 Mask;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Mask = 983040;
+  # DEBUG BEGIN_STMT
+  _1 = Base->STAT;
+  _2 = _1 & 1071661055;
+  _3 = Mask | _2;
+  Base->STAT = _3;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_ClearStatusFlagWithMask (struct LPUART_Type * Base, uint32 Mask)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->STAT;
+  _2 = _1 & 1071661055;
+  _3 = Mask | _2;
+  Base->STAT = _3;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_ClearStatusFlag (struct LPUART_Type * Base, Lpuart_Uart_Ip_StatusFlagType StatusFlag)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  switch (StatusFlag) <default: <L6> [INV], case 16: <L3> [INV], case 17: <L2> [INV], case 18: <L1> [INV], case 19: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = Base->STAT;
+  _2 = _1 & 1071661055;
+  _3 = _2 | 524288;
+  Base->STAT = _3;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _4 = Base->STAT;
+  _5 = _4 & 1071661055;
+  _6 = _5 | 262144;
+  Base->STAT = _6;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _7 = Base->STAT;
+  _8 = _7 & 1071661055;
+  _9 = _8 | 131072;
+  Base->STAT = _9;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _10 = Base->STAT;
+  _11 = _10 & 1071661055;
+  _12 = _11 | 65536;
+  Base->STAT = _12;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+<L6>:
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_GetStatusFlag (const struct LPUART_Type * Base, Lpuart_Uart_Ip_StatusFlagType StatusFlag)
+{
+  boolean RetVal;
+  boolean D.6161;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = Base->STAT;
+  _2 = _1 >> StatusFlag;
+  _3 = _2 & 1;
+  RetVal = _3 != 0;
+  # DEBUG BEGIN_STMT
+  D.6161 = RetVal;
+  return D.6161;
+
+}
+
+
+Lpuart_Uart_Ip_Getchar10 (const struct LPUART_Type * Base)
+{
+  uint16 ReadData;
+  uint16 D.6268;
+  unsigned char D.6267;
+  short unsigned int D.6266;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Base->CTRL;
+  _2 = _1 >> 30;
+  _3 = (short unsigned int) _2;
+  _4 = _3 << 9;
+  ReadData = _4 & 512;
+  # DEBUG BEGIN_STMT
+  _5 = Base->CTRL;
+  _6 = _5 >> 31;
+  _7 = (short unsigned int) _6;
+  _8 = _7 << 8;
+  D.6266 = _8 & 256;
+  ReadData = D.6266 | ReadData;
+  # DEBUG BEGIN_STMT
+  _9 = Base->DATA;
+  D.6267 = (unsigned char) _9;
+  _10 = (short unsigned int) D.6267;
+  ReadData = ReadData | _10;
+  # DEBUG BEGIN_STMT
+  D.6268 = ReadData;
+  return D.6268;
+
+}
+
+
+Lpuart_Uart_Ip_Getchar9 (const struct LPUART_Type * Base)
+{
+  uint16 ReadData;
+  uint16 D.6264;
+  unsigned char D.6263;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Base->CTRL;
+  _2 = _1 >> 31;
+  _3 = (short unsigned int) _2;
+  _4 = _3 << 8;
+  ReadData = _4 & 256;
+  # DEBUG BEGIN_STMT
+  _5 = Base->DATA;
+  D.6263 = (unsigned char) _5;
+  _6 = (short unsigned int) D.6263;
+  ReadData = ReadData | _6;
+  # DEBUG BEGIN_STMT
+  D.6264 = ReadData;
+  return D.6264;
+
+}
+
+
+Lpuart_Uart_Ip_Getchar (const struct LPUART_Type * Base)
+{
+  uint8 D.6274;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->DATA;
+  D.6274 = (uint8) _1;
+  return D.6274;
+
+}
+
+
+Lpuart_Uart_Ip_Putchar10 (struct LPUART_Type * Base, uint16 Data)
+{
+  volatile uint8 * DataRegBytes;
+  uint32 CtrlRegVal;
+  uint8 TenthDataBit;
+  uint8 NinthDataBit;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  DataRegBytes = &Base->DATA;
+  # DEBUG BEGIN_STMT
+  _1 = Data >> 8;
+  _2 = (unsigned char) _1;
+  NinthDataBit = _2 & 1;
+  # DEBUG BEGIN_STMT
+  _3 = Data >> 9;
+  _4 = (unsigned char) _3;
+  TenthDataBit = _4 & 1;
+  # DEBUG BEGIN_STMT
+  CtrlRegVal = Base->CTRL;
+  # DEBUG BEGIN_STMT
+  _5 = CtrlRegVal & 3221225471;
+  _6 = (long unsigned int) NinthDataBit;
+  _7 = _6 << 30;
+  CtrlRegVal = _5 | _7;
+  # DEBUG BEGIN_STMT
+  _8 = CtrlRegVal & 2147483647;
+  _9 = (long unsigned int) TenthDataBit;
+  _10 = _9 << 31;
+  CtrlRegVal = _8 | _10;
+  # DEBUG BEGIN_STMT
+  Base->CTRL = CtrlRegVal;
+  # DEBUG BEGIN_STMT
+  _11 = (unsigned char) Data;
+  *DataRegBytes = _11;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_Putchar9 (struct LPUART_Type * Base, uint16 Data)
+{
+  volatile uint8 * DataRegBytes;
+  uint8 NinthDataBit;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  DataRegBytes = &Base->DATA;
+  # DEBUG BEGIN_STMT
+  _1 = Data >> 8;
+  _2 = (unsigned char) _1;
+  NinthDataBit = _2 & 1;
+  # DEBUG BEGIN_STMT
+  _3 = Base->CTRL;
+  _4 = _3 & 3221225471;
+  _5 = (long unsigned int) NinthDataBit;
+  _6 = _5 << 30;
+  _7 = _4 | _6;
+  Base->CTRL = _7;
+  # DEBUG BEGIN_STMT
+  _8 = (unsigned char) Data;
+  *DataRegBytes = _8;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_Putchar (struct LPUART_Type * Base, uint8 Data)
+{
+  volatile uint8 * DataRegBytes;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  DataRegBytes = &Base->DATA;
+  # DEBUG BEGIN_STMT
+  *DataRegBytes = Data;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_GetIntMode (const struct LPUART_Type * Base, Lpuart_Uart_Ip_InterruptType IntSrc)
+{
+  boolean RetVal;
+  boolean D.6407;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = Base->CTRL;
+  _2 = _1 >> IntSrc;
+  _3 = _2 & 1;
+  RetVal = _3 != 0;
+  # DEBUG BEGIN_STMT
+  D.6407 = RetVal;
+  return D.6407;
+
+}
+
+
+Lpuart_Uart_Ip_SetIntMode (struct LPUART_Type * Base, Lpuart_Uart_Ip_InterruptType IntSrc, boolean Enable)
+{
+  unsigned int iftmp.2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->CTRL;
+  _2 = 1 << IntSrc;
+  _3 = ~_2;
+  _4 = _1 & _3;
+  if (Enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.2 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.2 = 0;
+
+  <bb 5> :
+  _5 = iftmp.2 << IntSrc;
+  _6 = _4 | _5;
+  Base->CTRL = _6;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SetStopBitCount (struct LPUART_Type * Base, Lpuart_Uart_Ip_StopBitCountType StopBitCount)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->BAUD;
+  _2 = _1 & 4294959103;
+  _3 = StopBitCount << 13;
+  _4 = _2 | _3;
+  Base->BAUD = _4;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SetParityMode (struct LPUART_Type * Base, Lpuart_Uart_Ip_ParityModeType ParityModeType)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->CTRL;
+  _2 = _1 & 4294967293;
+  _3 = ParityModeType & 4294967294;
+  _4 = _2 | _3;
+  Base->CTRL = _4;
+  # DEBUG BEGIN_STMT
+  _5 = Base->CTRL;
+  _6 = _5 & 4294967294;
+  _7 = ParityModeType & 1;
+  _8 = _6 | _7;
+  Base->CTRL = _8;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SetBitCountPerChar (struct LPUART_Type * Base, Lpuart_Uart_Ip_BitCountPerCharType BitCountPerChar, boolean Parity)
+{
+  uint32 TmpBitCountPerChar;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  TmpBitCountPerChar = BitCountPerChar;
+  # DEBUG BEGIN_STMT
+  if (Parity != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  TmpBitCountPerChar = TmpBitCountPerChar + 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (TmpBitCountPerChar == 3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->BAUD;
+  _2 = _1 | 536870912;
+  Base->BAUD = _2;
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (BitCountPerChar == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (Parity != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = Base->CTRL;
+  _4 = _3 & 4294965231;
+  Base->CTRL = _4;
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _5 = Base->CTRL;
+  _6 = _5 | 2048;
+  Base->CTRL = _6;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  TmpBitCountPerChar = TmpBitCountPerChar + 4294967295;
+  # DEBUG BEGIN_STMT
+  _7 = Base->CTRL;
+  _8 = _7 & 4294967279;
+  _9 = TmpBitCountPerChar << 4;
+  _10 = _8 | _9;
+  Base->CTRL = _10;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _11 = Base->BAUD;
+  _12 = _11 & 3758096383;
+  Base->BAUD = _12;
+
+  <bb 12> :
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_EnableBothEdgeSamplingCmd (struct LPUART_Type * Base)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->BAUD;
+  _2 = _1 | 131072;
+  Base->BAUD = _2;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SetOversamplingRatio (struct LPUART_Type * Base, uint32 OverSamplingRatio)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->BAUD;
+  _2 = _1 & 3774873599;
+  _3 = OverSamplingRatio << 24;
+  _4 = _3 & 520093696;
+  _5 = _2 | _4;
+  Base->BAUD = _5;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SetBaudRateDivisor (struct LPUART_Type * Base, uint32 baudRateDivisor)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->BAUD;
+  _2 = _1 & 4294959104;
+  _3 = baudRateDivisor & 8191;
+  _4 = _2 | _3;
+  Base->BAUD = _4;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SetReceiverCmd (struct LPUART_Type * Base, boolean Enable)
+{
+  long unsigned int iftmp.12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->CTRL;
+  _2 = _1 & 4294705151;
+  if (Enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.12 = 262144;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.12 = 0;
+
+  <bb 5> :
+  _3 = iftmp.12 | _2;
+  Base->CTRL = _3;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_SetTransmitterCmd (struct LPUART_Type * Base, boolean Enable)
+{
+  long unsigned int iftmp.6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Base->CTRL;
+  _2 = _1 & 4294443007;
+  if (Enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.6 = 524288;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.6 = 0;
+
+  <bb 5> :
+  _3 = iftmp.6 | _2;
+  Base->CTRL = _3;
+  return;
+
+}
+
+
+Lpuart_Uart_Ip_Hw_Init (struct LPUART_Type * Base)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Base->BAUD = 251658244;
+  # DEBUG BEGIN_STMT
+  Base->STAT = 3223306240;
+  # DEBUG BEGIN_STMT
+  Base->CTRL = 0;
+  return;
+
+}
+
+
