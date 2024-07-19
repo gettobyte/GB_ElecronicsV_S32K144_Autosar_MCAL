@@ -1,0 +1,883 @@
+Trivially needed symbols: main TestDelay gettobyte_tag_line exit_code
+Trivially needed symbols: DelayTimer
+
+
+Initial Symbol table:
+
+Lpuart_Uart_Ip_SyncSend/40 (Lpuart_Uart_Ip_SyncSend) @05ddd2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS) @060750d8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpuart_Uart_Ip_Init/38 (Lpuart_Uart_Ip_Init) @05ddd1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Port_Init/37 (Port_Init) @05ddd0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_DistributePll/36 (Clock_Ip_DistributePll) @05ddd000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_GetPllStatus/35 (Clock_Ip_GetPllStatus) @05dd4540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_aClockConfigPB/34 (Mcu_aClockConfigPB) @05dd3ee8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)main/31 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/33 (Clock_Ip_Init) @05dd4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+DelayTimer/32 (DelayTimer) @05dd39d8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @05dd49a0
+  References: 
+  Referring: TestDelay/30 (read)TestDelay/30 (write)TestDelay/30 (read)TestDelay/30 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/31 (main) @05dd49a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @01733ea0
+  References: Mcu_aClockConfigPB/34 (addr)Mcu_aClockConfigPB/34 (addr)Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (addr)gettobyte_tag_line/29 (read)gettobyte_tag_line/29 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/30 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_Init/38 Port_Init/37 Clock_Ip_DistributePll/36 Clock_Ip_GetPllStatus/35 Clock_Ip_Init/33 Clock_Ip_Init/33 
+TestDelay/30 (TestDelay) @05dd4700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05dd49a0
+  References: DelayTimer/32 (read)DelayTimer/32 (write)DelayTimer/32 (read)DelayTimer/32 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/31 
+  Calls: 
+gettobyte_tag_line/29 (gettobyte_tag_line) @05dd33f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05dd4700
+  References: 
+  Referring: main/31 (read)main/31 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+exit_code/28 (exit_code) @05dd3360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05dd33f0
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+DevAssert/27 (DevAssert) @05dc1700
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_FlushRxBuffer/26 (Lpuart_Uart_Ip_FlushRxBuffer) @05d8ca80
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_FlushTxBuffer/25 (Lpuart_Uart_Ip_FlushTxBuffer) @05d8c7e0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_CheckTimeout/24 (Lpuart_Uart_Ip_CheckTimeout) @05d8c540
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_StartTimeout/23 (Lpuart_Uart_Ip_StartTimeout) @05d8c2a0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_ClearErrorFlags/22 (Lpuart_Uart_Ip_ClearErrorFlags) @05d8c000
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_ClearStatusFlagWithMask/21 (Lpuart_Uart_Ip_ClearStatusFlagWithMask) @05d86d20
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_ClearStatusFlag/20 (Lpuart_Uart_Ip_ClearStatusFlag) @05d86a80
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_GetStatusFlag/19 (Lpuart_Uart_Ip_GetStatusFlag) @05d867e0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_Getchar10/18 (Lpuart_Uart_Ip_Getchar10) @05d86540
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_Getchar9/17 (Lpuart_Uart_Ip_Getchar9) @05d862a0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_Getchar/16 (Lpuart_Uart_Ip_Getchar) @05d86000
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_Putchar10/15 (Lpuart_Uart_Ip_Putchar10) @05d7fd20
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_Putchar9/14 (Lpuart_Uart_Ip_Putchar9) @05d7fa80
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_Putchar/13 (Lpuart_Uart_Ip_Putchar) @05d7f7e0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_GetIntMode/12 (Lpuart_Uart_Ip_GetIntMode) @05d7f540
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_SetIntMode/11 (Lpuart_Uart_Ip_SetIntMode) @05d7f2a0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_SetStopBitCount/10 (Lpuart_Uart_Ip_SetStopBitCount) @05d7f000
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_SetParityMode/9 (Lpuart_Uart_Ip_SetParityMode) @05d6ad20
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_SetBitCountPerChar/8 (Lpuart_Uart_Ip_SetBitCountPerChar) @05d6aa80
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_EnableBothEdgeSamplingCmd/7 (Lpuart_Uart_Ip_EnableBothEdgeSamplingCmd) @05d6a7e0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_GetOversamplingRatio/6 (Lpuart_Uart_Ip_GetOversamplingRatio) @05d6a540
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_SetOversamplingRatio/5 (Lpuart_Uart_Ip_SetOversamplingRatio) @05d6a2a0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_GetBaudRateDivisor/4 (Lpuart_Uart_Ip_GetBaudRateDivisor) @05d62ee0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_SetBaudRateDivisor/3 (Lpuart_Uart_Ip_SetBaudRateDivisor) @05d62c40
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_SetReceiverCmd/2 (Lpuart_Uart_Ip_SetReceiverCmd) @05d629a0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_SetTransmitterCmd/1 (Lpuart_Uart_Ip_SetTransmitterCmd) @05d62700
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_Hw_Init/0 (Lpuart_Uart_Ip_Hw_Init) @05d62460
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+
+Removing unused symbols: DevAssert Lpuart_Uart_Ip_FlushRxBuffer Lpuart_Uart_Ip_FlushTxBuffer Lpuart_Uart_Ip_CheckTimeout Lpuart_Uart_Ip_StartTimeout Lpuart_Uart_Ip_ClearErrorFlags Lpuart_Uart_Ip_ClearStatusFlagWithMask Lpuart_Uart_Ip_ClearStatusFlag Lpuart_Uart_Ip_GetStatusFlag Lpuart_Uart_Ip_Getchar10 Lpuart_Uart_Ip_Getchar9 Lpuart_Uart_Ip_Getchar Lpuart_Uart_Ip_Putchar10 Lpuart_Uart_Ip_Putchar9 Lpuart_Uart_Ip_Putchar Lpuart_Uart_Ip_GetIntMode Lpuart_Uart_Ip_SetIntMode Lpuart_Uart_Ip_SetStopBitCount Lpuart_Uart_Ip_SetParityMode Lpuart_Uart_Ip_SetBitCountPerChar Lpuart_Uart_Ip_EnableBothEdgeSamplingCmd Lpuart_Uart_Ip_GetOversamplingRatio Lpuart_Uart_Ip_SetOversamplingRatio Lpuart_Uart_Ip_GetBaudRateDivisor Lpuart_Uart_Ip_SetBaudRateDivisor Lpuart_Uart_Ip_SetReceiverCmd Lpuart_Uart_Ip_SetTransmitterCmd Lpuart_Uart_Ip_Hw_Init
+
+Reclaimed Symbol table:
+
+Lpuart_Uart_Ip_SyncSend/40 (Lpuart_Uart_Ip_SyncSend) @05ddd2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS) @060750d8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpuart_Uart_Ip_Init/38 (Lpuart_Uart_Ip_Init) @05ddd1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Port_Init/37 (Port_Init) @05ddd0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_DistributePll/36 (Clock_Ip_DistributePll) @05ddd000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_GetPllStatus/35 (Clock_Ip_GetPllStatus) @05dd4540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_aClockConfigPB/34 (Mcu_aClockConfigPB) @05dd3ee8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)main/31 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/33 (Clock_Ip_Init) @05dd4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+DelayTimer/32 (DelayTimer) @05dd39d8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/30 (read)TestDelay/30 (write)TestDelay/30 (read)TestDelay/30 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/31 (main) @05dd49a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Mcu_aClockConfigPB/34 (addr)Mcu_aClockConfigPB/34 (addr)Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (addr)gettobyte_tag_line/29 (read)gettobyte_tag_line/29 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/30 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_Init/38 Port_Init/37 Clock_Ip_DistributePll/36 Clock_Ip_GetPllStatus/35 Clock_Ip_Init/33 Clock_Ip_Init/33 
+TestDelay/30 (TestDelay) @05dd4700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer/32 (read)DelayTimer/32 (write)DelayTimer/32 (read)DelayTimer/32 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/31 
+  Calls: 
+gettobyte_tag_line/29 (gettobyte_tag_line) @05dd33f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: main/31 (read)main/31 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+exit_code/28 (exit_code) @05dd3360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+
+
+Initial Symbol table:
+
+Lpuart_Uart_Ip_SyncSend/40 (Lpuart_Uart_Ip_SyncSend) @05ddd2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS) @060750d8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpuart_Uart_Ip_Init/38 (Lpuart_Uart_Ip_Init) @05ddd1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Port_Init/37 (Port_Init) @05ddd0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_DistributePll/36 (Clock_Ip_DistributePll) @05ddd000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_GetPllStatus/35 (Clock_Ip_GetPllStatus) @05dd4540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_aClockConfigPB/34 (Mcu_aClockConfigPB) @05dd3ee8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)main/31 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/33 (Clock_Ip_Init) @05dd4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+DelayTimer.6345/32 (DelayTimer) @05dd39d8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/30 (read)TestDelay/30 (write)TestDelay/30 (read)TestDelay/30 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/31 (main) @05dd49a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Mcu_aClockConfigPB/34 (addr)Mcu_aClockConfigPB/34 (addr)Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (addr)gettobyte_tag_line/29 (read)gettobyte_tag_line/29 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/30 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_Init/38 Port_Init/37 Clock_Ip_DistributePll/36 Clock_Ip_GetPllStatus/35 Clock_Ip_Init/33 Clock_Ip_Init/33 
+TestDelay/30 (TestDelay) @05dd4700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer.6345/32 (read)DelayTimer.6345/32 (write)DelayTimer.6345/32 (read)DelayTimer.6345/32 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/31 
+  Calls: 
+gettobyte_tag_line/29 (gettobyte_tag_line) @05dd33f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: main/31 (read)main/31 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+exit_code/28 (exit_code) @05dd3360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+Lpuart_Uart_Ip_SyncSend/40 (Lpuart_Uart_Ip_SyncSend) @05ddd2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS) @060750d8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpuart_Uart_Ip_Init/38 (Lpuart_Uart_Ip_Init) @05ddd1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Port_Init/37 (Port_Init) @05ddd0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_DistributePll/36 (Clock_Ip_DistributePll) @05ddd000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_GetPllStatus/35 (Clock_Ip_GetPllStatus) @05dd4540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_aClockConfigPB/34 (Mcu_aClockConfigPB) @05dd3ee8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)main/31 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/33 (Clock_Ip_Init) @05dd4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+DelayTimer.6345/32 (DelayTimer) @05dd39d8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/30 (read)TestDelay/30 (write)TestDelay/30 (read)TestDelay/30 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/31 (main) @05dd49a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Mcu_aClockConfigPB/34 (addr)Mcu_aClockConfigPB/34 (addr)Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (addr)gettobyte_tag_line/29 (read)gettobyte_tag_line/29 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/30 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_Init/38 Port_Init/37 Clock_Ip_DistributePll/36 Clock_Ip_GetPllStatus/35 Clock_Ip_Init/33 Clock_Ip_Init/33 
+TestDelay/30 (TestDelay) @05dd4700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer.6345/32 (read)DelayTimer.6345/32 (write)DelayTimer.6345/32 (read)DelayTimer.6345/32 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/31 
+  Calls: 
+gettobyte_tag_line/29 (gettobyte_tag_line) @05dd33f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: main/31 (read)main/31 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+exit_code/28 (exit_code) @05dd3360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+Lpuart_Uart_Ip_SyncSend/40 (Lpuart_Uart_Ip_SyncSend) @05ddd2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS) @060750d8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Lpuart_Uart_Ip_Init/38 (Lpuart_Uart_Ip_Init) @05ddd1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Port_Init/37 (Port_Init) @05ddd0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_DistributePll/36 (Clock_Ip_DistributePll) @05ddd000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Clock_Ip_GetPllStatus/35 (Clock_Ip_GetPllStatus) @05dd4540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_aClockConfigPB/34 (Mcu_aClockConfigPB) @05dd3ee8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)main/31 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/33 (Clock_Ip_Init) @05dd4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+DelayTimer.6345/32 (DelayTimer) @05dd39d8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: TestDelay/30 (read)TestDelay/30 (write)TestDelay/30 (read)TestDelay/30 (write)
+  Availability: available
+  Varpool flags: initialized
+main/31 (main) @05dd49a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcu_aClockConfigPB/34 (addr)Mcu_aClockConfigPB/34 (addr)Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (addr)gettobyte_tag_line/29 (read)gettobyte_tag_line/29 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/30 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_SyncSend/40 Lpuart_Uart_Ip_Init/38 Port_Init/37 Clock_Ip_DistributePll/36 Clock_Ip_GetPllStatus/35 Clock_Ip_Init/33 Clock_Ip_Init/33 
+TestDelay/30 (TestDelay) @05dd4700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: DelayTimer.6345/32 (read)DelayTimer.6345/32 (write)DelayTimer.6345/32 (read)DelayTimer.6345/32 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: main/31 
+  Calls: 
+gettobyte_tag_line/29 (gettobyte_tag_line) @05dd33f0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: main/31 (read)main/31 (read)
+  Availability: available
+  Varpool flags: initialized
+exit_code/28 (exit_code) @05dd3360
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Trivially needed variables: DelayTimer.6345 gettobyte_tag_line exit_code
+Removing variables:
+
+Final Symbol table:
+
+Lpuart_Uart_Ip_SyncSend/40 (Lpuart_Uart_Ip_SyncSend) @05ddd2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS/39 (Lpuart_Uart_Ip_xHwConfigPB_1_BOARD_INITPERIPHERALS) @060750d8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Lpuart_Uart_Ip_Init/38 (Lpuart_Uart_Ip_Init) @05ddd1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Port_Init/37 (Port_Init) @05ddd0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Clock_Ip_DistributePll/36 (Clock_Ip_DistributePll) @05ddd000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Clock_Ip_GetPllStatus/35 (Clock_Ip_GetPllStatus) @05dd4540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Mcu_aClockConfigPB/34 (Mcu_aClockConfigPB) @05dd3ee8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/33 (Clock_Ip_Init) @05dd4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+DelayTimer.6345/32 (DelayTimer) @05dd39d8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+main/31 (main) @05dd49a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+TestDelay/30 (TestDelay) @05dd4700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+gettobyte_tag_line/29 (gettobyte_tag_line) @05dd33f0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @05dd39d8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+exit_code/28 (exit_code) @05dd3360
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @05dd33f0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized

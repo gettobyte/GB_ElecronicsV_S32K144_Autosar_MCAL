@@ -1,0 +1,317 @@
+
+
+ local analysis of NVIC_SetPriority
+   scanning: _1 = (long unsigned int) priority_5(D);
+  scanning: _2 = _1 << 4;
+  scanning: _3 = (long unsigned int) IRQn_6(D);
+  scanning: _4 = (unsigned char) _2;
+  scanning: MEM[(struct S32_NVIC_Type *)3758153984B].IP[_3] ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of NVIC_DisableIRQ
+   scanning: _2 = IRQn_6(D) & 31;
+  scanning: _1 = (long unsigned int) _2;
+  scanning: _3 = IRQn_6(D) >> 5;
+  scanning: _4 = (long unsigned int) _3;
+  scanning: _5 = 1 << _1;
+  scanning: MEM[(struct S32_NVIC_Type *)3758153984B].ICER[_4] ={v} _5;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of NVIC_EnableIRQ
+   scanning: _2 = IRQn_6(D) & 31;
+  scanning: _1 = (long unsigned int) _2;
+  scanning: _3 = IRQn_6(D) >> 5;
+  scanning: _4 = (long unsigned int) _3;
+  scanning: _5 = 1 << _1;
+  scanning: MEM[(struct S32_NVIC_Type *)3758153984B].ISER[_4] ={v} _5;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of NVIC_SetPriorityGrouping
+   scanning: _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].AIRCR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4294965503;
+  scanning: _3 = _2 | PriorityGroup_5(D);
+  scanning: MEM[(struct S32_SCB_Type *)3758153728B].AIRCR ={v} _3;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+callgraph:
+
+NVIC_SetPriority/3 (NVIC_SetPriority) @06ab2620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb4e00
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_DisableIRQ/2 (NVIC_DisableIRQ) @06ab2d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5100
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_EnableIRQ/1 (NVIC_EnableIRQ) @06ab2a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb4e60
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_SetPriorityGrouping/0 (NVIC_SetPriorityGrouping) @06ab27e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5000
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+NVIC_SetPriority/3 (NVIC_SetPriority) @06ab2620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb4e00
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_DisableIRQ/2 (NVIC_DisableIRQ) @06ab2d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5100
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_EnableIRQ/1 (NVIC_EnableIRQ) @06ab2a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb4e60
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_SetPriorityGrouping/0 (NVIC_SetPriorityGrouping) @06ab27e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5000
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+NVIC_SetPriority: malloc_bottom
+NVIC_DisableIRQ: malloc_bottom
+NVIC_EnableIRQ: malloc_bottom
+NVIC_SetPriorityGrouping: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+NVIC_SetPriority: malloc_bottom
+NVIC_DisableIRQ: malloc_bottom
+NVIC_EnableIRQ: malloc_bottom
+NVIC_SetPriorityGrouping: malloc_bottom
+callgraph:
+
+NVIC_SetPriority/3 (NVIC_SetPriority) @06ab2620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5100
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_DisableIRQ/2 (NVIC_DisableIRQ) @06ab2d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5160
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_EnableIRQ/1 (NVIC_EnableIRQ) @06ab2a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5180
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_SetPriorityGrouping/0 (NVIC_SetPriorityGrouping) @06ab27e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb51a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+NVIC_SetPriority/3 (NVIC_SetPriority) @06ab2620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5100
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_DisableIRQ/2 (NVIC_DisableIRQ) @06ab2d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5160
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_EnableIRQ/1 (NVIC_EnableIRQ) @06ab2a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb5180
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+NVIC_SetPriorityGrouping/0 (NVIC_SetPriorityGrouping) @06ab27e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04bb51a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: NVIC_SetPriorityGrouping
+Function found not to call free: NVIC_EnableIRQ
+Function found not to call free: NVIC_DisableIRQ
+Function found not to call free: NVIC_SetPriority
+NVIC_SetPriority (uint8 IRQn, uint8 priority)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG shift => 4
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) priority_5(D);
+  _2 = _1 << 4;
+  _3 = (long unsigned int) IRQn_6(D);
+  _4 = (unsigned char) _2;
+  MEM[(struct S32_NVIC_Type *)3758153984B].IP[_3] ={v} _4;
+  return;
+
+}
+
+
+NVIC_DisableIRQ (uint8 IRQn)
+{
+  long unsigned int _1;
+  unsigned char _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = IRQn_6(D) & 31;
+  _1 = (long unsigned int) _2;
+  _3 = IRQn_6(D) >> 5;
+  _4 = (long unsigned int) _3;
+  _5 = 1 << _1;
+  MEM[(struct S32_NVIC_Type *)3758153984B].ICER[_4] ={v} _5;
+  return;
+
+}
+
+
+NVIC_EnableIRQ (uint8 IRQn)
+{
+  long unsigned int _1;
+  unsigned char _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = IRQn_6(D) & 31;
+  _1 = (long unsigned int) _2;
+  _3 = IRQn_6(D) >> 5;
+  _4 = (long unsigned int) _3;
+  _5 = 1 << _1;
+  MEM[(struct S32_NVIC_Type *)3758153984B].ISER[_4] ={v} _5;
+  return;
+
+}
+
+
+NVIC_SetPriorityGrouping (uint32 PriorityGroup)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].AIRCR;
+  _2 = _1 & 4294965503;
+  _3 = _2 | PriorityGroup_5(D);
+  MEM[(struct S32_SCB_Type *)3758153728B].AIRCR ={v} _3;
+  return;
+
+}
+
+
