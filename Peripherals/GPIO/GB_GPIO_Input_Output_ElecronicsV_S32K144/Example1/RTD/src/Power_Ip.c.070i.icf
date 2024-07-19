@@ -1,0 +1,214 @@
+Parsed function:Power_Ip_InstallNotificationsCallback
+Parsed function:Power_Ip_EnableSleepOnExit
+Parsed function:Power_Ip_DisableSleepOnExit
+Parsed function:Power_Ip_InitPower
+Parsed function:Power_Ip_InitReset
+Parsed function:Power_Ip_GetResetRawValue
+Parsed function:Power_Ip_GetResetReason
+Parsed function:Power_Ip_SetMode
+Dump after hash based groups
+Congruence classes: 8 (unique hash values: 8), with total: 9 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 7 classes
+[2]: 1 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 9 (unique hash values: 8), with total: 9 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 9 classes
+
+
+Worklist has been filled with: 1
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 9 (unique hash values: 8), with total: 9 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 9 classes
+
+
+Init called for 0 items (0.00%).
+Dump after full equality comparison of groups
+Congruence classes: 9 (unique hash values: 8), with total: 9 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 9 classes
+
+
+Worklist has been filled with: 1
+Address reference subdivision created: 0 new classes.
+Congruence classes: 9 (unique hash values: 8), with total: 9 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 9 classes
+
+
+
+Item count: 9
+Congruent classes before: 9, after: 9
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+Power_Ip_InstallNotificationsCallback (void (*Power_Ip_ReportErrorsCallbackType) (Power_Ip_PowerReportErrorType, uint8) reportErrorsCallback)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  powerReportErrorsCallback = reportErrorsCallback_2(D);
+  return;
+
+}
+
+
+Power_Ip_EnableSleepOnExit ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_CM4_EnableSleepOnExit ();
+  return;
+
+}
+
+
+Power_Ip_DisableSleepOnExit ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_CM4_DisableSleepOnExit ();
+  return;
+
+}
+
+
+Power_Ip_InitPower (const struct Power_Ip_HwIPsConfigType * Power_Ip_pHwIPsConfigPtr)
+{
+  const struct Power_Ip_PMC_ConfigType * _1;
+  const struct Power_Ip_SMC_ConfigType * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Power_Ip_pHwIPsConfigPtr_4(D)->PMC_pConfig;
+  Power_Ip_PMC_PowerInit (_1);
+  # DEBUG BEGIN_STMT
+  _2 = Power_Ip_pHwIPsConfigPtr_4(D)->SMC_pConfig;
+  Power_Ip_SMC_AllowedModesConfig (_2);
+  return;
+
+}
+
+
+Power_Ip_InitReset (const struct Power_Ip_HwIPsConfigType * Power_Ip_pHwIPsConfigPtr)
+{
+  const struct Power_Ip_RCM_ConfigType * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Power_Ip_pHwIPsConfigPtr_3(D)->RCM_pConfig;
+  Power_Ip_RCM_ResetInit (_1);
+  return;
+
+}
+
+
+Power_Ip_GetResetRawValue ()
+{
+  Power_Ip_RawResetType ResetReason;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ResetReason_3 = Power_Ip_RCM_GetResetRawValue ();
+  # DEBUG ResetReason => ResetReason_3
+  # DEBUG BEGIN_STMT
+  return ResetReason_3;
+
+}
+
+
+Power_Ip_GetResetReason ()
+{
+  Power_Ip_ResetType eResetReason;
+  static const Power_Ip_ResetType resetReasonArray[15] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+  uint32 resetVal;
+  <unnamed type> _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eResetReason => 14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  resetVal_3 = Power_Ip_RCM_GetResetReason ();
+  # DEBUG resetVal => resetVal_3
+  # DEBUG BEGIN_STMT
+  # DEBUG resetReasonIndex => resetVal_3
+  # DEBUG INLINE_ENTRY Power_Ip_ConvertIntergeToResetType
+  # DEBUG BEGIN_STMT
+  # DEBUG eResetReason => 12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = resetReasonArray[resetVal_3];
+  if (_4 <= 14)
+    goto <bb 3>; [65.00%]
+  else
+    goto <bb 4>; [35.00%]
+
+  <bb 3> [local count: 697932186]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eResetReason => _4
+
+  <bb 4> [local count: 1073741824]:
+  # eResetReason_5 = PHI <12(2), _4(3)>
+  # DEBUG eResetReason => eResetReason_5
+  # DEBUG BEGIN_STMT
+  # DEBUG resetReasonIndex => NULL
+  # DEBUG eResetReason => NULL
+  # DEBUG eResetReason => eResetReason_5
+  # DEBUG BEGIN_STMT
+  return eResetReason_5;
+
+}
+
+
+Power_Ip_SetMode (const struct Power_Ip_ModeConfigType * Power_Ip_pModeConfigPtr)
+{
+  Power_Ip_PowerModeType ePowerMode;
+  uint32 ePowerSwitchMode;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ePowerMode_5 = Power_Ip_pModeConfigPtr_4(D)->Power_Ip_ePowerMode;
+  # DEBUG ePowerMode => ePowerMode_5
+  # DEBUG BEGIN_STMT
+  _1 = Power_Ip_SMC_ModeCheckEntry (ePowerMode_5);
+  if (_1 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  ePowerSwitchMode_8 = Power_Ip_SMC_ModeConfig (Power_Ip_pModeConfigPtr_4(D));
+  # DEBUG ePowerSwitchMode => ePowerSwitchMode_8
+  # DEBUG BEGIN_STMT
+  if (ePowerSwitchMode_8 == 1)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 719407023]:
+  # DEBUG ePowerSwitchMode => NULL
+  # DEBUG BEGIN_STMT
+  ReportPowerErrors (3, 255);
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

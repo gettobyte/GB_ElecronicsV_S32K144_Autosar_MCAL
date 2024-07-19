@@ -1,0 +1,342 @@
+
+
+ local analysis of PowerTimeoutExpired
+   scanning: _6 = OsIf_GetElapsed (startTimeInOut_4(D), 0);
+  scanning: _1 = *elapsedTimeInOut_7(D);
+    Indirect ref read is not const
+  scanning: _2 = _1 + _6;
+  scanning: *elapsedTimeInOut_7(D) = _2;
+    Indirect ref write is not const/pure
+  scanning: _10 = _2 >= TimeoutTicks_9(D);
+  scanning: return _10;
+
+
+ local analysis of PowerStartTimeout
+   scanning: _1 = OsIf_GetCounter (0);
+  scanning: *startTimeOut_5(D) = _1;
+    Indirect ref write is not const/pure
+  scanning: *elapsedTimeOut_7(D) = 0;
+    Indirect ref write is not const/pure
+  scanning: _2 = OsIf_MicrosToTicks (timeoutUs_9(D), 0);
+  scanning: *timeoutTicksOut_11(D) = _2;
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of ReportPowerErrorsEmptyCallback
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of ReportPowerErrors
+   scanning: powerReportErrorsCallback.0_1 = powerReportErrorsCallback;
+  scanning: powerReportErrorsCallback.0_1 (error_3(D), u8ErrorCode_4(D));
+  scanning: return;
+Function is locally const.
+callgraph:
+
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @06785000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PowerTimeoutExpired/3 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+OsIf_MicrosToTicks/6 (OsIf_MicrosToTicks) @06785e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PowerStartTimeout/2 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+OsIf_GetCounter/5 (OsIf_GetCounter) @06785d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PowerStartTimeout/2 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+PowerTimeoutExpired/3 (PowerTimeoutExpired) @06785700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384ab8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_GetElapsed/7 (1073741824 (estimated locally),1.00 per call) 
+PowerStartTimeout/2 (PowerStartTimeout) @06785460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384838
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_MicrosToTicks/6 (1073741824 (estimated locally),1.00 per call) OsIf_GetCounter/5 (1073741824 (estimated locally),1.00 per call) 
+ReportPowerErrorsEmptyCallback/1 (ReportPowerErrorsEmptyCallback) @067851c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384ad8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+ReportPowerErrors/0 (ReportPowerErrors) @06779ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384b78
+  References: powerReportErrorsCallback/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(1073741824 (estimated locally),1.00 per call) 
+
+
+ ordered call graph: reduced for nothrow
+PowerTimeoutExpired/3 (PowerTimeoutExpired) @06785700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384ab8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_GetElapsed/7 (1073741824 (estimated locally),1.00 per call) 
+PowerStartTimeout/2 (PowerStartTimeout) @06785460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384838
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_MicrosToTicks/6 (1073741824 (estimated locally),1.00 per call) OsIf_GetCounter/5 (1073741824 (estimated locally),1.00 per call) 
+ReportPowerErrorsEmptyCallback/1 (ReportPowerErrorsEmptyCallback) @067851c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384ad8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+ReportPowerErrors/0 (ReportPowerErrors) @06779ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384b78
+  References: powerReportErrorsCallback/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(1073741824 (estimated locally),1.00 per call) 
+
+
+
+MALLOC LATTICE Initial:
+PowerTimeoutExpired: malloc_bottom
+PowerStartTimeout: malloc_bottom
+ReportPowerErrorsEmptyCallback: malloc_bottom
+ReportPowerErrors: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+PowerTimeoutExpired: malloc_bottom
+PowerStartTimeout: malloc_bottom
+ReportPowerErrorsEmptyCallback: malloc_bottom
+ReportPowerErrors: malloc_bottom
+callgraph:
+
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @06785000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PowerTimeoutExpired/3 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+OsIf_MicrosToTicks/6 (OsIf_MicrosToTicks) @06785e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PowerStartTimeout/2 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+OsIf_GetCounter/5 (OsIf_GetCounter) @06785d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PowerStartTimeout/2 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+PowerTimeoutExpired/3 (PowerTimeoutExpired) @06785700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384b18
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_GetElapsed/7 (1073741824 (estimated locally),1.00 per call) 
+PowerStartTimeout/2 (PowerStartTimeout) @06785460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384818
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_MicrosToTicks/6 (1073741824 (estimated locally),1.00 per call) OsIf_GetCounter/5 (1073741824 (estimated locally),1.00 per call) 
+ReportPowerErrorsEmptyCallback/1 (ReportPowerErrorsEmptyCallback) @067851c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384a18
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+ReportPowerErrors/0 (ReportPowerErrors) @06779ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384a58
+  References: powerReportErrorsCallback/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(1073741824 (estimated locally),1.00 per call) 
+
+
+ ordered call graph: reduced
+PowerTimeoutExpired/3 (PowerTimeoutExpired) @06785700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384b18
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_GetElapsed/7 (1073741824 (estimated locally),1.00 per call) 
+PowerStartTimeout/2 (PowerStartTimeout) @06785460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384818
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_MicrosToTicks/6 (1073741824 (estimated locally),1.00 per call) OsIf_GetCounter/5 (1073741824 (estimated locally),1.00 per call) 
+ReportPowerErrorsEmptyCallback/1 (ReportPowerErrorsEmptyCallback) @067851c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384a18
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+ReportPowerErrors/0 (ReportPowerErrors) @06779ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06384a58
+  References: powerReportErrorsCallback/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(1073741824 (estimated locally),1.00 per call) 
+
+Function found not to call free: ReportPowerErrorsEmptyCallback
+PowerTimeoutExpired (uint32 * startTimeInOut, uint32 * elapsedTimeInOut, uint32 TimeoutTicks)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _6;
+  boolean _10;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _6 = OsIf_GetElapsed (startTimeInOut_4(D), 0);
+  _1 = *elapsedTimeInOut_7(D);
+  _2 = _1 + _6;
+  *elapsedTimeInOut_7(D) = _2;
+  # DEBUG BEGIN_STMT
+  _10 = _2 >= TimeoutTicks_9(D);
+  return _10;
+
+}
+
+
+PowerStartTimeout (uint32 * startTimeOut, uint32 * elapsedTimeOut, uint32 * timeoutTicksOut, uint32 timeoutUs)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = OsIf_GetCounter (0);
+  *startTimeOut_5(D) = _1;
+  # DEBUG BEGIN_STMT
+  *elapsedTimeOut_7(D) = 0;
+  # DEBUG BEGIN_STMT
+  _2 = OsIf_MicrosToTicks (timeoutUs_9(D), 0);
+  *timeoutTicksOut_11(D) = _2;
+  return;
+
+}
+
+
+ReportPowerErrorsEmptyCallback (Power_Ip_PowerReportErrorType error, uint8 u8ErrorCode)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+ReportPowerErrors (Power_Ip_PowerReportErrorType error, uint8 u8ErrorCode)
+{
+  void (*<T4c6>) (Power_Ip_PowerReportErrorType, uint8) powerReportErrorsCallback.0_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  powerReportErrorsCallback.0_1 = powerReportErrorsCallback;
+  powerReportErrorsCallback.0_1 (error_3(D), u8ErrorCode_4(D));
+  return;
+
+}
+
+

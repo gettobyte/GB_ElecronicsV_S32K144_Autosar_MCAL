@@ -1,0 +1,169 @@
+
+
+ local analysis of Power_Ip_SCG_DisableSpllClock
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4294967294;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of Power_Ip_SCG_DisableClockMonitors
+   scanning: _1 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4294901759;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 & 4294901759;
+  scanning: MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+callgraph:
+
+Power_Ip_SCG_DisableSpllClock/1 (Power_Ip_SCG_DisableSpllClock) @067b5540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04ba3940
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_SCG_DisableClockMonitors/0 (Power_Ip_SCG_DisableClockMonitors) @067b52a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04ba3c80
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+Power_Ip_SCG_DisableSpllClock/1 (Power_Ip_SCG_DisableSpllClock) @067b5540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04ba3940
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_SCG_DisableClockMonitors/0 (Power_Ip_SCG_DisableClockMonitors) @067b52a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04ba3c80
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+Power_Ip_SCG_DisableSpllClock: malloc_bottom
+Power_Ip_SCG_DisableClockMonitors: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Power_Ip_SCG_DisableSpllClock: malloc_bottom
+Power_Ip_SCG_DisableClockMonitors: malloc_bottom
+callgraph:
+
+Power_Ip_SCG_DisableSpllClock/1 (Power_Ip_SCG_DisableSpllClock) @067b5540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04ba3b60
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_SCG_DisableClockMonitors/0 (Power_Ip_SCG_DisableClockMonitors) @067b52a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04ba3b00
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+Power_Ip_SCG_DisableSpllClock/1 (Power_Ip_SCG_DisableSpllClock) @067b5540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04ba3b60
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_SCG_DisableClockMonitors/0 (Power_Ip_SCG_DisableClockMonitors) @067b52a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @04ba3b00
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: Power_Ip_SCG_DisableClockMonitors
+Function found not to call free: Power_Ip_SCG_DisableSpllClock
+Power_Ip_SCG_DisableSpllClock ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _2;
+  return;
+
+}
+
+
+Power_Ip_SCG_DisableClockMonitors ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _2 = _1 & 4294901759;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _4 = _3 & 4294901759;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+  return;
+
+}
+
+
