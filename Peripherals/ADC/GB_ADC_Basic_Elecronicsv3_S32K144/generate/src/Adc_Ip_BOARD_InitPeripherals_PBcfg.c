@@ -115,7 +115,7 @@ const Adc_Ip_ConfigType AdcHwUnit_0_BOARD_INITPERIPHERALS =
     ADC_IP_CLK_ALT_1, /* InputClock */
     255U, /* SampleTime */
     (boolean)TRUE, /* AvgEn */
-    ADC_IP_AVG_4_CONV, /* AvgSel */
+    ADC_IP_AVG_8_CONV, /* AvgSel */
     ADC_IP_RESOLUTION_12BIT, /* Resolution */
     ADC_IP_TRIGGER_SOFTWARE, /* TriggerMode */
 #if (ADC_IP_ENABLE_SIM_SOURCE_SELECTION == STD_ON)

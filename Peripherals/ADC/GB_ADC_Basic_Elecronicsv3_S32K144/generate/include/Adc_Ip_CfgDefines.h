@@ -106,7 +106,7 @@ extern "C"{
 #define ADC_IP_TIMEOUT_VAL                     (10000UL)
 #define ADC_IP_ENABLE_USER_MODE_SUPPORT        (STD_OFF)
 #define ADC_IP_SUPPLY_MONITORING_ENABLED       (STD_OFF)
-#define ADC_IP_ENABLE_SIM_SOURCE_SELECTION     (STD_ON)
+#define ADC_IP_ENABLE_SIM_SOURCE_SELECTION     (STD_OFF)
 
 /*! @brief ADC default Sample Time from RM */
 #define ADC_IP_DEFAULT_SAMPLE_TIME             (0x0CU)

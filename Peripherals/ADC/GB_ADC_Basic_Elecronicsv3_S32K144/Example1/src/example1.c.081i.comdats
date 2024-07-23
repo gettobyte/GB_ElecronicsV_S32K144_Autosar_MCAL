@@ -4,7 +4,7 @@ main ()
   boolean Gb_ADC_Conversion_Status;
   Adc_Ip_StatusType adcStatus;
   Clock_Ip_StatusType clockStatus;
-  int D.6942;
+  int D.6920;
   <unnamed type> _1;
   short unsigned int _2;
 
@@ -13,10 +13,10 @@ main ()
   goto <bb 4>; [INV]
 
   <bb 3> :
-  clockStatus_26 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  clockStatus_28 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
 
   <bb 4> :
-  # clockStatus_3 = PHI <clockStatus_11(2), clockStatus_26(3)>
+  # clockStatus_3 = PHI <clockStatus_11(2), clockStatus_28(3)>
   if (clockStatus_3 != 0)
     goto <bb 3>; [INV]
   else
@@ -39,20 +39,21 @@ main ()
   goto <bb 9>; [INV]
 
   <bb 8> :
-  adcStatus_24 = Adc_Ip_DoCalibration (0);
+  adcStatus_26 = Adc_Ip_DoCalibration (0);
 
   <bb 9> :
-  # adcStatus_4 = PHI <adcStatus_17(7), adcStatus_24(8)>
+  # adcStatus_4 = PHI <adcStatus_17(7), adcStatus_26(8)>
   if (adcStatus_4 != 0)
     goto <bb 8>; [INV]
   else
     goto <bb 10>; [INV]
 
   <bb 10> :
-  Adc_Ip_StartConversion (0, 12, 1);
+  Adc_Ip_StartConversion (0, 12, 0);
   Gb_ADC_Conversion_Status_20 = Adc_Ip_GetConvActiveFlag (0);
+  Gb_ADC_Conversion_Status_22 = Adc_Ip_GetConvCompleteFlag (0, 12);
   _2 = Adc_Ip_GetConvData (0, 0);
-  Gb_ADC_Value_22 = (uint32_t) _2;
+  Gb_ADC_Value_24 = (uint32_t) _2;
   goto <bb 10>; [INV]
 
 }

@@ -1,136 +1,3 @@
-ADC_SetSoftwarePretrigger_TrustedCall (const uint32 Instance, const uint8 SoftwarePretrigger)
-{
-  uint32 Reg;
-
-  <bb 2> :
-  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_31 ();
-  _1 = 1074036736B;
-  Reg = _1->ADCOPT;
-  switch (Instance) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
-
-  <bb 3> :
-<L0>:
-  Reg = Reg & 4294967281;
-  _2 = (long unsigned int) SoftwarePretrigger;
-  _3 = _2 << 1;
-  _4 = _3 & 14;
-  Reg = Reg | _4;
-  goto <bb 6>; [INV]
-
-  <bb 4> :
-<L1>:
-  Reg = Reg & 4294963711;
-  _5 = (long unsigned int) SoftwarePretrigger;
-  _6 = _5 << 9;
-  _7 = _6 & 3584;
-  Reg = Reg | _7;
-  goto <bb 6>; [INV]
-
-  <bb 5> :
-<L2>:
-
-  <bb 6> :
-  _8 = 1074036736B;
-  _8->ADCOPT = Reg;
-  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_31 ();
-  return;
-
-}
-
-
-ADC_SetPretriggerSourceSelect_TrustedCall (const uint32 Instance, const uint8 PretriggerSource)
-{
-  uint32 Reg;
-
-  <bb 2> :
-  _1 = 1074036736B;
-  Reg = _1->ADCOPT;
-  switch (Instance) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
-
-  <bb 3> :
-<L0>:
-  Reg = Reg & 4294967247;
-  _2 = (long unsigned int) PretriggerSource;
-  _3 = _2 << 4;
-  _4 = _3 & 48;
-  Reg = Reg | _4;
-  goto <bb 6>; [INV]
-
-  <bb 4> :
-<L1>:
-  Reg = Reg & 4294955007;
-  _5 = (long unsigned int) PretriggerSource;
-  _6 = _5 << 12;
-  _7 = _6 & 12288;
-  Reg = Reg | _7;
-  goto <bb 6>; [INV]
-
-  <bb 5> :
-<L2>:
-
-  <bb 6> :
-  _8 = 1074036736B;
-  _8->ADCOPT = Reg;
-  return;
-
-}
-
-
-ADC_SetPretriggerSourceSelect (const uint32 Instance, const uint8 PretriggerSource)
-{
-  <bb 2> :
-  ADC_SetPretriggerSourceSelect_TrustedCall (Instance, PretriggerSource);
-  return;
-
-}
-
-
-ADC_SetTriggerSourceSelect_TrustedCall (const uint32 Instance, const uint8 TriggerSource)
-{
-  uint32 Reg;
-
-  <bb 2> :
-  _1 = 1074036736B;
-  Reg = _1->ADCOPT;
-  switch (Instance) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
-
-  <bb 3> :
-<L0>:
-  Reg = Reg & 4294967294;
-  _2 = (long unsigned int) TriggerSource;
-  _3 = _2 & 1;
-  Reg = Reg | _3;
-  goto <bb 6>; [INV]
-
-  <bb 4> :
-<L1>:
-  Reg = Reg & 4294967039;
-  _4 = (long unsigned int) TriggerSource;
-  _5 = _4 << 8;
-  _6 = _5 & 256;
-  Reg = Reg | _6;
-  goto <bb 6>; [INV]
-
-  <bb 5> :
-<L2>:
-
-  <bb 6> :
-  _7 = 1074036736B;
-  _7->ADCOPT = Reg;
-  return;
-
-}
-
-
-ADC_SetTriggerSourceSelect (const uint32 Instance, const uint8 TriggerSource)
-{
-  <bb 2> :
-  ADC_SetTriggerSourceSelect_TrustedCall (Instance, TriggerSource);
-  return;
-
-}
-
-
 Adc_Ip_IRQHandler (const uint32 Instance)
 {
   boolean ChanCocoFlag;
@@ -232,16 +99,6 @@ Adc_Ip_IRQHandler (const uint32 Instance)
 }
 
 
-Adc_Ip_SetSoftwarePretrigger (const uint32 Instance, const Adc_Ip_SoftwarePretriggerType SoftwarePretrigger)
-{
-  <bb 2> :
-  _1 = (unsigned char) SoftwarePretrigger;
-  ADC_SetSoftwarePretrigger_TrustedCall (Instance, _1);
-  return;
-
-}
-
-
 Adc_Ip_GetChanData (const uint32 Instance, const Adc_Ip_InputChannelType Channel, uint16 * const Result)
 {
   boolean Found;
@@ -249,7 +106,7 @@ Adc_Ip_GetChanData (const uint32 Instance, const Adc_Ip_InputChannelType Channel
   uint16 Temp;
   Adc_Ip_StatusType Status;
   const struct ADC_Type * const Base;
-  Adc_Ip_StatusType D.6489;
+  Adc_Ip_StatusType D.6413;
 
   <bb 2> :
   Base = AdcBase[Instance];
@@ -299,28 +156,28 @@ Adc_Ip_GetChanData (const uint32 Instance, const Adc_Ip_InputChannelType Channel
 
   <bb 10> :
   *Result = Temp;
-  D.6489 = Status;
+  D.6413 = Status;
 
   <bb 11> :
 <L8>:
-  return D.6489;
+  return D.6413;
 
 }
 
 
 Adc_Ip_GetDataAddress (const uint32 Instance, const uint8 Index)
 {
-  uint32 D.6482;
+  uint32 D.6406;
 
   <bb 2> :
   _1 = AdcBase[Instance];
   _2 = (int) Index;
   _3 = &_1->R[_2];
-  D.6482 = (uint32) _3;
+  D.6406 = (uint32) _3;
 
   <bb 3> :
 <L0>:
-  return D.6482;
+  return D.6406;
 
 }
 
@@ -328,17 +185,17 @@ Adc_Ip_GetDataAddress (const uint32 Instance, const uint8 Index)
 Adc_Ip_GetTrigErrReg (const uint32 Instance)
 {
   const struct ADC_Type * const Base;
-  uint32 D.6480;
+  uint32 D.6404;
 
   <bb 2> :
   Base = AdcBase[Instance];
   _1 = Base->SC2;
   _2 = _1 >> 24;
-  D.6480 = _2 & 15;
+  D.6404 = _2 & 15;
 
   <bb 3> :
 <L0>:
-  return D.6480;
+  return D.6404;
 
 }
 
@@ -402,8 +259,8 @@ Adc_Ip_ClearLatchedTriggers (const uint32 Instance)
   uint32 TimeoutTicks;
   Adc_Ip_StatusType Status;
   struct ADC_Type * const Base;
-  Adc_Ip_StatusType D.6477;
-  long unsigned int D.6473;
+  Adc_Ip_StatusType D.6401;
+  long unsigned int D.6397;
 
   <bb 2> :
   Base = AdcBase[Instance];
@@ -420,8 +277,8 @@ Adc_Ip_ClearLatchedTriggers (const uint32 Instance)
   goto <bb 4>; [INV]
 
   <bb 3> :
-  D.6473 = OsIf_GetElapsed (&CurrentTicks, 0);
-  ElapsedTicks = D.6473 + ElapsedTicks;
+  D.6397 = OsIf_GetElapsed (&CurrentTicks, 0);
+  ElapsedTicks = D.6397 + ElapsedTicks;
 
   <bb 4> :
   _4 = Base->SC2;
@@ -447,12 +304,12 @@ Adc_Ip_ClearLatchedTriggers (const uint32 Instance)
   Status = 2;
 
   <bb 8> :
-  D.6477 = Status;
+  D.6401 = Status;
   CurrentTicks = {CLOBBER};
 
   <bb 9> :
 <L7>:
-  return D.6477;
+  return D.6401;
 
 }
 
@@ -468,9 +325,9 @@ Adc_Ip_DoCalibration (const uint32 Instance)
   Adc_Ip_TrigType TriggerMode;
   Adc_Ip_StatusType Status;
   struct ADC_Type * const Base;
-  Adc_Ip_StatusType D.6460;
+  Adc_Ip_StatusType D.6384;
   long unsigned int vol.9;
-  long unsigned int D.6455;
+  long unsigned int D.6379;
 
   <bb 2> :
   Base = AdcBase[Instance];
@@ -521,8 +378,8 @@ Adc_Ip_DoCalibration (const uint32 Instance)
   goto <bb 4>; [INV]
 
   <bb 3> :
-  D.6455 = OsIf_GetElapsed (&CurrentTicks, 0);
-  ElapsedTicks = D.6455 + ElapsedTicks;
+  D.6379 = OsIf_GetElapsed (&CurrentTicks, 0);
+  ElapsedTicks = D.6379 + ElapsedTicks;
 
   <bb 4> :
   _13 = Base->SC3;
@@ -550,14 +407,14 @@ Adc_Ip_DoCalibration (const uint32 Instance)
   <bb 8> :
   Adc_DoCalibration_SetParams (Base, &PreClockConfig, TriggerMode);
   vol.9 = Base->R[0];
-  D.6460 = Status;
+  D.6384 = Status;
   CurrentTicks = {CLOBBER};
   PreClockConfig = {CLOBBER};
   CalClockConfig = {CLOBBER};
 
   <bb 9> :
 <L7>:
-  return D.6460;
+  return D.6384;
 
 }
 
@@ -565,15 +422,15 @@ Adc_Ip_DoCalibration (const uint32 Instance)
 Adc_Ip_GetConvData (const uint32 Instance, const uint8 ControlChanIdx)
 {
   const struct ADC_Type * const Base;
-  uint16 D.6451;
+  uint16 D.6375;
 
   <bb 2> :
   Base = AdcBase[Instance];
-  D.6451 = Adc_HwAcc_GetData (Base, ControlChanIdx);
+  D.6375 = Adc_HwAcc_GetData (Base, ControlChanIdx);
 
   <bb 3> :
 <L0>:
-  return D.6451;
+  return D.6375;
 
 }
 
@@ -582,17 +439,17 @@ Adc_Ip_GetConvCompleteFlag (const uint32 Instance, const uint8 ControlChanIdx)
 {
   const uint32 Sc1Reg;
   const struct ADC_Type * const Base;
-  boolean D.6447;
+  boolean D.6371;
 
   <bb 2> :
   Base = AdcBase[Instance];
   _1 = (int) ControlChanIdx;
   Sc1Reg = Base->SC1[_1];
-  D.6447 = Adc_HwAcc_GetCOCO (Sc1Reg);
+  D.6371 = Adc_HwAcc_GetCOCO (Sc1Reg);
 
   <bb 3> :
 <L0>:
-  return D.6447;
+  return D.6371;
 
 }
 
@@ -601,17 +458,17 @@ Adc_Ip_GetChanInterrupt (const uint32 Instance, const uint8 ControlChanIdx)
 {
   const uint32 Sc1Reg;
   const struct ADC_Type * const Base;
-  boolean D.6443;
+  boolean D.6367;
 
   <bb 2> :
   Base = AdcBase[Instance];
   _1 = (int) ControlChanIdx;
   Sc1Reg = Base->SC1[_1];
-  D.6443 = Adc_HwAcc_GetAIEN (Sc1Reg);
+  D.6367 = Adc_HwAcc_GetAIEN (Sc1Reg);
 
   <bb 3> :
 <L0>:
-  return D.6443;
+  return D.6367;
 
 }
 
@@ -620,18 +477,18 @@ Adc_Ip_GetConvActiveFlag (const uint32 Instance)
 {
   uint32 Sc2Reg;
   const struct ADC_Type * const Base;
-  boolean D.6441;
+  boolean D.6365;
 
   <bb 2> :
   Base = AdcBase[Instance];
   Sc2Reg = Base->SC2;
   _1 = Sc2Reg >> 7;
   Sc2Reg = _1 & 1;
-  D.6441 = Sc2Reg != 0;
+  D.6365 = Sc2Reg != 0;
 
   <bb 3> :
 <L0>:
-  return D.6441;
+  return D.6365;
 
 }
 
@@ -657,8 +514,8 @@ Adc_Ip_SetDisabledChannel (const uint32 Instance, const uint8 ControlChanIdx, co
   uint32 TimeoutTicks;
   Adc_Ip_StatusType Status;
   struct ADC_Type * const Base;
-  Adc_Ip_StatusType D.6438;
-  long unsigned int D.6434;
+  Adc_Ip_StatusType D.6362;
+  long unsigned int D.6358;
 
   <bb 2> :
   Base = AdcBase[Instance];
@@ -683,8 +540,8 @@ Adc_Ip_SetDisabledChannel (const uint32 Instance, const uint8 ControlChanIdx, co
   goto <bb 5>; [INV]
 
   <bb 4> :
-  D.6434 = OsIf_GetElapsed (&CurrentTicks, 0);
-  ElapsedTicks = D.6434 + ElapsedTicks;
+  D.6358 = OsIf_GetElapsed (&CurrentTicks, 0);
+  ElapsedTicks = D.6358 + ElapsedTicks;
 
   <bb 5> :
   _6 = (int) ControlChanIdx;
@@ -711,12 +568,12 @@ Adc_Ip_SetDisabledChannel (const uint32 Instance, const uint8 ControlChanIdx, co
   Status = 2;
 
   <bb 9> :
-  D.6438 = Status;
+  D.6362 = Status;
   CurrentTicks = {CLOBBER};
 
   <bb 10> :
 <L9>:
-  return D.6438;
+  return D.6362;
 
 }
 
@@ -909,8 +766,6 @@ Adc_Ip_DeInit (const uint32 Instance)
   DefaultConfig.AvgSel = 0;
   DefaultConfig.Resolution = 0;
   DefaultConfig.TriggerMode = 0;
-  DefaultConfig.PretriggerSel = 0;
-  DefaultConfig.TriggerSel = 0;
   DefaultConfig.DmaEnable = 0;
   DefaultConfig.VoltageRef = 0;
   DefaultConfig.ContinuousConvEnable = 0;
@@ -977,19 +832,13 @@ Adc_Ip_Init (const uint32 Instance, const struct Adc_Ip_ConfigType * const Confi
   Adc_HwAcc_SetAveraging (Base, _4, _5);
   _6 = Config->Resolution;
   Adc_Ip_SetResolution (Instance, _6);
-  _7 = Config->TriggerSel;
-  _8 = (unsigned char) _7;
-  ADC_SetTriggerSourceSelect (Instance, _8);
-  _9 = Config->PretriggerSel;
-  _10 = (unsigned char) _9;
-  ADC_SetPretriggerSourceSelect (Instance, _10);
   SC2ClearMask = SC2ClearMask | 64;
-  _11 = Config->TriggerMode;
-  _12 = _11 << 6;
-  _13 = _12 & 64;
-  SC2Reg = SC2Reg | _13;
-  _14 = Config->DmaEnable;
-  if (_14 != 0)
+  _7 = Config->TriggerMode;
+  _8 = _7 << 6;
+  _9 = _8 & 64;
+  SC2Reg = SC2Reg | _9;
+  _10 = Config->DmaEnable;
+  if (_10 != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
@@ -1003,12 +852,12 @@ Adc_Ip_Init (const uint32 Instance, const struct Adc_Ip_ConfigType * const Confi
 
   <bb 5> :
   SC2ClearMask = SC2ClearMask | 3;
-  _15 = Config->VoltageRef;
-  _16 = _15 & 3;
-  SC2Reg = SC2Reg | _16;
+  _11 = Config->VoltageRef;
+  _12 = _11 & 3;
+  SC2Reg = SC2Reg | _12;
   SC2ClearMask = SC2ClearMask | 56;
-  _17 = Config->CompareEnable;
-  if (_17 != 0)
+  _13 = Config->CompareEnable;
+  if (_13 != 0)
     goto <bb 6>; [INV]
   else
     goto <bb 7>; [INV]
@@ -1022,8 +871,8 @@ Adc_Ip_Init (const uint32 Instance, const struct Adc_Ip_ConfigType * const Confi
 
   <bb 8> :
   SC2Reg = iftmp.0 | SC2Reg;
-  _18 = Config->CompareGreaterThanEnable;
-  if (_18 != 0)
+  _14 = Config->CompareGreaterThanEnable;
+  if (_14 != 0)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
@@ -1037,8 +886,8 @@ Adc_Ip_Init (const uint32 Instance, const struct Adc_Ip_ConfigType * const Confi
 
   <bb 11> :
   SC2Reg = iftmp.1 | SC2Reg;
-  _19 = Config->CompareRangeFuncEnable;
-  if (_19 != 0)
+  _15 = Config->CompareRangeFuncEnable;
+  if (_15 != 0)
     goto <bb 12>; [INV]
   else
     goto <bb 13>; [INV]
@@ -1052,20 +901,20 @@ Adc_Ip_Init (const uint32 Instance, const struct Adc_Ip_ConfigType * const Confi
 
   <bb 14> :
   SC2Reg = iftmp.2 | SC2Reg;
-  _20 = Config->CompVal1;
-  _21 = (long unsigned int) _20;
-  Base->CV[0] = _21;
-  _22 = Config->CompVal2;
-  _23 = (long unsigned int) _22;
-  Base->CV[1] = _23;
+  _16 = Config->CompVal1;
+  _17 = (long unsigned int) _16;
+  Base->CV[0] = _17;
+  _18 = Config->CompVal2;
+  _19 = (long unsigned int) _18;
+  Base->CV[1] = _19;
   Adc_HwAcc_SetSC2Reg (Base, SC2ClearMask, SC2Reg);
-  _24 = Config->UsrGain;
-  _25 = Config->UsrOffset;
-  Adc_HwAcc_SetUserGainAndOffset (Base, _24, _25);
-  _26 = Config->ContinuousConvEnable;
-  Adc_Ip_SetContinuousMode (Instance, _26);
-  _27 = Config->ChannelConfigs;
-  if (_27 != 0B)
+  _20 = Config->UsrGain;
+  _21 = Config->UsrOffset;
+  Adc_HwAcc_SetUserGainAndOffset (Base, _20, _21);
+  _22 = Config->ContinuousConvEnable;
+  Adc_Ip_SetContinuousMode (Instance, _22);
+  _23 = Config->ChannelConfigs;
+  if (_23 != 0B)
     goto <bb 15>; [INV]
   else
     goto <bb 18>; [INV]
@@ -1075,29 +924,27 @@ Adc_Ip_Init (const uint32 Instance, const struct Adc_Ip_ConfigType * const Confi
   goto <bb 17>; [INV]
 
   <bb 16> :
-  _28 = Config->ChannelConfigs;
-  _29 = (unsigned int) Index;
-  _30 = _29 * 12;
-  _31 = _28 + _30;
-  Adc_Ip_ConfigChannel (Instance, _31);
-  Index.3_32 = Index;
-  Index = Index.3_32 + 1;
+  _24 = Config->ChannelConfigs;
+  _25 = (unsigned int) Index;
+  _26 = _25 * 12;
+  _27 = _24 + _26;
+  Adc_Ip_ConfigChannel (Instance, _27);
+  Index.3_28 = Index;
+  Index = Index.3_28 + 1;
 
   <bb 17> :
-  _33 = Config->NumChannels;
-  if (Index < _33)
+  _29 = Config->NumChannels;
+  if (Index < _29)
     goto <bb 16>; [INV]
   else
     goto <bb 18>; [INV]
 
   <bb 18> :
-  _34 = Config->ConversionCompleteNotification;
-  AdcIpState[Instance].ConversionCompleteNotification = _34;
-  _35 = Config->CalibrationClockDivide;
-  AdcIpState[Instance].CalibrationClockDivide = _35;
+  _30 = Config->ConversionCompleteNotification;
+  AdcIpState[Instance].ConversionCompleteNotification = _30;
+  _31 = Config->CalibrationClockDivide;
+  AdcIpState[Instance].CalibrationClockDivide = _31;
   AdcIpState[Instance].Init = 1;
-  _36 = Config->PretriggerSel;
-  AdcIpState[Instance].PretriggerSel = _36;
   return;
 
 }
@@ -1131,52 +978,52 @@ Adc_DoCalibration_SetParams (struct ADC_Type * const Base, const struct Adc_Ip_C
 Adc_HwAcc_GetData (const struct ADC_Type * const Base, const uint8 ChnIdx)
 {
   uint16 Result;
-  uint16 D.6453;
+  uint16 D.6377;
 
   <bb 2> :
   _1 = (int) ChnIdx;
   _2 = Base->R[_1];
   Result = (uint16) _2;
   Result = Result & 4095;
-  D.6453 = Result;
+  D.6377 = Result;
 
   <bb 3> :
 <L0>:
-  return D.6453;
+  return D.6377;
 
 }
 
 
 Adc_HwAcc_GetCOCO (const uint32 Reg)
 {
-  boolean D.6449;
+  boolean D.6373;
 
   <bb 2> :
   _1 = Reg >> 7;
   _2 = (int) _1;
   _3 = _2 & 1;
-  D.6449 = _3 != 0;
+  D.6373 = _3 != 0;
 
   <bb 3> :
 <L0>:
-  return D.6449;
+  return D.6373;
 
 }
 
 
 Adc_HwAcc_GetAIEN (const uint32 Reg)
 {
-  boolean D.6445;
+  boolean D.6369;
 
   <bb 2> :
   _1 = Reg >> 6;
   _2 = (int) _1;
   _3 = _2 & 1;
-  D.6445 = _3 != 0;
+  D.6369 = _3 != 0;
 
   <bb 3> :
 <L0>:
-  return D.6445;
+  return D.6369;
 
 }
 
@@ -1230,7 +1077,7 @@ Adc_HwAcc_SetChannel (struct ADC_Type * const Base, const uint8 ChnIdx, const Ad
 Adc_HwAcc_GetTriggerMode (const uint32 Reg)
 {
   Adc_Ip_TrigType ReturnValue;
-  Adc_Ip_TrigType D.6467;
+  Adc_Ip_TrigType D.6391;
 
   <bb 2> :
   ReturnValue = 0;
@@ -1244,11 +1091,11 @@ Adc_HwAcc_GetTriggerMode (const uint32 Reg)
   ReturnValue = 1;
 
   <bb 4> :
-  D.6467 = ReturnValue;
+  D.6391 = ReturnValue;
 
   <bb 5> :
 <L2>:
-  return D.6467;
+  return D.6391;
 
 }
 
@@ -1272,7 +1119,7 @@ Adc_HwAcc_SetTriggerMode (struct ADC_Type * const Base, const Adc_Ip_TrigType Tr
 Adc_HwAcc_GetAverageSelect (const uint32 Reg)
 {
   Adc_Ip_AvgSelectType ReturnValue;
-  Adc_Ip_AvgSelectType D.6463;
+  Adc_Ip_AvgSelectType D.6387;
 
   <bb 2> :
   ReturnValue = 0;
@@ -1298,11 +1145,11 @@ Adc_HwAcc_GetAverageSelect (const uint32 Reg)
 <L3>:
 
   <bb 7> :
-  D.6463 = ReturnValue;
+  D.6387 = ReturnValue;
 
   <bb 8> :
 <L5>:
-  return D.6463;
+  return D.6387;
 
 }
 
@@ -1371,7 +1218,7 @@ Adc_HwAcc_SetSampleTime (struct ADC_Type * const Base, const uint8 SampleTime)
 Adc_HwAcc_GetInputClock (const uint32 Reg)
 {
   Adc_Ip_ClkSourceType ReturnValue;
-  Adc_Ip_ClkSourceType D.6471;
+  Adc_Ip_ClkSourceType D.6395;
 
   <bb 2> :
   ReturnValue = 0;
@@ -1397,11 +1244,11 @@ Adc_HwAcc_GetInputClock (const uint32 Reg)
 <L3>:
 
   <bb 7> :
-  D.6471 = ReturnValue;
+  D.6395 = ReturnValue;
 
   <bb 8> :
 <L5>:
-  return D.6471;
+  return D.6395;
 
 }
 
@@ -1409,7 +1256,7 @@ Adc_HwAcc_GetInputClock (const uint32 Reg)
 Adc_HwAcc_GetClockDivide (const uint32 Reg)
 {
   Adc_Ip_ClockSelType ReturnValue;
-  Adc_Ip_ClockSelType D.6469;
+  Adc_Ip_ClockSelType D.6393;
 
   <bb 2> :
   ReturnValue = 0;
@@ -1436,11 +1283,11 @@ Adc_HwAcc_GetClockDivide (const uint32 Reg)
 <L3>:
 
   <bb 7> :
-  D.6469 = ReturnValue;
+  D.6393 = ReturnValue;
 
   <bb 8> :
 <L5>:
-  return D.6469;
+  return D.6393;
 
 }
 

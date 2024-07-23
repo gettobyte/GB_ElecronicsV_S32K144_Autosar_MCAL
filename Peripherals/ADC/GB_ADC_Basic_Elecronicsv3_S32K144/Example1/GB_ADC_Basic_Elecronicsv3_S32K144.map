@@ -3641,7 +3641,7 @@ END GROUP
  *(.flash_config)
  .flash_config  0x00000400       0x10 ./Project_Settings/Startup_Code/startup_cm4.o
 
-.flash          0x00000410     0xab70
+.flash          0x00000410     0xa9a4
                 0x00000410                . = ALIGN (0x4)
  *(.startup)
  .startup       0x00000410       0xb8 ./Project_Settings/Startup_Code/startup_cm4.o
@@ -3724,418 +3724,417 @@ END GROUP
  .text          0x0000087a        0x0 ./generate/src/Port_Cfg.o
  .text          0x0000087a        0x0 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
  *fill*         0x0000087a        0x2 
- .text          0x0000087c       0xf4 ./src/example1.o
+ .text          0x0000087c      0x100 ./src/example1.o
                 0x0000087c                AdcConversionCompleteNotif
                 0x000008f0                main
  *(.text*)
-                0x00000970                . = ALIGN (0x4)
+                0x0000097c                . = ALIGN (0x4)
  *(.mcal_text)
- .mcal_text     0x00000970     0x10c8 ./RTD/src/Adc_Ip.o
-                0x00000cc6                Adc_Ip_Init
-                0x00000eb0                Adc_Ip_DeInit
-                0x00000fb4                Adc_Ip_SetAveraging
-                0x00000ff0                Adc_Ip_SetSampleTime
-                0x00001028                Adc_Ip_EnableDma
-                0x0000105c                Adc_Ip_DisableDma
-                0x00001090                Adc_Ip_SetTriggerMode
-                0x000010c0                Adc_Ip_SetContinuousMode
-                0x00001118                Adc_Ip_SetResolution
-                0x00001160                Adc_Ip_SetClockMode
-                0x000011c4                Adc_Ip_ConfigChannel
-                0x00001220                Adc_Ip_SetDisabledChannel
-                0x000012cc                Adc_Ip_StartConversion
-                0x00001308                Adc_Ip_GetConvActiveFlag
-                0x00001340                Adc_Ip_GetChanInterrupt
-                0x00001378                Adc_Ip_GetConvCompleteFlag
-                0x000013b0                Adc_Ip_GetConvData
-                0x000013e0                Adc_Ip_DoCalibration
-                0x00001558                Adc_Ip_ClearLatchedTriggers
-                0x000015e0                Adc_Ip_EnableChannelNotification
-                0x00001624                Adc_Ip_DisableChannelNotification
-                0x00001668                Adc_Ip_ClearTrigErrReg
-                0x0000169c                Adc_Ip_GetTrigErrReg
-                0x000016c0                Adc_Ip_GetDataAddress
-                0x000016e8                Adc_Ip_GetChanData
-                0x0000178c                Adc_Ip_SetSoftwarePretrigger
-                0x000017a8                Adc_Ip_IRQHandler
- .mcal_text     0x00001a38       0x20 ./RTD/src/Adc_Ip_Isr.o
-                0x00001a38                Adc_0_Isr
-                0x00001a48                Adc_1_Isr
- .mcal_text     0x00001a58      0xdcc ./RTD/src/Clock_Ip.o
-                0x00001a58                Clock_Ip_Init
-                0x00001a98                Clock_Ip_InitClock
-                0x00002134                Clock_Ip_GetPllStatus
-                0x000021bc                Clock_Ip_DistributePll
-                0x00002344                Clock_Ip_DisableClockMonitor
-                0x0000238c                Clock_Ip_GetClockMonitorStatus
-                0x000023d8                Clock_Ip_ClearClockMonitorStatus
-                0x00002420                Clock_Ip_PowerModeChangeNotification
-                0x00002454                Clock_Ip_InstallNotificationsCallback
-                0x00002468                Clock_Ip_DisableModuleClock
-                0x000024ac                Clock_Ip_EnableModuleClock
-                0x000024fc                ReportClockErrors
-                0x0000251c                ClockStartTimeout
-                0x00002550                ClockTimeoutExpired
- .mcal_text     0x00002824      0x4b0 ./RTD/src/Clock_Ip_Divider.o
- .mcal_text     0x00002cd4        0xa ./RTD/src/Clock_Ip_DividerTrigger.o
- *fill*         0x00002cde        0x2 
- .mcal_text     0x00002ce0      0x268 ./RTD/src/Clock_Ip_ExtOsc.o
- .mcal_text     0x00002f48       0x16 ./RTD/src/Clock_Ip_FracDiv.o
- *fill*         0x00002f5e        0x2 
- .mcal_text     0x00002f60      0x34c ./RTD/src/Clock_Ip_Gate.o
- .mcal_text     0x000032ac      0x720 ./RTD/src/Clock_Ip_IntOsc.o
- .mcal_text     0x000039cc       0x2a ./RTD/src/Clock_Ip_Monitor.o
- *fill*         0x000039f6        0x2 
- .mcal_text     0x000039f8      0x224 ./RTD/src/Clock_Ip_Pll.o
- .mcal_text     0x00003c1c        0xa ./RTD/src/Clock_Ip_ProgFreqSwitch.o
- *fill*         0x00003c26        0x2 
- .mcal_text     0x00003c28      0x6c4 ./RTD/src/Clock_Ip_Selector.o
- .mcal_text     0x000042ec      0xdac ./RTD/src/Clock_Ip_Specific.o
-                0x000042ec                SpecificPeripheralClockInitialization
-                0x000042f6                DisableSafeClock
-                0x000044cc                SpecificPlatformInitClock
-                0x00004c74                ClockInitializeObjects
-                0x00004e6c                ClockPowerModeChangeNotification
- .mcal_text     0x00005098      0x164 ./RTD/src/Det.o
-                0x00005098                Det_Init
-                0x0000509c                Det_ReportError
-                0x00005110                Det_ReportRuntimeError
-                0x00005184                Det_ReportTransientFault
-                0x000051f8                Det_Start
- .mcal_text     0x000051fc      0x468 ./RTD/src/Det_stub.o
-                0x000051fc                Det_TestLastReportError
-                0x000052c8                Det_TestLastReportRuntimeError
-                0x00005394                Det_TestLastReportTransientFault
-                0x00005460                Det_TestNoError
-                0x0000550c                Det_TestNoRuntimeError
-                0x000055b8                Det_TestNoTransientFault
- .mcal_text     0x00005664      0x51c ./RTD/src/IntCtrl_Ip.o
-                0x00005998                IntCtrl_Ip_Init
-                0x00005a38                IntCtrl_Ip_ConfigIrqRouting
-                0x00005ab0                IntCtrl_Ip_InstallHandler
-                0x00005acc                IntCtrl_Ip_EnableIrq
-                0x00005ae0                IntCtrl_Ip_DisableIrq
-                0x00005af4                IntCtrl_Ip_SetPriority
-                0x00005b14                IntCtrl_Ip_GetPriority
-                0x00005b2a                IntCtrl_Ip_ClearPending
-                0x00005b3e                IntCtrl_Ip_SetPending
-                0x00005b52                IntCtrl_Ip_GetPending
-                0x00005b68                IntCtrl_Ip_GetActive
- .mcal_text     0x00005b80       0xd6 ./RTD/src/OsIf_Timer.o
-                0x00005ba8                OsIf_Init
-                0x00005bc2                OsIf_GetCounter
-                0x00005be6                OsIf_GetElapsed
-                0x00005c0e                OsIf_SetTimerFrequency
-                0x00005c2e                OsIf_MicrosToTicks
- *fill*         0x00005c56        0x2 
- .mcal_text     0x00005c58      0x284 ./RTD/src/Port.o
-                0x00005c58                Port_Init
-                0x00005cbc                Port_SetPinDirection
-                0x00005d64                Port_SetPinMode
-                0x00005e44                Port_RefreshPortDirection
-                0x00005e9c                Port_GetVersionInfo
- .mcal_text     0x00005edc      0x408 ./RTD/src/Port_Ci_Port_Ip.o
-                0x0000604a                Port_Ci_Port_Ip_ReadPCR
-                0x0000605e                Port_Ci_Port_Ip_SetPCR
-                0x00006076                Port_Ci_Port_Ip_SetPSOR
-                0x00006088                Port_Ci_Port_Ip_SetPCOR
-                0x0000609a                Port_Ci_Port_Ip_SetPDDR
-                0x000060be                Port_Ci_Port_Ip_ClearPDDR
-                0x000060e4                Port_Ci_Port_Ip_SetPIDR
-                0x00006108                Port_Ci_Port_Ip_SetDFER
-                0x00006130                Port_Ci_Port_Ip_Init
-                0x0000616c                Port_Ci_Port_Ip_SetMuxModeSel
-                0x000061b0                Port_Ci_Port_Ip_EnableDigitalFilter
-                0x000061de                Port_Ci_Port_Ip_DisableDigitalFilter
-                0x0000620e                Port_Ci_Port_Ip_ConfigDigitalFilter
-                0x00006236                Port_Ci_Port_Ip_SetGlobalPinControl
- .mcal_text     0x000062e4      0x79c ./RTD/src/Port_Ipw.o
-                0x000064ac                Port_Ipw_Init
-                0x00006570                Port_Ipw_SetPinDirection
-                0x00006694                Port_Ipw_SetPinMode
-                0x000067e4                Port_Ipw_SetGpioDirChangeability
-                0x00006880                Port_Ipw_SetGpioPadOutput
-                0x00006920                Port_Ipw_RefreshPortDirection
- .mcal_text     0x00006a80     0x2970 ./RTD/src/SchM_Adc.o
-                0x00006a80                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_00
-                0x00006ad8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_00
-                0x00006b1c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_01
-                0x00006b74                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_01
-                0x00006bb8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_02
-                0x00006c10                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_02
-                0x00006c54                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_03
-                0x00006cac                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_03
-                0x00006cf0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_04
-                0x00006d48                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_04
-                0x00006d8c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_05
-                0x00006de4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_05
-                0x00006e28                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_06
-                0x00006e80                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_06
-                0x00006ec4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_10
-                0x00006f1c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_10
-                0x00006f60                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_11
-                0x00006fb8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_11
-                0x00006ffc                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_12
-                0x00007054                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_12
-                0x00007098                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_13
-                0x000070f0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_13
-                0x00007134                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_14
-                0x0000718c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_14
-                0x000071d0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_15
-                0x00007228                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_15
-                0x0000726c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_16
-                0x000072c4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_16
-                0x00007308                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_17
-                0x00007360                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_17
-                0x000073a4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_18
-                0x000073fc                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_18
-                0x00007440                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_19
-                0x00007498                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_19
-                0x000074dc                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_20
-                0x00007534                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_20
-                0x00007578                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_21
-                0x000075d0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_21
-                0x00007614                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_22
-                0x0000766c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_22
-                0x000076b0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_23
-                0x00007708                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_23
-                0x0000774c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_24
-                0x000077a4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_24
-                0x000077e8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_25
-                0x00007840                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_25
-                0x00007884                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_26
-                0x000078dc                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_26
-                0x00007920                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_27
-                0x00007978                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_27
-                0x000079bc                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_28
-                0x00007a14                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_28
-                0x00007a58                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_29
-                0x00007ab0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_29
-                0x00007af4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_30
-                0x00007b4c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_30
-                0x00007b90                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_31
-                0x00007be8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_31
-                0x00007c2c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_32
-                0x00007c84                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_32
-                0x00007cc8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_33
-                0x00007d20                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_33
-                0x00007d64                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34
-                0x00007dbc                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34
-                0x00007e00                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35
-                0x00007e58                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35
-                0x00007e9c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36
-                0x00007ef4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36
-                0x00007f38                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37
-                0x00007f90                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37
-                0x00007fd4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38
-                0x0000802c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38
-                0x00008070                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39
-                0x000080c8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39
-                0x0000810c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40
-                0x00008164                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40
-                0x000081a8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41
-                0x00008200                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41
-                0x00008244                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42
-                0x0000829c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42
-                0x000082e0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43
-                0x00008338                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43
-                0x0000837c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44
-                0x000083d4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44
-                0x00008418                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45
-                0x00008470                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45
-                0x000084b4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46
-                0x0000850c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46
-                0x00008550                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47
-                0x000085a8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47
-                0x000085ec                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48
-                0x00008644                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48
-                0x00008688                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_49
-                0x000086e0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_49
-                0x00008724                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_50
-                0x0000877c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_50
-                0x000087c0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_54
-                0x00008818                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_54
-                0x0000885c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_55
-                0x000088b4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_55
-                0x000088f8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_56
-                0x00008950                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_56
-                0x00008994                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_57
-                0x000089ec                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_57
-                0x00008a30                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_58
-                0x00008a88                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_58
-                0x00008acc                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_59
-                0x00008b24                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_59
-                0x00008b68                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_60
-                0x00008bc0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_60
-                0x00008c04                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_61
-                0x00008c5c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_61
-                0x00008ca0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_62
-                0x00008cf8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_62
-                0x00008d3c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_63
-                0x00008d94                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_63
-                0x00008dd8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_64
-                0x00008e30                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_64
-                0x00008e74                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_65
-                0x00008ecc                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_65
-                0x00008f10                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_66
-                0x00008f68                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_66
-                0x00008fac                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_67
-                0x00009004                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_67
-                0x00009048                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_68
-                0x000090a0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_68
-                0x000090e4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_69
-                0x0000913c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_69
-                0x00009180                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_70
-                0x000091d8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_70
-                0x0000921c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_71
-                0x00009274                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_71
-                0x000092b8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_72
-                0x00009310                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_72
-                0x00009354                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_73
-                0x000093ac                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_73
- .mcal_text     0x000093f0      0x1d4 ./RTD/src/SchM_Mcu.o
-                0x000093f0                SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00
-                0x00009448                SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00
-                0x0000948c                SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01
-                0x000094e4                SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01
-                0x00009528                SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02
-                0x00009580                SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02
- .mcal_text     0x000095c4      0x57c ./RTD/src/SchM_Port.o
-                0x000095c4                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_00
-                0x0000961c                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_00
-                0x00009660                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01
-                0x000096b8                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01
-                0x000096fc                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02
-                0x00009754                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02
-                0x00009798                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03
-                0x000097f0                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03
-                0x00009834                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04
-                0x0000988c                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04
-                0x000098d0                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05
-                0x00009928                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05
-                0x0000996c                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06
-                0x000099c4                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06
-                0x00009a08                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07
-                0x00009a60                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07
-                0x00009aa4                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08
-                0x00009afc                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08
-                0x00009b40                . = ALIGN (0x4)
-                0x00009b40                acfls_code_rom_start = .
-                0x00009b40                . = ALIGN (0x4)
+ .mcal_text     0x0000097c      0xef8 ./RTD/src/Adc_Ip.o
+                0x00000cd2                Adc_Ip_Init
+                0x00000e80                Adc_Ip_DeInit
+                0x00000f7c                Adc_Ip_SetAveraging
+                0x00000fb8                Adc_Ip_SetSampleTime
+                0x00000ff0                Adc_Ip_EnableDma
+                0x00001024                Adc_Ip_DisableDma
+                0x00001058                Adc_Ip_SetTriggerMode
+                0x00001088                Adc_Ip_SetContinuousMode
+                0x000010e0                Adc_Ip_SetResolution
+                0x00001128                Adc_Ip_SetClockMode
+                0x0000118c                Adc_Ip_ConfigChannel
+                0x000011ec                Adc_Ip_SetDisabledChannel
+                0x00001298                Adc_Ip_StartConversion
+                0x000012d4                Adc_Ip_GetConvActiveFlag
+                0x0000130c                Adc_Ip_GetChanInterrupt
+                0x00001344                Adc_Ip_GetConvCompleteFlag
+                0x0000137c                Adc_Ip_GetConvData
+                0x000013ac                Adc_Ip_DoCalibration
+                0x00001524                Adc_Ip_ClearLatchedTriggers
+                0x000015ac                Adc_Ip_EnableChannelNotification
+                0x000015f0                Adc_Ip_DisableChannelNotification
+                0x00001634                Adc_Ip_ClearTrigErrReg
+                0x00001668                Adc_Ip_GetTrigErrReg
+                0x0000168c                Adc_Ip_GetDataAddress
+                0x000016b4                Adc_Ip_GetChanData
+                0x0000175c                Adc_Ip_IRQHandler
+ .mcal_text     0x00001874       0x20 ./RTD/src/Adc_Ip_Isr.o
+                0x00001874                Adc_0_Isr
+                0x00001884                Adc_1_Isr
+ .mcal_text     0x00001894      0xdcc ./RTD/src/Clock_Ip.o
+                0x00001894                Clock_Ip_Init
+                0x000018d4                Clock_Ip_InitClock
+                0x00001f70                Clock_Ip_GetPllStatus
+                0x00001ff8                Clock_Ip_DistributePll
+                0x00002180                Clock_Ip_DisableClockMonitor
+                0x000021c8                Clock_Ip_GetClockMonitorStatus
+                0x00002214                Clock_Ip_ClearClockMonitorStatus
+                0x0000225c                Clock_Ip_PowerModeChangeNotification
+                0x00002290                Clock_Ip_InstallNotificationsCallback
+                0x000022a4                Clock_Ip_DisableModuleClock
+                0x000022e8                Clock_Ip_EnableModuleClock
+                0x00002338                ReportClockErrors
+                0x00002358                ClockStartTimeout
+                0x0000238c                ClockTimeoutExpired
+ .mcal_text     0x00002660      0x4b0 ./RTD/src/Clock_Ip_Divider.o
+ .mcal_text     0x00002b10        0xa ./RTD/src/Clock_Ip_DividerTrigger.o
+ *fill*         0x00002b1a        0x2 
+ .mcal_text     0x00002b1c      0x268 ./RTD/src/Clock_Ip_ExtOsc.o
+ .mcal_text     0x00002d84       0x16 ./RTD/src/Clock_Ip_FracDiv.o
+ *fill*         0x00002d9a        0x2 
+ .mcal_text     0x00002d9c      0x34c ./RTD/src/Clock_Ip_Gate.o
+ .mcal_text     0x000030e8      0x720 ./RTD/src/Clock_Ip_IntOsc.o
+ .mcal_text     0x00003808       0x2a ./RTD/src/Clock_Ip_Monitor.o
+ *fill*         0x00003832        0x2 
+ .mcal_text     0x00003834      0x224 ./RTD/src/Clock_Ip_Pll.o
+ .mcal_text     0x00003a58        0xa ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+ *fill*         0x00003a62        0x2 
+ .mcal_text     0x00003a64      0x6c4 ./RTD/src/Clock_Ip_Selector.o
+ .mcal_text     0x00004128      0xdac ./RTD/src/Clock_Ip_Specific.o
+                0x00004128                SpecificPeripheralClockInitialization
+                0x00004132                DisableSafeClock
+                0x00004308                SpecificPlatformInitClock
+                0x00004ab0                ClockInitializeObjects
+                0x00004ca8                ClockPowerModeChangeNotification
+ .mcal_text     0x00004ed4      0x164 ./RTD/src/Det.o
+                0x00004ed4                Det_Init
+                0x00004ed8                Det_ReportError
+                0x00004f4c                Det_ReportRuntimeError
+                0x00004fc0                Det_ReportTransientFault
+                0x00005034                Det_Start
+ .mcal_text     0x00005038      0x468 ./RTD/src/Det_stub.o
+                0x00005038                Det_TestLastReportError
+                0x00005104                Det_TestLastReportRuntimeError
+                0x000051d0                Det_TestLastReportTransientFault
+                0x0000529c                Det_TestNoError
+                0x00005348                Det_TestNoRuntimeError
+                0x000053f4                Det_TestNoTransientFault
+ .mcal_text     0x000054a0      0x51c ./RTD/src/IntCtrl_Ip.o
+                0x000057d4                IntCtrl_Ip_Init
+                0x00005874                IntCtrl_Ip_ConfigIrqRouting
+                0x000058ec                IntCtrl_Ip_InstallHandler
+                0x00005908                IntCtrl_Ip_EnableIrq
+                0x0000591c                IntCtrl_Ip_DisableIrq
+                0x00005930                IntCtrl_Ip_SetPriority
+                0x00005950                IntCtrl_Ip_GetPriority
+                0x00005966                IntCtrl_Ip_ClearPending
+                0x0000597a                IntCtrl_Ip_SetPending
+                0x0000598e                IntCtrl_Ip_GetPending
+                0x000059a4                IntCtrl_Ip_GetActive
+ .mcal_text     0x000059bc       0xd6 ./RTD/src/OsIf_Timer.o
+                0x000059e4                OsIf_Init
+                0x000059fe                OsIf_GetCounter
+                0x00005a22                OsIf_GetElapsed
+                0x00005a4a                OsIf_SetTimerFrequency
+                0x00005a6a                OsIf_MicrosToTicks
+ *fill*         0x00005a92        0x2 
+ .mcal_text     0x00005a94      0x284 ./RTD/src/Port.o
+                0x00005a94                Port_Init
+                0x00005af8                Port_SetPinDirection
+                0x00005ba0                Port_SetPinMode
+                0x00005c80                Port_RefreshPortDirection
+                0x00005cd8                Port_GetVersionInfo
+ .mcal_text     0x00005d18      0x408 ./RTD/src/Port_Ci_Port_Ip.o
+                0x00005e86                Port_Ci_Port_Ip_ReadPCR
+                0x00005e9a                Port_Ci_Port_Ip_SetPCR
+                0x00005eb2                Port_Ci_Port_Ip_SetPSOR
+                0x00005ec4                Port_Ci_Port_Ip_SetPCOR
+                0x00005ed6                Port_Ci_Port_Ip_SetPDDR
+                0x00005efa                Port_Ci_Port_Ip_ClearPDDR
+                0x00005f20                Port_Ci_Port_Ip_SetPIDR
+                0x00005f44                Port_Ci_Port_Ip_SetDFER
+                0x00005f6c                Port_Ci_Port_Ip_Init
+                0x00005fa8                Port_Ci_Port_Ip_SetMuxModeSel
+                0x00005fec                Port_Ci_Port_Ip_EnableDigitalFilter
+                0x0000601a                Port_Ci_Port_Ip_DisableDigitalFilter
+                0x0000604a                Port_Ci_Port_Ip_ConfigDigitalFilter
+                0x00006072                Port_Ci_Port_Ip_SetGlobalPinControl
+ .mcal_text     0x00006120      0x79c ./RTD/src/Port_Ipw.o
+                0x000062e8                Port_Ipw_Init
+                0x000063ac                Port_Ipw_SetPinDirection
+                0x000064d0                Port_Ipw_SetPinMode
+                0x00006620                Port_Ipw_SetGpioDirChangeability
+                0x000066bc                Port_Ipw_SetGpioPadOutput
+                0x0000675c                Port_Ipw_RefreshPortDirection
+ .mcal_text     0x000068bc     0x2970 ./RTD/src/SchM_Adc.o
+                0x000068bc                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_00
+                0x00006914                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_00
+                0x00006958                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_01
+                0x000069b0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_01
+                0x000069f4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_02
+                0x00006a4c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_02
+                0x00006a90                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_03
+                0x00006ae8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_03
+                0x00006b2c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_04
+                0x00006b84                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_04
+                0x00006bc8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_05
+                0x00006c20                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_05
+                0x00006c64                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_06
+                0x00006cbc                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_06
+                0x00006d00                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_10
+                0x00006d58                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_10
+                0x00006d9c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_11
+                0x00006df4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_11
+                0x00006e38                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_12
+                0x00006e90                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_12
+                0x00006ed4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_13
+                0x00006f2c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_13
+                0x00006f70                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_14
+                0x00006fc8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_14
+                0x0000700c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_15
+                0x00007064                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_15
+                0x000070a8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_16
+                0x00007100                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_16
+                0x00007144                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_17
+                0x0000719c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_17
+                0x000071e0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_18
+                0x00007238                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_18
+                0x0000727c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_19
+                0x000072d4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_19
+                0x00007318                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_20
+                0x00007370                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_20
+                0x000073b4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_21
+                0x0000740c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_21
+                0x00007450                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_22
+                0x000074a8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_22
+                0x000074ec                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_23
+                0x00007544                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_23
+                0x00007588                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_24
+                0x000075e0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_24
+                0x00007624                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_25
+                0x0000767c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_25
+                0x000076c0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_26
+                0x00007718                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_26
+                0x0000775c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_27
+                0x000077b4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_27
+                0x000077f8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_28
+                0x00007850                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_28
+                0x00007894                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_29
+                0x000078ec                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_29
+                0x00007930                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_30
+                0x00007988                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_30
+                0x000079cc                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_31
+                0x00007a24                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_31
+                0x00007a68                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_32
+                0x00007ac0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_32
+                0x00007b04                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_33
+                0x00007b5c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_33
+                0x00007ba0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34
+                0x00007bf8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34
+                0x00007c3c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35
+                0x00007c94                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35
+                0x00007cd8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36
+                0x00007d30                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36
+                0x00007d74                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37
+                0x00007dcc                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37
+                0x00007e10                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38
+                0x00007e68                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38
+                0x00007eac                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39
+                0x00007f04                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39
+                0x00007f48                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40
+                0x00007fa0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40
+                0x00007fe4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41
+                0x0000803c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41
+                0x00008080                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42
+                0x000080d8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42
+                0x0000811c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43
+                0x00008174                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43
+                0x000081b8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44
+                0x00008210                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44
+                0x00008254                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45
+                0x000082ac                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45
+                0x000082f0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46
+                0x00008348                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46
+                0x0000838c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47
+                0x000083e4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47
+                0x00008428                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48
+                0x00008480                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48
+                0x000084c4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_49
+                0x0000851c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_49
+                0x00008560                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_50
+                0x000085b8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_50
+                0x000085fc                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_54
+                0x00008654                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_54
+                0x00008698                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_55
+                0x000086f0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_55
+                0x00008734                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_56
+                0x0000878c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_56
+                0x000087d0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_57
+                0x00008828                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_57
+                0x0000886c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_58
+                0x000088c4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_58
+                0x00008908                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_59
+                0x00008960                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_59
+                0x000089a4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_60
+                0x000089fc                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_60
+                0x00008a40                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_61
+                0x00008a98                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_61
+                0x00008adc                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_62
+                0x00008b34                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_62
+                0x00008b78                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_63
+                0x00008bd0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_63
+                0x00008c14                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_64
+                0x00008c6c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_64
+                0x00008cb0                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_65
+                0x00008d08                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_65
+                0x00008d4c                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_66
+                0x00008da4                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_66
+                0x00008de8                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_67
+                0x00008e40                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_67
+                0x00008e84                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_68
+                0x00008edc                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_68
+                0x00008f20                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_69
+                0x00008f78                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_69
+                0x00008fbc                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_70
+                0x00009014                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_70
+                0x00009058                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_71
+                0x000090b0                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_71
+                0x000090f4                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_72
+                0x0000914c                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_72
+                0x00009190                SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_73
+                0x000091e8                SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_73
+ .mcal_text     0x0000922c      0x1d4 ./RTD/src/SchM_Mcu.o
+                0x0000922c                SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00
+                0x00009284                SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00
+                0x000092c8                SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01
+                0x00009320                SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01
+                0x00009364                SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02
+                0x000093bc                SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02
+ .mcal_text     0x00009400      0x57c ./RTD/src/SchM_Port.o
+                0x00009400                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_00
+                0x00009458                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_00
+                0x0000949c                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01
+                0x000094f4                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01
+                0x00009538                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02
+                0x00009590                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02
+                0x000095d4                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03
+                0x0000962c                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03
+                0x00009670                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04
+                0x000096c8                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04
+                0x0000970c                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05
+                0x00009764                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05
+                0x000097a8                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06
+                0x00009800                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06
+                0x00009844                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07
+                0x0000989c                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07
+                0x000098e0                SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08
+                0x00009938                SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08
+                0x0000997c                . = ALIGN (0x4)
+                0x0000997c                acfls_code_rom_start = .
+                0x0000997c                . = ALIGN (0x4)
  *(.acfls_code_rom)
-                0x00009b40                acfls_code_rom_end = .
+                0x0000997c                acfls_code_rom_end = .
  *(.init)
-                0x00009b40                . = ALIGN (0x4)
+                0x0000997c                . = ALIGN (0x4)
  *(.fini)
-                0x00009b40                . = ALIGN (0x4)
+                0x0000997c                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x00009b40       0x1c ./RTD/src/Clock_Ip_Specific.o
+ .rodata        0x0000997c       0x1c ./RTD/src/Clock_Ip_Specific.o
  *(.rodata*)
-                0x00009b5c                . = ALIGN (0x4)
+                0x00009998                . = ALIGN (0x4)
  *(.mcal_const_cfg)
  .mcal_const_cfg
-                0x00009b5c      0x3dc ./board/Clock_Ip_PBcfg.o
-                0x00009b5c                Mcu_aClockConfigPB
+                0x00009998      0x3dc ./board/Clock_Ip_PBcfg.o
+                0x00009998                Mcu_aClockConfigPB
  .mcal_const_cfg
-                0x00009f38       0x50 ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
-                0x00009f44                AdcHwUnit_0_BOARD_INITPERIPHERALS
+                0x00009d74       0x48 ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
+                0x00009d80                AdcHwUnit_0_BOARD_INITPERIPHERALS
  .mcal_const_cfg
-                0x00009f88      0x704 ./generate/src/IntCtrl_Ip_Cfg.o
-                0x0000a250                IntCtrlConfig_0
-                0x0000a684                intRouteConfig
+                0x00009dbc      0x704 ./generate/src/IntCtrl_Ip_Cfg.o
+                0x0000a084                IntCtrlConfig_0
+                0x0000a4b8                intRouteConfig
  .mcal_const_cfg
-                0x0000a68c       0xf4 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
-                0x0000a68c                au8Port_PartitionList_BOARD_InitPeripherals
-                0x0000a75c                Port_Config
+                0x0000a4c0       0xf4 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
+                0x0000a4c0                au8Port_PartitionList_BOARD_InitPeripherals
+                0x0000a590                Port_Config
  .mcal_const_cfg
-                0x0000a780       0x28 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
-                0x0000a780                g_pin_mux_InitConfigArr_BOARD_InitPeripherals
-                0x0000a7a8                . = ALIGN (0x4)
+                0x0000a5b4       0x28 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
+                0x0000a5b4                g_pin_mux_InitConfigArr_BOARD_InitPeripherals
+                0x0000a5dc                . = ALIGN (0x4)
  *(.mcal_const)
- .mcal_const    0x0000a7a8        0x8 ./RTD/src/Adc_Ip.o
- .mcal_const    0x0000a7b0      0x580 ./RTD/src/Clock_Ip_Data.o
-                0x0000a7b0                dividerCallbackIndex
-                0x0000a7c0                dividertriggerCallbackIndex
-                0x0000a7d0                xoscCallbackIndex
-                0x0000a7e0                ircoscCallbackIndex
-                0x0000a7f0                gateCallbackIndex
-                0x0000a800                fractional_dividerCallbackIndex
-                0x0000a810                pllCallbackIndex
-                0x0000a820                selectorCallbackIndex
-                0x0000a830                pcfsCallbackIndex
-                0x0000a840                cmuCallbackIndex
-                0x0000a850                clockFeatures
-                0x0000ab60                selectorEntry_hardwareValue
-                0x0000abb8                selectorEntrySCS_hardwareValue
-                0x0000abe8                selectorEntryPCS_hardwareValue
-                0x0000ac18                dividerValue_hardwareValue
-                0x0000ac5c                scgPeriphAsyncDivs
-                0x0000ac6c                sourceType_clockName
-                0x0000ad2c                HwPllName
- .mcal_const    0x0000ad30       0x3c ./RTD/src/Clock_Ip_Divider.o
-                0x0000ad30                dividerCallbacks
- .mcal_const    0x0000ad6c        0x8 ./RTD/src/Clock_Ip_DividerTrigger.o
-                0x0000ad6c                dividerTriggerCallbacks
- .mcal_const    0x0000ad74       0x28 ./RTD/src/Clock_Ip_ExtOsc.o
-                0x0000ad74                extOscCallbacks
- .mcal_const    0x0000ad9c        0xc ./RTD/src/Clock_Ip_FracDiv.o
-                0x0000ad9c                fracDivCallbacks
- .mcal_const    0x0000ada8       0x38 ./RTD/src/Clock_Ip_Gate.o
-                0x0000ada8                gateCallbacks
- .mcal_const    0x0000ade0       0x3c ./RTD/src/Clock_Ip_IntOsc.o
-                0x0000ade0                intOscCallbacks
- .mcal_const    0x0000ae1c       0x18 ./RTD/src/Clock_Ip_Monitor.o
-                0x0000ae1c                cmuCallbacks
- .mcal_const    0x0000ae34       0x28 ./RTD/src/Clock_Ip_Pll.o
-                0x0000ae34                pllCallbacks
- .mcal_const    0x0000ae5c        0x4 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
-                0x0000ae5c                pcfsCallbacks
- .mcal_const    0x0000ae60       0x58 ./RTD/src/Clock_Ip_Selector.o
-                0x0000ae60                selectorCallbacks
- .mcal_const    0x0000aeb8       0xa0 ./generate/src/Port_Cfg.o
-                0x0000aeb8                Port_au16PinDescription
-                0x0000af58                . = ALIGN (0x4)
+ .mcal_const    0x0000a5dc        0x8 ./RTD/src/Adc_Ip.o
+ .mcal_const    0x0000a5e4      0x580 ./RTD/src/Clock_Ip_Data.o
+                0x0000a5e4                dividerCallbackIndex
+                0x0000a5f4                dividertriggerCallbackIndex
+                0x0000a604                xoscCallbackIndex
+                0x0000a614                ircoscCallbackIndex
+                0x0000a624                gateCallbackIndex
+                0x0000a634                fractional_dividerCallbackIndex
+                0x0000a644                pllCallbackIndex
+                0x0000a654                selectorCallbackIndex
+                0x0000a664                pcfsCallbackIndex
+                0x0000a674                cmuCallbackIndex
+                0x0000a684                clockFeatures
+                0x0000a994                selectorEntry_hardwareValue
+                0x0000a9ec                selectorEntrySCS_hardwareValue
+                0x0000aa1c                selectorEntryPCS_hardwareValue
+                0x0000aa4c                dividerValue_hardwareValue
+                0x0000aa90                scgPeriphAsyncDivs
+                0x0000aaa0                sourceType_clockName
+                0x0000ab60                HwPllName
+ .mcal_const    0x0000ab64       0x3c ./RTD/src/Clock_Ip_Divider.o
+                0x0000ab64                dividerCallbacks
+ .mcal_const    0x0000aba0        0x8 ./RTD/src/Clock_Ip_DividerTrigger.o
+                0x0000aba0                dividerTriggerCallbacks
+ .mcal_const    0x0000aba8       0x28 ./RTD/src/Clock_Ip_ExtOsc.o
+                0x0000aba8                extOscCallbacks
+ .mcal_const    0x0000abd0        0xc ./RTD/src/Clock_Ip_FracDiv.o
+                0x0000abd0                fracDivCallbacks
+ .mcal_const    0x0000abdc       0x38 ./RTD/src/Clock_Ip_Gate.o
+                0x0000abdc                gateCallbacks
+ .mcal_const    0x0000ac14       0x3c ./RTD/src/Clock_Ip_IntOsc.o
+                0x0000ac14                intOscCallbacks
+ .mcal_const    0x0000ac50       0x18 ./RTD/src/Clock_Ip_Monitor.o
+                0x0000ac50                cmuCallbacks
+ .mcal_const    0x0000ac68       0x28 ./RTD/src/Clock_Ip_Pll.o
+                0x0000ac68                pllCallbacks
+ .mcal_const    0x0000ac90        0x4 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+                0x0000ac90                pcfsCallbacks
+ .mcal_const    0x0000ac94       0x58 ./RTD/src/Clock_Ip_Selector.o
+                0x0000ac94                selectorCallbacks
+ .mcal_const    0x0000acec       0xa0 ./generate/src/Port_Cfg.o
+                0x0000acec                Port_au16PinDescription
+                0x0000ad8c                . = ALIGN (0x4)
  *(.mcal_const_no_cacheable)
-                0x0000af58                . = ALIGN (0x4)
-                0x0000af58                __init_table = .
+                0x0000ad8c                . = ALIGN (0x4)
+                0x0000ad8c                __init_table = .
  *(.init_table)
- .init_table    0x0000af58       0x1c ./Project_Settings/Startup_Code/startup_cm4.o
-                0x0000af74                . = ALIGN (0x4)
-                0x0000af74                __zero_table = .
+ .init_table    0x0000ad8c       0x1c ./Project_Settings/Startup_Code/startup_cm4.o
+                0x0000ada8                . = ALIGN (0x4)
+                0x0000ada8                __zero_table = .
  *(.zero_table)
- .zero_table    0x0000af74        0xc ./Project_Settings/Startup_Code/startup_cm4.o
-                0x0000af80                . = ALIGN (0x4)
+ .zero_table    0x0000ada8        0xc ./Project_Settings/Startup_Code/startup_cm4.o
+                0x0000adb4                . = ALIGN (0x4)
  *(.acmcu_code_rom)
-                0x0000af80                . = ALIGN (0x4)
-                0x0000af80                _etext = .
-                0x0000af80                __DATA_ROM = .
+                0x0000adb4                . = ALIGN (0x4)
+                0x0000adb4                _etext = .
+                0x0000adb4                __DATA_ROM = .
 
-.glue_7         0x0000af80        0x0
- .glue_7        0x0000af80        0x0 linker stubs
+.glue_7         0x0000adb4        0x0
+ .glue_7        0x0000adb4        0x0 linker stubs
 
-.glue_7t        0x0000af80        0x0
- .glue_7t       0x0000af80        0x0 linker stubs
+.glue_7t        0x0000adb4        0x0
+ .glue_7t       0x0000adb4        0x0 linker stubs
 
-.vfp11_veneer   0x0000af80        0x0
- .vfp11_veneer  0x0000af80        0x0 linker stubs
+.vfp11_veneer   0x0000adb4        0x0
+ .vfp11_veneer  0x0000adb4        0x0 linker stubs
 
-.v4_bx          0x0000af80        0x0
- .v4_bx         0x0000af80        0x0 linker stubs
+.v4_bx          0x0000adb4        0x0
+ .v4_bx         0x0000adb4        0x0 linker stubs
 
-.iplt           0x0000af80        0x0
- .iplt          0x0000af80        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
+.iplt           0x0000adb4        0x0
+ .iplt          0x0000adb4        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
 
-.igot.plt       0x0000af80        0x0
- .igot.plt      0x0000af80        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
+.igot.plt       0x0000adb4        0x0
+ .igot.plt      0x0000adb4        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
 
-.rel.dyn        0x0000af80        0x0
- .rel.iplt      0x0000af80        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
-                0x0000af80                . = ALIGN (0x4)
+.rel.dyn        0x0000adb4        0x0
+ .rel.iplt      0x0000adb4        0x0 ./Project_Settings/Startup_Code/Vector_Table.o
+                0x0000adb4                . = ALIGN (0x4)
                 [!provide]                PROVIDE (__exidx_start = .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000af80                . = ALIGN (0x4)
+                0x0000adb4                . = ALIGN (0x4)
                 [!provide]                PROVIDE (__exidx_end = .)
 
 .ARM.extab      0x1fff8100        0x0
@@ -4152,7 +4151,7 @@ END GROUP
                 0x1fff9310                . = ALIGN (0x4)
                 0x1fff9310                __interrupts_ram_end = .
 
-.sram_data      0x1fff9310       0x54 load address 0x0000af80
+.sram_data      0x1fff9310       0x54 load address 0x0000adb4
                 0x1fff9310                . = ALIGN (0x4)
                 0x1fff9310                __data_ram_start = .
  *(.ramcode)
@@ -4213,9 +4212,9 @@ END GROUP
  *(.mcal_data_no_cacheable)
                 0x1fff9364                . = ALIGN (0x4)
                 0x1fff9364                __data_ram_end = .
-                0x0000afd4                __DATA_ROM_END = (__DATA_ROM + (__data_ram_end - __data_ram_start))
+                0x0000ae08                __DATA_ROM_END = (__DATA_ROM + (__data_ram_end - __data_ram_start))
 
-.sram_bss       0x1fff9364      0x544 load address 0x0000afd4
+.sram_bss       0x1fff9364      0x534 load address 0x0000ae08
                 0x1fff9370                . = ALIGN (0x10)
  *fill*         0x1fff9364        0xc 
                 0x1fff9370                __sram_bss_start = .
@@ -4227,85 +4226,85 @@ END GROUP
  .bss           0x1fff9370        0x0 ./Project_Settings/Startup_Code/startup_cm4.o
  .bss           0x1fff9370        0x4 ./Project_Settings/Startup_Code/system.o
                 0x1fff9370                RESET_CATCH_CORE
- .bss           0x1fff9374       0xa0 ./RTD/src/Adc_Ip.o
- .bss           0x1fff9414        0x0 ./RTD/src/Adc_Ip_Isr.o
- .bss           0x1fff9414        0x9 ./RTD/src/Clock_Ip.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_Data.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_Divider.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_DividerTrigger.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_ExtOsc.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_FracDiv.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_Frequency.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_Gate.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_IntOsc.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_Irq.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_Monitor.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_Pll.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
- .bss           0x1fff941d        0x0 ./RTD/src/Clock_Ip_Selector.o
- *fill*         0x1fff941d        0x3 
- .bss           0x1fff9420      0x130 ./RTD/src/Clock_Ip_Specific.o
- .bss           0x1fff9550        0x0 ./RTD/src/Det.o
- .bss           0x1fff9550        0x0 ./RTD/src/Det_stub.o
- .bss           0x1fff9550        0x0 ./RTD/src/IntCtrl_Ip.o
- .bss           0x1fff9550        0x0 ./RTD/src/OsIf_Timer.o
- .bss           0x1fff9550        0x0 ./RTD/src/OsIf_Timer_System.o
- .bss           0x1fff9550        0x4 ./RTD/src/Port.o
- .bss           0x1fff9554        0x0 ./RTD/src/Port_Ci_Port_Ip.o
- .bss           0x1fff9554       0x14 ./RTD/src/Port_Ipw.o
- .bss           0x1fff9568      0x220 ./RTD/src/SchM_Adc.o
- .bss           0x1fff9788       0x18 ./RTD/src/SchM_Mcu.o
- .bss           0x1fff97a0       0x48 ./RTD/src/SchM_Port.o
- .bss           0x1fff97e8        0x0 ./board/Clock_Ip_Cfg.o
- .bss           0x1fff97e8        0x0 ./board/Clock_Ip_PBcfg.o
- .bss           0x1fff97e8        0x0 ./board/Port_Ci_Port_Ip_Cfg.o
- .bss           0x1fff97e8        0x0 ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
- .bss           0x1fff97e8        0x0 ./generate/src/IntCtrl_Ip_Cfg.o
- .bss           0x1fff97e8        0x0 ./generate/src/OsIf_Cfg.o
- .bss           0x1fff97e8        0x0 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
- .bss           0x1fff97e8        0x0 ./generate/src/Port_Cfg.o
- .bss           0x1fff97e8        0x0 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
- .bss           0x1fff97e8        0xa ./src/example1.o
-                0x1fff97e8                notif_triggered
-                0x1fff97ec                exit_code
-                0x1fff97f0                data
+ .bss           0x1fff9374       0x98 ./RTD/src/Adc_Ip.o
+ .bss           0x1fff940c        0x0 ./RTD/src/Adc_Ip_Isr.o
+ .bss           0x1fff940c        0x9 ./RTD/src/Clock_Ip.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_Data.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_Divider.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_DividerTrigger.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_ExtOsc.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_FracDiv.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_Frequency.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_Gate.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_IntOsc.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_Irq.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_Monitor.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_Pll.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+ .bss           0x1fff9415        0x0 ./RTD/src/Clock_Ip_Selector.o
+ *fill*         0x1fff9415        0x3 
+ .bss           0x1fff9418      0x130 ./RTD/src/Clock_Ip_Specific.o
+ .bss           0x1fff9548        0x0 ./RTD/src/Det.o
+ .bss           0x1fff9548        0x0 ./RTD/src/Det_stub.o
+ .bss           0x1fff9548        0x0 ./RTD/src/IntCtrl_Ip.o
+ .bss           0x1fff9548        0x0 ./RTD/src/OsIf_Timer.o
+ .bss           0x1fff9548        0x0 ./RTD/src/OsIf_Timer_System.o
+ .bss           0x1fff9548        0x4 ./RTD/src/Port.o
+ .bss           0x1fff954c        0x0 ./RTD/src/Port_Ci_Port_Ip.o
+ .bss           0x1fff954c       0x14 ./RTD/src/Port_Ipw.o
+ .bss           0x1fff9560      0x220 ./RTD/src/SchM_Adc.o
+ .bss           0x1fff9780       0x18 ./RTD/src/SchM_Mcu.o
+ .bss           0x1fff9798       0x48 ./RTD/src/SchM_Port.o
+ .bss           0x1fff97e0        0x0 ./board/Clock_Ip_Cfg.o
+ .bss           0x1fff97e0        0x0 ./board/Clock_Ip_PBcfg.o
+ .bss           0x1fff97e0        0x0 ./board/Port_Ci_Port_Ip_Cfg.o
+ .bss           0x1fff97e0        0x0 ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
+ .bss           0x1fff97e0        0x0 ./generate/src/IntCtrl_Ip_Cfg.o
+ .bss           0x1fff97e0        0x0 ./generate/src/OsIf_Cfg.o
+ .bss           0x1fff97e0        0x0 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
+ .bss           0x1fff97e0        0x0 ./generate/src/Port_Cfg.o
+ .bss           0x1fff97e0        0x0 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
+ .bss           0x1fff97e0        0xa ./src/example1.o
+                0x1fff97e0                notif_triggered
+                0x1fff97e4                exit_code
+                0x1fff97e8                data
  *(.bss*)
-                0x1fff9800                . = ALIGN (0x10)
- *fill*         0x1fff97f2        0xe 
+                0x1fff97f0                . = ALIGN (0x10)
+ *fill*         0x1fff97ea        0x6 
  *(.mcal_bss)
-                0x1fff9800                . = ALIGN (0x10)
-                0x1fff9800                __non_cacheable_bss_start = .
+                0x1fff97f0                . = ALIGN (0x10)
+                0x1fff97f0                __non_cacheable_bss_start = .
  *(.mcal_bss_no_cacheable)
  .mcal_bss_no_cacheable
-                0x1fff9800       0xa8 ./RTD/src/Det.o
-                0x1fff9800                Det_InstanceId
-                0x1fff980c                Det_ApiId
-                0x1fff9818                Det_ErrorId
-                0x1fff9824                Det_RuntimeInstanceId
-                0x1fff9830                Det_RuntimeApiId
-                0x1fff983c                Det_RuntimeErrorId
-                0x1fff9848                Det_TransientInstanceId
-                0x1fff9854                Det_TransientApiId
-                0x1fff9860                Det_TransientFaultId
-                0x1fff986c                Det_TransientModuleId
-                0x1fff9880                Det_ModuleId
-                0x1fff9894                Det_RuntimeModuleId
-                0x1fff98a8                . = ALIGN (0x4)
-                0x1fff98a8                __non_cacheable_bss_end = .
-                0x1fff98a8                __sram_bss_end = .
+                0x1fff97f0       0xa8 ./RTD/src/Det.o
+                0x1fff97f0                Det_InstanceId
+                0x1fff97fc                Det_ApiId
+                0x1fff9808                Det_ErrorId
+                0x1fff9814                Det_RuntimeInstanceId
+                0x1fff9820                Det_RuntimeApiId
+                0x1fff982c                Det_RuntimeErrorId
+                0x1fff9838                Det_TransientInstanceId
+                0x1fff9844                Det_TransientApiId
+                0x1fff9850                Det_TransientFaultId
+                0x1fff985c                Det_TransientModuleId
+                0x1fff9870                Det_ModuleId
+                0x1fff9884                Det_RuntimeModuleId
+                0x1fff9898                . = ALIGN (0x4)
+                0x1fff9898                __non_cacheable_bss_end = .
+                0x1fff9898                __sram_bss_end = .
 
 .acfls_code_ram
-                0x1fff98a8        0x0
-                0x1fff98a8                . = (. + (acfls_code_rom_end - acfls_code_rom_start))
+                0x1fff9898        0x0
+                0x1fff9898                . = (. + (acfls_code_rom_end - acfls_code_rom_start))
 
-.heap           0x1fff98a8      0x200 load address 0x0000b518
-                0x1fff98a8                . = ALIGN (0x4)
-                0x1fff98a8                _end = .
-                0x1fff98a8                end = .
-                0x1fff98a8                _heap_start = .
-                0x1fff9aa8                . = (. + HEAP_SIZE)
- *fill*         0x1fff98a8      0x200 
-                0x1fff9aa8                _heap_end = .
+.heap           0x1fff9898      0x200 load address 0x0000b33c
+                0x1fff9898                . = ALIGN (0x4)
+                0x1fff9898                _end = .
+                0x1fff9898                end = .
+                0x1fff9898                _heap_start = .
+                0x1fff9a98                . = (. + HEAP_SIZE)
+ *fill*         0x1fff9898      0x200 
+                0x1fff9a98                _heap_end = .
 
 int_results     0x1fff8000      0x100
                 0x1fff8000                . = ALIGN (0x4)
@@ -4318,25 +4317,25 @@ int_results     0x1fff8000      0x100
                 0x20007000                __INT_SRAM_END = ORIGIN (ram_rsvd2)
                 0x1fff9310                __RAM_INIT_START = __data_ram_start
                 0x1fff9364                __RAM_INIT_END = __data_ram_end
-                0x0000af80                __ROM_INIT_START = __DATA_ROM
-                0x0000afd4                __ROM_INIT_END = __DATA_ROM_END
+                0x0000adb4                __ROM_INIT_START = __DATA_ROM
+                0x0000ae08                __ROM_INIT_END = __DATA_ROM_END
                 0x1fff9370                __BSS_SRAM_START = __sram_bss_start
-                0x1fff98a8                __BSS_SRAM_END = __sram_bss_end
-                0x00000538                __BSS_SRAM_SIZE = (__sram_bss_end - __sram_bss_start)
+                0x1fff9898                __BSS_SRAM_END = __sram_bss_end
+                0x00000528                __BSS_SRAM_SIZE = (__sram_bss_end - __sram_bss_start)
                 0x1fff9000                __RAM_INTERRUPT_START = __interrupts_ram_start
                 0x00000000                __ROM_INTERRUPT_START = __interrupts_rom_start
                 0x00000310                __ROM_INTERRUPT_END = __interrupts_rom_end
-                0x0000af58                __INIT_TABLE = __init_table
-                0x0000af74                __ZERO_TABLE = __zero_table
+                0x0000ad8c                __INIT_TABLE = __init_table
+                0x0000ada8                __ZERO_TABLE = __zero_table
                 0x00000001                __RAM_INIT = 0x1
-                0x00009b40                Fls_ACEraseRomStart = acfls_code_rom_start
-                0x00009b40                Fls_ACEraseRomEnd = acfls_code_rom_end
+                0x0000997c                Fls_ACEraseRomStart = acfls_code_rom_start
+                0x0000997c                Fls_ACEraseRomEnd = acfls_code_rom_end
                 0x00000000                Fls_ACEraseSize = (acfls_code_rom_end - acfls_code_rom_start)
-                0x00009b40                Fls_ACWriteRomStart = acfls_code_rom_start
-                0x00009b40                Fls_ACWriteRomEnd = acfls_code_rom_end
+                0x0000997c                Fls_ACWriteRomStart = acfls_code_rom_start
+                0x0000997c                Fls_ACWriteRomEnd = acfls_code_rom_end
                 0x00000000                Fls_ACWriteSize = (acfls_code_rom_end - acfls_code_rom_start)
-                0x1fff98a8                _ERASE_FUNC_ADDRESS_ = ADDR (.acfls_code_ram)
-                0x1fff98a8                _WRITE_FUNC_ADDRESS_ = ADDR (.acfls_code_ram)
+                0x1fff9898                _ERASE_FUNC_ADDRESS_ = ADDR (.acfls_code_ram)
+                0x1fff9898                _WRITE_FUNC_ADDRESS_ = ADDR (.acfls_code_ram)
                 0x1fff9000                __ENTRY_VTABLE = __RAM_INTERRUPT_START
 OUTPUT(GB_ADC_Basic_Elecronicsv3_S32K144.elf elf32-littlearm)
 
@@ -4476,97 +4475,97 @@ OUTPUT(GB_ADC_Basic_Elecronicsv3_S32K144.elf elf32-littlearm)
  .comment       0x00000080       0x81 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
  .comment       0x00000080       0x81 ./src/example1.o
 
-.debug_info     0x00000000    0x24f60
+.debug_info     0x00000000    0x24ae0
  .debug_info    0x00000000      0x139 ./Project_Settings/Startup_Code/exceptions.o
  .debug_info    0x00000139      0x465 ./Project_Settings/Startup_Code/nvic.o
  .debug_info    0x0000059e      0x244 ./Project_Settings/Startup_Code/startup.o
  .debug_info    0x000007e2       0x26 ./Project_Settings/Startup_Code/startup_cm4.o
  .debug_info    0x00000808      0x447 ./Project_Settings/Startup_Code/system.o
- .debug_info    0x00000c4f     0x18f4 ./RTD/src/Adc_Ip.o
- .debug_info    0x00002543       0xa9 ./RTD/src/Adc_Ip_Isr.o
- .debug_info    0x000025ec     0x1a2b ./RTD/src/Clock_Ip.o
- .debug_info    0x00004017     0x1731 ./RTD/src/Clock_Ip_Data.o
- .debug_info    0x00005748     0x1d33 ./RTD/src/Clock_Ip_Divider.o
- .debug_info    0x0000747b     0x148b ./RTD/src/Clock_Ip_DividerTrigger.o
- .debug_info    0x00008906     0x1852 ./RTD/src/Clock_Ip_ExtOsc.o
- .debug_info    0x0000a158     0x14b5 ./RTD/src/Clock_Ip_FracDiv.o
- .debug_info    0x0000b60d     0x1453 ./RTD/src/Clock_Ip_Frequency.o
- .debug_info    0x0000ca60     0x1a77 ./RTD/src/Clock_Ip_Gate.o
- .debug_info    0x0000e4d7     0x1c4f ./RTD/src/Clock_Ip_IntOsc.o
- .debug_info    0x00010126     0x1453 ./RTD/src/Clock_Ip_Irq.o
- .debug_info    0x00011579     0x1501 ./RTD/src/Clock_Ip_Monitor.o
- .debug_info    0x00012a7a     0x1890 ./RTD/src/Clock_Ip_Pll.o
- .debug_info    0x0001430a     0x148b ./RTD/src/Clock_Ip_ProgFreqSwitch.o
- .debug_info    0x00015795     0x2033 ./RTD/src/Clock_Ip_Selector.o
- .debug_info    0x000177c8     0x1e8c ./RTD/src/Clock_Ip_Specific.o
- .debug_info    0x00019654      0x3ad ./RTD/src/Det.o
- .debug_info    0x00019a01      0x3b3 ./RTD/src/Det_stub.o
- .debug_info    0x00019db4      0xc0a ./RTD/src/IntCtrl_Ip.o
- .debug_info    0x0001a9be      0x2dc ./RTD/src/OsIf_Timer.o
- .debug_info    0x0001ac9a       0x7d ./RTD/src/OsIf_Timer_System.o
- .debug_info    0x0001ad17      0x948 ./RTD/src/Port.o
- .debug_info    0x0001b65f      0x901 ./RTD/src/Port_Ci_Port_Ip.o
- .debug_info    0x0001bf60      0xa23 ./RTD/src/Port_Ipw.o
- .debug_info    0x0001c983     0x1fde ./RTD/src/SchM_Adc.o
- .debug_info    0x0001e961      0x26a ./RTD/src/SchM_Mcu.o
- .debug_info    0x0001ebcb      0x522 ./RTD/src/SchM_Port.o
- .debug_info    0x0001f0ed     0x1453 ./board/Clock_Ip_Cfg.o
- .debug_info    0x00020540     0x1462 ./board/Clock_Ip_PBcfg.o
- .debug_info    0x000219a2      0x424 ./board/Port_Ci_Port_Ip_Cfg.o
- .debug_info    0x00021dc6      0x4fb ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
- .debug_info    0x000222c1      0x4cf ./generate/src/IntCtrl_Ip_Cfg.o
- .debug_info    0x00022790       0x7d ./generate/src/OsIf_Cfg.o
- .debug_info    0x0002280d      0x771 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
- .debug_info    0x00022f7e      0x499 ./generate/src/Port_Cfg.o
- .debug_info    0x00023417      0x448 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
- .debug_info    0x0002385f     0x1701 ./src/example1.o
+ .debug_info    0x00000c4f     0x1554 ./RTD/src/Adc_Ip.o
+ .debug_info    0x000021a3       0xa9 ./RTD/src/Adc_Ip_Isr.o
+ .debug_info    0x0000224c     0x1a2b ./RTD/src/Clock_Ip.o
+ .debug_info    0x00003c77     0x1731 ./RTD/src/Clock_Ip_Data.o
+ .debug_info    0x000053a8     0x1d33 ./RTD/src/Clock_Ip_Divider.o
+ .debug_info    0x000070db     0x148b ./RTD/src/Clock_Ip_DividerTrigger.o
+ .debug_info    0x00008566     0x1852 ./RTD/src/Clock_Ip_ExtOsc.o
+ .debug_info    0x00009db8     0x14b5 ./RTD/src/Clock_Ip_FracDiv.o
+ .debug_info    0x0000b26d     0x1453 ./RTD/src/Clock_Ip_Frequency.o
+ .debug_info    0x0000c6c0     0x1a77 ./RTD/src/Clock_Ip_Gate.o
+ .debug_info    0x0000e137     0x1c4f ./RTD/src/Clock_Ip_IntOsc.o
+ .debug_info    0x0000fd86     0x1453 ./RTD/src/Clock_Ip_Irq.o
+ .debug_info    0x000111d9     0x1501 ./RTD/src/Clock_Ip_Monitor.o
+ .debug_info    0x000126da     0x1890 ./RTD/src/Clock_Ip_Pll.o
+ .debug_info    0x00013f6a     0x148b ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+ .debug_info    0x000153f5     0x2033 ./RTD/src/Clock_Ip_Selector.o
+ .debug_info    0x00017428     0x1e8c ./RTD/src/Clock_Ip_Specific.o
+ .debug_info    0x000192b4      0x3ad ./RTD/src/Det.o
+ .debug_info    0x00019661      0x3b3 ./RTD/src/Det_stub.o
+ .debug_info    0x00019a14      0xc0a ./RTD/src/IntCtrl_Ip.o
+ .debug_info    0x0001a61e      0x2dc ./RTD/src/OsIf_Timer.o
+ .debug_info    0x0001a8fa       0x7d ./RTD/src/OsIf_Timer_System.o
+ .debug_info    0x0001a977      0x948 ./RTD/src/Port.o
+ .debug_info    0x0001b2bf      0x901 ./RTD/src/Port_Ci_Port_Ip.o
+ .debug_info    0x0001bbc0      0xa23 ./RTD/src/Port_Ipw.o
+ .debug_info    0x0001c5e3     0x1fde ./RTD/src/SchM_Adc.o
+ .debug_info    0x0001e5c1      0x26a ./RTD/src/SchM_Mcu.o
+ .debug_info    0x0001e82b      0x522 ./RTD/src/SchM_Port.o
+ .debug_info    0x0001ed4d     0x1453 ./board/Clock_Ip_Cfg.o
+ .debug_info    0x000201a0     0x1462 ./board/Clock_Ip_PBcfg.o
+ .debug_info    0x00021602      0x424 ./board/Port_Ci_Port_Ip_Cfg.o
+ .debug_info    0x00021a26      0x48b ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
+ .debug_info    0x00021eb1      0x4cf ./generate/src/IntCtrl_Ip_Cfg.o
+ .debug_info    0x00022380       0x7d ./generate/src/OsIf_Cfg.o
+ .debug_info    0x000223fd      0x771 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
+ .debug_info    0x00022b6e      0x499 ./generate/src/Port_Cfg.o
+ .debug_info    0x00023007      0x448 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
+ .debug_info    0x0002344f     0x1691 ./src/example1.o
 
-.debug_abbrev   0x00000000     0x3ba3
+.debug_abbrev   0x00000000     0x3b6f
  .debug_abbrev  0x00000000       0x47 ./Project_Settings/Startup_Code/exceptions.o
  .debug_abbrev  0x00000047       0xff ./Project_Settings/Startup_Code/nvic.o
  .debug_abbrev  0x00000146       0xcb ./Project_Settings/Startup_Code/startup.o
  .debug_abbrev  0x00000211       0x14 ./Project_Settings/Startup_Code/startup_cm4.o
  .debug_abbrev  0x00000225      0x155 ./Project_Settings/Startup_Code/system.o
- .debug_abbrev  0x0000037a      0x27a ./RTD/src/Adc_Ip.o
- .debug_abbrev  0x000005f4       0x47 ./RTD/src/Adc_Ip_Isr.o
- .debug_abbrev  0x0000063b      0x293 ./RTD/src/Clock_Ip.o
- .debug_abbrev  0x000008ce      0x19f ./RTD/src/Clock_Ip_Data.o
- .debug_abbrev  0x00000a6d      0x211 ./RTD/src/Clock_Ip_Divider.o
- .debug_abbrev  0x00000c7e      0x1a3 ./RTD/src/Clock_Ip_DividerTrigger.o
- .debug_abbrev  0x00000e21      0x23c ./RTD/src/Clock_Ip_ExtOsc.o
- .debug_abbrev  0x0000105d      0x1bf ./RTD/src/Clock_Ip_FracDiv.o
- .debug_abbrev  0x0000121c      0x167 ./RTD/src/Clock_Ip_Frequency.o
- .debug_abbrev  0x00001383      0x222 ./RTD/src/Clock_Ip_Gate.o
- .debug_abbrev  0x000015a5      0x267 ./RTD/src/Clock_Ip_IntOsc.o
- .debug_abbrev  0x0000180c      0x167 ./RTD/src/Clock_Ip_Irq.o
- .debug_abbrev  0x00001973      0x1d9 ./RTD/src/Clock_Ip_Monitor.o
- .debug_abbrev  0x00001b4c      0x274 ./RTD/src/Clock_Ip_Pll.o
- .debug_abbrev  0x00001dc0      0x1a3 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
- .debug_abbrev  0x00001f63      0x211 ./RTD/src/Clock_Ip_Selector.o
- .debug_abbrev  0x00002174      0x278 ./RTD/src/Clock_Ip_Specific.o
- .debug_abbrev  0x000023ec       0xf5 ./RTD/src/Det.o
- .debug_abbrev  0x000024e1       0xbd ./RTD/src/Det_stub.o
- .debug_abbrev  0x0000259e      0x204 ./RTD/src/IntCtrl_Ip.o
- .debug_abbrev  0x000027a2      0x1a5 ./RTD/src/OsIf_Timer.o
- .debug_abbrev  0x00002947       0x29 ./RTD/src/OsIf_Timer_System.o
- .debug_abbrev  0x00002970      0x1d0 ./RTD/src/Port.o
- .debug_abbrev  0x00002b40      0x1c6 ./RTD/src/Port_Ci_Port_Ip.o
- .debug_abbrev  0x00002d06      0x1c8 ./RTD/src/Port_Ipw.o
- .debug_abbrev  0x00002ece       0xcb ./RTD/src/SchM_Adc.o
- .debug_abbrev  0x00002f99       0xcb ./RTD/src/SchM_Mcu.o
- .debug_abbrev  0x00003064       0xcb ./RTD/src/SchM_Port.o
- .debug_abbrev  0x0000312f      0x167 ./board/Clock_Ip_Cfg.o
- .debug_abbrev  0x00003296      0x176 ./board/Clock_Ip_PBcfg.o
- .debug_abbrev  0x0000340c       0xd4 ./board/Port_Ci_Port_Ip_Cfg.o
- .debug_abbrev  0x000034e0       0xe8 ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
- .debug_abbrev  0x000035c8       0xe8 ./generate/src/IntCtrl_Ip_Cfg.o
- .debug_abbrev  0x000036b0       0x29 ./generate/src/OsIf_Cfg.o
- .debug_abbrev  0x000036d9      0x14b ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
- .debug_abbrev  0x00003824       0xe3 ./generate/src/Port_Cfg.o
- .debug_abbrev  0x00003907       0xd0 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
- .debug_abbrev  0x000039d7      0x1cc ./src/example1.o
+ .debug_abbrev  0x0000037a      0x246 ./RTD/src/Adc_Ip.o
+ .debug_abbrev  0x000005c0       0x47 ./RTD/src/Adc_Ip_Isr.o
+ .debug_abbrev  0x00000607      0x293 ./RTD/src/Clock_Ip.o
+ .debug_abbrev  0x0000089a      0x19f ./RTD/src/Clock_Ip_Data.o
+ .debug_abbrev  0x00000a39      0x211 ./RTD/src/Clock_Ip_Divider.o
+ .debug_abbrev  0x00000c4a      0x1a3 ./RTD/src/Clock_Ip_DividerTrigger.o
+ .debug_abbrev  0x00000ded      0x23c ./RTD/src/Clock_Ip_ExtOsc.o
+ .debug_abbrev  0x00001029      0x1bf ./RTD/src/Clock_Ip_FracDiv.o
+ .debug_abbrev  0x000011e8      0x167 ./RTD/src/Clock_Ip_Frequency.o
+ .debug_abbrev  0x0000134f      0x222 ./RTD/src/Clock_Ip_Gate.o
+ .debug_abbrev  0x00001571      0x267 ./RTD/src/Clock_Ip_IntOsc.o
+ .debug_abbrev  0x000017d8      0x167 ./RTD/src/Clock_Ip_Irq.o
+ .debug_abbrev  0x0000193f      0x1d9 ./RTD/src/Clock_Ip_Monitor.o
+ .debug_abbrev  0x00001b18      0x274 ./RTD/src/Clock_Ip_Pll.o
+ .debug_abbrev  0x00001d8c      0x1a3 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+ .debug_abbrev  0x00001f2f      0x211 ./RTD/src/Clock_Ip_Selector.o
+ .debug_abbrev  0x00002140      0x278 ./RTD/src/Clock_Ip_Specific.o
+ .debug_abbrev  0x000023b8       0xf5 ./RTD/src/Det.o
+ .debug_abbrev  0x000024ad       0xbd ./RTD/src/Det_stub.o
+ .debug_abbrev  0x0000256a      0x204 ./RTD/src/IntCtrl_Ip.o
+ .debug_abbrev  0x0000276e      0x1a5 ./RTD/src/OsIf_Timer.o
+ .debug_abbrev  0x00002913       0x29 ./RTD/src/OsIf_Timer_System.o
+ .debug_abbrev  0x0000293c      0x1d0 ./RTD/src/Port.o
+ .debug_abbrev  0x00002b0c      0x1c6 ./RTD/src/Port_Ci_Port_Ip.o
+ .debug_abbrev  0x00002cd2      0x1c8 ./RTD/src/Port_Ipw.o
+ .debug_abbrev  0x00002e9a       0xcb ./RTD/src/SchM_Adc.o
+ .debug_abbrev  0x00002f65       0xcb ./RTD/src/SchM_Mcu.o
+ .debug_abbrev  0x00003030       0xcb ./RTD/src/SchM_Port.o
+ .debug_abbrev  0x000030fb      0x167 ./board/Clock_Ip_Cfg.o
+ .debug_abbrev  0x00003262      0x176 ./board/Clock_Ip_PBcfg.o
+ .debug_abbrev  0x000033d8       0xd4 ./board/Port_Ci_Port_Ip_Cfg.o
+ .debug_abbrev  0x000034ac       0xe8 ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
+ .debug_abbrev  0x00003594       0xe8 ./generate/src/IntCtrl_Ip_Cfg.o
+ .debug_abbrev  0x0000367c       0x29 ./generate/src/OsIf_Cfg.o
+ .debug_abbrev  0x000036a5      0x14b ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
+ .debug_abbrev  0x000037f0       0xe3 ./generate/src/Port_Cfg.o
+ .debug_abbrev  0x000038d3       0xd0 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
+ .debug_abbrev  0x000039a3      0x1cc ./src/example1.o
 
-.debug_aranges  0x00000000     0x12a0
+.debug_aranges  0x00000000     0x1270
  .debug_aranges
                 0x00000000       0x28 ./Project_Settings/Startup_Code/exceptions.o
  .debug_aranges
@@ -4578,109 +4577,109 @@ OUTPUT(GB_ADC_Basic_Elecronicsv3_S32K144.elf elf32-littlearm)
  .debug_aranges
                 0x00000088       0x28 ./Project_Settings/Startup_Code/system.o
  .debug_aranges
-                0x000000b0      0x190 ./RTD/src/Adc_Ip.o
+                0x000000b0      0x160 ./RTD/src/Adc_Ip.o
  .debug_aranges
-                0x00000240       0x28 ./RTD/src/Adc_Ip_Isr.o
+                0x00000210       0x28 ./RTD/src/Adc_Ip_Isr.o
  .debug_aranges
-                0x00000268       0xa8 ./RTD/src/Clock_Ip.o
+                0x00000238       0xa8 ./RTD/src/Clock_Ip.o
  .debug_aranges
-                0x00000310       0x18 ./RTD/src/Clock_Ip_Data.o
+                0x000002e0       0x18 ./RTD/src/Clock_Ip_Data.o
  .debug_aranges
-                0x00000328      0x100 ./RTD/src/Clock_Ip_Divider.o
+                0x000002f8      0x100 ./RTD/src/Clock_Ip_Divider.o
  .debug_aranges
-                0x00000428       0x20 ./RTD/src/Clock_Ip_DividerTrigger.o
+                0x000003f8       0x20 ./RTD/src/Clock_Ip_DividerTrigger.o
  .debug_aranges
-                0x00000448       0x70 ./RTD/src/Clock_Ip_ExtOsc.o
+                0x00000418       0x70 ./RTD/src/Clock_Ip_ExtOsc.o
  .debug_aranges
-                0x000004b8       0x28 ./RTD/src/Clock_Ip_FracDiv.o
+                0x00000488       0x28 ./RTD/src/Clock_Ip_FracDiv.o
  .debug_aranges
-                0x000004e0       0x18 ./RTD/src/Clock_Ip_Frequency.o
+                0x000004b0       0x18 ./RTD/src/Clock_Ip_Frequency.o
  .debug_aranges
-                0x000004f8       0xb8 ./RTD/src/Clock_Ip_Gate.o
+                0x000004c8       0xb8 ./RTD/src/Clock_Ip_Gate.o
  .debug_aranges
-                0x000005b0       0xf0 ./RTD/src/Clock_Ip_IntOsc.o
+                0x00000580       0xf0 ./RTD/src/Clock_Ip_IntOsc.o
  .debug_aranges
-                0x000006a0       0x18 ./RTD/src/Clock_Ip_Irq.o
+                0x00000670       0x18 ./RTD/src/Clock_Ip_Irq.o
  .debug_aranges
-                0x000006b8       0x38 ./RTD/src/Clock_Ip_Monitor.o
+                0x00000688       0x38 ./RTD/src/Clock_Ip_Monitor.o
  .debug_aranges
-                0x000006f0       0x78 ./RTD/src/Clock_Ip_Pll.o
+                0x000006c0       0x78 ./RTD/src/Clock_Ip_Pll.o
  .debug_aranges
-                0x00000768       0x20 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+                0x00000738       0x20 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
  .debug_aranges
-                0x00000788      0x150 ./RTD/src/Clock_Ip_Selector.o
+                0x00000758      0x150 ./RTD/src/Clock_Ip_Selector.o
  .debug_aranges
-                0x000008d8       0x88 ./RTD/src/Clock_Ip_Specific.o
+                0x000008a8       0x88 ./RTD/src/Clock_Ip_Specific.o
  .debug_aranges
-                0x00000960       0x40 ./RTD/src/Det.o
+                0x00000930       0x40 ./RTD/src/Det.o
  .debug_aranges
-                0x000009a0       0x48 ./RTD/src/Det_stub.o
+                0x00000970       0x48 ./RTD/src/Det_stub.o
  .debug_aranges
-                0x000009e8       0xc0 ./RTD/src/IntCtrl_Ip.o
+                0x000009b8       0xc0 ./RTD/src/IntCtrl_Ip.o
  .debug_aranges
-                0x00000aa8       0x68 ./RTD/src/OsIf_Timer.o
+                0x00000a78       0x68 ./RTD/src/OsIf_Timer.o
  .debug_aranges
-                0x00000b10       0x18 ./RTD/src/OsIf_Timer_System.o
+                0x00000ae0       0x18 ./RTD/src/OsIf_Timer_System.o
  .debug_aranges
-                0x00000b28       0x40 ./RTD/src/Port.o
+                0x00000af8       0x40 ./RTD/src/Port.o
  .debug_aranges
-                0x00000b68       0x90 ./RTD/src/Port_Ci_Port_Ip.o
+                0x00000b38       0x90 ./RTD/src/Port_Ci_Port_Ip.o
  .debug_aranges
-                0x00000bf8       0x50 ./RTD/src/Port_Ipw.o
+                0x00000bc8       0x50 ./RTD/src/Port_Ipw.o
  .debug_aranges
-                0x00000c48      0x460 ./RTD/src/SchM_Adc.o
+                0x00000c18      0x460 ./RTD/src/SchM_Adc.o
  .debug_aranges
-                0x000010a8       0x50 ./RTD/src/SchM_Mcu.o
+                0x00001078       0x50 ./RTD/src/SchM_Mcu.o
  .debug_aranges
-                0x000010f8       0xb0 ./RTD/src/SchM_Port.o
+                0x000010c8       0xb0 ./RTD/src/SchM_Port.o
  .debug_aranges
-                0x000011a8       0x18 ./board/Clock_Ip_Cfg.o
+                0x00001178       0x18 ./board/Clock_Ip_Cfg.o
  .debug_aranges
-                0x000011c0       0x18 ./board/Clock_Ip_PBcfg.o
+                0x00001190       0x18 ./board/Clock_Ip_PBcfg.o
  .debug_aranges
-                0x000011d8       0x18 ./board/Port_Ci_Port_Ip_Cfg.o
+                0x000011a8       0x18 ./board/Port_Ci_Port_Ip_Cfg.o
  .debug_aranges
-                0x000011f0       0x18 ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
+                0x000011c0       0x18 ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
  .debug_aranges
-                0x00001208       0x18 ./generate/src/IntCtrl_Ip_Cfg.o
+                0x000011d8       0x18 ./generate/src/IntCtrl_Ip_Cfg.o
  .debug_aranges
-                0x00001220       0x18 ./generate/src/OsIf_Cfg.o
+                0x000011f0       0x18 ./generate/src/OsIf_Cfg.o
  .debug_aranges
-                0x00001238       0x18 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
+                0x00001208       0x18 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
  .debug_aranges
-                0x00001250       0x18 ./generate/src/Port_Cfg.o
+                0x00001220       0x18 ./generate/src/Port_Cfg.o
  .debug_aranges
-                0x00001268       0x18 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
+                0x00001238       0x18 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
  .debug_aranges
-                0x00001280       0x20 ./src/example1.o
+                0x00001250       0x20 ./src/example1.o
 
-.debug_ranges   0x00000000      0xf48
+.debug_ranges   0x00000000      0xf18
  .debug_ranges  0x00000000       0x18 ./Project_Settings/Startup_Code/exceptions.o
  .debug_ranges  0x00000018       0x18 ./Project_Settings/Startup_Code/system.o
- .debug_ranges  0x00000030      0x180 ./RTD/src/Adc_Ip.o
- .debug_ranges  0x000001b0       0x18 ./RTD/src/Adc_Ip_Isr.o
- .debug_ranges  0x000001c8       0x98 ./RTD/src/Clock_Ip.o
- .debug_ranges  0x00000260       0xf0 ./RTD/src/Clock_Ip_Divider.o
- .debug_ranges  0x00000350       0x10 ./RTD/src/Clock_Ip_DividerTrigger.o
- .debug_ranges  0x00000360       0x60 ./RTD/src/Clock_Ip_ExtOsc.o
- .debug_ranges  0x000003c0       0x18 ./RTD/src/Clock_Ip_FracDiv.o
- .debug_ranges  0x000003d8       0xa8 ./RTD/src/Clock_Ip_Gate.o
- .debug_ranges  0x00000480       0xe0 ./RTD/src/Clock_Ip_IntOsc.o
- .debug_ranges  0x00000560       0x28 ./RTD/src/Clock_Ip_Monitor.o
- .debug_ranges  0x00000588       0x68 ./RTD/src/Clock_Ip_Pll.o
- .debug_ranges  0x000005f0       0x10 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
- .debug_ranges  0x00000600      0x140 ./RTD/src/Clock_Ip_Selector.o
- .debug_ranges  0x00000740       0x78 ./RTD/src/Clock_Ip_Specific.o
- .debug_ranges  0x000007b8       0x30 ./RTD/src/Det.o
- .debug_ranges  0x000007e8       0x38 ./RTD/src/Det_stub.o
- .debug_ranges  0x00000820       0xb0 ./RTD/src/IntCtrl_Ip.o
- .debug_ranges  0x000008d0       0x58 ./RTD/src/OsIf_Timer.o
- .debug_ranges  0x00000928       0x30 ./RTD/src/Port.o
- .debug_ranges  0x00000958       0x80 ./RTD/src/Port_Ci_Port_Ip.o
- .debug_ranges  0x000009d8       0x40 ./RTD/src/Port_Ipw.o
- .debug_ranges  0x00000a18      0x450 ./RTD/src/SchM_Adc.o
- .debug_ranges  0x00000e68       0x40 ./RTD/src/SchM_Mcu.o
- .debug_ranges  0x00000ea8       0xa0 ./RTD/src/SchM_Port.o
+ .debug_ranges  0x00000030      0x150 ./RTD/src/Adc_Ip.o
+ .debug_ranges  0x00000180       0x18 ./RTD/src/Adc_Ip_Isr.o
+ .debug_ranges  0x00000198       0x98 ./RTD/src/Clock_Ip.o
+ .debug_ranges  0x00000230       0xf0 ./RTD/src/Clock_Ip_Divider.o
+ .debug_ranges  0x00000320       0x10 ./RTD/src/Clock_Ip_DividerTrigger.o
+ .debug_ranges  0x00000330       0x60 ./RTD/src/Clock_Ip_ExtOsc.o
+ .debug_ranges  0x00000390       0x18 ./RTD/src/Clock_Ip_FracDiv.o
+ .debug_ranges  0x000003a8       0xa8 ./RTD/src/Clock_Ip_Gate.o
+ .debug_ranges  0x00000450       0xe0 ./RTD/src/Clock_Ip_IntOsc.o
+ .debug_ranges  0x00000530       0x28 ./RTD/src/Clock_Ip_Monitor.o
+ .debug_ranges  0x00000558       0x68 ./RTD/src/Clock_Ip_Pll.o
+ .debug_ranges  0x000005c0       0x10 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+ .debug_ranges  0x000005d0      0x140 ./RTD/src/Clock_Ip_Selector.o
+ .debug_ranges  0x00000710       0x78 ./RTD/src/Clock_Ip_Specific.o
+ .debug_ranges  0x00000788       0x30 ./RTD/src/Det.o
+ .debug_ranges  0x000007b8       0x38 ./RTD/src/Det_stub.o
+ .debug_ranges  0x000007f0       0xb0 ./RTD/src/IntCtrl_Ip.o
+ .debug_ranges  0x000008a0       0x58 ./RTD/src/OsIf_Timer.o
+ .debug_ranges  0x000008f8       0x30 ./RTD/src/Port.o
+ .debug_ranges  0x00000928       0x80 ./RTD/src/Port_Ci_Port_Ip.o
+ .debug_ranges  0x000009a8       0x40 ./RTD/src/Port_Ipw.o
+ .debug_ranges  0x000009e8      0x450 ./RTD/src/SchM_Adc.o
+ .debug_ranges  0x00000e38       0x40 ./RTD/src/SchM_Mcu.o
+ .debug_ranges  0x00000e78       0xa0 ./RTD/src/SchM_Port.o
 
 .debug_macro    0x00000000    0x1c6e7
  .debug_macro   0x00000000      0x13f ./Project_Settings/Startup_Code/exceptions.o
@@ -4893,52 +4892,52 @@ OUTPUT(GB_ADC_Basic_Elecronicsv3_S32K144.elf elf32-littlearm)
  .debug_macro   0x0001c0eb      0x5da ./src/example1.o
  .debug_macro   0x0001c6c5       0x22 ./src/example1.o
 
-.debug_line     0x00000000    0x13fa6
+.debug_line     0x00000000    0x13ed3
  .debug_line    0x00000000      0x532 ./Project_Settings/Startup_Code/exceptions.o
  .debug_line    0x00000532      0x756 ./Project_Settings/Startup_Code/nvic.o
  .debug_line    0x00000c88      0x415 ./Project_Settings/Startup_Code/startup.o
  .debug_line    0x0000109d       0xb6 ./Project_Settings/Startup_Code/startup_cm4.o
  .debug_line    0x00001153      0x8b9 ./Project_Settings/Startup_Code/system.o
- .debug_line    0x00001a0c      0xd0e ./RTD/src/Adc_Ip.o
- .debug_line    0x0000271a      0x53f ./RTD/src/Adc_Ip_Isr.o
- .debug_line    0x00002c59      0xe30 ./RTD/src/Clock_Ip.o
- .debug_line    0x00003a89      0x5eb ./RTD/src/Clock_Ip_Data.o
- .debug_line    0x00004074      0x83e ./RTD/src/Clock_Ip_Divider.o
- .debug_line    0x000048b2      0x608 ./RTD/src/Clock_Ip_DividerTrigger.o
- .debug_line    0x00004eba      0x6fd ./RTD/src/Clock_Ip_ExtOsc.o
- .debug_line    0x000055b7      0x608 ./RTD/src/Clock_Ip_FracDiv.o
- .debug_line    0x00005bbf      0x5f0 ./RTD/src/Clock_Ip_Frequency.o
- .debug_line    0x000061af      0x751 ./RTD/src/Clock_Ip_Gate.o
- .debug_line    0x00006900      0x931 ./RTD/src/Clock_Ip_IntOsc.o
- .debug_line    0x00007231      0x5ea ./RTD/src/Clock_Ip_Irq.o
- .debug_line    0x0000781b      0x62a ./RTD/src/Clock_Ip_Monitor.o
- .debug_line    0x00007e45      0x6e6 ./RTD/src/Clock_Ip_Pll.o
- .debug_line    0x0000852b      0x608 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
- .debug_line    0x00008b33      0x91d ./RTD/src/Clock_Ip_Selector.o
- .debug_line    0x00009450      0xcb8 ./RTD/src/Clock_Ip_Specific.o
- .debug_line    0x0000a108      0x536 ./RTD/src/Det.o
- .debug_line    0x0000a63e      0x772 ./RTD/src/Det_stub.o
- .debug_line    0x0000adb0      0xa07 ./RTD/src/IntCtrl_Ip.o
- .debug_line    0x0000b7b7      0x573 ./RTD/src/OsIf_Timer.o
- .debug_line    0x0000bd2a      0x4df ./RTD/src/OsIf_Timer_System.o
- .debug_line    0x0000c209      0x799 ./RTD/src/Port.o
- .debug_line    0x0000c9a2      0x87c ./RTD/src/Port_Ci_Port_Ip.o
- .debug_line    0x0000d21e      0x9c4 ./RTD/src/Port_Ipw.o
- .debug_line    0x0000dbe2     0x17a4 ./RTD/src/SchM_Adc.o
- .debug_line    0x0000f386      0x5de ./RTD/src/SchM_Mcu.o
- .debug_line    0x0000f964      0x784 ./RTD/src/SchM_Port.o
- .debug_line    0x000100e8      0x5fa ./board/Clock_Ip_Cfg.o
- .debug_line    0x000106e2      0x5fe ./board/Clock_Ip_PBcfg.o
- .debug_line    0x00010ce0      0x4e6 ./board/Port_Ci_Port_Ip_Cfg.o
- .debug_line    0x000111c6      0x55d ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
- .debug_line    0x00011723      0x733 ./generate/src/IntCtrl_Ip_Cfg.o
- .debug_line    0x00011e56      0x474 ./generate/src/OsIf_Cfg.o
- .debug_line    0x000122ca      0x647 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
- .debug_line    0x00012911      0x62f ./generate/src/Port_Cfg.o
- .debug_line    0x00012f40      0x596 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
- .debug_line    0x000134d6      0xad0 ./src/example1.o
+ .debug_line    0x00001a0c      0xc34 ./RTD/src/Adc_Ip.o
+ .debug_line    0x00002640      0x53f ./RTD/src/Adc_Ip_Isr.o
+ .debug_line    0x00002b7f      0xe30 ./RTD/src/Clock_Ip.o
+ .debug_line    0x000039af      0x5eb ./RTD/src/Clock_Ip_Data.o
+ .debug_line    0x00003f9a      0x83e ./RTD/src/Clock_Ip_Divider.o
+ .debug_line    0x000047d8      0x608 ./RTD/src/Clock_Ip_DividerTrigger.o
+ .debug_line    0x00004de0      0x6fd ./RTD/src/Clock_Ip_ExtOsc.o
+ .debug_line    0x000054dd      0x608 ./RTD/src/Clock_Ip_FracDiv.o
+ .debug_line    0x00005ae5      0x5f0 ./RTD/src/Clock_Ip_Frequency.o
+ .debug_line    0x000060d5      0x751 ./RTD/src/Clock_Ip_Gate.o
+ .debug_line    0x00006826      0x931 ./RTD/src/Clock_Ip_IntOsc.o
+ .debug_line    0x00007157      0x5ea ./RTD/src/Clock_Ip_Irq.o
+ .debug_line    0x00007741      0x62a ./RTD/src/Clock_Ip_Monitor.o
+ .debug_line    0x00007d6b      0x6e6 ./RTD/src/Clock_Ip_Pll.o
+ .debug_line    0x00008451      0x608 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+ .debug_line    0x00008a59      0x91d ./RTD/src/Clock_Ip_Selector.o
+ .debug_line    0x00009376      0xcb8 ./RTD/src/Clock_Ip_Specific.o
+ .debug_line    0x0000a02e      0x536 ./RTD/src/Det.o
+ .debug_line    0x0000a564      0x772 ./RTD/src/Det_stub.o
+ .debug_line    0x0000acd6      0xa07 ./RTD/src/IntCtrl_Ip.o
+ .debug_line    0x0000b6dd      0x573 ./RTD/src/OsIf_Timer.o
+ .debug_line    0x0000bc50      0x4df ./RTD/src/OsIf_Timer_System.o
+ .debug_line    0x0000c12f      0x799 ./RTD/src/Port.o
+ .debug_line    0x0000c8c8      0x87c ./RTD/src/Port_Ci_Port_Ip.o
+ .debug_line    0x0000d144      0x9c4 ./RTD/src/Port_Ipw.o
+ .debug_line    0x0000db08     0x17a4 ./RTD/src/SchM_Adc.o
+ .debug_line    0x0000f2ac      0x5de ./RTD/src/SchM_Mcu.o
+ .debug_line    0x0000f88a      0x784 ./RTD/src/SchM_Port.o
+ .debug_line    0x0001000e      0x5fa ./board/Clock_Ip_Cfg.o
+ .debug_line    0x00010608      0x5fe ./board/Clock_Ip_PBcfg.o
+ .debug_line    0x00010c06      0x4e6 ./board/Port_Ci_Port_Ip_Cfg.o
+ .debug_line    0x000110ec      0x55d ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
+ .debug_line    0x00011649      0x733 ./generate/src/IntCtrl_Ip_Cfg.o
+ .debug_line    0x00011d7c      0x474 ./generate/src/OsIf_Cfg.o
+ .debug_line    0x000121f0      0x647 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
+ .debug_line    0x00012837      0x62f ./generate/src/Port_Cfg.o
+ .debug_line    0x00012e66      0x596 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
+ .debug_line    0x000133fc      0xad7 ./src/example1.o
 
-.debug_str      0x00000000    0x82220
+.debug_str      0x00000000    0x81fc5
  .debug_str     0x00000000     0x7e7a ./Project_Settings/Startup_Code/exceptions.o
                                0x804a (size before relaxing)
  .debug_str     0x00007e7a    0x6377c ./Project_Settings/Startup_Code/nvic.o
@@ -4949,110 +4948,110 @@ OUTPUT(GB_ADC_Basic_Elecronicsv3_S32K144.elf elf32-littlearm)
                                  0xab (size before relaxing)
  .debug_str     0x0006b714      0x2a3 ./Project_Settings/Startup_Code/system.o
                               0x6b855 (size before relaxing)
- .debug_str     0x0006b9b7     0x2249 ./RTD/src/Adc_Ip.o
-                               0xf52a (size before relaxing)
- .debug_str     0x0006dc00      0x121 ./RTD/src/Adc_Ip_Isr.o
-                               0xe3c1 (size before relaxing)
- .debug_str     0x0006dd21     0x3beb ./RTD/src/Clock_Ip.o
+ .debug_str     0x0006b9b7     0x1f64 ./RTD/src/Adc_Ip.o
+                               0xf1f0 (size before relaxing)
+ .debug_str     0x0006d91b      0x121 ./RTD/src/Adc_Ip_Isr.o
+                               0xe3c2 (size before relaxing)
+ .debug_str     0x0006da3c     0x3bf7 ./RTD/src/Clock_Ip.o
                               0x13c11 (size before relaxing)
- .debug_str     0x0007190c      0x6be ./RTD/src/Clock_Ip_Data.o
+ .debug_str     0x00071633      0x6be ./RTD/src/Clock_Ip_Data.o
                               0x1389b (size before relaxing)
- .debug_str     0x00071fca      0x40c ./RTD/src/Clock_Ip_Divider.o
+ .debug_str     0x00071cf1      0x48a ./RTD/src/Clock_Ip_Divider.o
                               0x136d1 (size before relaxing)
- .debug_str     0x000723d6      0x192 ./RTD/src/Clock_Ip_DividerTrigger.o
+ .debug_str     0x0007217b      0x192 ./RTD/src/Clock_Ip_DividerTrigger.o
                               0x13308 (size before relaxing)
- .debug_str     0x00072568      0x21d ./RTD/src/Clock_Ip_ExtOsc.o
+ .debug_str     0x0007230d      0x21d ./RTD/src/Clock_Ip_ExtOsc.o
                               0x135a5 (size before relaxing)
- .debug_str     0x00072785      0x179 ./RTD/src/Clock_Ip_FracDiv.o
+ .debug_str     0x0007252a      0x179 ./RTD/src/Clock_Ip_FracDiv.o
                               0x132ef (size before relaxing)
- .debug_str     0x000728fe       0x20 ./RTD/src/Clock_Ip_Frequency.o
+ .debug_str     0x000726a3       0x20 ./RTD/src/Clock_Ip_Frequency.o
                               0x1318f (size before relaxing)
- .debug_str     0x0007291e      0x387 ./RTD/src/Clock_Ip_Gate.o
+ .debug_str     0x000726c3      0x387 ./RTD/src/Clock_Ip_Gate.o
                               0x135de (size before relaxing)
- .debug_str     0x00072ca5      0x39b ./RTD/src/Clock_Ip_IntOsc.o
+ .debug_str     0x00072a4a      0x39b ./RTD/src/Clock_Ip_IntOsc.o
                               0x13743 (size before relaxing)
- .debug_str     0x00073040      0x11d ./RTD/src/Clock_Ip_Irq.o
+ .debug_str     0x00072de5      0x11d ./RTD/src/Clock_Ip_Irq.o
                               0x1328c (size before relaxing)
- .debug_str     0x0007315d      0x272 ./RTD/src/Clock_Ip_Monitor.o
+ .debug_str     0x00072f02      0x272 ./RTD/src/Clock_Ip_Monitor.o
                               0x1356e (size before relaxing)
- .debug_str     0x000733cf      0x204 ./RTD/src/Clock_Ip_Pll.o
+ .debug_str     0x00073174      0x204 ./RTD/src/Clock_Ip_Pll.o
                               0x135ac (size before relaxing)
- .debug_str     0x000735d3      0x19a ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+ .debug_str     0x00073378      0x19a ./RTD/src/Clock_Ip_ProgFreqSwitch.o
                               0x13310 (size before relaxing)
- .debug_str     0x0007376d      0x5d0 ./RTD/src/Clock_Ip_Selector.o
+ .debug_str     0x00073512      0x5d0 ./RTD/src/Clock_Ip_Selector.o
                               0x138b5 (size before relaxing)
- .debug_str     0x00073d3d      0x588 ./RTD/src/Clock_Ip_Specific.o
+ .debug_str     0x00073ae2      0x588 ./RTD/src/Clock_Ip_Specific.o
                               0x13bd7 (size before relaxing)
- .debug_str     0x000742c5      0x5b2 ./RTD/src/Det.o
+ .debug_str     0x0007406a      0x5b2 ./RTD/src/Det.o
                                0x88fe (size before relaxing)
- .debug_str     0x00074877       0xc1 ./RTD/src/Det_stub.o
+ .debug_str     0x0007461c       0xc1 ./RTD/src/Det_stub.o
                                0x8890 (size before relaxing)
- .debug_str     0x00074938     0x16d2 ./RTD/src/IntCtrl_Ip.o
+ .debug_str     0x000746dd     0x16d2 ./RTD/src/IntCtrl_Ip.o
                               0x6cda1 (size before relaxing)
- .debug_str     0x0007600a      0x44a ./RTD/src/OsIf_Timer.o
+ .debug_str     0x00075daf      0x44a ./RTD/src/OsIf_Timer.o
                                0x7e21 (size before relaxing)
- .debug_str     0x00076454      0x14c ./RTD/src/OsIf_Timer_System.o
+ .debug_str     0x000761f9      0x14c ./RTD/src/OsIf_Timer_System.o
                                0x7d0d (size before relaxing)
- .debug_str     0x000765a0     0x632e ./RTD/src/Port.o
+ .debug_str     0x00076345     0x632e ./RTD/src/Port.o
                               0x102c8 (size before relaxing)
- .debug_str     0x0007c8ce     0x187e ./RTD/src/Port_Ci_Port_Ip.o
+ .debug_str     0x0007c673     0x187e ./RTD/src/Port_Ci_Port_Ip.o
                                0xb8dd (size before relaxing)
- .debug_str     0x0007e14c      0x34f ./RTD/src/Port_Ipw.o
+ .debug_str     0x0007def1      0x34f ./RTD/src/Port_Ipw.o
                               0x10023 (size before relaxing)
- .debug_str     0x0007e49b     0x2607 ./RTD/src/SchM_Adc.o
+ .debug_str     0x0007e240     0x2607 ./RTD/src/SchM_Adc.o
                                0xaaf3 (size before relaxing)
- .debug_str     0x00080aa2      0x28c ./RTD/src/SchM_Mcu.o
+ .debug_str     0x00080847      0x28c ./RTD/src/SchM_Mcu.o
                                0x88ac (size before relaxing)
- .debug_str     0x00080d2e      0x5f4 ./RTD/src/SchM_Port.o
+ .debug_str     0x00080ad3      0x5f4 ./RTD/src/SchM_Port.o
                                0x8c1b (size before relaxing)
- .debug_str     0x00081322      0x11b ./board/Clock_Ip_Cfg.o
+ .debug_str     0x000810c7      0x11b ./board/Clock_Ip_Cfg.o
                               0x1328a (size before relaxing)
- .debug_str     0x0008143d      0x12b ./board/Clock_Ip_PBcfg.o
+ .debug_str     0x000811e2      0x12b ./board/Clock_Ip_PBcfg.o
                               0x1329a (size before relaxing)
- .debug_str     0x00081568       0x38 ./board/Port_Ci_Port_Ip_Cfg.o
+ .debug_str     0x0008130d       0x38 ./board/Port_Ci_Port_Ip_Cfg.o
                                0x8640 (size before relaxing)
- .debug_str     0x000815a0      0x1fb ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
-                               0xe639 (size before relaxing)
- .debug_str     0x0008179b       0xf2 ./generate/src/IntCtrl_Ip_Cfg.o
+ .debug_str     0x00081345      0x1fb ./generate/src/Adc_Ip_BOARD_InitPeripherals_PBcfg.o
+                               0xe574 (size before relaxing)
+ .debug_str     0x00081540       0xf2 ./generate/src/IntCtrl_Ip_Cfg.o
                               0x6af03 (size before relaxing)
- .debug_str     0x0008188d      0x102 ./generate/src/OsIf_Cfg.o
+ .debug_str     0x00081632      0x102 ./generate/src/OsIf_Cfg.o
                                0x7129 (size before relaxing)
- .debug_str     0x0008198f      0x484 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
+ .debug_str     0x00081734      0x484 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o
                                0xff2a (size before relaxing)
- .debug_str     0x00081e13      0x102 ./generate/src/Port_Cfg.o
+ .debug_str     0x00081bb8      0x102 ./generate/src/Port_Cfg.o
                                0xf941 (size before relaxing)
- .debug_str     0x00081f15      0x21a ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
+ .debug_str     0x00081cba      0x21a ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o
                                0x8bba (size before relaxing)
- .debug_str     0x0008212f       0xf1 ./src/example1.o
-                              0x760cb (size before relaxing)
+ .debug_str     0x00081ed4       0xf1 ./src/example1.o
+                              0x76006 (size before relaxing)
 
-.debug_frame    0x00000000     0x3278
+.debug_frame    0x00000000     0x31d8
  .debug_frame   0x00000000       0xb0 ./Project_Settings/Startup_Code/exceptions.o
  .debug_frame   0x000000b0       0x70 ./Project_Settings/Startup_Code/nvic.o
  .debug_frame   0x00000120       0x28 ./Project_Settings/Startup_Code/startup.o
  .debug_frame   0x00000148       0x70 ./Project_Settings/Startup_Code/system.o
- .debug_frame   0x000001b8      0x4ec ./RTD/src/Adc_Ip.o
- .debug_frame   0x000006a4       0x40 ./RTD/src/Adc_Ip_Isr.o
- .debug_frame   0x000006e4      0x200 ./RTD/src/Clock_Ip.o
- .debug_frame   0x000008e4      0x300 ./RTD/src/Clock_Ip_Divider.o
- .debug_frame   0x00000be4       0x28 ./RTD/src/Clock_Ip_DividerTrigger.o
- .debug_frame   0x00000c0c      0x12c ./RTD/src/Clock_Ip_ExtOsc.o
- .debug_frame   0x00000d38       0x40 ./RTD/src/Clock_Ip_FracDiv.o
- .debug_frame   0x00000d78      0x220 ./RTD/src/Clock_Ip_Gate.o
- .debug_frame   0x00000f98      0x2dc ./RTD/src/Clock_Ip_IntOsc.o
- .debug_frame   0x00001274       0x70 ./RTD/src/Clock_Ip_Monitor.o
- .debug_frame   0x000012e4      0x144 ./RTD/src/Clock_Ip_Pll.o
- .debug_frame   0x00001428       0x28 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
- .debug_frame   0x00001450      0x404 ./RTD/src/Clock_Ip_Selector.o
- .debug_frame   0x00001854      0x164 ./RTD/src/Clock_Ip_Specific.o
- .debug_frame   0x000019b8       0x90 ./RTD/src/Det.o
- .debug_frame   0x00001a48       0xb8 ./RTD/src/Det_stub.o
- .debug_frame   0x00001b00      0x258 ./RTD/src/IntCtrl_Ip.o
- .debug_frame   0x00001d58      0x10c ./RTD/src/OsIf_Timer.o
- .debug_frame   0x00001e64       0x9c ./RTD/src/Port.o
- .debug_frame   0x00001f00      0x19c ./RTD/src/Port_Ci_Port_Ip.o
- .debug_frame   0x0000209c       0xd4 ./RTD/src/Port_Ipw.o
- .debug_frame   0x00002170      0xdfc ./RTD/src/SchM_Adc.o
- .debug_frame   0x00002f6c       0xc8 ./RTD/src/SchM_Mcu.o
- .debug_frame   0x00003034      0x200 ./RTD/src/SchM_Port.o
- .debug_frame   0x00003234       0x44 ./src/example1.o
+ .debug_frame   0x000001b8      0x44c ./RTD/src/Adc_Ip.o
+ .debug_frame   0x00000604       0x40 ./RTD/src/Adc_Ip_Isr.o
+ .debug_frame   0x00000644      0x200 ./RTD/src/Clock_Ip.o
+ .debug_frame   0x00000844      0x300 ./RTD/src/Clock_Ip_Divider.o
+ .debug_frame   0x00000b44       0x28 ./RTD/src/Clock_Ip_DividerTrigger.o
+ .debug_frame   0x00000b6c      0x12c ./RTD/src/Clock_Ip_ExtOsc.o
+ .debug_frame   0x00000c98       0x40 ./RTD/src/Clock_Ip_FracDiv.o
+ .debug_frame   0x00000cd8      0x220 ./RTD/src/Clock_Ip_Gate.o
+ .debug_frame   0x00000ef8      0x2dc ./RTD/src/Clock_Ip_IntOsc.o
+ .debug_frame   0x000011d4       0x70 ./RTD/src/Clock_Ip_Monitor.o
+ .debug_frame   0x00001244      0x144 ./RTD/src/Clock_Ip_Pll.o
+ .debug_frame   0x00001388       0x28 ./RTD/src/Clock_Ip_ProgFreqSwitch.o
+ .debug_frame   0x000013b0      0x404 ./RTD/src/Clock_Ip_Selector.o
+ .debug_frame   0x000017b4      0x164 ./RTD/src/Clock_Ip_Specific.o
+ .debug_frame   0x00001918       0x90 ./RTD/src/Det.o
+ .debug_frame   0x000019a8       0xb8 ./RTD/src/Det_stub.o
+ .debug_frame   0x00001a60      0x258 ./RTD/src/IntCtrl_Ip.o
+ .debug_frame   0x00001cb8      0x10c ./RTD/src/OsIf_Timer.o
+ .debug_frame   0x00001dc4       0x9c ./RTD/src/Port.o
+ .debug_frame   0x00001e60      0x19c ./RTD/src/Port_Ci_Port_Ip.o
+ .debug_frame   0x00001ffc       0xd4 ./RTD/src/Port_Ipw.o
+ .debug_frame   0x000020d0      0xdfc ./RTD/src/SchM_Adc.o
+ .debug_frame   0x00002ecc       0xc8 ./RTD/src/SchM_Mcu.o
+ .debug_frame   0x00002f94      0x200 ./RTD/src/SchM_Port.o
+ .debug_frame   0x00003194       0x44 ./src/example1.o
