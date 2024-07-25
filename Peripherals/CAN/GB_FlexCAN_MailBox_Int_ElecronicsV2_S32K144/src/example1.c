@@ -1,9 +1,7 @@
 /*!
-** Copyright 2019 NXP
-** @file main.c
+** @file example1.c
 ** @brief
-**         Main module.
-**         This module contains user's application code.
+**        This Demo Application is of FlexCAN peripheral of S32K144 MCU
 */
 /*!
 **  @addtogroup main_module main module documentation
