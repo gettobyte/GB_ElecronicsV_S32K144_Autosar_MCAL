@@ -1,0 +1,1899 @@
+ClockPowerModeChangeNotification (power_modes_t powerMode, power_notification_t notification)
+{
+  const struct selectorCallback * scsRunClockSelector.33_1;
+  void (*<T5ad>) (const struct Clock_Ip_SelectorConfigType *) _2;
+  const struct Clock_Ip_SelectorConfigType * scsConfig_Vlpr_Mode.34_3;
+  const struct dividerCallback * coreRunClockDivider.35_4;
+  void (*<T572>) (const struct Clock_Ip_DividerConfigType *) _5;
+  const struct Clock_Ip_DividerConfigType * coreConfig_Vlpr_Mode.36_6;
+  const struct dividerCallback * busRunClockDivider.37_7;
+  void (*<T572>) (const struct Clock_Ip_DividerConfigType *) _8;
+  const struct Clock_Ip_DividerConfigType * busConfig_Vlpr_Mode.38_9;
+  const struct dividerCallback * slowRunClockDivider.39_10;
+  void (*<T572>) (const struct Clock_Ip_DividerConfigType *) _11;
+  const struct Clock_Ip_DividerConfigType * slowConfig_Vlpr_Mode.40_12;
+  const struct pllCallback * spllClock.41_13;
+  void (*<T558>) (Clock_Ip_NameType) _14;
+  const struct Clock_Ip_PllConfigType * spllConfig.42_15;
+  <unnamed type> _16;
+  const struct extOscCallback * soscClock.43_17;
+  void (*<T558>) (Clock_Ip_NameType) _18;
+  const struct Clock_Ip_XoscConfigType * soscConfig.44_19;
+  <unnamed type> _20;
+  const struct intOscCallback * fircClock.45_21;
+  void (*<T558>) (Clock_Ip_NameType) _22;
+  const struct Clock_Ip_IrcoscConfigType * fircConfig.46_23;
+  <unnamed type> _24;
+  const struct intOscCallback * fircClock.47_25;
+  void (*<T555>) (const struct Clock_Ip_IrcoscConfigType *) _26;
+  const struct Clock_Ip_IrcoscConfigType * fircConfig.48_27;
+  const struct extOscCallback * soscClock.49_28;
+  void (*<T564>) (const struct Clock_Ip_XoscConfigType *) _29;
+  const struct Clock_Ip_XoscConfigType * soscConfig.50_30;
+  const struct extOscCallback * soscClock.51_31;
+  void (*<T564>) (const struct Clock_Ip_XoscConfigType *) _32;
+  const struct Clock_Ip_XoscConfigType * soscConfig.52_33;
+  const struct pllCallback * spllClock.53_34;
+  void (*<T59a>) (const struct Clock_Ip_PllConfigType *) _35;
+  const struct Clock_Ip_PllConfigType * spllConfig.54_36;
+  const struct pllCallback * spllClock.55_37;
+  clock_pll_status_t (*<T5a0>) (Clock_Ip_NameType) _38;
+  const struct Clock_Ip_PllConfigType * spllConfig.56_39;
+  <unnamed type> _40;
+  const struct selectorCallback * scsRunClockSelector.57_41;
+  void (*<T5ad>) (const struct Clock_Ip_SelectorConfigType *) _42;
+  const struct Clock_Ip_SelectorConfigType * scsConfig_Run_Mode.58_43;
+  const struct dividerCallback * coreRunClockDivider.59_44;
+  void (*<T572>) (const struct Clock_Ip_DividerConfigType *) _45;
+  const struct Clock_Ip_DividerConfigType * coreConfig_Run_Mode.60_46;
+  const struct dividerCallback * busRunClockDivider.61_47;
+  void (*<T572>) (const struct Clock_Ip_DividerConfigType *) _48;
+  const struct Clock_Ip_DividerConfigType * busConfig_Run_Mode.62_49;
+  const struct dividerCallback * slowRunClockDivider.63_50;
+  void (*<T572>) (const struct Clock_Ip_DividerConfigType *) _51;
+  const struct Clock_Ip_DividerConfigType * slowConfig_Run_Mode.64_52;
+  const struct intOscCallback * fircClock.65_53;
+  void (*<T555>) (const struct Clock_Ip_IrcoscConfigType *) _54;
+  const struct Clock_Ip_IrcoscConfigType * fircConfig.66_55;
+  const struct extOscCallback * soscClock.67_56;
+  void (*<T564>) (const struct Clock_Ip_XoscConfigType *) _57;
+  const struct Clock_Ip_XoscConfigType * soscConfig.68_58;
+  const struct extOscCallback * soscClock.69_59;
+  void (*<T564>) (const struct Clock_Ip_XoscConfigType *) _60;
+  const struct Clock_Ip_XoscConfigType * soscConfig.70_61;
+  const struct pllCallback * spllClock.71_62;
+  void (*<T59a>) (const struct Clock_Ip_PllConfigType *) _63;
+  const struct Clock_Ip_PllConfigType * spllConfig.72_64;
+  const struct pllCallback * spllClock.73_65;
+  clock_pll_status_t (*<T5a0>) (Clock_Ip_NameType) _66;
+  const struct Clock_Ip_PllConfigType * spllConfig.74_67;
+  <unnamed type> _68;
+  const struct selectorCallback * scsHsrunClockSelector.75_69;
+  void (*<T5ad>) (const struct Clock_Ip_SelectorConfigType *) _70;
+  const struct Clock_Ip_SelectorConfigType * scsConfig_Hsrun_Mode.76_71;
+  const struct dividerCallback * coreHsrunClockDivider.77_72;
+  void (*<T572>) (const struct Clock_Ip_DividerConfigType *) _73;
+  const struct Clock_Ip_DividerConfigType * coreConfig_Hsrun_Mode.78_74;
+  const struct dividerCallback * busHsrunClockDivider.79_75;
+  void (*<T572>) (const struct Clock_Ip_DividerConfigType *) _76;
+  const struct Clock_Ip_DividerConfigType * busConfig_Hsrun_Mode.80_77;
+  const struct dividerCallback * slowHsrunClockDivider.81_78;
+  void (*<T572>) (const struct Clock_Ip_DividerConfigType *) _79;
+  const struct Clock_Ip_DividerConfigType * slowConfig_Hsrun_Mode.82_80;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  switch (powerMode_82(D)) <default: <L12> [INV], case 0: <L4> [INV], case 1 ... 2: <L0> [INV], case 3: <L7> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  if (notification_84(D) == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  scsRunClockSelector.33_1 = scsRunClockSelector;
+  _2 = scsRunClockSelector.33_1->Set;
+  scsConfig_Vlpr_Mode.34_3 = scsConfig_Vlpr_Mode;
+  _2 (scsConfig_Vlpr_Mode.34_3);
+  # DEBUG BEGIN_STMT
+  coreRunClockDivider.35_4 = coreRunClockDivider;
+  _5 = coreRunClockDivider.35_4->Set;
+  coreConfig_Vlpr_Mode.36_6 = coreConfig_Vlpr_Mode;
+  _5 (coreConfig_Vlpr_Mode.36_6);
+  # DEBUG BEGIN_STMT
+  busRunClockDivider.37_7 = busRunClockDivider;
+  _8 = busRunClockDivider.37_7->Set;
+  busConfig_Vlpr_Mode.38_9 = busConfig_Vlpr_Mode;
+  _8 (busConfig_Vlpr_Mode.38_9);
+  # DEBUG BEGIN_STMT
+  slowRunClockDivider.39_10 = slowRunClockDivider;
+  _11 = slowRunClockDivider.39_10->Set;
+  slowConfig_Vlpr_Mode.40_12 = slowConfig_Vlpr_Mode;
+  _11 (slowConfig_Vlpr_Mode.40_12);
+  # DEBUG BEGIN_STMT
+  spllClock.41_13 = spllClock;
+  _14 = spllClock.41_13->Disable;
+  spllConfig.42_15 = spllConfig;
+  _16 = spllConfig.42_15->name;
+  _14 (_16);
+  # DEBUG BEGIN_STMT
+  soscClock.43_17 = soscClock;
+  _18 = soscClock.43_17->Disable;
+  soscConfig.44_19 = soscConfig;
+  _20 = soscConfig.44_19->name;
+  _18 (_20);
+  # DEBUG BEGIN_STMT
+  fircClock.45_21 = fircClock;
+  _22 = fircClock.45_21->Disable;
+  fircConfig.46_23 = fircConfig;
+  _24 = fircConfig.46_23->name;
+  _22 (_24);
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  if (notification_84(D) == 2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  fircClock.47_25 = fircClock;
+  _26 = fircClock.47_25->Enable;
+  fircConfig.48_27 = fircConfig;
+  _26 (fircConfig.48_27);
+  # DEBUG BEGIN_STMT
+  soscClock.49_28 = soscClock;
+  _29 = soscClock.49_28->Enable;
+  soscConfig.50_30 = soscConfig;
+  _29 (soscConfig.50_30);
+  # DEBUG BEGIN_STMT
+  soscClock.51_31 = soscClock;
+  _32 = soscClock.51_31->Complete;
+  soscConfig.52_33 = soscConfig;
+  _32 (soscConfig.52_33);
+  # DEBUG BEGIN_STMT
+  spllClock.53_34 = spllClock;
+  _35 = spllClock.53_34->Enable;
+  spllConfig.54_36 = spllConfig;
+  _35 (spllConfig.54_36);
+  # DEBUG BEGIN_STMT
+  spllClock.55_37 = spllClock;
+  _38 = spllClock.55_37->Complete;
+  spllConfig.56_39 = spllConfig;
+  _40 = spllConfig.56_39->name;
+  _38 (_40);
+  # DEBUG BEGIN_STMT
+  scsRunClockSelector.57_41 = scsRunClockSelector;
+  _42 = scsRunClockSelector.57_41->Set;
+  scsConfig_Run_Mode.58_43 = scsConfig_Run_Mode;
+  _42 (scsConfig_Run_Mode.58_43);
+  # DEBUG BEGIN_STMT
+  coreRunClockDivider.59_44 = coreRunClockDivider;
+  _45 = coreRunClockDivider.59_44->Set;
+  coreConfig_Run_Mode.60_46 = coreConfig_Run_Mode;
+  _45 (coreConfig_Run_Mode.60_46);
+  # DEBUG BEGIN_STMT
+  busRunClockDivider.61_47 = busRunClockDivider;
+  _48 = busRunClockDivider.61_47->Set;
+  busConfig_Run_Mode.62_49 = busConfig_Run_Mode;
+  _48 (busConfig_Run_Mode.62_49);
+  # DEBUG BEGIN_STMT
+  slowRunClockDivider.63_50 = slowRunClockDivider;
+  _51 = slowRunClockDivider.63_50->Set;
+  slowConfig_Run_Mode.64_52 = slowConfig_Run_Mode;
+  _51 (slowConfig_Run_Mode.64_52);
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  if (notification_84(D) == 2)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  fircClock.65_53 = fircClock;
+  _54 = fircClock.65_53->Enable;
+  fircConfig.66_55 = fircConfig;
+  _54 (fircConfig.66_55);
+  # DEBUG BEGIN_STMT
+  soscClock.67_56 = soscClock;
+  _57 = soscClock.67_56->Enable;
+  soscConfig.68_58 = soscConfig;
+  _57 (soscConfig.68_58);
+  # DEBUG BEGIN_STMT
+  soscClock.69_59 = soscClock;
+  _60 = soscClock.69_59->Complete;
+  soscConfig.70_61 = soscConfig;
+  _60 (soscConfig.70_61);
+  # DEBUG BEGIN_STMT
+  spllClock.71_62 = spllClock;
+  _63 = spllClock.71_62->Enable;
+  spllConfig.72_64 = spllConfig;
+  _63 (spllConfig.72_64);
+  # DEBUG BEGIN_STMT
+  spllClock.73_65 = spllClock;
+  _66 = spllClock.73_65->Complete;
+  spllConfig.74_67 = spllConfig;
+  _68 = spllConfig.74_67->name;
+  _66 (_68);
+  # DEBUG BEGIN_STMT
+  scsHsrunClockSelector.75_69 = scsHsrunClockSelector;
+  _70 = scsHsrunClockSelector.75_69->Set;
+  scsConfig_Hsrun_Mode.76_71 = scsConfig_Hsrun_Mode;
+  _70 (scsConfig_Hsrun_Mode.76_71);
+  # DEBUG BEGIN_STMT
+  coreHsrunClockDivider.77_72 = coreHsrunClockDivider;
+  _73 = coreHsrunClockDivider.77_72->Set;
+  coreConfig_Hsrun_Mode.78_74 = coreConfig_Hsrun_Mode;
+  _73 (coreConfig_Hsrun_Mode.78_74);
+  # DEBUG BEGIN_STMT
+  busHsrunClockDivider.79_75 = busHsrunClockDivider;
+  _76 = busHsrunClockDivider.79_75->Set;
+  busConfig_Hsrun_Mode.80_77 = busConfig_Hsrun_Mode;
+  _76 (busConfig_Hsrun_Mode.80_77);
+  # DEBUG BEGIN_STMT
+  slowHsrunClockDivider.81_78 = slowHsrunClockDivider;
+  _79 = slowHsrunClockDivider.81_78->Set;
+  slowConfig_Hsrun_Mode.82_80 = slowConfig_Hsrun_Mode;
+  _79 (slowConfig_Hsrun_Mode.82_80);
+
+  <bb 9> :
+<L12>:
+  return;
+
+}
+
+
+ClockInitializeObjects ()
+{
+  unsigned char _1;
+  int _2;
+  const struct pllCallback * _3;
+  unsigned char _4;
+  int _5;
+  const struct extOscCallback * _6;
+  unsigned char _7;
+  int _8;
+  const struct intOscCallback * _9;
+  unsigned char _10;
+  int _11;
+  const struct selectorCallback * _12;
+  unsigned char _13;
+  int _14;
+  const struct selectorCallback * _15;
+  unsigned char _16;
+  int _17;
+  const struct dividerCallback * _18;
+  unsigned char _19;
+  int _20;
+  const struct dividerCallback * _21;
+  unsigned char _22;
+  int _23;
+  const struct dividerCallback * _24;
+  unsigned char _25;
+  int _26;
+  const struct dividerCallback * _27;
+  unsigned char _28;
+  int _29;
+  const struct dividerCallback * _30;
+  unsigned char _31;
+  int _32;
+  const struct dividerCallback * _33;
+  const struct Clock_Ip_IrcoscConfigType * _34;
+  const struct Clock_Ip_XoscConfigType * _35;
+  const struct Clock_Ip_PllConfigType * _36;
+  const struct Clock_Ip_SelectorConfigType * _37;
+  const struct Clock_Ip_SelectorConfigType * _38;
+  const struct Clock_Ip_SelectorConfigType * _39;
+  const struct Clock_Ip_DividerConfigType * _40;
+  const struct Clock_Ip_DividerConfigType * _41;
+  const struct Clock_Ip_DividerConfigType * _42;
+  const struct Clock_Ip_DividerConfigType * _43;
+  const struct Clock_Ip_DividerConfigType * _44;
+  const struct Clock_Ip_DividerConfigType * _45;
+  const struct Clock_Ip_DividerConfigType * _46;
+  const struct Clock_Ip_DividerConfigType * _47;
+  const struct Clock_Ip_DividerConfigType * _48;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pllCallbackIndex[1];
+  _2 = (int) _1;
+  _3 = &pllCallbacks[_2];
+  spllClock = _3;
+  # DEBUG BEGIN_STMT
+  _4 = xoscCallbackIndex[1];
+  _5 = (int) _4;
+  _6 = &extOscCallbacks[_5];
+  soscClock = _6;
+  # DEBUG BEGIN_STMT
+  _7 = ircoscCallbackIndex[4];
+  _8 = (int) _7;
+  _9 = &intOscCallbacks[_8];
+  fircClock = _9;
+  # DEBUG BEGIN_STMT
+  _10 = selectorCallbackIndex[5];
+  _11 = (int) _10;
+  _12 = &selectorCallbacks[_11];
+  scsRunClockSelector = _12;
+  # DEBUG BEGIN_STMT
+  _13 = selectorCallbackIndex[7];
+  _14 = (int) _13;
+  _15 = &selectorCallbacks[_14];
+  scsHsrunClockSelector = _15;
+  # DEBUG BEGIN_STMT
+  _16 = dividerCallbackIndex[6];
+  _17 = (int) _16;
+  _18 = &dividerCallbacks[_17];
+  coreRunClockDivider = _18;
+  # DEBUG BEGIN_STMT
+  _19 = dividerCallbackIndex[8];
+  _20 = (int) _19;
+  _21 = &dividerCallbacks[_20];
+  coreHsrunClockDivider = _21;
+  # DEBUG BEGIN_STMT
+  _22 = dividerCallbackIndex[9];
+  _23 = (int) _22;
+  _24 = &dividerCallbacks[_23];
+  busRunClockDivider = _24;
+  # DEBUG BEGIN_STMT
+  _25 = dividerCallbackIndex[11];
+  _26 = (int) _25;
+  _27 = &dividerCallbacks[_26];
+  busHsrunClockDivider = _27;
+  # DEBUG BEGIN_STMT
+  _28 = dividerCallbackIndex[12];
+  _29 = (int) _28;
+  _30 = &dividerCallbacks[_29];
+  slowRunClockDivider = _30;
+  # DEBUG BEGIN_STMT
+  _31 = dividerCallbackIndex[14];
+  _32 = (int) _31;
+  _33 = &dividerCallbacks[_32];
+  slowHsrunClockDivider = _33;
+  # DEBUG BEGIN_STMT
+  _34 = getFircConfig ();
+  fircConfig = _34;
+  # DEBUG BEGIN_STMT
+  _35 = getSoscConfig ();
+  soscConfig = _35;
+  # DEBUG BEGIN_STMT
+  _36 = getSpllConfig ();
+  spllConfig = _36;
+  # DEBUG BEGIN_STMT
+  _37 = getSelectorConfig (25);
+  scsConfig_Run_Mode = _37;
+  # DEBUG BEGIN_STMT
+  _38 = getSelectorConfig (26);
+  scsConfig_Vlpr_Mode = _38;
+  # DEBUG BEGIN_STMT
+  _39 = getSelectorConfig (27);
+  scsConfig_Hsrun_Mode = _39;
+  # DEBUG BEGIN_STMT
+  _40 = getCoreDividerConfig (29);
+  coreConfig_Run_Mode = _40;
+  # DEBUG BEGIN_STMT
+  _41 = getCoreDividerConfig (30);
+  coreConfig_Vlpr_Mode = _41;
+  # DEBUG BEGIN_STMT
+  _42 = getCoreDividerConfig (31);
+  coreConfig_Hsrun_Mode = _42;
+  # DEBUG BEGIN_STMT
+  _43 = getBusDividerConfig (33);
+  busConfig_Run_Mode = _43;
+  # DEBUG BEGIN_STMT
+  _44 = getBusDividerConfig (34);
+  busConfig_Vlpr_Mode = _44;
+  # DEBUG BEGIN_STMT
+  _45 = getBusDividerConfig (35);
+  busConfig_Hsrun_Mode = _45;
+  # DEBUG BEGIN_STMT
+  _46 = getSlowDividerConfig (37);
+  slowConfig_Run_Mode = _46;
+  # DEBUG BEGIN_STMT
+  _47 = getSlowDividerConfig (38);
+  slowConfig_Vlpr_Mode = _47;
+  # DEBUG BEGIN_STMT
+  _48 = getSlowDividerConfig (39);
+  slowConfig_Hsrun_Mode = _48;
+  return;
+
+}
+
+
+getSlowDividerConfig (Clock_Ip_NameType name)
+{
+  uint32 i;
+  uint32 dividerConfigIndex;
+  static struct Clock_Ip_DividerConfigType dividerConfigurations[3];
+  const struct Clock_Ip_DividerConfigType * returnValue;
+  const struct Clock_Ip_ClockConfigType * config_clock.29_1;
+  const struct Clock_Ip_ClockConfigType * config_clock.30_2;
+  <unnamed type> _3;
+  const struct Clock_Ip_ClockConfigType * config_clock.31_4;
+  const struct Clock_Ip_ClockConfigType * config_clock.32_5;
+  unsigned char _6;
+  long unsigned int _7;
+  struct SCG_Type * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  struct SCG_Type * _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  struct SCG_Type * _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  const struct Clock_Ip_DividerConfigType * _40;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_25 = 0B;
+  # DEBUG returnValue => returnValue_25
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_26 = 0;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_26
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (name_27(D)) <default: <L20> [INV], case 37: <L0> [INV], case 38: <L1> [INV], case 39: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_30 = 0;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_30
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_29 = 1;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_29
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_28 = 2;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_28
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # dividerConfigIndex_22 = PHI <dividerConfigIndex_30(3), dividerConfigIndex_29(4), dividerConfigIndex_28(5), dividerConfigIndex_26(2)>
+<L20>:
+  # DEBUG dividerConfigIndex => dividerConfigIndex_22
+  # DEBUG BEGIN_STMT
+  config_clock.29_1 = config_clock;
+  if (config_clock.29_1 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  i_32 = 0;
+  # DEBUG i => i_32
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  config_clock.30_2 = config_clock;
+  _3 = config_clock.30_2->dividers[i_23].name;
+  if (name_27(D) == _3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  config_clock.31_4 = config_clock;
+  returnValue_34 = &config_clock.31_4->dividers[i_23];
+  # DEBUG returnValue => returnValue_34
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  i_33 = i_23 + 1;
+  # DEBUG i => i_33
+
+  <bb 11> :
+  # i_23 = PHI <i_32(7), i_33(10)>
+  # DEBUG i => i_23
+  # DEBUG BEGIN_STMT
+  config_clock.32_5 = config_clock;
+  _6 = config_clock.32_5->dividersCount;
+  _7 = (long unsigned int) _6;
+  if (i_23 < _7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # returnValue_20 = PHI <returnValue_25(6), returnValue_34(9), returnValue_25(11)>
+  # DEBUG returnValue => returnValue_20
+  # DEBUG BEGIN_STMT
+  if (returnValue_20 == 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  returnValue_35 = &dividerConfigurations[dividerConfigIndex_22];
+  # DEBUG returnValue => returnValue_35
+  # DEBUG BEGIN_STMT
+  dividerConfigurations[dividerConfigIndex_22].name = name_27(D);
+  # DEBUG BEGIN_STMT
+  switch (name_27(D)) <default: <L21> [INV], case 37: <L13> [INV], case 38: <L14> [INV], case 39: <L15> [INV]>
+
+  <bb 14> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 ={v} _8->RCCR;
+  _10 = _9 & 15;
+  _11 = _10 + 1;
+  dividerConfigurations[dividerConfigIndex_22].value = _11;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  _12 = 1074151424B;
+  _13 ={v} _12->VCCR;
+  _14 = _13 & 15;
+  _15 = _14 + 1;
+  dividerConfigurations[dividerConfigIndex_22].value = _15;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  _16 = 1074151424B;
+  _17 ={v} _16->HCCR;
+  _18 = _17 & 15;
+  _19 = _18 + 1;
+  dividerConfigurations[dividerConfigIndex_22].value = _19;
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+  # returnValue_21 = PHI <returnValue_20(12), returnValue_35(14), returnValue_35(15), returnValue_35(16), returnValue_35(13)>
+<L21>:
+  # DEBUG returnValue => returnValue_21
+  # DEBUG BEGIN_STMT
+  _40 = returnValue_21;
+  return _40;
+
+}
+
+
+getBusDividerConfig (Clock_Ip_NameType name)
+{
+  uint32 i;
+  uint32 dividerConfigIndex;
+  static struct Clock_Ip_DividerConfigType dividerConfigurations[3];
+  const struct Clock_Ip_DividerConfigType * returnValue;
+  const struct Clock_Ip_ClockConfigType * config_clock.25_1;
+  const struct Clock_Ip_ClockConfigType * config_clock.26_2;
+  <unnamed type> _3;
+  const struct Clock_Ip_ClockConfigType * config_clock.27_4;
+  const struct Clock_Ip_ClockConfigType * config_clock.28_5;
+  unsigned char _6;
+  long unsigned int _7;
+  struct SCG_Type * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  struct SCG_Type * _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  struct SCG_Type * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  const struct Clock_Ip_DividerConfigType * _43;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_28 = 0B;
+  # DEBUG returnValue => returnValue_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_29 = 0;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_29
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (name_30(D)) <default: <L20> [INV], case 33: <L0> [INV], case 34: <L1> [INV], case 35: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_33 = 0;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_33
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_32 = 1;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_32
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_31 = 2;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_31
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # dividerConfigIndex_25 = PHI <dividerConfigIndex_33(3), dividerConfigIndex_32(4), dividerConfigIndex_31(5), dividerConfigIndex_29(2)>
+<L20>:
+  # DEBUG dividerConfigIndex => dividerConfigIndex_25
+  # DEBUG BEGIN_STMT
+  config_clock.25_1 = config_clock;
+  if (config_clock.25_1 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  i_35 = 0;
+  # DEBUG i => i_35
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  config_clock.26_2 = config_clock;
+  _3 = config_clock.26_2->dividers[i_26].name;
+  if (name_30(D) == _3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  config_clock.27_4 = config_clock;
+  returnValue_37 = &config_clock.27_4->dividers[i_26];
+  # DEBUG returnValue => returnValue_37
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  i_36 = i_26 + 1;
+  # DEBUG i => i_36
+
+  <bb 11> :
+  # i_26 = PHI <i_35(7), i_36(10)>
+  # DEBUG i => i_26
+  # DEBUG BEGIN_STMT
+  config_clock.28_5 = config_clock;
+  _6 = config_clock.28_5->dividersCount;
+  _7 = (long unsigned int) _6;
+  if (i_26 < _7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # returnValue_23 = PHI <returnValue_28(6), returnValue_37(9), returnValue_28(11)>
+  # DEBUG returnValue => returnValue_23
+  # DEBUG BEGIN_STMT
+  if (returnValue_23 == 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  returnValue_38 = &dividerConfigurations[dividerConfigIndex_25];
+  # DEBUG returnValue => returnValue_38
+  # DEBUG BEGIN_STMT
+  dividerConfigurations[dividerConfigIndex_25].name = name_30(D);
+  # DEBUG BEGIN_STMT
+  switch (name_30(D)) <default: <L21> [INV], case 33: <L13> [INV], case 34: <L14> [INV], case 35: <L15> [INV]>
+
+  <bb 14> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 ={v} _8->RCCR;
+  _10 = _9 >> 4;
+  _11 = _10 & 15;
+  _12 = _11 + 1;
+  dividerConfigurations[dividerConfigIndex_25].value = _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  _13 = 1074151424B;
+  _14 ={v} _13->VCCR;
+  _15 = _14 >> 4;
+  _16 = _15 & 15;
+  _17 = _16 + 1;
+  dividerConfigurations[dividerConfigIndex_25].value = _17;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  _18 = 1074151424B;
+  _19 ={v} _18->HCCR;
+  _20 = _19 >> 4;
+  _21 = _20 & 15;
+  _22 = _21 + 1;
+  dividerConfigurations[dividerConfigIndex_25].value = _22;
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+  # returnValue_24 = PHI <returnValue_23(12), returnValue_38(14), returnValue_38(15), returnValue_38(16), returnValue_38(13)>
+<L21>:
+  # DEBUG returnValue => returnValue_24
+  # DEBUG BEGIN_STMT
+  _43 = returnValue_24;
+  return _43;
+
+}
+
+
+getCoreDividerConfig (Clock_Ip_NameType name)
+{
+  uint32 i;
+  uint32 dividerConfigIndex;
+  static struct Clock_Ip_DividerConfigType dividerConfigurations[3];
+  const struct Clock_Ip_DividerConfigType * returnValue;
+  const struct Clock_Ip_ClockConfigType * config_clock.21_1;
+  const struct Clock_Ip_ClockConfigType * config_clock.22_2;
+  <unnamed type> _3;
+  const struct Clock_Ip_ClockConfigType * config_clock.23_4;
+  const struct Clock_Ip_ClockConfigType * config_clock.24_5;
+  unsigned char _6;
+  long unsigned int _7;
+  struct SCG_Type * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  struct SCG_Type * _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  struct SCG_Type * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  const struct Clock_Ip_DividerConfigType * _43;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_28 = 0B;
+  # DEBUG returnValue => returnValue_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_29 = 0;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_29
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (name_30(D)) <default: <L20> [INV], case 29: <L0> [INV], case 30: <L1> [INV], case 31: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_33 = 0;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_33
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_32 = 1;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_32
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  dividerConfigIndex_31 = 2;
+  # DEBUG dividerConfigIndex => dividerConfigIndex_31
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # dividerConfigIndex_25 = PHI <dividerConfigIndex_33(3), dividerConfigIndex_32(4), dividerConfigIndex_31(5), dividerConfigIndex_29(2)>
+<L20>:
+  # DEBUG dividerConfigIndex => dividerConfigIndex_25
+  # DEBUG BEGIN_STMT
+  config_clock.21_1 = config_clock;
+  if (config_clock.21_1 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  i_35 = 0;
+  # DEBUG i => i_35
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  config_clock.22_2 = config_clock;
+  _3 = config_clock.22_2->dividers[i_26].name;
+  if (name_30(D) == _3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  config_clock.23_4 = config_clock;
+  returnValue_37 = &config_clock.23_4->dividers[i_26];
+  # DEBUG returnValue => returnValue_37
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  i_36 = i_26 + 1;
+  # DEBUG i => i_36
+
+  <bb 11> :
+  # i_26 = PHI <i_35(7), i_36(10)>
+  # DEBUG i => i_26
+  # DEBUG BEGIN_STMT
+  config_clock.24_5 = config_clock;
+  _6 = config_clock.24_5->dividersCount;
+  _7 = (long unsigned int) _6;
+  if (i_26 < _7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # returnValue_23 = PHI <returnValue_28(6), returnValue_37(9), returnValue_28(11)>
+  # DEBUG returnValue => returnValue_23
+  # DEBUG BEGIN_STMT
+  if (returnValue_23 == 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  returnValue_38 = &dividerConfigurations[dividerConfigIndex_25];
+  # DEBUG returnValue => returnValue_38
+  # DEBUG BEGIN_STMT
+  dividerConfigurations[dividerConfigIndex_25].name = name_30(D);
+  # DEBUG BEGIN_STMT
+  switch (name_30(D)) <default: <L21> [INV], case 29: <L13> [INV], case 30: <L14> [INV], case 31: <L15> [INV]>
+
+  <bb 14> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 ={v} _8->RCCR;
+  _10 = _9 >> 16;
+  _11 = _10 & 15;
+  _12 = _11 + 1;
+  dividerConfigurations[dividerConfigIndex_25].value = _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  _13 = 1074151424B;
+  _14 ={v} _13->VCCR;
+  _15 = _14 >> 16;
+  _16 = _15 & 15;
+  _17 = _16 + 1;
+  dividerConfigurations[dividerConfigIndex_25].value = _17;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  _18 = 1074151424B;
+  _19 ={v} _18->HCCR;
+  _20 = _19 >> 16;
+  _21 = _20 & 15;
+  _22 = _21 + 1;
+  dividerConfigurations[dividerConfigIndex_25].value = _22;
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+  # returnValue_24 = PHI <returnValue_23(12), returnValue_38(14), returnValue_38(15), returnValue_38(16), returnValue_38(13)>
+<L21>:
+  # DEBUG returnValue => returnValue_24
+  # DEBUG BEGIN_STMT
+  _43 = returnValue_24;
+  return _43;
+
+}
+
+
+getSelectorConfig (Clock_Ip_NameType name)
+{
+  static const Clock_Ip_NameType clockSource[7] = {0, 8, 2, 5, 0, 0, 9};
+  uint32 i;
+  uint32 selectorConfigIndex;
+  static struct Clock_Ip_SelectorConfigType selectorConfigurations[3];
+  const struct Clock_Ip_SelectorConfigType * returnValue;
+  const struct Clock_Ip_ClockConfigType * config_clock.17_1;
+  const struct Clock_Ip_ClockConfigType * config_clock.18_2;
+  <unnamed type> _3;
+  const struct Clock_Ip_ClockConfigType * config_clock.19_4;
+  const struct Clock_Ip_ClockConfigType * config_clock.20_5;
+  unsigned char _6;
+  long unsigned int _7;
+  struct SCG_Type * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  <unnamed type> _12;
+  struct SCG_Type * _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  <unnamed type> _17;
+  struct SCG_Type * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  <unnamed type> _22;
+  const struct Clock_Ip_SelectorConfigType * _43;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_28 = 0B;
+  # DEBUG returnValue => returnValue_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (name_29(D)) <default: <L3> [INV], case 25: <L0> [INV], case 26: <L1> [INV], case 27: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  selectorConfigIndex_32 = 0;
+  # DEBUG selectorConfigIndex => selectorConfigIndex_32
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  selectorConfigIndex_31 = 1;
+  # DEBUG selectorConfigIndex => selectorConfigIndex_31
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  selectorConfigIndex_30 = 2;
+  # DEBUG selectorConfigIndex => selectorConfigIndex_30
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  selectorConfigIndex_33 = 0;
+  # DEBUG selectorConfigIndex => selectorConfigIndex_33
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+  # selectorConfigIndex_25 = PHI <selectorConfigIndex_32(3), selectorConfigIndex_31(4), selectorConfigIndex_30(5), selectorConfigIndex_33(6)>
+  # DEBUG selectorConfigIndex => selectorConfigIndex_25
+  # DEBUG BEGIN_STMT
+  config_clock.17_1 = config_clock;
+  if (config_clock.17_1 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  i_35 = 0;
+  # DEBUG i => i_35
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  config_clock.18_2 = config_clock;
+  _3 = config_clock.18_2->selectors[i_26].name;
+  if (name_29(D) == _3)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  config_clock.19_4 = config_clock;
+  returnValue_37 = &config_clock.19_4->selectors[i_26];
+  # DEBUG returnValue => returnValue_37
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  i_36 = i_26 + 1;
+  # DEBUG i => i_36
+
+  <bb 12> :
+  # i_26 = PHI <i_35(8), i_36(11)>
+  # DEBUG i => i_26
+  # DEBUG BEGIN_STMT
+  config_clock.20_5 = config_clock;
+  _6 = config_clock.20_5->selectorsCount;
+  _7 = (long unsigned int) _6;
+  if (i_26 < _7)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # returnValue_23 = PHI <returnValue_28(7), returnValue_37(10), returnValue_28(12)>
+  # DEBUG returnValue => returnValue_23
+  # DEBUG BEGIN_STMT
+  if (returnValue_23 == 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  returnValue_38 = &selectorConfigurations[selectorConfigIndex_25];
+  # DEBUG returnValue => returnValue_38
+  # DEBUG BEGIN_STMT
+  selectorConfigurations[selectorConfigIndex_25].name = name_29(D);
+  # DEBUG BEGIN_STMT
+  switch (name_29(D)) <default: <L20> [INV], case 25: <L13> [INV], case 26: <L14> [INV], case 27: <L15> [INV]>
+
+  <bb 15> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 ={v} _8->RCCR;
+  _10 = _9 >> 24;
+  _11 = _10 & 15;
+  _12 = clockSource[_11];
+  selectorConfigurations[selectorConfigIndex_25].value = _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  _13 = 1074151424B;
+  _14 ={v} _13->VCCR;
+  _15 = _14 >> 24;
+  _16 = _15 & 15;
+  _17 = clockSource[_16];
+  selectorConfigurations[selectorConfigIndex_25].value = _17;
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  _18 = 1074151424B;
+  _19 ={v} _18->HCCR;
+  _20 = _19 >> 24;
+  _21 = _20 & 15;
+  _22 = clockSource[_21];
+  selectorConfigurations[selectorConfigIndex_25].value = _22;
+  # DEBUG BEGIN_STMT
+
+  <bb 18> :
+  # returnValue_24 = PHI <returnValue_23(13), returnValue_38(15), returnValue_38(16), returnValue_38(17), returnValue_38(14)>
+<L20>:
+  # DEBUG returnValue => returnValue_24
+  # DEBUG BEGIN_STMT
+  _43 = returnValue_24;
+  return _43;
+
+}
+
+
+getSpllConfig ()
+{
+  static struct Clock_Ip_PllConfigType spllConfiguration;
+  const struct Clock_Ip_PllConfigType * returnValue;
+  uint32 i;
+  const struct Clock_Ip_ClockConfigType * config_clock.13_1;
+  const struct Clock_Ip_ClockConfigType * config_clock.14_2;
+  <unnamed type> _3;
+  const struct Clock_Ip_ClockConfigType * config_clock.15_4;
+  const struct Clock_Ip_ClockConfigType * config_clock.16_5;
+  unsigned char _6;
+  long unsigned int _7;
+  struct SCG_Type * _8;
+  long unsigned int _9;
+  short unsigned int _10;
+  short unsigned int _11;
+  struct SCG_Type * _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  unsigned char _15;
+  unsigned char _16;
+  struct SCG_Type * _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  unsigned char _20;
+  unsigned char _21;
+  const struct Clock_Ip_PllConfigType * _36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  returnValue_26 = 0B;
+  # DEBUG returnValue => returnValue_26
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config_clock.13_1 = config_clock;
+  if (config_clock.13_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  i_28 = 0;
+  # DEBUG i => i_28
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  config_clock.14_2 = config_clock;
+  _3 = config_clock.14_2->plls[i_22].name;
+  if (_3 == 9)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  config_clock.15_4 = config_clock;
+  returnValue_30 = &config_clock.15_4->plls[i_22];
+  # DEBUG returnValue => returnValue_30
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  i_29 = i_22 + 1;
+  # DEBUG i => i_29
+
+  <bb 7> :
+  # i_22 = PHI <i_28(3), i_29(6)>
+  # DEBUG i => i_22
+  # DEBUG BEGIN_STMT
+  config_clock.16_5 = config_clock;
+  _6 = config_clock.16_5->pllsCount;
+  _7 = (long unsigned int) _6;
+  if (i_22 < _7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # returnValue_23 = PHI <returnValue_26(2), returnValue_30(5), returnValue_26(7)>
+  # DEBUG returnValue => returnValue_23
+  # DEBUG BEGIN_STMT
+  if (returnValue_23 == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  returnValue_31 = &spllConfiguration;
+  # DEBUG returnValue => returnValue_31
+  # DEBUG BEGIN_STMT
+  spllConfiguration.name = 9;
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 ={v} _8->SPLLCSR;
+  _10 = (short unsigned int) _9;
+  _11 = _10 & 1;
+  spllConfiguration.enable = _11;
+  # DEBUG BEGIN_STMT
+  _12 = 1074151424B;
+  _13 ={v} _12->SPLLCFG;
+  _14 = _13 >> 8;
+  _15 = (unsigned char) _14;
+  _16 = _15 & 7;
+  spllConfiguration.predivider = _16;
+  # DEBUG BEGIN_STMT
+  _17 = 1074151424B;
+  _18 ={v} _17->SPLLCFG;
+  _19 = _18 >> 16;
+  _20 = (unsigned char) _19;
+  _21 = _20 & 31;
+  spllConfiguration.mulFactorDiv = _21;
+
+  <bb 10> :
+  # returnValue_24 = PHI <returnValue_23(8), returnValue_31(9)>
+  # DEBUG returnValue => returnValue_24
+  # DEBUG BEGIN_STMT
+  _36 = returnValue_24;
+  return _36;
+
+}
+
+
+getSoscConfig ()
+{
+  static struct Clock_Ip_XoscConfigType soscConfiguration;
+  const struct Clock_Ip_XoscConfigType * returnValue;
+  uint32 i;
+  const struct Clock_Ip_ClockConfigType * config_clock.9_1;
+  const struct Clock_Ip_ClockConfigType * config_clock.10_2;
+  <unnamed type> _3;
+  const struct Clock_Ip_ClockConfigType * config_clock.11_4;
+  const struct Clock_Ip_ClockConfigType * config_clock.12_5;
+  unsigned char _6;
+  long unsigned int _7;
+  struct SCG_Type * _8;
+  long unsigned int _9;
+  short unsigned int _10;
+  short unsigned int _11;
+  const struct Clock_Ip_XoscConfigType * _25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  returnValue_16 = 0B;
+  # DEBUG returnValue => returnValue_16
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config_clock.9_1 = config_clock;
+  if (config_clock.9_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  i_18 = 0;
+  # DEBUG i => i_18
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  config_clock.10_2 = config_clock;
+  _3 = config_clock.10_2->xoscs[i_12].name;
+  if (_3 == 8)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  config_clock.11_4 = config_clock;
+  returnValue_20 = &config_clock.11_4->xoscs[i_12];
+  # DEBUG returnValue => returnValue_20
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  i_19 = i_12 + 1;
+  # DEBUG i => i_19
+
+  <bb 7> :
+  # i_12 = PHI <i_18(3), i_19(6)>
+  # DEBUG i => i_12
+  # DEBUG BEGIN_STMT
+  config_clock.12_5 = config_clock;
+  _6 = config_clock.12_5->xoscsCount;
+  _7 = (long unsigned int) _6;
+  if (i_12 < _7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # returnValue_13 = PHI <returnValue_16(2), returnValue_20(5), returnValue_16(7)>
+  # DEBUG returnValue => returnValue_13
+  # DEBUG BEGIN_STMT
+  if (returnValue_13 == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  returnValue_21 = &soscConfiguration;
+  # DEBUG returnValue => returnValue_21
+  # DEBUG BEGIN_STMT
+  soscConfiguration.name = 8;
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 ={v} _8->SOSCCSR;
+  _10 = (short unsigned int) _9;
+  _11 = _10 & 1;
+  soscConfiguration.enable = _11;
+  # DEBUG BEGIN_STMT
+  soscConfiguration.freq = 40000000;
+
+  <bb 10> :
+  # returnValue_14 = PHI <returnValue_13(8), returnValue_21(9)>
+  # DEBUG returnValue => returnValue_14
+  # DEBUG BEGIN_STMT
+  _25 = returnValue_14;
+  return _25;
+
+}
+
+
+getFircConfig ()
+{
+  static struct Clock_Ip_IrcoscConfigType fircConfiguration;
+  const struct Clock_Ip_IrcoscConfigType * returnValue;
+  uint32 i;
+  const struct Clock_Ip_ClockConfigType * config_clock.5_1;
+  const struct Clock_Ip_ClockConfigType * config_clock.6_2;
+  <unnamed type> _3;
+  const struct Clock_Ip_ClockConfigType * config_clock.7_4;
+  const struct Clock_Ip_ClockConfigType * config_clock.8_5;
+  unsigned char _6;
+  long unsigned int _7;
+  struct SCG_Type * _8;
+  long unsigned int _9;
+  short unsigned int _10;
+  short unsigned int _11;
+  struct SCG_Type * _12;
+  long unsigned int _13;
+  unsigned char _14;
+  unsigned char _15;
+  struct SCG_Type * _16;
+  long unsigned int _17;
+  unsigned char _18;
+  int _19;
+  int _20;
+  unsigned char _21;
+  unsigned char _22;
+  const struct Clock_Ip_IrcoscConfigType * _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  returnValue_27 = 0B;
+  # DEBUG returnValue => returnValue_27
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config_clock.5_1 = config_clock;
+  if (config_clock.5_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  i_29 = 0;
+  # DEBUG i => i_29
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  config_clock.6_2 = config_clock;
+  _3 = config_clock.6_2->ircoscs[i_23].name;
+  if (_3 == 5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  config_clock.7_4 = config_clock;
+  returnValue_31 = &config_clock.7_4->ircoscs[i_23];
+  # DEBUG returnValue => returnValue_31
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  i_30 = i_23 + 1;
+  # DEBUG i => i_30
+
+  <bb 7> :
+  # i_23 = PHI <i_29(3), i_30(6)>
+  # DEBUG i => i_23
+  # DEBUG BEGIN_STMT
+  config_clock.8_5 = config_clock;
+  _6 = config_clock.8_5->ircoscsCount;
+  _7 = (long unsigned int) _6;
+  if (i_23 < _7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # returnValue_24 = PHI <returnValue_27(2), returnValue_31(5), returnValue_27(7)>
+  # DEBUG returnValue => returnValue_24
+  # DEBUG BEGIN_STMT
+  if (returnValue_24 == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  returnValue_32 = &fircConfiguration;
+  # DEBUG returnValue => returnValue_32
+  # DEBUG BEGIN_STMT
+  fircConfiguration.name = 5;
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 ={v} _8->FIRCCSR;
+  _10 = (short unsigned int) _9;
+  _11 = _10 & 1;
+  fircConfiguration.enable = _11;
+  # DEBUG BEGIN_STMT
+  _12 = 1074151424B;
+  _13 ={v} _12->FIRCCFG;
+  _14 = (unsigned char) _13;
+  _15 = _14 & 3;
+  fircConfiguration.range = _15;
+  # DEBUG BEGIN_STMT
+  _16 = 1074151424B;
+  _17 ={v} _16->FIRCCSR;
+  _18 = (unsigned char) _17;
+  _19 = (int) _18;
+  _20 = _19 >> 3;
+  _21 = (unsigned char) _20;
+  _22 = _21 & 1;
+  fircConfiguration.regulator = _22;
+
+  <bb 10> :
+  # returnValue_25 = PHI <returnValue_24(8), returnValue_32(9)>
+  # DEBUG returnValue => returnValue_25
+  # DEBUG BEGIN_STMT
+  _37 = returnValue_25;
+  return _37;
+
+}
+
+
+SpecificPlatformInitClock (const struct Clock_Ip_ClockConfigType * config)
+{
+  uint32 IrcoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  struct SCG_Type * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  struct SCG_Type * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int TimeoutTicks.4_7;
+  _Bool _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  TimeoutOccurred_11 = 0;
+  # DEBUG TimeoutOccurred => TimeoutOccurred_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config_clock = config_13(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074151424B;
+  _2 ={v} _1->FIRCCSR;
+  _3 = _2 & 1;
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  fircWasEnabledBeforeMcuInit = 0;
+  # DEBUG BEGIN_STMT
+  SetFircToResetValue_TrustedCall ();
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = 1074151424B;
+  _5 ={v} _4->FIRCCSR;
+  _6 = _5 >> 24;
+  IrcoscStatus_19 = _6 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_19
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.4_7 = TimeoutTicks;
+  TimeoutOccurred_21 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.4_7);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_21
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_19 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _8 = ~TimeoutOccurred_21;
+  if (_8 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_21 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ReportClockErrors (1, 5);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  fircWasEnabledBeforeMcuInit = 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  SetSimLpoclksRegister_TrustedCall (config_13(D));
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetSimLpoclksRegister_TrustedCall (const struct Clock_Ip_ClockConfigType * config)
+{
+  uint32 i;
+  uint32 SimLpoValue;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+  unsigned char _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned char _11;
+  long unsigned int _12;
+  <unnamed type> _13;
+  short unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  <unnamed type> _17;
+  short unsigned int _18;
+  long unsigned int _19;
+  unsigned char _20;
+  long unsigned int _21;
+  struct SIM_Type * _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SimLpoValue_31 = 3;
+  # DEBUG SimLpoValue => SimLpoValue_31
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i_32 = 0;
+  # DEBUG i => i_32
+  goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = config_34(D)->selectors[i_29].name;
+  if (_1 == 40)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = config_34(D)->selectors[i_29].value;
+  _3 = selectorEntry_hardwareValue[_2];
+  _4 = (long unsigned int) _3;
+  _5 = _4 << 4;
+  SimLpoValue_40 = SimLpoValue_25 | _5;
+  # DEBUG SimLpoValue => SimLpoValue_40
+
+  <bb 5> :
+  # SimLpoValue_23 = PHI <SimLpoValue_25(3), SimLpoValue_40(4)>
+  # DEBUG SimLpoValue => SimLpoValue_23
+  # DEBUG BEGIN_STMT
+  _6 = config_34(D)->selectors[i_29].name;
+  if (_6 == 41)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _7 = config_34(D)->selectors[i_29].value;
+  _8 = selectorEntryPCS_hardwareValue[_7];
+  _9 = (long unsigned int) _8;
+  _10 = _9 << 2;
+  SimLpoValue_41 = SimLpoValue_23 | _10;
+  # DEBUG SimLpoValue => SimLpoValue_41
+
+  <bb 7> :
+  # SimLpoValue_24 = PHI <SimLpoValue_23(5), SimLpoValue_41(6)>
+  # DEBUG SimLpoValue => SimLpoValue_24
+  # DEBUG BEGIN_STMT
+  i_42 = i_29 + 1;
+  # DEBUG i => i_42
+
+  <bb 8> :
+  # SimLpoValue_25 = PHI <SimLpoValue_31(2), SimLpoValue_24(7)>
+  # i_29 = PHI <i_32(2), i_42(7)>
+  # DEBUG i => i_29
+  # DEBUG SimLpoValue => SimLpoValue_25
+  # DEBUG BEGIN_STMT
+  _11 = config_34(D)->selectorsCount;
+  _12 = (long unsigned int) _11;
+  if (i_29 < _12)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  i_35 = 0;
+  # DEBUG i => i_35
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _13 = config_34(D)->gates[i_30].name;
+  if (_13 == 18)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _14 = config_34(D)->gates[i_30].enable;
+  _15 = (long unsigned int) _14;
+  _16 = _15 << 1;
+  SimLpoValue_37 = SimLpoValue_28 | _16;
+  # DEBUG SimLpoValue => SimLpoValue_37
+
+  <bb 12> :
+  # SimLpoValue_26 = PHI <SimLpoValue_28(10), SimLpoValue_37(11)>
+  # DEBUG SimLpoValue => SimLpoValue_26
+  # DEBUG BEGIN_STMT
+  _17 = config_34(D)->gates[i_30].name;
+  if (_17 == 19)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _18 = config_34(D)->gates[i_30].enable;
+  _19 = (long unsigned int) _18;
+  SimLpoValue_38 = SimLpoValue_26 | _19;
+  # DEBUG SimLpoValue => SimLpoValue_38
+
+  <bb 14> :
+  # SimLpoValue_27 = PHI <SimLpoValue_26(12), SimLpoValue_38(13)>
+  # DEBUG SimLpoValue => SimLpoValue_27
+  # DEBUG BEGIN_STMT
+  i_39 = i_30 + 1;
+  # DEBUG i => i_39
+
+  <bb 15> :
+  # SimLpoValue_28 = PHI <SimLpoValue_25(9), SimLpoValue_27(14)>
+  # i_30 = PHI <i_35(9), i_39(14)>
+  # DEBUG i => i_30
+  # DEBUG SimLpoValue => SimLpoValue_28
+  # DEBUG BEGIN_STMT
+  _20 = config_34(D)->gatesCount;
+  _21 = (long unsigned int) _20;
+  if (i_30 < _21)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _22 = 1074036736B;
+  _22->LPOCLKS ={v} SimLpoValue_28;
+  return;
+
+}
+
+
+SetFircToResetValue_TrustedCall ()
+{
+  struct SCG_Type * _1;
+  struct SCG_Type * _2;
+  long unsigned int _3;
+  struct SCG_Type * _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1074151424B;
+  _1->FIRCCFG ={v} 0;
+  # DEBUG BEGIN_STMT
+  _2 = 1074151424B;
+  _3 ={v} _2->FIRCCSR;
+  _4 = 1074151424B;
+  _5 = _3 | 1;
+  _4->FIRCCSR ={v} _5;
+  return;
+
+}
+
+
+DisableSafeClock (const struct Clock_Ip_ClockConfigType * config)
+{
+  boolean fircConfigFound;
+  uint32 i;
+  const struct Clock_Ip_ClockConfigType * config_clock.0_1;
+  <unnamed type> _2;
+  const struct Clock_Ip_ClockConfigType * config_clock.1_3;
+  short unsigned int _4;
+  unsigned char _5;
+  int _6;
+  void (*<T558>) (Clock_Ip_NameType) _7;
+  const struct Clock_Ip_ClockConfigType * config_clock.2_8;
+  unsigned char _9;
+  long unsigned int _10;
+  _Bool _11;
+  _Bool fircWasEnabledBeforeMcuInit.3_12;
+  _Bool _13;
+  unsigned char _14;
+  int _15;
+  void (*<T558>) (Clock_Ip_NameType) _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fircConfigFound_21 = 0;
+  # DEBUG fircConfigFound => fircConfigFound_21
+  # DEBUG BEGIN_STMT
+  if (config_22(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  i_24 = 0;
+  # DEBUG i => i_24
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  config_clock.0_1 = config_clock;
+  _2 = config_clock.0_1->ircoscs[i_17].name;
+  if (_2 == 5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  fircConfigFound_26 = 1;
+  # DEBUG fircConfigFound => fircConfigFound_26
+  # DEBUG BEGIN_STMT
+  config_clock.1_3 = config_clock;
+  _4 = config_clock.1_3->ircoscs[i_17].enable;
+  if (_4 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _5 = ircoscCallbackIndex[4];
+  _6 = (int) _5;
+  _7 = intOscCallbacks[_6].Disable;
+  _7 (5);
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  i_25 = i_17 + 1;
+  # DEBUG i => i_25
+
+  <bb 8> :
+  # i_17 = PHI <i_24(3), i_25(7)>
+  # DEBUG i => i_17
+  # DEBUG BEGIN_STMT
+  config_clock.2_8 = config_clock;
+  _9 = config_clock.2_8->ircoscsCount;
+  _10 = (long unsigned int) _9;
+  if (i_17 < _10)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # fircConfigFound_18 = PHI <fircConfigFound_21(2), fircConfigFound_26(6), fircConfigFound_21(8), fircConfigFound_26(5)>
+  # DEBUG fircConfigFound => fircConfigFound_18
+  # DEBUG BEGIN_STMT
+  _11 = ~fircConfigFound_18;
+  if (_11 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  fircWasEnabledBeforeMcuInit.3_12 = fircWasEnabledBeforeMcuInit;
+  _13 = ~fircWasEnabledBeforeMcuInit.3_12;
+  if (_13 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _14 = ircoscCallbackIndex[4];
+  _15 = (int) _14;
+  _16 = intOscCallbacks[_15].Disable;
+  _16 (5);
+
+  <bb 12> :
+  return;
+
+}
+
+
+SpecificPeripheralClockInitialization (const struct Clock_IP_SpecificPeriphConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

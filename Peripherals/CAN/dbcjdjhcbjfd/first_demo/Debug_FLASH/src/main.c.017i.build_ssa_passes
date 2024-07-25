@@ -1,0 +1,110 @@
+main ()
+{
+  struct Flexcan_Ip_DataInfoType tx_info_ext;
+  struct Flexcan_Ip_DataInfoType tx_info_std;
+  Flexcan_Ip_StatusType FlexCAN_Api_Status;
+  int D.7062;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG BEGIN_STMT
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_EnableIrq (81);
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_InstallHandler (81, CAN0_ORED_0_15_MB_IRQHandler, 0B);
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  tx_info_std = {};
+  tx_info_std.data_length = 8;
+  # DEBUG BEGIN_STMT
+  tx_info_ext = {};
+  tx_info_ext.msg_id_type = 1;
+  tx_info_ext.data_length = 8;
+  # DEBUG BEGIN_STMT
+  FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
+  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode_Privileged (0);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status = FlexCAN_Ip_Send (0, 0, &tx_info_std, 1280, &CanData1);
+  # DEBUG BEGIN_STMT
+  TestDelay (2000000);
+  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status = FlexCAN_Ip_Send (0, 1, &tx_info_std, 1536, &CanData1);
+  # DEBUG BEGIN_STMT
+  TestDelay (2000000);
+  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status = FlexCAN_Ip_Send (0, 2, &tx_info_ext, 447044295, &CanData1);
+  # DEBUG BEGIN_STMT
+  TestDelay (2000000);
+  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status = FlexCAN_Ip_Send (0, 3, &tx_info_ext, 358061653, &CanData1);
+  # DEBUG BEGIN_STMT
+  TestDelay (2000000);
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  DelayTimer = 0;
+  return;
+
+}
+
+
+GB_MailBox_CallBack (uint8 instance, Flexcan_Ip_EventType eventType, uint32 buffIdx, const struct Flexcan_Ip_StateType * flexcanState)
+{
+  uint8_t callback;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  callback = 0;
+  return;
+
+}
+
+

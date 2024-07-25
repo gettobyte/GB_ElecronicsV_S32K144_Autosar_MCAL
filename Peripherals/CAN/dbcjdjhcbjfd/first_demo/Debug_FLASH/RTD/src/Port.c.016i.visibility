@@ -1,0 +1,429 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: Port_GetVersionInfo Port_RefreshPortDirection Port_SetPinMode Port_SetPinDirection Port_Init
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Port_Ipw_RefreshPortDirection/12 (Port_Ipw_RefreshPortDirection) @05e3c700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Port_RefreshPortDirection/5 
+  Calls: 
+Port_Ipw_SetPinMode/11 (Port_Ipw_SetPinMode) @05e3c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Port_SetPinMode/4 
+  Calls: 
+Port_Ipw_SetPinDirection/10 (Port_Ipw_SetPinDirection) @05e3c380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Port_SetPinDirection/3 
+  Calls: 
+Port_Ipw_Init/9 (Port_Ipw_Init) @05e3c1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Port_Init/2 
+  Calls: 
+Port_Config/8 (Port_Config) @05e32990
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Port_Init/2 (addr)
+  Availability: not_available
+  Varpool flags:
+Det_ReportError/7 (Det_ReportError) @05e3c0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Port_GetVersionInfo/6 Port_RefreshPortDirection/5 Port_RefreshPortDirection/5 Port_SetPinMode/4 Port_SetPinMode/4 Port_SetPinMode/4 Port_SetPinMode/4 Port_SetPinMode/4 Port_SetPinDirection/3 Port_SetPinDirection/3 Port_SetPinDirection/3 Port_SetPinDirection/3 Port_Init/2 Port_Init/2 
+  Calls: 
+Port_GetVersionInfo/6 (Port_GetVersionInfo) @05e31460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Det_ReportError/7 
+Port_RefreshPortDirection/5 (Port_RefreshPortDirection) @05e31ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Port_pConfig/1 (read)Port_pConfig/1 (read)Port_pConfig/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Port_Ipw_RefreshPortDirection/12 Det_ReportError/7 Det_ReportError/7 
+Port_SetPinMode/4 (Port_SetPinMode) @05e31c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Port_pConfig/1 (read)Port_pConfig/1 (read)Port_pConfig/1 (read)Port_pConfig/1 (read)Port_pConfig/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Det_ReportError/7 Port_Ipw_SetPinMode/11 Det_ReportError/7 Det_ReportError/7 Det_ReportError/7 Det_ReportError/7 
+Port_SetPinDirection/3 (Port_SetPinDirection) @05e319a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Port_pConfig/1 (read)Port_pConfig/1 (read)Port_pConfig/1 (read)Port_pConfig/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Det_ReportError/7 Port_Ipw_SetPinDirection/10 Det_ReportError/7 Det_ReportError/7 Det_ReportError/7 
+Port_Init/2 (Port_Init) @05e31700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Port_Config/8 (addr)Port_pConfig/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Port_Ipw_Init/9 Det_ReportError/7 Det_ReportError/7 
+Port_pConfig/1 (Port_pConfig) @05e321f8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: Port_Init/2 (write)Port_SetPinDirection/3 (read)Port_SetPinDirection/3 (read)Port_SetPinDirection/3 (read)Port_SetPinDirection/3 (read)Port_SetPinMode/4 (read)Port_SetPinMode/4 (read)Port_SetPinMode/4 (read)Port_SetPinMode/4 (read)Port_SetPinMode/4 (read)Port_RefreshPortDirection/5 (read)Port_RefreshPortDirection/5 (read)Port_RefreshPortDirection/5 (read)
+  Availability: available
+  Varpool flags:
+Port_GetVersionInfo (struct Std_VersionInfoType * versioninfo)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (versioninfo == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 3, 16);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  versioninfo->vendorID = 43;
+  # DEBUG BEGIN_STMT
+  versioninfo->moduleID = 124;
+  # DEBUG BEGIN_STMT
+  versioninfo->sw_major_version = 1;
+  # DEBUG BEGIN_STMT
+  versioninfo->sw_minor_version = 0;
+  # DEBUG BEGIN_STMT
+  versioninfo->sw_patch_version = 0;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Port_RefreshPortDirection ()
+{
+  uint8 CoreId;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId = 0;
+  # DEBUG BEGIN_STMT
+  Port_pConfig.9_1 = Port_pConfig;
+  if (Port_pConfig.9_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 2, 15);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Port_pConfig.10_2 = Port_pConfig;
+  _3 = Port_pConfig.10_2->pau8Port_PartitionList;
+  _4 = (sizetype) CoreId;
+  _5 = _3 + _4;
+  _6 = *_5;
+  if (_6 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 2, 240);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Port_pConfig.11_7 = Port_pConfig;
+  Port_Ipw_RefreshPortDirection (Port_pConfig.11_7);
+
+  <bb 7> :
+  return;
+
+}
+
+
+Port_SetPinMode (Port_PinType Pin, Port_PinModeType Mode)
+{
+  uint8 CoreId;
+  uint8 u8PinModeError;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u8PinModeError = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId = 0;
+  # DEBUG BEGIN_STMT
+  Port_pConfig.4_1 = Port_pConfig;
+  if (Port_pConfig.4_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 4, 15);
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Port_pConfig.5_2 = Port_pConfig;
+  _3 = Port_pConfig.5_2->u16NumPins;
+  _4 = (long unsigned int) _3;
+  if (Pin >= _4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 4, 10);
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Port_pConfig.6_5 = Port_pConfig;
+  _6 = Port_pConfig.6_5->pau32Port_PinToPartitionMap;
+  _7 = Pin * 4;
+  _8 = _6 + _7;
+  _9 = *_8;
+  _10 = (int) CoreId;
+  _11 = 1 << _10;
+  _12 = _9 & _11;
+  _13 = (int) CoreId;
+  _14 = _12 >> _13;
+  if (_14 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 4, 240);
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Port_pConfig.7_15 = Port_pConfig;
+  _16 = Port_pConfig.7_15->pUsedPadConfig;
+  _17 = Pin * 20;
+  _18 = _16 + _17;
+  _19 = _18->bMC;
+  _20 = ~_19;
+  if (_20 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 4, 14);
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Port_pConfig.8_21 = Port_pConfig;
+  u8PinModeError = Port_Ipw_SetPinMode (Pin, Mode, Port_pConfig.8_21);
+  # DEBUG BEGIN_STMT
+  if (u8PinModeError == 13)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 4, 13);
+
+  <bb 12> :
+  return;
+
+}
+
+
+Port_SetPinDirection (Port_PinType Pin, Port_PinDirectionType Direction)
+{
+  uint8 CoreId;
+  Std_ReturnType ErrStatus;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId = 0;
+  # DEBUG BEGIN_STMT
+  Port_pConfig.0_1 = Port_pConfig;
+  if (Port_pConfig.0_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 1, 15);
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Port_pConfig.1_2 = Port_pConfig;
+  _3 = Port_pConfig.1_2->u16NumPins;
+  _4 = (long unsigned int) _3;
+  if (Pin >= _4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 1, 10);
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Port_pConfig.2_5 = Port_pConfig;
+  _6 = Port_pConfig.2_5->pau32Port_PinToPartitionMap;
+  _7 = Pin * 4;
+  _8 = _6 + _7;
+  _9 = *_8;
+  _10 = (int) CoreId;
+  _11 = 1 << _10;
+  _12 = _9 & _11;
+  _13 = (int) CoreId;
+  _14 = _12 >> _13;
+  if (_14 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 1, 240);
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Port_pConfig.3_15 = Port_pConfig;
+  ErrStatus = Port_Ipw_SetPinDirection (Pin, Direction, Port_pConfig.3_15);
+  # DEBUG BEGIN_STMT
+  if (ErrStatus == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 1, 11);
+
+  <bb 10> :
+  return;
+
+}
+
+
+Port_Init (const struct Port_ConfigType * ConfigPtr)
+{
+  uint8 CoreId;
+  const struct Port_ConfigType * pLocalConfigPtr;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pLocalConfigPtr = ConfigPtr;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId = 0;
+  # DEBUG BEGIN_STMT
+  if (ConfigPtr != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 0, 12);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  pLocalConfigPtr = &Port_Config;
+  # DEBUG BEGIN_STMT
+  _1 = pLocalConfigPtr->pau8Port_PartitionList;
+  _2 = (sizetype) CoreId;
+  _3 = _1 + _2;
+  _4 = *_3;
+  if (_4 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 0, 240);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Port_Ipw_Init (pLocalConfigPtr);
+  # DEBUG BEGIN_STMT
+  Port_pConfig = pLocalConfigPtr;
+
+  <bb 7> :
+  return;
+
+}
+
+
