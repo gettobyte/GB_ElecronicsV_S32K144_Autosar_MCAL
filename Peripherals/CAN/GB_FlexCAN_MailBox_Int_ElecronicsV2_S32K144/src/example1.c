@@ -1,13 +1,10 @@
 /*!
 ** @file example1.c
 ** @brief
-**        This Demo Application is of FlexCAN peripheral of S32K144 MCU
+**        This Demo Application is of FlexCAN peripheral of S32K144 MCU By Gettobyte Technologies Pvt Ltd: gettobyte.com
 */
 /*!
-**  @addtogroup main_module main module documentation
-**  @{
 */
-/* MODULE main */
 
 
 /* Including necessary configuration files. */
