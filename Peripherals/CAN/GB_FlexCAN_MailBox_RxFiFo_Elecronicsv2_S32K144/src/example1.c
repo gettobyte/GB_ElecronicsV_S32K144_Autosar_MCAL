@@ -35,6 +35,20 @@ void TestDelay(uint32 delay)
    }
    DelayTimer=0;
 }
+#define GB_RXFIFO_CALLBACK 0
+GB_RxFiFo_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
+                  uint32 buffIdx, const Flexcan_Ip_StateType * flexcanState)
+
+{
+#if GB_RXFIFO_CALLBACK
+	Flexcan_Ip_StateType * state = flexcanState;
+	state->mbs[FLEXCAN_IP_MB_HANDLE_RXFIFO].state = FLEXCAN_MB_RX_BUSY;
+#else
+
+	uint8_t callback = 0;
+	/* Do Nothing */
+#endif
+}
 
 // RX FIFO Filter table structure
 const Flexcan_Ip_IdTableType GB_FlexCAN_IdFilterTable[8] = {
@@ -130,7 +144,7 @@ for(;;)
     FlexCAN_Api_Status = FlexCAN_Ip_RxFifoBlocking(INST_FLEXCAN_0, &GB_FlexCAN_Receive_Data, 10000);
 	TestDelay(2000000);
 
-	FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX, &rx_info, MSG_ID, (uint8 *)&dummyData);
+	FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX, &rx_info, MSG_ID, (uint8 *)&dummyData, 1000);
 
 
    }
