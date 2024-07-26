@@ -1,0 +1,397 @@
+Parsed function:CompleteSpll.part.0
+Parsed function:EnableSpll_TrustedCall.isra.0
+Parsed function:DisableSpll_TrustedCall.isra.0
+Parsed function:ResetSpll_TrustedCall.isra.0
+Parsed function:EnableSpll
+Parsed function:DisableSpll
+Parsed function:CompleteSpll
+Parsed function:SetSpll
+Parsed function:SetSpll_TrustedCall
+Parsed function:ResetSpll
+Parsed function:Callback_PllEmptyDisable
+Parsed function:Callback_PllEmptyComplete
+Parsed function:Callback_PllEmpty
+Dump after hash based groups
+Congruence classes: 12 (unique hash values: 12), with total: 14 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 10 classes
+[2]: 2 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 14 (unique hash values: 12), with total: 14 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 14 classes
+
+
+Worklist has been filled with: 13
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 14 (unique hash values: 12), with total: 14 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 14 classes
+
+
+Init called for 0 items (0.00%).
+Dump after full equality comparison of groups
+Congruence classes: 14 (unique hash values: 12), with total: 14 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 14 classes
+
+
+Worklist has been filled with: 13
+Address reference subdivision created: 0 new classes.
+Congruence classes: 14 (unique hash values: 12), with total: 14 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 14 classes
+
+
+
+Item count: 14
+Congruent classes before: 14, after: 14
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+CompleteSpll.part.0 (Clock_Ip_NameType pllName)
+{
+  clock_pll_status_t pllStatus;
+  boolean TimeoutOccurred;
+  uint32 StartTime;
+  uint32 ElapsedTime;
+  uint32 TimeoutTicks;
+  uint32 SPLLStatus;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int TimeoutTicks.0_4;
+
+  <bb 9> [local count: 114863532]:
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 >> 24;
+  SPLLStatus_3 = _2 & 1;
+  # DEBUG SPLLStatus => SPLLStatus_3
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_4 = TimeoutTicks;
+  TimeoutOccurred_5 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_4);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_5
+  # DEBUG BEGIN_STMT
+  if (SPLLStatus_3 == 0)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 4> [local count: 1014686025]:
+  if (TimeoutOccurred_5 != 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 5>; [94.50%]
+
+  <bb 5> [local count: 958878293]:
+  goto <bb 3>; [100.00%]
+
+  <bb 6> [local count: 114863532]:
+  # TimeoutOccurred_6 = PHI <TimeoutOccurred_5(3), TimeoutOccurred_5(4)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_6 != 0)
+    goto <bb 7>; [47.77%]
+  else
+    goto <bb 8>; [52.23%]
+
+  <bb 7> [local count: 54870309]:
+  # DEBUG BEGIN_STMT
+  ReportClockErrors (1, pllName_7(D));
+
+  <bb 8> [local count: 114863532]:
+  # pllStatus_8 = PHI <2(6), 1(7)>
+  # DEBUG pllStatus => pllStatus_8
+  # DEBUG BEGIN_STMT
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return pllStatus_8;
+
+}
+
+
+EnableSpll_TrustedCall.isra.0 (const uint16 ISRA.11)
+{
+  short unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.11_8(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _4 = _3 | 1;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+DisableSpll_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG PllName s=> PllName
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _4 = _3 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+  return;
+
+}
+
+
+ResetSpll_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _4 = _3 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+  _6 = _5 & 4294965503;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCFG ={v} _6;
+  # DEBUG BEGIN_STMT
+  _7 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+  _8 = _7 & 4292935679;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCFG ={v} _8;
+  return;
+
+}
+
+
+EnableSpll (const struct Clock_Ip_PllConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#3 => config_2(D)
+  EnableSpll_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+DisableSpll (Clock_Ip_NameType PllName)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#2 => PllName_2(D)
+  DisableSpll_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+CompleteSpll (Clock_Ip_NameType pllName)
+{
+  clock_pll_status_t pllStatus;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 348071309]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pllStatus => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 & 1;
+  if (_2 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 114863531]:
+  pllStatus_4 = CompleteSpll.part.0 (pllName_8(D));
+
+  <bb 4> [local count: 348071309]:
+  # pllStatus_5 = PHI <pllStatus_4(3), 0(2)>
+  # DEBUG pllStatus => pllStatus_5
+  # DEBUG BEGIN_STMT
+  return pllStatus_5;
+
+}
+
+
+SetSpll (const struct Clock_Ip_PllConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SetSpll_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
+{
+  short unsigned int _1;
+  long unsigned int _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned char _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  unsigned char _15;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = config_18(D)->enable;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+  _3 = config_18(D)->predivider;
+  _4 = (long unsigned int) _3;
+  _5 = _4 + 4294967295;
+  _6 = _5 << 8;
+  _7 = _6 & 1792;
+  _8 = config_18(D)->mulFactorDiv;
+  _9 = (long unsigned int) _8;
+  _10 = _9 + 4294967280;
+  _11 = _10 << 16;
+  _12 = _11 & 2031616;
+  _13 = _7 | _12;
+  _14 = _2 | _13;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCFG ={v} _14;
+  # DEBUG BEGIN_STMT
+  _15 = config_18(D)->monitor;
+  switch (_15) <default: <L7> [25.00%], case 0: <L1> [25.00%], case 1: <L2> [25.00%], case 2: <L3> [25.00%]>
+
+  <bb 4> [local count: 91268055]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 91268055]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} 65536;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 91268055]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} 196608;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1073741824]:
+<L7>:
+  return;
+
+}
+
+
+ResetSpll (const struct Clock_Ip_PllConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => config_2(D)
+  ResetSpll_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+Callback_PllEmptyDisable (Clock_Ip_NameType PllName)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Callback_PllEmptyComplete (Clock_Ip_NameType PllName)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Callback_PllEmpty (const struct Clock_Ip_PllConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

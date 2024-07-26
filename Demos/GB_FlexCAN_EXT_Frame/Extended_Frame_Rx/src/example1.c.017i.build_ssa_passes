@@ -1,0 +1,81 @@
+main ()
+{
+  struct Flexcan_Ip_MsgBuffType rxData2;
+  struct Flexcan_Ip_MsgBuffType rxData1;
+  struct Flexcan_Ip_DataInfoType rx_info_ext;
+  Flexcan_Ip_StatusType Rx1;
+  Flexcan_Ip_StatusType Rx0;
+  Flexcan_Ip_StatusType MbRx1;
+  Flexcan_Ip_StatusType MbRx0;
+  Flexcan_Ip_StatusType FlexCAN_Api_Status;
+  int D.7329;
+
+  <bb 2> :
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 3> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  Clock_Ip_DistributePll ();
+  IntCtrl_Ip_EnableIrq (81);
+  IntCtrl_Ip_InstallHandler (81, CAN0_ORED_0_15_MB_IRQHandler, 0B);
+  Port_Init (0B);
+  rx_info_ext = {};
+  rx_info_ext.msg_id_type = 1;
+  rx_info_ext.data_length = 8;
+  FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
+  FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode_Privileged (0);
+  MbRx0 = FlexCAN_Ip_ConfigRxMb (0, 0, &rx_info_ext, 447044295);
+  Rx0 = FlexCAN_Ip_Receive (0, 0, &rxData1, 0);
+  MbRx1 = FlexCAN_Ip_ConfigRxMb (0, 1, &rx_info_ext, 358061653);
+  Rx1 = FlexCAN_Ip_Receive (0, 1, &rxData2, 0);
+
+  <bb 5> :
+  goto <bb 5>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer = 0;
+  return;
+
+}
+
+
+GB_MailBox_CallBack (uint8 instance, Flexcan_Ip_EventType eventType, uint32 buffIdx, const struct Flexcan_Ip_StateType * flexcanState)
+{
+  struct Flexcan_Ip_StateType * state;
+
+  <bb 2> :
+  state = flexcanState;
+  state->mbs[buffIdx].state = 1;
+  return;
+
+}
+
+
