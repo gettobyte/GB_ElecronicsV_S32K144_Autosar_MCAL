@@ -351,7 +351,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-SetSimTraceSel_TrustedCall.isra.0/60 (SetSimTraceSel_TrustedCall.isra.0) @06bd1b60
+SetSimTraceSel_TrustedCall.isra.0/60 (SetSimTraceSel_TrustedCall.isra.0) @0779fb60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntryPCS_hardwareValue/40 (read)
@@ -360,7 +360,7 @@ SetSimTraceSel_TrustedCall.isra.0/60 (SetSimTraceSel_TrustedCall.isra.0) @06bd1b
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetSimTraceSel/39 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetSimTraceSel_TrustedCall.isra.0/59 (ResetSimTraceSel_TrustedCall.isra.0) @06bd1700
+ResetSimTraceSel_TrustedCall.isra.0/59 (ResetSimTraceSel_TrustedCall.isra.0) @0779f700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntryPCS_hardwareValue/40 (read)
@@ -369,7 +369,7 @@ ResetSimTraceSel_TrustedCall.isra.0/59 (ResetSimTraceSel_TrustedCall.isra.0) @06
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetSimTraceSel/37 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetPccPcsSelect_TrustedCall.isra.0/58 (ResetPccPcsSelect_TrustedCall.isra.0) @06bc31c0
+ResetPccPcsSelect_TrustedCall.isra.0/58 (ResetPccPcsSelect_TrustedCall.isra.0) @077931c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: clockFeatures/41 (read)
@@ -378,7 +378,7 @@ ResetPccPcsSelect_TrustedCall.isra.0/58 (ResetPccPcsSelect_TrustedCall.isra.0) @
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetPccPcsSelect/33 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetSimClkoutSel_TrustedCall.isra.0/57 (SetSimClkoutSel_TrustedCall.isra.0) @06bc3a80
+SetSimClkoutSel_TrustedCall.isra.0/57 (SetSimClkoutSel_TrustedCall.isra.0) @07793a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntry_hardwareValue/42 (read)
@@ -387,7 +387,7 @@ SetSimClkoutSel_TrustedCall.isra.0/57 (SetSimClkoutSel_TrustedCall.isra.0) @06bc
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetSimClkoutSel/31 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetSimClkoutSel_TrustedCall.isra.0/56 (ResetSimClkoutSel_TrustedCall.isra.0) @06bc3620
+ResetSimClkoutSel_TrustedCall.isra.0/56 (ResetSimClkoutSel_TrustedCall.isra.0) @07793620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -396,7 +396,7 @@ ResetSimClkoutSel_TrustedCall.isra.0/56 (ResetSimClkoutSel_TrustedCall.isra.0) @
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetSimClkoutSel/29 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetSimFtmoptSel_TrustedCall.isra.0/55 (ResetSimFtmoptSel_TrustedCall.isra.0) @06bb6ee0
+ResetSimFtmoptSel_TrustedCall.isra.0/55 (ResetSimFtmoptSel_TrustedCall.isra.0) @07786ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
@@ -405,7 +405,7 @@ ResetSimFtmoptSel_TrustedCall.isra.0/55 (ResetSimFtmoptSel_TrustedCall.isra.0) @
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetSimFtmoptSel/25 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgClkoutSel_TrustedCall.isra.0/54 (SetScgClkoutSel_TrustedCall.isra.0) @06bb68c0
+SetScgClkoutSel_TrustedCall.isra.0/54 (SetScgClkoutSel_TrustedCall.isra.0) @077868c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntrySCS_hardwareValue/43 (read)
@@ -414,7 +414,7 @@ SetScgClkoutSel_TrustedCall.isra.0/54 (SetScgClkoutSel_TrustedCall.isra.0) @06bb
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgClkoutSel/23 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetScgClkoutSel_TrustedCall.isra.0/53 (ResetScgClkoutSel_TrustedCall.isra.0) @06bb6380
+ResetScgClkoutSel_TrustedCall.isra.0/53 (ResetScgClkoutSel_TrustedCall.isra.0) @07786380
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntrySCS_hardwareValue/43 (read)
@@ -423,7 +423,7 @@ ResetScgClkoutSel_TrustedCall.isra.0/53 (ResetScgClkoutSel_TrustedCall.isra.0) @
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetScgClkoutSel/21 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetSimLpoSel_TrustedCall.isra.0/52 (SetSimLpoSel_TrustedCall.isra.0) @06baaee0
+SetSimLpoSel_TrustedCall.isra.0/52 (SetSimLpoSel_TrustedCall.isra.0) @0776bee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntryPCS_hardwareValue/40 (read)
@@ -432,7 +432,7 @@ SetSimLpoSel_TrustedCall.isra.0/52 (SetSimLpoSel_TrustedCall.isra.0) @06baaee0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetSimLpoSel/19 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetSimLpoSel_TrustedCall.isra.0/51 (ResetSimLpoSel_TrustedCall.isra.0) @06baaa80
+ResetSimLpoSel_TrustedCall.isra.0/51 (ResetSimLpoSel_TrustedCall.isra.0) @0776ba80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntryPCS_hardwareValue/40 (read)
@@ -441,7 +441,7 @@ ResetSimLpoSel_TrustedCall.isra.0/51 (ResetSimLpoSel_TrustedCall.isra.0) @06baaa
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetSimLpoSel/17 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetSimRtcSel_TrustedCall.isra.0/50 (SetSimRtcSel_TrustedCall.isra.0) @06baa540
+SetSimRtcSel_TrustedCall.isra.0/50 (SetSimRtcSel_TrustedCall.isra.0) @0776b540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntry_hardwareValue/42 (read)
@@ -450,7 +450,7 @@ SetSimRtcSel_TrustedCall.isra.0/50 (SetSimRtcSel_TrustedCall.isra.0) @06baa540
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetSimRtcSel/15 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetSimRtcSel_TrustedCall.isra.0/49 (ResetSimRtcSel_TrustedCall.isra.0) @06baa0e0
+ResetSimRtcSel_TrustedCall.isra.0/49 (ResetSimRtcSel_TrustedCall.isra.0) @0776b0e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntry_hardwareValue/42 (read)
@@ -459,7 +459,7 @@ ResetSimRtcSel_TrustedCall.isra.0/49 (ResetSimRtcSel_TrustedCall.isra.0) @06baa0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetSimRtcSel/13 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgHsrunSel_TrustedCall.isra.0/48 (SetScgHsrunSel_TrustedCall.isra.0) @06b0fe00
+SetScgHsrunSel_TrustedCall.isra.0/48 (SetScgHsrunSel_TrustedCall.isra.0) @076bfe00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntrySCS_hardwareValue/43 (read)
@@ -468,7 +468,7 @@ SetScgHsrunSel_TrustedCall.isra.0/48 (SetScgHsrunSel_TrustedCall.isra.0) @06b0fe
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgHsrunSel/11 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetScgHsrunSel_TrustedCall.isra.0/47 (ResetScgHsrunSel_TrustedCall.isra.0) @06b0f9a0
+ResetScgHsrunSel_TrustedCall.isra.0/47 (ResetScgHsrunSel_TrustedCall.isra.0) @076bf9a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntrySCS_hardwareValue/43 (read)
@@ -477,7 +477,7 @@ ResetScgHsrunSel_TrustedCall.isra.0/47 (ResetScgHsrunSel_TrustedCall.isra.0) @06
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetScgHsrunSel/9 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgVlprSel_TrustedCall.isra.0/46 (SetScgVlprSel_TrustedCall.isra.0) @06b0f460
+SetScgVlprSel_TrustedCall.isra.0/46 (SetScgVlprSel_TrustedCall.isra.0) @076bf460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntrySCS_hardwareValue/43 (read)
@@ -486,7 +486,7 @@ SetScgVlprSel_TrustedCall.isra.0/46 (SetScgVlprSel_TrustedCall.isra.0) @06b0f460
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgVlprSel/7 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SetScgRunSel_TrustedCall.isra.0/45 (SetScgRunSel_TrustedCall.isra.0) @06ad7ee0
+SetScgRunSel_TrustedCall.isra.0/45 (SetScgRunSel_TrustedCall.isra.0) @07687ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntrySCS_hardwareValue/43 (read)
@@ -495,7 +495,7 @@ SetScgRunSel_TrustedCall.isra.0/45 (SetScgRunSel_TrustedCall.isra.0) @06ad7ee0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetScgRunSel/5 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetScgRunSel_TrustedCall.isra.0/44 (ResetScgRunSel_TrustedCall.isra.0) @06ad7a80
+ResetScgRunSel_TrustedCall.isra.0/44 (ResetScgRunSel_TrustedCall.isra.0) @07687a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: selectorEntrySCS_hardwareValue/43 (read)
@@ -504,7 +504,7 @@ ResetScgRunSel_TrustedCall.isra.0/44 (ResetScgRunSel_TrustedCall.isra.0) @06ad7a
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetScgRunSel/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-selectorEntrySCS_hardwareValue/43 (selectorEntrySCS_hardwareValue) @06ab3bd0
+selectorEntrySCS_hardwareValue/43 (selectorEntrySCS_hardwareValue) @07663bd0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -512,7 +512,7 @@ selectorEntrySCS_hardwareValue/43 (selectorEntrySCS_hardwareValue) @06ab3bd0
   Referring: SetScgHsrunSel_TrustedCall.isra.0/48 (read)ResetScgHsrunSel_TrustedCall.isra.0/47 (read)SetScgVlprSel_TrustedCall.isra.0/46 (read)SetScgRunSel_TrustedCall.isra.0/45 (read)ResetScgRunSel_TrustedCall.isra.0/44 (read)ResetScgClkoutSel_TrustedCall.isra.0/53 (read)SetScgClkoutSel_TrustedCall.isra.0/54 (read)
   Availability: not_available
   Varpool flags: read-only
-selectorEntry_hardwareValue/42 (selectorEntry_hardwareValue) @06ab31f8
+selectorEntry_hardwareValue/42 (selectorEntry_hardwareValue) @076631f8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -520,7 +520,7 @@ selectorEntry_hardwareValue/42 (selectorEntry_hardwareValue) @06ab31f8
   Referring: ResetSimFtmoptSel_TrustedCall.isra.0/55 (read)SetSimRtcSel_TrustedCall.isra.0/50 (read)ResetSimRtcSel_TrustedCall.isra.0/49 (read)SetSimFtmoptSel_TrustedCall/26 (read)SetSimClkoutSel_TrustedCall.isra.0/57 (read)
   Availability: not_available
   Varpool flags: read-only
-clockFeatures/41 (clockFeatures) @05fd7d80
+clockFeatures/41 (clockFeatures) @06a7dd80
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -528,7 +528,7 @@ clockFeatures/41 (clockFeatures) @05fd7d80
   Referring: SetSimFtmoptSel_TrustedCall/26 (read)ResetSimFtmoptSel_TrustedCall.isra.0/55 (read)ResetPccPcsSelect_TrustedCall.isra.0/58 (read)SetPccPcsSelect_TrustedCall/34 (read)
   Availability: not_available
   Varpool flags: read-only
-selectorEntryPCS_hardwareValue/40 (selectorEntryPCS_hardwareValue) @05fd7948
+selectorEntryPCS_hardwareValue/40 (selectorEntryPCS_hardwareValue) @06a7d948
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -536,7 +536,7 @@ selectorEntryPCS_hardwareValue/40 (selectorEntryPCS_hardwareValue) @05fd7948
   Referring: SetPccPcsSelect_TrustedCall/34 (read)SetSimLpoSel_TrustedCall.isra.0/52 (read)ResetSimLpoSel_TrustedCall.isra.0/51 (read)ResetSimTraceSel_TrustedCall.isra.0/59 (read)SetSimTraceSel_TrustedCall.isra.0/60 (read)
   Availability: not_available
   Varpool flags: read-only
-SetSimTraceSel/39 (SetSimTraceSel) @05fdaa80
+SetSimTraceSel/39 (SetSimTraceSel) @06a82a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -546,7 +546,7 @@ SetSimTraceSel/39 (SetSimTraceSel) @05fdaa80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetSimTraceSel_TrustedCall.isra.0/60 (1073741824 (estimated locally),1.00 per call) 
-ResetSimTraceSel/37 (ResetSimTraceSel) @05fda460
+ResetSimTraceSel/37 (ResetSimTraceSel) @06a82460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -556,7 +556,7 @@ ResetSimTraceSel/37 (ResetSimTraceSel) @05fda460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetSimTraceSel_TrustedCall.isra.0/59 (1073741824 (estimated locally),1.00 per call) 
-SetPccPcsSelect/35 (SetPccPcsSelect) @05fd88c0
+SetPccPcsSelect/35 (SetPccPcsSelect) @06a7f8c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -566,7 +566,7 @@ SetPccPcsSelect/35 (SetPccPcsSelect) @05fd88c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetPccPcsSelect_TrustedCall/34 (1073741824 (estimated locally),1.00 per call) 
-SetPccPcsSelect_TrustedCall/34 (SetPccPcsSelect_TrustedCall) @05fd8e00
+SetPccPcsSelect_TrustedCall/34 (SetPccPcsSelect_TrustedCall) @06a7fe00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: clockFeatures/41 (read)selectorEntryPCS_hardwareValue/40 (read)
@@ -575,7 +575,7 @@ SetPccPcsSelect_TrustedCall/34 (SetPccPcsSelect_TrustedCall) @05fd8e00
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetPccPcsSelect/35 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetPccPcsSelect/33 (ResetPccPcsSelect) @05fd8a80
+ResetPccPcsSelect/33 (ResetPccPcsSelect) @06a7fa80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -585,7 +585,7 @@ ResetPccPcsSelect/33 (ResetPccPcsSelect) @05fd8a80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetPccPcsSelect_TrustedCall.isra.0/58 (1073741824 (estimated locally),1.00 per call) 
-SetSimClkoutSel/31 (SetSimClkoutSel) @05fd8540
+SetSimClkoutSel/31 (SetSimClkoutSel) @06a7f540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -595,7 +595,7 @@ SetSimClkoutSel/31 (SetSimClkoutSel) @05fd8540
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetSimClkoutSel_TrustedCall.isra.0/57 (1073741824 (estimated locally),1.00 per call) 
-ResetSimClkoutSel/29 (ResetSimClkoutSel) @05fd8000
+ResetSimClkoutSel/29 (ResetSimClkoutSel) @06a7f000
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -605,7 +605,7 @@ ResetSimClkoutSel/29 (ResetSimClkoutSel) @05fd8000
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetSimClkoutSel_TrustedCall.isra.0/56 (1073741824 (estimated locally),1.00 per call) 
-SetSimFtmoptSel/27 (SetSimFtmoptSel) @05fd1d20
+SetSimFtmoptSel/27 (SetSimFtmoptSel) @06a77d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -615,7 +615,7 @@ SetSimFtmoptSel/27 (SetSimFtmoptSel) @05fd1d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetSimFtmoptSel_TrustedCall/26 (1073741824 (estimated locally),1.00 per call) 
-SetSimFtmoptSel_TrustedCall/26 (SetSimFtmoptSel_TrustedCall) @05fd1a80
+SetSimFtmoptSel_TrustedCall/26 (SetSimFtmoptSel_TrustedCall) @06a77a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: selectorEntry_hardwareValue/42 (read)clockFeatures/41 (read)
@@ -624,7 +624,7 @@ SetSimFtmoptSel_TrustedCall/26 (SetSimFtmoptSel_TrustedCall) @05fd1a80
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetSimFtmoptSel/27 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetSimFtmoptSel/25 (ResetSimFtmoptSel) @05fd1620
+ResetSimFtmoptSel/25 (ResetSimFtmoptSel) @06a77620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -634,7 +634,7 @@ ResetSimFtmoptSel/25 (ResetSimFtmoptSel) @05fd1620
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetSimFtmoptSel_TrustedCall.isra.0/55 (1073741824 (estimated locally),1.00 per call) 
-SetScgClkoutSel/23 (SetScgClkoutSel) @05fcbee0
+SetScgClkoutSel/23 (SetScgClkoutSel) @06a72ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -644,7 +644,7 @@ SetScgClkoutSel/23 (SetScgClkoutSel) @05fcbee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgClkoutSel_TrustedCall.isra.0/54 (1073741824 (estimated locally),1.00 per call) 
-ResetScgClkoutSel/21 (ResetScgClkoutSel) @05fcb9a0
+ResetScgClkoutSel/21 (ResetScgClkoutSel) @06a729a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -654,7 +654,7 @@ ResetScgClkoutSel/21 (ResetScgClkoutSel) @05fcb9a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetScgClkoutSel_TrustedCall.isra.0/53 (1073741824 (estimated locally),1.00 per call) 
-SetSimLpoSel/19 (SetSimLpoSel) @05fcb460
+SetSimLpoSel/19 (SetSimLpoSel) @06a72460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -664,7 +664,7 @@ SetSimLpoSel/19 (SetSimLpoSel) @05fcb460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetSimLpoSel_TrustedCall.isra.0/52 (1073741824 (estimated locally),1.00 per call) 
-ResetSimLpoSel/17 (ResetSimLpoSel) @05fc7b60
+ResetSimLpoSel/17 (ResetSimLpoSel) @06a6eb60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -674,7 +674,7 @@ ResetSimLpoSel/17 (ResetSimLpoSel) @05fc7b60
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetSimLpoSel_TrustedCall.isra.0/51 (1073741824 (estimated locally),1.00 per call) 
-SetSimRtcSel/15 (SetSimRtcSel) @05fc7d20
+SetSimRtcSel/15 (SetSimRtcSel) @06a6ed20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -684,7 +684,7 @@ SetSimRtcSel/15 (SetSimRtcSel) @05fc7d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetSimRtcSel_TrustedCall.isra.0/50 (1073741824 (estimated locally),1.00 per call) 
-ResetSimRtcSel/13 (ResetSimRtcSel) @05fc77e0
+ResetSimRtcSel/13 (ResetSimRtcSel) @06a6e7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -694,7 +694,7 @@ ResetSimRtcSel/13 (ResetSimRtcSel) @05fc77e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetSimRtcSel_TrustedCall.isra.0/49 (1073741824 (estimated locally),1.00 per call) 
-SetScgHsrunSel/11 (SetScgHsrunSel) @05fc72a0
+SetScgHsrunSel/11 (SetScgHsrunSel) @06a6e2a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -704,7 +704,7 @@ SetScgHsrunSel/11 (SetScgHsrunSel) @05fc72a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgHsrunSel_TrustedCall.isra.0/48 (1073741824 (estimated locally),1.00 per call) 
-ResetScgHsrunSel/9 (ResetScgHsrunSel) @05fc4ee0
+ResetScgHsrunSel/9 (ResetScgHsrunSel) @06a6bee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -714,7 +714,7 @@ ResetScgHsrunSel/9 (ResetScgHsrunSel) @05fc4ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetScgHsrunSel_TrustedCall.isra.0/47 (1073741824 (estimated locally),1.00 per call) 
-SetScgVlprSel/7 (SetScgVlprSel) @05fc48c0
+SetScgVlprSel/7 (SetScgVlprSel) @06a6b8c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -724,7 +724,7 @@ SetScgVlprSel/7 (SetScgVlprSel) @05fc48c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgVlprSel_TrustedCall.isra.0/46 (1073741824 (estimated locally),1.00 per call) 
-SetScgRunSel/5 (SetScgRunSel) @05fc42a0
+SetScgRunSel/5 (SetScgRunSel) @06a6b2a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -734,7 +734,7 @@ SetScgRunSel/5 (SetScgRunSel) @05fc42a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetScgRunSel_TrustedCall.isra.0/45 (1073741824 (estimated locally),1.00 per call) 
-ResetScgRunSel/3 (ResetScgRunSel) @05ec3e00
+ResetScgRunSel/3 (ResetScgRunSel) @0696ae00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -744,7 +744,7 @@ ResetScgRunSel/3 (ResetScgRunSel) @05ec3e00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetScgRunSel_TrustedCall.isra.0/44 (1073741824 (estimated locally),1.00 per call) 
-Callback_SelectorEmpty/1 (Callback_SelectorEmpty) @05ec37e0
+Callback_SelectorEmpty/1 (Callback_SelectorEmpty) @0696a7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -754,7 +754,7 @@ Callback_SelectorEmpty/1 (Callback_SelectorEmpty) @05ec37e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-selectorCallbacks/0 (selectorCallbacks) @05ec1a68
+selectorCallbacks/0 (selectorCallbacks) @06968a68
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Callback_SelectorEmpty/1 (addr)Callback_SelectorEmpty/1 (addr)ResetScgRunSel/3 (addr)SetScgRunSel/5 (addr)Callback_SelectorEmpty/1 (addr)SetScgVlprSel/7 (addr)ResetScgHsrunSel/9 (addr)SetScgHsrunSel/11 (addr)ResetSimRtcSel/13 (addr)SetSimRtcSel/15 (addr)ResetSimLpoSel/17 (addr)SetSimLpoSel/19 (addr)ResetScgClkoutSel/21 (addr)SetScgClkoutSel/23 (addr)ResetSimFtmoptSel/25 (addr)SetSimFtmoptSel/27 (addr)ResetSimClkoutSel/29 (addr)SetSimClkoutSel/31 (addr)ResetPccPcsSelect/33 (addr)SetPccPcsSelect/35 (addr)ResetSimTraceSel/37 (addr)SetSimTraceSel/39 (addr)

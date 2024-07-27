@@ -1,158 +1,70 @@
-
-Analyzing function: ClockMonitorEmpty_GetStatus/4
-;; 1 loops found
-;;
-;; Loop 0
-;;  header 0, latch 1
-;;  depth 0, outer -1
-;;  nodes: 0 1 2
-;; 2 succs { 1 }
-
-Analyzing function body size: ClockMonitorEmpty_GetStatus
-
-IPA function summary for ClockMonitorEmpty_GetStatus/4 inlinable
-  global time:     2.000000
-  self size:       3
-  global size:     0
-  min size:       0
-  self stack:      0
-  global stack:    0
-    size:0.000000, time:0.000000
-    size:3.000000, time:2.000000,  executed if:(not inlined)
-  calls:
-
-
-Analyzing function: ClockMonitorEmpty_ClearStatus/3
-;; 1 loops found
-;;
-;; Loop 0
-;;  header 0, latch 1
-;;  depth 0, outer -1
-;;  nodes: 0 1 2
-;; 2 succs { 1 }
-
-Analyzing function body size: ClockMonitorEmpty_ClearStatus
-
-IPA function summary for ClockMonitorEmpty_ClearStatus/3 inlinable
-  global time:     2.000000
-  self size:       3
-  global size:     0
-  min size:       0
-  self stack:      0
-  global stack:    0
-    size:0.000000, time:0.000000
-    size:3.000000, time:2.000000,  executed if:(not inlined)
-  calls:
-
-
-Analyzing function: ClockMonitorEmpty_Disable/2
-;; 1 loops found
-;;
-;; Loop 0
-;;  header 0, latch 1
-;;  depth 0, outer -1
-;;  nodes: 0 1 2
-;; 2 succs { 1 }
-
-Analyzing function body size: ClockMonitorEmpty_Disable
-
-IPA function summary for ClockMonitorEmpty_Disable/2 inlinable
-  global time:     2.000000
-  self size:       3
-  global size:     0
-  min size:       0
-  self stack:      0
-  global stack:    0
-    size:0.000000, time:0.000000
-    size:3.000000, time:2.000000,  executed if:(not inlined)
-  calls:
-
-
-Analyzing function: ClockMonitorEmpty/1
-;; 1 loops found
-;;
-;; Loop 0
-;;  header 0, latch 1
-;;  depth 0, outer -1
-;;  nodes: 0 1 2
-;; 2 succs { 1 }
-
-Analyzing function body size: ClockMonitorEmpty
-
-IPA function summary for ClockMonitorEmpty/1 inlinable
-  global time:     2.000000
-  self size:       3
-  global size:     0
-  min size:       0
-  self stack:      0
-  global stack:    0
-    size:0.000000, time:0.000000
-    size:3.000000, time:2.000000,  executed if:(not inlined)
-  calls:
-
 Symbol table:
 
-ClockMonitorEmpty_GetStatus/4 (ClockMonitorEmpty_GetStatus) @05dc8460
+ClockMonitorEmpty_GetStatus/4 (ClockMonitorEmpty_GetStatus) @05f1d460
   Type: function definition analyzed
-  Visibility: prevailing_def_ironly
+  Visibility: force_output no_reorder prevailing_def_ironly
   Address is taken.
   References: 
   Referring: cmuCallbacks/0 (addr)
   Availability: available
-  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Function flags: body
   Called by: 
   Calls: 
-ClockMonitorEmpty_ClearStatus/3 (ClockMonitorEmpty_ClearStatus) @05dc81c0
+ClockMonitorEmpty_ClearStatus/3 (ClockMonitorEmpty_ClearStatus) @05f1d1c0
   Type: function definition analyzed
-  Visibility: prevailing_def_ironly
+  Visibility: force_output no_reorder prevailing_def_ironly
   Address is taken.
   References: 
   Referring: cmuCallbacks/0 (addr)
   Availability: available
-  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Function flags: body
   Called by: 
-  Calls: ClockMonitorEmpty_Disable/2 (1073741824 (estimated locally),1.00 per call) 
-ClockMonitorEmpty_Disable/2 (ClockMonitorEmpty_Disable) @05d06ee0
+  Calls: 
+ClockMonitorEmpty_Disable/2 (ClockMonitorEmpty_Disable) @05e3bee0
   Type: function definition analyzed
-  Visibility: prevailing_def_ironly
+  Visibility: force_output no_reorder prevailing_def_ironly
   Address is taken.
   References: 
   Referring: cmuCallbacks/0 (addr)
   Availability: available
-  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
-  Called by: ClockMonitorEmpty_ClearStatus/3 (1073741824 (estimated locally),1.00 per call) 
+  Function flags: body
+  Called by: 
   Calls: 
-ClockMonitorEmpty/1 (ClockMonitorEmpty) @05d06e00
+ClockMonitorEmpty/1 (ClockMonitorEmpty) @05e3be00
   Type: function definition analyzed
-  Visibility: prevailing_def_ironly
+  Visibility: force_output no_reorder prevailing_def_ironly
   Address is taken.
   References: 
   Referring: cmuCallbacks/0 (addr)cmuCallbacks/0 (addr)cmuCallbacks/0 (addr)
   Availability: available
-  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Function flags: body
   Called by: 
   Calls: 
-cmuCallbacks/0 (cmuCallbacks) @05d0e000
+cmuCallbacks/0 (cmuCallbacks) @05e43000
   Type: variable definition analyzed
-  Visibility: externally_visible public
+  Visibility: force_output externally_visible no_reorder public
   References: ClockMonitorEmpty/1 (addr)ClockMonitorEmpty/1 (addr)ClockMonitorEmpty_Disable/2 (addr)ClockMonitorEmpty_ClearStatus/3 (addr)ClockMonitorEmpty_GetStatus/4 (addr)ClockMonitorEmpty/1 (addr)
   Referring: 
   Availability: available
   Varpool flags: initialized read-only const-value-known
 ClockMonitorEmpty_GetStatus (Clock_Ip_NameType name)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  return 3;
+  Clock_Ip_CmuStatusType D.6081;
+  Clock_Ip_CmuStatusType _1;
+
+  <bb 2> :
+  _1 = 3;
+
+  <bb 3> :
+<L0>:
+  return _1;
 
 }
 
 
 ClockMonitorEmpty_ClearStatus (Clock_Ip_NameType name)
 {
-  <bb 2> [local count: 1073741824]:
-  ClockMonitorEmpty_Disable (name_1(D)); [tail call]
+  <bb 2> :
   return;
 
 }
@@ -160,8 +72,7 @@ ClockMonitorEmpty_ClearStatus (Clock_Ip_NameType name)
 
 ClockMonitorEmpty_Disable (Clock_Ip_NameType name)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   return;
 
 }
@@ -169,8 +80,7 @@ ClockMonitorEmpty_Disable (Clock_Ip_NameType name)
 
 ClockMonitorEmpty (const struct Clock_Ip_CmuConfigType * config)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   return;
 
 }

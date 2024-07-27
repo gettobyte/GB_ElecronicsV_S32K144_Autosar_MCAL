@@ -42,7 +42,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Callback_FracDivEmptyComplete/2 (Callback_FracDivEmptyComplete) @068f59a0
+Callback_FracDivEmptyComplete/2 (Callback_FracDivEmptyComplete) @06a169a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -52,7 +52,7 @@ Callback_FracDivEmptyComplete/2 (Callback_FracDivEmptyComplete) @068f59a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Callback_FracDivEmpty/1 (Callback_FracDivEmpty) @068f5700
+Callback_FracDivEmpty/1 (Callback_FracDivEmpty) @06a16700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -62,7 +62,7 @@ Callback_FracDivEmpty/1 (Callback_FracDivEmpty) @068f5700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-fracDivCallbacks/0 (fracDivCallbacks) @068f71b0
+fracDivCallbacks/0 (fracDivCallbacks) @06a181b0
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Callback_FracDivEmpty/1 (addr)Callback_FracDivEmpty/1 (addr)Callback_FracDivEmptyComplete/2 (addr)

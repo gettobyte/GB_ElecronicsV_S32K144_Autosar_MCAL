@@ -1,7 +1,6 @@
 DisableFirc (Clock_Ip_NameType name)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   DisableFirc_TrustedCall (name);
   return;
 
@@ -11,8 +10,6 @@ DisableFirc (Clock_Ip_NameType name)
 DisableFirc_TrustedCall (Clock_Ip_NameType name)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 = _1->FIRCCSR;
   _3 = 1074151424B;
@@ -26,7 +23,6 @@ DisableFirc_TrustedCall (Clock_Ip_NameType name)
 EnableFirc (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   EnableFirc_TrustedCall (config);
   return;
 
@@ -42,13 +38,7 @@ EnableFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
   boolean TimeoutOccurred;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   TimeoutOccurred = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->enable;
   if (_1 == 1)
     goto <bb 3>; [INV]
@@ -56,26 +46,20 @@ EnableFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 8>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   _3 = _2->FIRCCSR;
   _4 = 1074151424B;
   _5 = _3 | 1;
   _4->FIRCCSR = _5;
-  # DEBUG BEGIN_STMT
   ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _6 = 1074151424B;
   _7 = _6->FIRCCSR;
   _8 = _7 >> 24;
   IrcoscStatus = _8 & 1;
-  # DEBUG BEGIN_STMT
-  TimeoutTicks.0_9 = TimeoutTicks;
-  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_9);
-  # DEBUG BEGIN_STMT
+  TimeoutTicks.6_9 = TimeoutTicks;
+  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.6_9);
   if (IrcoscStatus == 0)
     goto <bb 5>; [INV]
   else
@@ -89,14 +73,12 @@ EnableFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 6>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   if (TimeoutOccurred != 0)
     goto <bb 7>; [INV]
   else
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   _11 = config->name;
   ReportClockErrors (1, _11);
 
@@ -112,7 +94,6 @@ EnableFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 SetFirc (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetFirc_TrustedCall (config);
   return;
 
@@ -130,25 +111,16 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
   uint32 instance;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = config->name;
   _2 = clockFeatures[_1][0];
   instance = (uint32) _2;
-  # DEBUG BEGIN_STMT
   TimeoutOccurred = 0;
   SircWasDisabled = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _3 = 1074151424B;
   _4 = _3->FIRCCSR;
   _5 = 1074151424B;
   _6 = _4 & 4286578687;
   _5->FIRCCSR = _6;
-  # DEBUG BEGIN_STMT
   _7 = 1074151424B;
   _8 = _7->FIRCCSR;
   _9 = _8 & 33554432;
@@ -158,7 +130,6 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 15>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _10 = config->range;
   _11 = (long unsigned int) _10;
   _12 = 1074151424B;
@@ -182,7 +153,6 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 21>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _21 = 1074151424B;
   _22 = _21->SIRCCSR;
   _23 = _22 & 1;
@@ -192,21 +162,16 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   SircWasDisabled = 1;
-  # DEBUG BEGIN_STMT
   SetSirc (0B);
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   SetInputSouceSytemClock (2);
-  # DEBUG BEGIN_STMT
   _24 = 1074151424B;
   _25 = _24->FIRCCSR;
   _26 = 1074151424B;
   _27 = _25 & 4294967294;
   _26->FIRCCSR = _27;
-  # DEBUG BEGIN_STMT
   _28 = config->enable;
   if (_28 == 1)
     goto <bb 8>; [INV]
@@ -214,13 +179,11 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 21>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _29 = config->range;
   _30 = (long unsigned int) _29;
   _31 = 1074151424B;
   _32 = _30 & 3;
   _31->FIRCCFG = _32;
-  # DEBUG BEGIN_STMT
   _33 = 1074151424B;
   _34 = _33->FIRCCSR;
   _35 = config->regulator;
@@ -231,20 +194,15 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
   _40 = 1074151424B;
   _41 = _39 | 1;
   _40->FIRCCSR = _41;
-  # DEBUG BEGIN_STMT
   ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _42 = 1074151424B;
   _43 = _42->FIRCCSR;
   _44 = _43 >> 24;
   IrcoscStatus = _44 & 1;
-  # DEBUG BEGIN_STMT
-  TimeoutTicks.1_45 = TimeoutTicks;
-  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.1_45);
-  # DEBUG BEGIN_STMT
+  TimeoutTicks.4_45 = TimeoutTicks;
+  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.4_45);
   if (IrcoscStatus == 0)
     goto <bb 10>; [INV]
   else
@@ -258,39 +216,32 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 11>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   if (TimeoutOccurred != 0)
     goto <bb 12>; [INV]
   else
     goto <bb 13>; [INV]
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   _47 = config->name;
   ReportClockErrors (1, _47);
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   SetInputSouceSytemClock (3);
-  # DEBUG BEGIN_STMT
   if (SircWasDisabled != 0)
     goto <bb 14>; [INV]
   else
     goto <bb 21>; [INV]
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   DisableSirc (2);
   goto <bb 21>; [INV]
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
   _48 = 1074151424B;
   _49 = _48->FIRCCSR;
   _50 = 1074151424B;
   _51 = _49 & 4294967294;
   _50->FIRCCSR = _51;
-  # DEBUG BEGIN_STMT
   _52 = config->enable;
   if (_52 == 1)
     goto <bb 16>; [INV]
@@ -298,13 +249,11 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 21>; [INV]
 
   <bb 16> :
-  # DEBUG BEGIN_STMT
   _53 = config->range;
   _54 = (long unsigned int) _53;
   _55 = 1074151424B;
   _56 = _54 & 3;
   _55->FIRCCFG = _56;
-  # DEBUG BEGIN_STMT
   _57 = 1074151424B;
   _58 = _57->FIRCCSR;
   _59 = config->regulator;
@@ -315,20 +264,15 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
   _64 = 1074151424B;
   _65 = _63 | 1;
   _64->FIRCCSR = _65;
-  # DEBUG BEGIN_STMT
   ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
 
   <bb 17> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _66 = 1074151424B;
   _67 = _66->FIRCCSR;
   _68 = _67 >> 24;
   IrcoscStatus = _68 & 1;
-  # DEBUG BEGIN_STMT
-  TimeoutTicks.2_69 = TimeoutTicks;
-  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.2_69);
-  # DEBUG BEGIN_STMT
+  TimeoutTicks.5_69 = TimeoutTicks;
+  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.5_69);
   if (IrcoscStatus == 0)
     goto <bb 18>; [INV]
   else
@@ -342,14 +286,12 @@ SetFirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 19>; [INV]
 
   <bb 19> :
-  # DEBUG BEGIN_STMT
   if (TimeoutOccurred != 0)
     goto <bb 20>; [INV]
   else
     goto <bb 21>; [INV]
 
   <bb 20> :
-  # DEBUG BEGIN_STMT
   _71 = config->name;
   ReportClockErrors (1, _71);
 
@@ -370,33 +312,20 @@ SetInputSouceSytemClock (uint32 sourceClock)
   uint32 StartTime;
   boolean TimeoutOccurred;
   uint32 regValue;
-  uint32 iftmp.3;
+  uint32 iftmp.2;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   TimeoutOccurred = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   regValue = _1->RCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4043309055;
-  # DEBUG BEGIN_STMT
   _2 = sourceClock << 24;
   regValue = regValue | _2;
-  # DEBUG BEGIN_STMT
   _3 = 1074151424B;
   _3->RCCR = regValue;
-  # DEBUG BEGIN_STMT
   ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _4 = 1074151424B;
   _5 = _4->CSR;
   _6 = _5 >> 24;
@@ -407,18 +336,16 @@ SetInputSouceSytemClock (uint32 sourceClock)
     goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.3 = 1;
+  iftmp.2 = 1;
   goto <bb 6>; [INV]
 
   <bb 5> :
-  iftmp.3 = 0;
+  iftmp.2 = 0;
 
   <bb 6> :
-  ScsStatus = iftmp.3;
-  # DEBUG BEGIN_STMT
-  TimeoutTicks.4_8 = TimeoutTicks;
-  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.4_8);
-  # DEBUG BEGIN_STMT
+  ScsStatus = iftmp.2;
+  TimeoutTicks.3_8 = TimeoutTicks;
+  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.3_8);
   if (ScsStatus == 0)
     goto <bb 7>; [INV]
   else
@@ -432,14 +359,12 @@ SetInputSouceSytemClock (uint32 sourceClock)
     goto <bb 8>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   if (TimeoutOccurred != 0)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   ReportClockErrors (1, 5);
 
   <bb 10> :
@@ -454,7 +379,6 @@ SetInputSouceSytemClock (uint32 sourceClock)
 DisableSircStop (Clock_Ip_NameType name)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   DisableSircStop_TrustedCall (name);
   return;
 
@@ -464,8 +388,6 @@ DisableSircStop (Clock_Ip_NameType name)
 DisableSircStop_TrustedCall (Clock_Ip_NameType name)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 = _1->SIRCCSR;
   _3 = 1074151424B;
@@ -479,7 +401,6 @@ DisableSircStop_TrustedCall (Clock_Ip_NameType name)
 EnableSircStop (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   EnableSircStop_TrustedCall (config);
   return;
 
@@ -489,7 +410,6 @@ EnableSircStop (const struct Clock_Ip_IrcoscConfigType * config)
 EnableSircStop_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = config->enable;
   if (_1 == 1)
     goto <bb 3>; [INV]
@@ -497,7 +417,6 @@ EnableSircStop_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   _3 = _2->SIRCCSR;
   _4 = 1074151424B;
@@ -513,7 +432,6 @@ EnableSircStop_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 SetSircStop (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetSircStop_TrustedCall (config);
   return;
 
@@ -523,20 +441,16 @@ SetSircStop (const struct Clock_Ip_IrcoscConfigType * config)
 SetSircStop_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 = _1->SIRCCSR;
   _3 = 1074151424B;
   _4 = _2 & 4286578687;
   _3->SIRCCSR = _4;
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _6 = _5->SIRCCSR;
   _7 = 1074151424B;
   _8 = _6 & 4294967293;
   _7->SIRCCSR = _8;
-  # DEBUG BEGIN_STMT
   _9 = 1074151424B;
   _10 = _9->SIRCCSR;
   _11 = config->stopModeEnable;
@@ -554,7 +468,6 @@ SetSircStop_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 DisableSircVlp (Clock_Ip_NameType name)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   DisableSircVlp_TrustedCall (name);
   return;
 
@@ -564,8 +477,6 @@ DisableSircVlp (Clock_Ip_NameType name)
 DisableSircVlp_TrustedCall (Clock_Ip_NameType name)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 = _1->SIRCCSR;
   _3 = 1074151424B;
@@ -579,7 +490,6 @@ DisableSircVlp_TrustedCall (Clock_Ip_NameType name)
 EnableSircVlp (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   EnableSircVlp_TrustedCall (config);
   return;
 
@@ -589,7 +499,6 @@ EnableSircVlp (const struct Clock_Ip_IrcoscConfigType * config)
 EnableSircVlp_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = config->enable;
   if (_1 == 1)
     goto <bb 3>; [INV]
@@ -597,7 +506,6 @@ EnableSircVlp_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   _3 = _2->SIRCCSR;
   _4 = 1074151424B;
@@ -613,7 +521,6 @@ EnableSircVlp_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 SetSircVlp (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetSircVlp_TrustedCall (config);
   return;
 
@@ -623,19 +530,16 @@ SetSircVlp (const struct Clock_Ip_IrcoscConfigType * config)
 SetSircVlp_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 = _1->SIRCCSR;
   _3 = 1074151424B;
   _4 = _2 & 4286578687;
   _3->SIRCCSR = _4;
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _6 = _5->SIRCCSR;
   _7 = 1074151424B;
   _8 = _6 & 4294967291;
   _7->SIRCCSR = _8;
-  # DEBUG BEGIN_STMT
   _9 = 1074151424B;
   _10 = _9->SIRCCSR;
   _11 = config->lowPowerModeEnable;
@@ -653,7 +557,6 @@ SetSircVlp_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 DisableSirc (Clock_Ip_NameType name)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   DisableSirc_TrustedCall (name);
   return;
 
@@ -663,14 +566,11 @@ DisableSirc (Clock_Ip_NameType name)
 DisableSirc_TrustedCall (Clock_Ip_NameType name)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 = _1->SIRCCSR;
   _3 = 1074151424B;
   _4 = _2 & 4294967294;
   _3->SIRCCSR = _4;
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _6 = _5->SIRCCSR;
   _7 = 1074151424B;
@@ -684,7 +584,6 @@ DisableSirc_TrustedCall (Clock_Ip_NameType name)
 EnableSirc (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   EnableSirc_TrustedCall (config);
   return;
 
@@ -700,38 +599,26 @@ EnableSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
   boolean TimeoutOccurred;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   TimeoutOccurred = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 = _1->SIRCCSR;
   _3 = 1074151424B;
   _4 = _2 | 1;
   _3->SIRCCSR = _4;
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _6 = _5->SIRCCSR;
   _7 = 1074151424B;
   _8 = _6 | 4;
   _7->SIRCCSR = _8;
-  # DEBUG BEGIN_STMT
   ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _9 = 1074151424B;
   _10 = _9->SIRCCSR;
   _11 = _10 >> 24;
   IrcoscStatus = _11 & 1;
-  # DEBUG BEGIN_STMT
-  TimeoutTicks.5_12 = TimeoutTicks;
-  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.5_12);
-  # DEBUG BEGIN_STMT
+  TimeoutTicks.1_12 = TimeoutTicks;
+  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.1_12);
   if (IrcoscStatus == 0)
     goto <bb 4>; [INV]
   else
@@ -745,14 +632,12 @@ EnableSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 5>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   if (TimeoutOccurred != 0)
     goto <bb 6>; [INV]
   else
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _14 = config->name;
   ReportClockErrors (1, _14);
 
@@ -768,7 +653,6 @@ EnableSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 SetSirc (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetSirc_TrustedCall (config);
   return;
 
@@ -785,64 +669,45 @@ SetSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
   boolean TimeoutOccurred;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   TimeoutOccurred = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   if (config == 0B)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   sircConfig.name = 5;
-  # DEBUG BEGIN_STMT
   sircConfig.range = 1;
-  # DEBUG BEGIN_STMT
   sircConfig.enable = 1;
-  # DEBUG BEGIN_STMT
   sircConfig.lowPowerModeEnable = 1;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _1 = config->name;
   sircConfig.name = _1;
-  # DEBUG BEGIN_STMT
   _2 = config->range;
   sircConfig.range = _2;
-  # DEBUG BEGIN_STMT
   _3 = config->enable;
   sircConfig.enable = _3;
-  # DEBUG BEGIN_STMT
   _4 = config->lowPowerModeEnable;
   sircConfig.lowPowerModeEnable = _4;
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _6 = _5->SIRCCSR;
   _7 = 1074151424B;
   _8 = _6 & 4286578687;
   _7->SIRCCSR = _8;
-  # DEBUG BEGIN_STMT
   _9 = 1074151424B;
   _10 = _9->SIRCCSR;
   _11 = 1074151424B;
   _12 = _10 & 4294967294;
   _11->SIRCCSR = _12;
-  # DEBUG BEGIN_STMT
   _13 = 1074151424B;
   _14 = _13->SIRCCSR;
   _15 = 1074151424B;
   _16 = _14 & 4294967291;
   _15->SIRCCSR = _16;
-  # DEBUG BEGIN_STMT
   _17 = sircConfig.enable;
   if (_17 == 1)
     goto <bb 6>; [INV]
@@ -850,19 +715,16 @@ SetSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 11>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _18 = sircConfig.range;
   _19 = (long unsigned int) _18;
   _20 = 1074151424B;
   _21 = _19 & 1;
   _20->SIRCCFG = _21;
-  # DEBUG BEGIN_STMT
   _22 = 1074151424B;
   _23 = _22->SIRCCSR;
   _24 = 1074151424B;
   _25 = _23 | 1;
   _24->SIRCCSR = _25;
-  # DEBUG BEGIN_STMT
   _26 = 1074151424B;
   _27 = _26->SIRCCSR;
   _28 = sircConfig.lowPowerModeEnable;
@@ -872,20 +734,15 @@ SetSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
   _32 = 1074151424B;
   _33 = _27 | _31;
   _32->SIRCCSR = _33;
-  # DEBUG BEGIN_STMT
   ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _34 = 1074151424B;
   _35 = _34->SIRCCSR;
   _36 = _35 >> 24;
   IrcoscStatus = _36 & 1;
-  # DEBUG BEGIN_STMT
-  TimeoutTicks.6_37 = TimeoutTicks;
-  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.6_37);
-  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_37 = TimeoutTicks;
+  TimeoutOccurred = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_37);
   if (IrcoscStatus == 0)
     goto <bb 8>; [INV]
   else
@@ -899,14 +756,12 @@ SetSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
     goto <bb 9>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (TimeoutOccurred != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   _39 = sircConfig.name;
   ReportClockErrors (1, _39);
 
@@ -923,7 +778,6 @@ SetSirc_TrustedCall (const struct Clock_Ip_IrcoscConfigType * config)
 InternalOscillatorEmpty_Disable (Clock_Ip_NameType name)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   return;
 
 }
@@ -932,7 +786,6 @@ InternalOscillatorEmpty_Disable (Clock_Ip_NameType name)
 InternalOscillatorEmpty (const struct Clock_Ip_IrcoscConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   return;
 
 }

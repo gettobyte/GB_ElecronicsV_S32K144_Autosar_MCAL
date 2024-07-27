@@ -45,7 +45,9 @@ Fraction of visited symbols: 0.00%
 
 main ()
 {
+  struct Flexcan_Ip_DataInfoType tx_info_ext_remote;
   struct Flexcan_Ip_DataInfoType tx_info_ext;
+  struct Flexcan_Ip_DataInfoType tx_info_std_remote;
   struct Flexcan_Ip_DataInfoType tx_info_std;
   <unnamed type> _1;
 
@@ -80,9 +82,18 @@ main ()
   tx_info_std = {};
   tx_info_std.data_length = 8;
   # DEBUG BEGIN_STMT
+  tx_info_std_remote = {};
+  tx_info_std_remote.data_length = 8;
+  tx_info_std_remote.is_remote = 1;
+  # DEBUG BEGIN_STMT
   MEM[(struct  *)&tx_info_ext + 8B] = {};
   tx_info_ext.msg_id_type = 1;
   tx_info_ext.data_length = 8;
+  # DEBUG BEGIN_STMT
+  MEM[(struct  *)&tx_info_ext_remote + 8B] = {};
+  tx_info_ext_remote.msg_id_type = 1;
+  tx_info_ext_remote.data_length = 8;
+  tx_info_ext_remote.is_remote = 1;
   # DEBUG BEGIN_STMT
   FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
   # DEBUG BEGIN_STMT
@@ -97,7 +108,7 @@ main ()
   # DEBUG BEGIN_STMT
   TestDelay (2000000);
   # DEBUG BEGIN_STMT
-  FlexCAN_Ip_Send (0, 1, &tx_info_std, 1536, &CanData1);
+  FlexCAN_Ip_Send (0, 1, &tx_info_std_remote, 1536, &CanData1);
   # DEBUG FlexCAN_Api_Status => NULL
   # DEBUG BEGIN_STMT
   TestDelay (2000000);
@@ -107,7 +118,7 @@ main ()
   # DEBUG BEGIN_STMT
   TestDelay (2000000);
   # DEBUG BEGIN_STMT
-  FlexCAN_Ip_Send (0, 3, &tx_info_ext, 358061653, &CanData1);
+  FlexCAN_Ip_Send (0, 3, &tx_info_ext_remote, 358061653, &CanData1);
   # DEBUG FlexCAN_Api_Status => NULL
   # DEBUG BEGIN_STMT
   TestDelay (2000000);

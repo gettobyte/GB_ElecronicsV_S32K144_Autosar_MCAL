@@ -99,7 +99,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Det_Start/16 (Det_Start) @05c6fb60
+Det_Start/16 (Det_Start) @05bbab60
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -108,7 +108,7 @@ Det_Start/16 (Det_Start) @05c6fb60
   Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
   Called by: 
   Calls: Det_Init/12 (1073741824 (estimated locally),1.00 per call) 
-Det_ReportTransientFault/15 (Det_ReportTransientFault) @05c6f620
+Det_ReportTransientFault/15 (Det_ReportTransientFault) @05bba620
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Det_TransientModuleId/9 (write)Det_TransientInstanceId/6 (write)Det_TransientApiId/7 (write)Det_TransientFaultId/8 (write)
@@ -117,7 +117,7 @@ Det_ReportTransientFault/15 (Det_ReportTransientFault) @05c6f620
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Det_ReportRuntimeError/14 (Det_ReportRuntimeError) @05c6fd20
+Det_ReportRuntimeError/14 (Det_ReportRuntimeError) @05bbad20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Det_RuntimeModuleId/11 (write)Det_RuntimeInstanceId/3 (write)Det_RuntimeApiId/4 (write)Det_RuntimeErrorId/5 (write)
@@ -126,7 +126,7 @@ Det_ReportRuntimeError/14 (Det_ReportRuntimeError) @05c6fd20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Det_ReportError/13 (Det_ReportError) @05c6fa80
+Det_ReportError/13 (Det_ReportError) @05bbaa80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Det_ModuleId/10 (write)Det_InstanceId/0 (write)Det_ApiId/1 (write)Det_ErrorId/2 (write)
@@ -135,7 +135,7 @@ Det_ReportError/13 (Det_ReportError) @05c6fa80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Det_Init/12 (Det_Init) @05c6f7e0
+Det_Init/12 (Det_Init) @05bba7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -144,84 +144,84 @@ Det_Init/12 (Det_Init) @05c6f7e0
   Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
   Called by: Det_Start/16 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Det_RuntimeModuleId/11 (Det_RuntimeModuleId) @05cefee8
+Det_RuntimeModuleId/11 (Det_RuntimeModuleId) @05c3cee8
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportRuntimeError/14 (write)
   Availability: available
   Varpool flags:
-Det_ModuleId/10 (Det_ModuleId) @05cefea0
+Det_ModuleId/10 (Det_ModuleId) @05c3cea0
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportError/13 (write)
   Availability: available
   Varpool flags:
-Det_TransientModuleId/9 (Det_TransientModuleId) @05cefe58
+Det_TransientModuleId/9 (Det_TransientModuleId) @05c3ce58
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportTransientFault/15 (write)
   Availability: available
   Varpool flags:
-Det_TransientFaultId/8 (Det_TransientFaultId) @05cefe10
+Det_TransientFaultId/8 (Det_TransientFaultId) @05c3ce10
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportTransientFault/15 (write)
   Availability: available
   Varpool flags:
-Det_TransientApiId/7 (Det_TransientApiId) @05cefdc8
+Det_TransientApiId/7 (Det_TransientApiId) @05c3cdc8
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportTransientFault/15 (write)
   Availability: available
   Varpool flags:
-Det_TransientInstanceId/6 (Det_TransientInstanceId) @05cefd80
+Det_TransientInstanceId/6 (Det_TransientInstanceId) @05c3cd80
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportTransientFault/15 (write)
   Availability: available
   Varpool flags:
-Det_RuntimeErrorId/5 (Det_RuntimeErrorId) @05cefd38
+Det_RuntimeErrorId/5 (Det_RuntimeErrorId) @05c3cd38
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportRuntimeError/14 (write)
   Availability: available
   Varpool flags:
-Det_RuntimeApiId/4 (Det_RuntimeApiId) @05cefcf0
+Det_RuntimeApiId/4 (Det_RuntimeApiId) @05c3ccf0
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportRuntimeError/14 (write)
   Availability: available
   Varpool flags:
-Det_RuntimeInstanceId/3 (Det_RuntimeInstanceId) @05cefca8
+Det_RuntimeInstanceId/3 (Det_RuntimeInstanceId) @05c3cca8
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportRuntimeError/14 (write)
   Availability: available
   Varpool flags:
-Det_ErrorId/2 (Det_ErrorId) @05cefc60
+Det_ErrorId/2 (Det_ErrorId) @05c3cc60
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportError/13 (write)
   Availability: available
   Varpool flags:
-Det_ApiId/1 (Det_ApiId) @05cefc18
+Det_ApiId/1 (Det_ApiId) @05c3cc18
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Det_ReportError/13 (write)
   Availability: available
   Varpool flags:
-Det_InstanceId/0 (Det_InstanceId) @05cefbd0
+Det_InstanceId/0 (Det_InstanceId) @05c3cbd0
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 

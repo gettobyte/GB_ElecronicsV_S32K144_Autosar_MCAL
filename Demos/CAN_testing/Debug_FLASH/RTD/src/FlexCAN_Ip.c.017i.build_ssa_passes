@@ -5,25 +5,18 @@ FlexCAN_Ip_ManualBusOffRecovery (uint8 Instance)
   uint32 timeElapsed;
   uint32 timeStart;
   struct FLEXCAN_Type * Base;
-  Flexcan_Ip_StatusType D.8179;
-  long unsigned int D.8176;
+  Flexcan_Ip_StatusType D.8188;
+  long unsigned int D.8185;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) Instance;
   Base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   timeStart = 0;
-  # DEBUG BEGIN_STMT
   timeElapsed = 0;
-  # DEBUG BEGIN_STMT
   uS2Ticks = OsIf_MicrosToTicks (10000, 0);
-  # DEBUG BEGIN_STMT
   RetVal = 1;
-  # DEBUG BEGIN_STMT
   _2 = Instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = Base->CTRL1;
   _4 = _3 & 64;
   if (_4 != 0)
@@ -32,9 +25,7 @@ FlexCAN_Ip_ManualBusOffRecovery (uint8 Instance)
     goto <bb 8>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   RetVal = 0;
-  # DEBUG BEGIN_STMT
   _5 = Base->ESR1;
   _6 = _5 & 32;
   if (_6 != 0)
@@ -43,42 +34,31 @@ FlexCAN_Ip_ManualBusOffRecovery (uint8 Instance)
     goto <bb 8>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Can_CAN_EXCLUSIVE_AREA_20 ();
-  # DEBUG BEGIN_STMT
   _7 = Base->CTRL1;
   _8 = _7 & 4294967231;
   Base->CTRL1 = _8;
-  # DEBUG BEGIN_STMT
   _9 = Base->CTRL1;
   _10 = _9 | 64;
   Base->CTRL1 = _10;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Can_CAN_EXCLUSIVE_AREA_20 ();
-  # DEBUG BEGIN_STMT
   _11 = OsIf_GetCounter (0);
   timeStart = _11;
-  # DEBUG BEGIN_STMT
   goto <bb 7>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
-  D.8176 = OsIf_GetElapsed (&timeStart, 0);
-  timeElapsed = D.8176 + timeElapsed;
-  # DEBUG BEGIN_STMT
+  D.8185 = OsIf_GetElapsed (&timeStart, 0);
+  timeElapsed = D.8185 + timeElapsed;
   if (timeElapsed >= uS2Ticks)
     goto <bb 6>; [INV]
   else
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   RetVal = 3;
-  # DEBUG BEGIN_STMT
   goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   _12 = Base->ESR1;
   _13 = _12 & 32;
   if (_13 != 0)
@@ -87,10 +67,12 @@ FlexCAN_Ip_ManualBusOffRecovery (uint8 Instance)
     goto <bb 8>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
-  D.8179 = RetVal;
+  D.8188 = RetVal;
   timeStart = {CLOBBER};
-  return D.8179;
+
+  <bb 9> :
+<L10>:
+  return D.8188;
 
 }
 
@@ -98,15 +80,16 @@ FlexCAN_Ip_ManualBusOffRecovery (uint8 Instance)
 FlexCAN_Ip_GetListenOnlyMode (uint8 instance)
 {
   const struct FLEXCAN_Type * base;
-  boolean D.8170;
+  boolean D.8179;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
-  D.8170 = FlexCAN_IsListenOnlyModeEnabled (base);
-  return D.8170;
+  D.8179 = FlexCAN_IsListenOnlyModeEnabled (base);
+
+  <bb 3> :
+<L0>:
+  return D.8179;
 
 }
 
@@ -118,40 +101,31 @@ FlexCAN_Ip_SetListenOnlyMode_Privileged (uint8 instance, const boolean enable)
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.8164;
+  Flexcan_Ip_StatusType D.8173;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _8 = ~freeze;
   if (_8 != 0)
     goto <bb 5>; [INV]
@@ -165,48 +139,41 @@ FlexCAN_Ip_SetListenOnlyMode_Privileged (uint8 instance, const boolean enable)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Can_CAN_EXCLUSIVE_AREA_10 ();
-  # DEBUG BEGIN_STMT
   FlexCAN_SetListenOnlyMode (pBase, enable);
-  # DEBUG BEGIN_STMT
   SchM_Exit_Can_CAN_EXCLUSIVE_AREA_10 ();
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.8164 = result;
-  return D.8164;
+  D.8173 = result;
+
+  <bb 13> :
+<L12>:
+  return D.8173;
 
 }
 
@@ -218,42 +185,32 @@ FlexCAN_Ip_SetRxMb15Mask_Privileged (uint8 instance, uint32 mask)
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.8150;
+  Flexcan_Ip_StatusType D.8159;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   freeze = 0;
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _8 = ~freeze;
   if (_8 != 0)
     goto <bb 5>; [INV]
@@ -267,44 +224,39 @@ FlexCAN_Ip_SetRxMb15Mask_Privileged (uint8 instance, uint32 mask)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   pBase->RX15MASK = mask;
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.8150 = result;
-  return D.8150;
+  D.8159 = result;
+
+  <bb 13> :
+<L12>:
+  return D.8159;
 
 }
 
@@ -316,42 +268,32 @@ FlexCAN_Ip_SetRxMb14Mask_Privileged (uint8 instance, uint32 mask)
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.8136;
+  Flexcan_Ip_StatusType D.8145;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   freeze = 0;
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _8 = ~freeze;
   if (_8 != 0)
     goto <bb 5>; [INV]
@@ -365,44 +307,39 @@ FlexCAN_Ip_SetRxMb14Mask_Privileged (uint8 instance, uint32 mask)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   pBase->RX14MASK = mask;
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.8136 = result;
-  return D.8136;
+  D.8145 = result;
+
+  <bb 13> :
+<L12>:
+  return D.8145;
 
 }
 
@@ -412,78 +349,86 @@ FlexCAN_Ip_AbortTransfer (uint8 u8Instance, uint8 mb_idx)
   Flexcan_Ip_StatusType result;
   const struct Flexcan_Ip_StateType * state;
   struct FLEXCAN_Type * pBase;
-  Flexcan_Ip_StatusType D.8101;
+  Flexcan_Ip_StatusType D.8131;
+  int iftmp.8;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = u8Instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
-  _2 = mb_idx + 224;
-  _3 = _2 > 222;
-  DevAssert (_3);
-  # DEBUG BEGIN_STMT
-  _4 = (int) u8Instance;
-  pBase = Flexcan_Ip_apxBase[_4];
-  # DEBUG BEGIN_STMT
-  _5 = (int) u8Instance;
-  state = Flexcan_Ip_apxState[_5];
-  # DEBUG BEGIN_STMT
-  result = 0;
-  # DEBUG BEGIN_STMT
   if (mb_idx <= 31)
-    goto <bb 3>; [INV]
+    goto <bb 4>; [INV]
   else
-    goto <bb 9>; [INV]
+    goto <bb 3>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
-  _6 = (int) mb_idx;
-  _7 = state->mbs[_6].state;
-  if (_7 == 0)
+  if (mb_idx == 255)
     goto <bb 4>; [INV]
   else
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  result = 5;
-  goto <bb 9>; [INV]
+  iftmp.8 = 1;
+  goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
-  _8 = (long unsigned int) mb_idx;
-  _9 = state->isIntActive;
-  FLEXCAN_ClearMsgBuffIntCmd (pBase, u8Instance, _8, _9);
-  # DEBUG BEGIN_STMT
-  _10 = (int) mb_idx;
-  _11 = state->mbs[_10].state;
-  if (_11 == 2)
-    goto <bb 6>; [INV]
-  else
-    goto <bb 7>; [INV]
+  iftmp.8 = 0;
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
-  result = FlexCAN_AbortTxTransfer (u8Instance, mb_idx);
+  _2 = (_Bool) iftmp.8;
+  DevAssert (_2);
+  _3 = (int) u8Instance;
+  pBase = Flexcan_Ip_apxBase[_3];
+  _4 = (int) u8Instance;
+  state = Flexcan_Ip_apxState[_4];
+  result = 0;
+  if (mb_idx <= 31)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 13>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
-  _12 = (int) mb_idx;
-  _13 = state->mbs[_12].state;
-  if (_13 == 1)
+  _5 = (int) mb_idx;
+  _6 = state->mbs[_5].state;
+  if (_6 == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
-  FlexCAN_AbortRxTransfer (u8Instance, mb_idx);
+  result = 5;
+  goto <bb 13>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
-  D.8101 = result;
-  return D.8101;
+  _7 = (long unsigned int) mb_idx;
+  _8 = state->isIntActive;
+  FLEXCAN_ClearMsgBuffIntCmd (pBase, u8Instance, _7, _8);
+  _9 = (int) mb_idx;
+  _10 = state->mbs[_9].state;
+  if (_10 == 2)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  result = FlexCAN_AbortTxTransfer (u8Instance, mb_idx);
+
+  <bb 11> :
+  _11 = (int) mb_idx;
+  _12 = state->mbs[_11].state;
+  if (_12 == 1)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  FlexCAN_AbortRxTransfer (u8Instance, mb_idx);
+
+  <bb 13> :
+  D.8131 = result;
+
+  <bb 14> :
+<L13>:
+  return D.8131;
 
 }
 
@@ -494,71 +439,55 @@ FlexCAN_Ip_SetErrorInt_Privileged (uint8 u8Instance, Flexcan_Ip_ErrorIntType typ
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.8090;
+  Flexcan_Ip_StatusType D.8115;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = u8Instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 5>; [INV]
   else
-    goto <bb 16>; [INV]
+    goto <bb 18>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   switch (type) <default: <L14> [INV], case 0: <L6> [INV], case 1: <L10> [INV], case 2: <L4> [INV], case 3: <L5> [INV], case 4: <L3> [INV]>
 
   <bb 6> :
 <L3>:
-  # DEBUG BEGIN_STMT
   FlexCAN_SetErrIntCmd (pBase, 32768, enable);
-  # DEBUG BEGIN_STMT
-  goto <bb 16>; [INV]
+  goto <bb 18>; [INV]
 
   <bb 7> :
 <L4>:
-  # DEBUG BEGIN_STMT
   FlexCAN_SetErrIntCmd (pBase, 16384, enable);
-  # DEBUG BEGIN_STMT
-  goto <bb 16>; [INV]
+  goto <bb 18>; [INV]
 
   <bb 8> :
 <L5>:
-  # DEBUG BEGIN_STMT
   FlexCAN_SetErrIntCmd (pBase, 16385, enable);
-  # DEBUG BEGIN_STMT
-  goto <bb 16>; [INV]
+  goto <bb 18>; [INV]
 
   <bb 9> :
 <L6>:
-  # DEBUG BEGIN_STMT
   _8 = FlexCAN_IsFreezeMode (pBase);
   _9 = ~_8;
   if (_9 != 0)
@@ -567,65 +496,60 @@ FlexCAN_Ip_SetErrorInt_Privileged (uint8 u8Instance, Flexcan_Ip_ErrorIntType typ
     goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   result = 1;
-  goto <bb 16>; [INV]
+  goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   FlexCAN_SetErrIntCmd (pBase, 1024, enable);
-  goto <bb 16>; [INV]
 
   <bb 12> :
+  goto <bb 18>; [INV]
+
+  <bb 13> :
 <L10>:
-  # DEBUG BEGIN_STMT
   _10 = FlexCAN_IsFreezeMode (pBase);
   _11 = ~_10;
   if (_11 != 0)
-    goto <bb 13>; [INV]
-  else
     goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
 
-  <bb 13> :
-  # DEBUG BEGIN_STMT
+  <bb 14> :
   result = 1;
   goto <bb 16>; [INV]
 
-  <bb 14> :
-  # DEBUG BEGIN_STMT
-  FlexCAN_SetErrIntCmd (pBase, 2048, enable);
-  goto <bb 16>; [INV]
-
   <bb 15> :
-<L14>:
-  # DEBUG BEGIN_STMT
-  DevAssert (0);
-  # DEBUG BEGIN_STMT
+  FlexCAN_SetErrIntCmd (pBase, 2048, enable);
 
   <bb 16> :
-  # DEBUG BEGIN_STMT
-  if (disabled != 0)
-    goto <bb 17>; [INV]
-  else
-    goto <bb 19>; [INV]
+  goto <bb 18>; [INV]
 
   <bb 17> :
-  # DEBUG BEGIN_STMT
-  status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
-  if (status != 0)
-    goto <bb 18>; [INV]
-  else
-    goto <bb 19>; [INV]
+<L14>:
+  DevAssert (0);
 
   <bb 18> :
-  # DEBUG BEGIN_STMT
-  result = status;
+  if (disabled != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
 
   <bb 19> :
-  # DEBUG BEGIN_STMT
-  D.8090 = result;
-  return D.8090;
+  status = FlexCAN_Disable (pBase);
+  if (status != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  result = status;
+
+  <bb 21> :
+  D.8115 = result;
+
+  <bb 22> :
+<L21>:
+  return D.8115;
 
 }
 
@@ -635,21 +559,16 @@ FlexCAN_Ip_DisableInterrupts_Privileged (uint8 u8Instance)
   struct Flexcan_Ip_StateType * state;
   Flexcan_Ip_StatusType result;
   struct FLEXCAN_Type * pBase;
-  Flexcan_Ip_StatusType D.8074;
+  Flexcan_Ip_StatusType D.8099;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   result = 1;
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   _3 = u8Instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = FlexCAN_IsEnabled (pBase);
   if (_4 != 0)
     goto <bb 3>; [INV]
@@ -657,17 +576,16 @@ FlexCAN_Ip_DisableInterrupts_Privileged (uint8 u8Instance)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   FlexCAN_DisableInterrupts (pBase);
-  # DEBUG BEGIN_STMT
   state->isIntActive = 0;
-  # DEBUG BEGIN_STMT
   result = 0;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.8074 = result;
-  return D.8074;
+  D.8099 = result;
+
+  <bb 5> :
+<L2>:
+  return D.8099;
 
 }
 
@@ -677,21 +595,16 @@ FlexCAN_Ip_EnableInterrupts_Privileged (uint8 u8Instance)
   struct Flexcan_Ip_StateType * state;
   Flexcan_Ip_StatusType result;
   struct FLEXCAN_Type * pBase;
-  Flexcan_Ip_StatusType D.8070;
+  Flexcan_Ip_StatusType D.8095;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   result = 1;
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   _3 = u8Instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = FlexCAN_IsEnabled (pBase);
   if (_4 != 0)
     goto <bb 3>; [INV]
@@ -699,17 +612,16 @@ FlexCAN_Ip_EnableInterrupts_Privileged (uint8 u8Instance)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   FlexCAN_EnableInterrupts (pBase, u8Instance);
-  # DEBUG BEGIN_STMT
   state->isIntActive = 1;
-  # DEBUG BEGIN_STMT
   result = 0;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.8070 = result;
-  return D.8070;
+  D.8095 = result;
+
+  <bb 5> :
+<L2>:
+  return D.8095;
 
 }
 
@@ -719,13 +631,10 @@ FlexCAN_Ip_ClearBuffStatusFlag (uint8 instance, uint8 msgBuffIdx)
   struct FLEXCAN_Type * pBase;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = (long unsigned int) msgBuffIdx;
   FlexCAN_ClearMsgBuffIntStatusFlag (pBase, _3);
   return;
@@ -737,24 +646,22 @@ FlexCAN_Ip_GetBuffStatusFlag (uint8 instance, uint8 msgBuffIdx)
 {
   const struct FLEXCAN_Type * pBase;
   boolean returnResult;
-  boolean D.8066;
+  boolean D.8091;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   returnResult = 1;
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = (long unsigned int) msgBuffIdx;
   _4 = FlexCAN_GetBuffStatusFlag (pBase, _3);
   returnResult = _4 == 1;
-  # DEBUG BEGIN_STMT
-  D.8066 = returnResult;
-  return D.8066;
+  D.8091 = returnResult;
+
+  <bb 3> :
+<L0>:
+  return D.8091;
 
 }
 
@@ -766,40 +673,31 @@ FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged (uint8 instance, uint8 value)
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.8064;
+  Flexcan_Ip_StatusType D.8089;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _8 = ~freeze;
   if (_8 != 0)
     goto <bb 5>; [INV]
@@ -813,48 +711,41 @@ FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged (uint8 instance, uint8 value)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Can_CAN_EXCLUSIVE_AREA_17 ();
-  # DEBUG BEGIN_STMT
   FlexCAN_SetTxArbitrationStartDelay (pBase, value);
-  # DEBUG BEGIN_STMT
   SchM_Exit_Can_CAN_EXCLUSIVE_AREA_17 ();
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.8064 = result;
-  return D.8064;
+  D.8089 = result;
+
+  <bb 13> :
+<L12>:
+  return D.8089;
 
 }
 
@@ -866,44 +757,34 @@ FlexCAN_Ip_SetTDCOffset_Privileged (uint8 instance, boolean enable, uint8 offset
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.8048;
+  Flexcan_Ip_StatusType D.8073;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _8 = FlexCAN_IsFDAvailable (pBase);
   _9 = _8;
   DevAssert (_9);
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _10 = ~freeze;
   if (_10 != 0)
     goto <bb 5>; [INV]
@@ -917,48 +798,41 @@ FlexCAN_Ip_SetTDCOffset_Privileged (uint8 instance, boolean enable, uint8 offset
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Can_CAN_EXCLUSIVE_AREA_16 ();
-  # DEBUG BEGIN_STMT
   FlexCAN_SetTDCOffset (pBase, enable, offset);
-  # DEBUG BEGIN_STMT
   SchM_Exit_Can_CAN_EXCLUSIVE_AREA_16 ();
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.8048 = result;
-  return D.8048;
+  D.8073 = result;
+
+  <bb 13> :
+<L12>:
+  return D.8073;
 
 }
 
@@ -967,25 +841,22 @@ FlexCAN_Ip_GetBitrateFD (uint8 instance, struct Flexcan_Ip_TimeSegmentType * bit
 {
   boolean enhCbt;
   const struct FLEXCAN_Type * pBase;
-  boolean D.8034;
+  boolean D.8059;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = bitrate != 0B;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_3];
-  # DEBUG BEGIN_STMT
   enhCbt = 0;
-  # DEBUG BEGIN_STMT
   FlexCAN_GetFDTimeSegments (pBase, bitrate);
-  # DEBUG BEGIN_STMT
-  D.8034 = enhCbt;
-  return D.8034;
+  D.8059 = enhCbt;
+
+  <bb 3> :
+<L0>:
+  return D.8059;
 
 }
 
@@ -998,45 +869,34 @@ FlexCAN_Ip_SetBitrateCbt_Privileged (uint8 instance, const struct Flexcan_Ip_Tim
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.8030;
+  Flexcan_Ip_StatusType D.8055;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = bitrate != 0B;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _3 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_3];
-  # DEBUG BEGIN_STMT
   _4 = FlexCAN_IsEnabled (pBase);
   _5 = (int) _4;
   _6 = _5 != 0;
   _7 = ~_6;
   _8 = (int) _7;
   disabled = (boolean) _8;
-  # DEBUG BEGIN_STMT
   fd_enable = FlexCAN_IsFDEnabled (pBase);
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _9 = ~fd_enable;
   if (_9 != 0)
     goto <bb 7>; [INV]
@@ -1057,50 +917,42 @@ FlexCAN_Ip_SetBitrateCbt_Privileged (uint8 instance, const struct Flexcan_Ip_Tim
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Can_CAN_EXCLUSIVE_AREA_15 ();
-  # DEBUG BEGIN_STMT
   FlexCAN_SetFDEnabled (pBase, fd_enable, bitRateSwitch);
-  # DEBUG BEGIN_STMT
   FlexCAN_SetFDTimeSegments (pBase, bitrate);
-  # DEBUG BEGIN_STMT
   SchM_Exit_Can_CAN_EXCLUSIVE_AREA_15 ();
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 13>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 12>; [INV]
   else
     goto <bb 13>; [INV]
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
-  D.8030 = result;
-  return D.8030;
+  D.8055 = result;
+
+  <bb 14> :
+<L12>:
+  return D.8055;
 
 }
 
@@ -1109,24 +961,22 @@ FlexCAN_Ip_GetTDCValue (uint8 u8Instance)
 {
   const struct FLEXCAN_Type * pBase;
   uint8 value;
-  uint8 D.8016;
+  uint8 D.8041;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   value = 0;
-  # DEBUG BEGIN_STMT
   _1 = u8Instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = pBase->FDCTRL;
   _4 = (unsigned char) _3;
   value = _4 & 63;
-  # DEBUG BEGIN_STMT
-  D.8016 = value;
-  return D.8016;
+  D.8041 = value;
+
+  <bb 3> :
+<L0>:
+  return D.8041;
 
 }
 
@@ -1135,24 +985,22 @@ FlexCAN_Ip_GetTDCFail (uint8 u8Instance)
 {
   const struct FLEXCAN_Type * pBase;
   boolean value;
-  boolean D.8014;
+  boolean D.8039;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   value = 0;
-  # DEBUG BEGIN_STMT
   _1 = u8Instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = pBase->FDCTRL;
   _4 = _3 & 16384;
   value = _4 == 16384;
-  # DEBUG BEGIN_STMT
-  D.8014 = value;
-  return D.8014;
+  D.8039 = value;
+
+  <bb 3> :
+<L0>:
+  return D.8039;
 
 }
 
@@ -1162,19 +1010,14 @@ FlexCAN_Ip_ClearTDCFail (uint8 u8Instance)
   struct FLEXCAN_Type * pBase;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = u8Instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   SchM_Enter_Can_CAN_EXCLUSIVE_AREA_09 ();
-  # DEBUG BEGIN_STMT
   _3 = pBase->FDCTRL;
   _4 = _3 | 16384;
   pBase->FDCTRL = _4;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Can_CAN_EXCLUSIVE_AREA_09 ();
   return;
 
@@ -1185,21 +1028,16 @@ FlexCAN_Ip_GetBitrate (uint8 instance, struct Flexcan_Ip_TimeSegmentType * bitra
 {
   boolean enhCbt;
   const struct FLEXCAN_Type * pBase;
-  boolean D.8012;
+  boolean D.8037;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = bitrate != 0B;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_3];
-  # DEBUG BEGIN_STMT
   enhCbt = 0;
-  # DEBUG BEGIN_STMT
   _4 = FlexCAN_IsExCbtEnabled (pBase);
   if (_4 != 0)
     goto <bb 3>; [INV]
@@ -1207,18 +1045,18 @@ FlexCAN_Ip_GetBitrate (uint8 instance, struct Flexcan_Ip_TimeSegmentType * bitra
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   FlexCAN_GetExtendedTimeSegments (pBase, bitrate);
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   FlexCAN_GetTimeSegments (pBase, bitrate);
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
-  D.8012 = enhCbt;
-  return D.8012;
+  D.8037 = enhCbt;
+
+  <bb 6> :
+<L3>:
+  return D.8037;
 
 }
 
@@ -1230,44 +1068,33 @@ FlexCAN_Ip_SetBitrate_Privileged (uint8 instance, const struct Flexcan_Ip_TimeSe
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.8005;
+  Flexcan_Ip_StatusType D.8030;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = bitrate != 0B;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _3 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_3];
-  # DEBUG BEGIN_STMT
   _4 = FlexCAN_IsEnabled (pBase);
   _5 = (int) _4;
   _6 = _5 != 0;
   _7 = ~_6;
   _8 = (int) _7;
   disabled = (boolean) _8;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _9 = ~freeze;
   if (_9 != 0)
     goto <bb 5>; [INV]
@@ -1281,20 +1108,16 @@ FlexCAN_Ip_SetBitrate_Privileged (uint8 instance, const struct Flexcan_Ip_TimeSe
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Can_CAN_EXCLUSIVE_AREA_14 ();
-  # DEBUG BEGIN_STMT
   _10 = FlexCAN_IsExCbtEnabled (pBase);
   if (_10 != 0)
     goto <bb 9>; [INV]
@@ -1302,42 +1125,37 @@ FlexCAN_Ip_SetBitrate_Privileged (uint8 instance, const struct Flexcan_Ip_TimeSe
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   FlexCAN_SetExtendedTimeSegments (pBase, bitrate);
   goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   FlexCAN_SetTimeSegments (pBase, bitrate);
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   SchM_Exit_Can_CAN_EXCLUSIVE_AREA_14 ();
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 13>; [INV]
   else
     goto <bb 15>; [INV]
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 14>; [INV]
   else
     goto <bb 15>; [INV]
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
-  D.8005 = result;
-  return D.8005;
+  D.8030 = result;
+
+  <bb 16> :
+<L15>:
+  return D.8030;
 
 }
 
@@ -1349,40 +1167,31 @@ FlexCAN_Ip_SetRxMaskType_Privileged (uint8 instance, Flexcan_Ip_RxMaskType type)
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7985;
+  Flexcan_Ip_StatusType D.8010;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _8 = ~freeze;
   if (_8 != 0)
     goto <bb 5>; [INV]
@@ -1396,48 +1205,41 @@ FlexCAN_Ip_SetRxMaskType_Privileged (uint8 instance, Flexcan_Ip_RxMaskType type)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Can_CAN_EXCLUSIVE_AREA_08 ();
-  # DEBUG BEGIN_STMT
   FlexCAN_SetRxMaskType (pBase, type);
-  # DEBUG BEGIN_STMT
   SchM_Exit_Can_CAN_EXCLUSIVE_AREA_08 ();
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.7985 = result;
-  return D.7985;
+  D.8010 = result;
+
+  <bb 13> :
+<L12>:
+  return D.8010;
 
 }
 
@@ -1446,32 +1248,28 @@ FlexCAN_Ip_SetStopMode_Privileged (uint8 instance)
 {
   Flexcan_Ip_StatusType status;
   struct FLEXCAN_Type * pBase;
-  Flexcan_Ip_StatusType D.7971;
+  Flexcan_Ip_StatusType D.7996;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   status = FlexCAN_EnterFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   if (status == 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.7971 = status;
-  return D.7971;
+  D.7996 = status;
+
+  <bb 5> :
+<L2>:
+  return D.7996;
 
 }
 
@@ -1479,26 +1277,23 @@ FlexCAN_Ip_SetStopMode_Privileged (uint8 instance)
 FlexCAN_Ip_SetStartMode_Privileged (uint8 instance)
 {
   struct FLEXCAN_Type * pBase;
-  Flexcan_Ip_StatusType D.7967;
+  Flexcan_Ip_StatusType D.7992;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   SchM_Enter_Can_CAN_EXCLUSIVE_AREA_07 ();
-  # DEBUG BEGIN_STMT
   _3 = pBase->MCR;
   _4 = _3 & 2147483647;
   pBase->MCR = _4;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Can_CAN_EXCLUSIVE_AREA_07 ();
-  # DEBUG BEGIN_STMT
-  D.7967 = FlexCAN_ExitFreezeMode (pBase);
-  return D.7967;
+  D.7992 = FlexCAN_ExitFreezeMode (pBase);
+
+  <bb 3> :
+<L0>:
+  return D.7992;
 
 }
 
@@ -1506,17 +1301,18 @@ FlexCAN_Ip_SetStartMode_Privileged (uint8 instance)
 FlexCAN_Ip_GetStartMode_Privileged (uint8 instance)
 {
   const struct FLEXCAN_Type * base;
-  boolean D.7965;
+  boolean D.7990;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = base->MCR;
   _3 = _2 & 17825792;
-  D.7965 = _3 == 0;
-  return D.7965;
+  D.7990 = _3 == 0;
+
+  <bb 3> :
+<L0>:
+  return D.7990;
 
 }
 
@@ -1524,17 +1320,18 @@ FlexCAN_Ip_GetStartMode_Privileged (uint8 instance)
 FlexCAN_Ip_GetStopMode_Privileged (uint8 instance)
 {
   const struct FLEXCAN_Type * base;
-  boolean D.7963;
+  boolean D.7988;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = base->MCR;
   _3 = _2 & 1048576;
-  D.7963 = _3 == 1048576;
-  return D.7963;
+  D.7988 = _3 == 1048576;
+
+  <bb 3> :
+<L0>:
+  return D.7988;
 
 }
 
@@ -1545,16 +1342,12 @@ FlexCAN_Ip_MainFunctionWrite (uint8 instance, uint8 mb_idx)
   struct FLEXCAN_Type * base;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = (long unsigned int) mb_idx;
   _5 = FlexCAN_GetBuffStatusFlag (base, _4);
   if (_5 != 0)
@@ -1563,17 +1356,13 @@ FlexCAN_Ip_MainFunctionWrite (uint8 instance, uint8 mb_idx)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _6 = (long unsigned int) mb_idx;
   _7 = (int) mb_idx;
   _8 = FlexCAN_GetMsgBuffTimestamp (base, _6);
   state->mbs[_7].time_stamp = _8;
-  # DEBUG BEGIN_STMT
   FlexCAN_UnlockRxMsgBuff (base);
-  # DEBUG BEGIN_STMT
   _9 = (long unsigned int) mb_idx;
   FlexCAN_ClearMsgBuffIntStatusFlag (base, _9);
-  # DEBUG BEGIN_STMT
   _10 = (int) mb_idx;
   state->mbs[_10].state = 0;
 
@@ -1589,25 +1378,18 @@ FlexCAN_Ip_MainFunctionBusOff_Privileged (uint8 instance)
   const struct Flexcan_Ip_StateType * state;
   struct FLEXCAN_Type * base;
   Flexcan_Ip_StatusType eRetVal;
-  Flexcan_Ip_StatusType D.7959;
+  Flexcan_Ip_StatusType D.7984;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   eRetVal = 1;
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   u32ErrStatus = 0;
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   u32ErrStatus = base->ESR1;
-  # DEBUG BEGIN_STMT
   _4 = u32ErrStatus & 4;
   if (_4 != 0)
     goto <bb 3>; [INV]
@@ -1615,7 +1397,6 @@ FlexCAN_Ip_MainFunctionBusOff_Privileged (uint8 instance)
     goto <bb 6>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _5 = state->error_callback;
   if (_5 != 0B)
     goto <bb 4>; [INV]
@@ -1623,20 +1404,19 @@ FlexCAN_Ip_MainFunctionBusOff_Privileged (uint8 instance)
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _6 = state->error_callback;
   _6 (instance, 7, u32ErrStatus, state);
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   base->ESR1 = 4;
-  # DEBUG BEGIN_STMT
   eRetVal = 0;
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
-  D.7959 = eRetVal;
-  return D.7959;
+  D.7984 = eRetVal;
+
+  <bb 7> :
+<L4>:
+  return D.7984;
 
 }
 
@@ -1647,75 +1427,66 @@ FlexCAN_Ip_MainFunctionRead (uint8 instance, uint8 mb_idx)
   const struct FLEXCAN_Type * base;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = mb_idx <= 31;
   DevAssert (_4);
-  # DEBUG BEGIN_STMT
   _5 = state->bIsLegacyFifoEn;
   if (_5 != 0)
     goto <bb 3>; [INV]
   else
-    goto <bb 7>; [INV]
+    goto <bb 8>; [INV]
 
   <bb 3> :
   if (mb_idx <= 7)
     goto <bb 4>; [INV]
   else
-    goto <bb 7>; [INV]
+    goto <bb 8>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   if (mb_idx == 0)
     goto <bb 5>; [INV]
   else
-    goto <bb 10>; [INV]
+    goto <bb 7>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _6 = FlexCAN_GetBuffStatusFlag (base, 5);
   if (_6 != 0)
     goto <bb 6>; [INV]
   else
-    goto <bb 10>; [INV]
+    goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   FlexCAN_IRQHandlerRxFIFO (instance, 5);
-  goto <bb 10>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 8> :
   _7 = (long unsigned int) mb_idx;
   _8 = FlexCAN_GetBuffStatusFlag (base, _7);
   if (_8 != 0)
-    goto <bb 8>; [INV]
+    goto <bb 9>; [INV]
   else
-    goto <bb 10>; [INV]
+    goto <bb 11>; [INV]
 
-  <bb 8> :
-  # DEBUG BEGIN_STMT
+  <bb 9> :
   _9 = (int) mb_idx;
   _10 = state->mbs[_9].state;
   if (_10 == 1)
-    goto <bb 9>; [INV]
-  else
     goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
 
-  <bb 9> :
-  # DEBUG BEGIN_STMT
+  <bb 10> :
   _11 = (long unsigned int) mb_idx;
   FlexCAN_IRQHandlerRxMB (instance, _11);
 
-  <bb 10> :
+  <bb 11> :
   return;
 
 }
@@ -1725,38 +1496,32 @@ FlexCAN_Ip_Deinit_Privileged (uint8 instance)
 {
   Flexcan_Ip_StatusType result;
   struct FLEXCAN_Type * base;
-  Flexcan_Ip_StatusType D.7939;
+  Flexcan_Ip_StatusType D.7964;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   result = 1;
-  # DEBUG BEGIN_STMT
   _2 = instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   result = FlexCAN_EnterFreezeMode (base);
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   FlexCAN_SetRegDefaultVal (base);
-  # DEBUG BEGIN_STMT
   FlexCAN_Disable (base);
-  # DEBUG BEGIN_STMT
   _3 = (int) instance;
   Flexcan_Ip_apxState[_3] = 0B;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.7939 = result;
-  return D.7939;
+  D.7964 = result;
+
+  <bb 5> :
+<L2>:
+  return D.7964;
 
 }
 
@@ -1768,40 +1533,31 @@ FlexCAN_Ip_SetRxFifoGlobalMask_Privileged (uint8 instance, uint32 mask)
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7935;
+  Flexcan_Ip_StatusType D.7960;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _8 = ~freeze;
   if (_8 != 0)
     goto <bb 5>; [INV]
@@ -1815,44 +1571,39 @@ FlexCAN_Ip_SetRxFifoGlobalMask_Privileged (uint8 instance, uint32 mask)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   FlexCAN_SetRxFifoGlobalMask (pBase, mask);
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.7935 = result;
-  return D.7935;
+  D.7960 = result;
+
+  <bb 13> :
+<L12>:
+  return D.7960;
 
 }
 
@@ -1864,22 +1615,16 @@ FlexCAN_Ip_SetRxIndividualMask_Privileged (uint8 instance, uint8 mb_idx, uint32 
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7921;
+  Flexcan_Ip_StatusType D.7946;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   freeze = 0;
-  # DEBUG BEGIN_STMT
   _2 = instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = (long unsigned int) mb_idx;
   _4 = pBase->MCR;
   _5 = _4 & 127;
@@ -1895,32 +1640,26 @@ FlexCAN_Ip_SetRxIndividualMask_Privileged (uint8 instance, uint8 mb_idx, uint32 
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   result = 4;
   goto <bb 15>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _6 = FlexCAN_IsEnabled (pBase);
   _7 = (int) _6;
   _8 = _7 != 0;
   _9 = ~_8;
   _10 = (int) _9;
   disabled = (boolean) _10;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 6>; [INV]
   else
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _11 = ~freeze;
   if (_11 != 0)
     goto <bb 8>; [INV]
@@ -1934,45 +1673,40 @@ FlexCAN_Ip_SetRxIndividualMask_Privileged (uint8 instance, uint8 mb_idx, uint32 
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   _12 = (long unsigned int) mb_idx;
   FlexCAN_SetRxIndividualMask (pBase, _12, mask);
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 13>; [INV]
   else
     goto <bb 15>; [INV]
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 14>; [INV]
   else
     goto <bb 15>; [INV]
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
-  D.7921 = result;
-  return D.7921;
+  D.7946 = result;
+
+  <bb 16> :
+<L16>:
+  return D.7946;
 
 }
 
@@ -1980,15 +1714,16 @@ FlexCAN_Ip_SetRxIndividualMask_Privileged (uint8 instance, uint8 mb_idx, uint32 
 FlexCAN_Ip_ExitFreezeMode_Privileged (uint8 instance)
 {
   struct FLEXCAN_Type * base;
-  Flexcan_Ip_StatusType D.7903;
+  Flexcan_Ip_StatusType D.7928;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
-  D.7903 = FlexCAN_ExitFreezeMode (base);
-  return D.7903;
+  D.7928 = FlexCAN_ExitFreezeMode (base);
+
+  <bb 3> :
+<L0>:
+  return D.7928;
 
 }
 
@@ -1996,15 +1731,16 @@ FlexCAN_Ip_ExitFreezeMode_Privileged (uint8 instance)
 FlexCAN_Ip_EnterFreezeMode_Privileged (uint8 instance)
 {
   struct FLEXCAN_Type * base;
-  Flexcan_Ip_StatusType D.7901;
+  Flexcan_Ip_StatusType D.7926;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
-  D.7901 = FlexCAN_EnterFreezeMode (base);
-  return D.7901;
+  D.7926 = FlexCAN_EnterFreezeMode (base);
+
+  <bb 3> :
+<L0>:
+  return D.7926;
 
 }
 
@@ -2016,42 +1752,32 @@ FlexCAN_Ip_SetRxMbGlobalMask_Privileged (uint8 instance, uint32 mask)
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7899;
+  Flexcan_Ip_StatusType D.7924;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   freeze = 0;
-  # DEBUG BEGIN_STMT
   _2 = instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _8 = ~freeze;
   if (_8 != 0)
     goto <bb 5>; [INV]
@@ -2065,44 +1791,39 @@ FlexCAN_Ip_SetRxMbGlobalMask_Privileged (uint8 instance, uint32 mask)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   FlexCAN_SetRxMsgBuffGlobalMask (pBase, mask);
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.7899 = result;
-  return D.7899;
+  D.7924 = result;
+
+  <bb 13> :
+<L12>:
+  return D.7924;
 
 }
 
@@ -2118,70 +1839,50 @@ FlexCAN_Ip_SendBlocking (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_D
   struct Flexcan_Ip_StateType * state;
   struct FLEXCAN_Type * base;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7884;
-  long unsigned int D.7877;
-  long unsigned int D.7870;
+  Flexcan_Ip_StatusType D.7909;
+  long unsigned int D.7902;
+  long unsigned int D.7895;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   timeStart = 0;
-  # DEBUG BEGIN_STMT
   timeElapsed = 0;
-  # DEBUG BEGIN_STMT
   _3 = timeout_ms * 1000;
   mS2Ticks = OsIf_MicrosToTicks (_3, 0);
-  # DEBUG BEGIN_STMT
   uS2Ticks = 0;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = 0;
-  # DEBUG BEGIN_STMT
   flexcan_mb = 0B;
-  # DEBUG BEGIN_STMT
   _4 = instance <= 2;
   DevAssert (_4);
-  # DEBUG BEGIN_STMT
   _5 = tx_info != 0B;
   DevAssert (_5);
-  # DEBUG BEGIN_STMT
   result = FlexCAN_StartSendData (instance, mb_idx, tx_info, msg_id, mb_data);
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 3>; [INV]
   else
     goto <bb 18>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _6 = OsIf_GetCounter (0);
   timeStart = _6;
-  # DEBUG BEGIN_STMT
   goto <bb 6>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.7870 = OsIf_GetElapsed (&timeStart, 0);
-  timeElapsed = D.7870 + timeElapsed;
-  # DEBUG BEGIN_STMT
+  D.7895 = OsIf_GetElapsed (&timeStart, 0);
+  timeElapsed = D.7895 + timeElapsed;
   if (timeElapsed >= mS2Ticks)
     goto <bb 5>; [INV]
   else
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   result = 3;
-  # DEBUG BEGIN_STMT
   goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _7 = (long unsigned int) mb_idx;
   _8 = FlexCAN_GetBuffStatusFlag (base, _7);
   if (_8 != 1)
@@ -2190,7 +1891,6 @@ FlexCAN_Ip_SendBlocking (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_D
     goto <bb 7>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 3)
     goto <bb 8>; [INV]
   else
@@ -2205,48 +1905,33 @@ FlexCAN_Ip_SendBlocking (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_D
     goto <bb 17>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   _11 = (long unsigned int) mb_idx;
   FlexCAN_ClearMsgBuffIntStatusFlag (base, _11);
-  # DEBUG BEGIN_STMT
   _12 = (long unsigned int) mb_idx;
   flexcan_mb = FlexCAN_GetMsgBuffRegion (base, _12);
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = *flexcan_mb;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config & 4043309055;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config | 150994944;
-  # DEBUG BEGIN_STMT
   *flexcan_mb = flexcan_mb_config;
-  # DEBUG BEGIN_STMT
   uS2Ticks = OsIf_MicrosToTicks (10000, 0);
-  # DEBUG BEGIN_STMT
   _13 = OsIf_GetCounter (0);
   timeStart = _13;
-  # DEBUG BEGIN_STMT
   timeElapsed = 0;
-  # DEBUG BEGIN_STMT
   goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
-  D.7877 = OsIf_GetElapsed (&timeStart, 0);
-  timeElapsed = D.7877 + timeElapsed;
-  # DEBUG BEGIN_STMT
+  D.7902 = OsIf_GetElapsed (&timeStart, 0);
+  timeElapsed = D.7902 + timeElapsed;
   if (timeElapsed >= uS2Ticks)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = 3;
-  # DEBUG BEGIN_STMT
   goto <bb 13>; [INV]
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   _14 = (long unsigned int) mb_idx;
   _15 = FlexCAN_GetBuffStatusFlag (base, _14);
   if (_15 == 0)
@@ -2255,9 +1940,7 @@ FlexCAN_Ip_SendBlocking (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_D
     goto <bb 13>; [INV]
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = *flexcan_mb;
-  # DEBUG BEGIN_STMT
   _16 = flexcan_mb_config >> 24;
   _17 = _16 & 15;
   if (_17 == 8)
@@ -2266,11 +1949,9 @@ FlexCAN_Ip_SendBlocking (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_D
     goto <bb 15>; [INV]
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   result = 0;
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
   _18 = flexcan_mb_config >> 24;
   _19 = _18 & 15;
   if (_19 == 9)
@@ -2279,22 +1960,21 @@ FlexCAN_Ip_SendBlocking (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_D
     goto <bb 17>; [INV]
 
   <bb 16> :
-  # DEBUG BEGIN_STMT
   result = 3;
 
   <bb 17> :
-  # DEBUG BEGIN_STMT
   _20 = (long unsigned int) mb_idx;
   FlexCAN_ClearMsgBuffIntStatusFlag (base, _20);
-  # DEBUG BEGIN_STMT
   _21 = (int) mb_idx;
   state->mbs[_21].state = 0;
 
   <bb 18> :
-  # DEBUG BEGIN_STMT
-  D.7884 = result;
+  D.7909 = result;
   timeStart = {CLOBBER};
-  return D.7884;
+
+  <bb 19> :
+<L21>:
+  return D.7909;
 
 }
 
@@ -2307,29 +1987,21 @@ FlexCAN_BusOff_IRQHandler (uint8 instance)
   struct FLEXCAN_Type * base;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   u32ErrStatus = 0;
-  # DEBUG BEGIN_STMT
   isSpuriousInt = 1;
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   if (state != 0B)
     goto <bb 3>; [INV]
   else
     goto <bb 18>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   u32ErrStatus = base->ESR1;
-  # DEBUG BEGIN_STMT
   _4 = u32ErrStatus & 131072;
   if (_4 != 0)
     goto <bb 4>; [INV]
@@ -2345,9 +2017,7 @@ FlexCAN_BusOff_IRQHandler (uint8 instance)
     goto <bb 8>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   base->ESR1 = 131072;
-  # DEBUG BEGIN_STMT
   _7 = state->error_callback;
   if (_7 != 0B)
     goto <bb 6>; [INV]
@@ -2355,18 +2025,14 @@ FlexCAN_BusOff_IRQHandler (uint8 instance)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _8 = state->error_callback;
   _8 (instance, 9, u32ErrStatus, state);
-  # DEBUG BEGIN_STMT
   u32ErrStatus = base->ESR1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   isSpuriousInt = 0;
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _9 = u32ErrStatus & 65536;
   if (_9 != 0)
     goto <bb 9>; [INV]
@@ -2382,9 +2048,7 @@ FlexCAN_BusOff_IRQHandler (uint8 instance)
     goto <bb 13>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   base->ESR1 = 65536;
-  # DEBUG BEGIN_STMT
   _12 = state->error_callback;
   if (_12 != 0B)
     goto <bb 11>; [INV]
@@ -2392,18 +2056,14 @@ FlexCAN_BusOff_IRQHandler (uint8 instance)
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   _13 = state->error_callback;
   _13 (instance, 8, u32ErrStatus, state);
-  # DEBUG BEGIN_STMT
   u32ErrStatus = base->ESR1;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   isSpuriousInt = 0;
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   _14 = u32ErrStatus & 4;
   if (_14 != 0)
     goto <bb 14>; [INV]
@@ -2419,9 +2079,7 @@ FlexCAN_BusOff_IRQHandler (uint8 instance)
     goto <bb 18>; [INV]
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
   base->ESR1 = 4;
-  # DEBUG BEGIN_STMT
   _17 = state->error_callback;
   if (_17 != 0B)
     goto <bb 16>; [INV]
@@ -2429,23 +2087,19 @@ FlexCAN_BusOff_IRQHandler (uint8 instance)
     goto <bb 17>; [INV]
 
   <bb 16> :
-  # DEBUG BEGIN_STMT
   _18 = state->error_callback;
   _18 (instance, 7, u32ErrStatus, state);
 
   <bb 17> :
-  # DEBUG BEGIN_STMT
   isSpuriousInt = 0;
 
   <bb 18> :
-  # DEBUG BEGIN_STMT
   if (isSpuriousInt != 0)
     goto <bb 19>; [INV]
   else
     goto <bb 20>; [INV]
 
   <bb 19> :
-  # DEBUG BEGIN_STMT
   base->ESR1 = 720900;
 
   <bb 20> :
@@ -2462,29 +2116,21 @@ FlexCAN_Error_IRQHandler (uint8 instance)
   struct FLEXCAN_Type * pBase;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   u32ErrStatus = 0;
-  # DEBUG BEGIN_STMT
   isSpuriousInt = 1;
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   if (state != 0B)
     goto <bb 3>; [INV]
   else
     goto <bb 13>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   u32ErrStatus = pBase->ESR1;
-  # DEBUG BEGIN_STMT
   _4 = u32ErrStatus & 2;
   if (_4 != 0)
     goto <bb 4>; [INV]
@@ -2500,9 +2146,7 @@ FlexCAN_Error_IRQHandler (uint8 instance)
     goto <bb 8>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   pBase->ESR1 = 2;
-  # DEBUG BEGIN_STMT
   _7 = state->error_callback;
   if (_7 != 0B)
     goto <bb 6>; [INV]
@@ -2510,18 +2154,14 @@ FlexCAN_Error_IRQHandler (uint8 instance)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _8 = state->error_callback;
   _8 (instance, 5, u32ErrStatus, state);
-  # DEBUG BEGIN_STMT
   u32ErrStatus = pBase->ESR1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   isSpuriousInt = 0;
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _9 = u32ErrStatus & 1048576;
   if (_9 != 0)
     goto <bb 9>; [INV]
@@ -2537,9 +2177,7 @@ FlexCAN_Error_IRQHandler (uint8 instance)
     goto <bb 13>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   pBase->ESR1 = 1048576;
-  # DEBUG BEGIN_STMT
   _12 = state->error_callback;
   if (_12 != 0B)
     goto <bb 11>; [INV]
@@ -2547,23 +2185,19 @@ FlexCAN_Error_IRQHandler (uint8 instance)
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   _13 = state->error_callback;
   _13 (instance, 6, u32ErrStatus, state);
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   isSpuriousInt = 0;
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   if (isSpuriousInt != 0)
     goto <bb 14>; [INV]
   else
     goto <bb 15>; [INV]
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   pBase->ESR1 = 3145730;
 
   <bb 15> :
@@ -2575,20 +2209,20 @@ FlexCAN_Error_IRQHandler (uint8 instance)
 FlexCAN_Ip_GetControllerRxErrorCounter (uint8 instance)
 {
   const struct FLEXCAN_Type * base;
-  uint8 D.7828;
+  uint8 D.7853;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = base->ECR;
   _4 = _3 >> 8;
-  D.7828 = (uint8) _4;
-  return D.7828;
+  D.7853 = (uint8) _4;
+
+  <bb 3> :
+<L0>:
+  return D.7853;
 
 }
 
@@ -2596,19 +2230,19 @@ FlexCAN_Ip_GetControllerRxErrorCounter (uint8 instance)
 FlexCAN_Ip_GetControllerTxErrorCounter (uint8 instance)
 {
   const struct FLEXCAN_Type * base;
-  uint8 D.7826;
+  uint8 D.7851;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = base->ECR;
-  D.7826 = (uint8) _3;
-  return D.7826;
+  D.7851 = (uint8) _3;
+
+  <bb 3> :
+<L0>:
+  return D.7851;
 
 }
 
@@ -2616,18 +2250,18 @@ FlexCAN_Ip_GetControllerTxErrorCounter (uint8 instance)
 FlexCAN_Ip_GetErrorStatus (uint8 instance)
 {
   const struct FLEXCAN_Type * base;
-  uint32 D.7824;
+  uint32 D.7849;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
-  D.7824 = base->ESR1;
-  return D.7824;
+  D.7849 = base->ESR1;
+
+  <bb 3> :
+<L0>:
+  return D.7849;
 
 }
 
@@ -2637,13 +2271,10 @@ FlexCAN_Ip_ClearErrorStatus (uint8 instance, uint32 error)
   struct FLEXCAN_Type * base;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   base->ESR1 = error;
   return;
 
@@ -2660,48 +2291,34 @@ FlexCAN_IRQHandler (uint8 instance, uint32 startMbIdx, uint32 endMbIdx)
   uint32 u32MbHandle;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   u32MbHandle = 0;
-  # DEBUG BEGIN_STMT
   flag_reg = 0;
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   bIsSpuriousInt = 1;
-  # DEBUG BEGIN_STMT
   mb_idx = endMbIdx;
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = endMbIdx <= 31;
   DevAssert (_4);
-  # DEBUG BEGIN_STMT
   if (state != 0B)
     goto <bb 3>; [INV]
   else
     goto <bb 20>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _5 = FlexCAN_GetMsgBuffIntStatusFlag (base, mb_idx);
   flag_reg = (uint32) _5;
-  # DEBUG BEGIN_STMT
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   mb_idx = mb_idx + 4294967295;
-  # DEBUG BEGIN_STMT
   _6 = FlexCAN_GetMsgBuffIntStatusFlag (base, mb_idx);
   flag_reg = (uint32) _6;
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   if (flag_reg == 0)
     goto <bb 6>; [INV]
   else
@@ -2714,18 +2331,14 @@ FlexCAN_IRQHandler (uint8 instance, uint32 startMbIdx, uint32 endMbIdx)
     goto <bb 7>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (flag_reg != 0)
     goto <bb 8>; [INV]
   else
     goto <bb 18>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   bIsSpuriousInt = 0;
-  # DEBUG BEGIN_STMT
   u32MbHandle = mb_idx;
-  # DEBUG BEGIN_STMT
   _7 = state->bIsLegacyFifoEn;
   if (_7 != 0)
     goto <bb 9>; [INV]
@@ -2739,14 +2352,11 @@ FlexCAN_IRQHandler (uint8 instance, uint32 startMbIdx, uint32 endMbIdx)
     goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   FlexCAN_IRQHandlerRxFIFO (instance, mb_idx);
-  # DEBUG BEGIN_STMT
   u32MbHandle = 0;
   goto <bb 13>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   _8 = state->mbs[u32MbHandle].state;
   if (_8 == 1)
     goto <bb 12>; [INV]
@@ -2754,11 +2364,9 @@ FlexCAN_IRQHandler (uint8 instance, uint32 startMbIdx, uint32 endMbIdx)
     goto <bb 13>; [INV]
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   FlexCAN_IRQHandlerRxMB (instance, mb_idx);
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   _9 = state->mbs[u32MbHandle].state;
   if (_9 == 2)
     goto <bb 14>; [INV]
@@ -2766,11 +2374,9 @@ FlexCAN_IRQHandler (uint8 instance, uint32 startMbIdx, uint32 endMbIdx)
     goto <bb 15>; [INV]
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   FlexCAN_IRQHandlerTxMB (instance, mb_idx);
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
   _10 = FlexCAN_GetMsgBuffIntStatusFlag (base, mb_idx);
   if (_10 != 0)
     goto <bb 16>; [INV]
@@ -2778,7 +2384,6 @@ FlexCAN_IRQHandler (uint8 instance, uint32 startMbIdx, uint32 endMbIdx)
     goto <bb 18>; [INV]
 
   <bb 16> :
-  # DEBUG BEGIN_STMT
   _11 = state->mbs[u32MbHandle].state;
   if (_11 == 0)
     goto <bb 17>; [INV]
@@ -2786,34 +2391,27 @@ FlexCAN_IRQHandler (uint8 instance, uint32 startMbIdx, uint32 endMbIdx)
     goto <bb 18>; [INV]
 
   <bb 17> :
-  # DEBUG BEGIN_STMT
   FlexCAN_ClearMsgBuffIntStatusFlag (base, mb_idx);
 
   <bb 18> :
-  # DEBUG BEGIN_STMT
   if (bIsSpuriousInt != 0)
     goto <bb 19>; [INV]
   else
     goto <bb 23>; [INV]
 
   <bb 19> :
-  # DEBUG BEGIN_STMT
   FlexCAN_ProcessSpuriousInterruptMB (instance, startMbIdx, endMbIdx);
   goto <bb 23>; [INV]
 
   <bb 20> :
-  # DEBUG BEGIN_STMT
   mb_idx = startMbIdx;
   goto <bb 22>; [INV]
 
   <bb 21> :
-  # DEBUG BEGIN_STMT
   FlexCAN_ClearMsgBuffIntStatusFlag (base, mb_idx);
-  # DEBUG BEGIN_STMT
   mb_idx = mb_idx + 1;
 
   <bb 22> :
-  # DEBUG BEGIN_STMT
   if (mb_idx <= endMbIdx)
     goto <bb 21>; [INV]
   else
@@ -2831,16 +2429,12 @@ FlexCAN_CompleteRxMessageFifoData (uint8 instance)
   struct FLEXCAN_Type * base;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = state->transferType;
   if (_4 == 0)
     goto <bb 3>; [INV]
@@ -2848,20 +2442,15 @@ FlexCAN_CompleteRxMessageFifoData (uint8 instance)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _5 = state->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (base, instance, 5, 0, _5);
-  # DEBUG BEGIN_STMT
   _6 = state->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (base, instance, 6, 0, _6);
-  # DEBUG BEGIN_STMT
   _7 = state->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (base, instance, 7, 0, _7);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   state->mbs[0].pMBmessage = 0B;
-  # DEBUG BEGIN_STMT
   state->mbs[0].state = 0;
   return;
 
@@ -2872,49 +2461,62 @@ FlexCAN_Ip_GetTransferStatus (uint8 instance, uint8 mb_idx)
 {
   Flexcan_Ip_StatusType status;
   const struct Flexcan_Ip_StateType * state;
-  Flexcan_Ip_StatusType D.7766;
+  Flexcan_Ip_StatusType D.7805;
+  int iftmp.7;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   state = Flexcan_Ip_apxState[_1];
-  # DEBUG BEGIN_STMT
   status = 1;
-  # DEBUG BEGIN_STMT
   _2 = instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
-  _3 = mb_idx + 224;
-  _4 = _3 > 222;
-  DevAssert (_4);
-  # DEBUG BEGIN_STMT
   if (mb_idx <= 31)
-    goto <bb 3>; [INV]
+    goto <bb 4>; [INV]
   else
-    goto <bb 6>; [INV]
+    goto <bb 3>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
-  _5 = (int) mb_idx;
-  _6 = state->mbs[_5].state;
-  if (_6 == 0)
+  if (mb_idx == 255)
     goto <bb 4>; [INV]
   else
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  status = 0;
+  iftmp.7 = 1;
   goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
-  status = 2;
+  iftmp.7 = 0;
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
-  D.7766 = status;
-  return D.7766;
+  _3 = (_Bool) iftmp.7;
+  DevAssert (_3);
+  if (mb_idx <= 31)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  _4 = (int) mb_idx;
+  _5 = state->mbs[_4].state;
+  if (_5 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  status = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  status = 2;
+
+  <bb 10> :
+  D.7805 = status;
+
+  <bb 11> :
+<L9>:
+  return D.7805;
 
 }
 
@@ -2926,39 +2528,29 @@ FlexCAN_Ip_ConfigRemoteResponseMb (uint8 instance, uint8 mb_idx, const struct Fl
   struct FLEXCAN_Type * pBase;
   struct Flexcan_Ip_MsbuffCodeStatusType cs;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7758;
+  Flexcan_Ip_StatusType D.7792;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   pMbAddr = 0B;
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = tx_info != 0B;
   DevAssert (_4);
-  # DEBUG BEGIN_STMT
   _5 = pBase->CTRL2;
   _6 = _5 & 131072;
   _7 = _6 == 0;
   DevAssert (_7);
-  # DEBUG BEGIN_STMT
   _8 = tx_info->data_length;
   _9 = (unsigned char) _8;
   _10 = (long unsigned int) mb_idx;
   _11 = FlexCAN_GetMbPayloadSize (pBase, _10);
   _12 = _9 <= _11;
   DevAssert (_12);
-  # DEBUG BEGIN_STMT
   _13 = state->bIsLegacyFifoEn;
   _14 = state->u32MaxMbNum;
   _15 = FlexCAN_IsMbOutOfRange (pBase, mb_idx, _13, _14);
@@ -2968,41 +2560,29 @@ FlexCAN_Ip_ConfigRemoteResponseMb (uint8 instance, uint8 mb_idx, const struct Fl
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = 4;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 5>; [INV]
   else
     goto <bb 7>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _16 = tx_info->data_length;
   cs.dataLen = _16;
-  # DEBUG BEGIN_STMT
   _17 = tx_info->msg_id_type;
   cs.msgIdType = _17;
-  # DEBUG BEGIN_STMT
   cs.code = 10;
-  # DEBUG BEGIN_STMT
   cs.fd_enable = 0;
-  # DEBUG BEGIN_STMT
   cs.enable_brs = 0;
-  # DEBUG BEGIN_STMT
   cs.fd_padding = 0;
-  # DEBUG BEGIN_STMT
   _18 = (long unsigned int) mb_idx;
   FlexCAN_ClearMsgBuffIntStatusFlag (pBase, _18);
-  # DEBUG BEGIN_STMT
   _19 = (long unsigned int) mb_idx;
   pMbAddr = FlexCAN_GetMsgBuffRegion (pBase, _19);
-  # DEBUG BEGIN_STMT
   _20 = tx_info->is_remote;
   FlexCAN_SetTxMsgBuff (pMbAddr, &cs, msg_id, mb_data, _20);
-  # DEBUG BEGIN_STMT
   _21 = tx_info->is_polling;
   _22 = ~_21;
   if (_22 != 0)
@@ -3011,16 +2591,17 @@ FlexCAN_Ip_ConfigRemoteResponseMb (uint8 instance, uint8 mb_idx, const struct Fl
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _23 = (long unsigned int) mb_idx;
   _24 = state->isIntActive;
   result = FlexCAN_SetMsgBuffIntCmd (pBase, instance, _23, 1, _24);
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
-  D.7758 = result;
+  D.7792 = result;
   cs = {CLOBBER};
-  return D.7758;
+
+  <bb 8> :
+<L7>:
+  return D.7792;
 
 }
 
@@ -3032,40 +2613,31 @@ FlexCAN_Ip_ConfigRxFifo_Privileged (uint8 instance, Flexcan_Ip_RxFifoIdElementFo
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType status;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7748;
+  Flexcan_Ip_StatusType D.7782;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   status = 0;
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_IsEnabled (pBase);
   _4 = (int) _3;
   _5 = _4 != 0;
   _6 = ~_5;
   _7 = (int) _6;
   disabled = (boolean) _7;
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_Enable (pBase);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   freeze = FlexCAN_IsFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   _8 = ~freeze;
   if (_8 != 0)
     goto <bb 5>; [INV]
@@ -3079,44 +2651,39 @@ FlexCAN_Ip_ConfigRxFifo_Privileged (uint8 instance, Flexcan_Ip_RxFifoIdElementFo
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   result = 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 8>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   FlexCAN_SetRxFifoFilter (pBase, id_format, id_filter_table);
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   if (disabled != 0)
     goto <bb 10>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   status = FlexCAN_Disable (pBase);
-  # DEBUG BEGIN_STMT
   if (status != 0)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = status;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.7748 = result;
-  return D.7748;
+  D.7782 = result;
+
+  <bb 13> :
+<L12>:
+  return D.7782;
 
 }
 
@@ -3124,30 +2691,27 @@ FlexCAN_Ip_ConfigRxFifo_Privileged (uint8 instance, Flexcan_Ip_RxFifoIdElementFo
 FlexCAN_Ip_RxFifoBlocking (uint8 instance, struct Flexcan_Ip_MsgBuffType * data, uint32 timeout)
 {
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7705;
+  Flexcan_Ip_StatusType D.7768;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = FlexCAN_StartRxMessageFifoData (instance, data);
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_ProccessLegacyRxFIFO (instance, timeout);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.7705 = result;
-  return D.7705;
+  D.7768 = result;
+
+  <bb 5> :
+<L2>:
+  return D.7768;
 
 }
 
@@ -3155,19 +2719,18 @@ FlexCAN_Ip_RxFifoBlocking (uint8 instance, struct Flexcan_Ip_MsgBuffType * data,
 FlexCAN_Ip_RxFifo (uint8 instance, struct Flexcan_Ip_MsgBuffType * data)
 {
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7689;
+  Flexcan_Ip_StatusType D.7764;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   result = FlexCAN_StartRxMessageFifoData (instance, data);
-  # DEBUG BEGIN_STMT
-  D.7689 = result;
-  return D.7689;
+  D.7764 = result;
+
+  <bb 3> :
+<L0>:
+  return D.7764;
 
 }
 
@@ -3180,30 +2743,21 @@ FlexCAN_Ip_ReceiveBlocking (uint8 instance, uint8 mb_idx, struct Flexcan_Ip_MsgB
   uint32 timeElapsed;
   uint32 timeStart;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7658;
-  long unsigned int D.7644;
+  Flexcan_Ip_StatusType D.7761;
+  long unsigned int D.7747;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   timeStart = 0;
-  # DEBUG BEGIN_STMT
   timeElapsed = 0;
-  # DEBUG BEGIN_STMT
   _1 = u32TimeoutMs * 1000;
   mS2Ticks = OsIf_MicrosToTicks (_1, 0);
-  # DEBUG BEGIN_STMT
   _2 = instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = (int) instance;
   state = Flexcan_Ip_apxState[_3];
-  # DEBUG BEGIN_STMT
   _4 = (int) instance;
   base = Flexcan_Ip_apxBase[_4];
-  # DEBUG BEGIN_STMT
   result = FlexCAN_StartRxMessageBufferData (instance, mb_idx, data, isPolling);
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 3>; [INV]
   else
@@ -3217,34 +2771,28 @@ FlexCAN_Ip_ReceiveBlocking (uint8 instance, uint8 mb_idx, struct Flexcan_Ip_MsgB
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _6 = (long unsigned int) mb_idx;
   _7 = state->isIntActive;
   result = FlexCAN_SetMsgBuffIntCmd (base, instance, _6, 1, _7);
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 6>; [INV]
   else
     goto <bb 13>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _8 = OsIf_GetCounter (0);
   timeStart = _8;
-  # DEBUG BEGIN_STMT
   goto <bb 12>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (isPolling != 0)
     goto <bb 8>; [INV]
   else
     goto <bb 10>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _9 = (long unsigned int) mb_idx;
   _10 = FlexCAN_GetBuffStatusFlag (base, _9);
   if (_10 != 0)
@@ -3253,28 +2801,22 @@ FlexCAN_Ip_ReceiveBlocking (uint8 instance, uint8 mb_idx, struct Flexcan_Ip_MsgB
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   _11 = (long unsigned int) mb_idx;
   FlexCAN_IRQHandlerRxMB (instance, _11);
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
-  D.7644 = OsIf_GetElapsed (&timeStart, 0);
-  timeElapsed = D.7644 + timeElapsed;
-  # DEBUG BEGIN_STMT
+  D.7747 = OsIf_GetElapsed (&timeStart, 0);
+  timeElapsed = D.7747 + timeElapsed;
   if (timeElapsed >= mS2Ticks)
     goto <bb 11>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   result = 3;
-  # DEBUG BEGIN_STMT
   goto <bb 13>; [INV]
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   _12 = (int) mb_idx;
   _13 = state->mbs[_12].state;
   if (_13 == 1)
@@ -3283,7 +2825,6 @@ FlexCAN_Ip_ReceiveBlocking (uint8 instance, uint8 mb_idx, struct Flexcan_Ip_MsgB
     goto <bb 13>; [INV]
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   if (result == 3)
     goto <bb 14>; [INV]
   else
@@ -3297,13 +2838,11 @@ FlexCAN_Ip_ReceiveBlocking (uint8 instance, uint8 mb_idx, struct Flexcan_Ip_MsgB
     goto <bb 16>; [INV]
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
   _15 = (long unsigned int) mb_idx;
   _16 = state->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (base, instance, _15, 0, _16);
 
   <bb 16> :
-  # DEBUG BEGIN_STMT
   if (result != 4)
     goto <bb 17>; [INV]
   else
@@ -3316,7 +2855,6 @@ FlexCAN_Ip_ReceiveBlocking (uint8 instance, uint8 mb_idx, struct Flexcan_Ip_MsgB
     goto <bb 21>; [INV]
 
   <bb 18> :
-  # DEBUG BEGIN_STMT
   _17 = (int) mb_idx;
   _18 = state->mbs[_17].state;
   if (_18 == 0)
@@ -3325,22 +2863,21 @@ FlexCAN_Ip_ReceiveBlocking (uint8 instance, uint8 mb_idx, struct Flexcan_Ip_MsgB
     goto <bb 20>; [INV]
 
   <bb 19> :
-  # DEBUG BEGIN_STMT
   result = 0;
   goto <bb 21>; [INV]
 
   <bb 20> :
-  # DEBUG BEGIN_STMT
   _19 = (int) mb_idx;
   state->mbs[_19].state = 0;
-  # DEBUG BEGIN_STMT
   result = 3;
 
   <bb 21> :
-  # DEBUG BEGIN_STMT
-  D.7658 = result;
+  D.7761 = result;
   timeStart = {CLOBBER};
-  return D.7658;
+
+  <bb 22> :
+<L27>:
+  return D.7761;
 
 }
 
@@ -3350,22 +2887,16 @@ FlexCAN_Ip_Receive (uint8 instance, uint8 mb_idx, struct Flexcan_Ip_MsgBuffType 
   const struct Flexcan_Ip_StateType * state;
   struct FLEXCAN_Type * base;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7624;
+  Flexcan_Ip_StatusType D.7735;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   result = FlexCAN_StartRxMessageBufferData (instance, mb_idx, data, isPolling);
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 3>; [INV]
   else
@@ -3379,15 +2910,16 @@ FlexCAN_Ip_Receive (uint8 instance, uint8 mb_idx, struct Flexcan_Ip_MsgBuffType 
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _5 = (long unsigned int) mb_idx;
   _6 = state->isIntActive;
   result = FlexCAN_SetMsgBuffIntCmd (base, instance, _5, 1, _6);
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
-  D.7624 = result;
-  return D.7624;
+  D.7735 = result;
+
+  <bb 6> :
+<L4>:
+  return D.7735;
 
 }
 
@@ -3398,25 +2930,18 @@ FlexCAN_Ip_ConfigRxMb (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_Dat
   struct FLEXCAN_Type * base;
   struct Flexcan_Ip_MsbuffCodeStatusType cs;
   Flexcan_Ip_StatusType eResult;
-  Flexcan_Ip_StatusType D.7617;
+  Flexcan_Ip_StatusType D.7728;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   eResult = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = rx_info != 0B;
   DevAssert (_4);
-  # DEBUG BEGIN_STMT
   _5 = state->bIsLegacyFifoEn;
   _6 = state->u32MaxMbNum;
   _7 = FlexCAN_IsMbOutOfRange (base, mb_idx, _5, _6);
@@ -3426,44 +2951,35 @@ FlexCAN_Ip_ConfigRxMb (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_Dat
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   eResult = 4;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _8 = (long unsigned int) mb_idx;
   FlexCAN_ClearMsgBuffIntStatusFlag (base, _8);
-  # DEBUG BEGIN_STMT
   _9 = rx_info->data_length;
   cs.dataLen = _9;
-  # DEBUG BEGIN_STMT
   _10 = rx_info->msg_id_type;
   cs.msgIdType = _10;
-  # DEBUG BEGIN_STMT
   _11 = rx_info->fd_enable;
   cs.fd_enable = _11;
-  # DEBUG BEGIN_STMT
   cs.code = 15;
-  # DEBUG BEGIN_STMT
   _12 = (long unsigned int) mb_idx;
   FlexCAN_SetRxMsgBuff (base, _12, &cs, msg_id);
-  # DEBUG BEGIN_STMT
   cs.code = 0;
-  # DEBUG BEGIN_STMT
   _13 = (long unsigned int) mb_idx;
   FlexCAN_SetRxMsgBuff (base, _13, &cs, msg_id);
-  # DEBUG BEGIN_STMT
   cs.code = 4;
-  # DEBUG BEGIN_STMT
   _14 = (long unsigned int) mb_idx;
   FlexCAN_SetRxMsgBuff (base, _14, &cs, msg_id);
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
-  D.7617 = eResult;
+  D.7728 = eResult;
   cs = {CLOBBER};
-  return D.7617;
+
+  <bb 6> :
+<L4>:
+  return D.7728;
 
 }
 
@@ -3473,24 +2989,18 @@ FlexCAN_Ip_Send (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_DataInfoT
   const struct Flexcan_Ip_StateType * state;
   struct FLEXCAN_Type * base;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7596;
+  Flexcan_Ip_StatusType D.7721;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result = 1;
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = tx_info != 0B;
   DevAssert (_4);
-  # DEBUG BEGIN_STMT
   _5 = FlexCAN_IsListenOnlyModeEnabled (base);
   _6 = ~_5;
   if (_6 != 0)
@@ -3499,9 +3009,7 @@ FlexCAN_Ip_Send (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_DataInfoT
     goto <bb 6>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = FlexCAN_StartSendData (instance, mb_idx, tx_info, msg_id, mb_data);
-  # DEBUG BEGIN_STMT
   if (result == 0)
     goto <bb 4>; [INV]
   else
@@ -3516,15 +3024,16 @@ FlexCAN_Ip_Send (uint8 instance, uint8 mb_idx, const struct Flexcan_Ip_DataInfoT
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _9 = (long unsigned int) mb_idx;
   _10 = state->isIntActive;
   result = FlexCAN_SetMsgBuffIntCmd (base, instance, _9, 1, _10);
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
-  D.7596 = result;
-  return D.7596;
+  D.7721 = result;
+
+  <bb 7> :
+<L6>:
+  return D.7721;
 
 }
 
@@ -3534,22 +3043,16 @@ FlexCAN_Ip_Init_Privileged (uint8 Flexcan_Ip_u8Instance, struct Flexcan_Ip_State
   uint32 i;
   struct FLEXCAN_Type * pBase;
   Flexcan_Ip_StatusType eResult;
-  Flexcan_Ip_StatusType D.7537;
+  Flexcan_Ip_StatusType D.7709;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   eResult = 0;
-  # DEBUG BEGIN_STMT
   _1 = (int) Flexcan_Ip_u8Instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _2 = Flexcan_Ip_u8Instance <= 2;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = Flexcan_Ip_pData != 0B;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = Flexcan_Ip_pData->fd_enable;
   if (_4 != 0)
     goto <bb 3>; [INV]
@@ -3557,26 +3060,21 @@ FlexCAN_Ip_Init_Privileged (uint8 Flexcan_Ip_u8Instance, struct Flexcan_Ip_State
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _5 = FlexCAN_IsFDAvailable (pBase);
   _6 = Flexcan_Ip_pData->fd_enable;
   _7 = _5 == _6;
   DevAssert (_7);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   eResult = FlexCAN_InitController (pBase, Flexcan_Ip_pData);
-  # DEBUG BEGIN_STMT
   if (eResult == 0)
     goto <bb 5>; [INV]
   else
     goto <bb 12>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _8 = Flexcan_Ip_pData->fd_enable;
   FlexCAN_EnableExtCbt (pBase, _8);
-  # DEBUG BEGIN_STMT
   _9 = Flexcan_Ip_pData->fd_enable;
   if (_9 != 0)
     goto <bb 6>; [INV]
@@ -3584,76 +3082,58 @@ FlexCAN_Ip_Init_Privileged (uint8 Flexcan_Ip_u8Instance, struct Flexcan_Ip_State
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _10 = &Flexcan_Ip_pData->bitrate;
   FlexCAN_SetExtendedTimeSegments (pBase, _10);
-  # DEBUG BEGIN_STMT
   _11 = &Flexcan_Ip_pData->bitrate_cbt;
   FlexCAN_SetFDTimeSegments (pBase, _11);
   goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   _12 = &Flexcan_Ip_pData->bitrate;
   FlexCAN_SetTimeSegments (pBase, _12);
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _13 = Flexcan_Ip_pData->flexcanMode;
   FlexCAN_SetOperationMode (pBase, _13);
-  # DEBUG BEGIN_STMT
   i = 0;
   goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   Flexcan_Ip_pState->mbs[i].isPolling = 1;
-  # DEBUG BEGIN_STMT
   Flexcan_Ip_pState->mbs[i].pMBmessage = 0B;
-  # DEBUG BEGIN_STMT
   Flexcan_Ip_pState->mbs[i].state = 0;
-  # DEBUG BEGIN_STMT
   Flexcan_Ip_pState->mbs[i].time_stamp = 0;
-  # DEBUG BEGIN_STMT
   i = i + 1;
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   if (i <= 31)
     goto <bb 9>; [INV]
   else
     goto <bb 11>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   _14 = Flexcan_Ip_pData->transfer_type;
   Flexcan_Ip_pState->transferType = _14;
-  # DEBUG BEGIN_STMT
   _15 = Flexcan_Ip_pData->Callback;
   Flexcan_Ip_pState->callback = _15;
-  # DEBUG BEGIN_STMT
   Flexcan_Ip_pState->callbackParam = 0B;
-  # DEBUG BEGIN_STMT
   _16 = Flexcan_Ip_pData->ErrorCallback;
   Flexcan_Ip_pState->error_callback = _16;
-  # DEBUG BEGIN_STMT
   Flexcan_Ip_pState->errorCallbackParam = 0B;
-  # DEBUG BEGIN_STMT
   _17 = Flexcan_Ip_pData->is_rx_fifo_needed;
   Flexcan_Ip_pState->bIsLegacyFifoEn = _17;
-  # DEBUG BEGIN_STMT
   _18 = Flexcan_Ip_pData->max_num_mb;
   Flexcan_Ip_pState->u32MaxMbNum = _18;
-  # DEBUG BEGIN_STMT
   Flexcan_Ip_pState->isIntActive = 1;
-  # DEBUG BEGIN_STMT
   _19 = (int) Flexcan_Ip_u8Instance;
   Flexcan_Ip_apxState[_19] = Flexcan_Ip_pState;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
-  D.7537 = eResult;
-  return D.7537;
+  D.7709 = eResult;
+
+  <bb 13> :
+<L10>:
+  return D.7709;
 
 }
 
@@ -3668,24 +3148,16 @@ FlexCAN_AbortRxTransfer (uint8 u8Instance, uint8 mb_idx)
   struct FLEXCAN_Type * pBase;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   val1 = 0;
-  # DEBUG BEGIN_STMT
   val2 = 0;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = 0;
-  # DEBUG BEGIN_STMT
   flexcan_mb = 0B;
-  # DEBUG BEGIN_STMT
   _3 = (int) mb_idx;
   state->mbs[_3].state = 0;
-  # DEBUG BEGIN_STMT
   _4 = state->bIsLegacyFifoEn;
   if (_4 != 0)
     goto <bb 3>; [INV]
@@ -3693,13 +3165,10 @@ FlexCAN_AbortRxTransfer (uint8 u8Instance, uint8 mb_idx)
     goto <bb 7>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _5 = pBase->CTRL2;
   _6 = _5 >> 24;
   val1 = _6 & 15;
-  # DEBUG BEGIN_STMT
   val2 = RxFifoOcuppiedLastMsgBuff (val1);
-  # DEBUG BEGIN_STMT
   _7 = (long unsigned int) mb_idx;
   if (val2 < _7)
     goto <bb 4>; [INV]
@@ -3707,58 +3176,39 @@ FlexCAN_AbortRxTransfer (uint8 u8Instance, uint8 mb_idx)
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _8 = (long unsigned int) mb_idx;
   flexcan_mb = FlexCAN_GetMsgBuffRegion (pBase, _8);
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = *flexcan_mb;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config & 4043309055;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config;
-  # DEBUG BEGIN_STMT
   *flexcan_mb = flexcan_mb_config;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config & 4043309055;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config | 67108864;
-  # DEBUG BEGIN_STMT
   *flexcan_mb = flexcan_mb_config;
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   if (mb_idx == 0)
     goto <bb 6>; [INV]
   else
     goto <bb 8>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _9 = state->isIntActive;
   FLEXCAN_ClearMsgBuffIntCmd (pBase, u8Instance, 5, _9);
   goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   _10 = (long unsigned int) mb_idx;
   flexcan_mb = FlexCAN_GetMsgBuffRegion (pBase, _10);
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = *flexcan_mb;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config & 4043309055;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config;
-  # DEBUG BEGIN_STMT
   *flexcan_mb = flexcan_mb_config;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config & 4043309055;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config | 67108864;
-  # DEBUG BEGIN_STMT
   *flexcan_mb = flexcan_mb_config;
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _11 = (long unsigned int) mb_idx;
   FlexCAN_ClearMsgBuffIntStatusFlag (pBase, _11);
   return;
@@ -3776,65 +3226,44 @@ FlexCAN_AbortTxTransfer (uint8 u8Instance, uint8 mb_idx)
   Flexcan_Ip_StatusType result;
   struct Flexcan_Ip_StateType * state;
   struct FLEXCAN_Type * pBase;
-  Flexcan_Ip_StatusType D.8112;
-  long unsigned int D.8103;
+  Flexcan_Ip_StatusType D.7690;
+  long unsigned int D.7681;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   timeStart = 0;
-  # DEBUG BEGIN_STMT
   timeElapsed = 0;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = 0;
-  # DEBUG BEGIN_STMT
   uS2Ticks = 0;
-  # DEBUG BEGIN_STMT
   flexcan_mb = 0B;
-  # DEBUG BEGIN_STMT
   _3 = (long unsigned int) mb_idx;
   flexcan_mb = FlexCAN_GetMsgBuffRegion (pBase, _3);
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = *flexcan_mb;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config & 4043309055;
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = flexcan_mb_config | 150994944;
-  # DEBUG BEGIN_STMT
   *flexcan_mb = flexcan_mb_config;
-  # DEBUG BEGIN_STMT
   uS2Ticks = OsIf_MicrosToTicks (10000, 0);
-  # DEBUG BEGIN_STMT
   _4 = OsIf_GetCounter (0);
   timeStart = _4;
-  # DEBUG BEGIN_STMT
   goto <bb 5>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
-  D.8103 = OsIf_GetElapsed (&timeStart, 0);
-  timeElapsed = D.8103 + timeElapsed;
-  # DEBUG BEGIN_STMT
+  D.7681 = OsIf_GetElapsed (&timeStart, 0);
+  timeElapsed = D.7681 + timeElapsed;
   if (timeElapsed >= uS2Ticks)
     goto <bb 4>; [INV]
   else
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   result = 3;
-  # DEBUG BEGIN_STMT
   goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _5 = (long unsigned int) mb_idx;
   _6 = FlexCAN_GetBuffStatusFlag (pBase, _5);
   if (_6 == 0)
@@ -3843,16 +3272,13 @@ FlexCAN_AbortTxTransfer (uint8 u8Instance, uint8 mb_idx)
     goto <bb 6>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   if (result != 3)
     goto <bb 7>; [INV]
   else
     goto <bb 11>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   flexcan_mb_config = *flexcan_mb;
-  # DEBUG BEGIN_STMT
   _7 = flexcan_mb_config >> 24;
   _8 = _7 & 15;
   if (_8 == 8)
@@ -3861,11 +3287,9 @@ FlexCAN_AbortTxTransfer (uint8 u8Instance, uint8 mb_idx)
     goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   result = 5;
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   _9 = flexcan_mb_config >> 24;
   _10 = _9 & 15;
   if (_10 == 9)
@@ -3874,20 +3298,19 @@ FlexCAN_AbortTxTransfer (uint8 u8Instance, uint8 mb_idx)
     goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   result = 0;
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   _11 = (long unsigned int) mb_idx;
   FlexCAN_ClearMsgBuffIntStatusFlag (pBase, _11);
-  # DEBUG BEGIN_STMT
   _12 = (int) mb_idx;
   state->mbs[_12].state = 0;
-  # DEBUG BEGIN_STMT
-  D.8112 = result;
+  D.7690 = result;
   timeStart = {CLOBBER};
-  return D.8112;
+
+  <bb 12> :
+<L12>:
+  return D.7690;
 
 }
 
@@ -3900,22 +3323,16 @@ FlexCAN_ProcessSpuriousInterruptMB (uint8 instance, uint32 startMbIdx, uint32 en
   struct FLEXCAN_Type * base;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   mb_idx = 0;
-  # DEBUG BEGIN_STMT
   u32MbHandle = 0;
-  # DEBUG BEGIN_STMT
   mb_idx = startMbIdx;
   goto <bb 12>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _3 = FlexCAN_GetBuffStatusFlag (base, mb_idx);
   if (_3 != 0)
     goto <bb 4>; [INV]
@@ -3930,9 +3347,7 @@ FlexCAN_ProcessSpuriousInterruptMB (uint8 instance, uint32 startMbIdx, uint32 en
     goto <bb 11>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   u32MbHandle = mb_idx;
-  # DEBUG BEGIN_STMT
   _5 = state->bIsLegacyFifoEn;
   if (_5 != 0)
     goto <bb 6>; [INV]
@@ -3946,11 +3361,9 @@ FlexCAN_ProcessSpuriousInterruptMB (uint8 instance, uint32 startMbIdx, uint32 en
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   u32MbHandle = 0;
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _6 = state->mbs[u32MbHandle].isPolling;
   _7 = ~_6;
   if (_7 != 0)
@@ -3959,9 +3372,7 @@ FlexCAN_ProcessSpuriousInterruptMB (uint8 instance, uint32 startMbIdx, uint32 en
     goto <bb 11>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   FlexCAN_ClearMsgBuffIntStatusFlag (base, mb_idx);
-  # DEBUG BEGIN_STMT
   _8 = state->mbs[u32MbHandle].state;
   if (_8 == 2)
     goto <bb 10>; [INV]
@@ -3969,17 +3380,13 @@ FlexCAN_ProcessSpuriousInterruptMB (uint8 instance, uint32 startMbIdx, uint32 en
     goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   state->mbs[u32MbHandle].state = 0;
-  # DEBUG BEGIN_STMT
   state->mbs[u32MbHandle].isPolling = 1;
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   mb_idx = mb_idx + 1;
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   if (mb_idx <= endMbIdx)
     goto <bb 3>; [INV]
   else
@@ -3998,14 +3405,10 @@ FlexCAN_IRQHandlerRxFIFO (uint8 instance, uint32 mb_idx)
   struct FLEXCAN_Type * base;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _3 = state->mbs[0].pMBmessage;
   if (_3 == 0B)
     goto <bb 3>; [INV]
@@ -4013,31 +3416,24 @@ FlexCAN_IRQHandlerRxFIFO (uint8 instance, uint32 mb_idx)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   state->mbs[0].pMBmessage = &data;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  switch (mb_idx) <default: <L17> [INV], case 5: <L2> [INV], case 6: <L9> [INV], case 7: <L12> [INV]>
+  switch (mb_idx) <default: <L15> [INV], case 5: <L2> [INV], case 6: <L9> [INV], case 7: <L12> [INV]>
 
   <bb 5> :
 <L2>:
-  # DEBUG BEGIN_STMT
   _4 = state->mbs[0].state;
   if (_4 == 1)
     goto <bb 6>; [INV]
   else
-    goto <bb 14>; [INV]
+    goto <bb 10>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _5 = state->mbs[0].pMBmessage;
   FlexCAN_ReadRxFifo (base, _5);
-  # DEBUG BEGIN_STMT
   FlexCAN_ClearMsgBuffIntStatusFlag (base, mb_idx);
-  # DEBUG BEGIN_STMT
   state->mbs[0].state = 0;
-  # DEBUG BEGIN_STMT
   _6 = state->callback;
   if (_6 != 0B)
     goto <bb 7>; [INV]
@@ -4045,60 +3441,59 @@ FlexCAN_IRQHandlerRxFIFO (uint8 instance, uint32 mb_idx)
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   _7 = state->callback;
   _7 (instance, 1, 0, state);
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _8 = state->mbs[0].state;
   if (_8 == 0)
     goto <bb 9>; [INV]
   else
-    goto <bb 14>; [INV]
+    goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   state->mbs[0].isPolling = 1;
-  # DEBUG BEGIN_STMT
   FlexCAN_CompleteRxMessageFifoData (instance);
-  goto <bb 14>; [INV]
 
   <bb 10> :
-<L9>:
-  # DEBUG BEGIN_STMT
-  FlexCAN_ClearMsgBuffIntStatusFlag (base, mb_idx);
-  # DEBUG BEGIN_STMT
-  _9 = state->callback;
-  if (_9 != 0B)
-    goto <bb 11>; [INV]
-  else
-    goto <bb 14>; [INV]
+  goto <bb 18>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
-  _10 = state->callback;
-  _10 (instance, 2, 0, state);
-  goto <bb 14>; [INV]
+<L9>:
+  FlexCAN_ClearMsgBuffIntStatusFlag (base, mb_idx);
+  _9 = state->callback;
+  if (_9 != 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
 
   <bb 12> :
-<L12>:
-  # DEBUG BEGIN_STMT
-  FlexCAN_ClearMsgBuffIntStatusFlag (base, mb_idx);
-  # DEBUG BEGIN_STMT
-  _11 = state->callback;
-  if (_11 != 0B)
-    goto <bb 13>; [INV]
-  else
-    goto <bb 14>; [INV]
+  _10 = state->callback;
+  _10 (instance, 2, 0, state);
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 14> :
+<L12>:
+  FlexCAN_ClearMsgBuffIntStatusFlag (base, mb_idx);
+  _11 = state->callback;
+  if (_11 != 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
   _12 = state->callback;
   _12 (instance, 3, 0, state);
 
-  <bb 14> :
-<L17>:
+  <bb 16> :
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+<L15>:
+
+  <bb 18> :
   data = {CLOBBER};
   return;
 
@@ -4113,16 +3508,11 @@ FlexCAN_IRQHandlerTxMB (uint8 u8Instance, uint32 u32MbIdx)
   struct FLEXCAN_Type * pBase;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   pState = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   bCurrentIntStat = 0;
-  # DEBUG BEGIN_STMT
   _3 = pState->mbs[u32MbIdx].isRemote;
   if (_3 != 0)
     goto <bb 3>; [INV]
@@ -4130,16 +3520,11 @@ FlexCAN_IRQHandlerTxMB (uint8 u8Instance, uint32 u32MbIdx)
     goto <bb 5>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   FlexCAN_LockRxMsgBuff (pBase, u32MbIdx);
-  # DEBUG BEGIN_STMT
   FlexCAN_GetMsgBuff (pBase, u32MbIdx, &mb);
-  # DEBUG BEGIN_STMT
   FlexCAN_UnlockRxMsgBuff (pBase);
-  # DEBUG BEGIN_STMT
   _4 = mb.time_stamp;
   pState->mbs[u32MbIdx].time_stamp = _4;
-  # DEBUG BEGIN_STMT
   _5 = mb.cs;
   _6 = _5 >> 24;
   _7 = _6 & 15;
@@ -4149,25 +3534,18 @@ FlexCAN_IRQHandlerTxMB (uint8 u8Instance, uint32 u32MbIdx)
     goto <bb 6>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   FlexCAN_ClearMsgBuffIntStatusFlag (pBase, u32MbIdx);
   goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _8 = FlexCAN_GetMsgBuffTimestamp (pBase, u32MbIdx);
   pState->mbs[u32MbIdx].time_stamp = _8;
-  # DEBUG BEGIN_STMT
   FlexCAN_UnlockRxMsgBuff (pBase);
-  # DEBUG BEGIN_STMT
   FlexCAN_ClearMsgBuffIntStatusFlag (pBase, u32MbIdx);
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   pState->mbs[u32MbIdx].state = 0;
-  # DEBUG BEGIN_STMT
   bCurrentIntStat = pState->mbs[u32MbIdx].isPolling;
-  # DEBUG BEGIN_STMT
   _9 = pState->callback;
   if (_9 != 0B)
     goto <bb 7>; [INV]
@@ -4175,12 +3553,10 @@ FlexCAN_IRQHandlerTxMB (uint8 u8Instance, uint32 u32MbIdx)
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   _10 = pState->callback;
   _10 (u8Instance, 4, u32MbIdx, pState);
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _11 = pState->mbs[u32MbIdx].state;
   if (_11 == 0)
     goto <bb 9>; [INV]
@@ -4196,15 +3572,12 @@ FlexCAN_IRQHandlerTxMB (uint8 u8Instance, uint32 u32MbIdx)
     goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   pState->mbs[u32MbIdx].isPolling = 1;
-  # DEBUG BEGIN_STMT
   _14 = pState->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (pBase, u8Instance, u32MbIdx, 0, _14);
   goto <bb 14>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   _15 = ~bCurrentIntStat;
   if (_15 != 0)
     goto <bb 12>; [INV]
@@ -4219,12 +3592,10 @@ FlexCAN_IRQHandlerTxMB (uint8 u8Instance, uint32 u32MbIdx)
     goto <bb 14>; [INV]
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   _17 = pState->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (pBase, u8Instance, u32MbIdx, 0, _17);
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   mb = {CLOBBER};
   return;
 
@@ -4241,16 +3612,11 @@ FlexCAN_IRQHandlerRxMB (uint8 instance, uint32 mb_idx)
   struct FLEXCAN_Type * base;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   bCurrentIntStat = 0;
-  # DEBUG BEGIN_STMT
   _3 = state->mbs[mb_idx].pMBmessage;
   if (_3 == 0B)
     goto <bb 3>; [INV]
@@ -4258,13 +3624,10 @@ FlexCAN_IRQHandlerRxMB (uint8 instance, uint32 mb_idx)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   state->mbs[mb_idx].pMBmessage = &data;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   bIsCriticalSectionNeeded = 0;
-  # DEBUG BEGIN_STMT
   _4 = state->mbs[mb_idx].isPolling;
   if (_4 != 0)
     goto <bb 5>; [INV]
@@ -4272,7 +3635,6 @@ FlexCAN_IRQHandlerRxMB (uint8 instance, uint32 mb_idx)
     goto <bb 7>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _5 = state->bIsLegacyFifoEn;
   if (_5 != 0)
     goto <bb 6>; [INV]
@@ -4280,20 +3642,14 @@ FlexCAN_IRQHandlerRxMB (uint8 instance, uint32 mb_idx)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   bIsCriticalSectionNeeded = 1;
-  # DEBUG BEGIN_STMT
   __asm__ __volatile__(" cpsid i");
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   FlexCAN_LockRxMsgBuff (base, mb_idx);
-  # DEBUG BEGIN_STMT
   _6 = state->mbs[mb_idx].pMBmessage;
   FlexCAN_GetMsgBuff (base, mb_idx, _6);
-  # DEBUG BEGIN_STMT
   FlexCAN_ClearMsgBuffIntStatusFlag (base, mb_idx);
-  # DEBUG BEGIN_STMT
   _7 = state->bIsLegacyFifoEn;
   if (_7 != 0)
     goto <bb 8>; [INV]
@@ -4311,39 +3667,30 @@ FlexCAN_IRQHandlerRxMB (uint8 instance, uint32 mb_idx)
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   flexcan_mb = FlexCAN_GetMsgBuffRegion (base, mb_idx);
-  # DEBUG BEGIN_STMT
   _12 = *flexcan_mb;
   _13 = _12 & 4043309055;
   *flexcan_mb = _13;
-  # DEBUG BEGIN_STMT
   _14 = *flexcan_mb;
   _15 = _14 | 67108864;
   *flexcan_mb = _15;
   goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   FlexCAN_UnlockRxMsgBuff (base);
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   if (bIsCriticalSectionNeeded != 0)
     goto <bb 12>; [INV]
   else
     goto <bb 13>; [INV]
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   __asm__ __volatile__(" cpsie i");
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   state->mbs[mb_idx].state = 0;
-  # DEBUG BEGIN_STMT
   bCurrentIntStat = state->mbs[mb_idx].isPolling;
-  # DEBUG BEGIN_STMT
   _16 = state->callback;
   if (_16 != 0B)
     goto <bb 14>; [INV]
@@ -4351,12 +3698,10 @@ FlexCAN_IRQHandlerRxMB (uint8 instance, uint32 mb_idx)
     goto <bb 15>; [INV]
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   _17 = state->callback;
   _17 (instance, 0, mb_idx, state);
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
   _18 = state->mbs[mb_idx].state;
   if (_18 == 0)
     goto <bb 16>; [INV]
@@ -4372,15 +3717,12 @@ FlexCAN_IRQHandlerRxMB (uint8 instance, uint32 mb_idx)
     goto <bb 18>; [INV]
 
   <bb 17> :
-  # DEBUG BEGIN_STMT
   state->mbs[mb_idx].isPolling = 1;
-  # DEBUG BEGIN_STMT
   _21 = state->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (base, instance, mb_idx, 0, _21);
   goto <bb 21>; [INV]
 
   <bb 18> :
-  # DEBUG BEGIN_STMT
   _22 = ~bCurrentIntStat;
   if (_22 != 0)
     goto <bb 19>; [INV]
@@ -4395,12 +3737,10 @@ FlexCAN_IRQHandlerRxMB (uint8 instance, uint32 mb_idx)
     goto <bb 21>; [INV]
 
   <bb 20> :
-  # DEBUG BEGIN_STMT
   _24 = state->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (base, instance, mb_idx, 0, _24);
 
   <bb 21> :
-  # DEBUG BEGIN_STMT
   data = {CLOBBER};
   return;
 
@@ -4412,25 +3752,18 @@ FlexCAN_StartRxMessageFifoData (uint8 instance, struct Flexcan_Ip_MsgBuffType * 
   Flexcan_Ip_StatusType eResult;
   struct Flexcan_Ip_StateType * state;
   struct FLEXCAN_Type * base;
-  Flexcan_Ip_StatusType D.7701;
+  Flexcan_Ip_StatusType D.7639;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   base = 0B;
-  # DEBUG BEGIN_STMT
   state = 0B;
-  # DEBUG BEGIN_STMT
   eResult = 0;
-  # DEBUG BEGIN_STMT
   _1 = instance <= 2;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   base = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   _3 = (int) instance;
   state = Flexcan_Ip_apxState[_3];
-  # DEBUG BEGIN_STMT
   _4 = state->bIsLegacyFifoEn;
   _5 = ~_4;
   if (_5 != 0)
@@ -4439,12 +3772,10 @@ FlexCAN_StartRxMessageFifoData (uint8 instance, struct Flexcan_Ip_MsgBuffType * 
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   eResult = 1;
   goto <bb 10>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _6 = state->mbs[0].state;
   if (_6 != 0)
     goto <bb 5>; [INV]
@@ -4452,14 +3783,11 @@ FlexCAN_StartRxMessageFifoData (uint8 instance, struct Flexcan_Ip_MsgBuffType * 
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   eResult = 2;
   goto <bb 10>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   state->mbs[0].state = 1;
-  # DEBUG BEGIN_STMT
   _7 = state->transferType;
   if (_7 == 1)
     goto <bb 7>; [INV]
@@ -4467,13 +3795,10 @@ FlexCAN_StartRxMessageFifoData (uint8 instance, struct Flexcan_Ip_MsgBuffType * 
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   state->mbs[0].isPolling = 1;
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   state->mbs[0].pMBmessage = data;
-  # DEBUG BEGIN_STMT
   _8 = state->transferType;
   if (_8 == 0)
     goto <bb 9>; [INV]
@@ -4481,22 +3806,20 @@ FlexCAN_StartRxMessageFifoData (uint8 instance, struct Flexcan_Ip_MsgBuffType * 
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   state->mbs[0].isPolling = 0;
-  # DEBUG BEGIN_STMT
   _9 = state->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (base, instance, 6, 1, _9);
-  # DEBUG BEGIN_STMT
   _10 = state->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (base, instance, 7, 1, _10);
-  # DEBUG BEGIN_STMT
   _11 = state->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (base, instance, 5, 1, _11);
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
-  D.7701 = eResult;
-  return D.7701;
+  D.7639 = eResult;
+
+  <bb 11> :
+<L10>:
+  return D.7639;
 
 }
 
@@ -4508,34 +3831,25 @@ FlexCAN_StartSendData (uint8 Flexcan_Ip_u8Instance, uint8 mb_idx, const struct F
   struct Flexcan_Ip_StateType * state;
   struct Flexcan_Ip_MsbuffCodeStatusType cs;
   Flexcan_Ip_StatusType eResult;
-  Flexcan_Ip_StatusType D.7609;
+  Flexcan_Ip_StatusType D.7626;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   eResult = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = (int) Flexcan_Ip_u8Instance;
   state = Flexcan_Ip_apxState[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) Flexcan_Ip_u8Instance;
   base = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   pMbAddr = 0B;
-  # DEBUG BEGIN_STMT
   _3 = Flexcan_Ip_u8Instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = tx_info != 0B;
   DevAssert (_4);
-  # DEBUG BEGIN_STMT
   _5 = tx_info->data_length;
   _6 = (unsigned char) _5;
   _7 = (long unsigned int) mb_idx;
   _8 = FlexCAN_GetMbPayloadSize (base, _7);
   _9 = _6 <= _8;
   DevAssert (_9);
-  # DEBUG BEGIN_STMT
   _10 = state->bIsLegacyFifoEn;
   _11 = state->u32MaxMbNum;
   _12 = FlexCAN_IsMbOutOfRange (base, mb_idx, _10, _11);
@@ -4545,12 +3859,10 @@ FlexCAN_StartSendData (uint8 Flexcan_Ip_u8Instance, uint8 mb_idx, const struct F
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   eResult = 4;
   goto <bb 10>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _13 = (int) mb_idx;
   _14 = state->mbs[_13].state;
   if (_14 != 0)
@@ -4559,44 +3871,32 @@ FlexCAN_StartSendData (uint8 Flexcan_Ip_u8Instance, uint8 mb_idx, const struct F
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   eResult = 2;
   goto <bb 10>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _15 = (long unsigned int) mb_idx;
   FlexCAN_ClearMsgBuffIntStatusFlag (base, _15);
-  # DEBUG BEGIN_STMT
   _16 = (int) mb_idx;
   state->mbs[_16].state = 2;
-  # DEBUG BEGIN_STMT
   _17 = (int) mb_idx;
   state->mbs[_17].time_stamp = 0;
-  # DEBUG BEGIN_STMT
   _18 = (int) mb_idx;
   _19 = tx_info->is_polling;
   state->mbs[_18].isPolling = _19;
-  # DEBUG BEGIN_STMT
   _20 = (int) mb_idx;
   _21 = tx_info->is_remote;
   state->mbs[_20].isRemote = _21;
-  # DEBUG BEGIN_STMT
   _22 = tx_info->data_length;
   cs.dataLen = _22;
-  # DEBUG BEGIN_STMT
   _23 = tx_info->msg_id_type;
   cs.msgIdType = _23;
-  # DEBUG BEGIN_STMT
   _24 = tx_info->fd_enable;
   cs.fd_enable = _24;
-  # DEBUG BEGIN_STMT
   _25 = tx_info->fd_padding;
   cs.fd_padding = _25;
-  # DEBUG BEGIN_STMT
   _26 = tx_info->enable_brs;
   cs.enable_brs = _26;
-  # DEBUG BEGIN_STMT
   _27 = tx_info->is_remote;
   if (_27 != 0)
     goto <bb 7>; [INV]
@@ -4604,26 +3904,24 @@ FlexCAN_StartSendData (uint8 Flexcan_Ip_u8Instance, uint8 mb_idx, const struct F
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   cs.code = 28;
   goto <bb 9>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   cs.code = 12;
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   _28 = (long unsigned int) mb_idx;
   pMbAddr = FlexCAN_GetMsgBuffRegion (base, _28);
-  # DEBUG BEGIN_STMT
   FlexCAN_SetTxMsgBuff (pMbAddr, &cs, msg_id, mb_data, 0);
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
-  D.7609 = eResult;
+  D.7626 = eResult;
   cs = {CLOBBER};
-  return D.7609;
+
+  <bb 11> :
+<L10>:
+  return D.7626;
 
 }
 
@@ -4633,21 +3931,16 @@ FlexCAN_StartRxMessageBufferData (uint8 instance, uint8 mb_idx, struct Flexcan_I
   struct Flexcan_Ip_StateType * state;
   const struct FLEXCAN_Type * base;
   Flexcan_Ip_StatusType result;
-  Flexcan_Ip_StatusType D.7632;
+  Flexcan_Ip_StatusType D.7612;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result = 0;
-  # DEBUG BEGIN_STMT
   _1 = (int) instance;
   base = Flexcan_Ip_apxBase[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) instance;
   state = Flexcan_Ip_apxState[_2];
-  # DEBUG BEGIN_STMT
   _3 = instance <= 2;
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = state->bIsLegacyFifoEn;
   _5 = state->u32MaxMbNum;
   _6 = FlexCAN_IsMbOutOfRange (base, mb_idx, _4, _5);
@@ -4657,12 +3950,10 @@ FlexCAN_StartRxMessageBufferData (uint8 instance, uint8 mb_idx, struct Flexcan_I
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   result = 4;
   goto <bb 7>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _7 = (int) mb_idx;
   _8 = state->mbs[_7].state;
   if (_8 != 0)
@@ -4671,25 +3962,23 @@ FlexCAN_StartRxMessageBufferData (uint8 instance, uint8 mb_idx, struct Flexcan_I
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   result = 2;
   goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _9 = (int) mb_idx;
   state->mbs[_9].state = 1;
-  # DEBUG BEGIN_STMT
   _10 = (int) mb_idx;
   state->mbs[_10].pMBmessage = data;
-  # DEBUG BEGIN_STMT
   _11 = (int) mb_idx;
   state->mbs[_11].isPolling = isPolling;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
-  D.7632 = result;
-  return D.7632;
+  D.7612 = result;
+
+  <bb 8> :
+<L6>:
+  return D.7612;
 
 }
 
@@ -4703,35 +3992,25 @@ FlexCAN_ProccessLegacyRxFIFO (uint8 u8Instance, uint32 u32TimeoutMs)
   struct FLEXCAN_Type * pBase;
   struct Flexcan_Ip_StateType * pState;
   Flexcan_Ip_StatusType eResult;
-  Flexcan_Ip_StatusType D.7718;
-  long unsigned int D.7711;
+  Flexcan_Ip_StatusType D.7585;
+  long unsigned int D.7578;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   eResult = 0;
-  # DEBUG BEGIN_STMT
   _1 = (int) u8Instance;
   pState = Flexcan_Ip_apxState[_1];
-  # DEBUG BEGIN_STMT
   _2 = (int) u8Instance;
   pBase = Flexcan_Ip_apxBase[_2];
-  # DEBUG BEGIN_STMT
   timeStart = 0;
-  # DEBUG BEGIN_STMT
   timeElapsed = 0;
-  # DEBUG BEGIN_STMT
   _3 = u32TimeoutMs * 1000;
   mS2Ticks = OsIf_MicrosToTicks (_3, 0);
-  # DEBUG BEGIN_STMT
   u32intType = 0;
-  # DEBUG BEGIN_STMT
   _4 = OsIf_GetCounter (0);
   timeStart = _4;
-  # DEBUG BEGIN_STMT
   goto <bb 11>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _5 = pState->transferType;
   if (_5 == 1)
     goto <bb 4>; [INV]
@@ -4739,12 +4018,10 @@ FlexCAN_ProccessLegacyRxFIFO (uint8 u8Instance, uint32 u32TimeoutMs)
     goto <bb 9>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   u32intType = 7;
   goto <bb 8>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _6 = FlexCAN_GetBuffStatusFlag (pBase, u32intType);
   if (_6 != 0)
     goto <bb 6>; [INV]
@@ -4752,38 +4029,30 @@ FlexCAN_ProccessLegacyRxFIFO (uint8 u8Instance, uint32 u32TimeoutMs)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   FlexCAN_IRQHandlerRxFIFO (u8Instance, u32intType);
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   u32intType = u32intType + 4294967295;
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   if (u32intType > 4)
     goto <bb 5>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
-  D.7711 = OsIf_GetElapsed (&timeStart, 0);
-  timeElapsed = D.7711 + timeElapsed;
-  # DEBUG BEGIN_STMT
+  D.7578 = OsIf_GetElapsed (&timeStart, 0);
+  timeElapsed = D.7578 + timeElapsed;
   if (timeElapsed >= mS2Ticks)
     goto <bb 10>; [INV]
   else
     goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   eResult = 3;
-  # DEBUG BEGIN_STMT
   goto <bb 12>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   _7 = pState->mbs[0].state;
   if (_7 == 1)
     goto <bb 3>; [INV]
@@ -4791,7 +4060,6 @@ FlexCAN_ProccessLegacyRxFIFO (uint8 u8Instance, uint32 u32TimeoutMs)
     goto <bb 12>; [INV]
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   if (eResult == 3)
     goto <bb 13>; [INV]
   else
@@ -4805,46 +4073,38 @@ FlexCAN_ProccessLegacyRxFIFO (uint8 u8Instance, uint32 u32TimeoutMs)
     goto <bb 15>; [INV]
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   _9 = pState->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (pBase, u8Instance, 5, 0, _9);
-  # DEBUG BEGIN_STMT
   _10 = pState->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (pBase, u8Instance, 6, 0, _10);
-  # DEBUG BEGIN_STMT
   _11 = pState->isIntActive;
   FlexCAN_SetMsgBuffIntCmd (pBase, u8Instance, 7, 0, _11);
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
   _12 = pState->mbs[0].state;
   switch (_12) <default: <L18> [INV], case 0: <L17> [INV], case 1: <L16> [INV]>
 
   <bb 16> :
 <L16>:
-  # DEBUG BEGIN_STMT
   pState->mbs[0].state = 0;
-  # DEBUG BEGIN_STMT
   goto <bb 19>; [INV]
 
   <bb 17> :
 <L17>:
-  # DEBUG BEGIN_STMT
   eResult = 0;
-  # DEBUG BEGIN_STMT
   goto <bb 19>; [INV]
 
   <bb 18> :
 <L18>:
-  # DEBUG BEGIN_STMT
   eResult = 1;
-  # DEBUG BEGIN_STMT
 
   <bb 19> :
-  # DEBUG BEGIN_STMT
-  D.7718 = eResult;
+  D.7585 = eResult;
   timeStart = {CLOBBER};
-  return D.7718;
+
+  <bb 20> :
+<L21>:
+  return D.7585;
 
 }
 
@@ -4852,12 +4112,10 @@ FlexCAN_ProccessLegacyRxFIFO (uint8 u8Instance, uint32 u32TimeoutMs)
 FlexCAN_InitController (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_ConfigType * Flexcan_Ip_pData)
 {
   Flexcan_Ip_StatusType eResult;
-  Flexcan_Ip_StatusType D.7553;
+  Flexcan_Ip_StatusType D.7558;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   eResult = 0;
-  # DEBUG BEGIN_STMT
   _1 = FlexCAN_IsEnabled (pBase);
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -4865,50 +4123,39 @@ FlexCAN_InitController (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_Con
     goto <bb 5>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   eResult = FlexCAN_EnterFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   if (eResult == 0)
     goto <bb 4>; [INV]
   else
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   eResult = FlexCAN_Disable (pBase);
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   if (eResult == 0)
     goto <bb 6>; [INV]
   else
     goto <bb 11>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _2 = Flexcan_Ip_pData->is_pe_clock;
   FlexCAN_SetClkSrc (pBase, _2);
-  # DEBUG BEGIN_STMT
   _3 = pBase->MCR;
   _4 = _3 & 2147483647;
   pBase->MCR = _4;
-  # DEBUG BEGIN_STMT
   eResult = FlexCAN_Init (pBase);
-  # DEBUG BEGIN_STMT
   if (eResult != 0)
     goto <bb 7>; [INV]
   else
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   FlexCAN_EnterFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   FlexCAN_Disable (pBase);
   goto <bb 11>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   _5 = FlexCAN_IsFDAvailable (pBase);
   if (_5 != 0)
     goto <bb 9>; [INV]
@@ -4916,22 +4163,21 @@ FlexCAN_InitController (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_Con
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   _6 = Flexcan_Ip_pData->fd_enable;
   _7 = Flexcan_Ip_pData->bitRateSwitch;
   FlexCAN_SetFDEnabled (pBase, _6, _7);
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   _8 = Flexcan_Ip_pData->ctrlOptions;
   FlexCAN_ConfigCtrlOptions (pBase, _8);
-  # DEBUG BEGIN_STMT
   eResult = FlexCAN_InitCtroll (pBase, Flexcan_Ip_pData);
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
-  D.7553 = eResult;
-  return D.7553;
+  D.7558 = eResult;
+
+  <bb 12> :
+<L11>:
+  return D.7558;
 
 }
 
@@ -4939,12 +4185,10 @@ FlexCAN_InitController (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_Con
 FlexCAN_InitCtroll (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_ConfigType * Flexcan_Ip_pData)
 {
   Flexcan_Ip_StatusType eResult;
-  Flexcan_Ip_StatusType D.7576;
+  Flexcan_Ip_StatusType D.7541;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   eResult = 0;
-  # DEBUG BEGIN_STMT
   _1 = Flexcan_Ip_pData->flexcanMode;
   if (_1 != 2)
     goto <bb 3>; [INV]
@@ -4952,48 +4196,40 @@ FlexCAN_InitCtroll (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_ConfigT
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   FlexCAN_SetSelfReception (pBase, 0);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   eResult = FlexCAN_InitRxFifo (pBase, Flexcan_Ip_pData);
-  # DEBUG BEGIN_STMT
   if (eResult != 0)
     goto <bb 5>; [INV]
   else
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   FlexCAN_EnterFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   FlexCAN_Disable (pBase);
   goto <bb 8>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _2 = &Flexcan_Ip_pData->payload;
   FlexCAN_SetPayloadSize (pBase, _2);
-  # DEBUG BEGIN_STMT
   _3 = Flexcan_Ip_pData->max_num_mb;
   eResult = FlexCAN_SetMaxMsgBuffNum (pBase, _3);
-  # DEBUG BEGIN_STMT
   if (eResult != 0)
     goto <bb 7>; [INV]
   else
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   FlexCAN_EnterFreezeMode (pBase);
-  # DEBUG BEGIN_STMT
   FlexCAN_Disable (pBase);
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
-  D.7576 = eResult;
-  return D.7576;
+  D.7541 = eResult;
+
+  <bb 9> :
+<L7>:
+  return D.7541;
 
 }
 
@@ -5001,12 +4237,10 @@ FlexCAN_InitCtroll (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_ConfigT
 FlexCAN_InitRxFifo (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_ConfigType * Flexcan_Ip_pData)
 {
   Flexcan_Ip_StatusType eResult;
-  Flexcan_Ip_StatusType D.7584;
+  Flexcan_Ip_StatusType D.7532;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   eResult = 0;
-  # DEBUG BEGIN_STMT
   _1 = Flexcan_Ip_pData->is_rx_fifo_needed;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -5014,14 +4248,15 @@ FlexCAN_InitRxFifo (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_ConfigT
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = Flexcan_Ip_pData->num_id_filters;
   eResult = FlexCAN_EnableRxFifo (pBase, _2);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.7584 = eResult;
-  return D.7584;
+  D.7532 = eResult;
+
+  <bb 5> :
+<L2>:
+  return D.7532;
 
 }
 
@@ -5029,7 +4264,6 @@ FlexCAN_InitRxFifo (struct FLEXCAN_Type * pBase, const struct Flexcan_Ip_ConfigT
 FlexCAN_SetRegDefaultVal (struct FLEXCAN_Type * base)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = FlexCAN_IsFDAvailable (base);
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -5037,29 +4271,18 @@ FlexCAN_SetRegDefaultVal (struct FLEXCAN_Type * base)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   base->FDCBT = 0;
-  # DEBUG BEGIN_STMT
   base->FDCTRL = 2147500288;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   base->IFLAG1 = 4294967295;
-  # DEBUG BEGIN_STMT
   base->IMASK1 = 0;
-  # DEBUG BEGIN_STMT
   base->CBT = 0;
-  # DEBUG BEGIN_STMT
   base->CTRL2 = 1048576;
-  # DEBUG BEGIN_STMT
   base->ESR1 = 241670;
-  # DEBUG BEGIN_STMT
   base->ECR = 0;
-  # DEBUG BEGIN_STMT
   base->TIMER = 0;
-  # DEBUG BEGIN_STMT
   base->CTRL1 = 0;
-  # DEBUG BEGIN_STMT
   base->MCR = 3633315855;
   return;
 
@@ -5069,21 +4292,18 @@ FlexCAN_SetRegDefaultVal (struct FLEXCAN_Type * base)
 FlexCAN_SetRxMaskType (struct FLEXCAN_Type * base, Flexcan_Ip_RxMaskType type)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   if (type == 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _1 = base->MCR;
   _2 = _1 & 4294901759;
   base->MCR = _2;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _3 = base->MCR;
   _4 = _3 | 65536;
   base->MCR = _4;
@@ -5097,7 +4317,6 @@ FlexCAN_SetRxMaskType (struct FLEXCAN_Type * base, Flexcan_Ip_RxMaskType type)
 FlexCAN_SetTxArbitrationStartDelay (struct FLEXCAN_Type * base, uint8 tasd)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->CTRL2;
   _2 = _1 & 4278714367;
   _3 = (long unsigned int) tasd;
@@ -5112,14 +4331,16 @@ FlexCAN_SetTxArbitrationStartDelay (struct FLEXCAN_Type * base, uint8 tasd)
 
 FlexCAN_IsFreezeMode (const struct FLEXCAN_Type * base)
 {
-  boolean D.7750;
+  boolean D.7784;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->MCR;
   _2 = _1 & 16777216;
-  D.7750 = _2 != 0;
-  return D.7750;
+  D.7784 = _2 != 0;
+
+  <bb 3> :
+<L0>:
+  return D.7784;
 
 }
 
@@ -5127,7 +4348,6 @@ FlexCAN_IsFreezeMode (const struct FLEXCAN_Type * base)
 FlexCAN_SetRxIndividualMask (struct FLEXCAN_Type * base, uint32 msgBuffIdx, uint32 mask)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   base->RXIMR[msgBuffIdx] = mask;
   return;
 
@@ -5137,7 +4357,6 @@ FlexCAN_SetRxIndividualMask (struct FLEXCAN_Type * base, uint32 msgBuffIdx, uint
 FlexCAN_SetRxMsgBuffGlobalMask (struct FLEXCAN_Type * base, uint32 Mask)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   base->RXMGMASK = Mask;
   return;
 
@@ -5148,22 +4367,17 @@ FlexCAN_GetMsgBuffIntStatusFlag (const struct FLEXCAN_Type * base, uint32 msgBuf
 {
   uint32 mask;
   uint8 flag;
-  uint8 D.7806;
+  uint8 D.7831;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   flag = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   if (msgBuffIdx <= 31)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   mask = base->IMASK1;
-  # DEBUG BEGIN_STMT
   _1 = base->IFLAG1;
   _2 = mask & _1;
   _3 = msgBuffIdx & 31;
@@ -5172,9 +4386,11 @@ FlexCAN_GetMsgBuffIntStatusFlag (const struct FLEXCAN_Type * base, uint32 msgBuf
   flag = _5 & 1;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.7806 = flag;
-  return D.7806;
+  D.7831 = flag;
+
+  <bb 5> :
+<L2>:
+  return D.7831;
 
 }
 
@@ -5184,7 +4400,6 @@ FlexCAN_SetClkSrc (struct FLEXCAN_Type * base, boolean enable)
   long unsigned int iftmp.1;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->CTRL1;
   _2 = _1 & 4294959103;
   if (enable != 0)
@@ -5209,53 +4424,58 @@ FlexCAN_SetClkSrc (struct FLEXCAN_Type * base, boolean enable)
 
 RxFifoOcuppiedLastMsgBuff (uint32 x)
 {
-  uint32 D.8122;
+  uint32 D.7700;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = x + 1;
   _2 = _1 * 8;
   _3 = _2 / 4;
-  D.8122 = _3 + 5;
-  return D.8122;
+  D.7700 = _3 + 5;
+
+  <bb 3> :
+<L0>:
+  return D.7700;
 
 }
 
 
 FlexCAN_IsListenOnlyModeEnabled (const struct FLEXCAN_Type * base)
 {
-  boolean D.7598;
+  boolean D.7723;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->CTRL1;
   _2 = _1 & 8;
-  D.7598 = _2 != 0;
-  return D.7598;
+  D.7723 = _2 != 0;
+
+  <bb 3> :
+<L0>:
+  return D.7723;
 
 }
 
 
 FlexCAN_IsFDEnabled (const struct FLEXCAN_Type * base)
 {
-  boolean D.8032;
+  boolean D.8057;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->MCR;
   _2 = _1 & 2048;
-  D.8032 = _2 != 0;
-  return D.8032;
+  D.8057 = _2 != 0;
+
+  <bb 3> :
+<L0>:
+  return D.8057;
 
 }
 
 
 FlexCAN_SetSelfReception (struct FLEXCAN_Type * base, boolean enable)
 {
-  long unsigned int iftmp.4;
+  long unsigned int iftmp.0;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->MCR;
   _2 = _1 & 4294836223;
   if (enable != 0)
@@ -5264,14 +4484,14 @@ FlexCAN_SetSelfReception (struct FLEXCAN_Type * base, boolean enable)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.4 = 0;
+  iftmp.0 = 0;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.4 = 131072;
+  iftmp.0 = 131072;
 
   <bb 5> :
-  _3 = iftmp.4 | _2;
+  _3 = iftmp.0 | _2;
   base->MCR = _3;
   return;
 
@@ -5280,10 +4500,9 @@ FlexCAN_SetSelfReception (struct FLEXCAN_Type * base, boolean enable)
 
 FlexCAN_EnableExtCbt (struct FLEXCAN_Type * base, boolean enableCBT)
 {
-  long unsigned int iftmp.5;
+  long unsigned int iftmp.6;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->CBT;
   _2 = _1 & 2147483647;
   if (enableCBT != 0)
@@ -5292,14 +4511,14 @@ FlexCAN_EnableExtCbt (struct FLEXCAN_Type * base, boolean enableCBT)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.5 = 2147483648;
+  iftmp.6 = 2147483648;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.5 = 0;
+  iftmp.6 = 0;
 
   <bb 5> :
-  _3 = iftmp.5 | _2;
+  _3 = iftmp.6 | _2;
   base->CBT = _3;
   return;
 
@@ -5308,14 +4527,16 @@ FlexCAN_EnableExtCbt (struct FLEXCAN_Type * base, boolean enableCBT)
 
 FlexCAN_IsExCbtEnabled (const struct FLEXCAN_Type * pBase)
 {
-  boolean D.8007;
+  boolean D.8032;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = pBase->CBT;
   _2 = (signed int) _1;
-  D.8007 = _2 < 0;
-  return D.8007;
+  D.8032 = _2 < 0;
+
+  <bb 3> :
+<L0>:
+  return D.8032;
 
 }
 
@@ -5323,26 +4544,21 @@ FlexCAN_IsExCbtEnabled (const struct FLEXCAN_Type * pBase)
 FlexCAN_GetFDTimeSegments (const struct FLEXCAN_Type * base, struct Flexcan_Ip_TimeSegmentType * timeSeg)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->FDCBT;
   _2 = _1 >> 20;
   _3 = _2 & 1023;
   timeSeg->preDivider = _3;
-  # DEBUG BEGIN_STMT
   _4 = base->FDCBT;
   _5 = _4 >> 10;
   _6 = _5 & 31;
   timeSeg->propSeg = _6;
-  # DEBUG BEGIN_STMT
   _7 = base->FDCBT;
   _8 = _7 >> 5;
   _9 = _8 & 7;
   timeSeg->phaseSeg1 = _9;
-  # DEBUG BEGIN_STMT
   _10 = base->FDCBT;
   _11 = _10 & 7;
   timeSeg->phaseSeg2 = _11;
-  # DEBUG BEGIN_STMT
   _12 = base->FDCBT;
   _13 = _12 >> 16;
   _14 = _13 & 7;
@@ -5355,26 +4571,21 @@ FlexCAN_GetFDTimeSegments (const struct FLEXCAN_Type * base, struct Flexcan_Ip_T
 FlexCAN_GetTimeSegments (const struct FLEXCAN_Type * base, struct Flexcan_Ip_TimeSegmentType * timeSeg)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->CTRL1;
   _2 = _1 >> 24;
   _3 = _2 & 255;
   timeSeg->preDivider = _3;
-  # DEBUG BEGIN_STMT
   _4 = base->CTRL1;
   _5 = _4 & 7;
   timeSeg->propSeg = _5;
-  # DEBUG BEGIN_STMT
   _6 = base->CTRL1;
   _7 = _6 >> 19;
   _8 = _7 & 7;
   timeSeg->phaseSeg1 = _8;
-  # DEBUG BEGIN_STMT
   _9 = base->CTRL1;
   _10 = _9 >> 16;
   _11 = _10 & 7;
   timeSeg->phaseSeg2 = _11;
-  # DEBUG BEGIN_STMT
   _12 = base->CTRL1;
   _13 = _12 >> 22;
   _14 = _13 & 3;
@@ -5387,26 +4598,21 @@ FlexCAN_GetTimeSegments (const struct FLEXCAN_Type * base, struct Flexcan_Ip_Tim
 FlexCAN_GetExtendedTimeSegments (const struct FLEXCAN_Type * base, struct Flexcan_Ip_TimeSegmentType * timeSeg)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->CBT;
   _2 = _1 >> 21;
   _3 = _2 & 1023;
   timeSeg->preDivider = _3;
-  # DEBUG BEGIN_STMT
   _4 = base->CBT;
   _5 = _4 >> 10;
   _6 = _5 & 63;
   timeSeg->propSeg = _6;
-  # DEBUG BEGIN_STMT
   _7 = base->CBT;
   _8 = _7 >> 5;
   _9 = _8 & 31;
   timeSeg->phaseSeg1 = _9;
-  # DEBUG BEGIN_STMT
   _10 = base->CBT;
   _11 = _10 & 31;
   timeSeg->phaseSeg2 = _11;
-  # DEBUG BEGIN_STMT
   _12 = base->CBT;
   _13 = _12 >> 16;
   _14 = _13 & 31;
@@ -5419,14 +4625,11 @@ FlexCAN_GetExtendedTimeSegments (const struct FLEXCAN_Type * base, struct Flexca
 FlexCAN_SetExtendedTimeSegments (struct FLEXCAN_Type * base, const struct Flexcan_Ip_TimeSegmentType * timeSeg)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = timeSeg != 0B;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = base->CBT;
   _3 = _2 & 2147483648;
   base->CBT = _3;
-  # DEBUG BEGIN_STMT
   _4 = base->CBT;
   _5 = timeSeg->propSeg;
   _6 = _5 << 10;
@@ -5456,14 +4659,11 @@ FlexCAN_SetExtendedTimeSegments (struct FLEXCAN_Type * base, const struct Flexca
 FlexCAN_SetTimeSegments (struct FLEXCAN_Type * base, const struct Flexcan_Ip_TimeSegmentType * timeSeg)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = timeSeg != 0B;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = base->CTRL1;
   _3 = _2 & 65528;
   base->CTRL1 = _3;
-  # DEBUG BEGIN_STMT
   _4 = base->CTRL1;
   _5 = timeSeg->propSeg;
   _6 = _5 & 7;
@@ -5492,14 +4692,11 @@ FlexCAN_SetTimeSegments (struct FLEXCAN_Type * base, const struct Flexcan_Ip_Tim
 FlexCAN_SetFDTimeSegments (struct FLEXCAN_Type * base, const struct Flexcan_Ip_TimeSegmentType * timeSeg)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = timeSeg != 0B;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = base->FDCBT;
   _3 = _2 & 3221783320;
   base->FDCBT = _3;
-  # DEBUG BEGIN_STMT
   _4 = base->FDCBT;
   _5 = timeSeg->propSeg;
   _6 = _5 << 10;
@@ -5529,19 +4726,16 @@ FlexCAN_SetFDTimeSegments (struct FLEXCAN_Type * base, const struct Flexcan_Ip_T
 FlexCAN_GetBuffStatusImask (const struct FLEXCAN_Type * base, uint32 msgBuffIdx)
 {
   uint32 u32Imask;
-  uint8 D.7822;
+  uint8 D.7847;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   u32Imask = 0;
-  # DEBUG BEGIN_STMT
   if (msgBuffIdx <= 31)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _1 = base->IMASK1;
   _2 = msgBuffIdx & 31;
   _3 = 1 << _2;
@@ -5550,9 +4744,11 @@ FlexCAN_GetBuffStatusImask (const struct FLEXCAN_Type * base, uint32 msgBuffIdx)
   u32Imask = _4 >> _5;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.7822 = (uint8) u32Imask;
-  return D.7822;
+  D.7847 = (uint8) u32Imask;
+
+  <bb 5> :
+<L2>:
+  return D.7847;
 
 }
 
@@ -5560,19 +4756,16 @@ FlexCAN_GetBuffStatusImask (const struct FLEXCAN_Type * base, uint32 msgBuffIdx)
 FlexCAN_GetBuffStatusFlag (const struct FLEXCAN_Type * base, uint32 msgBuffIdx)
 {
   uint32 flag;
-  uint8 D.7663;
+  uint8 D.7590;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   flag = 0;
-  # DEBUG BEGIN_STMT
   if (msgBuffIdx <= 31)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _1 = base->IFLAG1;
   _2 = msgBuffIdx & 31;
   _3 = 1 << _2;
@@ -5581,9 +4774,11 @@ FlexCAN_GetBuffStatusFlag (const struct FLEXCAN_Type * base, uint32 msgBuffIdx)
   flag = _4 >> _5;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  D.7663 = (uint8) flag;
-  return D.7663;
+  D.7590 = (uint8) flag;
+
+  <bb 5> :
+<L2>:
+  return D.7590;
 
 }
 
@@ -5593,17 +4788,14 @@ FlexCAN_ClearMsgBuffIntStatusFlag (struct FLEXCAN_Type * base, uint32 msgBuffIdx
   uint32 flag;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = msgBuffIdx & 31;
   flag = 1 << _1;
-  # DEBUG BEGIN_STMT
   if (msgBuffIdx <= 31)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   base->IFLAG1 = flag;
 
   <bb 4> :
@@ -5614,11 +4806,10 @@ FlexCAN_ClearMsgBuffIntStatusFlag (struct FLEXCAN_Type * base, uint32 msgBuffIdx
 
 FlexCAN_UnlockRxMsgBuff (const struct FLEXCAN_Type * base)
 {
-  long unsigned int vol.6;
+  long unsigned int vol.5;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  vol.6 = base->TIMER;
+  vol.5 = base->TIMER;
   return;
 
 }
@@ -5626,10 +4817,9 @@ FlexCAN_UnlockRxMsgBuff (const struct FLEXCAN_Type * base)
 
 FlexCAN_SetListenOnlyMode (struct FLEXCAN_Type * base, boolean enableListenOnly)
 {
-  long unsigned int iftmp.7;
+  long unsigned int iftmp.9;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->CTRL1;
   _2 = _1 & 4294967287;
   if (enableListenOnly != 0)
@@ -5638,14 +4828,14 @@ FlexCAN_SetListenOnlyMode (struct FLEXCAN_Type * base, boolean enableListenOnly)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.7 = 8;
+  iftmp.9 = 8;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.7 = 0;
+  iftmp.9 = 0;
 
   <bb 5> :
-  _3 = iftmp.7 | _2;
+  _3 = iftmp.9 | _2;
   base->CTRL1 = _3;
   return;
 
@@ -5658,7 +4848,6 @@ FlexCAN_SetFDEnabled (struct FLEXCAN_Type * base, boolean enableFD, boolean enab
   long unsigned int iftmp.2;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = base->MCR;
   _2 = _1 & 4294965247;
   if (enableFD != 0)
@@ -5676,7 +4865,6 @@ FlexCAN_SetFDEnabled (struct FLEXCAN_Type * base, boolean enableFD, boolean enab
   <bb 5> :
   _3 = iftmp.2 | _2;
   base->MCR = _3;
-  # DEBUG BEGIN_STMT
   _4 = base->FDCTRL;
   _5 = _4 & 2147483647;
   if (enableBRS != 0)
@@ -5694,7 +4882,6 @@ FlexCAN_SetFDEnabled (struct FLEXCAN_Type * base, boolean enableFD, boolean enab
   <bb 8> :
   _6 = iftmp.3 | _5;
   base->FDCTRL = _6;
-  # DEBUG BEGIN_STMT
   _7 = base->FDCTRL;
   _8 = _7 & 4294926591;
   base->FDCTRL = _8;
@@ -5705,14 +4892,16 @@ FlexCAN_SetFDEnabled (struct FLEXCAN_Type * base, boolean enableFD, boolean enab
 
 FlexCAN_IsEnabled (const struct FLEXCAN_Type * pBase)
 {
-  boolean D.7555;
+  boolean D.7560;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = pBase->MCR;
   _2 = (signed int) _1;
-  D.7555 = _2 >= 0;
-  return D.7555;
+  D.7560 = _2 >= 0;
+
+  <bb 3> :
+<L0>:
+  return D.7560;
 
 }
 
@@ -5722,28 +4911,21 @@ FlexCAN_SetTDCOffset (struct FLEXCAN_Type * base, boolean enable, uint8 offset)
   uint32 tmp;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   tmp = base->FDCTRL;
-  # DEBUG BEGIN_STMT
   tmp = tmp & 4294926591;
-  # DEBUG BEGIN_STMT
   if (enable != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   tmp = tmp | 32768;
-  # DEBUG BEGIN_STMT
   _1 = (long unsigned int) offset;
   _2 = _1 << 8;
   _3 = _2 & 7936;
   tmp = tmp | _3;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   base->FDCTRL = tmp;
   return;
 
@@ -5753,7 +4935,6 @@ FlexCAN_SetTDCOffset (struct FLEXCAN_Type * base, boolean enable, uint8 offset)
 FlexCAN_SetRxFifoGlobalMask (struct FLEXCAN_Type * base, uint32 Mask)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   base->RXFGMASK = Mask;
   return;
 
@@ -5763,21 +4944,16 @@ FlexCAN_SetRxFifoGlobalMask (struct FLEXCAN_Type * base, uint32 Mask)
 DevAssert (volatile boolean x)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  x.0_1 = x;
-  if (x.0_1 != 0)
+  x.4_1 = x;
+  if (x.4_1 != 0)
     goto <bb 4>; [INV]
   else
     goto <bb 3>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   goto <bb 3>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   return;
 
 }

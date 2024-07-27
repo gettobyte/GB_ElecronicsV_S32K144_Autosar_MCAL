@@ -24,7 +24,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Port_au16PinDescription/1 (Port_au16PinDescription) @069f1510
+Port_au16PinDescription/1 (Port_au16PinDescription) @05d67510
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 

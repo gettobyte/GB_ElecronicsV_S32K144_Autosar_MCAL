@@ -1,16 +1,3 @@
-/*!
-** Copyright 2019 NXP
-** @file main.c
-** @brief
-**         Main module.
-**         This module contains user's application code.
-*/
-/*!
-**  @addtogroup main_module main module documentation
-**  @{
-*/
-/* MODULE main */
-
 
 /* Including necessary configuration files. */
 #include "Mcal.h"
@@ -92,12 +79,26 @@ int main(void)
             .is_remote = FALSE
     };
 
+    Flexcan_Ip_DataInfoType tx_info_std_remote = {
+                .msg_id_type = FLEXCAN_MSG_ID_STD,
+                .data_length = 8u,
+                .is_polling = FALSE,
+                .is_remote = TRUE
+        };
+
     Flexcan_Ip_DataInfoType tx_info_ext = {
     		.msg_id_type = FLEXCAN_MSG_ID_EXT,
 			.data_length = 8u,
 			.is_polling = FALSE,
 			.is_remote = FALSE,
     };
+
+    Flexcan_Ip_DataInfoType tx_info_ext_remote = {
+        		.msg_id_type = FLEXCAN_MSG_ID_EXT,
+    			.data_length = 8u,
+    			.is_polling = FALSE,
+    			.is_remote = TRUE,
+        };
 
     FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
 
@@ -109,13 +110,13 @@ int main(void)
 	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &tx_info_std, MSG_ID0, (uint8 *)&CanData1);
 	   TestDelay(2000000);
 
-	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX1, &tx_info_std, MSG_ID1, (uint8 *)&CanData1);
+	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX1, &tx_info_std_remote, MSG_ID1, (uint8 *)&CanData1);
 	   TestDelay(2000000);
 
 	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX2, &tx_info_ext, MSG_ID2, (uint8 *)&CanData1);
 	   TestDelay(2000000);
 
-	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX3, &tx_info_ext, MSG_ID3, (uint8 *)&CanData1);
+	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX3, &tx_info_ext_remote, MSG_ID3, (uint8 *)&CanData1);
 	   TestDelay(2000000);
 
    }

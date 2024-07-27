@@ -3,27 +3,27 @@ Trivially needed symbols: init_data_bss
 
 Initial Symbol table:
 
-__ZERO_TABLE/2 (__ZERO_TABLE) @05b23048
+__ZERO_TABLE/2 (__ZERO_TABLE) @05cc7048
   Type: variable
   Visibility: external public
   References: 
   Referring: init_data_bss/0 (addr)
   Availability: not-ready
   Varpool flags:
-__INIT_TABLE/1 (__INIT_TABLE) @05b23000
+__INIT_TABLE/1 (__INIT_TABLE) @05cc7000
   Type: variable
   Visibility: external public
   References: 
   Referring: init_data_bss/0 (addr)
   Availability: not-ready
   Varpool flags:
-init_data_bss/0 (init_data_bss) @05b08a80
+init_data_bss/0 (init_data_bss) @05caba80
   Type: function definition analyzed
-  Visibility: public
+  Visibility: force_output no_reorder public
   Aux: @01733ea0
   References: __INIT_TABLE/1 (addr)__ZERO_TABLE/2 (addr)
   Referring: 
-  Function flags: body optimize_size
+  Function flags: body
   Called by: 
   Calls: 
 
@@ -31,52 +31,52 @@ Removing unused symbols:
 
 Reclaimed Symbol table:
 
-__ZERO_TABLE/2 (__ZERO_TABLE) @05b23048
+__ZERO_TABLE/2 (__ZERO_TABLE) @05cc7048
   Type: variable
   Visibility: external public
   References: 
   Referring: init_data_bss/0 (addr)
   Availability: not-ready
   Varpool flags:
-__INIT_TABLE/1 (__INIT_TABLE) @05b23000
+__INIT_TABLE/1 (__INIT_TABLE) @05cc7000
   Type: variable
   Visibility: external public
   References: 
   Referring: init_data_bss/0 (addr)
   Availability: not-ready
   Varpool flags:
-init_data_bss/0 (init_data_bss) @05b08a80
+init_data_bss/0 (init_data_bss) @05caba80
   Type: function definition analyzed
-  Visibility: public
+  Visibility: force_output no_reorder public
   References: __INIT_TABLE/1 (addr)__ZERO_TABLE/2 (addr)
   Referring: 
-  Function flags: body optimize_size
+  Function flags: body
   Called by: 
   Calls: 
 
 
 Initial Symbol table:
 
-__ZERO_TABLE/2 (__ZERO_TABLE) @05b23048
+__ZERO_TABLE/2 (__ZERO_TABLE) @05cc7048
   Type: variable
   Visibility: external public
   References: 
   Referring: init_data_bss/0 (addr)
   Availability: not-ready
   Varpool flags:
-__INIT_TABLE/1 (__INIT_TABLE) @05b23000
+__INIT_TABLE/1 (__INIT_TABLE) @05cc7000
   Type: variable
   Visibility: external public
   References: 
   Referring: init_data_bss/0 (addr)
   Availability: not-ready
   Varpool flags:
-init_data_bss/0 (init_data_bss) @05b08a80
+init_data_bss/0 (init_data_bss) @05caba80
   Type: function definition analyzed
-  Visibility: public
+  Visibility: force_output no_reorder public
   References: __INIT_TABLE/1 (addr)__ZERO_TABLE/2 (addr)
   Referring: 
-  Function flags: body optimize_size
+  Function flags: body
   Called by: 
   Calls: 
 
@@ -84,26 +84,26 @@ Removing unused symbols:
 
 Reclaimed Symbol table:
 
-__ZERO_TABLE/2 (__ZERO_TABLE) @05b23048
+__ZERO_TABLE/2 (__ZERO_TABLE) @05cc7048
   Type: variable
   Visibility: external public
   References: 
   Referring: init_data_bss/0 (addr)
   Availability: not-ready
   Varpool flags:
-__INIT_TABLE/1 (__INIT_TABLE) @05b23000
+__INIT_TABLE/1 (__INIT_TABLE) @05cc7000
   Type: variable
   Visibility: external public
   References: 
   Referring: init_data_bss/0 (addr)
   Availability: not-ready
   Varpool flags:
-init_data_bss/0 (init_data_bss) @05b08a80
+init_data_bss/0 (init_data_bss) @05caba80
   Type: function definition analyzed
-  Visibility: public
+  Visibility: force_output no_reorder public
   References: __INIT_TABLE/1 (addr)__ZERO_TABLE/2 (addr)
   Referring: 
-  Function flags: body optimize_size
+  Function flags: body
   Called by: 
   Calls: 
 
@@ -112,29 +112,29 @@ Reclaiming variables:
 Clearing address taken flags:
 Optimized Symbol table:
 
-__ZERO_TABLE/2 (__ZERO_TABLE) @05b23048
+__ZERO_TABLE/2 (__ZERO_TABLE) @05cc7048
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: init_data_bss/0 (read)init_data_bss/0 (addr)
+  Referring: init_data_bss/0 (addr)
   Availability: not_available
   Varpool flags:
-__INIT_TABLE/1 (__INIT_TABLE) @05b23000
+__INIT_TABLE/1 (__INIT_TABLE) @05cc7000
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: init_data_bss/0 (read)init_data_bss/0 (addr)
+  Referring: init_data_bss/0 (addr)
   Availability: not_available
   Varpool flags:
-init_data_bss/0 (init_data_bss) @05b08a80
+init_data_bss/0 (init_data_bss) @05caba80
   Type: function definition analyzed
-  Visibility: externally_visible public
-  References: __INIT_TABLE/1 (read)__INIT_TABLE/1 (addr)__ZERO_TABLE/2 (read)__ZERO_TABLE/2 (addr)
+  Visibility: force_output externally_visible no_reorder public
+  References: __INIT_TABLE/1 (addr)__ZERO_TABLE/2 (addr)
   Referring: 
   Availability: available
-  Function flags: count:14598062 (estimated locally) body nonfreeing_fn optimize_size
+  Function flags: body
   Called by: 
   Calls: 
 Materializing clones
@@ -143,13 +143,12 @@ Materialization Call site updates done.
 Reclaiming functions:
 Reclaiming variables:
 Clearing address taken flags:
-Time profile order in expand_all_functions:init_data_bss:0
 Trivially needed variables:
 Removing variables:
 
 Final Symbol table:
 
-__ZERO_TABLE/2 (__ZERO_TABLE) @05b23048
+__ZERO_TABLE/2 (__ZERO_TABLE) @05cc7048
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -157,7 +156,7 @@ __ZERO_TABLE/2 (__ZERO_TABLE) @05b23048
   Referring: 
   Availability: not_available
   Varpool flags:
-__INIT_TABLE/1 (__INIT_TABLE) @05b23000
+__INIT_TABLE/1 (__INIT_TABLE) @05cc7000
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -165,12 +164,12 @@ __INIT_TABLE/1 (__INIT_TABLE) @05b23000
   Referring: 
   Availability: not_available
   Varpool flags:
-init_data_bss/0 (init_data_bss) @05b08a80
+init_data_bss/0 (init_data_bss) @05caba80
   Type: function definition analyzed
-  Visibility: externally_visible asm_written public
+  Visibility: force_output externally_visible no_reorder asm_written public
   References: 
   Referring: 
   Availability: available
-  Function flags: count:14598062 (estimated locally) nonfreeing_fn optimize_size
+  Function flags:
   Called by: 
   Calls: 

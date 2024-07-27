@@ -55,7 +55,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-sys_m4_cache_init.constprop.0/7 (sys_m4_cache_init.constprop) @06b79ee0
+sys_m4_cache_init.constprop.0/7 (sys_m4_cache_init.constprop) @06c2eee0
   Type: function definition analyzed
   Visibility:
   References: 
@@ -65,7 +65,7 @@ sys_m4_cache_init.constprop.0/7 (sys_m4_cache_init.constprop) @06b79ee0
   Function flags: count:236223200 (estimated locally) local optimize_size
   Called by: SystemInit/6 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SystemInit/6 (SystemInit) @06b790e0
+SystemInit/6 (SystemInit) @06c2e0e0
   Type: function definition analyzed
   Visibility: externally_visible public section:.systeminit
   References: 
@@ -74,7 +74,7 @@ SystemInit/6 (SystemInit) @06b790e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: sys_m4_cache_init.constprop/7 (1073741824 (estimated locally),1.00 per call) 
-Sys_GetCoreID/4 (Sys_GetCoreID) @06b79d20
+Sys_GetCoreID/4 (Sys_GetCoreID) @06c2ed20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -83,7 +83,7 @@ Sys_GetCoreID/4 (Sys_GetCoreID) @06b79d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-default_interrupt_routine/3 (default_interrupt_routine) @06b79a80
+default_interrupt_routine/3 (default_interrupt_routine) @06c2ea80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -92,7 +92,7 @@ default_interrupt_routine/3 (default_interrupt_routine) @06b79a80
   Function flags: count:107374 (estimated locally) body executed_once optimize_size
   Called by: 
   Calls: 
-startup_go_to_user_mode/2 (startup_go_to_user_mode) @06b797e0
+startup_go_to_user_mode/2 (startup_go_to_user_mode) @06c2e7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -101,7 +101,7 @@ startup_go_to_user_mode/2 (startup_go_to_user_mode) @06b797e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-sys_m4_cache_init/1 (sys_m4_cache_init) @06b79460
+sys_m4_cache_init/1 (sys_m4_cache_init) @06c2e460
   Type: function
   Body removed by symtab_remove_unreachable_nodes
   Visibility: prevailing_def_ironly
@@ -111,7 +111,7 @@ sys_m4_cache_init/1 (sys_m4_cache_init) @06b79460
   Function flags: count:236223200 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-RESET_CATCH_CORE/0 (RESET_CATCH_CORE) @06b77a68
+RESET_CATCH_CORE/0 (RESET_CATCH_CORE) @06c2aa68
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 

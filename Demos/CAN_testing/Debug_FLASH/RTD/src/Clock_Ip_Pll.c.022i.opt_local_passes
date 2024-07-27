@@ -1,7 +1,6 @@
 EnableSpll (const struct Clock_Ip_PllConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   EnableSpll_TrustedCall (config_2(D));
   return;
 
@@ -17,7 +16,6 @@ EnableSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
   long unsigned int _5;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = config_8(D)->enable;
   if (_1 == 1)
     goto <bb 3>; [INV]
@@ -25,7 +23,6 @@ EnableSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   _3 ={v} _2->SPLLCSR;
   _4 = 1074151424B;
@@ -41,7 +38,6 @@ EnableSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
 DisableSpll (Clock_Ip_NameType PllName)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   DisableSpll_TrustedCall (PllName_2(D));
   return;
 
@@ -60,14 +56,11 @@ DisableSpll_TrustedCall (Clock_Ip_NameType PllName)
   long unsigned int _8;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 ={v} _1->SPLLCSR;
   _3 = 1074151424B;
   _4 = _2 & 4286578687;
   _3->SPLLCSR ={v} _4;
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _6 ={v} _5->SPLLCSR;
   _7 = 1074151424B;
@@ -86,6 +79,7 @@ CompleteSpll (Clock_Ip_NameType pllName)
   uint32 StartTime;
   boolean TimeoutOccurred;
   clock_pll_status_t pllStatus;
+  clock_pll_status_t D.6125;
   struct SCG_Type * _1;
   long unsigned int _2;
   long unsigned int _3;
@@ -98,17 +92,8 @@ CompleteSpll (Clock_Ip_NameType pllName)
   clock_pll_status_t _24;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   pllStatus_13 = 1;
-  # DEBUG pllStatus => pllStatus_13
-  # DEBUG BEGIN_STMT
   TimeoutOccurred_14 = 0;
-  # DEBUG TimeoutOccurred => TimeoutOccurred_14
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 ={v} _1->SPLLCSR;
   _3 = _2 & 1;
@@ -118,22 +103,15 @@ CompleteSpll (Clock_Ip_NameType pllName)
     goto <bb 9>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _4 = 1074151424B;
   _5 ={v} _4->SPLLCSR;
   _6 = _5 >> 24;
   SPLLStatus_18 = _6 & 1;
-  # DEBUG SPLLStatus => SPLLStatus_18
-  # DEBUG BEGIN_STMT
   TimeoutTicks.0_7 = TimeoutTicks;
   TimeoutOccurred_20 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_7);
-  # DEBUG TimeoutOccurred => TimeoutOccurred_20
-  # DEBUG BEGIN_STMT
   if (SPLLStatus_18 == 0)
     goto <bb 5>; [INV]
   else
@@ -147,7 +125,6 @@ CompleteSpll (Clock_Ip_NameType pllName)
     goto <bb 6>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _9 = ~TimeoutOccurred_20;
   if (_9 != 0)
     goto <bb 7>; [INV]
@@ -155,29 +132,25 @@ CompleteSpll (Clock_Ip_NameType pllName)
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   pllStatus_23 = 2;
-  # DEBUG pllStatus => pllStatus_23
   goto <bb 10>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   ReportClockErrors (1, pllName_21(D));
   goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   pllStatus_16 = 0;
-  # DEBUG pllStatus => pllStatus_16
 
   <bb 10> :
   # pllStatus_10 = PHI <pllStatus_13(8), pllStatus_16(9), pllStatus_23(7)>
-  # DEBUG pllStatus => pllStatus_10
-  # DEBUG BEGIN_STMT
   _24 = pllStatus_10;
   StartTime ={v} {CLOBBER};
   ElapsedTime ={v} {CLOBBER};
   TimeoutTicks ={v} {CLOBBER};
+
+  <bb 11> :
+<L10>:
   return _24;
 
 }
@@ -186,7 +159,6 @@ CompleteSpll (Clock_Ip_NameType pllName)
 SetSpll (const struct Clock_Ip_PllConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetSpll_TrustedCall (config_2(D));
   return;
 
@@ -218,15 +190,13 @@ SetSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
   struct SCG_Type * _21;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = config_24(D)->enable;
   if (_1 == 1)
     goto <bb 3>; [INV]
   else
-    goto <bb 7>; [INV]
+    goto <bb 8>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   _3 ={v} _2->SPLLCFG;
   _4 = config_24(D)->predivider;
@@ -243,36 +213,32 @@ SetSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
   _15 = 1074151424B;
   _16 = _3 | _14;
   _15->SPLLCFG ={v} _16;
-  # DEBUG BEGIN_STMT
   _17 = config_24(D)->monitor;
   _18 = (int) _17;
-  switch (_18) <default: <L7> [INV], case 0: <L1> [INV], case 1: <L2> [INV], case 2: <L3> [INV]>
+  switch (_18) <default: <L4> [INV], case 0: <L1> [INV], case 1: <L2> [INV], case 2: <L3> [INV]>
 
   <bb 4> :
 <L1>:
-  # DEBUG BEGIN_STMT
   _19 = 1074151424B;
   _19->SPLLCSR ={v} 0;
-  # DEBUG BEGIN_STMT
-  goto <bb 7>; [INV]
+  goto <bb 8>; [INV]
 
   <bb 5> :
 <L2>:
-  # DEBUG BEGIN_STMT
   _20 = 1074151424B;
   _20->SPLLCSR ={v} 65536;
-  # DEBUG BEGIN_STMT
-  goto <bb 7>; [INV]
+  goto <bb 8>; [INV]
 
   <bb 6> :
 <L3>:
-  # DEBUG BEGIN_STMT
   _21 = 1074151424B;
   _21->SPLLCSR ={v} 196608;
-  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
 
   <bb 7> :
-<L7>:
+<L4>:
+
+  <bb 8> :
   return;
 
 }
@@ -281,7 +247,6 @@ SetSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
 ResetSpll (const struct Clock_Ip_PllConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   ResetSpll_TrustedCall (config_2(D));
   return;
 
@@ -308,26 +273,21 @@ ResetSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
   long unsigned int _16;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074151424B;
   _2 ={v} _1->SPLLCSR;
   _3 = 1074151424B;
   _4 = _2 & 4286578687;
   _3->SPLLCSR ={v} _4;
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _6 ={v} _5->SPLLCSR;
   _7 = 1074151424B;
   _8 = _6 & 4294967294;
   _7->SPLLCSR ={v} _8;
-  # DEBUG BEGIN_STMT
   _9 = 1074151424B;
   _10 ={v} _9->SPLLCFG;
   _11 = 1074151424B;
   _12 = _10 & 4294965503;
   _11->SPLLCFG ={v} _12;
-  # DEBUG BEGIN_STMT
   _13 = 1074151424B;
   _14 ={v} _13->SPLLCFG;
   _15 = 1074151424B;
@@ -341,7 +301,6 @@ ResetSpll_TrustedCall (const struct Clock_Ip_PllConfigType * config)
 Callback_PllEmptyDisable (Clock_Ip_NameType PllName)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   return;
 
 }
@@ -349,12 +308,14 @@ Callback_PllEmptyDisable (Clock_Ip_NameType PllName)
 
 Callback_PllEmptyComplete (Clock_Ip_NameType PllName)
 {
+  clock_pll_status_t D.6114;
   clock_pll_status_t _1;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 0;
+
+  <bb 3> :
+<L0>:
   return _1;
 
 }
@@ -363,7 +324,6 @@ Callback_PllEmptyComplete (Clock_Ip_NameType PllName)
 Callback_PllEmpty (const struct Clock_Ip_PllConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   return;
 
 }

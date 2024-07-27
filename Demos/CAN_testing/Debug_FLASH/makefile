@@ -33,7 +33,7 @@ first_demo.siz \
 all: first_demo.elf secondary-outputs
 
 # Tool invocations
-first_demo.elf: $(OBJS) C:/Users/Rohan/OneDrive/Documents/s32k144_workspace/first_demo/Project_Settings/Linker_Files/linker_flash_s32k144.ld $(USER_OBJS)
+first_demo.elf: $(OBJS) C:/Users/Rohan/OneDrive/Documents/GB_ElecronicsV_S32K144_Autosar_MCAL/Demos/CAN_testing/Project_Settings/Linker_Files/linker_flash_s32k144.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Standard S32DS C Linker'
 	arm-none-eabi-gcc -o "first_demo.elf" "@first_demo.args"  $(USER_OBJS)

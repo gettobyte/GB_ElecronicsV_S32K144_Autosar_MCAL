@@ -138,7 +138,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-CompleteSpll.part.0/19 (CompleteSpll.part.0) @06ada2a0
+CompleteSpll.part.0/19 (CompleteSpll.part.0) @06a592a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -147,7 +147,7 @@ CompleteSpll.part.0/19 (CompleteSpll.part.0) @06ada2a0
   Function flags: count:114863532 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: CompleteSpll/8 (114863531 (estimated locally),0.33 per call) 
   Calls: ClockStartTimeout/13 (114863532 (estimated locally),1.00 per call) ClockTimeoutExpired/14 (1073741824 (estimated locally),9.35 per call) ReportClockErrors/15 (54870309 (estimated locally),0.48 per call) 
-EnableSpll_TrustedCall.isra.0/18 (EnableSpll_TrustedCall.isra.0) @06a29ee0
+EnableSpll_TrustedCall.isra.0/18 (EnableSpll_TrustedCall.isra.0) @069a9ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -156,7 +156,7 @@ EnableSpll_TrustedCall.isra.0/18 (EnableSpll_TrustedCall.isra.0) @06a29ee0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: EnableSpll/12 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-DisableSpll_TrustedCall.isra.0/17 (DisableSpll_TrustedCall.isra.0) @06a29a80
+DisableSpll_TrustedCall.isra.0/17 (DisableSpll_TrustedCall.isra.0) @069a9a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -165,7 +165,7 @@ DisableSpll_TrustedCall.isra.0/17 (DisableSpll_TrustedCall.isra.0) @06a29a80
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: DisableSpll/10 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetSpll_TrustedCall.isra.0/16 (ResetSpll_TrustedCall.isra.0) @06a29540
+ResetSpll_TrustedCall.isra.0/16 (ResetSpll_TrustedCall.isra.0) @069a9540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -174,7 +174,7 @@ ResetSpll_TrustedCall.isra.0/16 (ResetSpll_TrustedCall.isra.0) @06a29540
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: ResetSpll/5 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ReportClockErrors/15 (ReportClockErrors) @05f542a0
+ReportClockErrors/15 (ReportClockErrors) @05dca2a0
   Type: function
   Visibility: external public
   References: 
@@ -183,7 +183,7 @@ ReportClockErrors/15 (ReportClockErrors) @05f542a0
   Function flags: optimize_size
   Called by: CompleteSpll.part.0/19 (54870309 (estimated locally),0.48 per call) 
   Calls: 
-ClockTimeoutExpired/14 (ClockTimeoutExpired) @05f541c0
+ClockTimeoutExpired/14 (ClockTimeoutExpired) @05dca1c0
   Type: function
   Visibility: external public
   References: 
@@ -192,7 +192,7 @@ ClockTimeoutExpired/14 (ClockTimeoutExpired) @05f541c0
   Function flags: optimize_size
   Called by: CompleteSpll.part.0/19 (1073741824 (estimated locally),9.35 per call) 
   Calls: 
-ClockStartTimeout/13 (ClockStartTimeout) @05f540e0
+ClockStartTimeout/13 (ClockStartTimeout) @05dca0e0
   Type: function
   Visibility: external public
   References: 
@@ -201,7 +201,7 @@ ClockStartTimeout/13 (ClockStartTimeout) @05f540e0
   Function flags: optimize_size
   Called by: CompleteSpll.part.0/19 (114863532 (estimated locally),1.00 per call) 
   Calls: 
-EnableSpll/12 (EnableSpll) @05f4ca80
+EnableSpll/12 (EnableSpll) @05dc1a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -211,7 +211,7 @@ EnableSpll/12 (EnableSpll) @05f4ca80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: EnableSpll_TrustedCall.isra.0/18 (1073741824 (estimated locally),1.00 per call) 
-DisableSpll/10 (DisableSpll) @05f4c460
+DisableSpll/10 (DisableSpll) @05dc1460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -221,7 +221,7 @@ DisableSpll/10 (DisableSpll) @05f4c460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: DisableSpll_TrustedCall.isra.0/17 (1073741824 (estimated locally),1.00 per call) 
-CompleteSpll/8 (CompleteSpll) @05e49d20
+CompleteSpll/8 (CompleteSpll) @05ca1d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -231,7 +231,7 @@ CompleteSpll/8 (CompleteSpll) @05e49d20
   Function flags: count:348071309 (estimated locally) body optimize_size
   Called by: 
   Calls: CompleteSpll.part.0/19 (114863531 (estimated locally),0.33 per call) 
-SetSpll/7 (SetSpll) @05e49ee0
+SetSpll/7 (SetSpll) @05ca1ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -241,7 +241,7 @@ SetSpll/7 (SetSpll) @05e49ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SetSpll_TrustedCall/6 (1073741824 (estimated locally),1.00 per call) 
-SetSpll_TrustedCall/6 (SetSpll_TrustedCall) @05e49c40
+SetSpll_TrustedCall/6 (SetSpll_TrustedCall) @05ca1c40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -250,7 +250,7 @@ SetSpll_TrustedCall/6 (SetSpll_TrustedCall) @05e49c40
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: SetSpll/7 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetSpll/5 (ResetSpll) @05e49460
+ResetSpll/5 (ResetSpll) @05ca1460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -260,7 +260,7 @@ ResetSpll/5 (ResetSpll) @05e49460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: ResetSpll_TrustedCall.isra.0/16 (1073741824 (estimated locally),1.00 per call) 
-Callback_PllEmptyDisable/3 (Callback_PllEmptyDisable) @05e43d20
+Callback_PllEmptyDisable/3 (Callback_PllEmptyDisable) @05c9ad20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -270,7 +270,7 @@ Callback_PllEmptyDisable/3 (Callback_PllEmptyDisable) @05e43d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Callback_PllEmptyComplete/2 (Callback_PllEmptyComplete) @05e43ee0
+Callback_PllEmptyComplete/2 (Callback_PllEmptyComplete) @05c9aee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -280,7 +280,7 @@ Callback_PllEmptyComplete/2 (Callback_PllEmptyComplete) @05e43ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Callback_PllEmpty/1 (Callback_PllEmpty) @05e43c40
+Callback_PllEmpty/1 (Callback_PllEmpty) @05c9ac40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -290,7 +290,7 @@ Callback_PllEmpty/1 (Callback_PllEmpty) @05e43c40
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-pllCallbacks/0 (pllCallbacks) @05e45750
+pllCallbacks/0 (pllCallbacks) @05c9c750
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Callback_PllEmpty/1 (addr)Callback_PllEmpty/1 (addr)Callback_PllEmptyComplete/2 (addr)Callback_PllEmpty/1 (addr)Callback_PllEmptyDisable/3 (addr)ResetSpll/5 (addr)SetSpll/7 (addr)CompleteSpll/8 (addr)EnableSpll/12 (addr)DisableSpll/10 (addr)

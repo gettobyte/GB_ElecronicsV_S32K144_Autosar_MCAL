@@ -1,7 +1,7 @@
 generate/src/IntCtrl_Ip_Cfg.o: ../generate/src/IntCtrl_Ip_Cfg.c \
- C:/Users/Rohan/OneDrive/Documents/s32k144_workspace/first_demo/generate/include/IntCtrl_Ip_Cfg.h \
+ C:/Users/Rohan/OneDrive/Documents/GB_ElecronicsV_S32K144_Autosar_MCAL/Demos/CAN_testing/generate/include/IntCtrl_Ip_Cfg.h \
  ../RTD/include/IntCtrl_Ip_TypesDef.h \
- C:/Users/Rohan/OneDrive/Documents/s32k144_workspace/first_demo/generate/include/IntCtrl_Ip_CfgDefines.h \
+ C:/Users/Rohan/OneDrive/Documents/GB_ElecronicsV_S32K144_Autosar_MCAL/Demos/CAN_testing/generate/include/IntCtrl_Ip_CfgDefines.h \
  D:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/StandardTypes.h \
  D:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/Platform_Types.h \
  D:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/PlatformTypes.h \
@@ -51,11 +51,11 @@ generate/src/IntCtrl_Ip_Cfg.o: ../generate/src/IntCtrl_Ip_Cfg.c \
  D:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/header/S32K144_COMMON.h \
  D:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/Platform_MemMap.h
 
-C:/Users/Rohan/OneDrive/Documents/s32k144_workspace/first_demo/generate/include/IntCtrl_Ip_Cfg.h:
+C:/Users/Rohan/OneDrive/Documents/GB_ElecronicsV_S32K144_Autosar_MCAL/Demos/CAN_testing/generate/include/IntCtrl_Ip_Cfg.h:
 
 ../RTD/include/IntCtrl_Ip_TypesDef.h:
 
-C:/Users/Rohan/OneDrive/Documents/s32k144_workspace/first_demo/generate/include/IntCtrl_Ip_CfgDefines.h:
+C:/Users/Rohan/OneDrive/Documents/GB_ElecronicsV_S32K144_Autosar_MCAL/Demos/CAN_testing/generate/include/IntCtrl_Ip_CfgDefines.h:
 
 D:/NXP/S32DS.3.4/S32DS/software/PlatformSDK_S32K1_2021_08/SW32K1_RTD_4_4_1_0_0_D2108/Base_TS_T40D2M10I0R0/include/StandardTypes.h:
 

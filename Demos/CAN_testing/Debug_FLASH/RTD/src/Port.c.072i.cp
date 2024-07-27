@@ -74,7 +74,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Port_Ipw_RefreshPortDirection/12 (Port_Ipw_RefreshPortDirection) @05e3c700
+Port_Ipw_RefreshPortDirection/12 (Port_Ipw_RefreshPortDirection) @05de29a0
   Type: function
   Visibility: external public
   References: 
@@ -83,7 +83,7 @@ Port_Ipw_RefreshPortDirection/12 (Port_Ipw_RefreshPortDirection) @05e3c700
   Function flags: optimize_size
   Called by: Port_RefreshPortDirection/5 (301440132 (estimated locally),0.28 per call) 
   Calls: 
-Port_Ipw_SetPinMode/11 (Port_Ipw_SetPinMode) @05e3c540
+Port_Ipw_SetPinMode/11 (Port_Ipw_SetPinMode) @05de27e0
   Type: function
   Visibility: external public
   References: 
@@ -92,7 +92,7 @@ Port_Ipw_SetPinMode/11 (Port_Ipw_SetPinMode) @05e3c540
   Function flags: optimize_size
   Called by: Port_SetPinMode/4 (198994816 (estimated locally),0.19 per call) 
   Calls: 
-Port_Ipw_SetPinDirection/10 (Port_Ipw_SetPinDirection) @05e3c380
+Port_Ipw_SetPinDirection/10 (Port_Ipw_SetPinDirection) @05de2620
   Type: function
   Visibility: external public
   References: 
@@ -101,7 +101,7 @@ Port_Ipw_SetPinDirection/10 (Port_Ipw_SetPinDirection) @05e3c380
   Function flags: optimize_size
   Called by: Port_SetPinDirection/3 (297007189 (estimated locally),0.28 per call) 
   Calls: 
-Port_Ipw_Init/9 (Port_Ipw_Init) @05e3c1c0
+Port_Ipw_Init/9 (Port_Ipw_Init) @05de2460
   Type: function
   Visibility: external public
   References: 
@@ -110,7 +110,7 @@ Port_Ipw_Init/9 (Port_Ipw_Init) @05e3c1c0
   Function flags: optimize_size
   Called by: Port_Init/2 (169868104 (estimated locally),0.16 per call) 
   Calls: 
-Port_Config/8 (Port_Config) @05e32990
+Port_Config/8 (Port_Config) @05dd8990
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -118,7 +118,7 @@ Port_Config/8 (Port_Config) @05e32990
   Referring: Port_Init/2 (read)Port_Init/2 (addr)Port_Init/2 (addr)
   Availability: not_available
   Varpool flags:
-Det_ReportError/7 (Det_ReportError) @05e3c0e0
+Det_ReportError/7 (Det_ReportError) @05de2380
   Type: function
   Visibility: external public
   References: 
@@ -127,7 +127,7 @@ Det_ReportError/7 (Det_ReportError) @05e3c0e0
   Function flags: optimize_size
   Called by: Port_GetVersionInfo/6 (187153200 (estimated locally),0.17 per call) Port_RefreshPortDirection/5 (585148493 (estimated locally),0.54 per call) Port_RefreshPortDirection/5 (187153200 (estimated locally),0.17 per call) Port_SetPinMode/4 (40276551 (estimated locally),0.04 per call) Port_SetPinMode/4 (198994816 (estimated locally),0.19 per call) Port_SetPinMode/4 (196024745 (estimated locally),0.18 per call) Port_SetPinMode/4 (292574246 (estimated locally),0.27 per call) Port_SetPinMode/4 (187153200 (estimated locally),0.17 per call) Port_SetPinDirection/3 (60114255 (estimated locally),0.06 per call) Port_SetPinDirection/3 (297007189 (estimated locally),0.28 per call) Port_SetPinDirection/3 (292574246 (estimated locally),0.27 per call) Port_SetPinDirection/3 (187153200 (estimated locally),0.17 per call) Port_Init/2 (329743967 (estimated locally),0.31 per call) Port_Init/2 (574129754 (estimated locally),0.53 per call) 
   Calls: 
-Port_GetVersionInfo/6 (Port_GetVersionInfo) @05e31460
+Port_GetVersionInfo/6 (Port_GetVersionInfo) @05dd5d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -136,7 +136,7 @@ Port_GetVersionInfo/6 (Port_GetVersionInfo) @05e31460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Det_ReportError/7 (187153200 (estimated locally),0.17 per call) 
-Port_RefreshPortDirection/5 (Port_RefreshPortDirection) @05e31ee0
+Port_RefreshPortDirection/5 (Port_RefreshPortDirection) @05dd59a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_pConfig/1 (read)
@@ -145,7 +145,7 @@ Port_RefreshPortDirection/5 (Port_RefreshPortDirection) @05e31ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Port_Ipw_RefreshPortDirection/12 (301440132 (estimated locally),0.28 per call) Det_ReportError/7 (585148493 (estimated locally),0.54 per call) Det_ReportError/7 (187153200 (estimated locally),0.17 per call) 
-Port_SetPinMode/4 (Port_SetPinMode) @05e31c40
+Port_SetPinMode/4 (Port_SetPinMode) @05dd51c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_pConfig/1 (read)
@@ -154,7 +154,7 @@ Port_SetPinMode/4 (Port_SetPinMode) @05e31c40
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Det_ReportError/7 (40276551 (estimated locally),0.04 per call) Port_Ipw_SetPinMode/11 (198994816 (estimated locally),0.19 per call) Det_ReportError/7 (198994816 (estimated locally),0.19 per call) Det_ReportError/7 (196024745 (estimated locally),0.18 per call) Det_ReportError/7 (292574246 (estimated locally),0.27 per call) Det_ReportError/7 (187153200 (estimated locally),0.17 per call) 
-Port_SetPinDirection/3 (Port_SetPinDirection) @05e319a0
+Port_SetPinDirection/3 (Port_SetPinDirection) @05dd5ee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_pConfig/1 (read)
@@ -163,7 +163,7 @@ Port_SetPinDirection/3 (Port_SetPinDirection) @05e319a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Det_ReportError/7 (60114255 (estimated locally),0.06 per call) Port_Ipw_SetPinDirection/10 (297007189 (estimated locally),0.28 per call) Det_ReportError/7 (297007189 (estimated locally),0.28 per call) Det_ReportError/7 (292574246 (estimated locally),0.27 per call) Det_ReportError/7 (187153200 (estimated locally),0.17 per call) 
-Port_Init/2 (Port_Init) @05e31700
+Port_Init/2 (Port_Init) @05dd5c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_Config/8 (read)Port_Config/8 (addr)Port_pConfig/1 (write)Port_Config/8 (addr)
@@ -172,7 +172,7 @@ Port_Init/2 (Port_Init) @05e31700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Port_Ipw_Init/9 (169868104 (estimated locally),0.16 per call) Det_ReportError/7 (329743967 (estimated locally),0.31 per call) Det_ReportError/7 (574129754 (estimated locally),0.53 per call) 
-Port_pConfig/1 (Port_pConfig) @05e321f8
+Port_pConfig/1 (Port_pConfig) @05dd81f8
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 

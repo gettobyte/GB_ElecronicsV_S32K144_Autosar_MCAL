@@ -33,7 +33,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-ProgressiveFrequencyClockSwitchEmpty/1 (ProgressiveFrequencyClockSwitchEmpty) @05cc8620
+ProgressiveFrequencyClockSwitchEmpty/1 (ProgressiveFrequencyClockSwitchEmpty) @05de8620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -43,7 +43,7 @@ ProgressiveFrequencyClockSwitchEmpty/1 (ProgressiveFrequencyClockSwitchEmpty) @0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-pcfsCallbacks/0 (pcfsCallbacks) @05cca318
+pcfsCallbacks/0 (pcfsCallbacks) @05dea318
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: ProgressiveFrequencyClockSwitchEmpty/1 (addr)

@@ -2431,7 +2431,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-FlexCAN_StartRxMessageFifoData.part.0/161 (FlexCAN_StartRxMessageFifoData.part.0) @061ed0e0
+FlexCAN_StartRxMessageFifoData.part.0/161 (FlexCAN_StartRxMessageFifoData.part.0) @060f12a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -2440,7 +2440,7 @@ FlexCAN_StartRxMessageFifoData.part.0/161 (FlexCAN_StartRxMessageFifoData.part.0
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: FlexCAN_StartRxMessageFifoData/45 (107374 (estimated locally),0.50 per call) 
   Calls: FlexCAN_SetMsgBuffIntCmd/114 (115158811 (estimated locally),0.11 per call) FlexCAN_SetMsgBuffIntCmd/114 (115158811 (estimated locally),0.11 per call) FlexCAN_SetMsgBuffIntCmd/114 (115158811 (estimated locally),0.11 per call) 
-FlexCAN_GetMsgBuffIntStatusFlag.part.0/158 (FlexCAN_GetMsgBuffIntStatusFlag.part.0) @061f27e0
+FlexCAN_GetMsgBuffIntStatusFlag.part.0/158 (FlexCAN_GetMsgBuffIntStatusFlag.part.0) @060f69a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -2449,7 +2449,7 @@ FlexCAN_GetMsgBuffIntStatusFlag.part.0/158 (FlexCAN_GetMsgBuffIntStatusFlag.part
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: FlexCAN_GetMsgBuffIntStatusFlag/30 (536870912 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_SetExtendedTimeSegments.part.0/157 (FlexCAN_SetExtendedTimeSegments.part.0) @061f2460
+FlexCAN_SetExtendedTimeSegments.part.0/157 (FlexCAN_SetExtendedTimeSegments.part.0) @060f6620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -2458,7 +2458,7 @@ FlexCAN_SetExtendedTimeSegments.part.0/157 (FlexCAN_SetExtendedTimeSegments.part
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: FlexCAN_SetExtendedTimeSegments/12 (107374 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_SetTimeSegments.part.0/155 (FlexCAN_SetTimeSegments.part.0) @061f20e0
+FlexCAN_SetTimeSegments.part.0/155 (FlexCAN_SetTimeSegments.part.0) @060f62a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -2467,7 +2467,7 @@ FlexCAN_SetTimeSegments.part.0/155 (FlexCAN_SetTimeSegments.part.0) @061f20e0
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: FlexCAN_SetTimeSegments/11 (107374 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_SetFDTimeSegments.part.0/153 (FlexCAN_SetFDTimeSegments.part.0) @061edd20
+FlexCAN_SetFDTimeSegments.part.0/153 (FlexCAN_SetFDTimeSegments.part.0) @060f1ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -2476,7 +2476,7 @@ FlexCAN_SetFDTimeSegments.part.0/153 (FlexCAN_SetFDTimeSegments.part.0) @061edd2
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: FlexCAN_SetFDTimeSegments/10 (107374 (estimated locally),0.50 per call) 
   Calls: 
-SchM_Exit_Can_CAN_EXCLUSIVE_AREA_20/151 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_20) @06349c40
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_20/151 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_20) @0624ce00
   Type: function
   Visibility: external public
   References: 
@@ -2485,7 +2485,7 @@ SchM_Exit_Can_CAN_EXCLUSIVE_AREA_20/151 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_20) @0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ManualBusOffRecovery/104 (17717 (estimated locally),0.08 per call) 
   Calls: 
-SchM_Enter_Can_CAN_EXCLUSIVE_AREA_20/150 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_20) @06349b60
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_20/150 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_20) @0624cd20
   Type: function
   Visibility: external public
   References: 
@@ -2494,7 +2494,7 @@ SchM_Enter_Can_CAN_EXCLUSIVE_AREA_20/150 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_20) 
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ManualBusOffRecovery/104 (17717 (estimated locally),0.08 per call) 
   Calls: 
-SchM_Exit_Can_CAN_EXCLUSIVE_AREA_10/149 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_10) @063497e0
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_10/149 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_10) @0624c9a0
   Type: function
   Visibility: external public
   References: 
@@ -2503,7 +2503,7 @@ SchM_Exit_Can_CAN_EXCLUSIVE_AREA_10/149 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_10) @0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetListenOnlyMode_Privileged/102 (26575 (estimated locally),0.12 per call) 
   Calls: 
-SchM_Enter_Can_CAN_EXCLUSIVE_AREA_10/148 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_10) @06349700
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_10/148 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_10) @0624c8c0
   Type: function
   Visibility: external public
   References: 
@@ -2512,7 +2512,7 @@ SchM_Enter_Can_CAN_EXCLUSIVE_AREA_10/148 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_10) 
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetListenOnlyMode_Privileged/102 (26575 (estimated locally),0.12 per call) 
   Calls: 
-FLEXCAN_ClearMsgBuffIntCmd/147 (FLEXCAN_ClearMsgBuffIntCmd) @063490e0
+FLEXCAN_ClearMsgBuffIntCmd/147 (FLEXCAN_ClearMsgBuffIntCmd) @0624c2a0
   Type: function
   Visibility: external public
   References: 
@@ -2521,7 +2521,7 @@ FLEXCAN_ClearMsgBuffIntCmd/147 (FLEXCAN_ClearMsgBuffIntCmd) @063490e0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_AbortTransfer/99 (12823 (estimated locally),0.06 per call) FlexCAN_AbortRxTransfer/51 (237404317 (estimated locally),0.22 per call) 
   Calls: 
-FlexCAN_SetErrIntCmd/146 (FlexCAN_SetErrIntCmd) @0633aee0
+FlexCAN_SetErrIntCmd/146 (FlexCAN_SetErrIntCmd) @0624c0e0
   Type: function
   Visibility: external public
   References: 
@@ -2530,7 +2530,7 @@ FlexCAN_SetErrIntCmd/146 (FlexCAN_SetErrIntCmd) @0633aee0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetErrorInt_Privileged/98 (5154 (estimated locally),0.02 per call) FlexCAN_Ip_SetErrorInt_Privileged/98 (5154 (estimated locally),0.02 per call) FlexCAN_Ip_SetErrorInt_Privileged/98 (15617 (estimated locally),0.07 per call) FlexCAN_Ip_SetErrorInt_Privileged/98 (15617 (estimated locally),0.07 per call) FlexCAN_Ip_SetErrorInt_Privileged/98 (15617 (estimated locally),0.07 per call) 
   Calls: 
-FlexCAN_DisableInterrupts/145 (FlexCAN_DisableInterrupts) @0633ac40
+FlexCAN_DisableInterrupts/145 (FlexCAN_DisableInterrupts) @0623ee00
   Type: function
   Visibility: external public
   References: 
@@ -2539,7 +2539,7 @@ FlexCAN_DisableInterrupts/145 (FlexCAN_DisableInterrupts) @0633ac40
   Function flags: optimize_size
   Called by: FlexCAN_Ip_DisableInterrupts_Privileged/97 (44539 (estimated locally),0.21 per call) 
   Calls: 
-FlexCAN_EnableInterrupts/144 (FlexCAN_EnableInterrupts) @0633aa80
+FlexCAN_EnableInterrupts/144 (FlexCAN_EnableInterrupts) @0623ec40
   Type: function
   Visibility: external public
   References: 
@@ -2548,7 +2548,7 @@ FlexCAN_EnableInterrupts/144 (FlexCAN_EnableInterrupts) @0633aa80
   Function flags: optimize_size
   Called by: FlexCAN_Ip_EnableInterrupts_Privileged/96 (44539 (estimated locally),0.21 per call) 
   Calls: 
-SchM_Exit_Can_CAN_EXCLUSIVE_AREA_17/143 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_17) @0633a620
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_17/143 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_17) @0623e7e0
   Type: function
   Visibility: external public
   References: 
@@ -2557,7 +2557,7 @@ SchM_Exit_Can_CAN_EXCLUSIVE_AREA_17/143 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_17) @0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged/93 (26575 (estimated locally),0.12 per call) 
   Calls: 
-SchM_Enter_Can_CAN_EXCLUSIVE_AREA_17/142 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_17) @0633a540
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_17/142 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_17) @0623e700
   Type: function
   Visibility: external public
   References: 
@@ -2566,7 +2566,7 @@ SchM_Enter_Can_CAN_EXCLUSIVE_AREA_17/142 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_17) 
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged/93 (26575 (estimated locally),0.12 per call) 
   Calls: 
-SchM_Exit_Can_CAN_EXCLUSIVE_AREA_16/141 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_16) @0633a2a0
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_16/141 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_16) @0623e460
   Type: function
   Visibility: external public
   References: 
@@ -2575,7 +2575,7 @@ SchM_Exit_Can_CAN_EXCLUSIVE_AREA_16/141 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_16) @0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetTDCOffset_Privileged/92 (13288 (estimated locally),0.06 per call) 
   Calls: 
-SchM_Enter_Can_CAN_EXCLUSIVE_AREA_16/140 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_16) @0633a1c0
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_16/140 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_16) @0623e380
   Type: function
   Visibility: external public
   References: 
@@ -2584,7 +2584,7 @@ SchM_Enter_Can_CAN_EXCLUSIVE_AREA_16/140 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_16) 
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetTDCOffset_Privileged/92 (13288 (estimated locally),0.06 per call) 
   Calls: 
-SchM_Exit_Can_CAN_EXCLUSIVE_AREA_15/139 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_15) @06329d20
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_15/139 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_15) @0622dee0
   Type: function
   Visibility: external public
   References: 
@@ -2593,7 +2593,7 @@ SchM_Exit_Can_CAN_EXCLUSIVE_AREA_15/139 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_15) @0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetBitrateCbt_Privileged/90 (6644 (estimated locally),0.03 per call) 
   Calls: 
-SchM_Enter_Can_CAN_EXCLUSIVE_AREA_15/138 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_15) @06329c40
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_15/138 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_15) @0622de00
   Type: function
   Visibility: external public
   References: 
@@ -2602,7 +2602,7 @@ SchM_Enter_Can_CAN_EXCLUSIVE_AREA_15/138 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_15) 
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetBitrateCbt_Privileged/90 (6644 (estimated locally),0.03 per call) 
   Calls: 
-SchM_Exit_Can_CAN_EXCLUSIVE_AREA_09/137 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_09) @063298c0
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_09/137 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_09) @0622da80
   Type: function
   Visibility: external public
   References: 
@@ -2611,7 +2611,7 @@ SchM_Exit_Can_CAN_EXCLUSIVE_AREA_09/137 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_09) @0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ClearTDCFail/87 (107374 (estimated locally),0.50 per call) 
   Calls: 
-SchM_Enter_Can_CAN_EXCLUSIVE_AREA_09/136 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_09) @063297e0
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_09/136 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_09) @0622d9a0
   Type: function
   Visibility: external public
   References: 
@@ -2620,7 +2620,7 @@ SchM_Enter_Can_CAN_EXCLUSIVE_AREA_09/136 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_09) 
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ClearTDCFail/87 (107374 (estimated locally),0.50 per call) 
   Calls: 
-SchM_Exit_Can_CAN_EXCLUSIVE_AREA_14/135 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_14) @063292a0
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_14/135 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_14) @0622d460
   Type: function
   Visibility: external public
   References: 
@@ -2629,7 +2629,7 @@ SchM_Exit_Can_CAN_EXCLUSIVE_AREA_14/135 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_14) @0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetBitrate_Privileged/85 (13288 (estimated locally),0.06 per call) 
   Calls: 
-SchM_Enter_Can_CAN_EXCLUSIVE_AREA_14/134 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_14) @063291c0
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_14/134 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_14) @0622d380
   Type: function
   Visibility: external public
   References: 
@@ -2638,7 +2638,7 @@ SchM_Enter_Can_CAN_EXCLUSIVE_AREA_14/134 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_14) 
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetBitrate_Privileged/85 (13288 (estimated locally),0.06 per call) 
   Calls: 
-SchM_Exit_Can_CAN_EXCLUSIVE_AREA_08/133 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_08) @06313ee0
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_08/133 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_08) @0622d0e0
   Type: function
   Visibility: external public
   References: 
@@ -2647,7 +2647,7 @@ SchM_Exit_Can_CAN_EXCLUSIVE_AREA_08/133 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_08) @0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetRxMaskType_Privileged/84 (26575 (estimated locally),0.12 per call) 
   Calls: 
-SchM_Enter_Can_CAN_EXCLUSIVE_AREA_08/132 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_08) @06313e00
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_08/132 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_08) @0622d000
   Type: function
   Visibility: external public
   References: 
@@ -2656,7 +2656,7 @@ SchM_Enter_Can_CAN_EXCLUSIVE_AREA_08/132 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_08) 
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetRxMaskType_Privileged/84 (26575 (estimated locally),0.12 per call) 
   Calls: 
-SchM_Exit_Can_CAN_EXCLUSIVE_AREA_07/131 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_07) @06313b60
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_07/131 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_07) @06217d20
   Type: function
   Visibility: external public
   References: 
@@ -2665,7 +2665,7 @@ SchM_Exit_Can_CAN_EXCLUSIVE_AREA_07/131 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_07) @0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetStartMode_Privileged/82 (107374 (estimated locally),0.50 per call) 
   Calls: 
-SchM_Enter_Can_CAN_EXCLUSIVE_AREA_07/130 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_07) @06313a80
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_07/130 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_07) @06217c40
   Type: function
   Visibility: external public
   References: 
@@ -2674,7 +2674,7 @@ SchM_Enter_Can_CAN_EXCLUSIVE_AREA_07/130 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_07) 
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetStartMode_Privileged/82 (107374 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_ExitFreezeMode/129 (FlexCAN_ExitFreezeMode) @062faee0
+FlexCAN_ExitFreezeMode/129 (FlexCAN_ExitFreezeMode) @062170e0
   Type: function
   Visibility: external public
   References: 
@@ -2683,7 +2683,7 @@ FlexCAN_ExitFreezeMode/129 (FlexCAN_ExitFreezeMode) @062faee0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetStartMode_Privileged/82 (107374 (estimated locally),0.50 per call) FlexCAN_Ip_ExitFreezeMode_Privileged/73 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-FlexCAN_GetMsgBuffTimestamp/128 (FlexCAN_GetMsgBuffTimestamp) @062fa000
+FlexCAN_GetMsgBuffTimestamp/128 (FlexCAN_GetMsgBuffTimestamp) @061fa1c0
   Type: function
   Visibility: external public
   References: 
@@ -2692,7 +2692,7 @@ FlexCAN_GetMsgBuffTimestamp/128 (FlexCAN_GetMsgBuffTimestamp) @062fa000
   Function flags: optimize_size
   Called by: FlexCAN_Ip_MainFunctionWrite/79 (35433 (estimated locally),0.16 per call) FlexCAN_IRQHandlerTxMB/47 (536870911 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_SetRxFifoFilter/127 (FlexCAN_SetRxFifoFilter) @062da9a0
+FlexCAN_SetRxFifoFilter/127 (FlexCAN_SetRxFifoFilter) @061deb60
   Type: function
   Visibility: external public
   References: 
@@ -2701,7 +2701,7 @@ FlexCAN_SetRxFifoFilter/127 (FlexCAN_SetRxFifoFilter) @062da9a0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ConfigRxFifo_Privileged/59 (26575 (estimated locally),0.12 per call) 
   Calls: 
-FlexCAN_Enable/126 (FlexCAN_Enable) @062da8c0
+FlexCAN_Enable/126 (FlexCAN_Enable) @061dea80
   Type: function
   Visibility: external public
   References: 
@@ -2710,7 +2710,7 @@ FlexCAN_Enable/126 (FlexCAN_Enable) @062da8c0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetListenOnlyMode_Privileged/102 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetRxMb15Mask_Privileged/101 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetRxMb14Mask_Privileged/100 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetErrorInt_Privileged/98 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged/93 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetTDCOffset_Privileged/92 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetBitrateCbt_Privileged/90 (13690 (estimated locally),0.06 per call) FlexCAN_Ip_SetBitrate_Privileged/85 (13690 (estimated locally),0.06 per call) FlexCAN_Ip_SetRxMaskType_Privileged/84 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetRxFifoGlobalMask_Privileged/75 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetRxIndividualMask_Privileged/74 (11568 (estimated locally),0.05 per call) FlexCAN_Ip_SetRxMbGlobalMask_Privileged/71 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_ConfigRxFifo_Privileged/59 (27380 (estimated locally),0.13 per call) 
   Calls: 
-FlexCAN_ReadRxFifo/125 (FlexCAN_ReadRxFifo) @062da620
+FlexCAN_ReadRxFifo/125 (FlexCAN_ReadRxFifo) @061de7e0
   Type: function
   Visibility: external public
   References: 
@@ -2719,7 +2719,7 @@ FlexCAN_ReadRxFifo/125 (FlexCAN_ReadRxFifo) @062da620
   Function flags: optimize_size
   Called by: FlexCAN_IRQHandlerRxFIFO/48 (54331336 (estimated locally),0.05 per call) 
   Calls: 
-FlexCAN_GetMsgBuff/124 (FlexCAN_GetMsgBuff) @062c9ee0
+FlexCAN_GetMsgBuff/124 (FlexCAN_GetMsgBuff) @061de0e0
   Type: function
   Visibility: external public
   References: 
@@ -2728,7 +2728,7 @@ FlexCAN_GetMsgBuff/124 (FlexCAN_GetMsgBuff) @062c9ee0
   Function flags: optimize_size
   Called by: FlexCAN_IRQHandlerTxMB/47 (536870911 (estimated locally),0.50 per call) FlexCAN_IRQHandlerRxMB/46 (1073741823 (estimated locally),1.00 per call) 
   Calls: 
-FlexCAN_LockRxMsgBuff/123 (FlexCAN_LockRxMsgBuff) @062c9e00
+FlexCAN_LockRxMsgBuff/123 (FlexCAN_LockRxMsgBuff) @061de000
   Type: function
   Visibility: external public
   References: 
@@ -2737,7 +2737,7 @@ FlexCAN_LockRxMsgBuff/123 (FlexCAN_LockRxMsgBuff) @062c9e00
   Function flags: optimize_size
   Called by: FlexCAN_IRQHandlerTxMB/47 (536870911 (estimated locally),0.50 per call) FlexCAN_IRQHandlerRxMB/46 (1073741823 (estimated locally),1.00 per call) 
   Calls: 
-OsIf_GetElapsed/122 (OsIf_GetElapsed) @062c9a80
+OsIf_GetElapsed/122 (OsIf_GetElapsed) @061c9c40
   Type: function
   Visibility: external public
   References: 
@@ -2746,7 +2746,7 @@ OsIf_GetElapsed/122 (OsIf_GetElapsed) @062c9a80
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ManualBusOffRecovery/104 (156507 (estimated locally),0.73 per call) FlexCAN_Ip_SendBlocking/70 (17560 (estimated locally),0.08 per call) FlexCAN_Ip_SendBlocking/70 (156507 (estimated locally),0.73 per call) FlexCAN_Ip_ReceiveBlocking/56 (313013 (estimated locally),1.46 per call) FlexCAN_ProccessLegacyRxFIFO/42 (1014686025 (estimated locally),8.83 per call) FlexCAN_AbortTxTransfer/50 (1014686025 (estimated locally),8.83 per call) 
   Calls: 
-OsIf_GetCounter/121 (OsIf_GetCounter) @062c99a0
+OsIf_GetCounter/121 (OsIf_GetCounter) @061c9b60
   Type: function
   Visibility: external public
   References: 
@@ -2755,7 +2755,7 @@ OsIf_GetCounter/121 (OsIf_GetCounter) @062c99a0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ManualBusOffRecovery/104 (17717 (estimated locally),0.08 per call) FlexCAN_Ip_SendBlocking/70 (1988 (estimated locally),0.01 per call) FlexCAN_Ip_SendBlocking/70 (17717 (estimated locally),0.08 per call) FlexCAN_Ip_ReceiveBlocking/56 (35433 (estimated locally),0.16 per call) FlexCAN_ProccessLegacyRxFIFO/42 (114863532 (estimated locally),1.00 per call) FlexCAN_AbortTxTransfer/50 (114863532 (estimated locally),1.00 per call) 
   Calls: 
-OsIf_MicrosToTicks/120 (OsIf_MicrosToTicks) @062c98c0
+OsIf_MicrosToTicks/120 (OsIf_MicrosToTicks) @061c9a80
   Type: function
   Visibility: external public
   References: 
@@ -2764,7 +2764,7 @@ OsIf_MicrosToTicks/120 (OsIf_MicrosToTicks) @062c98c0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ManualBusOffRecovery/104 (214748 (estimated locally),1.00 per call) FlexCAN_Ip_SendBlocking/70 (1988 (estimated locally),0.01 per call) FlexCAN_Ip_SendBlocking/70 (214748 (estimated locally),1.00 per call) FlexCAN_Ip_ReceiveBlocking/56 (214748 (estimated locally),1.00 per call) FlexCAN_ProccessLegacyRxFIFO/42 (114863532 (estimated locally),1.00 per call) FlexCAN_AbortTxTransfer/50 (114863532 (estimated locally),1.00 per call) 
   Calls: 
-FlexCAN_SetRxMsgBuff/119 (FlexCAN_SetRxMsgBuff) @062c9460
+FlexCAN_SetRxMsgBuff/119 (FlexCAN_SetRxMsgBuff) @061c9620
   Type: function
   Visibility: external public
   References: 
@@ -2773,7 +2773,7 @@ FlexCAN_SetRxMsgBuff/119 (FlexCAN_SetRxMsgBuff) @062c9460
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ConfigRxMb/54 (25646 (estimated locally),0.12 per call) FlexCAN_Ip_ConfigRxMb/54 (25646 (estimated locally),0.12 per call) FlexCAN_Ip_ConfigRxMb/54 (25646 (estimated locally),0.12 per call) 
   Calls: 
-FlexCAN_SetTxMsgBuff/118 (FlexCAN_SetTxMsgBuff) @062c91c0
+FlexCAN_SetTxMsgBuff/118 (FlexCAN_SetTxMsgBuff) @061c9380
   Type: function
   Visibility: external public
   References: 
@@ -2782,7 +2782,7 @@ FlexCAN_SetTxMsgBuff/118 (FlexCAN_SetTxMsgBuff) @062c91c0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ConfigRemoteResponseMb/60 (6412 (estimated locally),0.03 per call) FlexCAN_StartSendData/44 (8335 (estimated locally),0.04 per call) 
   Calls: 
-FlexCAN_GetMsgBuffRegion/117 (FlexCAN_GetMsgBuffRegion) @062c90e0
+FlexCAN_GetMsgBuffRegion/117 (FlexCAN_GetMsgBuffRegion) @061c92a0
   Type: function
   Visibility: external public
   References: 
@@ -2791,7 +2791,7 @@ FlexCAN_GetMsgBuffRegion/117 (FlexCAN_GetMsgBuffRegion) @062c90e0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SendBlocking/70 (1988 (estimated locally),0.01 per call) FlexCAN_Ip_ConfigRemoteResponseMb/60 (6412 (estimated locally),0.03 per call) FlexCAN_AbortRxTransfer/51 (354334802 (estimated locally),0.33 per call) FlexCAN_AbortRxTransfer/51 (237404317 (estimated locally),0.22 per call) FlexCAN_IRQHandlerRxMB/46 (177167401 (estimated locally),0.17 per call) FlexCAN_AbortTxTransfer/50 (114863532 (estimated locally),1.00 per call) FlexCAN_StartSendData/44 (8335 (estimated locally),0.04 per call) 
   Calls: 
-FlexCAN_IsMbOutOfRange/116 (FlexCAN_IsMbOutOfRange) @062c9000
+FlexCAN_IsMbOutOfRange/116 (FlexCAN_IsMbOutOfRange) @061c91c0
   Type: function
   Visibility: external public
   References: 
@@ -2800,7 +2800,7 @@ FlexCAN_IsMbOutOfRange/116 (FlexCAN_IsMbOutOfRange) @062c9000
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ConfigRemoteResponseMb/60 (13422 (estimated locally),0.06 per call) FlexCAN_Ip_ConfigRxMb/54 (53687 (estimated locally),0.25 per call) FlexCAN_StartSendData/44 (26844 (estimated locally),0.13 per call) FlexCAN_StartRxMessageBufferData/43 (107374 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_GetMbPayloadSize/115 (FlexCAN_GetMbPayloadSize) @062b5ee0
+FlexCAN_GetMbPayloadSize/115 (FlexCAN_GetMbPayloadSize) @061c90e0
   Type: function
   Visibility: external public
   References: 
@@ -2809,7 +2809,7 @@ FlexCAN_GetMbPayloadSize/115 (FlexCAN_GetMbPayloadSize) @062b5ee0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ConfigRemoteResponseMb/60 (26844 (estimated locally),0.13 per call) FlexCAN_StartSendData/44 (53687 (estimated locally),0.25 per call) 
   Calls: 
-FlexCAN_SetMsgBuffIntCmd/114 (FlexCAN_SetMsgBuffIntCmd) @062b5c40
+FlexCAN_SetMsgBuffIntCmd/114 (FlexCAN_SetMsgBuffIntCmd) @061b9e00
   Type: function
   Visibility: external public
   References: 
@@ -2818,7 +2818,7 @@ FlexCAN_SetMsgBuffIntCmd/114 (FlexCAN_SetMsgBuffIntCmd) @062b5c40
   Function flags: optimize_size
   Called by: FlexCAN_Ip_ConfigRemoteResponseMb/60 (2116 (estimated locally),0.01 per call) FlexCAN_Ip_ReceiveBlocking/56 (12047 (estimated locally),0.06 per call) FlexCAN_Ip_ReceiveBlocking/56 (17717 (estimated locally),0.08 per call) FlexCAN_Ip_Receive/55 (17717 (estimated locally),0.08 per call) FlexCAN_Ip_Send/53 (2923 (estimated locally),0.01 per call) FlexCAN_IRQHandlerTxMB/47 (147934780 (estimated locally),0.14 per call) FlexCAN_IRQHandlerTxMB/47 (177167401 (estimated locally),0.17 per call) FlexCAN_ProccessLegacyRxFIFO/42 (19089400 (estimated locally),0.17 per call) FlexCAN_ProccessLegacyRxFIFO/42 (19089400 (estimated locally),0.17 per call) FlexCAN_ProccessLegacyRxFIFO/42 (19089400 (estimated locally),0.17 per call) FlexCAN_IRQHandlerRxMB/46 (147934780 (estimated locally),0.14 per call) FlexCAN_IRQHandlerRxMB/46 (177167401 (estimated locally),0.17 per call) FlexCAN_CompleteRxMessageFifoData/62 (35433 (estimated locally),0.16 per call) FlexCAN_CompleteRxMessageFifoData/62 (35433 (estimated locally),0.16 per call) FlexCAN_CompleteRxMessageFifoData/62 (35433 (estimated locally),0.16 per call) FlexCAN_StartRxMessageFifoData.part.0/161 (115158811 (estimated locally),0.11 per call) FlexCAN_StartRxMessageFifoData.part.0/161 (115158811 (estimated locally),0.11 per call) FlexCAN_StartRxMessageFifoData.part.0/161 (115158811 (estimated locally),0.11 per call) 
   Calls: 
-FlexCAN_EnableRxFifo/113 (FlexCAN_EnableRxFifo) @062b5700
+FlexCAN_EnableRxFifo/113 (FlexCAN_EnableRxFifo) @061b98c0
   Type: function
   Visibility: external public
   References: 
@@ -2827,7 +2827,7 @@ FlexCAN_EnableRxFifo/113 (FlexCAN_EnableRxFifo) @062b5700
   Function flags: optimize_size
   Called by: FlexCAN_InitRxFifo/39 (354334802 (estimated locally),0.33 per call) 
   Calls: 
-FlexCAN_SetMaxMsgBuffNum/112 (FlexCAN_SetMaxMsgBuffNum) @062b5460
+FlexCAN_SetMaxMsgBuffNum/112 (FlexCAN_SetMaxMsgBuffNum) @061b9620
   Type: function
   Visibility: external public
   References: 
@@ -2836,7 +2836,7 @@ FlexCAN_SetMaxMsgBuffNum/112 (FlexCAN_SetMaxMsgBuffNum) @062b5460
   Function flags: optimize_size
   Called by: FlexCAN_InitCtroll/40 (536870913 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_SetPayloadSize/111 (FlexCAN_SetPayloadSize) @062b5380
+FlexCAN_SetPayloadSize/111 (FlexCAN_SetPayloadSize) @061b9540
   Type: function
   Visibility: external public
   References: 
@@ -2845,7 +2845,7 @@ FlexCAN_SetPayloadSize/111 (FlexCAN_SetPayloadSize) @062b5380
   Function flags: optimize_size
   Called by: FlexCAN_InitCtroll/40 (536870913 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_ConfigCtrlOptions/110 (FlexCAN_ConfigCtrlOptions) @062ab540
+FlexCAN_ConfigCtrlOptions/110 (FlexCAN_ConfigCtrlOptions) @061b90e0
   Type: function
   Visibility: external public
   References: 
@@ -2854,7 +2854,7 @@ FlexCAN_ConfigCtrlOptions/110 (FlexCAN_ConfigCtrlOptions) @062ab540
   Function flags: optimize_size
   Called by: FlexCAN_InitController/41 (378493993 (estimated locally),0.35 per call) 
   Calls: 
-FlexCAN_Init/109 (FlexCAN_Init) @062ab2a0
+FlexCAN_Init/109 (FlexCAN_Init) @061b9000
   Type: function
   Visibility: external public
   References: 
@@ -2863,7 +2863,7 @@ FlexCAN_Init/109 (FlexCAN_Init) @062ab2a0
   Function flags: optimize_size
   Called by: FlexCAN_InitController/41 (756987987 (estimated locally),0.71 per call) 
   Calls: 
-FlexCAN_Disable/108 (FlexCAN_Disable) @062ab000
+FlexCAN_Disable/108 (FlexCAN_Disable) @061ac7e0
   Type: function
   Visibility: external public
   References: 
@@ -2872,7 +2872,7 @@ FlexCAN_Disable/108 (FlexCAN_Disable) @062ab000
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetListenOnlyMode_Privileged/102 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetRxMb15Mask_Privileged/101 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetRxMb14Mask_Privileged/100 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetErrorInt_Privileged/98 (25394 (estimated locally),0.12 per call) FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged/93 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetTDCOffset_Privileged/92 (13690 (estimated locally),0.06 per call) FlexCAN_Ip_SetBitrateCbt_Privileged/90 (13690 (estimated locally),0.06 per call) FlexCAN_Ip_SetBitrate_Privileged/85 (13690 (estimated locally),0.06 per call) FlexCAN_Ip_SetRxMaskType_Privileged/84 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetStopMode_Privileged/83 (35433 (estimated locally),0.16 per call) FlexCAN_Ip_Deinit_Privileged/76 (35433 (estimated locally),0.16 per call) FlexCAN_Ip_SetRxFifoGlobalMask_Privileged/75 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_SetRxIndividualMask_Privileged/74 (11568 (estimated locally),0.05 per call) FlexCAN_Ip_SetRxMbGlobalMask_Privileged/71 (27380 (estimated locally),0.13 per call) FlexCAN_Ip_ConfigRxFifo_Privileged/59 (27380 (estimated locally),0.13 per call) FlexCAN_InitController/41 (378493993 (estimated locally),0.35 per call) FlexCAN_InitController/41 (209057533 (estimated locally),0.19 per call) FlexCAN_InitCtroll/40 (177167401 (estimated locally),0.17 per call) FlexCAN_InitCtroll/40 (536870913 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_EnterFreezeMode/107 (FlexCAN_EnterFreezeMode) @062abee0
+FlexCAN_EnterFreezeMode/107 (FlexCAN_EnterFreezeMode) @061ac540
   Type: function
   Visibility: external public
   References: 
@@ -2881,7 +2881,7 @@ FlexCAN_EnterFreezeMode/107 (FlexCAN_EnterFreezeMode) @062abee0
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetStopMode_Privileged/83 (107374 (estimated locally),0.50 per call) FlexCAN_Ip_Deinit_Privileged/76 (107374 (estimated locally),0.50 per call) FlexCAN_Ip_EnterFreezeMode_Privileged/72 (1073741824 (estimated locally),1.00 per call) FlexCAN_InitController/41 (378493993 (estimated locally),0.35 per call) FlexCAN_InitController/41 (633507677 (estimated locally),0.59 per call) FlexCAN_InitCtroll/40 (177167401 (estimated locally),0.17 per call) FlexCAN_InitCtroll/40 (536870913 (estimated locally),0.50 per call) 
   Calls: 
-FlexCAN_SetOperationMode/106 (FlexCAN_SetOperationMode) @062abc40
+FlexCAN_SetOperationMode/106 (FlexCAN_SetOperationMode) @061acee0
   Type: function
   Visibility: external public
   References: 
@@ -2890,7 +2890,7 @@ FlexCAN_SetOperationMode/106 (FlexCAN_SetOperationMode) @062abc40
   Function flags: optimize_size
   Called by: FlexCAN_Ip_Init_Privileged/52 (13288 (estimated locally),0.06 per call) 
   Calls: 
-FlexCAN_IsFDAvailable/105 (FlexCAN_IsFDAvailable) @062abb60
+FlexCAN_IsFDAvailable/105 (FlexCAN_IsFDAvailable) @061ace00
   Type: function
   Visibility: external public
   References: 
@@ -2899,7 +2899,7 @@ FlexCAN_IsFDAvailable/105 (FlexCAN_IsFDAvailable) @062abb60
   Function flags: optimize_size
   Called by: FlexCAN_Ip_SetTDCOffset_Privileged/92 (107374 (estimated locally),0.50 per call) FlexCAN_Ip_Init_Privileged/52 (26844 (estimated locally),0.13 per call) FlexCAN_InitController/41 (378493993 (estimated locally),0.35 per call) FlexCAN_SetRegDefaultVal/36 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-FlexCAN_Ip_ManualBusOffRecovery/104 (FlexCAN_Ip_ManualBusOffRecovery) @062ab700
+FlexCAN_Ip_ManualBusOffRecovery/104 (FlexCAN_Ip_ManualBusOffRecovery) @061ac9a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -2908,7 +2908,7 @@ FlexCAN_Ip_ManualBusOffRecovery/104 (FlexCAN_Ip_ManualBusOffRecovery) @062ab700
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: OsIf_GetElapsed/122 (156507 (estimated locally),0.73 per call) OsIf_GetCounter/121 (17717 (estimated locally),0.08 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_20/151 (17717 (estimated locally),0.08 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_20/150 (17717 (estimated locally),0.08 per call) OsIf_MicrosToTicks/120 (214748 (estimated locally),1.00 per call) 
-FlexCAN_Ip_GetListenOnlyMode/103 (FlexCAN_Ip_GetListenOnlyMode) @062ab460
+FlexCAN_Ip_GetListenOnlyMode/103 (FlexCAN_Ip_GetListenOnlyMode) @061ac700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -2917,7 +2917,7 @@ FlexCAN_Ip_GetListenOnlyMode/103 (FlexCAN_Ip_GetListenOnlyMode) @062ab460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_Ip_SetListenOnlyMode_Privileged/102 (FlexCAN_Ip_SetListenOnlyMode_Privileged) @062ab1c0
+FlexCAN_Ip_SetListenOnlyMode_Privileged/102 (FlexCAN_Ip_SetListenOnlyMode_Privileged) @061ac460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -2926,7 +2926,7 @@ FlexCAN_Ip_SetListenOnlyMode_Privileged/102 (FlexCAN_Ip_SetListenOnlyMode_Privil
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (27380 (estimated locally),0.13 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_10/149 (26575 (estimated locally),0.12 per call) FlexCAN_SetListenOnlyMode/5 (26575 (estimated locally),0.12 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_10/148 (26575 (estimated locally),0.12 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_SetRxMb15Mask_Privileged/101 (FlexCAN_Ip_SetRxMb15Mask_Privileged) @0612ed20
+FlexCAN_Ip_SetRxMb15Mask_Privileged/101 (FlexCAN_Ip_SetRxMb15Mask_Privileged) @061ac1c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -2935,7 +2935,7 @@ FlexCAN_Ip_SetRxMb15Mask_Privileged/101 (FlexCAN_Ip_SetRxMb15Mask_Privileged) @0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (27380 (estimated locally),0.13 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_SetRxMb14Mask_Privileged/100 (FlexCAN_Ip_SetRxMb14Mask_Privileged) @0612e7e0
+FlexCAN_Ip_SetRxMb14Mask_Privileged/100 (FlexCAN_Ip_SetRxMb14Mask_Privileged) @06031d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -2944,7 +2944,7 @@ FlexCAN_Ip_SetRxMb14Mask_Privileged/100 (FlexCAN_Ip_SetRxMb14Mask_Privileged) @0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (27380 (estimated locally),0.13 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_AbortTransfer/99 (FlexCAN_Ip_AbortTransfer) @0612e2a0
+FlexCAN_Ip_AbortTransfer/99 (FlexCAN_Ip_AbortTransfer) @060317e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -2953,7 +2953,7 @@ FlexCAN_Ip_AbortTransfer/99 (FlexCAN_Ip_AbortTransfer) @0612e2a0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_AbortRxTransfer/51 (2595 (estimated locally),0.01 per call) FlexCAN_AbortTxTransfer/50 (2595 (estimated locally),0.01 per call) FLEXCAN_ClearMsgBuffIntCmd/147 (12823 (estimated locally),0.06 per call) 
-FlexCAN_Ip_SetErrorInt_Privileged/98 (FlexCAN_Ip_SetErrorInt_Privileged) @0612eee0
+FlexCAN_Ip_SetErrorInt_Privileged/98 (FlexCAN_Ip_SetErrorInt_Privileged) @060312a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -2962,7 +2962,7 @@ FlexCAN_Ip_SetErrorInt_Privileged/98 (FlexCAN_Ip_SetErrorInt_Privileged) @0612ee
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (25394 (estimated locally),0.12 per call) FlexCAN_SetErrIntCmd/146 (5154 (estimated locally),0.02 per call) FlexCAN_SetErrIntCmd/146 (5154 (estimated locally),0.02 per call) FlexCAN_SetErrIntCmd/146 (15617 (estimated locally),0.07 per call) FlexCAN_SetErrIntCmd/146 (15617 (estimated locally),0.07 per call) FlexCAN_SetErrIntCmd/146 (15617 (estimated locally),0.07 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_DisableInterrupts_Privileged/97 (FlexCAN_Ip_DisableInterrupts_Privileged) @0612ec40
+FlexCAN_Ip_DisableInterrupts_Privileged/97 (FlexCAN_Ip_DisableInterrupts_Privileged) @06031ee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -2971,7 +2971,7 @@ FlexCAN_Ip_DisableInterrupts_Privileged/97 (FlexCAN_Ip_DisableInterrupts_Privile
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_DisableInterrupts/145 (44539 (estimated locally),0.21 per call) 
-FlexCAN_Ip_EnableInterrupts_Privileged/96 (FlexCAN_Ip_EnableInterrupts_Privileged) @0612e9a0
+FlexCAN_Ip_EnableInterrupts_Privileged/96 (FlexCAN_Ip_EnableInterrupts_Privileged) @06031c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -2980,7 +2980,7 @@ FlexCAN_Ip_EnableInterrupts_Privileged/96 (FlexCAN_Ip_EnableInterrupts_Privilege
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_EnableInterrupts/144 (44539 (estimated locally),0.21 per call) 
-FlexCAN_Ip_ClearBuffStatusFlag/95 (FlexCAN_Ip_ClearBuffStatusFlag) @0612e700
+FlexCAN_Ip_ClearBuffStatusFlag/95 (FlexCAN_Ip_ClearBuffStatusFlag) @060319a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -2989,7 +2989,7 @@ FlexCAN_Ip_ClearBuffStatusFlag/95 (FlexCAN_Ip_ClearBuffStatusFlag) @0612e700
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_ClearMsgBuffIntStatusFlag/7 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_GetBuffStatusFlag/94 (FlexCAN_Ip_GetBuffStatusFlag) @0612e460
+FlexCAN_Ip_GetBuffStatusFlag/94 (FlexCAN_Ip_GetBuffStatusFlag) @06031700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -2998,7 +2998,7 @@ FlexCAN_Ip_GetBuffStatusFlag/94 (FlexCAN_Ip_GetBuffStatusFlag) @0612e460
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_GetBuffStatusFlag/8 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged/93 (FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged) @0612e1c0
+FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged/93 (FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged) @06031460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3007,7 +3007,7 @@ FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged/93 (FlexCAN_Ip_SetTxArbitration
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (27380 (estimated locally),0.13 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_17/143 (26575 (estimated locally),0.12 per call) FlexCAN_SetTxArbitrationStartDelay/34 (26575 (estimated locally),0.12 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_17/142 (26575 (estimated locally),0.12 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_SetTDCOffset_Privileged/92 (FlexCAN_Ip_SetTDCOffset_Privileged) @06123d20
+FlexCAN_Ip_SetTDCOffset_Privileged/92 (FlexCAN_Ip_SetTDCOffset_Privileged) @060311c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3016,7 +3016,7 @@ FlexCAN_Ip_SetTDCOffset_Privileged/92 (FlexCAN_Ip_SetTDCOffset_Privileged) @0612
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (13690 (estimated locally),0.06 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_16/141 (13288 (estimated locally),0.06 per call) FlexCAN_SetTDCOffset/2 (13288 (estimated locally),0.06 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_16/140 (13288 (estimated locally),0.06 per call) FlexCAN_IsFDAvailable/105 (107374 (estimated locally),0.50 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_GetBitrateFD/91 (FlexCAN_Ip_GetBitrateFD) @061237e0
+FlexCAN_Ip_GetBitrateFD/91 (FlexCAN_Ip_GetBitrateFD) @06026d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3025,7 +3025,7 @@ FlexCAN_Ip_GetBitrateFD/91 (FlexCAN_Ip_GetBitrateFD) @061237e0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_GetFDTimeSegments/15 (53687 (estimated locally),0.25 per call) 
-FlexCAN_Ip_SetBitrateCbt_Privileged/90 (FlexCAN_Ip_SetBitrateCbt_Privileged) @061232a0
+FlexCAN_Ip_SetBitrateCbt_Privileged/90 (FlexCAN_Ip_SetBitrateCbt_Privileged) @060267e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3034,7 +3034,7 @@ FlexCAN_Ip_SetBitrateCbt_Privileged/90 (FlexCAN_Ip_SetBitrateCbt_Privileged) @06
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (13690 (estimated locally),0.06 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_15/139 (6644 (estimated locally),0.03 per call) FlexCAN_SetFDTimeSegments/10 (6644 (estimated locally),0.03 per call) FlexCAN_SetFDEnabled/4 (6644 (estimated locally),0.03 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_15/138 (6644 (estimated locally),0.03 per call) FlexCAN_Enable/126 (13690 (estimated locally),0.06 per call) 
-FlexCAN_Ip_GetTDCValue/89 (FlexCAN_Ip_GetTDCValue) @06123ee0
+FlexCAN_Ip_GetTDCValue/89 (FlexCAN_Ip_GetTDCValue) @060262a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3043,7 +3043,7 @@ FlexCAN_Ip_GetTDCValue/89 (FlexCAN_Ip_GetTDCValue) @06123ee0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_Ip_GetTDCFail/88 (FlexCAN_Ip_GetTDCFail) @06123c40
+FlexCAN_Ip_GetTDCFail/88 (FlexCAN_Ip_GetTDCFail) @06026ee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3052,7 +3052,7 @@ FlexCAN_Ip_GetTDCFail/88 (FlexCAN_Ip_GetTDCFail) @06123c40
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_Ip_ClearTDCFail/87 (FlexCAN_Ip_ClearTDCFail) @061239a0
+FlexCAN_Ip_ClearTDCFail/87 (FlexCAN_Ip_ClearTDCFail) @06026c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3061,7 +3061,7 @@ FlexCAN_Ip_ClearTDCFail/87 (FlexCAN_Ip_ClearTDCFail) @061239a0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Can_CAN_EXCLUSIVE_AREA_09/137 (107374 (estimated locally),0.50 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_09/136 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_GetBitrate/86 (FlexCAN_Ip_GetBitrate) @06123700
+FlexCAN_Ip_GetBitrate/86 (FlexCAN_Ip_GetBitrate) @060269a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3070,7 +3070,7 @@ FlexCAN_Ip_GetBitrate/86 (FlexCAN_Ip_GetBitrate) @06123700
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_GetTimeSegments/14 (31675 (estimated locally),0.15 per call) FlexCAN_GetExtendedTimeSegments/13 (22012 (estimated locally),0.10 per call) 
-FlexCAN_Ip_SetBitrate_Privileged/85 (FlexCAN_Ip_SetBitrate_Privileged) @06123460
+FlexCAN_Ip_SetBitrate_Privileged/85 (FlexCAN_Ip_SetBitrate_Privileged) @06026700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3079,7 +3079,7 @@ FlexCAN_Ip_SetBitrate_Privileged/85 (FlexCAN_Ip_SetBitrate_Privileged) @06123460
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (13690 (estimated locally),0.06 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_14/135 (13288 (estimated locally),0.06 per call) FlexCAN_SetTimeSegments/11 (7840 (estimated locally),0.04 per call) FlexCAN_SetExtendedTimeSegments/12 (5448 (estimated locally),0.03 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_14/134 (13288 (estimated locally),0.06 per call) FlexCAN_Enable/126 (13690 (estimated locally),0.06 per call) 
-FlexCAN_Ip_SetRxMaskType_Privileged/84 (FlexCAN_Ip_SetRxMaskType_Privileged) @061231c0
+FlexCAN_Ip_SetRxMaskType_Privileged/84 (FlexCAN_Ip_SetRxMaskType_Privileged) @06026460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3088,7 +3088,7 @@ FlexCAN_Ip_SetRxMaskType_Privileged/84 (FlexCAN_Ip_SetRxMaskType_Privileged) @06
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (27380 (estimated locally),0.13 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_08/133 (26575 (estimated locally),0.12 per call) FlexCAN_SetRxMaskType/35 (26575 (estimated locally),0.12 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_08/132 (26575 (estimated locally),0.12 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_SetStopMode_Privileged/83 (FlexCAN_Ip_SetStopMode_Privileged) @06119d20
+FlexCAN_Ip_SetStopMode_Privileged/83 (FlexCAN_Ip_SetStopMode_Privileged) @060261c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3097,7 +3097,7 @@ FlexCAN_Ip_SetStopMode_Privileged/83 (FlexCAN_Ip_SetStopMode_Privileged) @06119d
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (35433 (estimated locally),0.16 per call) FlexCAN_EnterFreezeMode/107 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_SetStartMode_Privileged/82 (FlexCAN_Ip_SetStartMode_Privileged) @061197e0
+FlexCAN_Ip_SetStartMode_Privileged/82 (FlexCAN_Ip_SetStartMode_Privileged) @0601bd20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3106,7 +3106,7 @@ FlexCAN_Ip_SetStartMode_Privileged/82 (FlexCAN_Ip_SetStartMode_Privileged) @0611
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_ExitFreezeMode/129 (107374 (estimated locally),0.50 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_07/131 (107374 (estimated locally),0.50 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_07/130 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_GetStartMode_Privileged/81 (FlexCAN_Ip_GetStartMode_Privileged) @061192a0
+FlexCAN_Ip_GetStartMode_Privileged/81 (FlexCAN_Ip_GetStartMode_Privileged) @0601b7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3115,7 +3115,7 @@ FlexCAN_Ip_GetStartMode_Privileged/81 (FlexCAN_Ip_GetStartMode_Privileged) @0611
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_Ip_GetStopMode_Privileged/80 (FlexCAN_Ip_GetStopMode_Privileged) @06119ee0
+FlexCAN_Ip_GetStopMode_Privileged/80 (FlexCAN_Ip_GetStopMode_Privileged) @0601b2a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3124,7 +3124,7 @@ FlexCAN_Ip_GetStopMode_Privileged/80 (FlexCAN_Ip_GetStopMode_Privileged) @06119e
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_Ip_MainFunctionWrite/79 (FlexCAN_Ip_MainFunctionWrite) @06119c40
+FlexCAN_Ip_MainFunctionWrite/79 (FlexCAN_Ip_MainFunctionWrite) @0601bee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3133,7 +3133,7 @@ FlexCAN_Ip_MainFunctionWrite/79 (FlexCAN_Ip_MainFunctionWrite) @06119c40
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_ClearMsgBuffIntStatusFlag/7 (35433 (estimated locally),0.16 per call) FlexCAN_GetMsgBuffTimestamp/128 (35433 (estimated locally),0.16 per call) FlexCAN_GetBuffStatusFlag/8 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_MainFunctionBusOff_Privileged/78 (FlexCAN_Ip_MainFunctionBusOff_Privileged) @061199a0
+FlexCAN_Ip_MainFunctionBusOff_Privileged/78 (FlexCAN_Ip_MainFunctionBusOff_Privileged) @0601bc40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3143,7 +3143,7 @@ FlexCAN_Ip_MainFunctionBusOff_Privileged/78 (FlexCAN_Ip_MainFunctionBusOff_Privi
   Called by: 
   Calls: 
    Indirect call(37581 (estimated locally),0.18 per call) 
-FlexCAN_Ip_MainFunctionRead/77 (FlexCAN_Ip_MainFunctionRead) @06119700
+FlexCAN_Ip_MainFunctionRead/77 (FlexCAN_Ip_MainFunctionRead) @0601b9a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3152,7 +3152,7 @@ FlexCAN_Ip_MainFunctionRead/77 (FlexCAN_Ip_MainFunctionRead) @06119700
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_IRQHandlerRxMB/46 (3613 (estimated locally),0.02 per call) FlexCAN_GetBuffStatusFlag/8 (35702 (estimated locally),0.17 per call) FlexCAN_IRQHandlerRxFIFO/48 (2968 (estimated locally),0.01 per call) 
-FlexCAN_Ip_Deinit_Privileged/76 (FlexCAN_Ip_Deinit_Privileged) @06119460
+FlexCAN_Ip_Deinit_Privileged/76 (FlexCAN_Ip_Deinit_Privileged) @0601b700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (write)
@@ -3161,7 +3161,7 @@ FlexCAN_Ip_Deinit_Privileged/76 (FlexCAN_Ip_Deinit_Privileged) @06119460
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (35433 (estimated locally),0.16 per call) FlexCAN_SetRegDefaultVal/36 (35433 (estimated locally),0.16 per call) FlexCAN_EnterFreezeMode/107 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_SetRxFifoGlobalMask_Privileged/75 (FlexCAN_Ip_SetRxFifoGlobalMask_Privileged) @061191c0
+FlexCAN_Ip_SetRxFifoGlobalMask_Privileged/75 (FlexCAN_Ip_SetRxFifoGlobalMask_Privileged) @0601b460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3170,7 +3170,7 @@ FlexCAN_Ip_SetRxFifoGlobalMask_Privileged/75 (FlexCAN_Ip_SetRxFifoGlobalMask_Pri
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (27380 (estimated locally),0.13 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_SetRxIndividualMask_Privileged/74 (FlexCAN_Ip_SetRxIndividualMask_Privileged) @06108d20
+FlexCAN_Ip_SetRxIndividualMask_Privileged/74 (FlexCAN_Ip_SetRxIndividualMask_Privileged) @0601b1c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3179,7 +3179,7 @@ FlexCAN_Ip_SetRxIndividualMask_Privileged/74 (FlexCAN_Ip_SetRxIndividualMask_Pri
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (11568 (estimated locally),0.05 per call) FlexCAN_Enable/126 (11568 (estimated locally),0.05 per call) 
-FlexCAN_Ip_ExitFreezeMode_Privileged/73 (FlexCAN_Ip_ExitFreezeMode_Privileged) @061087e0
+FlexCAN_Ip_ExitFreezeMode_Privileged/73 (FlexCAN_Ip_ExitFreezeMode_Privileged) @0600cd20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3188,7 +3188,7 @@ FlexCAN_Ip_ExitFreezeMode_Privileged/73 (FlexCAN_Ip_ExitFreezeMode_Privileged) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_ExitFreezeMode/129 (1073741824 (estimated locally),1.00 per call) 
-FlexCAN_Ip_EnterFreezeMode_Privileged/72 (FlexCAN_Ip_EnterFreezeMode_Privileged) @061082a0
+FlexCAN_Ip_EnterFreezeMode_Privileged/72 (FlexCAN_Ip_EnterFreezeMode_Privileged) @0600c7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3197,7 +3197,7 @@ FlexCAN_Ip_EnterFreezeMode_Privileged/72 (FlexCAN_Ip_EnterFreezeMode_Privileged)
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_EnterFreezeMode/107 (1073741824 (estimated locally),1.00 per call) 
-FlexCAN_Ip_SetRxMbGlobalMask_Privileged/71 (FlexCAN_Ip_SetRxMbGlobalMask_Privileged) @06108ee0
+FlexCAN_Ip_SetRxMbGlobalMask_Privileged/71 (FlexCAN_Ip_SetRxMbGlobalMask_Privileged) @0600c2a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3206,7 +3206,7 @@ FlexCAN_Ip_SetRxMbGlobalMask_Privileged/71 (FlexCAN_Ip_SetRxMbGlobalMask_Privile
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (27380 (estimated locally),0.13 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_SendBlocking/70 (FlexCAN_Ip_SendBlocking) @06108c40
+FlexCAN_Ip_SendBlocking/70 (FlexCAN_Ip_SendBlocking) @0600cee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3215,7 +3215,7 @@ FlexCAN_Ip_SendBlocking/70 (FlexCAN_Ip_SendBlocking) @06108c40
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_ClearMsgBuffIntStatusFlag/7 (17717 (estimated locally),0.08 per call) FlexCAN_GetBuffStatusFlag/8 (18582 (estimated locally),0.09 per call) OsIf_GetElapsed/122 (17560 (estimated locally),0.08 per call) OsIf_GetCounter/121 (1988 (estimated locally),0.01 per call) OsIf_MicrosToTicks/120 (1988 (estimated locally),0.01 per call) FlexCAN_GetMsgBuffRegion/117 (1988 (estimated locally),0.01 per call) FlexCAN_ClearMsgBuffIntStatusFlag/7 (1988 (estimated locally),0.01 per call) FlexCAN_GetBuffStatusFlag/8 (165615 (estimated locally),0.77 per call) OsIf_GetElapsed/122 (156507 (estimated locally),0.73 per call) OsIf_GetCounter/121 (17717 (estimated locally),0.08 per call) FlexCAN_StartSendData/44 (53687 (estimated locally),0.25 per call) OsIf_MicrosToTicks/120 (214748 (estimated locally),1.00 per call) 
-FlexCAN_BusOff_IRQHandler/69 (FlexCAN_BusOff_IRQHandler) @061089a0
+FlexCAN_BusOff_IRQHandler/69 (FlexCAN_BusOff_IRQHandler) @0600cc40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3227,7 +3227,7 @@ FlexCAN_BusOff_IRQHandler/69 (FlexCAN_BusOff_IRQHandler) @061089a0
    Indirect call(13153 (estimated locally),0.06 per call) 
    Indirect call(13153 (estimated locally),0.06 per call) 
    Indirect call(13153 (estimated locally),0.06 per call) 
-FlexCAN_Error_IRQHandler/68 (FlexCAN_Error_IRQHandler) @06108700
+FlexCAN_Error_IRQHandler/68 (FlexCAN_Error_IRQHandler) @0600c9a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3238,7 +3238,7 @@ FlexCAN_Error_IRQHandler/68 (FlexCAN_Error_IRQHandler) @06108700
   Calls: 
    Indirect call(10786 (estimated locally),0.05 per call) 
    Indirect call(13153 (estimated locally),0.06 per call) 
-FlexCAN_Ip_GetControllerRxErrorCounter/67 (FlexCAN_Ip_GetControllerRxErrorCounter) @06108460
+FlexCAN_Ip_GetControllerRxErrorCounter/67 (FlexCAN_Ip_GetControllerRxErrorCounter) @0600c700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3247,7 +3247,7 @@ FlexCAN_Ip_GetControllerRxErrorCounter/67 (FlexCAN_Ip_GetControllerRxErrorCounte
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_Ip_GetControllerTxErrorCounter/66 (FlexCAN_Ip_GetControllerTxErrorCounter) @061081c0
+FlexCAN_Ip_GetControllerTxErrorCounter/66 (FlexCAN_Ip_GetControllerTxErrorCounter) @0600c460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3256,7 +3256,7 @@ FlexCAN_Ip_GetControllerTxErrorCounter/66 (FlexCAN_Ip_GetControllerTxErrorCounte
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_Ip_GetErrorStatus/65 (FlexCAN_Ip_GetErrorStatus) @060f9d20
+FlexCAN_Ip_GetErrorStatus/65 (FlexCAN_Ip_GetErrorStatus) @0600c1c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3265,7 +3265,7 @@ FlexCAN_Ip_GetErrorStatus/65 (FlexCAN_Ip_GetErrorStatus) @060f9d20
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_Ip_ClearErrorStatus/64 (FlexCAN_Ip_ClearErrorStatus) @060f97e0
+FlexCAN_Ip_ClearErrorStatus/64 (FlexCAN_Ip_ClearErrorStatus) @05ffbd20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3274,7 +3274,7 @@ FlexCAN_Ip_ClearErrorStatus/64 (FlexCAN_Ip_ClearErrorStatus) @060f97e0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_IRQHandler/63 (FlexCAN_IRQHandler) @060f92a0
+FlexCAN_IRQHandler/63 (FlexCAN_IRQHandler) @05ffb7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3283,7 +3283,7 @@ FlexCAN_IRQHandler/63 (FlexCAN_IRQHandler) @060f92a0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_ClearMsgBuffIntStatusFlag/7 (202115 (estimated locally),0.94 per call) FlexCAN_ClearMsgBuffIntStatusFlag/7 (3173 (estimated locally),0.01 per call) FlexCAN_GetMsgBuffIntStatusFlag/30 (19233 (estimated locally),0.09 per call) FlexCAN_IRQHandlerTxMB/47 (3893 (estimated locally),0.02 per call) FlexCAN_IRQHandlerRxMB/46 (3251 (estimated locally),0.02 per call) FlexCAN_IRQHandlerRxFIFO/48 (3173 (estimated locally),0.01 per call) FlexCAN_ProcessSpuriousInterruptMB/49 (9473 (estimated locally),0.04 per call) FlexCAN_GetMsgBuffIntStatusFlag/30 (239641 (estimated locally),1.12 per call) FlexCAN_GetMsgBuffIntStatusFlag/30 (28706 (estimated locally),0.13 per call) 
-FlexCAN_CompleteRxMessageFifoData/62 (FlexCAN_CompleteRxMessageFifoData) @060f9ee0
+FlexCAN_CompleteRxMessageFifoData/62 (FlexCAN_CompleteRxMessageFifoData) @05ffb2a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3292,7 +3292,7 @@ FlexCAN_CompleteRxMessageFifoData/62 (FlexCAN_CompleteRxMessageFifoData) @060f9e
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: FlexCAN_IRQHandlerRxFIFO/48 (17929341 (estimated locally),0.02 per call) 
   Calls: FlexCAN_SetMsgBuffIntCmd/114 (35433 (estimated locally),0.16 per call) FlexCAN_SetMsgBuffIntCmd/114 (35433 (estimated locally),0.16 per call) FlexCAN_SetMsgBuffIntCmd/114 (35433 (estimated locally),0.16 per call) 
-FlexCAN_Ip_GetTransferStatus/61 (FlexCAN_Ip_GetTransferStatus) @060f9c40
+FlexCAN_Ip_GetTransferStatus/61 (FlexCAN_Ip_GetTransferStatus) @05ffbee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxState/38 (read)
@@ -3301,7 +3301,7 @@ FlexCAN_Ip_GetTransferStatus/61 (FlexCAN_Ip_GetTransferStatus) @060f9c40
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-FlexCAN_Ip_ConfigRemoteResponseMb/60 (FlexCAN_Ip_ConfigRemoteResponseMb) @060f99a0
+FlexCAN_Ip_ConfigRemoteResponseMb/60 (FlexCAN_Ip_ConfigRemoteResponseMb) @05ffbc40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3310,7 +3310,7 @@ FlexCAN_Ip_ConfigRemoteResponseMb/60 (FlexCAN_Ip_ConfigRemoteResponseMb) @060f99
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_SetMsgBuffIntCmd/114 (2116 (estimated locally),0.01 per call) FlexCAN_SetTxMsgBuff/118 (6412 (estimated locally),0.03 per call) FlexCAN_GetMsgBuffRegion/117 (6412 (estimated locally),0.03 per call) FlexCAN_ClearMsgBuffIntStatusFlag/7 (6412 (estimated locally),0.03 per call) FlexCAN_IsMbOutOfRange/116 (13422 (estimated locally),0.06 per call) FlexCAN_GetMbPayloadSize/115 (26844 (estimated locally),0.13 per call) 
-FlexCAN_Ip_ConfigRxFifo_Privileged/59 (FlexCAN_Ip_ConfigRxFifo_Privileged) @060f9700
+FlexCAN_Ip_ConfigRxFifo_Privileged/59 (FlexCAN_Ip_ConfigRxFifo_Privileged) @05ffb9a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)
@@ -3319,7 +3319,7 @@ FlexCAN_Ip_ConfigRxFifo_Privileged/59 (FlexCAN_Ip_ConfigRxFifo_Privileged) @060f
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Disable/108 (27380 (estimated locally),0.13 per call) FlexCAN_SetRxFifoFilter/127 (26575 (estimated locally),0.12 per call) FlexCAN_Enable/126 (27380 (estimated locally),0.13 per call) 
-FlexCAN_Ip_RxFifoBlocking/58 (FlexCAN_Ip_RxFifoBlocking) @060f9460
+FlexCAN_Ip_RxFifoBlocking/58 (FlexCAN_Ip_RxFifoBlocking) @05ffb700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -3328,7 +3328,7 @@ FlexCAN_Ip_RxFifoBlocking/58 (FlexCAN_Ip_RxFifoBlocking) @060f9460
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_ProccessLegacyRxFIFO/42 (35433 (estimated locally),0.16 per call) FlexCAN_StartRxMessageFifoData/45 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_RxFifo/57 (FlexCAN_Ip_RxFifo) @060f91c0
+FlexCAN_Ip_RxFifo/57 (FlexCAN_Ip_RxFifo) @05ffb460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -3337,7 +3337,7 @@ FlexCAN_Ip_RxFifo/57 (FlexCAN_Ip_RxFifo) @060f91c0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_StartRxMessageFifoData/45 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_ReceiveBlocking/56 (FlexCAN_Ip_ReceiveBlocking) @060e7d20
+FlexCAN_Ip_ReceiveBlocking/56 (FlexCAN_Ip_ReceiveBlocking) @05ffb1c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxState/38 (read)Flexcan_Ip_apxBase/37 (read)
@@ -3346,7 +3346,7 @@ FlexCAN_Ip_ReceiveBlocking/56 (FlexCAN_Ip_ReceiveBlocking) @060e7d20
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_SetMsgBuffIntCmd/114 (12047 (estimated locally),0.06 per call) OsIf_GetElapsed/122 (313013 (estimated locally),1.46 per call) FlexCAN_IRQHandlerRxMB/46 (34087 (estimated locally),0.16 per call) FlexCAN_GetBuffStatusFlag/8 (103294 (estimated locally),0.48 per call) OsIf_GetCounter/121 (35433 (estimated locally),0.16 per call) FlexCAN_SetMsgBuffIntCmd/114 (17717 (estimated locally),0.08 per call) FlexCAN_StartRxMessageBufferData/43 (107374 (estimated locally),0.50 per call) OsIf_MicrosToTicks/120 (214748 (estimated locally),1.00 per call) 
-FlexCAN_Ip_Receive/55 (FlexCAN_Ip_Receive) @060e77e0
+FlexCAN_Ip_Receive/55 (FlexCAN_Ip_Receive) @05fe4d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3355,7 +3355,7 @@ FlexCAN_Ip_Receive/55 (FlexCAN_Ip_Receive) @060e77e0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_SetMsgBuffIntCmd/114 (17717 (estimated locally),0.08 per call) FlexCAN_StartRxMessageBufferData/43 (107374 (estimated locally),0.50 per call) 
-FlexCAN_Ip_ConfigRxMb/54 (FlexCAN_Ip_ConfigRxMb) @060e72a0
+FlexCAN_Ip_ConfigRxMb/54 (FlexCAN_Ip_ConfigRxMb) @05fe47e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3364,7 +3364,7 @@ FlexCAN_Ip_ConfigRxMb/54 (FlexCAN_Ip_ConfigRxMb) @060e72a0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_SetRxMsgBuff/119 (25646 (estimated locally),0.12 per call) FlexCAN_SetRxMsgBuff/119 (25646 (estimated locally),0.12 per call) FlexCAN_SetRxMsgBuff/119 (25646 (estimated locally),0.12 per call) FlexCAN_ClearMsgBuffIntStatusFlag/7 (25646 (estimated locally),0.12 per call) FlexCAN_IsMbOutOfRange/116 (53687 (estimated locally),0.25 per call) 
-FlexCAN_Ip_Send/53 (FlexCAN_Ip_Send) @060e7ee0
+FlexCAN_Ip_Send/53 (FlexCAN_Ip_Send) @05fe42a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3373,7 +3373,7 @@ FlexCAN_Ip_Send/53 (FlexCAN_Ip_Send) @060e7ee0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_SetMsgBuffIntCmd/114 (2923 (estimated locally),0.01 per call) FlexCAN_StartSendData/44 (17717 (estimated locally),0.08 per call) 
-FlexCAN_Ip_Init_Privileged/52 (FlexCAN_Ip_Init_Privileged) @060e7c40
+FlexCAN_Ip_Init_Privileged/52 (FlexCAN_Ip_Init_Privileged) @05fe4ee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (write)
@@ -3382,7 +3382,7 @@ FlexCAN_Ip_Init_Privileged/52 (FlexCAN_Ip_Init_Privileged) @060e7c40
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_SetOperationMode/106 (13288 (estimated locally),0.06 per call) FlexCAN_SetTimeSegments/11 (6644 (estimated locally),0.03 per call) FlexCAN_SetFDTimeSegments/10 (6644 (estimated locally),0.03 per call) FlexCAN_SetExtendedTimeSegments/12 (6644 (estimated locally),0.03 per call) FlexCAN_EnableExtCbt/17 (13288 (estimated locally),0.06 per call) FlexCAN_InitController/41 (40265 (estimated locally),0.19 per call) FlexCAN_IsFDAvailable/105 (26844 (estimated locally),0.13 per call) 
-FlexCAN_AbortRxTransfer/51 (FlexCAN_AbortRxTransfer) @060e79a0
+FlexCAN_AbortRxTransfer/51 (FlexCAN_AbortRxTransfer) @05fe4c40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3391,7 +3391,7 @@ FlexCAN_AbortRxTransfer/51 (FlexCAN_AbortRxTransfer) @060e79a0
   Function flags: count:1073741823 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_AbortTransfer/99 (2595 (estimated locally),0.01 per call) 
   Calls: FlexCAN_ClearMsgBuffIntStatusFlag/7 (1073741824 (estimated locally),1.00 per call) FlexCAN_GetMsgBuffRegion/117 (354334802 (estimated locally),0.33 per call) FLEXCAN_ClearMsgBuffIntCmd/147 (237404317 (estimated locally),0.22 per call) FlexCAN_GetMsgBuffRegion/117 (237404317 (estimated locally),0.22 per call) RxFifoOcuppiedLastMsgBuff/21 (719407022 (estimated locally),0.67 per call) 
-FlexCAN_AbortTxTransfer/50 (FlexCAN_AbortTxTransfer) @060e7700
+FlexCAN_AbortTxTransfer/50 (FlexCAN_AbortTxTransfer) @05fe49a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3400,7 +3400,7 @@ FlexCAN_AbortTxTransfer/50 (FlexCAN_AbortTxTransfer) @060e7700
   Function flags: count:114863532 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_AbortTransfer/99 (2595 (estimated locally),0.01 per call) 
   Calls: FlexCAN_ClearMsgBuffIntStatusFlag/7 (114863532 (estimated locally),1.00 per call) FlexCAN_GetBuffStatusFlag/8 (1073741824 (estimated locally),9.35 per call) OsIf_GetElapsed/122 (1014686025 (estimated locally),8.83 per call) OsIf_GetCounter/121 (114863532 (estimated locally),1.00 per call) OsIf_MicrosToTicks/120 (114863532 (estimated locally),1.00 per call) FlexCAN_GetMsgBuffRegion/117 (114863532 (estimated locally),1.00 per call) 
-FlexCAN_ProcessSpuriousInterruptMB/49 (FlexCAN_ProcessSpuriousInterruptMB) @060e7460
+FlexCAN_ProcessSpuriousInterruptMB/49 (FlexCAN_ProcessSpuriousInterruptMB) @05fe4700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3409,7 +3409,7 @@ FlexCAN_ProcessSpuriousInterruptMB/49 (FlexCAN_ProcessSpuriousInterruptMB) @060e
   Function flags: count:118111602 (estimated locally) body local optimize_size
   Called by: FlexCAN_IRQHandler/63 (9473 (estimated locally),0.04 per call) 
   Calls: FlexCAN_ClearMsgBuffIntStatusFlag/7 (52034066 (estimated locally),0.44 per call) FlexCAN_GetBuffStatusImask/9 (315357973 (estimated locally),2.67 per call) FlexCAN_GetBuffStatusFlag/8 (955630223 (estimated locally),8.09 per call) 
-FlexCAN_IRQHandlerRxFIFO/48 (FlexCAN_IRQHandlerRxFIFO) @060e71c0
+FlexCAN_IRQHandlerRxFIFO/48 (FlexCAN_IRQHandlerRxFIFO) @05fe4460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3421,7 +3421,7 @@ FlexCAN_IRQHandlerRxFIFO/48 (FlexCAN_IRQHandlerRxFIFO) @060e71c0
    Indirect call(187904819 (estimated locally),0.18 per call) 
    Indirect call(187904819 (estimated locally),0.18 per call) 
    Indirect call(38031935 (estimated locally),0.04 per call) 
-FlexCAN_IRQHandlerTxMB/47 (FlexCAN_IRQHandlerTxMB) @06205d20
+FlexCAN_IRQHandlerTxMB/47 (FlexCAN_IRQHandlerTxMB) @05fe41c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3431,7 +3431,7 @@ FlexCAN_IRQHandlerTxMB/47 (FlexCAN_IRQHandlerTxMB) @06205d20
   Called by: FlexCAN_IRQHandler/63 (3893 (estimated locally),0.02 per call) 
   Calls: FlexCAN_SetMsgBuffIntCmd/114 (147934780 (estimated locally),0.14 per call) FlexCAN_SetMsgBuffIntCmd/114 (177167401 (estimated locally),0.17 per call) FlexCAN_ClearMsgBuffIntStatusFlag/7 (536870911 (estimated locally),0.50 per call) FlexCAN_GetMsgBuffTimestamp/128 (536870911 (estimated locally),0.50 per call) FlexCAN_ClearMsgBuffIntStatusFlag/7 (108662672 (estimated locally),0.10 per call) FlexCAN_GetMsgBuff/124 (536870911 (estimated locally),0.50 per call) FlexCAN_LockRxMsgBuff/123 (536870911 (estimated locally),0.50 per call) 
    Indirect call(751619278 (estimated locally),0.70 per call) 
-FlexCAN_IRQHandlerRxMB/46 (FlexCAN_IRQHandlerRxMB) @062057e0
+FlexCAN_IRQHandlerRxMB/46 (FlexCAN_IRQHandlerRxMB) @06109ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3441,7 +3441,7 @@ FlexCAN_IRQHandlerRxMB/46 (FlexCAN_IRQHandlerRxMB) @062057e0
   Called by: FlexCAN_Ip_MainFunctionRead/77 (3613 (estimated locally),0.02 per call) FlexCAN_IRQHandler/63 (3251 (estimated locally),0.02 per call) FlexCAN_Ip_ReceiveBlocking/56 (34087 (estimated locally),0.16 per call) 
   Calls: FlexCAN_SetMsgBuffIntCmd/114 (147934780 (estimated locally),0.14 per call) FlexCAN_SetMsgBuffIntCmd/114 (177167401 (estimated locally),0.17 per call) FlexCAN_GetMsgBuffRegion/117 (177167401 (estimated locally),0.17 per call) FlexCAN_ClearMsgBuffIntStatusFlag/7 (1073741823 (estimated locally),1.00 per call) FlexCAN_GetMsgBuff/124 (1073741823 (estimated locally),1.00 per call) FlexCAN_LockRxMsgBuff/123 (1073741823 (estimated locally),1.00 per call) 
    Indirect call(751619277 (estimated locally),0.70 per call) 
-FlexCAN_StartRxMessageFifoData/45 (FlexCAN_StartRxMessageFifoData) @062052a0
+FlexCAN_StartRxMessageFifoData/45 (FlexCAN_StartRxMessageFifoData) @061099a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3450,7 +3450,7 @@ FlexCAN_StartRxMessageFifoData/45 (FlexCAN_StartRxMessageFifoData) @062052a0
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_RxFifoBlocking/58 (107374 (estimated locally),0.50 per call) FlexCAN_Ip_RxFifo/57 (107374 (estimated locally),0.50 per call) 
   Calls: FlexCAN_StartRxMessageFifoData.part.0/161 (107374 (estimated locally),0.50 per call) 
-FlexCAN_StartSendData/44 (FlexCAN_StartSendData) @06205ee0
+FlexCAN_StartSendData/44 (FlexCAN_StartSendData) @06109460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxState/38 (read)Flexcan_Ip_apxBase/37 (read)
@@ -3459,7 +3459,7 @@ FlexCAN_StartSendData/44 (FlexCAN_StartSendData) @06205ee0
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_SendBlocking/70 (53687 (estimated locally),0.25 per call) FlexCAN_Ip_Send/53 (17717 (estimated locally),0.08 per call) 
   Calls: FlexCAN_SetTxMsgBuff/118 (8335 (estimated locally),0.04 per call) FlexCAN_GetMsgBuffRegion/117 (8335 (estimated locally),0.04 per call) FlexCAN_ClearMsgBuffIntStatusFlag/7 (8335 (estimated locally),0.04 per call) FlexCAN_IsMbOutOfRange/116 (26844 (estimated locally),0.13 per call) FlexCAN_GetMbPayloadSize/115 (53687 (estimated locally),0.25 per call) 
-FlexCAN_StartRxMessageBufferData/43 (FlexCAN_StartRxMessageBufferData) @06205c40
+FlexCAN_StartRxMessageBufferData/43 (FlexCAN_StartRxMessageBufferData) @06109e00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxBase/37 (read)Flexcan_Ip_apxState/38 (read)
@@ -3468,7 +3468,7 @@ FlexCAN_StartRxMessageBufferData/43 (FlexCAN_StartRxMessageBufferData) @06205c40
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_ReceiveBlocking/56 (107374 (estimated locally),0.50 per call) FlexCAN_Ip_Receive/55 (107374 (estimated locally),0.50 per call) 
   Calls: FlexCAN_IsMbOutOfRange/116 (107374 (estimated locally),0.50 per call) 
-FlexCAN_ProccessLegacyRxFIFO/42 (FlexCAN_ProccessLegacyRxFIFO) @062059a0
+FlexCAN_ProccessLegacyRxFIFO/42 (FlexCAN_ProccessLegacyRxFIFO) @06109b60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Flexcan_Ip_apxState/38 (read)Flexcan_Ip_apxBase/37 (read)
@@ -3477,7 +3477,7 @@ FlexCAN_ProccessLegacyRxFIFO/42 (FlexCAN_ProccessLegacyRxFIFO) @062059a0
   Function flags: count:114863532 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_RxFifoBlocking/58 (35433 (estimated locally),0.16 per call) 
   Calls: FlexCAN_SetMsgBuffIntCmd/114 (19089400 (estimated locally),0.17 per call) FlexCAN_SetMsgBuffIntCmd/114 (19089400 (estimated locally),0.17 per call) FlexCAN_SetMsgBuffIntCmd/114 (19089400 (estimated locally),0.17 per call) OsIf_GetElapsed/122 (1014686025 (estimated locally),8.83 per call) FlexCAN_IRQHandlerRxFIFO/48 (160726266 (estimated locally),1.40 per call) FlexCAN_GetBuffStatusFlag/8 (487049291 (estimated locally),4.24 per call) OsIf_GetCounter/121 (114863532 (estimated locally),1.00 per call) OsIf_MicrosToTicks/120 (114863532 (estimated locally),1.00 per call) 
-FlexCAN_InitController/41 (FlexCAN_InitController) @06205700
+FlexCAN_InitController/41 (FlexCAN_InitController) @061098c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3486,7 +3486,7 @@ FlexCAN_InitController/41 (FlexCAN_InitController) @06205700
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_Init_Privileged/52 (40265 (estimated locally),0.19 per call) 
   Calls: FlexCAN_InitCtroll/40 (378493993 (estimated locally),0.35 per call) FlexCAN_ConfigCtrlOptions/110 (378493993 (estimated locally),0.35 per call) FlexCAN_SetFDEnabled/4 (124903018 (estimated locally),0.12 per call) FlexCAN_IsFDAvailable/105 (378493993 (estimated locally),0.35 per call) FlexCAN_Disable/108 (378493993 (estimated locally),0.35 per call) FlexCAN_EnterFreezeMode/107 (378493993 (estimated locally),0.35 per call) FlexCAN_Init/109 (756987987 (estimated locally),0.71 per call) FlexCAN_SetClkSrc/29 (756987987 (estimated locally),0.71 per call) FlexCAN_Disable/108 (209057533 (estimated locally),0.19 per call) FlexCAN_EnterFreezeMode/107 (633507677 (estimated locally),0.59 per call) 
-FlexCAN_InitCtroll/40 (FlexCAN_InitCtroll) @06205460
+FlexCAN_InitCtroll/40 (FlexCAN_InitCtroll) @06109620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3495,7 +3495,7 @@ FlexCAN_InitCtroll/40 (FlexCAN_InitCtroll) @06205460
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_InitController/41 (378493993 (estimated locally),0.35 per call) 
   Calls: FlexCAN_Disable/108 (177167401 (estimated locally),0.17 per call) FlexCAN_EnterFreezeMode/107 (177167401 (estimated locally),0.17 per call) FlexCAN_SetMaxMsgBuffNum/112 (536870913 (estimated locally),0.50 per call) FlexCAN_SetPayloadSize/111 (536870913 (estimated locally),0.50 per call) FlexCAN_Disable/108 (536870913 (estimated locally),0.50 per call) FlexCAN_EnterFreezeMode/107 (536870913 (estimated locally),0.50 per call) FlexCAN_InitRxFifo/39 (1073741824 (estimated locally),1.00 per call) 
-FlexCAN_InitRxFifo/39 (FlexCAN_InitRxFifo) @062051c0
+FlexCAN_InitRxFifo/39 (FlexCAN_InitRxFifo) @06109380
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3504,21 +3504,21 @@ FlexCAN_InitRxFifo/39 (FlexCAN_InitRxFifo) @062051c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_InitCtroll/40 (1073741824 (estimated locally),1.00 per call) 
   Calls: FlexCAN_EnableRxFifo/113 (354334802 (estimated locally),0.33 per call) 
-Flexcan_Ip_apxState/38 (Flexcan_Ip_apxState) @060aa558
+Flexcan_Ip_apxState/38 (Flexcan_Ip_apxState) @05fbe558
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: FlexCAN_IRQHandlerTxMB/47 (read)FlexCAN_AbortRxTransfer/51 (read)FlexCAN_CompleteRxMessageFifoData/62 (read)FlexCAN_Ip_Init_Privileged/52 (write)FlexCAN_Ip_Send/53 (read)FlexCAN_StartRxMessageFifoData.part.0/161 (read)FlexCAN_Ip_ConfigRxMb/54 (read)FlexCAN_StartSendData/44 (read)FlexCAN_Ip_DisableInterrupts_Privileged/97 (read)FlexCAN_IRQHandlerRxMB/46 (read)FlexCAN_AbortTxTransfer/50 (read)FlexCAN_ProcessSpuriousInterruptMB/49 (read)FlexCAN_Ip_Receive/55 (read)FlexCAN_Ip_ReceiveBlocking/56 (read)FlexCAN_Ip_ConfigRemoteResponseMb/60 (read)FlexCAN_IRQHandlerRxFIFO/48 (read)FlexCAN_ProccessLegacyRxFIFO/42 (read)FlexCAN_Ip_GetTransferStatus/61 (read)FlexCAN_IRQHandler/63 (read)FlexCAN_Error_IRQHandler/68 (read)FlexCAN_BusOff_IRQHandler/69 (read)FlexCAN_Ip_SendBlocking/70 (read)FlexCAN_Ip_Deinit_Privileged/76 (write)FlexCAN_Ip_MainFunctionRead/77 (read)FlexCAN_Ip_MainFunctionBusOff_Privileged/78 (read)FlexCAN_Ip_MainFunctionWrite/79 (read)FlexCAN_Ip_EnableInterrupts_Privileged/96 (read)FlexCAN_StartRxMessageBufferData/43 (read)FlexCAN_Ip_AbortTransfer/99 (read)
   Availability: available
   Varpool flags:
-Flexcan_Ip_apxBase/37 (Flexcan_Ip_apxBase) @060aa4c8
+Flexcan_Ip_apxBase/37 (Flexcan_Ip_apxBase) @05fbe4c8
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: FlexCAN_IRQHandlerTxMB/47 (read)FlexCAN_AbortRxTransfer/51 (read)FlexCAN_CompleteRxMessageFifoData/62 (read)FlexCAN_Ip_Init_Privileged/52 (read)FlexCAN_Ip_Send/53 (read)FlexCAN_StartRxMessageFifoData.part.0/161 (read)FlexCAN_Ip_ConfigRxMb/54 (read)FlexCAN_StartSendData/44 (read)FlexCAN_Ip_GetListenOnlyMode/103 (read)FlexCAN_IRQHandlerRxMB/46 (read)FlexCAN_AbortTxTransfer/50 (read)FlexCAN_ProcessSpuriousInterruptMB/49 (read)FlexCAN_Ip_Receive/55 (read)FlexCAN_Ip_ReceiveBlocking/56 (read)FlexCAN_Ip_ConfigRxFifo_Privileged/59 (read)FlexCAN_IRQHandlerRxFIFO/48 (read)FlexCAN_Ip_SetListenOnlyMode_Privileged/102 (read)FlexCAN_Ip_ConfigRemoteResponseMb/60 (read)FlexCAN_IRQHandler/63 (read)FlexCAN_Ip_ClearErrorStatus/64 (read)FlexCAN_Ip_GetErrorStatus/65 (read)FlexCAN_Ip_GetControllerTxErrorCounter/66 (read)FlexCAN_Ip_GetControllerRxErrorCounter/67 (read)FlexCAN_Error_IRQHandler/68 (read)FlexCAN_BusOff_IRQHandler/69 (read)FlexCAN_Ip_SendBlocking/70 (read)FlexCAN_Ip_SetRxMbGlobalMask_Privileged/71 (read)FlexCAN_Ip_EnterFreezeMode_Privileged/72 (read)FlexCAN_Ip_ExitFreezeMode_Privileged/73 (read)FlexCAN_Ip_SetRxIndividualMask_Privileged/74 (read)FlexCAN_Ip_SetRxFifoGlobalMask_Privileged/75 (read)FlexCAN_Ip_Deinit_Privileged/76 (read)FlexCAN_Ip_MainFunctionRead/77 (read)FlexCAN_Ip_MainFunctionBusOff_Privileged/78 (read)FlexCAN_Ip_MainFunctionWrite/79 (read)FlexCAN_Ip_GetStopMode_Privileged/80 (read)FlexCAN_Ip_GetStartMode_Privileged/81 (read)FlexCAN_Ip_SetStartMode_Privileged/82 (read)FlexCAN_Ip_SetStopMode_Privileged/83 (read)FlexCAN_Ip_SetRxMaskType_Privileged/84 (read)FlexCAN_Ip_SetBitrate_Privileged/85 (read)FlexCAN_Ip_GetBitrate/86 (read)FlexCAN_Ip_ClearTDCFail/87 (read)FlexCAN_Ip_GetTDCFail/88 (read)FlexCAN_Ip_GetTDCValue/89 (read)FlexCAN_Ip_SetBitrateCbt_Privileged/90 (read)FlexCAN_Ip_GetBitrateFD/91 (read)FlexCAN_Ip_SetTDCOffset_Privileged/92 (read)FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged/93 (read)FlexCAN_Ip_GetBuffStatusFlag/94 (read)FlexCAN_Ip_ClearBuffStatusFlag/95 (read)FlexCAN_Ip_EnableInterrupts_Privileged/96 (read)FlexCAN_Ip_DisableInterrupts_Privileged/97 (read)FlexCAN_StartRxMessageBufferData/43 (read)FlexCAN_ProccessLegacyRxFIFO/42 (read)FlexCAN_Ip_SetErrorInt_Privileged/98 (read)FlexCAN_Ip_AbortTransfer/99 (read)FlexCAN_Ip_SetRxMb14Mask_Privileged/100 (read)FlexCAN_Ip_SetRxMb15Mask_Privileged/101 (read)FlexCAN_Ip_ManualBusOffRecovery/104 (read)
   Availability: available
   Varpool flags: initialized read-only const-value-known
-FlexCAN_SetRegDefaultVal/36 (FlexCAN_SetRegDefaultVal) @061fac40
+FlexCAN_SetRegDefaultVal/36 (FlexCAN_SetRegDefaultVal) @060fde00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3527,7 +3527,7 @@ FlexCAN_SetRegDefaultVal/36 (FlexCAN_SetRegDefaultVal) @061fac40
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_Deinit_Privileged/76 (35433 (estimated locally),0.16 per call) 
   Calls: FlexCAN_IsFDAvailable/105 (1073741824 (estimated locally),1.00 per call) 
-FlexCAN_SetRxMaskType/35 (FlexCAN_SetRxMaskType) @061fa8c0
+FlexCAN_SetRxMaskType/35 (FlexCAN_SetRxMaskType) @060fda80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3536,7 +3536,7 @@ FlexCAN_SetRxMaskType/35 (FlexCAN_SetRxMaskType) @061fa8c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_SetRxMaskType_Privileged/84 (26575 (estimated locally),0.12 per call) 
   Calls: 
-FlexCAN_SetTxArbitrationStartDelay/34 (FlexCAN_SetTxArbitrationStartDelay) @061fa460
+FlexCAN_SetTxArbitrationStartDelay/34 (FlexCAN_SetTxArbitrationStartDelay) @060fd620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3545,7 +3545,7 @@ FlexCAN_SetTxArbitrationStartDelay/34 (FlexCAN_SetTxArbitrationStartDelay) @061f
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_SetTxArbitrationStartDelay_Privileged/93 (26575 (estimated locally),0.12 per call) 
   Calls: 
-FlexCAN_GetMsgBuffIntStatusFlag/30 (FlexCAN_GetMsgBuffIntStatusFlag) @061f58c0
+FlexCAN_GetMsgBuffIntStatusFlag/30 (FlexCAN_GetMsgBuffIntStatusFlag) @060f9a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3554,7 +3554,7 @@ FlexCAN_GetMsgBuffIntStatusFlag/30 (FlexCAN_GetMsgBuffIntStatusFlag) @061f58c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_IRQHandler/63 (19233 (estimated locally),0.09 per call) FlexCAN_IRQHandler/63 (239641 (estimated locally),1.12 per call) FlexCAN_IRQHandler/63 (28706 (estimated locally),0.13 per call) 
   Calls: FlexCAN_GetMsgBuffIntStatusFlag.part.0/158 (536870912 (estimated locally),0.50 per call) 
-FlexCAN_SetClkSrc/29 (FlexCAN_SetClkSrc) @061f5620
+FlexCAN_SetClkSrc/29 (FlexCAN_SetClkSrc) @060f97e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3563,7 +3563,7 @@ FlexCAN_SetClkSrc/29 (FlexCAN_SetClkSrc) @061f5620
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_InitController/41 (756987987 (estimated locally),0.71 per call) 
   Calls: 
-RxFifoOcuppiedLastMsgBuff/21 (RxFifoOcuppiedLastMsgBuff) @061ed8c0
+RxFifoOcuppiedLastMsgBuff/21 (RxFifoOcuppiedLastMsgBuff) @060f1a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3572,7 +3572,7 @@ RxFifoOcuppiedLastMsgBuff/21 (RxFifoOcuppiedLastMsgBuff) @061ed8c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_AbortRxTransfer/51 (719407022 (estimated locally),0.67 per call) 
   Calls: 
-FlexCAN_EnableExtCbt/17 (FlexCAN_EnableExtCbt) @061e6c40
+FlexCAN_EnableExtCbt/17 (FlexCAN_EnableExtCbt) @060eae00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3581,7 +3581,7 @@ FlexCAN_EnableExtCbt/17 (FlexCAN_EnableExtCbt) @061e6c40
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_Init_Privileged/52 (13288 (estimated locally),0.06 per call) 
   Calls: 
-FlexCAN_GetFDTimeSegments/15 (FlexCAN_GetFDTimeSegments) @061e6620
+FlexCAN_GetFDTimeSegments/15 (FlexCAN_GetFDTimeSegments) @060ea7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3590,7 +3590,7 @@ FlexCAN_GetFDTimeSegments/15 (FlexCAN_GetFDTimeSegments) @061e6620
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_GetBitrateFD/91 (53687 (estimated locally),0.25 per call) 
   Calls: 
-FlexCAN_GetTimeSegments/14 (FlexCAN_GetTimeSegments) @061e6380
+FlexCAN_GetTimeSegments/14 (FlexCAN_GetTimeSegments) @060ea540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3599,7 +3599,7 @@ FlexCAN_GetTimeSegments/14 (FlexCAN_GetTimeSegments) @061e6380
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_GetBitrate/86 (31675 (estimated locally),0.15 per call) 
   Calls: 
-FlexCAN_GetExtendedTimeSegments/13 (FlexCAN_GetExtendedTimeSegments) @061e60e0
+FlexCAN_GetExtendedTimeSegments/13 (FlexCAN_GetExtendedTimeSegments) @060ea2a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3608,7 +3608,7 @@ FlexCAN_GetExtendedTimeSegments/13 (FlexCAN_GetExtendedTimeSegments) @061e60e0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_GetBitrate/86 (22012 (estimated locally),0.10 per call) 
   Calls: 
-FlexCAN_SetExtendedTimeSegments/12 (FlexCAN_SetExtendedTimeSegments) @061e2e00
+FlexCAN_SetExtendedTimeSegments/12 (FlexCAN_SetExtendedTimeSegments) @060ea000
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3617,7 +3617,7 @@ FlexCAN_SetExtendedTimeSegments/12 (FlexCAN_SetExtendedTimeSegments) @061e2e00
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_SetBitrate_Privileged/85 (5448 (estimated locally),0.03 per call) FlexCAN_Ip_Init_Privileged/52 (6644 (estimated locally),0.03 per call) 
   Calls: FlexCAN_SetExtendedTimeSegments.part.0/157 (107374 (estimated locally),0.50 per call) 
-FlexCAN_SetTimeSegments/11 (FlexCAN_SetTimeSegments) @061e2700
+FlexCAN_SetTimeSegments/11 (FlexCAN_SetTimeSegments) @060e68c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3626,7 +3626,7 @@ FlexCAN_SetTimeSegments/11 (FlexCAN_SetTimeSegments) @061e2700
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_SetBitrate_Privileged/85 (7840 (estimated locally),0.04 per call) FlexCAN_Ip_Init_Privileged/52 (6644 (estimated locally),0.03 per call) 
   Calls: FlexCAN_SetTimeSegments.part.0/155 (107374 (estimated locally),0.50 per call) 
-FlexCAN_SetFDTimeSegments/10 (FlexCAN_SetFDTimeSegments) @061e2000
+FlexCAN_SetFDTimeSegments/10 (FlexCAN_SetFDTimeSegments) @060e61c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3635,7 +3635,7 @@ FlexCAN_SetFDTimeSegments/10 (FlexCAN_SetFDTimeSegments) @061e2000
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_SetBitrateCbt_Privileged/90 (6644 (estimated locally),0.03 per call) FlexCAN_Ip_Init_Privileged/52 (6644 (estimated locally),0.03 per call) 
   Calls: FlexCAN_SetFDTimeSegments.part.0/153 (107374 (estimated locally),0.50 per call) 
-FlexCAN_GetBuffStatusImask/9 (FlexCAN_GetBuffStatusImask) @061dc8c0
+FlexCAN_GetBuffStatusImask/9 (FlexCAN_GetBuffStatusImask) @060e0a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3644,7 +3644,7 @@ FlexCAN_GetBuffStatusImask/9 (FlexCAN_GetBuffStatusImask) @061dc8c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_ProcessSpuriousInterruptMB/49 (315357973 (estimated locally),2.67 per call) 
   Calls: 
-FlexCAN_GetBuffStatusFlag/8 (FlexCAN_GetBuffStatusFlag) @061dc620
+FlexCAN_GetBuffStatusFlag/8 (FlexCAN_GetBuffStatusFlag) @060e07e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3653,7 +3653,7 @@ FlexCAN_GetBuffStatusFlag/8 (FlexCAN_GetBuffStatusFlag) @061dc620
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_GetBuffStatusFlag/94 (107374 (estimated locally),0.50 per call) FlexCAN_Ip_MainFunctionWrite/79 (107374 (estimated locally),0.50 per call) FlexCAN_Ip_MainFunctionRead/77 (35702 (estimated locally),0.17 per call) FlexCAN_Ip_SendBlocking/70 (18582 (estimated locally),0.09 per call) FlexCAN_Ip_SendBlocking/70 (165615 (estimated locally),0.77 per call) FlexCAN_Ip_ReceiveBlocking/56 (103294 (estimated locally),0.48 per call) FlexCAN_ProccessLegacyRxFIFO/42 (487049291 (estimated locally),4.24 per call) FlexCAN_AbortTxTransfer/50 (1073741824 (estimated locally),9.35 per call) FlexCAN_ProcessSpuriousInterruptMB/49 (955630223 (estimated locally),8.09 per call) 
   Calls: 
-FlexCAN_ClearMsgBuffIntStatusFlag/7 (FlexCAN_ClearMsgBuffIntStatusFlag) @061dc380
+FlexCAN_ClearMsgBuffIntStatusFlag/7 (FlexCAN_ClearMsgBuffIntStatusFlag) @060e0540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3662,7 +3662,7 @@ FlexCAN_ClearMsgBuffIntStatusFlag/7 (FlexCAN_ClearMsgBuffIntStatusFlag) @061dc38
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_ClearBuffStatusFlag/95 (107374 (estimated locally),0.50 per call) FlexCAN_Ip_MainFunctionWrite/79 (35433 (estimated locally),0.16 per call) FlexCAN_Ip_SendBlocking/70 (17717 (estimated locally),0.08 per call) FlexCAN_Ip_SendBlocking/70 (1988 (estimated locally),0.01 per call) FlexCAN_IRQHandler/63 (202115 (estimated locally),0.94 per call) FlexCAN_IRQHandler/63 (3173 (estimated locally),0.01 per call) FlexCAN_Ip_ConfigRemoteResponseMb/60 (6412 (estimated locally),0.03 per call) FlexCAN_Ip_ConfigRxMb/54 (25646 (estimated locally),0.12 per call) FlexCAN_AbortRxTransfer/51 (1073741824 (estimated locally),1.00 per call) FlexCAN_IRQHandlerTxMB/47 (536870911 (estimated locally),0.50 per call) FlexCAN_IRQHandlerTxMB/47 (108662672 (estimated locally),0.10 per call) FlexCAN_IRQHandlerRxFIFO/48 (268435456 (estimated locally),0.25 per call) FlexCAN_IRQHandlerRxFIFO/48 (268435456 (estimated locally),0.25 per call) FlexCAN_IRQHandlerRxFIFO/48 (54331336 (estimated locally),0.05 per call) FlexCAN_IRQHandlerRxMB/46 (1073741823 (estimated locally),1.00 per call) FlexCAN_AbortTxTransfer/50 (114863532 (estimated locally),1.00 per call) FlexCAN_StartSendData/44 (8335 (estimated locally),0.04 per call) FlexCAN_ProcessSpuriousInterruptMB/49 (52034066 (estimated locally),0.44 per call) 
   Calls: 
-FlexCAN_SetListenOnlyMode/5 (FlexCAN_SetListenOnlyMode) @061d9d20
+FlexCAN_SetListenOnlyMode/5 (FlexCAN_SetListenOnlyMode) @060ddee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3671,7 +3671,7 @@ FlexCAN_SetListenOnlyMode/5 (FlexCAN_SetListenOnlyMode) @061d9d20
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_SetListenOnlyMode_Privileged/102 (26575 (estimated locally),0.12 per call) 
   Calls: 
-FlexCAN_SetFDEnabled/4 (FlexCAN_SetFDEnabled) @061d99a0
+FlexCAN_SetFDEnabled/4 (FlexCAN_SetFDEnabled) @060ddb60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -3680,7 +3680,7 @@ FlexCAN_SetFDEnabled/4 (FlexCAN_SetFDEnabled) @061d99a0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: FlexCAN_Ip_SetBitrateCbt_Privileged/90 (6644 (estimated locally),0.03 per call) FlexCAN_InitController/41 (124903018 (estimated locally),0.12 per call) 
   Calls: 
-FlexCAN_SetTDCOffset/2 (FlexCAN_SetTDCOffset) @061d90e0
+FlexCAN_SetTDCOffset/2 (FlexCAN_SetTDCOffset) @060dd2a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 

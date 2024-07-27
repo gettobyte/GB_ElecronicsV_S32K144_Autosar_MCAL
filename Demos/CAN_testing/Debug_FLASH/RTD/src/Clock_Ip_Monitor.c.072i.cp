@@ -59,7 +59,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-ClockMonitorEmpty_GetStatus/4 (ClockMonitorEmpty_GetStatus) @05dc8460
+ClockMonitorEmpty_GetStatus/4 (ClockMonitorEmpty_GetStatus) @069fd460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -69,7 +69,7 @@ ClockMonitorEmpty_GetStatus/4 (ClockMonitorEmpty_GetStatus) @05dc8460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-ClockMonitorEmpty_ClearStatus/3 (ClockMonitorEmpty_ClearStatus) @05dc81c0
+ClockMonitorEmpty_ClearStatus/3 (ClockMonitorEmpty_ClearStatus) @069fd1c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -79,7 +79,7 @@ ClockMonitorEmpty_ClearStatus/3 (ClockMonitorEmpty_ClearStatus) @05dc81c0
   Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
   Called by: 
   Calls: ClockMonitorEmpty_Disable/2 (1073741824 (estimated locally),1.00 per call) 
-ClockMonitorEmpty_Disable/2 (ClockMonitorEmpty_Disable) @05d06ee0
+ClockMonitorEmpty_Disable/2 (ClockMonitorEmpty_Disable) @0691bee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -89,7 +89,7 @@ ClockMonitorEmpty_Disable/2 (ClockMonitorEmpty_Disable) @05d06ee0
   Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
   Called by: ClockMonitorEmpty_ClearStatus/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ClockMonitorEmpty/1 (ClockMonitorEmpty) @05d06e00
+ClockMonitorEmpty/1 (ClockMonitorEmpty) @0691be00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -99,7 +99,7 @@ ClockMonitorEmpty/1 (ClockMonitorEmpty) @05d06e00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-cmuCallbacks/0 (cmuCallbacks) @05d0e000
+cmuCallbacks/0 (cmuCallbacks) @06923000
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: ClockMonitorEmpty/1 (addr)ClockMonitorEmpty/1 (addr)ClockMonitorEmpty_Disable/2 (addr)ClockMonitorEmpty_ClearStatus/3 (addr)ClockMonitorEmpty_GetStatus/4 (addr)ClockMonitorEmpty/1 (addr)

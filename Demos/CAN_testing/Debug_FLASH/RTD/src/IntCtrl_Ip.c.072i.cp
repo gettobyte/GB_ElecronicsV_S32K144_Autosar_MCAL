@@ -290,7 +290,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-__INT_SRAM_START/21 (__INT_SRAM_START) @0606a1f8
+__INT_SRAM_START/21 (__INT_SRAM_START) @06c581f8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -298,7 +298,7 @@ __INT_SRAM_START/21 (__INT_SRAM_START) @0606a1f8
   Referring: IntCtrl_Ip_InstallHandlerPrivileged/1 (addr)
   Availability: not_available
   Varpool flags:
-IntCtrl_Ip_GetActive/20 (IntCtrl_Ip_GetActive) @06030c40
+IntCtrl_Ip_GetActive/20 (IntCtrl_Ip_GetActive) @06c1dd20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -307,7 +307,7 @@ IntCtrl_Ip_GetActive/20 (IntCtrl_Ip_GetActive) @06030c40
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_GetActivePrivileged/9 (1073741824 (estimated locally),1.00 per call) 
-IntCtrl_Ip_GetPending/19 (IntCtrl_Ip_GetPending) @060309a0
+IntCtrl_Ip_GetPending/19 (IntCtrl_Ip_GetPending) @06c1da80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -316,7 +316,7 @@ IntCtrl_Ip_GetPending/19 (IntCtrl_Ip_GetPending) @060309a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_GetPendingPrivileged/8 (1073741824 (estimated locally),1.00 per call) 
-IntCtrl_Ip_SetPending/18 (IntCtrl_Ip_SetPending) @06030700
+IntCtrl_Ip_SetPending/18 (IntCtrl_Ip_SetPending) @06c1d7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -325,7 +325,7 @@ IntCtrl_Ip_SetPending/18 (IntCtrl_Ip_SetPending) @06030700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_SetPendingPrivileged/7 (1073741824 (estimated locally),1.00 per call) 
-IntCtrl_Ip_ClearPending/17 (IntCtrl_Ip_ClearPending) @06030460
+IntCtrl_Ip_ClearPending/17 (IntCtrl_Ip_ClearPending) @06c1d540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -334,7 +334,7 @@ IntCtrl_Ip_ClearPending/17 (IntCtrl_Ip_ClearPending) @06030460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_ClearPendingPrivileged/6 (1073741824 (estimated locally),1.00 per call) 
-IntCtrl_Ip_GetPriority/16 (IntCtrl_Ip_GetPriority) @060301c0
+IntCtrl_Ip_GetPriority/16 (IntCtrl_Ip_GetPriority) @06c1d2a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -343,7 +343,7 @@ IntCtrl_Ip_GetPriority/16 (IntCtrl_Ip_GetPriority) @060301c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_GetPriorityPrivileged/5 (1073741824 (estimated locally),1.00 per call) 
-IntCtrl_Ip_SetPriority/15 (IntCtrl_Ip_SetPriority) @06028ee0
+IntCtrl_Ip_SetPriority/15 (IntCtrl_Ip_SetPriority) @06c1d000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -352,7 +352,7 @@ IntCtrl_Ip_SetPriority/15 (IntCtrl_Ip_SetPriority) @06028ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_SetPriorityPrivileged/4 (1073741824 (estimated locally),1.00 per call) 
-IntCtrl_Ip_DisableIrq/14 (IntCtrl_Ip_DisableIrq) @060288c0
+IntCtrl_Ip_DisableIrq/14 (IntCtrl_Ip_DisableIrq) @06bd2a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -361,7 +361,7 @@ IntCtrl_Ip_DisableIrq/14 (IntCtrl_Ip_DisableIrq) @060288c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_DisableIrqPrivileged/3 (1073741824 (estimated locally),1.00 per call) 
-IntCtrl_Ip_EnableIrq/13 (IntCtrl_Ip_EnableIrq) @06028380
+IntCtrl_Ip_EnableIrq/13 (IntCtrl_Ip_EnableIrq) @06bd2540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -370,7 +370,7 @@ IntCtrl_Ip_EnableIrq/13 (IntCtrl_Ip_EnableIrq) @06028380
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_EnableIrqPrivileged/2 (1073741824 (estimated locally),1.00 per call) 
-IntCtrl_Ip_InstallHandler/12 (IntCtrl_Ip_InstallHandler) @06028e00
+IntCtrl_Ip_InstallHandler/12 (IntCtrl_Ip_InstallHandler) @06bd2000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -379,7 +379,7 @@ IntCtrl_Ip_InstallHandler/12 (IntCtrl_Ip_InstallHandler) @06028e00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_InstallHandlerPrivileged/1 (1073741824 (estimated locally),1.00 per call) 
-IntCtrl_Ip_ConfigIrqRouting/11 (IntCtrl_Ip_ConfigIrqRouting) @06028a80
+IntCtrl_Ip_ConfigIrqRouting/11 (IntCtrl_Ip_ConfigIrqRouting) @06bd2c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -388,7 +388,7 @@ IntCtrl_Ip_ConfigIrqRouting/11 (IntCtrl_Ip_ConfigIrqRouting) @06028a80
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_InstallHandlerPrivileged/1 (434377 (estimated locally),2.02 per call) 
-IntCtrl_Ip_Init/10 (IntCtrl_Ip_Init) @060287e0
+IntCtrl_Ip_Init/10 (IntCtrl_Ip_Init) @06bd29a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -397,7 +397,7 @@ IntCtrl_Ip_Init/10 (IntCtrl_Ip_Init) @060287e0
   Function flags: count:214748 (estimated locally) body optimize_size
   Called by: 
   Calls: IntCtrl_Ip_DisableIrqPrivileged/3 (217188 (estimated locally),1.01 per call) IntCtrl_Ip_EnableIrqPrivileged/2 (217188 (estimated locally),1.01 per call) IntCtrl_Ip_SetPriorityPrivileged/4 (434377 (estimated locally),2.02 per call) 
-IntCtrl_Ip_GetActivePrivileged/9 (IntCtrl_Ip_GetActivePrivileged) @06028540
+IntCtrl_Ip_GetActivePrivileged/9 (IntCtrl_Ip_GetActivePrivileged) @06bd2700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -406,7 +406,7 @@ IntCtrl_Ip_GetActivePrivileged/9 (IntCtrl_Ip_GetActivePrivileged) @06028540
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: IntCtrl_Ip_GetActive/20 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_GetPendingPrivileged/8 (IntCtrl_Ip_GetPendingPrivileged) @060282a0
+IntCtrl_Ip_GetPendingPrivileged/8 (IntCtrl_Ip_GetPendingPrivileged) @06bd2460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -415,7 +415,7 @@ IntCtrl_Ip_GetPendingPrivileged/8 (IntCtrl_Ip_GetPendingPrivileged) @060282a0
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: IntCtrl_Ip_GetPending/19 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_SetPendingPrivileged/7 (IntCtrl_Ip_SetPendingPrivileged) @06028000
+IntCtrl_Ip_SetPendingPrivileged/7 (IntCtrl_Ip_SetPendingPrivileged) @06bd21c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -424,7 +424,7 @@ IntCtrl_Ip_SetPendingPrivileged/7 (IntCtrl_Ip_SetPendingPrivileged) @06028000
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: IntCtrl_Ip_SetPending/18 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_ClearPendingPrivileged/6 (IntCtrl_Ip_ClearPendingPrivileged) @05fdbc40
+IntCtrl_Ip_ClearPendingPrivileged/6 (IntCtrl_Ip_ClearPendingPrivileged) @06bcbd20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -433,7 +433,7 @@ IntCtrl_Ip_ClearPendingPrivileged/6 (IntCtrl_Ip_ClearPendingPrivileged) @05fdbc4
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: IntCtrl_Ip_ClearPending/17 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_GetPriorityPrivileged/5 (IntCtrl_Ip_GetPriorityPrivileged) @05fdb700
+IntCtrl_Ip_GetPriorityPrivileged/5 (IntCtrl_Ip_GetPriorityPrivileged) @06bcb7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -442,7 +442,7 @@ IntCtrl_Ip_GetPriorityPrivileged/5 (IntCtrl_Ip_GetPriorityPrivileged) @05fdb700
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: IntCtrl_Ip_GetPriority/16 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_SetPriorityPrivileged/4 (IntCtrl_Ip_SetPriorityPrivileged) @05fdbe00
+IntCtrl_Ip_SetPriorityPrivileged/4 (IntCtrl_Ip_SetPriorityPrivileged) @06bcbee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -451,7 +451,7 @@ IntCtrl_Ip_SetPriorityPrivileged/4 (IntCtrl_Ip_SetPriorityPrivileged) @05fdbe00
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: IntCtrl_Ip_Init/10 (434377 (estimated locally),2.02 per call) IntCtrl_Ip_SetPriority/15 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_DisableIrqPrivileged/3 (IntCtrl_Ip_DisableIrqPrivileged) @05fdbb60
+IntCtrl_Ip_DisableIrqPrivileged/3 (IntCtrl_Ip_DisableIrqPrivileged) @06bcbc40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -460,7 +460,7 @@ IntCtrl_Ip_DisableIrqPrivileged/3 (IntCtrl_Ip_DisableIrqPrivileged) @05fdbb60
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: IntCtrl_Ip_Init/10 (217188 (estimated locally),1.01 per call) IntCtrl_Ip_DisableIrq/14 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_EnableIrqPrivileged/2 (IntCtrl_Ip_EnableIrqPrivileged) @05fdb8c0
+IntCtrl_Ip_EnableIrqPrivileged/2 (IntCtrl_Ip_EnableIrqPrivileged) @06bcb9a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -469,7 +469,7 @@ IntCtrl_Ip_EnableIrqPrivileged/2 (IntCtrl_Ip_EnableIrqPrivileged) @05fdb8c0
   Function flags: count:214748 (estimated locally) body local optimize_size
   Called by: IntCtrl_Ip_Init/10 (217188 (estimated locally),1.01 per call) IntCtrl_Ip_EnableIrq/13 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_InstallHandlerPrivileged/1 (IntCtrl_Ip_InstallHandlerPrivileged) @05fdb620
+IntCtrl_Ip_InstallHandlerPrivileged/1 (IntCtrl_Ip_InstallHandlerPrivileged) @06bcb700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: __INT_SRAM_START/21 (addr)

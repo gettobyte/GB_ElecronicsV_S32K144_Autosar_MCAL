@@ -40,7 +40,7 @@ Not considering main for cloning; -fipa-cp-clone disabled.
 Not considering TestDelay for cloning; -fipa-cp-clone disabled.
 Not considering GB_MailBox_CallBack for cloning; -fipa-cp-clone disabled.
 
-overall_size: 77, max_new_size: 11001
+overall_size: 88, max_new_size: 11001
  - context independent values, size: 3, time_benefit: 4.000000
 
 IPA lattices after all propagation:
@@ -85,7 +85,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-FlexCAN_Ip_Send/21 (FlexCAN_Ip_Send) @061bdb60
+FlexCAN_Ip_Send/21 (FlexCAN_Ip_Send) @06eb40e0
   Type: function
   Visibility: external public
   References: 
@@ -94,7 +94,7 @@ FlexCAN_Ip_Send/21 (FlexCAN_Ip_Send) @061bdb60
   Function flags: optimize_size
   Called by: main/7 (1073741824 (estimated locally),10000.02 per call) main/7 (1073741824 (estimated locally),10000.02 per call) main/7 (1073741824 (estimated locally),10000.02 per call) main/7 (1073741824 (estimated locally),10000.02 per call) 
   Calls: 
-FlexCAN_Ip_SetStartMode_Privileged/20 (FlexCAN_Ip_SetStartMode_Privileged) @061bda80
+FlexCAN_Ip_SetStartMode_Privileged/20 (FlexCAN_Ip_SetStartMode_Privileged) @06eb4000
   Type: function
   Visibility: external public
   References: 
@@ -103,7 +103,7 @@ FlexCAN_Ip_SetStartMode_Privileged/20 (FlexCAN_Ip_SetStartMode_Privileged) @061b
   Function flags: optimize_size
   Called by: main/7 (107374 (estimated locally),1.00 per call) 
   Calls: 
-FlexCAN_Config0/19 (FlexCAN_Config0) @061bbc60
+FlexCAN_Config0/19 (FlexCAN_Config0) @06eadcf0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -111,7 +111,7 @@ FlexCAN_Config0/19 (FlexCAN_Config0) @061bbc60
   Referring: main/7 (addr)
   Availability: not_available
   Varpool flags: read-only
-FlexCAN_State0/18 (FlexCAN_State0) @061bbc18
+FlexCAN_State0/18 (FlexCAN_State0) @06eadca8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -119,7 +119,7 @@ FlexCAN_State0/18 (FlexCAN_State0) @061bbc18
   Referring: main/7 (addr)
   Availability: not_available
   Varpool flags:
-FlexCAN_Ip_Init_Privileged/17 (FlexCAN_Ip_Init_Privileged) @061bd9a0
+FlexCAN_Ip_Init_Privileged/17 (FlexCAN_Ip_Init_Privileged) @06eaeee0
   Type: function
   Visibility: external public
   References: 
@@ -128,7 +128,7 @@ FlexCAN_Ip_Init_Privileged/17 (FlexCAN_Ip_Init_Privileged) @061bd9a0
   Function flags: optimize_size
   Called by: main/7 (107374 (estimated locally),1.00 per call) 
   Calls: 
-Port_Init/16 (Port_Init) @061bd8c0
+Port_Init/16 (Port_Init) @06eaee00
   Type: function
   Visibility: external public
   References: 
@@ -137,7 +137,7 @@ Port_Init/16 (Port_Init) @061bd8c0
   Function flags: optimize_size
   Called by: main/7 (107374 (estimated locally),1.00 per call) 
   Calls: 
-CAN0_ORED_0_15_MB_IRQHandler/15 (CAN0_ORED_0_15_MB_IRQHandler) @061bd7e0
+CAN0_ORED_0_15_MB_IRQHandler/15 (CAN0_ORED_0_15_MB_IRQHandler) @06eaed20
   Type: function
   Visibility: external public
   Address is taken.
@@ -147,7 +147,7 @@ CAN0_ORED_0_15_MB_IRQHandler/15 (CAN0_ORED_0_15_MB_IRQHandler) @061bd7e0
   Function flags: optimize_size
   Called by: 
   Calls: 
-IntCtrl_Ip_InstallHandler/14 (IntCtrl_Ip_InstallHandler) @061bd700
+IntCtrl_Ip_InstallHandler/14 (IntCtrl_Ip_InstallHandler) @06eaec40
   Type: function
   Visibility: external public
   References: 
@@ -156,7 +156,7 @@ IntCtrl_Ip_InstallHandler/14 (IntCtrl_Ip_InstallHandler) @061bd700
   Function flags: optimize_size
   Called by: main/7 (107374 (estimated locally),1.00 per call) 
   Calls: 
-IntCtrl_Ip_EnableIrq/13 (IntCtrl_Ip_EnableIrq) @061bd620
+IntCtrl_Ip_EnableIrq/13 (IntCtrl_Ip_EnableIrq) @06eaeb60
   Type: function
   Visibility: external public
   References: 
@@ -165,7 +165,7 @@ IntCtrl_Ip_EnableIrq/13 (IntCtrl_Ip_EnableIrq) @061bd620
   Function flags: optimize_size
   Called by: main/7 (107374 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @061bd540
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @06eaea80
   Type: function
   Visibility: external public
   References: 
@@ -174,7 +174,7 @@ Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @061bd540
   Function flags: optimize_size
   Called by: main/7 (107374 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @061bd460
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06eae9a0
   Type: function
   Visibility: external public
   References: 
@@ -183,7 +183,7 @@ Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @061bd460
   Function flags: optimize_size
   Called by: main/7 (976127 (estimated locally),9.09 per call) 
   Calls: 
-Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @061bba20
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @06eadab0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -191,7 +191,7 @@ Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @061bba20
   Referring: main/7 (addr)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_Init/9 (Clock_Ip_Init) @061bd380
+Clock_Ip_Init/9 (Clock_Ip_Init) @06eae8c0
   Type: function
   Visibility: external public
   References: 
@@ -200,14 +200,14 @@ Clock_Ip_Init/9 (Clock_Ip_Init) @061bd380
   Function flags: optimize_size
   Called by: main/7 (107374 (estimated locally),1.00 per call) 
   Calls: 
-DelayTimer.7044/8 (DelayTimer) @061bb630
+DelayTimer.7044/8 (DelayTimer) @06ead6c0
   Type: variable definition analyzed
   Visibility: force_output prevailing_def_ironly
   References: 
   Referring: TestDelay/6 (read)TestDelay/6 (write)TestDelay/6 (read)TestDelay/6 (write)
   Availability: available
   Varpool flags: initialized
-main/7 (main) @061b8e00
+main/7 (main) @06eae2a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Mcu_aClockConfigPB/10 (addr)CAN0_ORED_0_15_MB_IRQHandler/15 (addr)FlexCAN_State0/18 (addr)FlexCAN_Config0/19 (addr)CanData1/2 (addr)CanData1/2 (addr)CanData1/2 (addr)CanData1/2 (addr)
@@ -216,7 +216,7 @@ main/7 (main) @061b8e00
   Function flags: count:107374 (estimated locally) body only_called_at_startup executed_once optimize_size
   Called by: 
   Calls: TestDelay/6 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_Send/21 (1073741824 (estimated locally),10000.02 per call) TestDelay/6 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_Send/21 (1073741824 (estimated locally),10000.02 per call) TestDelay/6 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_Send/21 (1073741824 (estimated locally),10000.02 per call) TestDelay/6 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_Send/21 (1073741824 (estimated locally),10000.02 per call) FlexCAN_Ip_SetStartMode_Privileged/20 (107374 (estimated locally),1.00 per call) FlexCAN_Ip_Init_Privileged/17 (107374 (estimated locally),1.00 per call) Port_Init/16 (107374 (estimated locally),1.00 per call) IntCtrl_Ip_InstallHandler/14 (107374 (estimated locally),1.00 per call) IntCtrl_Ip_EnableIrq/13 (107374 (estimated locally),1.00 per call) Clock_Ip_DistributePll/12 (107374 (estimated locally),1.00 per call) Clock_Ip_GetPllStatus/11 (976127 (estimated locally),9.09 per call) Clock_Ip_Init/9 (107374 (estimated locally),1.00 per call) 
-TestDelay/6 (TestDelay) @061b8a80
+TestDelay/6 (TestDelay) @06ea9e00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: DelayTimer.7044/8 (read)DelayTimer.7044/8 (write)DelayTimer.7044/8 (read)DelayTimer.7044/8 (write)
@@ -225,35 +225,35 @@ TestDelay/6 (TestDelay) @061b8a80
   Function flags: count:118111600 (estimated locally) body optimize_size
   Called by: main/7 (1073741824 (estimated locally),10000.02 per call) main/7 (1073741824 (estimated locally),10000.02 per call) main/7 (1073741824 (estimated locally),10000.02 per call) main/7 (1073741824 (estimated locally),10000.02 per call) 
   Calls: 
-CanData4/5 (CanData4) @061b3ea0
+CanData4/5 (CanData4) @06ea5ea0
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: 
   Availability: available
   Varpool flags: initialized
-CanData3/4 (CanData3) @061b3dc8
+CanData3/4 (CanData3) @06ea5dc8
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: 
   Availability: available
   Varpool flags: initialized
-CanData2/3 (CanData2) @061b3d38
+CanData2/3 (CanData2) @06ea5d38
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: 
   Availability: available
   Varpool flags: initialized
-CanData1/2 (CanData1) @061b3c60
+CanData1/2 (CanData1) @06ea5c60
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: main/7 (addr)main/7 (addr)main/7 (addr)main/7 (addr)
   Availability: available
   Varpool flags: initialized
-GB_MailBox_CallBack/1 (GB_MailBox_CallBack) @061b81c0
+GB_MailBox_CallBack/1 (GB_MailBox_CallBack) @06ea9700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -320,7 +320,9 @@ TestDelay (uint32 delay)
 Modification phase of node main/7
 main ()
 {
+  struct Flexcan_Ip_DataInfoType tx_info_ext_remote;
   struct Flexcan_Ip_DataInfoType tx_info_ext;
+  struct Flexcan_Ip_DataInfoType tx_info_std_remote;
   struct Flexcan_Ip_DataInfoType tx_info_std;
   <unnamed type> _1;
 
@@ -355,9 +357,18 @@ main ()
   tx_info_std = {};
   tx_info_std.data_length = 8;
   # DEBUG BEGIN_STMT
+  tx_info_std_remote = {};
+  tx_info_std_remote.data_length = 8;
+  tx_info_std_remote.is_remote = 1;
+  # DEBUG BEGIN_STMT
   MEM[(struct  *)&tx_info_ext + 8B] = {};
   tx_info_ext.msg_id_type = 1;
   tx_info_ext.data_length = 8;
+  # DEBUG BEGIN_STMT
+  MEM[(struct  *)&tx_info_ext_remote + 8B] = {};
+  tx_info_ext_remote.msg_id_type = 1;
+  tx_info_ext_remote.data_length = 8;
+  tx_info_ext_remote.is_remote = 1;
   # DEBUG BEGIN_STMT
   FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
   # DEBUG BEGIN_STMT
@@ -372,7 +383,7 @@ main ()
   # DEBUG BEGIN_STMT
   TestDelay (2000000);
   # DEBUG BEGIN_STMT
-  FlexCAN_Ip_Send (0, 1, &tx_info_std, 1536, &CanData1);
+  FlexCAN_Ip_Send (0, 1, &tx_info_std_remote, 1536, &CanData1);
   # DEBUG FlexCAN_Api_Status => NULL
   # DEBUG BEGIN_STMT
   TestDelay (2000000);
@@ -382,7 +393,7 @@ main ()
   # DEBUG BEGIN_STMT
   TestDelay (2000000);
   # DEBUG BEGIN_STMT
-  FlexCAN_Ip_Send (0, 3, &tx_info_ext, 358061653, &CanData1);
+  FlexCAN_Ip_Send (0, 3, &tx_info_ext_remote, 358061653, &CanData1);
   # DEBUG FlexCAN_Api_Status => NULL
   # DEBUG BEGIN_STMT
   TestDelay (2000000);

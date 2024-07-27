@@ -33,7 +33,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Callback_DividerTriggerEmpty/1 (Callback_DividerTriggerEmpty) @05ce6620
+Callback_DividerTriggerEmpty/1 (Callback_DividerTriggerEmpty) @05d67620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -43,7 +43,7 @@ Callback_DividerTriggerEmpty/1 (Callback_DividerTriggerEmpty) @05ce6620
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-dividerTriggerCallbacks/0 (dividerTriggerCallbacks) @05ce8120
+dividerTriggerCallbacks/0 (dividerTriggerCallbacks) @05d69120
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Callback_DividerTriggerEmpty/1 (addr)Callback_DividerTriggerEmpty/1 (addr)

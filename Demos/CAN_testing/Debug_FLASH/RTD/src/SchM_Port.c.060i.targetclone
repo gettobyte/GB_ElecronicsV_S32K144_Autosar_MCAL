@@ -1,38 +1,35 @@
 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08 ()
 {
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_08[0];
+  <bb 2> :
+  u32CoreId_7 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_08[u32CoreId_7];
   _2 = _1 + 4294967295;
-  reentry_guard_PORT_EXCLUSIVE_AREA_08[0] ={v} _2;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_PORT_EXCLUSIVE_AREA_08[0];
+  reentry_guard_PORT_EXCLUSIVE_AREA_08[u32CoreId_7] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_08[u32CoreId_7];
   _4 = _3 & 1;
   if (_4 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_08[0];
+  <bb 3> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_08[u32CoreId_7];
   if (_5 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -40,50 +37,39 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08 ()
 
 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08 ()
 {
-  register uint32 reg_tmp;
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
+  long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_08[0];
+  <bb 2> :
+  u32CoreId_8 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_08[u32CoreId_8];
   if (_1 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Port_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_11);
-  # DEBUG reg_tmp => reg_tmp_11
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_PORT_EXCLUSIVE_AREA_08[0] ={v} reg_tmp_11;
-  # DEBUG BEGIN_STMT
-  _2 ={v} msr_PORT_EXCLUSIVE_AREA_08[0];
-  _3 = _2 & 1;
-  if (_3 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _2 = Port_schm_read_msr ();
+  msr_PORT_EXCLUSIVE_AREA_08[u32CoreId_8] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_08[u32CoreId_8];
+  _4 = _3 & 1;
+  if (_4 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _4 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_08[0];
-  _5 = _4 + 1;
-  reentry_guard_PORT_EXCLUSIVE_AREA_08[0] ={v} _5;
+  <bb 5> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_08[u32CoreId_8];
+  _6 = _5 + 1;
+  reentry_guard_PORT_EXCLUSIVE_AREA_08[u32CoreId_8] ={v} _6;
   return;
 
 }
@@ -91,39 +77,36 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08 ()
 
 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07 ()
 {
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_07[0];
+  <bb 2> :
+  u32CoreId_7 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_07[u32CoreId_7];
   _2 = _1 + 4294967295;
-  reentry_guard_PORT_EXCLUSIVE_AREA_07[0] ={v} _2;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_PORT_EXCLUSIVE_AREA_07[0];
+  reentry_guard_PORT_EXCLUSIVE_AREA_07[u32CoreId_7] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_07[u32CoreId_7];
   _4 = _3 & 1;
   if (_4 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_07[0];
+  <bb 3> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_07[u32CoreId_7];
   if (_5 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -131,50 +114,39 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07 ()
 
 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07 ()
 {
-  register uint32 reg_tmp;
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
+  long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_07[0];
+  <bb 2> :
+  u32CoreId_8 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_07[u32CoreId_8];
   if (_1 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Port_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_11);
-  # DEBUG reg_tmp => reg_tmp_11
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_PORT_EXCLUSIVE_AREA_07[0] ={v} reg_tmp_11;
-  # DEBUG BEGIN_STMT
-  _2 ={v} msr_PORT_EXCLUSIVE_AREA_07[0];
-  _3 = _2 & 1;
-  if (_3 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _2 = Port_schm_read_msr ();
+  msr_PORT_EXCLUSIVE_AREA_07[u32CoreId_8] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_07[u32CoreId_8];
+  _4 = _3 & 1;
+  if (_4 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _4 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_07[0];
-  _5 = _4 + 1;
-  reentry_guard_PORT_EXCLUSIVE_AREA_07[0] ={v} _5;
+  <bb 5> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_07[u32CoreId_8];
+  _6 = _5 + 1;
+  reentry_guard_PORT_EXCLUSIVE_AREA_07[u32CoreId_8] ={v} _6;
   return;
 
 }
@@ -182,39 +154,36 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07 ()
 
 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06 ()
 {
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_06[0];
+  <bb 2> :
+  u32CoreId_7 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_06[u32CoreId_7];
   _2 = _1 + 4294967295;
-  reentry_guard_PORT_EXCLUSIVE_AREA_06[0] ={v} _2;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_PORT_EXCLUSIVE_AREA_06[0];
+  reentry_guard_PORT_EXCLUSIVE_AREA_06[u32CoreId_7] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_06[u32CoreId_7];
   _4 = _3 & 1;
   if (_4 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_06[0];
+  <bb 3> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_06[u32CoreId_7];
   if (_5 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -222,50 +191,39 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06 ()
 
 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06 ()
 {
-  register uint32 reg_tmp;
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
+  long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_06[0];
+  <bb 2> :
+  u32CoreId_8 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_06[u32CoreId_8];
   if (_1 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Port_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_11);
-  # DEBUG reg_tmp => reg_tmp_11
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_PORT_EXCLUSIVE_AREA_06[0] ={v} reg_tmp_11;
-  # DEBUG BEGIN_STMT
-  _2 ={v} msr_PORT_EXCLUSIVE_AREA_06[0];
-  _3 = _2 & 1;
-  if (_3 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _2 = Port_schm_read_msr ();
+  msr_PORT_EXCLUSIVE_AREA_06[u32CoreId_8] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_06[u32CoreId_8];
+  _4 = _3 & 1;
+  if (_4 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _4 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_06[0];
-  _5 = _4 + 1;
-  reentry_guard_PORT_EXCLUSIVE_AREA_06[0] ={v} _5;
+  <bb 5> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_06[u32CoreId_8];
+  _6 = _5 + 1;
+  reentry_guard_PORT_EXCLUSIVE_AREA_06[u32CoreId_8] ={v} _6;
   return;
 
 }
@@ -273,39 +231,36 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06 ()
 
 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05 ()
 {
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_05[0];
+  <bb 2> :
+  u32CoreId_7 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_05[u32CoreId_7];
   _2 = _1 + 4294967295;
-  reentry_guard_PORT_EXCLUSIVE_AREA_05[0] ={v} _2;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_PORT_EXCLUSIVE_AREA_05[0];
+  reentry_guard_PORT_EXCLUSIVE_AREA_05[u32CoreId_7] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_05[u32CoreId_7];
   _4 = _3 & 1;
   if (_4 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_05[0];
+  <bb 3> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_05[u32CoreId_7];
   if (_5 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -313,50 +268,39 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05 ()
 
 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05 ()
 {
-  register uint32 reg_tmp;
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
+  long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_05[0];
+  <bb 2> :
+  u32CoreId_8 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_05[u32CoreId_8];
   if (_1 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Port_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_11);
-  # DEBUG reg_tmp => reg_tmp_11
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_PORT_EXCLUSIVE_AREA_05[0] ={v} reg_tmp_11;
-  # DEBUG BEGIN_STMT
-  _2 ={v} msr_PORT_EXCLUSIVE_AREA_05[0];
-  _3 = _2 & 1;
-  if (_3 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _2 = Port_schm_read_msr ();
+  msr_PORT_EXCLUSIVE_AREA_05[u32CoreId_8] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_05[u32CoreId_8];
+  _4 = _3 & 1;
+  if (_4 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _4 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_05[0];
-  _5 = _4 + 1;
-  reentry_guard_PORT_EXCLUSIVE_AREA_05[0] ={v} _5;
+  <bb 5> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_05[u32CoreId_8];
+  _6 = _5 + 1;
+  reentry_guard_PORT_EXCLUSIVE_AREA_05[u32CoreId_8] ={v} _6;
   return;
 
 }
@@ -364,39 +308,36 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05 ()
 
 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04 ()
 {
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_04[0];
+  <bb 2> :
+  u32CoreId_7 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_04[u32CoreId_7];
   _2 = _1 + 4294967295;
-  reentry_guard_PORT_EXCLUSIVE_AREA_04[0] ={v} _2;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_PORT_EXCLUSIVE_AREA_04[0];
+  reentry_guard_PORT_EXCLUSIVE_AREA_04[u32CoreId_7] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_04[u32CoreId_7];
   _4 = _3 & 1;
   if (_4 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_04[0];
+  <bb 3> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_04[u32CoreId_7];
   if (_5 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -404,50 +345,39 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04 ()
 
 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04 ()
 {
-  register uint32 reg_tmp;
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
+  long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_04[0];
+  <bb 2> :
+  u32CoreId_8 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_04[u32CoreId_8];
   if (_1 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Port_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_11);
-  # DEBUG reg_tmp => reg_tmp_11
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_PORT_EXCLUSIVE_AREA_04[0] ={v} reg_tmp_11;
-  # DEBUG BEGIN_STMT
-  _2 ={v} msr_PORT_EXCLUSIVE_AREA_04[0];
-  _3 = _2 & 1;
-  if (_3 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _2 = Port_schm_read_msr ();
+  msr_PORT_EXCLUSIVE_AREA_04[u32CoreId_8] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_04[u32CoreId_8];
+  _4 = _3 & 1;
+  if (_4 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _4 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_04[0];
-  _5 = _4 + 1;
-  reentry_guard_PORT_EXCLUSIVE_AREA_04[0] ={v} _5;
+  <bb 5> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_04[u32CoreId_8];
+  _6 = _5 + 1;
+  reentry_guard_PORT_EXCLUSIVE_AREA_04[u32CoreId_8] ={v} _6;
   return;
 
 }
@@ -455,39 +385,36 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04 ()
 
 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03 ()
 {
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_03[0];
+  <bb 2> :
+  u32CoreId_7 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_03[u32CoreId_7];
   _2 = _1 + 4294967295;
-  reentry_guard_PORT_EXCLUSIVE_AREA_03[0] ={v} _2;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_PORT_EXCLUSIVE_AREA_03[0];
+  reentry_guard_PORT_EXCLUSIVE_AREA_03[u32CoreId_7] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_03[u32CoreId_7];
   _4 = _3 & 1;
   if (_4 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_03[0];
+  <bb 3> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_03[u32CoreId_7];
   if (_5 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -495,50 +422,39 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03 ()
 
 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03 ()
 {
-  register uint32 reg_tmp;
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
+  long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_03[0];
+  <bb 2> :
+  u32CoreId_8 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_03[u32CoreId_8];
   if (_1 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Port_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_11);
-  # DEBUG reg_tmp => reg_tmp_11
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_PORT_EXCLUSIVE_AREA_03[0] ={v} reg_tmp_11;
-  # DEBUG BEGIN_STMT
-  _2 ={v} msr_PORT_EXCLUSIVE_AREA_03[0];
-  _3 = _2 & 1;
-  if (_3 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _2 = Port_schm_read_msr ();
+  msr_PORT_EXCLUSIVE_AREA_03[u32CoreId_8] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_03[u32CoreId_8];
+  _4 = _3 & 1;
+  if (_4 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _4 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_03[0];
-  _5 = _4 + 1;
-  reentry_guard_PORT_EXCLUSIVE_AREA_03[0] ={v} _5;
+  <bb 5> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_03[u32CoreId_8];
+  _6 = _5 + 1;
+  reentry_guard_PORT_EXCLUSIVE_AREA_03[u32CoreId_8] ={v} _6;
   return;
 
 }
@@ -546,39 +462,36 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03 ()
 
 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02 ()
 {
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_02[0];
+  <bb 2> :
+  u32CoreId_7 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_02[u32CoreId_7];
   _2 = _1 + 4294967295;
-  reentry_guard_PORT_EXCLUSIVE_AREA_02[0] ={v} _2;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_PORT_EXCLUSIVE_AREA_02[0];
+  reentry_guard_PORT_EXCLUSIVE_AREA_02[u32CoreId_7] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_02[u32CoreId_7];
   _4 = _3 & 1;
   if (_4 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_02[0];
+  <bb 3> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_02[u32CoreId_7];
   if (_5 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -586,50 +499,39 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02 ()
 
 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02 ()
 {
-  register uint32 reg_tmp;
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
+  long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_02[0];
+  <bb 2> :
+  u32CoreId_8 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_02[u32CoreId_8];
   if (_1 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Port_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_11);
-  # DEBUG reg_tmp => reg_tmp_11
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_PORT_EXCLUSIVE_AREA_02[0] ={v} reg_tmp_11;
-  # DEBUG BEGIN_STMT
-  _2 ={v} msr_PORT_EXCLUSIVE_AREA_02[0];
-  _3 = _2 & 1;
-  if (_3 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _2 = Port_schm_read_msr ();
+  msr_PORT_EXCLUSIVE_AREA_02[u32CoreId_8] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_02[u32CoreId_8];
+  _4 = _3 & 1;
+  if (_4 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _4 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_02[0];
-  _5 = _4 + 1;
-  reentry_guard_PORT_EXCLUSIVE_AREA_02[0] ={v} _5;
+  <bb 5> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_02[u32CoreId_8];
+  _6 = _5 + 1;
+  reentry_guard_PORT_EXCLUSIVE_AREA_02[u32CoreId_8] ={v} _6;
   return;
 
 }
@@ -637,39 +539,36 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02 ()
 
 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01 ()
 {
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_01[0];
+  <bb 2> :
+  u32CoreId_7 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_01[u32CoreId_7];
   _2 = _1 + 4294967295;
-  reentry_guard_PORT_EXCLUSIVE_AREA_01[0] ={v} _2;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_PORT_EXCLUSIVE_AREA_01[0];
+  reentry_guard_PORT_EXCLUSIVE_AREA_01[u32CoreId_7] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_01[u32CoreId_7];
   _4 = _3 & 1;
   if (_4 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_01[0];
+  <bb 3> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_01[u32CoreId_7];
   if (_5 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -677,50 +576,39 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01 ()
 
 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01 ()
 {
-  register uint32 reg_tmp;
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
+  long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_01[0];
+  <bb 2> :
+  u32CoreId_8 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_01[u32CoreId_8];
   if (_1 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Port_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_11);
-  # DEBUG reg_tmp => reg_tmp_11
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_PORT_EXCLUSIVE_AREA_01[0] ={v} reg_tmp_11;
-  # DEBUG BEGIN_STMT
-  _2 ={v} msr_PORT_EXCLUSIVE_AREA_01[0];
-  _3 = _2 & 1;
-  if (_3 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _2 = Port_schm_read_msr ();
+  msr_PORT_EXCLUSIVE_AREA_01[u32CoreId_8] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_01[u32CoreId_8];
+  _4 = _3 & 1;
+  if (_4 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _4 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_01[0];
-  _5 = _4 + 1;
-  reentry_guard_PORT_EXCLUSIVE_AREA_01[0] ={v} _5;
+  <bb 5> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_01[u32CoreId_8];
+  _6 = _5 + 1;
+  reentry_guard_PORT_EXCLUSIVE_AREA_01[u32CoreId_8] ={v} _6;
   return;
 
 }
@@ -728,39 +616,36 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01 ()
 
 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_00 ()
 {
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_00[0];
+  <bb 2> :
+  u32CoreId_7 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_00[u32CoreId_7];
   _2 = _1 + 4294967295;
-  reentry_guard_PORT_EXCLUSIVE_AREA_00[0] ={v} _2;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_PORT_EXCLUSIVE_AREA_00[0];
+  reentry_guard_PORT_EXCLUSIVE_AREA_00[u32CoreId_7] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_00[u32CoreId_7];
   _4 = _3 & 1;
   if (_4 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_00[0];
+  <bb 3> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_00[u32CoreId_7];
   if (_5 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -768,50 +653,39 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_00 ()
 
 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_00 ()
 {
-  register uint32 reg_tmp;
+  uint32 u32CoreId;
   long unsigned int _1;
   long unsigned int _2;
   long unsigned int _3;
   long unsigned int _4;
   long unsigned int _5;
+  long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG u32CoreId => 0
-  # DEBUG BEGIN_STMT
-  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_00[0];
+  <bb 2> :
+  u32CoreId_8 = 0;
+  _1 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_00[u32CoreId_8];
   if (_1 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Port_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_11);
-  # DEBUG reg_tmp => reg_tmp_11
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_PORT_EXCLUSIVE_AREA_00[0] ={v} reg_tmp_11;
-  # DEBUG BEGIN_STMT
-  _2 ={v} msr_PORT_EXCLUSIVE_AREA_00[0];
-  _3 = _2 & 1;
-  if (_3 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _2 = Port_schm_read_msr ();
+  msr_PORT_EXCLUSIVE_AREA_00[u32CoreId_8] ={v} _2;
+  _3 ={v} msr_PORT_EXCLUSIVE_AREA_00[u32CoreId_8];
+  _4 = _3 & 1;
+  if (_4 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _4 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_00[0];
-  _5 = _4 + 1;
-  reentry_guard_PORT_EXCLUSIVE_AREA_00[0] ={v} _5;
+  <bb 5> :
+  _5 ={v} reentry_guard_PORT_EXCLUSIVE_AREA_00[u32CoreId_8];
+  _6 = _5 + 1;
+  reentry_guard_PORT_EXCLUSIVE_AREA_00[u32CoreId_8] ={v} _6;
   return;
 
 }
@@ -820,14 +694,16 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_00 ()
 Port_schm_read_msr ()
 {
   register uint32 reg_tmp;
+  uint32 D.5674;
+  uint32 _2;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_1);
-  # DEBUG reg_tmp => reg_tmp_1
-  # DEBUG BEGIN_STMT
-  return reg_tmp_1;
+  _2 = reg_tmp_1;
+
+  <bb 3> :
+<L0>:
+  return _2;
 
 }
 

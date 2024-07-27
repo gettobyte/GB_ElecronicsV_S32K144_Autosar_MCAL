@@ -27,7 +27,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-__ZERO_TABLE/2 (__ZERO_TABLE) @05b23048
+__ZERO_TABLE/2 (__ZERO_TABLE) @05b47048
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -35,7 +35,7 @@ __ZERO_TABLE/2 (__ZERO_TABLE) @05b23048
   Referring: init_data_bss/0 (read)init_data_bss/0 (addr)
   Availability: not_available
   Varpool flags:
-__INIT_TABLE/1 (__INIT_TABLE) @05b23000
+__INIT_TABLE/1 (__INIT_TABLE) @05b47000
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -43,7 +43,7 @@ __INIT_TABLE/1 (__INIT_TABLE) @05b23000
   Referring: init_data_bss/0 (read)init_data_bss/0 (addr)
   Availability: not_available
   Varpool flags:
-init_data_bss/0 (init_data_bss) @05b08a80
+init_data_bss/0 (init_data_bss) @05b2ba80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: __INIT_TABLE/1 (read)__INIT_TABLE/1 (addr)__ZERO_TABLE/2 (read)__ZERO_TABLE/2 (addr)

@@ -1,75 +1,53 @@
 main ()
 {
+  struct Flexcan_Ip_DataInfoType tx_info_ext_remote;
   struct Flexcan_Ip_DataInfoType tx_info_ext;
+  struct Flexcan_Ip_DataInfoType tx_info_std_remote;
   struct Flexcan_Ip_DataInfoType tx_info_std;
+  Flexcan_Ip_StatusType FlexCAN_Api_Status;
+  int D.7064;
   <unnamed type> _1;
 
-  <bb 2> [local count: 107374]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
-  # DEBUG BEGIN_STMT
 
-  <bb 3> [local count: 976127]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 3> :
   _1 = Clock_Ip_GetPllStatus ();
   if (_1 != 0)
-    goto <bb 7>; [89.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 4>; [11.00%]
+    goto <bb 4>; [INV]
 
-  <bb 7> [local count: 868753]:
-  goto <bb 3>; [100.00%]
-
-  <bb 4> [local count: 107374]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   Clock_Ip_DistributePll ();
-  # DEBUG BEGIN_STMT
   IntCtrl_Ip_EnableIrq (81);
-  # DEBUG BEGIN_STMT
   IntCtrl_Ip_InstallHandler (81, CAN0_ORED_0_15_MB_IRQHandler, 0B);
-  # DEBUG BEGIN_STMT
   Port_Init (0B);
-  # DEBUG BEGIN_STMT
   tx_info_std = {};
   tx_info_std.data_length = 8;
-  # DEBUG BEGIN_STMT
-  MEM[(struct  *)&tx_info_ext + 8B] = {};
+  tx_info_std_remote = {};
+  tx_info_std_remote.data_length = 8;
+  tx_info_std_remote.is_remote = 1;
+  tx_info_ext = {};
   tx_info_ext.msg_id_type = 1;
   tx_info_ext.data_length = 8;
-  # DEBUG BEGIN_STMT
+  tx_info_ext_remote = {};
+  tx_info_ext_remote.msg_id_type = 1;
+  tx_info_ext_remote.data_length = 8;
+  tx_info_ext_remote.is_remote = 1;
   FlexCAN_Ip_Init_Privileged (0, &FlexCAN_State0, &FlexCAN_Config0);
-  # DEBUG BEGIN_STMT
-  FlexCAN_Ip_SetStartMode_Privileged (0);
-  # DEBUG FlexCAN_Api_Status => NULL
+  FlexCAN_Api_Status_25 = FlexCAN_Ip_SetStartMode_Privileged (0);
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  FlexCAN_Ip_Send (0, 0, &tx_info_std, 1280, &CanData1);
-  # DEBUG FlexCAN_Api_Status => NULL
-  # DEBUG BEGIN_STMT
+  <bb 5> :
+  FlexCAN_Api_Status_27 = FlexCAN_Ip_Send (0, 0, &tx_info_std, 1280, &CanData1);
   TestDelay (2000000);
-  # DEBUG BEGIN_STMT
-  FlexCAN_Ip_Send (0, 1, &tx_info_std, 1536, &CanData1);
-  # DEBUG FlexCAN_Api_Status => NULL
-  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status_30 = FlexCAN_Ip_Send (0, 1, &tx_info_std_remote, 1536, &CanData1);
   TestDelay (2000000);
-  # DEBUG BEGIN_STMT
-  FlexCAN_Ip_Send (0, 2, &tx_info_ext, 447044295, &CanData1);
-  # DEBUG FlexCAN_Api_Status => NULL
-  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status_33 = FlexCAN_Ip_Send (0, 2, &tx_info_ext, 447044295, &CanData1);
   TestDelay (2000000);
-  # DEBUG BEGIN_STMT
-  FlexCAN_Ip_Send (0, 3, &tx_info_ext, 358061653, &CanData1);
-  # DEBUG FlexCAN_Api_Status => NULL
-  # DEBUG BEGIN_STMT
+  FlexCAN_Api_Status_36 = FlexCAN_Ip_Send (0, 3, &tx_info_ext_remote, 358061653, &CanData1);
   TestDelay (2000000);
-  # DEBUG BEGIN_STMT
-
-  <bb 6> [local count: 1073741824]:
-  goto <bb 5>; [100.00%]
+  goto <bb 5>; [INV]
 
 }
 
@@ -81,27 +59,22 @@ TestDelay (uint32 delay)
   long unsigned int _2;
   long unsigned int DelayTimer.1_3;
 
-  <bb 2> [local count: 118111600]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  goto <bb 4>; [100.00%]
+  <bb 2> :
+  goto <bb 4>; [INV]
 
-  <bb 3> [local count: 955630223]:
-  # DEBUG BEGIN_STMT
+  <bb 3> :
   DelayTimer.0_1 ={v} DelayTimer;
   _2 = DelayTimer.0_1 + 1;
   DelayTimer ={v} _2;
 
-  <bb 4> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   DelayTimer.1_3 ={v} DelayTimer;
-  if (DelayTimer.1_3 < delay_6(D))
-    goto <bb 3>; [89.00%]
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [11.00%]
+    goto <bb 5>; [INV]
 
-  <bb 5> [local count: 118111601]:
-  # DEBUG BEGIN_STMT
+  <bb 5> :
   DelayTimer ={v} 0;
   return;
 
@@ -110,9 +83,10 @@ TestDelay (uint32 delay)
 
 GB_MailBox_CallBack (uint8 instance, Flexcan_Ip_EventType eventType, uint32 buffIdx, const struct Flexcan_Ip_StateType * flexcanState)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG callback => 0
+  uint8_t callback;
+
+  <bb 2> :
+  callback_1 = 0;
   return;
 
 }

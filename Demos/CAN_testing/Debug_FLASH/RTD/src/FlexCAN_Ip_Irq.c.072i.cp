@@ -60,7 +60,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-FlexCAN_IRQHandler/50 (FlexCAN_IRQHandler) @0604b1c0
+FlexCAN_IRQHandler/50 (FlexCAN_IRQHandler) @0607e380
   Type: function
   Visibility: external public
   References: 
@@ -69,7 +69,7 @@ FlexCAN_IRQHandler/50 (FlexCAN_IRQHandler) @0604b1c0
   Function flags: optimize_size
   Called by: CAN2_ORED_0_15_MB_IRQHandler/47 (1073741824 (estimated locally),1.00 per call) CAN1_ORED_16_31_MB_IRQHandler/44 (1073741824 (estimated locally),1.00 per call) CAN1_ORED_0_15_MB_IRQHandler/43 (1073741824 (estimated locally),1.00 per call) CAN0_ORED_16_31_MB_IRQHandler/40 (1073741824 (estimated locally),1.00 per call) CAN0_ORED_0_15_MB_IRQHandler/39 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-FlexCAN_Error_IRQHandler/49 (FlexCAN_Error_IRQHandler) @0604b000
+FlexCAN_Error_IRQHandler/49 (FlexCAN_Error_IRQHandler) @0607e1c0
   Type: function
   Visibility: external public
   References: 
@@ -78,7 +78,7 @@ FlexCAN_Error_IRQHandler/49 (FlexCAN_Error_IRQHandler) @0604b000
   Function flags: optimize_size
   Called by: CAN2_Error_IRQHandler/46 (1073741824 (estimated locally),1.00 per call) CAN1_Error_IRQHandler/42 (1073741824 (estimated locally),1.00 per call) CAN0_Error_IRQHandler/38 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-FlexCAN_BusOff_IRQHandler/48 (FlexCAN_BusOff_IRQHandler) @06048a80
+FlexCAN_BusOff_IRQHandler/48 (FlexCAN_BusOff_IRQHandler) @0607e000
   Type: function
   Visibility: external public
   References: 
@@ -87,7 +87,7 @@ FlexCAN_BusOff_IRQHandler/48 (FlexCAN_BusOff_IRQHandler) @06048a80
   Function flags: optimize_size
   Called by: CAN2_ORED_IRQHandler/45 (1073741824 (estimated locally),1.00 per call) CAN1_ORED_IRQHandler/41 (1073741824 (estimated locally),1.00 per call) CAN0_ORED_IRQHandler/37 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-CAN2_ORED_0_15_MB_IRQHandler/47 (CAN2_ORED_0_15_MB_IRQHandler) @06048ee0
+CAN2_ORED_0_15_MB_IRQHandler/47 (CAN2_ORED_0_15_MB_IRQHandler) @0607c2a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -96,7 +96,7 @@ CAN2_ORED_0_15_MB_IRQHandler/47 (CAN2_ORED_0_15_MB_IRQHandler) @06048ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_IRQHandler/50 (1073741824 (estimated locally),1.00 per call) 
-CAN2_Error_IRQHandler/46 (CAN2_Error_IRQHandler) @06048c40
+CAN2_Error_IRQHandler/46 (CAN2_Error_IRQHandler) @0607cee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -105,7 +105,7 @@ CAN2_Error_IRQHandler/46 (CAN2_Error_IRQHandler) @06048c40
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Error_IRQHandler/49 (1073741824 (estimated locally),1.00 per call) 
-CAN2_ORED_IRQHandler/45 (CAN2_ORED_IRQHandler) @060489a0
+CAN2_ORED_IRQHandler/45 (CAN2_ORED_IRQHandler) @0607cc40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -114,7 +114,7 @@ CAN2_ORED_IRQHandler/45 (CAN2_ORED_IRQHandler) @060489a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_BusOff_IRQHandler/48 (1073741824 (estimated locally),1.00 per call) 
-CAN1_ORED_16_31_MB_IRQHandler/44 (CAN1_ORED_16_31_MB_IRQHandler) @06048700
+CAN1_ORED_16_31_MB_IRQHandler/44 (CAN1_ORED_16_31_MB_IRQHandler) @0607c9a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -123,7 +123,7 @@ CAN1_ORED_16_31_MB_IRQHandler/44 (CAN1_ORED_16_31_MB_IRQHandler) @06048700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_IRQHandler/50 (1073741824 (estimated locally),1.00 per call) 
-CAN1_ORED_0_15_MB_IRQHandler/43 (CAN1_ORED_0_15_MB_IRQHandler) @06048460
+CAN1_ORED_0_15_MB_IRQHandler/43 (CAN1_ORED_0_15_MB_IRQHandler) @0607c700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -132,7 +132,7 @@ CAN1_ORED_0_15_MB_IRQHandler/43 (CAN1_ORED_0_15_MB_IRQHandler) @06048460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_IRQHandler/50 (1073741824 (estimated locally),1.00 per call) 
-CAN1_Error_IRQHandler/42 (CAN1_Error_IRQHandler) @060481c0
+CAN1_Error_IRQHandler/42 (CAN1_Error_IRQHandler) @0607c460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -141,7 +141,7 @@ CAN1_Error_IRQHandler/42 (CAN1_Error_IRQHandler) @060481c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Error_IRQHandler/49 (1073741824 (estimated locally),1.00 per call) 
-CAN1_ORED_IRQHandler/41 (CAN1_ORED_IRQHandler) @06046ee0
+CAN1_ORED_IRQHandler/41 (CAN1_ORED_IRQHandler) @0607c1c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -150,7 +150,7 @@ CAN1_ORED_IRQHandler/41 (CAN1_ORED_IRQHandler) @06046ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_BusOff_IRQHandler/48 (1073741824 (estimated locally),1.00 per call) 
-CAN0_ORED_16_31_MB_IRQHandler/40 (CAN0_ORED_16_31_MB_IRQHandler) @060469a0
+CAN0_ORED_16_31_MB_IRQHandler/40 (CAN0_ORED_16_31_MB_IRQHandler) @06079e00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -159,7 +159,7 @@ CAN0_ORED_16_31_MB_IRQHandler/40 (CAN0_ORED_16_31_MB_IRQHandler) @060469a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_IRQHandler/50 (1073741824 (estimated locally),1.00 per call) 
-CAN0_ORED_0_15_MB_IRQHandler/39 (CAN0_ORED_0_15_MB_IRQHandler) @06046e00
+CAN0_ORED_0_15_MB_IRQHandler/39 (CAN0_ORED_0_15_MB_IRQHandler) @060798c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -168,7 +168,7 @@ CAN0_ORED_0_15_MB_IRQHandler/39 (CAN0_ORED_0_15_MB_IRQHandler) @06046e00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_IRQHandler/50 (1073741824 (estimated locally),1.00 per call) 
-CAN0_Error_IRQHandler/38 (CAN0_Error_IRQHandler) @06046b60
+CAN0_Error_IRQHandler/38 (CAN0_Error_IRQHandler) @06079d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -177,7 +177,7 @@ CAN0_Error_IRQHandler/38 (CAN0_Error_IRQHandler) @06046b60
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: FlexCAN_Error_IRQHandler/49 (1073741824 (estimated locally),1.00 per call) 
-CAN0_ORED_IRQHandler/37 (CAN0_ORED_IRQHandler) @060468c0
+CAN0_ORED_IRQHandler/37 (CAN0_ORED_IRQHandler) @06079a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 

@@ -2,6 +2,8 @@ Det_TestNoTransientFault ()
 {
   uint32 u32CoreId;
   boolean result;
+  boolean D.5685;
+  int iftmp.5;
   short unsigned int _1;
   unsigned char _2;
   unsigned char _3;
@@ -16,13 +18,8 @@ Det_TestNoTransientFault ()
   boolean _20;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result_10 = 0;
-  # DEBUG result => result_10
-  # DEBUG BEGIN_STMT
   u32CoreId_11 = 0;
-  # DEBUG u32CoreId => u32CoreId_11
-  # DEBUG BEGIN_STMT
   _1 = Det_TransientModuleId[u32CoreId_11];
   if (_1 != 0)
     goto <bb 6>; [INV]
@@ -60,21 +57,18 @@ Det_TestNoTransientFault ()
   <bb 8> :
   # iftmp.5_9 = PHI <iftmp.5_14(6), iftmp.5_13(7)>
   result_15 = (boolean) iftmp.5_9;
-  # DEBUG result => result_15
-  # DEBUG BEGIN_STMT
   Det_TransientModuleId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   Det_TransientInstanceId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   Det_TransientApiId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   Det_TransientFaultId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   _5 = (int) result_15;
   _6 = _5 != 0;
   _7 = ~_6;
   _8 = (int) _7;
   _20 = (boolean) _8;
+
+  <bb 9> :
+<L6>:
   return _20;
 
 }
@@ -84,6 +78,8 @@ Det_TestNoRuntimeError ()
 {
   uint32 u32CoreId;
   boolean result;
+  boolean D.5676;
+  int iftmp.4;
   short unsigned int _1;
   unsigned char _2;
   unsigned char _3;
@@ -98,13 +94,8 @@ Det_TestNoRuntimeError ()
   boolean _20;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result_10 = 0;
-  # DEBUG result => result_10
-  # DEBUG BEGIN_STMT
   u32CoreId_11 = 0;
-  # DEBUG u32CoreId => u32CoreId_11
-  # DEBUG BEGIN_STMT
   _1 = Det_RuntimeModuleId[u32CoreId_11];
   if (_1 != 0)
     goto <bb 6>; [INV]
@@ -142,21 +133,18 @@ Det_TestNoRuntimeError ()
   <bb 8> :
   # iftmp.4_9 = PHI <iftmp.4_14(6), iftmp.4_13(7)>
   result_15 = (boolean) iftmp.4_9;
-  # DEBUG result => result_15
-  # DEBUG BEGIN_STMT
   Det_RuntimeModuleId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   Det_RuntimeInstanceId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   Det_RuntimeApiId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   Det_RuntimeErrorId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   _5 = (int) result_15;
   _6 = _5 != 0;
   _7 = ~_6;
   _8 = (int) _7;
   _20 = (boolean) _8;
+
+  <bb 9> :
+<L6>:
   return _20;
 
 }
@@ -166,6 +154,8 @@ Det_TestNoError ()
 {
   uint32 u32CoreId;
   boolean result;
+  boolean D.5667;
+  int iftmp.3;
   short unsigned int _1;
   unsigned char _2;
   unsigned char _3;
@@ -180,13 +170,8 @@ Det_TestNoError ()
   boolean _20;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result_10 = 0;
-  # DEBUG result => result_10
-  # DEBUG BEGIN_STMT
   u32CoreId_11 = 0;
-  # DEBUG u32CoreId => u32CoreId_11
-  # DEBUG BEGIN_STMT
   _1 = Det_ModuleId[u32CoreId_11];
   if (_1 != 0)
     goto <bb 6>; [INV]
@@ -224,21 +209,18 @@ Det_TestNoError ()
   <bb 8> :
   # iftmp.3_9 = PHI <iftmp.3_14(6), iftmp.3_13(7)>
   result_15 = (boolean) iftmp.3_9;
-  # DEBUG result => result_15
-  # DEBUG BEGIN_STMT
   Det_ModuleId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   Det_InstanceId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   Det_ApiId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   Det_ErrorId[u32CoreId_11] = 0;
-  # DEBUG BEGIN_STMT
   _5 = (int) result_15;
   _6 = _5 != 0;
   _7 = ~_6;
   _8 = (int) _7;
   _20 = (boolean) _8;
+
+  <bb 9> :
+<L6>:
   return _20;
 
 }
@@ -248,6 +230,8 @@ Det_TestLastReportTransientFault (uint16 ModuleId, uint8 InstanceId, uint8 ApiId
 {
   uint32 u32CoreId;
   boolean result;
+  boolean D.5658;
+  int iftmp.2;
   short unsigned int _1;
   unsigned char _2;
   unsigned char _3;
@@ -258,13 +242,8 @@ Det_TestLastReportTransientFault (uint16 ModuleId, uint8 InstanceId, uint8 ApiId
   boolean _20;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result_6 = 0;
-  # DEBUG result => result_6
-  # DEBUG BEGIN_STMT
   u32CoreId_7 = 0;
-  # DEBUG u32CoreId => u32CoreId_7
-  # DEBUG BEGIN_STMT
   _1 = Det_TransientModuleId[u32CoreId_7];
   if (ModuleId_9(D) == _1)
     goto <bb 3>; [INV]
@@ -302,17 +281,14 @@ Det_TestLastReportTransientFault (uint16 ModuleId, uint8 InstanceId, uint8 ApiId
   <bb 8> :
   # iftmp.2_5 = PHI <iftmp.2_13(6), iftmp.2_14(7)>
   result_15 = (boolean) iftmp.2_5;
-  # DEBUG result => result_15
-  # DEBUG BEGIN_STMT
   Det_TransientModuleId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   Det_TransientInstanceId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   Det_TransientApiId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   Det_TransientFaultId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   _20 = result_15;
+
+  <bb 9> :
+<L6>:
   return _20;
 
 }
@@ -322,6 +298,8 @@ Det_TestLastReportRuntimeError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, 
 {
   uint32 u32CoreId;
   boolean result;
+  boolean D.5649;
+  int iftmp.1;
   short unsigned int _1;
   unsigned char _2;
   unsigned char _3;
@@ -332,13 +310,8 @@ Det_TestLastReportRuntimeError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, 
   boolean _20;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result_6 = 0;
-  # DEBUG result => result_6
-  # DEBUG BEGIN_STMT
   u32CoreId_7 = 0;
-  # DEBUG u32CoreId => u32CoreId_7
-  # DEBUG BEGIN_STMT
   _1 = Det_RuntimeModuleId[u32CoreId_7];
   if (ModuleId_9(D) == _1)
     goto <bb 3>; [INV]
@@ -376,17 +349,14 @@ Det_TestLastReportRuntimeError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, 
   <bb 8> :
   # iftmp.1_5 = PHI <iftmp.1_13(6), iftmp.1_14(7)>
   result_15 = (boolean) iftmp.1_5;
-  # DEBUG result => result_15
-  # DEBUG BEGIN_STMT
   Det_RuntimeModuleId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   Det_RuntimeInstanceId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   Det_RuntimeApiId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   Det_RuntimeErrorId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   _20 = result_15;
+
+  <bb 9> :
+<L6>:
   return _20;
 
 }
@@ -396,6 +366,8 @@ Det_TestLastReportError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 E
 {
   uint32 u32CoreId;
   boolean result;
+  boolean D.5640;
+  int iftmp.0;
   short unsigned int _1;
   unsigned char _2;
   unsigned char _3;
@@ -406,13 +378,8 @@ Det_TestLastReportError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 E
   boolean _20;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   result_6 = 0;
-  # DEBUG result => result_6
-  # DEBUG BEGIN_STMT
   u32CoreId_7 = 0;
-  # DEBUG u32CoreId => u32CoreId_7
-  # DEBUG BEGIN_STMT
   _1 = Det_ModuleId[u32CoreId_7];
   if (ModuleId_9(D) == _1)
     goto <bb 3>; [INV]
@@ -450,17 +417,14 @@ Det_TestLastReportError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 E
   <bb 8> :
   # iftmp.0_5 = PHI <iftmp.0_13(6), iftmp.0_14(7)>
   result_15 = (boolean) iftmp.0_5;
-  # DEBUG result => result_15
-  # DEBUG BEGIN_STMT
   Det_ModuleId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   Det_InstanceId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   Det_ApiId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   Det_ErrorId[u32CoreId_7] = 0;
-  # DEBUG BEGIN_STMT
   _20 = result_15;
+
+  <bb 9> :
+<L6>:
   return _20;
 
 }

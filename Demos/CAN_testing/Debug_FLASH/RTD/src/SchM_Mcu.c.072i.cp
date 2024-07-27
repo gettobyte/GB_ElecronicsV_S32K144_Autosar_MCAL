@@ -45,7 +45,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02/12 (SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02) @05cc2a80
+SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02/12 (SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02) @05c3da80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: reentry_guard_MCU_EXCLUSIVE_AREA_02/5 (read)reentry_guard_MCU_EXCLUSIVE_AREA_02/5 (write)msr_MCU_EXCLUSIVE_AREA_02/4 (read)reentry_guard_MCU_EXCLUSIVE_AREA_02/5 (read)
@@ -54,7 +54,7 @@ SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02/12 (SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02/11 (SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02) @05cc2540
+SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02/11 (SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02) @05c3d540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: reentry_guard_MCU_EXCLUSIVE_AREA_02/5 (read)msr_MCU_EXCLUSIVE_AREA_02/4 (write)msr_MCU_EXCLUSIVE_AREA_02/4 (read)reentry_guard_MCU_EXCLUSIVE_AREA_02/5 (read)reentry_guard_MCU_EXCLUSIVE_AREA_02/5 (write)
@@ -63,7 +63,7 @@ SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02/11 (SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01/10 (SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01) @05cc2ee0
+SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01/10 (SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01) @05c3dee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: reentry_guard_MCU_EXCLUSIVE_AREA_01/3 (read)reentry_guard_MCU_EXCLUSIVE_AREA_01/3 (write)msr_MCU_EXCLUSIVE_AREA_01/2 (read)reentry_guard_MCU_EXCLUSIVE_AREA_01/3 (read)
@@ -72,7 +72,7 @@ SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01/10 (SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01/9 (SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01) @05cc2c40
+SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01/9 (SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01) @05c3dc40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: reentry_guard_MCU_EXCLUSIVE_AREA_01/3 (read)msr_MCU_EXCLUSIVE_AREA_01/2 (write)msr_MCU_EXCLUSIVE_AREA_01/2 (read)reentry_guard_MCU_EXCLUSIVE_AREA_01/3 (read)reentry_guard_MCU_EXCLUSIVE_AREA_01/3 (write)
@@ -81,7 +81,7 @@ SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01/9 (SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01) @0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00/8 (SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00) @05cc29a0
+SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00/8 (SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00) @05c3d9a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: reentry_guard_MCU_EXCLUSIVE_AREA_00/1 (read)reentry_guard_MCU_EXCLUSIVE_AREA_00/1 (write)msr_MCU_EXCLUSIVE_AREA_00/0 (read)reentry_guard_MCU_EXCLUSIVE_AREA_00/1 (read)
@@ -90,7 +90,7 @@ SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00/8 (SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00) @05c
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00/7 (SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00) @05cc2700
+SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00/7 (SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00) @05c3d700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: reentry_guard_MCU_EXCLUSIVE_AREA_00/1 (read)msr_MCU_EXCLUSIVE_AREA_00/0 (write)msr_MCU_EXCLUSIVE_AREA_00/0 (read)reentry_guard_MCU_EXCLUSIVE_AREA_00/1 (read)reentry_guard_MCU_EXCLUSIVE_AREA_00/1 (write)
@@ -99,7 +99,7 @@ SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00/7 (SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00) @0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Mcu_schm_read_msr/6 (Mcu_schm_read_msr) @05cc2460
+Mcu_schm_read_msr/6 (Mcu_schm_read_msr) @05c3d460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -108,42 +108,42 @@ Mcu_schm_read_msr/6 (Mcu_schm_read_msr) @05cc2460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-reentry_guard_MCU_EXCLUSIVE_AREA_02/5 (reentry_guard_MCU_EXCLUSIVE_AREA_02) @05cbfaf8
+reentry_guard_MCU_EXCLUSIVE_AREA_02/5 (reentry_guard_MCU_EXCLUSIVE_AREA_02) @05c3baf8
   Type: variable definition analyzed
   Visibility: force_output prevailing_def_ironly
   References: 
   Referring: SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02/11 (read)SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02/11 (read)SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02/11 (write)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02/12 (read)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02/12 (write)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02/12 (read)
   Availability: available
   Varpool flags:
-msr_MCU_EXCLUSIVE_AREA_02/4 (msr_MCU_EXCLUSIVE_AREA_02) @05cbfa68
+msr_MCU_EXCLUSIVE_AREA_02/4 (msr_MCU_EXCLUSIVE_AREA_02) @05c3ba68
   Type: variable definition analyzed
   Visibility: force_output prevailing_def_ironly
   References: 
   Referring: SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02/11 (read)SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02/11 (write)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02/12 (read)
   Availability: available
   Varpool flags:
-reentry_guard_MCU_EXCLUSIVE_AREA_01/3 (reentry_guard_MCU_EXCLUSIVE_AREA_01) @05cbf9d8
+reentry_guard_MCU_EXCLUSIVE_AREA_01/3 (reentry_guard_MCU_EXCLUSIVE_AREA_01) @05c3b9d8
   Type: variable definition analyzed
   Visibility: force_output prevailing_def_ironly
   References: 
   Referring: SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01/9 (read)SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01/9 (read)SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01/9 (write)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01/10 (read)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01/10 (write)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01/10 (read)
   Availability: available
   Varpool flags:
-msr_MCU_EXCLUSIVE_AREA_01/2 (msr_MCU_EXCLUSIVE_AREA_01) @05cbf948
+msr_MCU_EXCLUSIVE_AREA_01/2 (msr_MCU_EXCLUSIVE_AREA_01) @05c3b948
   Type: variable definition analyzed
   Visibility: force_output prevailing_def_ironly
   References: 
   Referring: SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01/9 (read)SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01/9 (write)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01/10 (read)
   Availability: available
   Varpool flags:
-reentry_guard_MCU_EXCLUSIVE_AREA_00/1 (reentry_guard_MCU_EXCLUSIVE_AREA_00) @05cbf8b8
+reentry_guard_MCU_EXCLUSIVE_AREA_00/1 (reentry_guard_MCU_EXCLUSIVE_AREA_00) @05c3b8b8
   Type: variable definition analyzed
   Visibility: force_output prevailing_def_ironly
   References: 
   Referring: SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00/7 (read)SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00/7 (read)SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00/7 (write)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00/8 (read)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00/8 (write)SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00/8 (read)
   Availability: available
   Varpool flags:
-msr_MCU_EXCLUSIVE_AREA_00/0 (msr_MCU_EXCLUSIVE_AREA_00) @05cbf828
+msr_MCU_EXCLUSIVE_AREA_00/0 (msr_MCU_EXCLUSIVE_AREA_00) @05c3b828
   Type: variable definition analyzed
   Visibility: force_output prevailing_def_ironly
   References: 

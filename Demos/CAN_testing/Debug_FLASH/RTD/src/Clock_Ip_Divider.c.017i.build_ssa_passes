@@ -1,7 +1,6 @@
 SetSimTraceDivMul (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetSimTraceDivMul_TrustedCall (config);
   return;
 
@@ -11,7 +10,6 @@ SetSimTraceDivMul (const struct Clock_Ip_DividerConfigType * config)
 SetSimTraceDivMul_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = 1074036736B;
   _2 = _1->CLKDIV4;
   _3 = config->value;
@@ -34,7 +32,6 @@ SetSimTraceDivMul_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetPccPcdDivFrac (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetPccPcdDivFrac_TrustedCall (config);
   return;
 
@@ -46,28 +43,22 @@ SetPccPcdDivFrac_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = 1074155520B;
   _2 = config->name;
   _3 = clockFeatures[_2][5];
   _4 = (int) _3;
   regValue = _1->PCCn[_4];
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294967280;
-  # DEBUG BEGIN_STMT
   _5 = config->value;
   _6 = _5 + 4294967295;
   _7 = _6 & 7;
   regValue = regValue | _7;
-  # DEBUG BEGIN_STMT
   _8 = config->options[0];
   _9 = (long unsigned int) _8;
   _10 = _9 + 4294967295;
   _11 = _10 << 3;
   _12 = _11 & 8;
   regValue = regValue | _12;
-  # DEBUG BEGIN_STMT
   _13 = 1074155520B;
   _14 = config->name;
   _15 = clockFeatures[_14][5];
@@ -81,7 +72,6 @@ SetPccPcdDivFrac_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetSimClkoutDiv (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetSimClkoutDiv_TrustedCall (config);
   return;
 
@@ -93,8 +83,6 @@ SetSimClkoutDiv_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -102,18 +90,14 @@ SetSimClkoutDiv_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074036736B;
   regValue = _2->CHIPCTL;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294965503;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   _5 = _4 << 8;
   _6 = _5 & 1792;
   regValue = regValue | _6;
-  # DEBUG BEGIN_STMT
   _7 = 1074036736B;
   _7->CHIPCTL = regValue;
 
@@ -126,7 +110,6 @@ SetSimClkoutDiv_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetScgHsrunDivslow (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgHsrunDivslow_TrustedCall (config);
   return;
 
@@ -138,8 +121,6 @@ SetScgHsrunDivslow_TrustedCall (const struct Clock_Ip_DividerConfigType * config
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -147,16 +128,12 @@ SetScgHsrunDivslow_TrustedCall (const struct Clock_Ip_DividerConfigType * config
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   regValue = _2->HCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294967280;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   regValue = regValue | _4;
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _5->HCCR = regValue;
 
@@ -169,7 +146,6 @@ SetScgHsrunDivslow_TrustedCall (const struct Clock_Ip_DividerConfigType * config
 SetScgHsrunDivbus (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgHsrunDivbus_TrustedCall (config);
   return;
 
@@ -181,8 +157,6 @@ SetScgHsrunDivbus_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -190,17 +164,13 @@ SetScgHsrunDivbus_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   regValue = _2->HCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294967055;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   _5 = _4 << 4;
   regValue = regValue | _5;
-  # DEBUG BEGIN_STMT
   _6 = 1074151424B;
   _6->HCCR = regValue;
 
@@ -213,7 +183,6 @@ SetScgHsrunDivbus_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetScgHsrunDivcore (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgHsrunDivcore_TrustedCall (config);
   return;
 
@@ -225,8 +194,6 @@ SetScgHsrunDivcore_TrustedCall (const struct Clock_Ip_DividerConfigType * config
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -234,17 +201,13 @@ SetScgHsrunDivcore_TrustedCall (const struct Clock_Ip_DividerConfigType * config
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   regValue = _2->HCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4293984255;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   _5 = _4 << 16;
   regValue = regValue | _5;
-  # DEBUG BEGIN_STMT
   _6 = 1074151424B;
   _6->HCCR = regValue;
 
@@ -257,7 +220,6 @@ SetScgHsrunDivcore_TrustedCall (const struct Clock_Ip_DividerConfigType * config
 SetScgVlprDivslow (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgVlprDivslow_TrustedCall (config);
   return;
 
@@ -269,8 +231,6 @@ SetScgVlprDivslow_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -278,16 +238,12 @@ SetScgVlprDivslow_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   regValue = _2->VCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294967280;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   regValue = regValue | _4;
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _5->VCCR = regValue;
 
@@ -300,7 +256,6 @@ SetScgVlprDivslow_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetScgVlprDivbus (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgVlprDivbus_TrustedCall (config);
   return;
 
@@ -312,8 +267,6 @@ SetScgVlprDivbus_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -321,17 +274,13 @@ SetScgVlprDivbus_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   regValue = _2->VCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294967055;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   _5 = _4 << 4;
   regValue = regValue | _5;
-  # DEBUG BEGIN_STMT
   _6 = 1074151424B;
   _6->VCCR = regValue;
 
@@ -344,7 +293,6 @@ SetScgVlprDivbus_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetScgVlprDivcore (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgVlprDivcore_TrustedCall (config);
   return;
 
@@ -356,8 +304,6 @@ SetScgVlprDivcore_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -365,17 +311,13 @@ SetScgVlprDivcore_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   regValue = _2->VCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4293984255;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   _5 = _4 << 16;
   regValue = regValue | _5;
-  # DEBUG BEGIN_STMT
   _6 = 1074151424B;
   _6->VCCR = regValue;
 
@@ -388,7 +330,6 @@ SetScgVlprDivcore_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetScgRunDivslow (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgRunDivslow_TrustedCall (config);
   return;
 
@@ -400,8 +341,6 @@ SetScgRunDivslow_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -409,16 +348,12 @@ SetScgRunDivslow_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   regValue = _2->RCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294967280;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   regValue = regValue | _4;
-  # DEBUG BEGIN_STMT
   _5 = 1074151424B;
   _5->RCCR = regValue;
 
@@ -431,7 +366,6 @@ SetScgRunDivslow_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetScgRunDivbus (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgRunDivbus_TrustedCall (config);
   return;
 
@@ -443,8 +377,6 @@ SetScgRunDivbus_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -452,17 +384,13 @@ SetScgRunDivbus_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   regValue = _2->RCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294967055;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   _5 = _4 << 4;
   regValue = regValue | _5;
-  # DEBUG BEGIN_STMT
   _6 = 1074151424B;
   _6->RCCR = regValue;
 
@@ -475,7 +403,6 @@ SetScgRunDivbus_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetScgRunDivcore (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgRunDivcore_TrustedCall (config);
   return;
 
@@ -487,8 +414,6 @@ SetScgRunDivcore_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->value;
   if (_1 != 0)
     goto <bb 3>; [INV]
@@ -496,17 +421,13 @@ SetScgRunDivcore_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _2 = 1074151424B;
   regValue = _2->RCCR;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4293984255;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = _3 + 4294967295;
   _5 = _4 << 16;
   regValue = regValue | _5;
-  # DEBUG BEGIN_STMT
   _6 = 1074151424B;
   _6->RCCR = regValue;
 
@@ -519,7 +440,6 @@ SetScgRunDivcore_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetScgAsyncDiv2 (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgAsyncDiv2_TrustedCall (config);
   return;
 
@@ -533,24 +453,17 @@ SetScgAsyncDiv2_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->name;
   _2 = clockFeatures[_1][0];
   instance = (uint32) _2;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = dividerValue_hardwareValue[_3];
   dividerValue = (uint32) _4;
-  # DEBUG BEGIN_STMT
   _5 = scgPeriphAsyncDivs[instance];
   regValue = _5->ASYNC_DIV;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294965503;
-  # DEBUG BEGIN_STMT
   _6 = dividerValue << 8;
   regValue = regValue | _6;
-  # DEBUG BEGIN_STMT
   _7 = scgPeriphAsyncDivs[instance];
   _7->ASYNC_DIV = regValue;
   return;
@@ -561,7 +474,6 @@ SetScgAsyncDiv2_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 SetScgAsyncDiv1 (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SetScgAsyncDiv1_TrustedCall (config);
   return;
 
@@ -575,23 +487,16 @@ SetScgAsyncDiv1_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
   uint32 regValue;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _1 = config->name;
   _2 = clockFeatures[_1][0];
   instance = (uint32) _2;
-  # DEBUG BEGIN_STMT
   _3 = config->value;
   _4 = dividerValue_hardwareValue[_3];
   dividerValue = (uint32) _4;
-  # DEBUG BEGIN_STMT
   _5 = scgPeriphAsyncDivs[instance];
   regValue = _5->ASYNC_DIV;
-  # DEBUG BEGIN_STMT
   regValue = regValue & 4294967288;
-  # DEBUG BEGIN_STMT
   regValue = regValue | dividerValue;
-  # DEBUG BEGIN_STMT
   _6 = scgPeriphAsyncDivs[instance];
   _6->ASYNC_DIV = regValue;
   return;
@@ -602,7 +507,6 @@ SetScgAsyncDiv1_TrustedCall (const struct Clock_Ip_DividerConfigType * config)
 Callback_DividerEmpty (const struct Clock_Ip_DividerConfigType * config)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   return;
 
 }
