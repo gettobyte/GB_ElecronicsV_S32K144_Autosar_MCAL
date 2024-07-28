@@ -45,14 +45,26 @@ extern void Adc_0_Isr(void);
 ==================================================================================================*/
 volatile boolean notif_triggered = FALSE;
 volatile int exit_code = 0;
-volatile uint16 data;
+uint32_t Gb_ADC_Value;
 
 void AdcConversionCompleteNotif(const uint8 ControlChanIdx)
 {
     notif_triggered = TRUE;
-    data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
-    /* Checks the measured ADC data conversion */
-    while (ADC_TOLERANCE(data, ADC_BANDGAP) > RESULT_TOLERANCE);
+    uint32 Sc1Reg;
+
+    const ADC_Type * const ADC_Instance = IP_ADC0;
+    Sc1Reg = SC1(ADC_Instance, ControlChanIdx);
+
+    uint8_t adc_channel = Sc1Reg & 0x1F;
+
+    switch(adc_channel)
+    {
+    case ADC_IP_INPUTCHAN_EXT1:
+    	Gb_ADC_Value = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
+    	break;
+    default:
+    	break;
+    }
 }
 
 
@@ -69,7 +81,6 @@ int main(void)
     Adc_Ip_StatusType adcStatus;
 
     boolean Gb_ADC_Conversion_Status;
-    uint32_t Gb_ADC_Value;
     /* Write your code here */
     clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB[0]);
     while (clockStatus != CLOCK_IP_SUCCESS)
@@ -85,6 +96,10 @@ int main(void)
     /* Initialize all pins using the Port driver */
     Port_Init(NULL_PTR);
 
+    IntCtrl_Ip_InstallHandler(ADC0_IRQn, Adc_0_Isr, NULL_PTR);
+    IntCtrl_Ip_EnableIrq(ADC0_IRQn);
+
+
     /**** Part 1: Start ADC software trigger conversions ****/
     Adc_Ip_Init(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
     adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
@@ -93,19 +108,16 @@ int main(void)
         adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
     }
 
-
-for(;;)
-{
 	/* Start a software trigger conversion */
-   Adc_Ip_StartConversion(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ADC_IP_INPUTCHAN_EXT12, FALSE);
+   Adc_Ip_StartConversion(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ADC_IP_INPUTCHAN_EXT1, TRUE);
    /* Checks whether ADC conversion is in progress */
    Gb_ADC_Conversion_Status = Adc_Ip_GetConvActiveFlag(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 
    /* Checks whether ADC conversion is completed or not */
-   Gb_ADC_Conversion_Status = Adc_Ip_GetConvCompleteFlag(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE,ADC_IP_INPUTCHAN_EXT12);
-   /* Reads the converted ADC data */
-   Gb_ADC_Value = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE,0);
+   Gb_ADC_Conversion_Status = Adc_Ip_GetConvCompleteFlag(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE,ADC_IP_INPUTCHAN_EXT1);
 
+for(;;)
+{
 
 }
 
@@ -116,3 +128,11 @@ for(;;)
 /*!
 ** @}
 */
+/*
+ * example4.c
+ *
+ *  Created on: 28-Jul-2024
+ *      Author: gettobyte_kunal
+ */
+
+

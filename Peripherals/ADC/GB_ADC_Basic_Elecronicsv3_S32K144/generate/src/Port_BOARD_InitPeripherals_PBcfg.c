@@ -127,6 +127,7 @@ const uint8 au8Port_PartitionList_BOARD_InitPeripherals[PORT_MAX_PARTITION] =
 */
 static const uint32 au32Port_PinToPartitionMap_BOARD_InitPeripherals[PORT_MAX_CONFIGURED_PADS_U16] =
 {
+    (uint32)0x00000001,
     (uint32)0x00000001
 };
 
@@ -143,7 +144,6 @@ static const uint32 au32Port_PinToPartitionMap_BOARD_InitPeripherals[PORT_MAX_CO
 static const uint16 Port_au16NoUnUsedPadsArrayDefault_BOARD_InitPeripherals[PORT_MAX_UNUSED_PADS_U16]=
 {
     (uint16)0,
-    (uint16)1,
     (uint16)2,
     (uint16)3,
     (uint16)6,
@@ -248,7 +248,9 @@ static const Port_UnUsedPinConfigType Port_UnUsedPin_BOARD_InitPeripherals =
 static const Port_PinConfigType Port_aPinConfigDefault_BOARD_InitPeripherals[PORT_MAX_CONFIGURED_PADS_U16]=
 {
     /* PCR Id, PCR Value, Output Level, Direction, IsGpio, Direction Configurable, Mode Changeable */
-    { (uint16)78, (uint32)0x00000000, (uint8)2, (Port_PinDirectionType)0, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE }
+    { (uint16)78, (uint32)0x00000000, (uint8)2, (Port_PinDirectionType)0, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE },
+    /* PCR Id, PCR Value, Output Level, Direction, IsGpio, Direction Configurable, Mode Changeable */
+    { (uint16)1, (uint32)0x00000000, (uint8)2, (Port_PinDirectionType)0, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE }
 };
 
 #if (0UL != PORT_MAX_CONFIGURED_DIGITAL_FILTER_PORTS_BOARD_InitPeripherals_U8)

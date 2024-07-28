@@ -91,12 +91,17 @@ extern "C"{
 #define ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Adc_MemMap.h"
 
-static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[1U] =
+static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[2U] =
 {
     {
         12U, /* ChnIdx */
         ADC_IP_INPUTCHAN_EXT12, /* Channel */
-        (boolean)FALSE /* InterruptEnable */
+        (boolean)TRUE /* InterruptEnable */
+    },
+    {
+        1U, /* ChnIdx */
+        ADC_IP_INPUTCHAN_EXT1, /* Channel */
+        (boolean)TRUE /* InterruptEnable */
     }
 };
 
@@ -115,7 +120,7 @@ const Adc_Ip_ConfigType AdcHwUnit_0_BOARD_INITPERIPHERALS =
     ADC_IP_CLK_ALT_1, /* InputClock */
     255U, /* SampleTime */
     (boolean)TRUE, /* AvgEn */
-    ADC_IP_AVG_8_CONV, /* AvgSel */
+    ADC_IP_AVG_32_CONV, /* AvgSel */
     ADC_IP_RESOLUTION_12BIT, /* Resolution */
     ADC_IP_TRIGGER_SOFTWARE, /* TriggerMode */
 #if (ADC_IP_ENABLE_SIM_SOURCE_SELECTION == STD_ON)
@@ -135,9 +140,9 @@ const Adc_Ip_ConfigType AdcHwUnit_0_BOARD_INITPERIPHERALS =
     0U, /* CompVal2 */
     4U, /* UsrGain */
     0U, /* UsrOffset */
-    1U, /* NumChannels */
+    2U, /* NumChannels */
     AdcIpChansConfig_0_BOARD_INITPERIPHERALS, /* ChannelConfigs */
-    NULL_PTR /* ConversionCompleteNotification */
+    AdcConversionCompleteNotif /* ConversionCompleteNotification */
 };
 
 

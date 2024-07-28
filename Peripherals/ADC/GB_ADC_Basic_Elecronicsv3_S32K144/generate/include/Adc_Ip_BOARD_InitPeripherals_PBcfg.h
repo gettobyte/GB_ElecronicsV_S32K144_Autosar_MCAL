@@ -92,6 +92,11 @@ extern "C"{
 #include "Adc_MemMap.h"
 
 
+/**
+* @brief         ADC Notification function for ADC0.
+*/
+extern Adc_Ip_ChanNotificationType AdcConversionCompleteNotif;
+
 #define ADC_STOP_SEC_CODE
 #include "Adc_MemMap.h"
 

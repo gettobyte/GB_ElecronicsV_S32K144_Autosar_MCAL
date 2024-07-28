@@ -92,7 +92,7 @@ static const IntCtrl_Ip_IrqConfigType aIrqConfiguration1[] = {
     {LPUART0_RxTx_IRQn, (boolean)FALSE, 0U},
     {LPUART1_RxTx_IRQn, (boolean)FALSE, 0U},
     {LPUART2_RxTx_IRQn, (boolean)FALSE, 0U},
-    {ADC0_IRQn, (boolean)FALSE, 0U},
+    {ADC0_IRQn, (boolean)TRUE, 0U},
     {ADC1_IRQn, (boolean)FALSE, 0U},
     {CMP0_IRQn, (boolean)FALSE, 0U},
     {ERM_single_fault_IRQn, (boolean)FALSE, 0U},
