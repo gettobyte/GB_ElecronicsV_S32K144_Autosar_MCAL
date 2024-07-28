@@ -42,6 +42,17 @@ extern "C"{
 #include "FlexCAN_Ip.h"
 #include "FlexCAN_Ip_Irq.h"
 #include "FlexCAN_Ip_HwAccess.h"
+#include "Dio.h"
+void TDelay(uint32 delay);
+void TDelay(uint32 delay)
+{
+   static volatile uint32 DelayTimer = 0;
+   while(DelayTimer<delay)
+   {
+       DelayTimer++;
+   }
+   DelayTimer=0;
+}
 #if (FLEXCAN_IP_FEATURE_HAS_DMA_ENABLE == STD_ON)
 #include "Dma_Ip.h"
 #endif
@@ -2738,6 +2749,52 @@ void FlexCAN_IRQHandler
         {
             FlexCAN_ProcessSpuriousInterruptMB(instance, startMbIdx, endMbIdx);
         }
+
+        //    Alert for receiving in Mailbox
+        	if (mb_idx == 0)
+        		{
+        			for (int var = 0; var < 5; var++)
+        				{
+        						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
+        						TDelay(2000000);
+        						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
+        						TDelay(2000000);
+        				}
+        		}
+        	else if(mb_idx == 1)
+        		{
+        			for (int var = 0; var < 5; var++)
+        				{
+        						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
+        						TDelay(2000000);
+        						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
+        						TDelay(2000000);
+        				}
+        		}
+        	else if(mb_idx == 2)
+        			{
+        				for (int var = 0; var < 5; var++)
+        					{
+        						Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_LOW);
+        						TDelay(2000000);
+        						Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_HIGH);
+        						TDelay(2000000);
+        					}
+        			}
+        	else if(mb_idx == 3)
+        			{
+        				for (int var = 0; var < 5; var++)
+        					{
+        						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
+        						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
+        						TDelay(2000000);
+        						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
+        						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
+        						TDelay(2000000);
+        					}
+        			}
+        	else
+        	{}
     }
     else
     {
@@ -2758,7 +2815,10 @@ void FlexCAN_IRQHandler
             FlexCAN_ClearEnhancedRxFifoIntStatusFlag(base, FLEXCAN_IP_ENHANCED_RXFIFO_UNDERFLOW);
         }
     #endif /* End of (FLEXCAN_IP_FEATURE_HAS_ENHANCED_RX_FIFO == STD_ON) */
+
+
     }
+
 }
 
 /*FUNCTION**********************************************************************

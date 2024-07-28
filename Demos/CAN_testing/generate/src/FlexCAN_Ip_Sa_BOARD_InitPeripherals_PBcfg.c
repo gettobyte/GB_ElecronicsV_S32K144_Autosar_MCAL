@@ -93,6 +93,8 @@ extern "C"{
 #define CAN_START_SEC_CODE
 #include "Can_MemMap.h"
 
+extern void GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
+                  uint32 buffIdx, const Flexcan_Ip_StateType * flexcanState);
 #define CAN_STOP_SEC_CODE
 #include "Can_MemMap.h"
 /*==================================================================================================
@@ -179,7 +181,7 @@ const Flexcan_Ip_ConfigType FlexCAN_Config0  = {
         0,
   #endif
     /* Controller Callback */
-    NULL_PTR,
+    GB_MailBox_CallBack,
     /* Error Callback */
     NULL_PTR
     };
