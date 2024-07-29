@@ -5,21 +5,22 @@
 #include "Port.h"
 #include "string.h"
 #include "IntCtrl_Ip.h"
+#include "Dio.h"
 
 //Rx for standard frame
-#define MSG_ID1 0x500
+#define MSG_ID0 0x500
 #define RX_MB_IDX0 0U
 
 //Tx for extended frame
-#define MSG_ID2 0x152F5AAF
+#define MSG_ID1 0x152F5AAF
 #define TX_MB_IDX0 1U
 
 //Rx for standard remote frame
-#define MSG_ID3 0x700
+#define MSG_ID2 0x700
 #define RX_MB_IDX1 2U
 
 //Tx for extended remote frame
-#define MSG_ID4 0x176B455B
+#define MSG_ID3 0x176B455B
 #define TX_MB_IDX1 3U
 
 extern void CAN0_ORED_0_15_MB_IRQHandler(void);
@@ -111,29 +112,60 @@ int main(void)
     FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);
 
 
-    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX0, &rx_info_std, MSG_ID1);
-    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX1, &rx_info_std_remote, MSG_ID3);
+    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX0, &rx_info_std, MSG_ID0);
+    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX1, &rx_info_std_remote, MSG_ID2);
 
 
     FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData1, false);
     FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX1, &rxData2, false);
 
 
-   for(;;)
-   {
-	   // Sending Data Frame(Standard) from Node 1:
-	   	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &tx_info_std, MSG_ID0, (uint8 *)&CanData1);
-	   	   TestDelay(2000000);
+//     Receiving Data Frame(Standard) from Node 1:
+	   boolean temp = false;
+	   while(temp != true)
+	   {
+		   if(rxData1.msgId == 1280)
+		   {
+				for (int var = 0; var < 5; var++)
+					{
+						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
+						TestDelay(2000000);
+						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
+						TestDelay(2000000);
+					}
+				temp = true;
+		   }
+	   }
 
-	   //	   Receiving Data Frame(Extended) from Node 2:
+
+//	   Sending Data Frame(Extended) from Node 2:
+	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData1);
+	   TestDelay(2000000);
 
 
-	   //     Sending Remote Frame(Standard) from Node 1:
-	   	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX2, &tx_info_std, MSG_ID0, (uint8 *)&CanData1);
-	   	   TestDelay(2000000):
+	   for(;;)
+	   {
 
-	   //	   Receiving Remote Frame(Extended) from Node 2:
-   }
+
+
+
+	//     Receiving Remote Frame(Standard) from Node 1:
+	//	   if(rxData2->msgId == 1792)
+	//	   {
+	//			for (int var = 0; var < 5; var++)
+	//				{
+	//					Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
+	//					TDelay(2000000);
+	//					Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
+	//					TDelay(2000000);
+	//				}
+	//	   }
+
+
+	//	   Sending Remote Frame(Extended) from Node 2:
+	//	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX1, &rx_info_ext_remote, MSG_ID3, (uint8 *)&CanData1);
+	//	   TestDelay(2000000);
+	   }
 
     return 0;
 }
