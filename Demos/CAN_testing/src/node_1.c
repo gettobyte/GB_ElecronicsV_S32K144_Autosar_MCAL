@@ -11,7 +11,7 @@
 #define TX_MB_IDX0 0
 
 //Rx for extended frame
-#define MSG_ID1 0x152F5AA
+#define MSG_ID1 0x152F5AAF
 #define RX_MB_IDX0 1
 
 //Tx for standard remote frame
@@ -117,8 +117,31 @@ int main(void)
 	FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &txData1, false);
 	FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX1, &txData2, false);
 
-	// Sending Data Frame(Standard) from Node 1:
+
+
+
+   for(;;)
+   {
+
+
+//	   Sending Data Frame(Standard) from Node 1:
 	FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &tx_info_std, MSG_ID0, (uint8 *)&CanData1);
+	{
+		while(FlexCAN_State0.mbs[TX_MB_IDX0].state == FLEXCAN_MB_TX_BUSY)
+	   {
+				Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
+				TestDelay(2000000);
+				Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
+				TestDelay(2000000);
+	   }
+		for (int var = 0; var < 5; var++)
+		{
+				Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_LOW);
+				TestDelay(2000000);
+				Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_HIGH);
+				TestDelay(2000000);
+		}
+	   }
 	TestDelay(2000000);
 
 
@@ -126,40 +149,22 @@ int main(void)
 	   boolean temp = false;
 	   while(temp != true)
 	   {
-		   if(txData1.msgId == 22214058)
+		   if(txData1.msgId == 355424943)
 		   {
 				for (int var = 0; var < 5; var++)
 					{
 						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
+						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
 						TestDelay(2000000);
 						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
+						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
 						TestDelay(2000000);
 					}
 				temp = true;
 		   }
 	   }
+	   temp = false;
 
-
-   for(;;)
-   {
-
-
-
-//     Sending Remote Frame(Standard) from Node 1:
-//	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX1, &tx_info_std_remote, MSG_ID2, (uint8 *)&CanData1);
-//	   TestDelay(2000000);
-
-//	   Receiving Remote Frame(Extended) from Node 2:
-//	   if(rxData2->msgId == 392906075)
-	   //	   {
-	   //			for (int var = 0; var < 5; var++)
-	   //				{
-	   //					Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
-	   //					TDelay(2000000);
-	   //					Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
-	   //					TDelay(2000000);
-	   //				}
-	   //	   }
    }
 
     return 0;

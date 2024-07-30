@@ -42,7 +42,6 @@ extern "C"{
 #include "FlexCAN_Ip.h"
 #include "FlexCAN_Ip_Irq.h"
 #include "FlexCAN_Ip_HwAccess.h"
-
 #if (FLEXCAN_IP_FEATURE_HAS_DMA_ENABLE == STD_ON)
 #include "Dma_Ip.h"
 #endif
@@ -2739,8 +2738,7 @@ void FlexCAN_IRQHandler
         {
             FlexCAN_ProcessSpuriousInterruptMB(instance, startMbIdx, endMbIdx);
         }
-
-        }
+    }
     else
     {
         /* Clear all interrupt flags when driver is not initialized */
@@ -2760,10 +2758,7 @@ void FlexCAN_IRQHandler
             FlexCAN_ClearEnhancedRxFifoIntStatusFlag(base, FLEXCAN_IP_ENHANCED_RXFIFO_UNDERFLOW);
         }
     #endif /* End of (FLEXCAN_IP_FEATURE_HAS_ENHANCED_RX_FIFO == STD_ON) */
-
-
     }
-
 }
 
 /*FUNCTION**********************************************************************

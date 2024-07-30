@@ -120,6 +120,12 @@ int main(void)
     FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX1, &rxData2, false);
 
 
+
+
+	   for(;;)
+	   {
+
+
 //     Receiving Data Frame(Standard) from Node 1:
 	   boolean temp = false;
 	   while(temp != true)
@@ -129,42 +135,37 @@ int main(void)
 				for (int var = 0; var < 5; var++)
 					{
 						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
+						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
 						TestDelay(2000000);
 						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
+						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
 						TestDelay(2000000);
 					}
 				temp = true;
 		   }
 	   }
+	   temp = false;
 
 
 //	   Sending Data Frame(Extended) from Node 2:
 	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData1);
-	   TestDelay(2000000);
-
-
-	   for(;;)
 	   {
-
-
-
-
-	//     Receiving Remote Frame(Standard) from Node 1:
-	//	   if(rxData2->msgId == 1792)
-	//	   {
-	//			for (int var = 0; var < 5; var++)
-	//				{
-	//					Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
-	//					TDelay(2000000);
-	//					Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
-	//					TDelay(2000000);
-	//				}
-	//	   }
-
-
-	//	   Sending Remote Frame(Extended) from Node 2:
-	//	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX1, &rx_info_ext_remote, MSG_ID3, (uint8 *)&CanData1);
-	//	   TestDelay(2000000);
+			while(FlexCAN_State0.mbs[TX_MB_IDX0].state == FLEXCAN_MB_TX_BUSY)
+			{
+				Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
+				TestDelay(2000000);
+				Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
+				TestDelay(2000000);
+			}
+			for (int var = 0; var < 5; var++)
+			{
+				Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_LOW);
+				TestDelay(2000000);
+				Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_HIGH);
+				TestDelay(2000000);
+			}
+	   }
+	   TestDelay(2000000);
 	   }
 
     return 0;
