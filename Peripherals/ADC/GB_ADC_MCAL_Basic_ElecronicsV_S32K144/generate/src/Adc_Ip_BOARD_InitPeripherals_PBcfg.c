@@ -91,17 +91,15 @@ extern "C"{
 #define ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Adc_MemMap.h"
 
-static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[2U] =
+/**
+* @brief          ADC Ip List of Channels Configuration for Logical ID 0 corresponding to the ADC0 configuration variant BOARD_INITPERIPHERALS.
+*/
+static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[1U] =
 {
     {
-        12U, /* ChnIdx */
+        0U, /* ChnIdx */
         ADC_IP_INPUTCHAN_EXT12, /* Channel */
-        (boolean)TRUE /* InterruptEnable */
-    },
-    {
-        1U, /* ChnIdx */
-        ADC_IP_INPUTCHAN_EXT1, /* Channel */
-        (boolean)TRUE /* InterruptEnable */
+        (boolean)FALSE /* InterruptEnable */
     }
 };
 
@@ -111,38 +109,38 @@ static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[2U] 
 ==================================================================================================*/
 
 /**
-* @brief          ADC Ip Config for the ADC0 configuration variant BOARD_INITPERIPHERALS.
+* @brief          ADC Ip Config for Logical ID 0 corresponding to the ADC0 configuration variant BOARD_INITPERIPHERALS.
 */
-const Adc_Ip_ConfigType AdcHwUnit_0_BOARD_INITPERIPHERALS =
+const Adc_Ip_ConfigType AdcIpConfig_0_BOARD_INITPERIPHERALS =
 {
     ADC_IP_CLK_FULL_BUS, /* ClockDivide */
-    ADC_IP_CLK_HALF_BUS, /* CalibrationClockDivide */
+    ADC_IP_CLK_EIGHTH_BUS, /* CalibrationClockDivide */
     ADC_IP_CLK_ALT_1, /* InputClock */
-    255U, /* SampleTime */
-    (boolean)TRUE, /* AvgEn */
-    ADC_IP_AVG_32_CONV, /* AvgSel */
+    ADC_IP_DEFAULT_SAMPLE_TIME, /* SampleTime */
+    (boolean)FALSE, /* AvgEn */
+    ADC_IP_AVG_4_CONV, /* AvgSel */
     ADC_IP_RESOLUTION_12BIT, /* Resolution */
-    ADC_IP_TRIGGER_SOFTWARE, /* TriggerMode */
+    ADC_IP_TRIGGER_HARDWARE, /* TriggerMode */
 #if (ADC_IP_ENABLE_SIM_SOURCE_SELECTION == STD_ON)
     ADC_IP_PRETRIGGER_SEL_PDB, /* PretriggerSel */
     ADC_IP_TRIGGER_SEL_PDB, /* TriggerSel */
 #endif /* (ADC_IP_ENABLE_SIM_SOURCE_SELECTION == STD_ON) */
     (boolean)FALSE, /* DmaEnable */
     ADC_IP_VOLTAGEREF_VREF, /* VoltageRef */
-    (boolean)TRUE, /* ContinuousConvEnable */
+    (boolean)FALSE, /* ContinuousConvEnable */
 #if (ADC_IP_SUPPLY_MONITORING_ENABLED == STD_ON)
     (boolean)FALSE, /* SupplyMonitoringEnable */
 #endif /* (ADC_IP_SUPPLY_MONITORING_ENABLED == STD_ON) */
-    (boolean)TRUE, /* CompareEnable */
-    (boolean)TRUE, /* CompareGreaterThanEnable */
+    (boolean)FALSE, /* CompareEnable */
+    (boolean)FALSE, /* CompareGreaterThanEnable */
     (boolean)FALSE, /* CompareRangeFuncEnable */
-    1000U, /* CompVal1 */
-    0U, /* CompVal2 */
+    0U, /* CompVal1 */
+    255U, /* CompVal2 */
     4U, /* UsrGain */
     0U, /* UsrOffset */
-    2U, /* NumChannels */
+    0U, /* NumChannels */
     AdcIpChansConfig_0_BOARD_INITPERIPHERALS, /* ChannelConfigs */
-    AdcConversionCompleteNotif /* ConversionCompleteNotification */
+    NULL_PTR /* ConversionCompleteNotification */
 };
 
 

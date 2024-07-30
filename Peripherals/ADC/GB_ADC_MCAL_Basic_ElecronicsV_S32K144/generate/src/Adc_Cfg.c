@@ -25,7 +25,7 @@
 /**
 *   @file
 *
-*   @addtogroup adc_ip_config Adc IPL Configuration
+*   @addtogroup adc_driver_config Adc Driver Configuration
 *   @{
 */
 
@@ -39,41 +39,41 @@ extern "C"{
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Adc_Ip_BOARD_InitPeripherals_PBcfg.h"
+#include "Adc.h"
 
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define ADC_IP_VENDOR_ID_BOARD_INITPERIPHERALS_PBCFG_C                     43
-#define ADC_IP_AR_RELEASE_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_C      4
-#define ADC_IP_AR_RELEASE_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_C      4
-#define ADC_IP_AR_RELEASE_REVISION_VERSION_BOARD_INITPERIPHERALS_PBCFG_C   0
-#define ADC_IP_SW_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_C              1
-#define ADC_IP_SW_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_C              0
-#define ADC_IP_SW_PATCH_VERSION_BOARD_INITPERIPHERALS_PBCFG_C              0
+#define ADC_VENDOR_ID_CFG_C                    43
+#define ADC_AR_RELEASE_MAJOR_VERSION_CFG_C     4
+#define ADC_AR_RELEASE_MINOR_VERSION_CFG_C     4
+#define ADC_AR_RELEASE_REVISION_VERSION_CFG_C  0
+#define ADC_SW_MAJOR_VERSION_CFG_C             1
+#define ADC_SW_MINOR_VERSION_CFG_C             0
+#define ADC_SW_PATCH_VERSION_CFG_C             0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
-/* Check if Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.c file and Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.h file are of the same vendor */
-#if (ADC_IP_VENDOR_ID_BOARD_INITPERIPHERALS_PBCFG_C != ADC_IP_VENDOR_ID_BOARD_INITPERIPHERALS_PBCFG_H)
-    #error "Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.c and Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.h have different vendor ids"
+/* Check if source file and ADC header file are of the same vendor */
+#if (ADC_VENDOR_ID_CFG_C != ADC_VENDOR_ID)
+    #error "Adc_Cfg.c and Adc.h have different vendor ids"
 #endif
 
-/* Check if Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.c file and Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.h file are of the same Autosar version */
-#if ((ADC_IP_AR_RELEASE_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_C != ADC_IP_AR_RELEASE_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H) || \
-     (ADC_IP_AR_RELEASE_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_C != ADC_IP_AR_RELEASE_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H) || \
-     (ADC_IP_AR_RELEASE_REVISION_VERSION_BOARD_INITPERIPHERALS_PBCFG_C != ADC_IP_AR_RELEASE_REVISION_VERSION_BOARD_INITPERIPHERALS_PBCFG_H) \
+/* Check if source file and ADC header file are of the same Autosar version */
+#if ((ADC_AR_RELEASE_MAJOR_VERSION_CFG_C != ADC_AR_RELEASE_MAJOR_VERSION) || \
+     (ADC_AR_RELEASE_MINOR_VERSION_CFG_C != ADC_AR_RELEASE_MINOR_VERSION) || \
+     (ADC_AR_RELEASE_REVISION_VERSION_CFG_C != ADC_AR_RELEASE_REVISION_VERSION) \
     )
-    #error "AutoSar Version Numbers of Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.c and Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.h are different"
+    #error "AutoSar Version Numbers of Adc_Cfg.c and Adc.h are different"
 #endif
 
-/* Check if Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.c file and Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.h file are of the same Software version */
-#if ((ADC_IP_SW_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_C != ADC_IP_SW_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H) || \
-     (ADC_IP_SW_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_C != ADC_IP_SW_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H) || \
-     (ADC_IP_SW_PATCH_VERSION_BOARD_INITPERIPHERALS_PBCFG_C != ADC_IP_SW_PATCH_VERSION_BOARD_INITPERIPHERALS_PBCFG_H) \
+/* Check if source file and ADC header file are of the same Software version */
+#if ((ADC_SW_MAJOR_VERSION_CFG_C != ADC_SW_MAJOR_VERSION) || \
+     (ADC_SW_MINOR_VERSION_CFG_C != ADC_SW_MINOR_VERSION) || \
+     (ADC_SW_PATCH_VERSION_CFG_C != ADC_SW_PATCH_VERSION) \
     )
-  #error "Software Version Numbers of Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.c and Adc_Ip_BOARD_INITPERIPHERALS_PBcfg.h are different"
+    #error "Software Version Numbers of Adc_Cfg.c and Adc.h are different"
 #endif
 
 /*==================================================================================================
@@ -88,69 +88,12 @@ extern "C"{
 *                                      LOCAL CONSTANTS
 ==================================================================================================*/
 
-#define ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-#include "Adc_MemMap.h"
-
-static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[2U] =
-{
-    {
-        12U, /* ChnIdx */
-        ADC_IP_INPUTCHAN_EXT12, /* Channel */
-        (boolean)TRUE /* InterruptEnable */
-    },
-    {
-        1U, /* ChnIdx */
-        ADC_IP_INPUTCHAN_EXT1, /* Channel */
-        (boolean)TRUE /* InterruptEnable */
-    }
-};
-
+/*==================================================================================================
+*                                      LOCAL VARIABLES
+==================================================================================================*/
 
 /*==================================================================================================
 *                                      GLOBAL CONSTANTS
-==================================================================================================*/
-
-/**
-* @brief          ADC Ip Config for the ADC0 configuration variant BOARD_INITPERIPHERALS.
-*/
-const Adc_Ip_ConfigType AdcHwUnit_0_BOARD_INITPERIPHERALS =
-{
-    ADC_IP_CLK_FULL_BUS, /* ClockDivide */
-    ADC_IP_CLK_HALF_BUS, /* CalibrationClockDivide */
-    ADC_IP_CLK_ALT_1, /* InputClock */
-    255U, /* SampleTime */
-    (boolean)TRUE, /* AvgEn */
-    ADC_IP_AVG_32_CONV, /* AvgSel */
-    ADC_IP_RESOLUTION_12BIT, /* Resolution */
-    ADC_IP_TRIGGER_SOFTWARE, /* TriggerMode */
-#if (ADC_IP_ENABLE_SIM_SOURCE_SELECTION == STD_ON)
-    ADC_IP_PRETRIGGER_SEL_PDB, /* PretriggerSel */
-    ADC_IP_TRIGGER_SEL_PDB, /* TriggerSel */
-#endif /* (ADC_IP_ENABLE_SIM_SOURCE_SELECTION == STD_ON) */
-    (boolean)FALSE, /* DmaEnable */
-    ADC_IP_VOLTAGEREF_VREF, /* VoltageRef */
-    (boolean)TRUE, /* ContinuousConvEnable */
-#if (ADC_IP_SUPPLY_MONITORING_ENABLED == STD_ON)
-    (boolean)FALSE, /* SupplyMonitoringEnable */
-#endif /* (ADC_IP_SUPPLY_MONITORING_ENABLED == STD_ON) */
-    (boolean)TRUE, /* CompareEnable */
-    (boolean)TRUE, /* CompareGreaterThanEnable */
-    (boolean)FALSE, /* CompareRangeFuncEnable */
-    1000U, /* CompVal1 */
-    0U, /* CompVal2 */
-    4U, /* UsrGain */
-    0U, /* UsrOffset */
-    2U, /* NumChannels */
-    AdcIpChansConfig_0_BOARD_INITPERIPHERALS, /* ChannelConfigs */
-    AdcConversionCompleteNotif /* ConversionCompleteNotification */
-};
-
-
-#define ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-#include "Adc_MemMap.h"
-
-/*==================================================================================================
-*                                      LOCAL VARIABLES
 ==================================================================================================*/
 
 /*==================================================================================================

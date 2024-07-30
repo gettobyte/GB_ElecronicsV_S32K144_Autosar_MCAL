@@ -1,0 +1,2502 @@
+/*==================================================================================================
+*   Project              : RTD AUTOSAR 4.4
+*   Platform             : CORTEXM
+*   Peripheral           : 
+*   Dependencies         : none
+*
+*   Autosar Version      : 4.4.0
+*   Autosar Revision     : ASR_REL_4_4_REV_0000
+*   Autosar Conf.Variant :
+*   SW Version           : 1.0.0
+*   Build Version        : S32K1_RTD_1_0_0_D2108_ASR_REL_4_4_REV_0000_20210810
+*
+*   (c) Copyright 2020-2021 NXP Semiconductors
+*   All Rights Reserved.
+*
+*   NXP Confidential. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms. By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms. If you do not agree to be
+*   bound by the applicable license terms, then you may not retain, install,
+*   activate or otherwise use the software.
+==================================================================================================*/
+
+/**
+*   @file    Clock_Ip_Types.h
+*   @version    1.0.0
+*
+*   @brief   CLOCK IP type header file.
+*   @details CLOCK IP type header file.
+
+*   @addtogroup CLOCK_DRIVER Clock Ip Driver
+*   @{
+*/
+
+#ifndef CLOCK_IP_TYPES_H
+#define CLOCK_IP_TYPES_H
+
+
+
+#include "StandardTypes.h"
+#include "Clock_Ip_Cfg_Defines.h"
+
+/*==================================================================================================
+                               SOURCE FILE VERSION INFORMATION
+==================================================================================================*/
+#define CLOCK_IP_TYPES_VENDOR_ID                       43
+#define CLOCK_IP_TYPES_AR_RELEASE_MAJOR_VERSION        4
+#define CLOCK_IP_TYPES_AR_RELEASE_MINOR_VERSION        4
+#define CLOCK_IP_TYPES_AR_RELEASE_REVISION_VERSION     0
+#define CLOCK_IP_TYPES_SW_MAJOR_VERSION                1
+#define CLOCK_IP_TYPES_SW_MINOR_VERSION                0
+#define CLOCK_IP_TYPES_SW_PATCH_VERSION                0
+
+/*==================================================================================================
+                                      FILE VERSION CHECKS
+==================================================================================================*/
+#ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
+/* Check if Clock_Ip_Types.h file and StandardTypes.h file are of the same Autosar version */
+#if ((CLOCK_IP_TYPES_AR_RELEASE_MAJOR_VERSION    != STD_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_TYPES_AR_RELEASE_MINOR_VERSION    != STD_AR_RELEASE_MINOR_VERSION))
+    #error "AutoSar Version Numbers of Clock_Ip_Types.h and StandardTypes.h are different"
+#endif
+#endif
+
+/* Check if Clock_Ip_Types.h file and Clock_Ip_Cfg_Defines.h file have same versions */
+#if (CLOCK_IP_TYPES_VENDOR_ID  != CLOCK_IP_CFG_DEFINES_VENDOR_ID)
+    #error "Clock_Ip_Types.h and Clock_Ip_Cfg_Defines.h have different vendor IDs"
+#endif
+
+/* Check if Clock_Ip_Types.h file and Clock_Ip_Cfg_Defines.h file are of the same Autosar version */
+#if ((CLOCK_IP_TYPES_AR_RELEASE_MAJOR_VERSION    != CLOCK_IP_CFG_DEFINES_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_TYPES_AR_RELEASE_MINOR_VERSION    != CLOCK_IP_CFG_DEFINES_AR_RELEASE_MINOR_VERSION) || \
+     (CLOCK_IP_TYPES_AR_RELEASE_REVISION_VERSION != CLOCK_IP_CFG_DEFINES_AR_RELEASE_REVISION_VERSION))
+    #error "AutoSar Version Numbers of Clock_Ip_Types.h and Clock_Ip_Cfg_Defines.h are different"
+#endif
+
+/* Check if Clock_Ip_Types.h file and Clock_Ip_Cfg_Defines.h file are of the same Software version */
+#if ((CLOCK_IP_TYPES_SW_MAJOR_VERSION != CLOCK_IP_CFG_DEFINES_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_TYPES_SW_MINOR_VERSION != CLOCK_IP_CFG_DEFINES_SW_MINOR_VERSION) || \
+     (CLOCK_IP_TYPES_SW_PATCH_VERSION != CLOCK_IP_CFG_DEFINES_SW_PATCH_VERSION))
+    #error "Software Version Numbers of Clock_Ip_Types.h and Clock_Ip_Cfg_Defines.h are different"
+#endif
+/*==================================================================================================
+                                             DEFINES
+==================================================================================================*/
+
+/* Number of internal oscillators */
+#if FEATURE_CLOCK_IRCOSCS_COUNT > 0U
+    #define CLOCK_IRCOSCS_NO                  FEATURE_CLOCK_IRCOSCS_COUNT
+#else
+    #define CLOCK_IRCOSCS_NO                  1U
+#endif
+
+/* Number of external oscillators */
+#if FEATURE_CLOCK_XOSCS_COUNT > 0U
+    #define CLOCK_XOSCS_NO                  FEATURE_CLOCK_XOSCS_COUNT
+#else
+    #define CLOCK_XOSCS_NO                  1U
+#endif
+
+/* Number of pllS */
+#if FEATURE_CLOCK_PLLS_COUNT > 0U
+    #define CLOCK_PLLS_NO                  FEATURE_CLOCK_PLLS_COUNT
+#else
+    #define CLOCK_PLLS_NO                  1U
+#endif
+
+/* Number of selectors */
+#if FEATURE_CLOCK_SELECTORS_COUNT > 0U
+    #define CLOCK_SELECTORS_NO                  FEATURE_CLOCK_SELECTORS_COUNT
+#else
+    #define CLOCK_SELECTORS_NO                  1U
+#endif
+
+/* Number of dividers */
+#if FEATURE_CLOCK_DIVIDERS_COUNT > 0U
+    #define CLOCK_DIVIDERS_NO                  FEATURE_CLOCK_DIVIDERS_COUNT
+#else
+    #define CLOCK_DIVIDERS_NO                  1U
+#endif
+
+/* Number of dividers */
+#if FEATURE_CLOCK_DIVIDER_TRIGGERS_COUNT > 0U
+    #define CLOCK_DIVIDER_TRIGGERS_NO                  FEATURE_CLOCK_DIVIDER_TRIGGERS_COUNT
+#else
+    #define CLOCK_DIVIDER_TRIGGERS_NO          1U
+#endif
+
+/* Number of fractional dividers */
+#if FEATURE_CLOCK_FRACTIONAL_DIVIDERS_COUNT > 0U
+    #define CLOCK_FRACTIONAL_DIVIDERS_NO                  FEATURE_CLOCK_FRACTIONAL_DIVIDERS_COUNT
+#else
+    #define CLOCK_FRACTIONAL_DIVIDERS_NO                  1U
+#endif
+
+/* Number of external clocks */
+#if FEATURE_CLOCK_EXT_CLKS_COUNT > 0U
+    #define CLOCK_EXT_CLKS_NO                  FEATURE_CLOCK_EXT_CLKS_COUNT
+#else
+    #define CLOCK_EXT_CLKS_NO                  1U
+#endif
+
+/* Number of external clocks */
+#if FEATURE_CLOCK_GATES_COUNT > 0U
+    #define CLOCK_GATES_NO                  FEATURE_CLOCK_GATES_COUNT
+#else
+    #define CLOCK_GATES_NO                  1U
+#endif
+
+/* Number of progressive frequemcy clock switching */
+#if FEATURE_CLOCK_PCFS_COUNT > 0U
+    #define CLOCK_PCFS_NO                  FEATURE_CLOCK_PCFS_COUNT
+#else
+    #define CLOCK_PCFS_NO                  1U
+#endif
+
+/* Number of external clocks */
+#if FEATURE_CLOCK_CMUS_COUNT > 0U
+    #define CLOCK_CMUS_NO                  FEATURE_CLOCK_CMUS_COUNT
+#else
+    #define CLOCK_CMUS_NO                  1U
+#endif
+
+/* Number of configured frequencies values */
+#if FEATURE_CLOCK_CONFIGURED_FREQUENCIES_COUNT > 0U
+    #define CLOCK_CONFIGURED_FREQUENCIES_NO     FEATURE_CLOCK_CONFIGURED_FREQUENCIES_COUNT
+#else
+    #define CLOCK_CONFIGURED_FREQUENCIES_NO     1U
+#endif
+
+
+
+/* Number of special peripheral clocks */
+#if FEATURE_CLOCK_SPECIFIC_PERIPH_COUNT > 0U
+    #define CLOCK_SPECIFIC_PERIPH_NO       FEATURE_CLOCK_SPECIFIC_PERIPH_COUNT
+#else
+    #define CLOCK_SPECIFIC_PERIPH_NO       1U
+#endif
+
+/**
+* @brief            This parameter shall be set True, if the H/W does not have a PLL.
+*/
+#if FEATURE_CLOCK_PLLS_COUNT > 0U
+    #define CLOCK_IP_NO_PLL     STD_OFF
+#else
+    #define CLOCK_IP_NO_PLL     STD_ON
+#endif
+/*==================================================================================================
+                                     CONFIGURATION STRUCTURE
+==================================================================================================*/
+
+/** @brief Power modes. */
+typedef enum {
+
+#if defined(FEATURE_CLOCK_IP_HAS_RUN_MODE)
+    RUN_MODE                              = FEATURE_CLOCK_IP_HAS_RUN_MODE,
+    VLPR_MODE                             = 1U,
+    VLPS_MODE                             = 2U,
+    HSRUN_MODE                            = 3U,
+#endif
+} power_modes_t;
+
+/** @brief Power mode notification. */
+typedef enum {
+
+    BEFORE_POWER_MODE_CHANGE,                /* Before power mode change command is sent */
+    POWER_MODE_CHANGE_IN_PROGRESS,         /* Power mode transition is in progress */
+    POWER_MODE_CHANGED,                    /* Power mode transition completed */
+
+} power_notification_t;
+
+/** @brief Clock names. */
+typedef enum {
+    
+    CLOCK_IS_OFF              = 0U,
+    
+#if defined(FEATURE_CLOCK_IP_HAS_FIRC_CLK)
+    FIRC_CLK                  = FEATURE_CLOCK_IP_HAS_FIRC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FIRC_VLP_CLK)
+    FIRC_VLP_CLK              = FEATURE_CLOCK_IP_HAS_FIRC_VLP_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FIRC_STOP_CLK)
+    FIRC_STOP_CLK             = FEATURE_CLOCK_IP_HAS_FIRC_STOP_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FIRC_STANDBY_CLK)
+    FIRC_STANDBY_CLK          = FEATURE_CLOCK_IP_HAS_FIRC_STANDBY_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIRC_CLK)
+    SIRC_CLK                  = FEATURE_CLOCK_IP_HAS_SIRC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIRC_VLP_CLK)
+    SIRC_VLP_CLK              = FEATURE_CLOCK_IP_HAS_SIRC_VLP_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIRC_STOP_CLK)
+    SIRC_STOP_CLK             = FEATURE_CLOCK_IP_HAS_SIRC_STOP_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIRC_STANDBY_CLK)
+    SIRC_STANDBY_CLK          = FEATURE_CLOCK_IP_HAS_SIRC_STANDBY_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPO_128K_CLK)
+    LPO_128K_CLK              = FEATURE_CLOCK_IP_HAS_LPO_128K_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FXOSC_CLK)
+    FXOSC_CLK                 = FEATURE_CLOCK_IP_HAS_FXOSC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SXOSC_CLK)
+    SXOSC_CLK                 = FEATURE_CLOCK_IP_HAS_SXOSC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SOSC_CLK)
+    SOSC_CLK                  = FEATURE_CLOCK_IP_HAS_SOSC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ACCELPLL_CLK)
+    ACCELPLL_CLK              = FEATURE_CLOCK_IP_HAS_ACCELPLL_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_CLK)
+    COREPLL_CLK               = FEATURE_CLOCK_IP_HAS_COREPLL_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DDRPLL_CLK)
+    DDRPLL_CLK                = FEATURE_CLOCK_IP_HAS_DDRPLL_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_CLK)
+    PERIPHPLL_CLK             = FEATURE_CLOCK_IP_HAS_PERIPHPLL_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PLL_CLK)
+    PLL_CLK                   = FEATURE_CLOCK_IP_HAS_PLL_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPLL_CLK)
+    SPLL_CLK                  = FEATURE_CLOCK_IP_HAS_SPLL_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ACCEL_PLL_PHI0_CLK)
+    ACCEL_PLL_PHI0_CLK        = FEATURE_CLOCK_IP_HAS_ACCEL_PLL_PHI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ACCEL_PLL_PHI1_CLK)
+    ACCEL_PLL_PHI1_CLK        = FEATURE_CLOCK_IP_HAS_ACCEL_PLL_PHI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_PLL_PHI0_CLK)
+    CORE_PLL_PHI0_CLK         = FEATURE_CLOCK_IP_HAS_CORE_PLL_PHI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_PLL_PHI1_CLK)
+    CORE_PLL_PHI1_CLK         = FEATURE_CLOCK_IP_HAS_CORE_PLL_PHI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS0_CLK)
+    CORE_PLL_DFS0_CLK         = FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS1_CLK)
+    CORE_PLL_DFS1_CLK         = FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS2_CLK)
+    CORE_PLL_DFS2_CLK         = FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS3_CLK)
+    CORE_PLL_DFS3_CLK         = FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS4_CLK)
+    CORE_PLL_DFS4_CLK         = FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS5_CLK)
+    CORE_PLL_DFS5_CLK         = FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS6_CLK)
+    CORE_PLL_DFS6_CLK         = FEATURE_CLOCK_IP_HAS_CORE_PLL_DFS6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DDR_PLL_PHI0_CLK)
+    DDR_PLL_PHI0_CLK          = FEATURE_CLOCK_IP_HAS_DDR_PLL_PHI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI0_CLK)
+    PERIPH_PLL_PHI0_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI1_CLK)
+    PERIPH_PLL_PHI1_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI2_CLK)
+    PERIPH_PLL_PHI2_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI3_CLK)
+    PERIPH_PLL_PHI3_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI4_CLK)
+    PERIPH_PLL_PHI4_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI5_CLK)
+    PERIPH_PLL_PHI5_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI6_CLK)
+    PERIPH_PLL_PHI6_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI7_CLK)
+    PERIPH_PLL_PHI7_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_PHI7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS0_CLK)
+    PERIPH_PLL_DFS0_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS1_CLK)
+    PERIPH_PLL_DFS1_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS2_CLK)
+    PERIPH_PLL_DFS2_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS3_CLK)
+    PERIPH_PLL_DFS3_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS4_CLK)
+    PERIPH_PLL_DFS4_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS5_CLK)
+    PERIPH_PLL_DFS5_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS6_CLK)
+    PERIPH_PLL_DFS6_CLK       = FEATURE_CLOCK_IP_HAS_PERIPH_PLL_DFS6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_PHI0_CLK)
+    COREPLL_PHI0_CLK          = FEATURE_CLOCK_IP_HAS_COREPLL_PHI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_PHI1_CLK)
+    COREPLL_PHI1_CLK          = FEATURE_CLOCK_IP_HAS_COREPLL_PHI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_DFS0_CLK)
+    COREPLL_DFS0_CLK          = FEATURE_CLOCK_IP_HAS_COREPLL_DFS0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_DFS1_CLK)
+    COREPLL_DFS1_CLK          = FEATURE_CLOCK_IP_HAS_COREPLL_DFS1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_DFS2_CLK)
+    COREPLL_DFS2_CLK          = FEATURE_CLOCK_IP_HAS_COREPLL_DFS2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_DFS3_CLK)
+    COREPLL_DFS3_CLK          = FEATURE_CLOCK_IP_HAS_COREPLL_DFS3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_DFS4_CLK)
+    COREPLL_DFS4_CLK          = FEATURE_CLOCK_IP_HAS_COREPLL_DFS4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_DFS5_CLK)
+    COREPLL_DFS5_CLK          = FEATURE_CLOCK_IP_HAS_COREPLL_DFS5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_COREPLL_DFS6_CLK)
+    COREPLL_DFS6_CLK          = FEATURE_CLOCK_IP_HAS_COREPLL_DFS6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DDRPLL_PHI0_CLK)
+    DDRPLL_PHI0_CLK           = FEATURE_CLOCK_IP_HAS_DDRPLL_PHI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI0_CLK)
+    PERIPHPLL_PHI0_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI1_CLK)
+    PERIPHPLL_PHI1_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI2_CLK)
+    PERIPHPLL_PHI2_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI3_CLK)
+    PERIPHPLL_PHI3_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI4_CLK)
+    PERIPHPLL_PHI4_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI5_CLK)
+    PERIPHPLL_PHI5_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI6_CLK)
+    PERIPHPLL_PHI6_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI7_CLK)
+    PERIPHPLL_PHI7_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_PHI7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS0_CLK)
+    PERIPHPLL_DFS0_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS1_CLK)
+    PERIPHPLL_DFS1_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS2_CLK)
+    PERIPHPLL_DFS2_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS3_CLK)
+    PERIPHPLL_DFS3_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS4_CLK)
+    PERIPHPLL_DFS4_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS5_CLK)
+    PERIPHPLL_DFS5_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS6_CLK)
+    PERIPHPLL_DFS6_CLK        = FEATURE_CLOCK_IP_HAS_PERIPHPLL_DFS6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PLL_PHI0_CLK)
+    PLL_PHI0_CLK              = FEATURE_CLOCK_IP_HAS_PLL_PHI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PLL_PHI1_CLK)
+    PLL_PHI1_CLK              = FEATURE_CLOCK_IP_HAS_PLL_PHI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PLL_POSTDIV_CLK)
+    PLL_POSTDIV_CLK           = FEATURE_CLOCK_IP_HAS_PLL_POSTDIV_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIRCDIV1_CLK)
+    SIRCDIV1_CLK              = FEATURE_CLOCK_IP_HAS_SIRCDIV1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIRCDIV2_CLK)
+    SIRCDIV2_CLK              = FEATURE_CLOCK_IP_HAS_SIRCDIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FIRCDIV1_CLK)
+    FIRCDIV1_CLK              = FEATURE_CLOCK_IP_HAS_FIRCDIV1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FIRCDIV2_CLK)
+    FIRCDIV2_CLK              = FEATURE_CLOCK_IP_HAS_FIRCDIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SOSCDIV1_CLK)
+    SOSCDIV1_CLK              = FEATURE_CLOCK_IP_HAS_SOSCDIV1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SOSCDIV2_CLK)
+    SOSCDIV2_CLK              = FEATURE_CLOCK_IP_HAS_SOSCDIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPLLDIV1_CLK)
+    SPLLDIV1_CLK              = FEATURE_CLOCK_IP_HAS_SPLLDIV1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPLLDIV2_CLK)
+    SPLLDIV2_CLK              = FEATURE_CLOCK_IP_HAS_SPLLDIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPO_32K_CLK)
+    LPO_32K_CLK               = FEATURE_CLOCK_IP_HAS_LPO_32K_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPO_1K_CLK)
+    LPO_1K_CLK                = FEATURE_CLOCK_IP_HAS_LPO_1K_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_0_LANE_0_TX)
+    SERDES_0_LANE_0_TX        = FEATURE_CLOCK_IP_HAS_SERDES_0_LANE_0_TX,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_0_LANE_0_CDR)
+    SERDES_0_LANE_0_CDR       = FEATURE_CLOCK_IP_HAS_SERDES_0_LANE_0_CDR,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_0_LANE_1_TX)
+    SERDES_0_LANE_1_TX        = FEATURE_CLOCK_IP_HAS_SERDES_0_LANE_1_TX,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_0_LANE_1_CDR)
+    SERDES_0_LANE_1_CDR       = FEATURE_CLOCK_IP_HAS_SERDES_0_LANE_1_CDR,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_1_LANE_0_TX)
+    SERDES_1_LANE_0_TX        = FEATURE_CLOCK_IP_HAS_SERDES_1_LANE_0_TX,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_1_LANE_0_CDR)
+    SERDES_1_LANE_0_CDR       = FEATURE_CLOCK_IP_HAS_SERDES_1_LANE_0_CDR,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_1_LANE_1_TX)
+    SERDES_1_LANE_1_TX        = FEATURE_CLOCK_IP_HAS_SERDES_1_LANE_1_TX,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_1_LANE_1_CDR)
+    SERDES_1_LANE_1_CDR       = FEATURE_CLOCK_IP_HAS_SERDES_1_LANE_1_CDR,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_0_XPCS_0_TX)
+    SERDES_0_XPCS_0_TX        = FEATURE_CLOCK_IP_HAS_SERDES_0_XPCS_0_TX,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_0_XPCS_0_CDR)
+    SERDES_0_XPCS_0_CDR       = FEATURE_CLOCK_IP_HAS_SERDES_0_XPCS_0_CDR,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_0_XPCS_1_TX)
+    SERDES_0_XPCS_1_TX        = FEATURE_CLOCK_IP_HAS_SERDES_0_XPCS_1_TX,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_0_XPCS_1_CDR)
+    SERDES_0_XPCS_1_CDR       = FEATURE_CLOCK_IP_HAS_SERDES_0_XPCS_1_CDR,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_1_XPCS_0_TX)
+    SERDES_1_XPCS_0_TX        = FEATURE_CLOCK_IP_HAS_SERDES_1_XPCS_0_TX,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_1_XPCS_0_CDR)
+    SERDES_1_XPCS_0_CDR       = FEATURE_CLOCK_IP_HAS_SERDES_1_XPCS_0_CDR,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_1_XPCS_1_TX)
+    SERDES_1_XPCS_1_TX        = FEATURE_CLOCK_IP_HAS_SERDES_1_XPCS_1_TX,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_1_XPCS_1_CDR)
+    SERDES_1_XPCS_1_CDR       = FEATURE_CLOCK_IP_HAS_SERDES_1_XPCS_1_CDR,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMAC_MII_RX_CLK)
+    EMAC_MII_RX_CLK           = FEATURE_CLOCK_IP_HAS_EMAC_MII_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMAC_MII_RMII_TX_CLK)
+    EMAC_MII_RMII_TX_CLK      = FEATURE_CLOCK_IP_HAS_EMAC_MII_RMII_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH_RGMII_REF_CLK)
+    ETH_RGMII_REF_CLK         = FEATURE_CLOCK_IP_HAS_ETH_RGMII_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH_EXT_TS_CLK)
+    ETH_EXT_TS_CLK            = FEATURE_CLOCK_IP_HAS_ETH_EXT_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH0_EXT_RX_CLK)
+    ETH0_EXT_RX_CLK           = FEATURE_CLOCK_IP_HAS_ETH0_EXT_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH0_EXT_TX_CLK)
+    ETH0_EXT_TX_CLK           = FEATURE_CLOCK_IP_HAS_ETH0_EXT_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH1_EXT_RX_CLK)
+    ETH1_EXT_RX_CLK           = FEATURE_CLOCK_IP_HAS_ETH1_EXT_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH1_EXT_TX_CLK)
+    ETH1_EXT_TX_CLK           = FEATURE_CLOCK_IP_HAS_ETH1_EXT_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LFAST0_EXT_REF_CLK)
+    LFAST0_EXT_REF_CLK        = FEATURE_CLOCK_IP_HAS_LFAST0_EXT_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LFAST1_EXT_REF_CLK)
+    LFAST1_EXT_REF_CLK        = FEATURE_CLOCK_IP_HAS_LFAST1_EXT_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM_0_EXT_REF_CLK)
+    FTM_0_EXT_REF_CLK         = FEATURE_CLOCK_IP_HAS_FTM_0_EXT_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM_1_EXT_REF_CLK)
+    FTM_1_EXT_REF_CLK         = FEATURE_CLOCK_IP_HAS_FTM_1_EXT_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC_0_EXT_REF_CLK)
+    GMAC_0_EXT_REF_CLK        = FEATURE_CLOCK_IP_HAS_GMAC_0_EXT_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC_0_EXT_RX_CLK)
+    GMAC_0_EXT_RX_CLK         = FEATURE_CLOCK_IP_HAS_GMAC_0_EXT_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC_0_EXT_TX_CLK)
+    GMAC_0_EXT_TX_CLK         = FEATURE_CLOCK_IP_HAS_GMAC_0_EXT_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC_1_EXT_REF_CLK)
+    GMAC_1_EXT_REF_CLK        = FEATURE_CLOCK_IP_HAS_GMAC_1_EXT_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC_1_EXT_RX_CLK)
+    GMAC_1_EXT_RX_CLK         = FEATURE_CLOCK_IP_HAS_GMAC_1_EXT_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC_1_EXT_TX_CLK)
+    GMAC_1_EXT_TX_CLK         = FEATURE_CLOCK_IP_HAS_GMAC_1_EXT_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC_EXT_TS_CLK)
+    GMAC_EXT_TS_CLK           = FEATURE_CLOCK_IP_HAS_GMAC_EXT_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_MAC_0_EXT_REF_CLK)
+    PFE_MAC_0_EXT_REF_CLK     = FEATURE_CLOCK_IP_HAS_PFE_MAC_0_EXT_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_MAC_0_EXT_RX_CLK)
+    PFE_MAC_0_EXT_RX_CLK      = FEATURE_CLOCK_IP_HAS_PFE_MAC_0_EXT_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_MAC_0_EXT_TX_CLK)
+    PFE_MAC_0_EXT_TX_CLK      = FEATURE_CLOCK_IP_HAS_PFE_MAC_0_EXT_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_MAC_1_EXT_REF_CLK)
+    PFE_MAC_1_EXT_REF_CLK     = FEATURE_CLOCK_IP_HAS_PFE_MAC_1_EXT_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_MAC_1_EXT_RX_CLK)
+    PFE_MAC_1_EXT_RX_CLK      = FEATURE_CLOCK_IP_HAS_PFE_MAC_1_EXT_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_MAC_1_EXT_TX_CLK)
+    PFE_MAC_1_EXT_TX_CLK      = FEATURE_CLOCK_IP_HAS_PFE_MAC_1_EXT_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_MAC_2_EXT_REF_CLK)
+    PFE_MAC_2_EXT_REF_CLK     = FEATURE_CLOCK_IP_HAS_PFE_MAC_2_EXT_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_MAC_2_EXT_RX_CLK)
+    PFE_MAC_2_EXT_RX_CLK      = FEATURE_CLOCK_IP_HAS_PFE_MAC_2_EXT_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_MAC_2_EXT_TX_CLK)
+    PFE_MAC_2_EXT_TX_CLK      = FEATURE_CLOCK_IP_HAS_PFE_MAC_2_EXT_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_TCLK0_REF_CLK)
+    TCLK0_REF_CLK             = FEATURE_CLOCK_IP_HAS_TCLK0_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_TCLK1_REF_CLK)
+    TCLK1_REF_CLK             = FEATURE_CLOCK_IP_HAS_TCLK1_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_TCLK2_REF_CLK)
+    TCLK2_REF_CLK             = FEATURE_CLOCK_IP_HAS_TCLK2_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTC_CLKIN)
+    RTC_CLKIN                 = FEATURE_CLOCK_IP_HAS_RTC_CLKIN,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_A53_CORE_CLK)
+    A53_CORE_CLK              = FEATURE_CLOCK_IP_HAS_A53_CORE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_A53_CORE_DIV2_CLK)
+    A53_CORE_DIV2_CLK         = FEATURE_CLOCK_IP_HAS_A53_CORE_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_A53_CORE_DIV10_CLK)
+    A53_CORE_DIV10_CLK        = FEATURE_CLOCK_IP_HAS_A53_CORE_DIV10_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_AIPS_PLAT_CLK)
+    AIPS_PLAT_CLK             = FEATURE_CLOCK_IP_HAS_AIPS_PLAT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_AIPS_SLOW_CLK)
+    AIPS_SLOW_CLK             = FEATURE_CLOCK_IP_HAS_AIPS_SLOW_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ACCEL3_CLK)
+    ACCEL3_CLK                = FEATURE_CLOCK_IP_HAS_ACCEL3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ACCEL3_DIV3_CLK)
+    ACCEL3_DIV3_CLK           = FEATURE_CLOCK_IP_HAS_ACCEL3_DIV3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ACCEL4_CLK)
+    ACCEL4_CLK                = FEATURE_CLOCK_IP_HAS_ACCEL4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CLKOUT_RUN_CLK)
+    CLKOUT_RUN_CLK            = FEATURE_CLOCK_IP_HAS_CLKOUT_RUN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DCM_CLK)
+    DCM_CLK                   = FEATURE_CLOCK_IP_HAS_DCM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DDR_CLK)
+    DDR_CLK                   = FEATURE_CLOCK_IP_HAS_DDR_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC_REF_DIV_CLK)
+    GMAC_REF_DIV_CLK          = FEATURE_CLOCK_IP_HAS_GMAC_REF_DIV_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC0_REF_DIV_CLK)
+    GMAC0_REF_DIV_CLK         = FEATURE_CLOCK_IP_HAS_GMAC0_REF_DIV_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC1_REF_DIV_CLK)
+    GMAC1_REF_DIV_CLK         = FEATURE_CLOCK_IP_HAS_GMAC1_REF_DIV_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_HSE_CLK)
+    HSE_CLK                   = FEATURE_CLOCK_IP_HAS_HSE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LBIST_CLK)
+    LBIST_CLK                 = FEATURE_CLOCK_IP_HAS_LBIST_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_PE_CLK)
+    PFE_PE_CLK                = FEATURE_CLOCK_IP_HAS_PFE_PE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFE_SYS_CLK)
+    PFE_SYS_CLK                = FEATURE_CLOCK_IP_HAS_PFE_SYS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PER_CLK)
+    PER_CLK                   = FEATURE_CLOCK_IP_HAS_PER_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC0_REF_DIV_CLK)
+    PFEMAC0_REF_DIV_CLK       = FEATURE_CLOCK_IP_HAS_PFEMAC0_REF_DIV_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC1_REF_DIV_CLK)
+    PFEMAC1_REF_DIV_CLK       = FEATURE_CLOCK_IP_HAS_PFEMAC1_REF_DIV_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC2_REF_DIV_CLK)
+    PFEMAC2_REF_DIV_CLK       = FEATURE_CLOCK_IP_HAS_PFEMAC2_REF_DIV_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI_MEM_CLK)
+    QSPI_MEM_CLK              = FEATURE_CLOCK_IP_HAS_QSPI_MEM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SCS_CLK)
+    SCS_CLK                   = FEATURE_CLOCK_IP_HAS_SCS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_XBAR_2X_CLK)
+    XBAR_2X_CLK               = FEATURE_CLOCK_IP_HAS_XBAR_2X_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_XBAR_CLK)
+    XBAR_CLK                  = FEATURE_CLOCK_IP_HAS_XBAR_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_XBAR_DIV2_CLK)
+    XBAR_DIV2_CLK             = FEATURE_CLOCK_IP_HAS_XBAR_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_XBAR_DIV3_CLK)
+    XBAR_DIV3_CLK             = FEATURE_CLOCK_IP_HAS_XBAR_DIV3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_XBAR_DIV4_CLK)
+    XBAR_DIV4_CLK             = FEATURE_CLOCK_IP_HAS_XBAR_DIV4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_XBAR_DIV6_CLK)
+    XBAR_DIV6_CLK             = FEATURE_CLOCK_IP_HAS_XBAR_DIV6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES_REF_CLK)
+    SERDES_REF_CLK            = FEATURE_CLOCK_IP_HAS_SERDES_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES0_REF_CLK)
+    SERDES0_REF_CLK            = FEATURE_CLOCK_IP_HAS_SERDES0_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SERDES1_REF_CLK)
+    SERDES1_REF_CLK            = FEATURE_CLOCK_IP_HAS_SERDES1_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SCS_RUN_CLK)
+    SCS_RUN_CLK               = FEATURE_CLOCK_IP_HAS_SCS_RUN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SCS_VLPR_CLK)
+    SCS_VLPR_CLK              = FEATURE_CLOCK_IP_HAS_SCS_VLPR_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SCS_HSRUN_CLK)
+    SCS_HSRUN_CLK             = FEATURE_CLOCK_IP_HAS_SCS_HSRUN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_CLK)
+    CORE_CLK                  = FEATURE_CLOCK_IP_HAS_CORE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_RUN_CLK)
+    CORE_RUN_CLK              = FEATURE_CLOCK_IP_HAS_CORE_RUN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_VLPR_CLK)
+    CORE_VLPR_CLK             = FEATURE_CLOCK_IP_HAS_CORE_VLPR_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_HSRUN_CLK)
+    CORE_HSRUN_CLK             = FEATURE_CLOCK_IP_HAS_CORE_HSRUN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_BUS_CLK)
+    BUS_CLK                   = FEATURE_CLOCK_IP_HAS_BUS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_BUS_RUN_CLK)
+    BUS_RUN_CLK               = FEATURE_CLOCK_IP_HAS_BUS_RUN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_BUS_VLPR_CLK)
+    BUS_VLPR_CLK              = FEATURE_CLOCK_IP_HAS_BUS_VLPR_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_BUS_HSRUN_CLK)
+    BUS_HSRUN_CLK              = FEATURE_CLOCK_IP_HAS_BUS_HSRUN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SLOW_CLK)
+    SLOW_CLK                  = FEATURE_CLOCK_IP_HAS_SLOW_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SLOW_RUN_CLK)
+    SLOW_RUN_CLK              = FEATURE_CLOCK_IP_HAS_SLOW_RUN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SLOW_VLPR_CLK)
+    SLOW_VLPR_CLK             = FEATURE_CLOCK_IP_HAS_SLOW_VLPR_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SLOW_HSRUN_CLK)
+    SLOW_HSRUN_CLK             = FEATURE_CLOCK_IP_HAS_SLOW_HSRUN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPO_CLK)
+    LPO_CLK                   = FEATURE_CLOCK_IP_HAS_LPO_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SCG_CLKOUT_CLK)
+    SCG_CLKOUT_CLK            = FEATURE_CLOCK_IP_HAS_SCG_CLKOUT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM0_EXT_CLK)
+    FTM0_EXT_CLK              = FEATURE_CLOCK_IP_HAS_FTM0_EXT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM1_EXT_CLK)
+    FTM1_EXT_CLK              = FEATURE_CLOCK_IP_HAS_FTM1_EXT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM2_EXT_CLK)
+    FTM2_EXT_CLK              = FEATURE_CLOCK_IP_HAS_FTM2_EXT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM3_EXT_CLK)
+    FTM3_EXT_CLK              = FEATURE_CLOCK_IP_HAS_FTM3_EXT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM4_EXT_CLK)
+    FTM4_EXT_CLK              = FEATURE_CLOCK_IP_HAS_FTM4_EXT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM5_EXT_CLK)
+    FTM5_EXT_CLK              = FEATURE_CLOCK_IP_HAS_FTM5_EXT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM6_EXT_CLK)
+    FTM6_EXT_CLK              = FEATURE_CLOCK_IP_HAS_FTM6_EXT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM7_EXT_CLK)
+    FTM7_EXT_CLK              = FEATURE_CLOCK_IP_HAS_FTM7_EXT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_Px_CLKOUT_SRC_CLK)
+    Px_CLKOUT_SRC_CLK         = FEATURE_CLOCK_IP_HAS_Px_CLKOUT_SRC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_Px_PSI5_S_UTIL_CLK)
+    Px_PSI5_S_UTIL_CLK        = FEATURE_CLOCK_IP_HAS_Px_PSI5_S_UTIL_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SHIFT_LBIST_CLK)
+    SHIFT_LBIST_CLK           = FEATURE_CLOCK_IP_HAS_SHIFT_LBIST_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_SYS_CLK)
+    P0_SYS_CLK                = FEATURE_CLOCK_IP_HAS_P0_SYS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_SYS_CLK)
+    P1_SYS_CLK                = FEATURE_CLOCK_IP_HAS_P1_SYS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_SYS_DIV2_CLK)
+    P1_SYS_DIV2_CLK           = FEATURE_CLOCK_IP_HAS_P1_SYS_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_SYS_DIV4_CLK)
+    P1_SYS_DIV4_CLK           = FEATURE_CLOCK_IP_HAS_P1_SYS_DIV4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P2_SYS_CLK)
+    P2_SYS_CLK                = FEATURE_CLOCK_IP_HAS_P2_SYS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_M33_CLK)
+    CORE_M33_CLK              = FEATURE_CLOCK_IP_HAS_CORE_M33_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P2_SYS_DIV2_CLK)
+    P2_SYS_DIV2_CLK           = FEATURE_CLOCK_IP_HAS_P2_SYS_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P2_SYS_DIV4_CLK)
+    P2_SYS_DIV4_CLK           = FEATURE_CLOCK_IP_HAS_P2_SYS_DIV4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_SYS_CLK)
+    P3_SYS_CLK                = FEATURE_CLOCK_IP_HAS_P3_SYS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CE_SYS_DIV2_CLK)
+    CE_SYS_DIV2_CLK           = FEATURE_CLOCK_IP_HAS_CE_SYS_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CE_SYS_DIV4_CLK)
+    CE_SYS_DIV4_CLK           = FEATURE_CLOCK_IP_HAS_CE_SYS_DIV4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_SYS_DIV2_NOC_CLK)
+    P3_SYS_DIV2_NOC_CLK       = FEATURE_CLOCK_IP_HAS_P3_SYS_DIV2_NOC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_SYS_DIV4_CLK)
+    P3_SYS_DIV4_CLK           = FEATURE_CLOCK_IP_HAS_P3_SYS_DIV4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_SYS_CLK)
+    P4_SYS_CLK                = FEATURE_CLOCK_IP_HAS_P4_SYS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_SYS_DIV2_CLK)
+    P4_SYS_DIV2_CLK           = FEATURE_CLOCK_IP_HAS_P4_SYS_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_HSE_SYS_DIV2_CLK)
+    HSE_SYS_DIV2_CLK          = FEATURE_CLOCK_IP_HAS_HSE_SYS_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_SYS_CLK)
+    P5_SYS_CLK                = FEATURE_CLOCK_IP_HAS_P5_SYS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_SYS_DIV2_CLK)
+    P5_SYS_DIV2_CLK           = FEATURE_CLOCK_IP_HAS_P5_SYS_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_SYS_DIV4_CLK)
+    P5_SYS_DIV4_CLK           = FEATURE_CLOCK_IP_HAS_P5_SYS_DIV4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P2_MATH_CLK)
+    P2_MATH_CLK               = FEATURE_CLOCK_IP_HAS_P2_MATH_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P2_MATH_DIV3_CLK)
+    P2_MATH_DIV3_CLK          = FEATURE_CLOCK_IP_HAS_P2_MATH_DIV3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU0_CORE_CLK)
+    RTU0_CORE_CLK             = FEATURE_CLOCK_IP_HAS_RTU0_CORE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_CLK)
+    RTU0_CORE_DIV2_CLK        = FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU1_CORE_CLK)
+    RTU1_CORE_CLK             = FEATURE_CLOCK_IP_HAS_RTU1_CORE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_CLK)
+    RTU1_CORE_DIV2_CLK        = FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_UTIL_CLK)
+    P0_PSI5_S_UTIL_CLK        = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_UTIL_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_UTIL_CLK)
+    P4_PSI5_S_UTIL_CLK        = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_UTIL_CLK,
+#endif
+THE_LAST_PRODUCER_CLK         = FEATURE_CLOCK_PRODUCERS_NO,     /* Number of producers clocks */
+#if defined(FEATURE_CLOCK_IP_HAS_ACCEL4_LAX0_CLK)
+    ACCEL4_LAX0_CLK           = FEATURE_CLOCK_IP_HAS_ACCEL4_LAX0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ACCEL4_LAX1_CLK)
+    ACCEL4_LAX1_CLK           = FEATURE_CLOCK_IP_HAS_ACCEL4_LAX1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ADC0_CLK)
+    ADC0_CLK                  = FEATURE_CLOCK_IP_HAS_ADC0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ADC1_CLK)
+    ADC1_CLK                  = FEATURE_CLOCK_IP_HAS_ADC1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ADC2_CLK)
+    ADC2_CLK                  = FEATURE_CLOCK_IP_HAS_ADC2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_BCTU0_CLK)
+    BCTU0_CLK                 = FEATURE_CLOCK_IP_HAS_BCTU0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CE_SYS_DIV2_MON_CLK)
+    CE_SYS_DIV2_MON_CLK       = FEATURE_CLOCK_IP_HAS_CE_SYS_DIV2_MON_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CLKOUT_STANDBY_CLK)
+    CLKOUT_STANDBY_CLK        = FEATURE_CLOCK_IP_HAS_CLKOUT_STANDBY_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CLKOUT0_CLK)
+    CLKOUT0_CLK               = FEATURE_CLOCK_IP_HAS_CLKOUT0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CLKOUT1_CLK)
+    CLKOUT1_CLK               = FEATURE_CLOCK_IP_HAS_CLKOUT1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CLKOUT2_CLK)
+    CLKOUT2_CLK               = FEATURE_CLOCK_IP_HAS_CLKOUT2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CLKOUT3_CLK)
+    CLKOUT3_CLK               = FEATURE_CLOCK_IP_HAS_CLKOUT3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CLKOUT4_CLK)
+    CLKOUT4_CLK               = FEATURE_CLOCK_IP_HAS_CLKOUT4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CLKOUT5_CLK)
+    CLKOUT5_CLK               = FEATURE_CLOCK_IP_HAS_CLKOUT5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CMP0_CLK)
+    CMP0_CLK                  = FEATURE_CLOCK_IP_HAS_CMP0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CMP1_CLK)
+    CMP1_CLK                  = FEATURE_CLOCK_IP_HAS_CMP1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CMP2_CLK)
+    CMP2_CLK                  = FEATURE_CLOCK_IP_HAS_CMP2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CMU0_CLK)
+    CMU0_CLK                  = FEATURE_CLOCK_IP_HAS_CMU0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CMU1_CLK)
+    CMU1_CLK                  = FEATURE_CLOCK_IP_HAS_CMU1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_A53_CLUSTER_0_CLK)
+    CORE_A53_CLUSTER_0_CLK    = FEATURE_CLOCK_IP_HAS_CORE_A53_CLUSTER_0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_A53_CLUSTER_1_CLK)
+    CORE_A53_CLUSTER_1_CLK    = FEATURE_CLOCK_IP_HAS_CORE_A53_CLUSTER_1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_M7_0_CLK)
+    CORE_M7_0_CLK             = FEATURE_CLOCK_IP_HAS_CORE_M7_0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_M7_1_CLK)
+    CORE_M7_1_CLK             = FEATURE_CLOCK_IP_HAS_CORE_M7_1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CORE_M7_2_CLK)
+    CORE_M7_2_CLK             = FEATURE_CLOCK_IP_HAS_CORE_M7_2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CRC0_CLK)
+    CRC0_CLK                  = FEATURE_CLOCK_IP_HAS_CRC0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CTU0_CLK)
+    CTU0_CLK                  = FEATURE_CLOCK_IP_HAS_CTU0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_CTU1_CLK)
+    CTU1_CLK                  = FEATURE_CLOCK_IP_HAS_CTU1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DAPB_CLK)
+    DAPB_CLK                  = FEATURE_CLOCK_IP_HAS_DAPB_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DCM0_CLK)
+    DCM0_CLK                  = FEATURE_CLOCK_IP_HAS_DCM0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DMA_CRC0_CLK)
+    DMA_CRC0_CLK              = FEATURE_CLOCK_IP_HAS_DMA_CRC0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DMA_CRC1_CLK)
+    DMA_CRC1_CLK              = FEATURE_CLOCK_IP_HAS_DMA_CRC1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DMA0_CLK)
+    DMA0_CLK                  = FEATURE_CLOCK_IP_HAS_DMA0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DMA1_CLK)
+    DMA1_CLK                  = FEATURE_CLOCK_IP_HAS_DMA1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DMAMUX0_CLK)
+    DMAMUX0_CLK               = FEATURE_CLOCK_IP_HAS_DMAMUX0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DMAMUX1_CLK)
+    DMAMUX1_CLK               = FEATURE_CLOCK_IP_HAS_DMAMUX1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DMAMUX2_CLK)
+    DMAMUX2_CLK               = FEATURE_CLOCK_IP_HAS_DMAMUX2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_DMAMUX3_CLK)
+    DMAMUX3_CLK               = FEATURE_CLOCK_IP_HAS_DMAMUX3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA_CLK)
+    EDMA_CLK                  = FEATURE_CLOCK_IP_HAS_EDMA_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_CLK)
+    EDMA0_CLK                 = FEATURE_CLOCK_IP_HAS_EDMA0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD0_CLK)
+    EDMA0_TCD0_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD1_CLK)
+    EDMA0_TCD1_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD10_CLK)
+    EDMA0_TCD10_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD10_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD11_CLK)
+    EDMA0_TCD11_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD11_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD12_CLK)
+    EDMA0_TCD12_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD12_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD13_CLK)
+    EDMA0_TCD13_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD13_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD14_CLK)
+    EDMA0_TCD14_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD14_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD15_CLK)
+    EDMA0_TCD15_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD15_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD16_CLK)
+    EDMA0_TCD16_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD16_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD17_CLK)
+    EDMA0_TCD17_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD17_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD18_CLK)
+    EDMA0_TCD18_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD18_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD19_CLK)
+    EDMA0_TCD19_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD19_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD2_CLK)
+    EDMA0_TCD2_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD20_CLK)
+    EDMA0_TCD20_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD20_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD21_CLK)
+    EDMA0_TCD21_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD21_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD22_CLK)
+    EDMA0_TCD22_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD22_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD23_CLK)
+    EDMA0_TCD23_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD23_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD24_CLK)
+    EDMA0_TCD24_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD24_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD25_CLK)
+    EDMA0_TCD25_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD25_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD26_CLK)
+    EDMA0_TCD26_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD26_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD27_CLK)
+    EDMA0_TCD27_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD27_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD28_CLK)
+    EDMA0_TCD28_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD28_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD29_CLK)
+    EDMA0_TCD29_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD29_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD3_CLK)
+    EDMA0_TCD3_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD30_CLK)
+    EDMA0_TCD30_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD30_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD31_CLK)
+    EDMA0_TCD31_CLK           = FEATURE_CLOCK_IP_HAS_EDMA0_TCD31_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD4_CLK)
+    EDMA0_TCD4_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD5_CLK)
+    EDMA0_TCD5_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD6_CLK)
+    EDMA0_TCD6_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD7_CLK)
+    EDMA0_TCD7_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD8_CLK)
+    EDMA0_TCD8_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD8_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA0_TCD9_CLK)
+    EDMA0_TCD9_CLK            = FEATURE_CLOCK_IP_HAS_EDMA0_TCD9_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA1_CLK)
+    EDMA1_CLK                 = FEATURE_CLOCK_IP_HAS_EDMA1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA3_CLK)
+    EDMA3_CLK                 = FEATURE_CLOCK_IP_HAS_EDMA3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA4_CLK)
+    EDMA4_CLK                 = FEATURE_CLOCK_IP_HAS_EDMA4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EDMA5_CLK)
+    EDMA5_CLK                 = FEATURE_CLOCK_IP_HAS_EDMA5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FDMA0_CLK)
+    FDMA0_CLK                 = FEATURE_CLOCK_IP_HAS_FDMA0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ENET_CLK)
+    ENET_CLK                  = FEATURE_CLOCK_IP_HAS_ENET_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EIM_CLK)
+    EIM_CLK                   = FEATURE_CLOCK_IP_HAS_EIM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EIM0_CLK)
+    EIM0_CLK                  = FEATURE_CLOCK_IP_HAS_EIM0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EIM1_CLK)
+    EIM1_CLK                  = FEATURE_CLOCK_IP_HAS_EIM1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EIM2_CLK)
+    EIM2_CLK                  = FEATURE_CLOCK_IP_HAS_EIM2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EIM3_CLK)
+    EIM3_CLK                  = FEATURE_CLOCK_IP_HAS_EIM3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EIM_BBE32DSP_CLK)
+    EIM_BBE32DSP_CLK          = FEATURE_CLOCK_IP_HAS_EIM_BBE32DSP_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EIM_LAX0_CLK)
+    EIM_LAX0_CLK              = FEATURE_CLOCK_IP_HAS_EIM_LAX0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EIM_LAX1_CLK)
+    EIM_LAX1_CLK              = FEATURE_CLOCK_IP_HAS_EIM_LAX1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EIM_PER1_CLK)
+    EIM_PER1_CLK              = FEATURE_CLOCK_IP_HAS_EIM_PER1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ENET0_CLK)
+    ENET0_CLK                 = FEATURE_CLOCK_IP_HAS_ENET0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ENET1_CLK)
+    ENET1_CLK                 = FEATURE_CLOCK_IP_HAS_ENET1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMAC_RX_CLK)
+    EMAC_RX_CLK               = FEATURE_CLOCK_IP_HAS_EMAC_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMAC_TS_CLK)
+    EMAC_TS_CLK               = FEATURE_CLOCK_IP_HAS_EMAC_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMAC_TX_CLK)
+    EMAC_TX_CLK               = FEATURE_CLOCK_IP_HAS_EMAC_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMAC0_RX_CLK)
+    EMAC0_RX_CLK              = FEATURE_CLOCK_IP_HAS_EMAC0_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMAC0_TS_CLK)
+    EMAC0_TS_CLK              = FEATURE_CLOCK_IP_HAS_EMAC0_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMAC0_TX_CLK)
+    EMAC0_TX_CLK              = FEATURE_CLOCK_IP_HAS_EMAC0_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMIOS0_CLK)
+    EMIOS0_CLK                = FEATURE_CLOCK_IP_HAS_EMIOS0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMIOS1_CLK)
+    EMIOS1_CLK                = FEATURE_CLOCK_IP_HAS_EMIOS1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EMIOS2_CLK)
+    EMIOS2_CLK                = FEATURE_CLOCK_IP_HAS_EMIOS2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM0_CLK)
+    ERM0_CLK                  = FEATURE_CLOCK_IP_HAS_ERM0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_CPU0_CLK)
+    ERM_CPU0_CLK              = FEATURE_CLOCK_IP_HAS_ERM_CPU0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_CPU1_CLK)
+    ERM_CPU1_CLK              = FEATURE_CLOCK_IP_HAS_ERM_CPU1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_CPU2_CLK)
+    ERM_CPU2_CLK              = FEATURE_CLOCK_IP_HAS_ERM_CPU2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_EDMA0_CLK)
+    ERM_EDMA0_CLK             = FEATURE_CLOCK_IP_HAS_ERM_EDMA0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_EDMA1_CLK)
+    ERM_EDMA1_CLK             = FEATURE_CLOCK_IP_HAS_ERM_EDMA1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_LAX0_CLK)
+    ERM_LAX0_CLK              = FEATURE_CLOCK_IP_HAS_ERM_LAX0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_LAX1_CLK)
+    ERM_LAX1_CLK              = FEATURE_CLOCK_IP_HAS_ERM_LAX1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_PER_CLK)
+    ERM_PER_CLK               = FEATURE_CLOCK_IP_HAS_ERM_PER_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_PER1_CLK)
+    ERM_PER1_CLK              = FEATURE_CLOCK_IP_HAS_ERM_PER1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ERM_CLK)
+    ERM_CLK                   = FEATURE_CLOCK_IP_HAS_ERM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_EWM0_CLK)
+    EWM0_CLK                  = FEATURE_CLOCK_IP_HAS_EWM0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FIRC_MON1_CLK)
+    FIRC_MON1_CLK             = FEATURE_CLOCK_IP_HAS_FIRC_MON1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FIRC_MON2_CLK)
+    FIRC_MON2_CLK             = FEATURE_CLOCK_IP_HAS_FIRC_MON2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLASH0_CLK)
+    FLASH0_CLK                = FEATURE_CLOCK_IP_HAS_FLASH0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN_CLK)
+    FLEXCAN_CLK               = FEATURE_CLOCK_IP_HAS_FLEXCAN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN0_CLK)
+    FLEXCAN0_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN1_CLK)
+    FLEXCAN1_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN2_CLK)
+    FLEXCAN2_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN3_CLK)
+    FLEXCAN3_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN4_CLK)
+    FLEXCAN4_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN5_CLK)
+    FLEXCAN5_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN6_CLK)
+    FLEXCAN6_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN7_CLK)
+    FLEXCAN7_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN8_CLK)
+    FLEXCAN8_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN8_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN9_CLK)
+    FLEXCAN9_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCAN9_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN10_CLK)
+    FLEXCAN10_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN10_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN11_CLK)
+    FLEXCAN11_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN11_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN12_CLK)
+    FLEXCAN12_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN12_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN13_CLK)
+    FLEXCAN13_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN13_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN14_CLK)
+    FLEXCAN14_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN14_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN15_CLK)
+    FLEXCAN15_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN15_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN16_CLK)
+    FLEXCAN16_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN16_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN17_CLK)
+    FLEXCAN17_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN17_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN18_CLK)
+    FLEXCAN18_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN18_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN19_CLK)
+    FLEXCAN19_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN19_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN20_CLK)
+    FLEXCAN20_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN20_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN21_CLK)
+    FLEXCAN21_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN21_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN22_CLK)
+    FLEXCAN22_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN22_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCAN23_CLK)
+    FLEXCAN23_CLK             = FEATURE_CLOCK_IP_HAS_FLEXCAN23_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCANA_CLK)
+    FLEXCANA_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCANA_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXCANB_CLK)
+    FLEXCANB_CLK              = FEATURE_CLOCK_IP_HAS_FLEXCANB_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FlexIO_CLK)
+    FlexIO_CLK                = FEATURE_CLOCK_IP_HAS_FlexIO_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FlexIO0_CLK)
+    FlexIO0_CLK               = FEATURE_CLOCK_IP_HAS_FlexIO0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXIO0_CLK)
+    FLEXIO0_CLK               = FEATURE_CLOCK_IP_HAS_FLEXIO0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXRAY_CLK)
+    FLEXRAY_CLK               = FEATURE_CLOCK_IP_HAS_FLEXRAY_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXTIMERA_CLK)
+    FLEXTIMERA_CLK            = FEATURE_CLOCK_IP_HAS_FLEXTIMERA_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FLEXTIMERB_CLK)
+    FLEXTIMERB_CLK            = FEATURE_CLOCK_IP_HAS_FLEXTIMERB_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FRAY0_CLK)
+    FRAY0_CLK                 = FEATURE_CLOCK_IP_HAS_FRAY0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FRAY1_CLK)
+    FRAY1_CLK                 = FEATURE_CLOCK_IP_HAS_FRAY1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTFC_CLK)
+    FTFC_CLK                  = FEATURE_CLOCK_IP_HAS_FTFC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTFM_CLK)
+    FTFM_CLK                  = FEATURE_CLOCK_IP_HAS_FTFM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTIMER0_CLK)
+    FTIMER0_CLK               = FEATURE_CLOCK_IP_HAS_FTIMER0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTIMER1_CLK)
+    FTIMER1_CLK               = FEATURE_CLOCK_IP_HAS_FTIMER1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM0_CLK)
+    FTM0_CLK                  = FEATURE_CLOCK_IP_HAS_FTM0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM1_CLK)
+    FTM1_CLK                  = FEATURE_CLOCK_IP_HAS_FTM1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM2_CLK)
+    FTM2_CLK                  = FEATURE_CLOCK_IP_HAS_FTM2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM3_CLK)
+    FTM3_CLK                  = FEATURE_CLOCK_IP_HAS_FTM3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM4_CLK)
+    FTM4_CLK                  = FEATURE_CLOCK_IP_HAS_FTM4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM5_CLK)
+    FTM5_CLK                  = FEATURE_CLOCK_IP_HAS_FTM5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM6_CLK)
+    FTM6_CLK                  = FEATURE_CLOCK_IP_HAS_FTM6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_FTM7_CLK)
+    FTM7_CLK                  = FEATURE_CLOCK_IP_HAS_FTM7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GLB_LBIST_CLK)
+    GLB_LBIST_CLK             = FEATURE_CLOCK_IP_HAS_GLB_LBIST_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC_TS_CLK)
+    GMAC_TS_CLK               = FEATURE_CLOCK_IP_HAS_GMAC_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC0_RX_CLK)
+    GMAC0_RX_CLK              = FEATURE_CLOCK_IP_HAS_GMAC0_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC0_TX_CLK)
+    GMAC0_TX_CLK              = FEATURE_CLOCK_IP_HAS_GMAC0_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC0_TS_CLK)
+    GMAC0_TS_CLK              = FEATURE_CLOCK_IP_HAS_GMAC0_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC1_RX_CLK)
+    GMAC1_RX_CLK              = FEATURE_CLOCK_IP_HAS_GMAC1_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC1_TX_CLK)
+    GMAC1_TX_CLK              = FEATURE_CLOCK_IP_HAS_GMAC1_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC1_TS_CLK)
+    GMAC1_TS_CLK              = FEATURE_CLOCK_IP_HAS_GMAC1_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GPIO0_CLK)
+    GPIO0_CLK                 = FEATURE_CLOCK_IP_HAS_GPIO0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_GMAC1_TS_CLK)
+    GMAC1_TS_CLK              = FEATURE_CLOCK_IP_HAS_GMAC1_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_IIIC0_CLK)
+    IIIC0_CLK                 = FEATURE_CLOCK_IP_HAS_IIIC0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_IIIC1_CLK)
+    IIIC1_CLK                 = FEATURE_CLOCK_IP_HAS_IIIC1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_IIIC2_CLK)
+    IIIC2_CLK                 = FEATURE_CLOCK_IP_HAS_IIIC2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_IIC0_CLK)
+    IIC0_CLK                  = FEATURE_CLOCK_IP_HAS_IIC0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_IIC1_CLK)
+    IIC1_CLK                  = FEATURE_CLOCK_IP_HAS_IIC1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_IIC2_CLK)
+    IIC2_CLK                  = FEATURE_CLOCK_IP_HAS_IIC2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_IIC3_CLK)
+    IIC3_CLK                  = FEATURE_CLOCK_IP_HAS_IIC3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_IIC4_CLK)
+    IIC4_CLK                  = FEATURE_CLOCK_IP_HAS_IIC4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_INTM_CLK)
+    INTM_CLK                  = FEATURE_CLOCK_IP_HAS_INTM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LBIST0_CLK)
+    LBIST0_CLK                = FEATURE_CLOCK_IP_HAS_LBIST0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LBIST1_CLK)
+    LBIST1_CLK                = FEATURE_CLOCK_IP_HAS_LBIST1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LBIST2_CLK)
+    LBIST2_CLK                = FEATURE_CLOCK_IP_HAS_LBIST2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LBIST3_CLK)
+    LBIST3_CLK                = FEATURE_CLOCK_IP_HAS_LBIST3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LBIST4_CLK)
+    LBIST4_CLK                = FEATURE_CLOCK_IP_HAS_LBIST4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LBIST5_CLK)
+    LBIST5_CLK                = FEATURE_CLOCK_IP_HAS_LBIST5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LBIST6_CLK)
+    LBIST6_CLK                = FEATURE_CLOCK_IP_HAS_LBIST6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LBIST7_CLK)
+    LBIST7_CLK                = FEATURE_CLOCK_IP_HAS_LBIST7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LCU0_CLK)
+    LCU0_CLK                  = FEATURE_CLOCK_IP_HAS_LCU0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LCU1_CLK)
+    LCU1_CLK                  = FEATURE_CLOCK_IP_HAS_LCU1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN_BAUD_CLK)
+    LIN_BAUD_CLK                   = FEATURE_CLOCK_IP_HAS_LIN_BAUD_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LINFLEXD_CLK)
+    LINFLEXD_CLK                   = FEATURE_CLOCK_IP_HAS_LINFLEXD_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN0_CLK)
+    LIN0_CLK                  = FEATURE_CLOCK_IP_HAS_LIN0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN1_CLK)
+    LIN1_CLK                  = FEATURE_CLOCK_IP_HAS_LIN1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN2_CLK)
+    LIN2_CLK                  = FEATURE_CLOCK_IP_HAS_LIN2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN3_CLK)
+    LIN3_CLK                  = FEATURE_CLOCK_IP_HAS_LIN3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN4_CLK)
+    LIN4_CLK                  = FEATURE_CLOCK_IP_HAS_LIN4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN5_CLK)
+    LIN5_CLK                  = FEATURE_CLOCK_IP_HAS_LIN5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN6_CLK)
+    LIN6_CLK                  = FEATURE_CLOCK_IP_HAS_LIN6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN7_CLK)
+    LIN7_CLK                  = FEATURE_CLOCK_IP_HAS_LIN7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN8_CLK)
+    LIN8_CLK                  = FEATURE_CLOCK_IP_HAS_LIN8_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN9_CLK)
+    LIN9_CLK                  = FEATURE_CLOCK_IP_HAS_LIN9_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN10_CLK)
+    LIN10_CLK                 = FEATURE_CLOCK_IP_HAS_LIN10_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LIN11_CLK)
+    LIN11_CLK                 = FEATURE_CLOCK_IP_HAS_LIN11_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPI2C0_CLK)
+    LPI2C0_CLK                = FEATURE_CLOCK_IP_HAS_LPI2C0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPI2C1_CLK)
+    LPI2C1_CLK                = FEATURE_CLOCK_IP_HAS_LPI2C1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPIT0_CLK)
+    LPIT0_CLK                 = FEATURE_CLOCK_IP_HAS_LPIT0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPSPI0_CLK)
+    LPSPI0_CLK                = FEATURE_CLOCK_IP_HAS_LPSPI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPSPI1_CLK)
+    LPSPI1_CLK                = FEATURE_CLOCK_IP_HAS_LPSPI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPSPI2_CLK)
+    LPSPI2_CLK                = FEATURE_CLOCK_IP_HAS_LPSPI2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPSPI3_CLK)
+    LPSPI3_CLK                = FEATURE_CLOCK_IP_HAS_LPSPI3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPSPI4_CLK)
+    LPSPI4_CLK                = FEATURE_CLOCK_IP_HAS_LPSPI4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPSPI5_CLK)
+    LPSPI5_CLK                = FEATURE_CLOCK_IP_HAS_LPSPI5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPTMR0_CLK)
+    LPTMR0_CLK                = FEATURE_CLOCK_IP_HAS_LPTMR0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART0_CLK)
+    LPUART0_CLK               = FEATURE_CLOCK_IP_HAS_LPUART0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART1_CLK)
+    LPUART1_CLK               = FEATURE_CLOCK_IP_HAS_LPUART1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART10_CLK)
+    LPUART10_CLK              = FEATURE_CLOCK_IP_HAS_LPUART10_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART11_CLK)
+    LPUART11_CLK              = FEATURE_CLOCK_IP_HAS_LPUART11_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART12_CLK)
+    LPUART12_CLK              = FEATURE_CLOCK_IP_HAS_LPUART12_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART13_CLK)
+    LPUART13_CLK              = FEATURE_CLOCK_IP_HAS_LPUART13_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART14_CLK)
+    LPUART14_CLK              = FEATURE_CLOCK_IP_HAS_LPUART14_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART15_CLK)
+    LPUART15_CLK              = FEATURE_CLOCK_IP_HAS_LPUART15_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART2_CLK)
+    LPUART2_CLK               = FEATURE_CLOCK_IP_HAS_LPUART2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART3_CLK)
+    LPUART3_CLK               = FEATURE_CLOCK_IP_HAS_LPUART3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART4_CLK)
+    LPUART4_CLK               = FEATURE_CLOCK_IP_HAS_LPUART4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART5_CLK)
+    LPUART5_CLK               = FEATURE_CLOCK_IP_HAS_LPUART5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART6_CLK)
+    LPUART6_CLK               = FEATURE_CLOCK_IP_HAS_LPUART6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART7_CLK)
+    LPUART7_CLK               = FEATURE_CLOCK_IP_HAS_LPUART7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART8_CLK)
+    LPUART8_CLK               = FEATURE_CLOCK_IP_HAS_LPUART8_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_LPUART9_CLK)
+    LPUART9_CLK               = FEATURE_CLOCK_IP_HAS_LPUART9_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_MPU0_CLK)
+    MPU0_CLK                  = FEATURE_CLOCK_IP_HAS_MPU0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_MSCM_CLK)
+    MSCM_CLK                  = FEATURE_CLOCK_IP_HAS_MSCM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_MSCM0_CLK)
+    MSCM0_CLK                 = FEATURE_CLOCK_IP_HAS_MSCM0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_MUA_CLK)
+    MUA_CLK                   = FEATURE_CLOCK_IP_HAS_MUA_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_MUB_CLK)
+    MUB_CLK                   = FEATURE_CLOCK_IP_HAS_MUB_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_OCOTP0_CLK)
+    OCOTP0_CLK                = FEATURE_CLOCK_IP_HAS_OCOTP0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PDB0_CLK)
+    PDB0_CLK                  = FEATURE_CLOCK_IP_HAS_PDB0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PDB1_CLK)
+    PDB1_CLK                  = FEATURE_CLOCK_IP_HAS_PDB1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC0_RX_CLK)
+    PFEMAC0_RX_CLK            = FEATURE_CLOCK_IP_HAS_PFEMAC0_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC0_TX_DIV_CLK)
+    PFEMAC0_TX_DIV_CLK            = FEATURE_CLOCK_IP_HAS_PFEMAC0_TX_DIV_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC0_TX_CLK)
+    PFEMAC0_TX_CLK            = FEATURE_CLOCK_IP_HAS_PFEMAC0_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC1_RX_CLK)
+    PFEMAC1_RX_CLK            = FEATURE_CLOCK_IP_HAS_PFEMAC1_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC1_TX_CLK)
+    PFEMAC1_TX_CLK            = FEATURE_CLOCK_IP_HAS_PFEMAC1_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC2_RX_CLK)
+    PFEMAC2_RX_CLK            = FEATURE_CLOCK_IP_HAS_PFEMAC2_RX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PFEMAC2_TX_CLK)
+    PFEMAC2_TX_CLK            = FEATURE_CLOCK_IP_HAS_PFEMAC2_TX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PIT0_CLK)
+    PIT0_CLK                  = FEATURE_CLOCK_IP_HAS_PIT0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PIT1_CLK)
+    PIT1_CLK                  = FEATURE_CLOCK_IP_HAS_PIT1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PIT2_CLK)
+    PIT2_CLK                  = FEATURE_CLOCK_IP_HAS_PIT2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PIT3_CLK)
+    PIT3_CLK                  = FEATURE_CLOCK_IP_HAS_PIT3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PIT4_CLK)
+    PIT4_CLK                  = FEATURE_CLOCK_IP_HAS_PIT4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PIT5_CLK)
+    PIT5_CLK                  = FEATURE_CLOCK_IP_HAS_PIT5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PORTA_CLK)
+    PORTA_CLK                 = FEATURE_CLOCK_IP_HAS_PORTA_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PORTB_CLK)
+    PORTB_CLK                 = FEATURE_CLOCK_IP_HAS_PORTB_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PORTC_CLK)
+    PORTC_CLK                 = FEATURE_CLOCK_IP_HAS_PORTC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PORTD_CLK)
+    PORTD_CLK                 = FEATURE_CLOCK_IP_HAS_PORTD_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PORTE_CLK)
+    PORTE_CLK                 = FEATURE_CLOCK_IP_HAS_PORTE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PSI5_0_CLK)
+    PSI5_0_CLK                = FEATURE_CLOCK_IP_HAS_PSI5_0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PSI5_1_CLK)
+    PSI5_1_CLK                = FEATURE_CLOCK_IP_HAS_PSI5_1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PSI5S_0_CLK)
+    PSI5S_0_CLK               = FEATURE_CLOCK_IP_HAS_PSI5S_0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_PSI5S_1_CLK)
+    PSI5S_1_CLK               = FEATURE_CLOCK_IP_HAS_PSI5S_1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI_CLK)
+    QSPI_CLK             = FEATURE_CLOCK_IP_HAS_QSPI_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI_SFIF_CLK_HYP_PREMUX_CLK)
+    QSPI_SFIF_CLK_HYP_PREMUX_CLK = FEATURE_CLOCK_IP_HAS_QSPI_SFIF_CLK_HYP_PREMUX_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI_SFIF_CLK)
+    QSPI_SFIF_CLK             = FEATURE_CLOCK_IP_HAS_QSPI_SFIF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI_2xSFIF_CLK)
+    QSPI_2xSFIF_CLK           = FEATURE_CLOCK_IP_HAS_QSPI_2xSFIF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI_2X_CLK)
+    QSPI_2X_CLK                  = FEATURE_CLOCK_IP_HAS_QSPI_2X_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI_1X_CLK)
+    QSPI_1X_CLK                  = FEATURE_CLOCK_IP_HAS_QSPI_1X_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI_SFCK_CLK)
+    QSPI_SFCK_CLK             = FEATURE_CLOCK_IP_HAS_QSPI_SFCK_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI0_CLK)
+    QSPI0_CLK                 = FEATURE_CLOCK_IP_HAS_QSPI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI0_RAM_CLK)
+    QSPI0_RAM_CLK             = FEATURE_CLOCK_IP_HAS_QSPI0_RAM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI0_SFCK_CLK)
+    QSPI0_SFCK_CLK            = FEATURE_CLOCK_IP_HAS_QSPI0_SFCK_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI0_TX_MEM_CLK)
+    QSPI0_TX_MEM_CLK          = FEATURE_CLOCK_IP_HAS_QSPI0_TX_MEM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_QSPI1_CLK)
+    QSPI1_CLK                 = FEATURE_CLOCK_IP_HAS_QSPI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_CLKOUT_SRC_CLK)
+    P0_CLKOUT_SRC_CLK         = FEATURE_CLOCK_IP_HAS_P0_CLKOUT_SRC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_CTU_PER_CLK)
+    P0_CTU_PER_CLK            = FEATURE_CLOCK_IP_HAS_P0_CTU_PER_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_DSPI_CLK)
+    P0_DSPI_CLK               = FEATURE_CLOCK_IP_HAS_P0_DSPI_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_DSPI_MSC_CLK)
+    P0_DSPI_MSC_CLK           = FEATURE_CLOCK_IP_HAS_P0_DSPI_MSC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_EMIOS_LCU_CLK)
+    P0_EMIOS_LCU_CLK          = FEATURE_CLOCK_IP_HAS_P0_EMIOS_LCU_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_FR_PE_CLK)
+    P0_FR_PE_CLK              = FEATURE_CLOCK_IP_HAS_P0_FR_PE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_GTM_CLK)
+    P0_GTM_CLK                = FEATURE_CLOCK_IP_HAS_P0_GTM_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_GTM_NOC_CLK)
+    P0_GTM_NOC_CLK            = FEATURE_CLOCK_IP_HAS_P0_GTM_NOC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_GTM_TS_CLK)
+    P0_GTM_TS_CLK             = FEATURE_CLOCK_IP_HAS_P0_GTM_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_LIN_BAUD_CLK)
+    P0_LIN_BAUD_CLK           = FEATURE_CLOCK_IP_HAS_P0_LIN_BAUD_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_LIN_CLK)
+    P0_LIN_CLK                = FEATURE_CLOCK_IP_HAS_P0_LIN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_NANO_CLK)
+    P0_NANO_CLK               = FEATURE_CLOCK_IP_HAS_P0_NANO_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_125K_CLK)
+    P0_PSI5_125K_CLK          = FEATURE_CLOCK_IP_HAS_P0_PSI5_125K_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_189K_CLK)
+    P0_PSI5_189K_CLK          = FEATURE_CLOCK_IP_HAS_P0_PSI5_189K_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_1US_CLK)
+    P0_PSI5_1US_CLK           = FEATURE_CLOCK_IP_HAS_P0_PSI5_1US_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_BAUD_CLK)
+    P0_PSI5_S_BAUD_CLK        = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_BAUD_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_CORE_CLK)
+    P0_PSI5_S_CORE_CLK        = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_CORE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_TRIG0_CLK)
+    P0_PSI5_S_TRIG0_CLK       = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_TRIG0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_TRIG1_CLK)
+    P0_PSI5_S_TRIG1_CLK       = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_TRIG1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_TRIG2_CLK)
+    P0_PSI5_S_TRIG2_CLK       = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_TRIG2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_TRIG3_CLK)
+    P0_PSI5_S_TRIG3_CLK       = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_TRIG3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_UART_CLK)
+    P0_PSI5_S_UART_CLK        = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_UART_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_WDOG0_CLK)
+    P0_PSI5_S_WDOG0_CLK       = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_WDOG0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_WDOG1_CLK)
+    P0_PSI5_S_WDOG1_CLK       = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_WDOG1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_WDOG2_CLK)
+    P0_PSI5_S_WDOG2_CLK       = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_WDOG2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_PSI5_S_WDOG3_CLK)
+    P0_PSI5_S_WDOG3_CLK       = FEATURE_CLOCK_IP_HAS_P0_PSI5_S_WDOG3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_REG_INTF_2X_CLK)
+    P0_REG_INTF_2X_CLK        = FEATURE_CLOCK_IP_HAS_P0_REG_INTF_2X_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P0_REG_INTF_CLK)
+    P0_REG_INTF_CLK           = FEATURE_CLOCK_IP_HAS_P0_REG_INTF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_CLKOUT_SRC_CLK)
+    P1_CLKOUT_SRC_CLK         = FEATURE_CLOCK_IP_HAS_P1_CLKOUT_SRC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_DSPI_CLK)
+    P1_DSPI_CLK               = FEATURE_CLOCK_IP_HAS_P1_DSPI_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_DSPI60_CLK)
+    P1_DSPI60_CLK             = FEATURE_CLOCK_IP_HAS_P1_DSPI60_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_LFAST0_REF_CLK)
+    P1_LFAST0_REF_CLK         = FEATURE_CLOCK_IP_HAS_P1_LFAST0_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_LFAST1_REF_CLK)
+    P1_LFAST1_REF_CLK         = FEATURE_CLOCK_IP_HAS_P1_LFAST1_REF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_LFAST_DFT_CLK)
+    P1_LFAST_DFT_CLK          = FEATURE_CLOCK_IP_HAS_P1_LFAST_DFT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_NETC_AXI_CLK)
+    P1_NETC_AXI_CLK           = FEATURE_CLOCK_IP_HAS_P1_NETC_AXI_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_LIN_BAUD_CLK)
+    P1_LIN_BAUD_CLK           = FEATURE_CLOCK_IP_HAS_P1_LIN_BAUD_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_LIN_CLK)
+    P1_LIN_CLK                = FEATURE_CLOCK_IP_HAS_P1_LIN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH_TS_CLK)
+    ETH_TS_CLK                = FEATURE_CLOCK_IP_HAS_ETH_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH_TS_DIV4_CLK)
+    ETH_TS_DIV4_CLK           = FEATURE_CLOCK_IP_HAS_ETH_TS_DIV4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH0_REF_RMII_CLK)
+    ETH0_REF_RMII_CLK         = FEATURE_CLOCK_IP_HAS_ETH0_REF_RMII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH0_RX_MII_CLK)
+    ETH0_RX_MII_CLK           = FEATURE_CLOCK_IP_HAS_ETH0_RX_MII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH0_RX_RGMII_CLK)
+    ETH0_RX_RGMII_CLK         = FEATURE_CLOCK_IP_HAS_ETH0_RX_RGMII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH0_TX_MII_CLK)
+    ETH0_TX_MII_CLK           = FEATURE_CLOCK_IP_HAS_ETH0_TX_MII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH0_TX_RGMII_CLK)
+    ETH0_TX_RGMII_CLK         = FEATURE_CLOCK_IP_HAS_ETH0_TX_RGMII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH0_TX_RGMII_LPBK_CLK)
+    ETH0_TX_RGMII_LPBK_CLK    = FEATURE_CLOCK_IP_HAS_ETH0_TX_RGMII_LPBK_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH1_REF_RMII_CLK)
+    ETH1_REF_RMII_CLK         = FEATURE_CLOCK_IP_HAS_ETH1_REF_RMII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH1_RX_MII_CLK)
+    ETH1_RX_MII_CLK           = FEATURE_CLOCK_IP_HAS_ETH1_RX_MII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH1_RX_RGMII_CLK)
+    ETH1_RX_RGMII_CLK         = FEATURE_CLOCK_IP_HAS_ETH1_RX_RGMII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH1_TX_MII_CLK)
+    ETH1_TX_MII_CLK           = FEATURE_CLOCK_IP_HAS_ETH1_TX_MII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH1_TX_RGMII_CLK)
+    ETH1_TX_RGMII_CLK         = FEATURE_CLOCK_IP_HAS_ETH1_TX_RGMII_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_ETH1_TX_RGMII_LPBK_CLK)
+    ETH1_TX_RGMII_LPBK_CLK    = FEATURE_CLOCK_IP_HAS_ETH1_TX_RGMII_LPBK_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P1_REG_INTF_CLK)
+    P1_REG_INTF_CLK           = FEATURE_CLOCK_IP_HAS_P1_REG_INTF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P2_DBG_ATB_CLK)
+    P2_DBG_ATB_CLK            = FEATURE_CLOCK_IP_HAS_P2_DBG_ATB_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P2_REG_INTF_CLK)
+    P2_REG_INTF_CLK           = FEATURE_CLOCK_IP_HAS_P2_REG_INTF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_AES_CLK)
+    P3_AES_CLK                = FEATURE_CLOCK_IP_HAS_P3_AES_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_CAN_PE_CLK)
+    P3_CAN_PE_CLK             = FEATURE_CLOCK_IP_HAS_P3_CAN_PE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_CLKOUT_SRC_CLK)
+    P3_CLKOUT_SRC_CLK         = FEATURE_CLOCK_IP_HAS_P3_CLKOUT_SRC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_DBG_TS_CLK)
+    P3_DBG_TS_CLK             = FEATURE_CLOCK_IP_HAS_P3_DBG_TS_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_REG_INTF_CLK)
+    P3_REG_INTF_CLK           = FEATURE_CLOCK_IP_HAS_P3_REG_INTF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_SYS_MON1_CLK)
+    P3_SYS_MON1_CLK           = FEATURE_CLOCK_IP_HAS_P3_SYS_MON1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_SYS_MON2_CLK)
+    P3_SYS_MON2_CLK           = FEATURE_CLOCK_IP_HAS_P3_SYS_MON2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P3_SYS_MON3_CLK)
+    P3_SYS_MON3_CLK           = FEATURE_CLOCK_IP_HAS_P3_SYS_MON3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_CLKOUT_SRC_CLK)
+    P4_CLKOUT_SRC_CLK         = FEATURE_CLOCK_IP_HAS_P4_CLKOUT_SRC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_DSPI_CLK)
+    P4_DSPI_CLK               = FEATURE_CLOCK_IP_HAS_P4_DSPI_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_DSPI60_CLK)
+    P4_DSPI60_CLK             = FEATURE_CLOCK_IP_HAS_P4_DSPI60_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_EMIOS_LCU_CLK)
+    P4_EMIOS_LCU_CLK          = FEATURE_CLOCK_IP_HAS_P4_EMIOS_LCU_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_LIN_BAUD_CLK)
+    P4_LIN_BAUD_CLK           = FEATURE_CLOCK_IP_HAS_P4_LIN_BAUD_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_LIN_CLK)
+    P4_LIN_CLK                = FEATURE_CLOCK_IP_HAS_P4_LIN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_125K_CLK)
+    P4_PSI5_125K_CLK          = FEATURE_CLOCK_IP_HAS_P4_PSI5_125K_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_189K_CLK)
+    P4_PSI5_189K_CLK          = FEATURE_CLOCK_IP_HAS_P4_PSI5_189K_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_1US_CLK)
+    P4_PSI5_1US_CLK           = FEATURE_CLOCK_IP_HAS_P4_PSI5_1US_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_BAUD_CLK)
+    P4_PSI5_S_BAUD_CLK        = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_BAUD_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_CORE_CLK)
+    P4_PSI5_S_CORE_CLK        = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_CORE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_TRIG0_CLK)
+    P4_PSI5_S_TRIG0_CLK       = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_TRIG0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_TRIG1_CLK)
+    P4_PSI5_S_TRIG1_CLK       = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_TRIG1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_TRIG2_CLK)
+    P4_PSI5_S_TRIG2_CLK       = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_TRIG2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_TRIG3_CLK)
+    P4_PSI5_S_TRIG3_CLK       = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_TRIG3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_UART_CLK)
+    P4_PSI5_S_UART_CLK        = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_UART_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_WDOG0_CLK)
+    P4_PSI5_S_WDOG0_CLK       = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_WDOG0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_WDOG1_CLK)
+    P4_PSI5_S_WDOG1_CLK       = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_WDOG1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_WDOG2_CLK)
+    P4_PSI5_S_WDOG2_CLK       = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_WDOG2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_PSI5_S_WDOG3_CLK)
+    P4_PSI5_S_WDOG3_CLK       = FEATURE_CLOCK_IP_HAS_P4_PSI5_S_WDOG3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_QSPI0_2X_CLK)
+    P4_QSPI0_2X_CLK           = FEATURE_CLOCK_IP_HAS_P4_QSPI0_2X_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_QSPI0_1X_CLK)
+    P4_QSPI0_1X_CLK           = FEATURE_CLOCK_IP_HAS_P4_QSPI0_1X_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_QSPI1_2X_CLK)
+    P4_QSPI1_2X_CLK           = FEATURE_CLOCK_IP_HAS_P4_QSPI1_2X_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_QSPI1_1X_CLK)
+    P4_QSPI1_1X_CLK           = FEATURE_CLOCK_IP_HAS_P4_QSPI1_1X_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_REG_INTF_2X_CLK)
+    P4_REG_INTF_2X_CLK        = FEATURE_CLOCK_IP_HAS_P4_REG_INTF_2X_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_REG_INTF_CLK)
+    P4_REG_INTF_CLK           = FEATURE_CLOCK_IP_HAS_P4_REG_INTF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_SDHC_CLK)
+    P4_SDHC_CLK               = FEATURE_CLOCK_IP_HAS_P4_SDHC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_SDHC_IP_CLK)
+    P4_SDHC_IP_CLK            = FEATURE_CLOCK_IP_HAS_P4_SDHC_IP_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P4_SDHC_IP_DIV2_CLK)
+    P4_SDHC_IP_DIV2_CLK       = FEATURE_CLOCK_IP_HAS_P4_SDHC_IP_DIV2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_AE_CLK)
+    P5_AE_CLK           = FEATURE_CLOCK_IP_HAS_P5_AE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_CANXL_PE_CLK)
+    P5_CANXL_PE_CLK           = FEATURE_CLOCK_IP_HAS_P5_CANXL_PE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_CLKOUT_SRC_CLK)
+    P5_CLKOUT_SRC_CLK         = FEATURE_CLOCK_IP_HAS_P5_CLKOUT_SRC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_DSPI_CLK)
+    P5_DSPI_CLK               = FEATURE_CLOCK_IP_HAS_P5_DSPI_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_DIPORT_CLK)
+    P5_DIPORT_CLK               = FEATURE_CLOCK_IP_HAS_P5_DIPORT_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_LIN_BAUD_CLK)
+    P5_LIN_BAUD_CLK           = FEATURE_CLOCK_IP_HAS_P5_LIN_BAUD_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_LIN_CLK)
+    P5_LIN_CLK                = FEATURE_CLOCK_IP_HAS_P5_LIN_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P5_REG_INTF_CLK)
+    P5_REG_INTF_CLK           = FEATURE_CLOCK_IP_HAS_P5_REG_INTF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_P6_REG_INTF_CLK)
+    P6_REG_INTF_CLK           = FEATURE_CLOCK_IP_HAS_P6_REG_INTF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU0_REG_INTF_CLK)
+    RTU0_REG_INTF_CLK         = FEATURE_CLOCK_IP_HAS_RTU0_REG_INTF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU0_CORE_MON_CLK)
+    RTU0_CORE_MON_CLK         = FEATURE_CLOCK_IP_HAS_RTU0_CORE_MON_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_MON1_CLK)
+    RTU0_CORE_DIV2_MON1_CLK   = FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_MON1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_MON2_CLK)
+    RTU0_CORE_DIV2_MON2_CLK   = FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_MON2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_MON3_CLK)
+    RTU0_CORE_DIV2_MON3_CLK   = FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_MON3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_MON4_CLK)
+    RTU0_CORE_DIV2_MON4_CLK   = FEATURE_CLOCK_IP_HAS_RTU0_CORE_DIV2_MON4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU1_REG_INTF_CLK)
+    RTU1_REG_INTF_CLK         = FEATURE_CLOCK_IP_HAS_RTU1_REG_INTF_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU1_CORE_MON_CLK)
+    RTU1_CORE_MON_CLK         = FEATURE_CLOCK_IP_HAS_RTU1_CORE_MON_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_MON1_CLK)
+    RTU1_CORE_DIV2_MON1_CLK   = FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_MON1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_MON2_CLK)
+    RTU1_CORE_DIV2_MON2_CLK   = FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_MON2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_MON3_CLK)
+    RTU1_CORE_DIV2_MON3_CLK   = FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_MON3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_MON4_CLK)
+    RTU1_CORE_DIV2_MON4_CLK   = FEATURE_CLOCK_IP_HAS_RTU1_CORE_DIV2_MON4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTC_CLK)
+    RTC_CLK                   = FEATURE_CLOCK_IP_HAS_RTC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_RTC0_CLK)
+    RTC0_CLK                  = FEATURE_CLOCK_IP_HAS_RTC0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SAI0_CLK)
+    SAI0_CLK                  = FEATURE_CLOCK_IP_HAS_SAI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SAI1_CLK)
+    SAI1_CLK                  = FEATURE_CLOCK_IP_HAS_SAI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SDHC0_CLK)
+    SDHC0_CLK                 = FEATURE_CLOCK_IP_HAS_SDHC0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SEMA42_CLK)
+    SEMA42_CLK                = FEATURE_CLOCK_IP_HAS_SEMA42_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIPI0_CLK)
+    SIPI0_CLK                 = FEATURE_CLOCK_IP_HAS_SIPI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIPI1_CLK)
+    SIPI1_CLK                 = FEATURE_CLOCK_IP_HAS_SIPI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIUL0_CLK)
+    SIUL0_CLK                 = FEATURE_CLOCK_IP_HAS_SIUL0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIUL1_CLK)
+    SIUL1_CLK                 = FEATURE_CLOCK_IP_HAS_SIUL1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIUL2_0_CLK)
+    SIUL2_0_CLK               = FEATURE_CLOCK_IP_HAS_SIUL2_0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIUL2_1_CLK)
+    SIUL2_1_CLK               = FEATURE_CLOCK_IP_HAS_SIUL2_1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIUL2_4_CLK)
+    SIUL2_4_CLK               = FEATURE_CLOCK_IP_HAS_SIUL2_4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SIUL2_5_CLK)
+    SIUL2_5_CLK               = FEATURE_CLOCK_IP_HAS_SIUL2_5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI_CLK)
+    SPI_CLK                   = FEATURE_CLOCK_IP_HAS_SPI_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI0_CLK)
+    SPI0_CLK                  = FEATURE_CLOCK_IP_HAS_SPI0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI1_CLK)
+    SPI1_CLK                  = FEATURE_CLOCK_IP_HAS_SPI1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI2_CLK)
+    SPI2_CLK                  = FEATURE_CLOCK_IP_HAS_SPI2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI3_CLK)
+    SPI3_CLK                  = FEATURE_CLOCK_IP_HAS_SPI3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI4_CLK)
+    SPI4_CLK                  = FEATURE_CLOCK_IP_HAS_SPI4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI5_CLK)
+    SPI5_CLK                  = FEATURE_CLOCK_IP_HAS_SPI5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI6_CLK)
+    SPI6_CLK                  = FEATURE_CLOCK_IP_HAS_SPI6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI7_CLK)
+    SPI7_CLK                  = FEATURE_CLOCK_IP_HAS_SPI7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI8_CLK)
+    SPI8_CLK                  = FEATURE_CLOCK_IP_HAS_SPI8_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SPI9_CLK)
+    SPI9_CLK                  = FEATURE_CLOCK_IP_HAS_SPI9_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SRX0_CLK)
+    SRX0_CLK                  = FEATURE_CLOCK_IP_HAS_SRX0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SRX1_CLK)
+    SRX1_CLK                  = FEATURE_CLOCK_IP_HAS_SRX1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STCU0_CLK)
+    STCU0_CLK                 = FEATURE_CLOCK_IP_HAS_STCU0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STM0_CLK)
+    STM0_CLK                  = FEATURE_CLOCK_IP_HAS_STM0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STM1_CLK)
+    STM1_CLK                  = FEATURE_CLOCK_IP_HAS_STM1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STM2_CLK)
+    STM2_CLK                  = FEATURE_CLOCK_IP_HAS_STM2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STM3_CLK)
+    STM3_CLK                  = FEATURE_CLOCK_IP_HAS_STM3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STM4_CLK)
+    STM4_CLK                  = FEATURE_CLOCK_IP_HAS_STM4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STM5_CLK)
+    STM5_CLK                  = FEATURE_CLOCK_IP_HAS_STM5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STM6_CLK)
+    STM6_CLK                  = FEATURE_CLOCK_IP_HAS_STM6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STM7_CLK)
+    STM7_CLK                  = FEATURE_CLOCK_IP_HAS_STM7_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STMA_CLK)
+    STMA_CLK                  = FEATURE_CLOCK_IP_HAS_STMA_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_STMB_CLK)
+    STMB_CLK                  = FEATURE_CLOCK_IP_HAS_STMB_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SWT0_CLK)
+    SWT0_CLK                  = FEATURE_CLOCK_IP_HAS_SWT0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SWT1_CLK)
+    SWT1_CLK                  = FEATURE_CLOCK_IP_HAS_SWT1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SWT2_CLK)
+    SWT2_CLK                  = FEATURE_CLOCK_IP_HAS_SWT2_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SWT3_CLK)
+    SWT3_CLK                  = FEATURE_CLOCK_IP_HAS_SWT3_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SWT4_CLK)
+    SWT4_CLK                  = FEATURE_CLOCK_IP_HAS_SWT4_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SWT5_CLK)
+    SWT5_CLK                  = FEATURE_CLOCK_IP_HAS_SWT5_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SWT6_CLK)
+    SWT6_CLK                  = FEATURE_CLOCK_IP_HAS_SWT6_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_TCM_CM7_0_CLK)
+    TCM_CM7_0_CLK             = FEATURE_CLOCK_IP_HAS_TCM_CM7_0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_TCM_CM7_1_CLK)
+    TCM_CM7_1_CLK             = FEATURE_CLOCK_IP_HAS_TCM_CM7_1_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_TEMPSENSE_CLK)
+    TEMPSENSE_CLK             = FEATURE_CLOCK_IP_HAS_TEMPSENSE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_TRACE_CLK)
+    TRACE_CLK                 = FEATURE_CLOCK_IP_HAS_TRACE_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_TRGMUX0_CLK)
+    TRGMUX0_CLK               = FEATURE_CLOCK_IP_HAS_TRGMUX0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_TSENSE0_CLK)
+    TSENSE0_CLK               = FEATURE_CLOCK_IP_HAS_TSENSE0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_SDHC_CLK)
+    SDHC_CLK                  = FEATURE_CLOCK_IP_HAS_SDHC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_USDHC_CLK)
+    USDHC_CLK                 = FEATURE_CLOCK_IP_HAS_USDHC_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_USDHC0_CLK)
+    USDHC0_CLK                = FEATURE_CLOCK_IP_HAS_USDHC0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_WKPU0_CLK)
+    WKPU0_CLK                 = FEATURE_CLOCK_IP_HAS_WKPU0_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_XBAR_DIV3_FAIL_CLK)
+    XBAR_DIV3_FAIL_CLK        = FEATURE_CLOCK_IP_HAS_XBAR_DIV3_FAIL_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_XBAR_MIPICSI201_CLK)
+    XBAR_MIPICSI201_CLK       = FEATURE_CLOCK_IP_HAS_XBAR_MIPICSI201_CLK,
+#endif
+#if defined(FEATURE_CLOCK_IP_HAS_XBAR_MIPICSI223_CLK)
+    XBAR_MIPICSI223_CLK       = FEATURE_CLOCK_IP_HAS_XBAR_MIPICSI223_CLK,
+#endif
+RESERVED_CLK                  = FEATURE_CLOCKS_NO,  /* Invalid clock name */
+} Clock_Ip_NameType;
+
+/** @brief Clock ip status return codes. */
+typedef enum
+{
+    CLOCK_IP_SUCCESS                            = 0x00U,    /**< Clock tree was initialized successfully. */
+    CLOCK_IP_ERROR                              = 0x01U,    /**< One of the elements timeout, clock tree couldn't be initialized. */
+
+} Clock_Ip_StatusType;
+
+/** @brief Clock ip pll status return codes. */
+typedef enum
+{
+    CLOCK_IP_PLL_LOCKED                         = 0x00U,    /**< PLL is locked */
+    CLOCK_IP_PLL_UNLOCKED                       = 0x01U,    /**< PLL is unlocked */
+    CLOCK_IP_PLL_STATUS_UNDEFINED               = 0x02U,    /**< PLL Status is unknown */
+
+} Clock_Ip_PllStatusType;
+
+/** @brief Clock ip cmu status return codes. */
+typedef enum
+{
+    CLOCK_IP_CMU_IN_RANGE                        = 0x00U,    /**< Frequency is in range */
+    CLOCK_IP_CMU_HIGH_FREQ                       = 0x01U,    /**< Frequency is higher than high limit */
+    CLOCK_IP_CMU_LOW_FREQ                        = 0x02U,    /**< Frequency is lower than low limit */
+    CLOCK_IP_CMU_STATUS_UNDEFINED                = 0X03U,    /**< CMU status is unknown */
+} Clock_Ip_CmuStatusType;
+
+/** @brief Clock ip report error types. */
+typedef enum
+{
+    CLOCK_IP_CMU_NOTIFICATION                   = 0U,   /**< @brief Cmu Fccu notification. */
+    CLOCK_IP_REPORT_TIMEOUT_ERROR               = 1U,   /**< @brief Report Timeout Error. */
+    CLOCK_IP_REPORT_FXOSC_CONFIGURATION_ERROR   = 2U,   /**< @brief Report Fxosc Configuration Error. */
+    CLOCK_IP_REPORT_CLOCK_MUX_SWITCH_ERROR      = 3U,   /**< @brief Report Clock Mux Switch Error. */
+    CLOCK_IP_RAM_MEMORY_CONFIG_ENTRY_POINT      = 4U,   /**< @brief Ram config entry point. */
+    CLOCK_IP_RAM_MEMORY_CONFIG_EXIT_POINT       = 5U,   /**< @brief Ram config exit point. */
+    CLOCK_IP_FLASH_MEMORY_CONFIG_ENTRY_POINT    = 6U,   /**< @brief Flash config entry point. */
+    CLOCK_IP_FLASH_MEMORY_CONFIG_EXIT_POINT     = 7U,   /**< @brief Flash config exit point. */
+
+} Clock_Ip_ClockNotificationType;
+
+/*!
+ * @brief Clock notifications callback type.
+ * Implements ClockNotificationsCallbackType_Class
+ */
+typedef void (*Clock_Ip_NotificationsCallbackType)(Clock_Ip_ClockNotificationType error, Clock_Ip_NameType clockName);
+
+/*!
+ * @brief Clock Source IRCOSC configuration structure.
+ * Implements Clock_Ip_IrcoscConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType             name;               /**< Clock name associated to ircosc */
+    uint16                        enable;             /**< Enable ircosc. */
+
+    uint8                         regulator;          /**< Enable regulator. */
+    uint8                         range;              /**< Ircosc range. */
+    uint8                         lowPowerModeEnable; /**< Ircosc enable in VLP mode */
+    uint8                         stopModeEnable;     /**< Ircosc enable in STOP mode */
+
+} Clock_Ip_IrcoscConfigType;
+
+/*!
+ * @brief CGM Clock Source XOSC configuration structure.
+ * Implements Clock_Ip_XoscConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType       name;               /**< Clock name associated to xosc */
+
+    uint32                  freq;               /**< External oscillator frequency. */
+
+    uint16                  enable;             /**< Enable xosc. */
+
+    uint16                  startupDelay;       /**< Startup stabilization time. */
+    uint8                   bypassOption;       /**< XOSC bypass option */
+    uint8                   compEn;             /**< Comparator enable */
+    uint8                   transConductance;   /**< Crystal overdrive protection */
+
+    uint8                   gain;               /**< Gain value */
+    uint8                   monitor;            /**< Monitor type */
+
+
+} Clock_Ip_XoscConfigType;
+
+/*!
+ * @brief CGM Clock Source PLLDIG configuration structure.
+ * Implements Clock_Ip_PllConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType        name;                           /**< Clock name associated to pll */
+
+    uint16                   enable;                         /**< Enable pll. */
+
+    Clock_Ip_NameType        inputReference;                 /**< Input reference. */
+
+    uint8                    bypass;                         /**< Bypass pll. */
+
+    uint8                    predivider;                     /**< Input clock predivider. (PREDIV) */
+    uint16                   numeratorFracLoopDiv;           /**< Numerator of fractional loop division factor (MFN) */
+    uint8                    mulFactorDiv;                   /**< Multiplication factor divider (MFD) */
+
+    uint8                    modulationFrequency;            /**< Enable/disable modulation */
+    uint8                    modulationType;                 /**< Modulation type */
+    uint16                   modulationPeriod;               /**< Stepsize - modulation period */
+    uint16                   incrementStep;                  /**< Stepno  - step no */
+
+    uint8                    sigmaDelta;                     /**< Sigma Delta Modulation Enable */
+
+    uint8                    ditherControl;                  /**< Dither control enable */
+    uint8                    ditherControlValue;             /**< Dither control value */
+
+    uint8                    monitor;                        /**< Monitor type */
+
+} Clock_Ip_PllConfigType;
+
+/*!
+ * @brief Clock selector configuration structure.
+ * Implements Clock_Ip_SelectorConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType               name;                           /**< Clock name associated to selector */
+    Clock_Ip_NameType               value;                          /**< Name of the selected input source */
+
+} Clock_Ip_SelectorConfigType;
+
+/*!
+ * @brief Clock divider configuration structure.
+ * Implements Clock_Ip_DividerConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType         name;                           /**< Clock name associated to divider. */
+    uint32                    value;                          /**< Divider value - if value is zero then divider is disabled. */
+    uint8                     options[1U];
+} Clock_Ip_DividerConfigType;
+
+
+/** @brief Clock ip trigger divider type. */
+typedef enum
+{
+    IMMEDIATE_DIVIDER_UPDATE,          /**< @brief Immediate divider update. */
+    COMMON_TRIGGER_DIVIDER_UPDATE,     /**< @brief Common trigger divider update.  */
+
+} Clock_Ip_TriggerDividerType;
+
+/*!
+ * @brief Clock divider trigger configuration structure.
+ * Implements Clock_Ip_DividerTriggerConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType             name;                           /**< Clock name associated to divider for which trigger is configured. */
+    Clock_Ip_TriggerDividerType   triggerType;                    /**< Trigger value - if value is zero then divider is updated immediately, divider is not triggered. */
+    Clock_Ip_NameType             source;                         /**< Clock name of the common input source of all dividers from the same group that support a common update */
+
+} Clock_Ip_DividerTriggerConfigType;
+
+
+
+/*!
+ * @brief Clock fractional divider configuration structure.
+ * Implements Clock_Ip_FracDivConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType         name;                           /**< Clock name associated to fractional divider. */
+    uint8                     enable;                         /**< Enable control for port n */
+    uint32                    value[2U];                      /**< Fractional dividers */
+
+} Clock_Ip_FracDivConfigType;
+
+/*!
+ * @brief Clock external clock configuration structure.
+ * Implements Clock_Ip_ExtClkConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType         name;                           /**< Clock name of the external clock. */
+    uint32                    value;                          /**< Enable value - if value is zero then clock is gated, otherwise is enabled in different modes. */
+
+} Clock_Ip_ExtClkConfigType;
+
+/*!
+ * @brief Clock Source PCFS configuration structure.
+ * Implements Clock_Ip_PcfsConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType             name;                        /**<  Clock source from which ramp-down and to which ramp-up are processed. */
+    uint32                        maxAllowableIDDchange;       /**<  Maximum variation of current per time (mA/microsec) -  max allowable IDD change is determined by the user's power supply design. */
+    uint32                        stepDuration;                /**<  Step duration of each PCFS step */
+    Clock_Ip_NameType             selectorName;                /**<  Name of the selector that supports PCFS and name is one the inputs that can be selected */
+    uint32                        clockSourceFrequency;        /**<  Frequency of the clock source from which ramp-down and to which ramp-up are processed. */
+
+} Clock_Ip_PcfsConfigType;
+
+/*!
+ * @brief Clock gate clock configuration structure.
+ * Implements Clock_Ip_GateConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType         name;                           /**< Clock name associated to clock gate. */
+    uint16                    enable;                         /**< Enable or disable clock */
+
+} Clock_Ip_GateConfigType;
+
+/*!
+ * @brief Clock cmu configuration structure.
+ * Implements Clock_Ip_CmuConfigType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType               name;                           /**< Clock name associated to clock monitor. */
+    uint8                           enable;                         /**< Enable/disable clock monitor */
+    uint32                          interrupt;                      /**< Enable/disable interrupt */
+    uint32                          monitoredClockFrequency;        /**< Frequency of the clock source from which ramp-down and to which ramp-up are processed. */
+} Clock_Ip_CmuConfigType;
+
+/*!
+ * @brief Configured frequency structure.
+ * Implements Clock_Ip_ConfiguredFrequencyType_Class
+ */
+typedef struct
+{
+    Clock_Ip_NameType               name;                           /**< Clock name of the configured frequency value */
+    uint32                          configuredFrequencyValue;       /**< Configured frequency value */
+} Clock_Ip_ConfiguredFrequencyType;
+
+/** @brief specific peripheral. */
+typedef enum
+{
+    RESERVED_VALUE,
+} Clock_Ip_SpecificPeriphParamType;
+
+/*!
+ * @brief Clock Specific peripheral configure.
+ * Implements Clock_Ip_SpecificPerpihParamType_Class
+ */
+typedef struct
+{
+    Clock_Ip_SpecificPeriphParamType     paramsType;
+    uint32                               paramsValue;
+} Clock_Ip_SpecificPerpihParamType;
+
+/*!
+ * @brief Clock Specific peripheral structure.
+ * Implements Clock_IP_SpecificPeriphConfigType_Class
+ */
+typedef struct
+{
+    uint8                                  paramsNo;
+    Clock_Ip_SpecificPerpihParamType       params[CLOCK_SPECIFIC_PERIPH_NO];
+} Clock_IP_SpecificPeriphConfigType;
+
+/*!
+ * @brief Clock configuration structure.
+ * Implements Clock_Ip_ClockConfigType_Class
+ */
+typedef struct
+{
+    uint32                          ClkConfigId;                                        /**< The ID for Clock configuration */
+
+    uint8   ircoscsCount;                                                               /**< IRCOSCs count */
+    uint8   xoscsCount;                                                                 /**< XOSCs count */
+    uint8   pllsCount;                                                                  /**< PLLs count */
+    uint8   selectorsCount;                                                             /**< Selectors count */
+    uint8   dividersCount;                                                              /**< Dividers count */
+    uint8   dividerTriggersCount;                                                       /**< Divider triggers count */
+    uint8   fracDivsCount;                                                              /**< Fractional dividers count */
+    uint8   extClksCount;                                                               /**< External clocks count */
+    uint8   gatesCount;                                                                 /**< Clock gates count */
+    uint8   pcfsCount;                                                                  /**< Clock pcfs count */
+    uint8   cmusCount;                                                                  /**< Clock cmus count */
+    uint8   configureFrequenciesCount;                                                  /**< Configured frequencies count */
+
+    Clock_Ip_IrcoscConfigType          ircoscs[CLOCK_IRCOSCS_NO];                       /**< IRCOSCs */
+    Clock_Ip_XoscConfigType            xoscs[CLOCK_XOSCS_NO];                           /**< XOSCs */
+    Clock_Ip_PllConfigType             plls[CLOCK_PLLS_NO];                             /**< PLLs */
+    Clock_Ip_SelectorConfigType        selectors[CLOCK_SELECTORS_NO];                   /**< Selectors */
+    Clock_Ip_DividerConfigType         dividers[CLOCK_DIVIDERS_NO];                     /**< Dividers */
+    Clock_Ip_DividerTriggerConfigType  dividerTriggers[CLOCK_DIVIDER_TRIGGERS_NO];      /**< Divider triggers */
+    Clock_Ip_FracDivConfigType         fracDivs[CLOCK_FRACTIONAL_DIVIDERS_NO];          /**< Fractional dividers */
+    Clock_Ip_ExtClkConfigType          extClks[CLOCK_EXT_CLKS_NO];                      /**< External clocks */
+    Clock_Ip_GateConfigType            gates[CLOCK_GATES_NO];                           /**< Clock gates */
+    Clock_Ip_PcfsConfigType            pcfs[CLOCK_PCFS_NO];                             /**< Progressive clock switching */
+    Clock_Ip_CmuConfigType             cmus[CLOCK_CMUS_NO];                             /**< Clock cmus */
+    Clock_IP_SpecificPeriphConfigType  specificPeriphalConfiguration;                   /**< Clock specific peripheral configuration */
+    
+    Clock_Ip_ConfiguredFrequencyType   configuredFrequencies[CLOCK_CONFIGURED_FREQUENCIES_NO];     /**< Configured frequency values */
+} Clock_Ip_ClockConfigType;
+
+
+/*! @}*/
+
+#endif /* CLOCK_IP_TYPES_H */
+
+/*==================================================================================================
+ *                                        END OF FILE
+==================================================================================================*/
+
