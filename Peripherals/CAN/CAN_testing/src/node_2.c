@@ -7,6 +7,7 @@
 #include "IntCtrl_Ip.h"
 #include "Dio.h"
 
+
 //Rx for standard frame
 #define MSG_ID0 0x500
 #define RX_MB_IDX0 0U
@@ -113,60 +114,57 @@ int main(void)
 
 
     FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX0, &rx_info_std, MSG_ID0);
-    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX1, &rx_info_std_remote, MSG_ID2);
+    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX1, &rx_info_std_remote, MSG_ID1);
+
+
 
 
     FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData1, false);
     FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX1, &rxData2, false);
 
 
+	for(;;)
+	{
 
 
-	   for(;;)
-	   {
-
-
-//     Receiving Data Frame(Standard) from Node 1:
-	   boolean temp = false;
-	   while(temp != true)
-	   {
-		   if(rxData1.msgId == 1280)
-		   {
-				for (int var = 0; var < 5; var++)
-					{
-						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
-						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
-						TestDelay(2000000);
-						Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
-						Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
-						TestDelay(2000000);
-					}
-				temp = true;
-		   }
-	   }
-	   temp = false;
-
-
-//	   Sending Data Frame(Extended) from Node 2:
-	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData1);
-	   {
-			while(FlexCAN_State0.mbs[TX_MB_IDX0].state == FLEXCAN_MB_TX_BUSY)
+		if(Dio_ReadChannel(DioConf_DioChannel_Switch_1) == STD_LOW)
+		{
+	//	   Sending Data Frame(Extended) from Node 2:
+			FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData1);
 			{
-				Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
+				while(FlexCAN_State0.mbs[TX_MB_IDX0].state == FLEXCAN_MB_TX_BUSY)
+				{
+					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
+					TestDelay(2000000);
+					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
+					TestDelay(2000000);
+				}
+				Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
 				TestDelay(2000000);
-				Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
-				TestDelay(2000000);
+				Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
 			}
-			for (int var = 0; var < 5; var++)
-			{
-				Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_LOW);
-				TestDelay(2000000);
-				Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_HIGH);
-				TestDelay(2000000);
-			}
-	   }
-	   TestDelay(2000000);
-	   }
+		}
+//      Receiving Data Frame(Standard) from Node 1:
+		else
+		{
+			if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs != 0)
+				   {
+						if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->msgId == 1280)
+							{
+								TestDelay(6000000);
+								for (int var = 0; var < 5; var++)
+								{
+									Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_LOW);
+									TestDelay(2000000);
+									Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_HIGH);
+									TestDelay(2000000);
+								}
+							}
+						memset(&FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs, 0x0, sizeof(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs));
+				   }
+		}
+
+	}
 
     return 0;
 }

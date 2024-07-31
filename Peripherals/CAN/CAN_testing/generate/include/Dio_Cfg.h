@@ -231,6 +231,22 @@ extern "C" {
 *
 */
 #define DioConf_DioChannel_GREEN_LED  ((uint16)0x0070U)
+/* ---------- Switch_Port ---------- */
+
+/**
+* @brief          Symbolic name for the port Switch_Port.
+*/
+#define DioConf_DioPort_Switch_Port  ((uint8)0x02U)
+/**
+* @brief          Symbolic name for the channel Switch_1.
+*
+*/
+#define DioConf_DioChannel_Switch_1  ((uint16)0x004cU)
+/**
+* @brief          Symbolic name for the channel Switch_2.
+*
+*/
+#define DioConf_DioChannel_Switch_2  ((uint16)0x004dU)
 
 /*=================================================================================================
 *                                             ENUMS
