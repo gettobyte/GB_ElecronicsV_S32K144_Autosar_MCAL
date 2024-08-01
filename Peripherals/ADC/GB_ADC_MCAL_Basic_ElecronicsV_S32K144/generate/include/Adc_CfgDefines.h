@@ -156,10 +156,6 @@ extern "C"{
 */
 #define ADC_OPTIMIZE_DMA_STREAMING_GROUPS   (STD_OFF)
 
-/**
-* @brief           This switch is used to enable the non autosar ADC performance optimization feature.
-*/
-#define ADC_CONTINUOUS_NO_INTERRUPT_SUPPORTED
 
 /**
 * @brief           Specifies to optimize conversions for hw triggered, one shot group.
@@ -207,7 +203,7 @@ extern "C"{
 /**
 * @brief          Add/remove ((STD_ON)/(STD_OFF)) the service Adc_SetChannel() from the code.
 */
-#define ADC_SETCHANNEL_API                        (STD_OFF)
+#define ADC_SETCHANNEL_API                        (STD_ON)
 
 /**
 * @brief          Extra group notification mechanism is/is not ((STD_ON)/(STD_OFF)) available at runtime.
@@ -248,7 +244,7 @@ extern "C"{
 /**
 * @brief           Enable the read of raw data API (CPR_RTD_00508).
 */
-#define ADC_ENABLE_READ_RAW_DATA_API              (STD_OFF)
+#define ADC_ENABLE_READ_RAW_DATA_API              (STD_ON)
 
 /**
 * @brief           Enable Group Streaming Result as multiple set.
@@ -323,7 +319,7 @@ extern "C"{
 /**
 * @brief          Add/Remove One time setting of Conversion time registers from Init() function.
 */
-#define ADC_SET_ADC_CONV_TIME_ONCE                (STD_OFF)
+#define ADC_SET_ADC_CONV_TIME_ONCE                (STD_ON)
 
 /**
 * @brief   Switch to enable that power state mode is supported
@@ -387,6 +383,10 @@ extern "C"{
 #define ADC_CHANNEL_SYMBOLIC_NAME_SHIFT_HW_UNIT_ID_U16          (12U)
 #endif /* (ADC_ENABLE_CH_DISABLE_CH_NONAUTO_API == STD_ON) */
 
+/**
+* @brief           Autosar Extension symbolic names of channels per groups, on all HW units, with value set to channel index in the group.
+*/
+#define AdcGroup_0_AdcChannel_0                   (0U)
 
 /**
 * @brief           Symbolic names of groups.

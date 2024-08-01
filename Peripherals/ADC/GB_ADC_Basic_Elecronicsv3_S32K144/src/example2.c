@@ -47,14 +47,6 @@ volatile boolean notif_triggered = FALSE;
 volatile int exit_code = 0;
 volatile uint16 data;
 
-void AdcConversionCompleteNotif(const uint8 ControlChanIdx)
-{
-    notif_triggered = TRUE;
-    data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
-    /* Checks the measured ADC data conversion */
-    while (ADC_TOLERANCE(data, ADC_BANDGAP) > RESULT_TOLERANCE);
-}
-
 
 
 /*!

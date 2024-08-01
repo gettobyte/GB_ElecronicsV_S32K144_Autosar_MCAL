@@ -257,7 +257,7 @@ const Adc_Ipw_GroupConfig AdcIpwGroupConfig_0_BOARD_INITPERIPHERALS =
     STD_OFF, /* u8GroupAvgEnable */
     /**< @brief Main Average selection of group */
     ADC_IP_AVG_4_CONV, /* GroupAvgSelect */
-    20U, /* ConvTime */
+    ADC_IP_DEFAULT_SAMPLE_TIME, /* ConvTime */
 #if (ADC_DUAL_CLOCK_MODE == STD_ON)
     /**< @brief Alternate Average enable status of group */
     STD_OFF, /* u8GroupAvgEnableAlternate */
@@ -266,7 +266,7 @@ const Adc_Ipw_GroupConfig AdcIpwGroupConfig_0_BOARD_INITPERIPHERALS =
     ADC_IP_DEFAULT_SAMPLE_TIME, /* AlternateConvTime */
 #endif /* (ADC_DUAL_CLOCK_MODE == STD_ON) */
 #endif /* (ADC_SET_ADC_CONV_TIME_ONCE == STD_OFF) */
-    1000U, /* PdbPeriod */
+    0U, /* PdbPeriod */
     0U, /* PdbDelay */
     (boolean)TRUE, /* AdcGroupEnableBackToBack */
     (boolean)FALSE, /* AdcGroupEnableChannelDelays */

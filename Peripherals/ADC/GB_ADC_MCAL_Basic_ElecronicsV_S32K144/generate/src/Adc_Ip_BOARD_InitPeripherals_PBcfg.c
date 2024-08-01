@@ -114,11 +114,11 @@ static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[1U] 
 const Adc_Ip_ConfigType AdcIpConfig_0_BOARD_INITPERIPHERALS =
 {
     ADC_IP_CLK_FULL_BUS, /* ClockDivide */
-    ADC_IP_CLK_EIGHTH_BUS, /* CalibrationClockDivide */
+    ADC_IP_CLK_HALF_BUS, /* CalibrationClockDivide */
     ADC_IP_CLK_ALT_1, /* InputClock */
-    ADC_IP_DEFAULT_SAMPLE_TIME, /* SampleTime */
-    (boolean)FALSE, /* AvgEn */
-    ADC_IP_AVG_4_CONV, /* AvgSel */
+    255U, /* SampleTime */
+    (boolean)TRUE, /* AvgEn */
+    ADC_IP_AVG_32_CONV, /* AvgSel */
     ADC_IP_RESOLUTION_12BIT, /* Resolution */
     ADC_IP_TRIGGER_HARDWARE, /* TriggerMode */
 #if (ADC_IP_ENABLE_SIM_SOURCE_SELECTION == STD_ON)
@@ -140,7 +140,7 @@ const Adc_Ip_ConfigType AdcIpConfig_0_BOARD_INITPERIPHERALS =
     0U, /* UsrOffset */
     0U, /* NumChannels */
     AdcIpChansConfig_0_BOARD_INITPERIPHERALS, /* ChannelConfigs */
-    NULL_PTR /* ConversionCompleteNotification */
+    Adc_Ipw_Adc0EndConversionNotification /* ConversionCompleteNotification */
 };
 
 

@@ -68,12 +68,20 @@ extern "C"{
  */
 #define ADC_MAX_HW_UNITS                    (2U)
 
+/**
+* @brief           Ctu trigger mode is supported.
+*/
+#define ADC_CTU_TRIGGER_MODE_SUPPORTED      (STD_OFF)
 
 /**
 * @brief           PDB available/unavailable (STD_ON/STD_OFF).
 */
 #define ADC_PDB_AVAILABLE                   (STD_ON)
 
+/**
+* @brief           PDB channel delays available/unavailable (STD_ON/STD_OFF).
+*/
+#define ADC_DELAY_AVAILABLE                   (ADC_PDB_AVAILABLE)
 
 /**
 * @brief           BCTU available/unavailable (STD_ON/STD_OFF).

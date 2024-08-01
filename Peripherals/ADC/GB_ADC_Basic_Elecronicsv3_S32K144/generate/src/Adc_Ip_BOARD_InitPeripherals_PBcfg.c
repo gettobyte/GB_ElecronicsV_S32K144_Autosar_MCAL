@@ -133,10 +133,10 @@ const Adc_Ip_ConfigType AdcHwUnit_0_BOARD_INITPERIPHERALS =
 #if (ADC_IP_SUPPLY_MONITORING_ENABLED == STD_ON)
     (boolean)FALSE, /* SupplyMonitoringEnable */
 #endif /* (ADC_IP_SUPPLY_MONITORING_ENABLED == STD_ON) */
-    (boolean)TRUE, /* CompareEnable */
-    (boolean)TRUE, /* CompareGreaterThanEnable */
+    (boolean)FALSE, /* CompareEnable */
+    (boolean)FALSE, /* CompareGreaterThanEnable */
     (boolean)FALSE, /* CompareRangeFuncEnable */
-    1000U, /* CompVal1 */
+    0U, /* CompVal1 */
     0U, /* CompVal2 */
     4U, /* UsrGain */
     0U, /* UsrOffset */
