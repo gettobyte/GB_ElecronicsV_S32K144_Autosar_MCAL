@@ -46,9 +46,12 @@ extern void Adc_0_Isr(void);
  * - startup asm routine
  * - main()
 */
-#define NUM_RESULTS 1
-Adc_ValueGroupType    ResultBuffer[NUM_RESULTS] =  {0xaaaa};
-Adc_ValueGroupType    Result[NUM_RESULTS] =  {0xaaaa};
+#define NUM_RESULTS 2
+Adc_ValueGroupType    ResultBuffer[NUM_RESULTS];
+Adc_ValueGroupType    Result[NUM_RESULTS];
+
+Adc_ChannelType adc_Channel[2] = { ADC_IP_INPUTCHAN_EXT12, ADC_IP_INPUTCHAN_EXT1};
+
 int main(void)
 {
 	 Std_ReturnType StdReturn = E_NOT_OK;
@@ -94,19 +97,32 @@ int main(void)
         }
 
 
-        Adc_SetupResultBuffer(AdcGroup_0, ResultBuffer);
-        Adc_StartGroupConversion(AdcGroup_0);
-
-
-        StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
+      //  Adc_SetupResultBuffer(AdcGroup_0, ResultBuffer);
+//        Adc_StartGroupConversion(AdcGroup_0);
+//
+//
+//        StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
+//
+//        Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 1, Result);
 
     for(;;)
     {
-    	   Adc_SetupResultBuffer(AdcGroup_0, ResultBuffer);
-    	        Adc_StartGroupConversion(AdcGroup_0);
+    //	   Adc_SetupResultBuffer(AdcGroup_0, ResultBuffer);
+
+    	Adc_StartGroupConversion(AdcGroup_0);
+
+    	       // Adc_Ipw_CheckValidConversion //
+//    	        Adc_ReadRawData
+    	        // Adc_SetChannel()
+
+    	     Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
+
+//    	     Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 1, Result);
 
 
-    	        StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
+    	        // Adc_SetChannel
+
+//    	        StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
 
 
     }

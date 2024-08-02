@@ -175,6 +175,8 @@ extern "C"{
 #define ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Adc_MemMap.h"
 
+#if (ADC_DUAL_CLOCK_MODE == STD_ON)
+#endif /* (ADC_DUAL_CLOCK_MODE == STD_ON) */
 
 #if (ADC_ENABLE_LIMIT_CHECK == STD_ON)
 /**
@@ -182,6 +184,16 @@ extern "C"{
 */
 static const Adc_ChannelLimitCheckingType ChannelLimitCheckingConfig_0_BOARD_INITPERIPHERALS[] =
 {
+    {
+        /**< @brief range for limit check */
+        (boolean)FALSE, /* bChannelLimitCheckEnabled */
+        /**< @brief range for limit check */
+        ADC_RANGE_ALWAYS, /* eChannelRange */
+        /**< @brief high limit value */
+        4095U, /* ChannelHighLimit */
+        /**< @brief low limit value */
+        0U /* ChannelLowLimit */
+    },
     {
         /**< @brief range for limit check */
         (boolean)FALSE, /* bChannelLimitCheckEnabled */
@@ -237,7 +249,7 @@ const Adc_Ipw_Config AdcIpwCfg_BOARD_INITPERIPHERALS =
         /**< @brief number of groups per hw unit > */
         { 1U, 0U }, /* aAdc_Groups */
         /**< @brief number of channels per hw unit > */
-        { 1U, 0U }, /* aAdc_Channels */
+        { 2U, 0U }, /* aAdc_Channels */
         { ADC_IPW_INVALID_DMA_CHANNEL_ID, ADC_IPW_INVALID_DMA_CHANNEL_ID }, /* au8Adc_DmaChannel */
 #if (STD_ON == ADC_OPTIMIZE_DMA_STREAMING_GROUPS) || (ADC_ENABLE_GROUP_STREAMING_RESULTS_REORDER == STD_ON)
         { ADC_IPW_INVALID_DMA_CHANNEL_ID, ADC_IPW_INVALID_DMA_CHANNEL_ID }, /* au8Adc_CountingDmaChannel */
@@ -266,7 +278,7 @@ const Adc_Ipw_GroupConfig AdcIpwGroupConfig_0_BOARD_INITPERIPHERALS =
     ADC_IP_DEFAULT_SAMPLE_TIME, /* AlternateConvTime */
 #endif /* (ADC_DUAL_CLOCK_MODE == STD_ON) */
 #endif /* (ADC_SET_ADC_CONV_TIME_ONCE == STD_OFF) */
-    0U, /* PdbPeriod */
+    1000U, /* PdbPeriod */
     0U, /* PdbDelay */
     (boolean)TRUE, /* AdcGroupEnableBackToBack */
     (boolean)FALSE, /* AdcGroupEnableChannelDelays */

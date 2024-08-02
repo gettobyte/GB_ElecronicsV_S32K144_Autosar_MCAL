@@ -156,6 +156,10 @@ extern "C"{
 */
 #define ADC_OPTIMIZE_DMA_STREAMING_GROUPS   (STD_OFF)
 
+/**
+* @brief           This switch is used to enable the non autosar ADC performance optimization feature.
+*/
+#define ADC_CONTINUOUS_NO_INTERRUPT_SUPPORTED
 
 /**
 * @brief           Specifies to optimize conversions for hw triggered, one shot group.
@@ -193,7 +197,7 @@ extern "C"{
 /**
 * @brief          Add/Remove Autosar Extension Adc_SetClockMode().
 */
-#define ADC_DUAL_CLOCK_MODE                       (STD_OFF)
+#define ADC_DUAL_CLOCK_MODE                       (STD_ON)
 
 /**
 * @brief          Add/remove ((STD_ON)/(STD_OFF)) the service Adc_Calibration() from the code.
@@ -255,8 +259,6 @@ extern "C"{
 * @brief IRQ definition
 */
 
-#define ADC_UNIT_0_ISR_USED
-
 /**
 * @brief           max queue depth configured across all configset.
 */
@@ -276,7 +278,7 @@ extern "C"{
 /**
 * @brief           Maximum number of channels across all hardware units.
 */
-#define ADC_MAX_CHANNEL_PER_HW_UNIT         (1U)
+#define ADC_MAX_CHANNEL_PER_HW_UNIT         (2U)
 
 #endif /* ADC_DMA_SUPPORTED */
 
@@ -374,6 +376,7 @@ extern "C"{
 *                  Bit fields [0-11]:   Logical id of channel in HW unit (used in Adc_EnableChannel()/Adc_DisableChannel())
 */
 #define AdcChannel_0                       (0x0U)
+#define AdcChannel_1                       (0x1U)
 
 /**
 * @brief          Definitions used for extracting the ADC Logical Unit Id and logical id of channels in each unit from equivalent channel symbolic name
@@ -387,6 +390,7 @@ extern "C"{
 * @brief           Autosar Extension symbolic names of channels per groups, on all HW units, with value set to channel index in the group.
 */
 #define AdcGroup_0_AdcChannel_0                   (0U)
+#define AdcGroup_0_AdcChannel_1                   (1U)
 
 /**
 * @brief           Symbolic names of groups.

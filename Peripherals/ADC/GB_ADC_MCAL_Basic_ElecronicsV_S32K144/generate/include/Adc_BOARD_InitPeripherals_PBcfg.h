@@ -97,7 +97,7 @@ extern "C"{
 *
 */
 
-#define ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_0_CHANNELS      (1U)
+#define ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_0_CHANNELS      (2U)
 
 /**
 * @brief          Total number of groups in Config.

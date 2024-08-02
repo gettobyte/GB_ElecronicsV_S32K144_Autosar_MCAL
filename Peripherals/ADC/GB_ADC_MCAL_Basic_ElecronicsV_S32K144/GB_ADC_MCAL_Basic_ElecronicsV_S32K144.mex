@@ -18,7 +18,7 @@
    <tools>
       <pins name="Pins" version="10.0" enabled="true" update_project_code="true">
          <generated_project_files>
-            <file path="board/Port_Ci_Port_Ip_Cfg.c" update_enabled="false"/>
+            <file path="board/Port_Ci_Port_Ip_Cfg.c" update_enabled="true"/>
             <file path="board/Port_Ci_Port_Ip_Cfg.h" update_enabled="true"/>
          </generated_project_files>
          <pins_profile>
@@ -39,6 +39,7 @@
                         <pin_feature name="direction" value="OUTPUT"/>
                      </pin_features>
                   </pin>
+                  <pin peripheral="ADC0" signal="se, 1" pin_num="78" pin_signal="PTA1"/>
                </pins>
             </function>
          </functions_list>
@@ -389,6 +390,25 @@
                                        <array name="AdcChannelResolution"/>
                                        <array name="AdcChannelSampTime"/>
                                     </struct>
+                                    <struct name="1">
+                                       <setting name="Name" value="AdcChannel_1"/>
+                                       <setting name="AdcLogicalChannelId" value="1"/>
+                                       <setting name="AdcChannelName" value="SE1_ADCH1"/>
+                                       <setting name="AdcChannelId" value="1"/>
+                                       <array name="AdcChannelConvTime"/>
+                                       <array name="AdcChannelLimitCheck"/>
+                                       <array name="AdcChannelHighLimit">
+                                          <setting name="0" value="4095"/>
+                                       </array>
+                                       <array name="AdcChannelLowLimit">
+                                          <setting name="0" value="0"/>
+                                       </array>
+                                       <array name="AdcChannelRangeSelect"/>
+                                       <array name="AdcChannelRefVoltsrcHigh"/>
+                                       <array name="AdcChannelRefVoltsrcLow"/>
+                                       <array name="AdcChannelResolution"/>
+                                       <array name="AdcChannelSampTime"/>
+                                    </struct>
                                  </array>
                                  <array name="AdcGroup">
                                     <struct name="0">
@@ -413,7 +433,7 @@
                                        <setting name="AdcStreamingNumSamples" value="1"/>
                                        <setting name="AdcStreamResultGroup" value="false"/>
                                        <setting name="AdcEnableChDisableChGroup" value="false"/>
-                                       <setting name="AdcWithoutInterrupts" value="false"/>
+                                       <setting name="AdcWithoutInterrupts" value="true"/>
                                        <setting name="AdcWithoutDma" value="false"/>
                                        <setting name="AdcExtDMAChanEnable" value="false"/>
                                        <setting name="AdcGroupInBacktoBackMode" value="true"/>
@@ -435,6 +455,7 @@
                                        </struct>
                                        <array name="AdcGroupDefinition">
                                           <setting name="0" value="/Adc_1/AdcUserCfg/AdcConfigSet/AdcHwUnit_0/AdcChannel_0"/>
+                                          <setting name="1" value="/Adc_1/AdcUserCfg/AdcConfigSet/AdcHwUnit_0/AdcChannel_1"/>
                                        </array>
                                        <array name="AdcGroupEcucPartitionRef"/>
                                     </struct>
@@ -468,7 +489,7 @@
                            <struct name="0">
                               <setting name="Name" value="AdcInterrupt_0"/>
                               <setting name="AdcInterruptSource" value="ADC0_COCO"/>
-                              <setting name="AdcInterruptEnable" value="true"/>
+                              <setting name="AdcInterruptEnable" value="false"/>
                            </struct>
                         </array>
                         <struct name="AdcPublishedInformation">
@@ -501,14 +522,14 @@
                            <setting name="AdcConvTimeOnce" value="true"/>
                            <setting name="AdcOptimizeOneShotHwTriggerConversions" value="false"/>
                            <setting name="AdcOptimizeDmaStreamingGroups" value="false"/>
-                           <setting name="AdcContinuousWithoutInterrupt" value="false"/>
+                           <setting name="AdcContinuousWithoutInterrupt" value="true"/>
                            <setting name="AdcEnableChDisableChApi" value="false"/>
                            <setting name="AdcEnableInitialNotification" value="false"/>
                            <setting name="AdcEnableDmaTrasferMode" value="false"/>
                            <setting name="AdcEnableUserModeSupport" value="false"/>
                            <setting name="AdcEnableSimSupplyMonitor" value="false"/>
                            <setting name="AdcEnableSetChannel" value="true"/>
-                           <setting name="AdcEnableDualClockMode" value="false"/>
+                           <setting name="AdcEnableDualClockMode" value="true"/>
                            <setting name="AdcEnableCalibration" value="true"/>
                            <setting name="AdcEnableReadRawDataApi" value="true"/>
                            <setting name="AdcEnableGroupStreamingResultReorder" value="false"/>

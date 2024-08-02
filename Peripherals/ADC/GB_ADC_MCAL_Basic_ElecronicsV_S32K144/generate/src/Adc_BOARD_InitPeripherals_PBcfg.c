@@ -145,7 +145,8 @@ static Adc_ValueGroupType * Adc_aResultsBufferPtr[1];
 */
 static const Adc_ChannelType Adc_Group0_Assignment_0_BOARD_INITPERIPHERALS[ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_0_CHANNELS] =
 {
-    0U
+    0U,
+    1U
 };
 
 /**
@@ -208,9 +209,9 @@ static const Adc_GroupConfigurationType Adc_GroupsCfg_BOARD_INITPERIPHERALS[] =
         /**< @brief Last Channel configured */
         (Adc_ChannelType)(ADC_ID_CHANNEL_U8(12)), /* LastCh */
         /**< @brief First Channel configured */
-        (Adc_ChannelType)(ADC_ID_CHANNEL_U8(12)), /* FirstCh */
+        (Adc_ChannelType)(ADC_ID_CHANNEL_U8(1)), /* FirstCh */
         /**< @brief Enables or Disables the ADC and DMA interrupts */
-        (uint8)(STD_OFF), /* u8AdcWithoutInterrupt */
+        (uint8)(STD_ON), /* u8AdcWithoutInterrupt */
         /**< @brief Enables or Disables configuring external DMA channel in the group */
         (uint8)(STD_OFF), /* u8AdcExtDMAChanEnable */
         /**< @brief When true, disables completely DMA configuration done by ADC driver for the group */
