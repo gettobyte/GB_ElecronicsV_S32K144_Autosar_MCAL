@@ -8,7 +8,7 @@
 * Autosar Revision : ASR_REL_4_4_REV_0000
 * Autosar Conf.Variant :
 * SW Version : 1.0.0
-* Build Version : S32K1_RTD_1_0_0_ASR_REL_4_4_REV_0000_20210810
+* Build Version : S32K1_RTD_1_0_0_D2108_ASR_REL_4_4_REV_0000_20210810
 *
 * (c) Copyright 2020-2021 NXP Semiconductors
 * All Rights Reserved.
@@ -142,7 +142,7 @@ extern "C" {
 * @brief This constant used for other modules to check if DIO is present in the project.  
 * @violates @ref modules_h_REF_1 MISRA 2012 Advisory Rule 2.5, unused macro. 
 */
-#define USE_DIO_MODULE              (STD_OFF)
+#define USE_DIO_MODULE              (STD_ON)
 
 /** 
 * @brief This constant used for other modules to check if EEP is present in the project.  
@@ -238,7 +238,7 @@ extern "C" {
 * @brief This constant used for other modules to check if PORT is present in the project.  
 * @violates @ref modules_h_REF_1 MISRA 2012 Advisory Rule 2.5, unused macro. 
 */
-#define USE_PORT_MODULE             (STD_OFF)
+#define USE_PORT_MODULE             (STD_ON)
 
 /** 
 * @brief This constant used for other modules to check if PWM is present in the project.  

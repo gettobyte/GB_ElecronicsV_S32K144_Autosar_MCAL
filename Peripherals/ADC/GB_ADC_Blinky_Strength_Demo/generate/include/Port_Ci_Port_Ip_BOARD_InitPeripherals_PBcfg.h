@@ -21,11 +21,12 @@
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
-#ifndef PORT_CI_PORT_IP_DEFINES_H
-#define PORT_CI_PORT_IP_DEFINES_H
+
+#ifndef PORT_CI_PORT_IP_BOARD_InitPeripherals_PBCFG_H
+#define PORT_CI_PORT_IP_BOARD_InitPeripherals_PBCFG_H
 
 /**
-*   @file    Port_Ci_Port_Ip_Defines.h
+*   @file    Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.h
 *
 *   @addtogroup Port_CFG
 *   @{
@@ -41,8 +42,6 @@ extern "C"{
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "S32K144_GPIO.h"
-#include "S32K144_PORT.h"
 
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
@@ -53,13 +52,13 @@ extern "C"{
 * @details      The integration of incompatible files shall be avoided.
 *
 */
-#define PORT_CI_PORT_IP_VENDOR_ID_DEFINES_H                       43
-#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_DEFINES_H        4
-#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_DEFINES_H        4
-#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_DEFINES_H     0
-#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_DEFINES_H                1
-#define PORT_CI_PORT_IP_SW_MINOR_VERSION_DEFINES_H                0
-#define PORT_CI_PORT_IP_SW_PATCH_VERSION_DEFINES_H                0
+#define PORT_CI_PORT_IP_VENDOR_ID_BOARD_InitPeripherals_PBCFG_H                       43
+#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_BOARD_InitPeripherals_PBCFG_H        4
+#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_BOARD_InitPeripherals_PBCFG_H        4
+#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_BOARD_InitPeripherals_PBCFG_H     0
+#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_BOARD_InitPeripherals_PBCFG_H                1
+#define PORT_CI_PORT_IP_SW_MINOR_VERSION_BOARD_InitPeripherals_PBCFG_H                0
+#define PORT_CI_PORT_IP_SW_PATCH_VERSION_BOARD_InitPeripherals_PBCFG_H                0
 
 /*==================================================================================================
 *                                      FILE VERSION CHECKS
@@ -73,25 +72,6 @@ extern "C"{
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
 
-/*! @brief PORT_CI module has DSE bit */
-#define FEATURE_PORT_CI_PORT_IP_HAS_DRIVE_STRENGTH
-
-/*! @brief PORT_CI module has LK bit */
-#define FEATURE_PORT_CI_PORT_IP_HAS_LOCK_REGISTER
-
-#define PORT_ENABLE_USER_MODE_SUPPORT   (STD_OFF)
-
-#ifndef MCAL_ENABLE_USER_MODE_SUPPORT
-    #ifdef PORT_ENABLE_USER_MODE_SUPPORT
-        #if (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT)
-            #error MCAL_ENABLE_USER_MODE_SUPPORT is not enabled. For running Port in user mode the MCAL_ENABLE_USER_MODE_SUPPORT needs to be defined
-        #endif /* (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT) */
-    #endif /* ifdef PORT_ENABLE_USER_MODE_SUPPORT*/
-#endif /* ifndef MCAL_ENABLE_USER_MODE_SUPPORT */
-
-/* Pre-processor switch to enable/disable development error detection for Port Ci Port Ip API */
-#define PORT_CI_PORT_IP_DEV_ERROR_DETECT                         (STD_OFF)
-
 /*==================================================================================================
 *                                             ENUMS
 ==================================================================================================*/
@@ -100,10 +80,12 @@ extern "C"{
 *                                STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
 
-
 /*==================================================================================================
 *                                GLOBAL VARIABLE DECLARATIONS
 ==================================================================================================*/
+/*! @brief User configuration structure */
+#define PORT_CI_PORT_CONFIG_BOARD_InitPeripherals_PB \
+extern const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr_BOARD_InitPeripherals[NUM_OF_CONFIGURED_PINS];
 
 /*==================================================================================================
 *                                    FUNCTION PROTOTYPES
@@ -116,5 +98,5 @@ extern "C"{
 
 /** @} */
 
-#endif /* PORT_CI_PORT_IP_DEFINES_H */
+#endif /* PORT_CI_PORT_IP_BOARD_InitPeripherals_PBCFG_H */
 

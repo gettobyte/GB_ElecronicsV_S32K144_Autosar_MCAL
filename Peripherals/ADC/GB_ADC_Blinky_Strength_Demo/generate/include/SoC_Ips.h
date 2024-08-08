@@ -8,9 +8,9 @@
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
 *   SW Version           : 1.0.0
-*   Build Version        : S32K1_RTD_1_0_0_ASR_REL_4_4_REV_0000_20210810
+*   Build Version        : S32K1_RTD_1_0_0_D2108_ASR_REL_4_4_REV_0000_20210810
 *
-*   (c) Copyright 2021 NXP Semiconductors
+*   (c) Copyright 2020-2021 NXP Semiconductors
 *   All Rights Reserved.
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -214,16 +214,17 @@ extern "C"{
 *                              Software Erratas for Hardware Erratas
 ==================================================================================================*/
 /**
-* @brief Hardware errata for FMC: (e10716)
+* @brief Hardware errata for RTC: (e10716)
 * @details e10716 RTC: Timer Alarm Flag can assert erroneously
 */
 #define ERR_IPV_RTC_ERR010716         (STD_ON)
 
 /**
 * @brief Hardware errata for FTM: (e10856)
-* @details e10856 RTC:  Safe state is not removed from channel outputs after fault conditionends if SWOCTRL is being used to control the pin
+* @details e10856 FTM:  Safe state is not removed from channel outputs after fault conditionends if SWOCTRL is being used to control the pin
 */
 #define ERR_IPV_FTM_ERR010856         (STD_ON)
+
 
 /**
 * @brief Hardware errata for FlexCAN: (e050246)
@@ -231,6 +232,12 @@ extern "C"{
 * if the Receive FIFO function is used (same to E050443)
 */
 #define ERR_IPV_FLEXCAN_E050246       (STD_ON)
+
+/**
+* @brief Hardware errata for SCG: (e010777)
+* @details e010777 SCG: Corrupted status when the system clock is switching.
+*/
+#define ERR_IPV_SCG_ERR010777         (STD_ON)
 
 /*==================================================================================================
 *                                       DEFINES AND MACROS
@@ -247,6 +254,9 @@ extern "C"{
 * Can be 1U, 2U, 4U, etc.. depending on the platform
 */
 #define EMIOS_CHANNELS_PER_INTERRUPT (4U)
+
+/*  ARM sub-architecture cortex M4 */
+#define MCAL_PLATFORM_ARM_M4
 
 /*==================================================================================================
 *                                             ENUMS

@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.4
 *   Platform             : CORTEXM
-*   Peripheral           : PORT_CI
+*   Peripheral           : GPIO
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.4.0
@@ -21,13 +21,13 @@
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
-#ifndef PORT_CI_PORT_IP_DEFINES_H
-#define PORT_CI_PORT_IP_DEFINES_H
+#ifndef GPIO_DIO_IP_CFG_H
+#define GPIO_DIO_IP_CFG_H
 
 /**
-*   @file    Port_Ci_Port_Ip_Defines.h
+*   @file Gpio_Dio_Ip_Cfg.h
 *
-*   @addtogroup Port_CFG
+*   @addtogroup DIO_IPL
 *   @{
 */
 
@@ -42,27 +42,19 @@ extern "C"{
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
 #include "S32K144_GPIO.h"
-#include "S32K144_PORT.h"
-
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-/**
-* @brief        Parameters that shall be published within the Port driver header file and also in the
-*               module description file
-* @details      The integration of incompatible files shall be avoided.
-*
-*/
-#define PORT_CI_PORT_IP_VENDOR_ID_DEFINES_H                       43
-#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_DEFINES_H        4
-#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_DEFINES_H        4
-#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_DEFINES_H     0
-#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_DEFINES_H                1
-#define PORT_CI_PORT_IP_SW_MINOR_VERSION_DEFINES_H                0
-#define PORT_CI_PORT_IP_SW_PATCH_VERSION_DEFINES_H                0
+#define GPIO_DIO_IP_VENDOR_ID_CFG_H                       43
+#define GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_CFG_H        4
+#define GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_CFG_H        4
+#define GPIO_DIO_IP_AR_RELEASE_REVISION_VERSION_CFG_H     0
+#define GPIO_DIO_IP_SW_MAJOR_VERSION_CFG_H                1
+#define GPIO_DIO_IP_SW_MINOR_VERSION_CFG_H                0
+#define GPIO_DIO_IP_SW_PATCH_VERSION_CFG_H                0
 
 /*==================================================================================================
-*                                      FILE VERSION CHECKS
+*                                     FILE VERSION CHECKS
 ==================================================================================================*/
 
 /*==================================================================================================
@@ -71,26 +63,12 @@ extern "C"{
 
 /*==================================================================================================
 *                                      DEFINES AND MACROS
-==================================================================================================*/
-
-/*! @brief PORT_CI module has DSE bit */
-#define FEATURE_PORT_CI_PORT_IP_HAS_DRIVE_STRENGTH
-
-/*! @brief PORT_CI module has LK bit */
-#define FEATURE_PORT_CI_PORT_IP_HAS_LOCK_REGISTER
-
-#define PORT_ENABLE_USER_MODE_SUPPORT   (STD_OFF)
-
-#ifndef MCAL_ENABLE_USER_MODE_SUPPORT
-    #ifdef PORT_ENABLE_USER_MODE_SUPPORT
-        #if (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT)
-            #error MCAL_ENABLE_USER_MODE_SUPPORT is not enabled. For running Port in user mode the MCAL_ENABLE_USER_MODE_SUPPORT needs to be defined
-        #endif /* (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT) */
-    #endif /* ifdef PORT_ENABLE_USER_MODE_SUPPORT*/
-#endif /* ifndef MCAL_ENABLE_USER_MODE_SUPPORT */
-
-/* Pre-processor switch to enable/disable development error detection for Port Ci Port Ip API */
-#define PORT_CI_PORT_IP_DEV_ERROR_DETECT                         (STD_OFF)
+==================================================================================================*//**
+* @brief          Pre-processor switch to enable/disable development error detection for Gpio Ip API
+*
+* @implements     GpioDioErrorDetect_define
+*/
+#define GPIO_DIO_IP_DEV_ERROR_DETECT                         (STD_OFF)
 
 /*==================================================================================================
 *                                             ENUMS
@@ -114,7 +92,7 @@ extern "C"{
 }
 #endif
 
-/** @} */
+#endif /* GPIO_DIO_IP_CFG_H */
 
-#endif /* PORT_CI_PORT_IP_DEFINES_H */
+/** @} */
 

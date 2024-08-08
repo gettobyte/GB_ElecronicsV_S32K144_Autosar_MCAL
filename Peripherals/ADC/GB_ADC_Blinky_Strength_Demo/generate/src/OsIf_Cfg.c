@@ -8,7 +8,7 @@
 * Autosar Revision : ASR_REL_4_4_REV_0000
 * Autosar Conf.Variant :
 * SW Version : 1.0.0
-* Build Version : S32K1_RTD_1_0_0_ASR_REL_4_4_REV_0000_20210810
+* Build Version : S32K1_RTD_1_0_0_D2108_ASR_REL_4_4_REV_0000_20210810
 *
 * (c) Copyright 2020-2021 NXP Semiconductors
 * All Rights Reserved.
@@ -23,6 +23,7 @@
 ==================================================================================================*/
 /**
 *   @file       OsIf_Cfg.c
+*   @implements OsIf_Cfg.c_Artifact
 *   @version 1.0.0
 *
 *

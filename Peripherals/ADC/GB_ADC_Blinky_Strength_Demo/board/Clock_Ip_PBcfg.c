@@ -1,6 +1,6 @@
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 !!GlobalInfo
-product: Clocks v7.0
+product: Clocks v8.0
 processor: S32K144
 package_id: S32K144_LQFP100
 mcu_data: PlatformSDK_S32K1_2021_08
