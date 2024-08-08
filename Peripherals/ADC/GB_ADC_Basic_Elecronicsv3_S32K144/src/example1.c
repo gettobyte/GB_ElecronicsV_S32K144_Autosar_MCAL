@@ -100,13 +100,10 @@ for(;;)
    Adc_Ip_StartConversion(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ADC_IP_INPUTCHAN_EXT12, FALSE);
    /* Checks whether ADC conversion is in progress */
    Gb_ADC_Conversion_Status = Adc_Ip_GetConvActiveFlag(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
-
    /* Checks whether ADC conversion is completed or not */
    Gb_ADC_Conversion_Status = Adc_Ip_GetConvCompleteFlag(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE,ADC_IP_INPUTCHAN_EXT12);
    /* Reads the converted ADC data */
    Gb_ADC_Value = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE,0);
-
-
 }
 
 
