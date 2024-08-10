@@ -94,14 +94,14 @@ extern "C"{
 static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[2U] =
 {
     {
-        12U, /* ChnIdx */
+        4U, /* ChnIdx */
         ADC_IP_INPUTCHAN_EXT12, /* Channel */
         (boolean)TRUE /* InterruptEnable */
     },
     {
         1U, /* ChnIdx */
         ADC_IP_INPUTCHAN_EXT1, /* Channel */
-        (boolean)FALSE /* InterruptEnable */
+        (boolean)TRUE /* InterruptEnable */
     }
 };
 
