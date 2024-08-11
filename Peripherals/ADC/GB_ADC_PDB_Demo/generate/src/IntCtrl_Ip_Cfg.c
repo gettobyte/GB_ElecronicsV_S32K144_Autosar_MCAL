@@ -103,7 +103,7 @@ static const IntCtrl_Ip_IrqConfigType aIrqConfiguration1[] = {
     {LPIT0_Ch1_IRQn, (boolean)FALSE, 0U},
     {LPIT0_Ch2_IRQn, (boolean)FALSE, 0U},
     {LPIT0_Ch3_IRQn, (boolean)FALSE, 0U},
-    {PDB0_IRQn, (boolean)TRUE, 0U},
+    {PDB0_IRQn, (boolean)FALSE, 0U},
     {SCG_IRQn, (boolean)FALSE, 0U},
     {LPTMR0_IRQn, (boolean)FALSE, 0U},
     {PORTA_IRQn, (boolean)FALSE, 0U},

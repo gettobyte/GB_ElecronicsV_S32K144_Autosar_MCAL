@@ -17,6 +17,7 @@ extern "C" {
 /*==================================================================================================
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
+//Not used in this demo
 #define ADC_CONTROL_CH         (0U)
 #define ADC_BANDGAP            (819U) /* Vbandgap ~ 1.15V at 5.0V reference */
 #define ADC_TOLERANCE(x,y)     ((x > y) ? (x - y) : (y - x))
@@ -26,34 +27,19 @@ extern "C" {
 *                                      EXTERN DECLARATIONS
 ==================================================================================================*/
 extern void Adc_0_Isr(void);
-extern void Pdb_0_Isr(void);
 
 /*==================================================================================================
 *                                      GLOBAL VARIABLES
 ==================================================================================================*/
+volatile uint32 data;
 volatile boolean notif_triggered = FALSE;
-volatile int exit_code = 0;
-volatile uint16 data;
 
 void AdcConversionCompleteNotif(const uint8 ControlChanIdx)
 {
-	notif_triggered = TRUE;
-	data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
-	/* Checks the measured ADC data conversion */
-	while (ADC_TOLERANCE(data, ADC_BANDGAP) > RESULT_TOLERANCE);
-}
-
-//Custom function for making a delay function(This is not optimized way)
-//Just a temporary solution
-void TestDelay(uint32 delay);
-void TestDelay(uint32 delay)
-{
-   static volatile uint32 DelayTimer = 0;
-   while(DelayTimer<delay)
-   {
-	   DelayTimer++;
-   }
-   DelayTimer=0;
+    notif_triggered = TRUE;
+    data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
+    /* Checks the measured ADC data conversion */
+    while (ADC_TOLERANCE(data, ADC_BANDGAP) > RESULT_TOLERANCE);
 }
 
 
@@ -74,10 +60,14 @@ int main(void)
 	Clock_Ip_DistributePll();
 #endif
 
+    /* Install and enable interrupt handlers */
+    IntCtrl_Ip_InstallHandler(ADC0_IRQn, Adc_0_Isr, NULL_PTR);
+    IntCtrl_Ip_EnableIrq(ADC0_IRQn);
+
 	/* Initialize all pins using the Port driver */
 	Port_Init(NULL_PTR);
 
-	/**** Part 1: Start ADC software trigger conversions ****/
+//	ADC initialization
 	Adc_Ip_Init(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
 	adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 
@@ -86,17 +76,15 @@ int main(void)
 		adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 	}
 
-	/* Start a software trigger conversion */
-//    Adc_Ip_StartConversion(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ADC_IP_INPUTCHAN_EXT12, FALSE);
-
+//	PDB initialization
 	Pdb_Adc_Ip_Init(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
 
-//	Starting a hardware trigger
+//	Starting a hardware trigger by software trigger
 	Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
-
 	for(;;)
 	{
-//	    Stop and Check Data Result Register "RE' for ADC value
+//	    Stop and Check Data Result Register "RE' for ADC value as well as value of "i"
+			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
 	}
 
 }
