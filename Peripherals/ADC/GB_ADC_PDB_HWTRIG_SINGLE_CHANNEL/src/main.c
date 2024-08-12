@@ -13,6 +13,7 @@ extern "C" {
 #include "IntCtrl_Ip.h"
 #include "Adc_Ip.h"
 #include "Port.h"
+#include "Pdb_Adc_Ip.h"
 #include "Trgmux_Ip.h"
 /*==================================================================================================
 *                                      DEFINES AND MACROS
@@ -39,8 +40,6 @@ void AdcConversionCompleteNotif(const uint8 ControlChanIdx)
     notif_triggered = TRUE;
     data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
     /* Checks the measured ADC data conversion */
-//  Code might get stuck on below hold function but you can still read ADC values providing pulse on PTB5 and seeing RA
-//	Data Register
     while (ADC_TOLERANCE(data, ADC_BANDGAP) > RESULT_TOLERANCE);
 }
 
@@ -71,21 +70,20 @@ int main(void)
 
 //	ADC initialization
 	Adc_Ip_Init(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
-
-//	This specific function configures the Software Pretrigger linked to it's specified channel
-	Adc_Ip_SetSoftwarePretrigger(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ADC_IP_SOFTWARE_PRETRIGGER_0);
-
-//	ADC calibration
 	adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
+
 	while (adcStatus != ADC_IP_STATUS_SUCCESS)
 	{
 		adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 	}
 
-	for(;;)
-	{
-//	    Stop and Check Data Result Register "RE' for ADC value
-			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
-	}
+//	PDB initialization
+	Pdb_Adc_Ip_Init(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
+
+		for(;;)
+		{
+	//	        Stop and Check Data Result Register "RE' for ADC value as well as value of "i"
+				data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
+		}
 
 }
