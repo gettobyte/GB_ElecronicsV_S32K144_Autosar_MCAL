@@ -61,8 +61,8 @@ int main(void)
 #endif
 
     /* Install and enable interrupt handlers */
-    IntCtrl_Ip_InstallHandler(ADC0_IRQn, Adc_0_Isr, NULL_PTR);
-    IntCtrl_Ip_EnableIrq(ADC0_IRQn);
+//    IntCtrl_Ip_InstallHandler(ADC0_IRQn, Adc_0_Isr, NULL_PTR);
+//    IntCtrl_Ip_EnableIrq(ADC0_IRQn);
 
 	/* Initialize all pins using the Port driver */
 	Port_Init(NULL_PTR);
