@@ -65,10 +65,10 @@ int main(void)
 	/* Initialize all pins using the Port driver */
 	Port_Init(NULL_PTR);
 
-//	TRGMUX is intialised with GUI configured parameters
+    //TRGMUX is intialised with GUI configured parameters
 	trgmuxStatus = Trgmux_Ip_Init(&Trgmux_Ip_xTrgmuxInitPB);
 
-//	ADC initialization
+    //ADC initialization
 	Adc_Ip_Init(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
 	adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 
@@ -77,7 +77,7 @@ int main(void)
 		adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 	}
 
-//	PDB initialization
+    //PDB initialization
 	Pdb_Adc_Ip_Init(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
 
 		for(;;)

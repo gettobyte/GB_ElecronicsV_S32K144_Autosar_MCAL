@@ -178,16 +178,6 @@ int main(void)
     {
         adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
     }
-
-	/* Start a software trigger conversion */
-   Adc_Ip_StartConversion(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ADC_IP_INPUTCHAN_EXT1, TRUE);
-
-   /* Checks whether ADC conversion is in progress */
-   Gb_ADC_Conversion_Status = Adc_Ip_GetConvActiveFlag(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
-
-   /* Checks whether ADC conversion is completed or not */
-   Gb_ADC_Conversion_Status = Adc_Ip_GetConvCompleteFlag(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE,0);
-
 for(;;)
 {
 
@@ -213,16 +203,5 @@ for(;;)
 
 
 }
-
-/* END main */
-/*!
-** @}
-*/
-/*
- * example4.c
- *
- *  Created on: 28-Jul-2024
- *      Author: gettobyte_kunal
- */
 
 
