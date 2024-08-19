@@ -27,31 +27,16 @@ extern "C" {
 #include "IntCtrl_Ip.h"
 #include "Adc_Ip.h"
 #include "Port.h"
-/*==================================================================================================
-*                                      DEFINES AND MACROS
-==================================================================================================*/
-#define ADC_CONTROL_CH         (0U)
-#define ADC_BANDGAP            (819U) /* Vbandgap ~ 1.15V at 5.0V reference */
-#define ADC_TOLERANCE(x,y)     ((x > y) ? (x - y) : (y - x))
-#define RESULT_TOLERANCE       (150U)
 
 /*==================================================================================================
 *                                      EXTERN DECLARATIONS
 ==================================================================================================*/
 extern void Adc_0_Isr(void);
 
-/*==================================================================================================
-*                                      GLOBAL VARIABLES
-==================================================================================================*/
-volatile boolean notif_triggered = FALSE;
-volatile int exit_code = 0;
-
-
 volatile uint32_t Gb_ADC_Value;
 
 void AdcConversionCompleteNotif(const uint8 ControlChanIdx)
 {
-    notif_triggered = TRUE;
     uint32 Sc1Reg;
 
     const ADC_Type * const ADC_Instance = IP_ADC0;
