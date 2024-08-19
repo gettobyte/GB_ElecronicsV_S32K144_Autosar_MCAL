@@ -1,3 +1,10 @@
+/*
+ * Gettobyte Technologies Pvt Ltd 2024
+ * brief@: ADC triggering using PDB(which is software triggered) on single channel control *
+ */
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif

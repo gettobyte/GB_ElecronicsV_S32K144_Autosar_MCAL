@@ -1,3 +1,11 @@
+/*
+ * Gettobyte Technologies Pvt Ltd 2024
+ * brief@: (ADC triggering using TRGMUX(which is hardware triggered by PTB5) on single channel control)
+ *
+ */
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif

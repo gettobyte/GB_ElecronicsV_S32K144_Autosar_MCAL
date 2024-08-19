@@ -1,3 +1,10 @@
+/*
+ * Gettobyte Technologies Pvt Ltd 2024
+ * brief@:  Using ADC to change the Blink LED Strength
+ */
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -13,12 +20,10 @@ extern "C" {
 #include "IntCtrl_Ip.h"
 #include "Adc_Ip.h"
 #include "Port.h"
-#include "Pdb_Adc_Ip.h"
-#include "Trgmux_Ip.h"
+#include "Dio.h"
 /*==================================================================================================
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
-//Not used in this demo
 #define ADC_CONTROL_CH         (0U)
 #define ADC_BANDGAP            (819U) /* Vbandgap ~ 1.15V at 5.0V reference */
 #define ADC_TOLERANCE(x,y)     ((x > y) ? (x - y) : (y - x))
@@ -32,15 +37,29 @@ extern void Adc_0_Isr(void);
 /*==================================================================================================
 *                                      GLOBAL VARIABLES
 ==================================================================================================*/
-volatile uint32 data;
 volatile boolean notif_triggered = FALSE;
+volatile int exit_code = 0;
+volatile uint16 data;
 
 void AdcConversionCompleteNotif(const uint8 ControlChanIdx)
 {
-    notif_triggered = TRUE;
-    data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
-    /* Checks the measured ADC data conversion */
-    while (ADC_TOLERANCE(data, ADC_BANDGAP) > RESULT_TOLERANCE);
+	notif_triggered = TRUE;
+	data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
+	/* Checks the measured ADC data conversion */
+	while (ADC_TOLERANCE(data, ADC_BANDGAP) > RESULT_TOLERANCE);
+}
+
+//Custom function for making a delay function(This is not optimized way)
+//Just a temporary solution
+void TestDelay(uint32 delay);
+void TestDelay(uint32 delay)
+{
+   static volatile uint32 DelayTimer = 0;
+   while(DelayTimer<delay)
+   {
+	   DelayTimer++;
+   }
+   DelayTimer=0;
 }
 
 
@@ -48,7 +67,9 @@ int main(void)
 {
 	Clock_Ip_StatusType clockStatus;
 	Adc_Ip_StatusType adcStatus;
-	Trgmux_Ip_StatusType trgmuxStatus;
+
+	boolean Gb_ADC_Conversion_Status;
+	uint32_t Gb_ADC_Value;
 
 //    Clock Configuration
 	clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB[0]);
@@ -65,25 +86,28 @@ int main(void)
 	/* Initialize all pins using the Port driver */
 	Port_Init(NULL_PTR);
 
-    //TRGMUX is intialised with GUI configured parameters
-	trgmuxStatus = Trgmux_Ip_Init(&Trgmux_Ip_xTrgmuxInitPB);
-
-    //ADC initialization
+	/**** Part 1: Start ADC software trigger conversions ****/
 	Adc_Ip_Init(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
 	adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
-
 	while (adcStatus != ADC_IP_STATUS_SUCCESS)
 	{
 		adcStatus = Adc_Ip_DoCalibration(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 	}
 
-    //PDB initialization
-	Pdb_Adc_Ip_Init(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
+	/* Start a software trigger conversion */
+   Adc_Ip_StartConversion(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ADC_IP_INPUTCHAN_EXT12, FALSE);
 
-		for(;;)
-		{
-	//	        Stop and Check Data Result Register "RE' for ADC value as well as value of "i"
-				data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
-		}
+	for(;;)
+	{
+		Dio_WriteChannel(DioConf_DioChannel_Green_LED, STD_LOW);
+		TestDelay((Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE,0)*940));
+		Dio_WriteChannel(DioConf_DioChannel_Green_LED, STD_HIGH);
+		TestDelay((Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE,0)*940));
+	}
 
 }
+
+/* END main */
+/*!
+** @}
+*/
