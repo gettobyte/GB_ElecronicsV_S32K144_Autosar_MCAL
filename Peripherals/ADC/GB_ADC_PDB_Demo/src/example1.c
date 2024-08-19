@@ -14,34 +14,32 @@ extern "C" {
 #include "Adc_Ip.h"
 #include "Port.h"
 #include "Pdb_Adc_Ip.h"
-/*==================================================================================================
-*                                      DEFINES AND MACROS
-==================================================================================================*/
-//Not used in this demo
-#define ADC_CONTROL_CH         (0U)
-#define ADC_BANDGAP            (819U) /* Vbandgap ~ 1.15V at 5.0V reference */
-#define ADC_TOLERANCE(x,y)     ((x > y) ? (x - y) : (y - x))
-#define RESULT_TOLERANCE       (150U)
 
 /*==================================================================================================
 *                                      EXTERN DECLARATIONS
 ==================================================================================================*/
 extern void Adc_0_Isr(void);
 
+extern void Pdb_0_Isr(void);
 /*==================================================================================================
 *                                      GLOBAL VARIABLES
 ==================================================================================================*/
 volatile uint32 data;
-volatile boolean notif_triggered = FALSE;
-
 void AdcConversionCompleteNotif(const uint8 ControlChanIdx)
 {
-    notif_triggered = TRUE;
     data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
-    /* Checks the measured ADC data conversion */
-    while (ADC_TOLERANCE(data, ADC_BANDGAP) > RESULT_TOLERANCE);
 }
 
+void TestDelay(uint32 delay);
+void TestDelay(uint32 delay)
+{
+   static volatile uint32 DelayTimer = 0;
+   while(DelayTimer<delay)
+   {
+	   DelayTimer++;
+   }
+   DelayTimer=0;
+}
 
 int main(void)
 {
@@ -61,8 +59,13 @@ int main(void)
 #endif
 
     /* Install and enable interrupt handlers */
-//    IntCtrl_Ip_InstallHandler(ADC0_IRQn, Adc_0_Isr, NULL_PTR);
-//    IntCtrl_Ip_EnableIrq(ADC0_IRQn);
+    IntCtrl_Ip_InstallHandler(ADC0_IRQn, Adc_0_Isr, NULL_PTR);
+    IntCtrl_Ip_EnableIrq(ADC0_IRQn);
+
+    /* Install and enable interrupt handlers */
+    IntCtrl_Ip_InstallHandler(PDB0_IRQn, Pdb_0_Isr, NULL_PTR);
+    IntCtrl_Ip_EnableIrq(PDB0_IRQn);
+
 
 	/* Initialize all pins using the Port driver */
 	Port_Init(NULL_PTR);
@@ -81,10 +84,26 @@ int main(void)
 
 //	Starting a hardware trigger by software trigger
 	Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
+
+	data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
+
 	for(;;)
 	{
 //	    Stop and Check Data Result Register "RE' for ADC value as well as value of "i"
+//			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
+//
+			Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
+			TestDelay(20000000);
+
 			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
+
+
+			Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
+			TestDelay(20000000);
+
+			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
+
+
 	}
 
 }
