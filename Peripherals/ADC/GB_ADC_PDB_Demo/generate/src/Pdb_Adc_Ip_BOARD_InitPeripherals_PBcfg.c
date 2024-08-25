@@ -91,24 +91,14 @@ extern "C"{
 #define ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Adc_MemMap.h"
 
-static const Pdb_Adc_Ip_ChanConfigType PdbAdcIpChansConfig_0_BOARD_INITPERIPHERALS[2U] =
+static const Pdb_Adc_Ip_ChanConfigType PdbAdcIpChansConfig_0_BOARD_INITPERIPHERALS[1U] =
 {
      {
           0, /* ChnIdx */
           /* PretriggersConfig */
           {
-               0x10U, /* EnableMask */
-               0x10U, /* EnableDelayMask */
-               0x0U /* BackToBackEnableMask */
-          },
-          { 0U, 0U, 0U, 0U, 16375U, 0U, 0U, 0U } /* PretriggerDelays */
-     },
-     {
-          0, /* ChnIdx */
-          /* PretriggersConfig */
-          {
-               0x2U, /* EnableMask */
-               0x2U, /* EnableDelayMask */
+               0x12U, /* EnableMask */
+               0x12U, /* EnableDelayMask */
                0x0U /* BackToBackEnableMask */
           },
           { 0U, 12000U, 0U, 0U, 16375U, 0U, 0U, 0U } /* PretriggerDelays */
@@ -151,7 +141,7 @@ const Pdb_Adc_Ip_ConfigType PdbHwUnit_0_BOARD_INITPERIPHERALS =
 #if  (STD_ON == FEATURE_PDB_HAS_INTERCHANNEL_BACKTOBACK)
     (boolean)FALSE, /* InterChannelBackToBackEnable */
 #endif /* (STD_ON == FEATURE_PDB_HAS_INTERCHANNEL_BACKTOBACK) */
-    2U, /* NumChans */
+    1U, /* NumChans */
     PdbAdcIpChansConfig_0_BOARD_INITPERIPHERALS, /* ChanConfigs */
     NULL_PTR /* SeqErrNotification */
 };

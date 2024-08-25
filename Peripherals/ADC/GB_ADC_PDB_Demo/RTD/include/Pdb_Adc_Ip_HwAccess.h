@@ -103,7 +103,7 @@ static inline void Pdb_Adc_HwAcc_ConfigAdcPretriggers(PDB_Type * const Base, con
 {
     /* Configure all channel's pretriggers by updating all fields of the C1 register */
     uint32 C1Reg = Base->CH[ChanIdx].C1;
-    C1Reg |= ~(PDB_C1_EN_MASK | PDB_C1_TOS_MASK | PDB_C1_BB_MASK);
+    C1Reg &= ~(PDB_C1_EN_MASK | PDB_C1_TOS_MASK | PDB_C1_BB_MASK);
     C1Reg |= PDB_C1_EN(Config->EnableMask);
     C1Reg |= PDB_C1_TOS(Config->EnableDelayMask);
     C1Reg |= PDB_C1_BB(Config->BackToBackEnableMask);

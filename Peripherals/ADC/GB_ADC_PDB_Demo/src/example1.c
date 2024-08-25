@@ -99,13 +99,13 @@ int main(void)
 //	    Stop and Check Data Result Register "RE' for ADC value as well as value of "i"
 //			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
 //
-			Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
+		//	Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 			TestDelay(20000000);
 
 			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
 
 
-			Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
+	//		Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 			TestDelay(20000000);
 
 			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
