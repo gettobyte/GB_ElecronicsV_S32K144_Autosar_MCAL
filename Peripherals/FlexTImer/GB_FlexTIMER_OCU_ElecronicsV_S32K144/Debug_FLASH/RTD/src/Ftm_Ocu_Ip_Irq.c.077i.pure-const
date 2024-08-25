@@ -1,0 +1,492 @@
+
+
+ local analysis of FTM_0_CH_0_CH_1_ISR
+   scanning: _1 = Ftm_Ocu_Ip_gapcxBase[0];
+  scanning: _8 ={v} MEM[(const struct Ftm_Ocu_Ip_xRegLayoutType *)_1].STATUS;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _9 = (_Bool) _8;
+  scanning: if (_9 != 0)
+  scanning: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt (0, 0);
+  scanning: _10 ={v} MEM[(const struct Ftm_Ocu_Ip_xRegLayoutType *)_1].STATUS;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _11 = _10 >> 1;
+  scanning: _12 = (_Bool) _11;
+  scanning: if (_12 != 0)
+  scanning: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt (0, 1);
+  scanning: __asm__ __volatile__(" DSB");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: return;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt
+   scanning: _1 = (int) InstNum_12(D);
+  scanning: _2 = (int) ChIdx_13(D);
+  scanning: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15 ();
+  scanning: _3 = Ftm_Ocu_Ip_gapcxBase[_1];
+  scanning: _4 ={v} _3->CONTROLS[_2].CSC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _5 = _4 & 64;
+  scanning: _6 ={v} _3->CONTROLS[_2].CSC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _7 = _6 & 128;
+  scanning: SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15 ();
+  scanning: Ftm_Ocu_Ip_Irq_ClearChannelInterrupt (InstNum_12(D), ChIdx_13(D));
+  scanning: if (_5 != 0)
+  scanning: if (_7 != 0)
+  scanning: _8 = MEM[(const struct Ftm_Ocu_Ip_ChStateType *)&Ftm_Ocu_Ip_gaxChState][_1][_2].mCallbackFunc;
+    Indirect ref read is not const
+  scanning: if (_8 != 0B)
+  scanning: _9 = MEM[(const struct Ftm_Ocu_Ip_ChStateType *)&Ftm_Ocu_Ip_gaxChState][_1][_2].mChannelInit;
+    Indirect ref read is not const
+  scanning: if (_9 != 0)
+  scanning: _10 = MEM[(const struct Ftm_Ocu_Ip_ChStateType *)&Ftm_Ocu_Ip_gaxChState][_1][_2].mCallbackParam;
+    Indirect ref read is not const
+  scanning: _8 (_10);
+  scanning: return;
+
+
+ local analysis of Ftm_Ocu_Ip_Irq_ClearChannelInterrupt
+   scanning: if (NumChannel_4(D) <= 7)
+  scanning: if (InstNum_6(D) <= 3)
+  scanning: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10 ();
+  scanning: _1 = (int) InstNum_6(D);
+  scanning: _2 = Ftm_Ocu_Ip_gapcxBase[_1];
+  scanning: _10 = (int) NumChannel_4(D);
+  scanning: _11 ={v} _2->CONTROLS[_10].CSC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _12 = _11 & 4294967167;
+  scanning: _2->CONTROLS[_10].CSC ={v} _12;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: Ftm_Ocu_Ip_ClearChannelEventStatus (_2, NumChannel_4(D));
+  scanning: SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10 ();
+  scanning: return;
+
+
+ local analysis of Ftm_Ocu_Ip_ClearChannelEventStatus
+   scanning: _1 ={v} acpFtmBase_7(D)->STATUS;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = (int) NumChannel_8(D);
+  scanning: _3 = 1 << _2;
+  scanning: _4 = ~_3;
+  scanning: _5 = _1 & _4;
+  scanning: acpFtmBase_7(D)->STATUS ={v} _5;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+callgraph:
+
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop.0/48 (Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop) @0689f0e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed0108
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)
+  Referring: 
+  Function Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 is inline copy in Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47
+  Clone of Ftm_Ocu_Ip_Irq_ClearChannelInterrupt/37
+  Availability: local
+  Function flags: count:1073741823 (estimated locally) local optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (inlined) (1073741823 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10/44 (177167401 (estimated locally),0.17 per call) Ftm_Ocu_Ip_ClearChannelEventStatus/9 (inlined) (177167401 (estimated locally),0.17 per call) SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10/45 (177167401 (estimated locally),0.17 per call) 
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop.0/47 (Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop) @0688c620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed0448
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)Ftm_Ocu_Ip_gaxChState/41 (read)Ftm_Ocu_Ip_gaxChState/41 (read)Ftm_Ocu_Ip_gaxChState/41 (read)
+  Referring: 
+  Clone of Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt/38
+  Availability: local
+  Function flags: count:1073741823 (estimated locally) local optimize_size
+  Called by: FTM_0_CH_0_CH_1_ISR/39 (354334802 (estimated locally),0.33 per call) FTM_0_CH_0_CH_1_ISR/39 (354334802 (estimated locally),0.33 per call) 
+  Calls: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15/42 (1073741823 (estimated locally),1.00 per call) SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15/43 (1073741823 (estimated locally),1.00 per call) Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (inlined) (1073741823 (estimated locally),1.00 per call) 
+   Indirect call(93952410 (estimated locally),0.09 per call) 
+SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10/45 (SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10) @06980620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (177167401 (estimated locally),0.17 per call) 
+  Calls: 
+SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10/44 (SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10) @06980540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (177167401 (estimated locally),0.17 per call) 
+  Calls: 
+SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15/43 (SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15) @06980380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (1073741823 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15/42 (SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15) @069802a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (1073741823 (estimated locally),1.00 per call) 
+  Calls: 
+FTM_0_CH_0_CH_1_ISR/39 (FTM_0_CH_0_CH_1_ISR) @06976620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ed0188
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (354334802 (estimated locally),0.33 per call) Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (354334802 (estimated locally),0.33 per call) 
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt/38 (Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt) @06976d20
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt/37 (Ftm_Ocu_Ip_Irq_ClearChannelInterrupt) @06976a80
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Ftm_Ocu_Ip_ClearChannelEventStatus/9 (Ftm_Ocu_Ip_ClearChannelEventStatus) @0688c8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06ed0468
+  References: 
+  Referring: 
+  Function Ftm_Ocu_Ip_ClearChannelEventStatus/9 is inline copy in Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47
+  Availability: local
+  Function flags: count:177167401 (estimated locally) body local optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (inlined) (177167401 (estimated locally),0.17 per call) 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop.0/48 (Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop) @0689f0e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed0108
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)
+  Referring: 
+  Function Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 is inline copy in Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47
+  Clone of Ftm_Ocu_Ip_Irq_ClearChannelInterrupt/37
+  Availability: local
+  Function flags: count:1073741823 (estimated locally) local optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (inlined) (1073741823 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10/44 (177167401 (estimated locally),0.17 per call) Ftm_Ocu_Ip_ClearChannelEventStatus/9 (inlined) (177167401 (estimated locally),0.17 per call) SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10/45 (177167401 (estimated locally),0.17 per call) 
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop.0/47 (Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop) @0688c620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed0448
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)Ftm_Ocu_Ip_gaxChState/41 (read)Ftm_Ocu_Ip_gaxChState/41 (read)Ftm_Ocu_Ip_gaxChState/41 (read)
+  Referring: 
+  Clone of Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt/38
+  Availability: local
+  Function flags: count:1073741823 (estimated locally) local optimize_size
+  Called by: FTM_0_CH_0_CH_1_ISR/39 (354334802 (estimated locally),0.33 per call) FTM_0_CH_0_CH_1_ISR/39 (354334802 (estimated locally),0.33 per call) 
+  Calls: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15/42 (1073741823 (estimated locally),1.00 per call) SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15/43 (1073741823 (estimated locally),1.00 per call) Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (inlined) (1073741823 (estimated locally),1.00 per call) 
+   Indirect call(93952410 (estimated locally),0.09 per call) 
+FTM_0_CH_0_CH_1_ISR/39 (FTM_0_CH_0_CH_1_ISR) @06976620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ed0188
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (354334802 (estimated locally),0.33 per call) Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (354334802 (estimated locally),0.33 per call) 
+Ftm_Ocu_Ip_ClearChannelEventStatus/9 (Ftm_Ocu_Ip_ClearChannelEventStatus) @0688c8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06ed0468
+  References: 
+  Referring: 
+  Function Ftm_Ocu_Ip_ClearChannelEventStatus/9 is inline copy in Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47
+  Availability: local
+  Function flags: count:177167401 (estimated locally) body local optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (inlined) (177167401 (estimated locally),0.17 per call) 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop: malloc_bottom
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop: malloc_bottom
+FTM_0_CH_0_CH_1_ISR: malloc_bottom
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt: malloc_bottom
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt: malloc_bottom
+Ftm_Ocu_Ip_ClearChannelEventStatus: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop: malloc_bottom
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop: malloc_bottom
+FTM_0_CH_0_CH_1_ISR: malloc_bottom
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt: malloc_bottom
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt: malloc_bottom
+Ftm_Ocu_Ip_ClearChannelEventStatus: malloc_bottom
+callgraph:
+
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop.0/48 (Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop) @0689f0e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed0468
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)
+  Referring: 
+  Function Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 is inline copy in Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47
+  Clone of Ftm_Ocu_Ip_Irq_ClearChannelInterrupt/37
+  Availability: local
+  Function flags: count:1073741823 (estimated locally) local optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (inlined) (1073741823 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10/44 (177167401 (estimated locally),0.17 per call) Ftm_Ocu_Ip_ClearChannelEventStatus/9 (inlined) (177167401 (estimated locally),0.17 per call) SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10/45 (177167401 (estimated locally),0.17 per call) 
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop.0/47 (Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop) @0688c620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed01a8
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)Ftm_Ocu_Ip_gaxChState/41 (read)Ftm_Ocu_Ip_gaxChState/41 (read)Ftm_Ocu_Ip_gaxChState/41 (read)
+  Referring: 
+  Clone of Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt/38
+  Availability: local
+  Function flags: count:1073741823 (estimated locally) local optimize_size
+  Called by: FTM_0_CH_0_CH_1_ISR/39 (354334802 (estimated locally),0.33 per call) FTM_0_CH_0_CH_1_ISR/39 (354334802 (estimated locally),0.33 per call) 
+  Calls: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15/42 (1073741823 (estimated locally),1.00 per call) SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15/43 (1073741823 (estimated locally),1.00 per call) Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (inlined) (1073741823 (estimated locally),1.00 per call) 
+   Indirect call(93952410 (estimated locally),0.09 per call) 
+SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10/45 (SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10) @06980620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (177167401 (estimated locally),0.17 per call) 
+  Calls: 
+SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10/44 (SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10) @06980540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (177167401 (estimated locally),0.17 per call) 
+  Calls: 
+SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15/43 (SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15) @06980380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (1073741823 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15/42 (SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15) @069802a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (1073741823 (estimated locally),1.00 per call) 
+  Calls: 
+FTM_0_CH_0_CH_1_ISR/39 (FTM_0_CH_0_CH_1_ISR) @06976620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ed02c8
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (354334802 (estimated locally),0.33 per call) Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (354334802 (estimated locally),0.33 per call) 
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt/38 (Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt) @06976d20
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt/37 (Ftm_Ocu_Ip_Irq_ClearChannelInterrupt) @06976a80
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Ftm_Ocu_Ip_ClearChannelEventStatus/9 (Ftm_Ocu_Ip_ClearChannelEventStatus) @0688c8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06ed0368
+  References: 
+  Referring: 
+  Function Ftm_Ocu_Ip_ClearChannelEventStatus/9 is inline copy in Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47
+  Availability: local
+  Function flags: count:177167401 (estimated locally) body local optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (inlined) (177167401 (estimated locally),0.17 per call) 
+  Calls: 
+
+
+ ordered call graph: reduced
+FTM_0_CH_0_CH_1_ISR/39 (FTM_0_CH_0_CH_1_ISR) @06976620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ed02c8
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (354334802 (estimated locally),0.33 per call) Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (354334802 (estimated locally),0.33 per call) 
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop.0/47 (Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop) @0688c620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed01a8
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)Ftm_Ocu_Ip_gaxChState/41 (read)Ftm_Ocu_Ip_gaxChState/41 (read)Ftm_Ocu_Ip_gaxChState/41 (read)
+  Referring: 
+  Clone of Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt/38
+  Availability: local
+  Function flags: count:1073741823 (estimated locally) local optimize_size
+  Called by: FTM_0_CH_0_CH_1_ISR/39 (354334802 (estimated locally),0.33 per call) FTM_0_CH_0_CH_1_ISR/39 (354334802 (estimated locally),0.33 per call) 
+  Calls: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15/42 (1073741823 (estimated locally),1.00 per call) SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15/43 (1073741823 (estimated locally),1.00 per call) Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (inlined) (1073741823 (estimated locally),1.00 per call) 
+   Indirect call(93952410 (estimated locally),0.09 per call) 
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop.0/48 (Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop) @0689f0e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed0468
+  References: Ftm_Ocu_Ip_gapcxBase/40 (read)
+  Referring: 
+  Function Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 is inline copy in Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47
+  Clone of Ftm_Ocu_Ip_Irq_ClearChannelInterrupt/37
+  Availability: local
+  Function flags: count:1073741823 (estimated locally) local optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47 (inlined) (1073741823 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10/44 (177167401 (estimated locally),0.17 per call) Ftm_Ocu_Ip_ClearChannelEventStatus/9 (inlined) (177167401 (estimated locally),0.17 per call) SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10/45 (177167401 (estimated locally),0.17 per call) 
+Ftm_Ocu_Ip_ClearChannelEventStatus/9 (Ftm_Ocu_Ip_ClearChannelEventStatus) @0688c8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06ed0368
+  References: 
+  Referring: 
+  Function Ftm_Ocu_Ip_ClearChannelEventStatus/9 is inline copy in Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt.constprop/47
+  Availability: local
+  Function flags: count:177167401 (estimated locally) body local optimize_size
+  Called by: Ftm_Ocu_Ip_Irq_ClearChannelInterrupt.constprop/48 (inlined) (177167401 (estimated locally),0.17 per call) 
+  Calls: 
+
+Function found not to call free: Ftm_Ocu_Ip_ClearChannelEventStatus
+FTM_0_CH_0_CH_1_ISR ()
+{
+  struct Ftm_Ocu_Ip_xRegLayoutType * _1;
+  long unsigned int _8;
+  _Bool _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  _Bool _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG moduleIndex => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG channelIndex => 0
+  # DEBUG BEGIN_STMT
+  _1 = Ftm_Ocu_Ip_gapcxBase[0];
+  # DEBUG acpcFtmBase => _1
+  # DEBUG NumChannel => 0
+  # DEBUG INLINE_ENTRY Ftm_Ocu_Ip_GetChannelEventStatus
+  # DEBUG BEGIN_STMT
+  _8 ={v} MEM[(const struct Ftm_Ocu_Ip_xRegLayoutType *)_1].STATUS;
+  _9 = (_Bool) _8;
+  # DEBUG acpcFtmBase => NULL
+  # DEBUG NumChannel => NULL
+  if (_9 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt (0, 0);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG channelIndex => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG acpcFtmBase => _1
+  # DEBUG NumChannel => 1
+  # DEBUG INLINE_ENTRY Ftm_Ocu_Ip_GetChannelEventStatus
+  # DEBUG BEGIN_STMT
+  _10 ={v} MEM[(const struct Ftm_Ocu_Ip_xRegLayoutType *)_1].STATUS;
+  _11 = _10 >> 1;
+  _12 = (_Bool) _11;
+  # DEBUG acpcFtmBase => NULL
+  # DEBUG NumChannel => NULL
+  if (_12 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt (0, 1);
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
+Ftm_Ocu_Ip_ClearChannelEventStatus (struct Ftm_Ocu_Ip_xRegLayoutType * const acpFtmBase, uint8 NumChannel)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} acpFtmBase_7(D)->STATUS;
+  _2 = (int) NumChannel_8(D);
+  _3 = 1 << _2;
+  _4 = ~_3;
+  _5 = _1 & _4;
+  acpFtmBase_7(D)->STATUS ={v} _5;
+  return;
+
+}
+
+

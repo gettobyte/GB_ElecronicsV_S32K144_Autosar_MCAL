@@ -1,0 +1,99 @@
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+  <unnamed type> _1;
+  _Bool Toggle_Led.2_2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus_9 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_9
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  clockStatus_20 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_20
+
+  <bb 4> :
+  # clockStatus_3 = PHI <clockStatus_9(2), clockStatus_20(3)>
+  # DEBUG clockStatus => clockStatus_3
+  # DEBUG BEGIN_STMT
+  if (clockStatus_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_EnableIrq (99);
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_InstallHandler (99, FTM_0_CH_0_CH_1_ISR, 0B);
+  # DEBUG BEGIN_STMT
+  Ftm_Ocu_Ip_Init (&Ftm_Ocu_Ip_ModuleCfgPB_BOARD_INITPERIPHERALS);
+  # DEBUG BEGIN_STMT
+  Ftm_Ocu_Ip_StartChannel (0, 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Ocu_Ip_EnableNotification (0, 0);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Toggle_Led.2_2 ={v} Toggle_Led;
+  if (Toggle_Led.2_2 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Toggle_Led ={v} 0;
+  goto <bb 7>; [INV]
+
+}
+
+
+OcuNotification ()
+{
+  long unsigned int count.0_1;
+  long unsigned int count.1_2;
+  long unsigned int _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  count.0_1 = count;
+  count.1_2 = count.0_1;
+  _3 = count.1_2 + 1;
+  count = _3;
+  if (count.1_2 > 13999)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Toggle_Led ={v} 1;
+  # DEBUG BEGIN_STMT
+  count = 0;
+
+  <bb 4> :
+  return;
+
+}
+
+

@@ -1,0 +1,207 @@
+FTM_0_CH_0_CH_1_ISR ()
+{
+  struct Ftm_Ocu_Ip_xRegLayoutType * _1;
+  long unsigned int _8;
+  _Bool _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  _Bool _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG moduleIndex => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG channelIndex => 0
+  # DEBUG BEGIN_STMT
+  _1 = Ftm_Ocu_Ip_gapcxBase[0];
+  # DEBUG acpcFtmBase => _1
+  # DEBUG NumChannel => 0
+  # DEBUG INLINE_ENTRY Ftm_Ocu_Ip_GetChannelEventStatus
+  # DEBUG BEGIN_STMT
+  _8 ={v} MEM[(const struct Ftm_Ocu_Ip_xRegLayoutType *)_1].STATUS;
+  _9 = (_Bool) _8;
+  # DEBUG acpcFtmBase => NULL
+  # DEBUG NumChannel => NULL
+  if (_9 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt (0, 0);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG channelIndex => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG acpcFtmBase => _1
+  # DEBUG NumChannel => 1
+  # DEBUG INLINE_ENTRY Ftm_Ocu_Ip_GetChannelEventStatus
+  # DEBUG BEGIN_STMT
+  _10 ={v} MEM[(const struct Ftm_Ocu_Ip_xRegLayoutType *)_1].STATUS;
+  _11 = _10 >> 1;
+  _12 = (_Bool) _11;
+  # DEBUG acpcFtmBase => NULL
+  # DEBUG NumChannel => NULL
+  if (_12 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt (0, 1);
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
+Ftm_Ocu_Ip_Irq_ProcessChannelInterrupt (uint8 InstNum, uint8 ChIdx)
+{
+  int _1;
+  int _2;
+  struct Ftm_Ocu_Ip_xRegLayoutType * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  void (*<T4a5>) (uint16) _8;
+  _Bool _9;
+  short unsigned int _10;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) InstNum_12(D);
+  _2 = (int) ChIdx_13(D);
+  # DEBUG D#1 => &Ftm_Ocu_Ip_gaxChState[_1][_2]
+  # DEBUG pChannelState => D#1
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_15 ();
+  # DEBUG BEGIN_STMT
+  _3 = Ftm_Ocu_Ip_gapcxBase[_1];
+  _4 ={v} _3->CONTROLS[_2].CSC;
+  _5 = _4 & 64;
+  # DEBUG IsChEvEnabled => _5 != 0
+  # DEBUG BEGIN_STMT
+  _6 ={v} _3->CONTROLS[_2].CSC;
+  _7 = _6 & 128;
+  # DEBUG HasChEvOccurred => _7 != 0
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_15 ();
+  # DEBUG BEGIN_STMT
+  Ftm_Ocu_Ip_Irq_ClearChannelInterrupt (InstNum_12(D), ChIdx_13(D));
+  # DEBUG BEGIN_STMT
+  if (_5 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 3> [local count: 536870911]:
+  if (_7 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  _8 = MEM[(const struct Ftm_Ocu_Ip_ChStateType *)&Ftm_Ocu_Ip_gaxChState][_1][_2].mCallbackFunc;
+  if (_8 != 0B)
+    goto <bb 5>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 5> [local count: 187904819]:
+  # DEBUG BEGIN_STMT
+  _9 = MEM[(const struct Ftm_Ocu_Ip_ChStateType *)&Ftm_Ocu_Ip_gaxChState][_1][_2].mChannelInit;
+  if (_9 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 93952410]:
+  # DEBUG BEGIN_STMT
+  _10 = MEM[(const struct Ftm_Ocu_Ip_ChStateType *)&Ftm_Ocu_Ip_gaxChState][_1][_2].mCallbackParam;
+  _8 (_10);
+
+  <bb 7> [local count: 1073741824]:
+  return;
+
+}
+
+
+Ftm_Ocu_Ip_Irq_ClearChannelInterrupt (uint8 InstNum, uint8 NumChannel)
+{
+  int _1;
+  struct Ftm_Ocu_Ip_xRegLayoutType * _2;
+  int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (NumChannel_4(D) <= 7)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  if (InstNum_6(D) <= 3)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 4> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Ocu_OCU_EXCLUSIVE_AREA_10 ();
+  # DEBUG BEGIN_STMT
+  _1 = (int) InstNum_6(D);
+  _2 = Ftm_Ocu_Ip_gapcxBase[_1];
+  # DEBUG acpFtmBase => _2
+  # DEBUG NumChannel => NumChannel_4(D)
+  # DEBUG INLINE_ENTRY Ftm_Ocu_Ip_ClearChannelEventFlag
+  # DEBUG BEGIN_STMT
+  _10 = (int) NumChannel_4(D);
+  _11 ={v} _2->CONTROLS[_10].CSC;
+  _12 = _11 & 4294967167;
+  _2->CONTROLS[_10].CSC ={v} _12;
+  # DEBUG acpFtmBase => NULL
+  # DEBUG NumChannel => NULL
+  # DEBUG BEGIN_STMT
+  Ftm_Ocu_Ip_ClearChannelEventStatus (_2, NumChannel_4(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Ocu_OCU_EXCLUSIVE_AREA_10 ();
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+
+Ftm_Ocu_Ip_ClearChannelEventStatus (struct Ftm_Ocu_Ip_xRegLayoutType * const acpFtmBase, uint8 NumChannel)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} acpFtmBase_7(D)->STATUS;
+  _2 = (int) NumChannel_8(D);
+  _3 = 1 << _2;
+  _4 = ~_3;
+  _5 = _1 & _4;
+  acpFtmBase_7(D)->STATUS ={v} _5;
+  return;
+
+}
+
+

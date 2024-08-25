@@ -1,0 +1,999 @@
+SetSimTraceSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetSimTraceSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSimTraceSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct SIM_Type * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct SIM_Type * _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_8(D)->value;
+  _2 = selectorEntryPCS_hardwareValue[_1];
+  selectorValue_9 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_9
+  # DEBUG BEGIN_STMT
+  _3 = 1074036736B;
+  regValue_10 ={v} _3->CHIPCTL;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  regValue_11 = regValue_10 & 4294963199;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  _4 = selectorValue_9 << 12;
+  _5 = _4 & 4096;
+  regValue_12 = regValue_11 | _5;
+  # DEBUG regValue => regValue_12
+  # DEBUG BEGIN_STMT
+  _6 = 1074036736B;
+  _6->CHIPCTL ={v} regValue_12;
+  return;
+
+}
+
+
+ResetSimTraceSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetSimTraceSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetSimTraceSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  unsigned char _1;
+  struct SIM_Type * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  struct SIM_Type * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntryPCS_hardwareValue[28];
+  selectorValue_7 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = 1074036736B;
+  regValue_8 ={v} _2->CHIPCTL;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  regValue_9 = regValue_8 & 4294963199;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  _3 = selectorValue_7 << 12;
+  _4 = _3 & 4096;
+  regValue_10 = regValue_9 | _4;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  _5 = 1074036736B;
+  _5->CHIPCTL ={v} regValue_10;
+  return;
+
+}
+
+
+SetPccPcsSelect (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetPccPcsSelect_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetPccPcsSelect_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 pccIndex;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  <unnamed type> _3;
+  unsigned char _4;
+  struct PCC_Type * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  struct PCC_Type * _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_10(D)->name;
+  _2 = clockFeatures[_1][4];
+  pccIndex_11 = (uint32) _2;
+  # DEBUG pccIndex => pccIndex_11
+  # DEBUG BEGIN_STMT
+  _3 = config_10(D)->value;
+  _4 = selectorEntryPCS_hardwareValue[_3];
+  selectorValue_12 = (uint32) _4;
+  # DEBUG selectorValue => selectorValue_12
+  # DEBUG BEGIN_STMT
+  _5 = 1074155520B;
+  regValue_13 ={v} _5->PCCn[pccIndex_11];
+  # DEBUG regValue => regValue_13
+  # DEBUG BEGIN_STMT
+  regValue_14 = regValue_13 & 4177526783;
+  # DEBUG regValue => regValue_14
+  # DEBUG BEGIN_STMT
+  _6 = selectorValue_12 << 24;
+  _7 = _6 & 117440512;
+  regValue_15 = regValue_14 | _7;
+  # DEBUG regValue => regValue_15
+  # DEBUG BEGIN_STMT
+  _8 = 1074155520B;
+  _8->PCCn[pccIndex_11] ={v} regValue_15;
+  return;
+
+}
+
+
+ResetPccPcsSelect (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetPccPcsSelect_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetPccPcsSelect_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 pccIndex;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct PCC_Type * _3;
+  struct PCC_Type * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_6(D)->name;
+  _2 = clockFeatures[_1][4];
+  pccIndex_7 = (uint32) _2;
+  # DEBUG pccIndex => pccIndex_7
+  # DEBUG BEGIN_STMT
+  _3 = 1074155520B;
+  regValue_8 ={v} _3->PCCn[pccIndex_7];
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  regValue_9 = regValue_8 & 3103784959;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  _4 = 1074155520B;
+  _4->PCCn[pccIndex_7] ={v} regValue_9;
+  return;
+
+}
+
+
+SetSimClkoutSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetSimClkoutSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSimClkoutSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct SIM_Type * _3;
+  long unsigned int _4;
+  struct SIM_Type * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_7(D)->value;
+  _2 = selectorEntry_hardwareValue[_1];
+  selectorValue_8 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_8
+  # DEBUG BEGIN_STMT
+  _3 = 1074036736B;
+  regValue_9 ={v} _3->CHIPCTL;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  regValue_10 = regValue_9 & 4294967055;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  _4 = selectorValue_8 << 4;
+  regValue_11 = regValue_10 | _4;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  _5 = 1074036736B;
+  _5->CHIPCTL ={v} regValue_11;
+  return;
+
+}
+
+
+ResetSimClkoutSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetSimClkoutSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetSimClkoutSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 regValue;
+  struct SIM_Type * _1;
+  struct SIM_Type * _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074036736B;
+  regValue_4 ={v} _1->CHIPCTL;
+  # DEBUG regValue => regValue_4
+  # DEBUG BEGIN_STMT
+  regValue_5 = regValue_4 & 4294965007;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  _2 = 1074036736B;
+  _2->CHIPCTL ={v} regValue_5;
+  return;
+
+}
+
+
+SetSimFtmoptSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetSimFtmoptSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSimFtmoptSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 instance;
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  <unnamed type> _3;
+  unsigned char _4;
+  struct SIM_Type * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  struct SIM_Type * _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_25(D)->value;
+  _2 = selectorEntry_hardwareValue[_1];
+  selectorValue_26 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_26
+  # DEBUG BEGIN_STMT
+  _3 = config_25(D)->name;
+  _4 = clockFeatures[_3][0];
+  instance_27 = (uint32) _4;
+  # DEBUG instance => instance_27
+  # DEBUG BEGIN_STMT
+  _5 = 1074036736B;
+  regValue_28 ={v} _5->FTMOPT0;
+  # DEBUG regValue => regValue_28
+  # DEBUG BEGIN_STMT
+  if (instance_27 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _6 = instance_27 << 1;
+  _7 = _6 + 24;
+  _8 = 3 << _7;
+  _9 = ~_8;
+  regValue_31 = regValue_28 & _9;
+  # DEBUG regValue => regValue_31
+  # DEBUG BEGIN_STMT
+  _10 = instance_27 << 1;
+  _11 = _10 + 24;
+  _12 = selectorValue_26 << _11;
+  regValue_32 = regValue_31 | _12;
+  # DEBUG regValue => regValue_32
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _13 = instance_27 + 4294967292;
+  _14 = _13 << 1;
+  _15 = _14 + 16;
+  _16 = 3 << _15;
+  _17 = ~_16;
+  regValue_29 = regValue_28 & _17;
+  # DEBUG regValue => regValue_29
+  # DEBUG BEGIN_STMT
+  _18 = instance_27 + 4294967292;
+  _19 = _18 << 1;
+  _20 = _19 + 16;
+  _21 = selectorValue_26 << _20;
+  regValue_30 = regValue_29 | _21;
+  # DEBUG regValue => regValue_30
+
+  <bb 5> :
+  # regValue_23 = PHI <regValue_32(3), regValue_30(4)>
+  # DEBUG regValue => regValue_23
+  # DEBUG BEGIN_STMT
+  _22 = 1074036736B;
+  _22->FTMOPT0 ={v} regValue_23;
+  return;
+
+}
+
+
+ResetSimFtmoptSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetSimFtmoptSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetSimFtmoptSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 instance;
+  uint32 selectorValue;
+  uint32 regValue;
+  unsigned char _1;
+  <unnamed type> _2;
+  unsigned char _3;
+  struct SIM_Type * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  struct SIM_Type * _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntry_hardwareValue[5];
+  selectorValue_24 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_24
+  # DEBUG BEGIN_STMT
+  _2 = config_25(D)->name;
+  _3 = clockFeatures[_2][0];
+  instance_26 = (uint32) _3;
+  # DEBUG instance => instance_26
+  # DEBUG BEGIN_STMT
+  _4 = 1074036736B;
+  regValue_27 ={v} _4->FTMOPT0;
+  # DEBUG regValue => regValue_27
+  # DEBUG BEGIN_STMT
+  if (instance_26 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _5 = instance_26 << 1;
+  _6 = _5 + 24;
+  _7 = 3 << _6;
+  _8 = ~_7;
+  regValue_30 = regValue_27 & _8;
+  # DEBUG regValue => regValue_30
+  # DEBUG BEGIN_STMT
+  _9 = instance_26 << 1;
+  _10 = _9 + 24;
+  _11 = selectorValue_24 << _10;
+  regValue_31 = regValue_30 | _11;
+  # DEBUG regValue => regValue_31
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _12 = instance_26 + 4294967292;
+  _13 = _12 << 1;
+  _14 = _13 + 16;
+  _15 = 3 << _14;
+  _16 = ~_15;
+  regValue_28 = regValue_27 & _16;
+  # DEBUG regValue => regValue_28
+  # DEBUG BEGIN_STMT
+  _17 = instance_26 + 4294967292;
+  _18 = _17 << 1;
+  _19 = _18 + 16;
+  _20 = selectorValue_24 << _19;
+  regValue_29 = regValue_28 | _20;
+  # DEBUG regValue => regValue_29
+
+  <bb 5> :
+  # regValue_22 = PHI <regValue_31(3), regValue_29(4)>
+  # DEBUG regValue => regValue_22
+  # DEBUG BEGIN_STMT
+  _21 = 1074036736B;
+  _21->FTMOPT0 ={v} regValue_22;
+  return;
+
+}
+
+
+SetScgClkoutSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetScgClkoutSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetScgClkoutSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct SCG_Type * _3;
+  long unsigned int _4;
+  struct SCG_Type * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_7(D)->value;
+  _2 = selectorEntrySCS_hardwareValue[_1];
+  selectorValue_8 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_8
+  # DEBUG BEGIN_STMT
+  _3 = 1074151424B;
+  regValue_9 ={v} _3->CLKOUTCNFG;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  regValue_10 = regValue_9 & 4043309055;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  _4 = selectorValue_8 << 24;
+  regValue_11 = regValue_10 | _4;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  _5 = 1074151424B;
+  _5->CLKOUTCNFG ={v} regValue_11;
+  return;
+
+}
+
+
+ResetScgClkoutSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetScgClkoutSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetScgClkoutSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  unsigned char _1;
+  struct SCG_Type * _2;
+  long unsigned int _3;
+  struct SCG_Type * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntrySCS_hardwareValue[5];
+  selectorValue_6 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = 1074151424B;
+  regValue_7 ={v} _2->CLKOUTCNFG;
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  regValue_8 = regValue_7 & 4043309055;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  _3 = selectorValue_6 << 24;
+  regValue_9 = regValue_8 | _3;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  _4 = 1074151424B;
+  _4->CLKOUTCNFG ={v} regValue_9;
+  return;
+
+}
+
+
+SetSimLpoSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetSimLpoSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSimLpoSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct SIM_Type * _3;
+  long unsigned int _4;
+  struct SIM_Type * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_7(D)->value;
+  _2 = selectorEntryPCS_hardwareValue[_1];
+  selectorValue_8 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = 1074036736B;
+  regValue_9 ={v} _3->LPOCLKS;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  regValue_10 = regValue_9 & 4294967283;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  _4 = selectorValue_8 << 2;
+  regValue_11 = regValue_10 | _4;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  _5 = 1074036736B;
+  _5->LPOCLKS ={v} regValue_11;
+  return;
+
+}
+
+
+ResetSimLpoSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetSimLpoSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetSimLpoSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  unsigned char _1;
+  struct SIM_Type * _2;
+  long unsigned int _3;
+  struct SIM_Type * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntryPCS_hardwareValue[1];
+  selectorValue_6 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = 1074036736B;
+  regValue_7 ={v} _2->LPOCLKS;
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  regValue_8 = regValue_7 & 4294967283;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  _3 = selectorValue_6 << 2;
+  regValue_9 = regValue_8 | _3;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  _4 = 1074036736B;
+  _4->LPOCLKS ={v} regValue_9;
+  return;
+
+}
+
+
+SetSimRtcSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetSimRtcSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSimRtcSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct SIM_Type * _3;
+  long unsigned int _4;
+  struct SIM_Type * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_7(D)->value;
+  _2 = selectorEntry_hardwareValue[_1];
+  selectorValue_8 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_8
+  # DEBUG BEGIN_STMT
+  _3 = 1074036736B;
+  regValue_9 ={v} _3->LPOCLKS;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  regValue_10 = regValue_9 & 4294967247;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  _4 = selectorValue_8 << 4;
+  regValue_11 = regValue_10 | _4;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  _5 = 1074036736B;
+  _5->LPOCLKS ={v} regValue_11;
+  return;
+
+}
+
+
+ResetSimRtcSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetSimRtcSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetSimRtcSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  unsigned char _1;
+  struct SIM_Type * _2;
+  long unsigned int _3;
+  struct SIM_Type * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntry_hardwareValue[14];
+  selectorValue_6 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = 1074036736B;
+  regValue_7 ={v} _2->LPOCLKS;
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  regValue_8 = regValue_7 & 4294967247;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  _3 = selectorValue_6 << 4;
+  regValue_9 = regValue_8 | _3;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  _4 = 1074036736B;
+  _4->LPOCLKS ={v} regValue_9;
+  return;
+
+}
+
+
+SetScgHsrunSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetScgHsrunSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetScgHsrunSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct SCG_Type * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct SCG_Type * _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_8(D)->value;
+  _2 = selectorEntrySCS_hardwareValue[_1];
+  selectorValue_9 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_9
+  # DEBUG BEGIN_STMT
+  _3 = 1074151424B;
+  regValue_10 ={v} _3->HCCR;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  regValue_11 = regValue_10 & 4043309055;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  _4 = selectorValue_9 << 24;
+  _5 = _4 & 251658240;
+  regValue_12 = regValue_11 | _5;
+  # DEBUG regValue => regValue_12
+  # DEBUG BEGIN_STMT
+  _6 = 1074151424B;
+  _6->HCCR ={v} regValue_12;
+  return;
+
+}
+
+
+ResetScgHsrunSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetScgHsrunSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetScgHsrunSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  unsigned char _1;
+  struct SCG_Type * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  struct SCG_Type * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntrySCS_hardwareValue[5];
+  selectorValue_7 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = 1074151424B;
+  regValue_8 ={v} _2->HCCR;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  regValue_9 = regValue_8 & 4043309055;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  _3 = selectorValue_7 << 24;
+  _4 = _3 & 251658240;
+  regValue_10 = regValue_9 | _4;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  _5 = 1074151424B;
+  _5->HCCR ={v} regValue_10;
+  return;
+
+}
+
+
+SetScgVlprSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetScgVlprSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetScgVlprSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct SCG_Type * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct SCG_Type * _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_8(D)->value;
+  _2 = selectorEntrySCS_hardwareValue[_1];
+  selectorValue_9 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_9
+  # DEBUG BEGIN_STMT
+  _3 = 1074151424B;
+  regValue_10 ={v} _3->VCCR;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  regValue_11 = regValue_10 & 4043309055;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  _4 = selectorValue_9 << 24;
+  _5 = _4 & 251658240;
+  regValue_12 = regValue_11 | _5;
+  # DEBUG regValue => regValue_12
+  # DEBUG BEGIN_STMT
+  _6 = 1074151424B;
+  _6->VCCR ={v} regValue_12;
+  return;
+
+}
+
+
+SetScgRunSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetScgRunSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetScgRunSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct SCG_Type * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct SCG_Type * _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_8(D)->value;
+  _2 = selectorEntrySCS_hardwareValue[_1];
+  selectorValue_9 = (uint32) _2;
+  # DEBUG selectorValue => selectorValue_9
+  # DEBUG BEGIN_STMT
+  _3 = 1074151424B;
+  regValue_10 ={v} _3->RCCR;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  regValue_11 = regValue_10 & 4043309055;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  _4 = selectorValue_9 << 24;
+  _5 = _4 & 251658240;
+  regValue_12 = regValue_11 | _5;
+  # DEBUG regValue => regValue_12
+  # DEBUG BEGIN_STMT
+  _6 = 1074151424B;
+  _6->RCCR ={v} regValue_12;
+  return;
+
+}
+
+
+ResetScgRunSel (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetScgRunSel_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetScgRunSel_TrustedCall (const struct Clock_Ip_SelectorConfigType * config)
+{
+  uint32 selectorValue;
+  uint32 regValue;
+  unsigned char _1;
+  struct SCG_Type * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  struct SCG_Type * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = selectorEntrySCS_hardwareValue[5];
+  selectorValue_7 = (uint32) _1;
+  # DEBUG selectorValue => selectorValue_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = 1074151424B;
+  regValue_8 ={v} _2->RCCR;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  regValue_9 = regValue_8 & 4043309055;
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  _3 = selectorValue_7 << 24;
+  _4 = _3 & 251658240;
+  regValue_10 = regValue_9 | _4;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  _5 = 1074151424B;
+  _5->RCCR ={v} regValue_10;
+  return;
+
+}
+
+
+Callback_SelectorEmpty (const struct Clock_Ip_SelectorConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
