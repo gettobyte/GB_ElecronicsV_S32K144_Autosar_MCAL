@@ -27,13 +27,6 @@ extern "C" {
 #include "IntCtrl_Ip.h"
 #include "Adc_Ip.h"
 #include "Port.h"
-/*==================================================================================================
-*                                      DEFINES AND MACROS
-==================================================================================================*/
-#define ADC_CONTROL_CH         (0U)
-#define ADC_BANDGAP            (819U) /* Vbandgap ~ 1.15V at 5.0V reference */
-#define ADC_TOLERANCE(x,y)     ((x > y) ? (x - y) : (y - x))
-#define RESULT_TOLERANCE       (150U)
 
 /*==================================================================================================
 *                                      EXTERN DECLARATIONS
