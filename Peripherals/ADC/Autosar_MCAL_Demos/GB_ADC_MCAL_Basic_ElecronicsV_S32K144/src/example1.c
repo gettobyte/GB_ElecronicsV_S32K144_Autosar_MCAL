@@ -31,9 +31,11 @@ int main(void)
 	 Std_ReturnType StdReturn = E_NOT_OK;
 
 	 Clock_Ip_StatusType clockStatus;
-	    Adc_Ip_StatusType adcStatus;
+	 Adc_Ip_StatusType adcStatus;
+	 boolean Gb_ADC_Conversion_Status;
+	 boolean bLocalStatus = TRUE;
+	 volatile boolean bStatus = TRUE;
 
-	    boolean Gb_ADC_Conversion_Status;
 	    /* Write your code here */
 	    clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB[0]);
 	    while (clockStatus != CLOCK_IP_SUCCESS)
@@ -54,14 +56,7 @@ int main(void)
 
 
     Adc_CalibrationStatusType CalibStatus;
-    boolean bLocalStatus = TRUE;
-    volatile boolean bStatus = TRUE;
-
-#if (ADC_PRECOMPILE_SUPPORT == STD_ON)
-    Adc_Init(NULL_PTR);
-#else
     Adc_Init(&Adc_Config_BOARD_INITPERIPHERALS);
-#endif /* ADC_PRECOMPILE_SUPPORT == STD_ON */
 
     /*******************************************************************************************************/
         Adc_Calibrate(AdcHwUnit_0, &CalibStatus);
@@ -70,35 +65,13 @@ int main(void)
             bStatus = FALSE;
         }
 
-
-      //  Adc_SetupResultBuffer(AdcGroup_0, ResultBuffer);
-//        Adc_StartGroupConversion(AdcGroup_0);
-//
-//
-//        StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
-//
-//        Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 1, Result);
-
     for(;;)
     {
-    //	   Adc_SetupResultBuffer(AdcGroup_0, ResultBuffer);
-
     	Adc_StartGroupConversion(AdcGroup_0);
 
-    	       // Adc_Ipw_CheckValidConversion //
-//    	        Adc_ReadRawData
-    	        // Adc_SetChannel()
+    	Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
 
-    	     Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
-
-//    	     Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 1, Result);
-
-
-    	        // Adc_SetChannel
-
-//    	        StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
-
-
+  	    //StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
     }
 }
 
