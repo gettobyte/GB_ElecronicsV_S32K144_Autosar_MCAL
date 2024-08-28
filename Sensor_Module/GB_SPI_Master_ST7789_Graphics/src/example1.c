@@ -1,26 +1,3 @@
-/*==================================================================================================
-*   Project              : RTD AUTOSAR 4.4
-*   Platform             : CORTEXM
-*   Peripheral           : S32K14X
-*   Dependencies         : none
-*
-*   Autosar Version      : 4.4.0
-*   Autosar Revision     : ASR_REL_4_4_REV_0000
-*   Autosar Conf.Variant :
-*   SW Version           : 1.0.0
-*   Build Version        : S32K1_RTD_1_0_0_D2108_ASR_REL_4_4_REV_0000_20210810
-*
-*   (c) Copyright 2020-2021 NXP Semiconductors
-*   All Rights Reserved.
-*
-*   NXP Confidential. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms. By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms. If you do not agree to be
-*   bound by the applicable license terms, then you may not retain, install,
-*   activate or otherwise use the software.
-==================================================================================================*/
 
 /**
 *   @file main.c
@@ -45,16 +22,6 @@ uint8 txBuffer[1] = {0x36};
 uint8 rxBuffer[1];
 uint16 numberOfBytes = 1u;
 uint32 timeOut = 1000000u;
-
-#define gb_ST7789_DC_pin_low()  Dio_WriteChannel(DioConf_DioChannel_GB_ST7789_DC, 0);
-#define gb_ST7789_DC_pin_high() Dio_WriteChannel(DioConf_DioChannel_GB_ST7789_DC, 1);
-
-#define gb_ST7789_CS_pin_low()  Dio_WriteChannel(DioConf_DioChannel_GB_ST7789_CS, 0);
-#define gb_ST7789_CS_pin_high() Dio_WriteChannel(DioConf_DioChannel_GB_ST7789_CS, 1);
-
-#define gb_ST7789_Reset_pin_low()  Dio_WriteChannel(DioConf_DioChannel_GB_ST7789_Reset, 0);
-#define gb_ST7789_Reset_pin_high() Dio_WriteChannel(DioConf_DioChannel_GB_ST7789_Reset, 1);
-
 
 /*!
   \brief The main function for the project.
@@ -104,17 +71,40 @@ int main(void)
 
 	TestDelay(700000);
 	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
-	ST7789_Fill_Color(ST77XX_BLACK);
+	ST7789_Fill_Color(ST77XX_RED);
 	TestDelay(700000);
-
-	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
-    ST7789_Fill_Color(ST77XX_RED);
-
-    TestDelay(700000);
-
 
     for(;;)
     {
+    		ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+    	    ST7789_Fill_Color(ST77XX_BLACK);
+
+    	    TestDelay(700000);
+
+    	    ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+
+    	    ST7789_WriteString(0, 80, "Looking for          ", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+    	    ST7789_WriteString(0, 106, "Industrial", Font_16x26,ST77XX_WHITE, ST77XX_BLACK);
+
+    	    ST7789_WriteString(0, 132, "Hardware kits", Font_16x26,ST77XX_WHITE, ST77XX_BLACK);
+
+    	    ST7789_WriteString(0, 158, "Based on", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+    	    ST7789_WriteString(0, 158+26, "Industrial ", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+    	    ST7789_WriteString(0, 210, "MCU's/MPU's/ASIC's", Font_16x26, ST77XX_WHITE, ST77XX_BLACK);
+
+    	    ST7789_WriteString(0, 236, "IC's", Font_16x26, ST77XX_WHITE, ST77XX_BLACK);
+
+    	    ST7789_WriteString(0, 262, "Like of :#NXP ", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+    	    ST7789_WriteString(0, 288, "#TI,#STM,#NRF and Etc", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+    	    ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+
+
+    	    TestDelay(700000);
 
     }
     return exit_code;
