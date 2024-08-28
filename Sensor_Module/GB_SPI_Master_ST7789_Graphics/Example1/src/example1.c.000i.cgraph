@@ -1,0 +1,899 @@
+Trivially needed symbols: main TestDelay timeOut numberOfBytes rxBuffer txBuffer exit_code
+Trivially needed symbols: DelayTimer
+
+
+Initial Symbol table:
+
+ST7789_Fill_Color/18 (ST7789_Fill_Color) @0699b460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+ST7789_SetAddressWindow/17 (ST7789_SetAddressWindow) @0699b380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+GB_ST7789_Init/16 (GB_ST7789_Init) @0699b2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals) @0699a1b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpspi_Ip_Init/14 (Lpspi_Ip_Init) @0699b1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Port_Init/13 (Port_Init) @0699b0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @0699b000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06995540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @0699a000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)main/7 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06995ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+DelayTimer/8 (DelayTimer) @06993af8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @069959a0
+  References: 
+  Referring: TestDelay/6 (read)TestDelay/6 (write)TestDelay/6 (read)TestDelay/6 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/7 (main) @069959a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @01733ea0
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 GB_ST7789_Init/16 Lpspi_Ip_Init/14 Port_Init/13 Clock_Ip_DistributePll/12 Clock_Ip_GetPllStatus/11 Clock_Ip_Init/9 Clock_Ip_Init/9 
+TestDelay/6 (TestDelay) @06995700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @069959a0
+  References: DelayTimer/8 (read)DelayTimer/8 (write)DelayTimer/8 (read)DelayTimer/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/7 main/7 main/7 
+  Calls: 
+timeOut/5 (timeOut) @06993360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06995700
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+numberOfBytes/4 (numberOfBytes) @069932d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06993360
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+rxBuffer/3 (rxBuffer) @06993240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @069932d0
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+txBuffer/2 (txBuffer) @069931b0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06993240
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+exit_code/1 (exit_code) @06993120
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @069931b0
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+DevAssert/0 (DevAssert) @06919d20
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+
+Removing unused symbols: DevAssert
+
+Reclaimed Symbol table:
+
+ST7789_Fill_Color/18 (ST7789_Fill_Color) @0699b460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+ST7789_SetAddressWindow/17 (ST7789_SetAddressWindow) @0699b380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+GB_ST7789_Init/16 (GB_ST7789_Init) @0699b2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals) @0699a1b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpspi_Ip_Init/14 (Lpspi_Ip_Init) @0699b1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Port_Init/13 (Port_Init) @0699b0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @0699b000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06995540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @0699a000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)main/7 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06995ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+DelayTimer/8 (DelayTimer) @06993af8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/6 (read)TestDelay/6 (write)TestDelay/6 (read)TestDelay/6 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/7 (main) @069959a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 GB_ST7789_Init/16 Lpspi_Ip_Init/14 Port_Init/13 Clock_Ip_DistributePll/12 Clock_Ip_GetPllStatus/11 Clock_Ip_Init/9 Clock_Ip_Init/9 
+TestDelay/6 (TestDelay) @06995700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer/8 (read)DelayTimer/8 (write)DelayTimer/8 (read)DelayTimer/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/7 main/7 main/7 
+  Calls: 
+timeOut/5 (timeOut) @06993360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+numberOfBytes/4 (numberOfBytes) @069932d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+rxBuffer/3 (rxBuffer) @06993240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+txBuffer/2 (txBuffer) @069931b0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+exit_code/1 (exit_code) @06993120
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+
+
+Initial Symbol table:
+
+ST7789_Fill_Color/18 (ST7789_Fill_Color) @0699b460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+ST7789_SetAddressWindow/17 (ST7789_SetAddressWindow) @0699b380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+GB_ST7789_Init/16 (GB_ST7789_Init) @0699b2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals) @0699a1b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpspi_Ip_Init/14 (Lpspi_Ip_Init) @0699b1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Port_Init/13 (Port_Init) @0699b0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @0699b000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06995540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @0699a000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)main/7 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06995ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+DelayTimer.6337/8 (DelayTimer) @06993af8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/6 (read)TestDelay/6 (write)TestDelay/6 (read)TestDelay/6 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/7 (main) @069959a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 GB_ST7789_Init/16 Lpspi_Ip_Init/14 Port_Init/13 Clock_Ip_DistributePll/12 Clock_Ip_GetPllStatus/11 Clock_Ip_Init/9 Clock_Ip_Init/9 
+TestDelay/6 (TestDelay) @06995700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer.6337/8 (read)DelayTimer.6337/8 (write)DelayTimer.6337/8 (read)DelayTimer.6337/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/7 main/7 main/7 
+  Calls: 
+timeOut/5 (timeOut) @06993360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+numberOfBytes/4 (numberOfBytes) @069932d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+rxBuffer/3 (rxBuffer) @06993240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+txBuffer/2 (txBuffer) @069931b0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+exit_code/1 (exit_code) @06993120
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+ST7789_Fill_Color/18 (ST7789_Fill_Color) @0699b460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+ST7789_SetAddressWindow/17 (ST7789_SetAddressWindow) @0699b380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+GB_ST7789_Init/16 (GB_ST7789_Init) @0699b2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals) @0699a1b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpspi_Ip_Init/14 (Lpspi_Ip_Init) @0699b1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Port_Init/13 (Port_Init) @0699b0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @0699b000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06995540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @0699a000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)main/7 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06995ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+DelayTimer.6337/8 (DelayTimer) @06993af8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/6 (read)TestDelay/6 (write)TestDelay/6 (read)TestDelay/6 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/7 (main) @069959a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 GB_ST7789_Init/16 Lpspi_Ip_Init/14 Port_Init/13 Clock_Ip_DistributePll/12 Clock_Ip_GetPllStatus/11 Clock_Ip_Init/9 Clock_Ip_Init/9 
+TestDelay/6 (TestDelay) @06995700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer.6337/8 (read)DelayTimer.6337/8 (write)DelayTimer.6337/8 (read)DelayTimer.6337/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/7 main/7 main/7 
+  Calls: 
+timeOut/5 (timeOut) @06993360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+numberOfBytes/4 (numberOfBytes) @069932d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+rxBuffer/3 (rxBuffer) @06993240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+txBuffer/2 (txBuffer) @069931b0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+exit_code/1 (exit_code) @06993120
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+ST7789_Fill_Color/18 (ST7789_Fill_Color) @0699b460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+ST7789_SetAddressWindow/17 (ST7789_SetAddressWindow) @0699b380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+GB_ST7789_Init/16 (GB_ST7789_Init) @0699b2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals) @0699a1b0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Lpspi_Ip_Init/14 (Lpspi_Ip_Init) @0699b1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Port_Init/13 (Port_Init) @0699b0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @0699b000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06995540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/7 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @0699a000
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/7 (addr)main/7 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06995ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/7 main/7 
+  Calls: 
+DelayTimer.6337/8 (DelayTimer) @06993af8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: TestDelay/6 (read)TestDelay/6 (write)TestDelay/6 (read)TestDelay/6 (write)
+  Availability: available
+  Varpool flags: initialized
+main/7 (main) @069959a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 ST7789_Fill_Color/18 ST7789_SetAddressWindow/17 TestDelay/6 GB_ST7789_Init/16 Lpspi_Ip_Init/14 Port_Init/13 Clock_Ip_DistributePll/12 Clock_Ip_GetPllStatus/11 Clock_Ip_Init/9 Clock_Ip_Init/9 
+TestDelay/6 (TestDelay) @06995700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: DelayTimer.6337/8 (read)DelayTimer.6337/8 (write)DelayTimer.6337/8 (read)DelayTimer.6337/8 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: main/7 main/7 main/7 
+  Calls: 
+timeOut/5 (timeOut) @06993360
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+numberOfBytes/4 (numberOfBytes) @069932d0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+rxBuffer/3 (rxBuffer) @06993240
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+txBuffer/2 (txBuffer) @069931b0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+exit_code/1 (exit_code) @06993120
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Trivially needed variables: DelayTimer.6337 timeOut numberOfBytes rxBuffer txBuffer exit_code
+Removing variables:
+
+Final Symbol table:
+
+ST7789_Fill_Color/18 (ST7789_Fill_Color) @0699b460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+ST7789_SetAddressWindow/17 (ST7789_SetAddressWindow) @0699b380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+GB_ST7789_Init/16 (GB_ST7789_Init) @0699b2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals/15 (Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals) @0699a1b0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Lpspi_Ip_Init/14 (Lpspi_Ip_Init) @0699b1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Port_Init/13 (Port_Init) @0699b0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @0699b000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06995540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @0699a000
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06995ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+DelayTimer.6337/8 (DelayTimer) @06993af8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+main/7 (main) @069959a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+TestDelay/6 (TestDelay) @06995700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+timeOut/5 (timeOut) @06993360
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @06993af8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+numberOfBytes/4 (numberOfBytes) @069932d0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @06993360
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+rxBuffer/3 (rxBuffer) @06993240
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @069932d0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+txBuffer/2 (txBuffer) @069931b0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @06993240
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+exit_code/1 (exit_code) @06993120
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @069931b0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
