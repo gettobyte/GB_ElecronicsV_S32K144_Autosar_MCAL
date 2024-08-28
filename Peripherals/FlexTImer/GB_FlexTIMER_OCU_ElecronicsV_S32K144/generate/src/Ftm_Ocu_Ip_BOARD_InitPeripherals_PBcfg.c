@@ -154,7 +154,7 @@ static const Ftm_Ocu_Ip_SpecificIpConfigType Ftm_Ocu_Ip_SpecificIpConfig_PB_BOAR
         /** @brief  Ftm Control Value */
         (uint8)
         (
-            (uint8)(FTM_CLOCK_SOURCE_SYSTEMCLK) << OCU_FTM_CLOCK_SOURCE_SHIFT | /* Clock source */
+            (uint8)(FTM_CLOCK_SOURCE_EXTERNALCLK) << OCU_FTM_CLOCK_SOURCE_SHIFT | /* Clock source */
             (uint8)((uint32)(FTM_SC_PS_DIV8_U32 << OCU_FTM_CLOCK_DIV_SHIFT))   | /* Timer clock prescaler configuration */
             ((uint8)(FTM_BDM_MODE_10) << FTM_CONF_BDMMODE_SHIFT_U8)      /* Timer debug config */
         ),

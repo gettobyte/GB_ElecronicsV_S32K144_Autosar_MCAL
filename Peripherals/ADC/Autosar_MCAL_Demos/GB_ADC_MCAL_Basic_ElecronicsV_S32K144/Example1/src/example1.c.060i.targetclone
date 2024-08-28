@@ -1,0 +1,63 @@
+main ()
+{
+  struct Adc_CalibrationStatusType CalibStatus;
+  volatile boolean bStatus;
+  boolean bLocalStatus;
+  boolean Gb_ADC_Conversion_Status;
+  Adc_Ip_StatusType adcStatus;
+  Clock_Ip_StatusType clockStatus;
+  Std_ReturnType StdReturn;
+  int D.7104;
+  <unnamed type> _1;
+  unsigned char _2;
+
+  <bb 2> :
+  StdReturn_7 = 1;
+  bLocalStatus_8 = 1;
+  bStatus ={v} 1;
+  clockStatus_12 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus_24 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  # clockStatus_3 = PHI <clockStatus_12(2), clockStatus_24(3)>
+  if (clockStatus_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  IntCtrl_Ip_InstallHandler (39, Adc_0_Isr, 0B);
+  IntCtrl_Ip_EnableIrq (39);
+  Adc_Init (&Adc_Config_BOARD_INITPERIPHERALS);
+  Adc_Calibrate (0, &CalibStatus);
+  _2 = CalibStatus.Adc_UnitSelfTestStatus;
+  if (_2 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  bStatus ={v} 0;
+
+  <bb 9> :
+  Adc_StartGroupConversion (0);
+  Adc_ReadRawData (0, &adc_Channel, 2, &Result);
+  goto <bb 9>; [INV]
+
+}
+
+
