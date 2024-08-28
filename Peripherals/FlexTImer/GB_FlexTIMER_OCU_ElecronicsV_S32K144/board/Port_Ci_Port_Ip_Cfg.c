@@ -20,7 +20,7 @@ processor_version: 0.0.0
 BOARD_InitPins:
 - options: {callFromInitBoot: 'true', coreID: core0}
 - pin_list:
-  - {pin_num: '22', peripheral: FTM0, signal: 'ch, 0', pin_signal: PTD15, direction: OUTPUT}
+  - {pin_num: '68', peripheral: FTM0, signal: 'ch, 0', pin_signal: PTB12, direction: OUTPUT}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
@@ -28,9 +28,9 @@ BOARD_InitPins:
 /* Generate array of configured pin structures */
 Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS] = {
     {
-        .portBase        = IP_PORTD,
+        .portBase        = IP_PORTB,
         .gpioBase        = NULL_PTR,
-        .pinPortIdx      = 15U,
+        .pinPortIdx      = 12U,
         .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
         .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
         .passiveFilter   = (boolean)FALSE,

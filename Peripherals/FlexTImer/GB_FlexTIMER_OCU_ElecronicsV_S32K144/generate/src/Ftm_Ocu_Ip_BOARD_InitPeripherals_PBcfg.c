@@ -125,8 +125,8 @@ static const Ftm_Ocu_Ip_ChannelConfigType Ftm_Ocu_Ip_ChannelConfig_PB_BOARD_INIT
     {
         /** @brief  Ftm hardware channel index */
         (uint16)FTM_0_CH_0,
-        /** @brief  Default threshold: 32000*/
-        (uint16)0x7D00U,
+        /** @brief  Default threshold: 4500*/
+        (uint16)0x1194U,
         /** @brief  Ftm Control Value */
         (uint8)
         (
@@ -150,11 +150,11 @@ static const Ftm_Ocu_Ip_SpecificIpConfigType Ftm_Ocu_Ip_SpecificIpConfig_PB_BOAR
         /** @brief  Ftm hardware module index */
         (uint8)0,
         /** @brief  Max Counter Value */
-        (uint16)0xFDE8,
+        (uint16)0x270F,
         /** @brief  Ftm Control Value */
         (uint8)
         (
-            (uint8)(FTM_CLOCK_SOURCE_EXTERNALCLK) << OCU_FTM_CLOCK_SOURCE_SHIFT | /* Clock source */
+            (uint8)(FTM_CLOCK_SOURCE_SYSTEMCLK) << OCU_FTM_CLOCK_SOURCE_SHIFT | /* Clock source */
             (uint8)((uint32)(FTM_SC_PS_DIV8_U32 << OCU_FTM_CLOCK_DIV_SHIFT))   | /* Timer clock prescaler configuration */
             ((uint8)(FTM_BDM_MODE_10) << FTM_CONF_BDMMODE_SHIFT_U8)      /* Timer debug config */
         ),

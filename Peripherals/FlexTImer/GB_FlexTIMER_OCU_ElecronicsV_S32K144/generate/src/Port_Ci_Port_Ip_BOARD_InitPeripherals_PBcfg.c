@@ -111,9 +111,9 @@ extern "C"{
 const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr_BOARD_InitPeripherals[NUM_OF_CONFIGURED_PINS] = 
 {
     {
-        .portBase              = IP_PORTD,
+        .portBase              = IP_PORTB,
         .gpioBase              = NULL_PTR,
-        .pinPortIdx            = 15,
+        .pinPortIdx            = 12,
         .mux                   = PORT_MUX_ALT2,
         .direction             = PORT_CI_PORT_PIN_OUT,
         .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
