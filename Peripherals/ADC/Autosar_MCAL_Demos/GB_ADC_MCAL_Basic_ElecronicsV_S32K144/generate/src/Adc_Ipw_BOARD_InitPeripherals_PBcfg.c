@@ -217,6 +217,11 @@ static const Adc_ChannelLimitCheckingType ChannelLimitCheckingConfig_0_BOARD_INI
 * @brief          Group Channel Delays for configuration variant BOARD_INITPERIPHERALS.
 *
 */
+static const uint16 Adc_GroupChannelDelays0_BOARD_INITPERIPHERALS[] =
+{
+    5000U,
+    15000U
+};
 
 
 #define ADC_STOP_SEC_CONFIG_DATA_16
@@ -278,11 +283,11 @@ const Adc_Ipw_GroupConfig AdcIpwGroupConfig_0_BOARD_INITPERIPHERALS =
     ADC_IP_DEFAULT_SAMPLE_TIME, /* AlternateConvTime */
 #endif /* (ADC_DUAL_CLOCK_MODE == STD_ON) */
 #endif /* (ADC_SET_ADC_CONV_TIME_ONCE == STD_OFF) */
-    1000U, /* PdbPeriod */
+    0U, /* PdbPeriod */
     0U, /* PdbDelay */
-    (boolean)TRUE, /* AdcGroupEnableBackToBack */
-    (boolean)FALSE, /* AdcGroupEnableChannelDelays */
-    NULL_PTR /* pDelay */
+    (boolean)FALSE, /* AdcGroupEnableBackToBack */
+    (boolean)TRUE, /* AdcGroupEnableChannelDelays */
+    Adc_GroupChannelDelays0_BOARD_INITPERIPHERALS /* pDelay */
 };
 
 

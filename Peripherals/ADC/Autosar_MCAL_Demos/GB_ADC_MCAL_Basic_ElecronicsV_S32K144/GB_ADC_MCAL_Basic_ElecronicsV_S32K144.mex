@@ -363,17 +363,17 @@
                                  <array name="AdcAlternateConvTimings"/>
                                  <struct name="PdbHwUnit">
                                     <setting name="Name" value="PdbHwUnit"/>
-                                    <setting name="AdcPdbPrescalerDividerSelect" value="0"/>
-                                    <setting name="AdcPdbMultiplicationFactorSelect" value="0"/>
-                                    <setting name="AdcPdbCounterPeriod" value="65535"/>
+                                    <setting name="AdcPdbPrescalerDividerSelect" value="6"/>
+                                    <setting name="AdcPdbMultiplicationFactorSelect" value="3"/>
+                                    <setting name="AdcPdbCounterPeriod" value="18750"/>
                                     <setting name="AdcPdbErrorNotification" value="NULL_PTR"/>
                                  </struct>
                                  <array name="AdcChannel">
                                     <struct name="0">
                                        <setting name="Name" value="AdcChannel_0"/>
                                        <setting name="AdcLogicalChannelId" value="0"/>
-                                       <setting name="AdcChannelName" value="SE12_ADCH12"/>
-                                       <setting name="AdcChannelId" value="12"/>
+                                       <setting name="AdcChannelName" value="SE1_ADCH1"/>
+                                       <setting name="AdcChannelId" value="1"/>
                                        <array name="AdcChannelConvTime"/>
                                        <array name="AdcChannelLimitCheck"/>
                                        <array name="AdcChannelHighLimit">
@@ -391,8 +391,8 @@
                                     <struct name="1">
                                        <setting name="Name" value="AdcChannel_1"/>
                                        <setting name="AdcLogicalChannelId" value="1"/>
-                                       <setting name="AdcChannelName" value="SE1_ADCH1"/>
-                                       <setting name="AdcChannelId" value="1"/>
+                                       <setting name="AdcChannelName" value="SE12_ADCH12"/>
+                                       <setting name="AdcChannelId" value="12"/>
                                        <array name="AdcChannelConvTime"/>
                                        <array name="AdcChannelLimitCheck"/>
                                        <array name="AdcChannelHighLimit">
@@ -431,14 +431,17 @@
                                        <setting name="AdcStreamingNumSamples" value="1"/>
                                        <setting name="AdcStreamResultGroup" value="false"/>
                                        <setting name="AdcEnableChDisableChGroup" value="false"/>
-                                       <setting name="AdcWithoutInterrupts" value="true"/>
+                                       <setting name="AdcWithoutInterrupts" value="false"/>
                                        <setting name="AdcWithoutDma" value="false"/>
                                        <setting name="AdcExtDMAChanEnable" value="false"/>
-                                       <setting name="AdcGroupInBacktoBackMode" value="true"/>
-                                       <setting name="AdcGroupUsesChannelDelays" value="false"/>
+                                       <setting name="AdcGroupInBacktoBackMode" value="false"/>
+                                       <setting name="AdcGroupUsesChannelDelays" value="true"/>
                                        <setting name="AdcDelayNextPdb" value="0"/>
                                        <setting name="AdcPdbPeriodContinuousMode" value="1000"/>
-                                       <array name="AdcChannelDelay"/>
+                                       <array name="AdcChannelDelay">
+                                          <setting name="0" value="5000"/>
+                                          <setting name="1" value="15000"/>
+                                       </array>
                                        <struct name="AdcGroupConversionConfiguration">
                                           <setting name="Name" value="AdcGroupConversionConfiguration"/>
                                           <setting name="AdcGroupHardwareAverageEnable" value="false"/>
@@ -469,7 +472,7 @@
                            <setting name="AdcDevErrorDetect" value="false"/>
                            <setting name="AdcEnableLimitCheck" value="true"/>
                            <setting name="AdcEnableQueuing" value="true"/>
-                           <setting name="AdcPriorityQueueMaxDepth" value="1"/>
+                           <setting name="AdcPriorityQueueMaxDepth" value="5"/>
                            <setting name="AdcEnableStartStopGroupApi" value="true"/>
                            <setting name="AdcGrpNotifCapability" value="true"/>
                            <setting name="AdcHwTriggerApi" value="false"/>
@@ -487,7 +490,7 @@
                            <struct name="0">
                               <setting name="Name" value="AdcInterrupt_0"/>
                               <setting name="AdcInterruptSource" value="ADC0_COCO"/>
-                              <setting name="AdcInterruptEnable" value="false"/>
+                              <setting name="AdcInterruptEnable" value="true"/>
                            </struct>
                         </array>
                         <struct name="AdcPublishedInformation">

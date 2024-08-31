@@ -26,6 +26,18 @@ Adc_ValueGroupType    Result[NUM_RESULTS];
 
 Adc_ChannelType adc_Channel[2] = { ADC_IP_INPUTCHAN_EXT12, ADC_IP_INPUTCHAN_EXT1};
 
+void TestDelay(uint32 delay);
+void TestDelay(uint32 delay)
+{
+   static volatile uint32 DelayTimer = 0;
+   while(DelayTimer<delay)
+   {
+	   DelayTimer++;
+   }
+   DelayTimer=0;
+}
+
+
 int main(void)
 {
 	 Std_ReturnType StdReturn = E_NOT_OK;
@@ -67,6 +79,8 @@ int main(void)
 
     for(;;)
     {
+    	TestDelay(200000);
+
     	Adc_StartGroupConversion(AdcGroup_0);
 
     	Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);

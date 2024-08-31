@@ -76,7 +76,7 @@ extern "C"{
 ==================================================================================================*/
 
 /* @brief PDB has instance back to back mode between PDB0 CH0 and PDB1 CH0 pre-triggers */
-#define FEATURE_PDB_HAS_INSTANCE_BACKTOBACK     (STD_OFF)
+#define FEATURE_PDB_HAS_INSTANCE_BACKTOBACK     (STD_ON)
 
 /* @brief PDB has inter-channel back to back mode between PDBx CH0 and PDBx CH1 pre-triggers */
 #define FEATURE_PDB_HAS_INTERCHANNEL_BACKTOBACK (STD_OFF)
