@@ -101,7 +101,7 @@ static const Pdb_Adc_Ip_ChanConfigType PdbAdcIpChansConfig_0_BOARD_INITPERIPHERA
                0x12U, /* EnableDelayMask */
                0x0U /* BackToBackEnableMask */
           },
-          { 0U, 12000U, 0U, 0U, 16375U, 0U, 0U, 0U } /* PretriggerDelays */
+          { 0U, 16000U, 0U, 0U, 8000U, 0U, 0U, 0U } /* PretriggerDelays */
      }
 };
 
@@ -132,7 +132,7 @@ const Pdb_Adc_Ip_ConfigType PdbHwUnit_0_BOARD_INITPERIPHERALS =
     PDB_ADC_IP_CLK_PREDIV_BY_64, /* PrescalerDiv */
     PDB_ADC_IP_CLK_PREMULT_FACT_AS_40, /* ClkPreMultFactor */
     PDB_ADC_IP_SOFTWARE_TRIGGER, /* TriggerSource */
-    (boolean)TRUE, /* ContinuousModeEnable */
+    (boolean)FALSE, /* ContinuousModeEnable */
     (boolean)FALSE, /* DmaEnable */
     18750U, /* ModValue */
 #if  (STD_ON == FEATURE_PDB_HAS_INSTANCE_BACKTOBACK)
