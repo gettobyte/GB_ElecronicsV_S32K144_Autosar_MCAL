@@ -27,11 +27,6 @@ extern "C" {
 /*==================================================================================================
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
-//Not used in this demo
-#define ADC_CONTROL_CH         (0U)
-#define ADC_BANDGAP            (819U) /* Vbandgap ~ 1.15V at 5.0V reference */
-#define ADC_TOLERANCE(x,y)     ((x > y) ? (x - y) : (y - x))
-#define RESULT_TOLERANCE       (150U)
 
 /*==================================================================================================
 *                                      EXTERN DECLARATIONS
@@ -46,12 +41,20 @@ volatile boolean notif_triggered = FALSE;
 
 void AdcConversionCompleteNotif(const uint8 ControlChanIdx)
 {
-    notif_triggered = TRUE;
     data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
     /* Checks the measured ADC data conversion */
-    while (ADC_TOLERANCE(data, ADC_BANDGAP) > RESULT_TOLERANCE);
 }
 
+void TestDelay(uint32 delay);
+void TestDelay(uint32 delay)
+{
+   static volatile uint32 DelayTimer = 0;
+   while(DelayTimer<delay)
+   {
+	   DelayTimer++;
+   }
+   DelayTimer=0;
+}
 
 int main(void)
 {
@@ -94,10 +97,22 @@ int main(void)
     //PDB initialization
 	Pdb_Adc_Ip_Init(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
 
+	Pdb_Adc_Ip_ConfigAdcPretriggers(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, PdbHwUnit_0_BOARD_INITPERIPHERALS.ChanConfigs->ChnIdx, &PdbHwUnit_0_BOARD_INITPERIPHERALS.ChanConfigs->PretriggersConfig);
 		for(;;)
 		{
+
 	//	        Stop and Check Data Result Register "RE' for ADC value as well as value of "i"
 				data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
+
+				TestDelay(20000000);    // delay has to be increased in one shot mode to trigger both the channels. take the account of prescaler clock values
+
+//				data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
+//
+//
+//				TestDelay(20000000);
+
+
+
 		}
 
 }

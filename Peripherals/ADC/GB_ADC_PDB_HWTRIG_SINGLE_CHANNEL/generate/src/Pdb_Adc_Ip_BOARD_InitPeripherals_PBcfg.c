@@ -132,7 +132,7 @@ const Pdb_Adc_Ip_ConfigType PdbHwUnit_0_BOARD_INITPERIPHERALS =
     PDB_ADC_IP_CLK_PREDIV_BY_64, /* PrescalerDiv */
     PDB_ADC_IP_CLK_PREMULT_FACT_AS_40, /* ClkPreMultFactor */
     PDB_ADC_IP_TRIGGER_IN0, /* TriggerSource */
-    (boolean)FALSE, /* ContinuousModeEnable */
+    (boolean)TRUE, /* ContinuousModeEnable */
     (boolean)FALSE, /* DmaEnable */
     18750U, /* ModValue */
 #if  (STD_ON == FEATURE_PDB_HAS_INSTANCE_BACKTOBACK)
