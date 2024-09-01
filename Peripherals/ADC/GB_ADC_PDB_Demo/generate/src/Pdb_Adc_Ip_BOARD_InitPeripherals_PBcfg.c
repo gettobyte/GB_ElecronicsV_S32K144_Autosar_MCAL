@@ -98,10 +98,10 @@ static const Pdb_Adc_Ip_ChanConfigType PdbAdcIpChansConfig_0_BOARD_INITPERIPHERA
           /* PretriggersConfig */
           {
                0x12U, /* EnableMask */
-               0x12U, /* EnableDelayMask */
-               0x0U /* BackToBackEnableMask */
+               0x2U, /* EnableDelayMask */
+               0x12U /* BackToBackEnableMask */
           },
-          { 0U, 16000U, 0U, 0U, 8000U, 0U, 0U, 0U } /* PretriggerDelays */
+          { 0U, 0U, 0U, 0U, 16000U, 0U, 0U, 0U } /* PretriggerDelays */
      }
 };
 

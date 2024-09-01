@@ -105,22 +105,19 @@ int main(void)
 	Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 
 	//data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
+	Pdb_Adc_Ip_ConfigAdcPretriggers(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, PdbHwUnit_0_BOARD_INITPERIPHERALS.ChanConfigs->ChnIdx, &PdbHwUnit_0_BOARD_INITPERIPHERALS.ChanConfigs->PretriggersConfig);
 
 	for(;;)
 	{
-//	    Stop and Check Data Result Register "RE' for ADC value as well as value of "i"
-//			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
-//
+
+//		delay has to be increased in one shot mode to trigger both the channels. take the account of prescaler clock values
+
 			Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
-			TestDelay(20000000);
-
-			//data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
-
+			TestDelay(20000000);    // delay has to be increased in one shot mode to trigger both the channels. take the account of prescaler clock values
 
 		//	Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 			TestDelay(20000000);
 
-		//	data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
 
 
 	}
