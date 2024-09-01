@@ -35,6 +35,16 @@ volatile uint32 data;
 void AdcConversionCompleteNotif(const uint8 ControlChanIdx)
 {
     data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, ControlChanIdx);
+
+    /*
+     * Clear CF flags of PDB peripheral in CH0S regsiter
+     *
+     *
+     *
+     *
+     */
+
+
 }
 
 void TestDelay(uint32 delay);
@@ -99,16 +109,16 @@ int main(void)
 //	    Stop and Check Data Result Register "RE' for ADC value as well as value of "i"
 //			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
 //
-			Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
+		//	Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 			TestDelay(2000000);
 
-			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
+			//data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
 
 
 	//		Pdb_Adc_Ip_SwTrigger(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE);
 			TestDelay(2000000);
 
-			data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 1);
+		//	data = Adc_Ip_GetConvData(ADCHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, 4);
 
 
 	}
