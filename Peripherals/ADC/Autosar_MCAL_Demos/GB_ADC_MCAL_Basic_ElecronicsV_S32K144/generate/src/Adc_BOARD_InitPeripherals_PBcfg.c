@@ -123,7 +123,7 @@ extern "C"{
 * @brief          Adc Result Buffer RAM initializations.
 * @details        Array for all ADC group result ram buffers.
 */
-static Adc_ValueGroupType * Adc_aResultsBufferPtr[3];
+static Adc_ValueGroupType * Adc_aResultsBufferPtr[4];
 
 #define ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Adc_MemMap.h"
@@ -164,6 +164,16 @@ static const Adc_ChannelType Adc_Group1_Assignment_0_BOARD_INITPERIPHERALS[ADC_C
 *
 */
 static const Adc_ChannelType Adc_Group2_Assignment_0_BOARD_INITPERIPHERALS[ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_2_CHANNELS] =
+{
+    0U,
+    1U
+};
+
+/**
+* @brief          Group Assignments on ADC0 BOARD_INITPERIPHERALS.
+*
+*/
+static const Adc_ChannelType Adc_Group3_Assignment_0_BOARD_INITPERIPHERALS[ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_3_CHANNELS] =
 {
     0U,
     1U
@@ -395,6 +405,80 @@ static const Adc_GroupConfigurationType Adc_GroupsCfg_BOARD_INITPERIPHERALS[] =
         (boolean)FALSE, /* bAdcGroupLimitcheck */
 #endif /* (STD_ON == ADC_ENABLE_LIMIT_CHECK) */
         &AdcIpwGroupConfig_2_BOARD_INITPERIPHERALS /* pAdcIpwGroupConfig */
+    },
+    /**< @brief Group3 -- Logical Unit Id 0 -- Hardware Unit ADC0 */
+    {
+        /**< @brief Index of group */
+        3, /* GroupId */
+        /**< @brief ADC Logical Unit Id that the group belongs to */
+        (Adc_HwUnitType)0, /* AdcLogicalUnitId */
+        /**< @brief Access mode */
+        ADC_ACCESS_MODE_SINGLE, /* eAccessMode */
+        /**< @brief Conversion mode */
+        ADC_CONV_MODE_CONTINUOUS, /* eMode */
+        /**< @brief Conversion type */
+        ADC_CONV_TYPE_NORMAL, /* eType */
+#if (ADC_PRIORITY_IMPLEMENTATION != ADC_PRIORITY_NONE)
+        /**< @brief Priority configured */
+        (Adc_GroupPriorityType)ADC_GROUP_PRIORITY, /* Priority */
+#endif /* ADC_PRIORITY_IMPLEMENTATION != ADC_PRIORITY_NONE */
+        /**< @brief Replacement mode */
+        ADC_GROUP_REPL_ABORT_RESTART, /* eReplacementMode */
+        /**< @brief Trigger source configured */
+        ADC_TRIGG_SRC_SW, /* eTriggerSource */
+#if (STD_ON == ADC_HW_TRIGGER_API)
+        /**< @brief Hardware trigger source for the group */
+        PDB_ADC_IP_SOFTWARE_TRIGGER, /* HwTriggerSource */
+        /**< @brief Hardware trigger signal */
+        ADC_HW_TRIG_RISING_EDGE, /* eTriggerEdge */
+#endif /* (STD_ON == ADC_HW_TRIGGER_API) */
+#if (STD_ON == ADC_GRP_NOTIF_CAPABILITY)
+        /**< @brief Notification function */
+        IoHwAb_AdcNotification_0, /* Notification */
+#endif /* (STD_ON == ADC_GRP_NOTIF_CAPABILITY) */
+#if (ADC_ENABLE_INITIAL_NOTIFICATION == STD_ON)
+        /**< @brief Extra notification function */
+        NULL_PTR, /* ExtraNotification */
+#endif /* (ADC_ENABLE_INITIAL_NOTIFICATION == STD_ON) */
+        /**< @brief ADC Group Result Buffers RAM array */
+        Adc_aResultsBufferPtr, /* pResultsBufferPtr */
+        /**< @brief Group Streaming Buffer Mode */
+        ADC_STREAM_BUFFER_LINEAR, /* eBufferMode */
+#if (ADC_ENABLE_CH_DISABLE_CH_NONAUTO_API == STD_ON)
+        /**< @brief Index of the group with AdcEnableChDisableChGroup enabled */
+        (Adc_GroupType)ADC_ENABLE_CH_DISABLE_CH_INVALID_GROUP_INDEX, /* EnableChDisableChGroupIndex */
+#endif /* (ADC_ENABLE_CH_DISABLE_CH_NONAUTO_API == STD_ON) */
+        /**< @brief Number of streaming samples */
+        (Adc_StreamNumSampleType)ADC_STREAMING_NUM_SAMPLES(1), /* NumSamples */
+#if (ADC_ENABLE_GROUP_STREAMING_RESULTS_REORDER == STD_ON)
+        /**< @brief Arrange the adc results as multiple sets of group result buffer */
+        (boolean)FALSE, /* bStreamResultGroupMultiSets */
+#endif /* (ADC_ENABLE_GROUP_STREAMING_RESULTS_REORDER == STD_ON) */
+        /**< @brief Channels assigned to the group*/
+        Adc_Group3_Assignment_0_BOARD_INITPERIPHERALS, /* pAssignment */
+        /**< @brief Number of channels in the group*/
+        (Adc_ChannelIndexType)ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_3_CHANNELS, /* AssignedChannelCount */
+        /**< @brief Last Channel configured */
+        (Adc_ChannelType)(ADC_ID_CHANNEL_U8(12)), /* LastCh */
+        /**< @brief First Channel configured */
+        (Adc_ChannelType)(ADC_ID_CHANNEL_U8(1)), /* FirstCh */
+        /**< @brief Enables or Disables the ADC and DMA interrupts */
+        (uint8)(STD_ON), /* u8AdcWithoutInterrupt */
+        /**< @brief Enables or Disables configuring external DMA channel in the group */
+        (uint8)(STD_OFF), /* u8AdcExtDMAChanEnable */
+        /**< @brief When true, disables completely DMA configuration done by ADC driver for the group */
+        (boolean)FALSE, /* u8AdcWithoutDma */
+#if (STD_ON == ADC_OPTIMIZE_DMA_STREAMING_GROUPS)
+        /**< @brief Enables or Disables the ADC optimize DMA streaming groups feature */
+        (boolean)FALSE, /* bAdcOptimizeDmaStream */
+        /**< @brief Enable/disable half interrupt for group with optimize DMA streaming groups */
+        (boolean)FALSE, /* bHalfInterrupt */
+#endif /* (STD_ON == ADC_OPTIMIZE_DMA_STREAMING_GROUPS) */
+#if (ADC_ENABLE_LIMIT_CHECK == STD_ON)
+        /**< @brief Enables or disables the usage of limit checking for an ADC group. */
+        (boolean)FALSE, /* bAdcGroupLimitcheck */
+#endif /* (STD_ON == ADC_ENABLE_LIMIT_CHECK) */
+        &AdcIpwGroupConfig_3_BOARD_INITPERIPHERALS /* pAdcIpwGroupConfig */
     }
 };
 
@@ -414,7 +498,8 @@ static const uint16 au16Adc_GroupIdToIndexMap_BOARD_INITPERIPHERALS[ADC_MAX_GROU
 {
     0,
     1,
-    2
+    2,
+    3
 };
 
 
