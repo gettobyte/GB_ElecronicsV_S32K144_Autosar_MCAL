@@ -269,7 +269,7 @@ extern "C"{
 /**
 * @brief           max number of groups configured across all configset.
 */
-#define ADC_MAX_GROUPS                      (1U)
+#define ADC_MAX_GROUPS                      (3U)
 
 /**
 * @brief           Invalid Hardware group ID to determine there is no ongoing hardware group
@@ -393,18 +393,26 @@ extern "C"{
 */
 #define AdcGroup_0_AdcChannel_0                   (0U)
 #define AdcGroup_0_AdcChannel_1                   (1U)
+#define AdcGroup_1_WNT_AdcChannel_0                   (0U)
+#define AdcGroup_1_WNT_AdcChannel_1                   (1U)
+#define AdcGroup_3_WI_PDB_Delay_AdcChannel_0                   (0U)
+#define AdcGroup_3_WI_PDB_Delay_AdcChannel_1                   (1U)
 
 /**
 * @brief           Symbolic names of groups.
 */
 
 #define AdcGroup_0                                (0U)
+#define AdcGroup_1_WNT                                (1U)
+#define AdcGroup_3_WI_PDB_Delay                                (2U)
 
 /**
 * @brief           Symbolic names of groups - ecuc 2108 compliant.
 */
 
 #define AdcConf_AdcGroup_AdcGroup_0               (0U)
+#define AdcConf_AdcGroup_AdcGroup_1_WNT               (1U)
+#define AdcConf_AdcGroup_AdcGroup_3_WI_PDB_Delay               (2U)
 
 /**
 * @brief          ADC Global Validation.

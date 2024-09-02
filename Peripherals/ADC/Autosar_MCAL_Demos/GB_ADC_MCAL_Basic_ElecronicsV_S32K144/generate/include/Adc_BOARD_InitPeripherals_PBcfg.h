@@ -98,12 +98,14 @@ extern "C"{
 */
 
 #define ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_0_CHANNELS      (2U)
+#define ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_1_CHANNELS      (2U)
+#define ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_2_CHANNELS      (2U)
 
 /**
 * @brief          Total number of groups in Config.
 *
 */
-#define ADC_GROUPS_BOARD_INITPERIPHERALS                       (1U)
+#define ADC_GROUPS_BOARD_INITPERIPHERALS                       (3U)
 
 #ifdef __cplusplus
 }
