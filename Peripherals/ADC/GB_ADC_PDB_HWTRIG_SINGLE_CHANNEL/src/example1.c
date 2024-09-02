@@ -97,7 +97,7 @@ int main(void)
     //PDB initialization
 	Pdb_Adc_Ip_Init(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
 
-	Pdb_Adc_Ip_ConfigAdcPretriggers(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, PdbHwUnit_0_BOARD_INITPERIPHERALS.ChanConfigs->ChnIdx, &PdbHwUnit_0_BOARD_INITPERIPHERALS.ChanConfigs->PretriggersConfig);
+//	Pdb_Adc_Ip_ConfigAdcPretriggers(PDBHWUNIT_0_BOARD_INITPERIPHERALS_INSTANCE, PdbHwUnit_0_BOARD_INITPERIPHERALS.ChanConfigs->ChnIdx, &PdbHwUnit_0_BOARD_INITPERIPHERALS.ChanConfigs->PretriggersConfig);
 		for(;;)
 		{
 

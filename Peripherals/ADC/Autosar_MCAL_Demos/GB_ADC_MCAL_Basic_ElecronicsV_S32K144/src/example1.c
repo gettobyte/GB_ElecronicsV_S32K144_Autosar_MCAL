@@ -23,6 +23,7 @@ extern void Adc_0_Isr(void);
 #define NUM_RESULTS 2
 Adc_ValueGroupType    ResultBuffer[NUM_RESULTS];
 Adc_ValueGroupType    Result[NUM_RESULTS];
+Adc_ValueGroupType    Resultx[NUM_RESULTS];
 
 Adc_ChannelType adc_Channel[2] = { ADC_IP_INPUTCHAN_EXT12, ADC_IP_INPUTCHAN_EXT1};
 
@@ -37,13 +38,25 @@ void TestDelay(uint32 delay)
    DelayTimer=0;
 }
 
+Std_ReturnType StdReturn = E_NOT_OK;
+
+uint8 AdcFlag = FALSE;
+void IoHwAb_AdcNotification_0( void )
+{
+    /*Read ready convertion*/
+    AdcFlag = TRUE;
+
+    StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
+	//Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
+
+}
+
 
 Adc_ValueGroupType    AdcReadGroupBuffer[2];
 Adc_ValueGroupType    ResultBuffer[2];
 
 int main(void)
 {
-	 Std_ReturnType StdReturn = E_NOT_OK;
 
 	 Clock_Ip_StatusType clockStatus;
 	 Adc_Ip_StatusType adcStatus;
@@ -66,8 +79,8 @@ int main(void)
 	    /* Initialize all pins using the Port driver */
 	    Port_Init(NULL_PTR);
 
-//	    IntCtrl_Ip_InstallHandler(ADC0_IRQn, Adc_0_Isr, NULL_PTR);
-//	    IntCtrl_Ip_EnableIrq(ADC0_IRQn);
+	    IntCtrl_Ip_InstallHandler(ADC0_IRQn, Adc_0_Isr, NULL_PTR);
+	    IntCtrl_Ip_EnableIrq(ADC0_IRQn);
 
 
     Adc_CalibrationStatusType CalibStatus;
@@ -80,34 +93,26 @@ int main(void)
             bStatus = FALSE;
         }
 
-        /*Set the memeory buffer to store convertions*/
+        /*Set the memory buffer to store convertions*/
         Adc_SetupResultBuffer( AdcGroup_0, ResultBuffer );
 
-    //	Adc_StartGroupConversion(AdcGroup_0);
+        Adc_EnableGroupNotification(AdcGroup_0);
 
 
     for(;;)
     {
 
-    	TestDelay(20000000);
+        Adc_EnableGroupNotification(AdcGroup_0);
 
     	Adc_StartGroupConversion(AdcGroup_0);
 
         /*wait until the convertion is done*/
-        //while( Adc_GetGroupStatus( AdcGroup_0 ) == ADC_BUSY );
+        while( Adc_GetGroupStatus( AdcGroup_0 ) == ADC_BUSY );
 
-            //Adc_ReadGroup( AdcGroup_0, AdcReadGroupBuffer );
+    	TestDelay(200000);
 
-        StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
+     //   Adc_StopGroupConversion(AdcGroup_0);
 
-
-    	Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
-
-
-        Adc_StopGroupConversion(AdcGroup_0);
-        //Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
-
-  	    //StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
     }
 }
 

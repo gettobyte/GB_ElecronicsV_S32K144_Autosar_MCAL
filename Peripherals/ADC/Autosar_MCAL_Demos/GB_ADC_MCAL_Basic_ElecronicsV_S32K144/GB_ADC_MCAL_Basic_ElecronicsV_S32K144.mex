@@ -423,7 +423,9 @@
                                        <array name="AdcHwTrigTimer">
                                           <setting name="0" value="10"/>
                                        </array>
-                                       <array name="AdcNotification"/>
+                                       <array name="AdcNotification">
+                                          <setting name="0" value="IoHwAb_AdcNotification_0"/>
+                                       </array>
                                        <setting name="AdcExtraNotification" value="NULL_PTR"/>
                                        <setting name="AdcStreamingBufferMode" value="ADC_STREAM_BUFFER_LINEAR"/>
                                        <setting name="AdcEnableOptimizeDmaStreamingGroups" value="false"/>
@@ -431,7 +433,7 @@
                                        <setting name="AdcStreamingNumSamples" value="1"/>
                                        <setting name="AdcStreamResultGroup" value="false"/>
                                        <setting name="AdcEnableChDisableChGroup" value="false"/>
-                                       <setting name="AdcWithoutInterrupts" value="true"/>
+                                       <setting name="AdcWithoutInterrupts" value="false"/>
                                        <setting name="AdcWithoutDma" value="false"/>
                                        <setting name="AdcExtDMAChanEnable" value="false"/>
                                        <setting name="AdcGroupInBacktoBackMode" value="true"/>
@@ -490,7 +492,7 @@
                            <struct name="0">
                               <setting name="Name" value="AdcInterrupt_0"/>
                               <setting name="AdcInterruptSource" value="ADC0_COCO"/>
-                              <setting name="AdcInterruptEnable" value="false"/>
+                              <setting name="AdcInterruptEnable" value="true"/>
                            </struct>
                         </array>
                         <struct name="AdcPublishedInformation">
@@ -1350,7 +1352,7 @@
                               <struct name="32">
                                  <setting name="Name" value="PlatformIsrConfig_32"/>
                                  <setting name="IsrName" value="ADC0_IRQn"/>
-                                 <setting name="IsrHandler" value="undefined_handler"/>
+                                 <setting name="IsrHandler" value="Adc_0_Isr"/>
                               </struct>
                               <struct name="33">
                                  <setting name="Name" value="PlatformIsrConfig_33"/>

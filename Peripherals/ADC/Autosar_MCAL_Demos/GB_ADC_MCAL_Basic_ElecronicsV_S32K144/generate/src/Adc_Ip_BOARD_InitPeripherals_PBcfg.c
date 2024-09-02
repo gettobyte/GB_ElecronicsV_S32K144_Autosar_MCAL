@@ -145,7 +145,7 @@ const Adc_Ip_ConfigType AdcIpConfig_0_BOARD_INITPERIPHERALS =
     0U, /* UsrOffset */
     0U, /* NumChannels */
     AdcIpChansConfig_0_BOARD_INITPERIPHERALS, /* ChannelConfigs */
-    NULL_PTR /* ConversionCompleteNotification */
+    Adc_Ipw_Adc0EndConversionNotification /* ConversionCompleteNotification */
 };
 
 

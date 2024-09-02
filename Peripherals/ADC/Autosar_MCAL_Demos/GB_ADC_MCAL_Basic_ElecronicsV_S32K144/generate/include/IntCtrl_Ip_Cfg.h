@@ -88,6 +88,7 @@ extern const IntCtrl_Ip_CtrlConfigType IntCtrlConfig_0;
 /* Declaration of the generic configuration structure for interrupts (not core related) */
 extern const IntCtrl_Ip_GlobalRouteConfigType intRouteConfig;
             extern void undefined_handler(void);
+                        extern void Adc_0_Isr(void);
             
 #define PLATFORM_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Platform_MemMap.h"

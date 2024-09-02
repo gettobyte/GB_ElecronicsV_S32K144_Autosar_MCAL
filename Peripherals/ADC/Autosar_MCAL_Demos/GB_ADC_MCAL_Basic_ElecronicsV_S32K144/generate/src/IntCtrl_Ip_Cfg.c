@@ -191,7 +191,7 @@ static const IntCtrl_Ip_IrqRouteConfigType aIrqRouteConfig[] = {
     {LPUART0_RxTx_IRQn, 0U, undefined_handler},
     {LPUART1_RxTx_IRQn, 0U, undefined_handler},
     {LPUART2_RxTx_IRQn, 0U, undefined_handler},
-    {ADC0_IRQn, 0U, undefined_handler},
+    {ADC0_IRQn, 0U, Adc_0_Isr},
     {ADC1_IRQn, 0U, undefined_handler},
     {CMP0_IRQn, 0U, undefined_handler},
     {ERM_single_fault_IRQn, 0U, undefined_handler},

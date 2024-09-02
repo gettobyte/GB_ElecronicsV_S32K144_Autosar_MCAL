@@ -259,6 +259,8 @@ extern "C"{
 * @brief IRQ definition
 */
 
+#define ADC_UNIT_0_ISR_USED
+
 /**
 * @brief           max queue depth configured across all configset.
 */

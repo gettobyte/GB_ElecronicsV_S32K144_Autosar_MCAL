@@ -110,6 +110,13 @@ extern const Adc_Ipw_GroupConfig AdcIpwGroupConfig_0_BOARD_INITPERIPHERALS;
 #include "Adc_MemMap.h"
 
 
+/**
+* @brief         ADC Notification functions.
+* @details       ADC Nofification functions defined inside the Plugin.
+*
+*/
+extern void IoHwAb_AdcNotification_0(void);
+
 #define ADC_STOP_SEC_CODE
 #include "Adc_MemMap.h"
 
