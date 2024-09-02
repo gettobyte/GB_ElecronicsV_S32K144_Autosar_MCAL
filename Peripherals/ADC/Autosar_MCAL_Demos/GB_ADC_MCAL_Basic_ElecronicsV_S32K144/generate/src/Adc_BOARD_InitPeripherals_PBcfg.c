@@ -163,7 +163,7 @@ static const Adc_GroupConfigurationType Adc_GroupsCfg_BOARD_INITPERIPHERALS[] =
         /**< @brief Access mode */
         ADC_ACCESS_MODE_SINGLE, /* eAccessMode */
         /**< @brief Conversion mode */
-        ADC_CONV_MODE_CONTINUOUS, /* eMode */
+        ADC_CONV_MODE_ONESHOT, /* eMode */
         /**< @brief Conversion type */
         ADC_CONV_TYPE_NORMAL, /* eType */
 #if (ADC_PRIORITY_IMPLEMENTATION != ADC_PRIORITY_NONE)
