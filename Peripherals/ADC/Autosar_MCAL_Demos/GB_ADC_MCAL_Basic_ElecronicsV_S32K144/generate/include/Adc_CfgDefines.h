@@ -259,12 +259,10 @@ extern "C"{
 * @brief IRQ definition
 */
 
-#define ADC_UNIT_0_ISR_USED
-
 /**
 * @brief           max queue depth configured across all configset.
 */
-#define ADC_QUEUE_MAX_DEPTH_MAX             (5U)
+#define ADC_QUEUE_MAX_DEPTH_MAX             (1U)
 
 /**
 * @brief           max number of groups configured across all configset.

@@ -79,8 +79,6 @@ int main(void)
 
     for(;;)
     {
-    	TestDelay(200000);
-
     	Adc_StartGroupConversion(AdcGroup_0);
 
     	Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);

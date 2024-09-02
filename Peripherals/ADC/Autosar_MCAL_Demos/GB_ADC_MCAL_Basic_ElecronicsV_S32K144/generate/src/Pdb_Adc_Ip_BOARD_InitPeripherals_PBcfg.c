@@ -109,12 +109,12 @@ extern "C"{
 const Pdb_Adc_Ip_ConfigType PdbAdcIpConfig_0_BOARD_INITPERIPHERALS =
 {
     PDB_ADC_IP_LOAD_VAL_IMMEDIATELY, /* LoadValueMode */
-    (Pdb_Adc_Ip_ClkPrescalerDivType) 6U, /* PrescalerDiv */
-    (Pdb_Adc_Ip_ClkPrescalerMultFactType) 3U, /* ClkPreMultFactor */
+    (Pdb_Adc_Ip_ClkPrescalerDivType) 0U, /* PrescalerDiv */
+    (Pdb_Adc_Ip_ClkPrescalerMultFactType) 0U, /* ClkPreMultFactor */
     PDB_ADC_IP_SOFTWARE_TRIGGER, /* TriggerSource */
     (boolean)FALSE, /* ContinuousModeEnable */
     (boolean)FALSE, /* DmaEnable */
-    18750U, /* ModValue */
+    65535U, /* ModValue */
 #if  (STD_ON == FEATURE_PDB_HAS_INSTANCE_BACKTOBACK)
     (boolean)FALSE, /* InstanceBackToBackEnable */
 #endif /* (STD_ON == FEATURE_PDB_HAS_INSTANCE_BACKTOBACK) */

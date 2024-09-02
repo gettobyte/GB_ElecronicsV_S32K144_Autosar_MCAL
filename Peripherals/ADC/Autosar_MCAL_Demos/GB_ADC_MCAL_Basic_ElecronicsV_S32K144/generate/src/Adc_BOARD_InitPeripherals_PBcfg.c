@@ -211,7 +211,7 @@ static const Adc_GroupConfigurationType Adc_GroupsCfg_BOARD_INITPERIPHERALS[] =
         /**< @brief First Channel configured */
         (Adc_ChannelType)(ADC_ID_CHANNEL_U8(1)), /* FirstCh */
         /**< @brief Enables or Disables the ADC and DMA interrupts */
-        (uint8)(STD_OFF), /* u8AdcWithoutInterrupt */
+        (uint8)(STD_ON), /* u8AdcWithoutInterrupt */
         /**< @brief Enables or Disables configuring external DMA channel in the group */
         (uint8)(STD_OFF), /* u8AdcExtDMAChanEnable */
         /**< @brief When true, disables completely DMA configuration done by ADC driver for the group */
