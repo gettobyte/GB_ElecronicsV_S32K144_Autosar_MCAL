@@ -101,7 +101,7 @@ extern "C"{
 *                                        LOCAL MACROS
 ==================================================================================================*/
 
-#define ADC_IP_DEV_ERROR_DETECT                (STD_OFF)
+#define ADC_IP_DEV_ERROR_DETECT                (STD_ON)
 #define ADC_IP_TIMEOUT_TYPE                    (OSIF_COUNTER_DUMMY)
 #define ADC_IP_TIMEOUT_VAL                     (10000UL)
 #define ADC_IP_ENABLE_USER_MODE_SUPPORT        (STD_OFF)

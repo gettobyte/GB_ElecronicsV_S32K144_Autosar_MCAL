@@ -81,7 +81,7 @@ extern "C"{
 /* @brief PDB has inter-channel back to back mode between PDBx CH0 and PDBx CH1 pre-triggers */
 #define FEATURE_PDB_HAS_INTERCHANNEL_BACKTOBACK (STD_OFF)
 
-#define PDB_ADC_IP_DEV_ERROR_DETECT             (STD_OFF)
+#define PDB_ADC_IP_DEV_ERROR_DETECT             (STD_ON)
 #define PDB_ADC_IP_ENABLE_USER_MODE_SUPPORT     (STD_OFF)
 
 /*==================================================================================================

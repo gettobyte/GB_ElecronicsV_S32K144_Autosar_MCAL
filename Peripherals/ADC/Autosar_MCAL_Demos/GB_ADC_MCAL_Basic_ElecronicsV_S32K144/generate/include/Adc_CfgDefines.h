@@ -298,7 +298,7 @@ extern "C"{
 /**
 * @brief          Development error detection enabled/disabled ((STD_ON)/(STD_OFF)).
 */
-#define ADC_DEV_ERROR_DETECT                      (STD_OFF)
+#define ADC_DEV_ERROR_DETECT                      (STD_ON)
 
 /**
 * @brief          Add/remove ((STD_ON)/(STD_OFF)) the service Adc_GetVersionInfo() from the code.
