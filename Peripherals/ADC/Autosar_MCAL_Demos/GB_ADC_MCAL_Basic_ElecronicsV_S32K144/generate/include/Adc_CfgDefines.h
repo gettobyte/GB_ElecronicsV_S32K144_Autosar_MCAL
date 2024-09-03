@@ -101,7 +101,7 @@ extern "C"{
 /**
 * @brief           Adds/removes ((STD_ON)/(STD_OFF)) the services Adc_EnableHardwareTrigger() and Adc_DisableHardwareTrigger() from the code.
 */
-#define ADC_HW_TRIGGER_API                  (STD_OFF)
+#define ADC_HW_TRIGGER_API                  (STD_ON)
 
 /**
 * @brief           AdcSetHwUnitPowerMode api enabled/disabled ((STD_ON)/(STD_OFF)).
@@ -269,7 +269,7 @@ extern "C"{
 /**
 * @brief           max number of groups configured across all configset.
 */
-#define ADC_MAX_GROUPS                      (4U)
+#define ADC_MAX_GROUPS                      (5U)
 
 /**
 * @brief           Invalid Hardware group ID to determine there is no ongoing hardware group
@@ -399,6 +399,8 @@ extern "C"{
 #define AdcGroup_3_WI_PDB_Delay_AdcChannel_1                   (1U)
 #define AdcGroup_4_WI_Back2Back_Continous_AdcChannel_0                   (0U)
 #define AdcGroup_4_WI_Back2Back_Continous_AdcChannel_1                   (1U)
+#define AdcGroup_5_HW_WI_OS_PDB_B2B_AdcChannel_0                   (0U)
+#define AdcGroup_5_HW_WI_OS_PDB_B2B_AdcChannel_1                   (1U)
 
 /**
 * @brief           Symbolic names of groups.
@@ -408,6 +410,7 @@ extern "C"{
 #define AdcGroup_1_WNT                                (1U)
 #define AdcGroup_3_WI_PDB_Delay                                (2U)
 #define AdcGroup_4_WI_Back2Back_Continous                                (3U)
+#define AdcGroup_5_HW_WI_OS_PDB_B2B                                (4U)
 
 /**
 * @brief           Symbolic names of groups - ecuc 2108 compliant.
@@ -417,6 +420,7 @@ extern "C"{
 #define AdcConf_AdcGroup_AdcGroup_1_WNT               (1U)
 #define AdcConf_AdcGroup_AdcGroup_3_WI_PDB_Delay               (2U)
 #define AdcConf_AdcGroup_AdcGroup_4_WI_Back2Back_Continous               (3U)
+#define AdcConf_AdcGroup_AdcGroup_5_HW_WI_OS_PDB_B2B               (4U)
 
 /**
 * @brief          ADC Global Validation.

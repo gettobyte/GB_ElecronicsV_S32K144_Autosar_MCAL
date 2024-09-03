@@ -251,7 +251,7 @@ const Adc_Ipw_Config AdcIpwCfg_BOARD_INITPERIPHERALS =
     {
         { ADC_INTERRUPT, ADC_IPW_INVALID_TRANSFER_TYPE /* Unit not used */ }, /* u8Adc_DmaInterruptSoftware */
         /**< @brief number of groups per hw unit > */
-        { 4U, 0U }, /* aAdc_Groups */
+        { 5U, 0U }, /* aAdc_Groups */
         /**< @brief number of channels per hw unit > */
         { 2U, 0U }, /* aAdc_Channels */
         { ADC_IPW_INVALID_DMA_CHANNEL_ID, ADC_IPW_INVALID_DMA_CHANNEL_ID }, /* au8Adc_DmaChannel */
@@ -361,6 +361,32 @@ const Adc_Ipw_GroupConfig AdcIpwGroupConfig_3_BOARD_INITPERIPHERALS =
 #endif /* (ADC_DUAL_CLOCK_MODE == STD_ON) */
 #endif /* (ADC_SET_ADC_CONV_TIME_ONCE == STD_OFF) */
     10000U, /* PdbPeriod */
+    0U, /* PdbDelay */
+    (boolean)TRUE, /* AdcGroupEnableBackToBack */
+    (boolean)FALSE, /* AdcGroupEnableChannelDelays */
+    NULL_PTR /* pDelay */
+};
+
+/**
+* @brief          ADC Ipw Group 4 Config BOARD_INITPERIPHERALS.
+*/
+const Adc_Ipw_GroupConfig AdcIpwGroupConfig_4_BOARD_INITPERIPHERALS =
+{
+#if (ADC_SET_ADC_CONV_TIME_ONCE == STD_OFF)
+    /**< @brief Main Average enable status of group */
+    STD_OFF, /* u8GroupAvgEnable */
+    /**< @brief Main Average selection of group */
+    ADC_IP_AVG_4_CONV, /* GroupAvgSelect */
+    ADC_IP_DEFAULT_SAMPLE_TIME, /* ConvTime */
+#if (ADC_DUAL_CLOCK_MODE == STD_ON)
+    /**< @brief Alternate Average enable status of group */
+    STD_OFF, /* u8GroupAvgEnableAlternate */
+    /**< @brief Alternate Average selection of group */
+    ADC_IP_AVG_4_CONV, /* GroupAvgSelectAlternate */
+    ADC_IP_DEFAULT_SAMPLE_TIME, /* AlternateConvTime */
+#endif /* (ADC_DUAL_CLOCK_MODE == STD_ON) */
+#endif /* (ADC_SET_ADC_CONV_TIME_ONCE == STD_OFF) */
+    0U, /* PdbPeriod */
     0U, /* PdbDelay */
     (boolean)TRUE, /* AdcGroupEnableBackToBack */
     (boolean)FALSE, /* AdcGroupEnableChannelDelays */
