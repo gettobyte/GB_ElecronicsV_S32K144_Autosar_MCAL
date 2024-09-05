@@ -269,7 +269,7 @@ extern "C"{
 /**
 * @brief           max number of groups configured across all configset.
 */
-#define ADC_MAX_GROUPS                      (5U)
+#define ADC_MAX_GROUPS                      (6U)
 
 /**
 * @brief           Invalid Hardware group ID to determine there is no ongoing hardware group
@@ -401,6 +401,8 @@ extern "C"{
 #define AdcGroup_4_WI_Back2Back_Continous_AdcChannel_1                   (1U)
 #define AdcGroup_5_HW_WI_OS_PDB_B2B_AdcChannel_0                   (0U)
 #define AdcGroup_5_HW_WI_OS_PDB_B2B_AdcChannel_1                   (1U)
+#define AdcGroup_6_Streaming_Mode_AdcChannel_0                   (0U)
+#define AdcGroup_6_Streaming_Mode_AdcChannel_1                   (1U)
 
 /**
 * @brief           Symbolic names of groups.
@@ -411,6 +413,7 @@ extern "C"{
 #define AdcGroup_3_WI_PDB_Delay                                (2U)
 #define AdcGroup_4_WI_Back2Back_Continous                                (3U)
 #define AdcGroup_5_HW_WI_OS_PDB_B2B                                (4U)
+#define AdcGroup_6_Streaming_Mode                                (5U)
 
 /**
 * @brief           Symbolic names of groups - ecuc 2108 compliant.
@@ -421,6 +424,7 @@ extern "C"{
 #define AdcConf_AdcGroup_AdcGroup_3_WI_PDB_Delay               (2U)
 #define AdcConf_AdcGroup_AdcGroup_4_WI_Back2Back_Continous               (3U)
 #define AdcConf_AdcGroup_AdcGroup_5_HW_WI_OS_PDB_B2B               (4U)
+#define AdcConf_AdcGroup_AdcGroup_6_Streaming_Mode               (5U)
 
 /**
 * @brief          ADC Global Validation.

@@ -102,12 +102,13 @@ extern "C"{
 #define ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_2_CHANNELS      (2U)
 #define ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_3_CHANNELS      (2U)
 #define ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_4_CHANNELS      (2U)
+#define ADC_CFGSET_BOARD_INITPERIPHERALS_GROUP_5_CHANNELS      (2U)
 
 /**
 * @brief          Total number of groups in Config.
 *
 */
-#define ADC_GROUPS_BOARD_INITPERIPHERALS                       (5U)
+#define ADC_GROUPS_BOARD_INITPERIPHERALS                       (6U)
 
 #ifdef __cplusplus
 }

@@ -118,6 +118,11 @@ extern const Adc_Ipw_GroupConfig AdcIpwGroupConfig_3_BOARD_INITPERIPHERALS;
 */
 extern const Adc_Ipw_GroupConfig AdcIpwGroupConfig_4_BOARD_INITPERIPHERALS;
 
+/**
+* @brief          ADC Ipw Group 5 Config BOARD_INITPERIPHERALS.
+*/
+extern const Adc_Ipw_GroupConfig AdcIpwGroupConfig_5_BOARD_INITPERIPHERALS;
+
 
 #define ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Adc_MemMap.h"
@@ -135,6 +140,7 @@ extern const Adc_Ipw_GroupConfig AdcIpwGroupConfig_4_BOARD_INITPERIPHERALS;
 * @details       ADC Nofification functions defined inside the Plugin.
 *
 */
+extern void IoHwAb_AdcNotification_0(void);
 extern void IoHwAb_AdcNotification_0(void);
 extern void IoHwAb_AdcNotification_0(void);
 extern void IoHwAb_AdcNotification_0(void);

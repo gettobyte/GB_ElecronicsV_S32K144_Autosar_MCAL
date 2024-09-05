@@ -1,0 +1,90 @@
+main ()
+{
+  Lpspi_Ip_StatusType x;
+  Clock_Ip_StatusType clockStatus;
+  int D.6357;
+  <unnamed type> _1;
+
+  <bb 2> :
+  clockStatus_8 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus_34 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  # clockStatus_2 = PHI <clockStatus_8(2), clockStatus_34(3)>
+  if (clockStatus_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  Lpspi_Ip_Init (&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
+  GB_ST7789_Init ();
+  TestDelay (700000);
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  ST7789_Fill_Color (63488);
+  TestDelay (700000);
+
+  <bb 8> :
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  ST7789_Fill_Color (0);
+  TestDelay (700000);
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  ST7789_WriteString (0, 80, "Looking for          ", Font_16x26, 53241, 0);
+  ST7789_WriteString (0, 106, "Industrial", Font_16x26, 65535, 0);
+  ST7789_WriteString (0, 132, "Hardware kits", Font_16x26, 65535, 0);
+  ST7789_WriteString (0, 158, "Based on", Font_16x26, 53241, 0);
+  ST7789_WriteString (0, 184, "Industrial ", Font_16x26, 53241, 0);
+  ST7789_WriteString (0, 210, "MCU\'s/MPU\'s/ASIC\'s", Font_16x26, 65535, 0);
+  ST7789_WriteString (0, 236, "IC\'s", Font_16x26, 65535, 0);
+  ST7789_WriteString (0, 262, "Like of :#NXP ", Font_16x26, 53241, 0);
+  ST7789_WriteString (0, 288, "#TI,#STM,#NRF and Etc", Font_16x26, 53241, 0);
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  TestDelay (700000);
+  goto <bb 8>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+  long unsigned int DelayTimer.0_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.1_3;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 ={v} DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  DelayTimer.1_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer ={v} 0;
+  return;
+
+}
+
+

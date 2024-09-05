@@ -41,12 +41,18 @@ void TestDelay(uint32 delay)
 Std_ReturnType StdReturn = E_NOT_OK;
 
 uint8 AdcFlag = FALSE;
+
+Adc_StreamNumSampleType x =0;
+Adc_ValueGroupType    *LastBuffer[2];
+
 void IoHwAb_AdcNotification_0( void )
 {
     /*Read ready convertion*/
     AdcFlag = TRUE;
 
-    StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
+ //   StdReturn = Adc_ReadGroup(AdcGroup_0, Result);
+    x = Adc_GetStreamLastPointer(AdcGroup_0, LastBuffer);
+
 	//Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
 
 }
