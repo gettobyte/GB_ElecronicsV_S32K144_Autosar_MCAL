@@ -19,50 +19,11 @@ processor_version: 0.0.0
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 BOARD_InitPins:
 - options: {callFromInitBoot: 'true', coreID: core0}
-- pin_list:
-  - {pin_num: '78', peripheral: ADC0, signal: 'se, 1', pin_signal: PTA1}
-  - {pin_num: '27', peripheral: TRGMUX, signal: 'in, 0', pin_signal: PTB5}
-  - {pin_num: '46', peripheral: ADC0, signal: 'se, 12', pin_signal: PTC14}
+- pin_list: []
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
 
-/* Generate array of configured pin structures */
-Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS] = {
-    {
-        .portBase        = IP_PORTA,
-        .gpioBase        = NULL_PTR,
-        .pinPortIdx      = 1U,
-        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
-        .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
-        .passiveFilter   = (boolean)FALSE,
-        .mux             = PORT_MUX_ALT0,
-        .lockRegister    = PORT_LOCK_REGISTER_DISABLED,
-        .digitalFilter   = (boolean)FALSE,
-    },
-    {
-        .portBase        = IP_PORTB,
-        .gpioBase        = NULL_PTR,
-        .pinPortIdx      = 5U,
-        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
-        .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
-        .passiveFilter   = (boolean)FALSE,
-        .mux             = PORT_MUX_ALT6,
-        .lockRegister    = PORT_LOCK_REGISTER_DISABLED,
-        .digitalFilter   = (boolean)FALSE,
-    },
-    {
-        .portBase        = IP_PORTC,
-        .gpioBase        = NULL_PTR,
-        .pinPortIdx      = 14U,
-        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
-        .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
-        .passiveFilter   = (boolean)FALSE,
-        .mux             = PORT_MUX_ALT0,
-        .lockRegister    = PORT_LOCK_REGISTER_DISABLED,
-        .digitalFilter   = (boolean)FALSE,
-    },
-};
 /***********************************************************************************************************************
  * EOF
  **********************************************************************************************************************/
