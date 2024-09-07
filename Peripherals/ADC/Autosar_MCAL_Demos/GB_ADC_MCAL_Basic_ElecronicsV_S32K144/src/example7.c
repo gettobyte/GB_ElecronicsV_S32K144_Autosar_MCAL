@@ -41,14 +41,19 @@ void TestDelay(uint32 delay)
 Std_ReturnType StdReturn = E_NOT_OK;
 
 uint8 AdcFlag = FALSE;
+
+Adc_StreamNumSampleType x =0;
+Adc_ValueGroupType    *LastBuffer[2];
+
 void IoHwAb_AdcNotification_0( void )
 {
     /*Read ready convertion*/
     AdcFlag = TRUE;
 
-    StdReturn = Adc_ReadGroup(AdcGroup_4_WI_Back2Back_Continous, Result);
+    StdReturn = Adc_ReadGroup(AdcGroup_7_Voltage, Result);
+  //  x = Adc_GetStreamLastPointer(AdcGroup_0, LastBuffer);
+
 	//Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
-    Adc_EnableGroupNotification(AdcGroup_4_WI_Back2Back_Continous);
 
 }
 
@@ -56,6 +61,7 @@ void IoHwAb_AdcNotification_0( void )
 Adc_ValueGroupType    AdcReadGroupBuffer[2];
 Adc_ValueGroupType    ResultBuffer[2];
 
+Adc_ValueGroupType    ResultBuffer_2[2];
 int main(void)
 {
 
@@ -95,28 +101,24 @@ int main(void)
         }
 
         /*Set the memory buffer to store convertions*/
-        Adc_SetupResultBuffer( AdcGroup_4_WI_Back2Back_Continous, ResultBuffer );
+        Adc_SetupResultBuffer( AdcGroup_7_Voltage, ResultBuffer_2 );
 
-        Adc_EnableGroupNotification(AdcGroup_4_WI_Back2Back_Continous);
-
-   	Adc_StartGroupConversion(AdcGroup_4_WI_Back2Back_Continous);
+        Adc_EnableGroupNotification(AdcGroup_7_Voltage);
 
 
     for(;;)
     {
 
-//        Adc_EnableGroupNotification(AdcGroup_4_WI_Back2Back_Continous);
+        Adc_EnableGroupNotification(AdcGroup_7_Voltage);
 
-//    	Adc_StartGroupConversion(AdcGroup_4_WI_Back2Back_Continous);
-
-//    	StdReturn = Adc_ReadGroup(AdcGroup_4_WI_Back2Back_Continous, Result);
+    	Adc_StartGroupConversion(AdcGroup_7_Voltage);
 
         /*wait until the convertion is done*/
-      //  while( Adc_GetGroupStatus( AdcGroup_4_WI_Back2Back_Continous ) == ADC_BUSY );
+        while( Adc_GetGroupStatus( AdcGroup_7_Voltage ) == ADC_BUSY );
 
     	TestDelay(200000);
 
-//       Adc_StopGroupConversion(AdcGroup_4_WI_Back2Back_Continous);
+     //   Adc_StopGroupConversion(AdcGroup_0);
 
     }
 }

@@ -237,6 +237,7 @@ outputs:
 - {id: SYS_CLK.outFreq, value: 48 MHz}
 - {id: TRACE_CLK.outFreq, value: 48 MHz}
 settings:
+- {id: ClockDevErrorDetect, value: Enabled}
 - {id: DIVBUS.scale, value: '1', locked: true}
 - {id: DIVCORE.scale, value: '1', locked: true}
 - {id: DIVSLOW.scale, value: '4', locked: true}

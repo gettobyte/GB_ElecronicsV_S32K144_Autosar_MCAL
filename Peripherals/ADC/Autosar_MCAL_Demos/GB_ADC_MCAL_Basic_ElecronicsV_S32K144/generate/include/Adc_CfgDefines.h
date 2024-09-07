@@ -264,12 +264,12 @@ extern "C"{
 /**
 * @brief           max queue depth configured across all configset.
 */
-#define ADC_QUEUE_MAX_DEPTH_MAX             (1U)
+#define ADC_QUEUE_MAX_DEPTH_MAX             (10U)
 
 /**
 * @brief           max number of groups configured across all configset.
 */
-#define ADC_MAX_GROUPS                      (6U)
+#define ADC_MAX_GROUPS                      (7U)
 
 /**
 * @brief           Invalid Hardware group ID to determine there is no ongoing hardware group
@@ -280,7 +280,7 @@ extern "C"{
 /**
 * @brief           Maximum number of channels across all hardware units.
 */
-#define ADC_MAX_CHANNEL_PER_HW_UNIT         (2U)
+#define ADC_MAX_CHANNEL_PER_HW_UNIT         (3U)
 
 #endif /* ADC_DMA_SUPPORTED */
 
@@ -379,6 +379,7 @@ extern "C"{
 */
 #define AdcChannel_0                       (0x0U)
 #define AdcChannel_1                       (0x1U)
+#define AdcChannel_2                       (0x2U)
 
 /**
 * @brief          Definitions used for extracting the ADC Logical Unit Id and logical id of channels in each unit from equivalent channel symbolic name
@@ -391,8 +392,8 @@ extern "C"{
 /**
 * @brief           Autosar Extension symbolic names of channels per groups, on all HW units, with value set to channel index in the group.
 */
-#define AdcGroup_0_AdcChannel_0                   (0U)
-#define AdcGroup_0_AdcChannel_1                   (1U)
+#define AdcGroup_0_WI_OS_PDB_B2B_AdcChannel_0                   (0U)
+#define AdcGroup_0_WI_OS_PDB_B2B_AdcChannel_1                   (1U)
 #define AdcGroup_1_WNT_AdcChannel_0                   (0U)
 #define AdcGroup_1_WNT_AdcChannel_1                   (1U)
 #define AdcGroup_3_WI_PDB_Delay_AdcChannel_0                   (0U)
@@ -403,28 +404,31 @@ extern "C"{
 #define AdcGroup_5_HW_WI_OS_PDB_B2B_AdcChannel_1                   (1U)
 #define AdcGroup_6_Streaming_Mode_AdcChannel_0                   (0U)
 #define AdcGroup_6_Streaming_Mode_AdcChannel_1                   (1U)
+#define AdcGroup_7_Voltage_AdcChannel_2                   (0U)
 
 /**
 * @brief           Symbolic names of groups.
 */
 
-#define AdcGroup_0                                (0U)
+#define AdcGroup_0_WI_OS_PDB_B2B                                (0U)
 #define AdcGroup_1_WNT                                (1U)
 #define AdcGroup_3_WI_PDB_Delay                                (2U)
 #define AdcGroup_4_WI_Back2Back_Continous                                (3U)
 #define AdcGroup_5_HW_WI_OS_PDB_B2B                                (4U)
 #define AdcGroup_6_Streaming_Mode                                (5U)
+#define AdcGroup_7_Voltage                                (6U)
 
 /**
 * @brief           Symbolic names of groups - ecuc 2108 compliant.
 */
 
-#define AdcConf_AdcGroup_AdcGroup_0               (0U)
+#define AdcConf_AdcGroup_AdcGroup_0_WI_OS_PDB_B2B               (0U)
 #define AdcConf_AdcGroup_AdcGroup_1_WNT               (1U)
 #define AdcConf_AdcGroup_AdcGroup_3_WI_PDB_Delay               (2U)
 #define AdcConf_AdcGroup_AdcGroup_4_WI_Back2Back_Continous               (3U)
 #define AdcConf_AdcGroup_AdcGroup_5_HW_WI_OS_PDB_B2B               (4U)
 #define AdcConf_AdcGroup_AdcGroup_6_Streaming_Mode               (5U)
+#define AdcConf_AdcGroup_AdcGroup_7_Voltage               (6U)
 
 /**
 * @brief          ADC Global Validation.

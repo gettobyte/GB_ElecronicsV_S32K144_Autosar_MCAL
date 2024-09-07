@@ -58,8 +58,8 @@ extern "C" {
 #define PLATFORM_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Platform_MemMap.h"
 
-/* List of configuration for interrupts #1 */
-static const IntCtrl_Ip_IrqConfigType aIrqConfiguration1[] = {
+/* List of configuration for interrupts  */
+static const IntCtrl_Ip_IrqConfigType aIrqConfiguration[] = {
     {DMA0_IRQn, (boolean)FALSE, 0U},
     {DMA1_IRQn, (boolean)FALSE, 0U},
     {DMA2_IRQn, (boolean)FALSE, 0U},
@@ -151,10 +151,10 @@ static const IntCtrl_Ip_IrqConfigType aIrqConfiguration1[] = {
     {FTM3_Ovf_Reload_IRQn, (boolean)FALSE, 0U},
 };
 
-/* Configuration structure for interrupt controller #1*/
-const IntCtrl_Ip_CtrlConfigType IntCtrlConfig_0 = {
+/* Configuration structure for interrupt controller */
+const IntCtrl_Ip_CtrlConfigType intCtrlConfig = {
     89U,
-    aIrqConfiguration1
+    aIrqConfiguration
 };
 
 /* List of configurations for routing interrupts */

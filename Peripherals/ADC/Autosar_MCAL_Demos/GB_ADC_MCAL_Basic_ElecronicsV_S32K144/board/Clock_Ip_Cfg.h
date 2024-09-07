@@ -92,7 +92,7 @@ extern "C" {
 *                   The detection of default errors is configurable (ON / OFF) at pre-compile time.
 */
 
-#define CLOCK_IP_DEV_ERROR_DETECT         (STD_OFF)
+#define CLOCK_IP_DEV_ERROR_DETECT         (STD_ON)
 
 #define CLOCK_TIMEOUT_TYPE                (OSIF_COUNTER_DUMMY)
 

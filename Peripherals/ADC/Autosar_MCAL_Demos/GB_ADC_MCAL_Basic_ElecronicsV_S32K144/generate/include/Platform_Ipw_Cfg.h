@@ -22,75 +22,63 @@
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
-#ifndef INTCTRL_IP_CFG_H_
-#define INTCTRL_IP_CFG_H_
+#ifndef PLATFORM_IPW_CFG_H_
+#define PLATFORM_IPW_CFG_H_
 
 /*==================================================================================================
                                          INCLUDE FILES
 ==================================================================================================*/
-#include "IntCtrl_Ip_TypesDef.h"
+#include "Platform_Ipw_TypesDef.h"
+#define PLATFORM_IPW_CFG_VENDOR_ID                     43
+#define PLATFORM_IPW_CFG_AR_MAJOR_VERSION              4
+#define PLATFORM_IPW_CFG_AR_MINOR_VERSION              4
+#define PLATFORM_IPW_CFG_AR_REVISION_VERSION           0
+#define PLATFORM_IPW_CFG_SW_MAJOR_VERSION              1
+#define PLATFORM_IPW_CFG_SW_MINOR_VERSION              0
+#define PLATFORM_IPW_CFG_SW_PATCH_VERSION              0
 
-#ifdef S32K116
-    #include "S32K116_COMMON.h"
-#endif
-#ifdef S32K118
-    #include "S32K118_COMMON.h"
-#endif
-#ifdef S32K142
-    #include "S32K142_COMMON.h"
-#endif
-#ifdef S32K142W
-    #include "S32K142W_COMMON.h"
-#endif
-#ifdef S32K144
-    #include "S32K144_COMMON.h"
-#endif
-#ifdef S32K144W
-    #include "S32K144W_COMMON.h"
-#endif
-#ifdef S32K146
-    #include "S32K146_COMMON.h"
-#endif
-#ifdef S32K148
-    #include "S32K148_COMMON.h"
-#endif
 /*==================================================================================================
-*                              SOURCE FILE VERSION INFORMATION
+*                                     FILE VERSION CHECKS
 ==================================================================================================*/
-#define PLATFORM_INTCTRL_IP_CFG_VENDOR_ID                          43
-#define PLATFORM_INTCTRL_IP_CFG_SW_MAJOR_VERSION                   1
-#define PLATFORM_INTCTRL_IP_CFG_SW_MINOR_VERSION                   0
-#define PLATFORM_INTCTRL_IP_CFG_SW_PATCH_VERSION                   0
+/* Check if current file and Platform_Ipw_TypesDef header file are of the same vendor */
+#if (PLATFORM_IPW_CFG_VENDOR_ID != PLATFORM_IPW_TYPESDEF_VENDOR_ID)
+    #error "Platform_Ipw_Cfg.h and Platform_Ipw_TypesDef.h have different vendor ids"
+#endif
+/* Check if current file and Platform_Ipw_TypesDef header file are of the same Autosar version */
+#if ((PLATFORM_IPW_CFG_AR_MAJOR_VERSION    != PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION) || \
+     (PLATFORM_IPW_CFG_AR_MINOR_VERSION    != PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION) || \
+     (PLATFORM_IPW_CFG_AR_REVISION_VERSION != PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Platform_Ipw_Cfg.h and Platform_Ipw_TypesDef.h are different"
+#endif
+/* Check if current file and Platform_Ipw_TypesDef header file are of the same Software version */
+#if ((PLATFORM_IPW_CFG_SW_MAJOR_VERSION != PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION) || \
+     (PLATFORM_IPW_CFG_SW_MINOR_VERSION != PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION) || \
+     (PLATFORM_IPW_CFG_SW_PATCH_VERSION != PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of Platform_Ipw_Cfg.h and Platform_Ipw_TypesDef.h are different"
+#endif
+
 /*==================================================================================================
                                       FILE VERSION CHECKS
 ==================================================================================================*/
-/* Check if current file and IntCtrl_Ip_TypesDef header file are of the same vendor */
-#if (PLATFORM_INTCTRL_IP_CFG_VENDOR_ID != PLATFORM_INTCTRL_IP_TYPESDEF_TYPES_VENDOR_ID)
-    #error "IntCtrl_Ip_Cfg.h and IntCtrl_Ip_TypesDef.h have different vendor ids"
-#endif
 
-/* Check if current file and Fls header file are of the same Software version */
-#if ((PLATFORM_INTCTRL_IP_CFG_SW_MAJOR_VERSION != PLATFORM_INTCTRL_IP_TYPESDEF_SW_MAJOR_VERSION) || \
-     (PLATFORM_INTCTRL_IP_CFG_SW_MINOR_VERSION != PLATFORM_INTCTRL_IP_TYPESDEF_SW_MINOR_VERSION) || \
-     (PLATFORM_INTCTRL_IP_CFG_SW_PATCH_VERSION != PLATFORM_INTCTRL_IP_TYPESDEF_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of IntCtrl_Ip_Cfg.h and IntCtrl_Ip_TypesDef.h are different"
-#endif
+/* TBD */
+
+
 /*==================================================================================================
                                        GLOBAL VARIABLES
 ==================================================================================================*/
 #define PLATFORM_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Platform_MemMap.h"
 
-/* Declaration of the configuration structure for Interrupt Controller (core related) */
-extern const IntCtrl_Ip_CtrlConfigType intCtrlConfig;
-/* Declaration of the generic configuration structure for interrupts (not core related) */
-extern const IntCtrl_Ip_GlobalRouteConfigType intRouteConfig;
-            extern void undefined_handler(void);
-                        extern void Adc_0_Isr(void);
-            
+/* Definition of the configuration structure for Platform IPW */
+extern const Platform_Ipw_ConfigType ipwConfig;
+/* Definition of the configuration structure for non core Platform IPW */
+extern const Platform_Ipw_NonCoreConfigType ipwNonCoreConfig;
+
 #define PLATFORM_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Platform_MemMap.h"
 
-#endif /* INTCTRL_IP_CFG_H_ */
+#endif /* PLATFORM_IPW_CFG_H_ */
 

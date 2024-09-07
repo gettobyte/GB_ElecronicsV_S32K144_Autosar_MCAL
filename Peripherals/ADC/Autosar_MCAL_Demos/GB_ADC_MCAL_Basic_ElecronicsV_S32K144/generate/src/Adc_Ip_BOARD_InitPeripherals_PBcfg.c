@@ -94,7 +94,7 @@ extern "C"{
 /**
 * @brief          ADC Ip List of Channels Configuration for Logical ID 0 corresponding to the ADC0 configuration variant BOARD_INITPERIPHERALS.
 */
-static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[2U] =
+static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[3U] =
 {
     {
         0U, /* ChnIdx */
@@ -104,6 +104,11 @@ static const Adc_Ip_ChanConfigType AdcIpChansConfig_0_BOARD_INITPERIPHERALS[2U] 
     {
         1U, /* ChnIdx */
         ADC_IP_INPUTCHAN_EXT1, /* Channel */
+        (boolean)FALSE /* InterruptEnable */
+    },
+    {
+        2U, /* ChnIdx */
+        ADC_IP_INPUTCHAN_BANDGAP, /* Channel */
         (boolean)FALSE /* InterruptEnable */
     }
 };

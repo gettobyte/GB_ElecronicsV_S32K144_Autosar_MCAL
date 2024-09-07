@@ -45,13 +45,13 @@
 *                                       LOCAL MACROS
 ==================================================================================================*/
 /* Development error detection */
-#define INT_CTRL_IP_DEV_ERROR_DETECT              (STD_ON)
+#define INT_CTRL_IP_DEV_ERROR_DETECT              (STD_OFF)
 
 /* CPU to CPU interrupt (MSI) routing through MSCM */
 #define INT_CTRL_IP_MSI_AVAILABLE                 (STD_OFF)
 
 /* IP standalone APIs  */
-#define INT_CTRL_IP_STANDALONE_APIS               (STD_ON)
+#define INT_CTRL_IP_STANDALONE_APIS               (STD_OFF)
 
 /* MSI target core count */
 #define INTCTRL_IP_MSI_CORE_CNT                   (0U)

@@ -41,6 +41,7 @@ void TestDelay(uint32 delay)
 
 Std_ReturnType StdReturn = E_NOT_OK;
 Adc_ValueGroupType    *LastBuffer[8];
+Adc_ValueGroupType    ResultBuffer_2[8];
 
 
 
@@ -52,8 +53,19 @@ void IoHwAb_AdcNotification_0( void )
     /*Read ready convertion*/
     AdcFlag = TRUE;
 
-   StdReturn = Adc_ReadGroup(AdcGroup_6_Streaming_Mode, Result);
-   //x = Adc_GetStreamLastPointer(AdcGroup_6_Streaming_Mode, LastBuffer);
+//   StdReturn = Adc_ReadGroup(AdcGroup_6_Streaming_Mode, Result);
+   x = Adc_GetStreamLastPointer(AdcGroup_6_Streaming_Mode, LastBuffer);
+	//Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
+
+}
+
+void IoHwAb_AdcNotification_6( void )
+{
+    /*Read ready convertion*/
+    AdcFlag = TRUE;
+
+//   StdReturn = Adc_ReadGroup(AdcGroup_6_Streaming_Mode, Result);
+   x = Adc_GetStreamLastPointer(AdcGroup_6_Streaming_Mode, LastBuffer);
 	//Adc_ReadRawData(AdcHwUnit_0, adc_Channel, 2, Result);
 
 }
@@ -102,7 +114,7 @@ int main(void)
         }
 
         /*Set the memory buffer to store convertions*/
-        Adc_SetupResultBuffer( AdcGroup_6_Streaming_Mode, ResultBuffer );
+        Adc_SetupResultBuffer( AdcGroup_6_Streaming_Mode, ResultBuffer_2 );
 
         Adc_EnableGroupNotification(AdcGroup_6_Streaming_Mode);
 
