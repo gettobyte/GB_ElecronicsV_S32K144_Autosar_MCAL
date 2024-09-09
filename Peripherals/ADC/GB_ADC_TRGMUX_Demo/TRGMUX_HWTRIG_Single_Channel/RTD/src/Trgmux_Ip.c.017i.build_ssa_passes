@@ -1,0 +1,394 @@
+Trgmux_Ip_SetLock (const uint32 LogicTrigger)
+{
+  Trgmux_Ip_StatusType Status;
+  struct TRGMUX_Type * LocTrgmuxBase;
+  uint32 LocOutput;
+  uint32 LocHwInst;
+  Trgmux_Ip_StatusType D.5832;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  g_pxTrgmuxInit.2_1 = g_pxTrgmuxInit;
+  _2 = g_pxTrgmuxInit.2_1->paxLogicTrigger[LogicTrigger];
+  _3 = _2->HwInstId;
+  LocHwInst = (uint32) _3;
+  # DEBUG BEGIN_STMT
+  g_pxTrgmuxInit.3_4 = g_pxTrgmuxInit;
+  _5 = g_pxTrgmuxInit.3_4->paxLogicTrigger[LogicTrigger];
+  _6 = _5->Output;
+  LocOutput = (uint32) _6;
+  # DEBUG BEGIN_STMT
+  LocTrgmuxBase = 1074147328B;
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  _7 = hwAcc_GetLockForOutput (LocTrgmuxBase, LocOutput);
+  if (_7 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Status = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (Status != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21 ();
+  # DEBUG BEGIN_STMT
+  hwAcc_SetLockForOutput (LocTrgmuxBase, LocOutput);
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21 ();
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.5832 = Status;
+  return D.5832;
+
+}
+
+
+Trgmux_Ip_SetInput (const uint32 LogicTrigger, const uint32 Input)
+{
+  Trgmux_Ip_StatusType Status;
+  struct TRGMUX_Type * LocTrgmuxBase;
+  uint32 LocOutput;
+  uint32 LocHwInst;
+  Trgmux_Ip_StatusType D.5820;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  g_pxTrgmuxInit.0_1 = g_pxTrgmuxInit;
+  _2 = g_pxTrgmuxInit.0_1->paxLogicTrigger[LogicTrigger];
+  _3 = _2->HwInstId;
+  LocHwInst = (uint32) _3;
+  # DEBUG BEGIN_STMT
+  g_pxTrgmuxInit.1_4 = g_pxTrgmuxInit;
+  _5 = g_pxTrgmuxInit.1_4->paxLogicTrigger[LogicTrigger];
+  _6 = _5->Output;
+  LocOutput = (uint32) _6;
+  # DEBUG BEGIN_STMT
+  LocTrgmuxBase = 1074147328B;
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  _7 = hwAcc_GetLockForOutput (LocTrgmuxBase, LocOutput);
+  if (_7 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Status = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (Status != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20 ();
+  # DEBUG BEGIN_STMT
+  hwAcc_SetInputForOutput (LocTrgmuxBase, Input, LocOutput);
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20 ();
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.5820 = Status;
+  return D.5820;
+
+}
+
+
+Trgmux_Ip_Init (const struct Trgmux_Ip_InitType * const pxTrgmuxInit)
+{
+  Trgmux_Ip_StatusType Status;
+  boolean LocLock;
+  uint8 LocInst;
+  uint32 LocOutput;
+  uint32 LocInput;
+  uint32 LocTriggerIdx;
+  struct TRGMUX_Type * LocTrgmuxBase;
+  Trgmux_Ip_StatusType D.5805;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  LocTrgmuxBase = 1074147328B;
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19 ();
+  # DEBUG BEGIN_STMT
+  _1 = hwAcc_Init (LocTrgmuxBase);
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Status = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (Status != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  LocTriggerIdx = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = pxTrgmuxInit->paxLogicTrigger[LocTriggerIdx];
+  LocInst = _2->HwInstId;
+  # DEBUG BEGIN_STMT
+  _3 = pxTrgmuxInit->paxLogicTrigger[LocTriggerIdx];
+  _4 = _3->Output;
+  LocOutput = (uint32) _4;
+  # DEBUG BEGIN_STMT
+  _5 = pxTrgmuxInit->paxLogicTrigger[LocTriggerIdx];
+  _6 = _5->Input;
+  LocInput = (uint32) _6;
+  # DEBUG BEGIN_STMT
+  _7 = (int) LocInst;
+  LocTrgmuxBase = 1074147328B;
+  # DEBUG BEGIN_STMT
+  hwAcc_SetInputForOutput (LocTrgmuxBase, LocInput, LocOutput);
+  # DEBUG BEGIN_STMT
+  LocTriggerIdx = LocTriggerIdx + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (LocTriggerIdx == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  LocTriggerIdx = 0;
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _8 = pxTrgmuxInit->paxLogicTrigger[LocTriggerIdx];
+  LocLock = _8->Lock;
+  # DEBUG BEGIN_STMT
+  if (LocLock != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _9 = pxTrgmuxInit->paxLogicTrigger[LocTriggerIdx];
+  _10 = _9->Output;
+  LocOutput = (uint32) _10;
+  # DEBUG BEGIN_STMT
+  hwAcc_SetLockForOutput (LocTrgmuxBase, LocOutput);
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  LocTriggerIdx = LocTriggerIdx + 1;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (LocTriggerIdx == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19 ();
+  # DEBUG BEGIN_STMT
+  g_pxTrgmuxInit = pxTrgmuxInit;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.5805 = Status;
+  return D.5805;
+
+}
+
+
+hwAcc_GetLockForOutput (const struct TRGMUX_Type * const pTrgmux, const uint32 Output)
+{
+  boolean Status;
+  boolean D.5825;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) Output;
+  _2 = _1 / 4;
+  _3 = (int) _2;
+  _4 = pTrgmux->TRGMUXn[_3];
+  _5 = _4 >> 31;
+  _6 = _5 & 1;
+  if (_6 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Status = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Status = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.5825 = Status;
+  return D.5825;
+
+}
+
+
+hwAcc_SetLockForOutput (struct TRGMUX_Type * const pTrgmux, const uint32 Output)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) Output;
+  _2 = _1 / 4;
+  _3 = (int) _2;
+  _4 = pTrgmux->TRGMUXn[_3];
+  _5 = (unsigned char) Output;
+  _6 = _5 / 4;
+  _7 = (int) _6;
+  _8 = _4 | 2147483648;
+  pTrgmux->TRGMUXn[_7] = _8;
+  return;
+
+}
+
+
+hwAcc_SetInputForOutput (struct TRGMUX_Type * const pTrgmux, const uint32 Input, const uint32 Output)
+{
+  uint32 regValue;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) Output;
+  _2 = _1 / 4;
+  _3 = (int) _2;
+  regValue = pTrgmux->TRGMUXn[_3];
+  # DEBUG BEGIN_STMT
+  _4 = (unsigned char) Output;
+  _5 = (unsigned int) _4;
+  _6 = _5 & 3;
+  _7 = _6 * 8;
+  _8 = 63 << _7;
+  _9 = ~_8;
+  regValue = regValue & _9;
+  # DEBUG BEGIN_STMT
+  _10 = (unsigned char) Output;
+  _11 = _10 & 3;
+  _12 = _11 * 8;
+  _13 = (int) _12;
+  _14 = Input << _13;
+  regValue = regValue | _14;
+  # DEBUG BEGIN_STMT
+  _15 = (unsigned char) Output;
+  _16 = _15 / 4;
+  _17 = (int) _16;
+  pTrgmux->TRGMUXn[_17] = regValue;
+  return;
+
+}
+
+
+hwAcc_Init (struct TRGMUX_Type * const pTrgmux)
+{
+  Trgmux_Ip_StatusType Status;
+  uint32 regValue;
+  uint32 regIdx;
+  Trgmux_Ip_StatusType D.5813;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  regIdx = 0;
+  goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (Status != 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = pTrgmux->TRGMUXn[regIdx];
+  regValue = _1 & 2147483648;
+  # DEBUG BEGIN_STMT
+  if (regValue == 2147483648)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Status = 1;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = pTrgmux->TRGMUXn[regIdx];
+  pTrgmux->TRGMUXn[regIdx] = _2;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regIdx = regIdx + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (regIdx <= 25)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  D.5813 = Status;
+  return D.5813;
+
+}
+
+

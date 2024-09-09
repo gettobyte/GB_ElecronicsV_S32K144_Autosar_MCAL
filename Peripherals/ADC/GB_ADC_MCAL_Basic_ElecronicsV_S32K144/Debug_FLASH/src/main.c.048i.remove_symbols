@@ -1,0 +1,215 @@
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Adc_ReadRawData/17 (Adc_ReadRawData) @06cfeb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Adc_StartGroupConversion/16 (Adc_StartGroupConversion) @06cfea80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Adc_Calibrate/15 (Adc_Calibrate) @06cfe9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Adc_Config_BOARD_INITPERIPHERALS/14 (Adc_Config_BOARD_INITPERIPHERALS) @06cff318
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Adc_Init/13 (Adc_Init) @06cfe8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+IntCtrl_Ip_EnableIrq/12 (IntCtrl_Ip_EnableIrq) @06cfe7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Adc_0_Isr/11 (Adc_0_Isr) @06cfe700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/4 (addr)
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/10 (IntCtrl_Ip_InstallHandler) @06cfe620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Port_Init/9 (Port_Init) @06cfe540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06cfe460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06cfe380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Mcu_aClockConfigPB/6 (Mcu_aClockConfigPB) @06cff0d8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)main/4 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/5 (Clock_Ip_Init) @06cfe2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 main/4 
+  Calls: 
+main/4 (main) @06e34e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcu_aClockConfigPB/6 (addr)Mcu_aClockConfigPB/6 (addr)Adc_0_Isr/11 (addr)Adc_Config_BOARD_INITPERIPHERALS/14 (addr)adc_Channel/3 (addr)Result/2 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Adc_ReadRawData/17 Adc_StartGroupConversion/16 Adc_Calibrate/15 Adc_Init/13 IntCtrl_Ip_EnableIrq/12 IntCtrl_Ip_InstallHandler/10 Port_Init/9 Clock_Ip_DistributePll/8 Clock_Ip_GetPllStatus/7 Clock_Ip_Init/5 Clock_Ip_Init/5 
+adc_Channel/3 (adc_Channel) @06e36870
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: main/4 (addr)
+  Availability: available
+  Varpool flags: initialized
+Result/2 (Result) @06e367e0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: main/4 (addr)
+  Availability: available
+  Varpool flags:
+ResultBuffer/1 (ResultBuffer) @06e36798
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+main ()
+{
+  volatile boolean bStatus;
+  boolean bLocalStatus;
+  struct Adc_CalibrationStatusType CalibStatus;
+  boolean Gb_ADC_Conversion_Status;
+  Adc_Ip_StatusType adcStatus;
+  Clock_Ip_StatusType clockStatus;
+  Std_ReturnType StdReturn;
+  int D.7103;
+  <unnamed type> _1;
+  unsigned char _2;
+
+  <bb 2> :
+  StdReturn_7 = 1;
+  clockStatus_10 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus_24 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  # clockStatus_3 = PHI <clockStatus_10(2), clockStatus_24(3)>
+  if (clockStatus_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  IntCtrl_Ip_InstallHandler (39, Adc_0_Isr, 0B);
+  IntCtrl_Ip_EnableIrq (39);
+  bLocalStatus_16 = 1;
+  bStatus ={v} 1;
+  Adc_Init (&Adc_Config_BOARD_INITPERIPHERALS);
+  Adc_Calibrate (0, &CalibStatus);
+  _2 = CalibStatus.Adc_UnitSelfTestStatus;
+  if (_2 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  bStatus ={v} 0;
+
+  <bb 9> :
+  Adc_StartGroupConversion (0);
+  Adc_ReadRawData (0, &adc_Channel, 2, &Result);
+  goto <bb 9>; [INV]
+
+}
+
+

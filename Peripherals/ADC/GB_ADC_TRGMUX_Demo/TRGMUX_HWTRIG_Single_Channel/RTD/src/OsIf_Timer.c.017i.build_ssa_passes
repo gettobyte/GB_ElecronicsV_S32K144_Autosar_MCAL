@@ -1,0 +1,193 @@
+OsIf_MicrosToTicks (uint32 Micros, OsIf_CounterType SelectedCounter)
+{
+  uint32 Value;
+  uint32 D.5612;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Value = 0;
+  # DEBUG BEGIN_STMT
+  if (SelectedCounter == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  Value = OsIf_Timer_Dummy_MicrosToTicks (Micros);
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.5612 = Value;
+  return D.5612;
+
+}
+
+
+OsIf_SetTimerFrequency (uint32 Freq, OsIf_CounterType SelectedCounter)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (SelectedCounter == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  OsIf_Timer_Dummy_SetTimerFrequency (Freq);
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  return;
+
+}
+
+
+OsIf_GetElapsed (uint32 * const CurrentRef, OsIf_CounterType SelectedCounter)
+{
+  uint32 Value;
+  uint32 D.5608;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Value = 0;
+  # DEBUG BEGIN_STMT
+  if (SelectedCounter == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  Value = OsIf_Timer_Dummy_GetElapsed (CurrentRef);
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.5608 = Value;
+  return D.5608;
+
+}
+
+
+OsIf_GetCounter (OsIf_CounterType SelectedCounter)
+{
+  uint32 Value;
+  uint32 D.5604;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Value = 0;
+  # DEBUG BEGIN_STMT
+  if (SelectedCounter == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  Value = OsIf_Timer_Dummy_GetCounter ();
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.5604 = Value;
+  return D.5604;
+
+}
+
+
+OsIf_Init (const void * Config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Config != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DevAssert (0);
+
+  <bb 4> :
+  return;
+
+}
+
+
+OsIf_Timer_Dummy_MicrosToTicks (uint32 Micros)
+{
+  uint32 D.5614;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  D.5614 = Micros;
+  return D.5614;
+
+}
+
+
+OsIf_Timer_Dummy_SetTimerFrequency (uint32 Freq)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+OsIf_Timer_Dummy_GetElapsed (const uint32 * const CurrentRef)
+{
+  uint32 D.5610;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.5610 = 1;
+  return D.5610;
+
+}
+
+
+OsIf_Timer_Dummy_GetCounter ()
+{
+  uint32 D.5606;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  D.5606 = 0;
+  return D.5606;
+
+}
+
+
+DevAssert (volatile boolean x)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  x.0_1 = x;
+  if (x.0_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 3>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

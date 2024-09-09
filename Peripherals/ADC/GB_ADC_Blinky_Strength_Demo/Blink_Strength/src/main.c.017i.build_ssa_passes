@@ -1,0 +1,166 @@
+main ()
+{
+  uint32_t Gb_ADC_Value;
+  boolean Gb_ADC_Conversion_Status;
+  Adc_Ip_StatusType adcStatus;
+  Clock_Ip_StatusType clockStatus;
+  int D.6964;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  Adc_Ip_Init (0, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
+  # DEBUG BEGIN_STMT
+  adcStatus = Adc_Ip_DoCalibration (0);
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  adcStatus = Adc_Ip_DoCalibration (0);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (adcStatus != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Adc_Ip_StartConversion (0, 12, 0);
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Dio_WriteChannel (112, 0);
+  # DEBUG BEGIN_STMT
+  _2 = Adc_Ip_GetConvData (0, 0);
+  _3 = (int) _2;
+  _4 = _3 * 940;
+  _5 = (long unsigned int) _4;
+  TestDelay (_5);
+  # DEBUG BEGIN_STMT
+  Dio_WriteChannel (112, 1);
+  # DEBUG BEGIN_STMT
+  _6 = Adc_Ip_GetConvData (0, 0);
+  _7 = (int) _6;
+  _8 = _7 * 940;
+  _9 = (long unsigned int) _8;
+  TestDelay (_9);
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DelayTimer.4_1 = DelayTimer;
+  _2 = DelayTimer.4_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  DelayTimer.5_3 = DelayTimer;
+  if (delay > DelayTimer.5_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  DelayTimer = 0;
+  return;
+
+}
+
+
+AdcConversionCompleteNotif (const uint8 ControlChanIdx)
+{
+  _Bool iftmp.0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  notif_triggered = 1;
+  # DEBUG BEGIN_STMT
+  _1 = Adc_Ip_GetConvData (0, ControlChanIdx);
+  data = _1;
+  # DEBUG BEGIN_STMT
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  data.1_2 = data;
+  if (data.1_2 > 819)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  data.2_3 = data;
+  _4 = (unsigned int) data.2_3;
+  _5 = _4 + 4294966477;
+  iftmp.0 = _5 > 150;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  data.3_6 = data;
+  _7 = (unsigned int) data.3_6;
+  _8 = 819 - _7;
+  iftmp.0 = _8 > 150;
+
+  <bb 6> :
+  if (iftmp.0 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+

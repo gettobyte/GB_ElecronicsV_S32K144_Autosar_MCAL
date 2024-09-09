@@ -1,0 +1,890 @@
+
+Analyzing function: CompleteSOSC.part.0/18
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 4 2 3
+;; 4 succs { 2 }
+;; 2 succs { 3 }
+;; 3 succs { 1 }
+
+Analyzing function body size: CompleteSOSC.part.0
+
+IPA function summary for CompleteSOSC.part.0/18 inlinable
+  global time:     15.000000
+  self size:       7
+  global size:     0
+  min size:       0
+  self stack:      12
+  global stack:    12
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 0] changed) && (not inlined)
+    size:0.500000, time:0.500000,  nonconst if:(op0[ref offset: 0] changed)
+  calls:
+    ReportClockErrors/14 function body not available
+      loop depth: 0 freq:1.00 size: 3 time: 12
+       op0 is compile time invariant
+
+
+Analyzing function: EnableSOSC_TrustedCall.isra.0/17
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 5 2 3 4
+;; 5 succs { 2 }
+;; 2 succs { 3 4 }
+;; 3 succs { 4 }
+;; 4 succs { 1 }
+
+Analyzing function body size: EnableSOSC_TrustedCall.isra.0
+
+IPA function summary for EnableSOSC_TrustedCall.isra.0/17 inlinable
+  global time:     5.020000
+  self size:       8
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op0 changed)
+    size:3.000000, time:1.020000,  executed if:(op0 == 1)
+  calls:
+
+
+Analyzing function: DisableSOSC_TrustedCall.isra.0/16
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 3 2
+;; 3 succs { 2 }
+;; 2 succs { 1 }
+
+Analyzing function body size: DisableSOSC_TrustedCall.isra.0
+
+IPA function summary for DisableSOSC_TrustedCall.isra.0/16 inlinable
+  global time:     5.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: ResetSOSC_TrustedCall.isra.0/15
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 3 2
+;; 3 succs { 2 }
+;; 2 succs { 1 }
+
+Analyzing function body size: ResetSOSC_TrustedCall.isra.0
+
+IPA function summary for ResetSOSC_TrustedCall.isra.0/15 inlinable
+  global time:     8.000000
+  self size:       9
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:6.000000, time:6.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: EnableSOSC/11
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EnableSOSC
+
+IPA function summary for EnableSOSC/11 inlinable
+  global time:     14.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.500000, time:0.500000
+    size:3.500000, time:2.500000,  executed if:(not inlined)
+  calls:
+    EnableSOSC_TrustedCall.isra.0/17 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 4 stack: 0
+
+
+Analyzing function: DisableSOSC/9
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: DisableSOSC
+
+IPA function summary for DisableSOSC/9 inlinable
+  global time:     12.000000
+  self size:       4
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    DisableSOSC_TrustedCall.isra.0/16 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 1 time: 10callee size: 3 stack: 0
+
+
+Analyzing function: CompleteSOSC/7
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 9 6 7 8
+;;
+;; Loop 1
+;;  header 4, latch 9
+;;  depth 1, outer 0
+;;  nodes: 4 9 5
+;; 2 succs { 3 8 }
+;; 3 succs { 4 }
+;; 4 succs { 5 6 }
+;; 5 succs { 9 6 }
+;; 9 succs { 4 }
+;; 6 succs { 7 8 }
+;; 7 succs { 8 }
+;; 8 succs { 1 }
+
+Analyzing function body size: CompleteSOSC
+
+IPA function summary for CompleteSOSC/7 inlinable
+  global time:     80.004892
+  self size:       29
+  global size:     0
+  min size:       0
+  self stack:      12
+  global stack:    12
+    size:14.000000, time:28.999332
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    CompleteSOSC.part.0/18 function not considered for inlining
+      loop depth: 0 freq:0.11 size: 2 time: 11callee size: 3 stack:12
+    ClockTimeoutExpired/13 function body not available
+      loop depth: 1 freq:3.08 size: 5 time: 14
+       op0 is compile time invariant
+       op1 is compile time invariant
+    ClockStartTimeout/12 function body not available
+      loop depth: 0 freq:0.33 size: 5 time: 14
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+       op3 is compile time invariant
+
+
+Analyzing function: SetSOSC/6
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: SetSOSC
+
+IPA function summary for SetSOSC/6 inlinable
+  global time:     13.000000
+  self size:       5
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    SetSOSC_TrustedCall/5 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11
+
+
+Analyzing function: SetSOSC_TrustedCall/5
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
+;; 2 succs { 3 17 }
+;; 3 succs { 6 4 5 }
+;; 4 succs { 6 }
+;; 5 succs { 6 }
+;; 6 succs { 7 8 }
+;; 7 succs { 9 }
+;; 8 succs { 9 }
+;; 9 succs { 10 11 }
+;; 10 succs { 12 }
+;; 11 succs { 12 }
+;; 12 succs { 16 13 14 15 }
+;; 13 succs { 17 }
+;; 14 succs { 17 }
+;; 15 succs { 17 }
+;; 16 succs { 17 }
+;; 17 succs { 1 }
+
+Analyzing function body size: SetSOSC_TrustedCall
+
+IPA function summary for SetSOSC_TrustedCall/5 inlinable
+  global time:     14.349099
+  self size:       56
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:1.999932,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 64] changed) && (not inlined)
+    size:2.500000, time:2.500000,  nonconst if:(op0[ref offset: 64] changed)
+    size:0.500000, time:0.170000,  executed if:(op0[ref offset: 64] == 1) && (not inlined),  nonconst if:(op0[ref offset: 120] changed) && (op0[ref offset: 64] == 1) && (not inlined)
+    size:6.500000, time:0.850000,  executed if:(op0[ref offset: 64] == 1),  nonconst if:(op0[ref offset: 120] changed) && (op0[ref offset: 64] == 1)
+    size:3.000000, time:0.339966,  executed if:(op0[ref offset: 120] == 1) && (op0[ref offset: 64] == 1)
+    size:3.000000, time:0.339966,  executed if:(op0[ref offset: 120] == 0) && (op0[ref offset: 64] == 1)
+    size:12.000000, time:2.294771,  executed if:(op0[ref offset: 64] == 1)
+    size:0.500000, time:0.169983,  executed if:(op0[ref offset: 64] == 1) && (not inlined),  nonconst if:(op0[ref offset: 32] changed) && (op0[ref offset: 64] == 1) && (not inlined)
+    size:3.500000, time:1.189881,  executed if:(op0[ref offset: 64] == 1),  nonconst if:(op0[ref offset: 32] changed) && (op0[ref offset: 64] == 1)
+    size:0.500000, time:0.169983,  executed if:(op0[ref offset: 64] == 1) && (not inlined),  nonconst if:(op0[ref offset: 96] changed) && (op0[ref offset: 64] == 1) && (not inlined)
+    size:2.500000, time:0.849915,  executed if:(op0[ref offset: 64] == 1),  nonconst if:(op0[ref offset: 96] changed) && (op0[ref offset: 64] == 1)
+    size:3.000000, time:0.509949,  executed if:(op0[ref offset: 96] != 0) && (op0[ref offset: 64] == 1)
+    size:3.000000, time:0.509949,  executed if:(op0[ref offset: 96] == 0) && (op0[ref offset: 64] == 1)
+    size:0.500000, time:0.169983,  executed if:(op0[ref offset: 64] == 1) && (not inlined),  nonconst if:(op0[ref offset: 128] changed) && (op0[ref offset: 64] == 1) && (not inlined)
+    size:8.500000, time:1.529847,  executed if:(op0[ref offset: 64] == 1),  nonconst if:(op0[ref offset: 128] changed) && (op0[ref offset: 64] == 1)
+    size:1.000000, time:0.084991,  executed if:(op0[ref offset: 128] == 2) && (op0[ref offset: 64] == 1)
+    size:1.000000, time:0.084991,  executed if:(op0[ref offset: 128] == 1) && (op0[ref offset: 64] == 1)
+    size:1.000000, time:0.084991,  executed if:(op0[ref offset: 128] == 0) && (op0[ref offset: 64] == 1)
+  calls:
+
+
+Analyzing function: ResetSOSC/4
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: ResetSOSC
+
+IPA function summary for ResetSOSC/4 inlinable
+  global time:     12.000000
+  self size:       4
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    ResetSOSC_TrustedCall.isra.0/15 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 1 time: 10callee size: 4 stack: 0
+
+
+Analyzing function: DisableExternalOscillatorEmpty/2
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: DisableExternalOscillatorEmpty
+
+IPA function summary for DisableExternalOscillatorEmpty/2 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: ExternalOscillatorEmpty/1
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: ExternalOscillatorEmpty
+
+IPA function summary for ExternalOscillatorEmpty/1 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+Symbol table:
+
+CompleteSOSC.part.0/18 (CompleteSOSC.part.0) @06b4a460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: CompleteSOSC/7 (37904965 (estimated locally),0.11 per call) 
+  Calls: ReportClockErrors/14 (1073741824 (estimated locally),1.00 per call) 
+EnableSOSC_TrustedCall.isra.0/17 (EnableSOSC_TrustedCall.isra.0) @06a87b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: EnableSOSC/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+DisableSOSC_TrustedCall.isra.0/16 (DisableSOSC_TrustedCall.isra.0) @06a87d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: DisableSOSC/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSOSC_TrustedCall.isra.0/15 (ResetSOSC_TrustedCall.isra.0) @06a87700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ResetSOSC/4 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ReportClockErrors/14 (ReportClockErrors) @05e9d7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: CompleteSOSC.part.0/18 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ClockTimeoutExpired/13 (ClockTimeoutExpired) @05e9d700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: CompleteSOSC/7 (1073741824 (estimated locally),3.08 per call) 
+  Calls: 
+ClockStartTimeout/12 (ClockStartTimeout) @05e9d620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: CompleteSOSC/7 (114863532 (estimated locally),0.33 per call) 
+  Calls: 
+EnableSOSC/11 (EnableSOSC) @05e97540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: EnableSOSC_TrustedCall.isra.0/17 (1073741824 (estimated locally),1.00 per call) 
+DisableSOSC/9 (DisableSOSC) @05e97c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DisableSOSC_TrustedCall.isra.0/16 (1073741824 (estimated locally),1.00 per call) 
+CompleteSOSC/7 (CompleteSOSC) @05e97700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:348071309 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CompleteSOSC.part.0/18 (37904965 (estimated locally),0.11 per call) ClockTimeoutExpired/13 (1073741824 (estimated locally),3.08 per call) ClockStartTimeout/12 (114863532 (estimated locally),0.33 per call) 
+SetSOSC/6 (SetSOSC) @05e97460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SetSOSC_TrustedCall/5 (1073741824 (estimated locally),1.00 per call) 
+SetSOSC_TrustedCall/5 (SetSOSC_TrustedCall) @05e971c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: SetSOSC/6 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ResetSOSC/4 (ResetSOSC) @05d95700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ResetSOSC_TrustedCall.isra.0/15 (1073741824 (estimated locally),1.00 per call) 
+DisableExternalOscillatorEmpty/2 (DisableExternalOscillatorEmpty) @05d951c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+ExternalOscillatorEmpty/1 (ExternalOscillatorEmpty) @05d909a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)extOscCallbacks/0 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+extOscCallbacks/0 (extOscCallbacks) @05d92630
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)ExternalOscillatorEmpty/1 (addr)DisableExternalOscillatorEmpty/2 (addr)ExternalOscillatorEmpty/1 (addr)ResetSOSC/4 (addr)SetSOSC/6 (addr)CompleteSOSC/7 (addr)DisableSOSC/9 (addr)EnableSOSC/11 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+CompleteSOSC.part.0 (const struct Clock_Ip_XoscConfigType * config)
+{
+  boolean TimeoutOccurred;
+  uint32 StartTime;
+  uint32 ElapsedTime;
+  uint32 TimeoutTicks;
+  uint32 SoscStatus;
+  <unnamed type> _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = config_1(D)->name;
+  ReportClockErrors (1, _2);
+
+  <bb 3> [local count: 1073741824]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+EnableSOSC_TrustedCall.isra.0 (const uint16 ISRA.10)
+{
+  short unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.10_8(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _4 = _3 | 1;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} _4;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+DisableSOSC_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG xoscName s=> xoscName
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _2 = _1 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} _2;
+  return;
+
+}
+
+
+ResetSOSC_TrustedCall.isra.0 ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _2 = _1 & 4286578687;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _4 = _3 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} _4;
+  return;
+
+}
+
+
+EnableSOSC (const struct Clock_Ip_XoscConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 8B];
+  # DEBUG D#3 => config_2(D)
+  EnableSOSC_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+DisableSOSC (Clock_Ip_NameType xoscName)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#2 => xoscName_2(D)
+  DisableSOSC_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+CompleteSOSC (const struct Clock_Ip_XoscConfigType * config)
+{
+  uint32 SoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int TimeoutTicks.0_6;
+
+  <bb 2> [local count: 348071309]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 3> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _5 = _4 >> 24;
+  SoscStatus_12 = _5 & 1;
+  # DEBUG SoscStatus => SoscStatus_12
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_6 = TimeoutTicks;
+  TimeoutOccurred_14 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_6);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_14
+  # DEBUG BEGIN_STMT
+  if (SoscStatus_12 == 0)
+    goto <bb 5>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 5> [local count: 1014686025]:
+  if (TimeoutOccurred_14 != 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 9>; [94.50%]
+
+  <bb 9> [local count: 958878294]:
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 114863532]:
+  # TimeoutOccurred_9 = PHI <TimeoutOccurred_14(4), TimeoutOccurred_14(5)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_9 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 7> [local count: 37904965]:
+  CompleteSOSC.part.0 (config_15(D));
+
+  <bb 8> [local count: 348071309]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetSOSC (const struct Clock_Ip_XoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SetSOSC_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSOSC_TrustedCall (const struct Clock_Ip_XoscConfigType * config)
+{
+  short unsigned int _1;
+  unsigned char _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  unsigned char _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  unsigned char _20;
+  long unsigned int _21;
+  long unsigned int _22;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = config_28(D)->enable;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 17>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _2 = config_28(D)->gain;
+  switch (_2) <default: <L17> [33.33%], case 0: <L1> [33.33%], case 1: <L2> [33.33%]>
+
+  <bb 4> [local count: 121678571]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCFG;
+  _4 = _3 & 4294967287;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCFG ={v} _4;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 121678571]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCFG;
+  _6 = _5 | 8;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCFG ={v} _6;
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 365035713]:
+<L17>:
+  # DEBUG BEGIN_STMT
+  _7 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCFG;
+  _8 = _7 & 4294967247;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCFG ={v} _8;
+  # DEBUG BEGIN_STMT
+  _9 = config_28(D)->freq;
+  _10 = _9 + 4290967296;
+  if (_10 <= 3999999)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 182517857]:
+  # DEBUG BEGIN_STMT
+  _11 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCFG;
+  _12 = _11 | 32;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCFG ={v} _12;
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 182517857]:
+  # DEBUG BEGIN_STMT
+  _13 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCFG;
+  _14 = _13 | 48;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCFG ={v} _14;
+
+  <bb 9> [local count: 365035713]:
+  # DEBUG BEGIN_STMT
+  _15 = config_28(D)->bypassOption;
+  if (_15 == 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 10> [local count: 182517857]:
+  # DEBUG BEGIN_STMT
+  _16 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCFG;
+  _17 = _16 | 4;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCFG ={v} _17;
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 182517857]:
+  # DEBUG BEGIN_STMT
+  _18 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCFG;
+  _19 = _18 & 4294967291;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCFG ={v} _19;
+
+  <bb 12> [local count: 365035713]:
+  # DEBUG BEGIN_STMT
+  _20 = config_28(D)->monitor;
+  switch (_20) <default: <L14> [25.00%], case 0: <L11> [25.00%], case 1: <L12> [25.00%], case 2: <L13> [25.00%]>
+
+  <bb 13> [local count: 91258928]:
+<L11>:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [100.00%]
+
+  <bb 14> [local count: 91258928]:
+<L12>:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} 65537;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [100.00%]
+
+  <bb 15> [local count: 91258928]:
+<L13>:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} 196609;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [100.00%]
+
+  <bb 16> [local count: 91258928]:
+<L14>:
+  # DEBUG BEGIN_STMT
+  _21 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _22 = _21 | 1;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} _22;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 17> [local count: 1073705317]:
+  return;
+
+}
+
+
+ResetSOSC (const struct Clock_Ip_XoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => config_2(D)
+  ResetSOSC_TrustedCall.isra.0 ();
+  return;
+
+}
+
+
+DisableExternalOscillatorEmpty (Clock_Ip_NameType xoscName)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+ExternalOscillatorEmpty (const struct Clock_Ip_XoscConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

@@ -1,0 +1,915 @@
+Trivially needed symbols: main TestDelay AdcConversionCompleteNotif data exit_code notif_triggered
+Trivially needed symbols: DelayTimer
+
+
+Initial Symbol table:
+
+Dio_WriteChannel/18 (Dio_WriteChannel) @06cd1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+Adc_Ip_StartConversion/17 (Adc_Ip_StartConversion) @06cd1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Adc_Ip_DoCalibration/16 (Adc_Ip_DoCalibration) @06cd1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (AdcHwUnit_0_BOARD_INITPERIPHERALS) @06e4a000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Adc_Ip_Init/14 (Adc_Ip_Init) @06cd1a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Port_Init/13 (Port_Init) @06cd19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @06cd18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06cd17e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @06ccce10
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)main/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06cd1700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+DelayTimer/8 (DelayTimer) @06ccc900
+  Type: variable definition analyzed
+  Visibility: force_output
+  Aux: @06cd1000
+  References: 
+  Referring: TestDelay/5 (read)TestDelay/5 (write)TestDelay/5 (read)TestDelay/5 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+Adc_Ip_GetConvData/7 (Adc_Ip_GetConvData) @06cd1460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 AdcConversionCompleteNotif/4 
+  Calls: 
+main/6 (main) @06cd1000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: TestDelay/5 Adc_Ip_GetConvData/7 Dio_WriteChannel/18 TestDelay/5 Adc_Ip_GetConvData/7 Dio_WriteChannel/18 Adc_Ip_StartConversion/17 Adc_Ip_DoCalibration/16 Adc_Ip_DoCalibration/16 Adc_Ip_Init/14 Port_Init/13 Clock_Ip_DistributePll/12 Clock_Ip_GetPllStatus/11 Clock_Ip_Init/9 Clock_Ip_Init/9 
+TestDelay/5 (TestDelay) @06cc5ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06cd1000
+  References: DelayTimer/8 (read)DelayTimer/8 (write)DelayTimer/8 (read)DelayTimer/8 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+AdcConversionCompleteNotif/4 (AdcConversionCompleteNotif) @06cc5b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06cc5ee0
+  References: notif_triggered/1 (write)data/3 (write)data/3 (read)data/3 (read)data/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Adc_Ip_GetConvData/7 
+data/3 (data) @06cc4e10
+  Type: variable definition analyzed
+  Visibility: force_output public
+  Aux: @06cc5b60
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)
+  Availability: not-ready
+  Varpool flags:
+exit_code/2 (exit_code) @06cc4dc8
+  Type: variable definition analyzed
+  Visibility: force_output public
+  Aux: @06cc4e10
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+notif_triggered/1 (notif_triggered) @06cc4d38
+  Type: variable definition analyzed
+  Visibility: force_output public
+  Aux: @06cc4dc8
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+DevAssert/0 (DevAssert) @06c88b60
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: DevAssert
+
+Reclaimed Symbol table:
+
+Dio_WriteChannel/18 (Dio_WriteChannel) @06cd1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+Adc_Ip_StartConversion/17 (Adc_Ip_StartConversion) @06cd1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Adc_Ip_DoCalibration/16 (Adc_Ip_DoCalibration) @06cd1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (AdcHwUnit_0_BOARD_INITPERIPHERALS) @06e4a000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Adc_Ip_Init/14 (Adc_Ip_Init) @06cd1a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Port_Init/13 (Port_Init) @06cd19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @06cd18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06cd17e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @06ccce10
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)main/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06cd1700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+DelayTimer/8 (DelayTimer) @06ccc900
+  Type: variable definition analyzed
+  Visibility: force_output
+  References: 
+  Referring: TestDelay/5 (read)TestDelay/5 (write)TestDelay/5 (read)TestDelay/5 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+Adc_Ip_GetConvData/7 (Adc_Ip_GetConvData) @06cd1460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 AdcConversionCompleteNotif/4 
+  Calls: 
+main/6 (main) @06cd1000
+  Type: function definition analyzed
+  Visibility: public
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: TestDelay/5 Adc_Ip_GetConvData/7 Dio_WriteChannel/18 TestDelay/5 Adc_Ip_GetConvData/7 Dio_WriteChannel/18 Adc_Ip_StartConversion/17 Adc_Ip_DoCalibration/16 Adc_Ip_DoCalibration/16 Adc_Ip_Init/14 Port_Init/13 Clock_Ip_DistributePll/12 Clock_Ip_GetPllStatus/11 Clock_Ip_Init/9 Clock_Ip_Init/9 
+TestDelay/5 (TestDelay) @06cc5ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: DelayTimer/8 (read)DelayTimer/8 (write)DelayTimer/8 (read)DelayTimer/8 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+AdcConversionCompleteNotif/4 (AdcConversionCompleteNotif) @06cc5b60
+  Type: function definition analyzed
+  Visibility: public
+  References: notif_triggered/1 (write)data/3 (write)data/3 (read)data/3 (read)data/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Adc_Ip_GetConvData/7 
+data/3 (data) @06cc4e10
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)
+  Availability: not-ready
+  Varpool flags:
+exit_code/2 (exit_code) @06cc4dc8
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+notif_triggered/1 (notif_triggered) @06cc4d38
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+
+
+Initial Symbol table:
+
+Dio_WriteChannel/18 (Dio_WriteChannel) @06cd1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+Adc_Ip_StartConversion/17 (Adc_Ip_StartConversion) @06cd1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Adc_Ip_DoCalibration/16 (Adc_Ip_DoCalibration) @06cd1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (AdcHwUnit_0_BOARD_INITPERIPHERALS) @06e4a000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Adc_Ip_Init/14 (Adc_Ip_Init) @06cd1a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Port_Init/13 (Port_Init) @06cd19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @06cd18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06cd17e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @06ccce10
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)main/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06cd1700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+DelayTimer.6935/8 (DelayTimer) @06ccc900
+  Type: variable definition analyzed
+  Visibility: force_output
+  References: 
+  Referring: TestDelay/5 (read)TestDelay/5 (write)TestDelay/5 (read)TestDelay/5 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+Adc_Ip_GetConvData/7 (Adc_Ip_GetConvData) @06cd1460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 AdcConversionCompleteNotif/4 
+  Calls: 
+main/6 (main) @06cd1000
+  Type: function definition analyzed
+  Visibility: public
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: TestDelay/5 Adc_Ip_GetConvData/7 Dio_WriteChannel/18 TestDelay/5 Adc_Ip_GetConvData/7 Dio_WriteChannel/18 Adc_Ip_StartConversion/17 Adc_Ip_DoCalibration/16 Adc_Ip_DoCalibration/16 Adc_Ip_Init/14 Port_Init/13 Clock_Ip_DistributePll/12 Clock_Ip_GetPllStatus/11 Clock_Ip_Init/9 Clock_Ip_Init/9 
+TestDelay/5 (TestDelay) @06cc5ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: DelayTimer.6935/8 (read)DelayTimer.6935/8 (write)DelayTimer.6935/8 (read)DelayTimer.6935/8 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+AdcConversionCompleteNotif/4 (AdcConversionCompleteNotif) @06cc5b60
+  Type: function definition analyzed
+  Visibility: public
+  References: notif_triggered/1 (write)data/3 (write)data/3 (read)data/3 (read)data/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Adc_Ip_GetConvData/7 
+data/3 (data) @06cc4e10
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)
+  Availability: not-ready
+  Varpool flags:
+exit_code/2 (exit_code) @06cc4dc8
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+notif_triggered/1 (notif_triggered) @06cc4d38
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+Dio_WriteChannel/18 (Dio_WriteChannel) @06cd1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+Adc_Ip_StartConversion/17 (Adc_Ip_StartConversion) @06cd1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Adc_Ip_DoCalibration/16 (Adc_Ip_DoCalibration) @06cd1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (AdcHwUnit_0_BOARD_INITPERIPHERALS) @06e4a000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Adc_Ip_Init/14 (Adc_Ip_Init) @06cd1a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Port_Init/13 (Port_Init) @06cd19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @06cd18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06cd17e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @06ccce10
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)main/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06cd1700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+DelayTimer.6935/8 (DelayTimer) @06ccc900
+  Type: variable definition analyzed
+  Visibility: force_output
+  References: 
+  Referring: TestDelay/5 (read)TestDelay/5 (write)TestDelay/5 (read)TestDelay/5 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+Adc_Ip_GetConvData/7 (Adc_Ip_GetConvData) @06cd1460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/6 main/6 AdcConversionCompleteNotif/4 
+  Calls: 
+main/6 (main) @06cd1000
+  Type: function definition analyzed
+  Visibility: public
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: TestDelay/5 Adc_Ip_GetConvData/7 Dio_WriteChannel/18 TestDelay/5 Adc_Ip_GetConvData/7 Dio_WriteChannel/18 Adc_Ip_StartConversion/17 Adc_Ip_DoCalibration/16 Adc_Ip_DoCalibration/16 Adc_Ip_Init/14 Port_Init/13 Clock_Ip_DistributePll/12 Clock_Ip_GetPllStatus/11 Clock_Ip_Init/9 Clock_Ip_Init/9 
+TestDelay/5 (TestDelay) @06cc5ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: DelayTimer.6935/8 (read)DelayTimer.6935/8 (write)DelayTimer.6935/8 (read)DelayTimer.6935/8 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: main/6 main/6 
+  Calls: 
+AdcConversionCompleteNotif/4 (AdcConversionCompleteNotif) @06cc5b60
+  Type: function definition analyzed
+  Visibility: public
+  References: notif_triggered/1 (write)data/3 (write)data/3 (read)data/3 (read)data/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Adc_Ip_GetConvData/7 
+data/3 (data) @06cc4e10
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)
+  Availability: not-ready
+  Varpool flags:
+exit_code/2 (exit_code) @06cc4dc8
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+notif_triggered/1 (notif_triggered) @06cc4d38
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+Dio_WriteChannel/18 (Dio_WriteChannel) @06cd1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/6 (1073741824 (estimated locally),10000.02 per call) main/6 (1073741824 (estimated locally),10000.02 per call) 
+  Calls: 
+Adc_Ip_StartConversion/17 (Adc_Ip_StartConversion) @06cd1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/6 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Adc_Ip_DoCalibration/16 (Adc_Ip_DoCalibration) @06cd1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/6 (868753 (estimated locally),8.09 per call) main/6 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (AdcHwUnit_0_BOARD_INITPERIPHERALS) @06e4a000
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Adc_Ip_Init/14 (Adc_Ip_Init) @06cd1a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/6 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Port_Init/13 (Port_Init) @06cd19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/6 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @06cd18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/6 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06cd17e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/6 (976127 (estimated locally),9.09 per call) 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @06ccce10
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/6 (addr)main/6 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06cd1700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/6 (868753 (estimated locally),8.09 per call) main/6 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+DelayTimer.6935/8 (DelayTimer) @06ccc900
+  Type: variable definition analyzed
+  Visibility: force_output prevailing_def_ironly
+  References: 
+  Referring: TestDelay/5 (read)TestDelay/5 (write)TestDelay/5 (read)TestDelay/5 (write)
+  Availability: available
+  Varpool flags: initialized
+Adc_Ip_GetConvData/7 (Adc_Ip_GetConvData) @06cd1460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/6 (1073741824 (estimated locally),10000.02 per call) main/6 (1073741824 (estimated locally),10000.02 per call) AdcConversionCompleteNotif/4 (118111600 (estimated locally),1.00 per call) 
+  Calls: 
+main/6 (main) @06cd1000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcu_aClockConfigPB/10 (addr)Mcu_aClockConfigPB/10 (addr)AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: TestDelay/5 (1073741824 (estimated locally),10000.02 per call) Adc_Ip_GetConvData/7 (1073741824 (estimated locally),10000.02 per call) Dio_WriteChannel/18 (1073741824 (estimated locally),10000.02 per call) TestDelay/5 (1073741824 (estimated locally),10000.02 per call) Adc_Ip_GetConvData/7 (1073741824 (estimated locally),10000.02 per call) Dio_WriteChannel/18 (1073741824 (estimated locally),10000.02 per call) Adc_Ip_StartConversion/17 (107374 (estimated locally),1.00 per call) Adc_Ip_DoCalibration/16 (868753 (estimated locally),8.09 per call) Adc_Ip_DoCalibration/16 (107374 (estimated locally),1.00 per call) Adc_Ip_Init/14 (107374 (estimated locally),1.00 per call) Port_Init/13 (107374 (estimated locally),1.00 per call) Clock_Ip_DistributePll/12 (107374 (estimated locally),1.00 per call) Clock_Ip_GetPllStatus/11 (976127 (estimated locally),9.09 per call) Clock_Ip_Init/9 (868753 (estimated locally),8.09 per call) Clock_Ip_Init/9 (107374 (estimated locally),1.00 per call) 
+TestDelay/5 (TestDelay) @06cc5ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: DelayTimer.6935/8 (read)DelayTimer.6935/8 (write)DelayTimer.6935/8 (read)DelayTimer.6935/8 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: main/6 (1073741824 (estimated locally),10000.02 per call) main/6 (1073741824 (estimated locally),10000.02 per call) 
+  Calls: 
+AdcConversionCompleteNotif/4 (AdcConversionCompleteNotif) @06cc5b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: notif_triggered/1 (write)data/3 (write)data/3 (read)data/3 (read)data/3 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Adc_Ip_GetConvData/7 (118111600 (estimated locally),1.00 per call) 
+data/3 (data) @06cc4e10
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)AdcConversionCompleteNotif/4 (read)
+  Availability: available
+  Varpool flags:
+exit_code/2 (exit_code) @06cc4dc8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+notif_triggered/1 (notif_triggered) @06cc4d38
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: AdcConversionCompleteNotif/4 (write)
+  Availability: available
+  Varpool flags: initialized
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:AdcConversionCompleteNotif:0
+Time profile order in expand_all_functions:TestDelay:0
+Time profile order in expand_all_functions:main:0
+Trivially needed variables: DelayTimer.6935 data exit_code notif_triggered
+Removing variables:
+
+Final Symbol table:
+
+Dio_WriteChannel/18 (Dio_WriteChannel) @06cd1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Adc_Ip_StartConversion/17 (Adc_Ip_StartConversion) @06cd1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Adc_Ip_DoCalibration/16 (Adc_Ip_DoCalibration) @06cd1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+AdcHwUnit_0_BOARD_INITPERIPHERALS/15 (AdcHwUnit_0_BOARD_INITPERIPHERALS) @06e4a000
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Adc_Ip_Init/14 (Adc_Ip_Init) @06cd1a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Port_Init/13 (Port_Init) @06cd19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Clock_Ip_DistributePll/12 (Clock_Ip_DistributePll) @06cd18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @06cd17e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Mcu_aClockConfigPB/10 (Mcu_aClockConfigPB) @06ccce10
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/9 (Clock_Ip_Init) @06cd1700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+DelayTimer.6935/8 (DelayTimer) @06ccc900
+  Type: variable definition analyzed
+  Visibility: force_output prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+Adc_Ip_GetConvData/7 (Adc_Ip_GetConvData) @06cd1460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+main/6 (main) @06cd1000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: 
+TestDelay/5 (TestDelay) @06cc5ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+AdcConversionCompleteNotif/4 (AdcConversionCompleteNotif) @06cc5b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+data/3 (data) @06cc4e10
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible asm_written public
+  Aux: @06ccc900
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+exit_code/2 (exit_code) @06cc4dc8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible asm_written public
+  Aux: @06cc4e10
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+notif_triggered/1 (notif_triggered) @06cc4d38
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible asm_written public
+  Aux: @06cc4dc8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized

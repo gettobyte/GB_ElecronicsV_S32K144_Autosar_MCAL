@@ -1,0 +1,105 @@
+
+Analyzing function: Adc_1_Isr/1
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: Adc_1_Isr
+
+IPA function summary for Adc_1_Isr/1 inlinable
+  global time:     14.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:1.000000, time:1.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    Adc_Ip_IRQHandler/2 function body not available
+      loop depth: 0 freq:1.00 size: 2 time: 11
+       op0 is compile time invariant
+
+
+Analyzing function: Adc_0_Isr/0
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: Adc_0_Isr
+
+IPA function summary for Adc_0_Isr/0 inlinable
+  global time:     14.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:1.000000, time:1.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    Adc_Ip_IRQHandler/2 function body not available
+      loop depth: 0 freq:1.00 size: 2 time: 11
+       op0 is compile time invariant
+
+Symbol table:
+
+Adc_Ip_IRQHandler/2 (Adc_Ip_IRQHandler) @05ba1ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Adc_1_Isr/1 (1073741824 (estimated locally),1.00 per call) Adc_0_Isr/0 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Adc_1_Isr/1 (Adc_1_Isr) @05ba1a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Adc_Ip_IRQHandler/2 (1073741824 (estimated locally),1.00 per call) 
+Adc_0_Isr/0 (Adc_0_Isr) @05ba1700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Adc_Ip_IRQHandler/2 (1073741824 (estimated locally),1.00 per call) 
+Adc_1_Isr ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Adc_Ip_IRQHandler (1);
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
+Adc_0_Isr ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Adc_Ip_IRQHandler (0);
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+

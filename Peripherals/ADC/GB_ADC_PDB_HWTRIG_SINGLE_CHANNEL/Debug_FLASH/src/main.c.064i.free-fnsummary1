@@ -1,0 +1,156 @@
+main ()
+{
+  Adc_Ip_StatusType adcStatus;
+  Clock_Ip_StatusType clockStatus;
+  <unnamed type> _1;
+  short unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus_12 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_12
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 868753]:
+  # DEBUG BEGIN_STMT
+  clockStatus_28 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_28
+
+  <bb 4> [local count: 976127]:
+  # clockStatus_4 = PHI <clockStatus_12(2), clockStatus_28(3)>
+  # DEBUG clockStatus => clockStatus_4
+  # DEBUG BEGIN_STMT
+  if (clockStatus_4 != 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 11> [local count: 107374]:
+
+  <bb 5> [local count: 976127]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 13>; [89.00%]
+  else
+    goto <bb 6>; [11.00%]
+
+  <bb 13> [local count: 868753]:
+  goto <bb 5>; [100.00%]
+
+  <bb 6> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_InstallHandler (39, Adc_0_Isr, 0B);
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_EnableIrq (39);
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  Trgmux_Ip_Init (&Trgmux_Ip_xTrgmuxInitPB);
+  # DEBUG trgmuxStatus => NULL
+  # DEBUG BEGIN_STMT
+  Adc_Ip_Init (0, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
+  # DEBUG BEGIN_STMT
+  adcStatus_21 = Adc_Ip_DoCalibration (0);
+  # DEBUG adcStatus => adcStatus_21
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 868753]:
+  # DEBUG BEGIN_STMT
+  adcStatus_26 = Adc_Ip_DoCalibration (0);
+  # DEBUG adcStatus => adcStatus_26
+
+  <bb 8> [local count: 976127]:
+  # adcStatus_5 = PHI <adcStatus_21(6), adcStatus_26(7)>
+  # DEBUG adcStatus => adcStatus_5
+  # DEBUG BEGIN_STMT
+  if (adcStatus_5 != 0)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_Ip_Init (0, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
+
+  <bb 10> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = Adc_Ip_GetConvData (0, 4);
+  _3 = (long unsigned int) _2;
+  data ={v} _3;
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 1073741824]:
+  goto <bb 10>; [100.00%]
+
+}
+
+
+AdcConversionCompleteNotif (const uint8 ControlChanIdx)
+{
+  short unsigned int _1;
+  long unsigned int _2;
+  long unsigned int data.1_3;
+  long unsigned int data.2_4;
+  long unsigned int _5;
+  long unsigned int data.3_6;
+  long unsigned int _7;
+  _Bool iftmp.0_8;
+  _Bool iftmp.0_14;
+  _Bool iftmp.0_15;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  notif_triggered ={v} 1;
+  # DEBUG BEGIN_STMT
+  _1 = Adc_Ip_GetConvData (0, ControlChanIdx_11(D));
+  _2 = (long unsigned int) _1;
+  data ={v} _2;
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  data.1_3 ={v} data;
+  if (data.1_3 > 819)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 536870913]:
+  data.2_4 ={v} data;
+  _5 = data.2_4 + 4294966477;
+  iftmp.0_15 = _5 > 150;
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 536870913]:
+  data.3_6 ={v} data;
+  _7 = 819 - data.3_6;
+  iftmp.0_14 = _7 > 150;
+
+  <bb 6> [local count: 1073741824]:
+  # iftmp.0_8 = PHI <iftmp.0_15(4), iftmp.0_14(5)>
+  if (iftmp.0_8 != 0)
+    goto <bb 8>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 8> [local count: 955630223]:
+  goto <bb 3>; [100.00%]
+
+  <bb 7> [local count: 118111601]:
+  return;
+
+}
+
+

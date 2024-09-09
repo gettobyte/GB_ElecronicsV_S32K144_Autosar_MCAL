@@ -1,0 +1,3239 @@
+
+
+ local analysis of PDB_ADC_ResetChannel
+   scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45 ();
+  scanning: Pdb_Adc_HwAcc_ConfigAdcPretriggers (Base_5(D), ChanIdx_6(D), PdbPretriggsConfig_7(D));
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45 ();
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47 ();
+  scanning: _13 = (int) ChanIdx_6(D);
+  scanning: _14 ={v} Base_5(D)->CH[_13].S;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _15 = _14 & 4278255615;
+  scanning: Base_5(D)->CH[_13].S ={v} _15;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _1 ={v} Base_5(D)->CH[_13].S;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 & 4294967040;
+  scanning: Base_5(D)->CH[_13].S ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47 ();
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_IRQHandler
+   scanning: Base_21 = PdbBase[Instance_20(D)];
+  scanning: _1 = PdbAdcState[Instance_20(D)].Init;
+  scanning: if (_1 != 0)
+  scanning: _2 = PdbAdcState[Instance_20(D)].SeqErrNotification;
+  scanning: if (_2 != 0B)
+  scanning: _3 ={v} Base_21->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 & 131072;
+  scanning: if (_4 != 0)
+  scanning: _5 = (int) ChanIdx_13;
+  scanning: _6 ={v} Base_21->CH[_5].S;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _7 = (short unsigned int) _6;
+  scanning: SeqErrMask_22 = _7 & 255;
+  scanning: if (SeqErrMask_22 != 0)
+  scanning: _8 = PdbAdcState[Instance_20(D)].SeqErrNotification;
+  scanning: _8 (ChanIdx_13, SeqErrMask_22);
+  scanning: ChanIdx_24 = ChanIdx_13 + 1;
+  scanning: if (ChanIdx_13 != 2)
+  scanning: _10 = (int) ChanIdx_14;
+  scanning: _11 ={v} Base_21->CH[_10].S;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _12 = _11 & 4294967040;
+  scanning: Base_21->CH[_10].S ={v} _12;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: ChanIdx_26 = ChanIdx_14 + 1;
+  scanning: if (ChanIdx_14 != 2)
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_DisableAndClearPdb
+   scanning: Base_5 = PdbBase[Instance_4(D)];
+  scanning: PdbPretriggsConfig.EnableMask = 0;
+  scanning: PdbPretriggsConfig.EnableDelayMask = 0;
+  scanning: PdbPretriggsConfig.BackToBackEnableMask = 0;
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40 ();
+  scanning: _16 ={v} Base_5->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _17 = _16 & 4294967167;
+  scanning: Base_5->SC ={v} _17;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _14 ={v} Base_5->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _15 = _14 & 4294967293;
+  scanning: Base_5->SC ={v} _15;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40 ();
+  scanning: PDB_ADC_ResetChannel (Base_5, ChanIdx_1, &PdbPretriggsConfig);
+  scanning: ChanIdx_13 = ChanIdx_1 + 1;
+  scanning: if (ChanIdx_1 != 2)
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_SetAdcPretriggerDelayValue
+   scanning: Base_6 = PdbBase[Instance_5(D)];
+  scanning: _1 = (int) ChanIdx_7(D);
+  scanning: _2 = (int) PretriggIdx_8(D);
+  scanning: _3 = (long unsigned int) DelayValue_9(D);
+  scanning: Base_6->CH[_1].DLY[_2] ={v} _3;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_SetAdcPretriggerDelayEnable
+   scanning: Base_5 = PdbBase[Instance_4(D)];
+  scanning: _1 = (int) PretriggIdx_6(D);
+  scanning: Mask_7 = 1 << _1;
+  scanning: _2 = Mask_7 << 8;
+  scanning: Mask_8 = _2 & 65535;
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44 ();
+  scanning: Pdb_Adc_HwAcc_SetAdcPretriggerMask (Base_5, ChanIdx_10(D), Mask_8, Value_11(D));
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of Pdb_Adc_Ip_SetAdcPretriggerEnable
+   scanning: Base_4 = PdbBase[Instance_3(D)];
+  scanning: _1 = (int) PretriggIdx_5(D);
+  scanning: Mask_6 = 1 << _1;
+  scanning: Mask_7 = Mask_6 & 255;
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43 ();
+  scanning: Pdb_Adc_HwAcc_SetAdcPretriggerMask (Base_4, ChanIdx_9(D), Mask_7, Value_10(D));
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of Pdb_Adc_Ip_SetAdcPretriggerBackToBack
+   scanning: Base_5 = PdbBase[Instance_4(D)];
+  scanning: _1 = (int) PretriggIdx_6(D);
+  scanning: Mask_7 = 1 << _1;
+  scanning: _2 = Mask_7 << 16;
+  scanning: Mask_8 = _2 & 16711680;
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42 ();
+  scanning: Pdb_Adc_HwAcc_SetAdcPretriggerMask (Base_5, ChanIdx_10(D), Mask_8, Value_11(D));
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of Pdb_Adc_Ip_ClearAdcPretriggerFlags
+   scanning: Base_3 = PdbBase[Instance_2(D)];
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46 ();
+  scanning: Pdb_Adc_HwAcc_ClearAdcPretriggerFlags (Base_3, ChanIdx_5(D), PretriggMask_6(D));
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of Pdb_Adc_Ip_GetAdcPretriggerFlags
+   scanning: Base_5 = PdbBase[Instance_4(D)];
+  scanning: _1 = (int) ChanIdx_6(D);
+  scanning: Result_7 ={v} Base_5->CH[_1].S;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = Result_7 >> 16;
+  scanning: Result_8 = _2 & 255;
+  scanning: return Result_8;
+
+
+ local analysis of Pdb_Adc_Ip_ConfigAdcPretriggers
+   scanning: Base_3 = PdbBase[Instance_2(D)];
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41 ();
+  scanning: Pdb_Adc_HwAcc_ConfigAdcPretriggers (Base_3, ChanIdx_5(D), Config_6(D));
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of Pdb_Adc_Ip_SetModulus
+   scanning: Base_4 = PdbBase[Instance_3(D)];
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48 ();
+  scanning: ModReg_6 ={v} Base_4->MOD;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: ModReg_7 = ModReg_6 & 4294901760;
+  scanning: _1 = (long unsigned int) ModVal_8(D);
+  scanning: ModReg_9 = _1 | ModReg_7;
+  scanning: Base_4->MOD ={v} ModReg_9;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48 ();
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_LoadRegValues
+   scanning: Base_5 = PdbBase[Instance_4(D)];
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39 ();
+  scanning: _1 ={v} Base_5->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 | 1;
+  scanning: Base_5->SC ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39 ();
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_GetTimerValue
+   scanning: Base_4 = PdbBase[Instance_3(D)];
+  scanning: _1 ={v} Base_4->CNT;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _5 = _1 & 65535;
+  scanning: return _5;
+
+
+ local analysis of Pdb_Adc_Ip_SwTrigger
+   scanning: Base_5 = PdbBase[Instance_4(D)];
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38 ();
+  scanning: _1 ={v} Base_5->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 | 65536;
+  scanning: Base_5->SC ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38 ();
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_SetContinuousMode
+   scanning: Base_3 = PdbBase[Instance_2(D)];
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37 ();
+  scanning: Pdb_Adc_HwAcc_SetContinuousMode (Base_3, State_5(D));
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37 ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of Pdb_Adc_Ip_SetTriggerInput
+   scanning: Base_5 = PdbBase[Instance_4(D)];
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36 ();
+  scanning: SCReg_7 ={v} Base_5->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: SCReg_8 = SCReg_7 & 4294963455;
+  scanning: _1 = TriggerSource_9(D) << 8;
+  scanning: _2 = _1 & 3840;
+  scanning: SCReg_10 = _2 | SCReg_8;
+  scanning: Base_5->SC ={v} SCReg_10;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36 ();
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_Disable
+   scanning: Base_3 = PdbBase[Instance_2(D)];
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35 ();
+  scanning: _6 ={v} Base_3->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _7 = _6 & 4294967167;
+  scanning: Base_3->SC ={v} _7;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35 ();
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_Enable
+   scanning: Base_5 = PdbBase[Instance_4(D)];
+  scanning: SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34 ();
+  scanning: _1 ={v} Base_5->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 | 128;
+  scanning: Base_5->SC ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34 ();
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_Ip_DeInit
+   scanning: DefaultConfig.LoadValueMode = 0;
+  scanning: DefaultConfig.PrescalerDiv = 0;
+  scanning: DefaultConfig.ClkPreMultFactor = 0;
+  scanning: DefaultConfig.TriggerSource = 0;
+  scanning: DefaultConfig.ContinuousModeEnable = 0;
+  scanning: DefaultConfig.DmaEnable = 0;
+  scanning: DefaultConfig.ModValue = 0;
+  scanning: DefaultConfig.NumChans = 2;
+  scanning: _1 = (int) ChannelIndex_3;
+  scanning: ChanConfigs[_1].ChnIdx = ChannelIndex_3;
+  scanning: ChanConfigs[_1].PretriggersConfig.EnableMask = 0;
+  scanning: ChanConfigs[_1].PretriggersConfig.EnableDelayMask = 0;
+  scanning: ChanConfigs[_1].PretriggersConfig.BackToBackEnableMask = 0;
+  scanning: _2 = (int) PretriggerIndex_4;
+  scanning: ChanConfigs[_1].PretriggerDelays[_2] = 0;
+  scanning: PretriggerIndex_30 = PretriggerIndex_4 + 1;
+  scanning: if (PretriggerIndex_4 != 8)
+  scanning: ChannelIndex_28 = ChannelIndex_3 + 1;
+  scanning: if (ChannelIndex_3 != 2)
+  scanning: DefaultConfig.ChanConfigs = &ChanConfigs;
+  scanning: DefaultConfig.SeqErrNotification = 0B;
+  scanning: Pdb_Adc_Ip_Init (Instance_18(D), &DefaultConfig);
+  scanning: Pdb_Adc_Ip_Disable (Instance_18(D));
+  scanning: PdbAdcState[Instance_18(D)].Init = 0;
+  scanning: return;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8
+;;
+;; Loop 1
+;;  header 7, latch 6
+;;  depth 1, outer 0
+;;  nodes: 7 6 5 3 4
+;;
+;; Loop 2
+;;  header 5, latch 4
+;;  depth 2, outer 1
+;;  nodes: 5 4
+;; 2 succs { 7 }
+;; 3 succs { 5 }
+;; 4 succs { 5 }
+;; 5 succs { 4 6 }
+;; 6 succs { 7 }
+;; 7 succs { 3 8 }
+;; 8 succs { 1 }
+Function is locally const.
+
+
+ local analysis of Pdb_Adc_Ip_Init
+   scanning: Base_39 = PdbBase[Instance_38(D)];
+  scanning: _1 = Config_40(D)->LoadValueMode;
+    Indirect ref read is not const
+  scanning: _2 = _1 << 18;
+  scanning: _3 = _2 & 786432;
+  scanning: _4 = Config_40(D)->PrescalerDiv;
+    Indirect ref read is not const
+  scanning: _5 = _4 << 12;
+  scanning: _6 = _5 & 28672;
+  scanning: Reg_41 = _3 | _6;
+  scanning: _7 = Config_40(D)->ClkPreMultFactor;
+    Indirect ref read is not const
+  scanning: _8 = _7 << 2;
+  scanning: _9 = _8 & 12;
+  scanning: Reg_42 = _9 | Reg_41;
+  scanning: _10 = Config_40(D)->TriggerSource;
+    Indirect ref read is not const
+  scanning: _11 = _10 << 8;
+  scanning: _12 = _11 & 3840;
+  scanning: Reg_43 = _12 | Reg_42;
+  scanning: _13 = Config_40(D)->ContinuousModeEnable;
+    Indirect ref read is not const
+  scanning: if (_13 != 0)
+  scanning: Reg_44 = Reg_43 | 2;
+  scanning: _14 = Config_40(D)->DmaEnable;
+    Indirect ref read is not const
+  scanning: if (_14 != 0)
+  scanning: Reg_45 = Reg_31 | 32768;
+  scanning: _15 = Config_40(D)->SeqErrNotification;
+    Indirect ref read is not const
+  scanning: if (_15 != 0B)
+  scanning: Reg_46 = Reg_32 | 131072;
+  scanning: Base_39->SC ={v} Reg_33;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _16 = Config_40(D)->ModValue;
+    Indirect ref read is not const
+  scanning: Pdb_Adc_Ip_SetModulus (Instance_38(D), _16);
+  scanning: _17 = Config_40(D)->NumChans;
+    Indirect ref read is not const
+  scanning: if (_17 != 0)
+  scanning: _18 = Config_40(D)->ChanConfigs;
+    Indirect ref read is not const
+  scanning: if (_18 != 0B)
+  scanning: _19 = Config_40(D)->ChanConfigs;
+    Indirect ref read is not const
+  scanning: _20 = (unsigned int) ChannelIndex_29;
+  scanning: _21 = _20 * 20;
+  scanning: ChanConfig_49 = _19 + _21;
+  scanning: _22 = ChanConfig_49->ChnIdx;
+    Indirect ref read is not const
+  scanning: _23 = &ChanConfig_49->PretriggersConfig;
+  scanning: Pdb_Adc_HwAcc_ConfigAdcPretriggers (Base_39, _22, _23);
+  scanning: _24 = ChanConfig_49->ChnIdx;
+    Indirect ref read is not const
+  scanning: _25 = (int) PretriggerIndex_30;
+  scanning: _26 = ChanConfig_49->PretriggerDelays[_25];
+    Indirect ref read is not const
+  scanning: _57 = (int) _24;
+  scanning: _58 = (long unsigned int) _26;
+  scanning: Base_39->CH[_57].DLY[_25] ={v} _58;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: PretriggerIndex_52 = PretriggerIndex_30 + 1;
+  scanning: if (PretriggerIndex_30 != 8)
+  scanning: ChannelIndex_51 = ChannelIndex_29 + 1;
+  scanning: _27 = Config_40(D)->NumChans;
+    Indirect ref read is not const
+  scanning: if (_27 > ChannelIndex_29)
+  scanning: Pdb_Adc_Ip_Enable (Instance_38(D));
+  scanning: Pdb_Adc_Ip_LoadRegValues (Instance_38(D));
+  scanning: _28 = Config_40(D)->SeqErrNotification;
+    Indirect ref read is not const
+  scanning: PdbAdcState[Instance_38(D)].SeqErrNotification = _28;
+  scanning: PdbAdcState[Instance_38(D)].Init = 1;
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_HwAcc_ClearAdcPretriggerFlags
+   scanning: _1 = (int) ChanIdx_8(D);
+  scanning: _2 ={v} Base_10(D)->CH[_1].S;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _3 = (long unsigned int) PretriggMask_11(D);
+  scanning: _4 = _3 << 16;
+  scanning: _5 = _4 & 16711680;
+  scanning: _6 = ~_5;
+  scanning: _7 = _2 & _6;
+  scanning: Base_10(D)->CH[_1].S ={v} _7;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_HwAcc_ConfigAdcPretriggers
+   scanning: _1 = (int) ChanIdx_10(D);
+  scanning: C1Reg_13 ={v} Base_12(D)->CH[_1].C1;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: C1Reg_14 = C1Reg_13 & 4278190080;
+  scanning: _2 = Config_15(D)->EnableMask;
+    Indirect ref read is not const
+  scanning: _3 = (long unsigned int) _2;
+  scanning: C1Reg_16 = _3 | C1Reg_14;
+  scanning: _4 = Config_15(D)->EnableDelayMask;
+    Indirect ref read is not const
+  scanning: _5 = (long unsigned int) _4;
+  scanning: _6 = _5 << 8;
+  scanning: C1Reg_17 = _6 | C1Reg_16;
+  scanning: _7 = Config_15(D)->BackToBackEnableMask;
+    Indirect ref read is not const
+  scanning: _8 = (long unsigned int) _7;
+  scanning: _9 = _8 << 16;
+  scanning: C1Reg_18 = _9 | C1Reg_17;
+  scanning: Base_12(D)->CH[_1].C1 ={v} C1Reg_18;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_HwAcc_SetContinuousMode
+   scanning: if (State_6(D) != 0)
+  scanning: _1 ={v} Base_8(D)->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _2 = _1 | 2;
+  scanning: Base_8(D)->SC ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _3 ={v} Base_8(D)->SC;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = _3 & 4294967293;
+  scanning: Base_8(D)->SC ={v} _4;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of Pdb_Adc_HwAcc_SetAdcPretriggerMask
+   scanning: if (Value_9(D) != 0)
+  scanning: _1 = (int) ChanIdx_10(D);
+  scanning: _2 ={v} Base_12(D)->CH[_1].C1;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _3 = _2 | Mask_13(D);
+  scanning: Base_12(D)->CH[_1].C1 ={v} _3;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: _4 = (int) ChanIdx_10(D);
+  scanning: _5 ={v} Base_12(D)->CH[_4].C1;
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _6 = ~Mask_13(D);
+  scanning: _7 = _5 & _6;
+  scanning: Base_12(D)->CH[_4].C1 ={v} _7;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+callgraph:
+
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @069fd700
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 61
+  Aux: @06862a20
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20
+  Clone of Pdb_Adc_HwAcc_SetAdcPretriggerMask/0
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @068541c0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 0
+  previous sharing asm name: 62
+  Aux: @06862a40
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerEnable/21
+  Clone of Pdb_Adc_HwAcc_SetAdcPretriggerMask/0
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47/56 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47) @069dfee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47/55 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47) @069dfe00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45/54 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45) @069dfd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45/53 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45) @069dfc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40/52 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40) @069dfa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_DisableAndClearPdb/24 (357878150 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40/51 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40) @069df9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_DisableAndClearPdb/24 (357878150 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44/50 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44) @069df700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44/49 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44) @069df620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43/48 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43) @069df460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43/47 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43) @069df380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42/46 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42) @069df0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42/45 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42) @069df000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46/44 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46) @069dad20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46/43 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46) @069dac40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41/42 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41) @069da9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_ConfigAdcPretriggers/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41/41 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41) @069da8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_ConfigAdcPretriggers/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48/40 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48) @069da700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetModulus/16 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48/39 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48) @069da620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetModulus/16 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39/38 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39) @069da460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_LoadRegValues/15 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39/37 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39) @069da380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_LoadRegValues/15 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38/36 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38) @069da0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SwTrigger/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38/35 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38) @069da000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SwTrigger/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37/34 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37) @069acd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetContinuousMode/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37/33 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37) @069acc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetContinuousMode/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36/32 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36) @069aca80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetTriggerInput/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36/31 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36) @069ac9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetTriggerInput/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35/30 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35) @069ac700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_Disable/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35/29 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35) @069ac620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_Disable/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34/28 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34) @069ac460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_Enable/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34/27 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34) @069ac380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_Enable/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+PDB_ADC_ResetChannel/26 (PDB_ADC_ResetChannel) @069a5540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862a60
+  References: 
+  Referring: 
+  Function PDB_ADC_ResetChannel/26 is inline copy in Pdb_Adc_Ip_DisableAndClearPdb/24
+  Availability: local
+  Function flags: count:715863676 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_DisableAndClearPdb/24 (inlined) (715863676 (estimated locally),2.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47/56 (715863676 (estimated locally),2.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47/55 (715863676 (estimated locally),2.00 per call) SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45/54 (715863676 (estimated locally),2.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (715863676 (estimated locally),2.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45/53 (715863676 (estimated locally),2.00 per call) 
+Pdb_Adc_Ip_IRQHandler/25 (Pdb_Adc_Ip_IRQHandler) @069a5e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862be0
+  References: PdbBase/5 (read)PdbAdcState/6 (read)PdbAdcState/6 (read)PdbAdcState/6 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:357878150 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(62638071 (estimated locally),0.18 per call) 
+Pdb_Adc_Ip_DisableAndClearPdb/24 (Pdb_Adc_Ip_DisableAndClearPdb) @069a5a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b00
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:357878150 (estimated locally) body optimize_size
+  Called by: 
+  Calls: PDB_ADC_ResetChannel/26 (inlined) (715863676 (estimated locally),2.00 per call) SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40/52 (357878150 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40/51 (357878150 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerDelayValue/23 (Pdb_Adc_Ip_SetAdcPretriggerDelayValue) @069a57e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ba0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (Pdb_Adc_Ip_SetAdcPretriggerDelayEnable) @069a5460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862960
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44/50 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44/49 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (Pdb_Adc_Ip_SetAdcPretriggerEnable) @069a50e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862a80
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43/48 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43/47 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (Pdb_Adc_Ip_SetAdcPretriggerBackToBack) @068d6c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862c00
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42/46 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42/45 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (Pdb_Adc_Ip_ClearAdcPretriggerFlags) @068d6380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ac0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46/44 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46/43 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_GetAdcPretriggerFlags/18 (Pdb_Adc_Ip_GetAdcPretriggerFlags) @068d6e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ae0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_ConfigAdcPretriggers/17 (Pdb_Adc_Ip_ConfigAdcPretriggers) @068d6b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629e0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41/42 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41/41 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetModulus/16 (Pdb_Adc_Ip_SetModulus) @068d68c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068628e0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125837 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48/40 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48/39 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_LoadRegValues/15 (Pdb_Adc_Ip_LoadRegValues) @068d6540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b80
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125838 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39/38 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39/37 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_GetTimerValue/14 (Pdb_Adc_Ip_GetTimerValue) @068d62a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b20
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_SwTrigger/13 (Pdb_Adc_Ip_SwTrigger) @068d6000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862860
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38/36 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38/35 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetContinuousMode/12 (Pdb_Adc_Ip_SetContinuousMode) @068cbb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862880
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37/34 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetContinuousMode/2 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37/33 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetTriggerInput/11 (Pdb_Adc_Ip_SetTriggerInput) @068cb620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862980
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36/32 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36/31 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Disable/10 (Pdb_Adc_Ip_Disable) @068cbd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068628a0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_DeInit/8 (59637412 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35/30 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35/29 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Enable/9 (Pdb_Adc_Ip_Enable) @068cba80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b60
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125838 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34/28 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34/27 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_DeInit/8 (Pdb_Adc_Ip_DeInit) @068cb7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629c0
+  References: PdbAdcState/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:59637411 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pdb_Adc_Ip_Disable/10 (59637412 (estimated locally),1.00 per call) Pdb_Adc_Ip_Init/7 (59637412 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Init/7 (Pdb_Adc_Ip_Init) @068cb540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862920
+  References: PdbBase/5 (read)PdbAdcState/6 (write)PdbAdcState/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:42125837 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_DeInit/8 (59637412 (estimated locally),1.00 per call) 
+  Calls: Pdb_Adc_Ip_LoadRegValues/15 (42125838 (estimated locally),1.00 per call) Pdb_Adc_Ip_Enable/9 (42125838 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (119292716 (estimated locally),2.83 per call) Pdb_Adc_Ip_SetModulus/16 (42125837 (estimated locally),1.00 per call) 
+Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 (Pdb_Adc_HwAcc_ClearAdcPretriggerFlags) @06854d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @068628c0
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 is inline copy in Pdb_Adc_Ip_ClearAdcPretriggerFlags/19
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (Pdb_Adc_HwAcc_ConfigAdcPretriggers) @068549a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862aa0
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (119292716 (estimated locally),2.83 per call) Pdb_Adc_Ip_ConfigAdcPretriggers/17 (1073741824 (estimated locally),1.00 per call) PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetContinuousMode/2 (Pdb_Adc_HwAcc_SetContinuousMode) @06854460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862900
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetContinuousMode/2 is inline copy in Pdb_Adc_Ip_SetContinuousMode/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetContinuousMode/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @067f9ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 61
+  Aux: @06862940
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @069fd700
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 61
+  Aux: @06862a20
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20
+  Clone of Pdb_Adc_HwAcc_SetAdcPretriggerMask/0
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @068541c0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 0
+  previous sharing asm name: 62
+  Aux: @06862a40
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerEnable/21
+  Clone of Pdb_Adc_HwAcc_SetAdcPretriggerMask/0
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+PDB_ADC_ResetChannel/26 (PDB_ADC_ResetChannel) @069a5540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862a60
+  References: 
+  Referring: 
+  Function PDB_ADC_ResetChannel/26 is inline copy in Pdb_Adc_Ip_DisableAndClearPdb/24
+  Availability: local
+  Function flags: count:715863676 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_DisableAndClearPdb/24 (inlined) (715863676 (estimated locally),2.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47/56 (715863676 (estimated locally),2.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47/55 (715863676 (estimated locally),2.00 per call) SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45/54 (715863676 (estimated locally),2.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (715863676 (estimated locally),2.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45/53 (715863676 (estimated locally),2.00 per call) 
+Pdb_Adc_Ip_IRQHandler/25 (Pdb_Adc_Ip_IRQHandler) @069a5e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862be0
+  References: PdbBase/5 (read)PdbAdcState/6 (read)PdbAdcState/6 (read)PdbAdcState/6 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:357878150 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(62638071 (estimated locally),0.18 per call) 
+Pdb_Adc_Ip_DisableAndClearPdb/24 (Pdb_Adc_Ip_DisableAndClearPdb) @069a5a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b00
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:357878150 (estimated locally) body optimize_size
+  Called by: 
+  Calls: PDB_ADC_ResetChannel/26 (inlined) (715863676 (estimated locally),2.00 per call) SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40/52 (357878150 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40/51 (357878150 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerDelayValue/23 (Pdb_Adc_Ip_SetAdcPretriggerDelayValue) @069a57e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ba0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (Pdb_Adc_Ip_SetAdcPretriggerDelayEnable) @069a5460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862960
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44/50 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44/49 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (Pdb_Adc_Ip_SetAdcPretriggerEnable) @069a50e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862a80
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43/48 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43/47 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (Pdb_Adc_Ip_SetAdcPretriggerBackToBack) @068d6c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862c00
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42/46 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42/45 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (Pdb_Adc_Ip_ClearAdcPretriggerFlags) @068d6380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ac0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46/44 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46/43 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_GetAdcPretriggerFlags/18 (Pdb_Adc_Ip_GetAdcPretriggerFlags) @068d6e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ae0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_ConfigAdcPretriggers/17 (Pdb_Adc_Ip_ConfigAdcPretriggers) @068d6b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629e0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41/42 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41/41 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetModulus/16 (Pdb_Adc_Ip_SetModulus) @068d68c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068628e0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125837 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48/40 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48/39 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_LoadRegValues/15 (Pdb_Adc_Ip_LoadRegValues) @068d6540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b80
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125838 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39/38 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39/37 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_GetTimerValue/14 (Pdb_Adc_Ip_GetTimerValue) @068d62a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b20
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_SwTrigger/13 (Pdb_Adc_Ip_SwTrigger) @068d6000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862860
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38/36 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38/35 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetContinuousMode/12 (Pdb_Adc_Ip_SetContinuousMode) @068cbb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862880
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37/34 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetContinuousMode/2 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37/33 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetTriggerInput/11 (Pdb_Adc_Ip_SetTriggerInput) @068cb620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862980
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36/32 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36/31 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Disable/10 (Pdb_Adc_Ip_Disable) @068cbd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068628a0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_DeInit/8 (59637412 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35/30 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35/29 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Enable/9 (Pdb_Adc_Ip_Enable) @068cba80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b60
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125838 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34/28 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34/27 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_DeInit/8 (Pdb_Adc_Ip_DeInit) @068cb7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629c0
+  References: PdbAdcState/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:59637411 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pdb_Adc_Ip_Disable/10 (59637412 (estimated locally),1.00 per call) Pdb_Adc_Ip_Init/7 (59637412 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Init/7 (Pdb_Adc_Ip_Init) @068cb540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862920
+  References: PdbBase/5 (read)PdbAdcState/6 (write)PdbAdcState/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:42125837 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_DeInit/8 (59637412 (estimated locally),1.00 per call) 
+  Calls: Pdb_Adc_Ip_LoadRegValues/15 (42125838 (estimated locally),1.00 per call) Pdb_Adc_Ip_Enable/9 (42125838 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (119292716 (estimated locally),2.83 per call) Pdb_Adc_Ip_SetModulus/16 (42125837 (estimated locally),1.00 per call) 
+Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 (Pdb_Adc_HwAcc_ClearAdcPretriggerFlags) @06854d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @068628c0
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 is inline copy in Pdb_Adc_Ip_ClearAdcPretriggerFlags/19
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (Pdb_Adc_HwAcc_ConfigAdcPretriggers) @068549a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862aa0
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (119292716 (estimated locally),2.83 per call) Pdb_Adc_Ip_ConfigAdcPretriggers/17 (1073741824 (estimated locally),1.00 per call) PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetContinuousMode/2 (Pdb_Adc_HwAcc_SetContinuousMode) @06854460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862900
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetContinuousMode/2 is inline copy in Pdb_Adc_Ip_SetContinuousMode/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetContinuousMode/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @067f9ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 61
+  Aux: @06862940
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+Pdb_Adc_HwAcc_SetAdcPretriggerMask: malloc_bottom
+Pdb_Adc_HwAcc_SetAdcPretriggerMask: malloc_bottom
+PDB_ADC_ResetChannel: malloc_bottom
+Pdb_Adc_Ip_IRQHandler: malloc_bottom
+Pdb_Adc_Ip_DisableAndClearPdb: malloc_bottom
+Pdb_Adc_Ip_SetAdcPretriggerDelayValue: malloc_bottom
+Pdb_Adc_Ip_SetAdcPretriggerDelayEnable: malloc_bottom
+Pdb_Adc_Ip_SetAdcPretriggerEnable: malloc_bottom
+Pdb_Adc_Ip_SetAdcPretriggerBackToBack: malloc_bottom
+Pdb_Adc_Ip_ClearAdcPretriggerFlags: malloc_bottom
+Pdb_Adc_Ip_GetAdcPretriggerFlags: malloc_bottom
+Pdb_Adc_Ip_ConfigAdcPretriggers: malloc_bottom
+Pdb_Adc_Ip_SetModulus: malloc_bottom
+Pdb_Adc_Ip_LoadRegValues: malloc_bottom
+Pdb_Adc_Ip_GetTimerValue: malloc_bottom
+Pdb_Adc_Ip_SwTrigger: malloc_bottom
+Pdb_Adc_Ip_SetContinuousMode: malloc_bottom
+Pdb_Adc_Ip_SetTriggerInput: malloc_bottom
+Pdb_Adc_Ip_Disable: malloc_bottom
+Pdb_Adc_Ip_Enable: malloc_bottom
+Pdb_Adc_Ip_DeInit: malloc_bottom
+Pdb_Adc_Ip_Init: malloc_bottom
+Pdb_Adc_HwAcc_ClearAdcPretriggerFlags: malloc_bottom
+Pdb_Adc_HwAcc_ConfigAdcPretriggers: malloc_bottom
+Pdb_Adc_HwAcc_SetContinuousMode: malloc_bottom
+Pdb_Adc_HwAcc_SetAdcPretriggerMask: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Pdb_Adc_HwAcc_SetAdcPretriggerMask: malloc_bottom
+Pdb_Adc_HwAcc_SetAdcPretriggerMask: malloc_bottom
+PDB_ADC_ResetChannel: malloc_bottom
+Pdb_Adc_Ip_IRQHandler: malloc_bottom
+Pdb_Adc_Ip_DisableAndClearPdb: malloc_bottom
+Pdb_Adc_Ip_SetAdcPretriggerDelayValue: malloc_bottom
+Pdb_Adc_Ip_SetAdcPretriggerDelayEnable: malloc_bottom
+Pdb_Adc_Ip_SetAdcPretriggerEnable: malloc_bottom
+Pdb_Adc_Ip_SetAdcPretriggerBackToBack: malloc_bottom
+Pdb_Adc_Ip_ClearAdcPretriggerFlags: malloc_bottom
+Pdb_Adc_Ip_GetAdcPretriggerFlags: malloc_bottom
+Pdb_Adc_Ip_ConfigAdcPretriggers: malloc_bottom
+Pdb_Adc_Ip_SetModulus: malloc_bottom
+Pdb_Adc_Ip_LoadRegValues: malloc_bottom
+Pdb_Adc_Ip_GetTimerValue: malloc_bottom
+Pdb_Adc_Ip_SwTrigger: malloc_bottom
+Pdb_Adc_Ip_SetContinuousMode: malloc_bottom
+Pdb_Adc_Ip_SetTriggerInput: malloc_bottom
+Pdb_Adc_Ip_Disable: malloc_bottom
+Pdb_Adc_Ip_Enable: malloc_bottom
+Pdb_Adc_Ip_DeInit: malloc_bottom
+Pdb_Adc_Ip_Init: malloc_bottom
+Pdb_Adc_HwAcc_ClearAdcPretriggerFlags: malloc_bottom
+Pdb_Adc_HwAcc_ConfigAdcPretriggers: malloc_bottom
+Pdb_Adc_HwAcc_SetContinuousMode: malloc_bottom
+Pdb_Adc_HwAcc_SetAdcPretriggerMask: malloc_bottom
+callgraph:
+
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @069fd700
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 61
+  Aux: @06862aa0
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20
+  Clone of Pdb_Adc_HwAcc_SetAdcPretriggerMask/0
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @068541c0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 0
+  previous sharing asm name: 62
+  Aux: @06862a20
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerEnable/21
+  Clone of Pdb_Adc_HwAcc_SetAdcPretriggerMask/0
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47/56 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47) @069dfee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47/55 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47) @069dfe00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45/54 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45) @069dfd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45/53 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45) @069dfc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40/52 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40) @069dfa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_DisableAndClearPdb/24 (357878150 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40/51 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40) @069df9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_DisableAndClearPdb/24 (357878150 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44/50 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44) @069df700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44/49 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44) @069df620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43/48 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43) @069df460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43/47 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43) @069df380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42/46 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42) @069df0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42/45 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42) @069df000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46/44 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46) @069dad20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46/43 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46) @069dac40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41/42 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41) @069da9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_ConfigAdcPretriggers/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41/41 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41) @069da8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_ConfigAdcPretriggers/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48/40 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48) @069da700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetModulus/16 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48/39 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48) @069da620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetModulus/16 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39/38 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39) @069da460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_LoadRegValues/15 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39/37 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39) @069da380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_LoadRegValues/15 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38/36 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38) @069da0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SwTrigger/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38/35 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38) @069da000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SwTrigger/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37/34 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37) @069acd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetContinuousMode/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37/33 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37) @069acc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetContinuousMode/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36/32 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36) @069aca80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetTriggerInput/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36/31 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36) @069ac9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_SetTriggerInput/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35/30 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35) @069ac700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_Disable/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35/29 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35) @069ac620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_Disable/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34/28 (SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34) @069ac460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_Enable/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34/27 (SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34) @069ac380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_Adc_Ip_Enable/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+PDB_ADC_ResetChannel/26 (PDB_ADC_ResetChannel) @069a5540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @068628c0
+  References: 
+  Referring: 
+  Function PDB_ADC_ResetChannel/26 is inline copy in Pdb_Adc_Ip_DisableAndClearPdb/24
+  Availability: local
+  Function flags: count:715863676 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_DisableAndClearPdb/24 (inlined) (715863676 (estimated locally),2.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47/56 (715863676 (estimated locally),2.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47/55 (715863676 (estimated locally),2.00 per call) SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45/54 (715863676 (estimated locally),2.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (715863676 (estimated locally),2.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45/53 (715863676 (estimated locally),2.00 per call) 
+Pdb_Adc_Ip_IRQHandler/25 (Pdb_Adc_Ip_IRQHandler) @069a5e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629a0
+  References: PdbBase/5 (read)PdbAdcState/6 (read)PdbAdcState/6 (read)PdbAdcState/6 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:357878150 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(62638071 (estimated locally),0.18 per call) 
+Pdb_Adc_Ip_DisableAndClearPdb/24 (Pdb_Adc_Ip_DisableAndClearPdb) @069a5a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b00
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:357878150 (estimated locally) body optimize_size
+  Called by: 
+  Calls: PDB_ADC_ResetChannel/26 (inlined) (715863676 (estimated locally),2.00 per call) SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40/52 (357878150 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40/51 (357878150 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerDelayValue/23 (Pdb_Adc_Ip_SetAdcPretriggerDelayValue) @069a57e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862a40
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (Pdb_Adc_Ip_SetAdcPretriggerDelayEnable) @069a5460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ba0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44/50 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44/49 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (Pdb_Adc_Ip_SetAdcPretriggerEnable) @069a50e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629c0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43/48 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43/47 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (Pdb_Adc_Ip_SetAdcPretriggerBackToBack) @068d6c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629e0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42/46 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42/45 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (Pdb_Adc_Ip_ClearAdcPretriggerFlags) @068d6380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862a80
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46/44 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46/43 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_GetAdcPretriggerFlags/18 (Pdb_Adc_Ip_GetAdcPretriggerFlags) @068d6e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862be0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_ConfigAdcPretriggers/17 (Pdb_Adc_Ip_ConfigAdcPretriggers) @068d6b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862880
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41/42 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41/41 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetModulus/16 (Pdb_Adc_Ip_SetModulus) @068d68c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862a60
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125837 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48/40 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48/39 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_LoadRegValues/15 (Pdb_Adc_Ip_LoadRegValues) @068d6540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862c00
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125838 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39/38 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39/37 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_GetTimerValue/14 (Pdb_Adc_Ip_GetTimerValue) @068d62a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862960
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_SwTrigger/13 (Pdb_Adc_Ip_SwTrigger) @068d6000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862980
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38/36 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38/35 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetContinuousMode/12 (Pdb_Adc_Ip_SetContinuousMode) @068cbb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862860
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37/34 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetContinuousMode/2 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37/33 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetTriggerInput/11 (Pdb_Adc_Ip_SetTriggerInput) @068cb620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862900
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36/32 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36/31 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Disable/10 (Pdb_Adc_Ip_Disable) @068cbd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ac0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_DeInit/8 (59637412 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35/30 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35/29 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Enable/9 (Pdb_Adc_Ip_Enable) @068cba80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ae0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125838 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34/28 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34/27 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_DeInit/8 (Pdb_Adc_Ip_DeInit) @068cb7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068628e0
+  References: PdbAdcState/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:59637411 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pdb_Adc_Ip_Disable/10 (59637412 (estimated locally),1.00 per call) Pdb_Adc_Ip_Init/7 (59637412 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Init/7 (Pdb_Adc_Ip_Init) @068cb540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068628a0
+  References: PdbBase/5 (read)PdbAdcState/6 (write)PdbAdcState/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:42125837 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_DeInit/8 (59637412 (estimated locally),1.00 per call) 
+  Calls: Pdb_Adc_Ip_LoadRegValues/15 (42125838 (estimated locally),1.00 per call) Pdb_Adc_Ip_Enable/9 (42125838 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (119292716 (estimated locally),2.83 per call) Pdb_Adc_Ip_SetModulus/16 (42125837 (estimated locally),1.00 per call) 
+Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 (Pdb_Adc_HwAcc_ClearAdcPretriggerFlags) @06854d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862920
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 is inline copy in Pdb_Adc_Ip_ClearAdcPretriggerFlags/19
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (Pdb_Adc_HwAcc_ConfigAdcPretriggers) @068549a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862b20
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (119292716 (estimated locally),2.83 per call) Pdb_Adc_Ip_ConfigAdcPretriggers/17 (1073741824 (estimated locally),1.00 per call) PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetContinuousMode/2 (Pdb_Adc_HwAcc_SetContinuousMode) @06854460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862b60
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetContinuousMode/2 is inline copy in Pdb_Adc_Ip_SetContinuousMode/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetContinuousMode/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @067f9ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 61
+  Aux: @06862940
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+
+
+ ordered call graph: reduced
+Pdb_Adc_Ip_IRQHandler/25 (Pdb_Adc_Ip_IRQHandler) @069a5e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629a0
+  References: PdbBase/5 (read)PdbAdcState/6 (read)PdbAdcState/6 (read)PdbAdcState/6 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:357878150 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(62638071 (estimated locally),0.18 per call) 
+Pdb_Adc_Ip_DisableAndClearPdb/24 (Pdb_Adc_Ip_DisableAndClearPdb) @069a5a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862b00
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:357878150 (estimated locally) body optimize_size
+  Called by: 
+  Calls: PDB_ADC_ResetChannel/26 (inlined) (715863676 (estimated locally),2.00 per call) SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40/52 (357878150 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40/51 (357878150 (estimated locally),1.00 per call) 
+PDB_ADC_ResetChannel/26 (PDB_ADC_ResetChannel) @069a5540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @068628c0
+  References: 
+  Referring: 
+  Function PDB_ADC_ResetChannel/26 is inline copy in Pdb_Adc_Ip_DisableAndClearPdb/24
+  Availability: local
+  Function flags: count:715863676 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_DisableAndClearPdb/24 (inlined) (715863676 (estimated locally),2.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47/56 (715863676 (estimated locally),2.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47/55 (715863676 (estimated locally),2.00 per call) SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45/54 (715863676 (estimated locally),2.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (715863676 (estimated locally),2.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45/53 (715863676 (estimated locally),2.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerDelayValue/23 (Pdb_Adc_Ip_SetAdcPretriggerDelayValue) @069a57e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862a40
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (Pdb_Adc_Ip_SetAdcPretriggerDelayEnable) @069a5460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ba0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44/50 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44/49 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (Pdb_Adc_Ip_SetAdcPretriggerEnable) @069a50e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629c0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43/48 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43/47 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @068541c0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 0
+  previous sharing asm name: 62
+  Aux: @06862a20
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/61 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerEnable/21
+  Clone of Pdb_Adc_HwAcc_SetAdcPretriggerMask/0
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerEnable/21 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (Pdb_Adc_Ip_SetAdcPretriggerBackToBack) @068d6c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068629e0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42/46 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42/45 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @069fd700
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 61
+  Aux: @06862aa0
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/62 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20
+  Clone of Pdb_Adc_HwAcc_SetAdcPretriggerMask/0
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerBackToBack/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (Pdb_Adc_Ip_ClearAdcPretriggerFlags) @068d6380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862a80
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46/44 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46/43 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_GetAdcPretriggerFlags/18 (Pdb_Adc_Ip_GetAdcPretriggerFlags) @068d6e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862be0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_ConfigAdcPretriggers/17 (Pdb_Adc_Ip_ConfigAdcPretriggers) @068d6b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862880
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41/42 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41/41 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_GetTimerValue/14 (Pdb_Adc_Ip_GetTimerValue) @068d62a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862960
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pdb_Adc_Ip_SwTrigger/13 (Pdb_Adc_Ip_SwTrigger) @068d6000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862980
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38/36 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38/35 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetContinuousMode/12 (Pdb_Adc_Ip_SetContinuousMode) @068cbb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862860
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37/34 (1073741824 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_SetContinuousMode/2 (inlined) (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37/33 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetTriggerInput/11 (Pdb_Adc_Ip_SetTriggerInput) @068cb620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862900
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36/32 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36/31 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_DeInit/8 (Pdb_Adc_Ip_DeInit) @068cb7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068628e0
+  References: PdbAdcState/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:59637411 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pdb_Adc_Ip_Disable/10 (59637412 (estimated locally),1.00 per call) Pdb_Adc_Ip_Init/7 (59637412 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Disable/10 (Pdb_Adc_Ip_Disable) @068cbd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ac0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_DeInit/8 (59637412 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35/30 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35/29 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Init/7 (Pdb_Adc_Ip_Init) @068cb540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @068628a0
+  References: PdbBase/5 (read)PdbAdcState/6 (write)PdbAdcState/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:42125837 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_DeInit/8 (59637412 (estimated locally),1.00 per call) 
+  Calls: Pdb_Adc_Ip_LoadRegValues/15 (42125838 (estimated locally),1.00 per call) Pdb_Adc_Ip_Enable/9 (42125838 (estimated locally),1.00 per call) Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (119292716 (estimated locally),2.83 per call) Pdb_Adc_Ip_SetModulus/16 (42125837 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_SetModulus/16 (Pdb_Adc_Ip_SetModulus) @068d68c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862a60
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125837 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48/40 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48/39 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_Enable/9 (Pdb_Adc_Ip_Enable) @068cba80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862ae0
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125838 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34/28 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34/27 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_Ip_LoadRegValues/15 (Pdb_Adc_Ip_LoadRegValues) @068d6540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06862c00
+  References: PdbBase/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (42125838 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39/38 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39/37 (1073741824 (estimated locally),1.00 per call) 
+Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 (Pdb_Adc_HwAcc_ClearAdcPretriggerFlags) @06854d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862920
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_ClearAdcPretriggerFlags/4 is inline copy in Pdb_Adc_Ip_ClearAdcPretriggerFlags/19
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_ClearAdcPretriggerFlags/19 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_ConfigAdcPretriggers/3 (Pdb_Adc_HwAcc_ConfigAdcPretriggers) @068549a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862b20
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_Init/7 (119292716 (estimated locally),2.83 per call) Pdb_Adc_Ip_ConfigAdcPretriggers/17 (1073741824 (estimated locally),1.00 per call) PDB_ADC_ResetChannel/26 (715863676 (estimated locally),2.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetContinuousMode/2 (Pdb_Adc_HwAcc_SetContinuousMode) @06854460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06862b60
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetContinuousMode/2 is inline copy in Pdb_Adc_Ip_SetContinuousMode/12
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetContinuousMode/12 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 (Pdb_Adc_HwAcc_SetAdcPretriggerMask) @067f9ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 61
+  Aux: @06862940
+  References: 
+  Referring: 
+  Function Pdb_Adc_HwAcc_SetAdcPretriggerMask/0 is inline copy in Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pdb_Adc_Ip_SetAdcPretriggerDelayEnable/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+
+Function found not to call free: Pdb_Adc_HwAcc_SetAdcPretriggerMask
+Function found not to call free: Pdb_Adc_HwAcc_SetContinuousMode
+Function found not to call free: Pdb_Adc_HwAcc_ConfigAdcPretriggers
+Function found not to call free: Pdb_Adc_HwAcc_ClearAdcPretriggerFlags
+Function found not to call free: Pdb_Adc_Ip_GetTimerValue
+Function found not to call free: Pdb_Adc_Ip_GetAdcPretriggerFlags
+Function found not to call free: Pdb_Adc_HwAcc_SetAdcPretriggerMask
+Function found not to call free: Pdb_Adc_HwAcc_SetAdcPretriggerMask
+Function found not to call free: Pdb_Adc_Ip_SetAdcPretriggerDelayValue
+PDB_ADC_ResetChannel (struct PDB_Type * const Base, const uint8 ChanIdx, const struct Pdb_Adc_Ip_PretriggersConfigType * PdbPretriggsConfig)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_45 ();
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_HwAcc_ConfigAdcPretriggers (Base_5(D), ChanIdx_6(D), PdbPretriggsConfig_7(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_45 ();
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_47 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG Base => Base_5(D)
+  # DEBUG ChanIdx => ChanIdx_6(D)
+  # DEBUG PretriggMask => 255
+  # DEBUG INLINE_ENTRY Pdb_Adc_HwAcc_ClearAdcPretriggerFlags
+  # DEBUG BEGIN_STMT
+  _13 = (int) ChanIdx_6(D);
+  _14 ={v} Base_5(D)->CH[_13].S;
+  _15 = _14 & 4278255615;
+  Base_5(D)->CH[_13].S ={v} _15;
+  # DEBUG Base => NULL
+  # DEBUG ChanIdx => NULL
+  # DEBUG PretriggMask => NULL
+  # DEBUG BEGIN_STMT
+  _1 ={v} Base_5(D)->CH[_13].S;
+  _2 = _1 & 4294967040;
+  Base_5(D)->CH[_13].S ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_47 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_IRQHandler (const uint32 Instance)
+{
+  uint16 SeqErrMask;
+  uint8 ChanIdx;
+  struct PDB_Type * const Base;
+  _Bool _1;
+  void (*<T4d5>) (uint8, uint16) _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  int _5;
+  long unsigned int _6;
+  short unsigned int _7;
+  void (*<T4d5>) (uint8, uint16) _8;
+  int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+
+  <bb 2> [local count: 357878150]:
+  # DEBUG BEGIN_STMT
+  Base_21 = PdbBase[Instance_20(D)];
+  # DEBUG Base => Base_21
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = PdbAdcState[Instance_20(D)].Init;
+  if (_1 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 3> [local count: 178939075]:
+  _2 = PdbAdcState[Instance_20(D)].SeqErrNotification;
+  if (_2 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 11> [local count: 357878150]:
+  # ChanIdx_17 = PHI <0(3), 0(4), 0(2), 0(8)>
+  goto <bb 13>; [100.00%]
+
+  <bb 4> [local count: 125257353]:
+  _3 ={v} Base_21->SC;
+  _4 = _3 & 131072;
+  if (_4 != 0)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 14> [local count: 62628676]:
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 125276143]:
+  # DEBUG BEGIN_STMT
+  _5 = (int) ChanIdx_13;
+  _6 ={v} Base_21->CH[_5].S;
+  _7 = (short unsigned int) _6;
+  SeqErrMask_22 = _7 & 255;
+  # DEBUG SeqErrMask => SeqErrMask_22
+  # DEBUG BEGIN_STMT
+  if (SeqErrMask_22 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 62638071]:
+  # DEBUG BEGIN_STMT
+  _8 = PdbAdcState[Instance_20(D)].SeqErrNotification;
+  _8 (ChanIdx_13, SeqErrMask_22);
+
+  <bb 7> [local count: 125276143]:
+  # DEBUG BEGIN_STMT
+  ChanIdx_24 = ChanIdx_13 + 1;
+  # DEBUG ChanIdx => ChanIdx_24
+
+  <bb 8> [local count: 187904819]:
+  # ChanIdx_13 = PHI <ChanIdx_24(7), 0(14)>
+  # DEBUG ChanIdx => ChanIdx_13
+  # DEBUG BEGIN_STMT
+  if (ChanIdx_13 != 2)
+    goto <bb 5>; [66.67%]
+  else
+    goto <bb 11>; [33.33%]
+
+  <bb 10> [local count: 715863676]:
+  # DEBUG BEGIN_STMT
+  _10 = (int) ChanIdx_14;
+  _11 ={v} Base_21->CH[_10].S;
+  _12 = _11 & 4294967040;
+  Base_21->CH[_10].S ={v} _12;
+  # DEBUG BEGIN_STMT
+  ChanIdx_26 = ChanIdx_14 + 1;
+  # DEBUG ChanIdx => ChanIdx_26
+
+  <bb 13> [local count: 1073741824]:
+  # ChanIdx_14 = PHI <ChanIdx_17(11), ChanIdx_26(10)>
+  # DEBUG ChanIdx => ChanIdx_14
+  # DEBUG BEGIN_STMT
+  if (ChanIdx_14 != 2)
+    goto <bb 10>; [66.67%]
+  else
+    goto <bb 12>; [33.33%]
+
+  <bb 12> [local count: 357878150]:
+  return;
+
+}
+
+
+Pdb_Adc_Ip_DisableAndClearPdb (const uint32 Instance)
+{
+  const struct Pdb_Adc_Ip_PretriggersConfigType PdbPretriggsConfig;
+  uint8 ChanIdx;
+  struct PDB_Type * const Base;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+
+  <bb 2> [local count: 357878150]:
+  # DEBUG BEGIN_STMT
+  Base_5 = PdbBase[Instance_4(D)];
+  # DEBUG Base => Base_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  PdbPretriggsConfig.EnableMask = 0;
+  PdbPretriggsConfig.EnableDelayMask = 0;
+  PdbPretriggsConfig.BackToBackEnableMask = 0;
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_40 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG Base => Base_5
+  # DEBUG INLINE_ENTRY Pdb_Adc_HwAcc_DisablePdb
+  # DEBUG BEGIN_STMT
+  _16 ={v} Base_5->SC;
+  _17 = _16 & 4294967167;
+  Base_5->SC ={v} _17;
+  # DEBUG Base => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG Base => Base_5
+  # DEBUG State => 0
+  # DEBUG INLINE_ENTRY Pdb_Adc_HwAcc_SetContinuousMode
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 ={v} Base_5->SC;
+  _15 = _14 & 4294967293;
+  Base_5->SC ={v} _15;
+  # DEBUG Base => NULL
+  # DEBUG State => NULL
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_40 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG ChanIdx => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 715863676]:
+  # DEBUG BEGIN_STMT
+  PDB_ADC_ResetChannel (Base_5, ChanIdx_1, &PdbPretriggsConfig);
+  # DEBUG BEGIN_STMT
+  ChanIdx_13 = ChanIdx_1 + 1;
+  # DEBUG ChanIdx => ChanIdx_13
+
+  <bb 4> [local count: 1073741824]:
+  # ChanIdx_1 = PHI <0(2), ChanIdx_13(3)>
+  # DEBUG ChanIdx => ChanIdx_1
+  # DEBUG BEGIN_STMT
+  if (ChanIdx_1 != 2)
+    goto <bb 3>; [66.67%]
+  else
+    goto <bb 5>; [33.33%]
+
+  <bb 5> [local count: 357878150]:
+  PdbPretriggsConfig ={v} {CLOBBER};
+  return;
+
+}
+
+
+Pdb_Adc_Ip_SetAdcPretriggerDelayValue (const uint32 Instance, const uint8 ChanIdx, const uint8 PretriggIdx, const uint16 DelayValue)
+{
+  struct PDB_Type * const Base;
+  int _1;
+  int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_6 = PdbBase[Instance_5(D)];
+  # DEBUG Base => Base_6
+  # DEBUG BEGIN_STMT
+  _1 = (int) ChanIdx_7(D);
+  _2 = (int) PretriggIdx_8(D);
+  _3 = (long unsigned int) DelayValue_9(D);
+  Base_6->CH[_1].DLY[_2] ={v} _3;
+  return;
+
+}
+
+
+Pdb_Adc_Ip_SetAdcPretriggerDelayEnable (const uint32 Instance, const uint8 ChanIdx, const uint8 PretriggIdx, const boolean Value)
+{
+  uint32 Mask;
+  struct PDB_Type * const Base;
+  int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_5 = PdbBase[Instance_4(D)];
+  # DEBUG Base => Base_5
+  # DEBUG BEGIN_STMT
+  _1 = (int) PretriggIdx_6(D);
+  Mask_7 = 1 << _1;
+  # DEBUG Mask => Mask_7
+  # DEBUG BEGIN_STMT
+  _2 = Mask_7 << 8;
+  Mask_8 = _2 & 65535;
+  # DEBUG Mask => Mask_8
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_44 ();
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_HwAcc_SetAdcPretriggerMask (Base_5, ChanIdx_10(D), Mask_8, Value_11(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_44 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_SetAdcPretriggerEnable (const uint32 Instance, const uint8 ChanIdx, const uint8 PretriggIdx, const boolean Value)
+{
+  uint32 Mask;
+  struct PDB_Type * const Base;
+  int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_4 = PdbBase[Instance_3(D)];
+  # DEBUG Base => Base_4
+  # DEBUG BEGIN_STMT
+  _1 = (int) PretriggIdx_5(D);
+  Mask_6 = 1 << _1;
+  # DEBUG Mask => Mask_6
+  # DEBUG BEGIN_STMT
+  Mask_7 = Mask_6 & 255;
+  # DEBUG Mask => Mask_7
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_43 ();
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_HwAcc_SetAdcPretriggerMask (Base_4, ChanIdx_9(D), Mask_7, Value_10(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_43 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_SetAdcPretriggerBackToBack (const uint32 Instance, const uint8 ChanIdx, const uint8 PretriggIdx, const boolean Value)
+{
+  uint32 Mask;
+  struct PDB_Type * const Base;
+  int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_5 = PdbBase[Instance_4(D)];
+  # DEBUG Base => Base_5
+  # DEBUG BEGIN_STMT
+  _1 = (int) PretriggIdx_6(D);
+  Mask_7 = 1 << _1;
+  # DEBUG Mask => Mask_7
+  # DEBUG BEGIN_STMT
+  _2 = Mask_7 << 16;
+  Mask_8 = _2 & 16711680;
+  # DEBUG Mask => Mask_8
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_42 ();
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_HwAcc_SetAdcPretriggerMask (Base_5, ChanIdx_10(D), Mask_8, Value_11(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_42 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_ClearAdcPretriggerFlags (const uint32 Instance, const uint8 ChanIdx, const uint16 PretriggMask)
+{
+  struct PDB_Type * const Base;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_3 = PdbBase[Instance_2(D)];
+  # DEBUG Base => Base_3
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_46 ();
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_HwAcc_ClearAdcPretriggerFlags (Base_3, ChanIdx_5(D), PretriggMask_6(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_46 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_GetAdcPretriggerFlags (const uint32 Instance, const uint8 ChanIdx)
+{
+  uint32 Result;
+  const struct PDB_Type * const Base;
+  int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_5 = PdbBase[Instance_4(D)];
+  # DEBUG Base => Base_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) ChanIdx_6(D);
+  Result_7 ={v} Base_5->CH[_1].S;
+  # DEBUG Result => Result_7
+  # DEBUG BEGIN_STMT
+  _2 = Result_7 >> 16;
+  Result_8 = _2 & 255;
+  # DEBUG Result => Result_8
+  # DEBUG BEGIN_STMT
+  return Result_8;
+
+}
+
+
+Pdb_Adc_Ip_ConfigAdcPretriggers (const uint32 Instance, const uint8 ChanIdx, const struct Pdb_Adc_Ip_PretriggersConfigType * const Config)
+{
+  struct PDB_Type * const Base;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_3 = PdbBase[Instance_2(D)];
+  # DEBUG Base => Base_3
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_41 ();
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_HwAcc_ConfigAdcPretriggers (Base_3, ChanIdx_5(D), Config_6(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_41 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_SetModulus (const uint32 Instance, const uint16 ModVal)
+{
+  uint32 ModReg;
+  struct PDB_Type * const Base;
+  long unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_4 = PdbBase[Instance_3(D)];
+  # DEBUG Base => Base_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_48 ();
+  # DEBUG BEGIN_STMT
+  ModReg_6 ={v} Base_4->MOD;
+  # DEBUG ModReg => ModReg_6
+  # DEBUG BEGIN_STMT
+  ModReg_7 = ModReg_6 & 4294901760;
+  # DEBUG ModReg => ModReg_7
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) ModVal_8(D);
+  ModReg_9 = _1 | ModReg_7;
+  # DEBUG ModReg => ModReg_9
+  # DEBUG BEGIN_STMT
+  Base_4->MOD ={v} ModReg_9;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_48 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_LoadRegValues (const uint32 Instance)
+{
+  struct PDB_Type * const Base;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_5 = PdbBase[Instance_4(D)];
+  # DEBUG Base => Base_5
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_39 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} Base_5->SC;
+  _2 = _1 | 1;
+  Base_5->SC ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_39 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_GetTimerValue (const uint32 Instance)
+{
+  const struct PDB_Type * const Base;
+  long unsigned int _1;
+  uint32 _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_4 = PdbBase[Instance_3(D)];
+  # DEBUG Base => Base_4
+  # DEBUG BEGIN_STMT
+  _1 ={v} Base_4->CNT;
+  _5 = _1 & 65535;
+  return _5;
+
+}
+
+
+Pdb_Adc_Ip_SwTrigger (const uint32 Instance)
+{
+  struct PDB_Type * const Base;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_5 = PdbBase[Instance_4(D)];
+  # DEBUG Base => Base_5
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_38 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} Base_5->SC;
+  _2 = _1 | 65536;
+  Base_5->SC ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_38 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_SetContinuousMode (const uint32 Instance, const boolean State)
+{
+  struct PDB_Type * const Base;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_3 = PdbBase[Instance_2(D)];
+  # DEBUG Base => Base_3
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_37 ();
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_HwAcc_SetContinuousMode (Base_3, State_5(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_37 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_SetTriggerInput (const uint32 Instance, const Pdb_Adc_Ip_TriggerSrcType TriggerSource)
+{
+  uint32 SCReg;
+  struct PDB_Type * const Base;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_5 = PdbBase[Instance_4(D)];
+  # DEBUG Base => Base_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_36 ();
+  # DEBUG BEGIN_STMT
+  SCReg_7 ={v} Base_5->SC;
+  # DEBUG SCReg => SCReg_7
+  # DEBUG BEGIN_STMT
+  SCReg_8 = SCReg_7 & 4294963455;
+  # DEBUG SCReg => SCReg_8
+  # DEBUG BEGIN_STMT
+  _1 = TriggerSource_9(D) << 8;
+  _2 = _1 & 3840;
+  SCReg_10 = _2 | SCReg_8;
+  # DEBUG SCReg => SCReg_10
+  # DEBUG BEGIN_STMT
+  Base_5->SC ={v} SCReg_10;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_36 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_Disable (const uint32 Instance)
+{
+  struct PDB_Type * const Base;
+  long unsigned int _6;
+  long unsigned int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_3 = PdbBase[Instance_2(D)];
+  # DEBUG Base => Base_3
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_35 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG Base => Base_3
+  # DEBUG INLINE_ENTRY Pdb_Adc_HwAcc_DisablePdb
+  # DEBUG BEGIN_STMT
+  _6 ={v} Base_3->SC;
+  _7 = _6 & 4294967167;
+  Base_3->SC ={v} _7;
+  # DEBUG Base => NULL
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_35 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_Enable (const uint32 Instance)
+{
+  struct PDB_Type * const Base;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Base_5 = PdbBase[Instance_4(D)];
+  # DEBUG Base => Base_5
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_34 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} Base_5->SC;
+  _2 = _1 | 128;
+  Base_5->SC ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Adc_ADC_EXCLUSIVE_AREA_34 ();
+  return;
+
+}
+
+
+Pdb_Adc_Ip_DeInit (const uint32 Instance)
+{
+  uint8 PretriggerIndex;
+  uint8 ChannelIndex;
+  struct Pdb_Adc_Ip_ChanConfigType ChanConfigs[2];
+  struct Pdb_Adc_Ip_ConfigType DefaultConfig;
+  int _1;
+  int _2;
+
+  <bb 2> [local count: 59637411]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  DefaultConfig.LoadValueMode = 0;
+  # DEBUG BEGIN_STMT
+  DefaultConfig.PrescalerDiv = 0;
+  # DEBUG BEGIN_STMT
+  DefaultConfig.ClkPreMultFactor = 0;
+  # DEBUG BEGIN_STMT
+  DefaultConfig.TriggerSource = 0;
+  # DEBUG BEGIN_STMT
+  DefaultConfig.ContinuousModeEnable = 0;
+  # DEBUG BEGIN_STMT
+  DefaultConfig.DmaEnable = 0;
+  # DEBUG BEGIN_STMT
+  DefaultConfig.ModValue = 0;
+  # DEBUG BEGIN_STMT
+  DefaultConfig.NumChans = 2;
+  # DEBUG BEGIN_STMT
+  # DEBUG ChannelIndex => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 119292716]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) ChannelIndex_3;
+  ChanConfigs[_1].ChnIdx = ChannelIndex_3;
+  # DEBUG BEGIN_STMT
+  ChanConfigs[_1].PretriggersConfig.EnableMask = 0;
+  # DEBUG BEGIN_STMT
+  ChanConfigs[_1].PretriggersConfig.EnableDelayMask = 0;
+  # DEBUG BEGIN_STMT
+  ChanConfigs[_1].PretriggersConfig.BackToBackEnableMask = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG PretriggerIndex => 0
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 954449109]:
+  # DEBUG BEGIN_STMT
+  _2 = (int) PretriggerIndex_4;
+  ChanConfigs[_1].PretriggerDelays[_2] = 0;
+  # DEBUG BEGIN_STMT
+  PretriggerIndex_30 = PretriggerIndex_4 + 1;
+  # DEBUG PretriggerIndex => PretriggerIndex_30
+
+  <bb 5> [local count: 1073741824]:
+  # PretriggerIndex_4 = PHI <0(3), PretriggerIndex_30(4)>
+  # DEBUG PretriggerIndex => PretriggerIndex_4
+  # DEBUG BEGIN_STMT
+  if (PretriggerIndex_4 != 8)
+    goto <bb 4>; [88.89%]
+  else
+    goto <bb 6>; [11.11%]
+
+  <bb 6> [local count: 119292717]:
+  # DEBUG BEGIN_STMT
+  ChannelIndex_28 = ChannelIndex_3 + 1;
+  # DEBUG ChannelIndex => ChannelIndex_28
+
+  <bb 7> [local count: 178930128]:
+  # ChannelIndex_3 = PHI <0(2), ChannelIndex_28(6)>
+  # DEBUG ChannelIndex => ChannelIndex_3
+  # DEBUG BEGIN_STMT
+  if (ChannelIndex_3 != 2)
+    goto <bb 3>; [66.67%]
+  else
+    goto <bb 8>; [33.33%]
+
+  <bb 8> [local count: 59637412]:
+  # DEBUG BEGIN_STMT
+  DefaultConfig.ChanConfigs = &ChanConfigs;
+  # DEBUG BEGIN_STMT
+  DefaultConfig.SeqErrNotification = 0B;
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_Ip_Init (Instance_18(D), &DefaultConfig);
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_Ip_Disable (Instance_18(D));
+  # DEBUG BEGIN_STMT
+  PdbAdcState[Instance_18(D)].Init = 0;
+  DefaultConfig ={v} {CLOBBER};
+  ChanConfigs ={v} {CLOBBER};
+  return;
+
+}
+
+
+Pdb_Adc_Ip_Init (const uint32 Instance, const struct Pdb_Adc_Ip_ConfigType * const Config)
+{
+  const struct Pdb_Adc_Ip_ChanConfigType * ChanConfig;
+  uint32 Reg;
+  uint8 PretriggerIndex;
+  uint8 ChannelIndex;
+  struct PDB_Type * const Base;
+  <unnamed type> _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  <unnamed type> _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  <unnamed type> _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  <unnamed type> _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  _Bool _13;
+  _Bool _14;
+  void (*<T4d5>) (uint8, uint16) _15;
+  short unsigned int _16;
+  unsigned char _17;
+  const struct Pdb_Adc_Ip_ChanConfigType * _18;
+  const struct Pdb_Adc_Ip_ChanConfigType * _19;
+  unsigned int _20;
+  unsigned int _21;
+  unsigned char _22;
+  const struct Pdb_Adc_Ip_PretriggersConfigType * _23;
+  unsigned char _24;
+  int _25;
+  short unsigned int _26;
+  unsigned char _27;
+  void (*<T4d5>) (uint8, uint16) _28;
+  int _57;
+  long unsigned int _58;
+
+  <bb 2> [local count: 42125837]:
+  # DEBUG BEGIN_STMT
+  Base_39 = PdbBase[Instance_38(D)];
+  # DEBUG Base => Base_39
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG Reg => 0
+  # DEBUG BEGIN_STMT
+  _1 = Config_40(D)->LoadValueMode;
+  _2 = _1 << 18;
+  _3 = _2 & 786432;
+  # DEBUG Reg => _3
+  # DEBUG BEGIN_STMT
+  _4 = Config_40(D)->PrescalerDiv;
+  _5 = _4 << 12;
+  _6 = _5 & 28672;
+  Reg_41 = _3 | _6;
+  # DEBUG Reg => Reg_41
+  # DEBUG BEGIN_STMT
+  _7 = Config_40(D)->ClkPreMultFactor;
+  _8 = _7 << 2;
+  _9 = _8 & 12;
+  Reg_42 = _9 | Reg_41;
+  # DEBUG Reg => Reg_42
+  # DEBUG BEGIN_STMT
+  _10 = Config_40(D)->TriggerSource;
+  _11 = _10 << 8;
+  _12 = _11 & 3840;
+  Reg_43 = _12 | Reg_42;
+  # DEBUG Reg => Reg_43
+  # DEBUG BEGIN_STMT
+  _13 = Config_40(D)->ContinuousModeEnable;
+  if (_13 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 21062919]:
+  # DEBUG BEGIN_STMT
+  Reg_44 = Reg_43 | 2;
+  # DEBUG Reg => Reg_44
+
+  <bb 4> [local count: 42125837]:
+  # Reg_31 = PHI <Reg_43(2), Reg_44(3)>
+  # DEBUG Reg => Reg_31
+  # DEBUG BEGIN_STMT
+  _14 = Config_40(D)->DmaEnable;
+  if (_14 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 21062919]:
+  # DEBUG BEGIN_STMT
+  Reg_45 = Reg_31 | 32768;
+  # DEBUG Reg => Reg_45
+
+  <bb 6> [local count: 42125837]:
+  # Reg_32 = PHI <Reg_31(4), Reg_45(5)>
+  # DEBUG Reg => Reg_32
+  # DEBUG BEGIN_STMT
+  _15 = Config_40(D)->SeqErrNotification;
+  if (_15 != 0B)
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 7> [local count: 29488086]:
+  # DEBUG BEGIN_STMT
+  Reg_46 = Reg_32 | 131072;
+  # DEBUG Reg => Reg_46
+
+  <bb 8> [local count: 42125837]:
+  # Reg_33 = PHI <Reg_32(6), Reg_46(7)>
+  # DEBUG Reg => Reg_33
+  # DEBUG BEGIN_STMT
+  Base_39->SC ={v} Reg_33;
+  # DEBUG BEGIN_STMT
+  _16 = Config_40(D)->ModValue;
+  Pdb_Adc_Ip_SetModulus (Instance_38(D), _16);
+  # DEBUG BEGIN_STMT
+  _17 = Config_40(D)->NumChans;
+  if (_17 != 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 9> [local count: 21062919]:
+  _18 = Config_40(D)->ChanConfigs;
+  if (_18 != 0B)
+    goto <bb 16>; [70.00%]
+  else
+    goto <bb 15>; [30.00%]
+
+  <bb 16> [local count: 14744043]:
+  goto <bb 14>; [100.00%]
+
+  <bb 10> [local count: 119292716]:
+  # DEBUG BEGIN_STMT
+  _19 = Config_40(D)->ChanConfigs;
+  _20 = (unsigned int) ChannelIndex_29;
+  _21 = _20 * 20;
+  ChanConfig_49 = _19 + _21;
+  # DEBUG ChanConfig => ChanConfig_49
+  # DEBUG BEGIN_STMT
+  _22 = ChanConfig_49->ChnIdx;
+  _23 = &ChanConfig_49->PretriggersConfig;
+  Pdb_Adc_HwAcc_ConfigAdcPretriggers (Base_39, _22, _23);
+  # DEBUG BEGIN_STMT
+  # DEBUG PretriggerIndex => 0
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 954449108]:
+  # DEBUG BEGIN_STMT
+  _24 = ChanConfig_49->ChnIdx;
+  _25 = (int) PretriggerIndex_30;
+  _26 = ChanConfig_49->PretriggerDelays[_25];
+  # DEBUG Instance => Instance_38(D)
+  # DEBUG ChanIdx => _24
+  # DEBUG PretriggIdx => PretriggerIndex_30
+  # DEBUG DelayValue => _26
+  # DEBUG INLINE_ENTRY Pdb_Adc_Ip_SetAdcPretriggerDelayValue
+  # DEBUG BEGIN_STMT
+  # DEBUG Base => Base_39
+  # DEBUG BEGIN_STMT
+  _57 = (int) _24;
+  _58 = (long unsigned int) _26;
+  Base_39->CH[_57].DLY[_25] ={v} _58;
+  # DEBUG Instance => NULL
+  # DEBUG ChanIdx => NULL
+  # DEBUG PretriggIdx => NULL
+  # DEBUG DelayValue => NULL
+  # DEBUG Base => NULL
+  # DEBUG BEGIN_STMT
+  PretriggerIndex_52 = PretriggerIndex_30 + 1;
+  # DEBUG PretriggerIndex => PretriggerIndex_52
+
+  <bb 12> [local count: 1073741824]:
+  # PretriggerIndex_30 = PHI <0(10), PretriggerIndex_52(11)>
+  # DEBUG PretriggerIndex => PretriggerIndex_30
+  # DEBUG BEGIN_STMT
+  if (PretriggerIndex_30 != 8)
+    goto <bb 11>; [88.89%]
+  else
+    goto <bb 13>; [11.11%]
+
+  <bb 13> [local count: 119292717]:
+  # DEBUG BEGIN_STMT
+  ChannelIndex_51 = ChannelIndex_29 + 1;
+  # DEBUG ChannelIndex => ChannelIndex_51
+
+  <bb 14> [local count: 134036760]:
+  # ChannelIndex_29 = PHI <ChannelIndex_51(13), 0(16)>
+  # DEBUG ChannelIndex => ChannelIndex_29
+  # DEBUG BEGIN_STMT
+  _27 = Config_40(D)->NumChans;
+  if (_27 > ChannelIndex_29)
+    goto <bb 10>; [89.00%]
+  else
+    goto <bb 15>; [11.00%]
+
+  <bb 15> [local count: 42125838]:
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_Ip_Enable (Instance_38(D));
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_Ip_LoadRegValues (Instance_38(D));
+  # DEBUG BEGIN_STMT
+  _28 = Config_40(D)->SeqErrNotification;
+  PdbAdcState[Instance_38(D)].SeqErrNotification = _28;
+  # DEBUG BEGIN_STMT
+  PdbAdcState[Instance_38(D)].Init = 1;
+  return;
+
+}
+
+
+Pdb_Adc_HwAcc_ClearAdcPretriggerFlags (struct PDB_Type * const Base, const uint8 ChanIdx, const uint16 PretriggMask)
+{
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) ChanIdx_8(D);
+  _2 ={v} Base_10(D)->CH[_1].S;
+  _3 = (long unsigned int) PretriggMask_11(D);
+  _4 = _3 << 16;
+  _5 = _4 & 16711680;
+  _6 = ~_5;
+  _7 = _2 & _6;
+  Base_10(D)->CH[_1].S ={v} _7;
+  return;
+
+}
+
+
+Pdb_Adc_HwAcc_ConfigAdcPretriggers (struct PDB_Type * const Base, const uint8 ChanIdx, const struct Pdb_Adc_Ip_PretriggersConfigType * const Config)
+{
+  uint32 C1Reg;
+  int _1;
+  unsigned char _2;
+  long unsigned int _3;
+  unsigned char _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned char _7;
+  long unsigned int _8;
+  long unsigned int _9;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) ChanIdx_10(D);
+  C1Reg_13 ={v} Base_12(D)->CH[_1].C1;
+  # DEBUG C1Reg => C1Reg_13
+  # DEBUG BEGIN_STMT
+  C1Reg_14 = C1Reg_13 & 4278190080;
+  # DEBUG C1Reg => C1Reg_14
+  # DEBUG BEGIN_STMT
+  _2 = Config_15(D)->EnableMask;
+  _3 = (long unsigned int) _2;
+  C1Reg_16 = _3 | C1Reg_14;
+  # DEBUG C1Reg => C1Reg_16
+  # DEBUG BEGIN_STMT
+  _4 = Config_15(D)->EnableDelayMask;
+  _5 = (long unsigned int) _4;
+  _6 = _5 << 8;
+  C1Reg_17 = _6 | C1Reg_16;
+  # DEBUG C1Reg => C1Reg_17
+  # DEBUG BEGIN_STMT
+  _7 = Config_15(D)->BackToBackEnableMask;
+  _8 = (long unsigned int) _7;
+  _9 = _8 << 16;
+  C1Reg_18 = _9 | C1Reg_17;
+  # DEBUG C1Reg => C1Reg_18
+  # DEBUG BEGIN_STMT
+  Base_12(D)->CH[_1].C1 ={v} C1Reg_18;
+  return;
+
+}
+
+
+Pdb_Adc_HwAcc_SetContinuousMode (struct PDB_Type * const Base, const boolean State)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (State_6(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Base_8(D)->SC;
+  _2 = _1 | 2;
+  Base_8(D)->SC ={v} _2;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} Base_8(D)->SC;
+  _4 = _3 & 4294967293;
+  Base_8(D)->SC ={v} _4;
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+
+Pdb_Adc_HwAcc_SetAdcPretriggerMask (struct PDB_Type * const Base, const uint8 ChanIdx, const uint32 Mask, const boolean Value)
+{
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (Value_9(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) ChanIdx_10(D);
+  _2 ={v} Base_12(D)->CH[_1].C1;
+  _3 = _2 | Mask_13(D);
+  Base_12(D)->CH[_1].C1 ={v} _3;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _4 = (int) ChanIdx_10(D);
+  _5 ={v} Base_12(D)->CH[_4].C1;
+  _6 = ~Mask_13(D);
+  _7 = _5 & _6;
+  Base_12(D)->CH[_4].C1 ={v} _7;
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+

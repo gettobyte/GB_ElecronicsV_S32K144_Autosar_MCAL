@@ -1,0 +1,113 @@
+main ()
+{
+  Adc_Ip_StatusType adcStatus;
+  Clock_Ip_StatusType clockStatus;
+  int D.7053;
+  <unnamed type> _1;
+  short unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> :
+  clockStatus_12 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus_26 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  # clockStatus_4 = PHI <clockStatus_12(2), clockStatus_26(3)>
+  if (clockStatus_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  Adc_Ip_Init (0, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
+  adcStatus_18 = Adc_Ip_DoCalibration (0);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  adcStatus_24 = Adc_Ip_DoCalibration (0);
+
+  <bb 9> :
+  # adcStatus_5 = PHI <adcStatus_18(7), adcStatus_24(8)>
+  if (adcStatus_5 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  Pdb_Adc_Ip_Init (0, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
+  Pdb_Adc_Ip_SwTrigger (0);
+
+  <bb 11> :
+  _2 = Adc_Ip_GetConvData (0, 4);
+  _3 = (long unsigned int) _2;
+  data ={v} _3;
+  goto <bb 11>; [INV]
+
+}
+
+
+AdcConversionCompleteNotif (const uint8 ControlChanIdx)
+{
+  _Bool iftmp.0;
+  short unsigned int _1;
+  long unsigned int _2;
+  long unsigned int data.1_3;
+  long unsigned int data.2_4;
+  long unsigned int _5;
+  long unsigned int data.3_6;
+  long unsigned int _7;
+  _Bool iftmp.0_8;
+  _Bool iftmp.0_14;
+  _Bool iftmp.0_15;
+
+  <bb 2> :
+  notif_triggered ={v} 1;
+  _1 = Adc_Ip_GetConvData (0, ControlChanIdx_11(D));
+  _2 = (long unsigned int) _1;
+  data ={v} _2;
+
+  <bb 3> :
+  data.1_3 ={v} data;
+  if (data.1_3 > 819)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  data.2_4 ={v} data;
+  _5 = data.2_4 + 4294966477;
+  iftmp.0_15 = _5 > 150;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  data.3_6 ={v} data;
+  _7 = 819 - data.3_6;
+  iftmp.0_14 = _7 > 150;
+
+  <bb 6> :
+  # iftmp.0_8 = PHI <iftmp.0_15(4), iftmp.0_14(5)>
+  if (iftmp.0_8 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+

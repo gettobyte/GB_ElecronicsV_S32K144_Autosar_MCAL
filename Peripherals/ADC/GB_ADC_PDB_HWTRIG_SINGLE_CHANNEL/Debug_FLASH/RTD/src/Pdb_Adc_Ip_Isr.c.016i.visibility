@@ -1,0 +1,66 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: Pdb_1_Isr Pdb_0_Isr
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Pdb_Adc_Ip_IRQHandler/2 (Pdb_Adc_Ip_IRQHandler) @05be8460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pdb_1_Isr/1 Pdb_0_Isr/0 
+  Calls: 
+Pdb_1_Isr/1 (Pdb_1_Isr) @05be8000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Pdb_Adc_Ip_IRQHandler/2 
+Pdb_0_Isr/0 (Pdb_0_Isr) @05bc0e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Pdb_Adc_Ip_IRQHandler/2 
+Pdb_1_Isr ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_Ip_IRQHandler (1);
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
+Pdb_0_Isr ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_Ip_IRQHandler (0);
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+

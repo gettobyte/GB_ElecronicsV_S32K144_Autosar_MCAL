@@ -1,0 +1,408 @@
+EnableSOSC (const struct Clock_Ip_XoscConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  EnableSOSC_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+EnableSOSC_TrustedCall (const struct Clock_Ip_XoscConfigType * config)
+{
+  short unsigned int _1;
+  struct SCG_Type * _2;
+  long unsigned int _3;
+  struct SCG_Type * _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = config_8(D)->enable;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = 1074151424B;
+  _3 ={v} _2->SOSCCSR;
+  _4 = 1074151424B;
+  _5 = _3 | 1;
+  _4->SOSCCSR ={v} _5;
+
+  <bb 4> :
+  return;
+
+}
+
+
+DisableSOSC (Clock_Ip_NameType xoscName)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  DisableSOSC_TrustedCall (xoscName_2(D));
+  return;
+
+}
+
+
+DisableSOSC_TrustedCall (Clock_Ip_NameType xoscName)
+{
+  struct SCG_Type * _1;
+  long unsigned int _2;
+  struct SCG_Type * _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074151424B;
+  _2 ={v} _1->SOSCCSR;
+  _3 = 1074151424B;
+  _4 = _2 & 4294967294;
+  _3->SOSCCSR ={v} _4;
+  return;
+
+}
+
+
+CompleteSOSC (const struct Clock_Ip_XoscConfigType * config)
+{
+  uint32 SoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  struct SCG_Type * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  struct SCG_Type * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int TimeoutTicks.0_7;
+  _Bool _8;
+  <unnamed type> _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  TimeoutOccurred_12 = 0;
+  # DEBUG TimeoutOccurred => TimeoutOccurred_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074151424B;
+  _2 ={v} _1->SOSCCSR;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ClockStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = 1074151424B;
+  _5 ={v} _4->SOSCCSR;
+  _6 = _5 >> 24;
+  SoscStatus_15 = _6 & 1;
+  # DEBUG SoscStatus => SoscStatus_15
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_7 = TimeoutTicks;
+  TimeoutOccurred_17 = ClockTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_7);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_17
+  # DEBUG BEGIN_STMT
+  if (SoscStatus_15 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _8 = ~TimeoutOccurred_17;
+  if (_8 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_17 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _9 = config_18(D)->name;
+  ReportClockErrors (1, _9);
+
+  <bb 8> :
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetSOSC (const struct Clock_Ip_XoscConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SetSOSC_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+SetSOSC_TrustedCall (const struct Clock_Ip_XoscConfigType * config)
+{
+  short unsigned int _1;
+  unsigned char _2;
+  int _3;
+  struct SCG_Type * _4;
+  long unsigned int _5;
+  struct SCG_Type * _6;
+  long unsigned int _7;
+  struct SCG_Type * _8;
+  long unsigned int _9;
+  struct SCG_Type * _10;
+  long unsigned int _11;
+  struct SCG_Type * _12;
+  long unsigned int _13;
+  struct SCG_Type * _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  struct SCG_Type * _18;
+  long unsigned int _19;
+  struct SCG_Type * _20;
+  long unsigned int _21;
+  struct SCG_Type * _22;
+  long unsigned int _23;
+  struct SCG_Type * _24;
+  long unsigned int _25;
+  unsigned char _26;
+  struct SCG_Type * _27;
+  long unsigned int _28;
+  struct SCG_Type * _29;
+  long unsigned int _30;
+  struct SCG_Type * _31;
+  long unsigned int _32;
+  struct SCG_Type * _33;
+  long unsigned int _34;
+  unsigned char _35;
+  int _36;
+  struct SCG_Type * _37;
+  struct SCG_Type * _38;
+  struct SCG_Type * _39;
+  struct SCG_Type * _40;
+  long unsigned int _41;
+  struct SCG_Type * _42;
+  long unsigned int _43;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = config_49(D)->enable;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = config_49(D)->gain;
+  _3 = (int) _2;
+  switch (_3) <default: <L17> [INV], case 0: <L1> [INV], case 1: <L2> [INV]>
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _4 = 1074151424B;
+  _5 ={v} _4->SOSCCFG;
+  _6 = 1074151424B;
+  _7 = _5 & 4294967287;
+  _6->SOSCCFG ={v} _7;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _8 = 1074151424B;
+  _9 ={v} _8->SOSCCFG;
+  _10 = 1074151424B;
+  _11 = _9 | 8;
+  _10->SOSCCFG ={v} _11;
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L17>:
+  # DEBUG BEGIN_STMT
+  _12 = 1074151424B;
+  _13 ={v} _12->SOSCCFG;
+  _14 = 1074151424B;
+  _15 = _13 & 4294967247;
+  _14->SOSCCFG ={v} _15;
+  # DEBUG BEGIN_STMT
+  _16 = config_49(D)->freq;
+  _17 = _16 + 4290967296;
+  if (_17 <= 3999999)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _18 = 1074151424B;
+  _19 ={v} _18->SOSCCFG;
+  _20 = 1074151424B;
+  _21 = _19 | 32;
+  _20->SOSCCFG ={v} _21;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _22 = 1074151424B;
+  _23 ={v} _22->SOSCCFG;
+  _24 = 1074151424B;
+  _25 = _23 | 48;
+  _24->SOSCCFG ={v} _25;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _26 = config_49(D)->bypassOption;
+  if (_26 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _27 = 1074151424B;
+  _28 ={v} _27->SOSCCFG;
+  _29 = 1074151424B;
+  _30 = _28 | 4;
+  _29->SOSCCFG ={v} _30;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _31 = 1074151424B;
+  _32 ={v} _31->SOSCCFG;
+  _33 = 1074151424B;
+  _34 = _32 & 4294967291;
+  _33->SOSCCFG ={v} _34;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _35 = config_49(D)->monitor;
+  _36 = (int) _35;
+  switch (_36) <default: <L14> [INV], case 0: <L11> [INV], case 1: <L12> [INV], case 2: <L13> [INV]>
+
+  <bb 13> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  _37 = 1074151424B;
+  _37->SOSCCSR ={v} 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 14> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  _38 = 1074151424B;
+  _38->SOSCCSR ={v} 65537;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _39 = 1074151424B;
+  _39->SOSCCSR ={v} 196609;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  _40 = 1074151424B;
+  _41 ={v} _40->SOSCCSR;
+  _42 = 1074151424B;
+  _43 = _41 | 1;
+  _42->SOSCCSR ={v} _43;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+  return;
+
+}
+
+
+ResetSOSC (const struct Clock_Ip_XoscConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ResetSOSC_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ResetSOSC_TrustedCall (const struct Clock_Ip_XoscConfigType * config)
+{
+  struct SCG_Type * _1;
+  long unsigned int _2;
+  struct SCG_Type * _3;
+  long unsigned int _4;
+  struct SCG_Type * _5;
+  long unsigned int _6;
+  struct SCG_Type * _7;
+  long unsigned int _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074151424B;
+  _2 ={v} _1->SOSCCSR;
+  _3 = 1074151424B;
+  _4 = _2 & 4286578687;
+  _3->SOSCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 = 1074151424B;
+  _6 ={v} _5->SOSCCSR;
+  _7 = 1074151424B;
+  _8 = _6 & 4294967294;
+  _7->SOSCCSR ={v} _8;
+  return;
+
+}
+
+
+DisableExternalOscillatorEmpty (Clock_Ip_NameType xoscName)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+ExternalOscillatorEmpty (const struct Clock_Ip_XoscConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

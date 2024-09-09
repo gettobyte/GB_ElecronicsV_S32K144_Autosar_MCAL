@@ -1,0 +1,210 @@
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Det_Start/16 (Det_Start) @068f92a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Det_ReportTransientFault/15 (Det_ReportTransientFault) @068f9000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Det_TransientModuleId/9 (write)Det_TransientInstanceId/6 (write)Det_TransientApiId/7 (write)Det_TransientFaultId/8 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Det_ReportRuntimeError/14 (Det_ReportRuntimeError) @068f5c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Det_RuntimeModuleId/11 (write)Det_RuntimeInstanceId/3 (write)Det_RuntimeApiId/4 (write)Det_RuntimeErrorId/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Det_ReportError/13 (Det_ReportError) @068f5e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Det_ModuleId/10 (write)Det_InstanceId/0 (write)Det_ApiId/1 (write)Det_ErrorId/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Det_Init/12 (Det_Init) @068f5b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Det_RuntimeModuleId/11 (Det_RuntimeModuleId) @068eeee8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportRuntimeError/14 (write)
+  Availability: available
+  Varpool flags:
+Det_ModuleId/10 (Det_ModuleId) @068eeea0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportError/13 (write)
+  Availability: available
+  Varpool flags:
+Det_TransientModuleId/9 (Det_TransientModuleId) @068eee58
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportTransientFault/15 (write)
+  Availability: available
+  Varpool flags:
+Det_TransientFaultId/8 (Det_TransientFaultId) @068eee10
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportTransientFault/15 (write)
+  Availability: available
+  Varpool flags:
+Det_TransientApiId/7 (Det_TransientApiId) @068eedc8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportTransientFault/15 (write)
+  Availability: available
+  Varpool flags:
+Det_TransientInstanceId/6 (Det_TransientInstanceId) @068eed80
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportTransientFault/15 (write)
+  Availability: available
+  Varpool flags:
+Det_RuntimeErrorId/5 (Det_RuntimeErrorId) @068eed38
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportRuntimeError/14 (write)
+  Availability: available
+  Varpool flags:
+Det_RuntimeApiId/4 (Det_RuntimeApiId) @068eecf0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportRuntimeError/14 (write)
+  Availability: available
+  Varpool flags:
+Det_RuntimeInstanceId/3 (Det_RuntimeInstanceId) @068eeca8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportRuntimeError/14 (write)
+  Availability: available
+  Varpool flags:
+Det_ErrorId/2 (Det_ErrorId) @068eec60
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportError/13 (write)
+  Availability: available
+  Varpool flags:
+Det_ApiId/1 (Det_ApiId) @068eec18
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportError/13 (write)
+  Availability: available
+  Varpool flags:
+Det_InstanceId/0 (Det_InstanceId) @068eebd0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Det_ReportError/13 (write)
+  Availability: available
+  Varpool flags:
+Det_Start ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Det_ReportTransientFault (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 FaultId)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  Det_TransientModuleId[0] = ModuleId_2(D);
+  # DEBUG BEGIN_STMT
+  Det_TransientInstanceId[0] = InstanceId_4(D);
+  # DEBUG BEGIN_STMT
+  Det_TransientApiId[0] = ApiId_6(D);
+  # DEBUG BEGIN_STMT
+  Det_TransientFaultId[0] = FaultId_8(D);
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Det_ReportRuntimeError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  Det_RuntimeModuleId[0] = ModuleId_2(D);
+  # DEBUG BEGIN_STMT
+  Det_RuntimeInstanceId[0] = InstanceId_4(D);
+  # DEBUG BEGIN_STMT
+  Det_RuntimeApiId[0] = ApiId_6(D);
+  # DEBUG BEGIN_STMT
+  Det_RuntimeErrorId[0] = ErrorId_8(D);
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Det_ReportError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  Det_ModuleId[0] = ModuleId_2(D);
+  # DEBUG BEGIN_STMT
+  Det_InstanceId[0] = InstanceId_4(D);
+  # DEBUG BEGIN_STMT
+  Det_ApiId[0] = ApiId_6(D);
+  # DEBUG BEGIN_STMT
+  Det_ErrorId[0] = ErrorId_8(D);
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Det_Init ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

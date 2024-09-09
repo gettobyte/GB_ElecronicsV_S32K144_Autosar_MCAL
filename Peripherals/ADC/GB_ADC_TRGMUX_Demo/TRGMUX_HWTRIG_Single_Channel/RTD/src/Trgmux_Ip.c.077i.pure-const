@@ -1,0 +1,860 @@
+
+
+ local analysis of Trgmux_Ip_SetLock
+   scanning: g_pxTrgmuxInit.2_1 = g_pxTrgmuxInit;
+  scanning: _2 = g_pxTrgmuxInit.2_1->paxLogicTrigger[LogicTrigger_6(D)];
+    Indirect ref read is not const
+  scanning: _3 = _2->Output;
+    Indirect ref read is not const
+  scanning: _10 = _3 >> 2;
+  scanning: _11 = (int) _10;
+  scanning: _12 ={v} MEM[(const struct TRGMUX_Type *)1074147328B].TRGMUXn[_11];
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _13 = _12 >> 31;
+  scanning: _14 = (_Bool) _13;
+  scanning: if (_14 != 0)
+  scanning: SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21 ();
+  scanning: _15 ={v} MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_11];
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _16 = _15 | 2147483648;
+  scanning: MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_11] ={v} _16;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21 ();
+  scanning: return Status_9;
+
+
+ local analysis of Trgmux_Ip_SetInput
+   scanning: g_pxTrgmuxInit.0_1 = g_pxTrgmuxInit;
+  scanning: _2 = g_pxTrgmuxInit.0_1->paxLogicTrigger[LogicTrigger_6(D)];
+    Indirect ref read is not const
+  scanning: _3 = _2->Output;
+    Indirect ref read is not const
+  scanning: LocOutput_7 = (uint32) _3;
+  scanning: _13 = _3 >> 2;
+  scanning: _14 = (int) _13;
+  scanning: _15 ={v} MEM[(const struct TRGMUX_Type *)1074147328B].TRGMUXn[_14];
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _16 = _15 >> 31;
+  scanning: _17 = (_Bool) _16;
+  scanning: if (_17 != 0)
+  scanning: SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20 ();
+  scanning: hwAcc_SetInputForOutput (1074147328B, Input_9(D), LocOutput_7);
+  scanning: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20 ();
+  scanning: return Status_12;
+
+
+ local analysis of Trgmux_Ip_Init
+   scanning: SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19 ();
+  scanning: _1 = hwAcc_Init (1074147328B);
+  scanning: if (_1 != 0)
+  scanning: _2 = pxTrgmuxInit_18(D)->paxLogicTrigger[0];
+    Indirect ref read is not const
+  scanning: _3 = _2->Output;
+    Indirect ref read is not const
+  scanning: LocOutput_22 = (uint32) _3;
+  scanning: _4 = _2->Input;
+    Indirect ref read is not const
+  scanning: LocInput_23 = (uint32) _4;
+  scanning: hwAcc_SetInputForOutput (1074147328B, LocInput_23, LocOutput_22);
+  scanning: if (LocTriggerIdx_8 == 0)
+  scanning: _5 = pxTrgmuxInit_18(D)->paxLogicTrigger[0];
+    Indirect ref read is not const
+  scanning: LocLock_20 = _5->Lock;
+    Indirect ref read is not const
+  scanning: if (LocLock_20 != 0)
+  scanning: _6 = _5->Output;
+    Indirect ref read is not const
+  scanning: _25 = _6 >> 2;
+  scanning: _26 = (int) _25;
+  scanning: _27 ={v} MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_26];
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _28 = _27 | 2147483648;
+  scanning: MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_26] ={v} _28;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: if (LocTriggerIdx_9 == 0)
+  scanning: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19 ();
+  scanning: g_pxTrgmuxInit = pxTrgmuxInit_18(D);
+  scanning: return Status_7;
+
+
+ local analysis of hwAcc_SetInputForOutput
+   scanning: _1 = (unsigned char) Output_12(D);
+  scanning: _2 = _1 >> 2;
+  scanning: _3 = (int) _2;
+  scanning: regValue_15 ={v} pTrgmux_14(D)->TRGMUXn[_3];
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _4 = Output_12(D) & 3;
+  scanning: _5 = _4 * 8;
+  scanning: _6 = 63 << _5;
+  scanning: _7 = ~_6;
+  scanning: regValue_16 = _7 & regValue_15;
+  scanning: _8 = _1 & 3;
+  scanning: _9 = _8 * 8;
+  scanning: _10 = (int) _9;
+  scanning: _11 = Input_17(D) << _10;
+  scanning: regValue_18 = _11 | regValue_16;
+  scanning: pTrgmux_14(D)->TRGMUXn[_3] ={v} regValue_18;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of hwAcc_Init
+   scanning: if (Status_5 != 1)
+  scanning: _1 ={v} pTrgmux_11(D)->TRGMUXn[regIdx_3];
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: _8 = (signed int) _1;
+  scanning: if (_8 < 0)
+  scanning: _2 ={v} pTrgmux_11(D)->TRGMUXn[regIdx_3];
+    Volatile stmt is not const/pure
+    Indirect ref read is not const
+  scanning: pTrgmux_11(D)->TRGMUXn[regIdx_3] ={v} _2;
+    Volatile stmt is not const/pure
+    Indirect ref write is not const/pure
+  scanning: regIdx_13 = regIdx_3 + 1;
+  scanning: if (regIdx_3 != 26)
+  scanning: return Status_10;
+callgraph:
+
+hwAcc_SetInputForOutput.constprop.0/19 (hwAcc_SetInputForOutput.constprop) @05d98d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 17
+  Aux: @05b46db0
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/19 is inline copy in Trgmux_Ip_SetInput/7
+  Clone of hwAcc_SetInputForOutput.constprop.0/17
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+hwAcc_Init.constprop.0/18 (hwAcc_Init.constprop) @05bb00e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05b46c30
+  References: 
+  Referring: 
+  Function hwAcc_Init.constprop/18 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_Init/0
+  Availability: local
+  Function flags: count:178956969 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (178956969 (estimated locally),1.00 per call) 
+  Calls: 
+hwAcc_SetInputForOutput.constprop.0/17 (hwAcc_SetInputForOutput.constprop) @05baad20
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 19
+  Aux: @05b46e30
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/17 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_SetInputForOutput/1
+  Availability: local
+  Function flags: count:59055800 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (59055800 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21) @05d921c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21) @05d920e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfaee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 (59055800 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 (178956969 (estimated locally),1.00 per call) 
+  Calls: 
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46d10
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (354334802 (estimated locally),0.33 per call) 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46e10
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (354334802 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/19 (inlined) (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (354334802 (estimated locally),0.33 per call) 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46f10
+  References: g_pxTrgmuxInit/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:178956969 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (59055800 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/17 (inlined) (59055800 (estimated locally),0.33 per call) hwAcc_Init.constprop/18 (inlined) (178956969 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (178956969 (estimated locally),1.00 per call) 
+hwAcc_SetInputForOutput/1 (hwAcc_SetInputForOutput) @05baa9a0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+hwAcc_Init/0 (hwAcc_Init) @05baa380
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:39728448 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+hwAcc_SetInputForOutput.constprop.0/19 (hwAcc_SetInputForOutput.constprop) @05d98d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 17
+  Aux: @05b46db0
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/19 is inline copy in Trgmux_Ip_SetInput/7
+  Clone of hwAcc_SetInputForOutput.constprop.0/17
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+hwAcc_Init.constprop.0/18 (hwAcc_Init.constprop) @05bb00e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05b46c30
+  References: 
+  Referring: 
+  Function hwAcc_Init.constprop/18 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_Init/0
+  Availability: local
+  Function flags: count:178956969 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (178956969 (estimated locally),1.00 per call) 
+  Calls: 
+hwAcc_SetInputForOutput.constprop.0/17 (hwAcc_SetInputForOutput.constprop) @05baad20
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 19
+  Aux: @05b46e30
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/17 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_SetInputForOutput/1
+  Availability: local
+  Function flags: count:59055800 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (59055800 (estimated locally),0.33 per call) 
+  Calls: 
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46d10
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (354334802 (estimated locally),0.33 per call) 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46e10
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (354334802 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/19 (inlined) (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (354334802 (estimated locally),0.33 per call) 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46f10
+  References: g_pxTrgmuxInit/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:178956969 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (59055800 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/17 (inlined) (59055800 (estimated locally),0.33 per call) hwAcc_Init.constprop/18 (inlined) (178956969 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (178956969 (estimated locally),1.00 per call) 
+
+
+
+MALLOC LATTICE Initial:
+hwAcc_SetInputForOutput.constprop: malloc_bottom
+hwAcc_Init.constprop: malloc_bottom
+hwAcc_SetInputForOutput.constprop: malloc_bottom
+Trgmux_Ip_SetLock: malloc_bottom
+Trgmux_Ip_SetInput: malloc_bottom
+Trgmux_Ip_Init: malloc_bottom
+hwAcc_SetInputForOutput: malloc_bottom
+hwAcc_Init: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+hwAcc_SetInputForOutput.constprop: malloc_bottom
+hwAcc_Init.constprop: malloc_bottom
+hwAcc_SetInputForOutput.constprop: malloc_bottom
+Trgmux_Ip_SetLock: malloc_bottom
+Trgmux_Ip_SetInput: malloc_bottom
+Trgmux_Ip_Init: malloc_bottom
+hwAcc_SetInputForOutput: malloc_bottom
+hwAcc_Init: malloc_bottom
+callgraph:
+
+hwAcc_SetInputForOutput.constprop.0/19 (hwAcc_SetInputForOutput.constprop) @05d98d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 17
+  Aux: @05b46cd0
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/19 is inline copy in Trgmux_Ip_SetInput/7
+  Clone of hwAcc_SetInputForOutput.constprop.0/17
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+hwAcc_Init.constprop.0/18 (hwAcc_Init.constprop) @05bb00e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05b46c30
+  References: 
+  Referring: 
+  Function hwAcc_Init.constprop/18 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_Init/0
+  Availability: local
+  Function flags: count:178956969 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (178956969 (estimated locally),1.00 per call) 
+  Calls: 
+hwAcc_SetInputForOutput.constprop.0/17 (hwAcc_SetInputForOutput.constprop) @05baad20
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 19
+  Aux: @05b46db0
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/17 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_SetInputForOutput/1
+  Availability: local
+  Function flags: count:59055800 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (59055800 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21) @05d921c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21) @05d920e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfaee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 (59055800 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 (178956969 (estimated locally),1.00 per call) 
+  Calls: 
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46dd0
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (354334802 (estimated locally),0.33 per call) 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46bf0
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (354334802 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/19 (inlined) (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (354334802 (estimated locally),0.33 per call) 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46d30
+  References: g_pxTrgmuxInit/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:178956969 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (59055800 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/17 (inlined) (59055800 (estimated locally),0.33 per call) hwAcc_Init.constprop/18 (inlined) (178956969 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (178956969 (estimated locally),1.00 per call) 
+hwAcc_SetInputForOutput/1 (hwAcc_SetInputForOutput) @05baa9a0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+hwAcc_Init/0 (hwAcc_Init) @05baa380
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:39728448 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46dd0
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (354334802 (estimated locally),0.33 per call) 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46bf0
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (354334802 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/19 (inlined) (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (354334802 (estimated locally),0.33 per call) 
+hwAcc_SetInputForOutput.constprop.0/19 (hwAcc_SetInputForOutput.constprop) @05d98d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 17
+  Aux: @05b46cd0
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/19 is inline copy in Trgmux_Ip_SetInput/7
+  Clone of hwAcc_SetInputForOutput.constprop.0/17
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05b46d30
+  References: g_pxTrgmuxInit/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:178956969 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (59055800 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/17 (inlined) (59055800 (estimated locally),0.33 per call) hwAcc_Init.constprop/18 (inlined) (178956969 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (178956969 (estimated locally),1.00 per call) 
+hwAcc_Init.constprop.0/18 (hwAcc_Init.constprop) @05bb00e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05b46c30
+  References: 
+  Referring: 
+  Function hwAcc_Init.constprop/18 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_Init/0
+  Availability: local
+  Function flags: count:178956969 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (178956969 (estimated locally),1.00 per call) 
+  Calls: 
+hwAcc_SetInputForOutput.constprop.0/17 (hwAcc_SetInputForOutput.constprop) @05baad20
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 19
+  Aux: @05b46db0
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/17 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_SetInputForOutput/1
+  Availability: local
+  Function flags: count:59055800 (estimated locally) local optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (59055800 (estimated locally),0.33 per call) 
+  Calls: 
+
+Function found not to call free: hwAcc_SetInputForOutput.constprop
+Function found not to call free: hwAcc_Init.constprop
+Function found not to call free: hwAcc_SetInputForOutput.constprop
+Trgmux_Ip_SetLock (const uint32 LogicTrigger)
+{
+  Trgmux_Ip_StatusType Status;
+  const struct Trgmux_Ip_InitType * g_pxTrgmuxInit.2_1;
+  const struct Trgmux_Ip_LogicTriggerType * _2;
+  unsigned char _3;
+  unsigned char _10;
+  int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  _Bool _14;
+  long unsigned int _15;
+  long unsigned int _16;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  g_pxTrgmuxInit.2_1 = g_pxTrgmuxInit;
+  _2 = g_pxTrgmuxInit.2_1->paxLogicTrigger[LogicTrigger_6(D)];
+  # DEBUG D#5 => _2->HwInstId
+  # DEBUG LocHwInst => (uint32) D#5
+  # DEBUG BEGIN_STMT
+  _3 = _2->Output;
+  # DEBUG D#4 => (uint32) _3
+  # DEBUG LocOutput => D#4
+  # DEBUG BEGIN_STMT
+  # DEBUG LocTrgmuxBase => 1074147328B
+  # DEBUG BEGIN_STMT
+  # DEBUG Status => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG pTrgmux => 1074147328B
+  # DEBUG Output => D#4
+  # DEBUG INLINE_ENTRY hwAcc_GetLockForOutput
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = _3 >> 2;
+  _11 = (int) _10;
+  _12 ={v} MEM[(const struct TRGMUX_Type *)1074147328B].TRGMUXn[_11];
+  _13 = _12 >> 31;
+  _14 = (_Bool) _13;
+  # DEBUG Status => _14
+  # DEBUG BEGIN_STMT
+  # DEBUG pTrgmux => NULL
+  # DEBUG Output => NULL
+  if (_14 != 0)
+    goto <bb 4>; [67.00%]
+  else
+    goto <bb 3>; [33.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG Status => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG pTrgmux => 1074147328B
+  # DEBUG Output => D#4
+  # DEBUG INLINE_ENTRY hwAcc_SetLockForOutput
+  # DEBUG BEGIN_STMT
+  _15 ={v} MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_11];
+  _16 = _15 | 2147483648;
+  MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_11] ={v} _16;
+  # DEBUG pTrgmux => NULL
+  # DEBUG Output => NULL
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21 ();
+
+  <bb 4> [local count: 1073741824]:
+  # Status_9 = PHI <1(2), 0(3)>
+  # DEBUG Status => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return Status_9;
+
+}
+
+
+Trgmux_Ip_SetInput (const uint32 LogicTrigger, const uint32 Input)
+{
+  Trgmux_Ip_StatusType Status;
+  uint32 LocOutput;
+  const struct Trgmux_Ip_InitType * g_pxTrgmuxInit.0_1;
+  const struct Trgmux_Ip_LogicTriggerType * _2;
+  unsigned char _3;
+  unsigned char _13;
+  int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  _Bool _17;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  g_pxTrgmuxInit.0_1 = g_pxTrgmuxInit;
+  _2 = g_pxTrgmuxInit.0_1->paxLogicTrigger[LogicTrigger_6(D)];
+  # DEBUG D#3 => _2->HwInstId
+  # DEBUG LocHwInst => (uint32) D#3
+  # DEBUG BEGIN_STMT
+  _3 = _2->Output;
+  LocOutput_7 = (uint32) _3;
+  # DEBUG LocOutput => LocOutput_7
+  # DEBUG BEGIN_STMT
+  # DEBUG LocTrgmuxBase => 1074147328B
+  # DEBUG BEGIN_STMT
+  # DEBUG Status => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG pTrgmux => 1074147328B
+  # DEBUG Output => LocOutput_7
+  # DEBUG INLINE_ENTRY hwAcc_GetLockForOutput
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = _3 >> 2;
+  _14 = (int) _13;
+  _15 ={v} MEM[(const struct TRGMUX_Type *)1074147328B].TRGMUXn[_14];
+  _16 = _15 >> 31;
+  _17 = (_Bool) _16;
+  # DEBUG Status => _17
+  # DEBUG BEGIN_STMT
+  # DEBUG pTrgmux => NULL
+  # DEBUG Output => NULL
+  if (_17 != 0)
+    goto <bb 4>; [67.00%]
+  else
+    goto <bb 3>; [33.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG Status => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20 ();
+  # DEBUG BEGIN_STMT
+  hwAcc_SetInputForOutput (1074147328B, Input_9(D), LocOutput_7);
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20 ();
+
+  <bb 4> [local count: 1073741824]:
+  # Status_12 = PHI <1(2), 0(3)>
+  # DEBUG Status => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return Status_12;
+
+}
+
+
+Trgmux_Ip_Init (const struct Trgmux_Ip_InitType * const pxTrgmuxInit)
+{
+  Trgmux_Ip_StatusType Status;
+  boolean LocLock;
+  uint32 LocOutput;
+  uint32 LocInput;
+  uint32 LocTriggerIdx;
+  <unnamed type> _1;
+  const struct Trgmux_Ip_LogicTriggerType * _2;
+  unsigned char _3;
+  unsigned char _4;
+  const struct Trgmux_Ip_LogicTriggerType * _5;
+  unsigned char _6;
+  unsigned char _25;
+  int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+
+  <bb 2> [local count: 178956969]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG Status => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG LocTrgmuxBase => 1074147328B
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19 ();
+  # DEBUG BEGIN_STMT
+  _1 = hwAcc_Init (1074147328B);
+  if (_1 != 0)
+    goto <bb 10>; [67.00%]
+  else
+    goto <bb 12>; [33.00%]
+
+  <bb 12> [local count: 59055800]:
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 59055800]:
+  # DEBUG BEGIN_STMT
+  _2 = pxTrgmuxInit_18(D)->paxLogicTrigger[0];
+  # DEBUG D#2 => _2->HwInstId
+  # DEBUG LocInst => D#2
+  # DEBUG BEGIN_STMT
+  _3 = _2->Output;
+  LocOutput_22 = (uint32) _3;
+  # DEBUG LocOutput => LocOutput_22
+  # DEBUG BEGIN_STMT
+  _4 = _2->Input;
+  LocInput_23 = (uint32) _4;
+  # DEBUG LocInput => LocInput_23
+  # DEBUG BEGIN_STMT
+  # DEBUG LocTrgmuxBase => 1074147328B
+  # DEBUG BEGIN_STMT
+  hwAcc_SetInputForOutput (1074147328B, LocInput_23, LocOutput_22);
+  # DEBUG BEGIN_STMT
+  # DEBUG LocTriggerIdx => 1
+
+  <bb 4> [local count: 118111600]:
+  # LocTriggerIdx_8 = PHI <1(3), 0(12)>
+  # DEBUG Status => NULL
+  # DEBUG LocTriggerIdx => LocTriggerIdx_8
+  # DEBUG LocTrgmuxBase => 1074147328B
+  # DEBUG BEGIN_STMT
+  if (LocTriggerIdx_8 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 11> [local count: 59055800]:
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  _5 = pxTrgmuxInit_18(D)->paxLogicTrigger[0];
+  LocLock_20 = _5->Lock;
+  # DEBUG LocLock => LocLock_20
+  # DEBUG BEGIN_STMT
+  if (LocLock_20 != 0)
+    goto <bb 6>; [67.00%]
+  else
+    goto <bb 13>; [33.00%]
+
+  <bb 13> [local count: 334846387]:
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 679839636]:
+  # DEBUG BEGIN_STMT
+  _6 = _5->Output;
+  # DEBUG D#1 => (uint32) _6
+  # DEBUG LocOutput => D#1
+  # DEBUG BEGIN_STMT
+  # DEBUG pTrgmux => 1074147328B
+  # DEBUG Output => D#1
+  # DEBUG INLINE_ENTRY hwAcc_SetLockForOutput
+  # DEBUG BEGIN_STMT
+  _25 = _6 >> 2;
+  _26 = (int) _25;
+  _27 ={v} MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_26];
+  _28 = _27 | 2147483648;
+  MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_26] ={v} _28;
+
+  <bb 7> [local count: 738895437]:
+  # LocTriggerIdx_11 = PHI <1(6), 0(11)>
+
+  <bb 8> [local count: 1073741824]:
+  # LocTriggerIdx_9 = PHI <LocTriggerIdx_11(7), 1(13)>
+  # DEBUG pTrgmux => NULL
+  # DEBUG Output => NULL
+  # DEBUG LocTriggerIdx => LocTriggerIdx_9
+  # DEBUG BEGIN_STMT
+  if (LocTriggerIdx_9 == 0)
+    goto <bb 5>; [94.50%]
+  else
+    goto <bb 9>; [5.50%]
+
+  <bb 9> [local count: 59055800]:
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19 ();
+  # DEBUG BEGIN_STMT
+  g_pxTrgmuxInit = pxTrgmuxInit_18(D);
+
+  <bb 10> [local count: 178956970]:
+  # Status_7 = PHI <1(2), 0(9)>
+  # DEBUG Status => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return Status_7;
+
+}
+
+

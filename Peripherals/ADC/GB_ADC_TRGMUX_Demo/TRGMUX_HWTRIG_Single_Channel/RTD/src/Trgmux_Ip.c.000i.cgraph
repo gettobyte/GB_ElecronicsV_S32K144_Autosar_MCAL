@@ -1,0 +1,949 @@
+Trivially needed symbols: Trgmux_Ip_SetLock Trgmux_Ip_SetInput Trgmux_Ip_Init
+
+
+Initial Symbol table:
+
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21) @05d921c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21) @05d920e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfaee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: g_pxTrgmuxInit/5 (read)g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 hwAcc_SetLockForOutput/2 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 hwAcc_GetLockForOutput/3 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @05bfa540
+  References: g_pxTrgmuxInit/5 (read)g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 hwAcc_SetInputForOutput/1 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 hwAcc_GetLockForOutput/3 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @05bfa2a0
+  References: g_pxTrgmuxInit/5 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 hwAcc_SetLockForOutput/2 hwAcc_SetInputForOutput/1 hwAcc_Init/0 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 
+g_pxTrgmuxInit/5 (g_pxTrgmuxInit) @05bf3318
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @05baa380
+  References: 
+  Referring: Trgmux_Ip_Init/6 (write)Trgmux_Ip_SetInput/7 (read)Trgmux_Ip_SetInput/7 (read)Trgmux_Ip_SetLock/8 (read)Trgmux_Ip_SetLock/8 (read)
+  Availability: not-ready
+  Varpool flags:
+g_paxTrgmuxBaseArray/4 (g_paxTrgmuxBaseArray) @05bf3288
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+hwAcc_GetLockForOutput/3 (hwAcc_GetLockForOutput) @05bb00e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05bfa540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetLock/8 Trgmux_Ip_SetInput/7 
+  Calls: 
+hwAcc_SetLockForOutput/2 (hwAcc_SetLockForOutput) @05baad20
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05bfa2a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetLock/8 Trgmux_Ip_Init/6 
+  Calls: 
+hwAcc_SetInputForOutput/1 (hwAcc_SetInputForOutput) @05baa9a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05baad20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetInput/7 Trgmux_Ip_Init/6 
+  Calls: 
+hwAcc_Init/0 (hwAcc_Init) @05baa380
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05baa9a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+
+Removing unused symbols: g_paxTrgmuxBaseArray
+
+Reclaimed Symbol table:
+
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21) @05d921c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21) @05d920e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfaee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: public
+  References: g_pxTrgmuxInit/5 (read)g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 hwAcc_SetLockForOutput/2 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 hwAcc_GetLockForOutput/3 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: g_pxTrgmuxInit/5 (read)g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 hwAcc_SetInputForOutput/1 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 hwAcc_GetLockForOutput/3 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: public
+  References: g_pxTrgmuxInit/5 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 hwAcc_SetLockForOutput/2 hwAcc_SetInputForOutput/1 hwAcc_Init/0 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 
+g_pxTrgmuxInit/5 (g_pxTrgmuxInit) @05bf3318
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: Trgmux_Ip_Init/6 (write)Trgmux_Ip_SetInput/7 (read)Trgmux_Ip_SetInput/7 (read)Trgmux_Ip_SetLock/8 (read)Trgmux_Ip_SetLock/8 (read)
+  Availability: not-ready
+  Varpool flags:
+hwAcc_GetLockForOutput/3 (hwAcc_GetLockForOutput) @05bb00e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetLock/8 Trgmux_Ip_SetInput/7 
+  Calls: 
+hwAcc_SetLockForOutput/2 (hwAcc_SetLockForOutput) @05baad20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetLock/8 Trgmux_Ip_Init/6 
+  Calls: 
+hwAcc_SetInputForOutput/1 (hwAcc_SetInputForOutput) @05baa9a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetInput/7 Trgmux_Ip_Init/6 
+  Calls: 
+hwAcc_Init/0 (hwAcc_Init) @05baa380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+
+
+Initial Symbol table:
+
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21) @05d921c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21) @05d920e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfaee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: public
+  References: g_pxTrgmuxInit/5 (read)g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 hwAcc_SetLockForOutput/2 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 hwAcc_GetLockForOutput/3 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: g_pxTrgmuxInit/5 (read)g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 hwAcc_SetInputForOutput/1 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 hwAcc_GetLockForOutput/3 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: public
+  References: g_pxTrgmuxInit/5 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 hwAcc_SetLockForOutput/2 hwAcc_SetInputForOutput/1 hwAcc_Init/0 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 
+g_pxTrgmuxInit/5 (g_pxTrgmuxInit) @05bf3318
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: Trgmux_Ip_Init/6 (write)Trgmux_Ip_SetInput/7 (read)Trgmux_Ip_SetInput/7 (read)Trgmux_Ip_SetLock/8 (read)Trgmux_Ip_SetLock/8 (read)
+  Availability: not-ready
+  Varpool flags:
+hwAcc_GetLockForOutput/3 (hwAcc_GetLockForOutput) @05bb00e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetLock/8 Trgmux_Ip_SetInput/7 
+  Calls: 
+hwAcc_SetLockForOutput/2 (hwAcc_SetLockForOutput) @05baad20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetLock/8 Trgmux_Ip_Init/6 
+  Calls: 
+hwAcc_SetInputForOutput/1 (hwAcc_SetInputForOutput) @05baa9a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetInput/7 Trgmux_Ip_Init/6 
+  Calls: 
+hwAcc_Init/0 (hwAcc_Init) @05baa380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21) @05d921c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21) @05d920e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfaee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: public
+  References: g_pxTrgmuxInit/5 (read)g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 hwAcc_SetLockForOutput/2 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 hwAcc_GetLockForOutput/3 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: g_pxTrgmuxInit/5 (read)g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 hwAcc_SetInputForOutput/1 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 hwAcc_GetLockForOutput/3 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: public
+  References: g_pxTrgmuxInit/5 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 hwAcc_SetLockForOutput/2 hwAcc_SetInputForOutput/1 hwAcc_Init/0 SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 
+g_pxTrgmuxInit/5 (g_pxTrgmuxInit) @05bf3318
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: Trgmux_Ip_Init/6 (write)Trgmux_Ip_SetInput/7 (read)Trgmux_Ip_SetInput/7 (read)Trgmux_Ip_SetLock/8 (read)Trgmux_Ip_SetLock/8 (read)
+  Availability: not-ready
+  Varpool flags:
+hwAcc_GetLockForOutput/3 (hwAcc_GetLockForOutput) @05bb00e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetLock/8 Trgmux_Ip_SetInput/7 
+  Calls: 
+hwAcc_SetLockForOutput/2 (hwAcc_SetLockForOutput) @05baad20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetLock/8 Trgmux_Ip_Init/6 
+  Calls: 
+hwAcc_SetInputForOutput/1 (hwAcc_SetInputForOutput) @05baa9a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_SetInput/7 Trgmux_Ip_Init/6 
+  Calls: 
+hwAcc_Init/0 (hwAcc_Init) @05baa380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Trgmux_Ip_Init/6 
+  Calls: 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+hwAcc_SetInputForOutput.constprop.0/19 (hwAcc_SetInputForOutput.constprop) @05d98d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 17
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/19 is inline copy in Trgmux_Ip_SetInput/7
+  Clone of hwAcc_SetInputForOutput.constprop.0/17
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+hwAcc_Init.constprop.0/18 (hwAcc_Init.constprop) @05bb00e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function hwAcc_Init.constprop/18 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_Init/0
+  Availability: local
+  Function flags: count:178956969 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (178956969 (estimated locally),1.00 per call) 
+  Calls: 
+hwAcc_SetInputForOutput.constprop.0/17 (hwAcc_SetInputForOutput.constprop) @05baad20
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 19
+  References: 
+  Referring: 
+  Function hwAcc_SetInputForOutput.constprop/17 is inline copy in Trgmux_Ip_Init/6
+  Clone of hwAcc_SetInputForOutput/1
+  Availability: local
+  Function flags: count:59055800 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: Trgmux_Ip_Init/6 (inlined) (59055800 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21) @05d921c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21) @05d920e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetLock/8 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfaee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_SetInput/7 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 (59055800 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Trgmux_Ip_Init/6 (178956969 (estimated locally),1.00 per call) 
+  Calls: 
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (354334802 (estimated locally),0.33 per call) 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: g_pxTrgmuxInit/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (354334802 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/19 (inlined) (354334802 (estimated locally),0.33 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (354334802 (estimated locally),0.33 per call) 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: g_pxTrgmuxInit/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:178956969 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (59055800 (estimated locally),0.33 per call) hwAcc_SetInputForOutput.constprop/17 (inlined) (59055800 (estimated locally),0.33 per call) hwAcc_Init.constprop/18 (inlined) (178956969 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (178956969 (estimated locally),1.00 per call) 
+g_pxTrgmuxInit/5 (g_pxTrgmuxInit) @05bf3318
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: Trgmux_Ip_Init/6 (write)Trgmux_Ip_SetInput/7 (read)Trgmux_Ip_SetLock/8 (read)
+  Availability: available
+  Varpool flags:
+hwAcc_SetInputForOutput/1 (hwAcc_SetInputForOutput) @05baa9a0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+hwAcc_Init/0 (hwAcc_Init) @05baa380
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:39728448 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Materializing clones
+cloning hwAcc_Init to hwAcc_Init.constprop
+   replace map:  -> 1074147328B(replace);
+   args_to_skip: 0
+   combined_args_to_skip:0
+hwAcc_Init (struct TRGMUX_Type * const pTrgmux)
+{
+  Trgmux_Ip_StatusType Status;
+  uint32 regIdx;
+
+  <bb 2> [local count: 39728448]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG Status => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG regIdx => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 1034013377]:
+  # DEBUG BEGIN_STMT
+  if (Status_5 != 1)
+    goto <bb 4>; [66.00%]
+  else
+    goto <bb 6>; [34.00%]
+
+  <bb 4> [local count: 682448829]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} pTrgmux_11(D)->TRGMUXn[regIdx_3];
+  # DEBUG regValue => _1 & 2147483648
+  # DEBUG BEGIN_STMT
+  _8 = (signed int) _1;
+  if (_8 < 0)
+    goto <bb 6>; [41.00%]
+  else
+    goto <bb 5>; [59.00%]
+
+  <bb 5> [local count: 402644809]:
+  # DEBUG BEGIN_STMT
+  _2 ={v} pTrgmux_11(D)->TRGMUXn[regIdx_3];
+  pTrgmux_11(D)->TRGMUXn[regIdx_3] ={v} _2;
+
+  <bb 6> [local count: 1034013377]:
+  # Status_4 = PHI <Status_5(3), Status_5(5), 1(4)>
+  # DEBUG Status => Status_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regIdx_13 = regIdx_3 + 1;
+  # DEBUG regIdx => regIdx_13
+
+  <bb 7> [local count: 1073741824]:
+  # regIdx_3 = PHI <0(2), regIdx_13(6)>
+  # Status_5 = PHI <0(2), Status_4(6)>
+  # DEBUG Status => Status_5
+  # DEBUG regIdx => regIdx_3
+  # DEBUG BEGIN_STMT
+  if (regIdx_3 != 26)
+    goto <bb 3>; [96.30%]
+  else
+    goto <bb 8>; [3.70%]
+
+  <bb 8> [local count: 39728448]:
+  # Status_10 = PHI <Status_5(7)>
+  # DEBUG BEGIN_STMT
+  return Status_10;
+
+}
+
+
+hwAcc_Init.constprop ()
+{
+  uint32 regIdx;
+  Trgmux_Ip_StatusType Status;
+  struct TRGMUX_Type * const pTrgmux;
+
+  <bb 9> [local count: 39728448]:
+  # DEBUG pTrgmux => 1074147328B
+
+  <bb 2> [local count: 39728448]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG Status => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG regIdx => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 1034013377]:
+  # DEBUG BEGIN_STMT
+  if (Status_1 != 1)
+    goto <bb 4>; [66.00%]
+  else
+    goto <bb 6>; [34.00%]
+
+  <bb 4> [local count: 682448829]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[regIdx_2];
+  # DEBUG regValue => _3 & 2147483648
+  # DEBUG BEGIN_STMT
+  _4 = (signed int) _3;
+  if (_4 < 0)
+    goto <bb 6>; [41.00%]
+  else
+    goto <bb 5>; [59.00%]
+
+  <bb 5> [local count: 402644809]:
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[regIdx_2];
+  MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[regIdx_2] ={v} _5;
+
+  <bb 6> [local count: 1034013377]:
+  # Status_8 = PHI <Status_1(3), 1(4), Status_1(5)>
+  # DEBUG Status => Status_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regIdx_6 = regIdx_2 + 1;
+  # DEBUG regIdx => regIdx_6
+
+  <bb 7> [local count: 1073741824]:
+  # regIdx_2 = PHI <0(2), regIdx_6(6)>
+  # Status_1 = PHI <0(2), Status_8(6)>
+  # DEBUG Status => Status_1
+  # DEBUG regIdx => regIdx_2
+  # DEBUG BEGIN_STMT
+  if (regIdx_2 != 26)
+    goto <bb 3>; [96.30%]
+  else
+    goto <bb 8>; [3.70%]
+
+  <bb 8> [local count: 39728448]:
+  # Status_7 = PHI <Status_1(7)>
+  # DEBUG BEGIN_STMT
+  return Status_7;
+
+}
+
+
+cloning hwAcc_SetInputForOutput to hwAcc_SetInputForOutput.constprop
+   replace map:  -> 1074147328B(replace);
+   args_to_skip: 0
+   combined_args_to_skip:0
+hwAcc_SetInputForOutput (struct TRGMUX_Type * const pTrgmux, const uint32 Input, const uint32 Output)
+{
+  uint32 regValue;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) Output_12(D);
+  _2 = _1 >> 2;
+  _3 = (int) _2;
+  regValue_15 ={v} pTrgmux_14(D)->TRGMUXn[_3];
+  # DEBUG regValue => regValue_15
+  # DEBUG BEGIN_STMT
+  _4 = Output_12(D) & 3;
+  _5 = _4 * 8;
+  _6 = 63 << _5;
+  _7 = ~_6;
+  regValue_16 = _7 & regValue_15;
+  # DEBUG regValue => regValue_16
+  # DEBUG BEGIN_STMT
+  _8 = _1 & 3;
+  _9 = _8 * 8;
+  _10 = (int) _9;
+  _11 = Input_17(D) << _10;
+  regValue_18 = _11 | regValue_16;
+  # DEBUG regValue => regValue_18
+  # DEBUG BEGIN_STMT
+  pTrgmux_14(D)->TRGMUXn[_3] ={v} regValue_18;
+  return;
+
+}
+
+
+hwAcc_SetInputForOutput.constprop (const uint32 Input, const uint32 Output)
+{
+  uint32 regValue;
+  struct TRGMUX_Type * const pTrgmux;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG pTrgmux => 1074147328B
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = (unsigned char) Output_1(D);
+  _3 = _2 >> 2;
+  _4 = (int) _3;
+  regValue_5 ={v} MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_4];
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  _6 = Output_1(D) & 3;
+  _7 = _6 * 8;
+  _8 = 63 << _7;
+  _9 = ~_8;
+  regValue_10 = regValue_5 & _9;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  _11 = _2 & 3;
+  _12 = _11 * 8;
+  _13 = (int) _12;
+  _15 = Input_14(D) << _13;
+  regValue_16 = regValue_10 | _15;
+  # DEBUG regValue => regValue_16
+  # DEBUG BEGIN_STMT
+  MEM[(struct TRGMUX_Type *)1074147328B].TRGMUXn[_4] ={v} regValue_16;
+  return;
+
+}
+
+
+Materialization Call site updates done.
+
+Reclaiming functions: hwAcc_SetInputForOutput/1 hwAcc_Init/0
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:Trgmux_Ip_Init:0
+updating call of Trgmux_Ip_Init/6 -> hwAcc_SetInputForOutput.constprop/17: hwAcc_SetInputForOutput (1074147328B, LocInput_23, LocOutput_22);
+ combined args to skip: 0
+  updated to:hwAcc_SetInputForOutput.constprop (LocInput_23, LocOutput_22);
+updating call of Trgmux_Ip_Init/6 -> hwAcc_Init.constprop/18: _1 = hwAcc_Init (1074147328B);
+ combined args to skip: 0
+  updated to:_1 = hwAcc_Init.constprop ();
+Time profile order in expand_all_functions:Trgmux_Ip_SetInput:0
+updating call of Trgmux_Ip_SetInput/7 -> hwAcc_SetInputForOutput.constprop/19: hwAcc_SetInputForOutput (1074147328B, Input_9(D), LocOutput_7);
+ combined args to skip: 0
+  updated to:hwAcc_SetInputForOutput.constprop (Input_9(D), LocOutput_7);
+Time profile order in expand_all_functions:Trgmux_Ip_SetLock:0
+Trivially needed variables: g_pxTrgmuxInit
+Removing variables:
+
+Final Symbol table:
+
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21/14 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_21) @05d921c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21/13 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_21) @05d920e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20/12 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20/11 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_20) @05bfaee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19/10 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19/9 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_19) @05bfa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Trgmux_Ip_SetLock/8 (Trgmux_Ip_SetLock) @05bfa540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+Trgmux_Ip_SetInput/7 (Trgmux_Ip_SetInput) @05bfa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+Trgmux_Ip_Init/6 (Trgmux_Ip_Init) @05bfa000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:178956969 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+g_pxTrgmuxInit/5 (g_pxTrgmuxInit) @05bf3318
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:

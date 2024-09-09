@@ -1,0 +1,96 @@
+callgraph:
+
+Adc_Ip_IRQHandler/2 (Adc_Ip_IRQHandler) @05c7fee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Adc_1_Isr/1 (1073741824 (estimated locally),1.00 per call) Adc_0_Isr/0 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Adc_1_Isr/1 (Adc_1_Isr) @05c7fa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Adc_Ip_IRQHandler/2 (1073741824 (estimated locally),1.00 per call) 
+Adc_0_Isr/0 (Adc_0_Isr) @05c7f700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Adc_Ip_IRQHandler/2 (1073741824 (estimated locally),1.00 per call) 
+Clearing variable flags:
+
+Function name:Adc_1_Isr/1:
+  locals read: 
+  locals written: 
+Function name:Adc_0_Isr/0:
+  locals read: 
+  locals written: 
+
+ ordered call graph: reduced
+Adc_1_Isr/1 (Adc_1_Isr) @05c7fa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057d44f8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Adc_Ip_IRQHandler/2 (1073741824 (estimated locally),1.00 per call) 
+Adc_0_Isr/0 (Adc_0_Isr) @05c7f700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057d4518
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Adc_Ip_IRQHandler/2 (1073741824 (estimated locally),1.00 per call) 
+
+
+Function name:Adc_0_Isr/0:
+    locals read: 
+    locals written: 
+  globals read: ALL
+  globals written: ALL
+
+Function name:Adc_1_Isr/1:
+    locals read: 
+    locals written: 
+  globals read: ALL
+  globals written: ALL
+Adc_1_Isr ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Adc_Ip_IRQHandler (1);
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
+Adc_0_Isr ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Adc_Ip_IRQHandler (0);
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+

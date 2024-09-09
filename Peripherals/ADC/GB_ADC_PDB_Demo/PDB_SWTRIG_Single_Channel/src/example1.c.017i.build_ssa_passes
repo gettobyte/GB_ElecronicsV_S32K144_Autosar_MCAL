@@ -1,0 +1,97 @@
+main ()
+{
+  Adc_Ip_StatusType adcStatus;
+  Clock_Ip_StatusType clockStatus;
+  int D.7053;
+
+  <bb 2> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  Adc_Ip_Init (0, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
+  adcStatus = Adc_Ip_DoCalibration (0);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  adcStatus = Adc_Ip_DoCalibration (0);
+
+  <bb 9> :
+  if (adcStatus != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  Pdb_Adc_Ip_Init (0, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
+  Pdb_Adc_Ip_SwTrigger (0);
+
+  <bb 11> :
+  _2 = Adc_Ip_GetConvData (0, 4);
+  _3 = (long unsigned int) _2;
+  data = _3;
+  goto <bb 11>; [INV]
+
+}
+
+
+AdcConversionCompleteNotif (const uint8 ControlChanIdx)
+{
+  _Bool iftmp.0;
+
+  <bb 2> :
+  notif_triggered = 1;
+  _1 = Adc_Ip_GetConvData (0, ControlChanIdx);
+  _2 = (long unsigned int) _1;
+  data = _2;
+
+  <bb 3> :
+  data.1_3 = data;
+  if (data.1_3 > 819)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  data.2_4 = data;
+  _5 = data.2_4 + 4294966477;
+  iftmp.0 = _5 > 150;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  data.3_6 = data;
+  _7 = 819 - data.3_6;
+  iftmp.0 = _7 > 150;
+
+  <bb 6> :
+  if (iftmp.0 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+

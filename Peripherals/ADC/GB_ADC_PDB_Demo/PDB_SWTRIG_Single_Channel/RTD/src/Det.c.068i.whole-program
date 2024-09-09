@@ -1,0 +1,223 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: Det_Start Det_ReportTransientFault Det_ReportRuntimeError Det_ReportError Det_Init
+
+
+Marking externally visible variables: Det_RuntimeModuleId Det_ModuleId Det_TransientModuleId Det_TransientFaultId Det_TransientApiId Det_TransientInstanceId Det_RuntimeErrorId Det_RuntimeApiId Det_RuntimeInstanceId Det_ErrorId Det_ApiId Det_InstanceId
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Det_Start/16 (Det_Start) @05d0c1c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+Det_ReportTransientFault/15 (Det_ReportTransientFault) @05d08e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Det_TransientModuleId/9 (write)Det_TransientInstanceId/6 (write)Det_TransientApiId/7 (write)Det_TransientFaultId/8 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+Det_ReportRuntimeError/14 (Det_ReportRuntimeError) @05d088c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Det_RuntimeModuleId/11 (write)Det_RuntimeInstanceId/3 (write)Det_RuntimeApiId/4 (write)Det_RuntimeErrorId/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+Det_ReportError/13 (Det_ReportError) @05d08d20
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Det_ModuleId/10 (write)Det_InstanceId/0 (write)Det_ApiId/1 (write)Det_ErrorId/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+Det_Init/12 (Det_Init) @05d08a80
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+Det_RuntimeModuleId/11 (Det_RuntimeModuleId) @05d01ee8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportRuntimeError/14 (write)
+  Availability: available
+  Varpool flags:
+Det_ModuleId/10 (Det_ModuleId) @05d01ea0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportError/13 (write)
+  Availability: available
+  Varpool flags:
+Det_TransientModuleId/9 (Det_TransientModuleId) @05d01e58
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportTransientFault/15 (write)
+  Availability: available
+  Varpool flags:
+Det_TransientFaultId/8 (Det_TransientFaultId) @05d01e10
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportTransientFault/15 (write)
+  Availability: available
+  Varpool flags:
+Det_TransientApiId/7 (Det_TransientApiId) @05d01dc8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportTransientFault/15 (write)
+  Availability: available
+  Varpool flags:
+Det_TransientInstanceId/6 (Det_TransientInstanceId) @05d01d80
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportTransientFault/15 (write)
+  Availability: available
+  Varpool flags:
+Det_RuntimeErrorId/5 (Det_RuntimeErrorId) @05d01d38
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportRuntimeError/14 (write)
+  Availability: available
+  Varpool flags:
+Det_RuntimeApiId/4 (Det_RuntimeApiId) @05d01cf0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportRuntimeError/14 (write)
+  Availability: available
+  Varpool flags:
+Det_RuntimeInstanceId/3 (Det_RuntimeInstanceId) @05d01ca8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportRuntimeError/14 (write)
+  Availability: available
+  Varpool flags:
+Det_ErrorId/2 (Det_ErrorId) @05d01c60
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportError/13 (write)
+  Availability: available
+  Varpool flags:
+Det_ApiId/1 (Det_ApiId) @05d01c18
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportError/13 (write)
+  Availability: available
+  Varpool flags:
+Det_InstanceId/0 (Det_InstanceId) @05d01bd0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Det_ReportError/13 (write)
+  Availability: available
+  Varpool flags:
+Det_Start ()
+{
+  <bb 2> :
+  return;
+
+}
+
+
+Det_ReportTransientFault (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 FaultId)
+{
+  uint32 u32CoreId;
+  Std_ReturnType D.5616;
+  Std_ReturnType _11;
+
+  <bb 2> :
+  u32CoreId_1 = 0;
+  Det_TransientModuleId[u32CoreId_1] = ModuleId_3(D);
+  Det_TransientInstanceId[u32CoreId_1] = InstanceId_5(D);
+  Det_TransientApiId[u32CoreId_1] = ApiId_7(D);
+  Det_TransientFaultId[u32CoreId_1] = FaultId_9(D);
+  _11 = 0;
+
+  <bb 3> :
+<L0>:
+  return _11;
+
+}
+
+
+Det_ReportRuntimeError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
+{
+  uint32 u32CoreId;
+  Std_ReturnType D.5614;
+  Std_ReturnType _11;
+
+  <bb 2> :
+  u32CoreId_1 = 0;
+  Det_RuntimeModuleId[u32CoreId_1] = ModuleId_3(D);
+  Det_RuntimeInstanceId[u32CoreId_1] = InstanceId_5(D);
+  Det_RuntimeApiId[u32CoreId_1] = ApiId_7(D);
+  Det_RuntimeErrorId[u32CoreId_1] = ErrorId_9(D);
+  _11 = 0;
+
+  <bb 3> :
+<L0>:
+  return _11;
+
+}
+
+
+Det_ReportError (uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
+{
+  uint32 u32CoreId;
+  Std_ReturnType D.5612;
+  Std_ReturnType _11;
+
+  <bb 2> :
+  u32CoreId_1 = 0;
+  Det_ModuleId[u32CoreId_1] = ModuleId_3(D);
+  Det_InstanceId[u32CoreId_1] = InstanceId_5(D);
+  Det_ApiId[u32CoreId_1] = ApiId_7(D);
+  Det_ErrorId[u32CoreId_1] = ErrorId_9(D);
+  _11 = 0;
+
+  <bb 3> :
+<L0>:
+  return _11;
+
+}
+
+
+Det_Init ()
+{
+  <bb 2> :
+  return;
+
+}
+
+

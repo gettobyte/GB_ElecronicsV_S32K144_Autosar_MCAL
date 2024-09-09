@@ -1,0 +1,126 @@
+main ()
+{
+  Trgmux_Ip_StatusType trgmuxStatus;
+  Adc_Ip_StatusType adcStatus;
+  Clock_Ip_StatusType clockStatus;
+  int D.7076;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_InstallHandler (39, Adc_0_Isr, 0B);
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_EnableIrq (39);
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  trgmuxStatus = Trgmux_Ip_Init (&Trgmux_Ip_xTrgmuxInitPB);
+  # DEBUG BEGIN_STMT
+  Adc_Ip_Init (0, &AdcHwUnit_0_BOARD_INITPERIPHERALS);
+  # DEBUG BEGIN_STMT
+  adcStatus = Adc_Ip_DoCalibration (0);
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  adcStatus = Adc_Ip_DoCalibration (0);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (adcStatus != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Pdb_Adc_Ip_Init (0, &PdbHwUnit_0_BOARD_INITPERIPHERALS);
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = Adc_Ip_GetConvData (0, 4);
+  _3 = (long unsigned int) _2;
+  data = _3;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+}
+
+
+AdcConversionCompleteNotif (const uint8 ControlChanIdx)
+{
+  _Bool iftmp.0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  notif_triggered = 1;
+  # DEBUG BEGIN_STMT
+  _1 = Adc_Ip_GetConvData (0, ControlChanIdx);
+  _2 = (long unsigned int) _1;
+  data = _2;
+  # DEBUG BEGIN_STMT
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  data.1_3 = data;
+  if (data.1_3 > 819)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  data.2_4 = data;
+  _5 = data.2_4 + 4294966477;
+  iftmp.0 = _5 > 150;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  data.3_6 = data;
+  _7 = 819 - data.3_6;
+  iftmp.0 = _7 > 150;
+
+  <bb 6> :
+  if (iftmp.0 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+
