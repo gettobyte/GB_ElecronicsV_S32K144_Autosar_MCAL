@@ -207,7 +207,7 @@ outputs:
 - {id: LPO_32K_CLK.outFreq, value: 32 kHz}
 - {id: LPO_CLK.outFreq, value: 128 kHz}
 - {id: LPSPI0_CLK.outFreq, value: 8 MHz}
-- {id: LPSPI1_CLK.outFreq, value: 8 MHz}
+- {id: LPSPI1_CLK.outFreq, value: 48 MHz}
 - {id: LPSPI2_CLK.outFreq, value: 8 MHz}
 - {id: LPTMR0_CLK.outFreq, value: 8 MHz}
 - {id: LPUART0_CLK.outFreq, value: 8 MHz}
@@ -233,16 +233,18 @@ outputs:
 - {id: SOSCDIV2_CLK.outFreq, value: 8 MHz}
 - {id: SOSCOUT.outFreq, value: 8 MHz}
 - {id: SPLLDIV1_CLK.outFreq, value: 48 MHz}
-- {id: SPLLDIV2_CLK.outFreq, value: 24 MHz}
+- {id: SPLLDIV2_CLK.outFreq, value: 12 MHz}
 - {id: SYS_CLK.outFreq, value: 48 MHz}
 - {id: TRACE_CLK.outFreq, value: 48 MHz}
 settings:
 - {id: DIVBUS.scale, value: '1', locked: true}
 - {id: DIVCORE.scale, value: '1', locked: true}
 - {id: DIVSLOW.scale, value: '4', locked: true}
+- {id: FIRCDIV2.scale, value: '1', locked: true}
 - {id: 'HSRUN:DIVBUS.scale', value: '1', locked: true}
 - {id: 'HSRUN:DIVCORE.scale', value: '1', locked: true}
 - {id: 'HSRUN:DIVSLOW.scale', value: '4', locked: true}
+- {id: MODULE_CLOCKS.PCC_LPSPI1_MUX.sel, value: FIRCDIV2}
 - {id: PREDIV.scale, value: '1', locked: true}
 - {id: 'RUN:DIVBUS.scale', value: '1', locked: true}
 - {id: 'RUN:DIVCORE.scale', value: '1', locked: true}
@@ -252,7 +254,7 @@ settings:
 - {id: SIRCDIV1.scale, value: '1', locked: true}
 - {id: SIRCDIV2.scale, value: '1', locked: true}
 - {id: SPLLDIV1.scale, value: '2', locked: true}
-- {id: SPLLDIV2.scale, value: '4', locked: true}
+- {id: SPLLDIV2.scale, value: '8', locked: true}
 - {id: SPLL_mul.scale, value: '24', locked: true}
 - {id: 'VLPR:DIVBUS.scale', value: '1', locked: true}
 - {id: 'VLPR:DIVCORE.scale', value: '8', locked: true}
@@ -487,7 +489,7 @@ sources:
             #if CLOCK_SELECTORS_NO > 18U
             {
                 LPSPI1_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                FIRCDIV2_CLK,                    /* Name of the selected input source */
             },
             #endif
 
@@ -632,7 +634,7 @@ sources:
             #if CLOCK_DIVIDERS_NO > 7U
             {
                 SPLLDIV2_CLK,                    /* name */
-                4U,                              /* value */
+                8U,                              /* value */
                 {
                     0U,
                 }

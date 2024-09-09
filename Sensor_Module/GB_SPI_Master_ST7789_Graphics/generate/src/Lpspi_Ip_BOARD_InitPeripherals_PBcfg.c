@@ -155,7 +155,7 @@ static Lpspi_Ip_DeviceParamsType Lpspi_Ip_DeviceParamsCfg_BOARD_InitPeripherals[
 const Lpspi_Ip_ExternalDeviceType Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals =
 {
     1U,  /* Instance */
-        (uint32)(LPSPI_CCR_SCKPCS(7U) | LPSPI_CCR_PCSSCK(7U) | LPSPI_CCR_SCKDIV(78U) | LPSPI_CCR_DBT(49U)), /* ccr */
+        (uint32)(LPSPI_CCR_SCKPCS(47U) | LPSPI_CCR_PCSSCK(47U) | LPSPI_CCR_SCKDIV(1U) | LPSPI_CCR_DBT(255U)), /* ccr */
         (uint32)(LPSPI_TCR_WIDTH(0U) | LPSPI_TCR_CPOL(0U) | LPSPI_TCR_CPHA(0U) | LPSPI_TCR_PRESCALE(0U) | LPSPI_TCR_PCS(3U) | LPSPI_TCR_CONT(0U)) /* TCR */
 
 

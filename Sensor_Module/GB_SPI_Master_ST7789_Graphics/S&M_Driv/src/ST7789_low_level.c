@@ -1,13 +1,12 @@
 
 
-#include "ST7789_low_level.h"
-#include "stdio.h"
-#include "Lpspi_Ip_BOARD_InitPeripherals_PBcfg.h"
-
-#include "Dio.h"
-#include "Lpspi_Ip_Types.h"
-
-#include "Lpspi_Ip.h"
+#include <Dio.h>
+#include <Lpspi_Ip.h>
+#include <Lpspi_Ip_Types.h>
+#include <PlatformTypes.h>
+#include <stdio.h>
+#include <sys/_stdint.h>
+#include <ST7789_low_level.h>
 
 static void TestDelay(uint32 delay);
 static void TestDelay(uint32 delay)
@@ -214,22 +213,44 @@ void ST7789_SetAddressWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
 uint16_t total =0;
 void ST7789_Fill_Color(uint16_t color)
 {
+	/* Old Code with double for loop*/
+//	uint16_t i,j;
+//	uint8_t data;
+//	gb_ST7789_CS_pin_low();
+//
+//
+//	GB_ST7789_SendCommand(ST77XX_RAMWR, &data, 0, GB_ST7789_TimeOut);
+//
+//	for (i =0; i < ST7789_WIDTH; i++)
+//		for (j=0; j<ST7789_HEIGHT; j++)
+//		{
+//			uint8_t data[] = { color >>8, color & 0xFF};
+//			GB_ST7789_SendData(data, sizeof(data));
+//		}
+//
+//	gb_ST7789_CS_pin_high();
 
-	uint16_t i,j;
-	uint8_t data;
+	/* New Code with single for loop*/
 	gb_ST7789_CS_pin_low();
 
-
+	// Send the RAMWR (Memory Write) command to the display
+	uint8_t data;
 	GB_ST7789_SendCommand(ST77XX_RAMWR, &data, 0, GB_ST7789_TimeOut);
 
-	for (i =0; i < ST7789_WIDTH; i++)
-		for (j=0; j<ST7789_HEIGHT; j++)
-		{
-			uint8_t data[] = { color >>8, color & 0xFF};
-			GB_ST7789_SendData(data, sizeof(data));
-		}
+	// Create the data array for the color to be sent
+	uint8_t colorData[] = { color >> 8, color & 0xFF };
 
+	// Send the color data for the entire screen in one go
+	// ST7789_WIDTH * ST7789_HEIGHT is the total number of pixels
+	// Each pixel requires 2 bytes (16-bit color)
+	for (uint32_t i = 0; i < (ST7789_WIDTH * ST7789_HEIGHT); i++)
+	{
+		GB_ST7789_SendData(colorData, sizeof(colorData));
+	}
+
+	// Set the CS (Chip Select) pin high to end communication
 	gb_ST7789_CS_pin_high();
+
 }
 uint32_t length = 0;
 uint16_t i,j;
