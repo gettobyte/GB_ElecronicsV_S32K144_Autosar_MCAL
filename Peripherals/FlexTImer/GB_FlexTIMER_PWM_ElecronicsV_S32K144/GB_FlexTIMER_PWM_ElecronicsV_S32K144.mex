@@ -39,6 +39,16 @@
                         <pin_feature name="direction" value="OUTPUT"/>
                      </pin_features>
                   </pin>
+                  <pin peripheral="FTM0" signal="ch, 3" pin_num="29" pin_signal="PTC3">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="FTM0" signal="ch, 2" pin_num="30" pin_signal="PTC2">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
                </pins>
             </function>
          </functions_list>
@@ -46,7 +56,7 @@
       <clocks name="Clocks" version="8.0" enabled="true" update_project_code="true">
          <generated_project_files>
             <file path="generate/include/Clock_Ip_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Clock_Ip_Cfg_Defines.h" update_enabled="false"/>
+            <file path="generate/include/Clock_Ip_Cfg_Defines.h" update_enabled="true"/>
             <file path="generate/src/Clock_Ip_Cfg.c" update_enabled="true"/>
          </generated_project_files>
          <clocks_profile>
@@ -249,12 +259,24 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.IntCtrl_Ip" description="IntCtrl_Ip not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.IntCtrl_Ip" description="Unsupported version of the IntCtrl_Ip in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/Port_Ci_Port_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Pwm_Ip_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Pwm_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Pwm_Ip_CfgDefines.h" update_enabled="true"/>
+            <file path="generate/include/IntCtrl_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/IntCtrl_Ip_CfgDefines.h" update_enabled="true"/>
             <file path="generate/include/OsIf_ArchCfg.h" update_enabled="true"/>
             <file path="generate/include/OsIf_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Port_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
@@ -264,6 +286,7 @@
             <file path="generate/include/SoC_Ips.h" update_enabled="true"/>
             <file path="generate/include/modules.h" update_enabled="true"/>
             <file path="generate/src/Ftm_Pwm_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/IntCtrl_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/OsIf_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Port_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Port_Cfg.c" update_enabled="true"/>
@@ -323,7 +346,7 @@
                                  <setting name="PwmFtmCounterMode" value="Edge_Aligned_mode"/>
                                  <setting name="PwmFtmPeriod" value="62499"/>
                                  <setting name="PwmFtmPeriodDither" value="0"/>
-                                 <setting name="PwmFtmDeadTime" value="0"/>
+                                 <setting name="PwmFtmDeadTime" value="100"/>
                                  <setting name="PwmFtmDeadTimePrescaler" value="Divide_by_1"/>
                               </struct>
                               <struct name="PwmFtmInstCfg">
@@ -332,7 +355,7 @@
                                  <setting name="PwmFtmWriteProtection" value="false"/>
                                  <setting name="PwmFtmInitTrigger" value="false"/>
                                  <setting name="PwmFtmInitTriggerMode" value="Trigger_on_Counter_Update"/>
-                                 <setting name="PwmFtmOverflowIrq" value="false"/>
+                                 <setting name="PwmFtmOverflowIrq" value="true"/>
                                  <struct name="PwmFtmOverflowIrqCallback">
                                     <setting name="Name" value="PwmFtmOverflowIrqCallback"/>
                                     <setting name="PwmFtmOverflowIrqFunctionCallback" value="NULL_PTR"/>
@@ -379,7 +402,7 @@
                                     <setting name="PwmFtmChPolarity" value="Channel_active_HIGH"/>
                                     <setting name="PwmFtmChDutyCycle" value="3000"/>
                                     <setting name="PwmFtmChDutyCycleDither" value="0"/>
-                                    <setting name="PwmFtmChInterrupt" value="false"/>
+                                    <setting name="PwmFtmChInterrupt" value="true"/>
                                     <struct name="PwmFtmChInterruptCallback">
                                        <setting name="Name" value="PwmFtmChInterruptCallback"/>
                                        <setting name="PwmFtmChInterruptFunctionCallback" value="NULL_PTR"/>
@@ -396,9 +419,41 @@
                                        <setting name="PwmFtmPairedChDeadtimeEnable" value="false"/>
                                        <setting name="PwmFtmPairedChSync" value="false"/>
                                        <setting name="PwmFtmPairedChExtTrig" value="false"/>
-                                       <setting name="PwmFtmPairedChComplementary" value="false"/>
+                                       <setting name="PwmFtmPairedChComplementary" value="true"/>
                                        <setting name="PwmFtmDutyDitheringPaired" value="false"/>
                                        <setting name="PwmFtmPairedChCombineMode" value="Combined_Mode"/>
+                                       <setting name="PwmFtmPairedChComplementaryMode" value="Invert_Output"/>
+                                       <setting name="PwmFtmPairedChPhaseShift" value="0"/>
+                                    </struct>
+                                 </struct>
+                                 <struct name="1">
+                                    <setting name="Name" value="PwmFtmCh_1"/>
+                                    <setting name="PwmFtmChId" value="CH_2"/>
+                                    <setting name="PwmFtmChPulseType" value="High_true_pulse"/>
+                                    <setting name="PwmFtmChInitOutput" value="LOW"/>
+                                    <setting name="PwmFtmChPolarity" value="Channel_active_HIGH"/>
+                                    <setting name="PwmFtmChDutyCycle" value="30000"/>
+                                    <setting name="PwmFtmChDutyCycleDither" value="0"/>
+                                    <setting name="PwmFtmChInterrupt" value="false"/>
+                                    <struct name="PwmFtmChInterruptCallback">
+                                       <setting name="Name" value="PwmFtmChInterruptCallback"/>
+                                       <setting name="PwmFtmChInterruptFunctionCallback" value="NULL_PTR"/>
+                                       <setting name="PwmFtmChInterruptParameterCallback" value="NULL_PTR"/>
+                                    </struct>
+                                    <setting name="PwmFtmChPwmOutputEnable" value="true"/>
+                                    <setting name="PwmFtmChSwCtrlEnable" value="false"/>
+                                    <setting name="PwmFtmChSwCtrlValue" value="false"/>
+                                    <setting name="PwmFtmChExternTriggerEnable" value="false"/>
+                                    <setting name="PwmFtmChMatchLoadPointEnable" value="false"/>
+                                    <setting name="PwmFtmPairChEnable" value="true"/>
+                                    <struct name="PwmFtmPairedCh">
+                                       <setting name="Name" value="PwmFtmPairedCh"/>
+                                       <setting name="PwmFtmPairedChDeadtimeEnable" value="false"/>
+                                       <setting name="PwmFtmPairedChSync" value="false"/>
+                                       <setting name="PwmFtmPairedChExtTrig" value="false"/>
+                                       <setting name="PwmFtmPairedChComplementary" value="true"/>
+                                       <setting name="PwmFtmDutyDitheringPaired" value="false"/>
+                                       <setting name="PwmFtmPairedChCombineMode" value="Combine_modes_disabled"/>
                                        <setting name="PwmFtmPairedChComplementaryMode" value="Invert_Output"/>
                                        <setting name="PwmFtmPairedChPhaseShift" value="0"/>
                                     </struct>
@@ -463,6 +518,40 @@
                                        <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
                                        <array name="PortPinEcucPartitionRef"/>
                                     </struct>
+                                    <struct name="1">
+                                       <setting name="Name" value="PortPin_1"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="2"/>
+                                       <setting name="PortPinPcr" value="66"/>
+                                       <setting name="PortPinMode" value="FTM0_CH2"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="2">
+                                       <setting name="Name" value="PortPin_2"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="3"/>
+                                       <setting name="PortPinPcr" value="67"/>
+                                       <setting name="PortPinMode" value="FTM0_CH3"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
                                  </array>
                               </struct>
                            </array>
@@ -501,6 +590,1011 @@
                            <setting name="SwPatchVersion" value="1"/>
                            <setting name="VendorApiInfix" value=""/>
                            <setting name="VendorId" value="43"/>
+                        </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="IntCtrl_Ip" uuid="838132a9-c75f-40b3-8c6e-0e22c6df3200" type="IntCtrl_Ip" type_id="IntCtrl_Ip" mode="ip" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="IntCtrl_Ip">
+                        <setting name="Name" value="IntCtrl_Ip"/>
+                        <struct name="ConfigTimeSupport">
+                           <setting name="POST_BUILD_VARIANT_USED" value="false"/>
+                           <setting name="IMPLEMENTATION_CONFIG_VARIANT" value="VARIANT-PRE-COMPILE"/>
+                        </struct>
+                        <struct name="IntCtrlConfigGeneral">
+                           <setting name="Name" value="IntCtrlConfigGeneral"/>
+                           <setting name="IntCtrlDevErrorDetect" value="true"/>
+                           <setting name="PlatformEnableUserModeSupport" value="false"/>
+                        </struct>
+                        <array name="IntCtrlConfig">
+                           <struct name="0">
+                              <setting name="Name" value="IntCtrlConfig_0"/>
+                              <array name="PlatformIsrConfig">
+                                 <struct name="0">
+                                    <setting name="Name" value="PlatformIsrConfig_0"/>
+                                    <setting name="IsrName" value="DMA0_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="1">
+                                    <setting name="Name" value="PlatformIsrConfig_1"/>
+                                    <setting name="IsrName" value="DMA1_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="2">
+                                    <setting name="Name" value="PlatformIsrConfig_2"/>
+                                    <setting name="IsrName" value="DMA2_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="3">
+                                    <setting name="Name" value="PlatformIsrConfig_3"/>
+                                    <setting name="IsrName" value="DMA3_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="4">
+                                    <setting name="Name" value="PlatformIsrConfig_4"/>
+                                    <setting name="IsrName" value="DMA4_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="5">
+                                    <setting name="Name" value="PlatformIsrConfig_5"/>
+                                    <setting name="IsrName" value="DMA5_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="6">
+                                    <setting name="Name" value="PlatformIsrConfig_6"/>
+                                    <setting name="IsrName" value="DMA6_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="7">
+                                    <setting name="Name" value="PlatformIsrConfig_7"/>
+                                    <setting name="IsrName" value="DMA7_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="8">
+                                    <setting name="Name" value="PlatformIsrConfig_8"/>
+                                    <setting name="IsrName" value="DMA8_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="9">
+                                    <setting name="Name" value="PlatformIsrConfig_9"/>
+                                    <setting name="IsrName" value="DMA9_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="10">
+                                    <setting name="Name" value="PlatformIsrConfig_10"/>
+                                    <setting name="IsrName" value="DMA10_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="11">
+                                    <setting name="Name" value="PlatformIsrConfig_11"/>
+                                    <setting name="IsrName" value="DMA11_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="12">
+                                    <setting name="Name" value="PlatformIsrConfig_12"/>
+                                    <setting name="IsrName" value="DMA12_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="13">
+                                    <setting name="Name" value="PlatformIsrConfig_13"/>
+                                    <setting name="IsrName" value="DMA13_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="14">
+                                    <setting name="Name" value="PlatformIsrConfig_14"/>
+                                    <setting name="IsrName" value="DMA14_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="15">
+                                    <setting name="Name" value="PlatformIsrConfig_15"/>
+                                    <setting name="IsrName" value="DMA15_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="16">
+                                    <setting name="Name" value="PlatformIsrConfig_16"/>
+                                    <setting name="IsrName" value="DMA_Error_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="17">
+                                    <setting name="Name" value="PlatformIsrConfig_17"/>
+                                    <setting name="IsrName" value="MCM_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="18">
+                                    <setting name="Name" value="PlatformIsrConfig_18"/>
+                                    <setting name="IsrName" value="FTFC_CMD_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="19">
+                                    <setting name="Name" value="PlatformIsrConfig_19"/>
+                                    <setting name="IsrName" value="FTFC_Read_Collision_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="20">
+                                    <setting name="Name" value="PlatformIsrConfig_20"/>
+                                    <setting name="IsrName" value="LVD_LVW_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="21">
+                                    <setting name="Name" value="PlatformIsrConfig_21"/>
+                                    <setting name="IsrName" value="FTFC_Fault_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="22">
+                                    <setting name="Name" value="PlatformIsrConfig_22"/>
+                                    <setting name="IsrName" value="WDOG_EWM_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="23">
+                                    <setting name="Name" value="PlatformIsrConfig_23"/>
+                                    <setting name="IsrName" value="RCM_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="24">
+                                    <setting name="Name" value="PlatformIsrConfig_24"/>
+                                    <setting name="IsrName" value="LPI2C0_Master_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="25">
+                                    <setting name="Name" value="PlatformIsrConfig_25"/>
+                                    <setting name="IsrName" value="LPI2C0_Slave_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="26">
+                                    <setting name="Name" value="PlatformIsrConfig_26"/>
+                                    <setting name="IsrName" value="LPSPI0_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="27">
+                                    <setting name="Name" value="PlatformIsrConfig_27"/>
+                                    <setting name="IsrName" value="LPSPI1_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="28">
+                                    <setting name="Name" value="PlatformIsrConfig_28"/>
+                                    <setting name="IsrName" value="LPSPI2_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="29">
+                                    <setting name="Name" value="PlatformIsrConfig_29"/>
+                                    <setting name="IsrName" value="LPUART0_RxTx_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="30">
+                                    <setting name="Name" value="PlatformIsrConfig_30"/>
+                                    <setting name="IsrName" value="LPUART1_RxTx_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="31">
+                                    <setting name="Name" value="PlatformIsrConfig_31"/>
+                                    <setting name="IsrName" value="LPUART2_RxTx_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="32">
+                                    <setting name="Name" value="PlatformIsrConfig_32"/>
+                                    <setting name="IsrName" value="ADC0_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="33">
+                                    <setting name="Name" value="PlatformIsrConfig_33"/>
+                                    <setting name="IsrName" value="ADC1_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="34">
+                                    <setting name="Name" value="PlatformIsrConfig_34"/>
+                                    <setting name="IsrName" value="CMP0_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="35">
+                                    <setting name="Name" value="PlatformIsrConfig_35"/>
+                                    <setting name="IsrName" value="ERM_single_fault_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="36">
+                                    <setting name="Name" value="PlatformIsrConfig_36"/>
+                                    <setting name="IsrName" value="ERM_double_fault_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="37">
+                                    <setting name="Name" value="PlatformIsrConfig_37"/>
+                                    <setting name="IsrName" value="RTC_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="38">
+                                    <setting name="Name" value="PlatformIsrConfig_38"/>
+                                    <setting name="IsrName" value="RTC_Seconds_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="39">
+                                    <setting name="Name" value="PlatformIsrConfig_39"/>
+                                    <setting name="IsrName" value="LPIT0_Ch0_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="40">
+                                    <setting name="Name" value="PlatformIsrConfig_40"/>
+                                    <setting name="IsrName" value="LPIT0_Ch1_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="41">
+                                    <setting name="Name" value="PlatformIsrConfig_41"/>
+                                    <setting name="IsrName" value="LPIT0_Ch2_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="42">
+                                    <setting name="Name" value="PlatformIsrConfig_42"/>
+                                    <setting name="IsrName" value="LPIT0_Ch3_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="43">
+                                    <setting name="Name" value="PlatformIsrConfig_43"/>
+                                    <setting name="IsrName" value="PDB0_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="44">
+                                    <setting name="Name" value="PlatformIsrConfig_44"/>
+                                    <setting name="IsrName" value="SCG_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="45">
+                                    <setting name="Name" value="PlatformIsrConfig_45"/>
+                                    <setting name="IsrName" value="LPTMR0_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="46">
+                                    <setting name="Name" value="PlatformIsrConfig_46"/>
+                                    <setting name="IsrName" value="PORTA_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="47">
+                                    <setting name="Name" value="PlatformIsrConfig_47"/>
+                                    <setting name="IsrName" value="PORTB_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="48">
+                                    <setting name="Name" value="PlatformIsrConfig_48"/>
+                                    <setting name="IsrName" value="PORTC_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="49">
+                                    <setting name="Name" value="PlatformIsrConfig_49"/>
+                                    <setting name="IsrName" value="PORTD_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="50">
+                                    <setting name="Name" value="PlatformIsrConfig_50"/>
+                                    <setting name="IsrName" value="PORTE_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="51">
+                                    <setting name="Name" value="PlatformIsrConfig_51"/>
+                                    <setting name="IsrName" value="SWI_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="52">
+                                    <setting name="Name" value="PlatformIsrConfig_52"/>
+                                    <setting name="IsrName" value="PDB1_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="53">
+                                    <setting name="Name" value="PlatformIsrConfig_53"/>
+                                    <setting name="IsrName" value="FLEXIO_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="54">
+                                    <setting name="Name" value="PlatformIsrConfig_54"/>
+                                    <setting name="IsrName" value="CAN0_ORed_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="55">
+                                    <setting name="Name" value="PlatformIsrConfig_55"/>
+                                    <setting name="IsrName" value="CAN0_Error_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="56">
+                                    <setting name="Name" value="PlatformIsrConfig_56"/>
+                                    <setting name="IsrName" value="CAN0_Wake_Up_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="57">
+                                    <setting name="Name" value="PlatformIsrConfig_57"/>
+                                    <setting name="IsrName" value="CAN0_ORed_0_15_MB_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="58">
+                                    <setting name="Name" value="PlatformIsrConfig_58"/>
+                                    <setting name="IsrName" value="CAN0_ORed_16_31_MB_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="59">
+                                    <setting name="Name" value="PlatformIsrConfig_59"/>
+                                    <setting name="IsrName" value="CAN1_ORed_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="60">
+                                    <setting name="Name" value="PlatformIsrConfig_60"/>
+                                    <setting name="IsrName" value="CAN1_Error_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="61">
+                                    <setting name="Name" value="PlatformIsrConfig_61"/>
+                                    <setting name="IsrName" value="CAN1_ORed_0_15_MB_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="62">
+                                    <setting name="Name" value="PlatformIsrConfig_62"/>
+                                    <setting name="IsrName" value="CAN2_ORed_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="63">
+                                    <setting name="Name" value="PlatformIsrConfig_63"/>
+                                    <setting name="IsrName" value="CAN2_Error_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="64">
+                                    <setting name="Name" value="PlatformIsrConfig_64"/>
+                                    <setting name="IsrName" value="CAN2_ORed_0_15_MB_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="65">
+                                    <setting name="Name" value="PlatformIsrConfig_65"/>
+                                    <setting name="IsrName" value="FTM0_Ch0_Ch1_IRQn"/>
+                                    <setting name="IsrEnabled" value="true"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="66">
+                                    <setting name="Name" value="PlatformIsrConfig_66"/>
+                                    <setting name="IsrName" value="FTM0_Ch2_Ch3_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="67">
+                                    <setting name="Name" value="PlatformIsrConfig_67"/>
+                                    <setting name="IsrName" value="FTM0_Ch4_Ch5_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="68">
+                                    <setting name="Name" value="PlatformIsrConfig_68"/>
+                                    <setting name="IsrName" value="FTM0_Ch6_Ch7_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="69">
+                                    <setting name="Name" value="PlatformIsrConfig_69"/>
+                                    <setting name="IsrName" value="FTM0_Fault_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="70">
+                                    <setting name="Name" value="PlatformIsrConfig_70"/>
+                                    <setting name="IsrName" value="FTM0_Ovf_Reload_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="71">
+                                    <setting name="Name" value="PlatformIsrConfig_71"/>
+                                    <setting name="IsrName" value="FTM1_Ch0_Ch1_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="72">
+                                    <setting name="Name" value="PlatformIsrConfig_72"/>
+                                    <setting name="IsrName" value="FTM1_Ch2_Ch3_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="73">
+                                    <setting name="Name" value="PlatformIsrConfig_73"/>
+                                    <setting name="IsrName" value="FTM1_Ch4_Ch5_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="74">
+                                    <setting name="Name" value="PlatformIsrConfig_74"/>
+                                    <setting name="IsrName" value="FTM1_Ch6_Ch7_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="75">
+                                    <setting name="Name" value="PlatformIsrConfig_75"/>
+                                    <setting name="IsrName" value="FTM1_Fault_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="76">
+                                    <setting name="Name" value="PlatformIsrConfig_76"/>
+                                    <setting name="IsrName" value="FTM1_Ovf_Reload_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="77">
+                                    <setting name="Name" value="PlatformIsrConfig_77"/>
+                                    <setting name="IsrName" value="FTM2_Ch0_Ch1_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="78">
+                                    <setting name="Name" value="PlatformIsrConfig_78"/>
+                                    <setting name="IsrName" value="FTM2_Ch2_Ch3_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="79">
+                                    <setting name="Name" value="PlatformIsrConfig_79"/>
+                                    <setting name="IsrName" value="FTM2_Ch4_Ch5_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="80">
+                                    <setting name="Name" value="PlatformIsrConfig_80"/>
+                                    <setting name="IsrName" value="FTM2_Ch6_Ch7_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="81">
+                                    <setting name="Name" value="PlatformIsrConfig_81"/>
+                                    <setting name="IsrName" value="FTM2_Fault_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="82">
+                                    <setting name="Name" value="PlatformIsrConfig_82"/>
+                                    <setting name="IsrName" value="FTM2_Ovf_Reload_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="83">
+                                    <setting name="Name" value="PlatformIsrConfig_83"/>
+                                    <setting name="IsrName" value="FTM3_Ch0_Ch1_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="84">
+                                    <setting name="Name" value="PlatformIsrConfig_84"/>
+                                    <setting name="IsrName" value="FTM3_Ch2_Ch3_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="85">
+                                    <setting name="Name" value="PlatformIsrConfig_85"/>
+                                    <setting name="IsrName" value="FTM3_Ch4_Ch5_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="86">
+                                    <setting name="Name" value="PlatformIsrConfig_86"/>
+                                    <setting name="IsrName" value="FTM3_Ch6_Ch7_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="87">
+                                    <setting name="Name" value="PlatformIsrConfig_87"/>
+                                    <setting name="IsrName" value="FTM3_Fault_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                                 <struct name="88">
+                                    <setting name="Name" value="PlatformIsrConfig_88"/>
+                                    <setting name="IsrName" value="FTM3_Ovf_Reload_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                 </struct>
+                              </array>
+                           </struct>
+                        </array>
+                        <struct name="MscmConfig">
+                           <setting name="Name" value="intRouteConfig"/>
+                           <array name="PlatformIsrConfig">
+                              <struct name="0">
+                                 <setting name="Name" value="PlatformIsrConfig_0"/>
+                                 <setting name="IsrName" value="DMA0_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="1">
+                                 <setting name="Name" value="PlatformIsrConfig_1"/>
+                                 <setting name="IsrName" value="DMA1_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="2">
+                                 <setting name="Name" value="PlatformIsrConfig_2"/>
+                                 <setting name="IsrName" value="DMA2_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="3">
+                                 <setting name="Name" value="PlatformIsrConfig_3"/>
+                                 <setting name="IsrName" value="DMA3_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="4">
+                                 <setting name="Name" value="PlatformIsrConfig_4"/>
+                                 <setting name="IsrName" value="DMA4_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="5">
+                                 <setting name="Name" value="PlatformIsrConfig_5"/>
+                                 <setting name="IsrName" value="DMA5_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="6">
+                                 <setting name="Name" value="PlatformIsrConfig_6"/>
+                                 <setting name="IsrName" value="DMA6_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="7">
+                                 <setting name="Name" value="PlatformIsrConfig_7"/>
+                                 <setting name="IsrName" value="DMA7_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="8">
+                                 <setting name="Name" value="PlatformIsrConfig_8"/>
+                                 <setting name="IsrName" value="DMA8_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="9">
+                                 <setting name="Name" value="PlatformIsrConfig_9"/>
+                                 <setting name="IsrName" value="DMA9_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="10">
+                                 <setting name="Name" value="PlatformIsrConfig_10"/>
+                                 <setting name="IsrName" value="DMA10_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="11">
+                                 <setting name="Name" value="PlatformIsrConfig_11"/>
+                                 <setting name="IsrName" value="DMA11_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="12">
+                                 <setting name="Name" value="PlatformIsrConfig_12"/>
+                                 <setting name="IsrName" value="DMA12_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="13">
+                                 <setting name="Name" value="PlatformIsrConfig_13"/>
+                                 <setting name="IsrName" value="DMA13_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="14">
+                                 <setting name="Name" value="PlatformIsrConfig_14"/>
+                                 <setting name="IsrName" value="DMA14_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="15">
+                                 <setting name="Name" value="PlatformIsrConfig_15"/>
+                                 <setting name="IsrName" value="DMA15_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="16">
+                                 <setting name="Name" value="PlatformIsrConfig_16"/>
+                                 <setting name="IsrName" value="DMA_Error_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="17">
+                                 <setting name="Name" value="PlatformIsrConfig_17"/>
+                                 <setting name="IsrName" value="MCM_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="18">
+                                 <setting name="Name" value="PlatformIsrConfig_18"/>
+                                 <setting name="IsrName" value="FTFC_CMD_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="19">
+                                 <setting name="Name" value="PlatformIsrConfig_19"/>
+                                 <setting name="IsrName" value="FTFC_Read_Collision_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="20">
+                                 <setting name="Name" value="PlatformIsrConfig_20"/>
+                                 <setting name="IsrName" value="LVD_LVW_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="21">
+                                 <setting name="Name" value="PlatformIsrConfig_21"/>
+                                 <setting name="IsrName" value="FTFC_Fault_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="22">
+                                 <setting name="Name" value="PlatformIsrConfig_22"/>
+                                 <setting name="IsrName" value="WDOG_EWM_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="23">
+                                 <setting name="Name" value="PlatformIsrConfig_23"/>
+                                 <setting name="IsrName" value="RCM_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="24">
+                                 <setting name="Name" value="PlatformIsrConfig_24"/>
+                                 <setting name="IsrName" value="LPI2C0_Master_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="25">
+                                 <setting name="Name" value="PlatformIsrConfig_25"/>
+                                 <setting name="IsrName" value="LPI2C0_Slave_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="26">
+                                 <setting name="Name" value="PlatformIsrConfig_26"/>
+                                 <setting name="IsrName" value="LPSPI0_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="27">
+                                 <setting name="Name" value="PlatformIsrConfig_27"/>
+                                 <setting name="IsrName" value="LPSPI1_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="28">
+                                 <setting name="Name" value="PlatformIsrConfig_28"/>
+                                 <setting name="IsrName" value="LPSPI2_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="29">
+                                 <setting name="Name" value="PlatformIsrConfig_29"/>
+                                 <setting name="IsrName" value="LPUART0_RxTx_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="30">
+                                 <setting name="Name" value="PlatformIsrConfig_30"/>
+                                 <setting name="IsrName" value="LPUART1_RxTx_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="31">
+                                 <setting name="Name" value="PlatformIsrConfig_31"/>
+                                 <setting name="IsrName" value="LPUART2_RxTx_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="32">
+                                 <setting name="Name" value="PlatformIsrConfig_32"/>
+                                 <setting name="IsrName" value="ADC0_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="33">
+                                 <setting name="Name" value="PlatformIsrConfig_33"/>
+                                 <setting name="IsrName" value="ADC1_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="34">
+                                 <setting name="Name" value="PlatformIsrConfig_34"/>
+                                 <setting name="IsrName" value="CMP0_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="35">
+                                 <setting name="Name" value="PlatformIsrConfig_35"/>
+                                 <setting name="IsrName" value="ERM_single_fault_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="36">
+                                 <setting name="Name" value="PlatformIsrConfig_36"/>
+                                 <setting name="IsrName" value="ERM_double_fault_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="37">
+                                 <setting name="Name" value="PlatformIsrConfig_37"/>
+                                 <setting name="IsrName" value="RTC_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="38">
+                                 <setting name="Name" value="PlatformIsrConfig_38"/>
+                                 <setting name="IsrName" value="RTC_Seconds_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="39">
+                                 <setting name="Name" value="PlatformIsrConfig_39"/>
+                                 <setting name="IsrName" value="LPIT0_Ch0_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="40">
+                                 <setting name="Name" value="PlatformIsrConfig_40"/>
+                                 <setting name="IsrName" value="LPIT0_Ch1_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="41">
+                                 <setting name="Name" value="PlatformIsrConfig_41"/>
+                                 <setting name="IsrName" value="LPIT0_Ch2_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="42">
+                                 <setting name="Name" value="PlatformIsrConfig_42"/>
+                                 <setting name="IsrName" value="LPIT0_Ch3_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="43">
+                                 <setting name="Name" value="PlatformIsrConfig_43"/>
+                                 <setting name="IsrName" value="PDB0_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="44">
+                                 <setting name="Name" value="PlatformIsrConfig_44"/>
+                                 <setting name="IsrName" value="SCG_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="45">
+                                 <setting name="Name" value="PlatformIsrConfig_45"/>
+                                 <setting name="IsrName" value="LPTMR0_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="46">
+                                 <setting name="Name" value="PlatformIsrConfig_46"/>
+                                 <setting name="IsrName" value="PORTA_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="47">
+                                 <setting name="Name" value="PlatformIsrConfig_47"/>
+                                 <setting name="IsrName" value="PORTB_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="48">
+                                 <setting name="Name" value="PlatformIsrConfig_48"/>
+                                 <setting name="IsrName" value="PORTC_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="49">
+                                 <setting name="Name" value="PlatformIsrConfig_49"/>
+                                 <setting name="IsrName" value="PORTD_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="50">
+                                 <setting name="Name" value="PlatformIsrConfig_50"/>
+                                 <setting name="IsrName" value="PORTE_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="51">
+                                 <setting name="Name" value="PlatformIsrConfig_51"/>
+                                 <setting name="IsrName" value="SWI_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="52">
+                                 <setting name="Name" value="PlatformIsrConfig_52"/>
+                                 <setting name="IsrName" value="PDB1_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="53">
+                                 <setting name="Name" value="PlatformIsrConfig_53"/>
+                                 <setting name="IsrName" value="FLEXIO_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="54">
+                                 <setting name="Name" value="PlatformIsrConfig_54"/>
+                                 <setting name="IsrName" value="CAN0_ORed_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="55">
+                                 <setting name="Name" value="PlatformIsrConfig_55"/>
+                                 <setting name="IsrName" value="CAN0_Error_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="56">
+                                 <setting name="Name" value="PlatformIsrConfig_56"/>
+                                 <setting name="IsrName" value="CAN0_Wake_Up_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="57">
+                                 <setting name="Name" value="PlatformIsrConfig_57"/>
+                                 <setting name="IsrName" value="CAN0_ORed_0_15_MB_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="58">
+                                 <setting name="Name" value="PlatformIsrConfig_58"/>
+                                 <setting name="IsrName" value="CAN0_ORed_16_31_MB_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="59">
+                                 <setting name="Name" value="PlatformIsrConfig_59"/>
+                                 <setting name="IsrName" value="CAN1_ORed_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="60">
+                                 <setting name="Name" value="PlatformIsrConfig_60"/>
+                                 <setting name="IsrName" value="CAN1_Error_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="61">
+                                 <setting name="Name" value="PlatformIsrConfig_61"/>
+                                 <setting name="IsrName" value="CAN1_ORed_0_15_MB_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="62">
+                                 <setting name="Name" value="PlatformIsrConfig_62"/>
+                                 <setting name="IsrName" value="CAN2_ORed_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="63">
+                                 <setting name="Name" value="PlatformIsrConfig_63"/>
+                                 <setting name="IsrName" value="CAN2_Error_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="64">
+                                 <setting name="Name" value="PlatformIsrConfig_64"/>
+                                 <setting name="IsrName" value="CAN2_ORed_0_15_MB_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="65">
+                                 <setting name="Name" value="PlatformIsrConfig_65"/>
+                                 <setting name="IsrName" value="FTM0_Ch0_Ch1_IRQn"/>
+                                 <setting name="IsrHandler" value="FTM_0_CH_0_CH_1_ISR"/>
+                              </struct>
+                              <struct name="66">
+                                 <setting name="Name" value="PlatformIsrConfig_66"/>
+                                 <setting name="IsrName" value="FTM0_Ch2_Ch3_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="67">
+                                 <setting name="Name" value="PlatformIsrConfig_67"/>
+                                 <setting name="IsrName" value="FTM0_Ch4_Ch5_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="68">
+                                 <setting name="Name" value="PlatformIsrConfig_68"/>
+                                 <setting name="IsrName" value="FTM0_Ch6_Ch7_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="69">
+                                 <setting name="Name" value="PlatformIsrConfig_69"/>
+                                 <setting name="IsrName" value="FTM0_Fault_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="70">
+                                 <setting name="Name" value="PlatformIsrConfig_70"/>
+                                 <setting name="IsrName" value="FTM0_Ovf_Reload_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="71">
+                                 <setting name="Name" value="PlatformIsrConfig_71"/>
+                                 <setting name="IsrName" value="FTM1_Ch0_Ch1_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="72">
+                                 <setting name="Name" value="PlatformIsrConfig_72"/>
+                                 <setting name="IsrName" value="FTM1_Ch2_Ch3_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="73">
+                                 <setting name="Name" value="PlatformIsrConfig_73"/>
+                                 <setting name="IsrName" value="FTM1_Ch4_Ch5_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="74">
+                                 <setting name="Name" value="PlatformIsrConfig_74"/>
+                                 <setting name="IsrName" value="FTM1_Ch6_Ch7_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="75">
+                                 <setting name="Name" value="PlatformIsrConfig_75"/>
+                                 <setting name="IsrName" value="FTM1_Fault_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="76">
+                                 <setting name="Name" value="PlatformIsrConfig_76"/>
+                                 <setting name="IsrName" value="FTM1_Ovf_Reload_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="77">
+                                 <setting name="Name" value="PlatformIsrConfig_77"/>
+                                 <setting name="IsrName" value="FTM2_Ch0_Ch1_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="78">
+                                 <setting name="Name" value="PlatformIsrConfig_78"/>
+                                 <setting name="IsrName" value="FTM2_Ch2_Ch3_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="79">
+                                 <setting name="Name" value="PlatformIsrConfig_79"/>
+                                 <setting name="IsrName" value="FTM2_Ch4_Ch5_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="80">
+                                 <setting name="Name" value="PlatformIsrConfig_80"/>
+                                 <setting name="IsrName" value="FTM2_Ch6_Ch7_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="81">
+                                 <setting name="Name" value="PlatformIsrConfig_81"/>
+                                 <setting name="IsrName" value="FTM2_Fault_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="82">
+                                 <setting name="Name" value="PlatformIsrConfig_82"/>
+                                 <setting name="IsrName" value="FTM2_Ovf_Reload_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="83">
+                                 <setting name="Name" value="PlatformIsrConfig_83"/>
+                                 <setting name="IsrName" value="FTM3_Ch0_Ch1_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="84">
+                                 <setting name="Name" value="PlatformIsrConfig_84"/>
+                                 <setting name="IsrName" value="FTM3_Ch2_Ch3_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="85">
+                                 <setting name="Name" value="PlatformIsrConfig_85"/>
+                                 <setting name="IsrName" value="FTM3_Ch4_Ch5_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="86">
+                                 <setting name="Name" value="PlatformIsrConfig_86"/>
+                                 <setting name="IsrName" value="FTM3_Ch6_Ch7_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="87">
+                                 <setting name="Name" value="PlatformIsrConfig_87"/>
+                                 <setting name="IsrName" value="FTM3_Fault_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                              <struct name="88">
+                                 <setting name="Name" value="PlatformIsrConfig_88"/>
+                                 <setting name="IsrName" value="FTM3_Ovf_Reload_IRQn"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
+                              </struct>
+                           </array>
                         </struct>
                      </config_set>
                   </instance>

@@ -1,0 +1,101 @@
+main ()
+{
+  struct Adc_CalibrationStatusType CalibStatus;
+  Clock_Ip_StatusType clockStatus;
+  int D.7281;
+
+  <bb 2> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Platform_Init (0B);
+  Platform_InstallIrqHandler (39, Adc_0_Isr, 0B);
+  Platform_SetIrq (39, 1);
+  Mcl_Init (0B);
+  Port_Init (0B);
+  Adc_Init (&Adc_Config_BOARD_INITPERIPHERALS);
+  Trgmux_Ip_Init (&Trgmux_Ip_xTrgmuxInitPB_BOARD_INITPERIPHERALS);
+  Adc_Calibrate (0, &CalibStatus);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  Adc_Calibrate (0, &CalibStatus);
+
+  <bb 9> :
+  _2 = CalibStatus.Adc_UnitSelfTestStatus;
+  if (_2 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  Adc_SetupResultBuffer (4, &ResultBuffer);
+  Adc_EnableGroupNotification (4);
+
+  <bb 11> :
+  Adc_EnableGroupNotification (4);
+  Adc_EnableHardwareTrigger (4);
+  TestDelay (200000);
+  Adc_DisableHardwareTrigger (4);
+  goto <bb 11>; [INV]
+
+}
+
+
+IoHwAb_AdcNotification_0 ()
+{
+  Std_ReturnType StdReturn;
+
+  <bb 2> :
+  StdReturn = Adc_ReadGroup (4, &Result);
+  return;
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer = 0;
+  return;
+
+}
+
+

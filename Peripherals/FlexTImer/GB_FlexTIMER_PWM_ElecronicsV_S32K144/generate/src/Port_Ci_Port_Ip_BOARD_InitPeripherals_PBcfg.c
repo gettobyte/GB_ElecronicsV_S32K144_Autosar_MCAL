@@ -121,6 +121,30 @@ const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr_BOARD_InitPeriph
         .passiveFilter         = (boolean)FALSE,
         .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
         .digitalFilter         = (boolean)FALSE
+    },
+    {
+        .portBase              = IP_PORTC,
+        .gpioBase              = NULL_PTR,
+        .pinPortIdx            = 2,
+        .mux                   = PORT_MUX_ALT2,
+        .direction             = PORT_CI_PORT_PIN_OUT,
+        .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength         = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter         = (boolean)FALSE,
+        .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter         = (boolean)FALSE
+    },
+    {
+        .portBase              = IP_PORTC,
+        .gpioBase              = NULL_PTR,
+        .pinPortIdx            = 3,
+        .mux                   = PORT_MUX_ALT2,
+        .direction             = PORT_CI_PORT_PIN_OUT,
+        .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength         = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter         = (boolean)FALSE,
+        .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter         = (boolean)FALSE
     }
 };
 #define PORT_STOP_SEC_CONFIG_DATA_UNSPECIFIED

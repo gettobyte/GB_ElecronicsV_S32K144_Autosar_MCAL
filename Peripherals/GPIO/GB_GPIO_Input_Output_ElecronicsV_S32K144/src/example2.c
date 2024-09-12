@@ -94,6 +94,9 @@ int main(void)
 
     for(;;)
     {
+
+
+
         Switch1_Level = Dio_ReadChannel(DioConf_DioChannel_Switch1);
         if(Switch1_Level == 1)
         {

@@ -85,6 +85,8 @@ extern "C"{
 ==================================================================================================*/
 /* Ftm instance index for configuration PwmFtmCh_0 */
 #define FTM_PWM_IP_BOARD_InitPeripherals_I0_CH0_CFG      (0U)
+/* Ftm instance index for configuration PwmFtmCh_1 */
+#define FTM_PWM_IP_BOARD_InitPeripherals_I0_CH2_CFG      (0U)
 
 /*==================================================================================================
 *                                      DEFINES AND MACROS
@@ -121,6 +123,9 @@ extern const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg0;
 /* Channel configurations for Ftm instance 0 */
 /* Ftm channel 0 configuration */
 extern const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0;
+
+/* Ftm channel 2 configuration */
+extern const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch2;
 
 
 #define PWM_STOP_SEC_CONFIG_DATA_UNSPECIFIED

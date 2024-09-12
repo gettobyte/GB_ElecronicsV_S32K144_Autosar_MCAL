@@ -204,6 +204,8 @@ extern "C"{
 /** Number of instances of the SIM module. */
 #define FTM_PWM_IP_SIM_INSTANCE_COUNT                  (SIM_INSTANCE_COUNT)
 
+#define FTM_PWM_IP_0_OVF_ISR_USED
+#define FTM_PWM_IP_0_CH_0_CH_1_ISR_USED
 
 #define FTM_PWM_IP_FAULT_NUMBER_CHANNELS                  (4U)
 /*==================================================================================================

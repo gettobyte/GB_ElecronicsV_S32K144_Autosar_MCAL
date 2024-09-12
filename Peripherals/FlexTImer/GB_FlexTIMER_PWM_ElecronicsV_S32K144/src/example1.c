@@ -9,6 +9,7 @@
 #include "Mcal.h"
 
 #include "Clock_Ip.h"
+#include "IntCtrl_Ip.h"
 #include "Ftm_Pwm_Ip.h"
 #include "Ftm_Pwm_Ip_Irq.h"
 #include "Clock_Ip.h"
@@ -16,7 +17,7 @@
 
 volatile int exit_code = 0;
 /* User includes */
-
+extern void FTM_0_CH_0_CH_1_ISR();
 /*!
   \brief The main function for the project.
   \details The startup initialization sequence is the following:
@@ -54,6 +55,11 @@ int main(void)
 
 	/* Initialize all pins using the Port driver */
 	Port_Init(NULL_PTR);
+
+    /* Install and enable interrupt handlers */
+    IntCtrl_Ip_InstallHandler(FTM0_Ch0_Ch1_IRQn, FTM_0_CH_0_CH_1_ISR, NULL_PTR);
+    IntCtrl_Ip_EnableIrq(FTM0_Ch0_Ch1_IRQn);
+
 
 	/* Initialize PWM driver */
 	Ftm_Pwm_Ip_Init(FTM_INSTANCE_0, &Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0);
