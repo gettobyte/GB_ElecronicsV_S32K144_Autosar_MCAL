@@ -156,7 +156,7 @@ const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0 =
         /* CbParam */               NULL_PTR
                                 },
 #endif
-    /* DebugMode */             FTM_PWM_IP_BDM_MODE_11,
+    /* DebugMode */             FTM_PWM_IP_BDM_MODE_00,
     /* WriteProtection */       (boolean)FALSE,
     /* InitTriggerEn */         (boolean)FALSE,
     /* InitTrigMode */          FTM_PWM_IP_INIT_TRIGG_CNT_UPDATE,
@@ -216,7 +216,7 @@ const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0 =
     /* DutyCycleDither */       0U,
 #endif
     /* InitOut */               FTM_PWM_IP_OUTPUT_STATE_LOW,
-    /* Polarity */              FTM_PWM_IP_POLARITY_HIGH,
+    /* Polarity */              FTM_PWM_IP_POLARITY_LOW,
     /* PairCfg */               NULL_PTR
 };
 
