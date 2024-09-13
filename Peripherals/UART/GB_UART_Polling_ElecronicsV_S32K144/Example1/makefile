@@ -33,7 +33,7 @@ GB_UART_Polling_ElecronicsV_S32K144.siz \
 all: GB_UART_Polling_ElecronicsV_S32K144.elf secondary-outputs
 
 # Tool invocations
-GB_UART_Polling_ElecronicsV_S32K144.elf: $(OBJS) C:/Users/gettobyte_kunal/Documents/elecronicsv2_autosar_MCAL_drivers/GB_UART_Polling_ElecronicsV_S32K144/Project_Settings/Linker_Files/linker_flash_s32k144.ld $(USER_OBJS)
+GB_UART_Polling_ElecronicsV_S32K144.elf: $(OBJS) C:/Users/Rohan/OneDrive/Documents/GB_ElecronicsV_S32K144_Autosar_MCAL/Peripherals/UART/GB_UART_Polling_ElecronicsV_S32K144/Project_Settings/Linker_Files/linker_flash_s32k144.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Standard S32DS C Linker'
 	arm-none-eabi-gcc -o "GB_UART_Polling_ElecronicsV_S32K144.elf" "@GB_UART_Polling_ElecronicsV_S32K144.args"  $(USER_OBJS)
