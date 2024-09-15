@@ -1,0 +1,214 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: main
+
+
+Marking externally visible variables: x rx_Buffer exit_code
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Uart_AsyncReceive/44 (Uart_AsyncReceive) @071fdd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Uart_AsyncSend/43 (Uart_AsyncSend) @071fdc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Uart_Init/42 (Uart_Init) @071fdb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+LPUART_UART_IP_1_IRQHandler/41 (LPUART_UART_IP_1_IRQHandler) @071fda80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/31 (addr)
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Platform_InstallIrqHandler/40 (Platform_InstallIrqHandler) @071fd9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Platform_Init/39 (Platform_Init) @071fd8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Port_Init/38 (Port_Init) @071fd7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_SetMode/37 (Mcu_SetMode) @071fd700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_DistributePllClock/36 (Mcu_DistributePllClock) @071fd620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_GetPllStatus/35 (Mcu_GetPllStatus) @071fd540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_InitClock/34 (Mcu_InitClock) @071fd460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 
+  Calls: 
+Mcu_Config_BOARD_InitPeripherals/33 (Mcu_Config_BOARD_InitPeripherals) @071f9ab0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/31 (addr)main/31 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Mcu_Init/32 (Mcu_Init) @071fd380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/31 main/31 
+  Calls: 
+main/31 (main) @071f2ee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcu_Config_BOARD_InitPeripherals/33 (addr)Mcu_Config_BOARD_InitPeripherals/33 (addr)LPUART_UART_IP_1_IRQHandler/41 (addr)x/30 (write)rx_Buffer/29 (addr)x/30 (write)exit_code/28 (read)exit_code/28 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Uart_AsyncReceive/44 Uart_AsyncSend/43 Uart_Init/42 Platform_InstallIrqHandler/40 Platform_Init/39 Port_Init/38 Mcu_Init/32 Mcu_SetMode/37 Mcu_DistributePllClock/36 Mcu_GetPllStatus/35 Mcu_InitClock/34 Mcu_Init/32 
+x/30 (x) @071f93f0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: main/31 (write)main/31 (write)
+  Availability: available
+  Varpool flags:
+rx_Buffer/29 (rx_Buffer) @071f93a8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: main/31 (addr)
+  Availability: available
+  Varpool flags:
+exit_code/28 (exit_code) @071f92d0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: main/31 (read)main/31 (read)
+  Availability: available
+  Varpool flags: initialized
+main ()
+{
+  Std_ReturnType Mcu_Status;
+  int D.7645;
+
+  <bb 2> :
+  Mcu_Init (&Mcu_Config_BOARD_InitPeripherals);
+  Mcu_Status = Mcu_InitClock (0);
+
+  <bb 3> :
+  _1 = Mcu_GetPllStatus ();
+  if (_1 != 51)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  Mcu_DistributePllClock ();
+  Mcu_SetMode (0);
+  Mcu_Init (&Mcu_Config_BOARD_InitPeripherals);
+  Port_Init (0B);
+  Platform_Init (0B);
+  Platform_InstallIrqHandler (33, LPUART_UART_IP_1_IRQHandler, 0B);
+  Uart_Init (0B);
+  _2 = Uart_AsyncSend (0, "Hello, This message is sent via Uart!\r\n", 39);
+  x = _2;
+  _3 = Uart_AsyncReceive (0, &rx_Buffer, 5);
+  x = _3;
+
+  <bb 5> :
+  exit_code.0_4 = exit_code;
+  if (exit_code.0_4 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  goto <bb 5>; [INV]
+
+  <bb 8> :
+  D.7645 = exit_code;
+
+  <bb 9> :
+<L7>:
+  return D.7645;
+
+}
+
+

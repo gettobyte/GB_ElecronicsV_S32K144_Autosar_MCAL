@@ -1,0 +1,188 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: main
+
+
+Marking externally visible variables: exit_code
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Uart_AsyncSend/41 (Uart_AsyncSend) @0718e8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 
+  Calls: 
+Uart_Init/40 (Uart_Init) @0718e7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 
+  Calls: 
+LPUART_UART_IP_1_IRQHandler/39 (LPUART_UART_IP_1_IRQHandler) @0718e700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/29 (addr)
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Platform_InstallIrqHandler/38 (Platform_InstallIrqHandler) @0718e620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 
+  Calls: 
+Platform_Init/37 (Platform_Init) @0718e540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 
+  Calls: 
+Port_Init/36 (Port_Init) @0718e460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 
+  Calls: 
+Mcu_SetMode/35 (Mcu_SetMode) @0718e380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 
+  Calls: 
+Mcu_DistributePllClock/34 (Mcu_DistributePllClock) @0718e2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 
+  Calls: 
+Mcu_GetPllStatus/33 (Mcu_GetPllStatus) @0718e1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 
+  Calls: 
+Mcu_InitClock/32 (Mcu_InitClock) @0718e0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 
+  Calls: 
+Mcu_Config_BOARD_InitPeripherals/31 (Mcu_Config_BOARD_InitPeripherals) @071899d8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/29 (addr)main/29 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Mcu_Init/30 (Mcu_Init) @0718e000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/29 main/29 
+  Calls: 
+main/29 (main) @07182b60
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcu_Config_BOARD_InitPeripherals/31 (addr)Mcu_Config_BOARD_InitPeripherals/31 (addr)LPUART_UART_IP_1_IRQHandler/39 (addr)exit_code/28 (read)exit_code/28 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Uart_AsyncSend/41 Uart_Init/40 Platform_InstallIrqHandler/38 Platform_Init/37 Port_Init/36 Mcu_Init/30 Mcu_SetMode/35 Mcu_DistributePllClock/34 Mcu_GetPllStatus/33 Mcu_InitClock/32 Mcu_Init/30 
+exit_code/28 (exit_code) @071892d0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: main/29 (read)main/29 (read)
+  Availability: available
+  Varpool flags: initialized
+main ()
+{
+  Std_ReturnType Mcu_Status;
+  int D.7643;
+
+  <bb 2> :
+  Mcu_Init (&Mcu_Config_BOARD_InitPeripherals);
+  Mcu_Status = Mcu_InitClock (0);
+
+  <bb 3> :
+  _1 = Mcu_GetPllStatus ();
+  if (_1 != 51)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  Mcu_DistributePllClock ();
+  Mcu_SetMode (0);
+  Mcu_Init (&Mcu_Config_BOARD_InitPeripherals);
+  Port_Init (0B);
+  Platform_Init (0B);
+  Platform_InstallIrqHandler (33, LPUART_UART_IP_1_IRQHandler, 0B);
+  Uart_Init (0B);
+
+  <bb 5> :
+  Uart_AsyncSend (0, "Hello, This message is sent via Uart!\r\n", 39);
+  exit_code.0_2 = exit_code;
+  if (exit_code.0_2 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  goto <bb 5>; [INV]
+
+  <bb 8> :
+  D.7643 = exit_code;
+
+  <bb 9> :
+<L7>:
+  return D.7643;
+
+}
+
+
