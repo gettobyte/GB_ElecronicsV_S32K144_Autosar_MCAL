@@ -81,10 +81,10 @@ int main(void)
 	GB_ST7789_Init();
 
 	TestDelay(700000);
-	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+//	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
 	ST7789_Fill_Color(ST77XX_RED);
 	TestDelay(700000);
-	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+//	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
 	ST7789_Fill_Color(ST77XX_BLACK);
 
 	/**** Part 1: Start ADC software trigger conversions ****/

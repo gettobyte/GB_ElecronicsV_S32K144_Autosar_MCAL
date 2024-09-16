@@ -39,6 +39,8 @@
 									<listOptionValue builtIn="false" value="${ProjDirPath}/generate/include"/>
 									<listOptionValue builtIn="false" value="${ProjDirPath}/RTD/include"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/board&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/generate\System_Ip&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/generate\IntCtrl_Ip&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_2022_02_S32K144_M4F_1.0.1_PATH}/SW32K1_RTD_4_4_1_0_1_D2202/Base_TS_T40D2M10I1R0/header&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_2022_02_S32K144_M4F_1.0.1_PATH}/SW32K1_RTD_4_4_1_0_1_D2202/Base_TS_T40D2M10I1R0/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_2022_02_S32K144_M4F_1.0.1_PATH}/SW32K1_RTD_4_4_1_0_1_D2202/Platform_TS_T40D2M10I1R0/include&quot;"/>
@@ -138,6 +140,8 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/generate/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/RTD/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/board&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/generate\System_Ip&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/generate\IntCtrl_Ip&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_2022_02_S32K144_M4F_1.0.1_PATH}/SW32K1_RTD_4_4_1_0_1_D2202/Base_TS_T40D2M10I1R0/header&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_2022_02_S32K144_M4F_1.0.1_PATH}/SW32K1_RTD_4_4_1_0_1_D2202/Base_TS_T40D2M10I1R0/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_2022_02_S32K144_M4F_1.0.1_PATH}/SW32K1_RTD_4_4_1_0_1_D2202/Platform_TS_T40D2M10I1R0/include&quot;"/>
@@ -173,7 +177,9 @@
 						<entry excluding="Linker_Files|Debugger" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Project_Settings"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="RTD"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="board"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="generate"/>
+						<entry excluding="IntCtrl_Ip|System_Ip" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="generate"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="generate/IntCtrl_Ip"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="generate/System_Ip"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
@@ -208,7 +214,7 @@
 	<storageModule moduleId="org.eclipse.embsys" parent_project="true" register_architecture="" register_board="---  none ---" register_chip="" register_core="" register_vendor=""/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.core">
-		<sdkComponents>platform.driver.dio;platform.driver.rte_dio;platform.driver.det;platform.driver.port;platform.driver.rte_port;platform.driver.uart;platform.driver.rte_uart;platform.driver.osif;platform.driver.port_ip;platform.driver.mcu;platform.driver.rte_mcu;platform.driver.clock</sdkComponents>
+		<sdkComponents>platform.driver.dio;platform.driver.rte_dio;platform.driver.det;platform.driver.port;platform.driver.rte_port;platform.driver.uart;platform.driver.rte_uart;platform.driver.osif;platform.driver.port_ip;platform.driver.mcu;platform.driver.rte_mcu;platform.driver.clock;platform.driver.Platform</sdkComponents>
 	</storageModule>
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.internal.core.toolchainSettings">
 		<COND_TOOLCHAIN_LIBRARIES/>
@@ -218,6 +224,6 @@
 		<COND_TOOLCHAIN_CUSTOM_OPTION/>
 	</storageModule>
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.internal.core.toolchainScriptProfile">
-		<COND_TOOLCHAIN_COMPONENTS_OPTION>COPY=platform.driver.clock;platform.driver.osif;platform.driver.uart;platform.driver.mcu;platform.driver.port;platform.driver.port_ip</COND_TOOLCHAIN_COMPONENTS_OPTION>
+		<COND_TOOLCHAIN_COMPONENTS_OPTION>COPY=platform.driver.Platform;platform.driver.clock;platform.driver.osif;platform.driver.uart;platform.driver.mcu;platform.driver.port;platform.driver.port_ip</COND_TOOLCHAIN_COMPONENTS_OPTION>
 	</storageModule>
 </cproject>
