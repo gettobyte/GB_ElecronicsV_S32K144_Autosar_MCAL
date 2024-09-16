@@ -83,7 +83,7 @@ int main(void)
 
     	    ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
 
-    	    ST7789_WriteString(0, 80, "Looking for          ", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+    	    ST7789_WriteString(0, 0, "Looking for          ", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
 
     	    ST7789_WriteString(0, 106, "Industrial", Font_16x26,ST77XX_WHITE, ST77XX_BLACK);
 
