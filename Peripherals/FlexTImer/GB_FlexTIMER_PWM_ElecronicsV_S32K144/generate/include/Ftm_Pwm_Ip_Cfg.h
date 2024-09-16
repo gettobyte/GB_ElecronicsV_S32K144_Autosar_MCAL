@@ -206,6 +206,7 @@ extern "C"{
 
 #define FTM_PWM_IP_0_OVF_ISR_USED
 #define FTM_PWM_IP_0_CH_0_CH_1_ISR_USED
+#define FTM_PWM_IP_0_CH_2_CH_3_ISR_USED
 
 #define FTM_PWM_IP_FAULT_NUMBER_CHANNELS                  (4U)
 /*==================================================================================================

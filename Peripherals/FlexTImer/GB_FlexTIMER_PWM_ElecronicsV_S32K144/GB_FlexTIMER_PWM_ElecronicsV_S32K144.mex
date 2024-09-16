@@ -346,12 +346,12 @@
                                  <setting name="PwmFtmCounterMode" value="Edge_Aligned_mode"/>
                                  <setting name="PwmFtmPeriod" value="62499"/>
                                  <setting name="PwmFtmPeriodDither" value="0"/>
-                                 <setting name="PwmFtmDeadTime" value="100"/>
+                                 <setting name="PwmFtmDeadTime" value="0"/>
                                  <setting name="PwmFtmDeadTimePrescaler" value="Divide_by_1"/>
                               </struct>
                               <struct name="PwmFtmInstCfg">
                                  <setting name="Name" value="PwmFtmInstCfg"/>
-                                 <setting name="PwmFtmDebugMode" value="Debug_Mode_00"/>
+                                 <setting name="PwmFtmDebugMode" value="Debug_Mode_11"/>
                                  <setting name="PwmFtmWriteProtection" value="false"/>
                                  <setting name="PwmFtmInitTrigger" value="false"/>
                                  <setting name="PwmFtmInitTriggerMode" value="Trigger_on_Counter_Update"/>
@@ -399,13 +399,13 @@
                                     <setting name="PwmFtmChId" value="CH_0"/>
                                     <setting name="PwmFtmChPulseType" value="High_true_pulse"/>
                                     <setting name="PwmFtmChInitOutput" value="LOW"/>
-                                    <setting name="PwmFtmChPolarity" value="Channel_active_LOW"/>
+                                    <setting name="PwmFtmChPolarity" value="Channel_active_HIGH"/>
                                     <setting name="PwmFtmChDutyCycle" value="3000"/>
                                     <setting name="PwmFtmChDutyCycleDither" value="0"/>
                                     <setting name="PwmFtmChInterrupt" value="true"/>
                                     <struct name="PwmFtmChInterruptCallback">
                                        <setting name="Name" value="PwmFtmChInterruptCallback"/>
-                                       <setting name="PwmFtmChInterruptFunctionCallback" value="NULL_PTR"/>
+                                       <setting name="PwmFtmChInterruptFunctionCallback" value="PwmFtmChInterruptCallback"/>
                                        <setting name="PwmFtmChInterruptParameterCallback" value="NULL_PTR"/>
                                     </struct>
                                     <setting name="PwmFtmChPwmOutputEnable" value="true"/>
@@ -434,7 +434,7 @@
                                     <setting name="PwmFtmChPolarity" value="Channel_active_HIGH"/>
                                     <setting name="PwmFtmChDutyCycle" value="30000"/>
                                     <setting name="PwmFtmChDutyCycleDither" value="0"/>
-                                    <setting name="PwmFtmChInterrupt" value="false"/>
+                                    <setting name="PwmFtmChInterrupt" value="true"/>
                                     <struct name="PwmFtmChInterruptCallback">
                                        <setting name="Name" value="PwmFtmChInterruptCallback"/>
                                        <setting name="PwmFtmChInterruptFunctionCallback" value="NULL_PTR"/>
@@ -448,7 +448,7 @@
                                     <setting name="PwmFtmPairChEnable" value="true"/>
                                     <struct name="PwmFtmPairedCh">
                                        <setting name="Name" value="PwmFtmPairedCh"/>
-                                       <setting name="PwmFtmPairedChDeadtimeEnable" value="false"/>
+                                       <setting name="PwmFtmPairedChDeadtimeEnable" value="true"/>
                                        <setting name="PwmFtmPairedChSync" value="false"/>
                                        <setting name="PwmFtmPairedChExtTrig" value="false"/>
                                        <setting name="PwmFtmPairedChComplementary" value="true"/>
@@ -1008,7 +1008,7 @@
                                  <struct name="66">
                                     <setting name="Name" value="PlatformIsrConfig_66"/>
                                     <setting name="IsrName" value="FTM0_Ch2_Ch3_IRQn"/>
-                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrEnabled" value="true"/>
                                     <setting name="IsrPriority" value="0"/>
                                  </struct>
                                  <struct name="67">
@@ -1482,7 +1482,7 @@
                               <struct name="66">
                                  <setting name="Name" value="PlatformIsrConfig_66"/>
                                  <setting name="IsrName" value="FTM0_Ch2_Ch3_IRQn"/>
-                                 <setting name="IsrHandler" value="undefined_handler"/>
+                                 <setting name="IsrHandler" value="FTM_0_CH_2_CH_3_ISR"/>
                               </struct>
                               <struct name="67">
                                  <setting name="Name" value="PlatformIsrConfig_67"/>
