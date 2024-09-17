@@ -1,7 +1,7 @@
 /*
- * TX_Polling.c
+ * main3.c
  *
- *  Created on: 14-Sep-2024
+ *  Created on: 17-Sep-2024
  *      Author: Rohan
  */
 
@@ -10,6 +10,8 @@
 #include "Mcu.h"
 #include "Port.h"
 #include "Uart.h"
+#include "Platform.h"
+#include "Lpuart_Uart_Ip_Irq.h"
 #include "string.h"
 
 /* User includes */
@@ -17,7 +19,7 @@ volatile int exit_code = 0;
 #define WELCOME_MSG_1 "Hello, This message is sent via Uart!\n"
 
 
-int main(void)
+int main()
 {
 	/*-------------------Clock_Configuration via MCU Peripheral---------------*/
 
@@ -48,19 +50,25 @@ int main(void)
 
 	/*------------------------------------------------------------------------*/
 
+	/*----------------------------Platform Configuration----------------------*/
+
+	    /* Initialize IRQs */
+	    Platform_Init(NULL_PTR);
+	    Platform_InstallIrqHandler(LPUART1_RxTx_IRQn, LPUART_UART_IP_1_IRQHandler, NULL_PTR);
+
+	/*------------------------------------------------------------------------*/
+
 	/*-------------------------------UART Configuration-----------------------*/
 
 		Uart_Init(NULL_PTR);
 
 	/*------------------------------------------------------------------------*/
 
+	Uart_AsyncSend(0, (uint8_t *)WELCOME_MSG_1, strlen(WELCOME_MSG_1));
 
 	for(;;)
     {
-		/* DON'T REDUCE TIMEOUT VALUE BELOW 3000 as API wont be able to sent complete *
-		 * data and transmitted data length is directly dependent on TIMEOUT value. *
-		 * More the length  =  MORE TIMEOUT you have to increase to avoid missing data */
-		Uart_SyncSend(0, (uint8_t *)WELCOME_MSG_1, strlen(WELCOME_MSG_1), 5000);
+
 
         if(exit_code != 0)
         {
