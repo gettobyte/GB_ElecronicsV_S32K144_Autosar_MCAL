@@ -1,7 +1,7 @@
 /*
- * main2.c
+ * example4.c
  *
- *  Created on: 16-Sep-2024
+ *  Created on: 19-Sep-2024
  *      Author: Rohan
  */
 
@@ -10,11 +10,7 @@
 #include "Mcu.h"
 #include "Port.h"
 #include "Uart.h"
-#include "Platform.h"
-#include "Lpuart_Uart_Ip_Irq.h"
 #include "string.h"
-#include "Uart_Ipw_Types.h"
-
 
 /* User includes */
 volatile int exit_code = 0;
@@ -53,14 +49,6 @@ int main(void)
 
 	/*------------------------------------------------------------------------*/
 
-	/*---------------------------Platform Configuration-----------------------*
-	 * This configuration is usually used for enabling interrupt mechanism in any peripheral*/
-
-		Platform_Init(NULL_PTR);
-		Platform_InstallIrqHandler(LPUART1_RxTx_IRQn, LPUART_UART_IP_1_IRQHandler, NULL_PTR);
-
-	/*------------------------------------------------------------------------*/
-
 	/*-------------------------------UART Configuration-----------------------*/
 
 		Uart_Init(NULL_PTR);
@@ -68,9 +56,11 @@ int main(void)
 	/*------------------------------------------------------------------------*/
 
 
-	Uart_AsyncReceive(0, (uint8_t *)rx_Buffer, 5);
 	for(;;)
     {
+		/* TIMEOUT IS IN MICROSECONDS */
+		Uart_SyncReceive(0, (uint8_t *)rx_Buffer, 5, 5000000);
+
         if(exit_code != 0)
         {
             break;
@@ -78,4 +68,3 @@ int main(void)
     }
     return exit_code;
 }
-

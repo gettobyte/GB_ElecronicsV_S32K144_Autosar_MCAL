@@ -64,11 +64,9 @@ int main()
 
 	/*------------------------------------------------------------------------*/
 
-	Uart_AsyncSend(0, (uint8_t *)WELCOME_MSG_1, strlen(WELCOME_MSG_1));
-
 	for(;;)
     {
-
+		Uart_AsyncSend(0, (uint8_t *)WELCOME_MSG_1, strlen(WELCOME_MSG_1));
 
         if(exit_code != 0)
         {
