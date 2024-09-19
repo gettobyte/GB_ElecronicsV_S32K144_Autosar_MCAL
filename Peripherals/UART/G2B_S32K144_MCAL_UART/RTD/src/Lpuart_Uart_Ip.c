@@ -2108,12 +2108,10 @@ static void Lpuart_Uart_Ip_GetData(const uint8 Instance)
     const Lpuart_Uart_Ip_UserConfigType *UartUserCfg;
     const LPUART_Type * Base;
     uint16 Data16b;
-    uint8 ind = 0;
 
     Base = (const LPUART_Type *)Lpuart_Uart_Ip_apBases[Instance];
     UartState = (Lpuart_Uart_Ip_StateStructureType *)Lpuart_Uart_Ip_apStateStructuresArray[Instance];
     UartUserCfg = Lpuart_Uart_Ip_apUserConfig[Instance];
-    ind++;
 
     if ((LPUART_UART_IP_7_BITS_PER_CHAR == UartUserCfg->BitCountPerChar) || (LPUART_UART_IP_8_BITS_PER_CHAR == UartUserCfg->BitCountPerChar))
     {
