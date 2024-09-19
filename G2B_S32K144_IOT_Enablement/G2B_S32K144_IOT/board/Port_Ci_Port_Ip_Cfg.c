@@ -2,36 +2,13 @@
 /*
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 !!GlobalInfo
-product: Pins v9.0
+product: Pins v10.0
 processor: S32K144
 package_id: S32K144_LQFP100
-mcu_data: PlatformSDK_S32K1_2021_08
+mcu_data: PlatformSDK_S32K1_2022_02
 processor_version: 0.0.0
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
-/*==================================================================================================
-* Project : RTD AUTOSAR 4.4
-* Platform : CORTEXM
-* Peripheral : S32K14X
-* Dependencies : none
-*
-* Autosar Version : 4.4.0
-* Autosar Revision : ASR_REL_4_4_REV_0000
-* Autosar Conf.Variant :
-* SW Version : 1.0.0
-* Build Version : S32K1_RTD_1_0_0_ASR_REL_4_4_REV_0000_20210810
-*
-* (c) Copyright 2020-2021 NXP Semiconductors
-* All Rights Reserved.
-*
-* NXP Confidential. This software is owned or controlled by NXP and may only be
-* used strictly in accordance with the applicable license terms. By expressly
-* accepting such terms or by downloading, installing, activating and/or otherwise
-* using the software, you are agreeing that you have read, and that you agree to
-* comply with and are bound by, such license terms. If you do not agree to be
-* bound by the applicable license terms, then you may not retain, install,
-* activate or otherwise use the software.
-==================================================================================================*/
 /* clang-format on */
  
 
@@ -42,11 +19,38 @@ processor_version: 0.0.0
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 BOARD_InitPins:
 - options: {callFromInitBoot: 'true', coreID: core0}
-- pin_list: []
+- pin_list:
+  - {pin_num: '54', peripheral: LPUART0, signal: rxd, pin_signal: PTB0}
+  - {pin_num: '53', peripheral: LPUART0, signal: txd, pin_signal: PTB1, direction: OUTPUT}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
 
+/* Generate array of configured pin structures */
+Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS0] = {
+    {
+        .portBase        = IP_PORTB,
+        .gpioBase        = NULL_PTR,
+        .pinPortIdx      = 0U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter   = (boolean)FALSE,
+        .mux             = PORT_MUX_ALT2,
+        .lockRegister    = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter   = (boolean)FALSE,
+    },
+    {
+        .portBase        = IP_PORTB,
+        .gpioBase        = NULL_PTR,
+        .pinPortIdx      = 1U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter   = (boolean)FALSE,
+        .mux             = PORT_MUX_ALT2,
+        .lockRegister    = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter   = (boolean)FALSE,
+    },
+};
 /***********************************************************************************************************************
  * EOF
  **********************************************************************************************************************/

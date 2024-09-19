@@ -7,10 +7,10 @@
 * Autosar Version : 4.4.0
 * Autosar Revision : ASR_REL_4_4_REV_0000
 * Autosar Conf.Variant :
-* SW Version : 1.0.0
-* Build Version : S32K1_RTD_1_0_0_ASR_REL_4_4_REV_0000_20210810
+* SW Version : 1.0.1
+* Build Version : S32K1_RTD_1_0_1_D2202_ASR_REL_4_4_REV_0000_20220224
 *
-* (c) Copyright 2020-2021 NXP Semiconductors
+* (c) Copyright 2020-2022 NXP Semiconductors
 * All Rights Reserved.
 *
 * NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -21,6 +21,7 @@
 * bound by the applicable license terms, then you may not retain, install,
 * activate or otherwise use the software.
 ==================================================================================================*/
+
 
 #ifndef MODULES_H
 #define MODULES_H
@@ -186,7 +187,7 @@ extern "C" {
 /** 
 * @brief This constant used for other modules to check if MCU is present in the project.   
 */
-#define USE_MCU_MODULE              (STD_OFF)
+#define USE_MCU_MODULE              (STD_ON)
 
 /** 
 * @brief This constant used for other modules to check if OCU is present in the project.   
@@ -196,7 +197,7 @@ extern "C" {
 /** 
 * @brief This constant used for other modules to check if PORT is present in the project.   
 */
-#define USE_PORT_MODULE             (STD_OFF)
+#define USE_PORT_MODULE             (STD_ON)
 
 /** 
 * @brief This constant used for other modules to check if PWM is present in the project.   

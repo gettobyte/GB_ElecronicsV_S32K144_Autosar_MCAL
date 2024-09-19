@@ -7,10 +7,10 @@
 * Autosar Version : 4.4.0
 * Autosar Revision : ASR_REL_4_4_REV_0000
 * Autosar Conf.Variant :
-* SW Version : 1.0.0
-* Build Version : S32K1_RTD_1_0_0_ASR_REL_4_4_REV_0000_20210810
+* SW Version : 1.0.1
+* Build Version : S32K1_RTD_1_0_1_D2202_ASR_REL_4_4_REV_0000_20220224
 *
-* (c) Copyright 2020-2021 NXP Semiconductors
+* (c) Copyright 2020-2022 NXP Semiconductors
 * All Rights Reserved.
 *
 * NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -23,7 +23,7 @@
 ==================================================================================================*/
 /**
 *   @file       OsIf_Cfg.h
-*   @version 1.0.0
+*   @version 1.0.1
 *
 *
 *   @addtogroup OSIF_DRIVER
@@ -45,6 +45,7 @@ extern "C"{
 ==================================================================================================*/
 #include "OsIf_ArchCfg.h"
 #include "StandardTypes.h"
+
 #include "S32K144_SYSTICK.h"
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
@@ -60,6 +61,21 @@ extern "C"{
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
+/* Checks against OsIf_ArchCfg.h */
+#if (OSIF_CFG_VENDOR_ID != OSIF_ARCHCFG_VENDOR_ID)
+    #error "OsIf_Cfg.h and OsIf_ArchCfg.h have different vendor ids"
+#endif
+#if ((OSIF_CFG_AR_RELEASE_MAJOR_VERSION    != OSIF_ARCHCFG_AR_RELEASE_MAJOR_VERSION) || \
+     (OSIF_CFG_AR_RELEASE_MINOR_VERSION    != OSIF_ARCHCFG_AR_RELEASE_MINOR_VERSION) || \
+     (OSIF_CFG_AR_RELEASE_REVISION_VERSION != OSIF_ARCHCFG_AR_RELEASE_REVISION_VERSION))
+     #error "AUTOSAR Version Numbers of OsIf_Cfg.h and OsIf_ArchCfg.h are different"
+#endif
+#if ((OSIF_CFG_SW_MAJOR_VERSION != OSIF_ARCHCFG_SW_MAJOR_VERSION) || \
+     (OSIF_CFG_SW_MINOR_VERSION != OSIF_ARCHCFG_SW_MINOR_VERSION) || \
+     (OSIF_CFG_SW_PATCH_VERSION != OSIF_ARCHCFG_SW_PATCH_VERSION))
+    #error "Software Version Numbers of OsIf_Cfg.h and OsIf_ArchCfg.h are different"
+#endif
+
 /* Checks against StandardTypes.h */
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
     #if ((OSIF_CFG_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) || \
@@ -70,10 +86,6 @@ extern "C"{
 /*==================================================================================================
 *                                            CONSTANTS
 ==================================================================================================*/
-#define MCAL_ARM_MARCH      (16)  /* for ARM M4 Thumb2      */
-#define MCAL_ARM_AARCH32    (32)  /* for ARM ARCH32         */
-#define MCAL_ARM_AARCH64    (64)  /* for ARM ARCH64         */
-#define MCAL_ARM_RARCH      (52)  /* for ARM R platform     */
 
 /*==================================================================================================
 *                                      DEFINES AND MACROS
@@ -106,7 +118,11 @@ extern "C"{
 /* Autosar OS Specific */
 
 /* Baremetal Specific */
-#define OSIF_USE_SYSTICK                 (STD_ON)
+#if (MCAL_PLATFORM_ARM == MCAL_ARM_MARCH)
+    #define OSIF_USE_SYSTICK                 (STD_ON)
+#else
+    #define OSIF_USE_GENERICTIMER            (STD_ON)
+#endif
 
 /*==================================================================================================
 *                                             ENUMS

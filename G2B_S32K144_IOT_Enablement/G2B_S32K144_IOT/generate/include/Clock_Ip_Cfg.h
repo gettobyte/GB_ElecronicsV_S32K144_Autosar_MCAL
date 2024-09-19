@@ -48,6 +48,7 @@ extern "C"{
  2) needed interfaces from external units
  3) internal and external interfaces from this unit
 ==================================================================================================*/
+#include "Clock_Ip_BOARD_InitPeripherals_PBcfg.h"
 
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
@@ -63,6 +64,27 @@ extern "C"{
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
+/* Check if Clock_Ip_Cfg.h file and Clock_Ip_BOARD_InitPeripherals_PBcfg.h file are of the same vendor */
+#if (CLOCK_IP_CFG_VENDOR_ID != CLOCK_IP_BOARD_INITPERIPHERALS_PBCFG_VENDOR_ID)
+    #error "Clock_Ip_Cfg.h and Clock_Ip_BOARD_InitPeripherals_PBcfg.h have different vendor ids"
+#endif
+
+/* Check if Clock_Ip_Cfg.h file and Clock_Ip_BOARD_InitPeripherals_PBcfg.h file are of the same Autosar version */
+#if ((CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION != CLOCK_IP_BOARD_INITPERIPHERALS_PBCFG_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION != CLOCK_IP_BOARD_INITPERIPHERALS_PBCFG_AR_RELEASE_MINOR_VERSION) || \
+     (CLOCK_IP_CFG_AR_RELEASE_REVISION_VERSION != CLOCK_IP_BOARD_INITPERIPHERALS_PBCFG_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Clock_Ip_Cfg.h and Clock_Ip_BOARD_InitPeripherals_PBcfg.h are different"
+#endif
+
+/* Check if Clock_Ip_Cfg.h file and Clock_Ip_BOARD_InitPeripherals_PBcfg.h file are of the same Software version */
+#if ((CLOCK_IP_CFG_SW_MAJOR_VERSION != CLOCK_IP_BOARD_INITPERIPHERALS_PBCFG_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_CFG_SW_MINOR_VERSION != CLOCK_IP_BOARD_INITPERIPHERALS_PBCFG_SW_MINOR_VERSION) || \
+     (CLOCK_IP_CFG_SW_PATCH_VERSION != CLOCK_IP_BOARD_INITPERIPHERALS_PBCFG_SW_PATCH_VERSION) \
+    )
+  #error "Software Version Numbers of Clock_Ip_Cfg.h and Clock_Ip_BOARD_InitPeripherals_PBcfg.h are different"
+#endif
+
 /*==================================================================================================
                                            DEFINES AND MACROS
 ==================================================================================================*/
@@ -106,21 +128,6 @@ extern "C"{
 #include "Mcu_MemMap.h"
 
 #define MCU_STOP_SEC_CODE
-#include "Mcu_MemMap.h"
-
-
-#define MCU_START_SEC_CONFIG_DATA_UNSPECIFIED
-#include "Mcu_MemMap.h"
-
-
-/* *************************************************************************
- * Configuration structure for Clock Configuration 
- * ************************************************************************* */
-
-extern const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[];
-
-
-#define MCU_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Mcu_MemMap.h"
 
 #ifdef __cplusplus

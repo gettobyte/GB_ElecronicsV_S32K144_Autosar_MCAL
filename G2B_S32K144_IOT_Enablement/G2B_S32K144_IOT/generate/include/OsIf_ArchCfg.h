@@ -7,10 +7,10 @@
 * Autosar Version : 4.4.0
 * Autosar Revision : ASR_REL_4_4_REV_0000
 * Autosar Conf.Variant :
-* SW Version : 1.0.0
-* Build Version : S32K1_RTD_1_0_0_ASR_REL_4_4_REV_0000_20210810
+* SW Version : 1.0.1
+* Build Version : S32K1_RTD_1_0_1_D2202_ASR_REL_4_4_REV_0000_20220224
 *
-* (c) Copyright 2020-2021 NXP Semiconductors
+* (c) Copyright 2020-2022 NXP Semiconductors
 * All Rights Reserved.
 *
 * NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -22,10 +22,7 @@
 * activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file       OsIf_ArchCfg.h
-*   
-*   @version 0.8.0
-*
+*   @file
 *
 *   @addtogroup OSIF_DRIVER
 *   @{
@@ -44,7 +41,7 @@ extern "C"{
  2) needed interfaces from external units
  3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "StandardTypes.h"
+
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
@@ -71,12 +68,12 @@ extern "C"{
 /*==================================================================================================
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
-#if defined(CPU_CORTEX_A53)
-    #define MCAL_PLATFORM_ARM  MCAL_ARM_AARCH64
-#elif (defined(CPU_CORTEX_M7) || defined(CPU_CORTEX_M4F) || defined(CPU_CORTEX_M0P))
-    #define MCAL_PLATFORM_ARM  MCAL_ARM_MARCH
-#endif
+/* ARM_MARCH - is used to specify the ARM architecture MCAL_MARCH, MCAL_RARCH, MCAL_AARCH32, MCAL_AARCH64 */
+#define MCAL_PLATFORM_ARM  MCAL_ARM_MARCH
+        
+    
 
+ 
 /*==================================================================================================
 *                                             ENUMS
 ==================================================================================================*/

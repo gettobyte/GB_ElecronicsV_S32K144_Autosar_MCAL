@@ -7,10 +7,10 @@
 *   Autosar Version      : 4.4.0
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
-*   SW Version           : 1.0.0
-*   Build Version        : S32K1_RTD_1_0_0_ASR_REL_4_4_REV_0000_20210810
+*   SW Version           : 1.0.1
+*   Build Version        : S32K1_RTD_1_0_1_D2202_ASR_REL_4_4_REV_0000_20220224
 *
-*   (c) Copyright 2020-2021 NXP Semiconductors
+*   (c) Copyright 2020-2022 NXP Semiconductors
 *   All Rights Reserved.
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -79,8 +79,12 @@ extern "C"{
 
 /*! @brief PORT_CI module has LK bit */
 #define FEATURE_PORT_CI_PORT_IP_HAS_LOCK_REGISTER
+/**
+* @brief Support for User mode.
+* If this parameter has been configured to STD_ON, the PORT driver code can be executed from both supervisor and user mode.
+*/
+#define PORT_ENABLE_USER_MODE_SUPPORT                         (STD_OFF)
 
-#define PORT_ENABLE_USER_MODE_SUPPORT   (STD_OFF)
 
 #ifndef MCAL_ENABLE_USER_MODE_SUPPORT
     #ifdef PORT_ENABLE_USER_MODE_SUPPORT
