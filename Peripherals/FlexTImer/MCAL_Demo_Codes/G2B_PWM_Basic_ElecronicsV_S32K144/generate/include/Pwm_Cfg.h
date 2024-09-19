@@ -123,7 +123,7 @@ extern "C"{
 #define PWM_INDEX                               (0U)
 
 /** @brief      Total number of Pwm logic channels configured. */
-#define PWM_CONFIG_LOGIC_CHANNELS               (2U)
+#define PWM_CONFIG_LOGIC_CHANNELS               (3U)
 
 #define PWM_HW_CHANNEL_NO                       (36U)
 
@@ -139,9 +139,11 @@ extern "C"{
                                                         PWM_NODEFINE_POWER,\
                                                         {\
                                                             NULL_PTR,\
+                                                            NULL_PTR,\
                                                             NULL_PTR\
                                                         },\
                                                         {\
+                                                            (boolean)FALSE,\
                                                             (boolean)FALSE,\
                                                             (boolean)FALSE\
                                                         }\
@@ -170,28 +172,28 @@ extern "C"{
 #define PWM_SET_PHASE_SHIFT_API                 (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_SetDutyPhaseShift API is supported */
-#define PWM_SET_DUTY_PHASE_SHIFT_API            (STD_OFF)
+#define PWM_SET_DUTY_PHASE_SHIFT_API            (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_SyncUpdate API is supported */
-#define PWM_SYNC_UPDATE_API                     (STD_OFF)
+#define PWM_SYNC_UPDATE_API                     (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_SetDutyCycle_NoUpdate API is supported */
-#define PWM_SET_DUTY_CYCLE_NO_UPDATE_API        (STD_OFF)
+#define PWM_SET_DUTY_CYCLE_NO_UPDATE_API        (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_SetPeriodAndDuty_NoUpdate API is supported */
-#define PWM_SET_PERIOD_AND_DUTY_NO_UPDATE_API   (STD_OFF)
+#define PWM_SET_PERIOD_AND_DUTY_NO_UPDATE_API   (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_SetPhaseShift_NoUpdate API is supported */
-#define PWM_SET_PHASE_SHIFT_NO_UPDATE_API       (STD_OFF)
+#define PWM_SET_PHASE_SHIFT_NO_UPDATE_API       (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_EnableTrigger API is supported */
-#define PWM_ENABLE_TRIGGER_API                  (STD_ON)
+#define PWM_ENABLE_TRIGGER_API                  (STD_OFF)
 
 /** @brief        Switch to indicate that Pwm_DisableTrigger API is supported */
-#define PWM_DISABLE_TRIGGER_API                 (STD_ON)
+#define PWM_DISABLE_TRIGGER_API                 (STD_OFF)
 
 /** @brief        Switch to indicate that Pwm_SwResetCounter API is supported */
-#define PWM_RESET_COUNTER_API                   (STD_ON)
+#define PWM_RESET_COUNTER_API                   (STD_OFF)
 
 /**
 * @brief        Switch to indicate that Pwm_SetChannelForceOut API is supported
@@ -200,7 +202,7 @@ extern "C"{
 #define PWM_SET_CHANNEL_FORCE_OUT_API           (STD_OFF)
 
 /* @brief Add/remove the service Pwm_SetChannelDeadTime() from the code.*/
-#define PWM_SET_CHANNEL_DEAD_TIME_API           (STD_ON)
+#define PWM_SET_CHANNEL_DEAD_TIME_API           (STD_OFF)
 
 /** @brief        Switch to enable the update of the duty cycle parameter at the end of the current period. */
 #define PWM_DUTYCYCLE_UPDATED_ENDPERIOD         (STD_OFF)
@@ -212,7 +214,7 @@ extern "C"{
 #define PWM_ENABLE_MASKING_OPERATIONS           (STD_OFF)
 
 /** @brief        Switch to enable update synchronization feature */
-#define PWM_UPDATE_DUTY_SYNCHRONOUS             (STD_OFF)
+#define PWM_UPDATE_DUTY_SYNCHRONOUS             (STD_ON)
 
 
 /**
@@ -255,6 +257,7 @@ extern "C"{
 */
 #define PwmChannel_0                            ((Pwm_ChannelType)0U)
 #define PwmChannel_1                            ((Pwm_ChannelType)1U)
+#define PwmChannel_2                            ((Pwm_ChannelType)2U)
 
 /**
 * @brief        Symbolic name for configured channels - TPS_ECUC_02108 compliant.
@@ -262,6 +265,7 @@ extern "C"{
 */
 #define PwmConf_PwmChannelConfigSet_PwmChannel_0          ((Pwm_ChannelType)0U)
 #define PwmConf_PwmChannelConfigSet_PwmChannel_1          ((Pwm_ChannelType)1U)
+#define PwmConf_PwmChannelConfigSet_PwmChannel_2          ((Pwm_ChannelType)2U)
 
 /*==================================================================================================
 *                                              ENUMS

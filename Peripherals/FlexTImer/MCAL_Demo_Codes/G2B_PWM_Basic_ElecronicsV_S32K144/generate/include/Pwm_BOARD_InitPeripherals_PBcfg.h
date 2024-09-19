@@ -78,7 +78,7 @@ extern "C"{
 /**
 * @brief        Total number of configured PWM channels
 */
-#define PWM_BOARD_InitPeripherals_PB_CFG_CHANNELS_COUNT           ((uint8)2U)
+#define PWM_BOARD_InitPeripherals_PB_CFG_CHANNELS_COUNT           ((uint8)3U)
 
 /**
 * @brief        Total number of configured PWM instances

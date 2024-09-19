@@ -42,6 +42,7 @@ void TestDelay(uint32 delay)
 }
 uint32_t FTM_Clk = 0;
 #define channel0 0
+#define channel1 1
 
 
 void PwmFtmChInterruptCallback(void)
@@ -74,9 +75,9 @@ int main(void)
 	/* Initialize PWM driver */
 	Ftm_Pwm_Ip_Init(FTM_INSTANCE_0, &Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0);
 
-	Ftm_Pwm_Ip_EnableNotification(FTM_INSTANCE_0, channel0 ,FTM_PWM_IP_BOTH_EDGES );
-
-	Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel(FTM_INSTANCE_0, channel0, 35000, TRUE);
+//	Ftm_Pwm_Ip_EnableNotification(FTM_INSTANCE_0, channel0 ,FTM_PWM_IP_BOTH_EDGES );
+//
+//	Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel(FTM_INSTANCE_0, channel0, 35000, TRUE);
 
 
 
@@ -90,13 +91,17 @@ int main(void)
 	for(;;)
     {
 
-		TestDelay(200000);
-
-		Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel(FTM_INSTANCE_0, channel0, 35000, TRUE);
+//		TestDelay(200000);
+//
+//		Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel(FTM_INSTANCE_0, channel0, 35000, TRUE);
 
 		TestDelay(200000);
 
 		Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty(FTM_INSTANCE_0, channel0, 35000, 12000, TRUE );
+
+		TestDelay(200000);
+		Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty(FTM_INSTANCE_0, channel1, 45000, 32000, TRUE );
+
 
 		TestDelay(200000);
 

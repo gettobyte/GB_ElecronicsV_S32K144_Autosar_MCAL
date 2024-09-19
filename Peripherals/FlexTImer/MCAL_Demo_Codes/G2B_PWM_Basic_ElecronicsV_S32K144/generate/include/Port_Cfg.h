@@ -695,9 +695,10 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 * @details Get All Symbolic Names from configuration tool
 *
 */
-#define PortConfigSet_pwm_pins_edge_aligned_pin 0
+#define PortConfigSet_pwm_pins_edge_aligned_ch0 0
 #define PortConfigSet_pwm_pins_complementary_pin1 1
 #define PortConfigSet_pwm_pins_complementary_pin2 2
+#define PortConfigSet_pwm_pins_edge_aligned_ch1 3
 
 /**
 * @brief Number of available pad modes options
@@ -717,12 +718,12 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 /**
 * @brief The maximum number of configured pins
 */
-#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)3)
+#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)4)
 
 /**
  * @brief Number of UnUsed pin array
 */
-#define PORT_MAX_UNUSED_PADS_U16    (81U)
+#define PORT_MAX_UNUSED_PADS_U16    (80U)
 
 /**
 * @brief Port driver Pre-Compile configuration switch

@@ -18,7 +18,7 @@
    <tools>
       <pins name="Pins" version="10.0" enabled="true" update_project_code="true">
          <generated_project_files>
-            <file path="board/Port_Ci_Port_Ip_Cfg.c" update_enabled="false"/>
+            <file path="board/Port_Ci_Port_Ip_Cfg.c" update_enabled="true"/>
             <file path="board/Port_Ci_Port_Ip_Cfg.h" update_enabled="true"/>
          </generated_project_files>
          <pins_profile>
@@ -427,14 +427,14 @@
                                     </struct>
                                  </struct>
                                  <struct name="1">
-                                    <setting name="Name" value="PwmFtmCh_1"/>
-                                    <setting name="PwmFtmChId" value="CH_2"/>
+                                    <setting name="Name" value="PwmFtmCh_2"/>
+                                    <setting name="PwmFtmChId" value="CH_1"/>
                                     <setting name="PwmFtmChPulseType" value="High_true_pulse"/>
                                     <setting name="PwmFtmChInitOutput" value="LOW"/>
                                     <setting name="PwmFtmChPolarity" value="Channel_active_HIGH"/>
-                                    <setting name="PwmFtmChDutyCycle" value="30000"/>
+                                    <setting name="PwmFtmChDutyCycle" value="3000"/>
                                     <setting name="PwmFtmChDutyCycleDither" value="0"/>
-                                    <setting name="PwmFtmChInterrupt" value="true"/>
+                                    <setting name="PwmFtmChInterrupt" value="false"/>
                                     <struct name="PwmFtmChInterruptCallback">
                                        <setting name="Name" value="PwmFtmChInterruptCallback"/>
                                        <setting name="PwmFtmChInterruptFunctionCallback" value="NULL_PTR"/>
@@ -445,13 +445,13 @@
                                     <setting name="PwmFtmChSwCtrlValue" value="false"/>
                                     <setting name="PwmFtmChExternTriggerEnable" value="false"/>
                                     <setting name="PwmFtmChMatchLoadPointEnable" value="false"/>
-                                    <setting name="PwmFtmPairChEnable" value="true"/>
+                                    <setting name="PwmFtmPairChEnable" value="false"/>
                                     <struct name="PwmFtmPairedCh">
                                        <setting name="Name" value="PwmFtmPairedCh"/>
-                                       <setting name="PwmFtmPairedChDeadtimeEnable" value="true"/>
+                                       <setting name="PwmFtmPairedChDeadtimeEnable" value="false"/>
                                        <setting name="PwmFtmPairedChSync" value="false"/>
                                        <setting name="PwmFtmPairedChExtTrig" value="false"/>
-                                       <setting name="PwmFtmPairedChComplementary" value="true"/>
+                                       <setting name="PwmFtmPairedChComplementary" value="false"/>
                                        <setting name="PwmFtmDutyDitheringPaired" value="false"/>
                                        <setting name="PwmFtmPairedChCombineMode" value="Combine_modes_disabled"/>
                                        <setting name="PwmFtmPairedChComplementaryMode" value="Invert_Output"/>
@@ -544,6 +544,23 @@
                                        <setting name="PortPinId" value="3"/>
                                        <setting name="PortPinPcr" value="67"/>
                                        <setting name="PortPinMode" value="FTM0_CH3"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="3">
+                                       <setting name="Name" value="PortPin_3"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="4"/>
+                                       <setting name="PortPinPcr" value="45"/>
+                                       <setting name="PortPinMode" value="FTM0_CH1"/>
                                        <setting name="PortPinDSE" value="Low_Drive_Strength"/>
                                        <setting name="PortPinPE" value="PullDisabled"/>
                                        <setting name="PortPinPS" value="PullDown"/>
@@ -1482,7 +1499,7 @@
                               <struct name="66">
                                  <setting name="Name" value="PlatformIsrConfig_66"/>
                                  <setting name="IsrName" value="FTM0_Ch2_Ch3_IRQn"/>
-                                 <setting name="IsrHandler" value="FTM_0_CH_2_CH_3_ISR"/>
+                                 <setting name="IsrHandler" value="undefined_handler"/>
                               </struct>
                               <struct name="67">
                                  <setting name="Name" value="PlatformIsrConfig_67"/>

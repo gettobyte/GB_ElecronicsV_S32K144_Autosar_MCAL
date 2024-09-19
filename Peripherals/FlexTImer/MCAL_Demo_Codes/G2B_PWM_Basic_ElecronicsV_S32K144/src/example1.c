@@ -17,11 +17,20 @@
 volatile int exit_code = 0;
 /* User includes */
 
-void FTM_0_CH_0_CH_1_ISR();
+void FTM_0_CH_0_CH_1_ISR(void);
 
+#define channel0 0
+#define channel1 1
+#define channel2 2
+#define instance0 0
 void pwm_callback(void)
 {
 
+	// returns the output state of PWM signal whether high or low
+	Pwm_GetOutputState(channel0);
+
+	// returns the duty cycle of PWM signal
+	Pwm_GetChannelState(channel0);
 }
 /*!
   \brief The main function for the project.
@@ -29,8 +38,16 @@ void pwm_callback(void)
  * - startup asm routine
  * - main()
 */
-
-#define channel0 0
+void TestDelay(uint32 delay);
+void TestDelay(uint32 delay)
+{
+   static volatile uint32 DelayTimer = 0;
+   while(DelayTimer<delay)
+   {
+       DelayTimer++;
+   }
+   DelayTimer=0;
+}
 int main(void)
 {
     /* Write your code here */
@@ -56,11 +73,60 @@ int main(void)
 	    Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
 
 
-	    //When when to use the Interrupts
-	    Pwm_EnableNotification(channel0, PWM_FALLING_EDGE);
+	    //When we want to use the Interrupts, so that call back function can be hit on every time PWM signal edge changes
+	  //  Pwm_EnableNotification(channel0, PWM_FALLING_EDGE);
+
+        /*Duty cycle update*/
+	    Pwm_SetDutyCycle(channel0, 10000);
+	    TestDelay(700000);
+
+	    /*Duty cycle update*/
+		Pwm_SetDutyCycle(channel1, 19000);
+		TestDelay(700000);
+
+		Pwm_SetDutyCycle(channel2, 29000);
+		TestDelay(700000);
 
 
+	    /* duty cycle and frequency update*/
 	    Pwm_SetPeriodAndDuty(channel0,40000,16384);
+	    TestDelay(700000);
+
+	    Pwm_SetPeriodAndDuty(channel2,23000,21384);
+	    TestDelay(700000);
+
+
+	    /*  to off the pwm signals*/
+	    Pwm_SetOutputToIdle(channel0);
+	    TestDelay(700000);
+
+	    /*Duty cycle update*/
+		Pwm_SetDutyCycle(channel1, 19000);
+		TestDelay(700000);
+		/* duty cycle and frequency update*/
+		Pwm_SetPeriodAndDuty(channel1,33000,21384);
+		TestDelay(700000);
+		/*  to off the pwm signals*/
+		Pwm_SetOutputToIdle(channel1);
+		TestDelay(700000);
+
+
+
+
+
+	    /****when multiple channels are configured in edge aligned and show the feature of sync update*******/
+	   // Pwm_SetDutyCycle_NoUpdate(channel0, 13000);
+
+	    Pwm_SetPeriodAndDuty_NoUpdate(channel0,30000,23284);
+
+	   // Pwm_SetDutyCycle_NoUpdate(channel1, 23000);
+
+	    Pwm_SetPeriodAndDuty_NoUpdate(channel1,30000,6384);
+
+	    Pwm_SetPeriodAndDuty_NoUpdate(channel2,30000,16384);
+
+	    Pwm_SyncUpdate(instance0);
+
 
     for(;;)
     {
