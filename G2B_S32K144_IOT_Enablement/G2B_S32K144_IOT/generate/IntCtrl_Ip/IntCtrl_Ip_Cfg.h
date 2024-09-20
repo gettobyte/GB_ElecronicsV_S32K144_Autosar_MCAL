@@ -84,7 +84,10 @@
 
 /* Declaration of the configuration structure for Interrupt Controller (core related) */
 extern const IntCtrl_Ip_CtrlConfigType intCtrlConfig;
+/* Declaration of the generic configuration structure for interrupts (not core related) */
+extern const IntCtrl_Ip_GlobalRouteConfigType intRouteConfig;
             extern void undefined_handler(void);
+                        extern void LPUART_UART_IP_0_IRQHandler(void);
             
 #define PLATFORM_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Platform_MemMap.h"

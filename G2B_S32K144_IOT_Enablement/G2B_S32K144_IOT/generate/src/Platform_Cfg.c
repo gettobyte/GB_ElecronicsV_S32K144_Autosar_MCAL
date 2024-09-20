@@ -103,7 +103,7 @@ extern "C" {
 static const Platform_ConfigType Platform_uConfiguration =
 {
     &ipwConfig,
-    NULL_PTR
+    &ipwNonCoreConfig
 };
 const Platform_ConfigType *const Platform_Config[1U]=
 {

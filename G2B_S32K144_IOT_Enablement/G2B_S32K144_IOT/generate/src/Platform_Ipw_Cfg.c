@@ -105,7 +105,7 @@ const Platform_Ipw_ConfigType ipwConfig = {
 };
 /* Definition of the configuration structure for non core Platform IPW */
 const Platform_Ipw_NonCoreConfigType ipwNonCoreConfig = {
-    NULL_PTR
+    &intRouteConfig
 };
 
 #define PLATFORM_STOP_SEC_CONFIG_DATA_UNSPECIFIED

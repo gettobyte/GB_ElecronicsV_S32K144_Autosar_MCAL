@@ -9,13 +9,19 @@
 
 
 /* User includes */
-#define test_command "AT/r/n"
-#define RX_BUFFER_SIZE 256
+#define test_command "AT+RST\r\n"
+#define RX_BUFFER_SIZE 512
 #define TIMEOUT 5000
 #define LPUART0_CHANNEL_INDEX 0
+#define LPUART1_CHANNEL_INDEX 1
 
+
+extern void LPUART_UART_IP_0_IRQHandler(void);
 volatile int exit_code = 0;
 volatile uint8_t rxBuffer[RX_BUFFER_SIZE];
+
+// Create a char array to store the string (2 chars per byte + null terminator)
+char str[RX_BUFFER_SIZE * 2 + 1];
 /*=================Function Prototyping===================*/
 
 	void mcu_init(void);
@@ -24,6 +30,10 @@ volatile uint8_t rxBuffer[RX_BUFFER_SIZE];
 	void uart_init(void);
 	void sendATcommand(void);
 	void receiveResponse(void);
+	void echoCallback(void);
+	void byteToHex(uint8_t byte, char* hexStr);
+	void uint8ArrayToString(uint8_t* arr, int length, char* str);
+	void testDelay(int microseconds);
 
 /*========================================================*/
 
@@ -46,6 +56,7 @@ volatile uint8_t rxBuffer[RX_BUFFER_SIZE];
 /*========================================================*/
 int main(void)
 {
+
 	mcu_init();
 	port_init();
 	irq_init();
@@ -54,6 +65,9 @@ int main(void)
 	sendATcommand();
 	receiveResponse();
 
+	testDelay(88000000);
+
+	echoCallback();
     for(;;)
     {
 
@@ -135,4 +149,36 @@ void receiveResponse(void){
 
 	Uart_AsyncReceive(LPUART0_CHANNEL_INDEX, (uint8_t *) rxBuffer, RX_BUFFER_SIZE);
 
+}
+
+void echoCallback(void){
+
+    // Convert uint8_t array to string
+    uint8ArrayToString(rxBuffer, RX_BUFFER_SIZE, str);
+
+    //Transmit the received data to LPUART1
+	Uart_SyncSend(LPUART1_CHANNEL_INDEX, (uint8_t *) rxBuffer, strlen(rxBuffer), 10000);
+
+}
+
+/* Helper function to convert a single byte to its hexadecimal representation */
+void byteToHex(uint8_t byte, char* hexStr) {
+    char hexDigits[] = "0123456789ABCDEF";
+
+    hexStr[0] = hexDigits[(byte >> 4) & 0x0F]; // Extract high nibble
+    hexStr[1] = hexDigits[byte & 0x0F];        // Extract low nibble
+}
+
+/* Function to convert uint8_t array to string */
+void uint8ArrayToString(uint8_t* arr, int length, char* str) {
+    for (int i = 0; i < length; i++) {
+        byteToHex(arr[i], &str[i * 2]);  // Convert each byte to 2 hex chars
+    }
+    str[length * 2] = '\0';  // Null-terminate the string
+}
+
+void testDelay(int microseconds){
+	while(microseconds > 0){
+		microseconds--;
+	}
 }

@@ -49,7 +49,7 @@
 /* Development error detection */
 #define INTCTRL_IP_CORE_MASK                      (1U)
 /* System interrupt routing through MSCM */
-#define INT_CTRL_IP_MSCM_SYSTEM_INTERRUPT_ROUTER  (STD_OFF)
+#define INT_CTRL_IP_MSCM_SYSTEM_INTERRUPT_ROUTER  (STD_ON)
 #define INT_CTRL_IP_DEV_ERROR_DETECT              (STD_OFF)
 /* IP standalone APIs  */
 #define INT_CTRL_IP_STANDALONE_APIS               (STD_OFF)

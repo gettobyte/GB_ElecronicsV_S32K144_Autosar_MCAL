@@ -100,7 +100,8 @@ extern "C"
 ==================================================================================================*/
 
 #define UART_IPW_CONFIG_BOARD_INITPERIPHERALS_PB \
-extern const Uart_Ipw_HwConfigType Uart_Ipw_xHwConfigPB_0_BOARD_InitPeripherals;
+extern const Uart_Ipw_HwConfigType Uart_Ipw_xHwConfigPB_0_BOARD_InitPeripherals;\
+extern const Uart_Ipw_HwConfigType Uart_Ipw_xHwConfigPB_1_BOARD_InitPeripherals;
 
 #ifndef UART_IPW_LPUART_HW_USING
     #define UART_IPW_LPUART_HW_USING

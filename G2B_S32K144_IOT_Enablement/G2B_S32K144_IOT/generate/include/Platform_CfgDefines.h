@@ -65,7 +65,7 @@
 /* System settings configurable */
 #define PLATFORM_SYS_CFG                 (STD_OFF)
 /* System MSCM configurable */
-#define PLATFORM_MSCM_CFG                 (STD_OFF)
+#define PLATFORM_MSCM_CFG                 (STD_ON)
 /* multicore support */
 #define PLATFORM_MULTICORE_SUPPORT                   (STD_OFF)
 #if (STD_ON == PLATFORM_MULTICORE_SUPPORT)
