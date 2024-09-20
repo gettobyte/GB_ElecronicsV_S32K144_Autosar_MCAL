@@ -1,7 +1,7 @@
 /**
-*   @file example1.c
+*   @file example3.c
 *
-*   Edge Aligned Demo code, with FTM input clock frequency of fixed clock of 8Mhz and
+*   Combine mode with complementary mode feature, with FTM input clock frequency of fixed clock of 8Mhz and
 *   prescaler to FTM instance 0 are divided by 1, meaning FTM instance 0 clock frequency for FTM0 is 8Mhz and period is 0.125us
 *
 *
@@ -23,7 +23,7 @@ volatile int exit_code = 0;
 /* User includes */
 
 void FTM_0_CH_0_CH_1_ISR(void);
-void FTM_0_OVF_ISR(void);
+
 #define channel0 0
 #define channel1 1
 #define channel2 2
@@ -75,55 +75,34 @@ int main(void)
 	    IntCtrl_Ip_InstallHandler(FTM0_Ch0_Ch1_IRQn, FTM_0_CH_0_CH_1_ISR, NULL_PTR);
 	    IntCtrl_Ip_EnableIrq(FTM0_Ch0_Ch1_IRQn);
 
-	    /* Install and enable interrupt handlers */
-	    IntCtrl_Ip_InstallHandler(FTM0_Ovf_Reload_IRQn, FTM_0_OVF_ISR, NULL_PTR);
-	    IntCtrl_Ip_EnableIrq(FTM0_Ovf_Reload_IRQn);
-
 	    Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
 
 
 	    //When we want to use the Interrupts, so that call back function can be hit on every time PWM signal edge changes
-	   Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+	  //  Pwm_EnableNotification(channel0, PWM_FALLING_EDGE);
 
-        /*Duty cycle update*/
-	    Pwm_SetDutyCycle(channel0, 10000);
-	    TestDelay(700000);
-
-	    /*Duty cycle update*/
-		Pwm_SetDutyCycle(channel1, 19000);
+		Pwm_SetDutyCycle(channel2, 29000);
 		TestDelay(700000);
+
+
+	    Pwm_SetPeriodAndDuty(channel2,23000,11384);
+	    TestDelay(700000);
 
 	    /* duty cycle and frequency update*/
 	    Pwm_SetPeriodAndDuty(channel0,40000,16384);
 	    TestDelay(700000);
 
-	    Pwm_SetPeriodAndDuty(channel1,23000,21384);
-	    TestDelay(700000);
-
 
 	    /*  to off the pwm signals*/
-	    Pwm_SetOutputToIdle(channel0);
+	    Pwm_SetOutputToIdle(channel2);
 	    TestDelay(700000);
 
-		/*  to off the pwm signals*/
-		Pwm_SetOutputToIdle(channel1);
+	    /*Duty cycle update*/
+		Pwm_SetDutyCycle(channel2, 19000);
 		TestDelay(700000);
-
-
-
-
-
-	    /****when multiple channels are configured in edge aligned and show the feature of sync update*******/
-	   // Pwm_SetDutyCycle_NoUpdate(channel0, 13000);
-
-	    Pwm_SetPeriodAndDuty_NoUpdate(channel0,30000,23284);
-
-	   // Pwm_SetDutyCycle_NoUpdate(channel1, 23000);
-
-	    Pwm_SetPeriodAndDuty_NoUpdate(channel1,30000,6384);
-
-	    Pwm_SyncUpdate(instance0);
-
+		/* duty cycle and frequency update*/
+		Pwm_SetPeriodAndDuty(channel2,33000,21384);
+		TestDelay(700000);
 
     for(;;)
     {

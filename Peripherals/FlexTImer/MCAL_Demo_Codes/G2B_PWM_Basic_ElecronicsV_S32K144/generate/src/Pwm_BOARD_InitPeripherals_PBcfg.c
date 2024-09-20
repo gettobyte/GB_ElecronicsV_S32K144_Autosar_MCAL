@@ -152,7 +152,7 @@ const Pwm_ChannelConfigType Pwm_Channels_BOARD_InitPeripherals_PB[PWM_BOARD_Init
             /** @brief  Hardware Channel Instance ID */
             (Pwm_IpwInstanceType)FTM_PWM_IP_BOARD_InitPeripherals_I0_CH0_CFG,
             /** @brief The duty cycle of this channel */
-            0U
+            3000U
         },
         /** @brief  The state of the channel output in idle mode */
         PWM_HIGH,
@@ -188,7 +188,7 @@ const Pwm_ChannelConfigType Pwm_Channels_BOARD_InitPeripherals_PB[PWM_BOARD_Init
         /** @brief  Channel Id */
         (Pwm_ChannelType)2U,
         /** @brief  Channel class */
-        PWM_FIXED_PERIOD,
+        PWM_VARIABLE_PERIOD,
         /** @brief  Ip channel configuration */
         {
             /** @brief  Hardware Channel Type */
@@ -202,7 +202,7 @@ const Pwm_ChannelConfigType Pwm_Channels_BOARD_InitPeripherals_PB[PWM_BOARD_Init
             /** @brief  Hardware Channel Instance ID */
             (Pwm_IpwInstanceType)FTM_PWM_IP_BOARD_InitPeripherals_I0_CH2_CFG,
             /** @brief The duty cycle of this channel */
-            0U
+            2000U
         },
         /** @brief  The state of the channel output in idle mode */
         PWM_HIGH,

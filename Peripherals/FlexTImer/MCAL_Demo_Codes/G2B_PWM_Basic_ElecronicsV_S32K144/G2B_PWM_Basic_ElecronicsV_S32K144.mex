@@ -419,7 +419,7 @@
                                  </array>
                                  <setting name="PwmPeriodInTicks" value="true"/>
                                  <setting name="PwmPeriodDefault" value="30000"/>
-                                 <setting name="PwmDutycycleDefault" value="0"/>
+                                 <setting name="PwmDutycycleDefault" value="3000"/>
                                  <setting name="PwmPolarity" value="PWM_HIGH"/>
                                  <setting name="PwmIdleState" value="PWM_HIGH"/>
                                  <array name="PwmNotification">
@@ -448,11 +448,13 @@
                                  <setting name="Name" value="PwmChannel_2"/>
                                  <setting name="PwmChannelId" value="2"/>
                                  <setting name="PwmHwChannel" value="/Pwm/Pwm/PwmChannelConfigSet/Ftm_Instance_0/PwmFtmCh_2"/>
-                                 <array name="PwmChannelClass"/>
+                                 <array name="PwmChannelClass">
+                                    <setting name="0" value="PWM_VARIABLE_PERIOD"/>
+                                 </array>
                                  <setting name="PwmPeriodInTicks" value="true"/>
                                  <setting name="PwmPeriodDefault" value="30000"/>
-                                 <setting name="PwmDutycycleDefault" value="0"/>
-                                 <setting name="PwmPolarity" value="PWM_LOW"/>
+                                 <setting name="PwmDutycycleDefault" value="2000"/>
+                                 <setting name="PwmPolarity" value="PWM_HIGH"/>
                                  <setting name="PwmIdleState" value="PWM_HIGH"/>
                                  <array name="PwmNotification"/>
                                  <setting name="PwmMcuClockReferencePoint" value="/Mcu/Mcu/McuModuleConfiguration/BOARD_BootClockRUN/McuClockReferencePoint_0"/>
@@ -479,7 +481,7 @@
                                  </struct>
                                  <struct name="PwmFtmInstCfg">
                                     <setting name="Name" value="PwmFtmInstCfg"/>
-                                    <setting name="PwmFtmDebugMode" value="Debug_Mode_11"/>
+                                    <setting name="PwmFtmDebugMode" value="Debug_Mode_00"/>
                                     <setting name="PwmFtmWriteProtection" value="false"/>
                                     <setting name="PwmFtmInitTrigger" value="false"/>
                                     <setting name="PwmFtmInitTriggerMode" value="Trigger_on_Reload_Point"/>
@@ -570,15 +572,15 @@
                                        <setting name="PwmFtmChSwCtrlValue" value="false"/>
                                        <setting name="PwmFtmChExternTriggerEnable" value="false"/>
                                        <setting name="PwmFtmChMatchLoadPointEnable" value="false"/>
-                                       <setting name="PwmFtmPairChEnable" value="false"/>
+                                       <setting name="PwmFtmPairChEnable" value="true"/>
                                        <struct name="PwmFtmPairedCh">
                                           <setting name="Name" value="PwmFtmPairedCh"/>
                                           <setting name="PwmFtmPairedChDeadtimeEnable" value="false"/>
                                           <setting name="PwmFtmPairedChSync" value="false"/>
                                           <setting name="PwmFtmPairedChExtTrig" value="false"/>
-                                          <setting name="PwmFtmPairedChComplementary" value="false"/>
+                                          <setting name="PwmFtmPairedChComplementary" value="true"/>
                                           <setting name="PwmFtmDutyDitheringPaired" value="false"/>
-                                          <setting name="PwmFtmPairedChCombineMode" value="Combine_modes_disabled"/>
+                                          <setting name="PwmFtmPairedChCombineMode" value="Combined_Mode"/>
                                           <setting name="PwmFtmPairedChComplementaryMode" value="Invert_Output"/>
                                           <setting name="PwmFtmPairedChPhaseShift" value="0"/>
                                        </struct>
