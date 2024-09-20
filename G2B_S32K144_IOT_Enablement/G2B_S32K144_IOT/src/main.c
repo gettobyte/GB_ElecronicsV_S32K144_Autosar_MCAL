@@ -4,12 +4,12 @@
 #include "Uart.h"
 #include "Platform.h"
 #include "Port.h"
+#include "Lpuart_Uart_Ip_Irq.h"
 #include "string.h"
 
 
 /* User includes */
-#define test_command "AT"
-#define command_end "/n/r"
+#define test_command "AT/r/n"
 #define RX_BUFFER_SIZE 256
 #define TIMEOUT 5000
 #define LPUART0_CHANNEL_INDEX 0
@@ -18,12 +18,12 @@ volatile int exit_code = 0;
 volatile uint8_t rxBuffer[RX_BUFFER_SIZE];
 /*=================Function Prototyping===================*/
 
-	void mcu_init();
-	void port_init();
-	void irq_init();
-	void uart_init();
-	void sendATcommand();
-	void receiveResponse();
+	void mcu_init(void);
+	void port_init(void);
+	void irq_init(void);
+	void uart_init(void);
+	void sendATcommand(void);
+	void receiveResponse(void);
 
 /*========================================================*/
 
@@ -50,9 +50,12 @@ int main(void)
 	port_init();
 	irq_init();
 	uart_init();
+
+	sendATcommand();
+	receiveResponse();
+
     for(;;)
     {
-
 
         if(exit_code != 0)
         {
@@ -125,12 +128,11 @@ void uart_init(void){
 void sendATcommand(void){
 
 	Uart_SyncSend(LPUART0_CHANNEL_INDEX, (uint8_t *) test_command, strlen(test_command), TIMEOUT);
-	Uart_SyncSend(LPUART0_CHANNEL_INDEX, (uint8_t *) command_end, strlen(command_end), TIMEOUT);
 
 }
 
 void receiveResponse(void){
 
-
+	Uart_AsyncReceive(LPUART0_CHANNEL_INDEX, (uint8_t *) rxBuffer, RX_BUFFER_SIZE);
 
 }
