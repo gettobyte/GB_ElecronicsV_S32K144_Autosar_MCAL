@@ -71,26 +71,37 @@ int main(void)
 		/* Initialize all pins using the Port driver */
 		Port_Init(NULL_PTR);
 
+	   // Pwm_SyncUpdate(instance0);
+
+
 	    /* Install and enable interrupt handlers */
 	    IntCtrl_Ip_InstallHandler(FTM0_Ch0_Ch1_IRQn, FTM_0_CH_0_CH_1_ISR, NULL_PTR);
 	    IntCtrl_Ip_EnableIrq(FTM0_Ch0_Ch1_IRQn);
 
 	    Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
 
+	    Pwm_SyncUpdate(instance0);
 
 	    //When we want to use the Interrupts, so that call back function can be hit on every time PWM signal edge changes
-	  //  Pwm_EnableNotification(channel0, PWM_FALLING_EDGE);
+	    //Pwm_EnableNotification(channel0, PWM_FALLING_EDGE);
 
-		Pwm_SetDutyCycle(channel2, 29000);
+		Pwm_SetDutyCycle(channel2, 000);
+		TestDelay(700000);
+
+		Pwm_SetDutyCycle_NoUpdate(channel2, 13000);
+
+//	    Pwm_SyncUpdate(instance0);
+
+		Pwm_SetDutyCycle(channel2, 19000);
 		TestDelay(700000);
 
 
-	    Pwm_SetPeriodAndDuty(channel2,23000,11384);
-	    TestDelay(700000);
+//	    Pwm_SetPeriodAndDuty(channel2,23000,11384);
+//	    TestDelay(700000);
 
-	    /* duty cycle and frequency update*/
-	    Pwm_SetPeriodAndDuty(channel0,40000,16384);
-	    TestDelay(700000);
+//	    /* duty cycle and frequency update*/
+//	    Pwm_SetPeriodAndDuty(channel0,40000,16384);
+//	    TestDelay(700000);
 
 
 	    /*  to off the pwm signals*/

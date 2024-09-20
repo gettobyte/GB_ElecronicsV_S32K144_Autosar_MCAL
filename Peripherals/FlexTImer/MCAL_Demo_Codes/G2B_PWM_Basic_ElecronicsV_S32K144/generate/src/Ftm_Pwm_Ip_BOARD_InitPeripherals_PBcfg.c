@@ -157,7 +157,7 @@ const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0 =
         /* CbParam */               0U
                                 },
 #endif
-    /* DebugMode */             FTM_PWM_IP_BDM_MODE_00,
+    /* DebugMode */             FTM_PWM_IP_BDM_MODE_11,
     /* WriteProtection */       (boolean)FALSE,
     /* InitTriggerEn */         (boolean)FALSE,
     /* InitTrigMode */          FTM_PWM_IP_INIT_TRIGG_RELOAD_POINT,
@@ -187,7 +187,7 @@ const Ftm_Pwm_Ip_PairCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_ChPair1 =
     /* ComplementaryModeEn */   (boolean)TRUE,
     /* PairChPolarity */        FTM_PWM_IP_MAIN_INVERTED,
     /* PairExtTrigEn */         (boolean)FALSE,
-    /* PairSyncEn */            (boolean)FALSE,
+    /* PairSyncEn */            (boolean)TRUE,
     /* PhaseShiftValue */       0U,
 #if (defined(FTM_PWM_IP_HAS_DITHERING) && (FTM_PWM_IP_HAS_DITHERING == STD_ON))
     /* DitherEdge */            FTM_PWM_IP_DITHER_LEADING_EDGE
@@ -249,7 +249,7 @@ const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch1 =
 const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch2 =
 {
     /* ChannelId */             2U,
-    /* ChannelMode */           FTM_PWM_IP_MODE_COMBINE_LOW,
+    /* ChannelMode */           FTM_PWM_IP_MODE_COMBINE_HIGH,
     /* ChIrqEn */               (boolean)TRUE,
     /* ChannelCb */             {
         /* FunctionCallback */      &Pwm_Notification,
@@ -264,7 +264,7 @@ const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch2 =
 #if (defined(FTM_PWM_IP_HAS_DITHERING) && (FTM_PWM_IP_HAS_DITHERING == STD_ON))
     /* DutyCycleDither */       0U,
 #endif
-    /* InitOut */               FTM_PWM_IP_OUTPUT_STATE_HIGH,
+    /* InitOut */               FTM_PWM_IP_OUTPUT_STATE_LOW,
     /* Polarity */              FTM_PWM_IP_POLARITY_HIGH,
     /* PairCfg */               &Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_ChPair1
 };

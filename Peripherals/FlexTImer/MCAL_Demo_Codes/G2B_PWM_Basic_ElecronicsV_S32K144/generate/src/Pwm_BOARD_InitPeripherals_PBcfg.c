@@ -205,7 +205,7 @@ const Pwm_ChannelConfigType Pwm_Channels_BOARD_InitPeripherals_PB[PWM_BOARD_Init
             2000U
         },
         /** @brief  The state of the channel output in idle mode */
-        PWM_HIGH,
+        PWM_LOW,
         NULL_PTR
     }
 };

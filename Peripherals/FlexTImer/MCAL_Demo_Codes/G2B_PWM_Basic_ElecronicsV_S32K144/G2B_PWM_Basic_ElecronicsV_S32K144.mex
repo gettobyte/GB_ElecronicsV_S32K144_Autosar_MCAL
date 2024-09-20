@@ -275,6 +275,16 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.ftm_pwm" description="Ftm_Pwm not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.ftm_pwm" description="Unsupported version of the Ftm_Pwm in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/Port_Ci_Port_Ip_Cfg.h" update_enabled="true"/>
@@ -455,7 +465,7 @@
                                  <setting name="PwmPeriodDefault" value="30000"/>
                                  <setting name="PwmDutycycleDefault" value="2000"/>
                                  <setting name="PwmPolarity" value="PWM_HIGH"/>
-                                 <setting name="PwmIdleState" value="PWM_HIGH"/>
+                                 <setting name="PwmIdleState" value="PWM_LOW"/>
                                  <array name="PwmNotification"/>
                                  <setting name="PwmMcuClockReferencePoint" value="/Mcu/Mcu/McuModuleConfiguration/BOARD_BootClockRUN/McuClockReferencePoint_0"/>
                                  <array name="PwmChannelEcucPartitionRef"/>
@@ -481,7 +491,7 @@
                                  </struct>
                                  <struct name="PwmFtmInstCfg">
                                     <setting name="Name" value="PwmFtmInstCfg"/>
-                                    <setting name="PwmFtmDebugMode" value="Debug_Mode_00"/>
+                                    <setting name="PwmFtmDebugMode" value="Debug_Mode_11"/>
                                     <setting name="PwmFtmWriteProtection" value="false"/>
                                     <setting name="PwmFtmInitTrigger" value="false"/>
                                     <setting name="PwmFtmInitTriggerMode" value="Trigger_on_Reload_Point"/>
@@ -564,7 +574,7 @@
                                     <struct name="2">
                                        <setting name="Name" value="PwmFtmCh_2"/>
                                        <setting name="PwmFtmChId" value="CH_2"/>
-                                       <setting name="PwmFtmChPulseType" value="Low_true_pulse"/>
+                                       <setting name="PwmFtmChPulseType" value="High_true_pulse"/>
                                        <setting name="PwmFtmChDutyCycleDither" value="0"/>
                                        <setting name="PwmFtmChInterrupt" value="true"/>
                                        <setting name="PwmFtmChPwmOutputEnable" value="true"/>
@@ -576,7 +586,7 @@
                                        <struct name="PwmFtmPairedCh">
                                           <setting name="Name" value="PwmFtmPairedCh"/>
                                           <setting name="PwmFtmPairedChDeadtimeEnable" value="false"/>
-                                          <setting name="PwmFtmPairedChSync" value="false"/>
+                                          <setting name="PwmFtmPairedChSync" value="true"/>
                                           <setting name="PwmFtmPairedChExtTrig" value="false"/>
                                           <setting name="PwmFtmPairedChComplementary" value="true"/>
                                           <setting name="PwmFtmDutyDitheringPaired" value="false"/>
@@ -2459,6 +2469,117 @@
                         <struct name="CommonPublishedInformation">
                            <setting name="Name" value="CommonPublishedInformation"/>
                         </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="Ftm_Pwm" uuid="bb7c56c5-8de9-4126-895e-0c293b7de546" type="Ftm_Pwm" type_id="Ftm_Pwm" mode="ip" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="Ftm_Pwm">
+                        <struct name="ConfigTimeSupport">
+                           <setting name="POST_BUILD_VARIANT_USED" value="false"/>
+                           <setting name="IMPLEMENTATION_CONFIG_VARIANT" value="VARIANT-POST-BUILD"/>
+                        </struct>
+                        <struct name="PwmGeneral">
+                           <setting name="Name" value="PwmGeneral"/>
+                           <setting name="PwmDevErrorDetect" value="false"/>
+                        </struct>
+                        <array name="PwmFtm">
+                           <struct name="0">
+                              <setting name="Name" value="Ftm_Instance_0"/>
+                              <setting name="PwmHwInstance" value="Ftm_0"/>
+                              <struct name="PwmFtmClkCfg">
+                                 <setting name="Name" value="PwmFtmClkCfg"/>
+                                 <setting name="PwmFtmClockSource" value="Fixed_clock"/>
+                                 <setting name="PwmFtmClockPrescaler" value="Divide_by_1"/>
+                                 <setting name="PwmFtmClockPrescalerAlternate" value="Divide_by_1"/>
+                              </struct>
+                              <struct name="PwmFtmGlobalChCfg">
+                                 <setting name="Name" value="PwmFtmGlobalChCfg"/>
+                                 <setting name="PwmFtmCounterMode" value="Edge_Aligned_mode"/>
+                                 <setting name="PwmFtmPeriod" value="30000"/>
+                                 <setting name="PwmFtmPeriodDither" value="0"/>
+                                 <setting name="PwmFtmDeadTime" value="0"/>
+                                 <setting name="PwmFtmDeadTimePrescaler" value="Divide_by_1"/>
+                              </struct>
+                              <struct name="PwmFtmInstCfg">
+                                 <setting name="Name" value="PwmFtmInstCfg"/>
+                                 <setting name="PwmFtmDebugMode" value="Debug_Mode_11"/>
+                                 <setting name="PwmFtmWriteProtection" value="false"/>
+                                 <setting name="PwmFtmInitTrigger" value="false"/>
+                                 <setting name="PwmFtmInitTriggerMode" value="Trigger_on_Reload_Point"/>
+                                 <setting name="PwmFtmOverflowIrq" value="false"/>
+                                 <struct name="PwmFtmOverflowIrqCallback">
+                                    <setting name="Name" value="PwmFtmOverflowIrqCallback"/>
+                                    <setting name="PwmFtmOverflowIrqFunctionCallback" value="NULL_PTR"/>
+                                    <setting name="PwmFtmOverflowIrqParameterCallback" value="NULL_PTR"/>
+                                 </struct>
+                                 <setting name="PwmFtmReloadIrq" value="false"/>
+                                 <struct name="PwmFtmReloadIrqCallback">
+                                    <setting name="Name" value="PwmFtmReloadIrqCallback"/>
+                                    <setting name="PwmFtmReloadIrqFunctionCallback" value="NULL_PTR"/>
+                                    <setting name="PwmFtmReloadIrqParameterCallback" value="NULL_PTR"/>
+                                 </struct>
+                              </struct>
+                              <struct name="PwmFtmSyncCfg">
+                                 <setting name="Name" value="PwmFtmSyncCfg"/>
+                                 <setting name="PwmFtmSyncMode" value="Software_sync_trigger"/>
+                                 <setting name="PwmFtmHwTrig0" value="false"/>
+                                 <setting name="PwmFtmHwTrig1" value="false"/>
+                                 <setting name="PwmFtmHwTrig2" value="false"/>
+                                 <setting name="PwmFtmAutoHwTrig" value="false"/>
+                                 <setting name="PwmFtmMaxLoadPoint" value="false"/>
+                                 <setting name="PwmFtmMinLoadPoint" value="false"/>
+                                 <setting name="PwmFtmHalfCycleLoadPoint" value="false"/>
+                                 <setting name="PwmFtmReloadPointFrequency" value="0"/>
+                                 <setting name="PwmFtmInvertControl" value="Sync_disabled"/>
+                                 <setting name="PwmFtmSwOutControl" value="Sync_disabled"/>
+                                 <setting name="PwmFtmOutputMask" value="Sync_disabled"/>
+                                 <setting name="PwmFtmCounterInitial" value="Sync_on_FTM_Sync_Trigger"/>
+                                 <setting name="PwmFtmCounterSync" value="Sync_on_FTM_Sync_Trigger"/>
+                              </struct>
+                              <struct name="FtmGlobalFaultCfg">
+                                 <setting name="Name" value="FtmGlobalFaultCfg"/>
+                                 <setting name="FtmFaultFunctionality" value="FAULT_DISABLED"/>
+                                 <setting name="FtmFaultFilterValue" value="0"/>
+                                 <setting name="FtmFaultOutputState" value="SAFE_VALUE"/>
+                                 <setting name="FtmFaultIrqUsed" value="false"/>
+                                 <array name="FtmFaultSettings"/>
+                              </struct>
+                              <array name="PwmFtmCh">
+                                 <struct name="0">
+                                    <setting name="Name" value="PwmFtmCh_0"/>
+                                    <setting name="PwmFtmChId" value="CH_2"/>
+                                    <setting name="PwmFtmChPulseType" value="High_true_pulse"/>
+                                    <setting name="PwmFtmChInitOutput" value="LOW"/>
+                                    <setting name="PwmFtmChPolarity" value="Channel_active_HIGH"/>
+                                    <setting name="PwmFtmChDutyCycle" value="0"/>
+                                    <setting name="PwmFtmChDutyCycleDither" value="0"/>
+                                    <setting name="PwmFtmChInterrupt" value="false"/>
+                                    <struct name="PwmFtmChInterruptCallback">
+                                       <setting name="Name" value="PwmFtmChInterruptCallback"/>
+                                       <setting name="PwmFtmChInterruptFunctionCallback" value="NULL_PTR"/>
+                                       <setting name="PwmFtmChInterruptParameterCallback" value="NULL_PTR"/>
+                                    </struct>
+                                    <setting name="PwmFtmChPwmOutputEnable" value="true"/>
+                                    <setting name="PwmFtmChSwCtrlEnable" value="false"/>
+                                    <setting name="PwmFtmChSwCtrlValue" value="false"/>
+                                    <setting name="PwmFtmChExternTriggerEnable" value="false"/>
+                                    <setting name="PwmFtmChMatchLoadPointEnable" value="false"/>
+                                    <setting name="PwmFtmPairChEnable" value="true"/>
+                                    <struct name="PwmFtmPairedCh">
+                                       <setting name="Name" value="PwmFtmPairedCh"/>
+                                       <setting name="PwmFtmPairedChDeadtimeEnable" value="false"/>
+                                       <setting name="PwmFtmPairedChSync" value="false"/>
+                                       <setting name="PwmFtmPairedChExtTrig" value="false"/>
+                                       <setting name="PwmFtmPairedChComplementary" value="true"/>
+                                       <setting name="PwmFtmDutyDitheringPaired" value="false"/>
+                                       <setting name="PwmFtmPairedChCombineMode" value="Combined_Mode"/>
+                                       <setting name="PwmFtmPairedChComplementaryMode" value="Invert_Output"/>
+                                       <setting name="PwmFtmPairedChPhaseShift" value="0"/>
+                                    </struct>
+                                 </struct>
+                              </array>
+                           </struct>
+                        </array>
+                        <setting name="Name" value="Ftm_Pwm"/>
                      </config_set>
                   </instance>
                </instances>
