@@ -1,0 +1,229 @@
+IPA summary for main/5 is missing.
+IPA summary for PwmFtmChInterruptCallback/4 is missing.
+IPA summary for TestDelay/2 is missing.
+
+Flattening functions:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :        7 calls, 7.000000 freq, 0 count
+IPA summary for main/5 is missing.
+IPA summary for PwmFtmChInterruptCallback/4 is missing.
+IPA summary for TestDelay/2 is missing.
+Symbol table:
+
+Ftm_Pwm_Ip_EnableNotification/15 (Ftm_Pwm_Ip_EnableNotification) @06dbf9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/5 
+  Calls: 
+Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0/14 (Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0) @06dc1168
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/5 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Ftm_Pwm_Ip_Init/13 (Ftm_Pwm_Ip_Init) @06dbf8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/5 
+  Calls: 
+IntCtrl_Ip_EnableIrq/12 (IntCtrl_Ip_EnableIrq) @06dbf7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/5 
+  Calls: 
+FTM_0_CH_0_CH_1_ISR/11 (FTM_0_CH_0_CH_1_ISR) @06dbf700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/5 (addr)
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/10 (IntCtrl_Ip_InstallHandler) @06dbf620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/5 
+  Calls: 
+Port_Init/9 (Port_Init) @06dbf540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/5 
+  Calls: 
+Clock_Ip_aClockConfig/8 (Clock_Ip_aClockConfig) @06dbaf78
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/5 (addr)main/5 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/7 (Clock_Ip_Init) @06dbf460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/5 main/5 
+  Calls: 
+DelayTimer.7003/6 (DelayTimer) @06dbab40
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: TestDelay/2 (read)TestDelay/2 (write)TestDelay/2 (read)TestDelay/2 (write)
+  Availability: available
+  Varpool flags: initialized
+main/5 (main) @06db9620
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Clock_Ip_aClockConfig/8 (addr)Clock_Ip_aClockConfig/8 (addr)FTM_0_CH_0_CH_1_ISR/11 (addr)Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0/14 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_EnableNotification/15 Ftm_Pwm_Ip_Init/13 IntCtrl_Ip_EnableIrq/12 IntCtrl_Ip_InstallHandler/10 Port_Init/9 Clock_Ip_Init/7 Clock_Ip_Init/7 
+PwmFtmChInterruptCallback/4 (PwmFtmChInterruptCallback) @06db9d20
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FTM_Clk/3 (FTM_Clk) @06dba5a0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+TestDelay/2 (TestDelay) @06db99a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: DelayTimer.7003/6 (read)DelayTimer.7003/6 (write)DelayTimer.7003/6 (read)DelayTimer.7003/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+exit_code/1 (exit_code) @06dba360
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+
+;; Function TestDelay (TestDelay, funcdef_no=1, decl_uid=6999, cgraph_uid=2, symbol_order=2)
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+  long unsigned int DelayTimer.0_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.1_3;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 ={v} DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  DelayTimer.1_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer ={v} 0;
+  return;
+
+}
+
+
+
+;; Function PwmFtmChInterruptCallback (PwmFtmChInterruptCallback, funcdef_no=2, decl_uid=7009, cgraph_uid=3, symbol_order=4)
+
+PwmFtmChInterruptCallback ()
+{
+  <bb 2> :
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=3, decl_uid=7012, cgraph_uid=4, symbol_order=5)
+
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+  int D.7023;
+
+  <bb 2> :
+  clockStatus_5 = Clock_Ip_Init (&Clock_Ip_aClockConfig[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus_12 = Clock_Ip_Init (&Clock_Ip_aClockConfig[0]);
+
+  <bb 4> :
+  # clockStatus_1 = PHI <clockStatus_5(2), clockStatus_12(3)>
+  if (clockStatus_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  Port_Init (0B);
+  IntCtrl_Ip_InstallHandler (100, FTM_0_CH_0_CH_1_ISR, 0B);
+  IntCtrl_Ip_EnableIrq (100);
+  Ftm_Pwm_Ip_Init (0, &Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0);
+  Ftm_Pwm_Ip_EnableNotification (0, 2, 3);
+
+  <bb 6> :
+  goto <bb 6>; [INV]
+
+}
+
+

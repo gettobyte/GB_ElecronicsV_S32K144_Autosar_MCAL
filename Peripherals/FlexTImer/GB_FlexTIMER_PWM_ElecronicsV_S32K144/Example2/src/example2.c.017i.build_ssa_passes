@@ -1,0 +1,65 @@
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+  int D.7023;
+
+  <bb 2> :
+  clockStatus = Clock_Ip_Init (&Clock_Ip_aClockConfig[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus = Clock_Ip_Init (&Clock_Ip_aClockConfig[0]);
+
+  <bb 4> :
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  Port_Init (0B);
+  IntCtrl_Ip_InstallHandler (100, FTM_0_CH_0_CH_1_ISR, 0B);
+  IntCtrl_Ip_EnableIrq (100);
+  Ftm_Pwm_Ip_Init (0, &Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0);
+  Ftm_Pwm_Ip_EnableNotification (0, 2, 3);
+
+  <bb 6> :
+  goto <bb 6>; [INV]
+
+}
+
+
+PwmFtmChInterruptCallback ()
+{
+  <bb 2> :
+  return;
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer = 0;
+  return;
+
+}
+
+
