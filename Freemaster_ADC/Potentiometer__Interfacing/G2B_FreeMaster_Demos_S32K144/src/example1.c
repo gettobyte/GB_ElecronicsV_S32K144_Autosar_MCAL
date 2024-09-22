@@ -15,10 +15,11 @@
 #include "Lpuart_Uart_Ip_Irq.h"
 #include "Platform.h"
 #include "freemaster.h"
-
-
+#include "Pwm.h"
+#include "IntCtrl_Ip.h"
 extern void Adc_0_Isr(void);
-
+void FTM_0_CH_0_CH_1_ISR(void);
+void FTM_0_OVF_ISR(void);
 /* User includes */
 
 /*!
@@ -46,6 +47,23 @@ void TestDelay(uint32 delay)
    }
    DelayTimer=0;
 }
+
+#define channel0 0
+#define channel1 1
+#define channel2 2
+#define instance0 0
+
+Pwm_OutputStateType pwm_signal = 0;
+void pwm_callback(void)
+{
+
+	// returns the output state of PWM signal whether high or low
+	pwm_signal = Pwm_GetOutputState(channel0);
+
+	// returns the duty cycle of PWM signal
+	Pwm_GetChannelState(channel0);
+}
+
 void IoHwAb_AdcNotification_0( void )
 {
 	Std_ReturnType StdReturn ;
@@ -98,6 +116,16 @@ int main(void)
 	    Platform_SetIrq(ADC0_IRQn, TRUE);
 
 
+	    /* Install and enable interrupt handlers */
+	    IntCtrl_Ip_InstallHandler(FTM0_Ch0_Ch1_IRQn, FTM_0_CH_0_CH_1_ISR, NULL_PTR);
+	    IntCtrl_Ip_EnableIrq(FTM0_Ch0_Ch1_IRQn);
+
+
+	    /* Install and enable interrupt handlers */
+	    IntCtrl_Ip_InstallHandler(FTM0_Ovf_Reload_IRQn, FTM_0_OVF_ISR, NULL_PTR);
+	    IntCtrl_Ip_EnableIrq(FTM0_Ovf_Reload_IRQn);
+
+
 		/*------------------------------------------------------------------------*/
 #ifdef TRGMUX_IP_IS_AVAILABLE
 		Mcl_Init(NULL_PTR);
@@ -123,7 +151,14 @@ int main(void)
 
         Adc_EnableGroupNotification(AdcGroup_0_WI_OS_PDB_B2B);
 
+
+	//    Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+
 	FMSTR_Init();
+
+    //When we want to use the Interrupts, so that call back function can be hit on every time PWM signal edge changes
+  // Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+
 
     for(;;)
     {
@@ -136,6 +171,11 @@ int main(void)
         while( Adc_GetGroupStatus( AdcGroup_0_WI_OS_PDB_B2B ) == ADC_BUSY );
 
     	TestDelay(200000);
+
+    	   /*Duty cycle update*/
+    	    Pwm_SetDutyCycle(channel0, 10000);
+    	    TestDelay(700000);
+
 
         /* Process FreeMASTER application commands */
         cmd = FMSTR_GetAppCmd();

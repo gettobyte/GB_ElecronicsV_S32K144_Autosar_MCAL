@@ -286,6 +286,16 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.pwm" description="Pwm not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.pwm" description="Unsupported version of the Pwm in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/Port_Ci_Port_Ip_Cfg.h" update_enabled="true"/>
@@ -314,12 +324,18 @@
             <file path="generate/include/Flexio_Mcl_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Flexio_Mcl_Ip_Cfg_Defines.h" update_enabled="true"/>
             <file path="generate/include/Flexio_Mcl_Ip_Cfg_DeviceRegisters.h" update_enabled="true"/>
+            <file path="generate/include/Flexio_Pwm_Ip_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/Flexio_Pwm_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Flexio_Pwm_Ip_CfgDefines.h" update_enabled="true"/>
             <file path="generate/include/Flexio_Uart_Ip_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Flexio_Uart_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Flexio_Uart_Ip_CfgDefines.h" update_enabled="true"/>
             <file path="generate/include/Flexio_Uart_Ip_Defines.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Mcl_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Mcl_Ip_Cfg_DeviceRegisters.h" update_enabled="true"/>
+            <file path="generate/include/Ftm_Pwm_Ip_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/Ftm_Pwm_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Ftm_Pwm_Ip_CfgDefines.h" update_enabled="true"/>
             <file path="generate/include/IntCtrl_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/IntCtrl_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/IntCtrl_Ip_CfgDefines.h" update_enabled="true"/>
@@ -343,6 +359,9 @@
             <file path="generate/include/Power_Ip_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Power_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Power_Ip_Cfg_Defines.h" update_enabled="true"/>
+            <file path="generate/include/Pwm_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/Pwm_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Pwm_Ipw_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Ram_Ip_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Ram_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Ram_Ip_Cfg_Defines.h" update_enabled="true"/>
@@ -366,7 +385,9 @@
             <file path="generate/src/Dma_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Dma_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Flexio_Mcl_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/Flexio_Pwm_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Flexio_Uart_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/Ftm_Pwm_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/IntCtrl_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/IntCtrl_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Lpuart_Uart_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
@@ -381,6 +402,7 @@
             <file path="generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Power_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Power_Ip_Cfg.c" update_enabled="true"/>
+            <file path="generate/src/Pwm_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Ram_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Ram_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Trgmux_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
@@ -1044,7 +1066,41 @@
                                        <setting name="PortPinDSE" value="Low_Drive_Strength"/>
                                        <setting name="PortPinPE" value="PullDisabled"/>
                                        <setting name="PortPinPS" value="PullDown"/>
-                                       <setting name="PortPinDirection" value="PORT_PIN_IN"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="5">
+                                       <setting name="Name" value="edge_aligned_ch0"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="6"/>
+                                       <setting name="PortPinPcr" value="44"/>
+                                       <setting name="PortPinMode" value="FTM0_CH0"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="6">
+                                       <setting name="Name" value="edge_aligned_ch1"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="7"/>
+                                       <setting name="PortPinPcr" value="45"/>
+                                       <setting name="PortPinMode" value="FTM0_CH1"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
                                        <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
                                        <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
                                        <array name="PortPinEcucPartitionRef"/>
@@ -1498,7 +1554,7 @@
                                  <struct name="65">
                                     <setting name="Name" value=""/>
                                     <setting name="IsrName" value="FTM0_Ch0_Ch1_IRQn"/>
-                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrEnabled" value="true"/>
                                     <setting name="IsrPriority" value="0"/>
                                  </struct>
                                  <struct name="66">
@@ -1973,7 +2029,7 @@
                               <struct name="65">
                                  <setting name="Name" value="PlatformIsrConfig_65"/>
                                  <setting name="IsrName" value="FTM0_Ch0_Ch1_IRQn"/>
-                                 <setting name="IsrHandler" value="undefined_handler"/>
+                                 <setting name="IsrHandler" value="FTM_0_CH_0_CH_1_ISR"/>
                               </struct>
                               <struct name="66">
                                  <setting name="Name" value="PlatformIsrConfig_66"/>
@@ -2714,7 +2770,7 @@
                                  <struct name="65">
                                     <setting name="Name" value=""/>
                                     <setting name="IsrName" value="FTM0_Ch0_Ch1_IRQn"/>
-                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrEnabled" value="true"/>
                                     <setting name="IsrPriority" value="0"/>
                                  </struct>
                                  <struct name="66">
@@ -2744,7 +2800,7 @@
                                  <struct name="70">
                                     <setting name="Name" value=""/>
                                     <setting name="IsrName" value="FTM0_Ovf_Reload_IRQn"/>
-                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrEnabled" value="true"/>
                                     <setting name="IsrPriority" value="0"/>
                                  </struct>
                                  <struct name="71">
@@ -3191,7 +3247,7 @@
                               <struct name="65">
                                  <setting name="Name" value="PlatformIsrConfig_65"/>
                                  <setting name="IsrName" value="FTM0_Ch0_Ch1_IRQn"/>
-                                 <setting name="IsrHandler" value="undefined_handler"/>
+                                 <setting name="IsrHandler" value="FTM_0_CH_0_CH_1_ISR"/>
                               </struct>
                               <struct name="66">
                                  <setting name="Name" value="PlatformIsrConfig_66"/>
@@ -3883,6 +3939,182 @@
                               <setting name="McuLowPowerBiasEnable" value="false"/>
                            </struct>
                         </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="Pwm_1" uuid="e50bd18a-ff07-442e-bcb8-31ce04361403" type="Pwm" type_id="Pwm" mode="autosar" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="Pwm">
+                        <struct name="ConfigTimeSupport">
+                           <setting name="POST_BUILD_VARIANT_USED" value="true"/>
+                           <setting name="IMPLEMENTATION_CONFIG_VARIANT" value="VARIANT-POST-BUILD"/>
+                        </struct>
+                        <struct name="PwmGeneral">
+                           <setting name="Name" value="PwmGeneral"/>
+                           <setting name="PwmMulticoreEnabled" value="false"/>
+                           <setting name="PwmDevErrorDetect" value="true"/>
+                           <setting name="PwmDutycycleUpdatedEndperiod" value="true"/>
+                           <setting name="PwmPeriodUpdatedEndperiod" value="true"/>
+                           <setting name="PwmNotificationSupported" value="true"/>
+                           <setting name="PwmEnableUserModeSupport" value="false"/>
+                           <array name="PwmLowPowerStatesSupport"/>
+                           <array name="PwmPowerStateAsynchTransitionMode"/>
+                           <setting name="PwmEnableDualClockMode" value="false"/>
+                           <setting name="PwmEnableExternalTrigger" value="false"/>
+                           <setting name="PwmEnablePhaseShift" value="false"/>
+                           <setting name="PwmEnableMaskOutputs" value="false"/>
+                           <setting name="PwmFaultSupported" value="false"/>
+                           <setting name="PwmMultiChannelSync" value="false"/>
+                           <setting name="PwmIndex" value="0"/>
+                           <array name="PwmEcucPartitionRef"/>
+                           <array name="PwmKernelEcucPartitionRef"/>
+                           <array name="PwmPowerStateConfig"/>
+                        </struct>
+                        <struct name="PwmChannelConfigSet">
+                           <array name="PwmChannel">
+                              <struct name="0">
+                                 <setting name="Name" value="PwmChannel_0"/>
+                                 <setting name="PwmChannelId" value="0"/>
+                                 <setting name="PwmHwChannel" value="/Pwm_1/Pwm/PwmChannelConfigSet/Ftm_Instance_0/PwmFtmCh_0"/>
+                                 <array name="PwmChannelClass">
+                                    <setting name="0" value="PWM_VARIABLE_PERIOD"/>
+                                 </array>
+                                 <setting name="PwmPeriodInTicks" value="true"/>
+                                 <setting name="PwmPeriodDefault" value="30000"/>
+                                 <setting name="PwmDutycycleDefault" value="16384"/>
+                                 <setting name="PwmPolarity" value="PWM_HIGH"/>
+                                 <setting name="PwmIdleState" value="PWM_HIGH"/>
+                                 <array name="PwmNotification">
+                                    <setting name="0" value="pwm_callback"/>
+                                 </array>
+                                 <setting name="PwmMcuClockReferencePoint" value="/Mcu_1/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/LPUART1_CLK"/>
+                                 <array name="PwmChannelEcucPartitionRef"/>
+                              </struct>
+                           </array>
+                           <array name="PwmFlexio"/>
+                           <array name="PwmFtm">
+                              <struct name="0">
+                                 <setting name="Name" value="Ftm_Instance_0"/>
+                                 <setting name="PwmHwInstance" value="Ftm_0"/>
+                                 <struct name="PwmFtmClkCfg">
+                                    <setting name="PwmFtmClockSource" value="Fixed_clock"/>
+                                    <setting name="PwmFtmClockPrescaler" value="Divide_by_1"/>
+                                    <setting name="PwmFtmClockPrescalerAlternate" value="Divide_by_1"/>
+                                 </struct>
+                                 <struct name="PwmFtmGlobalChCfg">
+                                    <setting name="PwmFtmCounterMode" value="Edge_Aligned_mode"/>
+                                    <setting name="PwmFtmPeriod" value="30000"/>
+                                    <setting name="PwmFtmPeriodDither" value="0"/>
+                                    <setting name="PwmFtmDeadTime" value="0"/>
+                                    <setting name="PwmFtmDeadTimePrescaler" value="Divide_by_1"/>
+                                 </struct>
+                                 <struct name="PwmFtmInstCfg">
+                                    <setting name="PwmFtmDebugMode" value="Debug_Mode_00"/>
+                                    <setting name="PwmFtmWriteProtection" value="false"/>
+                                    <setting name="PwmFtmInitTrigger" value="false"/>
+                                    <setting name="PwmFtmInitTriggerMode" value="Trigger_on_Reload_Point"/>
+                                    <setting name="PwmFtmOverflowIrq" value="false"/>
+                                    <struct name="PwmFtmOverflowIrqCallback">
+                                       <setting name="PwmFtmOverflowIrqFunctionCallback" value="NULL_PTR"/>
+                                       <setting name="PwmFtmOverflowIrqParameterCallback" value="NULL_PTR"/>
+                                    </struct>
+                                    <setting name="PwmFtmReloadIrq" value="false"/>
+                                    <struct name="PwmFtmReloadIrqCallback">
+                                       <setting name="PwmFtmReloadIrqFunctionCallback" value="NULL_PTR"/>
+                                       <setting name="PwmFtmReloadIrqParameterCallback" value="NULL_PTR"/>
+                                    </struct>
+                                 </struct>
+                                 <struct name="PwmFtmSyncCfg">
+                                    <setting name="PwmFtmSyncMode" value="Software_sync_trigger"/>
+                                    <setting name="PwmFtmHwTrig0" value="false"/>
+                                    <setting name="PwmFtmHwTrig1" value="false"/>
+                                    <setting name="PwmFtmHwTrig2" value="false"/>
+                                    <setting name="PwmFtmAutoHwTrig" value="false"/>
+                                    <setting name="PwmFtmMaxLoadPoint" value="false"/>
+                                    <setting name="PwmFtmMinLoadPoint" value="false"/>
+                                    <setting name="PwmFtmHalfCycleLoadPoint" value="false"/>
+                                    <setting name="PwmFtmReloadPointFrequency" value="0"/>
+                                    <setting name="PwmFtmInvertControl" value="Sync_disabled"/>
+                                    <setting name="PwmFtmSwOutControl" value="Sync_disabled"/>
+                                    <setting name="PwmFtmOutputMask" value="Sync_disabled"/>
+                                    <setting name="PwmFtmCounterInitial" value="Sync_on_FTM_Sync_Trigger"/>
+                                    <setting name="PwmFtmCounterSync" value="Sync_on_FTM_Sync_Trigger"/>
+                                 </struct>
+                                 <struct name="FtmGlobalFaultCfg">
+                                    <setting name="FtmFaultFunctionality" value="FAULT_DISABLED"/>
+                                    <setting name="FtmFaultFilterValue" value="0"/>
+                                    <setting name="FtmFaultOutputState" value="SAFE_VALUE"/>
+                                    <setting name="FtmFaultIrqUsed" value="false"/>
+                                    <array name="FtmFaultSettings"/>
+                                 </struct>
+                                 <array name="PwmFtmCh">
+                                    <struct name="0">
+                                       <setting name="Name" value="PwmFtmCh_0"/>
+                                       <setting name="PwmFtmChId" value="CH_0"/>
+                                       <setting name="PwmFtmChPulseType" value="High_true_pulse"/>
+                                       <setting name="PwmFtmChInitOutput" value="HIGH"/>
+                                       <setting name="PwmFtmChPolarity" value="Channel_active_HIGH"/>
+                                       <setting name="PwmFtmChDutyCycle" value="15000"/>
+                                       <setting name="PwmFtmChDutyCycleDither" value="0"/>
+                                       <setting name="PwmFtmChInterrupt" value="false"/>
+                                       <struct name="PwmFtmChInterruptCallback">
+                                          <setting name="PwmFtmChInterruptFunctionCallback" value="NULL_PTR"/>
+                                          <setting name="PwmFtmChInterruptParameterCallback" value="NULL_PTR"/>
+                                       </struct>
+                                       <setting name="PwmFtmChPwmOutputEnable" value="true"/>
+                                       <setting name="PwmFtmChSwCtrlEnable" value="false"/>
+                                       <setting name="PwmFtmChSwCtrlValue" value="false"/>
+                                       <setting name="PwmFtmChExternTriggerEnable" value="false"/>
+                                       <setting name="PwmFtmChMatchLoadPointEnable" value="false"/>
+                                       <setting name="PwmFtmPairChEnable" value="false"/>
+                                       <struct name="PwmFtmPairedCh">
+                                          <setting name="PwmFtmPairedChDeadtimeEnable" value="false"/>
+                                          <setting name="PwmFtmPairedChSync" value="false"/>
+                                          <setting name="PwmFtmPairedChExtTrig" value="false"/>
+                                          <setting name="PwmFtmPairedChComplementary" value="false"/>
+                                          <setting name="PwmFtmPairedChCombineMode" value="Combine_modes_disabled"/>
+                                          <setting name="PwmFtmPairedChComplementaryMode" value="Invert_Output"/>
+                                          <setting name="PwmFtmPairedChPhaseShift" value="0"/>
+                                       </struct>
+                                    </struct>
+                                 </array>
+                              </struct>
+                           </array>
+                           <setting name="Name" value="PwmChannelConfigSet"/>
+                        </struct>
+                        <struct name="PwmConfigurationOfOptApiServices">
+                           <setting name="Name" value="PwmConfigurationOfOptApiServices"/>
+                           <setting name="PwmDeInitApi" value="true"/>
+                           <setting name="PwmGetOutputState" value="true"/>
+                           <setting name="PwmSetDutyCycle" value="true"/>
+                           <setting name="PwmSetOutputToIdle" value="true"/>
+                           <setting name="PwmSetPeriodAndDuty" value="true"/>
+                           <setting name="PwmVersionInfoApi" value="true"/>
+                           <setting name="PwmGetChannelStateApi" value="true"/>
+                           <setting name="PwmSetDutyCycle_NoUpdate" value="false"/>
+                           <setting name="PwmSetPeriodAndDuty_NoUpdate" value="false"/>
+                           <setting name="PwmSetPhaseShift" value="true"/>
+                           <setting name="PwmSetPhaseShift_NoUpdate" value="false"/>
+                           <setting name="PwmSetDutyPhaseShift" value="false"/>
+                           <setting name="PwmSetChannelDeadTime" value="true"/>
+                           <setting name="PwmForceOutputToZeroApi" value="true"/>
+                           <setting name="PwmEnableTrigger" value="true"/>
+                           <setting name="PwmDisableTrigger" value="true"/>
+                           <setting name="PwmResetCounter" value="true"/>
+                        </struct>
+                        <struct name="CommonPublishedInformation" quick_selection="Default">
+                           <setting name="Name" value="CommonPublishedInformation"/>
+                           <setting name="ArReleaseMajorVersion" value="4"/>
+                           <setting name="ArReleaseMinorVersion" value="4"/>
+                           <setting name="ArReleaseRevisionVersion" value="0"/>
+                           <setting name="ModuleId" value="121"/>
+                           <setting name="SwMajorVersion" value="1"/>
+                           <setting name="SwMinorVersion" value="0"/>
+                           <setting name="SwPatchVersion" value="0"/>
+                           <array name="VendorApiInfix">
+                              <setting name="0" value=""/>
+                           </array>
+                           <setting name="VendorId" value="43"/>
+                        </struct>
+                        <setting name="Name" value="Pwm"/>
                      </config_set>
                   </instance>
                </instances>

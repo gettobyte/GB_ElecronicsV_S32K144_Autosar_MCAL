@@ -244,7 +244,7 @@ extern "C" {
 * @brief This constant used for other modules to check if PWM is present in the project.  
 * @violates @ref modules_h_REF_1 MISRA 2012 Advisory Rule 2.5, unused macro. 
 */
-#define USE_PWM_MODULE              (STD_OFF)
+#define USE_PWM_MODULE              (STD_ON)
 
 /** 
 * @brief This constant used for other modules to check if SENT is present in the project.  
