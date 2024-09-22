@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Speed Simulation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      /* Road styling */
+      .road {
+        position: relative; /* Allows the car to move within this container */
+        width: 100%; /* Full width of the screen */
+        height: 150px; /* Height of the road */
+        background-color: #333; /* Dark gray color for the road */
+        margin-top: 50px; /* Space above the road */
+        overflow: hidden; /* Hides the car when it moves off the screen */
+      }
+
+      /* Car styling */
+      .car {
+        position: absolute; /* Allows us to move the car by adjusting its 'left' property */
+        top: 20px; /* Places the car 20px from the top of the road */
+        left: 0; /* Starts the car at the left edge of the road */
+        width: 100px; /* Width of the car */
+        height: 50px; /* Height of the car */
+        background-color: red; /* Red car */
+        border-radius: 10px; /* Rounds the corners of the car for a smoother look */
+      }
+
+      /* Wheels styling */
+      .wheels {
+        position: absolute;
+        bottom: -10px; /* Places the wheels slightly outside the bottom of the car */
+        left: 10px;
+        width: 80px; /* Width of the wheels (black strip under the car) */
+        height: 10px;
+        background-color: black; /* Color of the wheels */
+      }
+
+      /* Speed display styling */
+      #speed {
+        font-size: 24px; /* Increases font size for the speed display */
+        margin-top: 20px; /* Adds space between the road and the speed display */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Heading for the car speed simulation -->
+    <h1>Car Speed Simulation</h1>
+
+    <!-- Road element where the car moves -->
+    <div class="road">
+      <!-- The car element inside the road -->
+      <div class="car">
+        <!-- The car's wheels (just a black strip under the car) -->
+        <div class="wheels"></div>
+      </div>
+    </div>
+
+    <!-- Display for showing the car's current speed -->
+    <p id="speed">Speed: 0 km/h</p>
+
+    <script>
+      // Initial speed of the car set to 0
+      let speed = 0;
+
+      // Grab the HTML element that displays the speed
+      const speedElement = document.getElementById("speed");
+
+      // Grab the HTML element representing the car
+      const carElement = document.querySelector(".car");
+
+      // Variable to track the car's position on the screen (starting at 0)
+      let position = 0;
+
+      /**
+       * Function to update the car's speed.
+       * This function takes in a new speed and updates the displayed speed and car's movement.
+       */
+      function updateSpeed(newSpeed) {
+        speed = newSpeed; // Set the new speed
+        speedElement.textContent = `Speed: ${speed} km/h`; // Update the speed display text
+        moveCar(); // Move the car according to the new speed
+      }
+
+      /**
+       * Function to move the car based on its speed.
+       * The higher the speed, the faster the car will move across the screen.
+       */
+      function moveCar() {
+        position += speed / 10; // Adjust the car's position based on speed (divide for smoother movement)
+
+        // If the car moves off the right edge of the screen, reset its position to the left
+        if (position > window.innerWidth) {
+          position = -100; // Moves the car back to the left (out of view) to create a loop
+        }
+
+        // Set the new left position of the car, so it appears to be moving
+        carElement.style.left = `${position}px`;
+      }
+
+      /**
+       * Simulate receiving new speed data every 2 seconds.
+       * In a real application, this data could come from an external source like a WebSocket or API.
+       */
+      setInterval(() => {
+        // Simulate random speed data between 1 and 100 km/h
+        const simulatedData = Math.floor(Math.random() * 100) + 1;
+        updateSpeed(simulatedData); // Update the speed with the new data
+      }, 2000); // This function runs every 2 seconds
+
+      /**
+       * Continuously move the car every 50 milliseconds.
+       * This makes the car move smoothly across the screen.
+       */
+      setInterval(moveCar, 50); // Move the car 20 times per second (50ms)
+    </script>
+    
+  </body>
+</html>

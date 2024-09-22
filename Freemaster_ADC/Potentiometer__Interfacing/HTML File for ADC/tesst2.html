@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Speed Simulation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      /* Road styling */
+      .road {
+        position: relative; /* Allows the car to move within this container */
+        width: 100%; /* Full width of the screen */
+        height: 150px; /* Height of the road */
+        background-color: #333; /* Dark gray color for the road */
+        margin-top: 50px; /* Space above the road */
+        overflow: hidden; /* Hides the car when it moves off the screen */
+      }
+
+      /* Car styling */
+      .car {
+        position: absolute; /* Allows us to move the car by adjusting its 'left' property */
+        top: 20px; /* Places the car 20px from the top of the road */
+        left: 0; /* Starts the car at the left edge of the road */
+        width: 100px; /* Width of the car */
+        height: 50px; /* Height of the car */
+        background-color: red; /* Red car */
+        border-radius: 10px; /* Rounds the corners of the car for a smoother look */
+      }
+
+      /* Wheels styling */
+      .wheels {
+        position: absolute;
+        bottom: -10px; /* Places the wheels slightly outside the bottom of the car */
+        left: 10px;
+        width: 80px; /* Width of the wheels (black strip under the car) */
+        height: 10px;
+        background-color: black; /* Color of the wheels */
+      }
+
+      /* Speed display styling */
+      #speed {
+        font-size: 24px; /* Increases font size for the speed display */
+        margin-top: 20px; /* Adds space between the road and the speed display */
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <object
+      name="freemaster"
+      width="0"
+      height="0"
+      classid="clsid:48A185F1-FFDB-11D3-80E3-00C04F176153"
+    ></object>
+
+    <h1>Car Speed Simulation</h1>
+
+    <!-- Road element where the car moves -->
+    <div class="road">
+      <!-- The car element inside the road -->
+      <div class="car">
+        <!-- The car's wheels (just a black strip under the car) -->
+        <div class="wheels"></div>
+      </div>
+    </div>
+    <br /><br /><br /><br />
+    <hr />
+    Speed: <span id="Value">??</span> Km/h
+
+    <script lang="JavaScript">
+      var ADC;
+      var position = 0; // Initialize position variable for the car
+
+      function main() {
+        // Reference the DOM element that will display the accelerator value
+        ADC = document.getElementById("Value");
+
+        // Set timers for both reading the accelerator and moving the car
+        setInterval(timer, 100); // Updates the accelerator value every 100ms
+        setInterval(moveCar, 50); // Moves the car every 50ms
+      }
+
+      function timer() {
+        // Simulate reading the accelerator value from an external application (freemaster)
+        if (freemaster.ReadVariable("Accelerator")) {
+          ADC.innerText = freemaster.LastVariable_vValue;
+        } else {
+          ADC.innerText = "ERROR" + freemaster.LastRetMsg;
+        }
+      }
+
+      function moveCar() {
+        // Convert the accelerator value from the ADC span element's text to a number
+        let adcValue = parseFloat(ADC.innerText);
+
+        // If the value is not a number, set it to 0 (for example, during an error)
+        if (isNaN(adcValue)) {
+          adcValue = 0;
+        }
+
+        // Adjust the car's position based on the ADC value (speed)
+        position += adcValue / 50; // Dividing for smoother movement
+
+        // If the car moves off the right edge of the screen, reset its position to the left
+        if (position > window.innerWidth) {
+          position = -100; // Move the car back to the left (out of view) to create a loop
+        }
+
+        // Set the new left position of the car, so it appears to be moving
+        document.querySelector('.car').style.left = `${position}px`;
+      }
+    </script>
+  </body>
+</html>

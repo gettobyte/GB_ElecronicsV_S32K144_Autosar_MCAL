@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Speed Simulation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+      }
+
+      /* Road styling */
+      .road {
+        position: relative;
+        width: 100%;
+        height: 150px;
+        background-color: #333;
+        margin-top: 50px;
+        overflow: hidden;
+      }
+
+      /* Car styling */
+      .car {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 100px;
+        height: 50px;
+        background-color: red;
+        border-radius: 10px;
+      }
+
+      .wheels {
+        position: absolute;
+        bottom: -10px;
+        left: 10px;
+        width: 80px;
+        height: 10px;
+        background-color: black;
+      }
+
+      /* Speedometer container */
+      .speedometer {
+        width: 250px;
+        height: 125px;
+        position: relative;
+        margin: 20px auto;
+        border-radius: 250px 250px 0 0;
+        background: linear-gradient(to top, #ccc, #ddd);
+        border: 10px solid #333;
+        overflow: hidden;
+      }
+
+      /* Needle styling */
+      .needle {
+        width: 2px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+        bottom: 10px; /* Move the needle's bottom to the base */
+        left: 50%;
+        transform-origin: bottom center;
+        transform: rotate(-90deg); /* Start from -90 degrees */
+        transition: transform 0.5s ease-in-out; /* Smooth transition for needle movement */
+      }
+
+      /* Center of the speedometer (pivot) */
+      .center-dot {
+        width: 20px;
+        height: 20px;
+        background-color: black;
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 10px);
+        border-radius: 50%;
+      }
+
+      /* Speedometer tick marks */
+      .tick {
+        position: absolute;
+        width: 2px;
+        height: 20px;
+        background-color: #000;
+        bottom: 20px;
+        left: 50%;
+        transform-origin: bottom center;
+      }
+
+      /* Speed labels */
+      .speed-label {
+        position: absolute;
+        font-size: 12px;
+        font-weight: bold;
+        bottom: 5px;
+      }
+
+      /* Speed value display */
+      #speedValue {
+        font-size: 24px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <object
+      name="freemaster"
+      width="0"
+      height="0"
+      classid="clsid:48A185F1-FFDB-11D3-80E3-00C04F176153"
+    ></object>
+
+    <h1>Car Speed Simulation</h1>
+
+    <!-- Road element where the car moves -->
+    <div class="road">
+      <div class="car">
+        <div class="wheels"></div>
+      </div>
+    </div>
+
+    <!-- Speed display -->
+    Speed (km/h): <span id="speedValue">0</span> km/h
+
+    <!-- Speedometer container -->
+    <div class="speedometer">
+      <!-- Speedometer needle -->
+      <div class="needle" id="needle"></div>
+
+      <!-- Needle center pivot -->
+      <div class="center-dot"></div>
+
+      <!-- Speed labels -->
+      <div class="speed-label" style="left: 10px">0</div>
+      <div class="speed-label" style="left: calc(50% - 10px)">90</div>
+      <div class="speed-label" style="right: 10px">180</div>
+
+      <!-- Tick marks for the speedometer -->
+      <div class="tick" style="transform: rotate(-90deg)"></div>
+      <div class="tick" style="transform: rotate(-45deg)"></div>
+      <div class="tick" style="transform: rotate(0deg)"></div>
+      <div class="tick" style="transform: rotate(45deg)"></div>
+      <div class="tick" style="transform: rotate(90deg)"></div>
+    </div>
+
+    <script lang="JavaScript">
+      var ADC;
+      var position = 0;
+
+      var maxADC = 4075;
+      var maxSpeed = 180;
+
+      function main() {
+        ADC = document.getElementById("speedValue");
+
+        setInterval(timer, 50); // Update speed every 100ms
+        setInterval(moveCar, 50); // Move car every 50ms
+      }
+
+      function timer() {
+        // Simulate reading ADC value from external source
+        if (freemaster.ReadVariable("Accelerator")) {
+          let adcValue = freemaster.LastVariable_vValue;
+          let speed = mapRange(adcValue, 0, maxADC, 0, maxSpeed); // Convert ADC to speed (km/h)
+          ADC.innerText = speed.toFixed(1); // Display speed value
+          updateSpeedometer(speed); // Update speedometer needle
+        } else {
+          ADC.innerText = "ERROR " + freemaster.LastRetMsg;
+        }
+      }
+
+      // Map ADC value to speed
+      function mapRange(value, inMin, inMax, outMin, outMax) {
+        return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+      }
+
+      function moveCar() {
+        let speedValue = parseFloat(ADC.innerText);
+
+        if (isNaN(speedValue)) {
+          speedValue = 0;
+        }
+
+        position += speedValue / 5; // Move car based on speed
+
+        if (position > window.innerWidth) {
+          position = -100; // Reset car position to the left of the screen
+        }
+
+        document.querySelector(".car").style.left = `${position}px`;
+      }
+
+      // Update speedometer needle position based on speed
+      function updateSpeedometer(speed) {
+        let needle = document.getElementById("needle");
+
+        // Convert speed to rotation (from -90deg to 90deg for 0-180 km/h)
+        let rotation = (speed / maxSpeed) * 180 - 90;
+        needle.style.transform = `rotate(${rotation}deg)`;
+      }
+    </script>
+  </body>
+</html>
