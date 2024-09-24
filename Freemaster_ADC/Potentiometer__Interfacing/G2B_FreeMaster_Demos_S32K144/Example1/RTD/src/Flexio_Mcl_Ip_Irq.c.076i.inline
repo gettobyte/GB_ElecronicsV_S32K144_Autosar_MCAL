@@ -1,0 +1,125 @@
+IPA summary for MCL_FLEXIO_ISR/1 is missing.
+IPA summary for Flexio_Mcl_Ip_CommonIrq/0 is missing.
+
+Flattening functions:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+function not considered for inlining              :        1 calls, 1.000000 freq, 0 count
+function body not available                       :        2 calls, 2.000000 freq, 0 count
+IPA summary for MCL_FLEXIO_ISR/1 is missing.
+IPA summary for Flexio_Mcl_Ip_CommonIrq/0 is missing.
+Symbol table:
+
+Flexio_Ip_IpIsInitialized/5 (Flexio_Ip_IpIsInitialized) @067d15a0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Flexio_Mcl_Ip_CommonIrq/0 (read)
+  Availability: not_available
+  Varpool flags:
+Flexio_Mcl_Ip_GetAllTimerStatus/4 (Flexio_Mcl_Ip_GetAllTimerStatus) @06851ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Flexio_Mcl_Ip_CommonIrq/0 
+  Calls: 
+Flexio_Mcl_Ip_GetAllShifterErrorStatus/3 (Flexio_Mcl_Ip_GetAllShifterErrorStatus) @06851e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Flexio_Mcl_Ip_CommonIrq/0 
+  Calls: 
+flexioBase/2 (flexioBase) @067d14c8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Flexio_Mcl_Ip_CommonIrq/0 (read)
+  Availability: not_available
+  Varpool flags: read-only
+MCL_FLEXIO_ISR/1 (MCL_FLEXIO_ISR) @068519a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Flexio_Mcl_Ip_CommonIrq/0 
+Flexio_Mcl_Ip_CommonIrq/0 (Flexio_Mcl_Ip_CommonIrq) @06851700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: flexioBase/2 (read)Flexio_Ip_IpIsInitialized/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: MCL_FLEXIO_ISR/1 
+  Calls: Flexio_Mcl_Ip_GetAllTimerStatus/4 Flexio_Mcl_Ip_GetAllShifterErrorStatus/3 
+
+;; Function Flexio_Mcl_Ip_CommonIrq (Flexio_Mcl_Ip_CommonIrq, funcdef_no=0, decl_uid=5740, cgraph_uid=1, symbol_order=0)
+
+Flexio_Mcl_Ip_CommonIrq ()
+{
+  uint8 u8TimerMaskFlag;
+  uint8 u8ShifterErrMaskFlag;
+  struct FLEXIO_Type * baseAddr;
+  long unsigned int _1;
+  long unsigned int _2;
+  _Bool _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  baseAddr_8 = flexioBase[0];
+  _1 = Flexio_Mcl_Ip_GetAllShifterErrorStatus (baseAddr_8);
+  u8ShifterErrMaskFlag_10 = (uint8) _1;
+  _2 = Flexio_Mcl_Ip_GetAllTimerStatus (baseAddr_8);
+  u8TimerMaskFlag_12 = (uint8) _2;
+  _3 = Flexio_Ip_IpIsInitialized[0];
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _4 = (long unsigned int) u8ShifterErrMaskFlag_10;
+  baseAddr_8->SHIFTERR ={v} _4;
+  _5 = (long unsigned int) u8TimerMaskFlag_12;
+  baseAddr_8->TIMSTAT ={v} _5;
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function MCL_FLEXIO_ISR (MCL_FLEXIO_ISR, funcdef_no=1, decl_uid=5734, cgraph_uid=2, symbol_order=1)
+
+MCL_FLEXIO_ISR ()
+{
+  <bb 2> :
+  Flexio_Mcl_Ip_CommonIrq ();
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+

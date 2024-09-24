@@ -1,0 +1,130 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: Flexio_Pwm_Ip_IrqHandler
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Flexio_Pwm_Ip_aState/13 (Flexio_Pwm_Ip_aState) @067e7318
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)
+  Availability: not_available
+  Varpool flags:
+timerIrqMask/12 (timerIrqMask) @067e72d0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Flexio_Pwm_Ip_IrqHandler/11 (read)
+  Availability: not_available
+  Varpool flags:
+Flexio_Pwm_Ip_IrqHandler/11 (Flexio_Pwm_Ip_IrqHandler) @067e2620
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: timerIrqMask/12 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+   Indirect call
+   Indirect call
+Flexio_Pwm_Ip_IrqHandler (uint8 channelId, uint8 timerFlags)
+{
+  unsigned char timerIrqMask.0_1;
+  unsigned char _2;
+  unsigned int _3;
+  int _4;
+  const struct Flexio_Pwm_Ip_ChannelConfigType * _5;
+  unsigned char _6;
+  int _7;
+  unsigned int _8;
+  unsigned int _9;
+  int _10;
+  const struct Flexio_Pwm_Ip_ChannelConfigType * _11;
+  void (*<T48b>) (Flexio_Pwm_Ip_OccurredIRQType, void *) _12;
+  int _13;
+  const struct Flexio_Pwm_Ip_ChannelConfigType * _14;
+  void (*<T48b>) (Flexio_Pwm_Ip_OccurredIRQType, void *) _15;
+  int _16;
+  const struct Flexio_Pwm_Ip_ChannelConfigType * _17;
+  void * _18;
+  int _19;
+  const struct Flexio_Pwm_Ip_ChannelConfigType * _20;
+  void (*<T490>) (uint8) _21;
+  int _22;
+  const struct Flexio_Pwm_Ip_ChannelConfigType * _23;
+  void (*<T490>) (uint8) _24;
+  int _25;
+  const struct Flexio_Pwm_Ip_ChannelConfigType * _26;
+  unsigned char _27;
+
+  <bb 2> :
+  timerIrqMask.0_1 ={v} timerIrqMask;
+  _2 = timerFlags_30(D) & timerIrqMask.0_1;
+  _3 = (unsigned int) _2;
+  _4 = (int) channelId_31(D);
+  _5 = Flexio_Pwm_Ip_aState[_4];
+  _6 = _5->timerId;
+  _7 = (int) _6;
+  _8 = _3 >> _7;
+  _9 = _8 & 1;
+  if (_9 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  _10 = (int) channelId_31(D);
+  _11 = Flexio_Pwm_Ip_aState[_10];
+  _12 = _11->iplCallback.cbFunction;
+  if (_12 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _13 = (int) channelId_31(D);
+  _14 = Flexio_Pwm_Ip_aState[_13];
+  _15 = _14->iplCallback.cbFunction;
+  _16 = (int) channelId_31(D);
+  _17 = Flexio_Pwm_Ip_aState[_16];
+  _18 = _17->iplCallback.cbParameter;
+  _15 (0, _18);
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  _19 = (int) channelId_31(D);
+  _20 = Flexio_Pwm_Ip_aState[_19];
+  _21 = _20->hldCallback.cbFunction;
+  if (_21 != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _22 = (int) channelId_31(D);
+  _23 = Flexio_Pwm_Ip_aState[_22];
+  _24 = _23->hldCallback.cbFunction;
+  _25 = (int) channelId_31(D);
+  _26 = Flexio_Pwm_Ip_aState[_25];
+  _27 = _26->hldCallback.cbParameter;
+  _24 (_27);
+
+  <bb 7> :
+  return;
+
+}
+
+

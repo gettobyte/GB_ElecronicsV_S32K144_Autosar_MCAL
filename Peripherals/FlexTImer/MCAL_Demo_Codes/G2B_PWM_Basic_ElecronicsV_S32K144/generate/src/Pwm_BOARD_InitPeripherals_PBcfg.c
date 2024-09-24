@@ -117,6 +117,8 @@ extern "C"{
 
 extern void pwm_callback(void);
 
+extern void pwm_callback(void);
+
 #define PWM_STOP_SEC_CODE
 #include "Pwm_MemMap.h"
 
@@ -206,7 +208,7 @@ const Pwm_ChannelConfigType Pwm_Channels_BOARD_InitPeripherals_PB[PWM_BOARD_Init
         },
         /** @brief  The state of the channel output in idle mode */
         PWM_LOW,
-        NULL_PTR
+        &pwm_callback
     }
 };
 

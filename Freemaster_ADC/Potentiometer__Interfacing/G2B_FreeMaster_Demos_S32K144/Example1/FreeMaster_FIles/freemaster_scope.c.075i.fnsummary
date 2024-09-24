@@ -1,0 +1,254 @@
+Symbol table:
+
+FMSTR_CopyToBuffer/7 (FMSTR_CopyToBuffer) @067b0c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_ReadScope/5 
+  Calls: 
+FMSTR_AddressFromBuffer/6 (FMSTR_AddressFromBuffer) @067b0a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_SetUpScope/4 
+  Calls: 
+FMSTR_ReadScope/5 (FMSTR_ReadScope) @067b0540
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_nScopeVarCount/0 (read)pcm_pScopeVarAddr/1 (read)pcm_pScopeVarSize/2 (read)pcm_nScopeVarCount/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/7 
+FMSTR_SetUpScope/4 (FMSTR_SetUpScope) @067b02a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_nScopeVarCount/0 (write)pcm_pScopeVarSize/2 (write)pcm_pScopeVarAddr/1 (addr)pcm_nScopeVarCount/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_AddressFromBuffer/6 
+FMSTR_InitScope/3 (FMSTR_InitScope) @067a6e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_pScopeVarSize/2 (pcm_pScopeVarSize) @067addc8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SetUpScope/4 (write)FMSTR_ReadScope/5 (read)
+  Availability: available
+  Varpool flags:
+pcm_pScopeVarAddr/1 (pcm_pScopeVarAddr) @067add38
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SetUpScope/4 (addr)FMSTR_ReadScope/5 (read)
+  Availability: available
+  Varpool flags:
+pcm_nScopeVarCount/0 (pcm_nScopeVarCount) @067adca8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SetUpScope/4 (write)FMSTR_SetUpScope/4 (write)FMSTR_ReadScope/5 (read)FMSTR_ReadScope/5 (read)
+  Availability: available
+  Varpool flags:
+FMSTR_ReadScope (unsigned char * pMessageIO)
+{
+  FMSTR_U8 i;
+  unsigned char * D.5663;
+  unsigned char pcm_nScopeVarCount.8_1;
+  int _2;
+  unsigned char * _3;
+  int _4;
+  unsigned char _5;
+  unsigned char i.9_6;
+  unsigned char pcm_nScopeVarCount.10_7;
+  unsigned char * _10;
+  unsigned char * _18;
+  unsigned char * _23;
+
+  <bb 2> :
+  pcm_nScopeVarCount.8_1 = pcm_nScopeVarCount;
+  if (pcm_nScopeVarCount.8_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  MEM[(FMSTR_U8 *)pMessageIO_14(D)] = 136;
+  _23 = pMessageIO_14(D) + 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  MEM[(FMSTR_U8 *)pMessageIO_14(D)] = 0;
+  pMessageIO_16 = pMessageIO_14(D) + 1;
+  i_17 = 0;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  _2 = (int) i_9;
+  _3 = pcm_pScopeVarAddr[_2];
+  _4 = (int) i_9;
+  _5 = pcm_pScopeVarSize[_4];
+  pMessageIO_20 = FMSTR_CopyToBuffer (pMessageIO_8, _3, _5);
+  i.9_6 = i_9;
+  i_21 = i.9_6 + 1;
+
+  <bb 6> :
+  # pMessageIO_8 = PHI <pMessageIO_16(4), pMessageIO_20(5)>
+  # i_9 = PHI <i_17(4), i_21(5)>
+  pcm_nScopeVarCount.10_7 = pcm_nScopeVarCount;
+  if (i_9 < pcm_nScopeVarCount.10_7)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _18 = pMessageIO_8;
+
+  <bb 8> :
+  # _10 = PHI <_23(3), _18(7)>
+<L5>:
+  return _10;
+
+}
+
+
+FMSTR_SetUpScope (unsigned char * pMessageIO)
+{
+  FMSTR_U8 nVarCnt;
+  FMSTR_U8 sz;
+  FMSTR_U8 i;
+  unsigned char * pResponse;
+  unsigned char * D.5655;
+  unsigned char _1;
+  unsigned char nVarCnt.0_2;
+  unsigned char nVarCnt.1_3;
+  unsigned char _4;
+  int _5;
+  unsigned char sz.2_6;
+  int _7;
+  unsigned char * * _8;
+  unsigned char sz.3_9;
+  unsigned char sz.4_10;
+  unsigned char i.5_11;
+  unsigned char nVarCnt.6_12;
+  unsigned char nVarCnt.7_13;
+  unsigned char * _16;
+  unsigned char * _29;
+  unsigned char * _37;
+  unsigned char * _39;
+
+  <bb 2> :
+  pResponse_20 = pMessageIO_19(D);
+  pcm_nScopeVarCount = 0;
+  pMessageIO_23 = pMessageIO_19(D) + 2;
+  _1 = MEM[(FMSTR_U8 *)pMessageIO_23];
+  nVarCnt = _1;
+  pMessageIO_25 = pMessageIO_23 + 1;
+  nVarCnt.0_2 = nVarCnt;
+  if (nVarCnt.0_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  nVarCnt.1_3 = nVarCnt;
+  if (nVarCnt.1_3 > 8)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  MEM[(FMSTR_U8 *)pResponse_20] = 133;
+  _39 = pResponse_20 + 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 5> :
+  i_26 = 0;
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  _4 = MEM[(FMSTR_U8 *)pMessageIO_14];
+  sz = _4;
+  pMessageIO_31 = pMessageIO_14 + 1;
+  _5 = (int) i_15;
+  sz.2_6 = sz;
+  pcm_pScopeVarSize[_5] = sz.2_6;
+  _7 = (int) i_15;
+  _8 = &pcm_pScopeVarAddr[_7];
+  pMessageIO_34 = FMSTR_AddressFromBuffer (_8, pMessageIO_31);
+  sz.3_9 = sz;
+  if (sz.3_9 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  sz.4_10 = sz;
+  if (sz.4_10 > 8)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  MEM[(FMSTR_U8 *)pResponse_20] = 134;
+  _37 = pResponse_20 + 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+  i.5_11 = i_15;
+  i_35 = i.5_11 + 1;
+
+  <bb 10> :
+  # pMessageIO_14 = PHI <pMessageIO_25(5), pMessageIO_34(9)>
+  # i_15 = PHI <i_26(5), i_35(9)>
+  nVarCnt.6_12 = nVarCnt;
+  if (i_15 < nVarCnt.6_12)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  nVarCnt.7_13 = nVarCnt;
+  pcm_nScopeVarCount = nVarCnt.7_13;
+  MEM[(FMSTR_U8 *)pResponse_20] = 0;
+  _29 = pResponse_20 + 1;
+
+  <bb 12> :
+  # _16 = PHI <_39(4), _37(8), _29(11)>
+  sz ={v} {CLOBBER};
+  nVarCnt ={v} {CLOBBER};
+
+  <bb 13> :
+<L10>:
+  return _16;
+
+}
+
+
+FMSTR_InitScope ()
+{
+  <bb 2> :
+  return;
+
+}
+
+

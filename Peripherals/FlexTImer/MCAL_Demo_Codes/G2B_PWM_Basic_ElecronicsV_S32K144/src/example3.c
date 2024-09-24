@@ -22,20 +22,23 @@
 volatile int exit_code = 0;
 /* User includes */
 
-void FTM_0_CH_0_CH_1_ISR(void);
-
+void FTM_0_CH_2_CH_3_ISR(void);
+void FTM_0_OVF_ISR(void);
 #define channel0 0
 #define channel1 1
 #define channel2 2
 #define instance0 0
+
+Pwm_OutputStateType pwm_signal_state;
+uint16 pwm_signal_duty;
 void pwm_callback(void)
 {
 
 	// returns the output state of PWM signal whether high or low
-	Pwm_GetOutputState(channel0);
+	pwm_signal_state = Pwm_GetOutputState(channel2);
 
 	// returns the duty cycle of PWM signal
-	Pwm_GetChannelState(channel0);
+	Pwm_GetChannelState(channel2);
 }
 /*!
   \brief The main function for the project.
@@ -71,19 +74,19 @@ int main(void)
 		/* Initialize all pins using the Port driver */
 		Port_Init(NULL_PTR);
 
-	   // Pwm_SyncUpdate(instance0);
-
+	    /* Install and enable interrupt handlers */
+	    IntCtrl_Ip_InstallHandler(FTM0_Ch2_Ch3_IRQn, FTM_0_CH_2_CH_3_ISR, NULL_PTR);
+	    IntCtrl_Ip_EnableIrq(FTM0_Ch2_Ch3_IRQn);
 
 	    /* Install and enable interrupt handlers */
-	    IntCtrl_Ip_InstallHandler(FTM0_Ch0_Ch1_IRQn, FTM_0_CH_0_CH_1_ISR, NULL_PTR);
-	    IntCtrl_Ip_EnableIrq(FTM0_Ch0_Ch1_IRQn);
+	    IntCtrl_Ip_InstallHandler(FTM0_Ovf_Reload_IRQn, FTM_0_OVF_ISR, NULL_PTR);
+	    IntCtrl_Ip_EnableIrq(FTM0_Ovf_Reload_IRQn);
+
 
 	    Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
 
-	    Pwm_SyncUpdate(instance0);
-
 	    //When we want to use the Interrupts, so that call back function can be hit on every time PWM signal edge changes
-	    //Pwm_EnableNotification(channel0, PWM_FALLING_EDGE);
+	    Pwm_EnableNotification(channel2, PWM_BOTH_EDGES);
 
 		Pwm_SetDutyCycle(channel2, 000);
 		TestDelay(700000);
@@ -94,15 +97,6 @@ int main(void)
 
 		Pwm_SetDutyCycle(channel2, 19000);
 		TestDelay(700000);
-
-
-//	    Pwm_SetPeriodAndDuty(channel2,23000,11384);
-//	    TestDelay(700000);
-
-//	    /* duty cycle and frequency update*/
-//	    Pwm_SetPeriodAndDuty(channel0,40000,16384);
-//	    TestDelay(700000);
-
 
 	    /*  to off the pwm signals*/
 	    Pwm_SetOutputToIdle(channel2);

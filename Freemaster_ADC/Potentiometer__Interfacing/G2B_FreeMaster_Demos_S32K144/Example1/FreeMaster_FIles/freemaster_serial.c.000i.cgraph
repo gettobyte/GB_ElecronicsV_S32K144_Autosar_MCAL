@@ -1,0 +1,1036 @@
+Trivially needed symbols: FMSTR_Poll FMSTR_InitSerial FMSTR_Rx FMSTR_Tx FMSTR_SendResponse FMSTR_SendError FMSTR_Listen FMSTR_ProcessSCI FMSTR_RxDequeue FMSTR_RxQueue pcm_pRQueueWP pcm_pRQueueRP pcm_pRQueueBuffer pcm_nRxCheckSum pcm_pRxBuff pcm_pTxBuff pcm_nRxTodo pcm_nTxTodo pcm_wFlags pcm_pCommBuffer
+
+
+Initial Symbol table:
+
+FMSTR_ProtocolDecoder/20 (FMSTR_ProtocolDecoder) @067440e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Rx/17 
+  Calls: 
+FMSTR_Poll/19 (FMSTR_Poll) @06705460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxDequeue/11 
+FMSTR_InitSerial/18 (FMSTR_InitSerial) @067051c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06705460
+  References: pcm_wFlags/1 (write)pcm_nTxTodo/2 (write)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueWP/9 (write)pcm_pRQueueBuffer/7 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Listen/13 
+FMSTR_Rx/17 (FMSTR_Rx) @066e2e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @067051c0
+  References: pcm_wFlags/1 (addr)pcm_pRxBuff/5 (write)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_nRxCheckSum/6 (read)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (read)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_pRxBuff/5 (read)pcm_nRxCheckSum/6 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_pRxBuff/5 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_RxDequeue/11 
+  Calls: FMSTR_ProtocolDecoder/20 FMSTR_SendError/14 FMSTR_SendError/14 
+FMSTR_Tx/16 (FMSTR_Tx) @066e28c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @066e2e00
+  References: pcm_nTxTodo/2 (read)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (read)pcm_wFlags/1 (read)pcm_wFlags/1 (write)pcm_wFlags/1 (read)pcm_nTxTodo/2 (read)pcm_nTxTodo/2 (write)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: FMSTR_Listen/13 
+FMSTR_SendResponse/15 (FMSTR_SendResponse) @066e2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @066e28c0
+  References: pcm_pTxBuff/4 (write)pcm_nTxTodo/2 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_SendError/14 
+  Calls: 
+FMSTR_SendError/14 (FMSTR_SendError) @066e2d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066e2000
+  References: pcm_pCommBuffer/0 (write)pcm_pCommBuffer/0 (addr)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Rx/17 FMSTR_Rx/17 
+  Calls: FMSTR_SendResponse/15 
+FMSTR_Listen/13 (FMSTR_Listen) @066e2a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066e2d20
+  References: pcm_nRxTodo/3 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_InitSerial/18 FMSTR_Tx/16 
+  Calls: 
+FMSTR_ProcessSCI/12 (FMSTR_ProcessSCI) @066e27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @066e2a80
+  References: pcm_wFlags/1 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxQueue/10 FMSTR_Tx/16 
+FMSTR_RxDequeue/11 (FMSTR_RxDequeue) @066e2460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066e27e0
+  References: pcm_pRQueueRP/8 (read)pcm_pRQueueRP/8 (write)pcm_pRQueueRP/8 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_wFlags/1 (read)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Poll/19 
+  Calls: FMSTR_Rx/17 
+FMSTR_RxQueue/10 (FMSTR_RxQueue) @066e21c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066e2460
+  References: pcm_pRQueueWP/9 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)pcm_pRQueueWP/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: 
+pcm_pRQueueWP/9 (pcm_pRQueueWP) @066da990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066e21c0
+  References: 
+  Referring: FMSTR_RxQueue/10 (read)FMSTR_RxQueue/10 (read)FMSTR_RxQueue/10 (write)FMSTR_RxDequeue/11 (read)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRQueueRP/8 (pcm_pRQueueRP) @066da900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066da990
+  References: 
+  Referring: FMSTR_RxQueue/10 (read)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_RxDequeue/11 (read)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRQueueBuffer/7 (pcm_pRQueueBuffer) @066da870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066da900
+  References: 
+  Referring: FMSTR_RxQueue/10 (addr)FMSTR_RxQueue/10 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_InitSerial/18 (addr)FMSTR_InitSerial/18 (addr)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRxCheckSum/6 (pcm_nRxCheckSum) @066da510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066da870
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRxBuff/5 (pcm_pRxBuff) @066da480
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066da510
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pTxBuff/4 (pcm_pTxBuff) @066da3f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066da480
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRxTodo/3 (pcm_nRxTodo) @066da360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066da3f0
+  References: 
+  Referring: FMSTR_Listen/13 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTxTodo/2 (pcm_nTxTodo) @066da2d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066da360
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wFlags/1 (pcm_wFlags) @066da240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066da2d0
+  References: 
+  Referring: FMSTR_RxDequeue/11 (read)FMSTR_ProcessSCI/12 (read)FMSTR_Listen/13 (write)FMSTR_Listen/13 (write)FMSTR_SendResponse/15 (write)FMSTR_SendResponse/15 (write)FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)FMSTR_Tx/16 (read)FMSTR_Rx/17 (addr)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pCommBuffer/0 (pcm_pCommBuffer) @066d7d80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @066da240
+  References: 
+  Referring: FMSTR_SendError/14 (write)FMSTR_SendError/14 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+FMSTR_ProtocolDecoder/20 (FMSTR_ProtocolDecoder) @067440e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Rx/17 
+  Calls: 
+FMSTR_Poll/19 (FMSTR_Poll) @06705460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxDequeue/11 
+FMSTR_InitSerial/18 (FMSTR_InitSerial) @067051c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wFlags/1 (write)pcm_nTxTodo/2 (write)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueWP/9 (write)pcm_pRQueueBuffer/7 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Listen/13 
+FMSTR_Rx/17 (FMSTR_Rx) @066e2e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wFlags/1 (addr)pcm_pRxBuff/5 (write)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_nRxCheckSum/6 (read)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (read)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_pRxBuff/5 (read)pcm_nRxCheckSum/6 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_pRxBuff/5 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_RxDequeue/11 
+  Calls: FMSTR_ProtocolDecoder/20 FMSTR_SendError/14 FMSTR_SendError/14 
+FMSTR_Tx/16 (FMSTR_Tx) @066e28c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_nTxTodo/2 (read)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (read)pcm_wFlags/1 (read)pcm_wFlags/1 (write)pcm_wFlags/1 (read)pcm_nTxTodo/2 (read)pcm_nTxTodo/2 (write)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: FMSTR_Listen/13 
+FMSTR_SendResponse/15 (FMSTR_SendResponse) @066e2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_pTxBuff/4 (write)pcm_nTxTodo/2 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_SendError/14 
+  Calls: 
+FMSTR_SendError/14 (FMSTR_SendError) @066e2d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_pCommBuffer/0 (write)pcm_pCommBuffer/0 (addr)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Rx/17 FMSTR_Rx/17 
+  Calls: FMSTR_SendResponse/15 
+FMSTR_Listen/13 (FMSTR_Listen) @066e2a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_nRxTodo/3 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_InitSerial/18 FMSTR_Tx/16 
+  Calls: 
+FMSTR_ProcessSCI/12 (FMSTR_ProcessSCI) @066e27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wFlags/1 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxQueue/10 FMSTR_Tx/16 
+FMSTR_RxDequeue/11 (FMSTR_RxDequeue) @066e2460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_pRQueueRP/8 (read)pcm_pRQueueRP/8 (write)pcm_pRQueueRP/8 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_wFlags/1 (read)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Poll/19 
+  Calls: FMSTR_Rx/17 
+FMSTR_RxQueue/10 (FMSTR_RxQueue) @066e21c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_pRQueueWP/9 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)pcm_pRQueueWP/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: 
+pcm_pRQueueWP/9 (pcm_pRQueueWP) @066da990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxQueue/10 (read)FMSTR_RxQueue/10 (read)FMSTR_RxQueue/10 (write)FMSTR_RxDequeue/11 (read)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRQueueRP/8 (pcm_pRQueueRP) @066da900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxQueue/10 (read)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_RxDequeue/11 (read)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRQueueBuffer/7 (pcm_pRQueueBuffer) @066da870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxQueue/10 (addr)FMSTR_RxQueue/10 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_InitSerial/18 (addr)FMSTR_InitSerial/18 (addr)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRxCheckSum/6 (pcm_nRxCheckSum) @066da510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRxBuff/5 (pcm_pRxBuff) @066da480
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pTxBuff/4 (pcm_pTxBuff) @066da3f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRxTodo/3 (pcm_nRxTodo) @066da360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_Listen/13 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTxTodo/2 (pcm_nTxTodo) @066da2d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wFlags/1 (pcm_wFlags) @066da240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxDequeue/11 (read)FMSTR_ProcessSCI/12 (read)FMSTR_Listen/13 (write)FMSTR_Listen/13 (write)FMSTR_SendResponse/15 (write)FMSTR_SendResponse/15 (write)FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)FMSTR_Tx/16 (read)FMSTR_Rx/17 (addr)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pCommBuffer/0 (pcm_pCommBuffer) @066d7d80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SendError/14 (write)FMSTR_SendError/14 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+FMSTR_ProtocolDecoder/20 (FMSTR_ProtocolDecoder) @067440e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Rx/17 
+  Calls: 
+FMSTR_Poll/19 (FMSTR_Poll) @06705460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxDequeue/11 
+FMSTR_InitSerial/18 (FMSTR_InitSerial) @067051c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wFlags/1 (write)pcm_nTxTodo/2 (write)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueWP/9 (write)pcm_pRQueueBuffer/7 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Listen/13 
+FMSTR_Rx/17 (FMSTR_Rx) @066e2e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wFlags/1 (addr)pcm_pRxBuff/5 (write)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_nRxCheckSum/6 (read)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (read)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_pRxBuff/5 (read)pcm_nRxCheckSum/6 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_pRxBuff/5 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_RxDequeue/11 
+  Calls: FMSTR_ProtocolDecoder/20 FMSTR_SendError/14 FMSTR_SendError/14 
+FMSTR_Tx/16 (FMSTR_Tx) @066e28c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_nTxTodo/2 (read)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (read)pcm_wFlags/1 (read)pcm_wFlags/1 (write)pcm_wFlags/1 (read)pcm_nTxTodo/2 (read)pcm_nTxTodo/2 (write)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: FMSTR_Listen/13 
+FMSTR_SendResponse/15 (FMSTR_SendResponse) @066e2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_pTxBuff/4 (write)pcm_nTxTodo/2 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_SendError/14 
+  Calls: 
+FMSTR_SendError/14 (FMSTR_SendError) @066e2d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_pCommBuffer/0 (write)pcm_pCommBuffer/0 (addr)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Rx/17 FMSTR_Rx/17 
+  Calls: FMSTR_SendResponse/15 
+FMSTR_Listen/13 (FMSTR_Listen) @066e2a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_nRxTodo/3 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_InitSerial/18 FMSTR_Tx/16 
+  Calls: 
+FMSTR_ProcessSCI/12 (FMSTR_ProcessSCI) @066e27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wFlags/1 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxQueue/10 FMSTR_Tx/16 
+FMSTR_RxDequeue/11 (FMSTR_RxDequeue) @066e2460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_pRQueueRP/8 (read)pcm_pRQueueRP/8 (write)pcm_pRQueueRP/8 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_wFlags/1 (read)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Poll/19 
+  Calls: FMSTR_Rx/17 
+FMSTR_RxQueue/10 (FMSTR_RxQueue) @066e21c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_pRQueueWP/9 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)pcm_pRQueueWP/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: 
+pcm_pRQueueWP/9 (pcm_pRQueueWP) @066da990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxQueue/10 (read)FMSTR_RxQueue/10 (read)FMSTR_RxQueue/10 (write)FMSTR_RxDequeue/11 (read)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRQueueRP/8 (pcm_pRQueueRP) @066da900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxQueue/10 (read)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_RxDequeue/11 (read)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRQueueBuffer/7 (pcm_pRQueueBuffer) @066da870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxQueue/10 (addr)FMSTR_RxQueue/10 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_InitSerial/18 (addr)FMSTR_InitSerial/18 (addr)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRxCheckSum/6 (pcm_nRxCheckSum) @066da510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRxBuff/5 (pcm_pRxBuff) @066da480
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pTxBuff/4 (pcm_pTxBuff) @066da3f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRxTodo/3 (pcm_nRxTodo) @066da360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_Listen/13 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTxTodo/2 (pcm_nTxTodo) @066da2d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wFlags/1 (pcm_wFlags) @066da240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxDequeue/11 (read)FMSTR_ProcessSCI/12 (read)FMSTR_Listen/13 (write)FMSTR_Listen/13 (write)FMSTR_SendResponse/15 (write)FMSTR_SendResponse/15 (write)FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)FMSTR_Tx/16 (read)FMSTR_Rx/17 (addr)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pCommBuffer/0 (pcm_pCommBuffer) @066d7d80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SendError/14 (write)FMSTR_SendError/14 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+FMSTR_ProtocolDecoder/20 (FMSTR_ProtocolDecoder) @067440e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Rx/17 
+  Calls: 
+FMSTR_Poll/19 (FMSTR_Poll) @06705460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxDequeue/11 
+FMSTR_InitSerial/18 (FMSTR_InitSerial) @067051c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wFlags/1 (write)pcm_nTxTodo/2 (write)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueWP/9 (write)pcm_pRQueueBuffer/7 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Listen/13 
+FMSTR_Rx/17 (FMSTR_Rx) @066e2e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wFlags/1 (addr)pcm_pRxBuff/5 (write)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_nRxCheckSum/6 (read)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (read)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_pRxBuff/5 (read)pcm_nRxCheckSum/6 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_pRxBuff/5 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_RxDequeue/11 
+  Calls: FMSTR_ProtocolDecoder/20 FMSTR_SendError/14 FMSTR_SendError/14 
+FMSTR_Tx/16 (FMSTR_Tx) @066e28c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_nTxTodo/2 (read)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (read)pcm_wFlags/1 (read)pcm_wFlags/1 (write)pcm_wFlags/1 (read)pcm_nTxTodo/2 (read)pcm_nTxTodo/2 (write)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: FMSTR_Listen/13 
+FMSTR_SendResponse/15 (FMSTR_SendResponse) @066e2000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_pTxBuff/4 (write)pcm_nTxTodo/2 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_SendError/14 
+  Calls: 
+FMSTR_SendError/14 (FMSTR_SendError) @066e2d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_pCommBuffer/0 (write)pcm_pCommBuffer/0 (addr)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Rx/17 FMSTR_Rx/17 
+  Calls: FMSTR_SendResponse/15 
+FMSTR_Listen/13 (FMSTR_Listen) @066e2a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_nRxTodo/3 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_InitSerial/18 FMSTR_Tx/16 
+  Calls: 
+FMSTR_ProcessSCI/12 (FMSTR_ProcessSCI) @066e27e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wFlags/1 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxQueue/10 FMSTR_Tx/16 
+FMSTR_RxDequeue/11 (FMSTR_RxDequeue) @066e2460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_pRQueueRP/8 (read)pcm_pRQueueRP/8 (write)pcm_pRQueueRP/8 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_wFlags/1 (read)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Poll/19 
+  Calls: FMSTR_Rx/17 
+FMSTR_RxQueue/10 (FMSTR_RxQueue) @066e21c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_pRQueueWP/9 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)pcm_pRQueueWP/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: 
+pcm_pRQueueWP/9 (pcm_pRQueueWP) @066da990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxQueue/10 (read)FMSTR_RxQueue/10 (read)FMSTR_RxQueue/10 (write)FMSTR_RxDequeue/11 (read)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRQueueRP/8 (pcm_pRQueueRP) @066da900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxQueue/10 (read)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_RxDequeue/11 (read)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRQueueBuffer/7 (pcm_pRQueueBuffer) @066da870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxQueue/10 (addr)FMSTR_RxQueue/10 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_InitSerial/18 (addr)FMSTR_InitSerial/18 (addr)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRxCheckSum/6 (pcm_nRxCheckSum) @066da510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRxBuff/5 (pcm_pRxBuff) @066da480
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pTxBuff/4 (pcm_pTxBuff) @066da3f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRxTodo/3 (pcm_nRxTodo) @066da360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_Listen/13 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTxTodo/2 (pcm_nTxTodo) @066da2d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wFlags/1 (pcm_wFlags) @066da240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_RxDequeue/11 (read)FMSTR_ProcessSCI/12 (read)FMSTR_Listen/13 (write)FMSTR_Listen/13 (write)FMSTR_SendResponse/15 (write)FMSTR_SendResponse/15 (write)FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)FMSTR_Tx/16 (read)FMSTR_Rx/17 (addr)FMSTR_InitSerial/18 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pCommBuffer/0 (pcm_pCommBuffer) @066d7d80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SendError/14 (write)FMSTR_SendError/14 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+FMSTR_ProtocolDecoder/20 (FMSTR_ProtocolDecoder) @067440e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_Rx/17 
+  Calls: 
+FMSTR_Poll/19 (FMSTR_Poll) @06705460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxDequeue/11 
+FMSTR_InitSerial/18 (FMSTR_InitSerial) @067051c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wFlags/1 (write)pcm_nTxTodo/2 (write)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueWP/9 (write)pcm_pRQueueBuffer/7 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Listen/13 
+FMSTR_Rx/17 (FMSTR_Rx) @066e2e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wFlags/1 (addr)pcm_pRxBuff/5 (write)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_nRxCheckSum/6 (read)pcm_nRxCheckSum/6 (write)pcm_nRxTodo/3 (read)pcm_nRxTodo/3 (write)pcm_nRxTodo/3 (read)pcm_pRxBuff/5 (read)pcm_nRxCheckSum/6 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (read)pcm_pCommBuffer/0 (addr)pcm_pRxBuff/5 (read)pcm_pRxBuff/5 (write)pcm_pRxBuff/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_RxDequeue/11 
+  Calls: FMSTR_ProtocolDecoder/20 FMSTR_SendError/14 FMSTR_SendError/14 
+FMSTR_Tx/16 (FMSTR_Tx) @066e28c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_nTxTodo/2 (read)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (read)pcm_wFlags/1 (read)pcm_wFlags/1 (write)pcm_wFlags/1 (read)pcm_nTxTodo/2 (read)pcm_nTxTodo/2 (write)pcm_pTxBuff/4 (read)pcm_pTxBuff/4 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: FMSTR_Listen/13 
+FMSTR_SendResponse/15 (FMSTR_SendResponse) @066e2000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_pTxBuff/4 (write)pcm_nTxTodo/2 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_SendError/14 
+  Calls: 
+FMSTR_SendError/14 (FMSTR_SendError) @066e2d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: pcm_pCommBuffer/0 (write)pcm_pCommBuffer/0 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_Rx/17 FMSTR_Rx/17 
+  Calls: FMSTR_SendResponse/15 
+FMSTR_Listen/13 (FMSTR_Listen) @066e2a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: pcm_nRxTodo/3 (write)pcm_wFlags/1 (write)pcm_wFlags/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_InitSerial/18 FMSTR_Tx/16 
+  Calls: 
+FMSTR_ProcessSCI/12 (FMSTR_ProcessSCI) @066e27e0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wFlags/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_RxQueue/10 FMSTR_Tx/16 
+FMSTR_RxDequeue/11 (FMSTR_RxDequeue) @066e2460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: pcm_pRQueueRP/8 (read)pcm_pRQueueRP/8 (write)pcm_pRQueueRP/8 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (write)pcm_pRQueueBuffer/7 (addr)pcm_wFlags/1 (read)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_Poll/19 
+  Calls: FMSTR_Rx/17 
+FMSTR_RxQueue/10 (FMSTR_RxQueue) @066e21c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: pcm_pRQueueWP/9 (read)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueBuffer/7 (addr)pcm_pRQueueRP/8 (read)pcm_pRQueueWP/9 (read)pcm_pRQueueWP/9 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_ProcessSCI/12 
+  Calls: 
+pcm_pRQueueWP/9 (pcm_pRQueueWP) @066da990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_RxQueue/10 (write)FMSTR_RxDequeue/11 (read)FMSTR_RxQueue/10 (read)FMSTR_RxQueue/10 (read)FMSTR_InitSerial/18 (write)
+  Availability: available
+  Varpool flags:
+pcm_pRQueueRP/8 (pcm_pRQueueRP) @066da900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_RxQueue/10 (read)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_RxDequeue/11 (read)FMSTR_RxDequeue/11 (write)FMSTR_InitSerial/18 (write)
+  Availability: available
+  Varpool flags:
+pcm_pRQueueBuffer/7 (pcm_pRQueueBuffer) @066da870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_RxQueue/10 (addr)FMSTR_RxQueue/10 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_RxDequeue/11 (addr)FMSTR_InitSerial/18 (addr)FMSTR_InitSerial/18 (addr)
+  Availability: available
+  Varpool flags:
+pcm_nRxCheckSum/6 (pcm_nRxCheckSum) @066da510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: available
+  Varpool flags:
+pcm_pRxBuff/5 (pcm_pRxBuff) @066da480
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)
+  Availability: available
+  Varpool flags:
+pcm_pTxBuff/4 (pcm_pTxBuff) @066da3f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)
+  Availability: available
+  Varpool flags:
+pcm_nRxTodo/3 (pcm_nRxTodo) @066da360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_Listen/13 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)FMSTR_Rx/17 (read)FMSTR_Rx/17 (write)FMSTR_Rx/17 (read)
+  Availability: available
+  Varpool flags:
+pcm_nTxTodo/2 (pcm_nTxTodo) @066da2d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (read)FMSTR_InitSerial/18 (write)
+  Availability: available
+  Varpool flags:
+pcm_wFlags/1 (pcm_wFlags) @066da240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_ProcessSCI/12 (read)FMSTR_SendResponse/15 (write)FMSTR_Tx/16 (read)FMSTR_Rx/17 (addr)FMSTR_Listen/13 (write)FMSTR_SendResponse/15 (write)FMSTR_RxDequeue/11 (read)FMSTR_SendResponse/15 (write)FMSTR_Listen/13 (write)FMSTR_Tx/16 (read)FMSTR_Tx/16 (write)FMSTR_InitSerial/18 (write)
+  Availability: available
+  Varpool flags:
+pcm_pCommBuffer/0 (pcm_pCommBuffer) @066d7d80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SendError/14 (write)FMSTR_SendError/14 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)FMSTR_Rx/17 (addr)
+  Availability: available
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Trivially needed variables: pcm_pRQueueWP pcm_pRQueueRP pcm_pRQueueBuffer pcm_nRxCheckSum pcm_pRxBuff pcm_pTxBuff pcm_nRxTodo pcm_nTxTodo pcm_wFlags pcm_pCommBuffer
+Removing variables:
+
+Final Symbol table:
+
+FMSTR_ProtocolDecoder/20 (FMSTR_ProtocolDecoder) @067440e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Poll/19 (FMSTR_Poll) @06705460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_InitSerial/18 (FMSTR_InitSerial) @067051c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Rx/17 (FMSTR_Rx) @066e2e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Tx/16 (FMSTR_Tx) @066e28c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_SendResponse/15 (FMSTR_SendResponse) @066e2000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_SendError/14 (FMSTR_SendError) @066e2d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Listen/13 (FMSTR_Listen) @066e2a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_ProcessSCI/12 (FMSTR_ProcessSCI) @066e27e0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_RxDequeue/11 (FMSTR_RxDequeue) @066e2460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_RxQueue/10 (FMSTR_RxQueue) @066e21c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+pcm_pRQueueWP/9 (pcm_pRQueueWP) @066da990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_pRQueueRP/8 (pcm_pRQueueRP) @066da900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @066da990
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_pRQueueBuffer/7 (pcm_pRQueueBuffer) @066da870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @066da900
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_nRxCheckSum/6 (pcm_nRxCheckSum) @066da510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @066da870
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_pRxBuff/5 (pcm_pRxBuff) @066da480
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @066da510
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_pTxBuff/4 (pcm_pTxBuff) @066da3f0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @066da480
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_nRxTodo/3 (pcm_nRxTodo) @066da360
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @066da3f0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_nTxTodo/2 (pcm_nTxTodo) @066da2d0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @066da360
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_wFlags/1 (pcm_wFlags) @066da240
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @066da2d0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_pCommBuffer/0 (pcm_pCommBuffer) @066d7d80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @066da240
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:

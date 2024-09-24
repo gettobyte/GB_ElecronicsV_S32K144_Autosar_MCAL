@@ -456,7 +456,9 @@
                                  <setting name="PwmDutycycleDefault" value="2000"/>
                                  <setting name="PwmPolarity" value="PWM_HIGH"/>
                                  <setting name="PwmIdleState" value="PWM_LOW"/>
-                                 <array name="PwmNotification"/>
+                                 <array name="PwmNotification">
+                                    <setting name="0" value="pwm_callback"/>
+                                 </array>
                                  <setting name="PwmMcuClockReferencePoint" value="/Mcu/Mcu/McuModuleConfiguration/BOARD_BootClockRUN/McuClockReferencePoint_0"/>
                                  <array name="PwmChannelEcucPartitionRef"/>
                               </struct>
@@ -485,7 +487,7 @@
                                     <setting name="PwmFtmWriteProtection" value="false"/>
                                     <setting name="PwmFtmInitTrigger" value="false"/>
                                     <setting name="PwmFtmInitTriggerMode" value="Trigger_on_Reload_Point"/>
-                                    <setting name="PwmFtmOverflowIrq" value="false"/>
+                                    <setting name="PwmFtmOverflowIrq" value="true"/>
                                  </struct>
                                  <struct name="PwmFtmSyncCfg">
                                     <setting name="Name" value="PwmFtmSyncCfg"/>
@@ -1232,6 +1234,40 @@
                                        <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
                                        <array name="PortPinEcucPartitionRef"/>
                                     </struct>
+                                    <struct name="4">
+                                       <setting name="Name" value="lpuart1_rx"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="5"/>
+                                       <setting name="PortPinPcr" value="70"/>
+                                       <setting name="PortPinMode" value="LPUART1_RX"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_IN"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="5">
+                                       <setting name="Name" value="lpuart1_tx"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="6"/>
+                                       <setting name="PortPinPcr" value="71"/>
+                                       <setting name="PortPinMode" value="LPUART1_TX"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
                                  </array>
                               </struct>
                            </array>
@@ -1712,8 +1748,8 @@
                                  <struct name="70">
                                     <setting name="Name" value="PlatformIsrConfig_70"/>
                                     <setting name="IsrName" value="FTM0_Ovf_Reload_IRQn"/>
-                                    <setting name="IsrEnabled" value="false"/>
-                                    <setting name="IsrPriority" value="0"/>
+                                    <setting name="IsrEnabled" value="true"/>
+                                    <setting name="IsrPriority" value="1"/>
                                  </struct>
                                  <struct name="71">
                                     <setting name="Name" value="PlatformIsrConfig_71"/>
@@ -2162,7 +2198,7 @@
                               <struct name="66">
                                  <setting name="Name" value="PlatformIsrConfig_66"/>
                                  <setting name="IsrName" value="FTM0_Ch2_Ch3_IRQn"/>
-                                 <setting name="IsrHandler" value="undefined_handler"/>
+                                 <setting name="IsrHandler" value="FTM_0_CH_2_CH_3_ISR"/>
                               </struct>
                               <struct name="67">
                                  <setting name="Name" value="PlatformIsrConfig_67"/>
@@ -2278,7 +2314,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="Mcl" uuid="4673c141-6b7a-4bbc-a794-7acb5171c505" type="Mcl" type_id="Mcl" mode="autosar" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="Mcl" uuid="f35e1b58-1daa-4570-ab2f-2d4a47725a93" type="Mcl" type_id="Mcl" mode="autosar" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="Mcl" quick_selection="mcl_default">
                         <setting name="Name" value="Mcl"/>
                         <struct name="ConfigTimeSupport">

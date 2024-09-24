@@ -1,0 +1,657 @@
+Uart_Ipw_LpuartConvertBaudrateType (Uart_BaudrateType Baudrate)
+{
+  Lpuart_Uart_Ip_BaudrateType TempBaud;
+  Lpuart_Uart_Ip_BaudrateType D.6293;
+
+  <bb 2> :
+  TempBaud = 1200;
+  switch (Baudrate) <default: <L14> [INV], case 1200: <L0> [INV], case 2400: <L1> [INV], case 4800: <L2> [INV], case 9600: <L3> [INV], case 14400: <L4> [INV], case 19200: <L5> [INV], case 28800: <L6> [INV], case 38400: <L7> [INV], case 57600: <L8> [INV], case 115200: <L9> [INV], case 230400: <L10> [INV], case 460800: <L11> [INV], case 921600: <L12> [INV], case 1843200: <L13> [INV]>
+
+  <bb 3> :
+<L0>:
+  TempBaud = 1200;
+  goto <bb 18>; [INV]
+
+  <bb 4> :
+<L1>:
+  TempBaud = 2400;
+  goto <bb 18>; [INV]
+
+  <bb 5> :
+<L2>:
+  TempBaud = 4800;
+  goto <bb 18>; [INV]
+
+  <bb 6> :
+<L3>:
+  TempBaud = 9600;
+  goto <bb 18>; [INV]
+
+  <bb 7> :
+<L4>:
+  TempBaud = 14400;
+  goto <bb 18>; [INV]
+
+  <bb 8> :
+<L5>:
+  TempBaud = 19200;
+  goto <bb 18>; [INV]
+
+  <bb 9> :
+<L6>:
+  TempBaud = 28800;
+  goto <bb 18>; [INV]
+
+  <bb 10> :
+<L7>:
+  TempBaud = 38400;
+  goto <bb 18>; [INV]
+
+  <bb 11> :
+<L8>:
+  TempBaud = 57600;
+  goto <bb 18>; [INV]
+
+  <bb 12> :
+<L9>:
+  TempBaud = 115200;
+  goto <bb 18>; [INV]
+
+  <bb 13> :
+<L10>:
+  TempBaud = 230400;
+  goto <bb 18>; [INV]
+
+  <bb 14> :
+<L11>:
+  TempBaud = 460800;
+  goto <bb 18>; [INV]
+
+  <bb 15> :
+<L12>:
+  TempBaud = 921600;
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+<L13>:
+  TempBaud = 1843200;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+<L14>:
+
+  <bb 18> :
+  D.6293 = TempBaud;
+
+  <bb 19> :
+<L16>:
+  return D.6293;
+
+}
+
+
+Uart_Ipw_LpuartConvertStatus (Lpuart_Uart_Ip_StatusType Status)
+{
+  Uart_StatusType TempStatus;
+  Uart_StatusType D.6291;
+
+  <bb 2> :
+  TempStatus = 6;
+  switch (Status) <default: <L8> [INV], case 0: <L0> [INV], case 2: <L1> [INV], case 3: <L3> [INV], case 5: <L5> [INV], case 6: <L2> [INV], case 7: <L4> [INV], case 8: <L7> [INV], case 9: <L6> [INV]>
+
+  <bb 3> :
+<L0>:
+  TempStatus = 0;
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+<L1>:
+  TempStatus = 1;
+  goto <bb 12>; [INV]
+
+  <bb 5> :
+<L2>:
+  TempStatus = 2;
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+<L3>:
+  TempStatus = 6;
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+<L4>:
+  TempStatus = 3;
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+<L5>:
+  TempStatus = 4;
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+<L6>:
+  TempStatus = 7;
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+<L7>:
+  TempStatus = 5;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+<L8>:
+  TempStatus = 8;
+
+  <bb 12> :
+  D.6291 = TempStatus;
+
+  <bb 13> :
+<L10>:
+  return D.6291;
+
+}
+
+
+Uart_Ipw_GetReceiveStatus (uint8 Channel, uint32 * BytesRemaining)
+{
+  Lpuart_Uart_Ip_StatusType u32LpuartIpStatus;
+  uint8 HwUnit;
+  Uart_StatusType TempStatus;
+  Uart_StatusType D.6289;
+
+  <bb 2> :
+  TempStatus = 6;
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  u32LpuartIpStatus = Lpuart_Uart_Ip_GetReceiveStatus (HwUnit, BytesRemaining);
+  TempStatus = Uart_Ipw_LpuartConvertStatus (u32LpuartIpStatus);
+
+  <bb 4> :
+  D.6289 = TempStatus;
+
+  <bb 5> :
+<L2>:
+  return D.6289;
+
+}
+
+
+Uart_Ipw_GetTransmitStatus (uint8 Channel, uint32 * BytesRemaining)
+{
+  Lpuart_Uart_Ip_StatusType u32LpuartIpStatus;
+  uint8 HwUnit;
+  Uart_StatusType TempStatus;
+  Uart_StatusType D.6285;
+
+  <bb 2> :
+  TempStatus = 6;
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  u32LpuartIpStatus = Lpuart_Uart_Ip_GetTransmitStatus (HwUnit, BytesRemaining);
+  TempStatus = Uart_Ipw_LpuartConvertStatus (u32LpuartIpStatus);
+
+  <bb 4> :
+  D.6285 = TempStatus;
+
+  <bb 5> :
+<L2>:
+  return D.6285;
+
+}
+
+
+Uart_Ipw_AsyncSend (uint8 Channel, const uint8 * Buffer, uint32 BufferSize)
+{
+  uint8 HwUnit;
+  Std_ReturnType TempStatus;
+  Std_ReturnType D.6281;
+
+  <bb 2> :
+  TempStatus = 1;
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _6 = Lpuart_Uart_Ip_AsyncSend (HwUnit, Buffer, BufferSize);
+  if (_6 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  TempStatus = 0;
+
+  <bb 5> :
+  D.6281 = TempStatus;
+
+  <bb 6> :
+<L4>:
+  return D.6281;
+
+}
+
+
+Uart_Ipw_AsyncReceive (uint8 Channel, uint8 * Buffer, uint32 BufferSize)
+{
+  uint8 HwUnit;
+  Std_ReturnType TempStatus;
+  Std_ReturnType D.6275;
+
+  <bb 2> :
+  TempStatus = 1;
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _6 = Lpuart_Uart_Ip_AsyncReceive (HwUnit, Buffer, BufferSize);
+  if (_6 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  TempStatus = 0;
+
+  <bb 5> :
+  D.6275 = TempStatus;
+
+  <bb 6> :
+<L4>:
+  return D.6275;
+
+}
+
+
+Uart_Ipw_SyncReceive (uint8 Channel, uint8 * Buffer, uint32 BufferSize, uint32 Timeout)
+{
+  Lpuart_Uart_Ip_StatusType u32LpuartIpStatus;
+  uint8 HwUnit;
+  Std_ReturnType TempStatus;
+  Std_ReturnType D.6269;
+
+  <bb 2> :
+  TempStatus = 1;
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  u32LpuartIpStatus = Lpuart_Uart_Ip_SyncReceive (HwUnit, Buffer, BufferSize, Timeout);
+  if (u32LpuartIpStatus == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  TempStatus = 0;
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  if (u32LpuartIpStatus == 3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  TempStatus = 6;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  TempStatus = 1;
+
+  <bb 8> :
+  D.6269 = TempStatus;
+
+  <bb 9> :
+<L8>:
+  return D.6269;
+
+}
+
+
+Uart_Ipw_SyncSend (uint8 Channel, const uint8 * Buffer, uint32 BufferSize, uint32 Timeout)
+{
+  Lpuart_Uart_Ip_StatusType u32LpuartIpStatus;
+  uint8 HwUnit;
+  Std_ReturnType TempStatus;
+  Std_ReturnType D.6259;
+
+  <bb 2> :
+  TempStatus = 1;
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  u32LpuartIpStatus = Lpuart_Uart_Ip_SyncSend (HwUnit, Buffer, BufferSize, Timeout);
+  if (u32LpuartIpStatus == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  TempStatus = 0;
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  if (u32LpuartIpStatus == 3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  TempStatus = 6;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  TempStatus = 1;
+
+  <bb 8> :
+  D.6259 = TempStatus;
+
+  <bb 9> :
+<L8>:
+  return D.6259;
+
+}
+
+
+Uart_Ipw_SetRxBuffer (uint8 Channel, uint8 * Buffer, uint32 BufferSize)
+{
+  uint8 HwUnit;
+
+  <bb 2> :
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Lpuart_Uart_Ip_SetRxBuffer (HwUnit, Buffer, BufferSize);
+
+  <bb 4> :
+  return;
+
+}
+
+
+Uart_Ipw_SetTxBuffer (uint8 Channel, const uint8 * Buffer, uint32 BufferSize)
+{
+  uint8 HwUnit;
+
+  <bb 2> :
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Lpuart_Uart_Ip_SetTxBuffer (HwUnit, Buffer, BufferSize);
+
+  <bb 4> :
+  return;
+
+}
+
+
+Uart_Ipw_AbortReceivingData (uint8 Channel)
+{
+  uint8 HwUnit;
+  Std_ReturnType TempStatus;
+  Std_ReturnType D.6245;
+
+  <bb 2> :
+  TempStatus = 1;
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _6 = Lpuart_Uart_Ip_AbortReceivingData (HwUnit);
+  if (_6 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  TempStatus = 0;
+
+  <bb 5> :
+  D.6245 = TempStatus;
+
+  <bb 6> :
+<L4>:
+  return D.6245;
+
+}
+
+
+Uart_Ipw_AbortSendingData (uint8 Channel)
+{
+  uint8 HwUnit;
+  Std_ReturnType TempStatus;
+  Std_ReturnType D.6239;
+
+  <bb 2> :
+  TempStatus = 1;
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _6 = Lpuart_Uart_Ip_AbortSendingData (HwUnit);
+  if (_6 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  TempStatus = 0;
+
+  <bb 5> :
+  D.6239 = TempStatus;
+
+  <bb 6> :
+<L4>:
+  return D.6239;
+
+}
+
+
+Uart_Ipw_GetBaudrate (uint8 Channel, uint32 * BaudrateValue)
+{
+  uint8 HwUnit;
+
+  <bb 2> :
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Lpuart_Uart_Ip_GetBaudRate (HwUnit, BaudrateValue);
+
+  <bb 4> :
+  return;
+
+}
+
+
+Uart_Ipw_SetBaudrate (uint8 Channel, Uart_BaudrateType BaudRateValue, uint32 ClockFrequency)
+{
+  Lpuart_Uart_Ip_BaudrateType LpuartBaud;
+  uint8 HwUnit;
+  Std_ReturnType TempStatus;
+  Std_ReturnType D.6231;
+
+  <bb 2> :
+  TempStatus = 1;
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  LpuartBaud = Uart_Ipw_LpuartConvertBaudrateType (BaudRateValue);
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _6 = Lpuart_Uart_Ip_SetBaudRate (HwUnit, LpuartBaud, ClockFrequency);
+  if (_6 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  TempStatus = 0;
+
+  <bb 5> :
+  D.6231 = TempStatus;
+
+  <bb 6> :
+<L4>:
+  return D.6231;
+
+}
+
+
+Uart_Ipw_Deinit (uint8 Channel)
+{
+  uint8 HwUnit;
+
+  <bb 2> :
+  _1 = (int) Channel;
+  _2 = Uart_Ipw_apChnConfig[_1];
+  HwUnit = _2->UartHwChannel;
+  _3 = (int) Channel;
+  _4 = Uart_Ipw_apChnConfig[_3];
+  _5 = _4->UartIpType;
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Lpuart_Uart_Ip_Deinit (HwUnit);
+
+  <bb 4> :
+  _6 = (int) Channel;
+  Uart_Ipw_apChnConfig[_6] = 0B;
+  return;
+
+}
+
+
+Uart_Ipw_Init (uint8 Channel, const struct Uart_Ipw_HwConfigType * Config)
+{
+  uint8 HwUnit;
+
+  <bb 2> :
+  HwUnit = Config->UartHwChannel;
+  _1 = (int) Channel;
+  Uart_Ipw_apChnConfig[_1] = Config;
+  _2 = (int) Channel;
+  _3 = Uart_Ipw_apChnConfig[_2];
+  _4 = _3->UartIpType;
+  if (_4 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _5 = Config->UserConfig;
+  _6 = _5->LpuartUserConfig;
+  Lpuart_Uart_Ip_Init (HwUnit, _6);
+
+  <bb 4> :
+  return;
+
+}
+
+

@@ -1,0 +1,474 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: FMSTR_AddressFromBuffer FMSTR_AddressToBuffer FMSTR_SetExAddr FMSTR_CopyFromBufferWithMask FMSTR_ValueToBuffer32 FMSTR_ValueToBuffer16 FMSTR_ValueFromBuffer32 FMSTR_ValueFromBuffer16 FMSTR_CopyFromBuffer FMSTR_CopyToBuffer FMSTR_CopyMemory FMSTR_Isr
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+FMSTR_ProcessSCI/13 (FMSTR_ProcessSCI) @067870e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_Isr/0 
+  Calls: 
+FMSTR_AddressFromBuffer/12 (FMSTR_AddressFromBuffer) @06781540
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 FMSTR_CopyFromBuffer/3 
+FMSTR_AddressToBuffer/11 (FMSTR_AddressToBuffer) @06781000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 FMSTR_CopyToBuffer/2 
+FMSTR_SetExAddr/10 (FMSTR_SetExAddr) @06781d20
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_bNextAddrIsEx/9 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_bNextAddrIsEx/9 (pcm_bNextAddrIsEx) @0676b828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SetExAddr/10 (write)FMSTR_AddressToBuffer/11 (read)FMSTR_AddressFromBuffer/12 (read)
+  Availability: available
+  Varpool flags:
+FMSTR_CopyFromBufferWithMask/8 (FMSTR_CopyFromBufferWithMask) @067819a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_ValueToBuffer32/7 (FMSTR_ValueToBuffer32) @06781700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueToBuffer16/6 (FMSTR_ValueToBuffer16) @06781460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueFromBuffer32/5 (FMSTR_ValueFromBuffer32) @067811c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_ValueFromBuffer16/4 (FMSTR_ValueFromBuffer16) @06766ee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_CopyFromBuffer/3 (FMSTR_CopyFromBuffer) @067669a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_AddressFromBuffer/12 FMSTR_AddressFromBuffer/12 FMSTR_ValueFromBuffer32/5 FMSTR_ValueFromBuffer16/4 
+  Calls: 
+FMSTR_CopyToBuffer/2 (FMSTR_CopyToBuffer) @06766e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_AddressToBuffer/11 FMSTR_AddressToBuffer/11 FMSTR_ValueToBuffer32/7 FMSTR_ValueToBuffer16/6 
+  Calls: 
+FMSTR_CopyMemory/1 (FMSTR_CopyMemory) @06766b60
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Isr/0 (FMSTR_Isr) @067668c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ProcessSCI/13 
+FMSTR_AddressFromBuffer (unsigned char * * pAddr, unsigned char * pSrc)
+{
+  unsigned char * D.5724;
+  unsigned char pcm_bNextAddrIsEx.16_1;
+  unsigned char * _11;
+
+  <bb 2> :
+  pcm_bNextAddrIsEx.16_1 = pcm_bNextAddrIsEx;
+  if (pcm_bNextAddrIsEx.16_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  pSrc_10 = FMSTR_CopyFromBuffer (pAddr_5(D), pSrc_6(D), 4);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  pSrc_8 = FMSTR_CopyFromBuffer (pAddr_5(D), pSrc_6(D), 2);
+
+  <bb 5> :
+  # pSrc_2 = PHI <pSrc_10(3), pSrc_8(4)>
+  _11 = pSrc_2;
+
+  <bb 6> :
+<L3>:
+  return _11;
+
+}
+
+
+FMSTR_AddressToBuffer (unsigned char * pDest, unsigned char * nAddr)
+{
+  unsigned char * D.5719;
+  unsigned char pcm_bNextAddrIsEx.15_1;
+  unsigned char * _10;
+
+  <bb 2> :
+  pcm_bNextAddrIsEx.15_1 = pcm_bNextAddrIsEx;
+  if (pcm_bNextAddrIsEx.15_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  pDest_9 = FMSTR_CopyToBuffer (pDest_5(D), &nAddr, 4);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  pDest_7 = FMSTR_CopyToBuffer (pDest_5(D), &nAddr, 2);
+
+  <bb 5> :
+  # pDest_2 = PHI <pDest_9(3), pDest_7(4)>
+  _10 = pDest_2;
+
+  <bb 6> :
+<L3>:
+  return _10;
+
+}
+
+
+FMSTR_SetExAddr (FMSTR_BOOL bNextAddrIsEx)
+{
+  <bb 2> :
+  pcm_bNextAddrIsEx = bNextAddrIsEx_2(D);
+  return;
+
+}
+
+
+FMSTR_CopyFromBufferWithMask (unsigned char * nDestAddr, unsigned char * pSrcBuff, FMSTR_SIZE8 nSize)
+{
+  FMSTR_U8 dtmp;
+  FMSTR_U8 stmp;
+  FMSTR_U8 mask;
+  FMSTR_U8 * pm;
+  FMSTR_U8 * pd;
+  FMSTR_U8 * ps;
+  sizetype _1;
+  FMSTR_U8 * pm.9_2;
+  FMSTR_U8 * ps.10_3;
+  unsigned char _4;
+  signed char _5;
+  signed char mask.11_6;
+  signed char _7;
+  signed char dtmp.12_8;
+  signed char _9;
+  signed char _10;
+  FMSTR_U8 * pd.13_11;
+  unsigned char nSize.14_12;
+
+  <bb 2> :
+  ps_19 = pSrcBuff_18(D);
+  pd_21 = nDestAddr_20(D);
+  _1 = (sizetype) nSize_22(D);
+  pm_23 = ps_19 + _1;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  pm.9_2 = pm_16;
+  pm_26 = pm.9_2 + 1;
+  mask_27 = *pm.9_2;
+  ps.10_3 = ps_14;
+  ps_28 = ps.10_3 + 1;
+  stmp_29 = *ps.10_3;
+  dtmp_30 = *pd_15;
+  _4 = stmp_29 & mask_27;
+  _5 = (signed char) _4;
+  mask.11_6 = (signed char) mask_27;
+  _7 = ~mask.11_6;
+  dtmp.12_8 = (signed char) dtmp_30;
+  _9 = _7 & dtmp.12_8;
+  _10 = _5 | _9;
+  stmp_31 = (FMSTR_U8) _10;
+  pd.13_11 = pd_15;
+  pd_32 = pd.13_11 + 1;
+  *pd.13_11 = stmp_31;
+
+  <bb 4> :
+  # nSize_13 = PHI <nSize_22(D)(2), nSize_25(3)>
+  # ps_14 = PHI <ps_19(2), ps_28(3)>
+  # pd_15 = PHI <pd_21(2), pd_32(3)>
+  # pm_16 = PHI <pm_23(2), pm_26(3)>
+  nSize.14_12 = nSize_13;
+  nSize_25 = nSize.14_12 + 255;
+  if (nSize.14_12 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+FMSTR_ValueToBuffer32 (unsigned char * pDest, FMSTR_U32 src)
+{
+  unsigned char * D.5714;
+  unsigned char * _4;
+
+  <bb 2> :
+  _4 = FMSTR_CopyToBuffer (pDest_2(D), &src, 4);
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+FMSTR_ValueToBuffer16 (unsigned char * pDest, FMSTR_U16 src)
+{
+  unsigned char * D.5712;
+  unsigned char * _4;
+
+  <bb 2> :
+  _4 = FMSTR_CopyToBuffer (pDest_2(D), &src, 2);
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+FMSTR_ValueFromBuffer32 (FMSTR_U32 * pDest, unsigned char * pSrc)
+{
+  unsigned char * D.5710;
+  unsigned char * _5;
+
+  <bb 2> :
+  _5 = FMSTR_CopyFromBuffer (pDest_2(D), pSrc_3(D), 4);
+
+  <bb 3> :
+<L0>:
+  return _5;
+
+}
+
+
+FMSTR_ValueFromBuffer16 (FMSTR_U16 * pDest, unsigned char * pSrc)
+{
+  unsigned char * D.5708;
+  unsigned char * _5;
+
+  <bb 2> :
+  _5 = FMSTR_CopyFromBuffer (pDest_2(D), pSrc_3(D), 2);
+
+  <bb 3> :
+<L0>:
+  return _5;
+
+}
+
+
+FMSTR_CopyFromBuffer (unsigned char * nDestAddr, unsigned char * pSrcBuff, FMSTR_SIZE8 nSize)
+{
+  FMSTR_U8 * pd;
+  FMSTR_U8 * ps;
+  unsigned char * D.5706;
+  FMSTR_U8 * ps.6_1;
+  FMSTR_U8 * pd.7_2;
+  unsigned char _3;
+  unsigned char nSize.8_4;
+  unsigned char * _16;
+
+  <bb 2> :
+  ps_10 = pSrcBuff_9(D);
+  pd_12 = nDestAddr_11(D);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  ps.6_1 = ps_6;
+  ps_17 = ps.6_1 + 1;
+  pd.7_2 = pd_7;
+  pd_18 = pd.7_2 + 1;
+  _3 = *ps.6_1;
+  *pd.7_2 = _3;
+
+  <bb 4> :
+  # nSize_5 = PHI <nSize_13(D)(2), nSize_15(3)>
+  # ps_6 = PHI <ps_10(2), ps_17(3)>
+  # pd_7 = PHI <pd_12(2), pd_18(3)>
+  nSize.8_4 = nSize_5;
+  nSize_15 = nSize.8_4 + 255;
+  if (nSize.8_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _16 = ps_6;
+
+  <bb 6> :
+<L3>:
+  return _16;
+
+}
+
+
+FMSTR_CopyToBuffer (unsigned char * pDestBuff, unsigned char * nSrcAddr, FMSTR_SIZE8 nSize)
+{
+  FMSTR_U8 * pd;
+  FMSTR_U8 * ps;
+  unsigned char * D.5704;
+  FMSTR_U8 * ps.3_1;
+  FMSTR_U8 * pd.4_2;
+  unsigned char _3;
+  unsigned char nSize.5_4;
+  unsigned char * _16;
+
+  <bb 2> :
+  ps_10 = nSrcAddr_9(D);
+  pd_12 = pDestBuff_11(D);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  ps.3_1 = ps_6;
+  ps_17 = ps.3_1 + 1;
+  pd.4_2 = pd_7;
+  pd_18 = pd.4_2 + 1;
+  _3 = *ps.3_1;
+  *pd.4_2 = _3;
+
+  <bb 4> :
+  # nSize_5 = PHI <nSize_13(D)(2), nSize_15(3)>
+  # ps_6 = PHI <ps_10(2), ps_17(3)>
+  # pd_7 = PHI <pd_12(2), pd_18(3)>
+  nSize.5_4 = nSize_5;
+  nSize_15 = nSize.5_4 + 255;
+  if (nSize.5_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _16 = pd_7;
+
+  <bb 6> :
+<L3>:
+  return _16;
+
+}
+
+
+FMSTR_CopyMemory (unsigned char * nDestAddr, unsigned char * nSrcAddr, FMSTR_SIZE8 nSize)
+{
+  FMSTR_U8 * pd;
+  FMSTR_U8 * ps;
+  FMSTR_U8 * ps.0_1;
+  FMSTR_U8 * pd.1_2;
+  unsigned char _3;
+  unsigned char nSize.2_4;
+
+  <bb 2> :
+  ps_10 = nSrcAddr_9(D);
+  pd_12 = nDestAddr_11(D);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  ps.0_1 = ps_6;
+  ps_16 = ps.0_1 + 1;
+  pd.1_2 = pd_7;
+  pd_17 = pd.1_2 + 1;
+  _3 = *ps.0_1;
+  *pd.1_2 = _3;
+
+  <bb 4> :
+  # nSize_5 = PHI <nSize_13(D)(2), nSize_15(3)>
+  # ps_6 = PHI <ps_10(2), ps_16(3)>
+  # pd_7 = PHI <pd_12(2), pd_17(3)>
+  nSize.2_4 = nSize_5;
+  nSize_15 = nSize.2_4 + 255;
+  if (nSize.2_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+FMSTR_Isr ()
+{
+  <bb 2> :
+  FMSTR_ProcessSCI ();
+  return;
+
+}
+
+

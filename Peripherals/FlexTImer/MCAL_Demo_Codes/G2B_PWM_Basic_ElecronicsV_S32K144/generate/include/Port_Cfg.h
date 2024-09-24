@@ -699,6 +699,8 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 #define PortConfigSet_pwm_pins_complementary_pin1 1
 #define PortConfigSet_pwm_pins_complementary_pin2 2
 #define PortConfigSet_pwm_pins_edge_aligned_ch1 3
+#define PortConfigSet_pwm_pins_lpuart1_rx 4
+#define PortConfigSet_pwm_pins_lpuart1_tx 5
 
 /**
 * @brief Number of available pad modes options
@@ -718,12 +720,12 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 /**
 * @brief The maximum number of configured pins
 */
-#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)4)
+#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)6)
 
 /**
  * @brief Number of UnUsed pin array
 */
-#define PORT_MAX_UNUSED_PADS_U16    (80U)
+#define PORT_MAX_UNUSED_PADS_U16    (78U)
 
 /**
 * @brief Port driver Pre-Compile configuration switch

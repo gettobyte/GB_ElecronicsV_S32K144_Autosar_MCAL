@@ -1,0 +1,2226 @@
+Trivially needed symbols: FMSTR_Recorder2 FMSTR_Recorder FMSTR_Compare32U FMSTR_Compare32S FMSTR_Compare16U FMSTR_Compare16S FMSTR_Compare8U FMSTR_Compare8S FMSTR_GetRecBuff FMSTR_IsInRecBuffer FMSTR_GetRecBuffSize FMSTR_GetRecStatus FMSTR_StopRec FMSTR_StartRec FMSTR_TriggerRec FMSTR_SetUpRec FMSTR_SetUpRecBuff FMSTR_AbortRec FMSTR_InitRec pcm_pOwnRecBuffer pcm_pCompareFunc pcm_nRecBuffAddr pcm_uTrgThreshold pcm_bTrgVarSigned pcm_nTrgVarSize pcm_nTrgVarAddr pcm_dwRecEndBuffPtr pcm_dwRecWritePtr pcm_wRecBuffStartIx pcm_wRecFlags pcm_wStoprecCountDown pcm_wRecTimeDivCtr pcm_pRecVarSize pcm_pRecVarAddr pcm_nRecVarCount pcm_wRecTimeDiv pcm_nRecTriggerMode pcm_wRecPostTrigger pcm_wRecTotalSmps
+
+
+Initial Symbol table:
+
+FMSTR_CopyMemory/44 (FMSTR_CopyMemory) @067732a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Recorder2/38 
+  Calls: 
+FMSTR_ValueToBuffer16/43 (FMSTR_ValueToBuffer16) @06726a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_AddressToBuffer/42 (FMSTR_AddressToBuffer) @067269a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_ValueFromBuffer32/41 (FMSTR_ValueFromBuffer32) @067261c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_AddressFromBuffer/40 (FMSTR_AddressFromBuffer) @067260e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_ValueFromBuffer16/39 (FMSTR_ValueFromBuffer16) @067197e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_Recorder2/38 (FMSTR_Recorder2) @067199a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @01733ea0
+  References: pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (write)pcm_wRecTimeDiv/3 (read)pcm_wRecTimeDivCtr/7 (write)pcm_pRecVarSize/6 (read)pcm_dwRecWritePtr/11 (read)pcm_pRecVarAddr/5 (read)pcm_dwRecWritePtr/11 (read)pcm_dwRecWritePtr/11 (write)pcm_nRecVarCount/4 (read)pcm_wRecBuffStartIx/10 (read)pcm_wRecBuffStartIx/10 (write)pcm_dwRecWritePtr/11 (read)pcm_dwRecEndBuffPtr/12 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecFlags/9 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_pCompareFunc/18 (read)pcm_pCompareFunc/18 (read)pcm_nRecTriggerMode/2 (read)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (read)pcm_wStoprecCountDown/8 (read)pcm_wRecFlags/9 (write)pcm_wStoprecCountDown/8 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Recorder/37 
+  Calls: FMSTR_TriggerRec/24 FMSTR_CopyMemory/44 
+   Indirect call
+FMSTR_Recorder/37 (FMSTR_Recorder) @06719700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @067199a0
+  References: pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Recorder2/38 
+FMSTR_Compare32U/36 (FMSTR_Compare32U) @06719460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @06719700
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare32S/35 (FMSTR_Compare32S) @067191c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @06719460
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16U/34 (FMSTR_Compare16U) @066fdd20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @067191c0
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16S/33 (FMSTR_Compare16S) @066fd7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @066fdd20
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8U/32 (FMSTR_Compare8U) @066fd2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @066fd7e0
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8S/31 (FMSTR_Compare8S) @066fdee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  Aux: @066fd2a0
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_GetRecBuff/30 (FMSTR_GetRecBuff) @066fdc40
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @066fdee0
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_wRecBuffStartIx/10 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ValueToBuffer16/43 FMSTR_AddressToBuffer/42 
+FMSTR_IsInRecBuffer/29 (FMSTR_IsInRecBuffer) @066fd9a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @066fdc40
+  References: pcm_nRecBuffAddr/17 (read)pcm_nRecBuffAddr/17 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 
+FMSTR_GetRecBuffSize/28 (FMSTR_GetRecBuffSize) @066fd700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @066fd9a0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_IsInRecBuffer/29 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_GetRecStatus/27 (FMSTR_GetRecStatus) @066fd460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @066fd700
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_StopRec/26 (FMSTR_StopRec) @066fd1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @066fd460
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_TriggerRec/24 
+FMSTR_StartRec/25 (FMSTR_StartRec) @0662aee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @066fd1c0
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecTimeDivCtr/7 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_TriggerRec/24 (FMSTR_TriggerRec) @0662a8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0662aee0
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecPostTrigger/1 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Recorder2/38 FMSTR_StopRec/26 
+  Calls: 
+FMSTR_SetUpRec/23 (FMSTR_SetUpRec) @0662ae00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0662a8c0
+  References: pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)pcm_nRecTriggerMode/2 (write)pcm_wRecTotalSmps/0 (addr)pcm_wRecPostTrigger/1 (addr)pcm_wRecTimeDiv/3 (addr)pcm_nTrgVarAddr/13 (addr)pcm_nTrgVarSize/14 (write)pcm_bTrgVarSigned/15 (write)pcm_uTrgThreshold/16 (addr)pcm_nRecVarCount/4 (write)pcm_nRecVarCount/4 (read)pcm_nRecVarCount/4 (read)pcm_pRecVarSize/6 (write)pcm_pRecVarAddr/5 (addr)pcm_nRecVarCount/4 (read)pcm_pCompareFunc/18 (write)pcm_nRecTriggerMode/2 (read)pcm_bTrgVarSigned/15 (read)pcm_nTrgVarSize/14 (read)pcm_bTrgVarSigned/15 (read)FMSTR_Compare8S/31 (addr)FMSTR_Compare8U/32 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare16S/33 (addr)FMSTR_Compare16U/34 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare32S/35 (addr)FMSTR_Compare32U/36 (addr)pcm_pCompareFunc/18 (write)pcm_wRecTotalSmps/0 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecEndBuffPtr/12 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer32/41 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_AbortRec/21 
+FMSTR_SetUpRecBuff/22 (FMSTR_SetUpRecBuff) @0662aa80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0662ae00
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_AbortRec/21 (FMSTR_AbortRec) @0662a7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @0662aa80
+  References: pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_InitRec/20 (FMSTR_InitRec) @0662a540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0662a7e0
+  References: pcm_wRecFlags/9 (write)pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_pOwnRecBuffer/19 (pcm_pOwnRecBuffer) @0661ff78
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @0662a540
+  References: 
+  Referring: FMSTR_InitRec/20 (addr)FMSTR_SetUpRec/23 (addr)
+  Availability: not-ready
+  Varpool flags:
+pcm_pCompareFunc/18 (pcm_pCompareFunc) @0661fe58
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @0661ff78
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecBuffAddr/17 (pcm_nRecBuffAddr) @0661fd38
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @0661fe58
+  References: 
+  Referring: FMSTR_InitRec/20 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_StartRec/25 (read)FMSTR_IsInRecBuffer/29 (read)FMSTR_IsInRecBuffer/29 (read)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_uTrgThreshold/16 (pcm_uTrgThreshold) @0661fca8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @0661fd38
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32S/35 (read)FMSTR_Compare32U/36 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_bTrgVarSigned/15 (pcm_bTrgVarSigned) @0661fa20
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @0661fca8
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTrgVarSize/14 (pcm_nTrgVarSize) @0661f990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @0661fa20
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTrgVarAddr/13 (pcm_nTrgVarAddr) @0661f900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @0661f990
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32S/35 (read)FMSTR_Compare32U/36 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_dwRecEndBuffPtr/12 (pcm_dwRecEndBuffPtr) @0661f870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f900
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_dwRecWritePtr/11 (pcm_dwRecWritePtr) @0661f828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f870
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecBuffStartIx/10 (pcm_wRecBuffStartIx) @0661f7e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f828
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecFlags/9 (pcm_wRecFlags) @0661f798
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f7e0
+  References: 
+  Referring: FMSTR_InitRec/20 (write)FMSTR_AbortRec/21 (write)FMSTR_SetUpRec/23 (write)FMSTR_TriggerRec/24 (read)FMSTR_TriggerRec/24 (write)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StopRec/26 (read)FMSTR_StopRec/26 (read)FMSTR_GetRecStatus/27 (read)FMSTR_GetRecStatus/27 (read)FMSTR_GetRecBuff/30 (read)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder/37 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wStoprecCountDown/8 (pcm_wStoprecCountDown) @0661f750
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f798
+  References: 
+  Referring: FMSTR_TriggerRec/24 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTimeDivCtr/7 (pcm_wRecTimeDivCtr) @0661f708
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f750
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRecVarSize/6 (pcm_pRecVarSize) @0661f6c0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f708
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRecVarAddr/5 (pcm_pRecVarAddr) @0661f678
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f6c0
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecVarCount/4 (pcm_nRecVarCount) @0661f630
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f678
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTimeDiv/3 (pcm_wRecTimeDiv) @0661f5e8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f630
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecTriggerMode/2 (pcm_nRecTriggerMode) @0661f5a0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f5e8
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecPostTrigger/1 (pcm_wRecPostTrigger) @0661f558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f5a0
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_TriggerRec/24 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTotalSmps/0 (pcm_wRecTotalSmps) @0661f510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0661f558
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+FMSTR_CopyMemory/44 (FMSTR_CopyMemory) @067732a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Recorder2/38 
+  Calls: 
+FMSTR_ValueToBuffer16/43 (FMSTR_ValueToBuffer16) @06726a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_AddressToBuffer/42 (FMSTR_AddressToBuffer) @067269a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_ValueFromBuffer32/41 (FMSTR_ValueFromBuffer32) @067261c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_AddressFromBuffer/40 (FMSTR_AddressFromBuffer) @067260e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_ValueFromBuffer16/39 (FMSTR_ValueFromBuffer16) @067197e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_Recorder2/38 (FMSTR_Recorder2) @067199a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (write)pcm_wRecTimeDiv/3 (read)pcm_wRecTimeDivCtr/7 (write)pcm_pRecVarSize/6 (read)pcm_dwRecWritePtr/11 (read)pcm_pRecVarAddr/5 (read)pcm_dwRecWritePtr/11 (read)pcm_dwRecWritePtr/11 (write)pcm_nRecVarCount/4 (read)pcm_wRecBuffStartIx/10 (read)pcm_wRecBuffStartIx/10 (write)pcm_dwRecWritePtr/11 (read)pcm_dwRecEndBuffPtr/12 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecFlags/9 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_pCompareFunc/18 (read)pcm_pCompareFunc/18 (read)pcm_nRecTriggerMode/2 (read)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (read)pcm_wStoprecCountDown/8 (read)pcm_wRecFlags/9 (write)pcm_wStoprecCountDown/8 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Recorder/37 
+  Calls: FMSTR_TriggerRec/24 FMSTR_CopyMemory/44 
+   Indirect call
+FMSTR_Recorder/37 (FMSTR_Recorder) @06719700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Recorder2/38 
+FMSTR_Compare32U/36 (FMSTR_Compare32U) @06719460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare32S/35 (FMSTR_Compare32S) @067191c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16U/34 (FMSTR_Compare16U) @066fdd20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16S/33 (FMSTR_Compare16S) @066fd7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8U/32 (FMSTR_Compare8U) @066fd2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8S/31 (FMSTR_Compare8S) @066fdee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_GetRecBuff/30 (FMSTR_GetRecBuff) @066fdc40
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_wRecBuffStartIx/10 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ValueToBuffer16/43 FMSTR_AddressToBuffer/42 
+FMSTR_IsInRecBuffer/29 (FMSTR_IsInRecBuffer) @066fd9a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_nRecBuffAddr/17 (read)pcm_nRecBuffAddr/17 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 
+FMSTR_GetRecBuffSize/28 (FMSTR_GetRecBuffSize) @066fd700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_IsInRecBuffer/29 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_GetRecStatus/27 (FMSTR_GetRecStatus) @066fd460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_StopRec/26 (FMSTR_StopRec) @066fd1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_TriggerRec/24 
+FMSTR_StartRec/25 (FMSTR_StartRec) @0662aee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecTimeDivCtr/7 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_TriggerRec/24 (FMSTR_TriggerRec) @0662a8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecPostTrigger/1 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Recorder2/38 FMSTR_StopRec/26 
+  Calls: 
+FMSTR_SetUpRec/23 (FMSTR_SetUpRec) @0662ae00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)pcm_nRecTriggerMode/2 (write)pcm_wRecTotalSmps/0 (addr)pcm_wRecPostTrigger/1 (addr)pcm_wRecTimeDiv/3 (addr)pcm_nTrgVarAddr/13 (addr)pcm_nTrgVarSize/14 (write)pcm_bTrgVarSigned/15 (write)pcm_uTrgThreshold/16 (addr)pcm_nRecVarCount/4 (write)pcm_nRecVarCount/4 (read)pcm_nRecVarCount/4 (read)pcm_pRecVarSize/6 (write)pcm_pRecVarAddr/5 (addr)pcm_nRecVarCount/4 (read)pcm_pCompareFunc/18 (write)pcm_nRecTriggerMode/2 (read)pcm_bTrgVarSigned/15 (read)pcm_nTrgVarSize/14 (read)pcm_bTrgVarSigned/15 (read)FMSTR_Compare8S/31 (addr)FMSTR_Compare8U/32 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare16S/33 (addr)FMSTR_Compare16U/34 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare32S/35 (addr)FMSTR_Compare32U/36 (addr)pcm_pCompareFunc/18 (write)pcm_wRecTotalSmps/0 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecEndBuffPtr/12 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer32/41 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_AbortRec/21 
+FMSTR_SetUpRecBuff/22 (FMSTR_SetUpRecBuff) @0662aa80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_AbortRec/21 (FMSTR_AbortRec) @0662a7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_InitRec/20 (FMSTR_InitRec) @0662a540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (write)pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_pOwnRecBuffer/19 (pcm_pOwnRecBuffer) @0661ff78
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_InitRec/20 (addr)FMSTR_SetUpRec/23 (addr)
+  Availability: not-ready
+  Varpool flags:
+pcm_pCompareFunc/18 (pcm_pCompareFunc) @0661fe58
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecBuffAddr/17 (pcm_nRecBuffAddr) @0661fd38
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_InitRec/20 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_StartRec/25 (read)FMSTR_IsInRecBuffer/29 (read)FMSTR_IsInRecBuffer/29 (read)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_uTrgThreshold/16 (pcm_uTrgThreshold) @0661fca8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32S/35 (read)FMSTR_Compare32U/36 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_bTrgVarSigned/15 (pcm_bTrgVarSigned) @0661fa20
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTrgVarSize/14 (pcm_nTrgVarSize) @0661f990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTrgVarAddr/13 (pcm_nTrgVarAddr) @0661f900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32S/35 (read)FMSTR_Compare32U/36 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_dwRecEndBuffPtr/12 (pcm_dwRecEndBuffPtr) @0661f870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_dwRecWritePtr/11 (pcm_dwRecWritePtr) @0661f828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecBuffStartIx/10 (pcm_wRecBuffStartIx) @0661f7e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecFlags/9 (pcm_wRecFlags) @0661f798
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_InitRec/20 (write)FMSTR_AbortRec/21 (write)FMSTR_SetUpRec/23 (write)FMSTR_TriggerRec/24 (read)FMSTR_TriggerRec/24 (write)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StopRec/26 (read)FMSTR_StopRec/26 (read)FMSTR_GetRecStatus/27 (read)FMSTR_GetRecStatus/27 (read)FMSTR_GetRecBuff/30 (read)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder/37 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wStoprecCountDown/8 (pcm_wStoprecCountDown) @0661f750
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_TriggerRec/24 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTimeDivCtr/7 (pcm_wRecTimeDivCtr) @0661f708
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRecVarSize/6 (pcm_pRecVarSize) @0661f6c0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRecVarAddr/5 (pcm_pRecVarAddr) @0661f678
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecVarCount/4 (pcm_nRecVarCount) @0661f630
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTimeDiv/3 (pcm_wRecTimeDiv) @0661f5e8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecTriggerMode/2 (pcm_nRecTriggerMode) @0661f5a0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecPostTrigger/1 (pcm_wRecPostTrigger) @0661f558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_TriggerRec/24 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTotalSmps/0 (pcm_wRecTotalSmps) @0661f510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+FMSTR_CopyMemory/44 (FMSTR_CopyMemory) @067732a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Recorder2/38 
+  Calls: 
+FMSTR_ValueToBuffer16/43 (FMSTR_ValueToBuffer16) @06726a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_AddressToBuffer/42 (FMSTR_AddressToBuffer) @067269a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_ValueFromBuffer32/41 (FMSTR_ValueFromBuffer32) @067261c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_AddressFromBuffer/40 (FMSTR_AddressFromBuffer) @067260e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_ValueFromBuffer16/39 (FMSTR_ValueFromBuffer16) @067197e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_Recorder2/38 (FMSTR_Recorder2) @067199a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (write)pcm_wRecTimeDiv/3 (read)pcm_wRecTimeDivCtr/7 (write)pcm_pRecVarSize/6 (read)pcm_dwRecWritePtr/11 (read)pcm_pRecVarAddr/5 (read)pcm_dwRecWritePtr/11 (read)pcm_dwRecWritePtr/11 (write)pcm_nRecVarCount/4 (read)pcm_wRecBuffStartIx/10 (read)pcm_wRecBuffStartIx/10 (write)pcm_dwRecWritePtr/11 (read)pcm_dwRecEndBuffPtr/12 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecFlags/9 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_pCompareFunc/18 (read)pcm_pCompareFunc/18 (read)pcm_nRecTriggerMode/2 (read)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (read)pcm_wStoprecCountDown/8 (read)pcm_wRecFlags/9 (write)pcm_wStoprecCountDown/8 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Recorder/37 
+  Calls: FMSTR_TriggerRec/24 FMSTR_CopyMemory/44 
+   Indirect call
+FMSTR_Recorder/37 (FMSTR_Recorder) @06719700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Recorder2/38 
+FMSTR_Compare32U/36 (FMSTR_Compare32U) @06719460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare32S/35 (FMSTR_Compare32S) @067191c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16U/34 (FMSTR_Compare16U) @066fdd20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16S/33 (FMSTR_Compare16S) @066fd7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8U/32 (FMSTR_Compare8U) @066fd2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8S/31 (FMSTR_Compare8S) @066fdee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_GetRecBuff/30 (FMSTR_GetRecBuff) @066fdc40
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_wRecBuffStartIx/10 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ValueToBuffer16/43 FMSTR_AddressToBuffer/42 
+FMSTR_IsInRecBuffer/29 (FMSTR_IsInRecBuffer) @066fd9a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_nRecBuffAddr/17 (read)pcm_nRecBuffAddr/17 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 
+FMSTR_GetRecBuffSize/28 (FMSTR_GetRecBuffSize) @066fd700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_IsInRecBuffer/29 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_GetRecStatus/27 (FMSTR_GetRecStatus) @066fd460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_StopRec/26 (FMSTR_StopRec) @066fd1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_TriggerRec/24 
+FMSTR_StartRec/25 (FMSTR_StartRec) @0662aee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecTimeDivCtr/7 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_TriggerRec/24 (FMSTR_TriggerRec) @0662a8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecPostTrigger/1 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Recorder2/38 FMSTR_StopRec/26 
+  Calls: 
+FMSTR_SetUpRec/23 (FMSTR_SetUpRec) @0662ae00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)pcm_nRecTriggerMode/2 (write)pcm_wRecTotalSmps/0 (addr)pcm_wRecPostTrigger/1 (addr)pcm_wRecTimeDiv/3 (addr)pcm_nTrgVarAddr/13 (addr)pcm_nTrgVarSize/14 (write)pcm_bTrgVarSigned/15 (write)pcm_uTrgThreshold/16 (addr)pcm_nRecVarCount/4 (write)pcm_nRecVarCount/4 (read)pcm_nRecVarCount/4 (read)pcm_pRecVarSize/6 (write)pcm_pRecVarAddr/5 (addr)pcm_nRecVarCount/4 (read)pcm_pCompareFunc/18 (write)pcm_nRecTriggerMode/2 (read)pcm_bTrgVarSigned/15 (read)pcm_nTrgVarSize/14 (read)pcm_bTrgVarSigned/15 (read)FMSTR_Compare8S/31 (addr)FMSTR_Compare8U/32 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare16S/33 (addr)FMSTR_Compare16U/34 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare32S/35 (addr)FMSTR_Compare32U/36 (addr)pcm_pCompareFunc/18 (write)pcm_wRecTotalSmps/0 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecEndBuffPtr/12 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer32/41 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_AbortRec/21 
+FMSTR_SetUpRecBuff/22 (FMSTR_SetUpRecBuff) @0662aa80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_AbortRec/21 (FMSTR_AbortRec) @0662a7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_InitRec/20 (FMSTR_InitRec) @0662a540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (write)pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_pOwnRecBuffer/19 (pcm_pOwnRecBuffer) @0661ff78
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_InitRec/20 (addr)FMSTR_SetUpRec/23 (addr)
+  Availability: not-ready
+  Varpool flags:
+pcm_pCompareFunc/18 (pcm_pCompareFunc) @0661fe58
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecBuffAddr/17 (pcm_nRecBuffAddr) @0661fd38
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_InitRec/20 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_StartRec/25 (read)FMSTR_IsInRecBuffer/29 (read)FMSTR_IsInRecBuffer/29 (read)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_uTrgThreshold/16 (pcm_uTrgThreshold) @0661fca8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32S/35 (read)FMSTR_Compare32U/36 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_bTrgVarSigned/15 (pcm_bTrgVarSigned) @0661fa20
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTrgVarSize/14 (pcm_nTrgVarSize) @0661f990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTrgVarAddr/13 (pcm_nTrgVarAddr) @0661f900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32S/35 (read)FMSTR_Compare32U/36 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_dwRecEndBuffPtr/12 (pcm_dwRecEndBuffPtr) @0661f870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_dwRecWritePtr/11 (pcm_dwRecWritePtr) @0661f828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecBuffStartIx/10 (pcm_wRecBuffStartIx) @0661f7e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecFlags/9 (pcm_wRecFlags) @0661f798
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_InitRec/20 (write)FMSTR_AbortRec/21 (write)FMSTR_SetUpRec/23 (write)FMSTR_TriggerRec/24 (read)FMSTR_TriggerRec/24 (write)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StopRec/26 (read)FMSTR_StopRec/26 (read)FMSTR_GetRecStatus/27 (read)FMSTR_GetRecStatus/27 (read)FMSTR_GetRecBuff/30 (read)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder/37 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wStoprecCountDown/8 (pcm_wStoprecCountDown) @0661f750
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_TriggerRec/24 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTimeDivCtr/7 (pcm_wRecTimeDivCtr) @0661f708
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRecVarSize/6 (pcm_pRecVarSize) @0661f6c0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRecVarAddr/5 (pcm_pRecVarAddr) @0661f678
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecVarCount/4 (pcm_nRecVarCount) @0661f630
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTimeDiv/3 (pcm_wRecTimeDiv) @0661f5e8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecTriggerMode/2 (pcm_nRecTriggerMode) @0661f5a0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecPostTrigger/1 (pcm_wRecPostTrigger) @0661f558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_TriggerRec/24 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTotalSmps/0 (pcm_wRecTotalSmps) @0661f510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+FMSTR_CopyMemory/44 (FMSTR_CopyMemory) @067732a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Recorder2/38 
+  Calls: 
+FMSTR_ValueToBuffer16/43 (FMSTR_ValueToBuffer16) @06726a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_AddressToBuffer/42 (FMSTR_AddressToBuffer) @067269a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_ValueFromBuffer32/41 (FMSTR_ValueFromBuffer32) @067261c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_AddressFromBuffer/40 (FMSTR_AddressFromBuffer) @067260e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_ValueFromBuffer16/39 (FMSTR_ValueFromBuffer16) @067197e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_Recorder2/38 (FMSTR_Recorder2) @067199a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (write)pcm_wRecTimeDiv/3 (read)pcm_wRecTimeDivCtr/7 (write)pcm_pRecVarSize/6 (read)pcm_dwRecWritePtr/11 (read)pcm_pRecVarAddr/5 (read)pcm_dwRecWritePtr/11 (read)pcm_dwRecWritePtr/11 (write)pcm_nRecVarCount/4 (read)pcm_wRecBuffStartIx/10 (read)pcm_wRecBuffStartIx/10 (write)pcm_dwRecWritePtr/11 (read)pcm_dwRecEndBuffPtr/12 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecFlags/9 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_pCompareFunc/18 (read)pcm_pCompareFunc/18 (read)pcm_nRecTriggerMode/2 (read)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (read)pcm_wStoprecCountDown/8 (read)pcm_wRecFlags/9 (write)pcm_wStoprecCountDown/8 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Recorder/37 
+  Calls: FMSTR_TriggerRec/24 FMSTR_CopyMemory/44 
+   Indirect call
+FMSTR_Recorder/37 (FMSTR_Recorder) @06719700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Recorder2/38 
+FMSTR_Compare32U/36 (FMSTR_Compare32U) @06719460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare32S/35 (FMSTR_Compare32S) @067191c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16U/34 (FMSTR_Compare16U) @066fdd20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16S/33 (FMSTR_Compare16S) @066fd7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8U/32 (FMSTR_Compare8U) @066fd2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8S/31 (FMSTR_Compare8S) @066fdee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_GetRecBuff/30 (FMSTR_GetRecBuff) @066fdc40
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_wRecBuffStartIx/10 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ValueToBuffer16/43 FMSTR_AddressToBuffer/42 
+FMSTR_IsInRecBuffer/29 (FMSTR_IsInRecBuffer) @066fd9a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_nRecBuffAddr/17 (read)pcm_nRecBuffAddr/17 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 
+FMSTR_GetRecBuffSize/28 (FMSTR_GetRecBuffSize) @066fd700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_IsInRecBuffer/29 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_GetRecStatus/27 (FMSTR_GetRecStatus) @066fd460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_StopRec/26 (FMSTR_StopRec) @066fd1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_TriggerRec/24 
+FMSTR_StartRec/25 (FMSTR_StartRec) @0662aee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecTimeDivCtr/7 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_TriggerRec/24 (FMSTR_TriggerRec) @0662a8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecPostTrigger/1 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_Recorder2/38 FMSTR_StopRec/26 
+  Calls: 
+FMSTR_SetUpRec/23 (FMSTR_SetUpRec) @0662ae00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)pcm_nRecTriggerMode/2 (write)pcm_wRecTotalSmps/0 (addr)pcm_wRecPostTrigger/1 (addr)pcm_wRecTimeDiv/3 (addr)pcm_nTrgVarAddr/13 (addr)pcm_nTrgVarSize/14 (write)pcm_bTrgVarSigned/15 (write)pcm_uTrgThreshold/16 (addr)pcm_nRecVarCount/4 (write)pcm_nRecVarCount/4 (read)pcm_nRecVarCount/4 (read)pcm_pRecVarSize/6 (write)pcm_pRecVarAddr/5 (addr)pcm_nRecVarCount/4 (read)pcm_pCompareFunc/18 (write)pcm_nRecTriggerMode/2 (read)pcm_bTrgVarSigned/15 (read)pcm_nTrgVarSize/14 (read)pcm_bTrgVarSigned/15 (read)FMSTR_Compare8S/31 (addr)FMSTR_Compare8U/32 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare16S/33 (addr)FMSTR_Compare16U/34 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare32S/35 (addr)FMSTR_Compare32U/36 (addr)pcm_pCompareFunc/18 (write)pcm_wRecTotalSmps/0 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecEndBuffPtr/12 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer32/41 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_AbortRec/21 
+FMSTR_SetUpRecBuff/22 (FMSTR_SetUpRecBuff) @0662aa80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_AbortRec/21 (FMSTR_AbortRec) @0662a7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: pcm_wRecFlags/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_InitRec/20 (FMSTR_InitRec) @0662a540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_wRecFlags/9 (write)pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_pOwnRecBuffer/19 (pcm_pOwnRecBuffer) @0661ff78
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_InitRec/20 (addr)FMSTR_SetUpRec/23 (addr)
+  Availability: not-ready
+  Varpool flags:
+pcm_pCompareFunc/18 (pcm_pCompareFunc) @0661fe58
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecBuffAddr/17 (pcm_nRecBuffAddr) @0661fd38
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_InitRec/20 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_StartRec/25 (read)FMSTR_IsInRecBuffer/29 (read)FMSTR_IsInRecBuffer/29 (read)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_uTrgThreshold/16 (pcm_uTrgThreshold) @0661fca8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32S/35 (read)FMSTR_Compare32U/36 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_bTrgVarSigned/15 (pcm_bTrgVarSigned) @0661fa20
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTrgVarSize/14 (pcm_nTrgVarSize) @0661f990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nTrgVarAddr/13 (pcm_nTrgVarAddr) @0661f900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32S/35 (read)FMSTR_Compare32U/36 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_dwRecEndBuffPtr/12 (pcm_dwRecEndBuffPtr) @0661f870
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_dwRecWritePtr/11 (pcm_dwRecWritePtr) @0661f828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecBuffStartIx/10 (pcm_wRecBuffStartIx) @0661f7e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecFlags/9 (pcm_wRecFlags) @0661f798
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_InitRec/20 (write)FMSTR_AbortRec/21 (write)FMSTR_SetUpRec/23 (write)FMSTR_TriggerRec/24 (read)FMSTR_TriggerRec/24 (write)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StopRec/26 (read)FMSTR_StopRec/26 (read)FMSTR_GetRecStatus/27 (read)FMSTR_GetRecStatus/27 (read)FMSTR_GetRecBuff/30 (read)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder/37 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wStoprecCountDown/8 (pcm_wStoprecCountDown) @0661f750
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_TriggerRec/24 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTimeDivCtr/7 (pcm_wRecTimeDivCtr) @0661f708
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRecVarSize/6 (pcm_pRecVarSize) @0661f6c0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_pRecVarAddr/5 (pcm_pRecVarAddr) @0661f678
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecVarCount/4 (pcm_nRecVarCount) @0661f630
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTimeDiv/3 (pcm_wRecTimeDiv) @0661f5e8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_nRecTriggerMode/2 (pcm_nRecTriggerMode) @0661f5a0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_Recorder2/38 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecPostTrigger/1 (pcm_wRecPostTrigger) @0661f558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_TriggerRec/24 (read)
+  Availability: not-ready
+  Varpool flags:
+pcm_wRecTotalSmps/0 (pcm_wRecTotalSmps) @0661f510
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_SetUpRec/23 (read)
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+FMSTR_CopyMemory/44 (FMSTR_CopyMemory) @067732a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_Recorder2/38 
+  Calls: 
+FMSTR_ValueToBuffer16/43 (FMSTR_ValueToBuffer16) @06726a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_AddressToBuffer/42 (FMSTR_AddressToBuffer) @067269a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_GetRecBuff/30 
+  Calls: 
+FMSTR_ValueFromBuffer32/41 (FMSTR_ValueFromBuffer32) @067261c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_AddressFromBuffer/40 (FMSTR_AddressFromBuffer) @067260e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_ValueFromBuffer16/39 (FMSTR_ValueFromBuffer16) @067197e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_Recorder2/38 (FMSTR_Recorder2) @067199a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (read)pcm_wRecTimeDivCtr/7 (write)pcm_wRecTimeDiv/3 (read)pcm_wRecTimeDivCtr/7 (write)pcm_pRecVarSize/6 (read)pcm_dwRecWritePtr/11 (read)pcm_pRecVarAddr/5 (read)pcm_dwRecWritePtr/11 (read)pcm_dwRecWritePtr/11 (write)pcm_nRecVarCount/4 (read)pcm_wRecBuffStartIx/10 (read)pcm_wRecBuffStartIx/10 (write)pcm_dwRecWritePtr/11 (read)pcm_dwRecEndBuffPtr/12 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecFlags/9 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_pCompareFunc/18 (read)pcm_pCompareFunc/18 (read)pcm_nRecTriggerMode/2 (read)pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (read)pcm_wStoprecCountDown/8 (read)pcm_wRecFlags/9 (write)pcm_wStoprecCountDown/8 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_Recorder/37 
+  Calls: FMSTR_TriggerRec/24 FMSTR_CopyMemory/44 
+   Indirect call
+FMSTR_Recorder/37 (FMSTR_Recorder) @06719700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wRecFlags/9 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_Recorder2/38 
+FMSTR_Compare32U/36 (FMSTR_Compare32U) @06719460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare32S/35 (FMSTR_Compare32S) @067191c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16U/34 (FMSTR_Compare16U) @066fdd20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare16S/33 (FMSTR_Compare16S) @066fd7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8U/32 (FMSTR_Compare8U) @066fd2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Compare8S/31 (FMSTR_Compare8S) @066fdee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  Address is taken.
+  References: pcm_nTrgVarAddr/13 (read)pcm_uTrgThreshold/16 (read)
+  Referring: FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_GetRecBuff/30 (FMSTR_GetRecBuff) @066fdc40
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_wRecBuffStartIx/10 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ValueToBuffer16/43 FMSTR_AddressToBuffer/42 
+FMSTR_IsInRecBuffer/29 (FMSTR_IsInRecBuffer) @066fd9a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_nRecBuffAddr/17 (read)pcm_nRecBuffAddr/17 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 
+FMSTR_GetRecBuffSize/28 (FMSTR_GetRecBuffSize) @066fd700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_IsInRecBuffer/29 FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_GetRecStatus/27 (FMSTR_GetRecStatus) @066fd460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_StopRec/26 (FMSTR_StopRec) @066fd1c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_TriggerRec/24 
+FMSTR_StartRec/25 (FMSTR_StartRec) @0662aee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecWritePtr/11 (write)pcm_wRecBuffStartIx/10 (write)pcm_wRecTimeDivCtr/7 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_TriggerRec/24 (FMSTR_TriggerRec) @0662a8c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wRecFlags/9 (read)pcm_wRecFlags/9 (write)pcm_wRecPostTrigger/1 (read)pcm_wStoprecCountDown/8 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_Recorder2/38 FMSTR_StopRec/26 
+  Calls: 
+FMSTR_SetUpRec/23 (FMSTR_SetUpRec) @0662ae00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)pcm_nRecTriggerMode/2 (write)pcm_wRecTotalSmps/0 (addr)pcm_wRecPostTrigger/1 (addr)pcm_wRecTimeDiv/3 (addr)pcm_nTrgVarAddr/13 (addr)pcm_nTrgVarSize/14 (write)pcm_bTrgVarSigned/15 (write)pcm_uTrgThreshold/16 (addr)pcm_nRecVarCount/4 (write)pcm_nRecVarCount/4 (read)pcm_nRecVarCount/4 (read)pcm_pRecVarSize/6 (write)pcm_pRecVarAddr/5 (addr)pcm_nRecVarCount/4 (read)pcm_pCompareFunc/18 (write)pcm_nRecTriggerMode/2 (read)pcm_bTrgVarSigned/15 (read)pcm_nTrgVarSize/14 (read)pcm_bTrgVarSigned/15 (read)FMSTR_Compare8S/31 (addr)FMSTR_Compare8U/32 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare16S/33 (addr)FMSTR_Compare16U/34 (addr)pcm_pCompareFunc/18 (write)pcm_bTrgVarSigned/15 (read)FMSTR_Compare32S/35 (addr)FMSTR_Compare32U/36 (addr)pcm_pCompareFunc/18 (write)pcm_wRecTotalSmps/0 (read)pcm_nRecBuffAddr/17 (read)pcm_dwRecEndBuffPtr/12 (write)pcm_wRecFlags/9 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_GetRecBuffSize/28 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer32/41 FMSTR_AddressFromBuffer/40 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_ValueFromBuffer16/39 FMSTR_AbortRec/21 
+FMSTR_SetUpRecBuff/22 (FMSTR_SetUpRecBuff) @0662aa80
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_AbortRec/21 (FMSTR_AbortRec) @0662a7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: pcm_wRecFlags/9 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_SetUpRec/23 
+  Calls: 
+FMSTR_InitRec/20 (FMSTR_InitRec) @0662a540
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_wRecFlags/9 (write)pcm_nRecBuffAddr/17 (write)pcm_pOwnRecBuffer/19 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_pOwnRecBuffer/19 (pcm_pOwnRecBuffer) @0661ff78
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_InitRec/20 (addr)FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Varpool flags:
+pcm_pCompareFunc/18 (pcm_pCompareFunc) @0661fe58
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)
+  Availability: available
+  Varpool flags:
+pcm_nRecBuffAddr/17 (pcm_nRecBuffAddr) @0661fd38
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_IsInRecBuffer/29 (read)FMSTR_SetUpRec/23 (read)FMSTR_InitRec/20 (write)FMSTR_GetRecBuff/30 (read)FMSTR_SetUpRec/23 (write)FMSTR_StartRec/25 (read)FMSTR_IsInRecBuffer/29 (read)FMSTR_Recorder2/38 (read)
+  Availability: available
+  Varpool flags:
+pcm_uTrgThreshold/16 (pcm_uTrgThreshold) @0661fca8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_Compare32S/35 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32U/36 (read)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Varpool flags:
+pcm_bTrgVarSigned/15 (pcm_bTrgVarSigned) @0661fa20
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)
+  Availability: available
+  Varpool flags:
+pcm_nTrgVarSize/14 (pcm_nTrgVarSize) @0661f990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)
+  Availability: available
+  Varpool flags:
+pcm_nTrgVarAddr/13 (pcm_nTrgVarAddr) @0661f900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_Compare32S/35 (read)FMSTR_Compare16U/34 (read)FMSTR_Compare32U/36 (read)FMSTR_Compare8S/31 (read)FMSTR_Compare8U/32 (read)FMSTR_Compare16S/33 (read)FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Varpool flags:
+pcm_dwRecEndBuffPtr/12 (pcm_dwRecEndBuffPtr) @0661f870
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: available
+  Varpool flags:
+pcm_dwRecWritePtr/11 (pcm_dwRecWritePtr) @0661f828
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: available
+  Varpool flags:
+pcm_wRecBuffStartIx/10 (pcm_wRecBuffStartIx) @0661f7e0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: available
+  Varpool flags:
+pcm_wRecFlags/9 (pcm_wRecFlags) @0661f798
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (write)FMSTR_StopRec/26 (read)FMSTR_GetRecStatus/27 (read)FMSTR_InitRec/20 (write)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (read)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_GetRecBuff/30 (read)FMSTR_AbortRec/21 (write)FMSTR_TriggerRec/24 (read)FMSTR_TriggerRec/24 (write)FMSTR_StartRec/25 (write)FMSTR_StartRec/25 (write)FMSTR_StopRec/26 (read)FMSTR_GetRecStatus/27 (read)FMSTR_GetRecBuff/30 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder/37 (read)
+  Availability: available
+  Varpool flags:
+pcm_wStoprecCountDown/8 (pcm_wStoprecCountDown) @0661f750
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_TriggerRec/24 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)
+  Availability: available
+  Varpool flags:
+pcm_wRecTimeDivCtr/7 (pcm_wRecTimeDivCtr) @0661f708
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_StartRec/25 (write)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (read)FMSTR_Recorder2/38 (write)FMSTR_Recorder2/38 (write)
+  Availability: available
+  Varpool flags:
+pcm_pRecVarSize/6 (pcm_pRecVarSize) @0661f6c0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: available
+  Varpool flags:
+pcm_pRecVarAddr/5 (pcm_pRecVarAddr) @0661f678
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: available
+  Varpool flags:
+pcm_nRecVarCount/4 (pcm_nRecVarCount) @0661f630
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (write)FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (read)FMSTR_Recorder2/38 (read)
+  Availability: available
+  Varpool flags:
+pcm_wRecTimeDiv/3 (pcm_wRecTimeDiv) @0661f5e8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_Recorder2/38 (read)
+  Availability: available
+  Varpool flags:
+pcm_nRecTriggerMode/2 (pcm_nRecTriggerMode) @0661f5a0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (read)FMSTR_SetUpRec/23 (write)FMSTR_Recorder2/38 (read)
+  Availability: available
+  Varpool flags:
+pcm_wRecPostTrigger/1 (pcm_wRecPostTrigger) @0661f558
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_TriggerRec/24 (read)FMSTR_SetUpRec/23 (addr)
+  Availability: available
+  Varpool flags:
+pcm_wRecTotalSmps/0 (pcm_wRecTotalSmps) @0661f510
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: FMSTR_SetUpRec/23 (addr)FMSTR_SetUpRec/23 (read)
+  Availability: available
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Trivially needed variables: pcm_pOwnRecBuffer pcm_pCompareFunc pcm_nRecBuffAddr pcm_uTrgThreshold pcm_bTrgVarSigned pcm_nTrgVarSize pcm_nTrgVarAddr pcm_dwRecEndBuffPtr pcm_dwRecWritePtr pcm_wRecBuffStartIx pcm_wRecFlags pcm_wStoprecCountDown pcm_wRecTimeDivCtr pcm_pRecVarSize pcm_pRecVarAddr pcm_nRecVarCount pcm_wRecTimeDiv pcm_nRecTriggerMode pcm_wRecPostTrigger pcm_wRecTotalSmps
+Removing variables:
+
+Final Symbol table:
+
+FMSTR_CopyMemory/44 (FMSTR_CopyMemory) @067732a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_ValueToBuffer16/43 (FMSTR_ValueToBuffer16) @06726a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_AddressToBuffer/42 (FMSTR_AddressToBuffer) @067269a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_ValueFromBuffer32/41 (FMSTR_ValueFromBuffer32) @067261c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_AddressFromBuffer/40 (FMSTR_AddressFromBuffer) @067260e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_ValueFromBuffer16/39 (FMSTR_ValueFromBuffer16) @067197e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Recorder2/38 (FMSTR_Recorder2) @067199a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Recorder/37 (FMSTR_Recorder) @06719700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Compare32U/36 (FMSTR_Compare32U) @06719460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Compare32S/35 (FMSTR_Compare32S) @067191c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Compare16U/34 (FMSTR_Compare16U) @066fdd20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Compare16S/33 (FMSTR_Compare16S) @066fd7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Compare8U/32 (FMSTR_Compare8U) @066fd2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Compare8S/31 (FMSTR_Compare8S) @066fdee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_GetRecBuff/30 (FMSTR_GetRecBuff) @066fdc40
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_IsInRecBuffer/29 (FMSTR_IsInRecBuffer) @066fd9a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_GetRecBuffSize/28 (FMSTR_GetRecBuffSize) @066fd700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_GetRecStatus/27 (FMSTR_GetRecStatus) @066fd460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_StopRec/26 (FMSTR_StopRec) @066fd1c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_StartRec/25 (FMSTR_StartRec) @0662aee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_TriggerRec/24 (FMSTR_TriggerRec) @0662a8c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_SetUpRec/23 (FMSTR_SetUpRec) @0662ae00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_SetUpRecBuff/22 (FMSTR_SetUpRecBuff) @0662aa80
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_AbortRec/21 (FMSTR_AbortRec) @0662a7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_InitRec/20 (FMSTR_InitRec) @0662a540
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+pcm_pOwnRecBuffer/19 (pcm_pOwnRecBuffer) @0661ff78
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_pCompareFunc/18 (pcm_pCompareFunc) @0661fe58
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @0661ff78
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_nRecBuffAddr/17 (pcm_nRecBuffAddr) @0661fd38
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @0661fe58
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_uTrgThreshold/16 (pcm_uTrgThreshold) @0661fca8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @0661fd38
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_bTrgVarSigned/15 (pcm_bTrgVarSigned) @0661fa20
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @0661fca8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_nTrgVarSize/14 (pcm_nTrgVarSize) @0661f990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @0661fa20
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_nTrgVarAddr/13 (pcm_nTrgVarAddr) @0661f900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @0661f990
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_dwRecEndBuffPtr/12 (pcm_dwRecEndBuffPtr) @0661f870
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f900
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_dwRecWritePtr/11 (pcm_dwRecWritePtr) @0661f828
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f870
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_wRecBuffStartIx/10 (pcm_wRecBuffStartIx) @0661f7e0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f828
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_wRecFlags/9 (pcm_wRecFlags) @0661f798
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f7e0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_wStoprecCountDown/8 (pcm_wStoprecCountDown) @0661f750
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f798
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_wRecTimeDivCtr/7 (pcm_wRecTimeDivCtr) @0661f708
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f750
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_pRecVarSize/6 (pcm_pRecVarSize) @0661f6c0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f708
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_pRecVarAddr/5 (pcm_pRecVarAddr) @0661f678
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f6c0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_nRecVarCount/4 (pcm_nRecVarCount) @0661f630
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f678
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_wRecTimeDiv/3 (pcm_wRecTimeDiv) @0661f5e8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f630
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_nRecTriggerMode/2 (pcm_nRecTriggerMode) @0661f5a0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f5e8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_wRecPostTrigger/1 (pcm_wRecPostTrigger) @0661f558
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f5a0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+pcm_wRecTotalSmps/0 (pcm_wRecTotalSmps) @0661f510
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @0661f558
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:

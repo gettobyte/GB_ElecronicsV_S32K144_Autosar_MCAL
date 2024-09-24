@@ -1,0 +1,188 @@
+IPA summary for Mcl_SetTrgMuxLock/4 is missing.
+IPA summary for Mcl_SetTrgMuxInput/3 is missing.
+IPA summary for Mcl_DeInit/2 is missing.
+IPA summary for Mcl_Init/1 is missing.
+
+Flattening functions:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :        3 calls, 3.000000 freq, 0 count
+IPA summary for Mcl_SetTrgMuxLock/4 is missing.
+IPA summary for Mcl_SetTrgMuxInput/3 is missing.
+IPA summary for Mcl_DeInit/2 is missing.
+IPA summary for Mcl_Init/1 is missing.
+Symbol table:
+
+Trgmux_Ip_SetLock/7 (Trgmux_Ip_SetLock) @066c1380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Mcl_SetTrgMuxLock/4 
+  Calls: 
+Trgmux_Ip_SetInput/6 (Trgmux_Ip_SetInput) @066c11c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Mcl_SetTrgMuxInput/3 
+  Calls: 
+Trgmux_Ip_Init/5 (Trgmux_Ip_Init) @068dec40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Mcl_Init/1 
+  Calls: 
+Mcl_SetTrgMuxLock/4 (Mcl_SetTrgMuxLock) @068dee00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Trgmux_Ip_SetLock/7 
+Mcl_SetTrgMuxInput/3 (Mcl_SetTrgMuxInput) @068deb60
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Trgmux_Ip_SetInput/6 
+Mcl_DeInit/2 (Mcl_DeInit) @068de8c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcl_pConfig/0 (read)Mcl_pConfig/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+Mcl_Init/1 (Mcl_Init) @068de620
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcl_pConfig/0 (read)Mcl_pConfig/0 (write)Mcl_pConfig/0 (read)Mcl_pConfig/0 (read)Mcl_pConfig/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Trgmux_Ip_Init/5 
+Mcl_pConfig/0 (Mcl_pConfig) @068e1948
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: Mcl_Init/1 (read)Mcl_Init/1 (read)Mcl_Init/1 (read)Mcl_Init/1 (write)Mcl_Init/1 (read)Mcl_DeInit/2 (read)Mcl_DeInit/2 (write)
+  Availability: available
+  Varpool flags:
+
+;; Function Mcl_Init (Mcl_Init, funcdef_no=0, decl_uid=5730, cgraph_uid=1, symbol_order=1)
+
+Mcl_Init (const struct Mcl_ConfigType * const ConfigPtr)
+{
+  const struct Mcl_ConfigType * Mcl_pConfig.0_1;
+  const struct Mcl_ConfigType * Mcl_pConfig.1_2;
+  const struct Mcl_ConfigType * Mcl_pConfig.2_3;
+  const struct Trgmux_Ip_InitType * _4;
+  const struct Mcl_ConfigType * Mcl_pConfig.3_5;
+  const struct Trgmux_Ip_InitType * _6;
+
+  <bb 2> :
+  Mcl_pConfig.0_1 = Mcl_pConfig;
+  if (Mcl_pConfig.0_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  Mcl_pConfig = ConfigPtr_9(D);
+  Mcl_pConfig.1_2 = Mcl_pConfig;
+  if (Mcl_pConfig.1_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  Mcl_pConfig.2_3 = Mcl_pConfig;
+  _4 = Mcl_pConfig.2_3->pxTrgmuxInitType;
+  if (_4 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  Mcl_pConfig.3_5 = Mcl_pConfig;
+  _6 = Mcl_pConfig.3_5->pxTrgmuxInitType;
+  Trgmux_Ip_Init (_6);
+
+  <bb 6> :
+  return;
+
+}
+
+
+
+;; Function Mcl_DeInit (Mcl_DeInit, funcdef_no=1, decl_uid=5732, cgraph_uid=2, symbol_order=2)
+
+Mcl_DeInit ()
+{
+  const struct Mcl_ConfigType * Mcl_pConfig.4_1;
+
+  <bb 2> :
+  Mcl_pConfig.4_1 = Mcl_pConfig;
+  if (Mcl_pConfig.4_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Mcl_pConfig = 0B;
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function Mcl_SetTrgMuxInput (Mcl_SetTrgMuxInput, funcdef_no=2, decl_uid=5735, cgraph_uid=3, symbol_order=3)
+
+Mcl_SetTrgMuxInput (const uint32 Trigger, const uint32 Input)
+{
+  <bb 2> :
+  Trgmux_Ip_SetInput (Trigger_2(D), Input_3(D));
+  return;
+
+}
+
+
+
+;; Function Mcl_SetTrgMuxLock (Mcl_SetTrgMuxLock, funcdef_no=3, decl_uid=5737, cgraph_uid=4, symbol_order=4)
+
+Mcl_SetTrgMuxLock (const uint32 Trigger)
+{
+  <bb 2> :
+  Trgmux_Ip_SetLock (Trigger_2(D));
+  return;
+
+}
+
+

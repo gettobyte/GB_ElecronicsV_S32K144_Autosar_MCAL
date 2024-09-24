@@ -1,0 +1,158 @@
+main ()
+{
+  struct Adc_CalibrationStatusType CalibStatus;
+  Std_ReturnType Mcu_Status;
+  Clock_Ip_StatusType clockStatus;
+  int D.8485;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  unsigned char _3;
+  <unnamed type> _4;
+  unsigned char _5;
+
+  <bb 2> :
+  clockStatus_15 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus_53 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  # clockStatus_6 = PHI <clockStatus_15(2), clockStatus_53(3)>
+  if (clockStatus_6 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Mcu_Init (&Mcu_Config_BOARD_InitPeripherals);
+  Mcu_Status_20 = Mcu_InitClock (0);
+
+  <bb 8> :
+  _2 = Mcu_GetPllStatus ();
+  if (_2 != 51)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  Mcu_DistributePllClock ();
+  Mcu_SetMode (0);
+  Mcu_Init (&Mcu_Config_BOARD_InitPeripherals);
+  Port_Init (0B);
+  Platform_Init (0B);
+  Platform_InstallIrqHandler (39, Adc_0_Isr, 0B);
+  Platform_InstallIrqHandler (33, FMSTR_Isr, 0B);
+  Platform_SetIrq (39, 1);
+  IntCtrl_Ip_InstallHandler (99, FTM_0_CH_0_CH_1_ISR, 0B);
+  IntCtrl_Ip_EnableIrq (99);
+  IntCtrl_Ip_InstallHandler (104, FTM_0_OVF_ISR, 0B);
+  IntCtrl_Ip_EnableIrq (104);
+  Mcl_Init (0B);
+  Uart_Init (0B);
+  Adc_Init (&Adc_Config_BOARD_INITPERIPHERALS);
+  Adc_Calibrate (0, &CalibStatus);
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  Adc_Calibrate (0, &CalibStatus);
+
+  <bb 11> :
+  _3 = CalibStatus.Adc_UnitSelfTestStatus;
+  if (_3 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  Adc_SetupResultBuffer (0, &ResultBuffer);
+  Adc_EnableGroupNotification (0);
+  Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
+  Pwm_EnableNotification (0, 2);
+  TestDelay (2000000);
+  FMSTR_Init ();
+
+  <bb 13> :
+  Adc_EnableGroupNotification (0);
+  Adc_StartGroupConversion (0);
+
+  <bb 14> :
+  _4 = Adc_GetGroupStatus (0);
+  if (_4 == 1)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  TestDelay (200000);
+  _5 = FMSTR_GetAppCmd ();
+  cmd = _5;
+  FMSTR_Poll ();
+  goto <bb 13>; [INV]
+
+}
+
+
+IoHwAb_AdcNotification_0 ()
+{
+  Std_ReturnType StdReturn;
+
+  <bb 2> :
+  StdReturn_3 = Adc_ReadGroup (0, &Result);
+  return;
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+  long unsigned int DelayTimer.0_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.1_3;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 ={v} DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  DelayTimer.1_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer ={v} 0;
+  return;
+
+}
+
+
+pwm_callback ()
+{
+  <unnamed type> _1;
+
+  <bb 2> :
+  _1 = Pwm_GetOutputState (0);
+  pwm_signal = _1;
+  Pwm_GetChannelState (0);
+  return;
+
+}
+
+

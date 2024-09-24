@@ -1,0 +1,742 @@
+Trivially needed symbols: FMSTR_AddressFromBuffer FMSTR_AddressToBuffer FMSTR_SetExAddr pcm_bNextAddrIsEx FMSTR_CopyFromBufferWithMask FMSTR_ValueToBuffer32 FMSTR_ValueToBuffer16 FMSTR_ValueFromBuffer32 FMSTR_ValueFromBuffer16 FMSTR_CopyFromBuffer FMSTR_CopyToBuffer FMSTR_CopyMemory FMSTR_Isr
+
+
+Initial Symbol table:
+
+FMSTR_ProcessSCI/13 (FMSTR_ProcessSCI) @067870e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Isr/0 
+  Calls: 
+FMSTR_AddressFromBuffer/12 (FMSTR_AddressFromBuffer) @06781540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @01733ea0
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 FMSTR_CopyFromBuffer/3 
+FMSTR_AddressToBuffer/11 (FMSTR_AddressToBuffer) @06781000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06781540
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 FMSTR_CopyToBuffer/2 
+FMSTR_SetExAddr/10 (FMSTR_SetExAddr) @06781d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06781000
+  References: pcm_bNextAddrIsEx/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_bNextAddrIsEx/9 (pcm_bNextAddrIsEx) @0676b828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @06781d20
+  References: 
+  Referring: FMSTR_SetExAddr/10 (write)FMSTR_AddressToBuffer/11 (read)FMSTR_AddressFromBuffer/12 (read)
+  Availability: not-ready
+  Varpool flags:
+FMSTR_CopyFromBufferWithMask/8 (FMSTR_CopyFromBufferWithMask) @067819a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0676b828
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_ValueToBuffer32/7 (FMSTR_ValueToBuffer32) @06781700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @067819a0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueToBuffer16/6 (FMSTR_ValueToBuffer16) @06781460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06781700
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueFromBuffer32/5 (FMSTR_ValueFromBuffer32) @067811c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06781460
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_ValueFromBuffer16/4 (FMSTR_ValueFromBuffer16) @06766ee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @067811c0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_CopyFromBuffer/3 (FMSTR_CopyFromBuffer) @067669a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06766ee0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_AddressFromBuffer/12 FMSTR_AddressFromBuffer/12 FMSTR_ValueFromBuffer32/5 FMSTR_ValueFromBuffer16/4 
+  Calls: 
+FMSTR_CopyToBuffer/2 (FMSTR_CopyToBuffer) @06766e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @067669a0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_AddressToBuffer/11 FMSTR_AddressToBuffer/11 FMSTR_ValueToBuffer32/7 FMSTR_ValueToBuffer16/6 
+  Calls: 
+FMSTR_CopyMemory/1 (FMSTR_CopyMemory) @06766b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06766e00
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Isr/0 (FMSTR_Isr) @067668c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @06766b60
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ProcessSCI/13 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+FMSTR_ProcessSCI/13 (FMSTR_ProcessSCI) @067870e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Isr/0 
+  Calls: 
+FMSTR_AddressFromBuffer/12 (FMSTR_AddressFromBuffer) @06781540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 FMSTR_CopyFromBuffer/3 
+FMSTR_AddressToBuffer/11 (FMSTR_AddressToBuffer) @06781000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 FMSTR_CopyToBuffer/2 
+FMSTR_SetExAddr/10 (FMSTR_SetExAddr) @06781d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_bNextAddrIsEx/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_bNextAddrIsEx/9 (pcm_bNextAddrIsEx) @0676b828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetExAddr/10 (write)FMSTR_AddressToBuffer/11 (read)FMSTR_AddressFromBuffer/12 (read)
+  Availability: not-ready
+  Varpool flags:
+FMSTR_CopyFromBufferWithMask/8 (FMSTR_CopyFromBufferWithMask) @067819a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_ValueToBuffer32/7 (FMSTR_ValueToBuffer32) @06781700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueToBuffer16/6 (FMSTR_ValueToBuffer16) @06781460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueFromBuffer32/5 (FMSTR_ValueFromBuffer32) @067811c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_ValueFromBuffer16/4 (FMSTR_ValueFromBuffer16) @06766ee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_CopyFromBuffer/3 (FMSTR_CopyFromBuffer) @067669a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_AddressFromBuffer/12 FMSTR_AddressFromBuffer/12 FMSTR_ValueFromBuffer32/5 FMSTR_ValueFromBuffer16/4 
+  Calls: 
+FMSTR_CopyToBuffer/2 (FMSTR_CopyToBuffer) @06766e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_AddressToBuffer/11 FMSTR_AddressToBuffer/11 FMSTR_ValueToBuffer32/7 FMSTR_ValueToBuffer16/6 
+  Calls: 
+FMSTR_CopyMemory/1 (FMSTR_CopyMemory) @06766b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Isr/0 (FMSTR_Isr) @067668c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ProcessSCI/13 
+
+
+Initial Symbol table:
+
+FMSTR_ProcessSCI/13 (FMSTR_ProcessSCI) @067870e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Isr/0 
+  Calls: 
+FMSTR_AddressFromBuffer/12 (FMSTR_AddressFromBuffer) @06781540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 FMSTR_CopyFromBuffer/3 
+FMSTR_AddressToBuffer/11 (FMSTR_AddressToBuffer) @06781000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 FMSTR_CopyToBuffer/2 
+FMSTR_SetExAddr/10 (FMSTR_SetExAddr) @06781d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_bNextAddrIsEx/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_bNextAddrIsEx/9 (pcm_bNextAddrIsEx) @0676b828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetExAddr/10 (write)FMSTR_AddressToBuffer/11 (read)FMSTR_AddressFromBuffer/12 (read)
+  Availability: not-ready
+  Varpool flags:
+FMSTR_CopyFromBufferWithMask/8 (FMSTR_CopyFromBufferWithMask) @067819a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_ValueToBuffer32/7 (FMSTR_ValueToBuffer32) @06781700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueToBuffer16/6 (FMSTR_ValueToBuffer16) @06781460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueFromBuffer32/5 (FMSTR_ValueFromBuffer32) @067811c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_ValueFromBuffer16/4 (FMSTR_ValueFromBuffer16) @06766ee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_CopyFromBuffer/3 (FMSTR_CopyFromBuffer) @067669a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_AddressFromBuffer/12 FMSTR_AddressFromBuffer/12 FMSTR_ValueFromBuffer32/5 FMSTR_ValueFromBuffer16/4 
+  Calls: 
+FMSTR_CopyToBuffer/2 (FMSTR_CopyToBuffer) @06766e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_AddressToBuffer/11 FMSTR_AddressToBuffer/11 FMSTR_ValueToBuffer32/7 FMSTR_ValueToBuffer16/6 
+  Calls: 
+FMSTR_CopyMemory/1 (FMSTR_CopyMemory) @06766b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Isr/0 (FMSTR_Isr) @067668c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ProcessSCI/13 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+FMSTR_ProcessSCI/13 (FMSTR_ProcessSCI) @067870e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: FMSTR_Isr/0 
+  Calls: 
+FMSTR_AddressFromBuffer/12 (FMSTR_AddressFromBuffer) @06781540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 FMSTR_CopyFromBuffer/3 
+FMSTR_AddressToBuffer/11 (FMSTR_AddressToBuffer) @06781000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 FMSTR_CopyToBuffer/2 
+FMSTR_SetExAddr/10 (FMSTR_SetExAddr) @06781d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: pcm_bNextAddrIsEx/9 (write)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_bNextAddrIsEx/9 (pcm_bNextAddrIsEx) @0676b828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: FMSTR_SetExAddr/10 (write)FMSTR_AddressToBuffer/11 (read)FMSTR_AddressFromBuffer/12 (read)
+  Availability: not-ready
+  Varpool flags:
+FMSTR_CopyFromBufferWithMask/8 (FMSTR_CopyFromBufferWithMask) @067819a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_ValueToBuffer32/7 (FMSTR_ValueToBuffer32) @06781700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueToBuffer16/6 (FMSTR_ValueToBuffer16) @06781460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueFromBuffer32/5 (FMSTR_ValueFromBuffer32) @067811c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_ValueFromBuffer16/4 (FMSTR_ValueFromBuffer16) @06766ee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_CopyFromBuffer/3 (FMSTR_CopyFromBuffer) @067669a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_AddressFromBuffer/12 FMSTR_AddressFromBuffer/12 FMSTR_ValueFromBuffer32/5 FMSTR_ValueFromBuffer16/4 
+  Calls: 
+FMSTR_CopyToBuffer/2 (FMSTR_CopyToBuffer) @06766e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FMSTR_AddressToBuffer/11 FMSTR_AddressToBuffer/11 FMSTR_ValueToBuffer32/7 FMSTR_ValueToBuffer16/6 
+  Calls: 
+FMSTR_CopyMemory/1 (FMSTR_CopyMemory) @06766b60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Isr/0 (FMSTR_Isr) @067668c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ProcessSCI/13 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+FMSTR_ProcessSCI/13 (FMSTR_ProcessSCI) @067870e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: FMSTR_Isr/0 
+  Calls: 
+FMSTR_AddressFromBuffer/12 (FMSTR_AddressFromBuffer) @06781540
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 FMSTR_CopyFromBuffer/3 
+FMSTR_AddressToBuffer/11 (FMSTR_AddressToBuffer) @06781000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_bNextAddrIsEx/9 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 FMSTR_CopyToBuffer/2 
+FMSTR_SetExAddr/10 (FMSTR_SetExAddr) @06781d20
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: pcm_bNextAddrIsEx/9 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+pcm_bNextAddrIsEx/9 (pcm_bNextAddrIsEx) @0676b828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: FMSTR_SetExAddr/10 (write)FMSTR_AddressToBuffer/11 (read)FMSTR_AddressFromBuffer/12 (read)
+  Availability: available
+  Varpool flags:
+FMSTR_CopyFromBufferWithMask/8 (FMSTR_CopyFromBufferWithMask) @067819a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_ValueToBuffer32/7 (FMSTR_ValueToBuffer32) @06781700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueToBuffer16/6 (FMSTR_ValueToBuffer16) @06781460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyToBuffer/2 
+FMSTR_ValueFromBuffer32/5 (FMSTR_ValueFromBuffer32) @067811c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_ValueFromBuffer16/4 (FMSTR_ValueFromBuffer16) @06766ee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_CopyFromBuffer/3 
+FMSTR_CopyFromBuffer/3 (FMSTR_CopyFromBuffer) @067669a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_AddressFromBuffer/12 FMSTR_AddressFromBuffer/12 FMSTR_ValueFromBuffer32/5 FMSTR_ValueFromBuffer16/4 
+  Calls: 
+FMSTR_CopyToBuffer/2 (FMSTR_CopyToBuffer) @06766e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FMSTR_AddressToBuffer/11 FMSTR_AddressToBuffer/11 FMSTR_ValueToBuffer32/7 FMSTR_ValueToBuffer16/6 
+  Calls: 
+FMSTR_CopyMemory/1 (FMSTR_CopyMemory) @06766b60
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+FMSTR_Isr/0 (FMSTR_Isr) @067668c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: FMSTR_ProcessSCI/13 
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Trivially needed variables: pcm_bNextAddrIsEx
+Removing variables:
+
+Final Symbol table:
+
+FMSTR_ProcessSCI/13 (FMSTR_ProcessSCI) @067870e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_AddressFromBuffer/12 (FMSTR_AddressFromBuffer) @06781540
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_AddressToBuffer/11 (FMSTR_AddressToBuffer) @06781000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_SetExAddr/10 (FMSTR_SetExAddr) @06781d20
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+pcm_bNextAddrIsEx/9 (pcm_bNextAddrIsEx) @0676b828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+FMSTR_CopyFromBufferWithMask/8 (FMSTR_CopyFromBufferWithMask) @067819a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_ValueToBuffer32/7 (FMSTR_ValueToBuffer32) @06781700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_ValueToBuffer16/6 (FMSTR_ValueToBuffer16) @06781460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_ValueFromBuffer32/5 (FMSTR_ValueFromBuffer32) @067811c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_ValueFromBuffer16/4 (FMSTR_ValueFromBuffer16) @06766ee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_CopyFromBuffer/3 (FMSTR_CopyFromBuffer) @067669a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_CopyToBuffer/2 (FMSTR_CopyToBuffer) @06766e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_CopyMemory/1 (FMSTR_CopyMemory) @06766b60
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FMSTR_Isr/0 (FMSTR_Isr) @067668c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 

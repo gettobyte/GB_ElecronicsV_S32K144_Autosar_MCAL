@@ -1,0 +1,673 @@
+FMSTR_Poll ()
+{
+  <bb 2> :
+  FMSTR_RxDequeue ();
+  return;
+
+}
+
+
+FMSTR_InitSerial ()
+{
+  FMSTR_BOOL D.5762;
+  FMSTR_BOOL _7;
+
+  <bb 2> :
+  pcm_wFlags.all ={v} 0;
+  pcm_nTxTodo = 0;
+  pcm_pRQueueRP = &pcm_pRQueueBuffer;
+  pcm_pRQueueWP = &pcm_pRQueueBuffer;
+  FMSTR_Listen ();
+  _7 = 1;
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+FMSTR_Rx (FMSTR_BCHR nRxChar)
+{
+  volatile union FMSTR_SERIAL_FLAGS * pflg;
+  FMSTR_BOOL D.5739;
+  <unnamed-unsigned:1> _1;
+  <unnamed-unsigned:1> _2;
+  <unnamed-unsigned:1> _3;
+  <unnamed-unsigned:1> _4;
+  unsigned char * pcm_pRxBuff.20_5;
+  unsigned char * pcm_pRxBuff.21_6;
+  unsigned char * _7;
+  int _8;
+  int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned char _14;
+  unsigned char _15;
+  unsigned char _16;
+  <unnamed-unsigned:1> _17;
+  unsigned char _18;
+  unsigned char pcm_nRxTodo.22_19;
+  unsigned char pcm_nRxCheckSum.23_20;
+  unsigned char _21;
+  unsigned char pcm_nRxTodo.24_22;
+  unsigned char pcm_nRxTodo.25_23;
+  unsigned char _24;
+  unsigned char pcm_nRxTodo.26_25;
+  unsigned char * pcm_pRxBuff.27_26;
+  unsigned char pcm_nRxCheckSum.28_27;
+  unsigned char * pcm_pRxBuff.29_28;
+  unsigned char * pcm_pRxBuff.30_29;
+  unsigned char * _30;
+  unsigned char * pcm_pRxBuff.31_31;
+  unsigned char * pcm_pRxBuff.32_32;
+  unsigned char * _33;
+  FMSTR_BOOL _34;
+  FMSTR_BOOL _45;
+  FMSTR_BOOL _56;
+  FMSTR_BOOL _57;
+  FMSTR_BOOL _67;
+
+  <bb 2> :
+  pflg_41 = &pcm_wFlags;
+  if (nRxChar_42(D) == 43)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _1 ={v} pflg_41->flg.bRxLastCharSOB;
+  _2 = ~_1;
+  pflg_41->flg.bRxLastCharSOB ={v} _2;
+  _3 ={v} pflg_41->flg.bRxLastCharSOB;
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _45 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 24>; [INV]
+
+  <bb 5> :
+  _4 ={v} pflg_41->flg.bRxLastCharSOB;
+  if (_4 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  pcm_pRxBuff = &pcm_pCommBuffer;
+  pcm_pRxBuff.20_5 = pcm_pRxBuff;
+  pcm_pRxBuff.21_6 = pcm_pRxBuff.20_5;
+  _7 = pcm_pRxBuff.21_6 + 1;
+  pcm_pRxBuff = _7;
+  *pcm_pRxBuff.21_6 = nRxChar_42(D);
+  pcm_nRxCheckSum = nRxChar_42(D);
+  pcm_nRxTodo = 0;
+  pflg_41->flg.bRxMsgLengthNext ={v} 1;
+  _8 = (int) nRxChar_42(D);
+  _9 = ~_8;
+  _10 = (unsigned int) _9;
+  _11 = _10 & 192;
+  if (_11 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  pflg_41->flg.bRxMsgLengthNext ={v} 0;
+  _12 = (unsigned int) nRxChar_42(D);
+  _13 = _12 >> 3;
+  _14 = (unsigned char) _13;
+  _15 = _14 & 6;
+  _16 = _15 + 1;
+  pcm_nRxTodo = _16;
+
+  <bb 8> :
+  pflg_41->flg.bRxLastCharSOB ={v} 0;
+  _67 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 24>; [INV]
+
+  <bb 9> :
+  _17 ={v} pflg_41->flg.bRxMsgLengthNext;
+  if (_17 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _18 = nRxChar_42(D) + 2;
+  pcm_nRxTodo = _18;
+  pflg_41->flg.bRxMsgLengthNext ={v} 0;
+
+  <bb 11> :
+  pcm_nRxTodo.22_19 = pcm_nRxTodo;
+  if (pcm_nRxTodo.22_19 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 12> :
+  pcm_nRxCheckSum.23_20 = pcm_nRxCheckSum;
+  _21 = nRxChar_42(D) + pcm_nRxCheckSum.23_20;
+  pcm_nRxCheckSum = _21;
+  pcm_nRxTodo.24_22 = pcm_nRxTodo;
+  pcm_nRxTodo.25_23 = pcm_nRxTodo.24_22;
+  _24 = pcm_nRxTodo.25_23 + 255;
+  pcm_nRxTodo = _24;
+  pcm_nRxTodo.26_25 = pcm_nRxTodo;
+  if (pcm_nRxTodo.26_25 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 13> :
+  pcm_pRxBuff.27_26 = pcm_pRxBuff;
+  if (pcm_pRxBuff.27_26 == 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  FMSTR_SendError (131);
+  goto <bb 18>; [INV]
+
+  <bb 15> :
+  pcm_nRxCheckSum.28_27 = pcm_nRxCheckSum;
+  if (pcm_nRxCheckSum.28_27 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  FMSTR_SendError (130);
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  FMSTR_ProtocolDecoder (&pcm_pCommBuffer);
+
+  <bb 18> :
+  _56 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 24>; [INV]
+
+  <bb 19> :
+  pcm_pRxBuff.29_28 = pcm_pRxBuff;
+  if (pcm_pRxBuff.29_28 != 0B)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 20> :
+  pcm_pRxBuff.30_29 = pcm_pRxBuff;
+  _30 = &pcm_pCommBuffer + 60;
+  if (pcm_pRxBuff.30_29 < _30)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  pcm_pRxBuff.31_31 = pcm_pRxBuff;
+  pcm_pRxBuff.32_32 = pcm_pRxBuff.31_31;
+  _33 = pcm_pRxBuff.32_32 + 1;
+  pcm_pRxBuff = _33;
+  *pcm_pRxBuff.32_32 = nRxChar_42(D);
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  pcm_pRxBuff = 0B;
+
+  <bb 23> :
+  _57 = 0;
+
+  <bb 24> :
+  # _34 = PHI <_45(4), _67(8), _56(18), _57(23)>
+<L25>:
+  return _34;
+
+}
+
+
+FMSTR_Tx (FMSTR_U8 * pTxChar)
+{
+  FMSTR_BOOL D.5733;
+  unsigned char pcm_nTxTodo.14_1;
+  unsigned char * pcm_pTxBuff.15_2;
+  unsigned char _3;
+  unsigned char * pcm_pTxBuff.16_4;
+  unsigned char _5;
+  <unnamed-unsigned:1> _6;
+  <unnamed-unsigned:1> _7;
+  <unnamed-unsigned:1> _8;
+  unsigned char pcm_nTxTodo.17_9;
+  unsigned char pcm_nTxTodo.18_10;
+  unsigned char _11;
+  unsigned char * pcm_pTxBuff.19_12;
+  unsigned char * _13;
+  FMSTR_BOOL _14;
+  FMSTR_BOOL _19;
+  FMSTR_BOOL _23;
+  FMSTR_BOOL _26;
+
+  <bb 2> :
+  pcm_nTxTodo.14_1 = pcm_nTxTodo;
+  if (pcm_nTxTodo.14_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  pcm_pTxBuff.15_2 = pcm_pTxBuff;
+  _3 = MEM[(FMSTR_U8 *)pcm_pTxBuff.15_2];
+  *pTxChar_20(D) = _3;
+  pcm_pTxBuff.16_4 = pcm_pTxBuff;
+  _5 = *pTxChar_20(D);
+  if (_5 == 43)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  _6 ={v} pcm_wFlags.flg.bTxLastCharSOB;
+  _7 = ~_6;
+  pcm_wFlags.flg.bTxLastCharSOB ={v} _7;
+  _8 ={v} pcm_wFlags.flg.bTxLastCharSOB;
+  if (_8 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _23 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  pcm_nTxTodo.17_9 = pcm_nTxTodo;
+  pcm_nTxTodo.18_10 = pcm_nTxTodo.17_9;
+  _11 = pcm_nTxTodo.18_10 + 255;
+  pcm_nTxTodo = _11;
+  pcm_pTxBuff.19_12 = pcm_pTxBuff;
+  _13 = pcm_pTxBuff.19_12 + 1;
+  pcm_pTxBuff = _13;
+  _26 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  FMSTR_Listen ();
+  _19 = 1;
+
+  <bb 8> :
+  # _14 = PHI <_23(5), _26(6), _19(7)>
+<L6>:
+  return _14;
+
+}
+
+
+FMSTR_SendResponse (unsigned char * pResponse, FMSTR_SIZE8 nLength)
+{
+  volatile FMSTR_SCISR dummySR;
+  FMSTR_U8 c;
+  FMSTR_SIZE8 i;
+  FMSTR_U16 chSum;
+  unsigned char vol.13;
+  unsigned char _1;
+  unsigned char c.11_2;
+  short unsigned int _3;
+  unsigned char i.12_4;
+  unsigned char _5;
+  unsigned char _6;
+  unsigned char _7;
+  volatile FMSTR_U32 * _8;
+  long unsigned int _9;
+  volatile FMSTR_U32 * _10;
+  long unsigned int _11;
+  volatile FMSTR_U32 * _12;
+  long unsigned int _13;
+  volatile FMSTR_U32 * _14;
+  long unsigned int _15;
+  volatile FMSTR_U32 * _16;
+  long unsigned int _17;
+  unsigned char _18;
+  volatile FMSTR_U8 * _19;
+  volatile FMSTR_U32 * _20;
+  long unsigned int _21;
+  volatile FMSTR_U32 * _22;
+  long unsigned int _23;
+  volatile FMSTR_U32 * _24;
+  long unsigned int _25;
+  volatile FMSTR_U32 * _26;
+  long unsigned int _27;
+  unsigned char vol.13_48;
+
+  <bb 2> :
+  chSum_32 = 0;
+  pcm_pTxBuff = pResponse_34(D);
+  i_36 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  c = 0;
+  _1 = MEM[(FMSTR_U8 *)pResponse_28];
+  c = _1;
+  pResponse_54 = pResponse_28 + 1;
+  c.11_2 = c;
+  _3 = (short unsigned int) c.11_2;
+  chSum_55 = chSum_29 + _3;
+  chSum_56 = chSum_55 & 255;
+  i.12_4 = i_30;
+  i_57 = i.12_4 + 1;
+
+  <bb 4> :
+  # pResponse_28 = PHI <pResponse_34(D)(2), pResponse_54(3)>
+  # chSum_29 = PHI <chSum_32(2), chSum_56(3)>
+  # i_30 = PHI <i_36(2), i_57(3)>
+  if (i_30 < nLength_37(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _5 = (unsigned char) chSum_29;
+  _6 = -_5;
+  MEM[(FMSTR_U8 *)pResponse_28] = _6;
+  pResponse_39 = pResponse_28 + 1;
+  _7 = nLength_37(D) + 1;
+  pcm_nTxTodo = _7;
+  pcm_wFlags.flg.bTxActive ={v} 1;
+  pcm_wFlags.flg.bTxWaitTC ={v} 0;
+  pcm_wFlags.flg.bTxLastCharSOB ={v} 0;
+  _8 = 1074180120B;
+  _9 ={v} *_8;
+  _10 = 1074180120B;
+  _11 = _9 & 4294705151;
+  *_10 ={v} _11;
+  _12 = 1074180120B;
+  _13 ={v} *_12;
+  _14 = 1074180120B;
+  _15 = _13 | 524288;
+  *_14 ={v} _15;
+  _16 = 1074180116B;
+  _17 ={v} *_16;
+  _18 = (unsigned char) _17;
+  dummySR ={v} _18;
+  _19 = 1074180124B;
+  *_19 ={v} 43;
+  vol.13_48 ={v} dummySR;
+  _20 = 1074180120B;
+  _21 ={v} *_20;
+  _22 = 1074180120B;
+  _23 = _21 & 4292870143;
+  *_22 ={v} _23;
+  _24 = 1074180120B;
+  _25 ={v} *_24;
+  _26 = 1074180120B;
+  _27 = _25 | 8388608;
+  *_26 ={v} _27;
+  c ={v} {CLOBBER};
+  return;
+
+}
+
+
+FMSTR_SendError (FMSTR_BCHR nErrCode)
+{
+  <bb 2> :
+  pcm_pCommBuffer[0] = nErrCode_2(D);
+  FMSTR_SendResponse (&pcm_pCommBuffer, 1);
+  return;
+
+}
+
+
+FMSTR_Listen ()
+{
+  volatile FMSTR_U32 * _1;
+  long unsigned int _2;
+  volatile FMSTR_U32 * _3;
+  long unsigned int _4;
+  volatile FMSTR_U32 * _5;
+  long unsigned int _6;
+  volatile FMSTR_U32 * _7;
+  long unsigned int _8;
+  volatile FMSTR_U32 * _9;
+  long unsigned int _10;
+  volatile FMSTR_U32 * _11;
+  long unsigned int _12;
+  volatile FMSTR_U32 * _13;
+  long unsigned int _14;
+  volatile FMSTR_U32 * _15;
+  long unsigned int _16;
+
+  <bb 2> :
+  pcm_nRxTodo = 0;
+  pcm_wFlags.flg.bTxActive ={v} 0;
+  pcm_wFlags.flg.bTxWaitTC ={v} 0;
+  _1 = 1074180120B;
+  _2 ={v} *_1;
+  _3 = 1074180120B;
+  _4 = _2 & 4294443007;
+  *_3 ={v} _4;
+  _5 = 1074180120B;
+  _6 ={v} *_5;
+  _7 = 1074180120B;
+  _8 = _6 | 262144;
+  *_7 ={v} _8;
+  _9 = 1074180120B;
+  _10 ={v} *_9;
+  _11 = 1074180120B;
+  _12 = _10 & 4286578687;
+  *_11 ={v} _12;
+  _13 = 1074180120B;
+  _14 ={v} *_13;
+  _15 = 1074180120B;
+  _16 = _14 | 2097152;
+  *_15 ={v} _16;
+  return;
+
+}
+
+
+FMSTR_ProcessSCI ()
+{
+  FMSTR_BCHR nRxChar;
+  volatile FMSTR_U16 nRxChar;
+  FMSTR_U8 ch;
+  FMSTR_SCISR wSciSR;
+  short unsigned int vol.10;
+  volatile FMSTR_U32 * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  volatile FMSTR_U32 * _4;
+  volatile FMSTR_U32 * _5;
+  long unsigned int _6;
+  <unnamed-unsigned:1> _7;
+  signed char wSciSR.8_8;
+  unsigned char _9;
+  volatile FMSTR_U8 * _10;
+  unsigned char ch.9_11;
+  int _12;
+  int _13;
+  volatile FMSTR_U8 * _14;
+  unsigned char _15;
+  short unsigned int _16;
+  int _17;
+  int _18;
+  volatile FMSTR_U8 * _19;
+  short unsigned int vol.10_33;
+
+  <bb 2> :
+  _1 = 1074180116B;
+  _2 ={v} *_1;
+  _3 = _2 >> 16;
+  wSciSR_24 = (FMSTR_SCISR) _3;
+  _4 = 1074180116B;
+  _5 = 1074180116B;
+  _6 ={v} *_4;
+  *_5 ={v} _6;
+  _7 ={v} pcm_wFlags.flg.bTxActive;
+  if (_7 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  wSciSR.8_8 = (signed char) wSciSR_24;
+  if (wSciSR.8_8 < 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  _9 = FMSTR_Tx (&ch);
+  if (_9 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _10 = 1074180124B;
+  ch.9_11 = ch;
+  *_10 ={v} ch.9_11;
+
+  <bb 6> :
+  ch ={v} {CLOBBER};
+
+  <bb 7> :
+  _12 = (int) wSciSR_24;
+  _13 = _12 & 40;
+  if (_13 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  _14 = 1074180124B;
+  _15 ={v} *_14;
+  _16 = (short unsigned int) _15;
+  nRxChar ={v} _16;
+  vol.10_33 ={v} nRxChar;
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+  _17 = (int) wSciSR_24;
+  _18 = _17 & 40;
+  if (_18 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  nRxChar_26 = 0;
+  _19 = 1074180124B;
+  nRxChar_27 ={v} *_19;
+  FMSTR_RxQueue (nRxChar_27);
+
+  <bb 11> :
+  return;
+
+}
+
+
+FMSTR_RxDequeue ()
+{
+  FMSTR_BCHR nChar;
+  unsigned char * pcm_pRQueueRP.3_1;
+  unsigned char * pcm_pRQueueRP.4_2;
+  unsigned char * _3;
+  unsigned char * pcm_pRQueueRP.5_4;
+  unsigned char * _5;
+  <unnamed-unsigned:1> _6;
+  unsigned char * pcm_pRQueueRP.6_7;
+  unsigned char * pcm_pRQueueWP.7_8;
+
+  <bb 2> :
+  nChar_11 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  pcm_pRQueueRP.3_1 = pcm_pRQueueRP;
+  pcm_pRQueueRP.4_2 = pcm_pRQueueRP.3_1;
+  _3 = pcm_pRQueueRP.4_2 + 1;
+  pcm_pRQueueRP = _3;
+  nChar_14 = *pcm_pRQueueRP.4_2;
+  pcm_pRQueueRP.5_4 = pcm_pRQueueRP;
+  _5 = &pcm_pRQueueBuffer + 32;
+  if (pcm_pRQueueRP.5_4 >= _5)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  pcm_pRQueueRP = &pcm_pRQueueBuffer;
+
+  <bb 5> :
+  _6 ={v} pcm_wFlags.flg.bTxActive;
+  if (_6 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  FMSTR_Rx (nChar_14);
+
+  <bb 7> :
+  pcm_pRQueueRP.6_7 = pcm_pRQueueRP;
+  pcm_pRQueueWP.7_8 = pcm_pRQueueWP;
+  if (pcm_pRQueueRP.6_7 != pcm_pRQueueWP.7_8)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  return;
+
+}
+
+
+FMSTR_RxQueue (FMSTR_BCHR nRxChar)
+{
+  unsigned char * wpnext;
+  unsigned char * pcm_pRQueueWP.0_1;
+  unsigned char * _2;
+  unsigned char * pcm_pRQueueRP.1_3;
+  unsigned char * pcm_pRQueueWP.2_4;
+
+  <bb 2> :
+  pcm_pRQueueWP.0_1 = pcm_pRQueueWP;
+  wpnext_8 = pcm_pRQueueWP.0_1 + 1;
+  _2 = &pcm_pRQueueBuffer + 32;
+  if (wpnext_8 >= _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  wpnext_9 = &pcm_pRQueueBuffer;
+
+  <bb 4> :
+  # wpnext_5 = PHI <wpnext_8(2), wpnext_9(3)>
+  pcm_pRQueueRP.1_3 = pcm_pRQueueRP;
+  if (wpnext_5 != pcm_pRQueueRP.1_3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  pcm_pRQueueWP.2_4 = pcm_pRQueueWP;
+  *pcm_pRQueueWP.2_4 = nRxChar_10(D);
+  pcm_pRQueueWP = wpnext_5;
+
+  <bb 6> :
+  return;
+
+}
+
+

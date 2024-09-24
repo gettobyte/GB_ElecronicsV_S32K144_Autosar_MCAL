@@ -1,0 +1,2728 @@
+FMSTR_PipeFrame (unsigned char * pMessageIO)
+{
+  FMSTR_U8 txToSend;
+  FMSTR_PIPE_SIZE txAvail;
+  FMSTR_U8 rxToRead;
+  FMSTR_PIPE_SIZE rxFree;
+  struct FMSTR_PIPE * pp;
+  FMSTR_U8 nPort;
+  FMSTR_U8 nByte;
+  FMSTR_U8 nFrameLen;
+  unsigned char * pResponse;
+  unsigned char * D.6393;
+
+  <bb 2> :
+  pResponse = pMessageIO;
+  pMessageIO = pMessageIO + 1;
+  _1 = MEM[(FMSTR_U8 *)pMessageIO];
+  nFrameLen = _1;
+  pMessageIO = pMessageIO + 1;
+  nFrameLen.62_2 = nFrameLen;
+  if (nFrameLen.62_2 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  MEM[(FMSTR_U8 *)pResponse] = 140;
+  D.6393 = pResponse + 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 28>; [INV]
+
+  <bb 4> :
+  _3 = MEM[(FMSTR_U8 *)pMessageIO];
+  nPort = _3;
+  pMessageIO = pMessageIO + 1;
+  nPort.63_4 = nPort;
+  _5 = (short unsigned int) nPort.63_4;
+  _6 = _5 & 127;
+  pp = FMSTR_FindPipe (_6);
+  if (pp == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  MEM[(FMSTR_U8 *)pResponse] = 140;
+  D.6393 = pResponse + 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 28>; [INV]
+
+  <bb 6> :
+  nPort.64_7 = nPort;
+  nPort.65_8 = (signed char) nPort.64_7;
+  if (nPort.65_8 < 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  _9 = BIT_FIELD_REF <pp->flags.flg, 8, 0>;
+  _10 = _9 & 1;
+  if (_10 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  nFrameLen = 0;
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  _11 = BIT_FIELD_REF <pp->flags.flg, 8, 0>;
+  _12 = _11 & 1;
+  _13 = _12 == 0;
+  pp->flags.flg.bExpectOdd = _13;
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  _14 = BIT_FIELD_REF <pp->flags.flg, 8, 0>;
+  _15 = _14 & 1;
+  if (_15 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  nFrameLen = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _16 = BIT_FIELD_REF <pp->flags.flg, 8, 0>;
+  _17 = _16 & 1;
+  _18 = _17 == 0;
+  pp->flags.flg.bExpectOdd = _18;
+
+  <bb 13> :
+  nFrameLen.66_19 = nFrameLen;
+  if (nFrameLen.66_19 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 14> :
+  _20 = MEM[(FMSTR_U8 *)pMessageIO];
+  nByte = _20;
+  pMessageIO = pMessageIO + 1;
+  nByte.67_21 = nByte;
+  if (nByte.67_21 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _22 = &pp->tx;
+  nByte.68_23 = nByte;
+  FMSTR_PipeDiscardBytes (_22, nByte.68_23);
+
+  <bb 16> :
+  nFrameLen.69_24 = nFrameLen;
+  if (nFrameLen.69_24 > 2)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 17> :
+  _25 = &pp->rx;
+  rxFree = FMSTR_PipeGetBytesFree (_25);
+  nFrameLen.70_26 = nFrameLen;
+  rxToRead = nFrameLen.70_26 + 254;
+  rxToRead = rxToRead;
+  rxToRead = rxToRead;
+  _27 = (short unsigned int) rxToRead;
+  if (rxFree < _27)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  rxToRead = (FMSTR_U8) rxFree;
+
+  <bb 19> :
+  pMessageIO = FMSTR_PipeReceive (pMessageIO, pp, rxToRead);
+  pp->nLastBytesReceived = rxToRead;
+  goto <bb 21>; [INV]
+
+  <bb 20> :
+  pp->nLastBytesReceived = 0;
+
+  <bb 21> :
+  _28 = pp->pCallback;
+  if (_28 != 0B)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 22> :
+  pp->flags.flg.bInComm = 1;
+  _29 = pp->pCallback;
+  _29 (pp);
+  pp->flags.flg.bInComm = 0;
+
+  <bb 23> :
+  _30 = &pp->tx;
+  txAvail = FMSTR_PipeGetBytesReady (_30);
+  txToSend = 57;
+  txToSend = txToSend;
+  txToSend = txToSend;
+  _31 = (short unsigned int) txToSend;
+  if (txAvail < _31)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  txToSend = (FMSTR_U8) txAvail;
+
+  <bb 25> :
+  _32 = txToSend + 2;
+  nFrameLen = _32;
+  MEM[(FMSTR_U8 *)pResponse] = 64;
+  pResponse = pResponse + 1;
+  nFrameLen.71_33 = nFrameLen;
+  MEM[(FMSTR_U8 *)pResponse] = nFrameLen.71_33;
+  pResponse = pResponse + 1;
+  nPort.72_34 = nPort;
+  MEM[(FMSTR_U8 *)pResponse] = nPort.72_34;
+  pResponse = pResponse + 1;
+  _35 = pp->nLastBytesReceived;
+  nByte = _35;
+  nByte.73_36 = nByte;
+  MEM[(FMSTR_U8 *)pResponse] = nByte.73_36;
+  pResponse = pResponse + 1;
+  if (txToSend != 0)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  pResponse = FMSTR_PipeTransmit (pResponse, pp, txToSend);
+
+  <bb 27> :
+  D.6393 = pResponse;
+
+  <bb 28> :
+  nFrameLen = {CLOBBER};
+  nByte = {CLOBBER};
+  nPort = {CLOBBER};
+
+  <bb 29> :
+<L29>:
+  return D.6393;
+
+}
+
+
+FMSTR_PipeTransmit (unsigned char * pMessageIO, struct FMSTR_PIPE * pp, FMSTR_SIZE8 size)
+{
+  FMSTR_PIPE_SIZE nRP;
+  FMSTR_PIPE_SIZE s;
+  struct FMSTR_PIPE_BUFF * pbuff;
+  unsigned char * D.6389;
+
+  <bb 2> :
+  pbuff = &pp->tx;
+  nRP = pbuff->nRP;
+  if (size != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  _1 = pbuff->nSize;
+  s = _1 - nRP;
+  _2 = (short unsigned int) size;
+  if (s > _2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  s = (FMSTR_PIPE_SIZE) size;
+
+  <bb 5> :
+  _3 = pbuff->pBuff;
+  _4 = (sizetype) nRP;
+  _5 = _3 + _4;
+  _6 = (unsigned char) s;
+  pMessageIO = FMSTR_CopyToBuffer (pMessageIO, _5, _6);
+  nRP = nRP + s;
+  _7 = pbuff->nSize;
+  if (nRP >= _7)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  nRP = 0;
+
+  <bb 7> :
+  _8 = (unsigned char) s;
+  size = size - _8;
+  if (size != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _9 = pbuff->pBuff;
+  _10 = (sizetype) nRP;
+  _11 = _9 + _10;
+  pMessageIO = FMSTR_CopyToBuffer (pMessageIO, _11, size);
+
+  <bb 9> :
+  D.6389 = pMessageIO;
+
+  <bb 10> :
+<L8>:
+  return D.6389;
+
+}
+
+
+FMSTR_PipeReceive (unsigned char * pMessageIO, struct FMSTR_PIPE * pp, FMSTR_SIZE8 size)
+{
+  FMSTR_PIPE_SIZE s;
+  struct FMSTR_PIPE_BUFF * pbuff;
+  unsigned char * D.6379;
+
+  <bb 2> :
+  pbuff = &pp->rx;
+  if (size != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 3> :
+  _1 = pbuff->nSize;
+  _2 = pbuff->nWP;
+  s = _1 - _2;
+  _3 = (short unsigned int) size;
+  if (s > _3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  s = (FMSTR_PIPE_SIZE) size;
+
+  <bb 5> :
+  _4 = pbuff->pBuff;
+  _5 = pbuff->nWP;
+  _6 = (sizetype) _5;
+  _7 = _4 + _6;
+  _8 = (unsigned char) s;
+  pMessageIO = FMSTR_CopyFromBuffer (_7, pMessageIO, _8);
+  _9 = pbuff->nWP;
+  _10 = s + _9;
+  pbuff->nWP = _10;
+  _11 = pbuff->nWP;
+  _12 = pbuff->nSize;
+  if (_11 >= _12)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  pbuff->nWP = 0;
+
+  <bb 7> :
+  _13 = (unsigned char) s;
+  size = size - _13;
+  if (size != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _14 = pbuff->pBuff;
+  _15 = pbuff->nWP;
+  _16 = (sizetype) _15;
+  _17 = _14 + _16;
+  pMessageIO = FMSTR_CopyFromBuffer (_17, pMessageIO, size);
+  _18 = pbuff->nWP;
+  _19 = (short unsigned int) size;
+  _20 = _18 + _19;
+  pbuff->nWP = _20;
+
+  <bb 9> :
+  _21 = pbuff->nWP;
+  _22 = pbuff->nRP;
+  if (_21 == _22)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  pbuff->flags.flg.bIsFull = 1;
+
+  <bb 11> :
+  D.6379 = pMessageIO;
+
+  <bb 12> :
+<L10>:
+  return D.6379;
+
+}
+
+
+FMSTR_PipeDiscardBytes (struct FMSTR_PIPE_BUFF * pbuff, FMSTR_SIZE8 count)
+{
+  FMSTR_PIPE_SIZE discard;
+  FMSTR_PIPE_SIZE rp;
+  FMSTR_PIPE_SIZE total;
+  FMSTR_PIPE_SIZE rest;
+
+  <bb 2> :
+  _1 = pbuff->nSize;
+  _2 = pbuff->nRP;
+  rest = _1 - _2;
+  total = FMSTR_PipeGetBytesReady (pbuff);
+  _3 = (short unsigned int) count;
+  discard = MIN_EXPR <total, _3>;
+  discard = discard;
+  if (discard != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  if (rest <= discard)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  rp = discard - rest;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  _4 = pbuff->nRP;
+  rp = discard + _4;
+
+  <bb 6> :
+  pbuff->flags.flg.bIsFull = 0;
+
+  <bb 7> :
+  pbuff->nRP = rp;
+  return;
+
+}
+
+
+FMSTR_PipeGetBytesReady (struct FMSTR_PIPE_BUFF * pbuff)
+{
+  FMSTR_PIPE_SIZE full;
+  FMSTR_PIPE_SIZE D.6362;
+
+  <bb 2> :
+  _1 = BIT_FIELD_REF <pbuff->flags.flg, 8, 0>;
+  _2 = _1 & 1;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  full = pbuff->nSize;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  _3 = pbuff->nWP;
+  _4 = pbuff->nRP;
+  if (_3 >= _4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _5 = pbuff->nWP;
+  _6 = pbuff->nRP;
+  full = _5 - _6;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _7 = pbuff->nSize;
+  _8 = pbuff->nRP;
+  _9 = _7 - _8;
+  _10 = pbuff->nWP;
+  full = _9 + _10;
+
+  <bb 7> :
+  D.6362 = full;
+
+  <bb 8> :
+<L6>:
+  return D.6362;
+
+}
+
+
+FMSTR_PipeGetBytesFree (struct FMSTR_PIPE_BUFF * pbuff)
+{
+  FMSTR_PIPE_SIZE free;
+  FMSTR_PIPE_SIZE D.6354;
+
+  <bb 2> :
+  _1 = BIT_FIELD_REF <pbuff->flags.flg, 8, 0>;
+  _2 = _1 & 1;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  free = 0;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  _3 = pbuff->nWP;
+  _4 = pbuff->nRP;
+  if (_3 < _4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _5 = pbuff->nRP;
+  _6 = pbuff->nWP;
+  free = _5 - _6;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _7 = pbuff->nSize;
+  _8 = pbuff->nWP;
+  _9 = _7 - _8;
+  _10 = pbuff->nRP;
+  free = _9 + _10;
+
+  <bb 7> :
+  D.6354 = free;
+
+  <bb 8> :
+<L6>:
+  return D.6354;
+
+}
+
+
+FMSTR_FindPipe (FMSTR_PIPE_PORT nPort)
+{
+  FMSTR_INDEX i;
+  struct FMSTR_PIPE * pp;
+  struct FMSTR_PIPE * D.6346;
+
+  <bb 2> :
+  pp = &pcm_pipes[0];
+  i = 0;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  _1 = pp->nPort;
+  if (nPort == _1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  D.6346 = pp;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  i.60_2 = i;
+  i.61_3 = (unsigned short) i.60_2;
+  _4 = i.61_3 + 1;
+  i = (FMSTR_INDEX) _4;
+  pp = pp + 96;
+
+  <bb 6> :
+  if (i <= 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  D.6346 = 0B;
+
+  <bb 8> :
+<L5>:
+  return D.6346;
+
+}
+
+
+FMSTR_PipeRead (void * hpipe, unsigned char * addr, FMSTR_PIPE_SIZE length, FMSTR_PIPE_SIZE granularity)
+{
+  FMSTR_PIPE_SIZE s;
+  FMSTR_PIPE_SIZE total;
+  struct FMSTR_PIPE_BUFF * pbuff;
+  struct FMSTR_PIPE * pp;
+  FMSTR_PIPE_SIZE D.6342;
+
+  <bb 2> :
+  pp = hpipe;
+  pbuff = &pp->rx;
+  total = FMSTR_PipeGetBytesReady (pbuff);
+  if (addr != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 3> :
+  length = length;
+  length = length;
+  if (length > total)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  length = total;
+
+  <bb 5> :
+  if (granularity > 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  length = length / granularity;
+  length = length * granularity;
+
+  <bb 7> :
+  total = length;
+  if (length != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 8> :
+  _1 = pbuff->nSize;
+  _2 = pbuff->nRP;
+  s = _1 - _2;
+  if (s > length)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  s = length;
+
+  <bb 10> :
+  _3 = pbuff->pBuff;
+  _4 = pbuff->nRP;
+  _5 = (sizetype) _4;
+  _6 = _3 + _5;
+  _7 = (unsigned char) s;
+  FMSTR_CopyMemory (addr, _6, _7);
+  _8 = (sizetype) s;
+  addr = addr + _8;
+  _9 = pbuff->nRP;
+  _10 = s + _9;
+  pbuff->nRP = _10;
+  _11 = pbuff->nRP;
+  _12 = pbuff->nSize;
+  if (_11 >= _12)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  pbuff->nRP = 0;
+
+  <bb 12> :
+  _13 = (unsigned char) s;
+  _14 = (short unsigned int) _13;
+  length = length - _14;
+  if (length != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  _15 = pbuff->pBuff;
+  _16 = pbuff->nRP;
+  _17 = (sizetype) _16;
+  _18 = _15 + _17;
+  _19 = (unsigned char) length;
+  FMSTR_CopyMemory (addr, _18, _19);
+  _20 = pbuff->nRP;
+  _21 = length + _20;
+  pbuff->nRP = _21;
+
+  <bb 14> :
+  pbuff->flags.flg.bIsFull = 0;
+
+  <bb 15> :
+  D.6342 = total;
+
+  <bb 16> :
+<L14>:
+  return D.6342;
+
+}
+
+
+FMSTR_PipePrintf (void * hpipe, const char * pszFmt)
+{
+  struct va_list args;
+  FMSTR_BOOL ok;
+  FMSTR_BOOL D.6325;
+
+  <bb 2> :
+  __builtin_va_start (&args, 0);
+  ok = FMSTR_PipePrintfV (hpipe, pszFmt, &args);
+  __builtin_va_end (&args);
+  D.6325 = ok;
+  args = {CLOBBER};
+
+  <bb 3> :
+<L1>:
+  return D.6325;
+
+}
+
+
+FMSTR_PipePrintfV (void * hpipe, const char * pszFmt, struct va_list * parg)
+{
+  const char * psz;
+  struct FMSTR_PIPE_PRINTF_CTX ctx;
+  FMSTR_BOOL ok;
+  int iftmp.59;
+  FMSTR_BOOL D.6317;
+  const char * iftmp.57;
+
+  <bb 2> :
+  ok = 1;
+  goto <bb 14>; [INV]
+
+  <bb 3> :
+  _1 = *pszFmt;
+  if (_1 == 37)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 4> :
+  pszFmt = pszFmt + 1;
+  _2 = *pszFmt;
+  if (_2 == 37)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  ok = FMSTR_PipePrintfPutc (hpipe, 37);
+  pszFmt = pszFmt + 1;
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  ok = FMSTR_PipePrintfFlush (hpipe);
+  if (ok != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 7> :
+  pszFmt = FMSTR_PipeParseFormat (pszFmt, &ctx);
+  _3 = BIT_FIELD_REF <ctx.flags.flg, 8, 0>;
+  _4 = _3 & 32;
+  if (_4 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 8> :
+  psz = .VA_ARG (parg, 0B, 0B);
+  if (psz != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.57 = psz;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.57 = "NULL";
+
+  <bb 11> :
+  FMSTR_PipePuts (hpipe, iftmp.57);
+  goto <bb 14>; [INV]
+
+  <bb 12> :
+  ok = FMSTR_PipePrintfAny (hpipe, parg, &ctx);
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  pszFmt.58_5 = pszFmt;
+  pszFmt = pszFmt.58_5 + 1;
+  _6 = *pszFmt.58_5;
+  ok = FMSTR_PipePrintfPutc (hpipe, _6);
+
+  <bb 14> :
+  _7 = *pszFmt;
+  if (_7 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  if (ok != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  if (ok != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  _8 = FMSTR_PipePrintfFlush (hpipe);
+  if (_8 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  iftmp.59 = 1;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  iftmp.59 = 0;
+
+  <bb 20> :
+  D.6317 = (FMSTR_BOOL) iftmp.59;
+  ctx = {CLOBBER};
+
+  <bb 21> :
+<L23>:
+  return D.6317;
+
+}
+
+
+FMSTR_PipePrintfAny (void * hpipe, struct va_list * parg, struct FMSTR_PIPE_PRINTF_CTX * pctx)
+{
+  FMSTR_U32 arg;
+  FMSTR_S32 arg;
+  FMSTR_U16 arg;
+  FMSTR_S16 arg;
+  FMSTR_U8 arg;
+  FMSTR_S8 arg;
+  FMSTR_BOOL ok;
+  FMSTR_BOOL D.6299;
+
+  <bb 2> :
+  ok = 0;
+  _1 = pctx->dtsize;
+  _2 = (int) _1;
+  switch (_2) <default: <L12> [INV], case 1: <L0> [INV], case 2: <L4> [INV], case 4: <L8> [INV]>
+
+  <bb 3> :
+<L0>:
+  _3 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _4 = _3 & 16;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _5 = .VA_ARG (parg, 0B, 0B);
+  _6 = (signed char) _5;
+  arg = _6;
+  ok = FMSTR_PipeS8ToA (hpipe, &arg, pctx);
+  arg = {CLOBBER};
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  _7 = .VA_ARG (parg, 0B, 0B);
+  _8 = (unsigned char) _7;
+  arg = _8;
+  ok = FMSTR_PipeU8ToA (hpipe, &arg, pctx);
+  arg = {CLOBBER};
+
+  <bb 6> :
+  goto <bb 15>; [INV]
+
+  <bb 7> :
+<L4>:
+  _9 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _10 = _9 & 16;
+  if (_10 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _11 = .VA_ARG (parg, 0B, 0B);
+  _12 = (short int) _11;
+  arg = _12;
+  ok = FMSTR_PipeS16ToA (hpipe, &arg, pctx);
+  arg = {CLOBBER};
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _13 = .VA_ARG (parg, 0B, 0B);
+  _14 = (short unsigned int) _13;
+  arg = _14;
+  ok = FMSTR_PipeU16ToA (hpipe, &arg, pctx);
+  arg = {CLOBBER};
+
+  <bb 10> :
+  goto <bb 15>; [INV]
+
+  <bb 11> :
+<L8>:
+  _15 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _16 = _15 & 16;
+  if (_16 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  _17 = .VA_ARG (parg, 0B, 0B);
+  arg = _17;
+  ok = FMSTR_PipeS32ToA (hpipe, &arg, pctx);
+  arg = {CLOBBER};
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  _18 = .VA_ARG (parg, 0B, 0B);
+  arg = _18;
+  ok = FMSTR_PipeU32ToA (hpipe, &arg, pctx);
+  arg = {CLOBBER};
+
+  <bb 14> :
+
+  <bb 15> :
+<L12>:
+  D.6299 = ok;
+
+  <bb 16> :
+<L14>:
+  return D.6299;
+
+}
+
+
+FMSTR_PipePrintfS32 (void * hpipe, const char * pszFmt, FMSTR_S32 arg)
+{
+  FMSTR_BOOL D.6287;
+
+  <bb 2> :
+  D.6287 = FMSTR_PipePrintfOne (hpipe, pszFmt, &arg, FMSTR_PipeS32ToA);
+
+  <bb 3> :
+<L0>:
+  return D.6287;
+
+}
+
+
+FMSTR_PipePrintfU32 (void * hpipe, const char * pszFmt, FMSTR_U32 arg)
+{
+  FMSTR_BOOL D.6285;
+
+  <bb 2> :
+  D.6285 = FMSTR_PipePrintfOne (hpipe, pszFmt, &arg, FMSTR_PipeU32ToA);
+
+  <bb 3> :
+<L0>:
+  return D.6285;
+
+}
+
+
+FMSTR_PipePrintfS16 (void * hpipe, const char * pszFmt, FMSTR_S16 arg)
+{
+  FMSTR_BOOL D.6283;
+
+  <bb 2> :
+  D.6283 = FMSTR_PipePrintfOne (hpipe, pszFmt, &arg, FMSTR_PipeS16ToA);
+
+  <bb 3> :
+<L0>:
+  return D.6283;
+
+}
+
+
+FMSTR_PipePrintfU16 (void * hpipe, const char * pszFmt, FMSTR_U16 arg)
+{
+  FMSTR_BOOL D.6281;
+
+  <bb 2> :
+  D.6281 = FMSTR_PipePrintfOne (hpipe, pszFmt, &arg, FMSTR_PipeU16ToA);
+
+  <bb 3> :
+<L0>:
+  return D.6281;
+
+}
+
+
+FMSTR_PipePrintfS8 (void * hpipe, const char * pszFmt, FMSTR_S8 arg)
+{
+  FMSTR_BOOL D.6279;
+
+  <bb 2> :
+  D.6279 = FMSTR_PipePrintfOne (hpipe, pszFmt, &arg, FMSTR_PipeS8ToA);
+
+  <bb 3> :
+<L0>:
+  return D.6279;
+
+}
+
+
+FMSTR_PipePrintfU8 (void * hpipe, const char * pszFmt, FMSTR_U8 arg)
+{
+  FMSTR_BOOL D.6277;
+
+  <bb 2> :
+  D.6277 = FMSTR_PipePrintfOne (hpipe, pszFmt, &arg, FMSTR_PipeU8ToA);
+
+  <bb 3> :
+<L0>:
+  return D.6277;
+
+}
+
+
+FMSTR_PipePrintfOne (void * hpipe, const char * pszFmt, void * parg, FMSTR_BOOL (*FMSTR_PIPE_ITOA_FUNC) (void *, const void *, struct FMSTR_PIPE_PRINTF_CTX *) pItoaFunc)
+{
+  const char * psz;
+  struct FMSTR_PIPE_PRINTF_CTX ctx;
+  FMSTR_BOOL ok;
+  int iftmp.56;
+  FMSTR_BOOL D.6269;
+  const char * iftmp.54;
+
+  <bb 2> :
+  ok = 1;
+  goto <bb 14>; [INV]
+
+  <bb 3> :
+  _1 = *pszFmt;
+  if (_1 == 37)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 4> :
+  pszFmt = pszFmt + 1;
+  _2 = *pszFmt;
+  if (_2 == 37)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  FMSTR_PipePrintfPutc (hpipe, 37);
+  pszFmt = pszFmt + 1;
+  // predicted unlikely by continue predictor.
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  ok = FMSTR_PipePrintfFlush (hpipe);
+  if (ok != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 7> :
+  pszFmt = FMSTR_PipeParseFormat (pszFmt, &ctx);
+  _3 = BIT_FIELD_REF <ctx.flags.flg, 8, 0>;
+  _4 = _3 & 32;
+  if (_4 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 8> :
+  psz = parg;
+  if (psz != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.54 = psz;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.54 = "NULL";
+
+  <bb 11> :
+  FMSTR_PipePuts (hpipe, iftmp.54);
+  goto <bb 14>; [INV]
+
+  <bb 12> :
+  ok = pItoaFunc (hpipe, parg, &ctx);
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  pszFmt.55_5 = pszFmt;
+  pszFmt = pszFmt.55_5 + 1;
+  _6 = *pszFmt.55_5;
+  ok = FMSTR_PipePrintfPutc (hpipe, _6);
+
+  <bb 14> :
+  _7 = *pszFmt;
+  if (_7 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  if (ok != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  if (ok != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  _8 = FMSTR_PipePrintfFlush (hpipe);
+  if (_8 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  iftmp.56 = 1;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  iftmp.56 = 0;
+
+  <bb 20> :
+  D.6269 = (FMSTR_BOOL) iftmp.56;
+  ctx = {CLOBBER};
+
+  <bb 21> :
+<L22>:
+  return D.6269;
+
+}
+
+
+FMSTR_PipeParseFormat (const char * pszFmt, struct FMSTR_PIPE_PRINTF_CTX * pctx)
+{
+  const char * D.6252;
+
+  <bb 2> :
+  pctx->flags.all = 0;
+  _1 = *pszFmt;
+  if (_1 == 37)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  pszFmt = pszFmt + 1;
+
+  <bb 4> :
+  _2 = *pszFmt;
+  if (_2 == 43)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  pctx->flags.flg.showsign = 1;
+  pszFmt = pszFmt + 1;
+
+  <bb 6> :
+  _3 = *pszFmt;
+  if (_3 == 48)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  pctx->flags.flg.zeroes = 1;
+  pszFmt = pszFmt + 1;
+
+  <bb 8> :
+  pctx->alen = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _4 = pctx->alen;
+  _5 = _4 * 10;
+  pctx->alen = _5;
+  _6 = pctx->alen;
+  _7 = *pszFmt;
+  _8 = _6 + _7;
+  _9 = _8 + 208;
+  pctx->alen = _9;
+  pszFmt = pszFmt + 1;
+
+  <bb 10> :
+  _10 = *pszFmt;
+  if (_10 > 47)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  _11 = *pszFmt;
+  if (_11 <= 57)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  pctx->dtsize = 4;
+  _12 = *pszFmt;
+  _13 = (int) _12;
+  switch (_13) <default: <L14> [INV], case 104: <L10> [INV], case 108: <L13> [INV]>
+
+  <bb 13> :
+<L10>:
+  pctx->dtsize = 2;
+  pszFmt = pszFmt + 1;
+  _14 = *pszFmt;
+  if (_14 == 104)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  pctx->dtsize = 1;
+  pszFmt = pszFmt + 1;
+
+  <bb 15> :
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L13>:
+  pctx->dtsize = 4;
+  pszFmt = pszFmt + 1;
+
+  <bb 17> :
+<L14>:
+  pszFmt.53_15 = pszFmt;
+  pszFmt = pszFmt.53_15 + 1;
+  _16 = *pszFmt.53_15;
+  _17 = (int) _16;
+  switch (_17) <default: <L25> [INV], case 88: <L16> [INV], case 98: <L19> [INV], case 99: <L23> [INV], case 100: <L20> [INV], case 105: <L20> [INV], case 111: <L18> [INV], case 115: <L24> [INV], case 117: <L22> [INV], case 120: <L17> [INV]>
+
+  <bb 18> :
+<L16>:
+  pctx->flags.flg.upperc = 1;
+
+  <bb 19> :
+<L17>:
+  pctx->radix = 3;
+  goto <bb 26>; [INV]
+
+  <bb 20> :
+<L18>:
+  pctx->radix = 1;
+  goto <bb 26>; [INV]
+
+  <bb 21> :
+<L19>:
+  pctx->radix = 0;
+  goto <bb 26>; [INV]
+
+  <bb 22> :
+<L20>:
+  pctx->flags.flg.signedtype = 1;
+
+  <bb 23> :
+<L22>:
+  pctx->radix = 2;
+  goto <bb 26>; [INV]
+
+  <bb 24> :
+<L23>:
+  pctx->radix = 4;
+  pctx->dtsize = 1;
+  goto <bb 26>; [INV]
+
+  <bb 25> :
+<L24>:
+  pctx->flags.flg.isstring = 1;
+  pctx->dtsize = 4;
+
+  <bb 26> :
+<L25>:
+  D.6252 = pszFmt;
+
+  <bb 27> :
+<L27>:
+  return D.6252;
+
+}
+
+
+FMSTR_PipeS32ToA (void * hpipe, const FMSTR_S32 * parg, struct FMSTR_PIPE_PRINTF_CTX * pctx)
+{
+  FMSTR_S32 arg;
+  FMSTR_BOOL D.6238;
+
+  <bb 2> :
+  _1 = *parg;
+  arg = _1;
+  arg.51_2 = arg;
+  if (arg.51_2 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  pctx->flags.flg.negative = 1;
+  _3 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _4 = _3 & 16;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  arg.52_5 = arg;
+  _6 = -arg.52_5;
+  arg = _6;
+
+  <bb 5> :
+  D.6238 = FMSTR_PipeU32ToA (hpipe, &arg, pctx);
+  arg = {CLOBBER};
+
+  <bb 6> :
+<L5>:
+  return D.6238;
+
+}
+
+
+FMSTR_PipeU32ToA (void * hpipe, const FMSTR_U32 * parg, struct FMSTR_PIPE_PRINTF_CTX * pctx)
+{
+  FMSTR_INDEX i;
+  FMSTR_U32 tmp;
+  FMSTR_U32 arg;
+  struct FMSTR_PIPE * pp;
+  char iftmp.48;
+  char iftmp.47;
+  char iftmp.46;
+  FMSTR_BOOL D.6210;
+
+  <bb 2> :
+  pp = hpipe;
+  arg = *parg;
+  _1 = pctx->radix;
+  _2 = (int) _1;
+  switch (_2) <default: <L22> [INV], case 0: <L1> [INV], case 1: <L8> [INV], case 2: <L15> [INV], case 4: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  _3 = pp->printfBPtr;
+  _4 = _3;
+  _5 = _4 + 1;
+  pp->printfBPtr = _5;
+  _6 = (int) _4;
+  _7 = (char) arg;
+  pp->printfBuff[_6] = _7;
+  goto <bb 37>; [INV]
+
+  <bb 4> :
+<L1>:
+
+  <bb 5> :
+  i = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _8 = (char) arg;
+  _9 = _8 & 1;
+  _10 = pp->printfBPtr;
+  _11 = _10;
+  _12 = _11 + 1;
+  pp->printfBPtr = _12;
+  _13 = (int) _11;
+  _14 = _9 + 48;
+  pp->printfBuff[_13] = _14;
+  arg = arg >> 1;
+  i.40_15 = i;
+  i.41_16 = (unsigned short) i.40_15;
+  _17 = i.41_16 + 1;
+  i = (FMSTR_INDEX) _17;
+
+  <bb 7> :
+  if (arg != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  if (i <= 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  goto <bb 37>; [INV]
+
+  <bb 10> :
+<L8>:
+
+  <bb 11> :
+  i = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _18 = (char) arg;
+  _19 = _18 & 7;
+  _20 = pp->printfBPtr;
+  _21 = _20;
+  _22 = _21 + 1;
+  pp->printfBPtr = _22;
+  _23 = (int) _21;
+  _24 = _19 + 48;
+  pp->printfBuff[_23] = _24;
+  arg = arg >> 3;
+  i.42_25 = i;
+  i.43_26 = (unsigned short) i.42_25;
+  _27 = i.43_26 + 1;
+  i = (FMSTR_INDEX) _27;
+
+  <bb 13> :
+  if (arg != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  if (i <= 10)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  goto <bb 37>; [INV]
+
+  <bb 16> :
+<L15>:
+
+  <bb 17> :
+  i = 0;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  _28 = arg % 10;
+  _29 = (char) _28;
+  _30 = pp->printfBPtr;
+  _31 = _30;
+  _32 = _31 + 1;
+  pp->printfBPtr = _32;
+  _33 = (int) _31;
+  _34 = _29 + 48;
+  pp->printfBuff[_33] = _34;
+  arg = arg / 10;
+  i.44_35 = i;
+  i.45_36 = (unsigned short) i.44_35;
+  _37 = i.45_36 + 1;
+  i = (FMSTR_INDEX) _37;
+
+  <bb 19> :
+  if (arg != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  if (i <= 9)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  goto <bb 37>; [INV]
+
+  <bb 22> :
+<L22>:
+
+  <bb 23> :
+  i = 0;
+  goto <bb 34>; [INV]
+
+  <bb 24> :
+  tmp = arg & 15;
+  _38 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _39 = _38 & 1;
+  if (_39 != 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 25> :
+  if (tmp <= 9)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  _40 = (char) tmp;
+  iftmp.47 = _40 + 48;
+  goto <bb 28>; [INV]
+
+  <bb 27> :
+  _41 = (char) tmp;
+  iftmp.47 = _41 + 55;
+
+  <bb 28> :
+  iftmp.46 = iftmp.47;
+  goto <bb 33>; [INV]
+
+  <bb 29> :
+  if (tmp <= 9)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 30> :
+  _42 = (char) tmp;
+  iftmp.48 = _42 + 48;
+  goto <bb 32>; [INV]
+
+  <bb 31> :
+  _43 = (char) tmp;
+  iftmp.48 = _43 + 87;
+
+  <bb 32> :
+  iftmp.46 = iftmp.48;
+
+  <bb 33> :
+  _44 = pp->printfBPtr;
+  _45 = _44;
+  _46 = _45 + 1;
+  pp->printfBPtr = _46;
+  _47 = (int) _45;
+  pp->printfBuff[_47] = iftmp.46;
+  arg = arg >> 4;
+  i.49_48 = i;
+  i.50_49 = (unsigned short) i.49_48;
+  _50 = i.50_49 + 1;
+  i = (FMSTR_INDEX) _50;
+
+  <bb 34> :
+  if (arg != 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 35> :
+  if (i <= 7)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 36> :
+
+  <bb 37> :
+  D.6210 = FMSTR_PipeIToAFinalize (hpipe, pctx);
+
+  <bb 38> :
+<L40>:
+  return D.6210;
+
+}
+
+
+FMSTR_PipeS16ToA (void * hpipe, const FMSTR_S16 * parg, struct FMSTR_PIPE_PRINTF_CTX * pctx)
+{
+  FMSTR_S16 arg;
+  FMSTR_BOOL D.6205;
+
+  <bb 2> :
+  _1 = *parg;
+  arg = _1;
+  arg.37_2 = arg;
+  if (arg.37_2 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  pctx->flags.flg.negative = 1;
+  _3 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _4 = _3 & 16;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  arg.38_5 = arg;
+  arg.39_6 = (unsigned short) arg.38_5;
+  _7 = -arg.39_6;
+  _8 = (short int) _7;
+  arg = _8;
+
+  <bb 5> :
+  D.6205 = FMSTR_PipeU16ToA (hpipe, &arg, pctx);
+  arg = {CLOBBER};
+
+  <bb 6> :
+<L5>:
+  return D.6205;
+
+}
+
+
+FMSTR_PipeU16ToA (void * hpipe, const FMSTR_U16 * parg, struct FMSTR_PIPE_PRINTF_CTX * pctx)
+{
+  FMSTR_INDEX i;
+  FMSTR_U16 tmp;
+  FMSTR_U16 arg;
+  struct FMSTR_PIPE * pp;
+  char iftmp.34;
+  char iftmp.33;
+  char iftmp.32;
+  FMSTR_BOOL D.6177;
+
+  <bb 2> :
+  pp = hpipe;
+  arg = *parg;
+  _1 = pctx->radix;
+  _2 = (int) _1;
+  switch (_2) <default: <L22> [INV], case 0: <L1> [INV], case 1: <L8> [INV], case 2: <L15> [INV], case 4: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  _3 = pp->printfBPtr;
+  _4 = _3;
+  _5 = _4 + 1;
+  pp->printfBPtr = _5;
+  _6 = (int) _4;
+  _7 = (char) arg;
+  pp->printfBuff[_6] = _7;
+  goto <bb 37>; [INV]
+
+  <bb 4> :
+<L1>:
+
+  <bb 5> :
+  i = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _8 = (char) arg;
+  _9 = _8 & 1;
+  _10 = pp->printfBPtr;
+  _11 = _10;
+  _12 = _11 + 1;
+  pp->printfBPtr = _12;
+  _13 = (int) _11;
+  _14 = _9 + 48;
+  pp->printfBuff[_13] = _14;
+  arg = arg >> 1;
+  i.26_15 = i;
+  i.27_16 = (unsigned short) i.26_15;
+  _17 = i.27_16 + 1;
+  i = (FMSTR_INDEX) _17;
+
+  <bb 7> :
+  if (arg != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  if (i <= 15)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  goto <bb 37>; [INV]
+
+  <bb 10> :
+<L8>:
+
+  <bb 11> :
+  i = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _18 = (char) arg;
+  _19 = _18 & 7;
+  _20 = pp->printfBPtr;
+  _21 = _20;
+  _22 = _21 + 1;
+  pp->printfBPtr = _22;
+  _23 = (int) _21;
+  _24 = _19 + 48;
+  pp->printfBuff[_23] = _24;
+  arg = arg >> 3;
+  i.28_25 = i;
+  i.29_26 = (unsigned short) i.28_25;
+  _27 = i.29_26 + 1;
+  i = (FMSTR_INDEX) _27;
+
+  <bb 13> :
+  if (arg != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  if (i <= 5)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  goto <bb 37>; [INV]
+
+  <bb 16> :
+<L15>:
+
+  <bb 17> :
+  i = 0;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  _28 = arg % 10;
+  _29 = (char) _28;
+  _30 = pp->printfBPtr;
+  _31 = _30;
+  _32 = _31 + 1;
+  pp->printfBPtr = _32;
+  _33 = (int) _31;
+  _34 = _29 + 48;
+  pp->printfBuff[_33] = _34;
+  arg = arg / 10;
+  i.30_35 = i;
+  i.31_36 = (unsigned short) i.30_35;
+  _37 = i.31_36 + 1;
+  i = (FMSTR_INDEX) _37;
+
+  <bb 19> :
+  if (arg != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  if (i <= 4)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  goto <bb 37>; [INV]
+
+  <bb 22> :
+<L22>:
+
+  <bb 23> :
+  i = 0;
+  goto <bb 34>; [INV]
+
+  <bb 24> :
+  tmp = arg & 15;
+  _38 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _39 = _38 & 1;
+  if (_39 != 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 25> :
+  if (tmp <= 9)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  _40 = (char) tmp;
+  iftmp.33 = _40 + 48;
+  goto <bb 28>; [INV]
+
+  <bb 27> :
+  _41 = (char) tmp;
+  iftmp.33 = _41 + 55;
+
+  <bb 28> :
+  iftmp.32 = iftmp.33;
+  goto <bb 33>; [INV]
+
+  <bb 29> :
+  if (tmp <= 9)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 30> :
+  _42 = (char) tmp;
+  iftmp.34 = _42 + 48;
+  goto <bb 32>; [INV]
+
+  <bb 31> :
+  _43 = (char) tmp;
+  iftmp.34 = _43 + 87;
+
+  <bb 32> :
+  iftmp.32 = iftmp.34;
+
+  <bb 33> :
+  _44 = pp->printfBPtr;
+  _45 = _44;
+  _46 = _45 + 1;
+  pp->printfBPtr = _46;
+  _47 = (int) _45;
+  pp->printfBuff[_47] = iftmp.32;
+  arg = arg >> 4;
+  i.35_48 = i;
+  i.36_49 = (unsigned short) i.35_48;
+  _50 = i.36_49 + 1;
+  i = (FMSTR_INDEX) _50;
+
+  <bb 34> :
+  if (arg != 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 35> :
+  if (i <= 3)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 36> :
+
+  <bb 37> :
+  D.6177 = FMSTR_PipeIToAFinalize (hpipe, pctx);
+
+  <bb 38> :
+<L40>:
+  return D.6177;
+
+}
+
+
+FMSTR_PipeS8ToA (void * hpipe, const FMSTR_S8 * parg, struct FMSTR_PIPE_PRINTF_CTX * pctx)
+{
+  FMSTR_S8 arg;
+  FMSTR_BOOL D.6172;
+
+  <bb 2> :
+  _1 = *parg;
+  arg = _1;
+  arg.23_2 = arg;
+  if (arg.23_2 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  pctx->flags.flg.negative = 1;
+  _3 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _4 = _3 & 16;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  arg.24_5 = arg;
+  arg.25_6 = (unsigned char) arg.24_5;
+  _7 = -arg.25_6;
+  _8 = (signed char) _7;
+  arg = _8;
+
+  <bb 5> :
+  D.6172 = FMSTR_PipeU8ToA (hpipe, &arg, pctx);
+  arg = {CLOBBER};
+
+  <bb 6> :
+<L5>:
+  return D.6172;
+
+}
+
+
+FMSTR_PipeU8ToA (void * hpipe, const FMSTR_U8 * parg, struct FMSTR_PIPE_PRINTF_CTX * pctx)
+{
+  FMSTR_INDEX i;
+  FMSTR_U8 tmp;
+  FMSTR_U8 arg;
+  struct FMSTR_PIPE * pp;
+  char iftmp.20;
+  char iftmp.19;
+  char iftmp.18;
+  FMSTR_BOOL D.6144;
+
+  <bb 2> :
+  pp = hpipe;
+  arg = *parg;
+  _1 = pctx->radix;
+  _2 = (int) _1;
+  switch (_2) <default: <L22> [INV], case 0: <L1> [INV], case 1: <L8> [INV], case 2: <L15> [INV], case 4: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  _3 = pp->printfBPtr;
+  _4 = _3;
+  _5 = _4 + 1;
+  pp->printfBPtr = _5;
+  _6 = (int) _4;
+  pp->printfBuff[_6] = arg;
+  goto <bb 37>; [INV]
+
+  <bb 4> :
+<L1>:
+
+  <bb 5> :
+  i = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _7 = arg & 1;
+  _8 = pp->printfBPtr;
+  _9 = _8;
+  _10 = _9 + 1;
+  pp->printfBPtr = _10;
+  _11 = (int) _9;
+  _12 = _7 + 48;
+  pp->printfBuff[_11] = _12;
+  arg = arg >> 1;
+  i.12_13 = i;
+  i.13_14 = (unsigned short) i.12_13;
+  _15 = i.13_14 + 1;
+  i = (FMSTR_INDEX) _15;
+
+  <bb 7> :
+  if (arg != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  if (i <= 7)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  goto <bb 37>; [INV]
+
+  <bb 10> :
+<L8>:
+
+  <bb 11> :
+  i = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _16 = arg & 7;
+  _17 = pp->printfBPtr;
+  _18 = _17;
+  _19 = _18 + 1;
+  pp->printfBPtr = _19;
+  _20 = (int) _18;
+  _21 = _16 + 48;
+  pp->printfBuff[_20] = _21;
+  arg = arg >> 3;
+  i.14_22 = i;
+  i.15_23 = (unsigned short) i.14_22;
+  _24 = i.15_23 + 1;
+  i = (FMSTR_INDEX) _24;
+
+  <bb 13> :
+  if (arg != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  if (i <= 2)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  goto <bb 37>; [INV]
+
+  <bb 16> :
+<L15>:
+
+  <bb 17> :
+  i = 0;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  _25 = arg % 10;
+  _26 = pp->printfBPtr;
+  _27 = _26;
+  _28 = _27 + 1;
+  pp->printfBPtr = _28;
+  _29 = (int) _27;
+  _30 = _25 + 48;
+  pp->printfBuff[_29] = _30;
+  arg = arg / 10;
+  i.16_31 = i;
+  i.17_32 = (unsigned short) i.16_31;
+  _33 = i.17_32 + 1;
+  i = (FMSTR_INDEX) _33;
+
+  <bb 19> :
+  if (arg != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  if (i <= 2)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  goto <bb 37>; [INV]
+
+  <bb 22> :
+<L22>:
+
+  <bb 23> :
+  i = 0;
+  goto <bb 34>; [INV]
+
+  <bb 24> :
+  tmp = arg & 15;
+  _34 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _35 = _34 & 1;
+  if (_35 != 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 25> :
+  if (tmp <= 9)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  iftmp.19 = tmp + 48;
+  goto <bb 28>; [INV]
+
+  <bb 27> :
+  iftmp.19 = tmp + 55;
+
+  <bb 28> :
+  iftmp.18 = iftmp.19;
+  goto <bb 33>; [INV]
+
+  <bb 29> :
+  if (tmp <= 9)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 30> :
+  iftmp.20 = tmp + 48;
+  goto <bb 32>; [INV]
+
+  <bb 31> :
+  iftmp.20 = tmp + 87;
+
+  <bb 32> :
+  iftmp.18 = iftmp.20;
+
+  <bb 33> :
+  _36 = pp->printfBPtr;
+  _37 = _36;
+  _38 = _37 + 1;
+  pp->printfBPtr = _38;
+  _39 = (int) _37;
+  pp->printfBuff[_39] = iftmp.18;
+  arg = arg >> 4;
+  i.21_40 = i;
+  i.22_41 = (unsigned short) i.21_40;
+  _42 = i.22_41 + 1;
+  i = (FMSTR_INDEX) _42;
+
+  <bb 34> :
+  if (arg != 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 35> :
+  if (i <= 1)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 36> :
+
+  <bb 37> :
+  D.6144 = FMSTR_PipeIToAFinalize (hpipe, pctx);
+
+  <bb 38> :
+<L40>:
+  return D.6144;
+
+}
+
+
+FMSTR_PipeIToAFinalize (void * hpipe, struct FMSTR_PIPE_PRINTF_CTX * pctx)
+{
+  char sgn;
+  char z;
+  FMSTR_SIZE8 bhalf;
+  FMSTR_SIZE8 i;
+  FMSTR_SIZE8 minlen;
+  FMSTR_SIZE8 bptr;
+  struct FMSTR_PIPE * pp;
+  char iftmp.6;
+  FMSTR_BOOL D.6122;
+
+  <bb 2> :
+  pp = hpipe;
+  bptr = pp->printfBPtr;
+  pp->printfBPtr = 0;
+  if (bptr == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  pp->printfBuff[0] = 48;
+  bptr = 1;
+
+  <bb 4> :
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  bptr.4_1 = bptr;
+  bptr = bptr.4_1 + 255;
+
+  <bb 6> :
+  if (bptr > 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _2 = (int) bptr;
+  _3 = _2 + -1;
+  _4 = pp->printfBuff[_3];
+  if (_4 == 48)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _5 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _6 = _5 & 8;
+  if (_6 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  sgn = 45;
+  pctx->flags.flg.showsign = 1;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  sgn = 43;
+
+  <bb 11> :
+  _7 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _8 = _7 & 16;
+  if (_8 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  pctx->flags.flg.showsign = 0;
+
+  <bb 13> :
+  minlen = bptr;
+  _9 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _10 = _9 & 4;
+  if (_10 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  minlen.5_11 = minlen;
+  minlen = minlen.5_11 + 1;
+
+  <bb 15> :
+  if (minlen > 48)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  D.6122 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 41>; [INV]
+
+  <bb 17> :
+  _12 = pctx->alen;
+  if (_12 > 48)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  pctx->alen = 48;
+
+  <bb 19> :
+  _13 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _14 = _13 & 2;
+  if (_14 != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 20> :
+  z = 48;
+  _15 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _16 = _15 & 8;
+  if (_16 != 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 21> :
+  _17 = pctx->radix;
+  _18 = (int) _17;
+  switch (_18) <default: <L25> [INV], case 0: <L19> [INV], case 1: <L20> [INV], case 3: <L21> [INV]>
+
+  <bb 22> :
+<L19>:
+  z = 49;
+  goto <bb 28>; [INV]
+
+  <bb 23> :
+<L20>:
+  z = 55;
+  goto <bb 28>; [INV]
+
+  <bb 24> :
+<L21>:
+  _19 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _20 = _19 & 1;
+  if (_20 != 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  iftmp.6 = 70;
+  goto <bb 27>; [INV]
+
+  <bb 26> :
+  iftmp.6 = 102;
+
+  <bb 27> :
+  z = iftmp.6;
+
+  <bb 28> :
+<L25>:
+  _21 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _22 = _21 & 4;
+  if (_22 != 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 29> :
+  _23 = pctx->alen;
+  _24 = _23;
+  _25 = _24 + 255;
+  pctx->alen = _25;
+  goto <bb 32>; [INV]
+
+  <bb 30> :
+  z = 32;
+  _26 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _27 = _26 & 4;
+  if (_27 != 0)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  bptr.7_28 = bptr;
+  bptr = bptr.7_28 + 1;
+  _29 = (int) bptr.7_28;
+  pp->printfBuff[_29] = sgn;
+  pctx->flags.flg.showsign = 0;
+
+  <bb 32> :
+  goto <bb 34>; [INV]
+
+  <bb 33> :
+  bptr.8_30 = bptr;
+  bptr = bptr.8_30 + 1;
+  _31 = (int) bptr.8_30;
+  pp->printfBuff[_31] = z;
+
+  <bb 34> :
+  _32 = pctx->alen;
+  if (bptr < _32)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 35> :
+  _33 = BIT_FIELD_REF <pctx->flags.flg, 8, 0>;
+  _34 = _33 & 4;
+  if (_34 != 0)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 36> :
+  bptr.9_35 = bptr;
+  bptr = bptr.9_35 + 1;
+  _36 = (int) bptr.9_35;
+  pp->printfBuff[_36] = sgn;
+
+  <bb 37> :
+  pp->printfBPtr = bptr;
+  bhalf = bptr / 2;
+  bptr.10_37 = bptr;
+  bptr = bptr.10_37 + 255;
+  i = 0;
+  goto <bb 39>; [INV]
+
+  <bb 38> :
+  _38 = (int) i;
+  z = pp->printfBuff[_38];
+  _39 = (int) bptr;
+  _40 = (int) i;
+  _41 = _39 - _40;
+  _42 = (int) i;
+  _43 = pp->printfBuff[_41];
+  pp->printfBuff[_42] = _43;
+  _44 = (int) bptr;
+  _45 = (int) i;
+  _46 = _44 - _45;
+  pp->printfBuff[_46] = z;
+  i.11_47 = i;
+  i = i.11_47 + 1;
+
+  <bb 39> :
+  if (i < bhalf)
+    goto <bb 38>; [INV]
+  else
+    goto <bb 40>; [INV]
+
+  <bb 40> :
+  D.6122 = 1;
+
+  <bb 41> :
+<L42>:
+  return D.6122;
+
+}
+
+
+FMSTR_PipePrintfPutc (void * hpipe, char c)
+{
+  struct FMSTR_PIPE * pp;
+  FMSTR_BOOL D.6108;
+
+  <bb 2> :
+  pp = hpipe;
+  _1 = pp->printfBPtr;
+  if (_1 > 47)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _2 = FMSTR_PipePrintfFlush (hpipe);
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  D.6108 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  _3 = pp->printfBPtr;
+  _4 = _3;
+  _5 = _4 + 1;
+  pp->printfBPtr = _5;
+  _6 = (int) _4;
+  pp->printfBuff[_6] = c;
+  D.6108 = 1;
+
+  <bb 6> :
+<L4>:
+  return D.6108;
+
+}
+
+
+FMSTR_PipePrintfFlush (void * hpipe)
+{
+  FMSTR_SIZE8 sz;
+  FMSTR_BOOL ok;
+  struct FMSTR_PIPE * pp;
+  FMSTR_BOOL D.6102;
+
+  <bb 2> :
+  pp = hpipe;
+  ok = 1;
+  _1 = pp->printfBPtr;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  _2 = &pp->printfBuff;
+  _3 = pp->printfBPtr;
+  _4 = (short unsigned int) _3;
+  _5 = FMSTR_PipeWrite (hpipe, _2, _4, 0);
+  sz = (FMSTR_SIZE8) _5;
+  _6 = pp->printfBPtr;
+  if (sz != _6)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  ok = 0;
+
+  <bb 5> :
+  pp->printfBPtr = 0;
+
+  <bb 6> :
+  D.6102 = ok;
+
+  <bb 7> :
+<L4>:
+  return D.6102;
+
+}
+
+
+FMSTR_PipePuts (void * hpipe, const char * pszStr)
+{
+  FMSTR_PIPE_SIZE slen;
+  FMSTR_PIPE_SIZE free;
+  struct FMSTR_PIPE_BUFF * pbuff;
+  struct FMSTR_PIPE * pp;
+  FMSTR_BOOL D.6096;
+
+  <bb 2> :
+  pp = hpipe;
+  pbuff = &pp->tx;
+  free = FMSTR_PipeGetBytesFree (pbuff);
+  slen = FMSTR_StrLen (pszStr);
+  if (slen > free)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  D.6096 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  FMSTR_PipeWrite (hpipe, pszStr, slen, 0);
+  D.6096 = 1;
+
+  <bb 5> :
+<L2>:
+  return D.6096;
+
+}
+
+
+FMSTR_PipeWrite (void * hpipe, unsigned char * addr, FMSTR_PIPE_SIZE length, FMSTR_PIPE_SIZE granularity)
+{
+  FMSTR_PIPE_SIZE s;
+  FMSTR_PIPE_SIZE total;
+  struct FMSTR_PIPE_BUFF * pbuff;
+  struct FMSTR_PIPE * pp;
+  FMSTR_PIPE_SIZE D.6092;
+
+  <bb 2> :
+  pp = hpipe;
+  pbuff = &pp->tx;
+  total = FMSTR_PipeGetBytesFree (pbuff);
+  if (addr != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 3> :
+  if (length > total)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  length = total;
+
+  <bb 5> :
+  if (granularity > 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  length = length / granularity;
+  length = length * granularity;
+
+  <bb 7> :
+  total = length;
+  if (length != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 8> :
+  _1 = pbuff->nSize;
+  _2 = pbuff->nWP;
+  s = _1 - _2;
+  if (s > length)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  s = length;
+
+  <bb 10> :
+  _3 = pbuff->pBuff;
+  _4 = pbuff->nWP;
+  _5 = (sizetype) _4;
+  _6 = _3 + _5;
+  _7 = (unsigned char) s;
+  FMSTR_CopyMemory (_6, addr, _7);
+  _8 = (sizetype) s;
+  addr = addr + _8;
+  _9 = pbuff->nWP;
+  _10 = s + _9;
+  pbuff->nWP = _10;
+  _11 = pbuff->nWP;
+  _12 = pbuff->nSize;
+  if (_11 >= _12)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  pbuff->nWP = 0;
+
+  <bb 12> :
+  _13 = (unsigned char) s;
+  _14 = (short unsigned int) _13;
+  length = length - _14;
+  if (length != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  _15 = pbuff->pBuff;
+  _16 = pbuff->nWP;
+  _17 = (sizetype) _16;
+  _18 = _15 + _17;
+  _19 = (unsigned char) length;
+  FMSTR_CopyMemory (_18, addr, _19);
+  _20 = pbuff->nWP;
+  _21 = length + _20;
+  pbuff->nWP = _21;
+
+  <bb 14> :
+  _22 = pbuff->nWP;
+  _23 = pbuff->nRP;
+  if (_22 == _23)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  pbuff->flags.flg.bIsFull = 1;
+
+  <bb 16> :
+  D.6092 = total;
+
+  <bb 17> :
+<L16>:
+  return D.6092;
+
+}
+
+
+FMSTR_PipeClose (void * hpipe)
+{
+  struct FMSTR_PIPE * pp;
+
+  <bb 2> :
+  pp = hpipe;
+  if (pp != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  pp->nPort = 0;
+
+  <bb 4> :
+  return;
+
+}
+
+
+FMSTR_PipeOpen (FMSTR_PIPE_PORT nPort, void (*FMSTR_PPIPEFUNC) (void *) pCallback, unsigned char * pRxBuff, FMSTR_PIPE_SIZE nRxSize, unsigned char * pTxBuff, FMSTR_PIPE_SIZE nTxSize)
+{
+  FMSTR_INDEX i;
+  FMSTR_INDEX ifree;
+  struct FMSTR_PIPE * pp;
+  void * D.6072;
+
+  <bb 2> :
+  pp = &pcm_pipes[0];
+  ifree = -1;
+  i = 0;
+  goto <bb 9>; [INV]
+
+  <bb 3> :
+  _1 = pp->nPort;
+  if (_1 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  if (ifree < 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  ifree = i;
+
+  <bb 6> :
+  _2 = pp->nPort;
+  if (nPort == _2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  i.2_3 = i;
+  i.3_4 = (unsigned short) i.2_3;
+  _5 = i.3_4 + 1;
+  i = (FMSTR_INDEX) _5;
+  pp = pp + 96;
+
+  <bb 9> :
+  if (i <= 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  if (i > 2)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 11> :
+  if (ifree >= 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  _6 = (int) ifree;
+  pp = &pcm_pipes[_6];
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  D.6072 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  pp->nPort = 0;
+  pp->rx.pBuff = pRxBuff;
+  pp->rx.nSize = nRxSize;
+  pp->rx.nWP = 0;
+  pp->rx.nRP = 0;
+  pp->rx.flags.all = 0;
+  pp->tx.pBuff = pTxBuff;
+  pp->tx.nSize = nTxSize;
+  pp->tx.nWP = 0;
+  pp->tx.nRP = 0;
+  pp->tx.flags.all = 0;
+  pp->flags.all = 0;
+  pp->pCallback = pCallback;
+  pp->printfBPtr = 0;
+  pp->nPort = nPort;
+  D.6072 = pp;
+
+  <bb 15> :
+<L14>:
+  return D.6072;
+
+}
+
+
+FMSTR_InitPipes ()
+{
+  FMSTR_INDEX i;
+
+  <bb 2> :
+  i = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (int) i;
+  pcm_pipes[_1].nPort = 0;
+  i.0_2 = i;
+  i.1_3 = (unsigned short) i.0_2;
+  _4 = i.1_3 + 1;
+  i = (FMSTR_INDEX) _4;
+
+  <bb 4> :
+  if (i <= 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
