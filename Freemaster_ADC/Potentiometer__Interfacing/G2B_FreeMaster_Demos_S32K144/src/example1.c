@@ -17,9 +17,25 @@
 #include "freemaster.h"
 #include "Pwm.h"
 #include "IntCtrl_Ip.h"
+
+#define channel0 0
+#define channel1 1
+#define channel2 2
+#define instance0 0
 extern void Adc_0_Isr(void);
+
 void FTM_0_CH_0_CH_1_ISR(void);
 void FTM_0_OVF_ISR(void);
+Pwm_OutputStateType pwm_signal;
+void pwm_callback(void)
+{
+
+	// returns the output state of PWM signal whether high or low
+	pwm_signal = Pwm_GetOutputState(channel0);
+
+	// returns the duty cycle of PWM signal
+	Pwm_GetChannelState(channel0);
+}
 /* User includes */
 
 /*!
@@ -47,23 +63,6 @@ void TestDelay(uint32 delay)
    }
    DelayTimer=0;
 }
-
-#define channel0 0
-#define channel1 1
-#define channel2 2
-#define instance0 0
-
-Pwm_OutputStateType pwm_signal = 0;
-void pwm_callback(void)
-{
-
-	// returns the output state of PWM signal whether high or low
-	pwm_signal = Pwm_GetOutputState(channel0);
-
-	// returns the duty cycle of PWM signal
-	Pwm_GetChannelState(channel0);
-}
-
 void IoHwAb_AdcNotification_0( void )
 {
 	Std_ReturnType StdReturn ;
@@ -120,7 +119,6 @@ int main(void)
 	    IntCtrl_Ip_InstallHandler(FTM0_Ch0_Ch1_IRQn, FTM_0_CH_0_CH_1_ISR, NULL_PTR);
 	    IntCtrl_Ip_EnableIrq(FTM0_Ch0_Ch1_IRQn);
 
-
 	    /* Install and enable interrupt handlers */
 	    IntCtrl_Ip_InstallHandler(FTM0_Ovf_Reload_IRQn, FTM_0_OVF_ISR, NULL_PTR);
 	    IntCtrl_Ip_EnableIrq(FTM0_Ovf_Reload_IRQn);
@@ -133,6 +131,7 @@ int main(void)
 		/*-------------------------------UART Configuration-----------------------*/
 
 			Uart_Init(NULL_PTR);
+
 
 		/*------------------------------------------------------------------------*/
 
@@ -152,12 +151,19 @@ int main(void)
         Adc_EnableGroupNotification(AdcGroup_0_WI_OS_PDB_B2B);
 
 
-	//    Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+
+	    Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+//
+//
+//	   	    //When we want to use the Interrupts, so that call back function can be hit on every time PWM signal edge changes
+	   	   Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+//
+//
+
+
+        TestDelay(2000000);
 
 	FMSTR_Init();
-
-    //When we want to use the Interrupts, so that call back function can be hit on every time PWM signal edge changes
-  // Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
 
 
     for(;;)
@@ -172,9 +178,12 @@ int main(void)
 
     	TestDelay(200000);
 
-    	   /*Duty cycle update*/
-    	    Pwm_SetDutyCycle(channel0, 10000);
-    	    TestDelay(700000);
+//        /*Duty cycle update*/
+//	    Pwm_SetDutyCycle(channel0, 10000);
+//	    TestDelay(700000);
+
+//	    Pwm_SetPeriodAndDuty(channel0,40000,6384);
+//	    TestDelay(700000);
 
 
         /* Process FreeMASTER application commands */

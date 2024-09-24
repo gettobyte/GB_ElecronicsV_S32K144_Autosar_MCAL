@@ -162,7 +162,7 @@ extern "C"{
 * @brief        Switch to indicate that Pwm_ForceOutputToZero API is supported
 * @note         In current implementation, this option is not supported
 */
-#define PWM_FORCE_OUTPUT_TO_ZERO_API            (STD_ON)
+#define PWM_FORCE_OUTPUT_TO_ZERO_API            (STD_OFF)
 
 /** @brief        Switch to indicate that Pwm_SetPhaseShift API is supported */
 #define PWM_SET_PHASE_SHIFT_API                 (STD_ON)
@@ -183,13 +183,13 @@ extern "C"{
 #define PWM_SET_PHASE_SHIFT_NO_UPDATE_API       (STD_OFF)
 
 /** @brief        Switch to indicate that Pwm_EnableTrigger API is supported */
-#define PWM_ENABLE_TRIGGER_API                  (STD_ON)
+#define PWM_ENABLE_TRIGGER_API                  (STD_OFF)
 
 /** @brief        Switch to indicate that Pwm_DisableTrigger API is supported */
-#define PWM_DISABLE_TRIGGER_API                 (STD_ON)
+#define PWM_DISABLE_TRIGGER_API                 (STD_OFF)
 
 /** @brief        Switch to indicate that Pwm_SwResetCounter API is supported */
-#define PWM_RESET_COUNTER_API                   (STD_ON)
+#define PWM_RESET_COUNTER_API                   (STD_OFF)
 
 /**
 * @brief        Switch to indicate that Pwm_SetChannelForceOut API is supported
@@ -198,10 +198,10 @@ extern "C"{
 #define PWM_SET_CHANNEL_FORCE_OUT_API           (STD_OFF)
 
 /* @brief Add/remove the service Pwm_SetChannelDeadTime() from the code.*/
-#define PWM_SET_CHANNEL_DEAD_TIME_API           (STD_ON)
+#define PWM_SET_CHANNEL_DEAD_TIME_API           (STD_OFF)
 
 /** @brief        Switch to enable the update of the duty cycle parameter at the end of the current period. */
-#define PWM_DUTYCYCLE_UPDATED_ENDPERIOD         (STD_ON)
+#define PWM_DUTYCYCLE_UPDATED_ENDPERIOD         (STD_OFF)
 
 /** @brief        Switch to enable the update of the period parameter at the end of the current period */
 #define PWM_DUTY_PERIOD_UPDATED_ENDPERIOD       (STD_ON)

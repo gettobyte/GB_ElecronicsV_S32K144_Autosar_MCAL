@@ -144,7 +144,7 @@ const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg0 =
 const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0 =
 {
     /* clkSrc */                FTM_PWM_CLOCK_SOURCE_FIXEDCLK,
-    /* clkPs */                 FTM_PWM_CLOCK_DIV_1,
+    /* clkPs */                 FTM_PWM_CLOCK_DIV_128,
     /* AlternateclkPs */        FTM_PWM_CLOCK_DIV_1,
     /* cntMode */               FTM_PWM_EDGE_ALIGNED,
     /* overflowIrqEn */         (boolean)TRUE,
@@ -189,7 +189,7 @@ const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0 =
 const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0 =
 {
     /* channelId */             0U,
-    /* channelMode */           FTM_PWM_MODE_EDGE_ALIGNED_HIGH,
+    /* channelMode */           FTM_PWM_MODE_EDGE_ALIGNED_LOW,
     /* chIrqEn */               (boolean)TRUE,
     /* channelCb */             {
         /* functionCallback */      &Pwm_Notification,

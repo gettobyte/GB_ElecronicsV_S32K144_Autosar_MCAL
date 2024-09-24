@@ -88,7 +88,6 @@ extern const IntCtrl_Ip_CtrlConfigType intCtrlConfig;
 extern const IntCtrl_Ip_GlobalRouteConfigType intRouteConfig;
             extern void undefined_handler(void);
                         extern void Adc_0_Isr(void);
-                        extern void FTM_0_CH_0_CH_1_ISR(void);
             
 #define PLATFORM_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Platform_MemMap.h"
