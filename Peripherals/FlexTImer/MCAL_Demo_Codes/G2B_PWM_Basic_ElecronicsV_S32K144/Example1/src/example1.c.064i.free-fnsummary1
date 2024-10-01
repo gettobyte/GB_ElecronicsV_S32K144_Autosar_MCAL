@@ -1,0 +1,143 @@
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+  int D.7138;
+  <unnamed type> _1;
+  unsigned char _2;
+  unsigned char _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  short unsigned int _8;
+
+  <bb 2> :
+  clockStatus_14 = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus_52 = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+
+  <bb 4> :
+  # clockStatus_9 = PHI <clockStatus_14(2), clockStatus_52(3)>
+  if (clockStatus_9 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  IntCtrl_Ip_InstallHandler (99, FTM_0_CH_0_CH_1_ISR, 0B);
+  IntCtrl_Ip_EnableIrq (99);
+  IntCtrl_Ip_InstallHandler (104, FTM_0_OVF_ISR, 0B);
+  IntCtrl_Ip_EnableIrq (104);
+  _2 = IntCtrl_Ip_GetPriority (99);
+  IntrPriority = _2;
+  _3 = IntCtrl_Ip_GetPriority (104);
+  IntrPriority = _3;
+  Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
+  Pwm_EnableNotification (0, 2);
+  _4 = pwm_duty_cycle (56);
+  Pwm_SetDutyCycle (0, _4);
+  TestDelay (700000);
+  _5 = pwm_duty_cycle (73);
+  Pwm_SetDutyCycle (0, _5);
+  TestDelay (700000);
+  _6 = pwm_duty_cycle (56);
+  zyz = _6;
+  Pwm_SetDutyCycle (1, 19000);
+  TestDelay (700000);
+  _7 = pwm_duty_cycle (50);
+  Pwm_SetPeriodAndDuty (0, 40000, _7);
+  TestDelay (700000);
+  Pwm_SetPeriodAndDuty (1, 23000, 21384);
+  TestDelay (700000);
+  Pwm_SetOutputToIdle (0);
+  TestDelay (700000);
+  Pwm_SetOutputToIdle (1);
+  TestDelay (700000);
+  _8 = pwm_duty_cycle (66);
+  Pwm_SetPeriodAndDuty_NoUpdate (0, 30000, _8);
+  Pwm_SetPeriodAndDuty_NoUpdate (1, 30000, 6384);
+  Pwm_SyncUpdate (0);
+
+  <bb 8> :
+  goto <bb 8>; [INV]
+
+}
+
+
+pwm_duty_cycle (uint8_t duty_cycle_percent)
+{
+  uint16_t period;
+  uint16_t D.7136;
+  int _1;
+  int _2;
+  int _3;
+  uint16_t _6;
+
+  <bb 2> :
+  _1 = (int) duty_cycle_percent_4(D);
+  _2 = _1 * 32768;
+  _3 = _2 / 100;
+  period_5 = (uint16_t) _3;
+  _6 = period_5;
+
+  <bb 3> :
+<L0>:
+  return _6;
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+  long unsigned int DelayTimer.0_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.1_3;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 ={v} DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  DelayTimer.1_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer ={v} 0;
+  return;
+
+}
+
+
+pwm_callback ()
+{
+  <unnamed type> _1;
+
+  <bb 2> :
+  _1 = Pwm_GetOutputState (0);
+  pwm_signal_state = _1;
+  return;
+
+}
+
+

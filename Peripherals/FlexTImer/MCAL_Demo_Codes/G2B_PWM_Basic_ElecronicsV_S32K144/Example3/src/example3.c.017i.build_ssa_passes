@@ -1,0 +1,91 @@
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+  int D.7130;
+
+  <bb 2> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+
+  <bb 4> :
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  IntCtrl_Ip_InstallHandler (100, FTM_0_CH_2_CH_3_ISR, 0B);
+  IntCtrl_Ip_EnableIrq (100);
+  IntCtrl_Ip_InstallHandler (104, FTM_0_OVF_ISR, 0B);
+  IntCtrl_Ip_EnableIrq (104);
+  Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
+  Pwm_EnableNotification (2, 2);
+  Pwm_SetDutyCycle (2, 0);
+  TestDelay (700000);
+  Pwm_SetDutyCycle_NoUpdate (2, 13000);
+  Pwm_SetDutyCycle (2, 19000);
+  TestDelay (700000);
+  Pwm_SetOutputToIdle (2);
+  TestDelay (700000);
+  Pwm_SetDutyCycle (2, 19000);
+  TestDelay (700000);
+  Pwm_SetPeriodAndDuty (2, 33000, 21384);
+  TestDelay (700000);
+
+  <bb 8> :
+  goto <bb 8>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer = 0;
+  return;
+
+}
+
+
+pwm_callback ()
+{
+  <bb 2> :
+  _1 = Pwm_GetOutputState (2);
+  pwm_signal_state = _1;
+  Pwm_GetChannelState (2);
+  return;
+
+}
+
+

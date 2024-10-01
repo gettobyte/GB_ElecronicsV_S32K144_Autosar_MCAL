@@ -30,7 +30,7 @@ typedef enum
 
 #define ST7789_XStart 0  // for 1.44 and mini
 #define ST7789_XEnd 239
-#define ST7789_YStart 0  // for 1.44 and mini
+#define ST7789_YStart 80  // for 1.44 and mini
 #define ST7789_YEnd 319
 
 

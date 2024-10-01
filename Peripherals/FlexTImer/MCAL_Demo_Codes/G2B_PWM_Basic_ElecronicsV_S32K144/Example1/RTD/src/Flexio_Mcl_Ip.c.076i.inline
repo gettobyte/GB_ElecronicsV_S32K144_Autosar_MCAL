@@ -1,0 +1,144 @@
+IPA summary for Flexio_Mcl_Ip_DeinitDevice/3 is missing.
+IPA summary for Flexio_Mcl_Ip_InitDevice/2 is missing.
+
+Flattening functions:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :        4 calls, 4.000000 freq, 0 count
+IPA summary for Flexio_Mcl_Ip_DeinitDevice/3 is missing.
+IPA summary for Flexio_Mcl_Ip_InitDevice/2 is missing.
+Symbol table:
+
+Flexio_Mcl_Ip_SetDebugEnable/6 (Flexio_Mcl_Ip_SetDebugEnable) @067558c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Flexio_Mcl_Ip_InitDevice/2 
+  Calls: 
+Flexio_Mcl_Ip_SetEnable/5 (Flexio_Mcl_Ip_SetEnable) @067557e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Flexio_Mcl_Ip_InitDevice/2 
+  Calls: 
+Flexio_Mcl_Ip_Init/4 (Flexio_Mcl_Ip_Init) @06755700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Flexio_Mcl_Ip_DeinitDevice/3 Flexio_Mcl_Ip_InitDevice/2 
+  Calls: 
+Flexio_Mcl_Ip_DeinitDevice/3 (Flexio_Mcl_Ip_DeinitDevice) @067552a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Flexio_Ip_baIpIsInitialized/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Flexio_Mcl_Ip_Init/4 
+Flexio_Mcl_Ip_InitDevice/2 (Flexio_Mcl_Ip_InitDevice) @06755000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Flexio_Ip_baIpIsInitialized/1 (read)Flexio_Ip_baIpIsInitialized/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Flexio_Mcl_Ip_SetDebugEnable/6 Flexio_Mcl_Ip_SetEnable/5 Flexio_Mcl_Ip_Init/4 
+Flexio_Ip_baIpIsInitialized/1 (Flexio_Ip_baIpIsInitialized) @067954c8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: Flexio_Mcl_Ip_InitDevice/2 (write)Flexio_Mcl_Ip_InitDevice/2 (read)Flexio_Mcl_Ip_DeinitDevice/3 (write)
+  Availability: available
+  Varpool flags:
+Flexio_Ip_paxBase/0 (Flexio_Ip_paxBase) @06795480
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+
+;; Function Flexio_Mcl_Ip_InitDevice (Flexio_Mcl_Ip_InitDevice, funcdef_no=0, decl_uid=5738, cgraph_uid=1, symbol_order=2)
+
+Flexio_Mcl_Ip_InitDevice (const struct Flexio_Ip_InstanceConfigType * const pFlexioInitType)
+{
+  boolean LocDebugEnable;
+  uint8 LocInstance;
+  Flexio_Ip_CommonStatusType Status;
+  struct FLEXIO_Type * BaseAddr;
+  Flexio_Ip_CommonStatusType D.5758;
+  int _1;
+  int _2;
+  _Bool _3;
+  int _4;
+  Flexio_Ip_CommonStatusType _17;
+
+  <bb 2> :
+  Status_6 = 0;
+  LocInstance_9 = pFlexioInitType_8(D)->instance;
+  LocDebugEnable_10 = pFlexioInitType_8(D)->debugEnable;
+  _1 = (int) LocInstance_9;
+  BaseAddr_11 = 1074110464B;
+  _2 = (int) LocInstance_9;
+  _3 = Flexio_Ip_baIpIsInitialized[_2];
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Status_12 = 1;
+
+  <bb 4> :
+  # Status_5 = PHI <Status_6(2), Status_12(3)>
+  Flexio_Mcl_Ip_Init (BaseAddr_11);
+  Flexio_Mcl_Ip_SetEnable (BaseAddr_11, 1);
+  Flexio_Mcl_Ip_SetDebugEnable (BaseAddr_11, LocDebugEnable_10);
+  _4 = (int) LocInstance_9;
+  Flexio_Ip_baIpIsInitialized[_4] = 1;
+  _17 = Status_5;
+
+  <bb 5> :
+<L2>:
+  return _17;
+
+}
+
+
+
+;; Function Flexio_Mcl_Ip_DeinitDevice (Flexio_Mcl_Ip_DeinitDevice, funcdef_no=1, decl_uid=5736, cgraph_uid=2, symbol_order=3)
+
+Flexio_Mcl_Ip_DeinitDevice (uint32 instance)
+{
+  struct FLEXIO_Type * BaseAddr;
+
+  <bb 2> :
+  BaseAddr_1 = 1074110464B;
+  Flexio_Mcl_Ip_Init (BaseAddr_1);
+  Flexio_Ip_baIpIsInitialized[instance_4(D)] = 0;
+  return;
+
+}
+
+
