@@ -697,8 +697,8 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 #define GB_ElecronicsV3_Port_RGB_Port_Container_Red_Port_PIN 0
 #define GB_ElecronicsV3_Port_RGB_Port_Container_Green_Port_Pin 1
 #define GB_ElecronicsV3_Port_RGB_Port_Container_Blue_Port_Pin 2
-#define GB_ElecronicsV3_Port_RGB_Port_Container_PortPin_3 3
-#define GB_ElecronicsV3_Port_RGB_Port_Container_PortPin_4 4
+#define GB_ElecronicsV3_Port_switch_container_SW1 3
+#define GB_ElecronicsV3_Port_switch_container_SW2 4
 
 /**
 * @brief Number of available pad modes options

@@ -1,29 +1,7 @@
-/*==================================================================================================
-*   Project              : RTD AUTOSAR 4.4
-*   Platform             : CORTEXM
-*   Peripheral           : S32K14X
-*   Dependencies         : none
-*
-*   Autosar Version      : 4.4.0
-*   Autosar Revision     : ASR_REL_4_4_REV_0000
-*   Autosar Conf.Variant :
-*   SW Version           : 1.0.0
-*   Build Version        : S32K1_RTD_1_0_0_D2108_ASR_REL_4_4_REV_0000_20210810
-*
-*   (c) Copyright 2020-2021 NXP Semiconductors
-*   All Rights Reserved.
-*
-*   NXP Confidential. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms. By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms. If you do not agree to be
-*   bound by the applicable license terms, then you may not retain, install,
-*   activate or otherwise use the software.
-==================================================================================================*/
 
 /**
-*   @file main.c
+*   @file example2.c
+*   Functional Demo code demonstarting how to use GPIO input for reading the state of pin using S32K144 and autosar mcal modules
 *
 *   @addtogroup main_module main module documentation
 *   @{
@@ -38,8 +16,8 @@
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Mcu.h"
 #include "Port.h"
+#include "Clock_Ip.h"
 #include "Dio.h"
 
 
@@ -61,32 +39,22 @@ void TestDelay(uint32 delay)
 volatile int exit_code = 0;
 /* User includes */
 Dio_LevelType Switch1_Level, Switch2_Level;
-/*!
-  \brief The main function for the project.
-  \details The startup initialization sequence is the following:
- * - startup asm routine
- * - main()
-*/
+
 int main(void)
 {
-	  /* Initialize the Mcu driver */
-	#if (MCU_PRECOMPILE_SUPPORT == STD_ON)
-	    Mcu_Init(NULL_PTR);
-	#elif (MCU_PRECOMPILE_SUPPORT == STD_OFF)
-	    Mcu_Init(&Mcu_Config_BOARD_InitPeripherals);
-	#endif /* (MCU_PRECOMPILE_SUPPORT == STD_ON) */
+	Clock_Ip_StatusType clockStatus;
 
-	    /* Initialize the clock tree and apply PLL as system clock */
-	    Mcu_InitClock(McuClockSettingConfig_0);
-	#if (MCU_NO_PLL == STD_OFF)
-	    while ( MCU_PLL_LOCKED != Mcu_GetPllStatus() )
-	    {
-	        /* Busy wait until the System PLL is locked */
-	    }
+	clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB[0]);
+	while (clockStatus != CLOCK_IP_SUCCESS)
+	{
+		clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB[0]);
+	}
 
-	    Mcu_DistributePllClock();
-	#endif
-	    Mcu_SetMode(McuModeSettingConf_0);
+#if defined (FEATURE_CLOCK_IP_HAS_SPLL_CLK)
+	/* Busy wait until the System PLL is locked */
+	while (CLOCK_IP_PLL_LOCKED != Clock_Ip_GetPllStatus());
+	Clock_Ip_DistributePll();
+#endif
 
 	    /* Initialize all pins using the Port driver */
 	    Port_Init(NULL_PTR);

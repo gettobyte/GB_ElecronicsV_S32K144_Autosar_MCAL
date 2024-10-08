@@ -68,7 +68,7 @@ extern "C"{
 *
 * @implements     GpioDioErrorDetect_define
 */
-#define GPIO_DIO_IP_DEV_ERROR_DETECT                         (STD_OFF)
+#define GPIO_DIO_IP_DEV_ERROR_DETECT                         (STD_ON)
 
 /*==================================================================================================
 *                                             ENUMS

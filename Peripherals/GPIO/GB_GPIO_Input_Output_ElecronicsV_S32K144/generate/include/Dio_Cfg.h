@@ -77,7 +77,7 @@ extern "C" {
 *
 * @implements     DIO_DEV_ERROR_DETECT_define
 */
-#define DIO_DEV_ERROR_DETECT           (STD_OFF)
+#define DIO_DEV_ERROR_DETECT           (STD_ON)
 
 /**
 * @brief          Function @p Dio_GetVersionInfo() enable switch.
@@ -89,7 +89,7 @@ extern "C" {
 /**
 * @brief          Function @p Dio_FlipChannel() enable switch.
 */
-#define DIO_FLIP_CHANNEL_API           (STD_OFF)
+#define DIO_FLIP_CHANNEL_API           (STD_ON)
 
 /**
 * @brief          Function @p Dio_MaskedWritePort() enable switch.

@@ -226,7 +226,7 @@ extern "C" {
 * @brief This constant used for other modules to check if MCU is present in the project.  
 * @violates @ref modules_h_REF_1 MISRA 2012 Advisory Rule 2.5, unused macro. 
 */
-#define USE_MCU_MODULE              (STD_ON)
+#define USE_MCU_MODULE              (STD_OFF)
 
 /** 
 * @brief This constant used for other modules to check if OCU is present in the project.  
