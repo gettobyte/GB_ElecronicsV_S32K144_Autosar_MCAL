@@ -9,7 +9,8 @@
 
 
 /* User includes */
-#define test_command "AT+RST\r\n"
+#define reset_command "AT+RST\r\n"
+#define wifi_mode_command ""
 #define RX_BUFFER_SIZE 512
 #define TIMEOUT 5000
 #define LPUART0_CHANNEL_INDEX 0
@@ -65,7 +66,7 @@ int main(void)
 	sendATcommand();
 	receiveResponse();
 
-	testDelay(88000000);
+	testDelay(8000000);
 
 	echoCallback();
     for(;;)
