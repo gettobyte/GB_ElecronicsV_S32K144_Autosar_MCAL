@@ -3,27 +3,8 @@
 #include "Clock_Ip.h"
 #include "Port.h"
 #include "Pwm.h"
+#include "SG90_Servo.h"
 
-/*Delay function*/
-void TestDelay(uint32 delay);
-void TestDelay(uint32 delay)
-{
-   static volatile uint32 DelayTimer = 0;
-   while(DelayTimer<delay)
-   {
-       DelayTimer++;
-   }
-   DelayTimer=0;
-}
-
-uint16_t pwm_duty_cycle(uint8_t duty_cycle_percent)
-{
-
-	uint16_t duty_cycle = ((32768 * duty_cycle_percent)/100);
-
-	return (duty_cycle);
-
-}
 
 int main(void)
 {
