@@ -158,7 +158,7 @@ const Pwm_ChannelConfigType Pwm_Channels_BOARD_InitPeripherals_PB[PWM_BOARD_Init
         /** @brief  Channel Id */
         (Pwm_ChannelType)1U,
         /** @brief  Channel class */
-        PWM_FIXED_PERIOD,
+        PWM_VARIABLE_PERIOD,
         /** @brief  Ip channel configuration */
         {
             /** @brief  Hardware Channel Type */

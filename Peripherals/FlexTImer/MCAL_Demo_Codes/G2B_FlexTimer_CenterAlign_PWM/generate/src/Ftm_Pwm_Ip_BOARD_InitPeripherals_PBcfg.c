@@ -142,7 +142,7 @@ const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg0 =
 const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0 =
 {
     /* ClkSrc */                FTM_PWM_IP_CLOCK_SOURCE_FIXEDCLK,
-    /* ClkPs */                 FTM_PWM_IP_CLOCK_DIV_1,
+    /* ClkPs */                 FTM_PWM_IP_CLOCK_DIV_4,
     /* AlternateclkPs */        FTM_PWM_IP_CLOCK_DIV_1,
     /* CntMode */               FTM_PWM_IP_EDGE_ALIGNED,
     /* OverflowIrqEn */         (boolean)FALSE,
@@ -255,7 +255,7 @@ const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg1 =
 /* Ftm instance 1 initialization configuration */
 const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg1 =
 {
-    /* ClkSrc */                FTM_PWM_IP_CLOCK_SOURCE_SYSTEMCLK,
+    /* ClkSrc */                FTM_PWM_IP_CLOCK_SOURCE_FIXEDCLK,
     /* ClkPs */                 FTM_PWM_IP_CLOCK_DIV_1,
     /* AlternateclkPs */        FTM_PWM_IP_CLOCK_DIV_1,
     /* CntMode */               FTM_PWM_IP_CENTER_ALIGNED,
@@ -275,7 +275,7 @@ const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg1 =
     /* WriteProtection */       (boolean)FALSE,
     /* InitTriggerEn */         (boolean)FALSE,
     /* InitTrigMode */          FTM_PWM_IP_INIT_TRIGG_RELOAD_POINT,
-    /* PwmPeriod */             25000U,
+    /* PwmPeriod */             5U,
 #if (defined(FTM_PWM_IP_HAS_DITHERING) && (FTM_PWM_IP_HAS_DITHERING == STD_ON))
     /* PwmPeriodDither */       0U,
 #endif
@@ -312,7 +312,7 @@ const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I1_Ch0 =
     /* SwControlVal */          (boolean)FALSE,
     /* ExtTrigEn */             (boolean)FALSE,
     /* ChMatchLoadEn */         (boolean)FALSE,
-    /* DutyCycle */             12500U,
+    /* DutyCycle */             2U,
 #if (defined(FTM_PWM_IP_HAS_DITHERING) && (FTM_PWM_IP_HAS_DITHERING == STD_ON))
     /* DutyCycleDither */       0U,
 #endif

@@ -1179,7 +1179,7 @@
                            <setting name="PwmEnableUserModeSupport" value="false"/>
                            <array name="PwmLowPowerStatesSupport"/>
                            <array name="PwmPowerStateAsynchTransitionMode"/>
-                           <setting name="PwmEnableDualClockMode" value="false"/>
+                           <setting name="PwmEnableDualClockMode" value="true"/>
                            <setting name="PwmEnableExternalTrigger" value="false"/>
                            <setting name="PwmEnablePhaseShift" value="false"/>
                            <setting name="PwmEnableMaskOutputs" value="false"/>
@@ -1214,9 +1214,11 @@
                                  <setting name="Name" value="PwmChannel_1"/>
                                  <setting name="PwmChannelId" value="1"/>
                                  <setting name="PwmHwChannel" value="/Pwm/Pwm/PwmChannelConfigSet/Ftm_Instance_1/PwmFtmCh_0"/>
-                                 <array name="PwmChannelClass"/>
+                                 <array name="PwmChannelClass">
+                                    <setting name="0" value="PWM_VARIABLE_PERIOD"/>
+                                 </array>
                                  <setting name="PwmPeriodInTicks" value="true"/>
-                                 <setting name="PwmPeriodDefault" value="25000"/>
+                                 <setting name="PwmPeriodDefault" value="5"/>
                                  <setting name="PwmDutycycleDefault" value="16384"/>
                                  <setting name="PwmPolarity" value="PWM_HIGH"/>
                                  <setting name="PwmIdleState" value="PWM_HIGH"/>
@@ -1233,7 +1235,7 @@
                                  <struct name="PwmFtmClkCfg">
                                     <setting name="Name" value="PwmFtmClkCfg0"/>
                                     <setting name="PwmFtmClockSource" value="Fixed_clock"/>
-                                    <setting name="PwmFtmClockPrescaler" value="Divide_by_1"/>
+                                    <setting name="PwmFtmClockPrescaler" value="Divide_by_4"/>
                                     <setting name="PwmFtmClockPrescalerAlternate" value="Divide_by_1"/>
                                  </struct>
                                  <struct name="PwmFtmGlobalChCfg">
@@ -1308,7 +1310,7 @@
                                  <setting name="PwmHwInstance" value="Ftm_1"/>
                                  <struct name="PwmFtmClkCfg">
                                     <setting name="Name" value="PwmFtmClkCfg1"/>
-                                    <setting name="PwmFtmClockSource" value="System_clock"/>
+                                    <setting name="PwmFtmClockSource" value="Fixed_clock"/>
                                     <setting name="PwmFtmClockPrescaler" value="Divide_by_1"/>
                                     <setting name="PwmFtmClockPrescalerAlternate" value="Divide_by_1"/>
                                  </struct>
