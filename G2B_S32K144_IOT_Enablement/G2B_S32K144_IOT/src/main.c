@@ -5,22 +5,18 @@
 #include "Platform.h"
 #include "Port.h"
 #include "Lpuart_Uart_Ip_Irq.h"
-#include "string.h"
-
+#include "ESP8266_ThingSpeak.h"
 
 /* User includes */
-#define reset_command "AT+RST\r\n"
-#define wifi_mode_command ""
 #define RX_BUFFER_SIZE 512
-#define TIMEOUT 5000
-#define LPUART0_CHANNEL_INDEX 0
 #define LPUART1_CHANNEL_INDEX 1
 
 
 extern void LPUART_UART_IP_0_IRQHandler(void);
 volatile int exit_code = 0;
-volatile uint8_t rxBuffer[RX_BUFFER_SIZE];
 
+// uint8_t array for storing the received data
+volatile uint8_t rxBuffer[RX_BUFFER_SIZE];
 // Create a char array to store the string (2 chars per byte + null terminator)
 char str[RX_BUFFER_SIZE * 2 + 1];
 /*=================Function Prototyping===================*/
@@ -34,7 +30,7 @@ char str[RX_BUFFER_SIZE * 2 + 1];
 	void echoCallback(void);
 	void byteToHex(uint8_t byte, char* hexStr);
 	void uint8ArrayToString(uint8_t* arr, int length, char* str);
-	void testDelay(int microseconds);
+	void uint8Array_Clear(void);
 
 /*========================================================*/
 
@@ -44,17 +40,6 @@ char str[RX_BUFFER_SIZE * 2 + 1];
 /*=================Function Prototyping===================*/
 /*========================================================*/
 
-/*=================Function Prototyping===================*/
-/*========================================================*/
-
-/*=================Function Prototyping===================*/
-/*========================================================*/
-
-/*=================Function Prototyping===================*/
-/*========================================================*/
-
-/*=================Function Prototyping===================*/
-/*========================================================*/
 int main(void)
 {
 
@@ -62,13 +47,22 @@ int main(void)
 	port_init();
 	irq_init();
 	uart_init();
-
-	sendATcommand();
 	receiveResponse();
+
+	AT_reset();
+
+	AT_set_WiFiMODE();
+
+	AT_connectWiFi();
+
+	AT_singleConnection();
+
+	AT_connect_ThingSpeak();
+
+	AT_sendData();
 
 	testDelay(8000000);
 
-	echoCallback();
     for(;;)
     {
 
@@ -81,7 +75,8 @@ int main(void)
 }
 
 
-void mcu_init(void){
+void mcu_init(void)
+{
 
 	/*-------------------Clock_Configuration via MCU Peripheral---------------*/
 
@@ -108,7 +103,8 @@ void mcu_init(void){
 
 }
 
-void port_init(void){
+void port_init(void)
+{
 
 	/*-------------------------------Port Configuration-----------------------*/
 
@@ -118,7 +114,8 @@ void port_init(void){
 
 }
 
-void irq_init(void){
+void irq_init(void)
+{
 
 	/*----------------------------Platform Configuration----------------------*/
 
@@ -130,7 +127,8 @@ void irq_init(void){
 
 }
 
-void uart_init(void){
+void uart_init(void)
+{
 
 	/*-------------------------------UART Configuration-----------------------*/
 
@@ -140,19 +138,27 @@ void uart_init(void){
 
 }
 
-void sendATcommand(void){
+void sendATcommand(void)
+{
+	/*=================================AT Command Transmitter===================================*/
 
-	Uart_SyncSend(LPUART0_CHANNEL_INDEX, (uint8_t *) test_command, strlen(test_command), TIMEOUT);
+	Uart_SyncSend(LPUART0_CHANNEL_INDEX, (uint8_t *) reset_command, strlen(reset_command), TIMEOUT);
 
+	/*==========================================================================================*/
 }
 
-void receiveResponse(void){
+void receiveResponse(void)
+{
+	/*=================================AT Command Receiver======================================*/
 
 	Uart_AsyncReceive(LPUART0_CHANNEL_INDEX, (uint8_t *) rxBuffer, RX_BUFFER_SIZE);
 
+	/*==========================================================================================*/
 }
 
-void echoCallback(void){
+
+void echoCallback(void)
+{
 
     // Convert uint8_t array to string
     uint8ArrayToString(rxBuffer, RX_BUFFER_SIZE, str);
@@ -162,24 +168,30 @@ void echoCallback(void){
 
 }
 
+
 /* Helper function to convert a single byte to its hexadecimal representation */
-void byteToHex(uint8_t byte, char* hexStr) {
+void byteToHex(uint8_t byte, char* hexStr)
+{
     char hexDigits[] = "0123456789ABCDEF";
 
     hexStr[0] = hexDigits[(byte >> 4) & 0x0F]; // Extract high nibble
     hexStr[1] = hexDigits[byte & 0x0F];        // Extract low nibble
 }
 
+
 /* Function to convert uint8_t array to string */
-void uint8ArrayToString(uint8_t* arr, int length, char* str) {
-    for (int i = 0; i < length; i++) {
+void uint8ArrayToString(uint8_t* arr, int length, char* str)
+{
+    for (int i = 0; i < length; i++)
+    {
         byteToHex(arr[i], &str[i * 2]);  // Convert each byte to 2 hex chars
     }
     str[length * 2] = '\0';  // Null-terminate the string
 }
 
-void testDelay(int microseconds){
-	while(microseconds > 0){
-		microseconds--;
-	}
+
+void uint8Array_Clear(void)
+{
+	// Clear the array using memset
+	memset(rxBuffer, 0, sizeof(rxBuffer));  // Set all elements to 0
 }
