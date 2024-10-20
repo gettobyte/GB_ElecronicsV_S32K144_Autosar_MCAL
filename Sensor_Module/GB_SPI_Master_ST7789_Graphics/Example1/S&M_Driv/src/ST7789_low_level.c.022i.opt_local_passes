@@ -1,0 +1,851 @@
+ST7789_Float (uint16_t x, uint16_t y, float gb_value, struct FontDef font, uint16_t color, uint16_t bgcolor)
+{
+  char gb_float_buff[10];
+  double _1;
+
+  <bb 2> :
+  _1 = (double) gb_value_2(D);
+  sprintf (&gb_float_buff, "%.2f", _1);
+  ST7789_WriteString (x_5(D), y_6(D), &gb_float_buff, font, color_7(D), bgcolor_8(D));
+  gb_float_buff ={v} {CLOBBER};
+  return;
+
+}
+
+
+ST7789_WriteDec (uint16_t x, uint16_t y, uint32_t gb_val, struct FontDef font, uint16_t color, uint16_t bgcolor)
+{
+  int8_t gb_ptr;
+  unsigned char gb_buf[5];
+  int _1;
+  unsigned char _2;
+  int _3;
+  int _4;
+  unsigned char _5;
+  short unsigned int _6;
+  int _7;
+  unsigned char _8;
+  int _9;
+  int _10;
+  long unsigned int _11;
+  unsigned char _12;
+  int _13;
+  unsigned char _14;
+  unsigned char gb_ptr.6_15;
+  unsigned char _16;
+  unsigned char gb_ptr.7_17;
+  unsigned char _18;
+  int _19;
+  unsigned char _20;
+  unsigned char _21;
+  short unsigned int _22;
+  unsigned char gb_ptr.8_23;
+  unsigned char _24;
+
+  <bb 2> :
+  gb_ptr_37 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  _1 = (int) x_26;
+  _2 = font.width;
+  _3 = (int) _2;
+  _4 = _1 + _3;
+  if (_4 > 239)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  x_42 = 0;
+  _5 = font.height;
+  _6 = (short unsigned int) _5;
+  y_43 = y_30 + _6;
+  _7 = (int) y_43;
+  _8 = font.height;
+  _9 = (int) _8;
+  _10 = _7 + _9;
+  if (_10 > 239)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # x_25 = PHI <x_26(3), x_42(4)>
+  # y_29 = PHI <y_30(3), y_43(4)>
+  _11 = gb_val_32 % 10;
+  _12 = (unsigned char) _11;
+  _13 = (int) gb_ptr_33;
+  _14 = _12 + 48;
+  gb_buf[_13] = _14;
+  gb_val_45 = gb_val_32 / 10;
+  gb_ptr.6_15 = (unsigned char) gb_ptr_33;
+  _16 = gb_ptr.6_15 + 1;
+  gb_ptr_46 = (int8_t) _16;
+
+  <bb 7> :
+  # x_26 = PHI <x_38(D)(2), x_25(6)>
+  # y_30 = PHI <y_39(D)(2), y_29(6)>
+  # gb_val_32 = PHI <gb_val_40(D)(2), gb_val_45(6)>
+  # gb_ptr_33 = PHI <gb_ptr_37(2), gb_ptr_46(6)>
+  if (gb_ptr_33 <= 4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # x_27 = PHI <x_42(5), x_26(7)>
+  # y_31 = PHI <y_43(5), y_30(7)>
+  gb_ptr.7_17 = (unsigned char) gb_ptr_33;
+  _18 = gb_ptr.7_17 + 255;
+  gb_ptr_47 = (int8_t) _18;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _19 = (int) gb_ptr_34;
+  _20 = gb_buf[_19];
+  ST7789_WriteChar (x_28, y_31, _20, font, color_49(D), bgcolor_50(D));
+  _21 = font.width;
+  _22 = (short unsigned int) _21;
+  x_52 = x_28 + _22;
+  gb_ptr.8_23 = (unsigned char) gb_ptr_34;
+  _24 = gb_ptr.8_23 + 255;
+  gb_ptr_53 = (int8_t) _24;
+
+  <bb 10> :
+  # x_28 = PHI <x_27(8), x_52(9)>
+  # gb_ptr_34 = PHI <gb_ptr_47(8), gb_ptr_53(9)>
+  if (gb_ptr_34 >= 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  gb_buf ={v} {CLOBBER};
+  return;
+
+}
+
+
+ST7789_WriteStringBox (uint16_t x, uint16_t y, uint16_t x1, uint16_t y1, const char * str, struct FontDef font, uint16_t color, uint16_t bgcolor)
+{
+  uint16_t y_temp;
+  uint16_t x_temp;
+  int _1;
+  unsigned char _2;
+  int _3;
+  int _4;
+  unsigned char _5;
+  short unsigned int _6;
+  int _7;
+  unsigned char _8;
+  int _9;
+  int _10;
+  char _11;
+  char _12;
+  unsigned char _13;
+  short unsigned int _14;
+  unsigned char _15;
+  short unsigned int _16;
+  char _17;
+
+  <bb 2> :
+  x_temp_29 = x_28(D);
+  y_temp_31 = y_30(D);
+  goto <bb 13>; [INV]
+
+  <bb 3> :
+  _1 = (int) x_21;
+  _2 = font.width;
+  _3 = (int) _2;
+  _4 = _1 + _3;
+  if (_4 > 239)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  x_34 = 0;
+  _5 = font.height;
+  _6 = (short unsigned int) _5;
+  y_35 = y_25 + _6;
+  _7 = (int) y_35;
+  _8 = font.height;
+  _9 = (int) _8;
+  _10 = _7 + _9;
+  if (_10 > 239)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  _11 = *str_26;
+  if (_11 == 32)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  str_36 = str_26 + 1;
+  // predicted unlikely by continue predictor.
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  # x_18 = PHI <x_21(3), x_34(6)>
+  # y_22 = PHI <y_25(3), y_35(6)>
+  _12 = *str_26;
+  ST7789_WriteChar (x_18, y_22, _12, font, color_37(D), bgcolor_38(D));
+  _13 = font.width;
+  _14 = (short unsigned int) _13;
+  x_40 = x_18 + _14;
+  if (x_40 > x1_41(D))
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  x_42 = x_temp_29;
+  _15 = font.height;
+  _16 = (short unsigned int) _15;
+  y_43 = y_22 + _16;
+
+  <bb 10> :
+  # x_19 = PHI <x_40(8), x_42(9)>
+  # y_23 = PHI <y_22(8), y_43(9)>
+  if (y_23 > y1_44(D))
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  x_45 = x_temp_29;
+  y_46 = y_temp_31;
+
+  <bb 12> :
+  # x_20 = PHI <x_19(10), x_45(11)>
+  # y_24 = PHI <y_23(10), y_46(11)>
+  str_47 = str_26 + 1;
+
+  <bb 13> :
+  # x_21 = PHI <x_28(D)(2), x_34(7), x_20(12)>
+  # y_25 = PHI <y_30(D)(2), y_35(7), y_24(12)>
+  # str_26 = PHI <str_32(D)(2), str_36(7), str_47(12)>
+  _17 = *str_26;
+  if (_17 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  return;
+
+}
+
+
+ST7789_WriteString (uint16_t x, uint16_t y, const char * str, struct FontDef font, uint16_t color, uint16_t bgcolor)
+{
+  int _1;
+  unsigned char _2;
+  int _3;
+  int _4;
+  unsigned char _5;
+  short unsigned int _6;
+  int _7;
+  unsigned char _8;
+  int _9;
+  int _10;
+  char _11;
+  char _12;
+  unsigned char _13;
+  short unsigned int _14;
+  char _15;
+
+  <bb 2> :
+  goto <bb 9>; [INV]
+
+  <bb 3> :
+  _1 = (int) x_17;
+  _2 = font.width;
+  _3 = (int) _2;
+  _4 = _1 + _3;
+  if (_4 > 239)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  x_26 = 0;
+  _5 = font.height;
+  _6 = (short unsigned int) _5;
+  y_27 = y_19 + _6;
+  _7 = (int) y_27;
+  _8 = font.height;
+  _9 = (int) _8;
+  _10 = _7 + _9;
+  if (_10 > 239)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  _11 = *str_20;
+  if (_11 == 32)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  str_28 = str_20 + 1;
+  // predicted unlikely by continue predictor.
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # x_16 = PHI <x_17(3), x_26(6)>
+  # y_18 = PHI <y_19(3), y_27(6)>
+  _12 = *str_20;
+  ST7789_WriteChar (x_16, y_18, _12, font, color_29(D), bgcolor_30(D));
+  _13 = font.width;
+  _14 = (short unsigned int) _13;
+  x_32 = x_16 + _14;
+  str_33 = str_20 + 1;
+
+  <bb 9> :
+  # x_17 = PHI <x_22(D)(2), x_26(7), x_32(8)>
+  # y_19 = PHI <y_23(D)(2), y_27(7), y_18(8)>
+  # str_20 = PHI <str_24(D)(2), str_28(7), str_33(8)>
+  _15 = *str_20;
+  if (_15 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  return;
+
+}
+
+
+ST7789_WriteChar (uint16_t x, uint16_t y, char ch, struct FontDef font, uint16_t color, uint16_t bgcolor)
+{
+  uint8_t data[2];
+  uint8_t data[2];
+  uint8_t d_ata;
+  uint32_t j;
+  uint32_t b;
+  uint32_t i;
+  unsigned char _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  unsigned char _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  short unsigned int _8;
+  const uint16_t * _9;
+  int _10;
+  int _11;
+  unsigned char _12;
+  int _13;
+  int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  const uint16_t * _18;
+  short unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  short unsigned int _22;
+  unsigned char _23;
+  unsigned char _24;
+  short unsigned int _25;
+  unsigned char _26;
+  unsigned char _27;
+  unsigned char _28;
+  long unsigned int _29;
+  unsigned char _30;
+  long unsigned int _31;
+
+  <bb 2> :
+  _1 = font.width;
+  _2 = (short unsigned int) _1;
+  _3 = x_38(D) + _2;
+  _4 = _3 + 65535;
+  _5 = font.height;
+  _6 = (short unsigned int) _5;
+  _7 = y_39(D) + _6;
+  _8 = _7 + 65535;
+  ST7789_SetAddressWindow (x_38(D), y_39(D), _4, _8);
+  Dio_WriteChannel (49, 0);
+  GB_ST7789_SendCommand (44, &d_ata, 0, 1000);
+  i_43 = 0;
+  goto <bb 10>; [INV]
+
+  <bb 3> :
+  _9 = font.data;
+  _10 = (int) ch_46(D);
+  _11 = _10 + -32;
+  _12 = font.height;
+  _13 = (int) _12;
+  _14 = _11 * _13;
+  _15 = (long unsigned int) _14;
+  _16 = i_32 + _15;
+  _17 = _16 * 2;
+  _18 = _9 + _17;
+  _19 = *_18;
+  b_47 = (uint32_t) _19;
+  j_48 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  _20 = b_47 << j_33;
+  _21 = _20 & 32768;
+  if (_21 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _22 = color_55(D) >> 8;
+  _23 = (unsigned char) _22;
+  data[0] = _23;
+  _24 = (unsigned char) color_55(D);
+  data[1] = _24;
+  GB_ST7789_SendData (&data, 2);
+  data ={v} {CLOBBER};
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _25 = bgcolor_50(D) >> 8;
+  _26 = (unsigned char) _25;
+  data[0] = _26;
+  _27 = (unsigned char) bgcolor_50(D);
+  data[1] = _27;
+  GB_ST7789_SendData (&data, 2);
+  data ={v} {CLOBBER};
+
+  <bb 7> :
+  j_60 = j_33 + 1;
+
+  <bb 8> :
+  # j_33 = PHI <j_48(3), j_60(7)>
+  _28 = font.width;
+  _29 = (long unsigned int) _28;
+  if (j_33 < _29)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  i_49 = i_32 + 1;
+
+  <bb 10> :
+  # i_32 = PHI <i_43(2), i_49(9)>
+  _30 = font.height;
+  _31 = (long unsigned int) _30;
+  if (i_32 < _31)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  Dio_WriteChannel (49, 1);
+  d_ata ={v} {CLOBBER};
+  return;
+
+}
+
+
+ST7789DrawPixel (uint16_t x, uint16_t y, uint16_t color)
+{
+  uint8_t data[2];
+  short unsigned int _1;
+  unsigned char _2;
+  unsigned char _3;
+
+  <bb 2> :
+  ST7789_SetAddressWindow (x_5(D), y_6(D), x_5(D), y_6(D));
+  _1 = color_8(D) >> 8;
+  _2 = (unsigned char) _1;
+  data[0] = _2;
+  _3 = (unsigned char) color_8(D);
+  data[1] = _3;
+  Dio_WriteChannel (49, 0);
+  GB_ST7789_SendData (&data, 2);
+  Dio_WriteChannel (49, 1);
+  data ={v} {CLOBBER};
+  return;
+
+}
+
+
+ST7789_DrawImage (uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint8_t * data)
+{
+  uint32_t TotalBytesToBeFilled;
+  uint32_t TotalCellsToBeFilled;
+  uint16_t NoOfRounds;
+  uint16_t BytesToSend;
+  uint8_t d_data;
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  int _5;
+  int _6;
+  int _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  int _15;
+  short unsigned int j.2_16;
+  int _17;
+  int _18;
+  sizetype _19;
+  const uint8_t * _20;
+  long unsigned int _21;
+  short unsigned int j.3_22;
+  short unsigned int j.4_23;
+  short unsigned int _24;
+  short unsigned int j.5_25;
+
+  <bb 2> :
+  _1 = x_29(D) + w_30(D);
+  _2 = _1 + 65535;
+  _3 = y_31(D) + h_32(D);
+  _4 = _3 + 65535;
+  ST7789_SetAddressWindow (x_29(D), y_31(D), _2, _4);
+  Dio_WriteChannel (49, 0);
+  GB_ST7789_SendCommand (44, &d_data, 0, 1000);
+  NoOfRounds_37 = 0;
+  _5 = (int) w_30(D);
+  _6 = (int) h_32(D);
+  _7 = _5 * _6;
+  TotalCellsToBeFilled_38 = (uint32_t) _7;
+  _8 = (int) w_30(D);
+  _9 = (int) h_32(D);
+  _10 = _8 * _9;
+  _11 = _10 * 2;
+  TotalBytesToBeFilled_39 = (uint32_t) _11;
+  if (TotalBytesToBeFilled_39 <= 14400)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  NoOfRounds_43 = 1;
+  BytesToSend_44 = (uint16_t) TotalBytesToBeFilled_39;
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  if (TotalBytesToBeFilled_39 > 14400)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _12 = TotalBytesToBeFilled_39 / 7200;
+  NoOfRounds_41 = (uint16_t) _12;
+  _13 = (long unsigned int) NoOfRounds_41;
+  _14 = TotalBytesToBeFilled_39 / _13;
+  BytesToSend_42 = (uint16_t) _14;
+
+  <bb 6> :
+  # BytesToSend_26 = PHI <BytesToSend_44(3), BytesToSend_40(D)(4), BytesToSend_42(5)>
+  # NoOfRounds_27 = PHI <NoOfRounds_43(3), NoOfRounds_37(4), NoOfRounds_41(5)>
+  j = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _15 = (int) BytesToSend_26;
+  j.2_16 = j;
+  _17 = (int) j.2_16;
+  _18 = _15 * _17;
+  _19 = (sizetype) _18;
+  _20 = data_48(D) + _19;
+  _21 = (long unsigned int) BytesToSend_26;
+  GB_ST7789_SendDataIm (_20, _21);
+  j.3_22 = j;
+  j.4_23 = j.3_22;
+  _24 = j.4_23 + 1;
+  j = _24;
+
+  <bb 8> :
+  j.5_25 = j;
+  if (NoOfRounds_27 > j.5_25)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  Dio_WriteChannel (49, 1);
+  d_data ={v} {CLOBBER};
+  return;
+
+}
+
+
+ST7789_Fill_Color (uint16_t color)
+{
+  uint32_t i;
+  uint8_t colorData[2];
+  uint8_t data;
+  short unsigned int _1;
+  unsigned char _2;
+  unsigned char _3;
+
+  <bb 2> :
+  Dio_WriteChannel (49, 0);
+  GB_ST7789_SendCommand (44, &data, 0, 1000);
+  _1 = color_9(D) >> 8;
+  _2 = (unsigned char) _1;
+  colorData[0] = _2;
+  _3 = (unsigned char) color_9(D);
+  colorData[1] = _3;
+  i_12 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  GB_ST7789_SendData (&colorData, 2);
+  i_17 = i_4 + 1;
+
+  <bb 4> :
+  # i_4 = PHI <i_12(2), i_17(3)>
+  if (i_4 <= 57599)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  Dio_WriteChannel (49, 1);
+  data ={v} {CLOBBER};
+  colorData ={v} {CLOBBER};
+  return;
+
+}
+
+
+ST7789_SetAddressWindow (uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
+{
+  uint8_t RowAddr[4];
+  uint8_t ColAddr[4];
+  uint16_t y_end;
+  uint16_t y_start;
+  uint16_t x_end;
+  uint16_t x_start;
+  short unsigned int _1;
+  unsigned char _2;
+  unsigned char _3;
+  short unsigned int _4;
+  unsigned char _5;
+  unsigned char _6;
+  short unsigned int _7;
+  unsigned char _8;
+  unsigned char _9;
+  short unsigned int _10;
+  unsigned char _11;
+  unsigned char _12;
+
+  <bb 2> :
+  Dio_WriteChannel (49, 0);
+  x_start_16 = x0_15(D);
+  x_end_18 = x1_17(D);
+  y_start_20 = y0_19(D);
+  y_end_22 = y1_21(D);
+  _1 = x_start_16 >> 8;
+  _2 = (unsigned char) _1;
+  ColAddr[0] = _2;
+  _3 = (unsigned char) x_start_16;
+  ColAddr[1] = _3;
+  _4 = x_end_18 >> 8;
+  _5 = (unsigned char) _4;
+  ColAddr[2] = _5;
+  _6 = (unsigned char) x_end_18;
+  ColAddr[3] = _6;
+  GB_ST7789_SendCommand (42, &ColAddr, 4, 1000);
+  _7 = y_start_20 >> 8;
+  _8 = (unsigned char) _7;
+  RowAddr[0] = _8;
+  _9 = (unsigned char) y_start_20;
+  RowAddr[1] = _9;
+  _10 = y_end_22 >> 8;
+  _11 = (unsigned char) _10;
+  RowAddr[2] = _11;
+  _12 = (unsigned char) y_end_22;
+  RowAddr[3] = _12;
+  GB_ST7789_SendCommand (43, &RowAddr, 4, 1000);
+  Dio_WriteChannel (49, 1);
+  ColAddr ={v} {CLOBBER};
+  RowAddr ={v} {CLOBBER};
+  return;
+
+}
+
+
+GB_ST7789_Init ()
+{
+  uint8_t data;
+  uint8_t RowAddr[4];
+  uint8_t ColAddr[4];
+  uint8_t MADCTL_SetRotation0;
+  uint8_t MADCTL_SetRotation1;
+  uint8_t ColorMod;
+
+  <bb 2> :
+  ColorMod = 85;
+  MADCTL_SetRotation1_3 = 128;
+  MADCTL_SetRotation0 = 192;
+  ColAddr = "\x00\x00\x00\xf0";
+  RowAddr = "\x00\x00\x01@";
+  Dio_WriteChannel (44, 0);
+  TestDelay (72000);
+  Dio_WriteChannel (44, 1);
+  TestDelay (144000);
+  Dio_WriteChannel (49, 0);
+  GB_ST7789_SendCommand (1, &data, 0, 1000);
+  GB_ST7789_SendCommand (17, &data, 0, 1000);
+  GB_ST7789_SendCommand (58, &ColorMod, 1, 1000);
+  GB_ST7789_SendCommand (33, &data, 0, 1000);
+  GB_ST7789_SendCommand (19, &data, 0, 1000);
+  GB_ST7789_SendCommand (41, &data, 0, 1000);
+  GB_ST7789_SendCommand (54, &MADCTL_SetRotation0, 1, 1000);
+  Dio_WriteChannel (49, 1);
+  ColorMod ={v} {CLOBBER};
+  MADCTL_SetRotation0 ={v} {CLOBBER};
+  ColAddr ={v} {CLOBBER};
+  RowAddr ={v} {CLOBBER};
+  data ={v} {CLOBBER};
+  return;
+
+}
+
+
+GB_ST7789_SendDataIm (const uint8_t * data, uint32_t data_size)
+{
+  short unsigned int _1;
+
+  <bb 2> :
+  Dio_WriteChannel (45, 1);
+  _1 = (short unsigned int) data_size_4(D);
+  GB_MA_SPI_send_byte_conti (data_5(D), _1, 5000);
+  return;
+
+}
+
+
+GB_ST7789_SendData (uint8_t * data, uint32_t data_size)
+{
+  short unsigned int _1;
+
+  <bb 2> :
+  Dio_WriteChannel (45, 1);
+  _1 = (short unsigned int) data_size_4(D);
+  GB_MA_SPI_send_byte_conti (data_5(D), _1, 5000);
+  return;
+
+}
+
+
+GB_ST7789_SendCommand (uint8_t commandByte, uint8_t * dataBytes, uint8_t numDataBytes, uint32_t timeout)
+{
+  short unsigned int _1;
+
+  <bb 2> :
+  Dio_WriteChannel (45, 0);
+  GB_MA_SPI_send_byte_conti (&commandByte, 1, timeout_5(D));
+  Dio_WriteChannel (45, 1);
+  if (numDataBytes_8(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (short unsigned int) numDataBytes_8(D);
+  GB_MA_SPI_send_byte_conti (dataBytes_9(D), _1, timeout_5(D));
+
+  <bb 4> :
+  return;
+
+}
+
+
+GB_STT7789_SPI_CS_high ()
+{
+  <bb 2> :
+  Dio_WriteChannel (49, 1);
+  return;
+
+}
+
+
+GB_STT7789_SPI_CS_low ()
+{
+  <bb 2> :
+  Dio_WriteChannel (49, 0);
+  return;
+
+}
+
+
+GB_MA_SPI_exchange_byte (uint8_t * rx_value, uint8_t count, uint32_t timeout)
+{
+  static uint8_t val = 0;
+  short unsigned int _1;
+
+  <bb 2> :
+  _1 = (short unsigned int) count_2(D);
+  Lpspi_Ip_SyncTransmit (&Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals, &val, rx_value_4(D), _1, timeout_5(D));
+  return;
+
+}
+
+
+GB_MA_SPI_send_byte_conti (uint8_t * val, uint16_t count, uint32_t timeout)
+{
+  <bb 2> :
+  Lpspi_Ip_SyncTransmit (&Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals, val_2(D), &rx_val, count_3(D), timeout_4(D));
+  return;
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+  long unsigned int DelayTimer.0_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.1_3;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 ={v} DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  DelayTimer.1_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer ={v} 0;
+  return;
+
+}
+
+

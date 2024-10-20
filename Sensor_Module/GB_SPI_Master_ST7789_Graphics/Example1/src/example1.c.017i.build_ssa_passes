@@ -1,0 +1,89 @@
+main ()
+{
+  Lpspi_Ip_StatusType x;
+  Clock_Ip_StatusType clockStatus;
+  int D.6369;
+
+  <bb 2> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  tx_buff[0] = 159;
+  Lpspi_Ip_Init (&Lpspi_Ip_PhyUnitConfig_W25_SPI_BOARD_InitPeripherals);
+  Dio_WriteChannel (32, 0);
+  GB_MA_SPI_send_byte_conti (&tx_buff, 4, 5000);
+  GB_MA_SPI_exchange_byte (&rx_buff, 4, 5000);
+  Dio_WriteChannel (32, 1);
+  TestDelay (700000);
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  ST7789_Fill_Color (63488);
+  TestDelay (700000);
+
+  <bb 8> :
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  ST7789_Fill_Color (0);
+  TestDelay (700000);
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  ST7789_WriteString (0, 0, "Looking for          ", Font_16x26, 53241, 0);
+  ST7789_WriteString (0, 106, "Industrial", Font_16x26, 65535, 0);
+  ST7789_WriteString (0, 132, "Hardware kits", Font_16x26, 65535, 0);
+  ST7789_WriteString (0, 158, "Based on", Font_16x26, 53241, 0);
+  ST7789_WriteString (0, 184, "Industrial ", Font_16x26, 53241, 0);
+  ST7789_WriteString (0, 210, "MCU\'s/MPU\'s/ASIC\'s", Font_16x26, 65535, 0);
+  ST7789_WriteString (0, 236, "IC\'s", Font_16x26, 65535, 0);
+  ST7789_WriteString (0, 262, "Like of :#NXP ", Font_16x26, 53241, 0);
+  ST7789_WriteString (0, 288, "#TI,#STM,#NRF and Etc", Font_16x26, 53241, 0);
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  TestDelay (700000);
+  goto <bb 8>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer = 0;
+  return;
+
+}
+
+
