@@ -34,10 +34,11 @@ static void TestDelay(uint32 delay)
 
 
 // For ST7789 Driver IC and we are using 240*240 pixel and 1.3 inch display
+
 #define ST7789_WIDTH 240
 #define ST7789_HEIGHT 240
-
 #define GB_ST7789_TimeOut 1000
+
 /*
  * @brief write data to ST7789 controller
  * @param commonByte -> address of ST7789 that needs to be accessed
@@ -45,12 +46,15 @@ static void TestDelay(uint32 delay)
  * @param numDataBytes -> number of data bytes that needs to send
  */
 
+ uint8_t rx_val[10];
+
+
 void GB_MA_SPI_send_byte_conti(uint8_t *val, uint16_t count, uint32_t timeout)
 {
-	static uint8_t rx_val;
+	//uint8_t rx_val;
 	//Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals,val, &rx_value, count, timeout); //Transfer the data from MOSI to MISO
 
-	Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals,val, &rx_val, count, timeout); //Transfer the data from MOSI to MISO
+	Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals,val, rx_val, count, timeout); //Transfer the data from MOSI to MISO
 
 }
 
