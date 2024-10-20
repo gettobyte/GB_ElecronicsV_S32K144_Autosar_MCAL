@@ -132,6 +132,10 @@ static const uint32 au32Port_PinToPartitionMap_BOARD_InitPeripherals[PORT_MAX_CO
     (uint32)0x00000001,
     (uint32)0x00000001,
     (uint32)0x00000001,
+    (uint32)0x00000001,
+    (uint32)0x00000001,
+    (uint32)0x00000001,
+    (uint32)0x00000001,
     (uint32)0x00000001
 };
 
@@ -162,10 +166,6 @@ static const uint16 Port_au16NoUnUsedPadsArrayDefault_BOARD_InitPeripherals[PORT
     (uint16)15,
     (uint16)16,
     (uint16)17,
-    (uint16)32,
-    (uint16)33,
-    (uint16)34,
-    (uint16)35,
     (uint16)36,
     (uint16)37,
     (uint16)38,
@@ -258,7 +258,15 @@ static const Port_PinConfigType Port_aPinConfigDefault_BOARD_InitPeripherals[POR
     /* PCR Id, PCR Value, Output Level, Direction, IsGpio, Direction Configurable, Mode Changeable */
     { (uint16)48, (uint32)0x00000300, (uint8)1, (Port_PinDirectionType)2, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE },
     /* PCR Id, PCR Value, Output Level, Direction, IsGpio, Direction Configurable, Mode Changeable */
-    { (uint16)49, (uint32)0x00000300, (uint8)1, (Port_PinDirectionType)2, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE }
+    { (uint16)49, (uint32)0x00000300, (uint8)1, (Port_PinDirectionType)2, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE },
+    /* PCR Id, PCR Value, Output Level, Direction, IsGpio, Direction Configurable, Mode Changeable */
+    { (uint16)32, (uint32)0x00000300, (uint8)1, (Port_PinDirectionType)2, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE },
+    /* PCR Id, PCR Value, Output Level, Direction, IsGpio, Direction Configurable, Mode Changeable */
+    { (uint16)33, (uint32)0x00000300, (uint8)1, (Port_PinDirectionType)2, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE },
+    /* PCR Id, PCR Value, Output Level, Direction, IsGpio, Direction Configurable, Mode Changeable */
+    { (uint16)34, (uint32)0x00000300, (uint8)1, (Port_PinDirectionType)2, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE },
+    /* PCR Id, PCR Value, Output Level, Direction, IsGpio, Direction Configurable, Mode Changeable */
+    { (uint16)35, (uint32)0x00000300, (uint8)1, (Port_PinDirectionType)1, (boolean)FALSE, (boolean)FALSE, (boolean)TRUE }
 };
 
 #if (0UL != PORT_MAX_CONFIGURED_DIGITAL_FILTER_PORTS_BOARD_InitPeripherals_U8)

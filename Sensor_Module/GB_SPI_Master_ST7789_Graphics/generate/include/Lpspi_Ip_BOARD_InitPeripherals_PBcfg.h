@@ -86,7 +86,9 @@ extern "C"
 ==================================================================================================*/
 #define LPSPI_IP_CONFIG_BOARD_InitPeripherals_PB \
     extern const Lpspi_Ip_ExternalDeviceType Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals; \
+    extern const Lpspi_Ip_ExternalDeviceType Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals; \
     extern const Lpspi_Ip_ConfigType Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals; \
+    extern const Lpspi_Ip_ConfigType Lpspi_Ip_PhyUnitConfig_W25_SPI_BOARD_InitPeripherals; \
 
 /*==================================================================================================
                                    LOCAL FUNCTION PROTOTYPES

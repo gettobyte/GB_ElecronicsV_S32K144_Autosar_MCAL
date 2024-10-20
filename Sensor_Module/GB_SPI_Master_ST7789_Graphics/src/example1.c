@@ -41,6 +41,14 @@ void TestDelay(uint32 delay)
    DelayTimer=0;
 }
 
+#define JEDECID 0x9F
+
+#define gb_W25_CS_pin_low()  Dio_WriteChannel(DioConf_DioChannel_G2B_W25_CE, 0);
+#define gb_W25_CS_pin_high() Dio_WriteChannel(DioConf_DioChannel_G2B_W25_CE, 1);
+
+uint8_t tx_buff[10];
+uint8_t rx_buff[10];
+
 int main(void)
 {
 	Clock_Ip_StatusType clockStatus;
@@ -64,10 +72,19 @@ int main(void)
 	/* Initialize all pins using the Port driver */
 	Port_Init(NULL_PTR);
 
-    Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
+//  Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
+//	GB_ST7789_Init();
+
+	tx_buff[0] = JEDECID;
 
 
-	GB_ST7789_Init();
+
+    Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_W25_SPI_BOARD_InitPeripherals);
+
+	gb_W25_CS_pin_low();
+	GB_MA_SPI_send_byte_conti(tx_buff, 4, 5000);
+	GB_MA_SPI_exchange_byte(rx_buff,4, 5000);
+	gb_W25_CS_pin_high();
 
 	TestDelay(700000);
 	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);

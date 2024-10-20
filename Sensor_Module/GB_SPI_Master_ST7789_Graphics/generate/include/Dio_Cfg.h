@@ -231,6 +231,11 @@ extern "C" {
 *
 */
 #define DioConf_DioChannel_GB_ST7789_CS  ((uint16)0x0031U)
+/**
+* @brief          Symbolic name for the channel G2B_W25_CE.
+*
+*/
+#define DioConf_DioChannel_G2B_W25_CE  ((uint16)0x0020U)
 
 /*=================================================================================================
 *                                             ENUMS

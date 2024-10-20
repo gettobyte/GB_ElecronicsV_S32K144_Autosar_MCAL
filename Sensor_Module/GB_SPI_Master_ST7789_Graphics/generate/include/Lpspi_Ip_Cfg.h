@@ -105,13 +105,14 @@ extern "C"
 
 
 /** @brief Total number of SpiPhyUnit configured. */
-#define LPSPI_IP_NUMBER_OF_INSTANCES  1U
+#define LPSPI_IP_NUMBER_OF_INSTANCES  2U
 
 /** @brief Number of FIFO entries supported */
 #define LPSPI_IP_FIFO_SIZE_U8    ((uint8)4U)
 
 /** @brief HWUnits enabled/disabled */
 #define LPSPI_IP_1_ENABLED  (STD_ON)
+#define LPSPI_IP_0_ENABLED  (STD_ON)
 #define LPSPI_IP_SLAVE_SUPPORT  (STD_OFF)
 
 /**

@@ -14,6 +14,10 @@ pin_labels:
 - {pin_num: '63', pin_signal: PTB17, label: CS, identifier: CS}
 - {pin_num: '68', pin_signal: PTB12, label: Reset, identifier: Reset}
 - {pin_num: '65', pin_signal: PTB15, label: MISO}
+- {pin_num: '53', pin_signal: PTB1, label: W25_DIN(MOSI)}
+- {pin_num: '47', pin_signal: PTB3, label: W25_DO(MISO)}
+- {pin_num: '54', pin_signal: PTB0, label: W25_CE}
+- {pin_num: '48', pin_signal: PTB2, label: W25_CLK}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
@@ -33,12 +37,38 @@ BOARD_InitPins:
   - {pin_num: '63', peripheral: LPSPI1, signal: 'pcs, 3', pin_signal: PTB17, direction: OUTPUT}
   - {pin_num: '68', peripheral: PORTB, signal: 'port, 12', pin_signal: PTB12, direction: OUTPUT}
   - {pin_num: '65', peripheral: LPSPI1, signal: sin, pin_signal: PTB15, direction: INPUT}
+  - {pin_num: '54', peripheral: LPSPI0, signal: 'pcs, 0', pin_signal: PTB0, direction: OUTPUT}
+  - {pin_num: '53', peripheral: LPSPI0, signal: sout, pin_signal: PTB1, direction: OUTPUT}
+  - {pin_num: '48', peripheral: LPSPI0, signal: 'sck, sck', pin_signal: PTB2, direction: OUTPUT}
+  - {pin_num: '47', peripheral: LPSPI0, signal: sin, pin_signal: PTB3, direction: OUTPUT}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
 
 /* Generate array of configured pin structures */
 Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS] = {
+    {
+        .portBase        = IP_PORTB,
+        .gpioBase        = NULL_PTR,
+        .pinPortIdx      = 0U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter   = (boolean)FALSE,
+        .mux             = PORT_MUX_ALT3,
+        .lockRegister    = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter   = (boolean)FALSE,
+    },
+    {
+        .portBase        = IP_PORTB,
+        .gpioBase        = NULL_PTR,
+        .pinPortIdx      = 1U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter   = (boolean)FALSE,
+        .mux             = PORT_MUX_ALT3,
+        .lockRegister    = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter   = (boolean)FALSE,
+    },
     {
         .portBase        = IP_PORTB,
         .gpioBase        = IP_PTB,
@@ -102,6 +132,28 @@ Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PIN
         .portBase        = IP_PORTB,
         .gpioBase        = NULL_PTR,
         .pinPortIdx      = 17U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter   = (boolean)FALSE,
+        .mux             = PORT_MUX_ALT3,
+        .lockRegister    = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter   = (boolean)FALSE,
+    },
+    {
+        .portBase        = IP_PORTB,
+        .gpioBase        = NULL_PTR,
+        .pinPortIdx      = 2U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter   = (boolean)FALSE,
+        .mux             = PORT_MUX_ALT3,
+        .lockRegister    = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter   = (boolean)FALSE,
+    },
+    {
+        .portBase        = IP_PORTB,
+        .gpioBase        = NULL_PTR,
+        .pinPortIdx      = 3U,
         .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
         .driveStrength   = PORT_DRIVE_STRENGTH_LOW,
         .passiveFilter   = (boolean)FALSE,

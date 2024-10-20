@@ -92,6 +92,9 @@ typedef struct {
 } FontDef;
 
 
+void GB_MA_SPI_send_byte_conti(uint8_t *val, uint16_t count, uint32_t timeout);
+void GB_MA_SPI_exchange_byte(uint8_t *rx_value, uint8_t count, uint32_t timeout);
+
 /*
  * @brief write data to ST7789 controller
  * @param commonByte -> address of ST7789 that needs to be accessed

@@ -126,8 +126,16 @@ extern "C"
 #endif
 #include "Spi_MemMap.h"
 /* Lpspi_Ip_DeviceParamsCfg_BOARD_InitPeripherals Device Attribute Configuration of Spi*/
-static Lpspi_Ip_DeviceParamsType Lpspi_Ip_DeviceParamsCfg_BOARD_InitPeripherals[1U] =
+static Lpspi_Ip_DeviceParamsType Lpspi_Ip_DeviceParamsCfg_BOARD_InitPeripherals[2U] =
 {
+    {
+        (uint8)8U, /* Frame size */
+        (boolean)FALSE, /*Lsb */
+        (uint32)0U  /* Default Data */
+#if (STD_ON == LPSPI_IP_HALF_DUPLEX_MODE_SUPPORT)        
+        , LPSPI_IP_FULL_DUPLEX /* Transfer mode - dummy value */
+#endif        
+    },
     {
         (uint8)8U, /* Frame size */
         (boolean)FALSE, /*Lsb */
@@ -165,6 +173,20 @@ const Lpspi_Ip_ExternalDeviceType Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_
     , &Lpspi_Ip_DeviceParamsCfg_BOARD_InitPeripherals[0U]
 };
 
+/* Lpspi_Ip_DeviceAttributes_W25_SPI_Flash Device Attribute Configuration of Spi*/
+const Lpspi_Ip_ExternalDeviceType Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals =
+{
+    0U,  /* Instance */
+        (uint32)(LPSPI_CCR_SCKPCS(7U) | LPSPI_CCR_PCSSCK(7U) | LPSPI_CCR_SCKDIV(78U) | LPSPI_CCR_DBT(49U)), /* ccr */
+        (uint32)(LPSPI_TCR_WIDTH(0U) | LPSPI_TCR_CPOL(0U) | LPSPI_TCR_CPHA(0U) | LPSPI_TCR_PRESCALE(0U) | LPSPI_TCR_PCS(0U) | LPSPI_TCR_CONT(1U)) /* TCR */
+
+
+#if (STD_ON == LPSPI_IP_HALF_DUPLEX_MODE_SUPPORT) 
+    ,(uint32)0U /* This device do not support half duplex mode */
+#endif
+    , &Lpspi_Ip_DeviceParamsCfg_BOARD_InitPeripherals[1U]
+};
+
 /* SPI controller SpiPhyUnit_0 configuration. */
 const Lpspi_Ip_ConfigType Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals = 
 {
@@ -191,6 +213,34 @@ const Lpspi_Ip_ConfigType Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripher
     #endif
     LPSPI_IP_POLLING, /* Transfer mode */
     (uint8)0U /* State structure element from the array */
+};
+
+/* SPI controller W25_SPI configuration. */
+const Lpspi_Ip_ConfigType Lpspi_Ip_PhyUnitConfig_W25_SPI_BOARD_InitPeripherals = 
+{
+    0U,  /* Instance */
+     /* CR */
+    (uint32)0,
+    /* CFGR1 */
+    (uint32)(LPSPI_CFGR1_PINCFG(0U) | LPSPI_CFGR1_PCSPOL(0U) | LPSPI_CFGR1_MASTER(1U) | LPSPI_CFGR1_SAMPLE(0U)),
+    #if (LPSPI_IP_SLAVE_SUPPORT == STD_ON)
+    (boolean)FALSE,
+    #endif
+    #if (LPSPI_IP_DMA_USED == STD_ON)
+    (boolean)FALSE,
+    (uint8)0, /* txDmaChannel */
+    (uint8)0, /* rxDmaChannel */
+    #if (LPSPI_IP_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON)
+    (uint8)0U, /* u8NumOfDmaFastTransfer */
+    NULL_PTR, /* pCmdDmaFast */
+    (uint8)0U,
+    (uint8)0U,
+    NULL_PTR, /* List of Tx SG Id */
+    NULL_PTR, /* List of Rx SG Id */
+    #endif
+    #endif
+    LPSPI_IP_POLLING, /* Transfer mode */
+    (uint8)1U /* State structure element from the array */
 };
 
 
