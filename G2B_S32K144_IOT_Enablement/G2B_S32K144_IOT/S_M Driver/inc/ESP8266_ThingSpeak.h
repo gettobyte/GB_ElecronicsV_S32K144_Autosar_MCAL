@@ -27,8 +27,6 @@
 #define send_data "AT+CIPSEND=51"
 #define connection_close "AT+CIPCLOSE"
 
-char api_key[] = "ELCZ6SJ1WE4DVRHZ";
-
 void testDelay(int32_t microseconds);
 void AT_reset(void);
 void AT_set_WiFiMODE(void);

@@ -84,6 +84,9 @@ void AT_connect_ThingSpeak(void)
 	testDelay(15000000);
 }
 
+char api_key[] = "ELCZ6SJ1WE4DVRHZ";
+
+
 
 void AT_sendData(int value)
 {
