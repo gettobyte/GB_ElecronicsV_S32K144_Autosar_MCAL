@@ -59,7 +59,7 @@ int main(void)
 
 	AT_connect_ThingSpeak();
 
-	AT_sendData();
+	AT_sendData(239);
 
 	testDelay(8000000);
 
