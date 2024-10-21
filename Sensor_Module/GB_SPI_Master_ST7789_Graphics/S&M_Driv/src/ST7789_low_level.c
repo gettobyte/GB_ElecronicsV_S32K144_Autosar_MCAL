@@ -8,6 +8,44 @@
 #include <sys/_stdint.h>
 #include <ST7789_low_level.h>
 
+
+
+/*
+ *
+//SPI Jobs
+
+#define G2B_W25Q_Flash_Reset_Job 0
+#define G2B_W25Q_Flash_WrEn_Job 1
+#define G2B_W25Q_Flash_ReDat_Job 2
+#define G2B_W25Q_Flash_WrData_Job 3
+#define G2B_W25Q_Flash_ReJedID_Job 4
+#define G2B_W25Q_Flash_ErSec4kb_Job 5
+#define G2B_W25Q_Flash_ErSec32kb_Job 6
+#define G2B_W25Q_Flash_ErSec64kb_Job 7
+#define G2B_W25Q_Flash_ChiEra_Job 8
+#define G2B_W25Q_Flash_WrSR_Job 9
+#define G2B_W25Q_Flash_ReSRCommand_Job 10
+#define G2B_W25Q_Flash_ReSRData_Job 10
+#define G2B_W25Q_Flash_WaiWritEnd_Job 11
+
+// SPI Sequence
+
+#define G2B_W25Q_Flash_Reset_Seq 0
+#define G2B_W25Q_Flash_WrEn_Seq 1
+#define G2B_W25Q_Flash_ReDat_Seq 2
+#define G2B_W25Q_Flash_WrData_Seq 3
+#define G2B_W25Q_Flash_ReJedID_Seq 4
+#define G2B_W25Q_Flash_ErSec4kb_Seq 5
+#define G2B_W25Q_Flash_ErSec32kb_Seq 6
+#define G2B_W25Q_Flash_ErSec64kb_Seq 7
+#define G2B_W25Q_Flash_ChiEra_Seq 8
+#define G2B_W25Q_Flash_WrSR_Seq 9
+#define G2B_W25Q_Flash_ReSRCommand_Seq 10
+#define G2B_W25Q_Flash_ReSRData_Seq 10
+#define G2B_W25Q_Flash_WaiWritEnd_Seq 11
+ */
+
+
 static void TestDelay(uint32 delay);
 static void TestDelay(uint32 delay)
 {
@@ -51,10 +89,10 @@ static void TestDelay(uint32 delay)
 
 void GB_MA_SPI_send_byte_conti(uint8_t *val, uint16_t count, uint32_t timeout)
 {
-	//uint8_t rx_val;
-	//Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals,val, &rx_value, count, timeout); //Transfer the data from MOSI to MISO
+	uint8_t rx_value;
+	Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals,val, &rx_value, count, timeout); //Transfer the data from MOSI to MISO
 
-	Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals,val, rx_val, count, timeout); //Transfer the data from MOSI to MISO
+	//Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals,val, rx_val, count, timeout); //Transfer the data from MOSI to MISO
 
 }
 

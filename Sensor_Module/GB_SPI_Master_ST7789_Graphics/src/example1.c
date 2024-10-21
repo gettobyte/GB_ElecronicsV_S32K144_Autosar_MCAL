@@ -72,19 +72,15 @@ int main(void)
 	/* Initialize all pins using the Port driver */
 	Port_Init(NULL_PTR);
 
-//  Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
-//	GB_ST7789_Init();
+  Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
+	GB_ST7789_Init();
 
-	tx_buff[0] = JEDECID;
+//  Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_W25_SPI_BOARD_InitPeripherals);
 
-
-
-    Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_W25_SPI_BOARD_InitPeripherals);
-
-	gb_W25_CS_pin_low();
-	GB_MA_SPI_send_byte_conti(tx_buff, 4, 5000);
-	GB_MA_SPI_exchange_byte(rx_buff,4, 5000);
-	gb_W25_CS_pin_high();
+//	gb_W25_CS_pin_low();
+//	GB_MA_SPI_send_byte_conti(tx_buff, 4, 5000);
+//	GB_MA_SPI_exchange_byte(rx_buff,4, 5000);
+//	gb_W25_CS_pin_high();
 
 	TestDelay(700000);
 	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
