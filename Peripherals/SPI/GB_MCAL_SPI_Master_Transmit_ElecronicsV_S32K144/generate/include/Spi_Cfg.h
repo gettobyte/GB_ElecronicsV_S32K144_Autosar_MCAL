@@ -161,7 +161,7 @@ extern "C"{
 *        (see chapter 7.2.1)
 * @implements SPI_CHANNEL_BUFFERS_ALLOWED_define
 */
-#define SPI_CHANNEL_BUFFERS_ALLOWED           USAGE0
+#define SPI_CHANNEL_BUFFERS_ALLOWED           USAGE2
 /* The LEVEL 0 Simple Synchronous SPI Handler Driver functionalities are selected.*/
 #define LEVEL0                          0x00u
 
@@ -184,21 +184,63 @@ extern "C"{
 *     for all the driver configurations.
 */
 #define SpiConf_SpiChannel_SpiChannel_0    ((Spi_ChannelType)0U)
-#define SPI_MAX_CHANNEL 1U
+#define SpiConf_SpiChannel_SpiChannel_1    ((Spi_ChannelType)1U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_Reset_Channel    ((Spi_ChannelType)2U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_WrEn_Channel    ((Spi_ChannelType)3U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_ReData_Channel    ((Spi_ChannelType)4U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_WrCommand_Channel    ((Spi_ChannelType)5U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_ReJedID_Channel    ((Spi_ChannelType)6U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_WrData_Channel    ((Spi_ChannelType)7U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_ErSec4kb_Channel    ((Spi_ChannelType)8U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_ErSec32kb_Channel    ((Spi_ChannelType)9U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_ErSec64kb_Channel    ((Spi_ChannelType)10U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_ChiEra_Channel    ((Spi_ChannelType)11U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_WrSR_Channel    ((Spi_ChannelType)12U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_ReSRCommand_Job    ((Spi_ChannelType)13U)
+#define SpiConf_SpiChannel_G2B_W25Q_Flash_ReSRData_Job    ((Spi_ChannelType)14U)
+#define SPI_MAX_CHANNEL 15U
 /**
 * @brief Total number of Jobs configured.
 * @details Defines the maximum number of supported jobs
 *     for all the driver configurations.
 */
 #define SpiConf_SpiJob_SpiJob_0    ((Spi_JobType)0U)
-#define SPI_MAX_JOB 1U
+#define SpiConf_SpiJob_SpiJob_1    ((Spi_JobType)1U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_Reset_Job    ((Spi_JobType)2U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_WrEn_Job    ((Spi_JobType)3U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_ReData_Job    ((Spi_JobType)4U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_WrCommand_Job    ((Spi_JobType)5U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_ReJedID_Job    ((Spi_JobType)6U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_WrData_Job    ((Spi_JobType)7U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_ErSec4kb_Job    ((Spi_JobType)8U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_ErSec32kb_Job    ((Spi_JobType)9U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_ErSec64kb_Job    ((Spi_JobType)10U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_ChiEra_Job    ((Spi_JobType)11U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_WrSR_Job    ((Spi_JobType)12U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_ReSRCommand_Job    ((Spi_JobType)13U)
+#define SpiConf_SpiJob_G2B_W25Q_Flash_ReSRData_Job    ((Spi_JobType)14U)
+#define SPI_MAX_JOB 15U
 /**
 * @brief Total number of Sequences configured.
 * @details Defines the maximum number of supported sequences
 *     for all the driver configurations.
 */
 #define SpiConf_SpiSequence_SpiSequence_0    ((Spi_SequenceType)0U)
-#define SPI_MAX_SEQUENCE 1U
+#define SpiConf_SpiSequence_SpiSequence_1    ((Spi_SequenceType)1U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_Reset_Seq    ((Spi_SequenceType)2U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_WrEn_Seq    ((Spi_SequenceType)3U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_ReData_Seq    ((Spi_SequenceType)4U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_WrCommand_Seq    ((Spi_SequenceType)5U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_ReJedID_Seq    ((Spi_SequenceType)6U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_WrData_Seq    ((Spi_SequenceType)7U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_ErSec4kb_Seq    ((Spi_SequenceType)8U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_ErSec32kb_Seq    ((Spi_SequenceType)9U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_ErSec64kb_Seq    ((Spi_SequenceType)10U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_ChiEra_Seq    ((Spi_SequenceType)11U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_WrSR_Seq    ((Spi_SequenceType)12U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_ReSRCommand_Seq    ((Spi_SequenceType)13U)
+#define SpiConf_SpiSequence_G2B_W25Q_Flash_ReSRData_Seq    ((Spi_SequenceType)14U)
+#define SPI_MAX_SEQUENCE 15U
 #define CSIB0 ((uint8)0u)
 
 /**

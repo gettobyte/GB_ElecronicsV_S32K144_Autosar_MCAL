@@ -159,6 +159,33 @@ extern "C"{
 /* Buffers Descriptors for EB Channels and Allocate Buffers for IB Channels */
 static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_SpiChannel_0[4];
 static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_SpiChannel_0[4];
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_SpiChannel_1;
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_Reset_Channel[2];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_Reset_Channel[2];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrEn_Channel[1];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrEn_Channel[1];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReData_Channel[40];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReData_Channel[40];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrCommand_Channel[4];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrCommand_Channel[4];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReJedID_Channel[4];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReJedID_Channel[4];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrData_Channel[40];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrData_Channel[40];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec4kb_Channel[4];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec4kb_Channel[4];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec32kb_Channel[4];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec32kb_Channel[4];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec64kb_Channel[4];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec64kb_Channel[4];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ChiEra_Channel[1];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ChiEra_Channel[1];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrSR_Channel[2];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrSR_Channel[2];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRCommand_Job[2];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRCommand_Job[2];
+static Spi_DataBufferType Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRData_Job[1];
+static Spi_DataBufferType Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRData_Job[1];
 
 #if ((SPI_DMA_USED == STD_ON) && \
     ((SPI_LEVEL_DELIVERED == LEVEL1) || (SPI_LEVEL_DELIVERED == LEVEL2)))
@@ -178,6 +205,84 @@ static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_SpiChannel_0 =
 {
     Spi_BufferTX_BOARD_InitPeripherals_SpiChannel_0,  /* BufferTX */
     Spi_BufferRX_BOARD_InitPeripherals_SpiChannel_0   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_Reset_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_Reset_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_Reset_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_Reset_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_WrEn_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_WrEn_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrEn_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrEn_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_ReData_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ReData_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReData_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReData_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_WrCommand_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_WrCommand_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrCommand_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrCommand_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_ReJedID_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ReJedID_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReJedID_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReJedID_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_WrData_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_WrData_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrData_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrData_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_ErSec4kb_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec4kb_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec4kb_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec4kb_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_ErSec32kb_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec32kb_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec32kb_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec32kb_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_ErSec64kb_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec64kb_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec64kb_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec64kb_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_ChiEra_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ChiEra_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ChiEra_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ChiEra_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_WrSR_Channel */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_WrSR_Channel =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrSR_Channel,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_WrSR_Channel   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_ReSRCommand_Job */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRCommand_Job =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRCommand_Job,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRCommand_Job   /* BufferRX */
+};
+/*  Buffers Descriptors for IB Channel G2B_W25Q_Flash_ReSRData_Job */
+static Spi_BufferDescriptorType Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRData_Job =
+{
+    Spi_BufferTX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRData_Job,  /* BufferTX */
+    Spi_BufferRX_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRData_Job   /* BufferRX */
 };
 
 #define SPI_STOP_SEC_VAR_INIT_UNSPECIFIED
@@ -206,12 +311,306 @@ static const Spi_ChannelConfigType Spi_ChannelConfig_SpiChannel_0_BOARD_InitPeri
         SPI_SPURIOUS_CORE_ID,  /* Core Id */
         &Spi_axSpiChannelState[0U] /* ChannelState pointer */
 };
+/* Channel Configuration for SpiChannel_1 */
+static const Spi_ChannelConfigType Spi_ChannelConfig_SpiChannel_1_BOARD_InitPeripherals =
+{
+        EB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        4U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_SpiChannel_1, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[1U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_Reset_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_Reset_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        2U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_Reset_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[2U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_WrEn_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_WrEn_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        1U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_WrEn_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[3U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_ReData_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_ReData_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)1U,  /* DefaultTransmitValue (configured) */
+        40U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ReData_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[4U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_WrCommand_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_WrCommand_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        4U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_WrCommand_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[5U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_ReJedID_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_ReJedID_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        4U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ReJedID_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[6U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_WrData_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_WrData_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        40U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_WrData_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[7U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_ErSec4kb_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_ErSec4kb_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        4U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec4kb_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[8U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_ErSec32kb_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_ErSec32kb_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        4U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec32kb_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[9U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_ErSec64kb_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_ErSec64kb_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        4U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ErSec64kb_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[10U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_ChiEra_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_ChiEra_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        1U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ChiEra_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[11U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_WrSR_Channel */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_WrSR_Channel_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        2U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_WrSR_Channel, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[12U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_ReSRCommand_Job */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_ReSRCommand_Job_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        2U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRCommand_Job, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[13U] /* ChannelState pointer */
+};
+/* Channel Configuration for G2B_W25Q_Flash_ReSRData_Job */
+static const Spi_ChannelConfigType Spi_ChannelConfig_G2B_W25Q_Flash_ReSRData_Job_BOARD_InitPeripherals =
+{
+        IB,  /* BufferType IB or EB */
+        8U,   /* Frame size */
+        (boolean)FALSE, /* Bite order, 1:LSB, 0: MSB */
+#ifdef SPI_HALF_DUPLEX_MODE_SUPPORT
+  #if (STD_ON == SPI_HALF_DUPLEX_MODE_SUPPORT)
+            SPI_FULL_DUPLEX,
+          #endif
+#endif
+        (uint32)0U,  /* DefaultTransmitValue (configured) */
+        1U, /* length of buffer */
+        &Spi_Buffer_BOARD_InitPeripherals_G2B_W25Q_Flash_ReSRData_Job, /* BufferDescriptor */
+        SPI_SPURIOUS_CORE_ID,  /* Core Id */
+        &Spi_axSpiChannelState[14U] /* ChannelState pointer */
+};
 /* Spi_aChannelConfigList_BOARD_InitPeripherals Channel Configuration */
-static const Spi_ChannelsCfgType Spi_aChannelConfigList_BOARD_InitPeripherals[1] =
+static const Spi_ChannelsCfgType Spi_aChannelConfigList_BOARD_InitPeripherals[15] =
 {
     /* SpiChannel_0 */
     {
         &Spi_ChannelConfig_SpiChannel_0_BOARD_InitPeripherals
+    },
+    /* SpiChannel_1 */
+    {
+        &Spi_ChannelConfig_SpiChannel_1_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_Reset_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_Reset_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrEn_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_WrEn_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReData_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_ReData_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrCommand_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_WrCommand_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReJedID_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_ReJedID_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrData_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_WrData_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ErSec4kb_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_ErSec4kb_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ErSec32kb_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_ErSec32kb_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ErSec64kb_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_ErSec64kb_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ChiEra_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_ChiEra_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrSR_Channel */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_WrSR_Channel_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReSRCommand_Job */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_ReSRCommand_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReSRData_Job */
+    {
+        &Spi_ChannelConfig_G2B_W25Q_Flash_ReSRData_Job_BOARD_InitPeripherals
     }
 };
 
@@ -220,6 +619,77 @@ static const Spi_ChannelsCfgType Spi_aChannelConfigList_BOARD_InitPeripherals[1]
 static const Spi_ChannelType Spi_SpiJob_0_ChannelAssignment_BOARD_InitPeripherals[1] =
 {
     SpiConf_SpiChannel_SpiChannel_0 
+};
+/* SpiJob_1 */
+static const Spi_ChannelType Spi_SpiJob_1_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_SpiChannel_1 
+};
+/* G2B_W25Q_Flash_Reset_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_Reset_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_Reset_Channel 
+};
+/* G2B_W25Q_Flash_WrEn_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_WrEn_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_WrEn_Channel 
+};
+/* G2B_W25Q_Flash_ReData_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_ReData_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_ReData_Channel 
+};
+/* G2B_W25Q_Flash_WrCommand_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_WrCommand_Job_ChannelAssignment_BOARD_InitPeripherals[2] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_WrCommand_Channel ,
+    SpiConf_SpiChannel_G2B_W25Q_Flash_WrData_Channel 
+};
+/* G2B_W25Q_Flash_ReJedID_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_ReJedID_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_ReJedID_Channel 
+};
+/* G2B_W25Q_Flash_WrData_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_WrData_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_WrData_Channel 
+};
+/* G2B_W25Q_Flash_ErSec4kb_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_ErSec4kb_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_ErSec4kb_Channel 
+};
+/* G2B_W25Q_Flash_ErSec32kb_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_ErSec32kb_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_ErSec32kb_Channel 
+};
+/* G2B_W25Q_Flash_ErSec64kb_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_ErSec64kb_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_ErSec64kb_Channel 
+};
+/* G2B_W25Q_Flash_ChiEra_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_ChiEra_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_ChiEra_Channel 
+};
+/* G2B_W25Q_Flash_WrSR_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_WrSR_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_WrSR_Channel 
+};
+/* G2B_W25Q_Flash_ReSRCommand_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_ReSRCommand_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_ReSRCommand_Job 
+};
+/* G2B_W25Q_Flash_ReSRData_Job */
+static const Spi_ChannelType Spi_G2B_W25Q_Flash_ReSRData_Job_ChannelAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiChannel_G2B_W25Q_Flash_ReSRData_Job 
 };
 
 /* Configuration of Jobs */
@@ -237,12 +707,264 @@ static const Spi_JobConfigType Spi_JobConfig_SpiJob_0_BOARD_InitPeripherals =
         SPI_SpiExternalDevice_0, /* External Device */
         &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
 };
+/* Job Configuration for SpiJob_1 */
+static const Spi_JobConfigType Spi_JobConfig_SpiJob_1_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_SpiJob_1_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[1], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_Reset_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_Reset_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_Reset_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[2], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_WrEn_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_WrEn_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_WrEn_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[3], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_ReData_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_ReData_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_ReData_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[4], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_WrCommand_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_WrCommand_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)2U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_WrCommand_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[5], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_ReJedID_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_ReJedID_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_ReJedID_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[6], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_WrData_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_WrData_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_WrData_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[7], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_ErSec4kb_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_ErSec4kb_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_ErSec4kb_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[8], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_ErSec32kb_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_ErSec32kb_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_ErSec32kb_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[9], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_ErSec64kb_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_ErSec64kb_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_ErSec64kb_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[10], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_ChiEra_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_ChiEra_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_ChiEra_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[11], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_WrSR_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_WrSR_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_WrSR_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[12], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_ReSRCommand_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_ReSRCommand_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_ReSRCommand_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[13], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
+/* Job Configuration for G2B_W25Q_Flash_ReSRData_Job */
+static const Spi_JobConfigType Spi_JobConfig_G2B_W25Q_Flash_ReSRData_Job_BOARD_InitPeripherals =
+{
+        (Spi_ChannelType)1U, /* NumChannels field */
+        Spi_G2B_W25Q_Flash_ReSRData_Job_ChannelAssignment_BOARD_InitPeripherals, /* List of Channels */
+        NULL_PTR, /* End Notification */
+        NULL_PTR, /* Start Notification */
+        (sint8)0, /* Priority */
+        SPI_SPURIOUS_CORE_ID,    /* Core ID */
+        &Spi_axSpiJobState[14], /* JobState instance */
+        CSIB0, /* HWUnit index */
+        SPI_SpiExternalDevice_0, /* External Device */
+        &Spi_aExternalDeviceConfigList_BOARD_InitPeripherals[SPI_SpiExternalDevice_0] /* ExternalDeviceConfig - pointer to the external device configuration */
+};
 /* Spi_aJobConfigList_BOARD_InitPeripherals Job Configuration*/
-static const Spi_JobsCfgType Spi_aJobConfigList_BOARD_InitPeripherals[1] =
+static const Spi_JobsCfgType Spi_aJobConfigList_BOARD_InitPeripherals[15] =
 {
     /* SpiJob_0 */
     {
         &Spi_JobConfig_SpiJob_0_BOARD_InitPeripherals
+    },
+    /* SpiJob_1 */
+    {
+        &Spi_JobConfig_SpiJob_1_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_Reset_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_Reset_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrEn_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_WrEn_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReData_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_ReData_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrCommand_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_WrCommand_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReJedID_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_ReJedID_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrData_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_WrData_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ErSec4kb_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_ErSec4kb_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ErSec32kb_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_ErSec32kb_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ErSec64kb_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_ErSec64kb_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ChiEra_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_ChiEra_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrSR_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_WrSR_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReSRCommand_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_ReSRCommand_Job_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReSRData_Job */
+    {
+        &Spi_JobConfig_G2B_W25Q_Flash_ReSRData_Job_BOARD_InitPeripherals
     }
 };
 
@@ -251,6 +973,76 @@ static const Spi_JobsCfgType Spi_aJobConfigList_BOARD_InitPeripherals[1] =
 static const Spi_JobType Spi_SpiSequence_0_JobAssignment_BOARD_InitPeripherals[1] =
 {
     SpiConf_SpiJob_SpiJob_0 
+};
+/* SpiSequence_1 */
+static const Spi_JobType Spi_SpiSequence_1_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_SpiJob_1 
+};
+/* G2B_W25Q_Flash_Reset_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_Reset_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_Reset_Job 
+};
+/* G2B_W25Q_Flash_WrEn_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_WrEn_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_WrEn_Job 
+};
+/* G2B_W25Q_Flash_ReData_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_ReData_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_ReData_Job 
+};
+/* G2B_W25Q_Flash_WrCommand_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_WrCommand_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_WrCommand_Job 
+};
+/* G2B_W25Q_Flash_ReJedID_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_ReJedID_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_ReJedID_Job 
+};
+/* G2B_W25Q_Flash_WrData_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_WrData_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_WrData_Job 
+};
+/* G2B_W25Q_Flash_ErSec4kb_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_ErSec4kb_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_ErSec4kb_Job 
+};
+/* G2B_W25Q_Flash_ErSec32kb_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_ErSec32kb_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_ErSec32kb_Job 
+};
+/* G2B_W25Q_Flash_ErSec64kb_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_ErSec64kb_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_ErSec64kb_Job 
+};
+/* G2B_W25Q_Flash_ChiEra_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_ChiEra_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_ChiEra_Job 
+};
+/* G2B_W25Q_Flash_WrSR_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_WrSR_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_WrSR_Job 
+};
+/* G2B_W25Q_Flash_ReSRCommand_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_ReSRCommand_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_ReSRCommand_Job 
+};
+/* G2B_W25Q_Flash_ReSRData_Seq */
+static const Spi_JobType Spi_G2B_W25Q_Flash_ReSRData_Seq_JobAssignment_BOARD_InitPeripherals[1] =
+{
+    SpiConf_SpiJob_G2B_W25Q_Flash_ReSRData_Job 
 };
 
 /* Configuration of Sequences */
@@ -266,12 +1058,236 @@ static const Spi_SequenceConfigType Spi_SequenceConfig_SpiSequence_0_BOARD_InitP
         , (boolean)FALSE /* Enable Dma fast transfer */
         #endif
 };
+/* Sequence Configuration for SpiSequence_1 */
+static const Spi_SequenceConfigType Spi_SequenceConfig_SpiSequence_1_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_SpiSequence_1_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_Reset_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_Reset_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_Reset_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_WrEn_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_WrEn_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_WrEn_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_ReData_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_ReData_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_ReData_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_WrCommand_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_WrCommand_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_WrCommand_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_ReJedID_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_ReJedID_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_ReJedID_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_WrData_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_WrData_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_WrData_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_ErSec4kb_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_ErSec4kb_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_ErSec4kb_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_ErSec32kb_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_ErSec32kb_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_ErSec32kb_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_ErSec64kb_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_ErSec64kb_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_ErSec64kb_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_ChiEra_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_ChiEra_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_ChiEra_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_WrSR_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_WrSR_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_WrSR_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_ReSRCommand_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_ReSRCommand_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_ReSRCommand_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
+/* Sequence Configuration for G2B_W25Q_Flash_ReSRData_Seq */
+static const Spi_SequenceConfigType Spi_SequenceConfig_G2B_W25Q_Flash_ReSRData_Seq_BOARD_InitPeripherals =
+{
+        (Spi_JobType)1U,  /* Number of Job in Seq */
+        SPI_SPURIOUS_CORE_ID,
+        Spi_G2B_W25Q_Flash_ReSRData_Seq_JobAssignment_BOARD_InitPeripherals, /* List of Jobs */
+        NULL_PTR, /* End Notification */
+        (uint8)FALSE  /* Interruptible */
+        #if ((SPI_DMA_USED == STD_ON) && (SPI_ENABLE_DMAFASTTRANSFER_SUPPORT == STD_ON))
+        , (boolean)FALSE /* Enable Dma fast transfer */
+        #endif
+};
 /* Spi_aSequenceConfigList_BOARD_InitPeripherals Sequence Configuration */
-static const Spi_SeqsConfigType Spi_aSequenceConfigList_BOARD_InitPeripherals[1] =
+static const Spi_SeqsConfigType Spi_aSequenceConfigList_BOARD_InitPeripherals[15] =
 {
     /* SpiSequence_0 */
     {
         &Spi_SequenceConfig_SpiSequence_0_BOARD_InitPeripherals
+    },
+    /* SpiSequence_1 */
+    {
+        &Spi_SequenceConfig_SpiSequence_1_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_Reset_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_Reset_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrEn_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_WrEn_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReData_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_ReData_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrCommand_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_WrCommand_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReJedID_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_ReJedID_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrData_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_WrData_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ErSec4kb_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_ErSec4kb_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ErSec32kb_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_ErSec32kb_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ErSec64kb_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_ErSec64kb_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ChiEra_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_ChiEra_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_WrSR_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_WrSR_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReSRCommand_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_ReSRCommand_Seq_BOARD_InitPeripherals
+    },
+    /* G2B_W25Q_Flash_ReSRData_Seq */
+    {
+        &Spi_SequenceConfig_G2B_W25Q_Flash_ReSRData_Seq_BOARD_InitPeripherals
     }
 };
 /*==================================================================================================
@@ -281,9 +1297,9 @@ static const Spi_SeqsConfigType Spi_aSequenceConfigList_BOARD_InitPeripherals[1]
  const Spi_ConfigType Spi_Config_BOARD_InitPeripherals=
 {
     1U,  /* MaxExternalDevice - number of external devices */
-    0U, /* SpiMaxChannel - number of channels */
-    0U, /* SpiMaxJob - number of jobs */
-    0U, /* SpiMaxSequence - number of sequences */
+    14U, /* SpiMaxChannel - number of channels */
+    14U, /* SpiMaxJob - number of jobs */
+    14U, /* SpiMaxSequence - number of sequences */
     SPI_SPURIOUS_CORE_ID,   /* SpiCoreUse - used core */
     Spi_aChannelConfigList_BOARD_InitPeripherals, /* ChannelConfig */
     Spi_aJobConfigList_BOARD_InitPeripherals, /* JobConfig */
