@@ -6,7 +6,9 @@
  */
 
 #include "ESP8266_ThingSpeak.h"
-
+char api_key[] = "ELCZ6SJ1WE4DVRHZ";
+// uint8_t array for storing the received data
+volatile uint8_t rxBuffer[RX_BUFFER_SIZE];
 
 void AT_reset(void)
 {
@@ -17,6 +19,28 @@ void AT_reset(void)
 	/*==========================================================================================*/
 
 	testDelay(15000000);
+}
+
+
+void AT_init(void)
+{
+
+	/*-------------------------------UART Configuration-----------------------*/
+
+		Uart_Init(NULL_PTR);
+
+	/*------------------------------------------------------------------------*/
+
+}
+
+
+void AT_receiveResponse(void)
+{
+	/*=================================AT Command Receiver======================================*/
+
+	Uart_AsyncReceive(LPUART0_CHANNEL_INDEX, (uint8_t *) rxBuffer, RX_BUFFER_SIZE);
+
+	/*==========================================================================================*/
 }
 
 
@@ -71,7 +95,7 @@ void AT_connect_ThingSpeak(void)
 	char output[100];
 
 	// Format the command in the "AT+CWJAP=\"SSID\",\"PASSWORD\"" format
-	int len = snprintf(output, 100, "AT+CWJAP=\"%s\",\"%s\",%d\r\n", connection_type, thingspeak_url, port_number);
+	int len = snprintf(output, 100, "AT+CIPSTART=\"%s\",\"%s\",%d\r\n", connection_type, thingspeak_url, port_number);
 
 	// Clear any remaining characters in the buffer
 	memset(output + len, '\0', sizeof(output) - len);
@@ -84,9 +108,6 @@ void AT_connect_ThingSpeak(void)
 	testDelay(15000000);
 }
 
-char api_key[] = "ELCZ6SJ1WE4DVRHZ";
-
-
 
 void AT_sendData(int value)
 {
@@ -96,7 +117,7 @@ void AT_sendData(int value)
 	int field_value = value;
 
 	// Format the command in the "AT+CWJAP=\"SSID\",\"PASSWORD\"" format
-	int len = snprintf(output, sizeof(output),"GET /update?api_key=%s&field1=%d", api_key, field_value);
+	int len = snprintf(output, sizeof(output),"GET /update?api_key=%s&field1=%d\r\n", api_key, field_value);
 
 	// Clear any remaining characters in the buffer
 	memset(output + len, '\0', sizeof(output) - len);
