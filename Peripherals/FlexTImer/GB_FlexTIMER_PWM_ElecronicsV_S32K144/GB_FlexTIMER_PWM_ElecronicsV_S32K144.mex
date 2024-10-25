@@ -269,9 +269,22 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.ftm_icu" description="Ftm_Icu not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.ftm_icu" description="Unsupported version of the Ftm_Icu in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/Port_Ci_Port_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Ftm_Icu_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Ftm_Icu_Ip_Defines.h" update_enabled="true"/>
+            <file path="generate/include/Ftm_Icu_Ip_SA_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Pwm_Ip_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Pwm_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Pwm_Ip_CfgDefines.h" update_enabled="true"/>
@@ -285,6 +298,7 @@
             <file path="generate/include/Port_Ci_Port_Ip_Defines.h" update_enabled="true"/>
             <file path="generate/include/SoC_Ips.h" update_enabled="true"/>
             <file path="generate/include/modules.h" update_enabled="true"/>
+            <file path="generate/src/Ftm_Icu_Ip_SA_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Ftm_Pwm_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/IntCtrl_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/OsIf_Cfg.c" update_enabled="true"/>
@@ -565,6 +579,23 @@
                                        <setting name="PortPinPE" value="PullDisabled"/>
                                        <setting name="PortPinPS" value="PullDown"/>
                                        <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="4">
+                                       <setting name="Name" value="PortPin_4"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="5"/>
+                                       <setting name="PortPinPcr" value="34"/>
+                                       <setting name="PortPinMode" value="FTM1_CH0"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_IN"/>
                                        <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
                                        <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
                                        <array name="PortPinEcucPartitionRef"/>
@@ -1055,7 +1086,7 @@
                                  <struct name="71">
                                     <setting name="Name" value="PlatformIsrConfig_71"/>
                                     <setting name="IsrName" value="FTM1_Ch0_Ch1_IRQn"/>
-                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrEnabled" value="true"/>
                                     <setting name="IsrPriority" value="0"/>
                                  </struct>
                                  <struct name="72">
@@ -1085,7 +1116,7 @@
                                  <struct name="76">
                                     <setting name="Name" value="PlatformIsrConfig_76"/>
                                     <setting name="IsrName" value="FTM1_Ovf_Reload_IRQn"/>
-                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrEnabled" value="true"/>
                                     <setting name="IsrPriority" value="0"/>
                                  </struct>
                                  <struct name="77">
@@ -1612,6 +1643,67 @@
                                  <setting name="IsrHandler" value="undefined_handler"/>
                               </struct>
                            </array>
+                        </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="Ftm_Icu" uuid="3212b059-2221-44e2-bfbd-d172f4cad9e6" type="Ftm_Icu" type_id="Ftm_Icu" mode="ip" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="Ftm_Icu">
+                        <setting name="Name" value="Ftm_Icu"/>
+                        <struct name="ConfigTimeSupport">
+                           <setting name="POST_BUILD_VARIANT_USED" value="false"/>
+                           <setting name="IMPLEMENTATION_CONFIG_VARIANT" value="VARIANT-POST-BUILD"/>
+                        </struct>
+                        <struct name="IcuConfigSet">
+                           <setting name="Name" value="FtmConfigSet"/>
+                           <setting name="IcuMaxChannel" value="1"/>
+                           <array name="IcuChannel">
+                              <struct name="0">
+                                 <setting name="Name" value="IcuChannel_0"/>
+                                 <setting name="IcuChannelId" value="0"/>
+                                 <setting name="IcuChannelRef" value="/Ftm_Icu/Ftm_Icu/FtmConfigSet/IcuFtm_1/IcuFtm_1_Channel_0"/>
+                                 <setting name="IcuDefaultStartEdge" value="ICU_RISING_EDGE"/>
+                                 <setting name="IcuMeasurementMode" value="ICU_MODE_SIGNAL_MEASUREMENT"/>
+                                 <setting name="IcuOverflowNotification" value="input_capture_callback"/>
+                                 <array name="IcuSignalEdgeDetection"/>
+                                 <array name="IcuSignalMeasurement">
+                                    <struct name="0">
+                                       <setting name="Name" value="IcuSignalMeasurement"/>
+                                       <setting name="IcuSignalMeasurementProperty" value="ICU_HIGH_TIME"/>
+                                    </struct>
+                                 </array>
+                                 <array name="IcuTimestampMeasurement"/>
+                              </struct>
+                           </array>
+                           <array name="IcuFtm">
+                              <struct name="0">
+                                 <setting name="Name" value="IcuFtm_1"/>
+                                 <setting name="IcuFtmModule" value="1"/>
+                                 <setting name="IcuFtmClockSource" value="EXTERNAL_CLOCK"/>
+                                 <setting name="IcuFtmPrescaler" value="1"/>
+                                 <setting name="IcuFtmPrescalerAlternate" value="1"/>
+                                 <setting name="IcuFtmDebugMode" value="MODE_0"/>
+                                 <setting name="IcuFtmModValue" value="0"/>
+                                 <array name="IcuFtmChannels">
+                                    <struct name="0">
+                                       <setting name="Name" value="IcuFtm_1_Channel_0"/>
+                                       <setting name="IcuFtmChannel" value="0"/>
+                                       <setting name="IcuFtmFilter" value="0"/>
+                                    </struct>
+                                 </array>
+                              </struct>
+                           </array>
+                           <array name="IcuHwInterruptConfigList">
+                              <struct name="0">
+                                 <setting name="Name" value="IcuHwInterruptConfigList_0"/>
+                                 <setting name="IcuIsrHwId" value="FTM_1_CH_0"/>
+                                 <setting name="IcuIsrEnable" value="true"/>
+                              </struct>
+                           </array>
+                        </struct>
+                        <struct name="IcuGeneral">
+                           <setting name="Name" value="FtmIcuGeneral"/>
+                           <setting name="IcuDevErrorDetect" value="true"/>
+                           <setting name="IcuEnableUserModeSupport" value="false"/>
                         </struct>
                      </config_set>
                   </instance>
