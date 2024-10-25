@@ -97,15 +97,15 @@ int main(void)
 //
 //		Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel(FTM_INSTANCE_0, channel0, 35000, TRUE);
 
-		TestDelay(200000);
-
-		Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty(FTM_INSTANCE_0, channel0, 35000, 12000, TRUE );
-
-		TestDelay(200000);
-		Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty(FTM_INSTANCE_0, channel1, 45000, 32000, TRUE );
-
-
-		TestDelay(200000);
+//		TestDelay(200000);
+//
+//		Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty(FTM_INSTANCE_0, channel0, 35000, 12000, TRUE );
+//
+//		TestDelay(200000);
+//		Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty(FTM_INSTANCE_0, channel1, 45000, 32000, TRUE );
+//
+//
+//		TestDelay(200000);
 
 
 
