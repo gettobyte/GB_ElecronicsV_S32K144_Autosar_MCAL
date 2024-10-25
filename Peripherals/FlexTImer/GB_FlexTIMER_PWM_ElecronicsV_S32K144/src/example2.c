@@ -72,7 +72,7 @@ int main(void)
 	Port_Init(NULL_PTR);
 
     /* Install and enable interrupt handlers */
-    IntCtrl_Ip_InstallHandler(FTM0_Ch2_Ch3_IRQn, FTM_0_CH_0_CH_1_ISR, NULL_PTR);
+    IntCtrl_Ip_InstallHandler(FTM0_Ch2_Ch3_IRQn, FTM_0_CH_2_CH_3_ISR, NULL_PTR);
     IntCtrl_Ip_EnableIrq(FTM0_Ch2_Ch3_IRQn);
 
 	/* Initialize PWM driver */

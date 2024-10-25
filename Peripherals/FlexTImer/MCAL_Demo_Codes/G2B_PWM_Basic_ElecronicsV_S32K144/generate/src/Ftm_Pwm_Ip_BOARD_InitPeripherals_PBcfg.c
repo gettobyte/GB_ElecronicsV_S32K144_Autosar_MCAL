@@ -141,7 +141,7 @@ const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg0 =
 /* Ftm instance 0 initialization configuration */
 const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0 =
 {
-    /* ClkSrc */                FTM_PWM_IP_CLOCK_SOURCE_FIXEDCLK,
+    /* ClkSrc */                FTM_PWM_IP_CLOCK_SOURCE_SYSTEMCLK,
     /* ClkPs */                 FTM_PWM_IP_CLOCK_DIV_1,
     /* AlternateclkPs */        FTM_PWM_IP_CLOCK_DIV_1,
     /* CntMode */               FTM_PWM_IP_EDGE_ALIGNED,

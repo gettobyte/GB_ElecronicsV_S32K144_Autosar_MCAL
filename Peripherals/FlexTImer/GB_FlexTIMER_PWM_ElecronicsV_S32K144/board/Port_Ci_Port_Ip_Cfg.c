@@ -28,7 +28,7 @@ BOARD_InitPins:
 /* clang-format on */
 
 /* Generate array of configured pin structures */
-Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS0] = {
+Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS] = {
     {
         .portBase        = IP_PORTB,
         .gpioBase        = NULL_PTR,

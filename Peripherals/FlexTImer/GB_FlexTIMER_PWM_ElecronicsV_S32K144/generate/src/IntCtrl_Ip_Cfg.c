@@ -130,7 +130,7 @@ static const IntCtrl_Ip_IrqConfigType aIrqConfiguration1[] = {
     {FTM0_Ch4_Ch5_IRQn, (boolean)FALSE, 0U},
     {FTM0_Ch6_Ch7_IRQn, (boolean)FALSE, 0U},
     {FTM0_Fault_IRQn, (boolean)FALSE, 0U},
-    {FTM0_Ovf_Reload_IRQn, (boolean)FALSE, 0U},
+    {FTM0_Ovf_Reload_IRQn, (boolean)TRUE, 0U},
     {FTM1_Ch0_Ch1_IRQn, (boolean)FALSE, 0U},
     {FTM1_Ch2_Ch3_IRQn, (boolean)FALSE, 0U},
     {FTM1_Ch4_Ch5_IRQn, (boolean)FALSE, 0U},

@@ -72,10 +72,12 @@ int main(void)
     IntCtrl_Ip_InstallHandler(FTM0_Ch0_Ch1_IRQn, FTM_0_CH_0_CH_1_ISR, NULL_PTR);
     IntCtrl_Ip_EnableIrq(FTM0_Ch0_Ch1_IRQn);
 
+    IntCtrl_Ip_InstallHandler(FTM0_Ovf_Reload_IRQn, FTM_0_OVF_ISR, NULL_PTR);
+    IntCtrl_Ip_EnableIrq(FTM0_Ovf_Reload_IRQn);
 	/* Initialize PWM driver */
 	Ftm_Pwm_Ip_Init(FTM_INSTANCE_0, &Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0);
 
-//	Ftm_Pwm_Ip_EnableNotification(FTM_INSTANCE_0, channel0 ,FTM_PWM_IP_BOTH_EDGES );
+	Ftm_Pwm_Ip_EnableNotification(FTM_INSTANCE_0, channel0 ,FTM_PWM_IP_BOTH_EDGES );
 //
 //	Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel(FTM_INSTANCE_0, channel0, 35000, TRUE);
 
