@@ -52,7 +52,8 @@ uint32_t FTM_Clk = 0;
 
 
 Ftm_Icu_Ip_DutyCycleType x;
-
+uint16 period;
+uint16 activeperiod;
 
 void PwmFtmChInterruptCallback(void)
 {
@@ -64,11 +65,11 @@ void PwmFtmChInterruptCallback(void)
 void input_capture_callback(void)
 {
 
-	Ftm_Icu_Ip_StartSignalMeasurement(icu_instance, icu_channel);
+	//Ftm_Icu_Ip_StartSignalMeasurement(icu_instance, icu_channel);
 
-	Ftm_Icu_Ip_GetDutyCycleValues(icu_instance, icu_channel, &x);
+//	Ftm_Icu_Ip_GetDutyCycleValues(icu_instance, icu_channel, &x);
 
-
+	Ftm_Icu_Ip_GetPWandPeriod(icu_instance, icu_channel, &activeperiod, &period );
 }
 
 
@@ -100,20 +101,28 @@ int main(void)
     IntCtrl_Ip_InstallHandler(FTM1_Ovf_Reload_IRQn, FTM_1_OVF_ISR, NULL_PTR);
     IntCtrl_Ip_EnableIrq(FTM1_Ovf_Reload_IRQn);
 
-    /* Initialize PWM driver */
-	Ftm_Pwm_Ip_Init(FTM_INSTANCE_0, &Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0);
 
-	Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel(FTM_INSTANCE_0, channel0, 35000, TRUE);
-	Ftm_Pwm_Ip_EnableNotification(FTM_INSTANCE_0, channel0 ,FTM_PWM_IP_BOTH_EDGES );
 
+    Ftm_Icu_Ip_Init(icu_instance, &Ftm_Icu_Ip_1_Config_PB_BOARD_InitPeripherals);
 
 	Ftm_Icu_Ip_StartSignalMeasurement(icu_instance, icu_channel);
 
 	Ftm_Icu_Ip_EnableInterrupt(icu_instance, icu_channel);
 	Ftm_Icu_Ip_EnableNotification(icu_instance, icu_channel);
 
-    Ftm_Icu_Ip_Init(icu_instance, &Ftm_Icu_Ip_1_Config_PB_BOARD_InitPeripherals);
 
+    /* Initialize PWM driver */
+	Ftm_Pwm_Ip_Init(FTM_INSTANCE_0, &Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0);
+
+	Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel(FTM_INSTANCE_0, channel0, 35000, TRUE);
+
+	Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty(FTM_INSTANCE_0, channel0, 45000, 32000, TRUE);
+
+
+	Ftm_Pwm_Ip_EnableNotification(FTM_INSTANCE_0, channel0 ,FTM_PWM_IP_BOTH_EDGES );
+
+
+//	Ftm_Icu_Ip_StartSignalMeasurement(icu_instance, icu_channel);
 //	Ftm_Icu_Ip_EnableInterrupt(icu_instance, icu_channel);
 //	Ftm_Icu_Ip_EnableEdgeCount();
 //	Ftm_Icu_Ip_EnableEdgeDetection();

@@ -122,9 +122,9 @@ const Ftm_Icu_Ip_ChannelConfigType Ftm_Icu_Ip_1_ChannelConfig_PB_BOARD_InitPerip
         /** @brief DMA support for timestamp measurement. */
         FTM_ICU_MODE_WITHOUT_DMA,
         /** @brief Measurement mode for signal measurement. */
-        FTM_ICU_HIGH_TIME,
+        FTM_ICU_DUTY_CYCLE,
         /** @brief Edge alignment for signal measurement. */
-        FTM_ICU_RISING_EDGE,
+        FTM_ICU_FALLING_EDGE,
         /** @brief Continuos measurement enable/disable. */
         FALSE,
         /** @brief FTM Channel Input Filter value */
@@ -159,9 +159,9 @@ const Ftm_Icu_Ip_InstanceConfigType Ftm_Icu_Ip_1_InstanceConfig_PB_BOARD_InitPer
     (uint8)1,
 #endif
     /** @brief FTM debug mode  */
-    MODE_0,
+    MODE_3,
     /** @brief FTM maxim counter value */
-    (uint16)0
+    (uint16)65535
 };
         
 /*
