@@ -1,0 +1,92 @@
+main ()
+{
+  uint8 direction;
+  double count;
+  Clock_Ip_StatusType clockStatus;
+  int D.6477;
+
+  <bb 2> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+
+  <bb 4> :
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
+  _2 = pwm_duty_cycle (50);
+  Pwm_SetPeriodAndDuty (0, 40000, _2);
+  TestDelay (700000);
+  count = 2.5e+0;
+  direction = 0;
+
+  <bb 8> :
+  if (direction == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  if (count <= 1.25e+1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _3 = (unsigned char) count;
+  _4 = pwm_duty_cycle (_3);
+  Pwm_SetDutyCycle (0, _4);
+  TestDelay (700000);
+  count = count + 5.0e-1;
+  goto <bb 16>; [INV]
+
+  <bb 11> :
+  direction = 1;
+  goto <bb 16>; [INV]
+
+  <bb 12> :
+  if (direction == 1)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  if (count >= 2.5e+0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  _5 = (unsigned char) count;
+  _6 = pwm_duty_cycle (_5);
+  Pwm_SetDutyCycle (0, _6);
+  TestDelay (700000);
+  count = count - 5.0e-1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  direction = 0;
+
+  <bb 16> :
+  goto <bb 8>; [INV]
+
+}
+
+

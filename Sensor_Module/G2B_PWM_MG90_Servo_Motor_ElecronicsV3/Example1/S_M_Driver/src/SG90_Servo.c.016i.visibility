@@ -1,0 +1,273 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: servo_sweep_with_step servo_sweep servo_setPosition pwm_duty_cycle TestDelay
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Pwm_SetDutyCycle/7 (Pwm_SetDutyCycle) @0677c8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: servo_sweep_with_step/5 servo_sweep_with_step/5 servo_sweep_with_step/5 servo_sweep/4 servo_sweep/4 servo_sweep/4 servo_setPosition/3 
+  Calls: 
+DelayTimer.5991/6 (DelayTimer) @068bd708
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: TestDelay/1 (read)TestDelay/1 (write)TestDelay/1 (read)TestDelay/1 (write)
+  Availability: available
+  Varpool flags: initialized
+servo_sweep_with_step/5 (servo_sweep_with_step) @0677c2a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/1 Pwm_SetDutyCycle/7 pwm_duty_cycle/2 TestDelay/1 Pwm_SetDutyCycle/7 pwm_duty_cycle/2 Pwm_SetDutyCycle/7 pwm_duty_cycle/2 
+servo_sweep/4 (servo_sweep) @0677c000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/1 Pwm_SetDutyCycle/7 pwm_duty_cycle/2 TestDelay/1 Pwm_SetDutyCycle/7 pwm_duty_cycle/2 Pwm_SetDutyCycle/7 pwm_duty_cycle/2 
+servo_setPosition/3 (servo_setPosition) @068b7c40
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/1 Pwm_SetDutyCycle/7 pwm_duty_cycle/2 
+pwm_duty_cycle/2 (pwm_duty_cycle) @068b7e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: servo_sweep_with_step/5 servo_sweep_with_step/5 servo_sweep_with_step/5 servo_sweep/4 servo_sweep/4 servo_sweep/4 servo_setPosition/3 
+  Calls: 
+TestDelay/1 (TestDelay) @068b7b60
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: DelayTimer.5991/6 (read)DelayTimer.5991/6 (write)DelayTimer.5991/6 (read)DelayTimer.5991/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: servo_sweep_with_step/5 servo_sweep_with_step/5 servo_sweep/4 servo_sweep/4 servo_setPosition/3 
+  Calls: 
+servo_sweep_with_step (float32 steps)
+{
+  float32 step;
+  int8_t direction;
+  float32 currentValue;
+
+  <bb 2> :
+  _1 = pwm_duty_cycle (2);
+  Pwm_SetDutyCycle (0, _1);
+  currentValue = 2.5e+0;
+  direction = 0;
+  step = steps;
+
+  <bb 3> :
+  if (direction == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  if (currentValue <= 1.25e+1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _2 = (unsigned char) currentValue;
+  _3 = pwm_duty_cycle (_2);
+  Pwm_SetDutyCycle (0, _3);
+  TestDelay (100000);
+  currentValue = currentValue + step;
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  direction = 1;
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+  if (direction == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  if (currentValue >= 2.5e+0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _4 = (unsigned char) currentValue;
+  _5 = pwm_duty_cycle (_4);
+  Pwm_SetDutyCycle (0, _5);
+  TestDelay (100000);
+  currentValue = currentValue - step;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  direction = 0;
+
+  <bb 11> :
+  goto <bb 3>; [INV]
+
+}
+
+
+servo_sweep ()
+{
+  float32 step;
+  int8_t direction;
+  float32 currentValue;
+
+  <bb 2> :
+  _1 = pwm_duty_cycle (2);
+  Pwm_SetDutyCycle (0, _1);
+  currentValue = 2.5e+0;
+  direction = 0;
+  step = 1.00000001490116119384765625e-1;
+
+  <bb 3> :
+  if (direction == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  if (currentValue <= 1.25e+1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _2 = (unsigned char) currentValue;
+  _3 = pwm_duty_cycle (_2);
+  Pwm_SetDutyCycle (0, _3);
+  TestDelay (10000);
+  currentValue = currentValue + step;
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  direction = 1;
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+  if (direction == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  if (currentValue >= 2.5e+0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _4 = (unsigned char) currentValue;
+  _5 = pwm_duty_cycle (_4);
+  Pwm_SetDutyCycle (0, _5);
+  TestDelay (10000);
+  currentValue = currentValue - step;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  direction = 0;
+
+  <bb 11> :
+  goto <bb 3>; [INV]
+
+}
+
+
+servo_setPosition (int32_t degree)
+{
+  float32 z;
+  float32 y;
+  float32 x;
+
+  <bb 2> :
+  _1 = degree / 180;
+  x = (float32) _1;
+  y = x * 1.0e+1;
+  z = y + 2.5e+0;
+  _2 = (unsigned char) z;
+  _3 = pwm_duty_cycle (_2);
+  Pwm_SetDutyCycle (0, _3);
+  TestDelay (10000);
+  return;
+
+}
+
+
+pwm_duty_cycle (uint8_t duty_cycle_percent)
+{
+  uint16_t duty_cycle;
+  uint16_t D.6023;
+
+  <bb 2> :
+  _1 = (int) duty_cycle_percent;
+  _2 = _1 * 32768;
+  _3 = _2 / 100;
+  duty_cycle = (uint16_t) _3;
+  D.6023 = duty_cycle;
+
+  <bb 3> :
+<L0>:
+  return D.6023;
+
+}
+
+
+TestDelay (uint32_t delay)
+{
+  static volatile uint32_t DelayTimer = 0;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer = 0;
+  return;
+
+}
+
+

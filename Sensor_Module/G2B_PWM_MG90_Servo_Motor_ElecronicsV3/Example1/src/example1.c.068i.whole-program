@@ -1,0 +1,224 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: main
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Pwm_SetDutyCycle/12 (Pwm_SetDutyCycle) @064a39a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/1 main/1 
+  Calls: 
+TestDelay/11 (TestDelay) @064a38c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/1 main/1 main/1 
+  Calls: 
+Pwm_SetPeriodAndDuty/10 (Pwm_SetPeriodAndDuty) @064a37e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/1 
+  Calls: 
+pwm_duty_cycle/9 (pwm_duty_cycle) @064a3700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/1 main/1 main/1 
+  Calls: 
+Pwm_Config_BOARD_InitPeripherals/8 (Pwm_Config_BOARD_InitPeripherals) @06c2b798
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/1 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Pwm_Init/7 (Pwm_Init) @064a3620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/1 
+  Calls: 
+Port_Init/6 (Port_Init) @064a3540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/1 
+  Calls: 
+Clock_Ip_DistributePll/5 (Clock_Ip_DistributePll) @064a3460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/1 
+  Calls: 
+Clock_Ip_GetPllStatus/4 (Clock_Ip_GetPllStatus) @064a3380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/1 
+  Calls: 
+Mcu_aClockConfigPB_BOARD_InitPeripherals/3 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06c2b5e8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/1 (addr)main/1 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/2 (Clock_Ip_Init) @064a32a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/1 main/1 
+  Calls: 
+main/1 (main) @0649ee00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/3 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/3 (addr)Pwm_Config_BOARD_InitPeripherals/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/11 Pwm_SetDutyCycle/12 pwm_duty_cycle/9 TestDelay/11 Pwm_SetDutyCycle/12 pwm_duty_cycle/9 TestDelay/11 Pwm_SetPeriodAndDuty/10 pwm_duty_cycle/9 Pwm_Init/7 Port_Init/6 Clock_Ip_DistributePll/5 Clock_Ip_GetPllStatus/4 Clock_Ip_Init/2 Clock_Ip_Init/2 
+main ()
+{
+  uint8 direction;
+  double count;
+  Clock_Ip_StatusType clockStatus;
+  int D.6477;
+  <unnamed type> _1;
+  short unsigned int _2;
+  unsigned char _3;
+  short unsigned int _4;
+  unsigned char _5;
+  short unsigned int _6;
+
+  <bb 2> :
+  clockStatus_18 = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus_39 = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+
+  <bb 4> :
+  # clockStatus_7 = PHI <clockStatus_18(2), clockStatus_39(3)>
+  if (clockStatus_7 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
+  _2 = pwm_duty_cycle (50);
+  Pwm_SetPeriodAndDuty (0, 40000, _2);
+  TestDelay (700000);
+  count_26 = 2.5e+0;
+  direction_27 = 0;
+
+  <bb 8> :
+  # count_8 = PHI <count_26(7), count_9(16)>
+  # direction_10 = PHI <direction_27(7), direction_11(16)>
+  if (direction_10 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  if (count_8 <= 1.25e+1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _3 = (unsigned char) count_8;
+  _4 = pwm_duty_cycle (_3);
+  Pwm_SetDutyCycle (0, _4);
+  TestDelay (700000);
+  count_37 = count_8 + 5.0e-1;
+  goto <bb 16>; [INV]
+
+  <bb 11> :
+  direction_33 = 1;
+  goto <bb 16>; [INV]
+
+  <bb 12> :
+  if (direction_10 == 1)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  if (count_8 >= 2.5e+0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  _5 = (unsigned char) count_8;
+  _6 = pwm_duty_cycle (_5);
+  Pwm_SetDutyCycle (0, _6);
+  TestDelay (700000);
+  count_32 = count_8 - 5.0e-1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  direction_28 = 0;
+
+  <bb 16> :
+  # count_9 = PHI <count_8(11), count_8(12), count_32(14), count_8(15), count_37(10)>
+  # direction_11 = PHI <direction_33(11), direction_10(12), direction_10(14), direction_28(15), direction_10(10)>
+  goto <bb 8>; [INV]
+
+}
+
+
