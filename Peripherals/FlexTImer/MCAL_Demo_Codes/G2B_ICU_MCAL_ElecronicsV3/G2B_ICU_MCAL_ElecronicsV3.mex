@@ -1337,6 +1337,40 @@
                                        <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
                                        <array name="PortPinEcucPartitionRef"/>
                                     </struct>
+                                    <struct name="2">
+                                       <setting name="Name" value="switch1"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="3"/>
+                                       <setting name="PortPinPcr" value="35"/>
+                                       <setting name="PortPinMode" value="GPIO"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_IN"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_LOW"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="3">
+                                       <setting name="Name" value="PortPin_3"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="4"/>
+                                       <setting name="PortPinPcr" value="76"/>
+                                       <setting name="PortPinMode" value="GPIO"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_IN"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
                                  </array>
                               </struct>
                            </array>
@@ -1685,7 +1719,7 @@
                                  <struct name="48">
                                     <setting name="Name" value="PlatformIsrConfig_48"/>
                                     <setting name="IsrName" value="PORTC_IRQn"/>
-                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrEnabled" value="true"/>
                                     <setting name="IsrPriority" value="0"/>
                                  </struct>
                                  <struct name="49">
@@ -2392,7 +2426,7 @@
                         </struct>
                         <struct name="IcuConfigSet">
                            <setting name="Name" value="IcuConfigSet"/>
-                           <setting name="IcuMaxChannel" value="1"/>
+                           <setting name="IcuMaxChannel" value="2"/>
                            <array name="IcuChannel">
                               <struct name="0">
                                  <setting name="Name" value="IcuChannel_0"/>
@@ -2412,6 +2446,29 @@
                                        <setting name="IcuSignalMeasurementProperty" value="ICU_DUTY_CYCLE"/>
                                     </struct>
                                  </array>
+                                 <array name="IcuTimestampMeasurement"/>
+                                 <array name="IcuWakeup"/>
+                              </struct>
+                              <struct name="1">
+                                 <setting name="Name" value="IcuChannel_1"/>
+                                 <setting name="IcuChannelId" value="1"/>
+                                 <array name="IcuChannelEcucPartitionRef"/>
+                                 <setting name="IcuChannelRef" value="/Icu/Icu/IcuConfigSet/IcuPort_0/IcuPortChannel_0"/>
+                                 <setting name="IcuDMAChannelEnable" value="false"/>
+                                 <array name="IcuDMAChannelRef"/>
+                                 <setting name="IcuDefaultStartEdge" value="ICU_RISING_EDGE"/>
+                                 <setting name="IcuMeasurementMode" value="ICU_MODE_SIGNAL_EDGE_DETECT"/>
+                                 <setting name="IcuOverflowNotification" value="NULL_PTR"/>
+                                 <setting name="IcuWakeupCapability" value="false"/>
+                                 <array name="IcuSignalEdgeDetection">
+                                    <struct name="0">
+                                       <setting name="Name" value="IcuSignalEdgeDetection"/>
+                                       <array name="IcuSignalNotification">
+                                          <setting name="0" value="switch_detect_callback"/>
+                                       </array>
+                                    </struct>
+                                 </array>
+                                 <array name="IcuSignalMeasurement"/>
                                  <array name="IcuTimestampMeasurement"/>
                                  <array name="IcuWakeup"/>
                               </struct>
@@ -2436,12 +2493,28 @@
                            </array>
                            <array name="IcuLpCmp"/>
                            <array name="IcuLptmr"/>
-                           <array name="IcuPort"/>
+                           <array name="IcuPort">
+                              <struct name="0">
+                                 <setting name="Name" value="IcuPort_0"/>
+                                 <setting name="IcuPortModule" value="2"/>
+                                 <array name="IcuPortChannels">
+                                    <struct name="0">
+                                       <setting name="Name" value="IcuPortChannel_0"/>
+                                       <setting name="IcuPortChannel" value="12"/>
+                                    </struct>
+                                 </array>
+                              </struct>
+                           </array>
                            <array name="IcuLpit"/>
                            <array name="IcuHwInterruptConfigList">
                               <struct name="0">
                                  <setting name="Name" value="IcuHwInterruptConfigList_0"/>
                                  <setting name="IcuIsrHwId" value="FTM_1_CH_0"/>
+                                 <setting name="IcuIsrEnable" value="true"/>
+                              </struct>
+                              <struct name="1">
+                                 <setting name="Name" value="IcuHwInterruptConfigList_1"/>
+                                 <setting name="IcuIsrHwId" value="PORT_2"/>
                                  <setting name="IcuIsrEnable" value="true"/>
                               </struct>
                            </array>

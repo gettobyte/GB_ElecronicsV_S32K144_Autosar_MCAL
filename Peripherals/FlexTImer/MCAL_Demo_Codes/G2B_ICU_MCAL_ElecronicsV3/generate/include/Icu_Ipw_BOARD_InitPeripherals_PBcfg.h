@@ -66,8 +66,8 @@ extern "C"{
  *================================================================================================*/
 #define ICU_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Icu_MemMap.h"
-extern const Icu_Ipw_ChannelConfigType Icu_Ipw_IpChannelConfig_BOARD_InitPeripherals[1U];
-extern const Icu_Ipw_IpConfigType Icu_Ipw_IpConfig_BOARD_InitPeripherals[1U];
+extern const Icu_Ipw_ChannelConfigType Icu_Ipw_IpChannelConfig_BOARD_InitPeripherals[2U];
+extern const Icu_Ipw_IpConfigType Icu_Ipw_IpConfig_BOARD_InitPeripherals[2U];
 #define ICU_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Icu_MemMap.h"
 

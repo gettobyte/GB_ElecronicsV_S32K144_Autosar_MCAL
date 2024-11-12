@@ -160,6 +160,7 @@ extern "C"{
 #define ICU_START_SEC_CODE
 #include "Icu_MemMap.h"
 extern void input_capture_callback(void);
+extern void switch_detect_callback(void);
 #define ICU_STOP_SEC_CODE
 #include "Icu_MemMap.h"
 
@@ -169,15 +170,16 @@ extern void input_capture_callback(void);
 /*
 *   @brief Translation LUT for Logical channel number to Partition Configuration indexed location
 */
-const uint8 Icu_ChIndexMap_BOARD_InitPeripherals[1U] = 
+const uint8 Icu_ChIndexMap_BOARD_InitPeripherals[2U] = 
 {
-    0U
+    0U,
+    1U
 };
 
 /*
 *  @brief    BOARD_InitPeripherals Configuration
 */
-static const Icu_ChannelConfigType Icu_ChannelConfig_BOARD_InitPeripherals[1U]=
+static const Icu_ChannelConfigType Icu_ChannelConfig_BOARD_InitPeripherals[2U]=
 {
     /* IcuChannel_0 */
     {
@@ -196,16 +198,34 @@ static const Icu_ChannelConfigType Icu_ChannelConfig_BOARD_InitPeripherals[1U]=
         (Icu_WakeupValueType)0U,    /*Icu_Channel_WakeupValue*/
 #endif
         &Icu_Ipw_IpChannelConfig_BOARD_InitPeripherals[0U] /* Ipw channel pointer */
+    },
+    /* IcuChannel_1 */
+    {
+        (boolean)FALSE,    /* Wakeup capability */
+        ICU_RISING_EDGE,    /* Edge used */
+        ICU_MODE_SIGNAL_EDGE_DETECT,    /* Measurement mode */
+        (Icu_MeasurementSubModeType)0U,    /* Icu_MeasurementSubModeType */
+        &switch_detect_callback,    /* Icu_Channel_Notification */
+#if ((ICU_SIGNALMEASUREMENT_USES_DMA == STD_ON) || (ICU_TIMESTAMP_USES_DMA == STD_ON))
+        (Mcl_ChannelType)NoMclDmaChannel,    /* Mcl_DmaChannel */
+#endif
+#if (ICU_OVERFLOW_NOTIFICATION_API == STD_ON)
+        NULL_PTR,    /* Icu_Channel_OverflowNotification */
+#endif
+#if (ICU_REPORT_WAKEUP_SOURCE == STD_ON)
+        (Icu_WakeupValueType)0U,    /*Icu_Channel_WakeupValue*/
+#endif
+        &Icu_Ipw_IpChannelConfig_BOARD_InitPeripherals[1U] /* Ipw channel pointer */
     }
 };
 
 const Icu_ConfigType Icu_Config_BOARD_InitPeripherals = 
 {
-    (uint8)1, 
+    (uint8)2, 
     /** @brief The number of channels configured*/
     &Icu_ChannelConfig_BOARD_InitPeripherals, 
     /** @brief Icu Channel Configuration Pointer */
-    (uint8)1, /* The number of IP instances configured*/
+    (uint8)2, /* The number of IP instances configured*/
     /** @brief Icu Instance Configuration Pointer */
     &Icu_Ipw_IpConfig_BOARD_InitPeripherals,
     /** @brief Index of channel in each partition map table*/

@@ -84,6 +84,9 @@ extern "C"{
 /*==================================================================================================
  *                                       GLOBAL CONSTANTS
  *================================================================================================*/
+#define PORT_CI_ICU_CONFIG_BOARD_INITPERIPHERALS_PB  \
+    extern const Port_Ci_Icu_Ip_ChannelConfigType Port_Ci_Icu_Ip_2_ChannelConfig_PB_BOARD_InitPeripherals[1U]; \
+    extern const Port_Ci_Icu_Ip_ConfigType Port_Ci_Icu_Ip_2_Config_PB_BOARD_InitPeripherals; \
 
 #ifdef __cplusplus
 }

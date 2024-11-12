@@ -108,7 +108,7 @@ static const IntCtrl_Ip_IrqConfigType aIrqConfiguration1[] = {
     {LPTMR0_IRQn, (boolean)FALSE, 0U},
     {PORTA_IRQn, (boolean)FALSE, 0U},
     {PORTB_IRQn, (boolean)FALSE, 0U},
-    {PORTC_IRQn, (boolean)FALSE, 0U},
+    {PORTC_IRQn, (boolean)TRUE, 0U},
     {PORTD_IRQn, (boolean)FALSE, 0U},
     {PORTE_IRQn, (boolean)FALSE, 0U},
     {SWI_IRQn, (boolean)FALSE, 0U},

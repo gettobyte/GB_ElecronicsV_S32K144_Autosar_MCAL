@@ -216,7 +216,7 @@ extern "C"{
 /** 
  * @brief   Icu channels IP related configuration array
  */
-const Icu_Ipw_ChannelConfigType Icu_Ipw_IpChannelConfig_BOARD_InitPeripherals[1U] =
+const Icu_Ipw_ChannelConfigType Icu_Ipw_IpChannelConfig_BOARD_InitPeripherals[2U] =
 {
 
     {
@@ -236,6 +236,24 @@ const Icu_Ipw_ChannelConfigType Icu_Ipw_IpChannelConfig_BOARD_InitPeripherals[1U
         NULL_PTR,
         /** @brief Index in the configuration table of the FTM channels */
         (uint8)0
+    },
+    {
+        /** @brief IP type of this channel */
+        ICU_PORT_CI_MODULE,
+        /** @brief Instance number */
+        (uint8)2,
+        /** @brief Ftm IP channel pointer */
+        NULL_PTR,
+        /** @brief Lpit IP channel pointer */
+        NULL_PTR,
+        /** @brief Lptmr IP channel pointer */
+        NULL_PTR,
+        /** @brief Port Ci IP channel pointer */
+        &Port_Ci_Icu_Ip_2_ChannelConfig_PB_BOARD_InitPeripherals[0U],
+        /** @brief Cmp IP channel pointer */
+        NULL_PTR,
+        /** @brief Index in the configuration table of the PORT CI channels */
+        (uint8)0
     }
 };
 
@@ -243,7 +261,7 @@ const Icu_Ipw_ChannelConfigType Icu_Ipw_IpChannelConfig_BOARD_InitPeripherals[1U
  * @brief   Icu instances related configuration array
  */
 
-const Icu_Ipw_IpConfigType Icu_Ipw_IpConfig_BOARD_InitPeripherals[1U] =
+const Icu_Ipw_IpConfigType Icu_Ipw_IpConfig_BOARD_InitPeripherals[2U] =
 {
     {
         /** @brief IP type */
@@ -258,6 +276,22 @@ const Icu_Ipw_IpConfigType Icu_Ipw_IpConfig_BOARD_InitPeripherals[1U] =
         NULL_PTR,
         /** @brief pointer to Port Ci HW configuration of instance */
         NULL_PTR,
+        /** @brief pointer to Cmp HW configuration of instance */
+        NULL_PTR
+    },
+    {
+        /** @brief IP type */
+        ICU_PORT_CI_MODULE,
+        /** @brief IP instance number */
+        2U,
+        /** @brief pointer to Ftm HW configuration of instance */
+        NULL_PTR,
+        /** @brief pointer to Lpit HW configuration of instance */
+        NULL_PTR,
+        /** @brief pointer to Lptmr HW configuration of instance */
+        NULL_PTR,
+        /** @brief pointer to Port Ci HW configuration of instance */
+        &Port_Ci_Icu_Ip_2_Config_PB_BOARD_InitPeripherals,
         /** @brief pointer to Cmp HW configuration of instance */
         NULL_PTR
     }
