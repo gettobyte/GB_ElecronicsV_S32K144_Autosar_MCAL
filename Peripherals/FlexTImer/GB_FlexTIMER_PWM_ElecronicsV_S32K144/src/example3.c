@@ -52,7 +52,7 @@ uint32_t FTM_Clk = 0;
 
 
 Ftm_Icu_Ip_DutyCycleType x;
-uint16 period;
+uint32 period;
 uint16 activeperiod;
 
 void PwmFtmChInterruptCallback(void)
@@ -64,7 +64,6 @@ void PwmFtmChInterruptCallback(void)
 
 void input_capture_callback(void)
 {
-
 	//Ftm_Icu_Ip_StartSignalMeasurement(icu_instance, icu_channel);
 
 //	Ftm_Icu_Ip_GetDutyCycleValues(icu_instance, icu_channel, &x);
@@ -107,7 +106,7 @@ int main(void)
 
 	Ftm_Icu_Ip_StartSignalMeasurement(icu_instance, icu_channel);
 
-	Ftm_Icu_Ip_EnableInterrupt(icu_instance, icu_channel);
+//	Ftm_Icu_Ip_EnableInterrupt(icu_instance, icu_channel);
 	Ftm_Icu_Ip_EnableNotification(icu_instance, icu_channel);
 
 

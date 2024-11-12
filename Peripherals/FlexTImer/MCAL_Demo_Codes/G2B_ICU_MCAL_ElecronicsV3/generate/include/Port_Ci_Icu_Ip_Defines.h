@@ -1,0 +1,115 @@
+/*==================================================================================================
+*   Project              : RTD AUTOSAR 4.4
+*   Platform             : CORTEXM
+*   Peripheral           : Ftm Lpit Lptmr Port_Ci LpCmp
+*   Dependencies         : none
+*
+*   Autosar Version      : 4.4.0
+*   Autosar Revision     : ASR_REL_4_4_REV_0000
+*   Autosar Conf.Variant :
+*   SW Version           : 1.0.1
+*   Build Version        : S32K1_RTD_1_0_1_D2202_ASR_REL_4_4_REV_0000_20220224
+*
+*   (c) Copyright 2020-2022 NXP Semiconductors
+*   All Rights Reserved.
+*
+*   NXP Confidential. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms. By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms. If you do not agree to be
+*   bound by the applicable license terms, then you may not retain, install,
+*   activate or otherwise use the software.
+==================================================================================================*/
+
+#ifndef PORT_CI_ICU_IP_DEFINES_H
+#define PORT_CI_ICU_IP_DEFINES_H
+
+/**
+ *   @file    Port_Ci_Icu_Ip_Defines.h
+ *   @version 1.0.1
+ *
+ *   @brief   AUTOSAR Icu - contains the data exported by the Icu module
+ *   @details Contains the information that will be exported by the module, as requested by Autosar.
+ *
+ *   @addtogroup port_ci_icu_ip PORT_CI IPL
+ *   @{
+ */
+ 
+#ifdef __cplusplus
+extern "C"{
+#endif
+
+
+ /*==================================================================================================
+ *                                         INCLUDE FILES
+ * 1) system and project includes
+ * 2) needed interfaces from external units
+ * 3) internal and external interfaces from this unit
+ *================================================================================================*/
+#include "StandardTypes.h"
+#include "S32K144_PORT.h"
+/*==================================================================================================
+*                                 SOURCE FILE VERSION INFORMATION
+==================================================================================================*/
+#define PORT_CI_ICU_IP_DEFINES_VENDOR_ID                    43
+#define PORT_CI_ICU_IP_DEFINES_MODULE_ID                    122
+#define PORT_CI_ICU_IP_DEFINES_AR_RELEASE_MAJOR_VERSION     4
+#define PORT_CI_ICU_IP_DEFINES_AR_RELEASE_MINOR_VERSION     4
+#define PORT_CI_ICU_IP_DEFINES_AR_RELEASE_REVISION_VERSION  0
+#define PORT_CI_ICU_IP_DEFINES_SW_MAJOR_VERSION             1
+#define PORT_CI_ICU_IP_DEFINES_SW_MINOR_VERSION             0
+#define PORT_CI_ICU_IP_DEFINES_SW_PATCH_VERSION             1
+
+/*==================================================================================================
+ *                                      FILE VERSION CHECKS
+ *================================================================================================*/
+#ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
+    /* Check if header file and StandardTypes.h file are of the same Autosar version */
+    #if ((PORT_CI_ICU_IP_DEFINES_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) || \
+         (PORT_CI_ICU_IP_DEFINES_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
+        #error "AutoSar Version Numbers of Port_Ci_Icu_Ip_Defines.h and StandardTypes.h are different"
+    #endif
+#endif
+
+/*==================================================================================================
+                                       DEFINES AND MACROS
+==================================================================================================*/
+/* Macros that indicate PORT instances used by ICU. */
+/** @brief Switches the Development Error Detection and Notification on or off.  */
+#define PORT_CI_ICU_IP_DEV_ERROR_DETECT (STD_ON)
+/** @brief The number of LPTMR instances available on platform */
+#define ICU_NUM_PORT_CI_HW_MODULE_U8                 (5)
+/** @brief Adds or removes all services related to the edge detect functionality. */
+#define PORT_CI_ICU_IP_EDGE_DETECT_API              (STD_ON)
+
+/** @brief Adds or removes all services related to the deinitialization functionality. */
+#define PORT_CI_ICU_IP_DEINIT_API                 (STD_ON)
+
+/** @brief Adds or removes all services related to mode set functionality. */
+#define PORT_CI_ICU_IP_SET_MODE_API               (STD_ON)
+
+/** @brief Add or remove all functions related to input state. */
+#define PORT_CI_ICU_IP_GET_INPUT_STATE_API        (STD_ON)
+
+
+/** @brief Support for User mode. If this parameter has been configured to STD_ON, the PORT driver 
+ *         code can be executed from both supervisor and user mode. */
+#define PORT_CI_ICU_IP_ENABLE_USER_MODE_SUPPORT   (STD_OFF)
+
+/* Verification for user mode support. */
+#ifndef MCAL_ENABLE_USER_MODE_SUPPORT
+ #if (defined (PORT_CI_ICU_IP_ENABLE_USER_MODE_SUPPORT) && (STD_ON == PORT_CI_ICU_IP_ENABLE_USER_MODE_SUPPORT))
+    #error MCAL_ENABLE_USER_MODE_SUPPORT is not enabled. For running Icu in user mode the MCAL_ENABLE_USER_MODE_SUPPORT needs to be defined
+ #endif
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+/** @} */
+
+#endif  /* PORT_CI_ICU_IP_DEFINES_H */
+
