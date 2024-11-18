@@ -43,12 +43,9 @@ void FTM_0_CH_0_CH_1_ISR(void);
 void FTM_0_OVF_ISR(void);
 void FTM_1_CH_0_CH_1_ISR(void);
 void FTM_1_OVF_ISR(void);
+
 #define channel0 0
-#define channel1 1
-#define channel2 2
 #define instance0 0
-
-
 #define icu_channel0 0
 
 Icu_ValueType HighTime ;
@@ -58,18 +55,18 @@ Icu_DutyCycleType Signal_parameters;
 
 Pwm_OutputStateType pwm_signal_state;
 uint16 pwm_signal_duty;
-void pwm_callback(void)
+void switch_detect_callback(void)
 {
 
-	// returns the output state of PWM signal whether high or low
+}
+void pwm_callback(void)
+{
 	pwm_signal_state = Pwm_GetOutputState(channel0);
-
 }
 
 
 void input_capture_callback(void)
 {
-
 	Icu_GetDutyCycleValues(icu_channel0, &Signal_parameters );
 }
 
@@ -113,8 +110,6 @@ int main(void)
 			/* Initialize all pins using the Port driver */
 			Port_Init(NULL_PTR);
 
-			//IntCtrl_Ip_Init(&IntCtrlConfig_0);
-
 		    /* Install and enable interrupt handlers */
 		    IntCtrl_Ip_InstallHandler(FTM0_Ch0_Ch1_IRQn, FTM_0_CH_0_CH_1_ISR, NULL_PTR);
 		    IntCtrl_Ip_EnableIrq(FTM0_Ch0_Ch1_IRQn);
@@ -128,12 +123,6 @@ int main(void)
 
 		    IntCtrl_Ip_InstallHandler(FTM1_Ovf_Reload_IRQn, FTM_1_OVF_ISR, NULL_PTR);
 		    IntCtrl_Ip_EnableIrq(FTM1_Ovf_Reload_IRQn);
-
-
-
-		    IntrPriority = IntCtrl_Ip_GetPriority(FTM0_Ch0_Ch1_IRQn);
-		    IntrPriority = IntCtrl_Ip_GetPriority(FTM0_Ovf_Reload_IRQn);
-
 
 		    Icu_Init(&Icu_Config_BOARD_InitPeripherals);
 
@@ -149,13 +138,11 @@ int main(void)
 
 		    /*Duty cycle update*/
 		    Pwm_SetDutyCycle(channel0,pwm_duty_cycle(56));
-		    TestDelay(700000);
+		    TestDelay(7000000);
 
-		    Pwm_SetDutyCycle(channel0, pwm_duty_cycle(73));
-		    TestDelay(700000);
 
-		    /* duty cycle and frequency update*/
-		    Pwm_SetPeriodAndDuty(channel0,40000,pwm_duty_cycle(50));
+		  //  show by changing frequnecy to : 5000, 25000, 15000, 50000
+		    Pwm_SetPeriodAndDuty(channel0,50000,pwm_duty_cycle(50));
 		    TestDelay(700000);
 
 

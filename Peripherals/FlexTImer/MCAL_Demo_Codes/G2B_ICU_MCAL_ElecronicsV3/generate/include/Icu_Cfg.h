@@ -380,7 +380,7 @@ extern "C"{
 *       Range: 0  to width of the timer register.
 *       Description: Width of the buffer for timestamp ticks and measured elapsed timeticks
 */
-typedef uint16 Icu_TimerRegisterWidthType;
+typedef uint32 Icu_TimerRegisterWidthType;
 
 #if (STD_ON == ICU_TIMESTAMP_API)
 /**
