@@ -30,44 +30,8 @@ int main(void)
 	Pwm_SetPeriodAndDuty(0,40000,pwm_duty_cycle(50));
 	TestDelay(700000);
 
-	/* As our Servo, responds only from 0.5ms(2.5% Duty Cycle)
-	 * to 2.5ms(12.5% Duty Cycle), we create a up-down counter
-	 * for simulation
-	 */
-	double count = 2.5;
-
-	/*
-	 * Direction = 0(UP) means the counter goes from 2.5 to 12.5
-	 * whereas
-	 * Direction = 1(DOWN) means the counter goes from 12.5 to 2.5
-	 */
-	uint8 direction = 0;
-
 	/*Main Loop*/
 	for (;;) {
-
-		if(direction == 0)
-		{
-			if(count <= 12.5){
-				Pwm_SetDutyCycle(0, pwm_duty_cycle(count));
-				TestDelay(700000);
-				count += 0.5;
-			}
-			else{
-				direction = 1;
-			}
-		}
-
-		else if(direction == 1)
-		{
-			if(count >= 2.5){
-				Pwm_SetDutyCycle(0, pwm_duty_cycle(count));
-				TestDelay(700000);
-				count -= 0.5;
-			}
-			else{
-				direction = 0;
-			}
-		}
+		servo_sweep();
 	}
 }
