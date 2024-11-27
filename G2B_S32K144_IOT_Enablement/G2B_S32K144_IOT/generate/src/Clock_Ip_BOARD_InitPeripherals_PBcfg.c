@@ -218,7 +218,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_BOARD_InitPeripherals[1U] = {
             #if CLOCK_IP_XOSCS_NO > 0U
             {
                 SOSC_CLK,              /* Clock name associated to xosc */
-                0U,              /* External oscillator frequency */ 
+                8000000U,              /* External oscillator frequency */ 
                 1U,                     /* Enable xosc */
                 0U,                   /* Startup stabilization time */
                 0U,                   /* XOSC bypass option */ 
@@ -720,7 +720,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_BOARD_InitPeripherals[1U] = {
             #if CLOCK_IP_EXT_CLKS_NO > 3U
             {
                 RTC_CLKIN,                    /* name */
-                0U,                              /* value */
+                32768U,                              /* value */
             },
             #endif
         },

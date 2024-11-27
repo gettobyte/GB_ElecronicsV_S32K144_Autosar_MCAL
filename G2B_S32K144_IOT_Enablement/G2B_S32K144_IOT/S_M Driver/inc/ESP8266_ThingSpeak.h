@@ -19,8 +19,6 @@
 
 #define reset_command "AT+RST\r\n"
 #define wifi_mode_command "AT+CWMODE=1\r\n"
-#define SSID "Excitel_Rohan"
-#define Password "zxcvbnm1234"
 #define single_connection "AT+CIPMUX=0\r\n"
 #define connection_type "TCP"
 #define thingspeak_url "api.thingspeak.com"
@@ -35,9 +33,9 @@ void AT_receiveResponse(void);
 void testDelay(int32_t microseconds);
 void AT_reset(void);
 void AT_set_WiFiMODE(void);
-void AT_connectWiFi(void);
+void AT_connectWiFi(char *, char *);
 void AT_singleConnection(void);
 void AT_connect_ThingSpeak(void);
-void AT_sendData(int value);
+void AT_sendData(int value, char *);
 
 #endif /* INC_ESP8266_THINGSPEAK_H_ */

@@ -10,6 +10,11 @@
 extern void LPUART_UART_IP_0_IRQHandler(void);
 volatile int exit_code = 0;
 
+#define wifi_SSID ""
+#define wifi_password ""
+
+char api_key[] = "ELCZ6SJ1WE4DVRHZ";
+
 /*=================Function Prototyping===================*/
 
 	void mcu_init(void);
@@ -45,13 +50,13 @@ int main(void)
 
 	AT_set_WiFiMODE();
 
-	AT_connectWiFi();
+	AT_connectWiFi(wifi_SSID, wifi_password);
 
 	AT_singleConnection();
 
 	AT_connect_ThingSpeak();
 
-	AT_sendData(91);
+	AT_sendData(91, api_key);
 
 	testDelay(8000000);
 

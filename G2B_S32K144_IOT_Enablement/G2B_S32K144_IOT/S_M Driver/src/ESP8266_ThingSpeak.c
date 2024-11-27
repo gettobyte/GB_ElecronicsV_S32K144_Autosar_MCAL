@@ -6,7 +6,7 @@
  */
 
 #include "ESP8266_ThingSpeak.h"
-char api_key[] = "ELCZ6SJ1WE4DVRHZ";
+
 // uint8_t array for storing the received data
 volatile uint8_t rxBuffer[RX_BUFFER_SIZE];
 
@@ -56,7 +56,7 @@ void AT_set_WiFiMODE(void)
 }
 
 
-void AT_connectWiFi(void)
+void AT_connectWiFi(char * SSID, char * Password)
 {
 	//Temporary variable for storing the AT Command
 	char output[100];
@@ -109,14 +109,14 @@ void AT_connect_ThingSpeak(void)
 }
 
 
-void AT_sendData(int value)
+void AT_sendData(int value, char * api_key)
 {
 	//Temporary variable for storing the AT Command
 	char output[100];
 	//Store your data to be transmitted
 	int field_value = value;
 
-	// Format the command in the "AT+CWJAP=\"SSID\",\"PASSWORD\"" format
+	// Format the command in the "GET /update?api_key="your_api_key"&field1="your_data"" format
 	int len = snprintf(output, sizeof(output),"GET /update?api_key=%s&field1=%d\r\n", api_key, field_value);
 
 	// Clear any remaining characters in the buffer
