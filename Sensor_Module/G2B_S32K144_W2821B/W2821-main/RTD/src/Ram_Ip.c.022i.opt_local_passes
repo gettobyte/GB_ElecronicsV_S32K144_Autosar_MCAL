@@ -1,0 +1,266 @@
+Ram_Ip_InitRamSection (const struct Ram_Ip_RamConfigType * RamConfigPtr)
+{
+  Ram_Ip_RamSizeType RamCounterLimit;
+  Ram_Ip_RamIndexType RamCounter;
+  Ram_Ip_StatusType RamStatus;
+  Ram_Ip_RamSizeType * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long long unsigned int _5;
+  uint8[1] * _6;
+  unsigned char _7;
+  long long unsigned int _8;
+  uint8[1] * _9;
+  short unsigned int _10;
+  long long unsigned int _11;
+  uint8[1] * _12;
+  long unsigned int _13;
+  uint8[1] * _14;
+  long long unsigned int _15;
+  long unsigned int _16;
+  long long unsigned int _17;
+  unsigned char _18;
+  uint8[1] * _19;
+  unsigned char _20;
+  long long unsigned int _21;
+  short unsigned int _22;
+  uint8[1] * _23;
+  short unsigned int _24;
+  long long unsigned int _25;
+  long unsigned int _26;
+  uint8[1] * _27;
+  long unsigned int _28;
+  long long unsigned int _29;
+  uint8[1] * _30;
+  long long unsigned int _31;
+  Ram_Ip_StatusType _60;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RamStatus_41 = 0;
+  # DEBUG RamStatus => RamStatus_41
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = RamConfigPtr_43(D)->RamSize;
+  _2 = (long unsigned int) _1;
+  _3 = RamConfigPtr_43(D)->RamWriteSize;
+  RamCounterLimit_44 = _2 / _3;
+  # DEBUG RamCounterLimit => RamCounterLimit_44
+  # DEBUG BEGIN_STMT
+  RamStatus_45 = 0;
+  # DEBUG RamStatus => RamStatus_45
+  # DEBUG BEGIN_STMT
+  RamCounter_46 = 0;
+  # DEBUG RamCounter => RamCounter_46
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = RamConfigPtr_43(D)->RamWriteSize;
+  switch (_4) <default: <L5> [INV], case 1: <L1> [INV], case 2: <L2> [INV], case 4: <L3> [INV], case 8: <L4> [INV]>
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _5 = RamConfigPtr_43(D)->RamDefaultValue;
+  _6 = RamConfigPtr_43(D)->RamBaseAddrPtr;
+  _7 = (unsigned char) _5;
+  *_6[RamCounter_37] = _7;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _8 = RamConfigPtr_43(D)->RamDefaultValue;
+  _9 = RamConfigPtr_43(D)->RamBaseAddrPtr;
+  _10 = (short unsigned int) _8;
+  MEM[(uint16[1] *)_9][RamCounter_37] = _10;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _11 = RamConfigPtr_43(D)->RamDefaultValue;
+  _12 = RamConfigPtr_43(D)->RamBaseAddrPtr;
+  _13 = (long unsigned int) _11;
+  MEM[(uint32[1] *)_12][RamCounter_37] = _13;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  _14 = RamConfigPtr_43(D)->RamBaseAddrPtr;
+  _15 = RamConfigPtr_43(D)->RamDefaultValue;
+  MEM[(uint64[1] *)_14][RamCounter_37] = _15;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  RamStatus_51 = 1;
+  # DEBUG RamStatus => RamStatus_51
+  # DEBUG BEGIN_STMT
+
+  <bb 9> :
+  # RamStatus_32 = PHI <RamStatus_33(4), RamStatus_33(5), RamStatus_33(6), RamStatus_33(7), RamStatus_51(8)>
+  # DEBUG RamStatus => RamStatus_32
+  # DEBUG BEGIN_STMT
+  RamCounter_52 = RamCounter_37 + 1;
+  # DEBUG RamCounter => RamCounter_52
+
+  <bb 10> :
+  # RamStatus_33 = PHI <RamStatus_45(2), RamStatus_32(9)>
+  # RamCounter_37 = PHI <RamCounter_46(2), RamCounter_52(9)>
+  # DEBUG RamCounter => RamCounter_37
+  # DEBUG RamStatus => RamStatus_33
+  # DEBUG BEGIN_STMT
+  if (RamCounter_37 < RamCounterLimit_44)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  if (RamStatus_33 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (RamStatus_33 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  RamCounter_53 = 0;
+  # DEBUG RamCounter => RamCounter_53
+  # DEBUG BEGIN_STMT
+  goto <bb 25>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _16 = RamConfigPtr_43(D)->RamWriteSize;
+  switch (_16) <default: <L24> [INV], case 1: <L12> [INV], case 2: <L15> [INV], case 4: <L18> [INV], case 8: <L21> [INV]>
+
+  <bb 15> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  _17 = RamConfigPtr_43(D)->RamDefaultValue;
+  _18 = (unsigned char) _17;
+  _19 = RamConfigPtr_43(D)->RamBaseAddrPtr;
+  _20 = *_19[RamCounter_38];
+  if (_18 != _20)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  RamStatus_57 = 1;
+  # DEBUG RamStatus => RamStatus_57
+  goto <bb 24>; [INV]
+
+  <bb 17> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  _21 = RamConfigPtr_43(D)->RamDefaultValue;
+  _22 = (short unsigned int) _21;
+  _23 = RamConfigPtr_43(D)->RamBaseAddrPtr;
+  _24 = MEM[(uint16[1] *)_23][RamCounter_38];
+  if (_22 != _24)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  RamStatus_56 = 1;
+  # DEBUG RamStatus => RamStatus_56
+  goto <bb 24>; [INV]
+
+  <bb 19> :
+<L18>:
+  # DEBUG BEGIN_STMT
+  _25 = RamConfigPtr_43(D)->RamDefaultValue;
+  _26 = (long unsigned int) _25;
+  _27 = RamConfigPtr_43(D)->RamBaseAddrPtr;
+  _28 = MEM[(uint32[1] *)_27][RamCounter_38];
+  if (_26 != _28)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  RamStatus_55 = 1;
+  # DEBUG RamStatus => RamStatus_55
+  goto <bb 24>; [INV]
+
+  <bb 21> :
+<L21>:
+  # DEBUG BEGIN_STMT
+  _29 = RamConfigPtr_43(D)->RamDefaultValue;
+  _30 = RamConfigPtr_43(D)->RamBaseAddrPtr;
+  _31 = MEM[(uint64[1] *)_30][RamCounter_38];
+  if (_29 != _31)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  RamStatus_54 = 1;
+  # DEBUG RamStatus => RamStatus_54
+  goto <bb 24>; [INV]
+
+  <bb 23> :
+<L24>:
+  # DEBUG BEGIN_STMT
+  RamStatus_58 = 1;
+  # DEBUG RamStatus => RamStatus_58
+  # DEBUG BEGIN_STMT
+
+  <bb 24> :
+  # RamStatus_34 = PHI <RamStatus_57(16), RamStatus_56(18), RamStatus_55(20), RamStatus_54(22), RamStatus_58(23), RamStatus_35(15), RamStatus_35(17), RamStatus_35(19), RamStatus_35(21)>
+  # DEBUG RamStatus => RamStatus_34
+  # DEBUG BEGIN_STMT
+  RamCounter_59 = RamCounter_38 + 1;
+  # DEBUG RamCounter => RamCounter_59
+
+  <bb 25> :
+  # RamStatus_35 = PHI <RamStatus_33(13), RamStatus_34(24)>
+  # RamCounter_38 = PHI <RamCounter_53(13), RamCounter_59(24)>
+  # DEBUG RamCounter => RamCounter_38
+  # DEBUG RamStatus => RamStatus_35
+  # DEBUG BEGIN_STMT
+  if (RamCounter_38 < RamCounterLimit_44)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  if (RamStatus_35 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 27> :
+  # RamStatus_36 = PHI <RamStatus_33(12), RamStatus_35(25), RamStatus_35(26)>
+  # DEBUG RamStatus => RamStatus_36
+  # DEBUG BEGIN_STMT
+  _60 = RamStatus_36;
+  return _60;
+
+}
+
+

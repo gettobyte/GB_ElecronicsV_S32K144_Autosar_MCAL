@@ -1,0 +1,63 @@
+
+IPA constant propagation start:
+
+IPA structures before propagation:
+
+Jump functions:
+
+ Propagating constants:
+
+
+overall_size: 0, max_new_size: 11001
+
+IPA lattices after all propagation:
+
+Lattices:
+
+IPA decision stage:
+
+
+IPA constant propagation end
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0/5 (Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0) @06a01ea0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Pwm_Instances_BOARD_InitPeripherals_PB/2 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0/4 (Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0) @06a01e58
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Pwm_Channels_BOARD_InitPeripherals_PB/1 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Pwm_Config_BOARD_InitPeripherals/3 (Pwm_Config_BOARD_InitPeripherals) @06a01d38
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: Pwm_Channels_BOARD_InitPeripherals_PB/1 (addr)Pwm_Instances_BOARD_InitPeripherals_PB/2 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+Pwm_Instances_BOARD_InitPeripherals_PB/2 (Pwm_Instances_BOARD_InitPeripherals_PB) @06a01cf0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0/5 (addr)
+  Referring: Pwm_Config_BOARD_InitPeripherals/3 (addr)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+Pwm_Channels_BOARD_InitPeripherals_PB/1 (Pwm_Channels_BOARD_InitPeripherals_PB) @06a01c60
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0/4 (addr)
+  Referring: Pwm_Config_BOARD_InitPeripherals/3 (addr)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known

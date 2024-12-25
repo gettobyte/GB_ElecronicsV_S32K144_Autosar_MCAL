@@ -1,0 +1,116 @@
+
+Marking local functions: Flexio_Mcl_Ip_CommonIrq
+
+
+Marking externally visible functions: MCL_FLEXIO_ISR
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Flexio_Ip_baIpIsInitialized/5 (Flexio_Ip_baIpIsInitialized) @05de0f78
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Flexio_Mcl_Ip_CommonIrq/0 (read)
+  Availability: not_available
+  Varpool flags:
+Flexio_Mcl_Ip_GetAllTimerStatus/4 (Flexio_Mcl_Ip_GetAllTimerStatus) @05de22a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Flexio_Mcl_Ip_CommonIrq/0 
+  Calls: 
+Flexio_Mcl_Ip_GetAllShifterErrorStatus/3 (Flexio_Mcl_Ip_GetAllShifterErrorStatus) @05de21c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Flexio_Mcl_Ip_CommonIrq/0 
+  Calls: 
+Flexio_Ip_paxBase/2 (Flexio_Ip_paxBase) @05de0ea0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Flexio_Mcl_Ip_CommonIrq/0 (read)
+  Availability: not_available
+  Varpool flags: read-only
+MCL_FLEXIO_ISR/1 (MCL_FLEXIO_ISR) @05cc3380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Flexio_Mcl_Ip_CommonIrq/0 
+Flexio_Mcl_Ip_CommonIrq/0 (Flexio_Mcl_Ip_CommonIrq) @05cc3d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: Flexio_Ip_paxBase/2 (read)Flexio_Ip_baIpIsInitialized/5 (read)
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: MCL_FLEXIO_ISR/1 
+  Calls: Flexio_Mcl_Ip_GetAllTimerStatus/4 Flexio_Mcl_Ip_GetAllShifterErrorStatus/3 
+MCL_FLEXIO_ISR ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Flexio_Mcl_Ip_CommonIrq ();
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_CommonIrq ()
+{
+  uint8 u8TimerMaskFlag;
+  uint8 u8ShifterErrMaskFlag;
+  struct FLEXIO_Type * BaseAddr;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  BaseAddr = Flexio_Ip_paxBase[0];
+  # DEBUG BEGIN_STMT
+  _1 = Flexio_Mcl_Ip_GetAllShifterErrorStatus (BaseAddr);
+  u8ShifterErrMaskFlag = (uint8) _1;
+  # DEBUG BEGIN_STMT
+  _2 = Flexio_Mcl_Ip_GetAllTimerStatus (BaseAddr);
+  u8TimerMaskFlag = (uint8) _2;
+  # DEBUG BEGIN_STMT
+  _3 = Flexio_Ip_baIpIsInitialized[0];
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) u8ShifterErrMaskFlag;
+  BaseAddr->SHIFTERR = _4;
+  # DEBUG BEGIN_STMT
+  _5 = (long unsigned int) u8TimerMaskFlag;
+  BaseAddr->TIMSTAT = _5;
+
+  <bb 4> :
+  return;
+
+}
+
+

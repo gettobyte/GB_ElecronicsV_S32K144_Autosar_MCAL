@@ -1,0 +1,394 @@
+Pwm_DeInit ()
+{
+  uint8 Index;
+  uint32 CoreId;
+  const struct Pwm_ConfigType * ConfigPtr;
+  Std_ReturnType CallIsValid;
+  const struct Pwm_ChannelConfigType * _1;
+  unsigned int _2;
+  unsigned int _3;
+  const struct Pwm_ChannelConfigType * _4;
+  const struct Pwm_IpwChannelConfigType * _5;
+  const struct Pwm_ChannelConfigType * _6;
+  unsigned int _7;
+  unsigned int _8;
+  const struct Pwm_ChannelConfigType * _9;
+  <unnamed type> _10;
+  unsigned char Index.2_11;
+  const struct Pwm_ConfigType * _12;
+  unsigned char _13;
+  const struct Pwm_IpwInstanceConfigType[<unknown>] * _14;
+  int _15;
+  const struct Pwm_IpwInstanceConfigType * _16;
+  unsigned char Index.3_17;
+  const struct Pwm_ConfigType * _18;
+  unsigned char _19;
+  int _20;
+  unsigned char Index.4_21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId_29 = 0;
+  # DEBUG CoreId => CoreId_29
+  # DEBUG BEGIN_STMT
+  CallIsValid_32 = Pwm_ValidateGlobalConfigCall (CoreId_29, 1);
+  # DEBUG CallIsValid => CallIsValid_32
+  # DEBUG BEGIN_STMT
+  if (CallIsValid_32 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Index_33 = 0;
+  # DEBUG Index => Index_33
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Pwm_aState[CoreId_29].PwmChannelConfigs[0];
+  _2 = (unsigned int) Index_22;
+  _3 = _2 * 24;
+  _4 = _1 + _3;
+  _5 = &_4->IpwChannelCfg;
+  _6 = Pwm_aState[CoreId_29].PwmChannelConfigs[0];
+  _7 = (unsigned int) Index_22;
+  _8 = _7 * 24;
+  _9 = _6 + _8;
+  _10 = _9->ChannelIdleState;
+  Pwm_Ipw_DeInit (_5, _10);
+  # DEBUG BEGIN_STMT
+  Index.2_11 = Index_22;
+  Index_43 = Index.2_11 + 1;
+  # DEBUG Index => Index_43
+
+  <bb 5> :
+  # Index_22 = PHI <Index_33(3), Index_43(4)>
+  # DEBUG Index => Index_22
+  # DEBUG BEGIN_STMT
+  _12 = Pwm_aState[CoreId_29].PwmConfig;
+  _13 = _12->NumChannels;
+  if (Index_22 < _13)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ConfigPtr_34 = Pwm_aState[CoreId_29].PwmConfig;
+  # DEBUG ConfigPtr => ConfigPtr_34
+  # DEBUG BEGIN_STMT
+  Index_35 = 0;
+  # DEBUG Index => Index_35
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _14 = ConfigPtr_34->PwmInstancesConfig;
+  _15 = (int) Index_23;
+  _16 = &*_14[_15];
+  Pwm_Ipw_DeInitInstance (_16);
+  # DEBUG BEGIN_STMT
+  Index.3_17 = Index_23;
+  Index_41 = Index.3_17 + 1;
+  # DEBUG Index => Index_41
+
+  <bb 8> :
+  # Index_23 = PHI <Index_35(6), Index_41(7)>
+  # DEBUG Index => Index_23
+  # DEBUG BEGIN_STMT
+  _18 = Pwm_aState[CoreId_29].PwmConfig;
+  _19 = _18->NumInstances;
+  if (Index_23 < _19)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Pwm_aState[CoreId_29].PwmConfig = 0B;
+  # DEBUG BEGIN_STMT
+  Index_37 = 0;
+  # DEBUG Index => Index_37
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _20 = (int) Index_24;
+  Pwm_aState[CoreId_29].PwmChannelConfigs[_20] = 0B;
+  # DEBUG BEGIN_STMT
+  Index.4_21 = Index_24;
+  Index_39 = Index.4_21 + 1;
+  # DEBUG Index => Index_39
+
+  <bb 11> :
+  # Index_24 = PHI <Index_37(9), Index_39(10)>
+  # DEBUG Index => Index_24
+  # DEBUG BEGIN_STMT
+  if (Index_24 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Pwm_EndValidateGlobalConfigCall (CoreId_29, CallIsValid_32, 1);
+  return;
+
+}
+
+
+Pwm_Init (const struct Pwm_ConfigType * ConfigPtr)
+{
+  uint8 Index;
+  uint32 CoreId;
+  Std_ReturnType CallIsValid;
+  const struct Pwm_ConfigType * _1;
+  const struct Pwm_IpwInstanceConfigType[<unknown>] * _2;
+  int _3;
+  const struct Pwm_IpwInstanceConfigType * _4;
+  unsigned char Index.0_5;
+  const struct Pwm_ConfigType * _6;
+  unsigned char _7;
+  const struct Pwm_ConfigType * _8;
+  const struct Pwm_ChannelConfigType[<unknown>] * _9;
+  int _10;
+  int _11;
+  const struct Pwm_ChannelConfigType * _12;
+  const struct Pwm_ConfigType * _13;
+  const struct Pwm_ChannelConfigType[<unknown>] * _14;
+  int _15;
+  const struct Pwm_IpwChannelConfigType * _16;
+  unsigned char Index.1_17;
+  const struct Pwm_ConfigType * _18;
+  unsigned char _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId_26 = 0;
+  # DEBUG CoreId => CoreId_26
+  # DEBUG BEGIN_STMT
+  CallIsValid_29 = Pwm_ValidateGlobalConfigCall (CoreId_26, 0);
+  # DEBUG CallIsValid => CallIsValid_29
+  # DEBUG BEGIN_STMT
+  if (CallIsValid_29 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  CallIsValid_32 = Pwm_ValidateParamPtrInit (CoreId_26, ConfigPtr_30(D));
+  # DEBUG CallIsValid => CallIsValid_32
+  # DEBUG BEGIN_STMT
+  if (CallIsValid_32 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Pwm_aState[CoreId_26].PwmConfig = ConfigPtr_30(D);
+  # DEBUG BEGIN_STMT
+  Index_34 = 0;
+  # DEBUG Index => Index_34
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = Pwm_aState[CoreId_26].PwmConfig;
+  _2 = _1->PwmInstancesConfig;
+  _3 = (int) Index_21;
+  _4 = &*_2[_3];
+  Pwm_Ipw_InitInstance (_4);
+  # DEBUG BEGIN_STMT
+  Index.0_5 = Index_21;
+  Index_40 = Index.0_5 + 1;
+  # DEBUG Index => Index_40
+
+  <bb 6> :
+  # Index_21 = PHI <Index_34(4), Index_40(5)>
+  # DEBUG Index => Index_21
+  # DEBUG BEGIN_STMT
+  _6 = Pwm_aState[CoreId_26].PwmConfig;
+  _7 = _6->NumInstances;
+  if (Index_21 < _7)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Index_35 = 0;
+  # DEBUG Index => Index_35
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _8 = Pwm_aState[CoreId_26].PwmConfig;
+  _9 = _8->PwmChannelsConfig;
+  _10 = (int) Index_22;
+  _11 = (int) Index_22;
+  _12 = &*_9[_10];
+  Pwm_aState[CoreId_26].PwmChannelConfigs[_11] = _12;
+  # DEBUG BEGIN_STMT
+  _13 = Pwm_aState[CoreId_26].PwmConfig;
+  _14 = _13->PwmChannelsConfig;
+  _15 = (int) Index_22;
+  _16 = &*_14[_15].IpwChannelCfg;
+  Pwm_Ipw_Init (_16);
+  # DEBUG BEGIN_STMT
+  Index.1_17 = Index_22;
+  Index_38 = Index.1_17 + 1;
+  # DEBUG Index => Index_38
+
+  <bb 9> :
+  # Index_22 = PHI <Index_35(7), Index_38(8)>
+  # DEBUG Index => Index_22
+  # DEBUG BEGIN_STMT
+  _18 = Pwm_aState[CoreId_26].PwmConfig;
+  _19 = _18->NumChannels;
+  if (Index_22 < _19)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  # CallIsValid_20 = PHI <CallIsValid_29(2), CallIsValid_32(3), CallIsValid_32(9)>
+  # DEBUG CallIsValid => CallIsValid_20
+  # DEBUG BEGIN_STMT
+  Pwm_EndValidateGlobalConfigCall (CoreId_26, CallIsValid_20, 0);
+  return;
+
+}
+
+
+Pwm_ValidateParamPtrInit (uint32 CoreId, const struct Pwm_ConfigType * ConfigPtr)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal_3 = 0;
+  # DEBUG RetVal => RetVal_3
+  # DEBUG BEGIN_STMT
+  if (ConfigPtr_4(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Det_ReportError (121, 0, 0, 16);
+  # DEBUG BEGIN_STMT
+  RetVal_7 = 1;
+  # DEBUG RetVal => RetVal_7
+
+  <bb 4> :
+  # RetVal_1 = PHI <RetVal_3(2), RetVal_7(3)>
+  # DEBUG RetVal => RetVal_1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = RetVal_1;
+  return _8;
+
+}
+
+
+Pwm_EndValidateGlobalConfigCall (uint32 CoreId, Std_ReturnType ValidCall, uint8 ServiceId)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (ValidCall_2(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (ServiceId_4(D) == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Pwm_aState[CoreId_5(D)].PwmDriverState = 0;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Pwm_aState[CoreId_5(D)].PwmDriverState = 1;
+
+  <bb 6> :
+  return;
+
+}
+
+
+Pwm_ValidateGlobalConfigCall (uint32 CoreId, uint8 ServiceId)
+{
+  Std_ReturnType RetVal;
+  <unnamed type> _1;
+  Std_ReturnType _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal_4 = 0;
+  # DEBUG RetVal => RetVal_4
+  # DEBUG BEGIN_STMT
+  _1 = Pwm_aState[CoreId_6(D)].PwmDriverState;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (ServiceId_7(D) != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (121, 0, ServiceId_7(D), 17);
+  # DEBUG BEGIN_STMT
+  RetVal_11 = 1;
+  # DEBUG RetVal => RetVal_11
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (ServiceId_7(D) == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (121, 0, ServiceId_7(D), 20);
+  # DEBUG BEGIN_STMT
+  RetVal_9 = 1;
+  # DEBUG RetVal => RetVal_9
+
+  <bb 7> :
+  # RetVal_2 = PHI <RetVal_11(4), RetVal_4(5), RetVal_9(6), RetVal_4(3)>
+  # DEBUG RetVal => RetVal_2
+  # DEBUG BEGIN_STMT
+  _12 = RetVal_2;
+  return _12;
+
+}
+
+

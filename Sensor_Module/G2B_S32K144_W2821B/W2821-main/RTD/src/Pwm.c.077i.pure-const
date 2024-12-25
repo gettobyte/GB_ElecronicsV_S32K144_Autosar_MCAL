@@ -1,0 +1,908 @@
+
+
+ local analysis of Pwm_ValidateParamPtrInit.isra.0
+   scanning: if (ConfigPtr_1(D) == 0B)
+  scanning: Det_ReportError (121, 0, 0, 16);
+  scanning: return RetVal_2;
+Function is locally const.
+
+
+ local analysis of Pwm_ValidateGlobalConfigCall.part.0
+   scanning: Det_ReportError (121, 0, ServiceId_1(D), 17);
+  scanning: return RetVal_2;
+Function is locally const.
+
+
+ local analysis of Pwm_DeInit
+   scanning: CallIsValid_23 = Pwm_ValidateGlobalConfigCall (0, 1);
+  scanning: if (CallIsValid_23 == 0)
+  scanning: _1 = Pwm_aState[0].PwmChannelConfigs[0];
+  scanning: _2 = (unsigned int) Index_14;
+  scanning: _3 = _2 * 24;
+  scanning: _4 = _1 + _3;
+  scanning: _5 = &_4->IpwChannelCfg;
+  scanning: _6 = _4->ChannelIdleState;
+    Indirect ref read is not const
+  scanning: Pwm_Ipw_DeInit (_5, _6);
+  scanning: Index_30 = Index_14 + 1;
+  scanning: _7 = Pwm_aState[0].PwmConfig;
+  scanning: _8 = _7->NumChannels;
+    Indirect ref read is not const
+  scanning: if (_8 > Index_14)
+  scanning: _9 = _24->PwmInstancesConfig;
+    Indirect ref read is not const
+  scanning: _10 = (int) Index_15;
+  scanning: _11 = &*_9[_10];
+  scanning: Pwm_Ipw_DeInitInstance (_11);
+  scanning: Index_28 = Index_15 + 1;
+  scanning: _12 = Pwm_aState[0].PwmConfig;
+  scanning: _13 = _12->NumInstances;
+    Indirect ref read is not const
+  scanning: if (_13 > Index_15)
+  scanning: Pwm_aState[0].PwmConfig = 0B;
+  scanning: Pwm_aState[0].PwmChannelConfigs[0] = 0B;
+  scanning: if (Index_16 == 0)
+  scanning: if (CallIsValid_23 == 0)
+  scanning: Pwm_aState[0].PwmDriverState = 0;
+  scanning: return;
+;; 4 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 14 3 4 5 6 7 8 9 10 11 12 13
+;;
+;; Loop 3
+;;  header 10, latch 9
+;;  depth 1, outer 0
+;;  nodes: 10 9
+;;
+;; Loop 2
+;;  header 7, latch 6
+;;  depth 1, outer 0
+;;  nodes: 7 6
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 14 11 }
+;; 14 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 7 }
+;; 6 succs { 7 }
+;; 7 succs { 6 8 }
+;; 8 succs { 10 }
+;; 9 succs { 10 }
+;; 10 succs { 9 11 }
+;; 11 succs { 12 13 }
+;; 12 succs { 13 }
+;; 13 succs { 1 }
+    cannot prove finiteness of loop 3
+Function is locally looping.
+Function is locally pure.
+
+
+ local analysis of Pwm_Init
+   scanning: CallIsValid_20 = Pwm_ValidateGlobalConfigCall (0, 0);
+  scanning: if (CallIsValid_20 == 0)
+  scanning: CallIsValid_23 = Pwm_ValidateParamPtrInit.isra.0 (ConfigPtr_21(D));
+  scanning: if (CallIsValid_23 == 0)
+  scanning: Pwm_aState[0].PwmConfig = ConfigPtr_21(D);
+  scanning: _1 = _4->PwmInstancesConfig;
+    Indirect ref read is not const
+  scanning: _2 = (int) Index_13;
+  scanning: _3 = &*_1[_2];
+  scanning: Pwm_Ipw_InitInstance (_3);
+  scanning: Index_29 = Index_13 + 1;
+  scanning: _4 = Pwm_aState[0].PwmConfig;
+  scanning: _5 = _4->NumInstances;
+    Indirect ref read is not const
+  scanning: if (_5 > Index_13)
+  scanning: _6 = _10->PwmChannelsConfig;
+    Indirect ref read is not const
+  scanning: _7 = (int) Index_14;
+  scanning: _8 = &*_6[_7];
+  scanning: Pwm_aState[0].PwmChannelConfigs[_7] = _8;
+  scanning: _9 = &*_6[_7].IpwChannelCfg;
+  scanning: Pwm_Ipw_Init (_9);
+  scanning: Index_27 = Index_14 + 1;
+  scanning: _10 = Pwm_aState[0].PwmConfig;
+  scanning: _11 = _10->NumChannels;
+    Indirect ref read is not const
+  scanning: if (_11 > Index_14)
+  scanning: if (CallIsValid_12 == 0)
+  scanning: Pwm_aState[0].PwmDriverState = 1;
+  scanning: return;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 12 7 8 9 10 11
+;;
+;; Loop 2
+;;  header 8, latch 7
+;;  depth 1, outer 0
+;;  nodes: 8 7
+;;
+;; Loop 1
+;;  header 6, latch 5
+;;  depth 1, outer 0
+;;  nodes: 6 5
+;; 2 succs { 3 9 }
+;; 3 succs { 4 9 }
+;; 4 succs { 6 }
+;; 5 succs { 6 }
+;; 6 succs { 5 12 }
+;; 12 succs { 8 }
+;; 7 succs { 8 }
+;; 8 succs { 7 9 }
+;; 9 succs { 10 11 }
+;; 10 succs { 11 }
+;; 11 succs { 1 }
+    cannot prove finiteness of loop 2
+Function is locally looping.
+Function is locally pure.
+
+
+ local analysis of Pwm_ValidateGlobalConfigCall
+   scanning: _1 = Pwm_aState[CoreId_5(D)].PwmDriverState;
+  scanning: if (_1 == 0)
+  scanning: if (ServiceId_6(D) != 0)
+  scanning: RetVal_9 = Pwm_ValidateGlobalConfigCall.part.0 (ServiceId_6(D));
+  scanning: if (ServiceId_6(D) == 0)
+  scanning: Det_ReportError (121, 0, 0, 20);
+  scanning: return RetVal_2;
+Function is locally const.
+callgraph:
+
+__builtin_unreachable/17 (__builtin_unreachable) @06ad9c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_ValidateGlobalConfigCall.constprop/15 (0 (precise),0.00 per call) Pwm_ValidateGlobalConfigCall.constprop/16 (0 (precise),0.00 per call) 
+  Calls: 
+Pwm_ValidateGlobalConfigCall.constprop.0/16 (Pwm_ValidateGlobalConfigCall.constprop) @06ad9620
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 15
+  Aux: @06bc65b0
+  References: Pwm_aState/1 (read)
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.constprop/16 is inline copy in Pwm_DeInit/6
+  Clone of Pwm_ValidateGlobalConfigCall.constprop.0/15
+  Availability: local
+  Function flags: count:357913938 (estimated locally) local optimize_size
+  Called by: Pwm_DeInit/6 (inlined) (357913938 (estimated locally),1.00 per call) 
+  Calls: __builtin_unreachable/17 (0 (precise),0.00 per call) Pwm_ValidateGlobalConfigCall.part.0/12 (inlined) (59055799 (estimated locally),0.16 per call) 
+Pwm_ValidateGlobalConfigCall.constprop.0/15 (Pwm_ValidateGlobalConfigCall.constprop) @06ad98c0
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 16
+  Aux: @06bc64b0
+  References: Pwm_aState/1 (read)
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.constprop/15 is inline copy in Pwm_Init/5
+  Clone of Pwm_ValidateGlobalConfigCall/2
+  Availability: local
+  Function flags: count:715827876 (estimated locally) local optimize_size
+  Called by: Pwm_Init/5 (inlined) (715827876 (estimated locally),1.00 per call) 
+  Calls: __builtin_unreachable/17 (0 (precise),0.00 per call) Det_ReportError/9 (118111600 (estimated locally),0.17 per call) 
+Pwm_ValidateParamPtrInit.isra.0/13 (Pwm_ValidateParamPtrInit.isra.0) @06c7c0e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06bc64f0
+  References: 
+  Referring: 
+  Function Pwm_ValidateParamPtrInit.isra.0/13 is inline copy in Pwm_Init/5
+  Availability: local
+  Function flags: count:236223199 (estimated locally) body local optimize_size
+  Called by: Pwm_Init/5 (inlined) (236223199 (estimated locally),0.33 per call) 
+  Calls: Det_ReportError/9 (41173704 (estimated locally),0.06 per call) 
+Pwm_ValidateGlobalConfigCall.part.0/12 (Pwm_ValidateGlobalConfigCall.part.0) @06844ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06bc67f0
+  References: 
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.part.0/12 is inline copy in Pwm_DeInit/6
+  Availability: local
+  Function flags: count:59055799 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: Pwm_ValidateGlobalConfigCall.constprop/16 (inlined) (59055799 (estimated locally),0.16 per call) 
+  Calls: Det_ReportError/9 (59055799 (estimated locally),0.16 per call) 
+Pwm_Ipw_DeInitInstance/11 (Pwm_Ipw_DeInitInstance) @069bc620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_DeInit/6 (955630225 (estimated locally),2.67 per call) 
+  Calls: 
+Pwm_Ipw_DeInit/10 (Pwm_Ipw_DeInit) @069bc540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_DeInit/6 (955630219 (estimated locally),2.67 per call) 
+  Calls: 
+Det_ReportError/9 (Det_ReportError) @069bc1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_ValidateGlobalConfigCall.constprop/15 (118111600 (estimated locally),0.17 per call) Pwm_ValidateParamPtrInit.isra.0/13 (41173704 (estimated locally),0.06 per call) Pwm_ValidateGlobalConfigCall.part.0/12 (59055799 (estimated locally),0.16 per call) 
+  Calls: 
+Pwm_Ipw_Init/8 (Pwm_Ipw_Init) @069bc000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_Init/5 (955630225 (estimated locally),1.34 per call) 
+  Calls: 
+Pwm_Ipw_InitInstance/7 (Pwm_Ipw_InitInstance) @06ad99a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_Init/5 (955630219 (estimated locally),1.34 per call) 
+  Calls: 
+Pwm_DeInit/6 (Pwm_DeInit) @06ad9e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06bc6530
+  References: Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (write)Pwm_aState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:357913938 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pwm_Ipw_DeInitInstance/11 (955630225 (estimated locally),2.67 per call) Pwm_Ipw_DeInit/10 (955630219 (estimated locally),2.67 per call) Pwm_ValidateGlobalConfigCall.constprop/16 (inlined) (357913938 (estimated locally),1.00 per call) 
+Pwm_Init/5 (Pwm_Init) @06ad9b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06bc6750
+  References: Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:715827876 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pwm_Ipw_Init/8 (955630225 (estimated locally),1.34 per call) Pwm_Ipw_InitInstance/7 (955630219 (estimated locally),1.34 per call) Pwm_ValidateParamPtrInit.isra.0/13 (inlined) (236223199 (estimated locally),0.33 per call) Pwm_ValidateGlobalConfigCall.constprop/15 (inlined) (715827876 (estimated locally),1.00 per call) 
+Pwm_ValidateGlobalConfigCall/2 (Pwm_ValidateGlobalConfigCall) @06ad9380
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+Pwm_ValidateGlobalConfigCall.constprop.0/16 (Pwm_ValidateGlobalConfigCall.constprop) @06ad9620
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 15
+  Aux: @06bc65b0
+  References: Pwm_aState/1 (read)
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.constprop/16 is inline copy in Pwm_DeInit/6
+  Clone of Pwm_ValidateGlobalConfigCall.constprop.0/15
+  Availability: local
+  Function flags: count:357913938 (estimated locally) local optimize_size
+  Called by: Pwm_DeInit/6 (inlined) (357913938 (estimated locally),1.00 per call) 
+  Calls: __builtin_unreachable/17 (0 (precise),0.00 per call) Pwm_ValidateGlobalConfigCall.part.0/12 (inlined) (59055799 (estimated locally),0.16 per call) 
+Pwm_ValidateGlobalConfigCall.constprop.0/15 (Pwm_ValidateGlobalConfigCall.constprop) @06ad98c0
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 16
+  Aux: @06bc64b0
+  References: Pwm_aState/1 (read)
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.constprop/15 is inline copy in Pwm_Init/5
+  Clone of Pwm_ValidateGlobalConfigCall/2
+  Availability: local
+  Function flags: count:715827876 (estimated locally) local optimize_size
+  Called by: Pwm_Init/5 (inlined) (715827876 (estimated locally),1.00 per call) 
+  Calls: __builtin_unreachable/17 (0 (precise),0.00 per call) Det_ReportError/9 (118111600 (estimated locally),0.17 per call) 
+Pwm_ValidateParamPtrInit.isra.0/13 (Pwm_ValidateParamPtrInit.isra.0) @06c7c0e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06bc64f0
+  References: 
+  Referring: 
+  Function Pwm_ValidateParamPtrInit.isra.0/13 is inline copy in Pwm_Init/5
+  Availability: local
+  Function flags: count:236223199 (estimated locally) body local optimize_size
+  Called by: Pwm_Init/5 (inlined) (236223199 (estimated locally),0.33 per call) 
+  Calls: Det_ReportError/9 (41173704 (estimated locally),0.06 per call) 
+Pwm_ValidateGlobalConfigCall.part.0/12 (Pwm_ValidateGlobalConfigCall.part.0) @06844ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06bc67f0
+  References: 
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.part.0/12 is inline copy in Pwm_DeInit/6
+  Availability: local
+  Function flags: count:59055799 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: Pwm_ValidateGlobalConfigCall.constprop/16 (inlined) (59055799 (estimated locally),0.16 per call) 
+  Calls: Det_ReportError/9 (59055799 (estimated locally),0.16 per call) 
+Pwm_DeInit/6 (Pwm_DeInit) @06ad9e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06bc6530
+  References: Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (write)Pwm_aState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:357913938 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pwm_Ipw_DeInitInstance/11 (955630225 (estimated locally),2.67 per call) Pwm_Ipw_DeInit/10 (955630219 (estimated locally),2.67 per call) Pwm_ValidateGlobalConfigCall.constprop/16 (inlined) (357913938 (estimated locally),1.00 per call) 
+Pwm_Init/5 (Pwm_Init) @06ad9b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06bc6750
+  References: Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:715827876 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pwm_Ipw_Init/8 (955630225 (estimated locally),1.34 per call) Pwm_Ipw_InitInstance/7 (955630219 (estimated locally),1.34 per call) Pwm_ValidateParamPtrInit.isra.0/13 (inlined) (236223199 (estimated locally),0.33 per call) Pwm_ValidateGlobalConfigCall.constprop/15 (inlined) (715827876 (estimated locally),1.00 per call) 
+
+
+
+MALLOC LATTICE Initial:
+Pwm_ValidateGlobalConfigCall.constprop: malloc_bottom
+Pwm_ValidateGlobalConfigCall.constprop: malloc_bottom
+Pwm_ValidateParamPtrInit.isra.0: malloc_bottom
+Pwm_ValidateGlobalConfigCall.part.0: malloc_bottom
+Pwm_DeInit: malloc_bottom
+Pwm_Init: malloc_bottom
+Pwm_ValidateGlobalConfigCall: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Pwm_ValidateGlobalConfigCall.constprop: malloc_bottom
+Pwm_ValidateGlobalConfigCall.constprop: malloc_bottom
+Pwm_ValidateParamPtrInit.isra.0: malloc_bottom
+Pwm_ValidateGlobalConfigCall.part.0: malloc_bottom
+Pwm_DeInit: malloc_bottom
+Pwm_Init: malloc_bottom
+Pwm_ValidateGlobalConfigCall: malloc_bottom
+callgraph:
+
+__builtin_unreachable/17 (__builtin_unreachable) @06ad9c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_ValidateGlobalConfigCall.constprop/15 (0 (precise),0.00 per call) Pwm_ValidateGlobalConfigCall.constprop/16 (0 (precise),0.00 per call) 
+  Calls: 
+Pwm_ValidateGlobalConfigCall.constprop.0/16 (Pwm_ValidateGlobalConfigCall.constprop) @06ad9620
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 15
+  Aux: @06bc6750
+  References: Pwm_aState/1 (read)
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.constprop/16 is inline copy in Pwm_DeInit/6
+  Clone of Pwm_ValidateGlobalConfigCall.constprop.0/15
+  Availability: local
+  Function flags: count:357913938 (estimated locally) local optimize_size
+  Called by: Pwm_DeInit/6 (inlined) (357913938 (estimated locally),1.00 per call) 
+  Calls: __builtin_unreachable/17 (0 (precise),0.00 per call) Pwm_ValidateGlobalConfigCall.part.0/12 (inlined) (59055799 (estimated locally),0.16 per call) 
+Pwm_ValidateGlobalConfigCall.constprop.0/15 (Pwm_ValidateGlobalConfigCall.constprop) @06ad98c0
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 16
+  Aux: @06bc66d0
+  References: Pwm_aState/1 (read)
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.constprop/15 is inline copy in Pwm_Init/5
+  Clone of Pwm_ValidateGlobalConfigCall/2
+  Availability: local
+  Function flags: count:715827876 (estimated locally) local optimize_size
+  Called by: Pwm_Init/5 (inlined) (715827876 (estimated locally),1.00 per call) 
+  Calls: __builtin_unreachable/17 (0 (precise),0.00 per call) Det_ReportError/9 (118111600 (estimated locally),0.17 per call) 
+Pwm_ValidateParamPtrInit.isra.0/13 (Pwm_ValidateParamPtrInit.isra.0) @06c7c0e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06bc67b0
+  References: 
+  Referring: 
+  Function Pwm_ValidateParamPtrInit.isra.0/13 is inline copy in Pwm_Init/5
+  Availability: local
+  Function flags: count:236223199 (estimated locally) body local optimize_size
+  Called by: Pwm_Init/5 (inlined) (236223199 (estimated locally),0.33 per call) 
+  Calls: Det_ReportError/9 (41173704 (estimated locally),0.06 per call) 
+Pwm_ValidateGlobalConfigCall.part.0/12 (Pwm_ValidateGlobalConfigCall.part.0) @06844ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06bc66f0
+  References: 
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.part.0/12 is inline copy in Pwm_DeInit/6
+  Availability: local
+  Function flags: count:59055799 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: Pwm_ValidateGlobalConfigCall.constprop/16 (inlined) (59055799 (estimated locally),0.16 per call) 
+  Calls: Det_ReportError/9 (59055799 (estimated locally),0.16 per call) 
+Pwm_Ipw_DeInitInstance/11 (Pwm_Ipw_DeInitInstance) @069bc620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_DeInit/6 (955630225 (estimated locally),2.67 per call) 
+  Calls: 
+Pwm_Ipw_DeInit/10 (Pwm_Ipw_DeInit) @069bc540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_DeInit/6 (955630219 (estimated locally),2.67 per call) 
+  Calls: 
+Det_ReportError/9 (Det_ReportError) @069bc1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_ValidateGlobalConfigCall.constprop/15 (118111600 (estimated locally),0.17 per call) Pwm_ValidateParamPtrInit.isra.0/13 (41173704 (estimated locally),0.06 per call) Pwm_ValidateGlobalConfigCall.part.0/12 (59055799 (estimated locally),0.16 per call) 
+  Calls: 
+Pwm_Ipw_Init/8 (Pwm_Ipw_Init) @069bc000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_Init/5 (955630225 (estimated locally),1.34 per call) 
+  Calls: 
+Pwm_Ipw_InitInstance/7 (Pwm_Ipw_InitInstance) @06ad99a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_Init/5 (955630219 (estimated locally),1.34 per call) 
+  Calls: 
+Pwm_DeInit/6 (Pwm_DeInit) @06ad9e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06bc6570
+  References: Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (write)Pwm_aState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:357913938 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pwm_Ipw_DeInitInstance/11 (955630225 (estimated locally),2.67 per call) Pwm_Ipw_DeInit/10 (955630219 (estimated locally),2.67 per call) Pwm_ValidateGlobalConfigCall.constprop/16 (inlined) (357913938 (estimated locally),1.00 per call) 
+Pwm_Init/5 (Pwm_Init) @06ad9b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06bc6610
+  References: Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:715827876 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pwm_Ipw_Init/8 (955630225 (estimated locally),1.34 per call) Pwm_Ipw_InitInstance/7 (955630219 (estimated locally),1.34 per call) Pwm_ValidateParamPtrInit.isra.0/13 (inlined) (236223199 (estimated locally),0.33 per call) Pwm_ValidateGlobalConfigCall.constprop/15 (inlined) (715827876 (estimated locally),1.00 per call) 
+Pwm_ValidateGlobalConfigCall/2 (Pwm_ValidateGlobalConfigCall) @06ad9380
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+Pwm_DeInit/6 (Pwm_DeInit) @06ad9e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06bc6570
+  References: Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (write)Pwm_aState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:357913938 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pwm_Ipw_DeInitInstance/11 (955630225 (estimated locally),2.67 per call) Pwm_Ipw_DeInit/10 (955630219 (estimated locally),2.67 per call) Pwm_ValidateGlobalConfigCall.constprop/16 (inlined) (357913938 (estimated locally),1.00 per call) 
+Pwm_ValidateGlobalConfigCall.constprop.0/16 (Pwm_ValidateGlobalConfigCall.constprop) @06ad9620
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 15
+  Aux: @06bc6750
+  References: Pwm_aState/1 (read)
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.constprop/16 is inline copy in Pwm_DeInit/6
+  Clone of Pwm_ValidateGlobalConfigCall.constprop.0/15
+  Availability: local
+  Function flags: count:357913938 (estimated locally) local optimize_size
+  Called by: Pwm_DeInit/6 (inlined) (357913938 (estimated locally),1.00 per call) 
+  Calls: __builtin_unreachable/17 (0 (precise),0.00 per call) Pwm_ValidateGlobalConfigCall.part.0/12 (inlined) (59055799 (estimated locally),0.16 per call) 
+Pwm_ValidateGlobalConfigCall.part.0/12 (Pwm_ValidateGlobalConfigCall.part.0) @06844ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06bc66f0
+  References: 
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.part.0/12 is inline copy in Pwm_DeInit/6
+  Availability: local
+  Function flags: count:59055799 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: Pwm_ValidateGlobalConfigCall.constprop/16 (inlined) (59055799 (estimated locally),0.16 per call) 
+  Calls: Det_ReportError/9 (59055799 (estimated locally),0.16 per call) 
+Pwm_Init/5 (Pwm_Init) @06ad9b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06bc6610
+  References: Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:715827876 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pwm_Ipw_Init/8 (955630225 (estimated locally),1.34 per call) Pwm_Ipw_InitInstance/7 (955630219 (estimated locally),1.34 per call) Pwm_ValidateParamPtrInit.isra.0/13 (inlined) (236223199 (estimated locally),0.33 per call) Pwm_ValidateGlobalConfigCall.constprop/15 (inlined) (715827876 (estimated locally),1.00 per call) 
+Pwm_ValidateGlobalConfigCall.constprop.0/15 (Pwm_ValidateGlobalConfigCall.constprop) @06ad98c0
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 16
+  Aux: @06bc66d0
+  References: Pwm_aState/1 (read)
+  Referring: 
+  Function Pwm_ValidateGlobalConfigCall.constprop/15 is inline copy in Pwm_Init/5
+  Clone of Pwm_ValidateGlobalConfigCall/2
+  Availability: local
+  Function flags: count:715827876 (estimated locally) local optimize_size
+  Called by: Pwm_Init/5 (inlined) (715827876 (estimated locally),1.00 per call) 
+  Calls: __builtin_unreachable/17 (0 (precise),0.00 per call) Det_ReportError/9 (118111600 (estimated locally),0.17 per call) 
+Pwm_ValidateParamPtrInit.isra.0/13 (Pwm_ValidateParamPtrInit.isra.0) @06c7c0e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06bc67b0
+  References: 
+  Referring: 
+  Function Pwm_ValidateParamPtrInit.isra.0/13 is inline copy in Pwm_Init/5
+  Availability: local
+  Function flags: count:236223199 (estimated locally) body local optimize_size
+  Called by: Pwm_Init/5 (inlined) (236223199 (estimated locally),0.33 per call) 
+  Calls: Det_ReportError/9 (41173704 (estimated locally),0.06 per call) 
+
+Pwm_ValidateParamPtrInit.isra.0 (const struct Pwm_ConfigType * ConfigPtr)
+{
+  Std_ReturnType RetVal;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG CoreId s=> CoreId
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RetVal => 0
+  # DEBUG BEGIN_STMT
+  if (ConfigPtr_1(D) == 0B)
+    goto <bb 3>; [17.43%]
+  else
+    goto <bb 4>; [82.57%]
+
+  <bb 3> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Det_ReportError (121, 0, 0, 16);
+  # DEBUG BEGIN_STMT
+  # DEBUG RetVal => 1
+
+  <bb 4> [local count: 1073741824]:
+  # RetVal_2 = PHI <0(2), 1(3)>
+  # DEBUG RetVal => RetVal_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return RetVal_2;
+
+}
+
+
+Pwm_ValidateGlobalConfigCall.part.0 (uint8 ServiceId)
+{
+  Std_ReturnType RetVal;
+  uint32 CoreId;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#2 s=> CoreId
+  # DEBUG CoreId => D#2
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (121, 0, ServiceId_1(D), 17);
+  # DEBUG BEGIN_STMT
+  # DEBUG RetVal => 1
+
+  <bb 3> [local count: 1073741824]:
+  # RetVal_2 = PHI <1(2)>
+  # DEBUG RetVal => RetVal_2
+  # DEBUG BEGIN_STMT
+  return RetVal_2;
+
+}
+
+
+Pwm_DeInit ()
+{
+  uint8 Index;
+  Std_ReturnType CallIsValid;
+  const struct Pwm_ChannelConfigType * _1;
+  unsigned int _2;
+  unsigned int _3;
+  const struct Pwm_ChannelConfigType * _4;
+  const struct Pwm_IpwChannelConfigType * _5;
+  <unnamed type> _6;
+  const struct Pwm_ConfigType * _7;
+  unsigned char _8;
+  const struct Pwm_IpwInstanceConfigType[<unknown>] * _9;
+  int _10;
+  const struct Pwm_IpwInstanceConfigType * _11;
+  const struct Pwm_ConfigType * _12;
+  unsigned char _13;
+  const struct Pwm_ConfigType * _24;
+
+  <bb 2> [local count: 357913938]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG CoreId => 0
+  # DEBUG BEGIN_STMT
+  CallIsValid_23 = Pwm_ValidateGlobalConfigCall (0, 1);
+  # DEBUG CallIsValid => CallIsValid_23
+  # DEBUG BEGIN_STMT
+  if (CallIsValid_23 == 0)
+    goto <bb 14>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 14> [local count: 118111599]:
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630219]:
+  # DEBUG BEGIN_STMT
+  _1 = Pwm_aState[0].PwmChannelConfigs[0];
+  _2 = (unsigned int) Index_14;
+  _3 = _2 * 24;
+  _4 = _1 + _3;
+  _5 = &_4->IpwChannelCfg;
+  _6 = _4->ChannelIdleState;
+  Pwm_Ipw_DeInit (_5, _6);
+  # DEBUG BEGIN_STMT
+  Index_30 = Index_14 + 1;
+  # DEBUG Index => Index_30
+
+  <bb 4> [local count: 1073741820]:
+  # Index_14 = PHI <Index_30(3), 0(14)>
+  # DEBUG Index => Index_14
+  # DEBUG BEGIN_STMT
+  _7 = Pwm_aState[0].PwmConfig;
+  _8 = _7->NumChannels;
+  if (_8 > Index_14)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111600]:
+  # _24 = PHI <_7(4)>
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 955630225]:
+  # DEBUG BEGIN_STMT
+  _9 = _24->PwmInstancesConfig;
+  _10 = (int) Index_15;
+  _11 = &*_9[_10];
+  Pwm_Ipw_DeInitInstance (_11);
+  # DEBUG BEGIN_STMT
+  Index_28 = Index_15 + 1;
+  # DEBUG Index => Index_28
+
+  <bb 7> [local count: 1073741824]:
+  # Index_15 = PHI <Index_28(6), 0(5)>
+  # DEBUG ConfigPtr => NULL
+  # DEBUG Index => Index_15
+  # DEBUG BEGIN_STMT
+  _12 = Pwm_aState[0].PwmConfig;
+  _13 = _12->NumInstances;
+  if (_13 > Index_15)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  Pwm_aState[0].PwmConfig = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG Index => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  Pwm_aState[0].PwmChannelConfigs[0] = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG Index => 1
+
+  <bb 10> [local count: 236223202]:
+  # Index_16 = PHI <0(8), 1(9)>
+  # DEBUG Index => Index_16
+  # DEBUG BEGIN_STMT
+  if (Index_16 == 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 11> [local count: 357913939]:
+  # DEBUG BEGIN_STMT
+  # DEBUG CoreId => 0
+  # DEBUG ValidCall => CallIsValid_23
+  # DEBUG ServiceId => 1
+  # DEBUG INLINE_ENTRY Pwm_EndValidateGlobalConfigCall
+  # DEBUG BEGIN_STMT
+  if (CallIsValid_23 == 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 12> [local count: 178956970]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Pwm_aState[0].PwmDriverState = 0;
+
+  <bb 13> [local count: 357913939]:
+  # DEBUG CoreId => NULL
+  # DEBUG ValidCall => NULL
+  # DEBUG ServiceId => NULL
+  return;
+
+}
+
+
+Pwm_Init (const struct Pwm_ConfigType * ConfigPtr)
+{
+  uint8 Index;
+  Std_ReturnType CallIsValid;
+  const struct Pwm_IpwInstanceConfigType[<unknown>] * _1;
+  int _2;
+  const struct Pwm_IpwInstanceConfigType * _3;
+  const struct Pwm_ConfigType * _4;
+  unsigned char _5;
+  const struct Pwm_ChannelConfigType[<unknown>] * _6;
+  int _7;
+  const struct Pwm_ChannelConfigType * _8;
+  const struct Pwm_IpwChannelConfigType * _9;
+  const struct Pwm_ConfigType * _10;
+  unsigned char _11;
+
+  <bb 2> [local count: 715827876]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG CoreId => 0
+  # DEBUG BEGIN_STMT
+  CallIsValid_20 = Pwm_ValidateGlobalConfigCall (0, 0);
+  # DEBUG CallIsValid => CallIsValid_20
+  # DEBUG BEGIN_STMT
+  if (CallIsValid_20 == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 3> [local count: 236223199]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#3 => 0
+  CallIsValid_23 = Pwm_ValidateParamPtrInit.isra.0 (ConfigPtr_21(D));
+  # DEBUG CallIsValid => CallIsValid_23
+  # DEBUG BEGIN_STMT
+  if (CallIsValid_23 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 4> [local count: 118111599]:
+  # DEBUG BEGIN_STMT
+  Pwm_aState[0].PwmConfig = ConfigPtr_21(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG Index => 0
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 955630219]:
+  # DEBUG BEGIN_STMT
+  _1 = _4->PwmInstancesConfig;
+  _2 = (int) Index_13;
+  _3 = &*_1[_2];
+  Pwm_Ipw_InitInstance (_3);
+  # DEBUG BEGIN_STMT
+  Index_29 = Index_13 + 1;
+  # DEBUG Index => Index_29
+
+  <bb 6> [local count: 1073741820]:
+  # Index_13 = PHI <0(4), Index_29(5)>
+  # DEBUG Index => Index_13
+  # DEBUG BEGIN_STMT
+  _4 = Pwm_aState[0].PwmConfig;
+  _5 = _4->NumInstances;
+  if (_5 > Index_13)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 12>; [11.00%]
+
+  <bb 12> [local count: 118111600]:
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 955630225]:
+  # DEBUG BEGIN_STMT
+  _6 = _10->PwmChannelsConfig;
+  _7 = (int) Index_14;
+  _8 = &*_6[_7];
+  Pwm_aState[0].PwmChannelConfigs[_7] = _8;
+  # DEBUG BEGIN_STMT
+  _9 = &*_6[_7].IpwChannelCfg;
+  Pwm_Ipw_Init (_9);
+  # DEBUG BEGIN_STMT
+  Index_27 = Index_14 + 1;
+  # DEBUG Index => Index_27
+
+  <bb 8> [local count: 1073741824]:
+  # Index_14 = PHI <Index_27(7), 0(12)>
+  # DEBUG Index => Index_14
+  # DEBUG BEGIN_STMT
+  _10 = Pwm_aState[0].PwmConfig;
+  _11 = _10->NumChannels;
+  if (_11 > Index_14)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 715827877]:
+  # CallIsValid_12 = PHI <CallIsValid_20(2), CallIsValid_23(3), 0(8)>
+  # DEBUG CallIsValid => CallIsValid_12
+  # DEBUG BEGIN_STMT
+  # DEBUG CoreId => 0
+  # DEBUG ValidCall => CallIsValid_12
+  # DEBUG ServiceId => 0
+  # DEBUG INLINE_ENTRY Pwm_EndValidateGlobalConfigCall
+  # DEBUG BEGIN_STMT
+  if (CallIsValid_12 == 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 10> [local count: 357913938]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Pwm_aState[0].PwmDriverState = 1;
+
+  <bb 11> [local count: 715827877]:
+  # DEBUG CoreId => NULL
+  # DEBUG ValidCall => NULL
+  # DEBUG ServiceId => NULL
+  return;
+
+}
+
+

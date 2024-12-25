@@ -1,0 +1,106 @@
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+  int D.6444;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  exit_code.2_2 = exit_code;
+  if (exit_code.2_2 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6444 = exit_code;
+  return D.6444;
+
+}
+
+
+PWM_DutyCycle (uint8_t DutyCycle_Percentage)
+{
+  uint16_t Converted_DutyCycle;
+  uint16_t D.6441;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) DutyCycle_Percentage;
+  _2 = _1 * 32768;
+  _3 = _2 / 100;
+  Converted_DutyCycle = (uint16_t) _3;
+  # DEBUG BEGIN_STMT
+  D.6441 = Converted_DutyCycle;
+  return D.6441;
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  DelayTimer = 0;
+  return;
+
+}
+
+

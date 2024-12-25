@@ -1,0 +1,143 @@
+Pwm_Ipw_DeInitInstance (const struct Pwm_IpwInstanceConfigType * const IpConfig)
+{
+  <unnamed type> _1;
+  const struct Ftm_Pwm_Ip_UserCfgType * _2;
+  unsigned char _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig_6(D)->InstanceType;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig_6(D)->FtmInsConfig;
+  if (_2 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 195204116]:
+  # DEBUG BEGIN_STMT
+  _3 = IpConfig_6(D)->InstanceId;
+  Ftm_Pwm_Ip_DeInit (_3);
+
+  <bb 5> [local count: 1073741824]:
+<L6>:
+  return;
+
+}
+
+
+Pwm_Ipw_DeInit (const struct Pwm_IpwChannelConfigType * const IpConfig, Pwm_OutputStateType ChannelIdleState)
+{
+  <unnamed type> _1;
+  unsigned char _2;
+  int _3;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _4;
+  unsigned char _5;
+  int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig_9(D)->ChannelType;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig_9(D)->ChannelInstanceId;
+  _3 = (int) _2;
+  _4 = IpConfig_9(D)->FtmChConfig;
+  _5 = _4->ChannelId;
+  _6 = (int) _5;
+  Pwm_Ipw_aFtmDutyCycle[_3][_6] = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+<L4>:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Pwm_Ipw_InitInstance (const struct Pwm_IpwInstanceConfigType * const IpConfig)
+{
+  <unnamed type> _1;
+  const struct Ftm_Pwm_Ip_UserCfgType * _2;
+  unsigned char _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig_6(D)->InstanceType;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig_6(D)->FtmInsConfig;
+  if (_2 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 195204116]:
+  # DEBUG BEGIN_STMT
+  _3 = IpConfig_6(D)->InstanceId;
+  Ftm_Pwm_Ip_Init (_3, _2);
+
+  <bb 5> [local count: 1073741824]:
+<L6>:
+  return;
+
+}
+
+
+Pwm_Ipw_Init (const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  <unnamed type> _1;
+  unsigned char _2;
+  int _3;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _4;
+  unsigned char _5;
+  int _6;
+  short unsigned int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig_10(D)->ChannelType;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig_10(D)->ChannelInstanceId;
+  _3 = (int) _2;
+  _4 = IpConfig_10(D)->FtmChConfig;
+  _5 = _4->ChannelId;
+  _6 = (int) _5;
+  _7 = IpConfig_10(D)->ChannelDutyCycle;
+  Pwm_Ipw_aFtmDutyCycle[_3][_6] = _7;
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+<L4>:
+  return;
+
+}
+
+

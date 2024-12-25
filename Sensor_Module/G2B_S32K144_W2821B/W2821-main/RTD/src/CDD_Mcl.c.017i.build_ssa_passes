@@ -1,0 +1,45 @@
+Mcl_DeInit ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Mcl_pxConfig.2_1 = Mcl_pxConfig;
+  if (Mcl_pxConfig.2_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Mcl_pxConfig = 0B;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Mcl_Init (const struct Mcl_ConfigType * const ConfigPtr)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Mcl_pxConfig.0_1 = Mcl_pxConfig;
+  if (Mcl_pxConfig.0_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Mcl_pxConfig = ConfigPtr;
+  # DEBUG BEGIN_STMT
+  Mcl_pxConfig.1_2 = Mcl_pxConfig;
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

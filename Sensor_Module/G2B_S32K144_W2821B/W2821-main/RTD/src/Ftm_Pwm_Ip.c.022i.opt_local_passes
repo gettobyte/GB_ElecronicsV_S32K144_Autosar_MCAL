@@ -1,0 +1,6843 @@
+Ftm_Pwm_Ip_SetChannelDeadTime (uint8 Instance, uint8 Channel, uint16 DeadTimeVal)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  _Bool _6;
+  _Bool _7;
+  _Bool _8;
+  _Bool _9;
+  unsigned char _10;
+  unsigned char _11;
+  unsigned char _12;
+  short unsigned int _13;
+  unsigned char _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_16(D);
+  FtmBase_18 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_18
+  # DEBUG BEGIN_STMT
+  _2 = Instance_16(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_20(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = Ftm_Pwm_Ip_GetDualChnCompCmd (FtmBase_18, Channel_20(D));
+  _5 = _4;
+  DevAssert (_5);
+  # DEBUG BEGIN_STMT
+  _6 = Ftm_Pwm_Ip_GetDualChnDeadtimeCmd (FtmBase_18, Channel_20(D));
+  _7 = _6;
+  DevAssert (_7);
+  # DEBUG BEGIN_STMT
+  _8 = Ftm_Pwm_Ip_ValidateParamDeadTime (Instance_16(D), Channel_20(D), DeadTimeVal_26(D));
+  _9 = _8;
+  DevAssert (_9);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_13 ();
+  # DEBUG BEGIN_STMT
+  if (DeadTimeVal_26(D) <= 63)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _10 = (unsigned char) DeadTimeVal_26(D);
+  Ftm_Pwm_Ip_SetDeadtimeCount (FtmBase_18, _10);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetExtDeadtimeValue (FtmBase_18, 0);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _11 = (unsigned char) DeadTimeVal_26(D);
+  _12 = _11 & 63;
+  Ftm_Pwm_Ip_SetDeadtimeCount (FtmBase_18, _12);
+  # DEBUG BEGIN_STMT
+  _13 = DeadTimeVal_26(D) >> 6;
+  _14 = (unsigned char) _13;
+  Ftm_Pwm_Ip_SetExtDeadtimeValue (FtmBase_18, _14);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_13 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SyncUpdate (uint8 Instance)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_3(D);
+  FtmBase_5 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_5
+  # DEBUG BEGIN_STMT
+  _2 = Instance_3(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_12 ();
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_5, 1);
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_12 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_EnableTrigger (uint8 Instance, uint32 TriggerMask)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_3(D);
+  FtmBase_5 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_5
+  # DEBUG BEGIN_STMT
+  _2 = Instance_3(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_11 ();
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_EnableTriggerMask (FtmBase_5, TriggerMask_8(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_11 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_DisableTrigger (uint8 Instance, uint32 TriggerMask)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_3(D);
+  FtmBase_5 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_5
+  # DEBUG BEGIN_STMT
+  _2 = Instance_3(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_10 ();
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_DisableTriggerMask (FtmBase_5, TriggerMask_8(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_10 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetDutyPhaseShift (uint8 Instance, uint8 Channel, uint16 DutyCycle, uint16 PhaseShift, boolean SyncUpdate)
+{
+  boolean RetVal;
+  boolean CheckChMode;
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+  const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase;
+  boolean SoftwareTrigger;
+  uint8 PairId;
+  uint16 SecondEdgeEdge;
+  uint16 FirstEdge;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  _Bool _4;
+  unsigned int _5;
+  int _6;
+  short unsigned int _7;
+  int _8;
+  short unsigned int _9;
+  int _10;
+  short unsigned int _11;
+  _Bool _12;
+  int _13;
+  int _14;
+  int _15;
+  int _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_22(D);
+  FtmBase_24 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_24
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CheckChMode_25 = 1;
+  # DEBUG CheckChMode => CheckChMode_25
+  # DEBUG BEGIN_STMT
+  RetVal_26 = 1;
+  # DEBUG RetVal => RetVal_26
+  # DEBUG BEGIN_STMT
+  _2 = Instance_22(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_28(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  ChMode_31 = Ftm_Pwm_Ip_GetChannelMode (FtmBase_24, Channel_28(D));
+  # DEBUG ChMode => ChMode_31
+  # DEBUG BEGIN_STMT
+  if (ChMode_31 != 34)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  if (ChMode_31 != 98)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  if (ChMode_31 != 97)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  if (ChMode_31 != 33)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  CheckChMode_32 = 0;
+  # DEBUG CheckChMode => CheckChMode_32
+
+  <bb 7> :
+  # CheckChMode_19 = PHI <CheckChMode_25(2), CheckChMode_25(3), CheckChMode_25(4), CheckChMode_25(5), CheckChMode_32(6)>
+  # DEBUG CheckChMode => CheckChMode_19
+  # DEBUG BEGIN_STMT
+  _4 = CheckChMode_19;
+  DevAssert (_4);
+  # DEBUG BEGIN_STMT
+  _5 = ChMode_31 + 4294967199;
+  if (_5 <= 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  if (SyncUpdate_34(D) != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal_35 = 0;
+  # DEBUG RetVal => RetVal_35
+
+  <bb 10> :
+  # RetVal_20 = PHI <RetVal_26(7), RetVal_26(8), RetVal_35(9)>
+  # DEBUG RetVal => RetVal_20
+  # DEBUG BEGIN_STMT
+  _6 = (int) Instance_22(D);
+  _7 = Ftm_Pwm_Ip_aPeriod[_6];
+  if (DutyCycle_36(D) != _7)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 11> :
+  if (DutyCycle_36(D) != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _8 = (int) Instance_22(D);
+  _9 = Ftm_Pwm_Ip_aPeriod[_8];
+  if (PhaseShift_37(D) >= _9)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  _10 = (int) Instance_22(D);
+  _11 = Ftm_Pwm_Ip_aPeriod[_10];
+  if (DutyCycle_36(D) > _11)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  RetVal_38 = 0;
+  # DEBUG RetVal => RetVal_38
+
+  <bb 15> :
+  # RetVal_21 = PHI <RetVal_20(10), RetVal_20(11), RetVal_20(13), RetVal_38(14)>
+  # DEBUG RetVal => RetVal_21
+  # DEBUG BEGIN_STMT
+  _12 = RetVal_21;
+  DevAssert (_12);
+  # DEBUG BEGIN_STMT
+  PairId_40 = Channel_28(D) >> 1;
+  # DEBUG PairId => PairId_40
+  # DEBUG BEGIN_STMT
+  _13 = (int) Instance_22(D);
+  _14 = (int) PairId_40;
+  Ftm_Pwm_Ip_aPhaseShift[_13][_14] = PhaseShift_37(D);
+  # DEBUG BEGIN_STMT
+  _15 = (int) Instance_22(D);
+  _16 = (int) Channel_28(D);
+  Ftm_Pwm_Ip_aDutyCycle[_15][_16] = DutyCycle_36(D);
+  # DEBUG BEGIN_STMT
+  if (PhaseShift_37(D) == 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  FirstEdge_44 = 1;
+  # DEBUG FirstEdge => FirstEdge_44
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  FirstEdge_43 = PhaseShift_37(D);
+  # DEBUG FirstEdge => FirstEdge_43
+
+  <bb 18> :
+  # FirstEdge_17 = PHI <FirstEdge_44(16), FirstEdge_43(17)>
+  # DEBUG FirstEdge => FirstEdge_17
+  # DEBUG BEGIN_STMT
+  SecondEdgeEdge_46 = Ftm_Pwm_Ip_CalculatePhaseShift (Instance_22(D), DutyCycle_36(D), PhaseShift_37(D));
+  # DEBUG SecondEdgeEdge => SecondEdgeEdge_46
+  # DEBUG BEGIN_STMT
+  if (SyncUpdate_34(D) != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  SoftwareTrigger_48 = 0;
+  # DEBUG SoftwareTrigger => SoftwareTrigger_48
+  goto <bb 21>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  SoftwareTrigger_47 = 1;
+  # DEBUG SoftwareTrigger => SoftwareTrigger_47
+
+  <bb 21> :
+  # SoftwareTrigger_18 = PHI <SoftwareTrigger_48(19), SoftwareTrigger_47(20)>
+  # DEBUG SoftwareTrigger => SoftwareTrigger_18
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdatePwmChannel (Instance_22(D), Channel_28(D), FirstEdge_17, SecondEdgeEdge_46, SoftwareTrigger_18);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetPhaseShift (uint8 Instance, uint8 Channel, uint16 Period, uint16 PhaseShift, boolean SoftwareTrigger)
+{
+  boolean RetVal;
+  boolean CheckChMode;
+  uint16 CnVValue;
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+  uint16 DutyCycleVal;
+  uint8 PairChId;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  _Bool _4;
+  short unsigned int _5;
+  _Bool _6;
+  int _7;
+  <unnamed type> _8;
+  short unsigned int _9;
+  short unsigned int _10;
+  unsigned char _11;
+  int _12;
+  int _13;
+  unsigned char _14;
+  unsigned char _15;
+  short unsigned int _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_20(D);
+  FtmBase_22 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_22
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CnVValue_23 = 0;
+  # DEBUG CnVValue => CnVValue_23
+  # DEBUG BEGIN_STMT
+  CheckChMode_24 = 1;
+  # DEBUG CheckChMode => CheckChMode_24
+  # DEBUG BEGIN_STMT
+  RetVal_25 = 1;
+  # DEBUG RetVal => RetVal_25
+  # DEBUG BEGIN_STMT
+  _2 = Instance_20(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_27(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  ChMode_30 = Ftm_Pwm_Ip_GetChannelMode (FtmBase_22, Channel_27(D));
+  # DEBUG ChMode => ChMode_30
+  # DEBUG BEGIN_STMT
+  if (ChMode_30 != 34)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  if (ChMode_30 != 98)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  if (ChMode_30 != 97)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  if (ChMode_30 != 33)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  CheckChMode_31 = 0;
+  # DEBUG CheckChMode => CheckChMode_31
+
+  <bb 7> :
+  # CheckChMode_17 = PHI <CheckChMode_24(2), CheckChMode_24(3), CheckChMode_24(4), CheckChMode_24(5), CheckChMode_31(6)>
+  # DEBUG CheckChMode => CheckChMode_17
+  # DEBUG BEGIN_STMT
+  _4 = CheckChMode_17;
+  DevAssert (_4);
+  # DEBUG BEGIN_STMT
+  _5 = Period_33(D) >> 1;
+  CnVValue_35 = PhaseShift_34(D) + _5;
+  # DEBUG CnVValue => CnVValue_35
+  # DEBUG BEGIN_STMT
+  if (CnVValue_35 <= PhaseShift_34(D))
+    goto <bb 9>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  if (Period_33(D) <= CnVValue_35)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal_36 = 0;
+  # DEBUG RetVal => RetVal_36
+
+  <bb 10> :
+  # RetVal_18 = PHI <RetVal_25(8), RetVal_36(9)>
+  # DEBUG RetVal => RetVal_18
+  # DEBUG BEGIN_STMT
+  _6 = RetVal_18;
+  DevAssert (_6);
+  # DEBUG BEGIN_STMT
+  PairChId_38 = Channel_27(D) >> 1;
+  # DEBUG PairChId => PairChId_38
+  # DEBUG BEGIN_STMT
+  _7 = (int) Instance_20(D);
+  Ftm_Pwm_Ip_aPeriod[_7] = Period_33(D);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_09 ();
+  # DEBUG BEGIN_STMT
+  _8 = Ftm_Pwm_Ip_GetCpwms (FtmBase_22);
+  if (_8 == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _9 = Period_33(D) >> 1;
+  Ftm_Pwm_Ip_SetMod (FtmBase_22, _9);
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _10 = Period_33(D) + 65535;
+  Ftm_Pwm_Ip_SetMod (FtmBase_22, _10);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _11 = PairChId_38 * 2;
+  Ftm_Pwm_Ip_SetChnCountVal (FtmBase_22, _11, PhaseShift_34(D));
+  # DEBUG BEGIN_STMT
+  DutyCycleVal_45 = Period_33(D) >> 1;
+  # DEBUG DutyCycleVal => DutyCycleVal_45
+  # DEBUG BEGIN_STMT
+  _12 = (int) Instance_20(D);
+  _13 = (int) Channel_27(D);
+  Ftm_Pwm_Ip_aDutyCycle[_12][_13] = DutyCycleVal_45;
+  # DEBUG BEGIN_STMT
+  _14 = PairChId_38 * 2;
+  _15 = _14 + 1;
+  _16 = PhaseShift_34(D) + DutyCycleVal_45;
+  Ftm_Pwm_Ip_SetChnCountVal (FtmBase_22, _15, _16);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_22, SoftwareTrigger_48(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_09 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_UnMaskOutputChannels (uint8 Instance, uint32 ChannelsMask, boolean SoftwareTrigger)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_3(D);
+  FtmBase_5 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_5
+  # DEBUG BEGIN_STMT
+  _2 = Instance_3(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_08 ();
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ClearOutmaskReg (FtmBase_5, ChannelsMask_8(D));
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_5, SoftwareTrigger_10(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_08 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_MaskOutputChannels (uint8 Instance, uint32 ChannelsMask, boolean SoftwareTrigger)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_3(D);
+  FtmBase_5 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_5
+  # DEBUG BEGIN_STMT
+  _2 = Instance_3(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_07 ();
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetOutmaskReg (FtmBase_5, ChannelsMask_8(D));
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_5, SoftwareTrigger_10(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_07 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_FastUpdatePwmDuty (uint8 Instance, uint8 NumberOfChannels, const uint8 * Channels, const uint16 * Duty, boolean SoftwareTrigger)
+{
+  uint8 Index;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  sizetype _4;
+  const uint8 * _5;
+  unsigned char _6;
+  unsigned int _7;
+  unsigned int _8;
+  const uint16 * _9;
+  short unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  const uint16 * _13;
+  int _14;
+  sizetype _15;
+  const uint8 * _16;
+  unsigned char _17;
+  int _18;
+  short unsigned int _19;
+  unsigned char Index.35_20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_23(D);
+  FtmBase_25 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_25
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = Instance_23(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = NumberOfChannels_27(D) <= 8;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  Index_29 = 0;
+  # DEBUG Index => Index_29
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = (sizetype) Index_21;
+  _5 = Channels_32(D) + _4;
+  _6 = *_5;
+  _7 = (unsigned int) Index_21;
+  _8 = _7 * 2;
+  _9 = Duty_33(D) + _8;
+  _10 = *_9;
+  Ftm_Pwm_Ip_SetChnCountVal (FtmBase_25, _6, _10);
+  # DEBUG BEGIN_STMT
+  _11 = (unsigned int) Index_21;
+  _12 = _11 * 2;
+  _13 = Duty_33(D) + _12;
+  _14 = (int) Instance_23(D);
+  _15 = (sizetype) Index_21;
+  _16 = Channels_32(D) + _15;
+  _17 = *_16;
+  _18 = (int) _17;
+  _19 = *_13;
+  Ftm_Pwm_Ip_aDutyCycle[_14][_18] = _19;
+  # DEBUG BEGIN_STMT
+  Index.35_20 = Index_21;
+  Index_36 = Index.35_20 + 1;
+  # DEBUG Index => Index_36
+
+  <bb 4> :
+  # Index_21 = PHI <Index_29(2), Index_36(3)>
+  # DEBUG Index => Index_21
+  # DEBUG BEGIN_STMT
+  if (Index_21 < NumberOfChannels_27(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_25, SoftwareTrigger_30(D));
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetChannelState (uint8 Instance, uint8 Channel)
+{
+  uint16 DutyCycle;
+  _Bool _1;
+  _Bool _2;
+  int _3;
+  int _4;
+  uint16 _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Instance_5(D) <= 3;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = Channel_8(D) <= 7;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance_5(D);
+  _4 = (int) Channel_8(D);
+  DutyCycle_10 = Ftm_Pwm_Ip_aDutyCycle[_3][_4];
+  # DEBUG DutyCycle => DutyCycle_10
+  # DEBUG BEGIN_STMT
+  _11 = DutyCycle_10;
+  return _11;
+
+}
+
+
+Ftm_Pwm_Ip_ResetCounter (uint8 Instance, boolean IsResetCnt)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_3(D);
+  FtmBase_5 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_5
+  # DEBUG BEGIN_STMT
+  _2 = Instance_3(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd (FtmBase_5, IsResetCnt_7(D));
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetClockMode (uint8 Instance, Ftm_Pwm_Ip_PrescalerType Prescaler)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  int _3;
+  <unnamed type> _4;
+  int _5;
+  <unnamed type> _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_8(D);
+  FtmBase_10 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_10
+  # DEBUG BEGIN_STMT
+  _2 = Instance_8(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  if (Prescaler_12(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance_8(D);
+  _4 = Ftm_Pwm_Ip_aAlternateClockPrescaler[_3];
+  Ftm_Pwm_Ip_SetClockPs (FtmBase_10, _4);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 = (int) Instance_8(D);
+  _6 = Ftm_Pwm_Ip_aClockPrescaler[_5];
+  Ftm_Pwm_Ip_SetClockPs (FtmBase_10, _6);
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetPowerState (uint8 Instance, Ftm_Pwm_Ip_PowerStateType PowerState)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  int _3;
+  <unnamed type> _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_6(D);
+  FtmBase_8 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_8
+  # DEBUG BEGIN_STMT
+  _2 = Instance_6(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  if (PowerState_10(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetClockSource (FtmBase_8, 0);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance_6(D);
+  _4 = Ftm_Pwm_Ip_aClockSource[_3];
+  Ftm_Pwm_Ip_SetClockSource (FtmBase_8, _4);
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_EnableNotification (uint8 Instance, uint8 Channel, Ftm_Ftm_Ip_EdgeNotifType EdgeNotif)
+{
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  int _4;
+  int _5;
+  unsigned char _6;
+  int _7;
+  int _8;
+  unsigned char _9;
+  unsigned int _10;
+  int _11;
+  int _12;
+  short unsigned int _13;
+  int _14;
+  short unsigned int _15;
+  int _16;
+  int _17;
+  short unsigned int _18;
+  int _19;
+  int _20;
+  unsigned char _21;
+  int _22;
+  int _23;
+  unsigned char _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_27(D);
+  FtmBase_29 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_29
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = Instance_27(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_31(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_05 ();
+  # DEBUG BEGIN_STMT
+  _4 = (int) Instance_27(D);
+  _5 = (int) Channel_31(D);
+  _6 = Ftm_Pwm_Ip_aNotifIrq[_4][_5];
+  _7 = (int) Instance_27(D);
+  _8 = (int) Channel_31(D);
+  _9 = _6 & 252;
+  Ftm_Pwm_Ip_aNotifIrq[_7][_8] = _9;
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ClearChnEventFlag (FtmBase_29, Channel_31(D));
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ClearTimerOverflow (FtmBase_29);
+  # DEBUG BEGIN_STMT
+  ChMode_38 = Ftm_Pwm_Ip_GetChannelMode (FtmBase_29, Channel_31(D));
+  # DEBUG ChMode => ChMode_38
+  # DEBUG BEGIN_STMT
+  _10 = ChMode_38 + 4294967287;
+  if (_10 <= 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (ChMode_38 == 18)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (ChMode_38 == 17)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdateNotificationState (Instance_27(D), Channel_31(D), EdgeNotif_39(D));
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdateNotificationStateCombine (Instance_27(D), Channel_31(D), EdgeNotif_39(D));
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _11 = (int) Instance_27(D);
+  _12 = (int) Channel_31(D);
+  _13 = Ftm_Pwm_Ip_aDutyCycle[_11][_12];
+  if (_13 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  _14 = (int) Instance_27(D);
+  _15 = Ftm_Pwm_Ip_aPeriod[_14];
+  _16 = (int) Instance_27(D);
+  _17 = (int) Channel_31(D);
+  _18 = Ftm_Pwm_Ip_aDutyCycle[_16][_17];
+  if (_15 != _18)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetNormalNotificationCase (Instance_27(D), Channel_31(D));
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _19 = (int) Instance_27(D);
+  _20 = (int) Channel_31(D);
+  _21 = Ftm_Pwm_Ip_aNotifIrq[_19][_20];
+  _22 = (int) Instance_27(D);
+  _23 = (int) Channel_31(D);
+  _24 = _21 | 4;
+  Ftm_Pwm_Ip_aNotifIrq[_22][_23] = _24;
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance_27(D), Channel_31(D));
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_05 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetNormalNotificationCase (uint8 Instance, uint8 Channel)
+{
+  uint8 PairChId;
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  int _2;
+  int _3;
+  unsigned char _4;
+  int _5;
+  int _6;
+  int _7;
+  int _8;
+  unsigned char _9;
+  int _10;
+  int _11;
+  unsigned char _12;
+  unsigned char _13;
+  int _14;
+  unsigned char _15;
+  int _16;
+  unsigned char _17;
+  int _18;
+  int _19;
+  unsigned char _20;
+  unsigned char _21;
+  int _22;
+  unsigned char _23;
+  unsigned char _24;
+  int _25;
+  unsigned char _26;
+  int _27;
+  int _28;
+  unsigned char _29;
+  unsigned char _30;
+  unsigned char _31;
+  unsigned char _32;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_37(D);
+  FtmBase_39 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_39
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  PairChId_41 = Channel_40(D) >> 1;
+  # DEBUG PairChId => PairChId_41
+  # DEBUG BEGIN_STMT
+  ChMode_43 = Ftm_Pwm_Ip_GetChannelMode (FtmBase_39, Channel_40(D));
+  # DEBUG ChMode => ChMode_43
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance_37(D);
+  _3 = (int) Channel_40(D);
+  _4 = Ftm_Pwm_Ip_aNotifIrq[_2][_3];
+  _5 = (int) _4;
+  _6 = _5 & 2;
+  if (_6 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetTimerOverflowInt (FtmBase_39, 1);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = (int) Instance_37(D);
+  _8 = (int) Channel_40(D);
+  _9 = Ftm_Pwm_Ip_aNotifIrq[_7][_8];
+  _10 = (int) _9;
+  _11 = _10 & 1;
+  if (_11 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase_39, Channel_40(D), 1);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase_39, Channel_40(D), 0);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (ChMode_43 == 34)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  if (ChMode_43 == 98)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  if (ChMode_43 == 97)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  if (ChMode_43 == 33)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _12 = PairChId_41 * 2;
+  _13 = _12 + 1;
+  Ftm_Pwm_Ip_ClearChnEventFlag (FtmBase_39, _13);
+  # DEBUG BEGIN_STMT
+  _14 = (int) Instance_37(D);
+  _15 = PairChId_41 * 2;
+  _16 = (int) _15;
+  _17 = Ftm_Pwm_Ip_aNotifIrq[_14][_16];
+  _18 = (int) _17;
+  _19 = _18 & 1;
+  if (_19 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _20 = PairChId_41 * 2;
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase_39, _20, 1);
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _21 = PairChId_41 * 2;
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase_39, _21, 0);
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _22 = (int) Instance_37(D);
+  _23 = PairChId_41 * 2;
+  _24 = _23 + 1;
+  _25 = (int) _24;
+  _26 = Ftm_Pwm_Ip_aNotifIrq[_22][_25];
+  _27 = (int) _26;
+  _28 = _27 & 1;
+  if (_28 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _29 = PairChId_41 * 2;
+  _30 = _29 + 1;
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase_39, _30, 1);
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _31 = PairChId_41 * 2;
+  _32 = _31 + 1;
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase_39, _32, 0);
+
+  <bb 17> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_DisableNotification (uint8 Instance, uint8 Channel)
+{
+  uint8 PairChId;
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+  const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  int _4;
+  int _5;
+  int _6;
+  unsigned char _7;
+  int _8;
+  int _9;
+  unsigned char _10;
+  unsigned char _11;
+  int _12;
+  unsigned char _13;
+  unsigned char _14;
+  unsigned char _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_17(D);
+  FtmBase_19 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_19
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  PairChId_21 = Channel_20(D) >> 1;
+  # DEBUG PairChId => PairChId_21
+  # DEBUG BEGIN_STMT
+  _2 = Instance_17(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_20(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_04 ();
+  # DEBUG BEGIN_STMT
+  ChMode_26 = Ftm_Pwm_Ip_GetChannelMode (FtmBase_19, Channel_20(D));
+  # DEBUG ChMode => ChMode_26
+  # DEBUG BEGIN_STMT
+  _4 = (int) Instance_17(D);
+  _5 = (int) Channel_20(D);
+  Ftm_Pwm_Ip_aNotifIrq[_4][_5] = 0;
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance_17(D), Channel_20(D));
+  # DEBUG BEGIN_STMT
+  if (ChMode_26 == 34)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (ChMode_26 == 98)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (ChMode_26 == 97)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (ChMode_26 == 33)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _6 = (int) Instance_17(D);
+  _7 = PairChId_21 * 2;
+  _8 = (int) _7;
+  Ftm_Pwm_Ip_aNotifIrq[_6][_8] = 0;
+  # DEBUG BEGIN_STMT
+  _9 = (int) Instance_17(D);
+  _10 = PairChId_21 * 2;
+  _11 = _10 + 1;
+  _12 = (int) _11;
+  Ftm_Pwm_Ip_aNotifIrq[_9][_12] = 0;
+  # DEBUG BEGIN_STMT
+  _13 = PairChId_21 * 2;
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance_17(D), _13);
+  # DEBUG BEGIN_STMT
+  _14 = PairChId_21 * 2;
+  _15 = _14 + 1;
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance_17(D), _15);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_04 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetOutputState (uint8 Instance, uint8 Channel)
+{
+  Ftm_Pwm_Ip_OutputStateType OutputValue;
+  const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  _Bool _4;
+  Ftm_Pwm_Ip_OutputStateType _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_6(D);
+  FtmBase_8 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = Instance_6(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_10(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  _4 = Ftm_Pwm_Ip_GetChOutputValue (FtmBase_8, Channel_10(D));
+  if (_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  OutputValue_15 = 1;
+  # DEBUG OutputValue => OutputValue_15
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  OutputValue_14 = 0;
+  # DEBUG OutputValue => OutputValue_14
+
+  <bb 5> :
+  # OutputValue_5 = PHI <OutputValue_15(3), OutputValue_14(4)>
+  # DEBUG OutputValue => OutputValue_5
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  _17 = OutputValue_5;
+  return _17;
+
+}
+
+
+Ftm_Pwm_Ip_UpdatePwmPeriod (uint8 Instance, uint32 NewValue, boolean SoftwareTrigger)
+{
+  uint32 FtmPeriod;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  int _3;
+  short unsigned int _4;
+  <unnamed type> _5;
+  short unsigned int _6;
+  Ftm_Pwm_Ip_StatusType _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_8(D);
+  FtmBase_10 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_10
+  # DEBUG BEGIN_STMT
+  FtmPeriod_11 = 0;
+  # DEBUG FtmPeriod => FtmPeriod_11
+  # DEBUG BEGIN_STMT
+  _2 = Instance_8(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  FtmPeriod_14 = NewValue_13(D);
+  # DEBUG FtmPeriod => FtmPeriod_14
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance_8(D);
+  _4 = (short unsigned int) NewValue_13(D);
+  Ftm_Pwm_Ip_aPeriod[_3] = _4;
+  # DEBUG BEGIN_STMT
+  _5 = Ftm_Pwm_Ip_GetCpwms (FtmBase_10);
+  if (_5 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  FtmPeriod_18 = FtmPeriod_14 >> 1;
+  # DEBUG FtmPeriod => FtmPeriod_18
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  FtmPeriod_17 = FtmPeriod_14 + 4294967295;
+  # DEBUG FtmPeriod => FtmPeriod_17
+
+  <bb 5> :
+  # FtmPeriod_7 = PHI <FtmPeriod_18(3), FtmPeriod_17(4)>
+  # DEBUG FtmPeriod => FtmPeriod_7
+  # DEBUG BEGIN_STMT
+  _6 = (short unsigned int) FtmPeriod_7;
+  Ftm_Pwm_Ip_SetMod (FtmBase_10, _6);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_10, SoftwareTrigger_20(D));
+  # DEBUG BEGIN_STMT
+  _22 = 0;
+  return _22;
+
+}
+
+
+Ftm_Pwm_Ip_UpdatePwmChannel (uint8 Instance, uint8 Channel, uint16 FirstEdge, uint16 SecondEdge, boolean SoftwareTrigger)
+{
+  uint8 ChPairId;
+  uint16 FtmPeriod;
+  uint16 HwSecondEdge;
+  uint16 HwFirstEdge;
+  Ftm_Pwm_Ip_StatusType RetStatus;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  int _4;
+  _Bool _5;
+  unsigned char _6;
+  unsigned char _7;
+  unsigned char _8;
+  <unnamed type> _9;
+  short unsigned int _10;
+  Ftm_Pwm_Ip_StatusType _41;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_16(D);
+  FtmBase_18 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_18
+  # DEBUG BEGIN_STMT
+  RetStatus_19 = 0;
+  # DEBUG RetStatus => RetStatus_19
+  # DEBUG BEGIN_STMT
+  HwFirstEdge_20 = 0;
+  # DEBUG HwFirstEdge => HwFirstEdge_20
+  # DEBUG BEGIN_STMT
+  HwSecondEdge_21 = 0;
+  # DEBUG HwSecondEdge => HwSecondEdge_21
+  # DEBUG BEGIN_STMT
+  FtmPeriod_22 = 0;
+  # DEBUG FtmPeriod => FtmPeriod_22
+  # DEBUG BEGIN_STMT
+  ChPairId_24 = Channel_23(D) >> 1;
+  # DEBUG ChPairId => ChPairId_24
+  # DEBUG BEGIN_STMT
+  _2 = Instance_16(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_23(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = (int) Instance_16(D);
+  FtmPeriod_27 = Ftm_Pwm_Ip_aPeriod[_4];
+  # DEBUG FtmPeriod => FtmPeriod_27
+  # DEBUG BEGIN_STMT
+  if (FirstEdge_28(D) <= FtmPeriod_27)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  if (SecondEdge_29(D) <= FtmPeriod_27)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (FtmPeriod_27 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  HwFirstEdge_31 = FirstEdge_28(D);
+  # DEBUG HwFirstEdge => HwFirstEdge_31
+  # DEBUG BEGIN_STMT
+  HwSecondEdge_32 = SecondEdge_29(D);
+  # DEBUG HwSecondEdge => HwSecondEdge_32
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetStatus_30 = 1;
+  # DEBUG RetStatus => RetStatus_30
+
+  <bb 7> :
+  # RetStatus_11 = PHI <RetStatus_19(5), RetStatus_30(6)>
+  # HwFirstEdge_12 = PHI <HwFirstEdge_31(5), HwFirstEdge_20(6)>
+  # HwSecondEdge_13 = PHI <HwSecondEdge_32(5), HwSecondEdge_21(6)>
+  # DEBUG HwSecondEdge => HwSecondEdge_13
+  # DEBUG HwFirstEdge => HwFirstEdge_12
+  # DEBUG RetStatus => RetStatus_11
+  # DEBUG BEGIN_STMT
+  if (RetStatus_11 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _5 = Ftm_Pwm_Ip_GetDualChnCombineCmd (FtmBase_18, ChPairId_24);
+  if (_5 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _6 = ChPairId_24 * 2;
+  Ftm_Pwm_Ip_SetChnCountVal (FtmBase_18, _6, HwFirstEdge_12);
+  # DEBUG BEGIN_STMT
+  _7 = ChPairId_24 * 2;
+  _8 = _7 + 1;
+  Ftm_Pwm_Ip_SetChnCountVal (FtmBase_18, _8, HwSecondEdge_13);
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _9 = Ftm_Pwm_Ip_GetCpwms (FtmBase_18);
+  if (_9 == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _10 = HwFirstEdge_12 >> 1;
+  Ftm_Pwm_Ip_SetChnCountVal (FtmBase_18, Channel_23(D), _10);
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetChnCountVal (FtmBase_18, Channel_23(D), HwFirstEdge_12);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_18, SoftwareTrigger_39(D));
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _41 = RetStatus_11;
+  return _41;
+
+}
+
+
+Ftm_Pwm_Ip_SwOutputControl (uint8 Instance, uint8 Channel, Ftm_Pwm_Ip_OutputStateType OutputState, boolean ActiveState)
+{
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+  uint16 TempPolVal;
+  uint16 SwoCtrlBitMask;
+  uint16 ChannelMask;
+  uint16 SwoCtrlRegVal;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  int _4;
+  int _5;
+  <unnamed type> _6;
+  int _7;
+  int _8;
+  short unsigned int _9;
+  long unsigned int _10;
+  int _11;
+  long unsigned int _12;
+  short unsigned int _13;
+  long unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  long unsigned int _17;
+  short unsigned int _18;
+  short unsigned int _19;
+  long unsigned int _20;
+  unsigned int _21;
+  unsigned int _22;
+  long unsigned int _23;
+  short unsigned int _24;
+  long unsigned int _25;
+  int _26;
+  long unsigned int _27;
+  short unsigned int _28;
+  long unsigned int _29;
+  int _30;
+  long unsigned int _31;
+  short unsigned int _32;
+  short unsigned int _33;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_38(D);
+  FtmBase_40 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_40
+  # DEBUG BEGIN_STMT
+  SwoCtrlRegVal_41 = 0;
+  # DEBUG SwoCtrlRegVal => SwoCtrlRegVal_41
+  # DEBUG BEGIN_STMT
+  ChannelMask_42 = 0;
+  # DEBUG ChannelMask => ChannelMask_42
+  # DEBUG BEGIN_STMT
+  SwoCtrlBitMask_43 = 0;
+  # DEBUG SwoCtrlBitMask => SwoCtrlBitMask_43
+  # DEBUG BEGIN_STMT
+  TempPolVal_44 = 0;
+  # DEBUG TempPolVal => TempPolVal_44
+  # DEBUG BEGIN_STMT
+  ChMode_47 = Ftm_Pwm_Ip_GetChannelMode (FtmBase_40, Channel_45(D));
+  # DEBUG ChMode => ChMode_47
+  # DEBUG BEGIN_STMT
+  _2 = Instance_38(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_45(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = (int) Instance_38(D);
+  _5 = (int) Channel_45(D);
+  _6 = Ftm_Pwm_Ip_aChannelState[_4][_5];
+  if (_6 == 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _7 = (int) Instance_38(D);
+  _8 = (int) Channel_45(D);
+  Ftm_Pwm_Ip_aDutyCycle[_7][_8] = 0;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SwoCtrlRegVal_52 = Ftm_Pwm_Ip_GetSoftwareOutputControl (FtmBase_40);
+  # DEBUG SwoCtrlRegVal => SwoCtrlRegVal_52
+  # DEBUG BEGIN_STMT
+  if (ChMode_47 == 34)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (ChMode_47 == 98)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  if (ChMode_47 == 97)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  if (ChMode_47 == 33)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  ChannelMask_54 = 3;
+  # DEBUG ChannelMask => ChannelMask_54
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ChannelMask_53 = 1;
+  # DEBUG ChannelMask => ChannelMask_53
+
+  <bb 10> :
+  # ChannelMask_35 = PHI <ChannelMask_54(8), ChannelMask_53(9)>
+  # DEBUG ChannelMask => ChannelMask_35
+  # DEBUG BEGIN_STMT
+  _9 = Ftm_Pwm_Ip_GetPolInstance (FtmBase_40);
+  _10 = (long unsigned int) ChannelMask_35;
+  _11 = (int) Channel_45(D);
+  _12 = _10 << _11;
+  _13 = (short unsigned int) _12;
+  TempPolVal_56 = _9 & _13;
+  # DEBUG TempPolVal => TempPolVal_56
+  # DEBUG BEGIN_STMT
+  TempPolVal_57 = TempPolVal_56 << 8;
+  # DEBUG TempPolVal => TempPolVal_57
+  # DEBUG BEGIN_STMT
+  _14 = (long unsigned int) ChannelMask_35;
+  _15 = (unsigned int) Channel_45(D);
+  _16 = _15 + 8;
+  _17 = _14 << _16;
+  _18 = (short unsigned int) _17;
+  _19 = ~_18;
+  SwoCtrlRegVal_58 = SwoCtrlRegVal_52 & _19;
+  # DEBUG SwoCtrlRegVal => SwoCtrlRegVal_58
+  # DEBUG BEGIN_STMT
+  if (ActiveState_59(D) != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (OutputState_61(D) == 1)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _20 = (long unsigned int) ChannelMask_35;
+  _21 = (unsigned int) Channel_45(D);
+  _22 = _21 + 8;
+  _23 = _20 << _22;
+  SwoCtrlBitMask_63 = (uint16) _23;
+  # DEBUG SwoCtrlBitMask => SwoCtrlBitMask_63
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  SwoCtrlBitMask_62 = 0;
+  # DEBUG SwoCtrlBitMask => SwoCtrlBitMask_62
+
+  <bb 14> :
+  # SwoCtrlBitMask_36 = PHI <SwoCtrlBitMask_63(12), SwoCtrlBitMask_62(13)>
+  # DEBUG SwoCtrlBitMask => SwoCtrlBitMask_36
+  # DEBUG BEGIN_STMT
+  _24 = SwoCtrlBitMask_36 ^ TempPolVal_57;
+  SwoCtrlRegVal_64 = SwoCtrlRegVal_58 | _24;
+  # DEBUG SwoCtrlRegVal => SwoCtrlRegVal_64
+  # DEBUG BEGIN_STMT
+  _25 = (long unsigned int) ChannelMask_35;
+  _26 = (int) Channel_45(D);
+  _27 = _25 << _26;
+  _28 = (short unsigned int) _27;
+  SwoCtrlRegVal_65 = SwoCtrlRegVal_64 | _28;
+  # DEBUG SwoCtrlRegVal => SwoCtrlRegVal_65
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _29 = (long unsigned int) ChannelMask_35;
+  _30 = (int) Channel_45(D);
+  _31 = _29 << _30;
+  _32 = (short unsigned int) _31;
+  _33 = ~_32;
+  SwoCtrlRegVal_60 = SwoCtrlRegVal_58 & _33;
+  # DEBUG SwoCtrlRegVal => SwoCtrlRegVal_60
+
+  <bb 16> :
+  # SwoCtrlRegVal_34 = PHI <SwoCtrlRegVal_65(14), SwoCtrlRegVal_60(15)>
+  # DEBUG SwoCtrlRegVal => SwoCtrlRegVal_34
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SoftwareOutputControl (FtmBase_40, SwoCtrlRegVal_34);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_40, 1);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty (uint8 Instance, uint8 Channel, uint16 Period, uint16 DutyCycle, boolean SoftwareTrigger)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  uint16 TempDutyCycle;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  int _4;
+  int _5;
+  <unnamed type> _6;
+  int _7;
+  int _8;
+  long unsigned int _9;
+  int _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  TempDutyCycle_13 = 0;
+  # DEBUG TempDutyCycle => TempDutyCycle_13
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_14(D);
+  FtmBase_16 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_16
+  # DEBUG BEGIN_STMT
+  _2 = Instance_14(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_18(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  _4 = (int) Instance_14(D);
+  _5 = (int) Channel_18(D);
+  _6 = Ftm_Pwm_Ip_aChannelState[_4][_5];
+  if (_6 == 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _7 = (int) Instance_14(D);
+  _8 = (int) Channel_18(D);
+  Ftm_Pwm_Ip_aChannelState[_7][_8] = 1;
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SwOutputControl (Instance_14(D), Channel_18(D), 0, 0);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = (long unsigned int) Period_23(D);
+  Ftm_Pwm_Ip_UpdatePwmPeriod (Instance_14(D), _9, 0);
+  # DEBUG BEGIN_STMT
+  _10 = (int) Instance_14(D);
+  Ftm_Pwm_Ip_aPeriod[_10] = Period_23(D);
+  # DEBUG BEGIN_STMT
+  if (Period_23(D) == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  TempDutyCycle_28 = 0;
+  # DEBUG TempDutyCycle => TempDutyCycle_28
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  TempDutyCycle_27 = DutyCycle_26(D);
+  # DEBUG TempDutyCycle => TempDutyCycle_27
+
+  <bb 7> :
+  # TempDutyCycle_11 = PHI <TempDutyCycle_28(5), TempDutyCycle_27(6)>
+  # DEBUG TempDutyCycle => TempDutyCycle_11
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel (Instance_14(D), Channel_18(D), TempDutyCycle_11, SoftwareTrigger_29(D));
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_16, SoftwareTrigger_29(D));
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_01 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel (uint8 Instance, uint8 Channel, uint16 DutyCycle, boolean SoftwareTrigger)
+{
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+  uint8 PairId;
+  uint16 FirstEdge;
+  const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  int _4;
+  int _5;
+  int _6;
+  int _7;
+  <unnamed type> _8;
+  int _9;
+  int _10;
+  unsigned int _11;
+  int _12;
+  int _13;
+  short unsigned int _14;
+  int _15;
+  int _16;
+  short unsigned int _17;
+  int _18;
+  int _19;
+  short unsigned int _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_23(D);
+  FtmBase_25 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_25
+  # DEBUG BEGIN_STMT
+  FirstEdge_27 = DutyCycle_26(D);
+  # DEBUG FirstEdge => FirstEdge_27
+  # DEBUG BEGIN_STMT
+  PairId_29 = Channel_28(D) >> 1;
+  # DEBUG PairId => PairId_29
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = Instance_23(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = Channel_28(D) <= 7;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  _4 = (int) Instance_23(D);
+  _5 = (int) Channel_28(D);
+  Ftm_Pwm_Ip_aDutyCycle[_4][_5] = DutyCycle_26(D);
+  # DEBUG BEGIN_STMT
+  ChMode_35 = Ftm_Pwm_Ip_GetChannelMode (FtmBase_25, Channel_28(D));
+  # DEBUG ChMode => ChMode_35
+  # DEBUG BEGIN_STMT
+  _6 = (int) Instance_23(D);
+  _7 = (int) Channel_28(D);
+  _8 = Ftm_Pwm_Ip_aChannelState[_6][_7];
+  if (_8 == 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _9 = (int) Instance_23(D);
+  _10 = (int) Channel_28(D);
+  Ftm_Pwm_Ip_aChannelState[_9][_10] = 1;
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SwOutputControl (Instance_23(D), Channel_28(D), 0, 0);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _11 = ChMode_35 + 4294967287;
+  if (_11 <= 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (ChMode_35 == 18)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  if (ChMode_35 == 17)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdatePwmChannel (Instance_23(D), Channel_28(D), FirstEdge_27, 0, SoftwareTrigger_40(D));
+  goto <bb 15>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ChMode_35 == 34)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  if (ChMode_35 == 98)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  if (ChMode_35 == 97)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  if (ChMode_35 == 33)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _12 = (int) Instance_23(D);
+  _13 = (int) PairId_29;
+  _14 = Ftm_Pwm_Ip_aPhaseShift[_12][_13];
+  if (_14 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdatePwmChannel (Instance_23(D), Channel_28(D), 0, FirstEdge_27, SoftwareTrigger_40(D));
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _15 = (int) Instance_23(D);
+  _16 = (int) PairId_29;
+  _17 = Ftm_Pwm_Ip_aPhaseShift[_15][_16];
+  FirstEdge_39 = Ftm_Pwm_Ip_CalculatePhaseShift (Instance_23(D), DutyCycle_26(D), _17);
+  # DEBUG FirstEdge => FirstEdge_39
+  # DEBUG BEGIN_STMT
+  _18 = (int) Instance_23(D);
+  _19 = (int) PairId_29;
+  _20 = Ftm_Pwm_Ip_aPhaseShift[_18][_19];
+  Ftm_Pwm_Ip_UpdatePwmChannel (Instance_23(D), Channel_28(D), _20, FirstEdge_39, SoftwareTrigger_40(D));
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_00 ();
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_DeInit (uint8 Instance)
+{
+  uint8 ChannelId;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  int _3;
+  int _4;
+  <unnamed type> _5;
+  unsigned char ChannelId.30_6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_10(D);
+  FtmBase_12 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_12
+  # DEBUG BEGIN_STMT
+  ChannelId_13 = 0;
+  # DEBUG ChannelId => ChannelId_13
+  # DEBUG BEGIN_STMT
+  _2 = Instance_10(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_Reset (FtmBase_12);
+  # DEBUG BEGIN_STMT
+  ChannelId_16 = 0;
+  # DEBUG ChannelId => ChannelId_16
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance_10(D);
+  _4 = (int) ChannelId_7;
+  _5 = Ftm_Pwm_Ip_aChannelState[_3][_4];
+  if (_5 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_DeInitChannel (Instance_10(D), ChannelId_7);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ChannelId.30_6 = ChannelId_7;
+  ChannelId_19 = ChannelId.30_6 + 1;
+  # DEBUG ChannelId => ChannelId_19
+
+  <bb 6> :
+  # ChannelId_7 = PHI <ChannelId_16(2), ChannelId_19(5)>
+  # DEBUG ChannelId => ChannelId_7
+  # DEBUG BEGIN_STMT
+  if (ChannelId_7 <= 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_DeInitInstance (Instance_10(D));
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_Init (uint8 Instance, const struct Ftm_Pwm_Ip_UserCfgType * UserCfg)
+{
+  uint8 Index;
+  _Bool _1;
+  _Bool _2;
+  const struct Ftm_Pwm_Ip_InstanceCfgType * _3;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * const * _4;
+  unsigned int _5;
+  unsigned int _6;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * const * _7;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _8;
+  unsigned char Index.0_9;
+  unsigned char _10;
+  unsigned char _11;
+  const struct Ftm_Pwm_Ip_FaultChCfgType * const * _12;
+  unsigned int _13;
+  unsigned int _14;
+  const struct Ftm_Pwm_Ip_FaultChCfgType * const * _15;
+  const struct Ftm_Pwm_Ip_FaultChCfgType * _16;
+  unsigned char Index.1_17;
+  unsigned char _18;
+  const struct Ftm_Pwm_Ip_InstanceCfgType * _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Index_25 = 0;
+  # DEBUG Index => Index_25
+  # DEBUG BEGIN_STMT
+  _1 = Instance_26(D) <= 3;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = UserCfg_29(D) != 0B;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_u8FaultCheck = 0;
+  # DEBUG BEGIN_STMT
+  _3 = UserCfg_29(D)->InstanceCfg;
+  Ftm_Pwm_Ip_InitInstance (Instance_26(D), _3);
+  # DEBUG BEGIN_STMT
+  Index_33 = 0;
+  # DEBUG Index => Index_33
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = UserCfg_29(D)->ConfiguredChArray;
+  _5 = (unsigned int) Index_20;
+  _6 = _5 * 4;
+  _7 = _4 + _6;
+  _8 = *_7;
+  Ftm_Pwm_Ip_InitChannel (Instance_26(D), _8);
+  # DEBUG BEGIN_STMT
+  Index.0_9 = Index_20;
+  Index_39 = Index.0_9 + 1;
+  # DEBUG Index => Index_39
+
+  <bb 4> :
+  # Index_20 = PHI <Index_33(2), Index_39(3)>
+  # DEBUG Index => Index_20
+  # DEBUG BEGIN_STMT
+  _10 = UserCfg_29(D)->NoOfConfiguredCh;
+  if (Index_20 < _10)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _11 = UserCfg_29(D)->NoOfFaultCfg;
+  if (_11 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Index_34 = 0;
+  # DEBUG Index => Index_34
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _12 = UserCfg_29(D)->ConfiguredFaultArray;
+  _13 = (unsigned int) Index_21;
+  _14 = _13 * 4;
+  _15 = _12 + _14;
+  _16 = *_15;
+  Ftm_Pwm_Ip_InitChFault (Instance_26(D), _16);
+  # DEBUG BEGIN_STMT
+  Index.1_17 = Index_21;
+  Index_36 = Index.1_17 + 1;
+  # DEBUG Index => Index_36
+
+  <bb 8> :
+  # Index_21 = PHI <Index_34(6), Index_36(7)>
+  # DEBUG Index => Index_21
+  # DEBUG BEGIN_STMT
+  _18 = UserCfg_29(D)->NoOfFaultCfg;
+  if (Index_21 < _18)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _19 = UserCfg_29(D)->InstanceCfg;
+  Ftm_Pwm_Ip_InitInstanceStart (Instance_26(D), _19);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_InitChFault (uint8 Instance, const struct Ftm_Pwm_Ip_FaultChCfgType * FaultChCfg)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  unsigned char _2;
+  <unnamed type> _3;
+  unsigned char _4;
+  _Bool _5;
+  unsigned char _6;
+  int _7;
+  unsigned char _8;
+  int _9;
+  void (*<T4e5>) (void) _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_11(D);
+  FtmBase_13 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_13
+  # DEBUG BEGIN_STMT
+  _2 = FaultChCfg_14(D)->FaultId;
+  _3 = FaultChCfg_14(D)->FaultPol;
+  Ftm_Pwm_Ip_SetFaultPolarity (FtmBase_13, _2, _3);
+  # DEBUG BEGIN_STMT
+  _4 = FaultChCfg_14(D)->FaultId;
+  _5 = FaultChCfg_14(D)->FaultFilEn;
+  Ftm_Pwm_Ip_SetFaultFilterEn (FtmBase_13, _4, _5);
+  # DEBUG BEGIN_STMT
+  _6 = FaultChCfg_14(D)->FaultId;
+  Ftm_Pwm_Ip_SetFaultInputEn (FtmBase_13, _6, 1);
+  # DEBUG BEGIN_STMT
+  _7 = (int) Instance_11(D);
+  _8 = FaultChCfg_14(D)->FaultId;
+  _9 = (int) _8;
+  _10 = FaultChCfg_14(D)->FaultCb;
+  Ftm_Pwm_Ip_pFaultIrqCallback[_7][_9] = _10;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_DeInitChannel (uint8 Instance, uint8 Channel)
+{
+  uint8 PairId;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  int _3;
+  int _4;
+  <unnamed type> _5;
+  int _6;
+  unsigned int _7;
+  unsigned int _8;
+  int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_13(D);
+  FtmBase_15 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_15
+  # DEBUG BEGIN_STMT
+  PairId_17 = Channel_16(D) >> 1;
+  # DEBUG PairId => PairId_17
+  # DEBUG BEGIN_STMT
+  _2 = Instance_13(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance_13(D), Channel_16(D));
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance_13(D);
+  _4 = (int) Channel_16(D);
+  _5 = Ftm_Pwm_Ip_aIdleState[_3][_4];
+  Ftm_Pwm_Ip_SwOutputControl (Instance_13(D), Channel_16(D), _5, 1);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_15, 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd (FtmBase_15, 1);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd (FtmBase_15, 1);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetChnOutputMask (FtmBase_15, Channel_16(D), 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_15, 1);
+  # DEBUG BEGIN_STMT
+  _6 = (int) Instance_13(D);
+  _7 = (unsigned int) PairId_17;
+  _8 = _7 * 2;
+  Ftm_Pwm_Ip_aNotifIrq[_6][_8] = 0;
+  # DEBUG BEGIN_STMT
+  _9 = (int) Instance_13(D);
+  _10 = (unsigned int) PairId_17;
+  _11 = _10 * 2;
+  _12 = _11 + 1;
+  Ftm_Pwm_Ip_aNotifIrq[_9][_12] = 0;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_DeInitInstance (uint8 Instance)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_3(D);
+  FtmBase_5 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_5
+  # DEBUG BEGIN_STMT
+  _2 = Instance_3(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetClockSource (FtmBase_5, 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetExtDeadtimeValue (FtmBase_5, 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetDeadtimePrescaler (FtmBase_5, 1);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetDeadtimeCount (FtmBase_5, 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetBdmMode (FtmBase_5, 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetTimerOverflowInt (FtmBase_5, 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetMod (FtmBase_5, 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetCounter (FtmBase_5, 0);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_InitChannel (uint8 Instance, const struct Ftm_Pwm_Ip_ChannelConfigType * UserChCfg)
+{
+  uint8 ChannelId;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  <unnamed type> _4;
+  unsigned int _5;
+  <unnamed type> _6;
+  _Bool _7;
+  const struct Ftm_Pwm_Ip_PairCfgType * _8;
+  unsigned char _9;
+  const struct Ftm_Pwm_Ip_PairCfgType * _10;
+  unsigned char _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int _14;
+  <unnamed type> _15;
+  <unnamed type> _16;
+  <unnamed type> _17;
+  <unnamed type> _18;
+  const struct Ftm_Pwm_Ip_PairCfgType * _19;
+  _Bool _20;
+  int _21;
+  int _22;
+  short unsigned int _23;
+  int _24;
+  int _25;
+  <unnamed type> _26;
+  int _27;
+  int _28;
+  <unnamed type> _29;
+  <unnamed type> _30;
+  <unnamed type> _31;
+  <unnamed type> _32;
+  <unnamed type> _33;
+  int _34;
+  int _35;
+  short unsigned int _36;
+  _Bool _37;
+  int _38;
+  int _39;
+  _Bool _40;
+  int _41;
+  int _42;
+  void (*<Te3>) (void *) _43;
+  int _44;
+  int _45;
+  void * _46;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_52(D);
+  FtmBase_54 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_54
+  # DEBUG BEGIN_STMT
+  ChannelId_55 = 0;
+  # DEBUG ChannelId => ChannelId_55
+  # DEBUG BEGIN_STMT
+  _2 = Instance_52(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = UserChCfg_57(D) != 0B;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  ChannelId_59 = UserChCfg_57(D)->ChannelId;
+  # DEBUG ChannelId => ChannelId_59
+  # DEBUG BEGIN_STMT
+  _4 = UserChCfg_57(D)->ChannelMode;
+  _5 = _4 + 4294967279;
+  if (_5 <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _6 = Ftm_Pwm_Ip_GetCpwms (FtmBase_54);
+  _7 = _6 == 1;
+  DevAssert (_7);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _8 = UserChCfg_57(D)->PairCfg;
+  if (_8 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _9 = ChannelId_59 & 1;
+  if (_9 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  DevAssert (0);
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _10 = UserChCfg_57(D)->PairCfg;
+  _11 = _10->PairId;
+  _12 = (unsigned int) _11;
+  _13 = _12 * 2;
+  _14 = (unsigned int) ChannelId_59;
+  if (_13 != _14)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  DevAssert (0);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = UserChCfg_57(D)->ChannelMode;
+  if (_15 == 34)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  _16 = UserChCfg_57(D)->ChannelMode;
+  if (_16 == 98)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  _17 = UserChCfg_57(D)->ChannelMode;
+  if (_17 == 97)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _18 = UserChCfg_57(D)->ChannelMode;
+  if (_18 == 33)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _19 = UserChCfg_57(D)->PairCfg;
+  _20 = _19 != 0B;
+  DevAssert (_20);
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _21 = (int) Instance_52(D);
+  _22 = (int) ChannelId_59;
+  _23 = UserChCfg_57(D)->DutyCycle;
+  Ftm_Pwm_Ip_aDutyCycle[_21][_22] = _23;
+  # DEBUG BEGIN_STMT
+  _24 = (int) Instance_52(D);
+  _25 = (int) ChannelId_59;
+  _26 = UserChCfg_57(D)->InitOut;
+  Ftm_Pwm_Ip_aIdleState[_24][_25] = _26;
+  # DEBUG BEGIN_STMT
+  _27 = (int) Instance_52(D);
+  _28 = (int) ChannelId_59;
+  _29 = UserChCfg_57(D)->Polarity;
+  Ftm_Pwm_Ip_aPolarity[_27][_28] = _29;
+  # DEBUG BEGIN_STMT
+  _30 = UserChCfg_57(D)->Polarity;
+  Ftm_Pwm_Ip_SetChnOutputPolarityCmd (FtmBase_54, ChannelId_59, _30);
+  # DEBUG BEGIN_STMT
+  _31 = UserChCfg_57(D)->InitOut;
+  Ftm_Pwm_Ip_SetChnOutputInitStateCmd (FtmBase_54, ChannelId_59, _31);
+  # DEBUG BEGIN_STMT
+  _32 = UserChCfg_57(D)->ChannelMode;
+  Ftm_Pwm_Ip_SetChnEdgeLevel (FtmBase_54, ChannelId_59, _32);
+  # DEBUG BEGIN_STMT
+  _33 = UserChCfg_57(D)->ChannelMode;
+  Ftm_Pwm_Ip_SetChnMSBAMode (FtmBase_54, ChannelId_59, _33);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ConfigurePairedChannel (Instance_52(D), UserChCfg_57(D));
+  # DEBUG BEGIN_STMT
+  _34 = (int) Instance_52(D);
+  _35 = (int) ChannelId_59;
+  _36 = Ftm_Pwm_Ip_aDutyCycle[_34][_35];
+  Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel (Instance_52(D), ChannelId_59, _36, 1);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl (Instance_52(D), UserChCfg_57(D));
+  # DEBUG BEGIN_STMT
+  _37 = UserChCfg_57(D)->ChOutputEn;
+  if (_37 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_EnablePwmChannelOutputs (FtmBase_54, ChannelId_59);
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _38 = (int) Instance_52(D);
+  _39 = (int) ChannelId_59;
+  Ftm_Pwm_Ip_aChannelState[_38][_39] = 1;
+  # DEBUG BEGIN_STMT
+  _40 = UserChCfg_57(D)->ChIrqEn;
+  if (_40 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  _41 = (int) Instance_52(D);
+  _42 = (int) ChannelId_59;
+  _43 = UserChCfg_57(D)->ChannelCb.FunctionCallback;
+  Ftm_Pwm_Ip_aChIrqCallbacks[_41][_42].FunctionCallback = _43;
+  # DEBUG BEGIN_STMT
+  _44 = (int) Instance_52(D);
+  _45 = (int) ChannelId_59;
+  _46 = UserChCfg_57(D)->ChannelCb.CbParam;
+  Ftm_Pwm_Ip_aChIrqCallbacks[_44][_45].CbParam = _46;
+
+  <bb 18> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl (uint8 Instance, const struct Ftm_Pwm_Ip_ChannelConfigType * UserChCfg)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  unsigned char _2;
+  _Bool _3;
+  unsigned char _4;
+  _Bool _5;
+  unsigned char _6;
+  _Bool _7;
+  unsigned char _8;
+  _Bool _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_10(D);
+  FtmBase_12 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_12
+  # DEBUG BEGIN_STMT
+  _2 = UserChCfg_13(D)->ChannelId;
+  _3 = UserChCfg_13(D)->ExtTrigEn;
+  Ftm_Pwm_Ip_SetChnTriggerCmd (FtmBase_12, _2, _3);
+  # DEBUG BEGIN_STMT
+  _4 = UserChCfg_13(D)->ChannelId;
+  _5 = UserChCfg_13(D)->ChMatchLoadEn;
+  Ftm_Pwm_Ip_SetPwmLoadChnSelCmd (FtmBase_12, _4, _5);
+  # DEBUG BEGIN_STMT
+  _6 = UserChCfg_13(D)->ChannelId;
+  _7 = UserChCfg_13(D)->SwControlEn;
+  Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd (FtmBase_12, _6, _7);
+  # DEBUG BEGIN_STMT
+  _8 = UserChCfg_13(D)->ChannelId;
+  _9 = UserChCfg_13(D)->SwControlVal;
+  Ftm_Pwm_Ip_SetChnSoftwareCtrlVal (FtmBase_12, _8, _9);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_12, 1);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_ConfigurePairedChannel (uint8 Instance, const struct Ftm_Pwm_Ip_ChannelConfigType * UserChCfg)
+{
+  uint8 ChPairId;
+  uint8 ChannelId;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  <unnamed type> _2;
+  unsigned int _3;
+  unsigned char _4;
+  unsigned char _5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+  unsigned int _8;
+  unsigned char _9;
+  unsigned char _10;
+  <unnamed type> _11;
+  const struct Ftm_Pwm_Ip_PairCfgType * _12;
+  const struct Ftm_Pwm_Ip_PairCfgType * _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_16(D);
+  FtmBase_18 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_18
+  # DEBUG BEGIN_STMT
+  ChannelId_19 = 0;
+  # DEBUG ChannelId => ChannelId_19
+  # DEBUG BEGIN_STMT
+  ChPairId_20 = 0;
+  # DEBUG ChPairId => ChPairId_20
+  # DEBUG BEGIN_STMT
+  ChannelId_22 = UserChCfg_21(D)->ChannelId;
+  # DEBUG ChannelId => ChannelId_22
+  # DEBUG BEGIN_STMT
+  ChPairId_23 = ChannelId_22 >> 1;
+  # DEBUG ChPairId => ChPairId_23
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetDualChnPwmSyncCmd (FtmBase_18, ChPairId_23, 1);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetDualChFaultCtr (FtmBase_18, ChPairId_23, 1);
+  # DEBUG BEGIN_STMT
+  _2 = UserChCfg_21(D)->ChannelMode;
+  _3 = _2 + 4294967263;
+  if (_3 <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = ChPairId_23 * 2;
+  _5 = _4 + 1;
+  _6 = UserChCfg_21(D)->ChannelMode;
+  Ftm_Pwm_Ip_SetChnEdgeLevel (FtmBase_18, _5, _6);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetDualChnCombineCmd (FtmBase_18, ChPairId_23, 1);
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _7 = UserChCfg_21(D)->ChannelMode;
+  _8 = _7 + 4294967199;
+  if (_8 <= 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _9 = ChPairId_23 * 2;
+  _10 = _9 + 1;
+  _11 = UserChCfg_21(D)->ChannelMode;
+  Ftm_Pwm_Ip_SetChnEdgeLevel (FtmBase_18, _10, _11);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetDualChnCombineCmd (FtmBase_18, ChPairId_23, 1);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetDualChnMCombineCmd (FtmBase_18, ChPairId_23, 1);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = UserChCfg_21(D)->PairCfg;
+  if (_12 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _13 = UserChCfg_21(D)->PairCfg;
+  Ftm_Pwm_Ip_InitPair (Instance_16(D), _13);
+
+  <bb 8> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_InitInstanceStart (uint8 Instance, const struct Ftm_Pwm_Ip_InstanceCfgType * UserInstCfg)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  <unnamed type> _4;
+  short unsigned int _5;
+  _Bool _6;
+  unsigned char _7;
+  <unnamed type> _8;
+  <unnamed type> _9;
+  _Bool _10;
+  <unnamed type> _11;
+  <unnamed type> _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_15(D);
+  FtmBase_17 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_17
+  # DEBUG BEGIN_STMT
+  _2 = Instance_15(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = UserInstCfg_19(D) != 0B;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = UserInstCfg_19(D)->CntMode;
+  if (_4 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _5 = UserInstCfg_19(D)->PwmPeriod;
+  _6 = _5 <= 32766;
+  DevAssert (_6);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _7 = UserInstCfg_19(D)->FaultInFilter;
+  Ftm_Pwm_Ip_SetFaultFilterValue (FtmBase_17, _7);
+  # DEBUG BEGIN_STMT
+  _8 = UserInstCfg_19(D)->FaultOutState;
+  Ftm_Pwm_Ip_SetFaultOutputState (FtmBase_17, _8);
+  # DEBUG BEGIN_STMT
+  _9 = UserInstCfg_19(D)->FaultCtrMode;
+  Ftm_Pwm_Ip_SetFaultControlMode (FtmBase_17, _9);
+  # DEBUG BEGIN_STMT
+  _10 = UserInstCfg_19(D)->FaultIrqEn;
+  if (_10 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetFaultInterruptEnable (FtmBase_17, 1);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_Enable (FtmBase_17, 1);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetPwmSyncMode (FtmBase_17, 1);
+  # DEBUG BEGIN_STMT
+  _11 = UserInstCfg_19(D)->ClkPs;
+  Ftm_Pwm_Ip_SetClockPs (FtmBase_17, _11);
+  # DEBUG BEGIN_STMT
+  _12 = UserInstCfg_19(D)->ClkSrc;
+  Ftm_Pwm_Ip_SetClockSource (FtmBase_17, _12);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_InitInstance (uint8 Instance, const struct Ftm_Pwm_Ip_InstanceCfgType * UserInstCfg)
+{
+  struct Ftm_Pwm_Ip_SimType * SimBase;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  short unsigned int _4;
+  _Bool _5;
+  <unnamed type> _6;
+  short unsigned int _7;
+  _Bool _8;
+  const struct Ftm_Pwm_Ip_SyncCfgType * _9;
+  int _10;
+  short unsigned int _11;
+  int _12;
+  <unnamed type> _13;
+  int _14;
+  <unnamed type> _15;
+  int _16;
+  <unnamed type> _17;
+  _Bool _18;
+  int _19;
+  void (*<Te3>) (void *) _20;
+  int _21;
+  void * _22;
+  <unnamed type> _23;
+  short unsigned int _24;
+  short unsigned int _25;
+  short unsigned int _26;
+  short unsigned int _27;
+  _Bool _28;
+  <unnamed type> _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_33(D);
+  FtmBase_35 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_35
+  # DEBUG BEGIN_STMT
+  SimBase_36 = 1074036736B;
+  # DEBUG SimBase => SimBase_36
+  # DEBUG BEGIN_STMT
+  _2 = Instance_33(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = UserInstCfg_38(D) != 0B;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = UserInstCfg_38(D)->DeadTimeValue;
+  _5 = _4 <= 1023;
+  DevAssert (_5);
+  # DEBUG BEGIN_STMT
+  _6 = UserInstCfg_38(D)->CntMode;
+  if (_6 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _7 = UserInstCfg_38(D)->PwmPeriod;
+  _8 = _7 <= 32766;
+  DevAssert (_8);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSimOutputBufferEn (SimBase_36, Instance_33(D));
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ResetAndFirstConfigure (Instance_33(D), UserInstCfg_38(D));
+  # DEBUG BEGIN_STMT
+  _9 = UserInstCfg_38(D)->SyncCfg;
+  Ftm_Pwm_Ip_UpdateSync (Instance_33(D), _9);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetCounterInitVal (FtmBase_35, 0);
+  # DEBUG BEGIN_STMT
+  _10 = (int) Instance_33(D);
+  _11 = UserInstCfg_38(D)->PwmPeriod;
+  Ftm_Pwm_Ip_aPeriod[_10] = _11;
+  # DEBUG BEGIN_STMT
+  _12 = (int) Instance_33(D);
+  _13 = UserInstCfg_38(D)->ClkSrc;
+  Ftm_Pwm_Ip_aClockSource[_12] = _13;
+  # DEBUG BEGIN_STMT
+  _14 = (int) Instance_33(D);
+  _15 = UserInstCfg_38(D)->ClkPs;
+  Ftm_Pwm_Ip_aClockPrescaler[_14] = _15;
+  # DEBUG BEGIN_STMT
+  _16 = (int) Instance_33(D);
+  _17 = UserInstCfg_38(D)->AlternateClkPs;
+  Ftm_Pwm_Ip_aAlternateClockPrescaler[_16] = _17;
+  # DEBUG BEGIN_STMT
+  _18 = UserInstCfg_38(D)->OverflowIrqEn;
+  if (_18 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _19 = (int) Instance_33(D);
+  _20 = UserInstCfg_38(D)->OverflowCb.FunctionCallback;
+  Ftm_Pwm_Ip_pOverflowIrqCallback[_19].FunctionCallback = _20;
+  # DEBUG BEGIN_STMT
+  _21 = (int) Instance_33(D);
+  _22 = UserInstCfg_38(D)->OverflowCb.CbParam;
+  Ftm_Pwm_Ip_pOverflowIrqCallback[_21].CbParam = _22;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _23 = UserInstCfg_38(D)->CntMode;
+  if (_23 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _24 = UserInstCfg_38(D)->PwmPeriod;
+  _25 = _24 >> 1;
+  Ftm_Pwm_Ip_SetMod (FtmBase_35, _25);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _26 = UserInstCfg_38(D)->PwmPeriod;
+  _27 = _26 + 65535;
+  Ftm_Pwm_Ip_SetMod (FtmBase_35, _27);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _28 = UserInstCfg_38(D)->InitTriggerEn;
+  Ftm_Pwm_Ip_SetInitTriggerCmd (FtmBase_35, _28);
+  # DEBUG BEGIN_STMT
+  _29 = UserInstCfg_38(D)->InitTrigMode;
+  Ftm_Pwm_Ip_SetInitTriggerMode (FtmBase_35, _29);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_ResetAndFirstConfigure (uint8 Instance, const struct Ftm_Pwm_Ip_InstanceCfgType * UserInstCfg)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  <unnamed type> _2;
+  _Bool _3;
+  <unnamed type> _4;
+  short unsigned int _5;
+  unsigned char _6;
+  unsigned char _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  unsigned char _10;
+  <unnamed type> _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_12(D);
+  FtmBase_14 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_14
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_Reset (FtmBase_14);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetClockSource (FtmBase_14, 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ClearTimerOverflow (FtmBase_14);
+  # DEBUG BEGIN_STMT
+  _2 = UserInstCfg_18(D)->CntMode;
+  _3 = _2 != 0;
+  Ftm_Pwm_Ip_SetCpwms (FtmBase_14, _3);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_Enable (FtmBase_14, 0);
+  # DEBUG BEGIN_STMT
+  _4 = UserInstCfg_18(D)->DebugMode;
+  Ftm_Pwm_Ip_SetBdmMode (FtmBase_14, _4);
+  # DEBUG BEGIN_STMT
+  _5 = UserInstCfg_18(D)->DeadTimeValue;
+  _6 = (unsigned char) _5;
+  _7 = _6 & 63;
+  Ftm_Pwm_Ip_SetDeadtimeCount (FtmBase_14, _7);
+  # DEBUG BEGIN_STMT
+  _8 = UserInstCfg_18(D)->DeadTimeValue;
+  _9 = _8 >> 6;
+  _10 = (unsigned char) _9;
+  Ftm_Pwm_Ip_SetExtDeadtimeValue (FtmBase_14, _10);
+  # DEBUG BEGIN_STMT
+  _11 = UserInstCfg_18(D)->DeadTimePs;
+  Ftm_Pwm_Ip_SetDeadtimePrescaler (FtmBase_14, _11);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_UpdateSync (uint8 Instance, const struct Ftm_Pwm_Ip_SyncCfgType * SyncCfg)
+{
+  boolean HardwareSync;
+  Ftm_Pwm_Ip_StatusType RetStatus;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  unsigned int _4;
+  unsigned int _5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+  _Bool _8;
+  _Bool _9;
+  _Bool _10;
+  _Bool _11;
+  _Bool _12;
+  _Bool _13;
+  _Bool _14;
+  unsigned char _15;
+  Ftm_Pwm_Ip_StatusType _41;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_19(D);
+  FtmBase_21 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_21
+  # DEBUG BEGIN_STMT
+  RetStatus_22 = 0;
+  # DEBUG RetStatus => RetStatus_22
+  # DEBUG BEGIN_STMT
+  HardwareSync_23 = 0;
+  # DEBUG HardwareSync => HardwareSync_23
+  # DEBUG BEGIN_STMT
+  _2 = Instance_19(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = SyncCfg_25(D) != 0B;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = BIT_FIELD_REF <*SyncCfg_25(D), 32, 32>;
+  _5 = _4 & 16777215;
+  HardwareSync_27 = _5 != 0;
+  # DEBUG HardwareSync => HardwareSync_27
+  # DEBUG BEGIN_STMT
+  _6 = SyncCfg_25(D)->SyncMode;
+  if (_6 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  if (HardwareSync_27 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  RetStatus_28 = 1;
+  # DEBUG RetStatus => RetStatus_28
+
+  <bb 5> :
+  # RetStatus_16 = PHI <RetStatus_22(2), RetStatus_22(3), RetStatus_28(4)>
+  # DEBUG RetStatus => RetStatus_16
+  # DEBUG BEGIN_STMT
+  _7 = SyncCfg_25(D)->CounterSync;
+  if (_7 == 2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetStatus_29 = 1;
+  # DEBUG RetStatus => RetStatus_29
+
+  <bb 7> :
+  # RetStatus_17 = PHI <RetStatus_16(5), RetStatus_29(6)>
+  # DEBUG RetStatus => RetStatus_17
+  # DEBUG BEGIN_STMT
+  if (RetStatus_17 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ConfigureSWandHWSync (Instance_19(D), SyncCfg_25(D));
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetPwmSyncModeCmd (FtmBase_21, 1);
+  # DEBUG BEGIN_STMT
+  _8 = SyncCfg_25(D)->HwSync0;
+  Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc (FtmBase_21, 0, _8);
+  # DEBUG BEGIN_STMT
+  _9 = SyncCfg_25(D)->HwSync1;
+  Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc (FtmBase_21, 1, _9);
+  # DEBUG BEGIN_STMT
+  _10 = SyncCfg_25(D)->HwSync2;
+  Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc (FtmBase_21, 2, _10);
+  # DEBUG BEGIN_STMT
+  _11 = SyncCfg_25(D)->HwTriggerAutoClear;
+  Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd (FtmBase_21, _11);
+  # DEBUG BEGIN_STMT
+  _12 = SyncCfg_25(D)->MaxLoadPoint;
+  Ftm_Pwm_Ip_SetMaxLoadingCmd (FtmBase_21, _12);
+  # DEBUG BEGIN_STMT
+  _13 = SyncCfg_25(D)->MinLoadPoint;
+  Ftm_Pwm_Ip_SetMinLoadingCmd (FtmBase_21, _13);
+  # DEBUG BEGIN_STMT
+  _14 = SyncCfg_25(D)->HalfCycleLoadPoint;
+  Ftm_Pwm_Ip_SetHalfCycleCmd (FtmBase_21, _14);
+  # DEBUG BEGIN_STMT
+  _15 = SyncCfg_25(D)->LoadPointFreq;
+  Ftm_Pwm_Ip_SetLoadFreq (FtmBase_21, _15);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ConfigureSyncType (Instance_19(D), SyncCfg_25(D));
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _41 = RetStatus_17;
+  return _41;
+
+}
+
+
+Ftm_Pwm_Ip_ConfigureSyncType (uint8 Instance, const struct Ftm_Pwm_Ip_SyncCfgType * SyncCfg)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  <unnamed type> _2;
+  _Bool _3;
+  <unnamed type> _4;
+  _Bool _5;
+  <unnamed type> _6;
+  _Bool _7;
+  <unnamed type> _8;
+  _Bool _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_10(D);
+  FtmBase_12 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_12
+  # DEBUG BEGIN_STMT
+  _2 = SyncCfg_13(D)->OutMaskSync;
+  _3 = _2 != 0;
+  Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd (FtmBase_12, _3);
+  # DEBUG BEGIN_STMT
+  _4 = SyncCfg_13(D)->InverterSync;
+  _5 = _4 != 0;
+  Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd (FtmBase_12, _5);
+  # DEBUG BEGIN_STMT
+  _6 = SyncCfg_13(D)->OutRegSync;
+  _7 = _6 != 0;
+  Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd (FtmBase_12, _7);
+  # DEBUG BEGIN_STMT
+  _8 = SyncCfg_13(D)->InitCounterSync;
+  _9 = _8 != 0;
+  Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd (FtmBase_12, _9);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_ConfigureSWandHWSync (uint8 Instance, const struct Ftm_Pwm_Ip_SyncCfgType * SyncCfg)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  _Bool _4;
+  <unnamed type> _5;
+  _Bool _6;
+  <unnamed type> _7;
+  _Bool _8;
+  <unnamed type> _9;
+  _Bool _10;
+  <unnamed type> _11;
+  _Bool _12;
+  <unnamed type> _13;
+  _Bool _14;
+  <unnamed type> _15;
+  _Bool _16;
+  <unnamed type> _17;
+  _Bool _18;
+  <unnamed type> _19;
+  _Bool _20;
+  <unnamed type> _21;
+  _Bool _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_24(D);
+  FtmBase_26 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_26
+  # DEBUG BEGIN_STMT
+  _2 = SyncCfg_27(D)->SyncMode;
+  switch (_2) <default: <L4> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _3 = SyncCfg_27(D)->OutMaskSync;
+  _4 = _3 != 0;
+  Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd (FtmBase_26, _4);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  _5 = SyncCfg_27(D)->InverterSync;
+  _6 = _5 != 0;
+  Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd (FtmBase_26, _6);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  _7 = SyncCfg_27(D)->OutRegSync;
+  _8 = _7 != 0;
+  Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd (FtmBase_26, _8);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  _9 = SyncCfg_27(D)->InitCounterSync;
+  _10 = _9 != 0;
+  Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd (FtmBase_26, _10);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  _11 = SyncCfg_27(D)->CounterSync;
+  _12 = _11 != 0;
+  Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd (FtmBase_26, _12);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  _13 = SyncCfg_27(D)->OutMaskSync;
+  _14 = _13 != 0;
+  Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd (FtmBase_26, _14);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  _15 = SyncCfg_27(D)->InverterSync;
+  _16 = _15 != 0;
+  Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd (FtmBase_26, _16);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  _17 = SyncCfg_27(D)->OutRegSync;
+  _18 = _17 != 0;
+  Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd (FtmBase_26, _18);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  _19 = SyncCfg_27(D)->InitCounterSync;
+  _20 = _19 != 0;
+  Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd (FtmBase_26, _20);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd (FtmBase_26, 0);
+  # DEBUG BEGIN_STMT
+  _21 = SyncCfg_27(D)->CounterSync;
+  _22 = _21 != 0;
+  Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd (FtmBase_26, _22);
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+<L4>:
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_UpdateNotificationStateCombine (uint8 Instance, uint8 Channel, Ftm_Ftm_Ip_EdgeNotifType EdgeNotif)
+{
+  int _1;
+  int _2;
+  unsigned char _3;
+  int _4;
+  int _5;
+  unsigned char _6;
+  int _7;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned char _10;
+  int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned char _14;
+  int _15;
+  int _16;
+  <unnamed type> _17;
+  int _18;
+  int _19;
+  unsigned char _20;
+  int _21;
+  int _22;
+  unsigned char _23;
+  int _24;
+  unsigned int _25;
+  unsigned int _26;
+  unsigned char _27;
+  int _28;
+  unsigned int _29;
+  unsigned int _30;
+  unsigned char _31;
+  int _32;
+  int _33;
+  <unnamed type> _34;
+  int _35;
+  unsigned int _36;
+  unsigned int _37;
+  unsigned char _38;
+  int _39;
+  unsigned int _40;
+  unsigned int _41;
+  unsigned char _42;
+  int _43;
+  int _44;
+  unsigned char _45;
+  int _46;
+  int _47;
+  unsigned char _48;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  switch (EdgeNotif_50(D)) <default: <L11> [INV], case 1: <L1> [INV], case 2: <L5> [INV], case 3: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_52(D);
+  _2 = (int) Channel_53(D);
+  _3 = Ftm_Pwm_Ip_aNotifIrq[_1][_2];
+  _4 = (int) Instance_52(D);
+  _5 = (int) Channel_53(D);
+  _6 = _3 | 1;
+  Ftm_Pwm_Ip_aNotifIrq[_4][_5] = _6;
+  # DEBUG BEGIN_STMT
+  _7 = (int) Instance_52(D);
+  _8 = (unsigned int) Channel_53(D);
+  _9 = _8 + 1;
+  _10 = Ftm_Pwm_Ip_aNotifIrq[_7][_9];
+  _11 = (int) Instance_52(D);
+  _12 = (unsigned int) Channel_53(D);
+  _13 = _12 + 1;
+  _14 = _10 | 1;
+  Ftm_Pwm_Ip_aNotifIrq[_11][_13] = _14;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _15 = (int) Instance_52(D);
+  _16 = (int) Channel_53(D);
+  _17 = Ftm_Pwm_Ip_aPolarity[_15][_16];
+  if (_17 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _18 = (int) Instance_52(D);
+  _19 = (int) Channel_53(D);
+  _20 = Ftm_Pwm_Ip_aNotifIrq[_18][_19];
+  _21 = (int) Instance_52(D);
+  _22 = (int) Channel_53(D);
+  _23 = _20 | 1;
+  Ftm_Pwm_Ip_aNotifIrq[_21][_22] = _23;
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _24 = (int) Instance_52(D);
+  _25 = (unsigned int) Channel_53(D);
+  _26 = _25 + 1;
+  _27 = Ftm_Pwm_Ip_aNotifIrq[_24][_26];
+  _28 = (int) Instance_52(D);
+  _29 = (unsigned int) Channel_53(D);
+  _30 = _29 + 1;
+  _31 = _27 | 1;
+  Ftm_Pwm_Ip_aNotifIrq[_28][_30] = _31;
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  _32 = (int) Instance_52(D);
+  _33 = (int) Channel_53(D);
+  _34 = Ftm_Pwm_Ip_aPolarity[_32][_33];
+  if (_34 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _35 = (int) Instance_52(D);
+  _36 = (unsigned int) Channel_53(D);
+  _37 = _36 + 1;
+  _38 = Ftm_Pwm_Ip_aNotifIrq[_35][_37];
+  _39 = (int) Instance_52(D);
+  _40 = (unsigned int) Channel_53(D);
+  _41 = _40 + 1;
+  _42 = _38 | 1;
+  Ftm_Pwm_Ip_aNotifIrq[_39][_41] = _42;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _43 = (int) Instance_52(D);
+  _44 = (int) Channel_53(D);
+  _45 = Ftm_Pwm_Ip_aNotifIrq[_43][_44];
+  _46 = (int) Instance_52(D);
+  _47 = (int) Channel_53(D);
+  _48 = _45 | 1;
+  Ftm_Pwm_Ip_aNotifIrq[_46][_47] = _48;
+
+  <bb 10> :
+<L11>:
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_UpdateNotificationState (uint8 Instance, uint8 Channel, Ftm_Ftm_Ip_EdgeNotifType EdgeNotif)
+{
+  int _1;
+  int _2;
+  unsigned char _3;
+  int _4;
+  int _5;
+  unsigned char _6;
+  int _7;
+  int _8;
+  <unnamed type> _9;
+  int _10;
+  int _11;
+  unsigned char _12;
+  int _13;
+  int _14;
+  unsigned char _15;
+  int _16;
+  int _17;
+  unsigned char _18;
+  int _19;
+  int _20;
+  unsigned char _21;
+  int _22;
+  int _23;
+  <unnamed type> _24;
+  int _25;
+  int _26;
+  unsigned char _27;
+  int _28;
+  int _29;
+  unsigned char _30;
+  int _31;
+  int _32;
+  unsigned char _33;
+  int _34;
+  int _35;
+  unsigned char _36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  switch (EdgeNotif_38(D)) <default: <L11> [INV], case 1: <L1> [INV], case 2: <L5> [INV], case 3: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_40(D);
+  _2 = (int) Channel_41(D);
+  _3 = Ftm_Pwm_Ip_aNotifIrq[_1][_2];
+  _4 = (int) Instance_40(D);
+  _5 = (int) Channel_41(D);
+  _6 = _3 | 3;
+  Ftm_Pwm_Ip_aNotifIrq[_4][_5] = _6;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _7 = (int) Instance_40(D);
+  _8 = (int) Channel_41(D);
+  _9 = Ftm_Pwm_Ip_aPolarity[_7][_8];
+  if (_9 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _10 = (int) Instance_40(D);
+  _11 = (int) Channel_41(D);
+  _12 = Ftm_Pwm_Ip_aNotifIrq[_10][_11];
+  _13 = (int) Instance_40(D);
+  _14 = (int) Channel_41(D);
+  _15 = _12 | 2;
+  Ftm_Pwm_Ip_aNotifIrq[_13][_14] = _15;
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _16 = (int) Instance_40(D);
+  _17 = (int) Channel_41(D);
+  _18 = Ftm_Pwm_Ip_aNotifIrq[_16][_17];
+  _19 = (int) Instance_40(D);
+  _20 = (int) Channel_41(D);
+  _21 = _18 | 1;
+  Ftm_Pwm_Ip_aNotifIrq[_19][_20] = _21;
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  _22 = (int) Instance_40(D);
+  _23 = (int) Channel_41(D);
+  _24 = Ftm_Pwm_Ip_aPolarity[_22][_23];
+  if (_24 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _25 = (int) Instance_40(D);
+  _26 = (int) Channel_41(D);
+  _27 = Ftm_Pwm_Ip_aNotifIrq[_25][_26];
+  _28 = (int) Instance_40(D);
+  _29 = (int) Channel_41(D);
+  _30 = _27 | 2;
+  Ftm_Pwm_Ip_aNotifIrq[_28][_29] = _30;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _31 = (int) Instance_40(D);
+  _32 = (int) Channel_41(D);
+  _33 = Ftm_Pwm_Ip_aNotifIrq[_31][_32];
+  _34 = (int) Instance_40(D);
+  _35 = (int) Channel_41(D);
+  _36 = _33 | 1;
+  Ftm_Pwm_Ip_aNotifIrq[_34][_35] = _36;
+
+  <bb 10> :
+<L11>:
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_DisableCmpIrq (uint8 Instance, uint8 Channel)
+{
+  uint8 Index;
+  Ftm_Pwm_Ip_EdgeInterruptType NotifyState;
+  Ftm_Pwm_Ip_OutputStateType OutputValue;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  int _2;
+  int _3;
+  unsigned char _4;
+  unsigned char Index.31_5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_9(D);
+  FtmBase_11 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_11
+  # DEBUG BEGIN_STMT
+  OutputValue_12 = 0;
+  # DEBUG OutputValue => OutputValue_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase_11, Channel_13(D), 0);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ClearChnEventFlag (FtmBase_11, Channel_13(D));
+  # DEBUG BEGIN_STMT
+  Index_16 = 0;
+  # DEBUG Index => Index_16
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = (int) Instance_9(D);
+  _3 = (int) Index_7;
+  _4 = Ftm_Pwm_Ip_aNotifIrq[_2][_3];
+  NotifyState_17 = _4 & 10;
+  # DEBUG NotifyState => NotifyState_17
+  # DEBUG BEGIN_STMT
+  if (NotifyState_17 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  OutputValue_19 = 1;
+  # DEBUG OutputValue => OutputValue_19
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Index.31_5 = Index_7;
+  Index_18 = Index.31_5 + 1;
+  # DEBUG Index => Index_18
+
+  <bb 6> :
+  # Index_7 = PHI <Index_16(2), Index_18(5)>
+  # DEBUG Index => Index_7
+  # DEBUG BEGIN_STMT
+  if (Index_7 <= 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # OutputValue_6 = PHI <OutputValue_19(4), OutputValue_12(6)>
+  # DEBUG OutputValue => OutputValue_6
+  # DEBUG BEGIN_STMT
+  if (OutputValue_6 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetTimerOverflowInt (FtmBase_11, 0);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_ClearTimerOverflow (FtmBase_11);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_InitPair (uint8 Instance, const struct Ftm_Pwm_Ip_PairCfgType * UserPairCfg)
+{
+  uint8 PairChId;
+  uint8 MainChId;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+  int _1;
+  _Bool _2;
+  _Bool _3;
+  unsigned char _4;
+  _Bool _5;
+  _Bool _6;
+  _Bool _7;
+  _Bool _8;
+  unsigned char _9;
+  int _10;
+  unsigned char _11;
+  int _12;
+  short unsigned int _13;
+  unsigned char _14;
+  _Bool _15;
+  _Bool _16;
+  <unnamed type> _17;
+  <unnamed type> _18;
+  <unnamed type> _19;
+  unsigned char _20;
+  _Bool _21;
+  unsigned char _22;
+  _Bool _23;
+  _Bool _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_27(D);
+  FtmBase_29 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_29
+  # DEBUG BEGIN_STMT
+  MainChId_30 = 0;
+  # DEBUG MainChId => MainChId_30
+  # DEBUG BEGIN_STMT
+  PairChId_31 = 0;
+  # DEBUG PairChId => PairChId_31
+  # DEBUG BEGIN_STMT
+  _2 = Instance_27(D) <= 3;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = UserPairCfg_33(D) != 0B;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = UserPairCfg_33(D)->PairId;
+  _5 = _4 <= 3;
+  DevAssert (_5);
+  # DEBUG BEGIN_STMT
+  _6 = UserPairCfg_33(D)->DeadtimeEn;
+  if (_6 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _7 = UserPairCfg_33(D)->ComplementaryModeEn;
+  _8 = _7;
+  DevAssert (_8);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _9 = UserPairCfg_33(D)->PairId;
+  MainChId_37 = _9 * 2;
+  # DEBUG MainChId => MainChId_37
+  # DEBUG BEGIN_STMT
+  PairChId_38 = MainChId_37 + 1;
+  # DEBUG PairChId => PairChId_38
+  # DEBUG BEGIN_STMT
+  _10 = (int) Instance_27(D);
+  _11 = UserPairCfg_33(D)->PairId;
+  _12 = (int) _11;
+  _13 = UserPairCfg_33(D)->PhaseShiftValue;
+  Ftm_Pwm_Ip_aPhaseShift[_10][_12] = _13;
+  # DEBUG BEGIN_STMT
+  _14 = UserPairCfg_33(D)->PairId;
+  _15 = UserPairCfg_33(D)->ComplementaryModeEn;
+  Ftm_Pwm_Ip_SetDualChnCompCmd (FtmBase_29, _14, _15);
+  # DEBUG BEGIN_STMT
+  _16 = UserPairCfg_33(D)->ComplementaryModeEn;
+  if (_16 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _17 = Ftm_Pwm_Ip_GetChnOutputPolarity (FtmBase_29, MainChId_37);
+  if (_17 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _18 = UserPairCfg_33(D)->PairChPolarity;
+  if (_18 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetChnOutputPolarityCmd (FtmBase_29, PairChId_38, 0);
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetChnOutputPolarityCmd (FtmBase_29, PairChId_38, 1);
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _19 = UserPairCfg_33(D)->PairChPolarity;
+  if (_19 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetChnOutputPolarityCmd (FtmBase_29, PairChId_38, 1);
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetChnOutputPolarityCmd (FtmBase_29, PairChId_38, 0);
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_EnablePwmChannelOutputs (FtmBase_29, PairChId_38);
+  # DEBUG BEGIN_STMT
+  _20 = UserPairCfg_33(D)->PairId;
+  _21 = UserPairCfg_33(D)->PairSyncEn;
+  Ftm_Pwm_Ip_SetDualChnPwmSyncCmd (FtmBase_29, _20, _21);
+  # DEBUG BEGIN_STMT
+  _22 = UserPairCfg_33(D)->PairId;
+  _23 = UserPairCfg_33(D)->DeadtimeEn;
+  Ftm_Pwm_Ip_SetDualChnDeadtimeCmd (FtmBase_29, _22, _23);
+  # DEBUG BEGIN_STMT
+  _24 = UserPairCfg_33(D)->PairExtTrigEn;
+  Ftm_Pwm_Ip_SetChnTriggerCmd (FtmBase_29, PairChId_38, _24);
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase_29, 1);
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_CalculatePhaseShift (uint8 Instance, uint16 DutyCycle, uint16 PhaseShift)
+{
+  uint16 CnVValue;
+  int _1;
+  short unsigned int _2;
+  int _3;
+  int _4;
+  int _5;
+  int _6;
+  int _7;
+  short unsigned int _8;
+  int _9;
+  int _10;
+  uint16 _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  CnVValue_12 = 0;
+  # DEBUG CnVValue => CnVValue_12
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_13(D);
+  _2 = Ftm_Pwm_Ip_aPeriod[_1];
+  if (DutyCycle_15(D) == _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) Instance_13(D);
+  CnVValue_19 = Ftm_Pwm_Ip_aPeriod[_3];
+  # DEBUG CnVValue => CnVValue_19
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (DutyCycle_15(D) == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  CnVValue_18 = PhaseShift_16(D);
+  # DEBUG CnVValue => CnVValue_18
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _4 = (int) PhaseShift_16(D);
+  _5 = (int) DutyCycle_15(D);
+  _6 = _4 + _5;
+  _7 = (int) Instance_13(D);
+  _8 = Ftm_Pwm_Ip_aPeriod[_7];
+  _9 = (int) _8;
+  _10 = _6 % _9;
+  CnVValue_17 = (uint16) _10;
+  # DEBUG CnVValue => CnVValue_17
+
+  <bb 7> :
+  # CnVValue_11 = PHI <CnVValue_19(3), CnVValue_18(5), CnVValue_17(6)>
+  # DEBUG CnVValue => CnVValue_11
+  # DEBUG BEGIN_STMT
+  _20 = CnVValue_11;
+  return _20;
+
+}
+
+
+Ftm_Pwm_Ip_ValidateParamDeadTime (uint8 Instance, uint8 Channel, uint16 DeadTimeVal)
+{
+  uint16 CompareOdd;
+  uint16 CompareEven;
+  uint8 DeadTimePs;
+  uint8 Prescaler;
+  uint16 OddCounterVal;
+  uint16 EvenCounterVal;
+  uint8 PairId;
+  boolean RetVal;
+  const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase;
+  int _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+  int _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  boolean _30;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_10(D);
+  FtmBase_12 = Ftm_Pwm_Ip_aFtmBase[_1];
+  # DEBUG FtmBase => FtmBase_12
+  # DEBUG BEGIN_STMT
+  RetVal_13 = 0;
+  # DEBUG RetVal => RetVal_13
+  # DEBUG BEGIN_STMT
+  PairId_15 = Channel_14(D) >> 1;
+  # DEBUG PairId => PairId_15
+  # DEBUG BEGIN_STMT
+  _2 = PairId_15 * 2;
+  EvenCounterVal_17 = Ftm_Pwm_Ip_GetChnCountVal (FtmBase_12, _2);
+  # DEBUG EvenCounterVal => EvenCounterVal_17
+  # DEBUG BEGIN_STMT
+  _3 = PairId_15 * 2;
+  _4 = _3 + 1;
+  OddCounterVal_19 = Ftm_Pwm_Ip_GetChnCountVal (FtmBase_12, _4);
+  # DEBUG OddCounterVal => OddCounterVal_19
+  # DEBUG BEGIN_STMT
+  Prescaler_21 = Ftm_Pwm_Ip_GetClockPs (FtmBase_12);
+  # DEBUG Prescaler => Prescaler_21
+  # DEBUG BEGIN_STMT
+  DeadTimePs_23 = Ftm_Pwm_Ip_GetDeadtimePrescaler (FtmBase_12);
+  # DEBUG DeadTimePs => DeadTimePs_23
+  # DEBUG BEGIN_STMT
+  CompareEven_24 = OddCounterVal_19 - EvenCounterVal_17;
+  # DEBUG CompareEven => CompareEven_24
+  # DEBUG BEGIN_STMT
+  _5 = (int) Instance_10(D);
+  _6 = Ftm_Pwm_Ip_aPeriod[_5];
+  CompareOdd_25 = _6 - CompareEven_24;
+  # DEBUG CompareOdd => CompareOdd_25
+  # DEBUG BEGIN_STMT
+  _7 = DeadTimeVal_26(D) + 65535;
+  if (_7 <= 1022)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetVal_27 = 1;
+  # DEBUG RetVal => RetVal_27
+
+  <bb 4> :
+  # RetVal_8 = PHI <RetVal_13(2), RetVal_27(3)>
+  # DEBUG RetVal => RetVal_8
+  # DEBUG BEGIN_STMT
+  if (Prescaler_21 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  if (DeadTimePs_23 <= 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (DeadTimeVal_26(D) < CompareEven_24)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  if (DeadTimeVal_26(D) < CompareOdd_25)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  RetVal_28 = 1;
+  # DEBUG RetVal => RetVal_28
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal_29 = 0;
+  # DEBUG RetVal => RetVal_29
+
+  <bb 10> :
+  # RetVal_9 = PHI <RetVal_8(4), RetVal_8(5), RetVal_28(8), RetVal_29(9)>
+  # DEBUG RetVal => RetVal_9
+  # DEBUG BEGIN_STMT
+  _30 = RetVal_9;
+  return _30;
+
+}
+
+
+Ftm_Pwm_Ip_SetSimOutputBufferEn (struct Ftm_Pwm_Ip_SimType * const SimBase, uint8 Instance)
+{
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Instance_5(D);
+  _2 = 65536 << _1;
+  _3 ={v} SimBase_7(D)->MISCTRL0;
+  _4 = _2 | _3;
+  SimBase_7(D)->MISCTRL0 ={v} _4;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetFaultFilterEn (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 FaultId, boolean FaultFilEn)
+{
+  uint32 FaultFilterEn;
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int iftmp.25_10;
+  long unsigned int iftmp.25_12;
+  long unsigned int iftmp.25_13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (FaultFilEn_11(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.25_13 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.25_12 = 0;
+
+  <bb 5> :
+  # iftmp.25_10 = PHI <iftmp.25_13(3), iftmp.25_12(4)>
+  FaultFilterEn_14 = iftmp.25_10;
+  # DEBUG FaultFilterEn => FaultFilterEn_14
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_16(D)->FLTCTRL;
+  _2 = (int) FaultId_17(D);
+  _3 = 16 << _2;
+  _4 = ~_3;
+  _5 = _1 & _4;
+  _6 = (int) FaultId_17(D);
+  _7 = FaultFilterEn_14 << _6;
+  _8 = _7 << 4;
+  _9 = _5 | _8;
+  FtmBase_16(D)->FLTCTRL ={v} _9;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetFaultInputEn (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 FaultId, boolean FaultEn)
+{
+  uint32 FaultInEn;
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int iftmp.26_9;
+  long unsigned int iftmp.26_11;
+  long unsigned int iftmp.26_12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (FaultEn_10(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.26_12 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.26_11 = 0;
+
+  <bb 5> :
+  # iftmp.26_9 = PHI <iftmp.26_12(3), iftmp.26_11(4)>
+  FaultInEn_13 = iftmp.26_9;
+  # DEBUG FaultInEn => FaultInEn_13
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_15(D)->FLTCTRL;
+  _2 = (int) FaultId_16(D);
+  _3 = 1 << _2;
+  _4 = ~_3;
+  _5 = _1 & _4;
+  _6 = (int) FaultId_16(D);
+  _7 = FaultInEn_13 << _6;
+  _8 = _5 | _7;
+  FtmBase_15(D)->FLTCTRL ={v} _8;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetFaultPolarity (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 FaultId, Ftm_Pwm_Ip_PolarityType FaultPol)
+{
+  uint32 FaultInPol;
+  _Bool _1;
+  int _2;
+  long unsigned int _3;
+  int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = FaultPol_11(D) != 0;
+  _2 = (int) _1;
+  FaultInPol_12 = (uint32) _2;
+  # DEBUG FaultInPol => FaultInPol_12
+  # DEBUG BEGIN_STMT
+  _3 ={v} FtmBase_14(D)->FLTPOL;
+  _4 = (int) FaultId_15(D);
+  _5 = 1 << _4;
+  _6 = ~_5;
+  _7 = _3 & _6;
+  _8 = (int) FaultId_15(D);
+  _9 = FaultInPol_12 << _8;
+  _10 = _7 | _9;
+  FtmBase_14(D)->FLTPOL ={v} _10;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetFaultOutputState (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm_Ip_FaultOutputStateType FaultState)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.27_4;
+  long unsigned int iftmp.27_8;
+  long unsigned int iftmp.27_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->FLTCTRL;
+  _2 = _1 & 4294934527;
+  if (FaultState_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.27_9 = 32768;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.27_8 = 0;
+
+  <bb 5> :
+  # iftmp.27_4 = PHI <iftmp.27_9(3), iftmp.27_8(4)>
+  _3 = iftmp.27_4 | _2;
+  FtmBase_6(D)->FLTCTRL ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetFaultFilterValue (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 FaultFilterValue)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_8(D)->FLTCTRL;
+  _2 = _1 & 4294963455;
+  _3 = (long unsigned int) FaultFilterValue_9(D);
+  _4 = _3 << 8;
+  _5 = _4 & 3840;
+  _6 = _2 | _5;
+  FtmBase_8(D)->FLTCTRL ={v} _6;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetFaultInterruptEnable (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.28_4;
+  long unsigned int iftmp.28_8;
+  long unsigned int iftmp.28_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->MODE;
+  _2 = _1 & 4294967167;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.28_9 = 128;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.28_8 = 0;
+
+  <bb 5> :
+  # iftmp.28_4 = PHI <iftmp.28_9(3), iftmp.28_8(4)>
+  _3 = iftmp.28_4 | _2;
+  FtmBase_6(D)->MODE ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetDualChFaultCtr (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 ChPairId, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_13(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_15(D)->COMBINE;
+  _2 = (long unsigned int) ChPairId_16(D);
+  _3 = _2 * 8;
+  _4 = 64 << _3;
+  _5 = _1 | _4;
+  FtmBase_15(D)->COMBINE ={v} _5;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _6 ={v} FtmBase_15(D)->COMBINE;
+  _7 = (long unsigned int) ChPairId_16(D);
+  _8 = _7 * 8;
+  _9 = 64 << _8;
+  _10 = ~_9;
+  _11 = _6 & _10;
+  FtmBase_15(D)->COMBINE ={v} _11;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetFaultControlMode (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm_Ip_FaultControlModeType FaultMode)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  switch (FaultMode_12(D)) <default: <L6> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV], case 3: <L3> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_14(D)->MODE;
+  _2 = _1 & 4294967199;
+  FtmBase_14(D)->MODE ={v} _2;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _3 ={v} FtmBase_14(D)->MODE;
+  _4 = _3 & 4294967199;
+  _5 = _4 | 32;
+  FtmBase_14(D)->MODE ={v} _5;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _6 ={v} FtmBase_14(D)->MODE;
+  _7 = _6 & 4294967199;
+  _8 = _7 | 64;
+  FtmBase_14(D)->MODE ={v} _8;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _9 ={v} FtmBase_14(D)->MODE;
+  _10 = _9 | 96;
+  FtmBase_14(D)->MODE ={v} _10;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+<L6>:
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnTriggerCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, boolean Enable)
+{
+  uint32 Value;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Value_13 = 0;
+  # DEBUG Value => Value_13
+  # DEBUG BEGIN_STMT
+  if (Channel_14(D) <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) Channel_14(D);
+  Value_17 = 16 << _1;
+  # DEBUG Value => Value_17
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (Channel_14(D) <= 5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) Channel_14(D);
+  _3 = _2 + 4294967294;
+  Value_16 = 1 << _3;
+  # DEBUG Value => Value_16
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) Channel_14(D);
+  _5 = _4 + 4294967290;
+  Value_15 = 256 << _5;
+  # DEBUG Value => Value_15
+
+  <bb 7> :
+  # Value_11 = PHI <Value_17(3), Value_16(5), Value_15(6)>
+  # DEBUG Value => Value_11
+  # DEBUG BEGIN_STMT
+  if (Enable_18(D) != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _6 ={v} FtmBase_20(D)->EXTTRIG;
+  _7 = Value_11 | _6;
+  FtmBase_20(D)->EXTTRIG ={v} _7;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _8 ={v} FtmBase_20(D)->EXTTRIG;
+  _9 = ~Value_11;
+  _10 = _8 & _9;
+  FtmBase_20(D)->EXTTRIG ={v} _10;
+
+  <bb 10> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_Reset (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
+{
+  uint8 ChnIndex;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _4;
+  int _5;
+  unsigned char ChnIndex.3_6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Ftm_Pwm_Ip_UpdateWriteProtection (FtmBase_10(D), 0);
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_10(D)->SC;
+  FtmBase_10(D)->SC ={v} _1;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->CNT ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->MOD ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->CNTIN ={v} 0;
+  # DEBUG BEGIN_STMT
+  _2 ={v} FtmBase_10(D)->STATUS;
+  FtmBase_10(D)->STATUS ={v} _2;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->MODE ={v} 4;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->SYNC ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->OUTINIT ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->OUTMASK ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->COMBINE ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->DEADTIME ={v} 0;
+  # DEBUG BEGIN_STMT
+  _3 ={v} FtmBase_10(D)->EXTTRIG;
+  FtmBase_10(D)->EXTTRIG ={v} _3;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->POL ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->FMS ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->FILTER ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->QDCTRL ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->CONF ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->SYNCONF ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->INVCTRL ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->SWOCTRL ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->PWMLOAD ={v} 0;
+  # DEBUG BEGIN_STMT
+  FtmBase_10(D)->HCR ={v} 0;
+  # DEBUG BEGIN_STMT
+  ChnIndex_34 = 0;
+  # DEBUG ChnIndex => ChnIndex_34
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = (int) ChnIndex_7;
+  FtmBase_10(D)->CONTROLS[_4].CSC ={v} 0;
+  # DEBUG BEGIN_STMT
+  _5 = (int) ChnIndex_7;
+  FtmBase_10(D)->CONTROLS[_5].CV ={v} 0;
+  # DEBUG BEGIN_STMT
+  ChnIndex.3_6 = ChnIndex_7;
+  ChnIndex_37 = ChnIndex.3_6 + 1;
+  # DEBUG ChnIndex => ChnIndex_37
+
+  <bb 4> :
+  # ChnIndex_7 = PHI <ChnIndex_34(2), ChnIndex_37(3)>
+  # DEBUG ChnIndex => ChnIndex_7
+  # DEBUG BEGIN_STMT
+  if (ChnIndex_7 <= 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_UpdateWriteProtection (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_8(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_10(D)->FMS;
+  _2 = _1 | 64;
+  FtmBase_10(D)->FMS ={v} _2;
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 ={v} FtmBase_10(D)->FMS;
+  _4 = _3 & 64;
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _5 ={v} FtmBase_10(D)->MODE;
+  _6 = _5 | 4;
+  FtmBase_10(D)->MODE ={v} _6;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetChannelMode (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  uint8 ChPairId;
+  uint8 Mcombine;
+  uint8 Combine;
+  uint8 RetValue;
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  unsigned char _17;
+  <unnamed type> _18;
+  unsigned char _19;
+  unsigned char _20;
+  unsigned char _21;
+  int _22;
+  uint8 iftmp.34_24;
+  uint8 iftmp.34_31;
+  uint8 iftmp.34_32;
+  unsigned char _37;
+  unsigned char _40;
+  Ftm_Pwm_Ip_ChannelModeType _53;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ChPairId_26 = Channel_25(D) >> 1;
+  # DEBUG ChPairId => ChPairId_26
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_28(D)->COMBINE;
+  _2 = (long unsigned int) ChPairId_26;
+  _3 = _2 * 8;
+  _4 = 1 << _3;
+  _5 = _1 & _4;
+  _6 = (long unsigned int) ChPairId_26;
+  _7 = _6 * 8;
+  _8 = _5 >> _7;
+  Combine_29 = (uint8) _8;
+  # DEBUG Combine => Combine_29
+  # DEBUG BEGIN_STMT
+  _9 ={v} FtmBase_28(D)->COMBINE;
+  _10 = (long unsigned int) ChPairId_26;
+  _11 = _10 * 8;
+  _12 = 128 << _11;
+  _13 = _9 & _12;
+  _14 = (long unsigned int) ChPairId_26;
+  _15 = _14 * 8;
+  _16 = _13 >> _15;
+  Mcombine_30 = (uint8) _16;
+  # DEBUG Mcombine => Mcombine_30
+  # DEBUG BEGIN_STMT
+  if (Mcombine_30 == 128)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.34_32 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.34_31 = 0;
+
+  <bb 5> :
+  # iftmp.34_24 = PHI <iftmp.34_32(3), iftmp.34_31(4)>
+  Mcombine_33 = iftmp.34_24;
+  # DEBUG Mcombine => Mcombine_33
+  # DEBUG BEGIN_STMT
+  RetValue_35 = Ftm_Pwm_Ip_GetChnEdgeLevel (FtmBase_28(D), Channel_25(D));
+  # DEBUG RetValue => RetValue_35
+  # DEBUG BEGIN_STMT
+  _17 = Ftm_Pwm_Ip_GetChnMode (FtmBase_28(D), Channel_25(D));
+  _37 = _17 << 2;
+  RetValue_38 = _37 | RetValue_35;
+  # DEBUG RetValue => RetValue_38
+  # DEBUG BEGIN_STMT
+  _18 = Ftm_Pwm_Ip_GetCpwms (FtmBase_28(D));
+  _19 = (unsigned char) _18;
+  _40 = _19 << 4;
+  RetValue_41 = _40 | RetValue_38;
+  # DEBUG RetValue => RetValue_41
+  # DEBUG BEGIN_STMT
+  _20 = Combine_29 << 5;
+  RetValue_42 = RetValue_41 | _20;
+  # DEBUG RetValue => RetValue_42
+  # DEBUG BEGIN_STMT
+  _21 = Mcombine_33 << 6;
+  RetValue_43 = RetValue_42 | _21;
+  # DEBUG RetValue => RetValue_43
+  # DEBUG BEGIN_STMT
+  _22 = (int) RetValue_43;
+  switch (_22) <default: <L11> [INV], case 9: <L4> [INV], case 10: <L3> [INV], case 17: <L6> [INV], case 18: <L5> [INV], case 33: <L8> [INV], case 34: <L7> [INV], case 97: <L10> [INV], case 98: <L9> [INV]>
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  ChMode_50 = 10;
+  # DEBUG ChMode => ChMode_50
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  ChMode_51 = 9;
+  # DEBUG ChMode => ChMode_51
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  ChMode_48 = 18;
+  # DEBUG ChMode => ChMode_48
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 9> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  ChMode_49 = 17;
+  # DEBUG ChMode => ChMode_49
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  ChMode_46 = 34;
+  # DEBUG ChMode => ChMode_46
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 11> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  ChMode_47 = 33;
+  # DEBUG ChMode => ChMode_47
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 12> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  ChMode_44 = 98;
+  # DEBUG ChMode => ChMode_44
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 13> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  ChMode_45 = 97;
+  # DEBUG ChMode => ChMode_45
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  ChMode_52 = 255;
+  # DEBUG ChMode => ChMode_52
+  # DEBUG BEGIN_STMT
+
+  <bb 15> :
+  # ChMode_23 = PHI <ChMode_50(6), ChMode_51(7), ChMode_48(8), ChMode_49(9), ChMode_46(10), ChMode_47(11), ChMode_44(12), ChMode_45(13), ChMode_52(14)>
+  # DEBUG ChMode => ChMode_23
+  # DEBUG BEGIN_STMT
+  _53 = ChMode_23;
+  return _53;
+
+}
+
+
+Ftm_Pwm_Ip_GetDualChnDeadtimeCmd (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  uint8 DetEnable;
+  uint8 ChPairId;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  boolean _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ChPairId_10 = Channel_9(D) >> 1;
+  # DEBUG ChPairId => ChPairId_10
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_12(D)->COMBINE;
+  _2 = (long unsigned int) ChPairId_10;
+  _3 = _2 * 8;
+  _4 = 16 << _3;
+  _5 = _1 & _4;
+  _6 = (long unsigned int) ChPairId_10;
+  _7 = _6 * 8;
+  _8 = _5 >> _7;
+  DetEnable_13 = (uint8) _8;
+  # DEBUG DetEnable => DetEnable_13
+  # DEBUG BEGIN_STMT
+  _14 = DetEnable_13 == 16;
+  return _14;
+
+}
+
+
+Ftm_Pwm_Ip_GetDualChnCompCmd (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  uint8 Comp;
+  uint8 ChPairId;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  boolean _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ChPairId_10 = Channel_9(D) >> 1;
+  # DEBUG ChPairId => ChPairId_10
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_12(D)->COMBINE;
+  _2 = (long unsigned int) ChPairId_10;
+  _3 = _2 * 8;
+  _4 = 2 << _3;
+  _5 = _1 & _4;
+  _6 = (long unsigned int) ChPairId_10;
+  _7 = _6 * 8;
+  _8 = _5 >> _7;
+  Comp_13 = (uint8) _8;
+  # DEBUG Comp => Comp_13
+  # DEBUG BEGIN_STMT
+  _14 = Comp_13 == 2;
+  return _14;
+
+}
+
+
+Ftm_Pwm_Ip_GetPolInstance (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
+{
+  long unsigned int _1;
+  uint16 _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_3(D)->POL;
+  _4 = (uint16) _1;
+  return _4;
+
+}
+
+
+Ftm_Pwm_Ip_GetSoftwareOutputControl (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
+{
+  long unsigned int _1;
+  uint16 _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_3(D)->SWOCTRL;
+  _4 = (uint16) _1;
+  return _4;
+
+}
+
+
+Ftm_Pwm_Ip_SetHalfCycleCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_8(D)->PWMLOAD;
+  _2 = _1 | 256;
+  FtmBase_8(D)->PWMLOAD ={v} _2;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 ={v} FtmBase_8(D)->PWMLOAD;
+  _4 = _3 & 4294967039;
+  FtmBase_8(D)->PWMLOAD ={v} _4;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetPwmLoadChnSelCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, boolean Enable)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_11(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_13(D)->PWMLOAD;
+  _2 = (int) Channel_14(D);
+  _3 = 1 << _2;
+  _4 = _1 | _3;
+  FtmBase_13(D)->PWMLOAD ={v} _4;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 ={v} FtmBase_13(D)->PWMLOAD;
+  _6 = (int) Channel_14(D);
+  _7 = 1 << _6;
+  _8 = ~_7;
+  _9 = _5 & _8;
+  FtmBase_13(D)->PWMLOAD ={v} _9;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SoftwareOutputControl (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint16 Value)
+{
+  long unsigned int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) Value_2(D);
+  FtmBase_4(D)->SWOCTRL ={v} _1;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, boolean Enable)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_11(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_13(D)->SWOCTRL;
+  _2 = (int) Channel_14(D);
+  _3 = 1 << _2;
+  _4 = _1 | _3;
+  FtmBase_13(D)->SWOCTRL ={v} _4;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 ={v} FtmBase_13(D)->SWOCTRL;
+  _6 = (int) Channel_14(D);
+  _7 = 1 << _6;
+  _8 = ~_7;
+  _9 = _5 & _8;
+  FtmBase_13(D)->SWOCTRL ={v} _9;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnSoftwareCtrlVal (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, boolean Enable)
+{
+  boolean StatusPol;
+  uint8 ChPol;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned char _4;
+  long unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_18(D)->POL;
+  _2 = (long unsigned int) Channel_19(D);
+  _3 = _1 >> _2;
+  _4 = (unsigned char) _3;
+  ChPol_20 = _4 & 1;
+  # DEBUG ChPol => ChPol_20
+  # DEBUG BEGIN_STMT
+  StatusPol_21 = ChPol_20 != 0;
+  # DEBUG StatusPol => StatusPol_21
+  # DEBUG BEGIN_STMT
+  if (Enable_22(D) != StatusPol_21)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _5 ={v} FtmBase_18(D)->SWOCTRL;
+  _6 = (unsigned int) Channel_19(D);
+  _7 = _6 + 8;
+  _8 = 1 << _7;
+  _9 = _5 | _8;
+  FtmBase_18(D)->SWOCTRL ={v} _9;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _10 ={v} FtmBase_18(D)->SWOCTRL;
+  _11 = (unsigned int) Channel_19(D);
+  _12 = _11 + 8;
+  _13 = 1 << _12;
+  _14 = ~_13;
+  _15 = _10 & _14;
+  FtmBase_18(D)->SWOCTRL ={v} _15;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.10_4;
+  long unsigned int iftmp.10_8;
+  long unsigned int iftmp.10_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294443007;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.10_9 = 524288;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.10_8 = 0;
+
+  <bb 5> :
+  # iftmp.10_4 = PHI <iftmp.10_9(3), iftmp.10_8(4)>
+  _3 = iftmp.10_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.7_4;
+  long unsigned int iftmp.7_8;
+  long unsigned int iftmp.7_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294705151;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.7_9 = 262144;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.7_8 = 0;
+
+  <bb 5> :
+  # iftmp.7_4 = PHI <iftmp.7_9(3), iftmp.7_8(4)>
+  _3 = iftmp.7_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.12_4;
+  long unsigned int iftmp.12_8;
+  long unsigned int iftmp.12_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294836223;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.12_9 = 131072;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.12_8 = 0;
+
+  <bb 5> :
+  # iftmp.12_4 = PHI <iftmp.12_9(3), iftmp.12_8(4)>
+  _3 = iftmp.12_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.14_4;
+  long unsigned int iftmp.14_8;
+  long unsigned int iftmp.14_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294901759;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.14_9 = 65536;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.14_8 = 0;
+
+  <bb 5> :
+  # iftmp.14_4 = PHI <iftmp.14_9(3), iftmp.14_8(4)>
+  _3 = iftmp.14_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.9_4;
+  long unsigned int iftmp.9_8;
+  long unsigned int iftmp.9_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294963199;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.9_9 = 4096;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.9_8 = 0;
+
+  <bb 5> :
+  # iftmp.9_4 = PHI <iftmp.9_9(3), iftmp.9_8(4)>
+  _3 = iftmp.9_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.8_4;
+  long unsigned int iftmp.8_8;
+  long unsigned int iftmp.8_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294965247;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.8_9 = 2048;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.8_8 = 0;
+
+  <bb 5> :
+  # iftmp.8_4 = PHI <iftmp.8_9(3), iftmp.8_8(4)>
+  _3 = iftmp.8_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.6_4;
+  long unsigned int iftmp.6_8;
+  long unsigned int iftmp.6_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294966271;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.6_9 = 1024;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.6_8 = 0;
+
+  <bb 5> :
+  # iftmp.6_4 = PHI <iftmp.6_9(3), iftmp.6_8(4)>
+  _3 = iftmp.6_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.11_4;
+  long unsigned int iftmp.11_8;
+  long unsigned int iftmp.11_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294966783;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.11_9 = 512;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.11_8 = 0;
+
+  <bb 5> :
+  # iftmp.11_4 = PHI <iftmp.11_9(3), iftmp.11_8(4)>
+  _3 = iftmp.11_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.13_4;
+  long unsigned int iftmp.13_8;
+  long unsigned int iftmp.13_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294967039;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.13_9 = 256;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.13_8 = 0;
+
+  <bb 5> :
+  # iftmp.13_4 = PHI <iftmp.13_9(3), iftmp.13_8(4)>
+  _3 = iftmp.13_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetPwmSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Mode)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.15_4;
+  long unsigned int iftmp.15_8;
+  long unsigned int iftmp.15_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294967167;
+  if (Mode_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.15_9 = 128;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.15_8 = 0;
+
+  <bb 5> :
+  # iftmp.15_4 = PHI <iftmp.15_9(3), iftmp.15_8(4)>
+  _3 = iftmp.15_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.21_4;
+  long unsigned int iftmp.21_8;
+  long unsigned int iftmp.21_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294967263;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.21_9 = 32;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.21_8 = 0;
+
+  <bb 5> :
+  # iftmp.21_4 = PHI <iftmp.21_9(3), iftmp.21_8(4)>
+  _3 = iftmp.21_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.20_4;
+  long unsigned int iftmp.20_8;
+  long unsigned int iftmp.20_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294967279;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.20_9 = 16;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.20_8 = 0;
+
+  <bb 5> :
+  # iftmp.20_4 = PHI <iftmp.20_9(3), iftmp.20_8(4)>
+  _3 = iftmp.20_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.22_4;
+  long unsigned int iftmp.22_8;
+  long unsigned int iftmp.22_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294967291;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.22_9 = 4;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.22_8 = 0;
+
+  <bb 5> :
+  # iftmp.22_4 = PHI <iftmp.22_9(3), iftmp.22_8(4)>
+  _3 = iftmp.22_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.16_4;
+  long unsigned int iftmp.16_8;
+  long unsigned int iftmp.16_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNCONF;
+  _2 = _1 & 4294967294;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.16_9 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.16_8 = 0;
+
+  <bb 5> :
+  # iftmp.16_4 = PHI <iftmp.16_9(3), iftmp.16_8(4)>
+  _3 = iftmp.16_4 | _2;
+  FtmBase_6(D)->SYNCONF ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetInitTriggerMode (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm_Ip_InitTriggModeType InitTrigMode)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_7(D)->CONF;
+  _2 = _1 & 4294965247;
+  _3 = InitTrigMode_8(D) << 11;
+  _4 = _3 & 2048;
+  _5 = _2 | _4;
+  FtmBase_7(D)->CONF ={v} _5;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetBdmMode (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm_Ip_DebugModeType Val)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_7(D)->CONF;
+  _2 = _1 & 4294967103;
+  _3 = Val_8(D) << 6;
+  _4 = _3 & 255;
+  _5 = _2 | _4;
+  FtmBase_7(D)->CONF ={v} _5;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetLoadFreq (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Val)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_7(D)->CONF;
+  _2 = _1 & 4294967264;
+  _3 = (long unsigned int) Val_8(D);
+  _4 = _3 & 31;
+  _5 = _2 | _4;
+  FtmBase_7(D)->CONF ={v} _5;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetChnOutputPolarity (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  _Bool _5;
+  Ftm_Pwm_Ip_PolarityType _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_7(D)->POL;
+  _2 = (int) Channel_8(D);
+  _3 = _1 >> _2;
+  _4 = _3 & 1;
+  _5 = _4 == 1;
+  _9 = (Ftm_Pwm_Ip_PolarityType) _5;
+  return _9;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnOutputPolarityCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, Ftm_Pwm_Ip_PolarityType Polarity)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Polarity_11(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_13(D)->POL;
+  _2 = (int) Channel_14(D);
+  _3 = 1 << _2;
+  _4 = ~_3;
+  _5 = _1 & _4;
+  FtmBase_13(D)->POL ={v} _5;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _6 ={v} FtmBase_13(D)->POL;
+  _7 = (int) Channel_14(D);
+  _8 = 1 << _7;
+  _9 = _6 | _8;
+  FtmBase_13(D)->POL ={v} _9;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_EnableTriggerMask (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint32 TriggerMask)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->EXTTRIG;
+  _2 = ~TriggerMask_7(D);
+  _3 = _1 & _2;
+  _4 = TriggerMask_7(D) | _3;
+  FtmBase_6(D)->EXTTRIG ={v} _4;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_DisableTriggerMask (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint32 TriggerMask)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_5(D)->EXTTRIG;
+  _2 = ~TriggerMask_6(D);
+  _3 = _1 & _2;
+  FtmBase_5(D)->EXTTRIG ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetInitTriggerCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.23_4;
+  long unsigned int iftmp.23_8;
+  long unsigned int iftmp.23_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->EXTTRIG;
+  _2 = _1 & 4294967231;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.23_9 = 64;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.23_8 = 0;
+
+  <bb 5> :
+  # iftmp.23_4 = PHI <iftmp.23_9(3), iftmp.23_8(4)>
+  _3 = iftmp.23_4 | _2;
+  FtmBase_6(D)->EXTTRIG ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetExtDeadtimeValue (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Value)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_8(D)->DEADTIME;
+  _2 = _1 & 4293984255;
+  _3 = (long unsigned int) Value_9(D);
+  _4 = _3 << 16;
+  _5 = _4 & 983040;
+  _6 = _2 | _5;
+  FtmBase_8(D)->DEADTIME ={v} _6;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetDeadtimePrescaler (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
+{
+  long unsigned int _1;
+  unsigned char _2;
+  int _3;
+  int _4;
+  unsigned char _5;
+  uint8 _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_7(D)->DEADTIME;
+  _2 = (unsigned char) _1;
+  _3 = (int) _2;
+  _4 = _3 >> 6;
+  _5 = (unsigned char) _4;
+  _8 = _5 & 3;
+  return _8;
+
+}
+
+
+Ftm_Pwm_Ip_SetDeadtimePrescaler (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm_Ip_DeadtimePrescalerType Divider)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_9(D)->DEADTIME;
+  _2 = _1 & 4294967103;
+  _3 = (unsigned char) Divider_10(D);
+  _4 = (long unsigned int) _3;
+  _5 = _4 << 6;
+  _6 = _5 & 255;
+  _7 = _2 | _6;
+  FtmBase_9(D)->DEADTIME ={v} _7;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetDeadtimeCount (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Count)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_7(D)->DEADTIME;
+  _2 = _1 & 4294967232;
+  _3 = (long unsigned int) Count_8(D);
+  _4 = _3 & 63;
+  _5 = _2 | _4;
+  FtmBase_7(D)->DEADTIME ={v} _5;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetDualChnMCombineCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 ChPairId, boolean Enable)
+{
+  long unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_13(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_15(D)->COMBINE;
+  _2 = (unsigned int) ChPairId_16(D);
+  _3 = _2 * 8;
+  _4 = 128 << _3;
+  _5 = _1 | _4;
+  FtmBase_15(D)->COMBINE ={v} _5;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _6 ={v} FtmBase_15(D)->COMBINE;
+  _7 = (unsigned int) ChPairId_16(D);
+  _8 = _7 * 8;
+  _9 = 128 << _8;
+  _10 = ~_9;
+  _11 = _6 & _10;
+  FtmBase_15(D)->COMBINE ={v} _11;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetDualChnPwmSyncCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 ChPairId, boolean Enable)
+{
+  long unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_13(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_15(D)->COMBINE;
+  _2 = (unsigned int) ChPairId_16(D);
+  _3 = _2 * 8;
+  _4 = 32 << _3;
+  _5 = _1 | _4;
+  FtmBase_15(D)->COMBINE ={v} _5;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _6 ={v} FtmBase_15(D)->COMBINE;
+  _7 = (unsigned int) ChPairId_16(D);
+  _8 = _7 * 8;
+  _9 = 32 << _8;
+  _10 = ~_9;
+  _11 = _6 & _10;
+  FtmBase_15(D)->COMBINE ={v} _11;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetDualChnDeadtimeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 ChPairId, boolean Enable)
+{
+  long unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_13(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_15(D)->COMBINE;
+  _2 = (unsigned int) ChPairId_16(D);
+  _3 = _2 * 8;
+  _4 = 16 << _3;
+  _5 = _1 | _4;
+  FtmBase_15(D)->COMBINE ={v} _5;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _6 ={v} FtmBase_15(D)->COMBINE;
+  _7 = (unsigned int) ChPairId_16(D);
+  _8 = _7 * 8;
+  _9 = 16 << _8;
+  _10 = ~_9;
+  _11 = _6 & _10;
+  FtmBase_15(D)->COMBINE ={v} _11;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetDualChnCompCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 ChPairId, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_13(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_15(D)->COMBINE;
+  _2 = (long unsigned int) ChPairId_16(D);
+  _3 = _2 * 8;
+  _4 = 2 << _3;
+  _5 = _1 | _4;
+  FtmBase_15(D)->COMBINE ={v} _5;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _6 ={v} FtmBase_15(D)->COMBINE;
+  _7 = (long unsigned int) ChPairId_16(D);
+  _8 = _7 * 8;
+  _9 = 2 << _8;
+  _10 = ~_9;
+  _11 = _6 & _10;
+  FtmBase_15(D)->COMBINE ={v} _11;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetDualChnCombineCmd (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 ChPairId)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  boolean _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_7(D)->COMBINE;
+  _2 = (long unsigned int) ChPairId_8(D);
+  _3 = _2 * 8;
+  _4 = _1 >> _3;
+  _5 = _4 & 1;
+  _9 = _5 != 0;
+  return _9;
+
+}
+
+
+Ftm_Pwm_Ip_SetDualChnCombineCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 ChPairId, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_13(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_15(D)->COMBINE;
+  _2 = (long unsigned int) ChPairId_16(D);
+  _3 = _2 * 8;
+  _4 = 1 << _3;
+  _5 = _1 | _4;
+  FtmBase_15(D)->COMBINE ={v} _5;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _6 ={v} FtmBase_15(D)->COMBINE;
+  _7 = (long unsigned int) ChPairId_16(D);
+  _8 = _7 * 8;
+  _9 = 1 << _8;
+  _10 = ~_9;
+  _11 = _6 & _10;
+  FtmBase_15(D)->COMBINE ={v} _11;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_ClearOutmaskReg (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint32 RegVal)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_5(D)->OUTMASK;
+  _2 = ~RegVal_6(D);
+  _3 = _1 & _2;
+  FtmBase_5(D)->OUTMASK ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetOutmaskReg (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint32 RegVal)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->OUTMASK;
+  _2 = ~RegVal_7(D);
+  _3 = _1 & _2;
+  _4 = RegVal_7(D) | _3;
+  FtmBase_6(D)->OUTMASK ={v} _4;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnOutputMask (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, boolean EnableMask)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (EnableMask_11(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_13(D)->OUTMASK;
+  _2 = (int) Channel_14(D);
+  _3 = 1 << _2;
+  _4 = _1 | _3;
+  FtmBase_13(D)->OUTMASK ={v} _4;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 ={v} FtmBase_13(D)->OUTMASK;
+  _6 = (int) Channel_14(D);
+  _7 = 1 << _6;
+  _8 = ~_7;
+  _9 = _5 & _8;
+  FtmBase_13(D)->OUTMASK ={v} _9;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnOutputInitStateCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, Ftm_Pwm_Ip_OutputStateType State)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (State_11(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_13(D)->OUTINIT;
+  _2 = (int) Channel_14(D);
+  _3 = 1 << _2;
+  _4 = _1 | _3;
+  FtmBase_13(D)->OUTINIT ={v} _4;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 ={v} FtmBase_13(D)->OUTINIT;
+  _6 = (int) Channel_14(D);
+  _7 = 1 << _6;
+  _8 = ~_7;
+  _9 = _5 & _8;
+  FtmBase_13(D)->OUTINIT ={v} _9;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetSoftwareTriggerCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.24_4;
+  long unsigned int iftmp.24_8;
+  long unsigned int iftmp.24_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNC;
+  _2 = _1 & 4294967167;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.24_9 = 128;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.24_8 = 0;
+
+  <bb 5> :
+  # iftmp.24_4 = PHI <iftmp.24_9(3), iftmp.24_8(4)>
+  _3 = iftmp.24_4 | _2;
+  FtmBase_6(D)->SYNC ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 TriggerNumber, boolean Enable)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (Enable_11(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_13(D)->SYNC;
+  _2 = (int) TriggerNumber_14(D);
+  _3 = 16 << _2;
+  _4 = _1 | _3;
+  FtmBase_13(D)->SYNC ={v} _4;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 ={v} FtmBase_13(D)->SYNC;
+  _6 = (int) TriggerNumber_14(D);
+  _7 = 16 << _6;
+  _8 = ~_7;
+  _9 = _5 & _8;
+  FtmBase_13(D)->SYNC ={v} _9;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.19_4;
+  long unsigned int iftmp.19_8;
+  long unsigned int iftmp.19_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNC;
+  _2 = _1 & 4294967287;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.19_9 = 8;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.19_8 = 0;
+
+  <bb 5> :
+  # iftmp.19_4 = PHI <iftmp.19_9(3), iftmp.19_8(4)>
+  _3 = iftmp.19_4 | _2;
+  FtmBase_6(D)->SYNC ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetMaxLoadingCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.17_4;
+  long unsigned int iftmp.17_8;
+  long unsigned int iftmp.17_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNC;
+  _2 = _1 & 4294967293;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.17_9 = 2;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.17_8 = 0;
+
+  <bb 5> :
+  # iftmp.17_4 = PHI <iftmp.17_9(3), iftmp.17_8(4)>
+  _3 = iftmp.17_4 | _2;
+  FtmBase_6(D)->SYNC ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetMinLoadingCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.18_4;
+  long unsigned int iftmp.18_8;
+  long unsigned int iftmp.18_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SYNC;
+  _2 = _1 & 4294967294;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.18_9 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.18_8 = 0;
+
+  <bb 5> :
+  # iftmp.18_4 = PHI <iftmp.18_9(3), iftmp.18_8(4)>
+  _3 = iftmp.18_4 | _2;
+  FtmBase_6(D)->SYNC ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetPwmSyncMode (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.29_4;
+  long unsigned int iftmp.29_8;
+  long unsigned int iftmp.29_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->MODE;
+  _2 = _1 & 4294967287;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.29_9 = 8;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.29_8 = 0;
+
+  <bb 5> :
+  # iftmp.29_4 = PHI <iftmp.29_9(3), iftmp.29_8(4)>
+  _3 = iftmp.29_4 | _2;
+  FtmBase_6(D)->MODE ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_Enable (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.5_4;
+  long unsigned int iftmp.5_8;
+  long unsigned int iftmp.5_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->MODE;
+  _2 = _1 & 4294967294;
+  if (Enable_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.5_9 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.5_8 = 0;
+
+  <bb 5> :
+  # iftmp.5_4 = PHI <iftmp.5_9(3), iftmp.5_8(4)>
+  _3 = iftmp.5_4 | _2;
+  FtmBase_6(D)->MODE ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetCounterInitVal (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint16 Value)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->CNTIN;
+  _2 = _1 & 4294901760;
+  _3 = (long unsigned int) Value_7(D);
+  _4 = _2 | _3;
+  FtmBase_6(D)->CNTIN ={v} _4;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetChnCountVal (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  int _1;
+  long unsigned int _2;
+  uint16 _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Channel_3(D);
+  _2 ={v} FtmBase_5(D)->CONTROLS[_1].CV;
+  _6 = (uint16) _2;
+  return _6;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnCountVal (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, uint16 Value)
+{
+  int _1;
+  long unsigned int _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Channel_3(D);
+  _2 = (long unsigned int) Value_4(D);
+  FtmBase_6(D)->CONTROLS[_1].CV ={v} _2;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetChOutputValue (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  boolean _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Channel_4(D);
+  _2 ={v} FtmBase_6(D)->CONTROLS[_1].CSC;
+  _3 = _2 & 1024;
+  _7 = _3 != 0;
+  return _7;
+
+}
+
+
+Ftm_Pwm_Ip_ClearChnEventFlag (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  int _1;
+  long unsigned int _2;
+  int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Channel_5(D);
+  _2 ={v} FtmBase_7(D)->CONTROLS[_1].CSC;
+  _3 = (int) Channel_5(D);
+  _4 = _2 & 4294967167;
+  FtmBase_7(D)->CONTROLS[_3].CSC ={v} _4;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_UpdateChnInt (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, boolean Enable)
+{
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _4;
+  long unsigned int _5;
+  long unsigned int iftmp.32_6;
+  long unsigned int iftmp.32_11;
+  long unsigned int iftmp.32_12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) Channel_7(D);
+  _2 ={v} FtmBase_9(D)->CONTROLS[_1].CSC;
+  _3 = _2 & 4294967231;
+  if (Enable_10(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.32_12 = 64;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.32_11 = 0;
+
+  <bb 5> :
+  # iftmp.32_6 = PHI <iftmp.32_12(3), iftmp.32_11(4)>
+  _4 = (int) Channel_7(D);
+  _5 = iftmp.32_6 | _3;
+  FtmBase_9(D)->CONTROLS[_4].CSC ={v} _5;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetChnMode (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  uint8 RetValue;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned char _4;
+  int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned char _8;
+  unsigned char _9;
+  unsigned char _14;
+  uint8 _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Channel_10(D);
+  _2 ={v} FtmBase_12(D)->CONTROLS[_1].CSC;
+  _3 = _2 >> 4;
+  _4 = (unsigned char) _3;
+  RetValue_13 = _4 & 1;
+  # DEBUG RetValue => RetValue_13
+  # DEBUG BEGIN_STMT
+  _5 = (int) Channel_10(D);
+  _6 ={v} FtmBase_12(D)->CONTROLS[_5].CSC;
+  _7 = _6 >> 5;
+  _8 = (unsigned char) _7;
+  _9 = _8 << 1;
+  _14 = _9 & 2;
+  RetValue_15 = _14 | RetValue_13;
+  # DEBUG RetValue => RetValue_15
+  # DEBUG BEGIN_STMT
+  _16 = RetValue_15;
+  return _16;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnMSBAMode (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, Ftm_Pwm_Ip_ChannelModeType Selection)
+{
+  uint32 SelectionB;
+  uint32 SelectionA;
+  long unsigned int _1;
+  long unsigned int _2;
+  int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  int _11;
+  long unsigned int _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Selection_13(D) << 2;
+  SelectionA_14 = _1 & 16;
+  # DEBUG SelectionA => SelectionA_14
+  # DEBUG BEGIN_STMT
+  _2 = Selection_13(D) << 2;
+  SelectionB_15 = _2 & 32;
+  # DEBUG SelectionB => SelectionB_15
+  # DEBUG BEGIN_STMT
+  _3 = (int) Channel_16(D);
+  _4 ={v} FtmBase_18(D)->CONTROLS[_3].CSC;
+  _5 = _4 & 4294967279;
+  _6 = (int) Channel_16(D);
+  _7 = SelectionA_14 | _5;
+  FtmBase_18(D)->CONTROLS[_6].CSC ={v} _7;
+  # DEBUG BEGIN_STMT
+  _8 = (int) Channel_16(D);
+  _9 ={v} FtmBase_18(D)->CONTROLS[_8].CSC;
+  _10 = _9 & 4294967263;
+  _11 = (int) Channel_16(D);
+  _12 = SelectionB_15 | _10;
+  FtmBase_18(D)->CONTROLS[_11].CSC ={v} _12;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetChnEdgeLevel (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, Ftm_Pwm_Ip_ChannelModeType Level)
+{
+  uint32 LevelB;
+  uint32 LevelA;
+  long unsigned int _1;
+  long unsigned int _2;
+  int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  int _11;
+  long unsigned int _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Level_13(D) << 2;
+  LevelA_14 = _1 & 4;
+  # DEBUG LevelA => LevelA_14
+  # DEBUG BEGIN_STMT
+  _2 = Level_13(D) << 2;
+  LevelB_15 = _2 & 8;
+  # DEBUG LevelB => LevelB_15
+  # DEBUG BEGIN_STMT
+  _3 = (int) Channel_16(D);
+  _4 ={v} FtmBase_18(D)->CONTROLS[_3].CSC;
+  _5 = _4 & 4294967291;
+  _6 = (int) Channel_16(D);
+  _7 = LevelA_14 | _5;
+  FtmBase_18(D)->CONTROLS[_6].CSC ={v} _7;
+  # DEBUG BEGIN_STMT
+  _8 = (int) Channel_16(D);
+  _9 ={v} FtmBase_18(D)->CONTROLS[_8].CSC;
+  _10 = _9 & 4294967287;
+  _11 = (int) Channel_16(D);
+  _12 = LevelB_15 | _10;
+  FtmBase_18(D)->CONTROLS[_11].CSC ={v} _12;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetChnEdgeLevel (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  uint8 RetValue;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned char _4;
+  int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned char _8;
+  unsigned char _9;
+  unsigned char _14;
+  uint8 _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) Channel_10(D);
+  _2 ={v} FtmBase_12(D)->CONTROLS[_1].CSC;
+  _3 = _2 >> 2;
+  _4 = (unsigned char) _3;
+  RetValue_13 = _4 & 1;
+  # DEBUG RetValue => RetValue_13
+  # DEBUG BEGIN_STMT
+  _5 = (int) Channel_10(D);
+  _6 ={v} FtmBase_12(D)->CONTROLS[_5].CSC;
+  _7 = _6 >> 3;
+  _8 = (unsigned char) _7;
+  _9 = _8 << 1;
+  _14 = _9 & 2;
+  RetValue_15 = _14 | RetValue_13;
+  # DEBUG RetValue => RetValue_15
+  # DEBUG BEGIN_STMT
+  _16 = RetValue_15;
+  return _16;
+
+}
+
+
+Ftm_Pwm_Ip_SetMod (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint16 Value)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->MOD;
+  _2 = _1 & 4294901760;
+  _3 = (long unsigned int) Value_7(D);
+  _4 = _2 | _3;
+  FtmBase_6(D)->MOD ={v} _4;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetCounter (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint16 Value)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->CNT;
+  _2 = _1 & 4294901760;
+  _3 = (long unsigned int) Value_7(D);
+  _4 = _2 | _3;
+  FtmBase_6(D)->CNT ={v} _4;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_EnablePwmChannelOutputs (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
+{
+  unsigned int _1;
+  unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned int) Channel_6(D);
+  _2 = _1 + 16;
+  _3 = 1 << _2;
+  _4 ={v} FtmBase_8(D)->SC;
+  _5 = _3 | _4;
+  FtmBase_8(D)->SC ={v} _5;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_ClearTimerOverflow (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_4(D)->SC;
+  _2 = _1 & 4294966783;
+  FtmBase_4(D)->SC ={v} _2;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetTimerOverflowInt (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean State)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.33_4;
+  long unsigned int iftmp.33_8;
+  long unsigned int iftmp.33_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SC;
+  _2 = _1 & 4294967039;
+  if (State_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.33_9 = 256;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.33_8 = 0;
+
+  <bb 5> :
+  # iftmp.33_4 = PHI <iftmp.33_9(3), iftmp.33_8(4)>
+  _3 = iftmp.33_4 | _2;
+  FtmBase_6(D)->SC ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetCpwms (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  _Bool _3;
+  Ftm_Pwm_Ip_CounterModeType _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_5(D)->SC;
+  _2 = _1 & 32;
+  _3 = _2 != 0;
+  _6 = (Ftm_Pwm_Ip_CounterModeType) _3;
+  return _6;
+
+}
+
+
+Ftm_Pwm_Ip_SetCpwms (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Mode)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int iftmp.4_4;
+  long unsigned int iftmp.4_8;
+  long unsigned int iftmp.4_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SC;
+  _2 = _1 & 4294967263;
+  if (Mode_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.4_9 = 32;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.4_8 = 0;
+
+  <bb 5> :
+  # iftmp.4_4 = PHI <iftmp.4_9(3), iftmp.4_8(4)>
+  _3 = iftmp.4_4 | _2;
+  FtmBase_6(D)->SC ={v} _3;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetClockSource (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm_Ip_ClkSourceType ClockSrc)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_7(D)->SC;
+  _2 = _1 & 4294967271;
+  _3 = ClockSrc_8(D) << 3;
+  _4 = _3 & 24;
+  _5 = _2 | _4;
+  FtmBase_7(D)->SC ={v} _5;
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_GetClockPs (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
+{
+  long unsigned int _1;
+  unsigned char _2;
+  uint8 _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_4(D)->SC;
+  _2 = (unsigned char) _1;
+  _5 = _2 & 7;
+  return _5;
+
+}
+
+
+Ftm_Pwm_Ip_SetClockPs (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm_Ip_ClkPrescalerType Prescaler)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 ={v} FtmBase_6(D)->SC;
+  _2 = _1 & 4294967288;
+  _3 = Prescaler_7(D) & 7;
+  _4 = _2 | _3;
+  FtmBase_6(D)->SC ={v} _4;
+  return;
+
+}
+
+
+DevAssert (volatile boolean x)
+{
+  _Bool x.2_1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  x.2_1 ={v} x;
+  if (x.2_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0");
+  # DEBUG BEGIN_STMT
+  goto <bb 3>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

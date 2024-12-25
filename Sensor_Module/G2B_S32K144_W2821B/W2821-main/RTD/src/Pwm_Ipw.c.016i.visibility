@@ -1,0 +1,185 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: Pwm_Ipw_DeInitInstance Pwm_Ipw_DeInit Pwm_Ipw_InitInstance Pwm_Ipw_Init
+
+
+Marking externally visible variables: Pwm_Ipw_aFtmDutyCycle
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Ftm_Pwm_Ip_DeInit/7 (Ftm_Pwm_Ip_DeInit) @069a8540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_Ipw_DeInitInstance/5 
+  Calls: 
+Ftm_Pwm_Ip_Init/6 (Ftm_Pwm_Ip_Init) @069a8ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pwm_Ipw_InitInstance/3 
+  Calls: 
+Pwm_Ipw_DeInitInstance/5 (Pwm_Ipw_DeInitInstance) @069a89a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Ftm_Pwm_Ip_DeInit/7 
+Pwm_Ipw_DeInit/4 (Pwm_Ipw_DeInit) @069a8700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Pwm_Ipw_aFtmDutyCycle/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+Pwm_Ipw_InitInstance/3 (Pwm_Ipw_InitInstance) @069a8460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Ftm_Pwm_Ip_Init/6 
+Pwm_Ipw_Init/2 (Pwm_Ipw_Init) @069a81c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Pwm_Ipw_aFtmDutyCycle/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+Pwm_Ipw_aFtmDutyCycle/1 (Pwm_Ipw_aFtmDutyCycle) @069a7048
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Pwm_Ipw_Init/2 (write)Pwm_Ipw_DeInit/4 (write)
+  Availability: available
+  Varpool flags:
+Pwm_Ipw_DeInitInstance (const struct Pwm_IpwInstanceConfigType * const IpConfig)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig->InstanceType;
+  switch (_1) <default: <L6> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig->FtmInsConfig;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = IpConfig->InstanceId;
+  Ftm_Pwm_Ip_DeInit (_3);
+
+  <bb 5> :
+<L6>:
+  return;
+
+}
+
+
+Pwm_Ipw_DeInit (const struct Pwm_IpwChannelConfigType * const IpConfig, Pwm_OutputStateType ChannelIdleState)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig->ChannelType;
+  switch (_1) <default: <L4> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig->ChannelInstanceId;
+  _3 = (int) _2;
+  _4 = IpConfig->FtmChConfig;
+  _5 = _4->ChannelId;
+  _6 = (int) _5;
+  Pwm_Ipw_aFtmDutyCycle[_3][_6] = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Pwm_Ipw_InitInstance (const struct Pwm_IpwInstanceConfigType * const IpConfig)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig->InstanceType;
+  switch (_1) <default: <L6> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig->FtmInsConfig;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = IpConfig->InstanceId;
+  _4 = IpConfig->FtmInsConfig;
+  Ftm_Pwm_Ip_Init (_3, _4);
+
+  <bb 5> :
+<L6>:
+  return;
+
+}
+
+
+Pwm_Ipw_Init (const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig->ChannelType;
+  switch (_1) <default: <L4> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig->ChannelInstanceId;
+  _3 = (int) _2;
+  _4 = IpConfig->FtmChConfig;
+  _5 = _4->ChannelId;
+  _6 = (int) _5;
+  _7 = IpConfig->ChannelDutyCycle;
+  Pwm_Ipw_aFtmDutyCycle[_3][_6] = _7;
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+<L4>:
+  return;
+
+}
+
+

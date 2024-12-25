@@ -1,0 +1,125 @@
+
+Analyzing function: Mcl_DeInit/2
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4
+;; 2 succs { 3 4 }
+;; 3 succs { 4 }
+;; 4 succs { 1 }
+
+Analyzing function body size: Mcl_DeInit
+
+IPA function summary for Mcl_DeInit/2 inlinable
+  global time:     5.700000
+  self size:       7
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:4.000000, time:3.700000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: Mcl_Init/1
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4
+;; 2 succs { 3 4 }
+;; 3 succs { 4 }
+;; 4 succs { 1 }
+
+Analyzing function body size: Mcl_Init
+
+IPA function summary for Mcl_Init/1 inlinable
+  global time:     5.300000
+  self size:       7
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:4.000000, time:3.300000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+Symbol table:
+
+Mcl_DeInit/2 (Mcl_DeInit) @06969460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcl_pxConfig/0 (read)Mcl_pxConfig/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Mcl_Init/1 (Mcl_Init) @069691c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcl_pxConfig/0 (read)Mcl_pxConfig/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Mcl_pxConfig/0 (Mcl_pxConfig) @06966990
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: Mcl_Init/1 (write)Mcl_Init/1 (read)Mcl_DeInit/2 (read)Mcl_DeInit/2 (write)
+  Availability: available
+  Varpool flags:
+Mcl_DeInit ()
+{
+  const struct Mcl_ConfigType * Mcl_pxConfig.2_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Mcl_pxConfig.2_1 = Mcl_pxConfig;
+  if (Mcl_pxConfig.2_1 != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 4>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  Mcl_pxConfig = 0B;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Mcl_Init (const struct Mcl_ConfigType * const ConfigPtr)
+{
+  const struct Mcl_ConfigType * Mcl_pxConfig.0_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Mcl_pxConfig.0_1 = Mcl_pxConfig;
+  if (Mcl_pxConfig.0_1 == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  Mcl_pxConfig = ConfigPtr_4(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

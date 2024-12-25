@@ -1,0 +1,133 @@
+Pwm_Ipw_DeInitInstance (const struct Pwm_IpwInstanceConfigType * const IpConfig)
+{
+  <unnamed type> _1;
+  const struct Ftm_Pwm_Ip_UserCfgType * _2;
+  unsigned char _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig_6(D)->InstanceType;
+  switch (_1) <default: <L6> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig_6(D)->FtmInsConfig;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = IpConfig_6(D)->InstanceId;
+  Ftm_Pwm_Ip_DeInit (_3);
+
+  <bb 5> :
+<L6>:
+  return;
+
+}
+
+
+Pwm_Ipw_DeInit (const struct Pwm_IpwChannelConfigType * const IpConfig, Pwm_OutputStateType ChannelIdleState)
+{
+  <unnamed type> _1;
+  unsigned char _2;
+  int _3;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _4;
+  unsigned char _5;
+  int _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig_9(D)->ChannelType;
+  switch (_1) <default: <L4> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig_9(D)->ChannelInstanceId;
+  _3 = (int) _2;
+  _4 = IpConfig_9(D)->FtmChConfig;
+  _5 = _4->ChannelId;
+  _6 = (int) _5;
+  Pwm_Ipw_aFtmDutyCycle[_3][_6] = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Pwm_Ipw_InitInstance (const struct Pwm_IpwInstanceConfigType * const IpConfig)
+{
+  <unnamed type> _1;
+  const struct Ftm_Pwm_Ip_UserCfgType * _2;
+  unsigned char _3;
+  const struct Ftm_Pwm_Ip_UserCfgType * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig_7(D)->InstanceType;
+  switch (_1) <default: <L6> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig_7(D)->FtmInsConfig;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = IpConfig_7(D)->InstanceId;
+  _4 = IpConfig_7(D)->FtmInsConfig;
+  Ftm_Pwm_Ip_Init (_3, _4);
+
+  <bb 5> :
+<L6>:
+  return;
+
+}
+
+
+Pwm_Ipw_Init (const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  <unnamed type> _1;
+  unsigned char _2;
+  int _3;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _4;
+  unsigned char _5;
+  int _6;
+  short unsigned int _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = IpConfig_10(D)->ChannelType;
+  switch (_1) <default: <L4> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = IpConfig_10(D)->ChannelInstanceId;
+  _3 = (int) _2;
+  _4 = IpConfig_10(D)->FtmChConfig;
+  _5 = _4->ChannelId;
+  _6 = (int) _5;
+  _7 = IpConfig_10(D)->ChannelDutyCycle;
+  Pwm_Ipw_aFtmDutyCycle[_3][_6] = _7;
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+<L4>:
+  return;
+
+}
+
+

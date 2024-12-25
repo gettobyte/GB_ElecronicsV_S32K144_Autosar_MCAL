@@ -1,0 +1,190 @@
+IPA function summary for MCL_FLEXIO_ISR/1 inlinable
+  global time:     13.000000
+  self size:       5
+  global size:     5
+  min size:       2
+  self stack:      0
+  global stack:    0
+    size:1.000000, time:1.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    Flexio_Mcl_Ip_CommonIrq/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 1 time: 10callee size: 8 stack: 0
+
+IPA function summary for Flexio_Mcl_Ip_CommonIrq/0 inlinable
+  global time:     32.000000
+  self size:       17
+  global size:     17
+  min size:       12
+  self stack:      0
+  global stack:    0
+    size:8.000000, time:6.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    Flexio_Mcl_Ip_GetAllTimerStatus/4 function body not available
+      loop depth: 0 freq:1.00 size: 3 time: 12
+    Flexio_Mcl_Ip_GetAllShifterErrorStatus/3 function body not available
+      loop depth: 0 freq:1.00 size: 3 time: 12
+
+
+Flattening functions:
+Overall time estimate: 45.000000 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+Enqueueing calls in MCL_FLEXIO_ISR/1.
+Enqueueing calls in Flexio_Mcl_Ip_CommonIrq/0.
+
+Considering Flexio_Mcl_Ip_CommonIrq/0 with 17 size
+ to be inlined into MCL_FLEXIO_ISR/1 in ../RTD/src/Flexio_Mcl_Ip_Irq.c:787
+ Estimated badness is -0.205128, frequency 1.00.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 33.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :        2 calls, 2.000000 freq, 0 count
+IPA function summary for MCL_FLEXIO_ISR/1 inlinable
+  global time:     33.000000
+  self size:       5
+  global size:     18
+  min size:       14
+  self stack:      0
+  global stack:    0
+    size:9.000000, time:7.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    Flexio_Mcl_Ip_CommonIrq/0 inlined
+      loop depth: 0 freq:1.00 size: 1 time: 10callee size: 8 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      Flexio_Mcl_Ip_GetAllTimerStatus/4 function body not available
+        loop depth: 0 freq:1.00 size: 3 time: 12
+      Flexio_Mcl_Ip_GetAllShifterErrorStatus/3 function body not available
+        loop depth: 0 freq:1.00 size: 3 time: 12
+
+Symbol table:
+
+Flexio_Ip_baIpIsInitialized/5 (Flexio_Ip_baIpIsInitialized) @05de0f78
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Flexio_Mcl_Ip_CommonIrq/0 (read)
+  Availability: not_available
+  Varpool flags:
+Flexio_Mcl_Ip_GetAllTimerStatus/4 (Flexio_Mcl_Ip_GetAllTimerStatus) @05de22a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Flexio_Mcl_Ip_CommonIrq/0 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Flexio_Mcl_Ip_GetAllShifterErrorStatus/3 (Flexio_Mcl_Ip_GetAllShifterErrorStatus) @05de21c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Flexio_Mcl_Ip_CommonIrq/0 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Flexio_Ip_paxBase/2 (Flexio_Ip_paxBase) @05de0ea0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Flexio_Mcl_Ip_CommonIrq/0 (read)
+  Availability: not_available
+  Varpool flags: read-only
+MCL_FLEXIO_ISR/1 (MCL_FLEXIO_ISR) @05cc3380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Flexio_Mcl_Ip_CommonIrq/0 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Flexio_Mcl_Ip_CommonIrq/0 (Flexio_Mcl_Ip_CommonIrq) @05cc3d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: Flexio_Ip_paxBase/2 (read)Flexio_Ip_baIpIsInitialized/5 (read)
+  Referring: 
+  Function Flexio_Mcl_Ip_CommonIrq/0 is inline copy in MCL_FLEXIO_ISR/1
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: MCL_FLEXIO_ISR/1 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: Flexio_Mcl_Ip_GetAllTimerStatus/4 (1073741824 (estimated locally),1.00 per call) Flexio_Mcl_Ip_GetAllShifterErrorStatus/3 (1073741824 (estimated locally),1.00 per call) 
+
+;; Function MCL_FLEXIO_ISR (MCL_FLEXIO_ISR, funcdef_no=1, decl_uid=5734, cgraph_uid=2, symbol_order=1)
+
+
+Symbols to be put in SSA form
+{ D.5758 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 7
+Number of blocks to update: 6 ( 86%)
+
+
+Merging blocks 2 and 4
+Merging blocks 6 and 3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4
+;; 2 succs { 4 3 }
+;; 3 succs { 4 }
+;; 4 succs { 1 }
+MCL_FLEXIO_ISR ()
+{
+  struct FLEXIO_Type * BaseAddr;
+  long unsigned int _5;
+  long unsigned int _6;
+  _Bool _7;
+  long unsigned int _8;
+  long unsigned int _9;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY Flexio_Mcl_Ip_CommonIrq
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  BaseAddr_4 = Flexio_Ip_paxBase[0];
+  # DEBUG BaseAddr => BaseAddr_4
+  # DEBUG BEGIN_STMT
+  _5 = Flexio_Mcl_Ip_GetAllShifterErrorStatus (BaseAddr_4);
+  # DEBUG u8ShifterErrMaskFlag => (uint8) _5
+  # DEBUG BEGIN_STMT
+  _6 = Flexio_Mcl_Ip_GetAllTimerStatus (BaseAddr_4);
+  # DEBUG u8TimerMaskFlag => (uint8) _6
+  # DEBUG BEGIN_STMT
+  _7 = Flexio_Ip_baIpIsInitialized[0];
+  if (_7 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _8 = _5 & 255;
+  BaseAddr_4->SHIFTERR ={v} _8;
+  # DEBUG BEGIN_STMT
+  _9 = _6 & 255;
+  BaseAddr_4->TIMSTAT ={v} _9;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BaseAddr => NULL
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
