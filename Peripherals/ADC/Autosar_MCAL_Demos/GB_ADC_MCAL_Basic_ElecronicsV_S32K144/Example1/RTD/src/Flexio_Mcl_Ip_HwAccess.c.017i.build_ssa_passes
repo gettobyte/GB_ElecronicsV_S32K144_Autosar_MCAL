@@ -1,0 +1,409 @@
+Flexio_Mcl_Ip_Init (struct FLEXIO_Type * baseAddr)
+{
+  <bb 2> :
+  Flexio_Mcl_Ip_SetSoftwareReset (baseAddr, 1);
+  baseAddr->CTRL = 0;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetTimerInterrupt (struct FLEXIO_Type * baseAddr, uint8 interruptMask, boolean enable)
+{
+  uint32 tmp;
+
+  <bb 2> :
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45 ();
+  tmp = baseAddr->TIMIEN;
+  if (enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) interruptMask;
+  tmp = tmp | _1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _2 = (long unsigned int) interruptMask;
+  _3 = ~_2;
+  tmp = tmp & _3;
+
+  <bb 5> :
+  baseAddr->TIMIEN = tmp;
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllTimerInterrupt (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 D.6042;
+
+  <bb 2> :
+  D.6042 = baseAddr->TIMIEN;
+
+  <bb 3> :
+<L0>:
+  return D.6042;
+
+}
+
+
+Flexio_Mcl_Ip_SetShifterDMARequest (struct FLEXIO_Type * baseAddr, uint8 requestMask, boolean enable)
+{
+  uint32 tmp;
+
+  <bb 2> :
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44 ();
+  tmp = baseAddr->SHIFTSDEN;
+  if (enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) requestMask;
+  tmp = tmp | _1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _2 = (long unsigned int) requestMask;
+  _3 = ~_2;
+  tmp = tmp & _3;
+
+  <bb 5> :
+  baseAddr->SHIFTSDEN = tmp;
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetShifterInterrupt (struct FLEXIO_Type * baseAddr, uint8 interruptMask, boolean enable)
+{
+  uint32 tmp;
+
+  <bb 2> :
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43 ();
+  tmp = baseAddr->SHIFTSIEN;
+  if (enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) interruptMask;
+  tmp = tmp | _1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _2 = (long unsigned int) interruptMask;
+  _3 = ~_2;
+  tmp = tmp & _3;
+
+  <bb 5> :
+  baseAddr->SHIFTSIEN = tmp;
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetShifterErrorInterrupt (struct FLEXIO_Type * baseAddr, uint8 interruptMask, boolean enable)
+{
+  uint32 tmp;
+
+  <bb 2> :
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42 ();
+  tmp = baseAddr->SHIFTEIEN;
+  if (enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) interruptMask;
+  tmp = tmp | _1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _2 = (long unsigned int) interruptMask;
+  _3 = ~_2;
+  tmp = tmp & _3;
+
+  <bb 5> :
+  baseAddr->SHIFTEIEN = tmp;
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllShifterErrorInterrupt (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 D.6031;
+
+  <bb 2> :
+  D.6031 = baseAddr->SHIFTEIEN;
+
+  <bb 3> :
+<L0>:
+  return D.6031;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllShifterInterrupt (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 D.6029;
+
+  <bb 2> :
+  D.6029 = baseAddr->SHIFTSIEN;
+
+  <bb 3> :
+<L0>:
+  return D.6029;
+
+}
+
+
+Flexio_Mcl_Ip_ClearTimerStatus (struct FLEXIO_Type * baseAddr, uint8 timer)
+{
+  <bb 2> :
+  _1 = (int) timer;
+  _2 = 1 << _1;
+  baseAddr->TIMSTAT = _2;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllTimerStatus (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 D.6027;
+
+  <bb 2> :
+  D.6027 = baseAddr->TIMSTAT;
+
+  <bb 3> :
+<L0>:
+  return D.6027;
+
+}
+
+
+Flexio_Mcl_Ip_GetTimerInterruptEnable (const struct FLEXIO_Type * baseAddr, uint8 timer)
+{
+  boolean D.6025;
+
+  <bb 2> :
+  _1 = baseAddr->TIMIEN;
+  _2 = (int) timer;
+  _3 = _1 >> _2;
+  _4 = _3 & 1;
+  D.6025 = _4 != 0;
+
+  <bb 3> :
+<L0>:
+  return D.6025;
+
+}
+
+
+Flexio_Mcl_Ip_GetTimerStatus (const struct FLEXIO_Type * baseAddr, uint8 timer)
+{
+  boolean D.6023;
+
+  <bb 2> :
+  _1 = baseAddr->TIMSTAT;
+  _2 = (int) timer;
+  _3 = _1 >> _2;
+  _4 = _3 & 1;
+  D.6023 = _4 != 0;
+
+  <bb 3> :
+<L0>:
+  return D.6023;
+
+}
+
+
+Flexio_Mcl_Ip_ClearShifterErrorStatus (struct FLEXIO_Type * baseAddr, uint8 shifter)
+{
+  <bb 2> :
+  _1 = (int) shifter;
+  _2 = 1 << _1;
+  baseAddr->SHIFTERR = _2;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllShifterErrorStatus (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 D.6021;
+
+  <bb 2> :
+  D.6021 = baseAddr->SHIFTERR;
+
+  <bb 3> :
+<L0>:
+  return D.6021;
+
+}
+
+
+Flexio_Mcl_Ip_GetShifterErrorStatus (const struct FLEXIO_Type * baseAddr, uint8 shifter)
+{
+  boolean D.6019;
+
+  <bb 2> :
+  _1 = baseAddr->SHIFTERR;
+  _2 = (int) shifter;
+  _3 = _1 >> _2;
+  _4 = _3 & 1;
+  D.6019 = _4 != 0;
+
+  <bb 3> :
+<L0>:
+  return D.6019;
+
+}
+
+
+Flexio_Mcl_Ip_ClearShifterStatus (struct FLEXIO_Type * baseAddr, uint8 shifter)
+{
+  <bb 2> :
+  _1 = (int) shifter;
+  _2 = 1 << _1;
+  baseAddr->SHIFTSTAT = _2;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllShifterStatus (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 D.6017;
+
+  <bb 2> :
+  D.6017 = baseAddr->SHIFTSTAT;
+
+  <bb 3> :
+<L0>:
+  return D.6017;
+
+}
+
+
+Flexio_Mcl_Ip_GetShifterStatus (const struct FLEXIO_Type * baseAddr, uint8 shifter)
+{
+  boolean D.6015;
+
+  <bb 2> :
+  _1 = baseAddr->SHIFTSTAT;
+  _2 = (int) shifter;
+  _3 = _1 >> _2;
+  _4 = _3 & 1;
+  D.6015 = _4 != 0;
+
+  <bb 3> :
+<L0>:
+  return D.6015;
+
+}
+
+
+Flexio_Mcl_Ip_SetEnable (struct FLEXIO_Type * baseAddr, boolean enable)
+{
+  uint32 regValue;
+  long unsigned int iftmp.2;
+
+  <bb 2> :
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41 ();
+  regValue = baseAddr->CTRL;
+  regValue = regValue & 4294967294;
+  if (enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.2 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.2 = 0;
+
+  <bb 5> :
+  regValue = iftmp.2 | regValue;
+  baseAddr->CTRL = regValue;
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetDebugEnable (struct FLEXIO_Type * baseAddr, boolean enable)
+{
+  uint32 regValue;
+  long unsigned int iftmp.1;
+
+  <bb 2> :
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40 ();
+  regValue = baseAddr->CTRL;
+  regValue = regValue & 3221225471;
+  if (enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.1 = 1073741824;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.1 = 0;
+
+  <bb 5> :
+  regValue = iftmp.1 | regValue;
+  baseAddr->CTRL = regValue;
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetSoftwareReset (struct FLEXIO_Type * baseAddr, boolean enable)
+{
+  uint32 regValue;
+  long unsigned int iftmp.0;
+
+  <bb 2> :
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_39 ();
+  regValue = baseAddr->CTRL;
+  regValue = regValue & 4294967293;
+  if (enable != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.0 = 2;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.0 = 0;
+
+  <bb 5> :
+  regValue = iftmp.0 | regValue;
+  baseAddr->CTRL = regValue;
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_39 ();
+  return;
+
+}
+
+

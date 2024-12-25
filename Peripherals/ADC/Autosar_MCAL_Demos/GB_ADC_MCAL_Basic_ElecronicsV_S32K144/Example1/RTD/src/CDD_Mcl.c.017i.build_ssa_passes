@@ -1,0 +1,72 @@
+Mcl_SetTrgMuxLock (const uint32 Trigger)
+{
+  <bb 2> :
+  Trgmux_Ip_SetLock (Trigger);
+  return;
+
+}
+
+
+Mcl_SetTrgMuxInput (const uint32 Trigger, const uint32 Input)
+{
+  <bb 2> :
+  Trgmux_Ip_SetInput (Trigger, Input);
+  return;
+
+}
+
+
+Mcl_DeInit ()
+{
+  <bb 2> :
+  Mcl_pConfig.4_1 = Mcl_pConfig;
+  if (Mcl_pConfig.4_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Mcl_pConfig = 0B;
+
+  <bb 4> :
+  return;
+
+}
+
+
+Mcl_Init (const struct Mcl_ConfigType * const ConfigPtr)
+{
+  <bb 2> :
+  Mcl_pConfig.0_1 = Mcl_pConfig;
+  if (Mcl_pConfig.0_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  Mcl_pConfig = ConfigPtr;
+  Mcl_pConfig.1_2 = Mcl_pConfig;
+  if (Mcl_pConfig.1_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  Mcl_pConfig.2_3 = Mcl_pConfig;
+  _4 = Mcl_pConfig.2_3->pxTrgmuxInitType;
+  if (_4 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  Mcl_pConfig.3_5 = Mcl_pConfig;
+  _6 = Mcl_pConfig.3_5->pxTrgmuxInitType;
+  Trgmux_Ip_Init (_6);
+
+  <bb 6> :
+  return;
+
+}
+
+

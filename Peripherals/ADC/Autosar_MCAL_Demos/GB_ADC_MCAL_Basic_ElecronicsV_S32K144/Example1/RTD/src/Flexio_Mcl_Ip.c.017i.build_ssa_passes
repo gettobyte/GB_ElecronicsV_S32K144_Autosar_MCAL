@@ -1,0 +1,52 @@
+Flexio_Mcl_Ip_DeinitDevice (uint32 instance)
+{
+  struct FLEXIO_Type * baseAddr;
+
+  <bb 2> :
+  baseAddr = 1074110464B;
+  Flexio_Mcl_Ip_Init (baseAddr);
+  Flexio_Ip_IpIsInitialized[instance] = 0;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_InitDevice (const struct Flexio_Ip_InstanceConfigType * const pFlexioInitType)
+{
+  boolean LocDebugEnable;
+  uint8 LocInstance;
+  Flexio_Ip_CommonStatusType status;
+  struct FLEXIO_Type * baseAddr;
+  Flexio_Ip_CommonStatusType D.5758;
+
+  <bb 2> :
+  status = 0;
+  LocInstance = pFlexioInitType->instance;
+  LocDebugEnable = pFlexioInitType->debugEnable;
+  _1 = (int) LocInstance;
+  baseAddr = 1074110464B;
+  _2 = (int) LocInstance;
+  _3 = Flexio_Ip_IpIsInitialized[_2];
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  status = 1;
+
+  <bb 4> :
+  Flexio_Mcl_Ip_Init (baseAddr);
+  Flexio_Mcl_Ip_SetEnable (baseAddr, 1);
+  Flexio_Mcl_Ip_SetDebugEnable (baseAddr, LocDebugEnable);
+  _4 = (int) LocInstance;
+  Flexio_Ip_IpIsInitialized[_4] = 1;
+  D.5758 = status;
+
+  <bb 5> :
+<L2>:
+  return D.5758;
+
+}
+
+

@@ -1,0 +1,1130 @@
+Trivially needed symbols: main TestDelay pwm_callback exit_code
+Trivially needed symbols: DelayTimer
+
+
+Initial Symbol table:
+
+Pwm_SetPeriodAndDuty/22 (Pwm_SetPeriodAndDuty) @062aaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetOutputToIdle/21 (Pwm_SetOutputToIdle) @062aa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle_NoUpdate/20 (Pwm_SetDutyCycle_NoUpdate) @062aa8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle/19 (Pwm_SetDutyCycle) @062aa7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 main/4 main/4 
+  Calls: 
+Pwm_SyncUpdate/18 (Pwm_SyncUpdate) @062aa700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_Config_BOARD_InitPeripherals/17 (Pwm_Config_BOARD_InitPeripherals) @061a1ea0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Pwm_Init/16 (Pwm_Init) @062aa620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+IntCtrl_Ip_EnableIrq/15 (IntCtrl_Ip_EnableIrq) @062aa540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+FTM_0_CH_0_CH_1_ISR/14 (FTM_0_CH_0_CH_1_ISR) @062aa460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/4 (addr)
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/13 (IntCtrl_Ip_InstallHandler) @062aa380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Port_Init/12 (Port_Init) @062aa2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_DistributePll/11 (Clock_Ip_DistributePll) @062aa1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_GetPllStatus/10 (Clock_Ip_GetPllStatus) @062aa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @061a1c60
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)main/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/8 (Clock_Ip_Init) @062aa000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 main/4 
+  Calls: 
+DelayTimer/7 (DelayTimer) @061a17e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @061a09a0
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+Pwm_GetChannelState/6 (Pwm_GetChannelState) @061a0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+Pwm_GetOutputState/5 (Pwm_GetOutputState) @061a0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+main/4 (main) @061a09a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @01733ea0
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)FTM_0_CH_0_CH_1_ISR/14 (addr)Pwm_Config_BOARD_InitPeripherals/17 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/3 Pwm_SetPeriodAndDuty/22 TestDelay/3 Pwm_SetDutyCycle/19 TestDelay/3 Pwm_SetOutputToIdle/21 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SetDutyCycle_NoUpdate/20 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SyncUpdate/18 Pwm_Init/16 IntCtrl_Ip_EnableIrq/15 IntCtrl_Ip_InstallHandler/13 Port_Init/12 Clock_Ip_DistributePll/11 Clock_Ip_GetPllStatus/10 Clock_Ip_Init/8 Clock_Ip_Init/8 
+TestDelay/3 (TestDelay) @061a0700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @061a09a0
+  References: DelayTimer/7 (read)DelayTimer/7 (write)DelayTimer/7 (read)DelayTimer/7 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/4 main/4 main/4 main/4 main/4 
+  Calls: 
+pwm_callback/2 (pwm_callback) @061a0380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @061a0700
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Pwm_GetChannelState/6 Pwm_GetOutputState/5 
+exit_code/1 (exit_code) @0619bea0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @061a0380
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+DevAssert/0 (DevAssert) @05fd22a0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+
+Removing unused symbols: DevAssert
+
+Reclaimed Symbol table:
+
+Pwm_SetPeriodAndDuty/22 (Pwm_SetPeriodAndDuty) @062aaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetOutputToIdle/21 (Pwm_SetOutputToIdle) @062aa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle_NoUpdate/20 (Pwm_SetDutyCycle_NoUpdate) @062aa8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle/19 (Pwm_SetDutyCycle) @062aa7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 main/4 main/4 
+  Calls: 
+Pwm_SyncUpdate/18 (Pwm_SyncUpdate) @062aa700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_Config_BOARD_InitPeripherals/17 (Pwm_Config_BOARD_InitPeripherals) @061a1ea0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Pwm_Init/16 (Pwm_Init) @062aa620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+IntCtrl_Ip_EnableIrq/15 (IntCtrl_Ip_EnableIrq) @062aa540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+FTM_0_CH_0_CH_1_ISR/14 (FTM_0_CH_0_CH_1_ISR) @062aa460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/4 (addr)
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/13 (IntCtrl_Ip_InstallHandler) @062aa380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Port_Init/12 (Port_Init) @062aa2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_DistributePll/11 (Clock_Ip_DistributePll) @062aa1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_GetPllStatus/10 (Clock_Ip_GetPllStatus) @062aa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @061a1c60
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)main/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/8 (Clock_Ip_Init) @062aa000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 main/4 
+  Calls: 
+DelayTimer/7 (DelayTimer) @061a17e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+Pwm_GetChannelState/6 (Pwm_GetChannelState) @061a0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+Pwm_GetOutputState/5 (Pwm_GetOutputState) @061a0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+main/4 (main) @061a09a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)FTM_0_CH_0_CH_1_ISR/14 (addr)Pwm_Config_BOARD_InitPeripherals/17 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/3 Pwm_SetPeriodAndDuty/22 TestDelay/3 Pwm_SetDutyCycle/19 TestDelay/3 Pwm_SetOutputToIdle/21 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SetDutyCycle_NoUpdate/20 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SyncUpdate/18 Pwm_Init/16 IntCtrl_Ip_EnableIrq/15 IntCtrl_Ip_InstallHandler/13 Port_Init/12 Clock_Ip_DistributePll/11 Clock_Ip_GetPllStatus/10 Clock_Ip_Init/8 Clock_Ip_Init/8 
+TestDelay/3 (TestDelay) @061a0700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer/7 (read)DelayTimer/7 (write)DelayTimer/7 (read)DelayTimer/7 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/4 main/4 main/4 main/4 main/4 
+  Calls: 
+pwm_callback/2 (pwm_callback) @061a0380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Pwm_GetChannelState/6 Pwm_GetOutputState/5 
+exit_code/1 (exit_code) @0619bea0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+
+
+Initial Symbol table:
+
+Pwm_SetPeriodAndDuty/22 (Pwm_SetPeriodAndDuty) @062aaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetOutputToIdle/21 (Pwm_SetOutputToIdle) @062aa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle_NoUpdate/20 (Pwm_SetDutyCycle_NoUpdate) @062aa8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle/19 (Pwm_SetDutyCycle) @062aa7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 main/4 main/4 
+  Calls: 
+Pwm_SyncUpdate/18 (Pwm_SyncUpdate) @062aa700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_Config_BOARD_InitPeripherals/17 (Pwm_Config_BOARD_InitPeripherals) @061a1ea0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Pwm_Init/16 (Pwm_Init) @062aa620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+IntCtrl_Ip_EnableIrq/15 (IntCtrl_Ip_EnableIrq) @062aa540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+FTM_0_CH_0_CH_1_ISR/14 (FTM_0_CH_0_CH_1_ISR) @062aa460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/4 (addr)
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/13 (IntCtrl_Ip_InstallHandler) @062aa380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Port_Init/12 (Port_Init) @062aa2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_DistributePll/11 (Clock_Ip_DistributePll) @062aa1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_GetPllStatus/10 (Clock_Ip_GetPllStatus) @062aa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @061a1c60
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)main/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/8 (Clock_Ip_Init) @062aa000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 main/4 
+  Calls: 
+DelayTimer.7105/7 (DelayTimer) @061a17e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+Pwm_GetChannelState/6 (Pwm_GetChannelState) @061a0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+Pwm_GetOutputState/5 (Pwm_GetOutputState) @061a0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+main/4 (main) @061a09a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)FTM_0_CH_0_CH_1_ISR/14 (addr)Pwm_Config_BOARD_InitPeripherals/17 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/3 Pwm_SetPeriodAndDuty/22 TestDelay/3 Pwm_SetDutyCycle/19 TestDelay/3 Pwm_SetOutputToIdle/21 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SetDutyCycle_NoUpdate/20 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SyncUpdate/18 Pwm_Init/16 IntCtrl_Ip_EnableIrq/15 IntCtrl_Ip_InstallHandler/13 Port_Init/12 Clock_Ip_DistributePll/11 Clock_Ip_GetPllStatus/10 Clock_Ip_Init/8 Clock_Ip_Init/8 
+TestDelay/3 (TestDelay) @061a0700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer.7105/7 (read)DelayTimer.7105/7 (write)DelayTimer.7105/7 (read)DelayTimer.7105/7 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/4 main/4 main/4 main/4 main/4 
+  Calls: 
+pwm_callback/2 (pwm_callback) @061a0380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Pwm_GetChannelState/6 Pwm_GetOutputState/5 
+exit_code/1 (exit_code) @0619bea0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+Pwm_SetPeriodAndDuty/22 (Pwm_SetPeriodAndDuty) @062aaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetOutputToIdle/21 (Pwm_SetOutputToIdle) @062aa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle_NoUpdate/20 (Pwm_SetDutyCycle_NoUpdate) @062aa8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle/19 (Pwm_SetDutyCycle) @062aa7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 main/4 main/4 
+  Calls: 
+Pwm_SyncUpdate/18 (Pwm_SyncUpdate) @062aa700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_Config_BOARD_InitPeripherals/17 (Pwm_Config_BOARD_InitPeripherals) @061a1ea0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Pwm_Init/16 (Pwm_Init) @062aa620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+IntCtrl_Ip_EnableIrq/15 (IntCtrl_Ip_EnableIrq) @062aa540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+FTM_0_CH_0_CH_1_ISR/14 (FTM_0_CH_0_CH_1_ISR) @062aa460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/4 (addr)
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/13 (IntCtrl_Ip_InstallHandler) @062aa380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Port_Init/12 (Port_Init) @062aa2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_DistributePll/11 (Clock_Ip_DistributePll) @062aa1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_GetPllStatus/10 (Clock_Ip_GetPllStatus) @062aa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @061a1c60
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)main/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/8 (Clock_Ip_Init) @062aa000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: main/4 main/4 
+  Calls: 
+DelayTimer.7105/7 (DelayTimer) @061a17e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+Pwm_GetChannelState/6 (Pwm_GetChannelState) @061a0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+Pwm_GetOutputState/5 (Pwm_GetOutputState) @061a0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+main/4 (main) @061a09a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)FTM_0_CH_0_CH_1_ISR/14 (addr)Pwm_Config_BOARD_InitPeripherals/17 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/3 Pwm_SetPeriodAndDuty/22 TestDelay/3 Pwm_SetDutyCycle/19 TestDelay/3 Pwm_SetOutputToIdle/21 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SetDutyCycle_NoUpdate/20 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SyncUpdate/18 Pwm_Init/16 IntCtrl_Ip_EnableIrq/15 IntCtrl_Ip_InstallHandler/13 Port_Init/12 Clock_Ip_DistributePll/11 Clock_Ip_GetPllStatus/10 Clock_Ip_Init/8 Clock_Ip_Init/8 
+TestDelay/3 (TestDelay) @061a0700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer.7105/7 (read)DelayTimer.7105/7 (write)DelayTimer.7105/7 (read)DelayTimer.7105/7 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/4 main/4 main/4 main/4 main/4 
+  Calls: 
+pwm_callback/2 (pwm_callback) @061a0380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Pwm_GetChannelState/6 Pwm_GetOutputState/5 
+exit_code/1 (exit_code) @0619bea0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+Pwm_SetPeriodAndDuty/22 (Pwm_SetPeriodAndDuty) @062aaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetOutputToIdle/21 (Pwm_SetOutputToIdle) @062aa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle_NoUpdate/20 (Pwm_SetDutyCycle_NoUpdate) @062aa8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_SetDutyCycle/19 (Pwm_SetDutyCycle) @062aa7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 main/4 main/4 
+  Calls: 
+Pwm_SyncUpdate/18 (Pwm_SyncUpdate) @062aa700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Pwm_Config_BOARD_InitPeripherals/17 (Pwm_Config_BOARD_InitPeripherals) @061a1ea0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Pwm_Init/16 (Pwm_Init) @062aa620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+IntCtrl_Ip_EnableIrq/15 (IntCtrl_Ip_EnableIrq) @062aa540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+FTM_0_CH_0_CH_1_ISR/14 (FTM_0_CH_0_CH_1_ISR) @062aa460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: main/4 (addr)
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/13 (IntCtrl_Ip_InstallHandler) @062aa380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Port_Init/12 (Port_Init) @062aa2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_DistributePll/11 (Clock_Ip_DistributePll) @062aa1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Clock_Ip_GetPllStatus/10 (Clock_Ip_GetPllStatus) @062aa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 
+  Calls: 
+Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @061a1c60
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/4 (addr)main/4 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/8 (Clock_Ip_Init) @062aa000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: main/4 main/4 
+  Calls: 
+DelayTimer.7105/7 (DelayTimer) @061a17e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: available
+  Varpool flags: initialized
+Pwm_GetChannelState/6 (Pwm_GetChannelState) @061a0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+Pwm_GetOutputState/5 (Pwm_GetOutputState) @061a0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: pwm_callback/2 
+  Calls: 
+main/4 (main) @061a09a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (addr)FTM_0_CH_0_CH_1_ISR/14 (addr)Pwm_Config_BOARD_InitPeripherals/17 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: TestDelay/3 Pwm_SetPeriodAndDuty/22 TestDelay/3 Pwm_SetDutyCycle/19 TestDelay/3 Pwm_SetOutputToIdle/21 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SetDutyCycle_NoUpdate/20 TestDelay/3 Pwm_SetDutyCycle/19 Pwm_SyncUpdate/18 Pwm_Init/16 IntCtrl_Ip_EnableIrq/15 IntCtrl_Ip_InstallHandler/13 Port_Init/12 Clock_Ip_DistributePll/11 Clock_Ip_GetPllStatus/10 Clock_Ip_Init/8 Clock_Ip_Init/8 
+TestDelay/3 (TestDelay) @061a0700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: DelayTimer.7105/7 (read)DelayTimer.7105/7 (write)DelayTimer.7105/7 (read)DelayTimer.7105/7 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: main/4 main/4 main/4 main/4 main/4 
+  Calls: 
+pwm_callback/2 (pwm_callback) @061a0380
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Pwm_GetChannelState/6 Pwm_GetOutputState/5 
+exit_code/1 (exit_code) @0619bea0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Trivially needed variables: DelayTimer.7105 exit_code
+Removing variables:
+
+Final Symbol table:
+
+Pwm_SetPeriodAndDuty/22 (Pwm_SetPeriodAndDuty) @062aaa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Pwm_SetOutputToIdle/21 (Pwm_SetOutputToIdle) @062aa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Pwm_SetDutyCycle_NoUpdate/20 (Pwm_SetDutyCycle_NoUpdate) @062aa8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Pwm_SetDutyCycle/19 (Pwm_SetDutyCycle) @062aa7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Pwm_SyncUpdate/18 (Pwm_SyncUpdate) @062aa700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Pwm_Config_BOARD_InitPeripherals/17 (Pwm_Config_BOARD_InitPeripherals) @061a1ea0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Pwm_Init/16 (Pwm_Init) @062aa620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_EnableIrq/15 (IntCtrl_Ip_EnableIrq) @062aa540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+FTM_0_CH_0_CH_1_ISR/14 (FTM_0_CH_0_CH_1_ISR) @062aa460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+IntCtrl_Ip_InstallHandler/13 (IntCtrl_Ip_InstallHandler) @062aa380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Port_Init/12 (Port_Init) @062aa2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Clock_Ip_DistributePll/11 (Clock_Ip_DistributePll) @062aa1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Clock_Ip_GetPllStatus/10 (Clock_Ip_GetPllStatus) @062aa0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Mcu_aClockConfigPB_BOARD_InitPeripherals/9 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @061a1c60
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/8 (Clock_Ip_Init) @062aa000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+DelayTimer.7105/7 (DelayTimer) @061a17e0
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+Pwm_GetChannelState/6 (Pwm_GetChannelState) @061a0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Pwm_GetOutputState/5 (Pwm_GetOutputState) @061a0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+main/4 (main) @061a09a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+TestDelay/3 (TestDelay) @061a0700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+pwm_callback/2 (pwm_callback) @061a0380
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+exit_code/1 (exit_code) @0619bea0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @061a17e0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized

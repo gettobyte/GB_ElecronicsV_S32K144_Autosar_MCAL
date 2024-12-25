@@ -1,0 +1,40 @@
+MCL_FLEXIO_ISR ()
+{
+  <bb 2> :
+  Flexio_Mcl_Ip_CommonIrq ();
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_CommonIrq ()
+{
+  uint8 u8TimerMaskFlag;
+  uint8 u8ShifterErrMaskFlag;
+  struct FLEXIO_Type * baseAddr;
+
+  <bb 2> :
+  baseAddr = flexioBase[0];
+  _1 = Flexio_Mcl_Ip_GetAllShifterErrorStatus (baseAddr);
+  u8ShifterErrMaskFlag = (uint8) _1;
+  _2 = Flexio_Mcl_Ip_GetAllTimerStatus (baseAddr);
+  u8TimerMaskFlag = (uint8) _2;
+  _3 = Flexio_Ip_IpIsInitialized[0];
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _4 = (long unsigned int) u8ShifterErrMaskFlag;
+  baseAddr->SHIFTERR = _4;
+  _5 = (long unsigned int) u8TimerMaskFlag;
+  baseAddr->TIMSTAT = _5;
+
+  <bb 4> :
+  return;
+
+}
+
+
