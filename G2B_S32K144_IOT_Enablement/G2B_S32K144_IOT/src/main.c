@@ -10,8 +10,8 @@
 extern void LPUART_UART_IP_0_IRQHandler(void);
 volatile int exit_code = 0;
 
-#define wifi_SSID ""
-#define wifi_password ""
+#define wifi_SSID "Airtel_kuna_6009"
+#define wifi_password "air64185"
 
 char api_key[] = "ELCZ6SJ1WE4DVRHZ";
 
@@ -56,7 +56,7 @@ int main(void)
 
 	AT_connect_ThingSpeak();
 
-	AT_sendData(91, api_key);
+	AT_sendData(911, api_key);
 
 	testDelay(8000000);
 
