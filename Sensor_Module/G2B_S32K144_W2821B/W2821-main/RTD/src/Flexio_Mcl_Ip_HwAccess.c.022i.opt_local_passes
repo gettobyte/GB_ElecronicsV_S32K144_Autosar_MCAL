@@ -1,9 +1,7 @@
 Flexio_Mcl_Ip_Init (struct FLEXIO_Type * baseAddr)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   Flexio_Mcl_Ip_SetSoftwareReset (baseAddr_2(D), 1);
-  # DEBUG BEGIN_STMT
   baseAddr_2(D)->CTRL ={v} 0;
   return;
 
@@ -18,38 +16,26 @@ Flexio_Mcl_Ip_SetTimerInterrupt (struct FLEXIO_Type * baseAddr, uint8 interruptM
   long unsigned int _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45 ();
-  # DEBUG BEGIN_STMT
   Tmp_8 ={v} baseAddr_7(D)->TIMIEN;
-  # DEBUG Tmp => Tmp_8
-  # DEBUG BEGIN_STMT
   if (enable_9(D) != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _1 = (long unsigned int) interruptMask_10(D);
   Tmp_12 = Tmp_8 | _1;
-  # DEBUG Tmp => Tmp_12
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _2 = (long unsigned int) interruptMask_10(D);
   _3 = ~_2;
   Tmp_11 = Tmp_8 & _3;
-  # DEBUG Tmp => Tmp_11
 
   <bb 5> :
   # Tmp_4 = PHI <Tmp_12(3), Tmp_11(4)>
-  # DEBUG Tmp => Tmp_4
-  # DEBUG BEGIN_STMT
   baseAddr_7(D)->TIMIEN ={v} Tmp_4;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45 ();
   return;
 
@@ -58,11 +44,14 @@ Flexio_Mcl_Ip_SetTimerInterrupt (struct FLEXIO_Type * baseAddr, uint8 interruptM
 
 Flexio_Mcl_Ip_GetAllTimerInterrupt (const struct FLEXIO_Type * baseAddr)
 {
+  uint32 D.6042;
   uint32 _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _3 ={v} baseAddr_2(D)->TIMIEN;
+
+  <bb 3> :
+<L0>:
   return _3;
 
 }
@@ -76,38 +65,26 @@ Flexio_Mcl_Ip_SetShifterDMARequest (struct FLEXIO_Type * baseAddr, uint8 request
   long unsigned int _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44 ();
-  # DEBUG BEGIN_STMT
   Tmp_8 ={v} baseAddr_7(D)->SHIFTSDEN;
-  # DEBUG Tmp => Tmp_8
-  # DEBUG BEGIN_STMT
   if (enable_9(D) != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _1 = (long unsigned int) requestMask_10(D);
   Tmp_12 = Tmp_8 | _1;
-  # DEBUG Tmp => Tmp_12
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _2 = (long unsigned int) requestMask_10(D);
   _3 = ~_2;
   Tmp_11 = Tmp_8 & _3;
-  # DEBUG Tmp => Tmp_11
 
   <bb 5> :
   # Tmp_4 = PHI <Tmp_12(3), Tmp_11(4)>
-  # DEBUG Tmp => Tmp_4
-  # DEBUG BEGIN_STMT
   baseAddr_7(D)->SHIFTSDEN ={v} Tmp_4;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44 ();
   return;
 
@@ -122,38 +99,26 @@ Flexio_Mcl_Ip_SetShifterInterrupt (struct FLEXIO_Type * baseAddr, uint8 interrup
   long unsigned int _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43 ();
-  # DEBUG BEGIN_STMT
   Tmp_8 ={v} baseAddr_7(D)->SHIFTSIEN;
-  # DEBUG Tmp => Tmp_8
-  # DEBUG BEGIN_STMT
   if (enable_9(D) != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _1 = (long unsigned int) interruptMask_10(D);
   Tmp_12 = Tmp_8 | _1;
-  # DEBUG Tmp => Tmp_12
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _2 = (long unsigned int) interruptMask_10(D);
   _3 = ~_2;
   Tmp_11 = Tmp_8 & _3;
-  # DEBUG Tmp => Tmp_11
 
   <bb 5> :
   # Tmp_4 = PHI <Tmp_12(3), Tmp_11(4)>
-  # DEBUG Tmp => Tmp_4
-  # DEBUG BEGIN_STMT
   baseAddr_7(D)->SHIFTSIEN ={v} Tmp_4;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43 ();
   return;
 
@@ -168,38 +133,26 @@ Flexio_Mcl_Ip_SetShifterErrorInterrupt (struct FLEXIO_Type * baseAddr, uint8 int
   long unsigned int _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42 ();
-  # DEBUG BEGIN_STMT
   Tmp_8 ={v} baseAddr_7(D)->SHIFTEIEN;
-  # DEBUG Tmp => Tmp_8
-  # DEBUG BEGIN_STMT
   if (enable_9(D) != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _1 = (long unsigned int) interruptMask_10(D);
   Tmp_12 = Tmp_8 | _1;
-  # DEBUG Tmp => Tmp_12
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _2 = (long unsigned int) interruptMask_10(D);
   _3 = ~_2;
   Tmp_11 = Tmp_8 & _3;
-  # DEBUG Tmp => Tmp_11
 
   <bb 5> :
   # Tmp_4 = PHI <Tmp_12(3), Tmp_11(4)>
-  # DEBUG Tmp => Tmp_4
-  # DEBUG BEGIN_STMT
   baseAddr_7(D)->SHIFTEIEN ={v} Tmp_4;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42 ();
   return;
 
@@ -208,11 +161,14 @@ Flexio_Mcl_Ip_SetShifterErrorInterrupt (struct FLEXIO_Type * baseAddr, uint8 int
 
 Flexio_Mcl_Ip_GetAllShifterErrorInterrupt (const struct FLEXIO_Type * baseAddr)
 {
+  uint32 D.6031;
   uint32 _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _3 ={v} baseAddr_2(D)->SHIFTEIEN;
+
+  <bb 3> :
+<L0>:
   return _3;
 
 }
@@ -220,11 +176,14 @@ Flexio_Mcl_Ip_GetAllShifterErrorInterrupt (const struct FLEXIO_Type * baseAddr)
 
 Flexio_Mcl_Ip_GetAllShifterInterrupt (const struct FLEXIO_Type * baseAddr)
 {
+  uint32 D.6029;
   uint32 _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _3 ={v} baseAddr_2(D)->SHIFTSIEN;
+
+  <bb 3> :
+<L0>:
   return _3;
 
 }
@@ -236,7 +195,6 @@ Flexio_Mcl_Ip_ClearTimerStatus (struct FLEXIO_Type * baseAddr, uint8 timer)
   long unsigned int _2;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) timer_3(D);
   _2 = 1 << _1;
   baseAddr_5(D)->TIMSTAT ={v} _2;
@@ -247,11 +205,14 @@ Flexio_Mcl_Ip_ClearTimerStatus (struct FLEXIO_Type * baseAddr, uint8 timer)
 
 Flexio_Mcl_Ip_GetAllTimerStatus (const struct FLEXIO_Type * baseAddr)
 {
+  uint32 D.6027;
   uint32 _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _3 ={v} baseAddr_2(D)->TIMSTAT;
+
+  <bb 3> :
+<L0>:
   return _3;
 
 }
@@ -259,6 +220,7 @@ Flexio_Mcl_Ip_GetAllTimerStatus (const struct FLEXIO_Type * baseAddr)
 
 Flexio_Mcl_Ip_GetTimerInterruptEnable (const struct FLEXIO_Type * baseAddr, uint8 timer)
 {
+  boolean D.6025;
   long unsigned int _1;
   int _2;
   long unsigned int _3;
@@ -266,12 +228,14 @@ Flexio_Mcl_Ip_GetTimerInterruptEnable (const struct FLEXIO_Type * baseAddr, uint
   boolean _8;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 ={v} baseAddr_6(D)->TIMIEN;
   _2 = (int) timer_7(D);
   _3 = _1 >> _2;
   _4 = _3 & 1;
   _8 = _4 != 0;
+
+  <bb 3> :
+<L0>:
   return _8;
 
 }
@@ -279,6 +243,7 @@ Flexio_Mcl_Ip_GetTimerInterruptEnable (const struct FLEXIO_Type * baseAddr, uint
 
 Flexio_Mcl_Ip_GetTimerStatus (const struct FLEXIO_Type * baseAddr, uint8 timer)
 {
+  boolean D.6023;
   long unsigned int _1;
   int _2;
   long unsigned int _3;
@@ -286,12 +251,14 @@ Flexio_Mcl_Ip_GetTimerStatus (const struct FLEXIO_Type * baseAddr, uint8 timer)
   boolean _8;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 ={v} baseAddr_6(D)->TIMSTAT;
   _2 = (int) timer_7(D);
   _3 = _1 >> _2;
   _4 = _3 & 1;
   _8 = _4 != 0;
+
+  <bb 3> :
+<L0>:
   return _8;
 
 }
@@ -303,7 +270,6 @@ Flexio_Mcl_Ip_ClearShifterErrorStatus (struct FLEXIO_Type * baseAddr, uint8 shif
   long unsigned int _2;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) shifter_3(D);
   _2 = 1 << _1;
   baseAddr_5(D)->SHIFTERR ={v} _2;
@@ -314,11 +280,14 @@ Flexio_Mcl_Ip_ClearShifterErrorStatus (struct FLEXIO_Type * baseAddr, uint8 shif
 
 Flexio_Mcl_Ip_GetAllShifterErrorStatus (const struct FLEXIO_Type * baseAddr)
 {
+  uint32 D.6021;
   uint32 _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _3 ={v} baseAddr_2(D)->SHIFTERR;
+
+  <bb 3> :
+<L0>:
   return _3;
 
 }
@@ -326,6 +295,7 @@ Flexio_Mcl_Ip_GetAllShifterErrorStatus (const struct FLEXIO_Type * baseAddr)
 
 Flexio_Mcl_Ip_GetShifterErrorStatus (const struct FLEXIO_Type * baseAddr, uint8 shifter)
 {
+  boolean D.6019;
   long unsigned int _1;
   int _2;
   long unsigned int _3;
@@ -333,12 +303,14 @@ Flexio_Mcl_Ip_GetShifterErrorStatus (const struct FLEXIO_Type * baseAddr, uint8 
   boolean _8;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 ={v} baseAddr_6(D)->SHIFTERR;
   _2 = (int) shifter_7(D);
   _3 = _1 >> _2;
   _4 = _3 & 1;
   _8 = _4 != 0;
+
+  <bb 3> :
+<L0>:
   return _8;
 
 }
@@ -350,7 +322,6 @@ Flexio_Mcl_Ip_ClearShifterStatus (struct FLEXIO_Type * baseAddr, uint8 shifter)
   long unsigned int _2;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) shifter_3(D);
   _2 = 1 << _1;
   baseAddr_5(D)->SHIFTSTAT ={v} _2;
@@ -361,11 +332,14 @@ Flexio_Mcl_Ip_ClearShifterStatus (struct FLEXIO_Type * baseAddr, uint8 shifter)
 
 Flexio_Mcl_Ip_GetAllShifterStatus (const struct FLEXIO_Type * baseAddr)
 {
+  uint32 D.6017;
   uint32 _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _3 ={v} baseAddr_2(D)->SHIFTSTAT;
+
+  <bb 3> :
+<L0>:
   return _3;
 
 }
@@ -373,6 +347,7 @@ Flexio_Mcl_Ip_GetAllShifterStatus (const struct FLEXIO_Type * baseAddr)
 
 Flexio_Mcl_Ip_GetShifterStatus (const struct FLEXIO_Type * baseAddr, uint8 shifter)
 {
+  boolean D.6015;
   long unsigned int _1;
   int _2;
   long unsigned int _3;
@@ -380,12 +355,14 @@ Flexio_Mcl_Ip_GetShifterStatus (const struct FLEXIO_Type * baseAddr, uint8 shift
   boolean _8;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 ={v} baseAddr_6(D)->SHIFTSTAT;
   _2 = (int) shifter_7(D);
   _3 = _1 >> _2;
   _4 = _3 & 1;
   _8 = _4 != 0;
+
+  <bb 3> :
+<L0>:
   return _8;
 
 }
@@ -394,20 +371,15 @@ Flexio_Mcl_Ip_GetShifterStatus (const struct FLEXIO_Type * baseAddr, uint8 shift
 Flexio_Mcl_Ip_SetEnable (struct FLEXIO_Type * baseAddr, boolean enable)
 {
   uint32 RegValue;
+  long unsigned int iftmp.2;
   long unsigned int iftmp.2_1;
   long unsigned int iftmp.2_8;
   long unsigned int iftmp.2_9;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41 ();
-  # DEBUG BEGIN_STMT
   RegValue_5 ={v} baseAddr_4(D)->CTRL;
-  # DEBUG RegValue => RegValue_5
-  # DEBUG BEGIN_STMT
   RegValue_6 = RegValue_5 & 4294967294;
-  # DEBUG RegValue => RegValue_6
-  # DEBUG BEGIN_STMT
   if (enable_7(D) != 0)
     goto <bb 3>; [INV]
   else
@@ -423,10 +395,7 @@ Flexio_Mcl_Ip_SetEnable (struct FLEXIO_Type * baseAddr, boolean enable)
   <bb 5> :
   # iftmp.2_1 = PHI <iftmp.2_9(3), iftmp.2_8(4)>
   RegValue_10 = iftmp.2_1 | RegValue_6;
-  # DEBUG RegValue => RegValue_10
-  # DEBUG BEGIN_STMT
   baseAddr_4(D)->CTRL ={v} RegValue_10;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41 ();
   return;
 
@@ -436,20 +405,15 @@ Flexio_Mcl_Ip_SetEnable (struct FLEXIO_Type * baseAddr, boolean enable)
 Flexio_Mcl_Ip_SetDebugEnable (struct FLEXIO_Type * baseAddr, boolean enable)
 {
   uint32 RegValue;
+  long unsigned int iftmp.1;
   long unsigned int iftmp.1_1;
   long unsigned int iftmp.1_8;
   long unsigned int iftmp.1_9;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40 ();
-  # DEBUG BEGIN_STMT
   RegValue_5 ={v} baseAddr_4(D)->CTRL;
-  # DEBUG RegValue => RegValue_5
-  # DEBUG BEGIN_STMT
   RegValue_6 = RegValue_5 & 3221225471;
-  # DEBUG RegValue => RegValue_6
-  # DEBUG BEGIN_STMT
   if (enable_7(D) != 0)
     goto <bb 3>; [INV]
   else
@@ -465,10 +429,7 @@ Flexio_Mcl_Ip_SetDebugEnable (struct FLEXIO_Type * baseAddr, boolean enable)
   <bb 5> :
   # iftmp.1_1 = PHI <iftmp.1_9(3), iftmp.1_8(4)>
   RegValue_10 = iftmp.1_1 | RegValue_6;
-  # DEBUG RegValue => RegValue_10
-  # DEBUG BEGIN_STMT
   baseAddr_4(D)->CTRL ={v} RegValue_10;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40 ();
   return;
 
@@ -478,20 +439,15 @@ Flexio_Mcl_Ip_SetDebugEnable (struct FLEXIO_Type * baseAddr, boolean enable)
 Flexio_Mcl_Ip_SetSoftwareReset (struct FLEXIO_Type * baseAddr, boolean enable)
 {
   uint32 RegValue;
+  long unsigned int iftmp.0;
   long unsigned int iftmp.0_1;
   long unsigned int iftmp.0_8;
   long unsigned int iftmp.0_9;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_39 ();
-  # DEBUG BEGIN_STMT
   RegValue_5 ={v} baseAddr_4(D)->CTRL;
-  # DEBUG RegValue => RegValue_5
-  # DEBUG BEGIN_STMT
   RegValue_6 = RegValue_5 & 4294967293;
-  # DEBUG RegValue => RegValue_6
-  # DEBUG BEGIN_STMT
   if (enable_7(D) != 0)
     goto <bb 3>; [INV]
   else
@@ -507,10 +463,7 @@ Flexio_Mcl_Ip_SetSoftwareReset (struct FLEXIO_Type * baseAddr, boolean enable)
   <bb 5> :
   # iftmp.0_1 = PHI <iftmp.0_9(3), iftmp.0_8(4)>
   RegValue_10 = iftmp.0_1 | RegValue_6;
-  # DEBUG RegValue => RegValue_10
-  # DEBUG BEGIN_STMT
   baseAddr_4(D)->CTRL ={v} RegValue_10;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_39 ();
   return;
 

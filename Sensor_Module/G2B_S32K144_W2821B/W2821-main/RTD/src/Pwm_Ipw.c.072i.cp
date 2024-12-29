@@ -64,7 +64,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Ftm_Pwm_Ip_DeInit/7 (Ftm_Pwm_Ip_DeInit) @069a8540
+Ftm_Pwm_Ip_DeInit/7 (Ftm_Pwm_Ip_DeInit) @069c59a0
   Type: function
   Visibility: external public
   References: 
@@ -73,7 +73,7 @@ Ftm_Pwm_Ip_DeInit/7 (Ftm_Pwm_Ip_DeInit) @069a8540
   Function flags: optimize_size
   Called by: Pwm_Ipw_DeInitInstance/5 (195204116 (estimated locally),0.18 per call) 
   Calls: 
-Ftm_Pwm_Ip_Init/6 (Ftm_Pwm_Ip_Init) @069a8ee0
+Ftm_Pwm_Ip_Init/6 (Ftm_Pwm_Ip_Init) @069c5700
   Type: function
   Visibility: external public
   References: 
@@ -82,7 +82,7 @@ Ftm_Pwm_Ip_Init/6 (Ftm_Pwm_Ip_Init) @069a8ee0
   Function flags: optimize_size
   Called by: Pwm_Ipw_InitInstance/3 (195204116 (estimated locally),0.18 per call) 
   Calls: 
-Pwm_Ipw_DeInitInstance/5 (Pwm_Ipw_DeInitInstance) @069a89a0
+Pwm_Ipw_DeInitInstance/5 (Pwm_Ipw_DeInitInstance) @069c51c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -91,7 +91,7 @@ Pwm_Ipw_DeInitInstance/5 (Pwm_Ipw_DeInitInstance) @069a89a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Ftm_Pwm_Ip_DeInit/7 (195204116 (estimated locally),0.18 per call) 
-Pwm_Ipw_DeInit/4 (Pwm_Ipw_DeInit) @069a8700
+Pwm_Ipw_DeInit/4 (Pwm_Ipw_DeInit) @0694ce00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Pwm_Ipw_aFtmDutyCycle/1 (write)
@@ -100,7 +100,7 @@ Pwm_Ipw_DeInit/4 (Pwm_Ipw_DeInit) @069a8700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Pwm_Ipw_InitInstance/3 (Pwm_Ipw_InitInstance) @069a8460
+Pwm_Ipw_InitInstance/3 (Pwm_Ipw_InitInstance) @0694c620
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -109,7 +109,7 @@ Pwm_Ipw_InitInstance/3 (Pwm_Ipw_InitInstance) @069a8460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Ftm_Pwm_Ip_Init/6 (195204116 (estimated locally),0.18 per call) 
-Pwm_Ipw_Init/2 (Pwm_Ipw_Init) @069a81c0
+Pwm_Ipw_Init/2 (Pwm_Ipw_Init) @0694c2a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Pwm_Ipw_aFtmDutyCycle/1 (write)
@@ -118,7 +118,7 @@ Pwm_Ipw_Init/2 (Pwm_Ipw_Init) @069a81c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Pwm_Ipw_aFtmDutyCycle/1 (Pwm_Ipw_aFtmDutyCycle) @069a7048
+Pwm_Ipw_aFtmDutyCycle/1 (Pwm_Ipw_aFtmDutyCycle) @06949f30
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 

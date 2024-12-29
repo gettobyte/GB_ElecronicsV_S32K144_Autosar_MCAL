@@ -82,7 +82,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-OsIf_MicrosToTicks/9 (OsIf_MicrosToTicks) @05b387e0
+OsIf_MicrosToTicks/9 (OsIf_MicrosToTicks) @05c74000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -91,7 +91,7 @@ OsIf_MicrosToTicks/9 (OsIf_MicrosToTicks) @05b387e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-OsIf_SetTimerFrequency/8 (OsIf_SetTimerFrequency) @05b382a0
+OsIf_SetTimerFrequency/8 (OsIf_SetTimerFrequency) @05c11b60
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -100,7 +100,7 @@ OsIf_SetTimerFrequency/8 (OsIf_SetTimerFrequency) @05b382a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-OsIf_GetElapsed/7 (OsIf_GetElapsed) @05b38ee0
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @05c11620
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -109,7 +109,7 @@ OsIf_GetElapsed/7 (OsIf_GetElapsed) @05b38ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-OsIf_GetCounter/6 (OsIf_GetCounter) @05b38c40
+OsIf_GetCounter/6 (OsIf_GetCounter) @05c110e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -118,7 +118,7 @@ OsIf_GetCounter/6 (OsIf_GetCounter) @05b38c40
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-OsIf_Init/5 (OsIf_Init) @05b389a0
+OsIf_Init/5 (OsIf_Init) @05c11d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 

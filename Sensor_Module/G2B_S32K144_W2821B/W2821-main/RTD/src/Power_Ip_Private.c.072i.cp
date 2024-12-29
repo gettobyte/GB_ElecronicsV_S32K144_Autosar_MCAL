@@ -102,7 +102,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-OsIf_GetElapsed/7 (OsIf_GetElapsed) @05bb7540
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @05c06d20
   Type: function
   Visibility: external public
   References: 
@@ -111,7 +111,7 @@ OsIf_GetElapsed/7 (OsIf_GetElapsed) @05bb7540
   Function flags: optimize_size
   Called by: Power_Ip_TimeoutExpired/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-OsIf_MicrosToTicks/6 (OsIf_MicrosToTicks) @05bb7380
+OsIf_MicrosToTicks/6 (OsIf_MicrosToTicks) @05c06b60
   Type: function
   Visibility: external public
   References: 
@@ -120,7 +120,7 @@ OsIf_MicrosToTicks/6 (OsIf_MicrosToTicks) @05bb7380
   Function flags: optimize_size
   Called by: Power_Ip_StartTimeout/2 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-OsIf_GetCounter/5 (OsIf_GetCounter) @05bb72a0
+OsIf_GetCounter/5 (OsIf_GetCounter) @05c06a80
   Type: function
   Visibility: external public
   References: 
@@ -129,7 +129,7 @@ OsIf_GetCounter/5 (OsIf_GetCounter) @05bb72a0
   Function flags: optimize_size
   Called by: Power_Ip_StartTimeout/2 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_pfReportErrorsCallback/4 (Power_Ip_pfReportErrorsCallback) @05bb2b40
+Power_Ip_pfReportErrorsCallback/4 (Power_Ip_pfReportErrorsCallback) @05c039d8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -137,7 +137,7 @@ Power_Ip_pfReportErrorsCallback/4 (Power_Ip_pfReportErrorsCallback) @05bb2b40
   Referring: Power_Ip_ReportPowerErrors/0 (read)
   Availability: not_available
   Varpool flags:
-Power_Ip_TimeoutExpired/3 (Power_Ip_TimeoutExpired) @05bad620
+Power_Ip_TimeoutExpired/3 (Power_Ip_TimeoutExpired) @05c06460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -146,7 +146,7 @@ Power_Ip_TimeoutExpired/3 (Power_Ip_TimeoutExpired) @05bad620
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: OsIf_GetElapsed/7 (1073741824 (estimated locally),1.00 per call) 
-Power_Ip_StartTimeout/2 (Power_Ip_StartTimeout) @05badd20
+Power_Ip_StartTimeout/2 (Power_Ip_StartTimeout) @05c061c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -155,7 +155,7 @@ Power_Ip_StartTimeout/2 (Power_Ip_StartTimeout) @05badd20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: OsIf_MicrosToTicks/6 (1073741824 (estimated locally),1.00 per call) OsIf_GetCounter/5 (1073741824 (estimated locally),1.00 per call) 
-Power_Ip_ReportPowerErrorsEmptyCallback/1 (Power_Ip_ReportPowerErrorsEmptyCallback) @05bada80
+Power_Ip_ReportPowerErrorsEmptyCallback/1 (Power_Ip_ReportPowerErrorsEmptyCallback) @05bfad20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -164,7 +164,7 @@ Power_Ip_ReportPowerErrorsEmptyCallback/1 (Power_Ip_ReportPowerErrorsEmptyCallba
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Power_Ip_ReportPowerErrors/0 (Power_Ip_ReportPowerErrors) @05bad7e0
+Power_Ip_ReportPowerErrors/0 (Power_Ip_ReportPowerErrors) @05bfaee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Power_Ip_pfReportErrorsCallback/4 (read)

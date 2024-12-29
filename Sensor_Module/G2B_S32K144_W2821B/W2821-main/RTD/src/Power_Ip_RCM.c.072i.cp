@@ -38,7 +38,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Power_Ip_RCM_GetResetRawValue/3 (Power_Ip_RCM_GetResetRawValue) @067e61c0
+Power_Ip_RCM_GetResetRawValue/3 (Power_Ip_RCM_GetResetRawValue) @05b7e9a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Power_Ip_u32ResetStatus/0 (write)Power_Ip_u32ResetStatus/0 (read)
@@ -47,7 +47,7 @@ Power_Ip_RCM_GetResetRawValue/3 (Power_Ip_RCM_GetResetRawValue) @067e61c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Power_Ip_RCM_GetResetReason/2 (Power_Ip_RCM_GetResetReason) @067d8d20
+Power_Ip_RCM_GetResetReason/2 (Power_Ip_RCM_GetResetReason) @05b7e700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Power_Ip_u32ResetStatus/0 (write)Power_Ip_u32ResetStatus/0 (read)
@@ -56,7 +56,7 @@ Power_Ip_RCM_GetResetReason/2 (Power_Ip_RCM_GetResetReason) @067d8d20
   Function flags: count:59850511 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Power_Ip_RCM_ResetInit/1 (Power_Ip_RCM_ResetInit) @067d8ee0
+Power_Ip_RCM_ResetInit/1 (Power_Ip_RCM_ResetInit) @05b7e460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -65,7 +65,7 @@ Power_Ip_RCM_ResetInit/1 (Power_Ip_RCM_ResetInit) @067d8ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Power_Ip_u32ResetStatus/0 (Power_Ip_u32ResetStatus) @067dad38
+Power_Ip_u32ResetStatus/0 (Power_Ip_u32ResetStatus) @05b7abd0
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 

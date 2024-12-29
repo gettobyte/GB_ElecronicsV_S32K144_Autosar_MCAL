@@ -379,7 +379,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Clock_Ip_EnableFirc_TrustedCall.part.0/38 (Clock_Ip_EnableFirc_TrustedCall.part.0) @0624a9a0
+Clock_Ip_EnableFirc_TrustedCall.part.0/38 (Clock_Ip_EnableFirc_TrustedCall.part.0) @06158380
   Type: function definition analyzed alias
   Visibility: prevailing_def_ironly artificial
   References: Clock_Ip_EnableSirc_TrustedCall.part.0/33 (alias)
@@ -388,7 +388,7 @@ Clock_Ip_EnableFirc_TrustedCall.part.0/38 (Clock_Ip_EnableFirc_TrustedCall.part.
   Function flags: count:1073741824 (estimated locally) first_run:1 local icf_merged split_part optimize_size
   Called by: Clock_Ip_EnableFirc_TrustedCall/25 (37904965 (estimated locally),0.07 per call) 
   Calls: 
-Clock_Ip_EnableSircStop_TrustedCall.part.0/35 (Clock_Ip_EnableSircStop_TrustedCall.part.0) @0624ad20
+Clock_Ip_EnableSircStop_TrustedCall.part.0/35 (Clock_Ip_EnableSircStop_TrustedCall.part.0) @060a2d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -397,7 +397,7 @@ Clock_Ip_EnableSircStop_TrustedCall.part.0/35 (Clock_Ip_EnableSircStop_TrustedCa
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: Clock_Ip_EnableSircStop_TrustedCall/22 (365072224 (estimated locally),0.34 per call) 
   Calls: 
-Clock_Ip_EnableSircVlp_TrustedCall.part.0/34 (Clock_Ip_EnableSircVlp_TrustedCall.part.0) @0624a540
+Clock_Ip_EnableSircVlp_TrustedCall.part.0/34 (Clock_Ip_EnableSircVlp_TrustedCall.part.0) @060a2ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -406,7 +406,7 @@ Clock_Ip_EnableSircVlp_TrustedCall.part.0/34 (Clock_Ip_EnableSircVlp_TrustedCall
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: Clock_Ip_EnableSircVlp_TrustedCall/19 (365072224 (estimated locally),0.34 per call) 
   Calls: 
-Clock_Ip_EnableSirc_TrustedCall.part.0/33 (Clock_Ip_EnableSirc_TrustedCall.part.0) @06171ee0
+Clock_Ip_EnableSirc_TrustedCall.part.0/33 (Clock_Ip_EnableSirc_TrustedCall.part.0) @060a28c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -415,7 +415,7 @@ Clock_Ip_EnableSirc_TrustedCall.part.0/33 (Clock_Ip_EnableSirc_TrustedCall.part.
   Function flags: count:1073741824 (estimated locally) first_run:1 body local icf_merged split_part optimize_size
   Called by: Clock_Ip_EnableSirc_TrustedCall/16 (37904965 (estimated locally),0.33 per call) 
   Calls: Clock_Ip_ReportClockErrors/30 (1073741824 (estimated locally),1.00 per call) 
-SetInputSouceSytemClock.part.0/32 (SetInputSouceSytemClock.part.0) @06171b60
+SetInputSouceSytemClock.part.0/32 (SetInputSouceSytemClock.part.0) @060a21c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -424,7 +424,7 @@ SetInputSouceSytemClock.part.0/32 (SetInputSouceSytemClock.part.0) @06171b60
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: SetInputSouceSytemClock/11 (37904965 (estimated locally),0.33 per call) 
   Calls: Clock_Ip_ReportClockErrors/30 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ReportClockErrors/30 (Clock_Ip_ReportClockErrors) @05ebb9a0
+Clock_Ip_ReportClockErrors/30 (Clock_Ip_ReportClockErrors) @0603d7e0
   Type: function
   Visibility: external public
   References: 
@@ -433,7 +433,7 @@ Clock_Ip_ReportClockErrors/30 (Clock_Ip_ReportClockErrors) @05ebb9a0
   Function flags: optimize_size
   Called by: Clock_Ip_SetFirc_TrustedCall/24 (35858682 (estimated locally),0.03 per call) Clock_Ip_SetFirc_TrustedCall/24 (31713418 (estimated locally),0.03 per call) Clock_Ip_EnableSirc_TrustedCall.part.0/33 (1073741824 (estimated locally),1.00 per call) Clock_Ip_SetSirc_TrustedCall/15 (37904965 (estimated locally),0.07 per call) SetInputSouceSytemClock.part.0/32 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_TimeoutExpired/29 (Clock_Ip_TimeoutExpired) @05ebb8c0
+Clock_Ip_TimeoutExpired/29 (Clock_Ip_TimeoutExpired) @0603d460
   Type: function
   Visibility: external public
   References: 
@@ -442,7 +442,7 @@ Clock_Ip_TimeoutExpired/29 (Clock_Ip_TimeoutExpired) @05ebb8c0
   Function flags: optimize_size
   Called by: Clock_Ip_EnableFirc_TrustedCall/25 (1073741824 (estimated locally),1.89 per call) Clock_Ip_SetFirc_TrustedCall/24 (1015776324 (estimated locally),0.95 per call) Clock_Ip_SetFirc_TrustedCall/24 (898352582 (estimated locally),0.84 per call) Clock_Ip_EnableSirc_TrustedCall/16 (1073741824 (estimated locally),9.35 per call) Clock_Ip_SetSirc_TrustedCall/15 (1073741824 (estimated locally),1.89 per call) SetInputSouceSytemClock/11 (1073741824 (estimated locally),9.35 per call) 
   Calls: 
-Clock_Ip_StartTimeout/28 (Clock_Ip_StartTimeout) @05ebb7e0
+Clock_Ip_StartTimeout/28 (Clock_Ip_StartTimeout) @0603dee0
   Type: function
   Visibility: external public
   References: 
@@ -451,14 +451,14 @@ Clock_Ip_StartTimeout/28 (Clock_Ip_StartTimeout) @05ebb7e0
   Function flags: optimize_size
   Called by: Clock_Ip_EnableFirc_TrustedCall/25 (114863532 (estimated locally),0.20 per call) Clock_Ip_SetFirc_TrustedCall/24 (108662673 (estimated locally),0.10 per call) Clock_Ip_SetFirc_TrustedCall/24 (96101268 (estimated locally),0.09 per call) Clock_Ip_EnableSirc_TrustedCall/16 (114863532 (estimated locally),1.00 per call) Clock_Ip_SetSirc_TrustedCall/15 (114863532 (estimated locally),0.20 per call) SetInputSouceSytemClock/11 (114863532 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_axIntOscCallbacks/27 (Clock_Ip_axIntOscCallbacks) @05e829d8
+Clock_Ip_axIntOscCallbacks/27 (Clock_Ip_axIntOscCallbacks) @05de28b8
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_InternalOscillatorEmpty/0 (addr)Clock_Ip_InternalOscillatorEmpty/0 (addr)Clock_Ip_InternalOscillatorEmpty_Disable/1 (addr)Clock_Ip_SetSirc/2 (addr)Clock_Ip_EnableSirc/3 (addr)Clock_Ip_DisableSirc/4 (addr)Clock_Ip_SetSircVlp/5 (addr)Clock_Ip_EnableSircVlp/6 (addr)Clock_Ip_DisableSircVlp/7 (addr)Clock_Ip_SetSircStop/8 (addr)Clock_Ip_EnableSircStop/9 (addr)Clock_Ip_DisableSircStop/10 (addr)Clock_Ip_SetFirc/12 (addr)Clock_Ip_EnableFirc/13 (addr)Clock_Ip_DisableFirc/14 (addr)
   Referring: 
   Availability: available
   Varpool flags: initialized read-only const-value-known
-Clock_Ip_DisableFirc_TrustedCall/26 (Clock_Ip_DisableFirc_TrustedCall) @05ebb2a0
+Clock_Ip_DisableFirc_TrustedCall/26 (Clock_Ip_DisableFirc_TrustedCall) @0603d9a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -467,7 +467,7 @@ Clock_Ip_DisableFirc_TrustedCall/26 (Clock_Ip_DisableFirc_TrustedCall) @05ebb2a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_DisableFirc/14 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_EnableFirc_TrustedCall/25 (Clock_Ip_EnableFirc_TrustedCall) @05ebb000
+Clock_Ip_EnableFirc_TrustedCall/25 (Clock_Ip_EnableFirc_TrustedCall) @0603d700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -476,7 +476,7 @@ Clock_Ip_EnableFirc_TrustedCall/25 (Clock_Ip_EnableFirc_TrustedCall) @05ebb000
   Function flags: count:567507571 (estimated locally) body optimize_size
   Called by: Clock_Ip_EnableFirc/13 (1073741824 (estimated locally),1.00 per call) 
   Calls: Clock_Ip_EnableFirc_TrustedCall.part.0/38 (37904965 (estimated locally),0.07 per call) Clock_Ip_TimeoutExpired/29 (1073741824 (estimated locally),1.89 per call) Clock_Ip_StartTimeout/28 (114863532 (estimated locally),0.20 per call) 
-Clock_Ip_SetFirc_TrustedCall/24 (Clock_Ip_SetFirc_TrustedCall) @05eb2380
+Clock_Ip_SetFirc_TrustedCall/24 (Clock_Ip_SetFirc_TrustedCall) @0603d380
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -485,7 +485,7 @@ Clock_Ip_SetFirc_TrustedCall/24 (Clock_Ip_SetFirc_TrustedCall) @05eb2380
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetFirc/12 (1073741824 (estimated locally),1.00 per call) 
   Calls: Clock_Ip_ReportClockErrors/30 (35858682 (estimated locally),0.03 per call) Clock_Ip_TimeoutExpired/29 (1015776324 (estimated locally),0.95 per call) Clock_Ip_StartTimeout/28 (108662673 (estimated locally),0.10 per call) Clock_Ip_DisableSirc_TrustedCall/17 (31713418 (estimated locally),0.03 per call) SetInputSouceSytemClock/11 (96101267 (estimated locally),0.09 per call) Clock_Ip_ReportClockErrors/30 (31713418 (estimated locally),0.03 per call) Clock_Ip_TimeoutExpired/29 (898352582 (estimated locally),0.84 per call) Clock_Ip_StartTimeout/28 (96101268 (estimated locally),0.09 per call) SetInputSouceSytemClock/11 (474808635 (estimated locally),0.44 per call) Clock_Ip_SetSirc_TrustedCall/15 (156686850 (estimated locally),0.15 per call) 
-Clock_Ip_DisableSircStop_TrustedCall/23 (Clock_Ip_DisableSircStop_TrustedCall) @05eb28c0
+Clock_Ip_DisableSircStop_TrustedCall/23 (Clock_Ip_DisableSircStop_TrustedCall) @06035540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -494,7 +494,7 @@ Clock_Ip_DisableSircStop_TrustedCall/23 (Clock_Ip_DisableSircStop_TrustedCall) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_DisableSircStop/10 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_EnableSircStop_TrustedCall/22 (Clock_Ip_EnableSircStop_TrustedCall) @05eb2620
+Clock_Ip_EnableSircStop_TrustedCall/22 (Clock_Ip_EnableSircStop_TrustedCall) @06035e00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -503,7 +503,7 @@ Clock_Ip_EnableSircStop_TrustedCall/22 (Clock_Ip_EnableSircStop_TrustedCall) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_EnableSircStop/9 (1073741824 (estimated locally),1.00 per call) 
   Calls: Clock_Ip_EnableSircStop_TrustedCall.part.0/35 (365072224 (estimated locally),0.34 per call) 
-Clock_Ip_SetSircStop_TrustedCall/21 (Clock_Ip_SetSircStop_TrustedCall) @05eb22a0
+Clock_Ip_SetSircStop_TrustedCall/21 (Clock_Ip_SetSircStop_TrustedCall) @06035a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -512,7 +512,7 @@ Clock_Ip_SetSircStop_TrustedCall/21 (Clock_Ip_SetSircStop_TrustedCall) @05eb22a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetSircStop/8 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_DisableSircVlp_TrustedCall/20 (Clock_Ip_DisableSircVlp_TrustedCall) @05eace00
+Clock_Ip_DisableSircVlp_TrustedCall/20 (Clock_Ip_DisableSircVlp_TrustedCall) @06035700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -521,7 +521,7 @@ Clock_Ip_DisableSircVlp_TrustedCall/20 (Clock_Ip_DisableSircVlp_TrustedCall) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_DisableSircVlp/7 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_EnableSircVlp_TrustedCall/19 (Clock_Ip_EnableSircVlp_TrustedCall) @05eac7e0
+Clock_Ip_EnableSircVlp_TrustedCall/19 (Clock_Ip_EnableSircVlp_TrustedCall) @06035460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -530,7 +530,7 @@ Clock_Ip_EnableSircVlp_TrustedCall/19 (Clock_Ip_EnableSircVlp_TrustedCall) @05ea
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_EnableSircVlp/6 (1073741824 (estimated locally),1.00 per call) 
   Calls: Clock_Ip_EnableSircVlp_TrustedCall.part.0/34 (365072224 (estimated locally),0.34 per call) 
-Clock_Ip_SetSircVlp_TrustedCall/18 (Clock_Ip_SetSircVlp_TrustedCall) @05eacd20
+Clock_Ip_SetSircVlp_TrustedCall/18 (Clock_Ip_SetSircVlp_TrustedCall) @060350e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -539,7 +539,7 @@ Clock_Ip_SetSircVlp_TrustedCall/18 (Clock_Ip_SetSircVlp_TrustedCall) @05eacd20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetSircVlp/5 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_DisableSirc_TrustedCall/17 (Clock_Ip_DisableSirc_TrustedCall) @05eac9a0
+Clock_Ip_DisableSirc_TrustedCall/17 (Clock_Ip_DisableSirc_TrustedCall) @05de47e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -548,7 +548,7 @@ Clock_Ip_DisableSirc_TrustedCall/17 (Clock_Ip_DisableSirc_TrustedCall) @05eac9a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetFirc_TrustedCall/24 (31713418 (estimated locally),0.03 per call) Clock_Ip_DisableSirc/4 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_EnableSirc_TrustedCall/16 (Clock_Ip_EnableSirc_TrustedCall) @05eac700
+Clock_Ip_EnableSirc_TrustedCall/16 (Clock_Ip_EnableSirc_TrustedCall) @05de42a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -557,7 +557,7 @@ Clock_Ip_EnableSirc_TrustedCall/16 (Clock_Ip_EnableSirc_TrustedCall) @05eac700
   Function flags: count:114863532 (estimated locally) body optimize_size
   Called by: Clock_Ip_EnableSirc/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: Clock_Ip_EnableSirc_TrustedCall.part.0/33 (37904965 (estimated locally),0.33 per call) Clock_Ip_TimeoutExpired/29 (1073741824 (estimated locally),9.35 per call) Clock_Ip_StartTimeout/28 (114863532 (estimated locally),1.00 per call) 
-Clock_Ip_SetSirc_TrustedCall/15 (Clock_Ip_SetSirc_TrustedCall) @05eac2a0
+Clock_Ip_SetSirc_TrustedCall/15 (Clock_Ip_SetSirc_TrustedCall) @05de4c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -566,7 +566,7 @@ Clock_Ip_SetSirc_TrustedCall/15 (Clock_Ip_SetSirc_TrustedCall) @05eac2a0
   Function flags: count:567507571 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetFirc_TrustedCall/24 (156686850 (estimated locally),0.15 per call) Clock_Ip_SetSirc/2 (1073741824 (estimated locally),1.00 per call) 
   Calls: Clock_Ip_ReportClockErrors/30 (37904965 (estimated locally),0.07 per call) Clock_Ip_TimeoutExpired/29 (1073741824 (estimated locally),1.89 per call) Clock_Ip_StartTimeout/28 (114863532 (estimated locally),0.20 per call) 
-Clock_Ip_DisableFirc/14 (Clock_Ip_DisableFirc) @05e817e0
+Clock_Ip_DisableFirc/14 (Clock_Ip_DisableFirc) @05de4700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -576,7 +576,7 @@ Clock_Ip_DisableFirc/14 (Clock_Ip_DisableFirc) @05e817e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_DisableFirc_TrustedCall/26 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_EnableFirc/13 (Clock_Ip_EnableFirc) @05e812a0
+Clock_Ip_EnableFirc/13 (Clock_Ip_EnableFirc) @05de4460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -586,7 +586,7 @@ Clock_Ip_EnableFirc/13 (Clock_Ip_EnableFirc) @05e812a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_EnableFirc_TrustedCall/25 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetFirc/12 (Clock_Ip_SetFirc) @05e81ee0
+Clock_Ip_SetFirc/12 (Clock_Ip_SetFirc) @05de41c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -596,7 +596,7 @@ Clock_Ip_SetFirc/12 (Clock_Ip_SetFirc) @05e81ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetFirc_TrustedCall/24 (1073741824 (estimated locally),1.00 per call) 
-SetInputSouceSytemClock/11 (SetInputSouceSytemClock) @05e81c40
+SetInputSouceSytemClock/11 (SetInputSouceSytemClock) @05de0e00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -605,7 +605,7 @@ SetInputSouceSytemClock/11 (SetInputSouceSytemClock) @05e81c40
   Function flags: count:114863532 (estimated locally) body local optimize_size
   Called by: Clock_Ip_SetFirc_TrustedCall/24 (96101267 (estimated locally),0.09 per call) Clock_Ip_SetFirc_TrustedCall/24 (474808635 (estimated locally),0.44 per call) 
   Calls: SetInputSouceSytemClock.part.0/32 (37904965 (estimated locally),0.33 per call) Clock_Ip_TimeoutExpired/29 (1073741824 (estimated locally),9.35 per call) Clock_Ip_StartTimeout/28 (114863532 (estimated locally),1.00 per call) 
-Clock_Ip_DisableSircStop/10 (Clock_Ip_DisableSircStop) @05e819a0
+Clock_Ip_DisableSircStop/10 (Clock_Ip_DisableSircStop) @05de0620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -615,7 +615,7 @@ Clock_Ip_DisableSircStop/10 (Clock_Ip_DisableSircStop) @05e819a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_DisableSircStop_TrustedCall/23 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_EnableSircStop/9 (Clock_Ip_EnableSircStop) @05e81700
+Clock_Ip_EnableSircStop/9 (Clock_Ip_EnableSircStop) @05de00e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -625,7 +625,7 @@ Clock_Ip_EnableSircStop/9 (Clock_Ip_EnableSircStop) @05e81700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_EnableSircStop_TrustedCall/22 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetSircStop/8 (Clock_Ip_SetSircStop) @05e81460
+Clock_Ip_SetSircStop/8 (Clock_Ip_SetSircStop) @05de0d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -635,7 +635,7 @@ Clock_Ip_SetSircStop/8 (Clock_Ip_SetSircStop) @05e81460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetSircStop_TrustedCall/21 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_DisableSircVlp/7 (Clock_Ip_DisableSircVlp) @05e811c0
+Clock_Ip_DisableSircVlp/7 (Clock_Ip_DisableSircVlp) @05de0a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -645,7 +645,7 @@ Clock_Ip_DisableSircVlp/7 (Clock_Ip_DisableSircVlp) @05e811c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_DisableSircVlp_TrustedCall/20 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_EnableSircVlp/6 (Clock_Ip_EnableSircVlp) @05e7ce00
+Clock_Ip_EnableSircVlp/6 (Clock_Ip_EnableSircVlp) @05de07e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -655,7 +655,7 @@ Clock_Ip_EnableSircVlp/6 (Clock_Ip_EnableSircVlp) @05e7ce00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_EnableSircVlp_TrustedCall/19 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetSircVlp/5 (Clock_Ip_SetSircVlp) @05e7c8c0
+Clock_Ip_SetSircVlp/5 (Clock_Ip_SetSircVlp) @05de0540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -665,7 +665,7 @@ Clock_Ip_SetSircVlp/5 (Clock_Ip_SetSircVlp) @05e7c8c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetSircVlp_TrustedCall/18 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_DisableSirc/4 (Clock_Ip_DisableSirc) @05e7c380
+Clock_Ip_DisableSirc/4 (Clock_Ip_DisableSirc) @05de02a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -675,7 +675,7 @@ Clock_Ip_DisableSirc/4 (Clock_Ip_DisableSirc) @05e7c380
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_DisableSirc_TrustedCall/17 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_EnableSirc/3 (Clock_Ip_EnableSirc) @05e7cd20
+Clock_Ip_EnableSirc/3 (Clock_Ip_EnableSirc) @05de0000
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -685,7 +685,7 @@ Clock_Ip_EnableSirc/3 (Clock_Ip_EnableSirc) @05e7cd20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_EnableSirc_TrustedCall/16 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetSirc/2 (Clock_Ip_SetSirc) @05e7ca80
+Clock_Ip_SetSirc/2 (Clock_Ip_SetSirc) @05ddcc40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -695,7 +695,7 @@ Clock_Ip_SetSirc/2 (Clock_Ip_SetSirc) @05e7ca80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetSirc_TrustedCall/15 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_InternalOscillatorEmpty_Disable/1 (Clock_Ip_InternalOscillatorEmpty_Disable) @05e7c7e0
+Clock_Ip_InternalOscillatorEmpty_Disable/1 (Clock_Ip_InternalOscillatorEmpty_Disable) @05ddce00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -705,7 +705,7 @@ Clock_Ip_InternalOscillatorEmpty_Disable/1 (Clock_Ip_InternalOscillatorEmpty_Dis
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Clock_Ip_InternalOscillatorEmpty/0 (Clock_Ip_InternalOscillatorEmpty) @05e7c540
+Clock_Ip_InternalOscillatorEmpty/0 (Clock_Ip_InternalOscillatorEmpty) @05ddcb60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.

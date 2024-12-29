@@ -305,7 +305,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Clock_Ip_au8ClockFeatures/21 (Clock_Ip_au8ClockFeatures) @069e0900
+Clock_Ip_au8ClockFeatures/21 (Clock_Ip_au8ClockFeatures) @05db87e0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -313,14 +313,14 @@ Clock_Ip_au8ClockFeatures/21 (Clock_Ip_au8ClockFeatures) @069e0900
   Referring: Clock_Ip_ClockSetPccCgcEnable_TrustedCall/17 (read)Clock_Ip_ClockSetSimGate_TrustedCall/18 (read)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_axGateCallbacks/20 (Clock_Ip_axGateCallbacks) @069e03a8
+Clock_Ip_axGateCallbacks/20 (Clock_Ip_axGateCallbacks) @05db8288
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_ClockSetGateEmpty/0 (addr)Clock_Ip_ClockUpdateGateEmpty/1 (addr)Clock_Ip_ClockSetPccCgcEnable/8 (addr)Clock_Ip_ClockUpdatePccCgcEnable/9 (addr)Clock_Ip_ClockSetSimClkoutEnable/6 (addr)Clock_Ip_ClockUpdateSimClkoutEnable/7 (addr)Clock_Ip_ClockSetSimLPO32KEnable/4 (addr)Clock_Ip_ClockUpdateSimLPO32KEnable/5 (addr)Clock_Ip_ClockSetSimLPO1KEnable/2 (addr)Clock_Ip_ClockUpdateSimLPO1KEnable/3 (addr)Clock_Ip_ClockSetSimGate/10 (addr)Clock_Ip_ClockUpdateSimGate/11 (addr)Clock_Ip_ClockSetSimTraceEnable/12 (addr)Clock_Ip_ClockUpdateSimTraceEnable/13 (addr)
   Referring: 
   Availability: available
   Varpool flags: initialized read-only const-value-known
-Clock_Ip_ClockSetSimTraceEnable_TrustedCall/19 (Clock_Ip_ClockSetSimTraceEnable_TrustedCall) @06a0a2a0
+Clock_Ip_ClockSetSimTraceEnable_TrustedCall/19 (Clock_Ip_ClockSetSimTraceEnable_TrustedCall) @05db9c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -329,7 +329,7 @@ Clock_Ip_ClockSetSimTraceEnable_TrustedCall/19 (Clock_Ip_ClockSetSimTraceEnable_
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ClockUpdateSimTraceEnable/13 (1073741824 (estimated locally),1.00 per call) Clock_Ip_ClockSetSimTraceEnable/12 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ClockSetSimGate_TrustedCall/18 (Clock_Ip_ClockSetSimGate_TrustedCall) @06a0a000
+Clock_Ip_ClockSetSimGate_TrustedCall/18 (Clock_Ip_ClockSetSimGate_TrustedCall) @05db99a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8ClockFeatures/21 (read)
@@ -338,7 +338,7 @@ Clock_Ip_ClockSetSimGate_TrustedCall/18 (Clock_Ip_ClockSetSimGate_TrustedCall) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ClockUpdateSimGate/11 (1073741824 (estimated locally),1.00 per call) Clock_Ip_ClockSetSimGate/10 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ClockSetPccCgcEnable_TrustedCall/17 (Clock_Ip_ClockSetPccCgcEnable_TrustedCall) @069dfb60
+Clock_Ip_ClockSetPccCgcEnable_TrustedCall/17 (Clock_Ip_ClockSetPccCgcEnable_TrustedCall) @05db9700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8ClockFeatures/21 (read)
@@ -347,7 +347,7 @@ Clock_Ip_ClockSetPccCgcEnable_TrustedCall/17 (Clock_Ip_ClockSetPccCgcEnable_Trus
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ClockUpdatePccCgcEnable/9 (1073741824 (estimated locally),1.00 per call) Clock_Ip_ClockSetPccCgcEnable/8 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ClockSetSimClkoutEnable_TrustedCall/16 (Clock_Ip_ClockSetSimClkoutEnable_TrustedCall) @069df620
+Clock_Ip_ClockSetSimClkoutEnable_TrustedCall/16 (Clock_Ip_ClockSetSimClkoutEnable_TrustedCall) @05db9460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -356,7 +356,7 @@ Clock_Ip_ClockSetSimClkoutEnable_TrustedCall/16 (Clock_Ip_ClockSetSimClkoutEnabl
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ClockUpdateSimClkoutEnable/7 (1073741824 (estimated locally),1.00 per call) Clock_Ip_ClockSetSimClkoutEnable/6 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall/15 (Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall) @069df0e0
+Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall/15 (Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall) @05db91c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -365,7 +365,7 @@ Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall/15 (Clock_Ip_ClockSetSimLPO32KEnabl
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ClockUpdateSimLPO32KEnable/5 (1073741824 (estimated locally),1.00 per call) Clock_Ip_ClockSetSimLPO32KEnable/4 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall/14 (Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall) @069dfd20
+Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall/14 (Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall) @05db5ee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -374,7 +374,7 @@ Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall/14 (Clock_Ip_ClockSetSimLPO1KEnable_
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ClockUpdateSimLPO1KEnable/3 (1073741824 (estimated locally),1.00 per call) Clock_Ip_ClockSetSimLPO1KEnable/2 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ClockUpdateSimTraceEnable/13 (Clock_Ip_ClockUpdateSimTraceEnable) @069dfa80
+Clock_Ip_ClockUpdateSimTraceEnable/13 (Clock_Ip_ClockUpdateSimTraceEnable) @05db59a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -384,7 +384,7 @@ Clock_Ip_ClockUpdateSimTraceEnable/13 (Clock_Ip_ClockUpdateSimTraceEnable) @069d
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimTraceEnable_TrustedCall/19 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockSetSimTraceEnable/12 (Clock_Ip_ClockSetSimTraceEnable) @069df7e0
+Clock_Ip_ClockSetSimTraceEnable/12 (Clock_Ip_ClockSetSimTraceEnable) @05db5380
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -394,7 +394,7 @@ Clock_Ip_ClockSetSimTraceEnable/12 (Clock_Ip_ClockSetSimTraceEnable) @069df7e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimTraceEnable_TrustedCall/19 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockUpdateSimGate/11 (Clock_Ip_ClockUpdateSimGate) @069df540
+Clock_Ip_ClockUpdateSimGate/11 (Clock_Ip_ClockUpdateSimGate) @05db5e00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -404,7 +404,7 @@ Clock_Ip_ClockUpdateSimGate/11 (Clock_Ip_ClockUpdateSimGate) @069df540
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimGate_TrustedCall/18 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockSetSimGate/10 (Clock_Ip_ClockSetSimGate) @069df2a0
+Clock_Ip_ClockSetSimGate/10 (Clock_Ip_ClockSetSimGate) @05db5b60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -414,7 +414,7 @@ Clock_Ip_ClockSetSimGate/10 (Clock_Ip_ClockSetSimGate) @069df2a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimGate_TrustedCall/18 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockUpdatePccCgcEnable/9 (Clock_Ip_ClockUpdatePccCgcEnable) @069dbd20
+Clock_Ip_ClockUpdatePccCgcEnable/9 (Clock_Ip_ClockUpdatePccCgcEnable) @05db57e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -424,7 +424,7 @@ Clock_Ip_ClockUpdatePccCgcEnable/9 (Clock_Ip_ClockUpdatePccCgcEnable) @069dbd20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetPccCgcEnable_TrustedCall/17 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockSetPccCgcEnable/8 (Clock_Ip_ClockSetPccCgcEnable) @069db7e0
+Clock_Ip_ClockSetPccCgcEnable/8 (Clock_Ip_ClockSetPccCgcEnable) @05db5540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -434,7 +434,7 @@ Clock_Ip_ClockSetPccCgcEnable/8 (Clock_Ip_ClockSetPccCgcEnable) @069db7e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetPccCgcEnable_TrustedCall/17 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockUpdateSimClkoutEnable/7 (Clock_Ip_ClockUpdateSimClkoutEnable) @069db2a0
+Clock_Ip_ClockUpdateSimClkoutEnable/7 (Clock_Ip_ClockUpdateSimClkoutEnable) @05db52a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -444,7 +444,7 @@ Clock_Ip_ClockUpdateSimClkoutEnable/7 (Clock_Ip_ClockUpdateSimClkoutEnable) @069
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimClkoutEnable_TrustedCall/16 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockSetSimClkoutEnable/6 (Clock_Ip_ClockSetSimClkoutEnable) @069dbee0
+Clock_Ip_ClockSetSimClkoutEnable/6 (Clock_Ip_ClockSetSimClkoutEnable) @05db5000
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -454,7 +454,7 @@ Clock_Ip_ClockSetSimClkoutEnable/6 (Clock_Ip_ClockSetSimClkoutEnable) @069dbee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimClkoutEnable_TrustedCall/16 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockUpdateSimLPO32KEnable/5 (Clock_Ip_ClockUpdateSimLPO32KEnable) @069dbc40
+Clock_Ip_ClockUpdateSimLPO32KEnable/5 (Clock_Ip_ClockUpdateSimLPO32KEnable) @05db0c40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -464,7 +464,7 @@ Clock_Ip_ClockUpdateSimLPO32KEnable/5 (Clock_Ip_ClockUpdateSimLPO32KEnable) @069
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall/15 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockSetSimLPO32KEnable/4 (Clock_Ip_ClockSetSimLPO32KEnable) @069db9a0
+Clock_Ip_ClockSetSimLPO32KEnable/4 (Clock_Ip_ClockSetSimLPO32KEnable) @05db0700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -474,7 +474,7 @@ Clock_Ip_ClockSetSimLPO32KEnable/4 (Clock_Ip_ClockSetSimLPO32KEnable) @069db9a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall/15 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockUpdateSimLPO1KEnable/3 (Clock_Ip_ClockUpdateSimLPO1KEnable) @069db700
+Clock_Ip_ClockUpdateSimLPO1KEnable/3 (Clock_Ip_ClockUpdateSimLPO1KEnable) @05db0e00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -484,7 +484,7 @@ Clock_Ip_ClockUpdateSimLPO1KEnable/3 (Clock_Ip_ClockUpdateSimLPO1KEnable) @069db
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall/14 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockSetSimLPO1KEnable/2 (Clock_Ip_ClockSetSimLPO1KEnable) @069db460
+Clock_Ip_ClockSetSimLPO1KEnable/2 (Clock_Ip_ClockSetSimLPO1KEnable) @05db0b60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -494,7 +494,7 @@ Clock_Ip_ClockSetSimLPO1KEnable/2 (Clock_Ip_ClockSetSimLPO1KEnable) @069db460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall/14 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ClockUpdateGateEmpty/1 (Clock_Ip_ClockUpdateGateEmpty) @069db1c0
+Clock_Ip_ClockUpdateGateEmpty/1 (Clock_Ip_ClockUpdateGateEmpty) @05db08c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -504,7 +504,7 @@ Clock_Ip_ClockUpdateGateEmpty/1 (Clock_Ip_ClockUpdateGateEmpty) @069db1c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Clock_Ip_ClockSetGateEmpty/0 (Clock_Ip_ClockSetGateEmpty) @069d8e00
+Clock_Ip_ClockSetGateEmpty/0 (Clock_Ip_ClockSetGateEmpty) @05db0620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.

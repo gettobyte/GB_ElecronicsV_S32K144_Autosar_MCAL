@@ -13,7 +13,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Flexio_Pwm_Ip_aState/13 (Flexio_Pwm_Ip_aState) @069c4f30
+Flexio_Pwm_Ip_aState/13 (Flexio_Pwm_Ip_aState) @05ceeee8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -21,7 +21,7 @@ Flexio_Pwm_Ip_aState/13 (Flexio_Pwm_Ip_aState) @069c4f30
   Referring: Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)Flexio_Pwm_Ip_IrqHandler/11 (read)
   Availability: not_available
   Varpool flags:
-Flexio_Pwm_Ip_u8TimerIrqMask/12 (Flexio_Pwm_Ip_u8TimerIrqMask) @069c4ee8
+Flexio_Pwm_Ip_u8TimerIrqMask/12 (Flexio_Pwm_Ip_u8TimerIrqMask) @05ceeea0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -29,13 +29,13 @@ Flexio_Pwm_Ip_u8TimerIrqMask/12 (Flexio_Pwm_Ip_u8TimerIrqMask) @069c4ee8
   Referring: Flexio_Pwm_Ip_IrqHandler/11 (read)
   Availability: not_available
   Varpool flags:
-Flexio_Pwm_Ip_IrqHandler/11 (Flexio_Pwm_Ip_IrqHandler) @069ce460
+Flexio_Pwm_Ip_IrqHandler/11 (Flexio_Pwm_Ip_IrqHandler) @05cf7b60
   Type: function definition analyzed
-  Visibility: externally_visible public
+  Visibility: force_output externally_visible no_reorder public
   References: Flexio_Pwm_Ip_u8TimerIrqMask/12 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)Flexio_Pwm_Ip_aState/13 (read)
   Referring: 
   Availability: available
-  Function flags: body optimize_size
+  Function flags: body
   Called by: 
   Calls: 
    Indirect call
@@ -43,7 +43,6 @@ Flexio_Pwm_Ip_IrqHandler/11 (Flexio_Pwm_Ip_IrqHandler) @069ce460
 Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   Flexio_Pwm_Ip_u8TimerIrqMask.0_1 = Flexio_Pwm_Ip_u8TimerIrqMask;
   _2 = TimerFlags & Flexio_Pwm_Ip_u8TimerIrqMask.0_1;
   _3 = (unsigned int) _2;
@@ -59,7 +58,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
     goto <bb 7>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _10 = (int) ChannelId;
   _11 = Flexio_Pwm_Ip_aState[_10];
   _12 = _11->IplCallback.CbFunction;
@@ -69,7 +67,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _13 = (int) ChannelId;
   _14 = Flexio_Pwm_Ip_aState[_13];
   _15 = _14->IplCallback.CbFunction;
@@ -80,7 +77,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
   goto <bb 7>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _19 = (int) ChannelId;
   _20 = Flexio_Pwm_Ip_aState[_19];
   _21 = _20->HldCallback.CbFunction;
@@ -90,7 +86,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _22 = (int) ChannelId;
   _23 = Flexio_Pwm_Ip_aState[_22];
   _24 = _23->HldCallback.CbFunction;
@@ -100,7 +95,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
   _24 (_27);
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   return;
 
 }

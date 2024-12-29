@@ -29,7 +29,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
   unsigned char _27;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   Flexio_Pwm_Ip_u8TimerIrqMask.0_1 ={v} Flexio_Pwm_Ip_u8TimerIrqMask;
   _2 = TimerFlags_30(D) & Flexio_Pwm_Ip_u8TimerIrqMask.0_1;
   _3 = (unsigned int) _2;
@@ -45,7 +44,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
     goto <bb 7>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _10 = (int) ChannelId_31(D);
   _11 = Flexio_Pwm_Ip_aState[_10];
   _12 = _11->IplCallback.CbFunction;
@@ -55,7 +53,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
     goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _13 = (int) ChannelId_31(D);
   _14 = Flexio_Pwm_Ip_aState[_13];
   _15 = _14->IplCallback.CbFunction;
@@ -66,7 +63,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
   goto <bb 7>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _19 = (int) ChannelId_31(D);
   _20 = Flexio_Pwm_Ip_aState[_19];
   _21 = _20->HldCallback.CbFunction;
@@ -76,7 +72,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _22 = (int) ChannelId_31(D);
   _23 = Flexio_Pwm_Ip_aState[_22];
   _24 = _23->HldCallback.CbFunction;
@@ -86,7 +81,6 @@ Flexio_Pwm_Ip_IrqHandler (uint8 ChannelId, uint8 TimerFlags)
   _24 (_27);
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   return;
 
 }

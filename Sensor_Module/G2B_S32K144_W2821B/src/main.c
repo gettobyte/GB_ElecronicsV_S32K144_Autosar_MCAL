@@ -3,31 +3,10 @@
 #include "Clock_Ip.h"
 #include "Port.h"
 #include "Pwm.h"
+#include "W2821B.h"
 
 volatile int exit_code = 0;
 /* User includes */
-
-void TestDelay(uint32 delay);
-void TestDelay(uint32 delay)
-{
-   static volatile uint32 DelayTimer = 0;
-   while(DelayTimer<delay)
-   {
-       DelayTimer++;
-   }
-   DelayTimer=0;
-}
-
-uint16_t PWM_DutyCycle(uint8_t DutyCycle_Percentage)
-{
-	/*
-	 * Duty Cycle variation follow the range of 0x0000 to 0x8000
-	 * which is 0 to 32768 in decimal. Therefore this conversion
-	 * is important for proper duty cycle adjustment.
-	 */
-	uint16_t Converted_DutyCycle = ((32768 * DutyCycle_Percentage)/100);
-	return (Converted_DutyCycle);
-}
 
 int main(void)
 {
@@ -49,9 +28,35 @@ int main(void)
 	/* Initialize all PWM Configuration using the PWM driver */
 	Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
 
-
     for(;;)
     {
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+    	Pwm_SetDutyCycle(0, 20971);
+
+    	Pwm_SetDutyCycle(0, 11796);
+    	Pwm_SetDutyCycle(0, 11796);
+    	Pwm_SetDutyCycle(0, 11796);
+    	Pwm_SetDutyCycle(0, 11796);
+    	Pwm_SetDutyCycle(0, 11796);
+    	Pwm_SetDutyCycle(0, 11796);
+    	Pwm_SetDutyCycle(0, 11796);
+    	Pwm_SetDutyCycle(0, 11796);
+
         if(exit_code != 0)
         {
             break;

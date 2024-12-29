@@ -42,14 +42,14 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Clock_Ip_axFracDivCallbacks/2 (Clock_Ip_axFracDivCallbacks) @05ed5798
+Clock_Ip_axFracDivCallbacks/2 (Clock_Ip_axFracDivCallbacks) @05f82678
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_CallbackFracDivEmpty/0 (addr)Clock_Ip_CallbackFracDivEmpty/0 (addr)Clock_Ip_CallbackFracDivEmptyComplete/1 (addr)
   Referring: 
   Availability: available
   Varpool flags: initialized read-only const-value-known
-Clock_Ip_CallbackFracDivEmptyComplete/1 (Clock_Ip_CallbackFracDivEmptyComplete) @05de31c0
+Clock_Ip_CallbackFracDivEmptyComplete/1 (Clock_Ip_CallbackFracDivEmptyComplete) @05edf8c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -59,7 +59,7 @@ Clock_Ip_CallbackFracDivEmptyComplete/1 (Clock_Ip_CallbackFracDivEmptyComplete) 
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Clock_Ip_CallbackFracDivEmpty/0 (Clock_Ip_CallbackFracDivEmpty) @05ed3620
+Clock_Ip_CallbackFracDivEmpty/0 (Clock_Ip_CallbackFracDivEmpty) @05edf620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.

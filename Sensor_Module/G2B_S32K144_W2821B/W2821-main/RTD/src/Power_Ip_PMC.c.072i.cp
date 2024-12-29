@@ -32,7 +32,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Power_Ip_PMC_PowerInit/0 (Power_Ip_PMC_PowerInit) @05bcc1c0
+Power_Ip_PMC_PowerInit/0 (Power_Ip_PMC_PowerInit) @05b8d8c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 

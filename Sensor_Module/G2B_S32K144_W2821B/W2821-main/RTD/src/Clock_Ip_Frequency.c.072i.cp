@@ -38,7 +38,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Clock_Ip_SetExternalSignalFrequency/0 (Clock_Ip_SetExternalSignalFrequency) @05e941c0
+Clock_Ip_SetExternalSignalFrequency/0 (Clock_Ip_SetExternalSignalFrequency) @05db5460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 

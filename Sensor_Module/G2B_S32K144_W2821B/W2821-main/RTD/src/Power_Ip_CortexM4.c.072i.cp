@@ -36,7 +36,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Power_Ip_CM4_DisableDeepSleep/4 (Power_Ip_CM4_DisableDeepSleep) @05c4e9a0
+Power_Ip_CM4_DisableDeepSleep/4 (Power_Ip_CM4_DisableDeepSleep) @05bc42a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Power_Ip_pxCM4/0 (read)
@@ -45,7 +45,7 @@ Power_Ip_CM4_DisableDeepSleep/4 (Power_Ip_CM4_DisableDeepSleep) @05c4e9a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Power_Ip_CM4_EnableDeepSleep/3 (Power_Ip_CM4_EnableDeepSleep) @05c4ee00
+Power_Ip_CM4_EnableDeepSleep/3 (Power_Ip_CM4_EnableDeepSleep) @05bc4000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Power_Ip_pxCM4/0 (read)
@@ -54,7 +54,7 @@ Power_Ip_CM4_EnableDeepSleep/3 (Power_Ip_CM4_EnableDeepSleep) @05c4ee00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Power_Ip_CM4_EnableSleepOnExit/2 (Power_Ip_CM4_EnableSleepOnExit) @05c4eb60
+Power_Ip_CM4_EnableSleepOnExit/2 (Power_Ip_CM4_EnableSleepOnExit) @05bbab60
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Power_Ip_pxCM4/0 (read)
@@ -63,7 +63,7 @@ Power_Ip_CM4_EnableSleepOnExit/2 (Power_Ip_CM4_EnableSleepOnExit) @05c4eb60
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Power_Ip_CM4_DisableSleepOnExit/1 (Power_Ip_CM4_DisableSleepOnExit) @05c4e8c0
+Power_Ip_CM4_DisableSleepOnExit/1 (Power_Ip_CM4_DisableSleepOnExit) @05bbad20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Power_Ip_pxCM4/0 (read)
@@ -72,7 +72,7 @@ Power_Ip_CM4_DisableSleepOnExit/1 (Power_Ip_CM4_DisableSleepOnExit) @05c4e8c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Power_Ip_pxCM4/0 (Power_Ip_pxCM4) @05c54168
+Power_Ip_pxCM4/0 (Power_Ip_pxCM4) @05bc1000
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 

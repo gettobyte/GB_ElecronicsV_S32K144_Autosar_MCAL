@@ -8,35 +8,30 @@ SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02 ()
   long unsigned int _5;
   long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   _1 = Sys_GetCoreID ();
   u32CoreId_10 = (uint32) _1;
-  # DEBUG u32CoreId => u32CoreId_10
-  # DEBUG BEGIN_STMT
   _2 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_02[u32CoreId_10];
   _3 = _2 + 4294967295;
   reentry_guard_MCU_EXCLUSIVE_AREA_02[u32CoreId_10] ={v} _3;
-  # DEBUG BEGIN_STMT
   _4 ={v} msr_MCU_EXCLUSIVE_AREA_02[u32CoreId_10];
   _5 = _4 & 1;
   if (_5 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
+  <bb 3> :
   _6 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_02[u32CoreId_10];
   if (_6 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -44,7 +39,6 @@ SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_02 ()
 
 SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02 ()
 {
-  register uint32 reg_tmp;
   uint32 u32CoreId;
   unsigned char _1;
   long unsigned int _2;
@@ -52,46 +46,34 @@ SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_02 ()
   long unsigned int _4;
   long unsigned int _5;
   long unsigned int _6;
+  long unsigned int _7;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   _1 = Sys_GetCoreID ();
-  u32CoreId_10 = (uint32) _1;
-  # DEBUG u32CoreId => u32CoreId_10
-  # DEBUG BEGIN_STMT
-  _2 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_02[u32CoreId_10];
+  u32CoreId_11 = (uint32) _1;
+  _2 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_02[u32CoreId_11];
   if (_2 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Mcu_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_14);
-  # DEBUG reg_tmp => reg_tmp_14
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_MCU_EXCLUSIVE_AREA_02[u32CoreId_10] ={v} reg_tmp_14;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_MCU_EXCLUSIVE_AREA_02[u32CoreId_10];
-  _4 = _3 & 1;
-  if (_4 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _3 = Mcu_schm_read_msr ();
+  msr_MCU_EXCLUSIVE_AREA_02[u32CoreId_11] ={v} _3;
+  _4 ={v} msr_MCU_EXCLUSIVE_AREA_02[u32CoreId_11];
+  _5 = _4 & 1;
+  if (_5 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _5 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_02[u32CoreId_10];
-  _6 = _5 + 1;
-  reentry_guard_MCU_EXCLUSIVE_AREA_02[u32CoreId_10] ={v} _6;
+  <bb 5> :
+  _6 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_02[u32CoreId_11];
+  _7 = _6 + 1;
+  reentry_guard_MCU_EXCLUSIVE_AREA_02[u32CoreId_11] ={v} _7;
   return;
 
 }
@@ -107,35 +89,30 @@ SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01 ()
   long unsigned int _5;
   long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   _1 = Sys_GetCoreID ();
   u32CoreId_10 = (uint32) _1;
-  # DEBUG u32CoreId => u32CoreId_10
-  # DEBUG BEGIN_STMT
   _2 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_01[u32CoreId_10];
   _3 = _2 + 4294967295;
   reentry_guard_MCU_EXCLUSIVE_AREA_01[u32CoreId_10] ={v} _3;
-  # DEBUG BEGIN_STMT
   _4 ={v} msr_MCU_EXCLUSIVE_AREA_01[u32CoreId_10];
   _5 = _4 & 1;
   if (_5 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
+  <bb 3> :
   _6 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_01[u32CoreId_10];
   if (_6 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -143,7 +120,6 @@ SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_01 ()
 
 SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01 ()
 {
-  register uint32 reg_tmp;
   uint32 u32CoreId;
   unsigned char _1;
   long unsigned int _2;
@@ -151,46 +127,34 @@ SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_01 ()
   long unsigned int _4;
   long unsigned int _5;
   long unsigned int _6;
+  long unsigned int _7;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   _1 = Sys_GetCoreID ();
-  u32CoreId_10 = (uint32) _1;
-  # DEBUG u32CoreId => u32CoreId_10
-  # DEBUG BEGIN_STMT
-  _2 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_01[u32CoreId_10];
+  u32CoreId_11 = (uint32) _1;
+  _2 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_01[u32CoreId_11];
   if (_2 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Mcu_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_14);
-  # DEBUG reg_tmp => reg_tmp_14
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_MCU_EXCLUSIVE_AREA_01[u32CoreId_10] ={v} reg_tmp_14;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_MCU_EXCLUSIVE_AREA_01[u32CoreId_10];
-  _4 = _3 & 1;
-  if (_4 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _3 = Mcu_schm_read_msr ();
+  msr_MCU_EXCLUSIVE_AREA_01[u32CoreId_11] ={v} _3;
+  _4 ={v} msr_MCU_EXCLUSIVE_AREA_01[u32CoreId_11];
+  _5 = _4 & 1;
+  if (_5 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _5 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_01[u32CoreId_10];
-  _6 = _5 + 1;
-  reentry_guard_MCU_EXCLUSIVE_AREA_01[u32CoreId_10] ={v} _6;
+  <bb 5> :
+  _6 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_01[u32CoreId_11];
+  _7 = _6 + 1;
+  reentry_guard_MCU_EXCLUSIVE_AREA_01[u32CoreId_11] ={v} _7;
   return;
 
 }
@@ -206,35 +170,30 @@ SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00 ()
   long unsigned int _5;
   long unsigned int _6;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   _1 = Sys_GetCoreID ();
   u32CoreId_10 = (uint32) _1;
-  # DEBUG u32CoreId => u32CoreId_10
-  # DEBUG BEGIN_STMT
   _2 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_00[u32CoreId_10];
   _3 = _2 + 4294967295;
   reentry_guard_MCU_EXCLUSIVE_AREA_00[u32CoreId_10] ={v} _3;
-  # DEBUG BEGIN_STMT
   _4 ={v} msr_MCU_EXCLUSIVE_AREA_00[u32CoreId_10];
   _5 = _4 & 1;
   if (_5 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
+  <bb 3> :
   _6 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_00[u32CoreId_10];
   if (_6 == 0)
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsie i");
 
-  <bb 5> [local count: 1073741824]:
+  <bb 5> :
   return;
 
 }
@@ -242,7 +201,6 @@ SchM_Exit_Mcu_MCU_EXCLUSIVE_AREA_00 ()
 
 SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00 ()
 {
-  register uint32 reg_tmp;
   uint32 u32CoreId;
   unsigned char _1;
   long unsigned int _2;
@@ -250,46 +208,34 @@ SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00 ()
   long unsigned int _4;
   long unsigned int _5;
   long unsigned int _6;
+  long unsigned int _7;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   _1 = Sys_GetCoreID ();
-  u32CoreId_10 = (uint32) _1;
-  # DEBUG u32CoreId => u32CoreId_10
-  # DEBUG BEGIN_STMT
-  _2 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_00[u32CoreId_10];
+  u32CoreId_11 = (uint32) _1;
+  _2 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_00[u32CoreId_11];
   if (_2 == 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
-  # DEBUG INLINE_ENTRY Mcu_schm_read_msr
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_14);
-  # DEBUG reg_tmp => reg_tmp_14
-  # DEBUG BEGIN_STMT
-  # DEBUG reg_tmp => NULL
-  msr_MCU_EXCLUSIVE_AREA_00[u32CoreId_10] ={v} reg_tmp_14;
-  # DEBUG BEGIN_STMT
-  _3 ={v} msr_MCU_EXCLUSIVE_AREA_00[u32CoreId_10];
-  _4 = _3 & 1;
-  if (_4 == 0)
-    goto <bb 4>; [50.00%]
+  <bb 3> :
+  _3 = Mcu_schm_read_msr ();
+  msr_MCU_EXCLUSIVE_AREA_00[u32CoreId_11] ={v} _3;
+  _4 ={v} msr_MCU_EXCLUSIVE_AREA_00[u32CoreId_11];
+  _5 = _4 & 1;
+  if (_5 == 0)
+    goto <bb 4>; [INV]
   else
-    goto <bb 5>; [50.00%]
+    goto <bb 5>; [INV]
 
-  <bb 4> [local count: 268435456]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   __asm__ __volatile__(" cpsid i");
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _5 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_00[u32CoreId_10];
-  _6 = _5 + 1;
-  reentry_guard_MCU_EXCLUSIVE_AREA_00[u32CoreId_10] ={v} _6;
+  <bb 5> :
+  _6 ={v} reentry_guard_MCU_EXCLUSIVE_AREA_00[u32CoreId_11];
+  _7 = _6 + 1;
+  reentry_guard_MCU_EXCLUSIVE_AREA_00[u32CoreId_11] ={v} _7;
   return;
 
 }
@@ -298,14 +244,16 @@ SchM_Enter_Mcu_MCU_EXCLUSIVE_AREA_00 ()
 Mcu_schm_read_msr ()
 {
   register uint32 reg_tmp;
+  uint32 D.5590;
+  uint32 _2;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_1);
-  # DEBUG reg_tmp => reg_tmp_1
-  # DEBUG BEGIN_STMT
-  return reg_tmp_1;
+  _2 = reg_tmp_1;
+
+  <bb 3> :
+<L0>:
+  return _2;
 
 }
 

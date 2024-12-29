@@ -2,6 +2,7 @@ Flexio_Pwm_Ip_GetPeriod (uint8 InstanceId, uint8 Channel)
 {
   uint16 Period;
   const struct Flexio_Pwm_Ip_HwAddrType * const Base;
+  uint16 D.6069;
   _Bool _1;
   _Bool _2;
   int _3;
@@ -13,26 +14,22 @@ Flexio_Pwm_Ip_GetPeriod (uint8 InstanceId, uint8 Channel)
   uint16 _18;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = Channel_9(D) <= 3;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = InstanceId_12(D) == 0;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = (int) InstanceId_12(D);
   Base_14 = 1074110464B;
-  # DEBUG Base => Base_14
-  # DEBUG BEGIN_STMT
   _4 = Flexio_Pwm_Ip_GetUpperValue (Base_14, Channel_9(D));
   _5 = (short unsigned int) _4;
   _6 = Flexio_Pwm_Ip_GetLowerValue (Base_14, Channel_9(D));
   _7 = (short unsigned int) _6;
   _8 = _5 + _7;
   Period_17 = _8 + 2;
-  # DEBUG Period => Period_17
-  # DEBUG BEGIN_STMT
   _18 = Period_17;
+
+  <bb 3> :
+<L0>:
   return _18;
 
 }
@@ -43,6 +40,7 @@ Flexio_Pwm_Ip_UpdateInterruptMode (uint8 InstanceId, uint8 Channel, Flexio_Pwm_I
   Flexio_Pwm_Ip_StatusType RetStatus;
   const struct Flexio_Pwm_Ip_ChannelConfigType * const UserCfg;
   struct Flexio_Pwm_Ip_HwAddrType * const Base;
+  Flexio_Pwm_Ip_StatusType D.6067;
   _Bool _1;
   _Bool _2;
   int _3;
@@ -74,48 +72,34 @@ Flexio_Pwm_Ip_UpdateInterruptMode (uint8 InstanceId, uint8 Channel, Flexio_Pwm_I
   Flexio_Pwm_Ip_StatusType _46;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = Channel_30(D) <= 3;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = InstanceId_33(D) == 0;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = (int) InstanceId_33(D);
   Base_35 = 1074110464B;
-  # DEBUG Base => Base_35
-  # DEBUG BEGIN_STMT
   _4 = (int) Channel_30(D);
   UserCfg_36 = Flexio_Pwm_Ip_aState[_4];
-  # DEBUG UserCfg => UserCfg_36
-  # DEBUG BEGIN_STMT
   RetStatus_37 = 0;
-  # DEBUG RetStatus => RetStatus_37
-  # DEBUG BEGIN_STMT
   SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_34 ();
-  # DEBUG BEGIN_STMT
   _5 = UserCfg_36->TimerId;
   Flexio_Mcl_Ip_ClearTimerStatus (Base_35, _5);
-  # DEBUG BEGIN_STMT
   _6 = UserCfg_36->TimerId;
   _7 = (int) _6;
   _8 = 1 << _7;
   _9 = (unsigned char) _8;
   Flexio_Mcl_Ip_SetTimerInterrupt (Base_35, _9, 0);
-  # DEBUG BEGIN_STMT
   if (IrqMode_41(D) == 4)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _10 = UserCfg_36->TimerId;
   _11 = (int) _10;
   _12 = 1 << _11;
   _13 = (unsigned char) _12;
   Flexio_Mcl_Ip_SetTimerInterrupt (Base_35, _13, 1);
-  # DEBUG BEGIN_STMT
   _14 = UserCfg_36->TimerId;
   _15 = (int) _14;
   _16 = 1 << _15;
@@ -126,14 +110,12 @@ Flexio_Pwm_Ip_UpdateInterruptMode (uint8 InstanceId, uint8 Channel, Flexio_Pwm_I
   goto <bb 6>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   if (IrqMode_41(D) == 0)
     goto <bb 5>; [INV]
   else
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _20 = UserCfg_36->TimerId;
   _21 = (int) _20;
   _22 = 1 << _21;
@@ -146,11 +128,11 @@ Flexio_Pwm_Ip_UpdateInterruptMode (uint8 InstanceId, uint8 Channel, Flexio_Pwm_I
   Flexio_Pwm_Ip_u8TimerIrqMask ={v} _28;
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_34 ();
-  # DEBUG BEGIN_STMT
   _46 = RetStatus_37;
+
+  <bb 7> :
+<L6>:
   return _46;
 
 }
@@ -160,6 +142,7 @@ Flexio_Pwm_Ip_GetOutputState (uint8 InstanceId, uint8 Channel)
 {
   const struct Flexio_Pwm_Ip_ChannelConfigType * const UserCfg;
   const struct Flexio_Pwm_Ip_HwAddrType * const Base;
+  boolean D.6057;
   _Bool _1;
   _Bool _2;
   int _3;
@@ -168,23 +151,19 @@ Flexio_Pwm_Ip_GetOutputState (uint8 InstanceId, uint8 Channel)
   boolean _14;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = Channel_6(D) <= 3;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = InstanceId_9(D) == 0;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = (int) InstanceId_9(D);
   Base_11 = 1074110464B;
-  # DEBUG Base => Base_11
-  # DEBUG BEGIN_STMT
   _4 = (int) Channel_6(D);
   UserCfg_12 = Flexio_Pwm_Ip_aState[_4];
-  # DEBUG UserCfg => UserCfg_12
-  # DEBUG BEGIN_STMT
   _5 = UserCfg_12->PinId;
   _14 = Flexio_Pwm_Ip_GetPinState (Base_11, _5);
+
+  <bb 3> :
+<L0>:
   return _14;
 
 }
@@ -193,6 +172,7 @@ Flexio_Pwm_Ip_GetOutputState (uint8 InstanceId, uint8 Channel)
 Flexio_Pwm_Ip_UpdatePeriodDuty (uint8 InstanceId, uint8 Channel, uint16 Period, uint16 DutyCycle)
 {
   struct Flexio_Pwm_Ip_HwAddrType * const Base;
+  Flexio_Pwm_Ip_StatusType D.6055;
   _Bool _1;
   _Bool _2;
   _Bool _3;
@@ -209,46 +189,35 @@ Flexio_Pwm_Ip_UpdatePeriodDuty (uint8 InstanceId, uint8 Channel, uint16 Period, 
   Flexio_Pwm_Ip_StatusType _31;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = Channel_14(D) <= 3;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = InstanceId_17(D) == 0;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = Period_19(D) >= DutyCycle_20(D);
   DevAssert (_3);
-  # DEBUG BEGIN_STMT
   _4 = DutyCycle_20(D) <= 256;
   DevAssert (_4);
-  # DEBUG BEGIN_STMT
   _5 = Period_19(D) - DutyCycle_20(D);
   _6 = _5 <= 256;
   DevAssert (_6);
-  # DEBUG BEGIN_STMT
   _7 = (int) InstanceId_17(D);
   Base_24 = 1074110464B;
-  # DEBUG Base => Base_24
-  # DEBUG BEGIN_STMT
   SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_33 ();
-  # DEBUG BEGIN_STMT
   Flexio_Pwm_Ip_SetTimerInitMode (Base_24, Channel_14(D), 0);
-  # DEBUG BEGIN_STMT
   Flexio_Pwm_Ip_SetTimerMode (Base_24, Channel_14(D), 2);
-  # DEBUG BEGIN_STMT
   _8 = (unsigned char) DutyCycle_20(D);
   _9 = _8 + 255;
   Flexio_Pwm_Ip_SetLowerValue (Base_24, Channel_14(D), _9);
-  # DEBUG BEGIN_STMT
   _10 = (unsigned char) Period_19(D);
   _11 = (unsigned char) DutyCycle_20(D);
   _12 = _10 - _11;
   _13 = _12 + 255;
   Flexio_Pwm_Ip_SetUpperValue (Base_24, Channel_14(D), _13);
-  # DEBUG BEGIN_STMT
   SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_33 ();
-  # DEBUG BEGIN_STMT
   _31 = 0;
+
+  <bb 3> :
+<L0>:
   return _31;
 
 }
@@ -259,6 +228,7 @@ Flexio_Pwm_Ip_DeInitChannel (uint8 InstanceId, uint8 Channel)
   Flexio_Pwm_Ip_StatusType RetStatus;
   const struct Flexio_Pwm_Ip_ChannelConfigType * const UserCfg;
   struct Flexio_Pwm_Ip_HwAddrType * const Base;
+  Flexio_Pwm_Ip_StatusType D.6053;
   _Bool _1;
   _Bool _2;
   int _3;
@@ -267,33 +237,23 @@ Flexio_Pwm_Ip_DeInitChannel (uint8 InstanceId, uint8 Channel)
   Flexio_Pwm_Ip_StatusType _18;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = Channel_6(D) <= 3;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = InstanceId_9(D) == 0;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = (int) InstanceId_9(D);
   Base_11 = 1074110464B;
-  # DEBUG Base => Base_11
-  # DEBUG BEGIN_STMT
   _4 = (int) Channel_6(D);
   UserCfg_12 = Flexio_Pwm_Ip_aState[_4];
-  # DEBUG UserCfg => UserCfg_12
-  # DEBUG BEGIN_STMT
   RetStatus_13 = 0;
-  # DEBUG RetStatus => RetStatus_13
-  # DEBUG BEGIN_STMT
   _5 = UserCfg_12->TimerId;
   Flexio_Pwm_Ip_SetTimerMode (Base_11, _5, 0);
-  # DEBUG BEGIN_STMT
   RetStatus_16 = Flexio_Pwm_Ip_UpdateInterruptMode (InstanceId_9(D), Channel_6(D), 0);
-  # DEBUG RetStatus => RetStatus_16
-  # DEBUG BEGIN_STMT
   Flexio_Pwm_Ip_ResetTimerRegisters (InstanceId_9(D), Channel_6(D));
-  # DEBUG BEGIN_STMT
   _18 = RetStatus_16;
+
+  <bb 3> :
+<L0>:
   return _18;
 
 }
@@ -303,6 +263,7 @@ Flexio_Pwm_Ip_InitChannel (uint8 InstanceId, const struct Flexio_Pwm_Ip_ChannelC
 {
   Flexio_Pwm_Ip_StatusType RetStatus;
   struct Flexio_Pwm_Ip_HwAddrType * const Base;
+  Flexio_Pwm_Ip_StatusType D.6048;
   _Bool _1;
   _Bool _2;
   short unsigned int _3;
@@ -335,57 +296,40 @@ Flexio_Pwm_Ip_InitChannel (uint8 InstanceId, const struct Flexio_Pwm_Ip_ChannelC
   Flexio_Pwm_Ip_StatusType _49;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = UserCfg_30(D) != 0B;
   DevAssert (_1);
-  # DEBUG BEGIN_STMT
   _2 = InstanceId_33(D) == 0;
   DevAssert (_2);
-  # DEBUG BEGIN_STMT
   _3 = UserCfg_30(D)->Period;
   _4 = UserCfg_30(D)->DutyCycle;
   _5 = _3 >= _4;
   DevAssert (_5);
-  # DEBUG BEGIN_STMT
   _6 = UserCfg_30(D)->DutyCycle;
   _7 = _6 <= 256;
   DevAssert (_7);
-  # DEBUG BEGIN_STMT
   _8 = UserCfg_30(D)->Period;
   _9 = UserCfg_30(D)->DutyCycle;
   _10 = _8 - _9;
   _11 = _10 <= 256;
   DevAssert (_11);
-  # DEBUG BEGIN_STMT
   _12 = (int) InstanceId_33(D);
   Base_38 = 1074110464B;
-  # DEBUG Base => Base_38
-  # DEBUG BEGIN_STMT
   RetStatus_39 = 0;
-  # DEBUG RetStatus => RetStatus_39
-  # DEBUG BEGIN_STMT
   _13 = UserCfg_30(D)->TimerId;
   _14 = (int) _13;
   Flexio_Pwm_Ip_aState[_14] = UserCfg_30(D);
-  # DEBUG BEGIN_STMT
   _15 = UserCfg_30(D)->TimerId;
   Flexio_Pwm_Ip_SetTimerMode (Base_38, _15, 0);
-  # DEBUG BEGIN_STMT
   _16 = UserCfg_30(D)->TimerId;
   Flexio_Pwm_Ip_SetTimerInitMode (Base_38, _16, 0);
-  # DEBUG BEGIN_STMT
   Flexio_Pwm_Ip_InitTimerPin (Base_38, UserCfg_30(D));
-  # DEBUG BEGIN_STMT
   _17 = UserCfg_30(D)->TimerId;
   RetStatus_45 = Flexio_Pwm_Ip_UpdateInterruptMode (InstanceId_33(D), _17, 0);
-  # DEBUG RetStatus => RetStatus_45
-  # DEBUG BEGIN_STMT
   _18 = UserCfg_30(D)->TimerId;
   _19 = UserCfg_30(D)->DutyCycle;
   _20 = (unsigned char) _19;
   _21 = _20 + 255;
   Flexio_Pwm_Ip_SetLowerValue (Base_38, _18, _21);
-  # DEBUG BEGIN_STMT
   _22 = UserCfg_30(D)->TimerId;
   _23 = UserCfg_30(D)->Period;
   _24 = (unsigned char) _23;
@@ -394,11 +338,12 @@ Flexio_Pwm_Ip_InitChannel (uint8 InstanceId, const struct Flexio_Pwm_Ip_ChannelC
   _27 = _24 - _26;
   _28 = _27 + 255;
   Flexio_Pwm_Ip_SetUpperValue (Base_38, _22, _28);
-  # DEBUG BEGIN_STMT
   _29 = UserCfg_30(D)->TimerId;
   Flexio_Pwm_Ip_SetTimerMode (Base_38, _29, 2);
-  # DEBUG BEGIN_STMT
   _49 = RetStatus_45;
+
+  <bb 3> :
+<L0>:
   return _49;
 
 }
@@ -411,10 +356,8 @@ Flexio_Pwm_Ip_InitTimerPin (struct Flexio_Pwm_Ip_HwAddrType * const Base, const 
   unsigned char _3;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = UserCfg_5(D)->TimerId;
   Flexio_Pwm_Ip_SetTimerPinOutput (Base_6(D), _1, 3);
-  # DEBUG BEGIN_STMT
   _2 = UserCfg_5(D)->TimerId;
   _3 = UserCfg_5(D)->PinId;
   Flexio_Pwm_Ip_SetTimerPin (Base_6(D), _2, _3);
@@ -436,27 +379,18 @@ Flexio_Pwm_Ip_ResetTimerRegisters (uint8 InstanceId, uint8 Channel)
   unsigned char _7;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) InstanceId_8(D);
   Base_9 = 1074110464B;
-  # DEBUG Base => Base_9
-  # DEBUG BEGIN_STMT
   _2 = (int) Channel_10(D);
   UserCfg_12 = Flexio_Pwm_Ip_aState[_2];
-  # DEBUG UserCfg => UserCfg_12
-  # DEBUG BEGIN_STMT
   _3 = UserCfg_12->TimerId;
   Flexio_Pwm_Ip_SetTimerPin (Base_9, _3, 0);
-  # DEBUG BEGIN_STMT
   _4 = UserCfg_12->TimerId;
   Flexio_Pwm_Ip_SetTimerPinOutput (Base_9, _4, 0);
-  # DEBUG BEGIN_STMT
   _5 = UserCfg_12->TimerId;
   Flexio_Pwm_Ip_SetTimerInitMode (Base_9, _5, 0);
-  # DEBUG BEGIN_STMT
   _6 = UserCfg_12->TimerId;
   Flexio_Pwm_Ip_SetUpperValue (Base_9, _6, 0);
-  # DEBUG BEGIN_STMT
   _7 = UserCfg_12->TimerId;
   Flexio_Pwm_Ip_SetLowerValue (Base_9, _7, 0);
   return;
@@ -466,15 +400,18 @@ Flexio_Pwm_Ip_ResetTimerRegisters (uint8 InstanceId, uint8 Channel)
 
 Flexio_Pwm_Ip_GetLowerValue (const struct Flexio_Pwm_Ip_HwAddrType * const Base, uint8 Timer)
 {
+  uint8 D.6073;
   int _1;
   long unsigned int _2;
   uint8 _6;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) Timer_3(D);
   _2 ={v} Base_5(D)->TIMCMP[_1];
   _6 = (uint8) _2;
+
+  <bb 3> :
+<L0>:
   return _6;
 
 }
@@ -482,17 +419,20 @@ Flexio_Pwm_Ip_GetLowerValue (const struct Flexio_Pwm_Ip_HwAddrType * const Base,
 
 Flexio_Pwm_Ip_GetUpperValue (const struct Flexio_Pwm_Ip_HwAddrType * const Base, uint8 Timer)
 {
+  uint8 D.6071;
   int _1;
   long unsigned int _2;
   long unsigned int _3;
   uint8 _7;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) Timer_4(D);
   _2 ={v} Base_6(D)->TIMCMP[_1];
   _3 = _2 >> 8;
   _7 = (uint8) _3;
+
+  <bb 3> :
+<L0>:
   return _7;
 
 }
@@ -508,7 +448,6 @@ Flexio_Pwm_Ip_SetLowerValue (struct Flexio_Pwm_Ip_HwAddrType * Base, uint8 Timer
   long unsigned int _6;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) Timer_7(D);
   _2 ={v} Base_9(D)->TIMCMP[_1];
   _3 = _2 & 4294967040;
@@ -533,7 +472,6 @@ Flexio_Pwm_Ip_SetUpperValue (struct Flexio_Pwm_Ip_HwAddrType * Base, uint8 Timer
   long unsigned int _8;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) Timer_9(D);
   _2 ={v} Base_11(D)->TIMCMP[_1];
   _3 = _2 & 4294902015;
@@ -559,7 +497,6 @@ Flexio_Pwm_Ip_SetTimerInitMode (struct Flexio_Pwm_Ip_HwAddrType * Base, uint8 Ti
   long unsigned int _7;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) Timer_8(D);
   _2 ={v} Base_10(D)->TIMCFG[_1];
   _3 = _2 & 4244635647;
@@ -583,7 +520,6 @@ Flexio_Pwm_Ip_SetTimerMode (struct Flexio_Pwm_Ip_HwAddrType * Base, uint8 Timer,
   long unsigned int _6;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) Timer_7(D);
   _2 ={v} Base_9(D)->TIMCTL[_1];
   _3 = _2 & 4294967292;
@@ -608,7 +544,6 @@ Flexio_Pwm_Ip_SetTimerPin (struct Flexio_Pwm_Ip_HwAddrType * Base, uint8 Timer, 
   long unsigned int _8;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) Timer_9(D);
   _2 ={v} Base_11(D)->TIMCTL[_1];
   _3 = _2 & 4294965503;
@@ -634,7 +569,6 @@ Flexio_Pwm_Ip_SetTimerPinOutput (struct Flexio_Pwm_Ip_HwAddrType * Base, uint8 T
   long unsigned int _7;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = (int) Timer_8(D);
   _2 ={v} Base_10(D)->TIMCTL[_1];
   _3 = _2 & 4294770687;
@@ -650,6 +584,7 @@ Flexio_Pwm_Ip_SetTimerPinOutput (struct Flexio_Pwm_Ip_HwAddrType * Base, uint8 T
 
 Flexio_Pwm_Ip_GetPinState (const struct Flexio_Pwm_Ip_HwAddrType * const Base, uint8 Pin)
 {
+  boolean D.6059;
   long unsigned int _1;
   long unsigned int _2;
   int _3;
@@ -658,13 +593,15 @@ Flexio_Pwm_Ip_GetPinState (const struct Flexio_Pwm_Ip_HwAddrType * const Base, u
   boolean _9;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 ={v} Base_7(D)->PIN;
   _2 = _1 & 255;
   _3 = (int) Pin_8(D);
   _4 = _2 >> _3;
   _5 = _4 & 1;
   _9 = _5 == 1;
+
+  <bb 3> :
+<L0>:
   return _9;
 
 }
@@ -675,7 +612,6 @@ DevAssert (volatile boolean x)
   _Bool x.0_1;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   x.0_1 ={v} x;
   if (x.0_1 != 0)
     goto <bb 4>; [INV]
@@ -683,14 +619,10 @@ DevAssert (volatile boolean x)
     goto <bb 3>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   __asm__ __volatile__("BKPT #0");
-  # DEBUG BEGIN_STMT
   goto <bb 3>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   return;
 
 }

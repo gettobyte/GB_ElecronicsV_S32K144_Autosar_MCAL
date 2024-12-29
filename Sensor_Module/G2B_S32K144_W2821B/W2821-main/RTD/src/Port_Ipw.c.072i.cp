@@ -181,7 +181,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_20/32 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_20) @05fb4700
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_20/32 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_20) @05e6de00
   Type: function
   Visibility: external public
   References: 
@@ -190,7 +190,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_20/32 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_20)
   Function flags: optimize_size
   Called by: Port_Ipw_RefreshPortDirection/8 (90242694 (estimated locally),0.76 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_20/31 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_20) @05fb4540
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_20/31 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_20) @05e6dc40
   Type: function
   Visibility: external public
   References: 
@@ -199,7 +199,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_20/31 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_2
   Function flags: optimize_size
   Called by: Port_Ipw_RefreshPortDirection/8 (90242694 (estimated locally),0.76 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19/30 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19) @05fb4460
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19/30 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19) @05e6db60
   Type: function
   Visibility: external public
   References: 
@@ -208,7 +208,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19/30 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19)
   Function flags: optimize_size
   Called by: Port_Ipw_RefreshPortDirection/8 (90242694 (estimated locally),0.76 per call) Port_Ipw_RefreshPortDirection/8 (48354889 (estimated locally),0.41 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_19/29 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_19) @05fb4380
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_19/29 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_19) @05e6da80
   Type: function
   Visibility: external public
   References: 
@@ -217,7 +217,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_19/29 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_1
   Function flags: optimize_size
   Called by: Port_Ipw_RefreshPortDirection/8 (90242694 (estimated locally),0.76 per call) Port_Ipw_RefreshPortDirection/8 (48354889 (estimated locally),0.41 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_18/28 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_18) @05fb40e0
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_18/28 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_18) @05e6d7e0
   Type: function
   Visibility: external public
   References: 
@@ -226,7 +226,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_18/28 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_18)
   Function flags: optimize_size
   Called by: Port_Ipw_SetGpioDirChangeability/6 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_18/27 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_18) @05fb4000
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_18/27 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_18) @05e6d700
   Type: function
   Visibility: external public
   References: 
@@ -235,7 +235,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_18/27 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_1
   Function flags: optimize_size
   Called by: Port_Ipw_SetGpioDirChangeability/6 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_27/26 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_27) @05f6a540
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_27/26 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_27) @05e6d540
   Type: function
   Visibility: external public
   References: 
@@ -244,7 +244,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_27/26 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_27)
   Function flags: optimize_size
   Called by: Port_Ipw_SetPinMode/5 (136442915 (estimated locally),0.13 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_27/25 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_27) @05f6a2a0
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_27/25 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_27) @05e6d460
   Type: function
   Visibility: external public
   References: 
@@ -253,7 +253,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_27/25 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_2
   Function flags: optimize_size
   Called by: Port_Ipw_SetPinMode/5 (136442915 (estimated locally),0.13 per call) 
   Calls: 
-Port_au16PinDescription/24 (Port_au16PinDescription) @05faf8b8
+Port_au16PinDescription/24 (Port_au16PinDescription) @05e70750
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -261,7 +261,7 @@ Port_au16PinDescription/24 (Port_au16PinDescription) @05faf8b8
   Referring: Port_Ipw_SetPinMode/5 (read)
   Availability: not_available
   Varpool flags: read-only
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_17/23 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_17) @05f6ad20
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_17/23 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_17) @05e6d1c0
   Type: function
   Visibility: external public
   References: 
@@ -270,7 +270,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_17/23 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_17)
   Function flags: optimize_size
   Called by: Port_Ipw_SetPinDirection/4 (136550377 (estimated locally),0.13 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_17/22 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_17) @05f6ab60
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_17/22 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_17) @05e6d000
   Type: function
   Visibility: external public
   References: 
@@ -279,7 +279,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_17/22 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_1
   Function flags: optimize_size
   Called by: Port_Ipw_SetPinDirection/4 (136550377 (estimated locally),0.13 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16/21 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16) @05f6aa80
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16/21 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16) @05e26ee0
   Type: function
   Visibility: external public
   References: 
@@ -288,7 +288,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16/21 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16)
   Function flags: optimize_size
   Called by: Port_Ipw_SetPinDirection/4 (136550377 (estimated locally),0.13 per call) Port_Ipw_SetPinDirection/4 (73168010 (estimated locally),0.07 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_16/20 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_16) @05f6a9a0
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_16/20 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_16) @05e26c40
   Type: function
   Visibility: external public
   References: 
@@ -297,7 +297,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_16/20 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_1
   Function flags: optimize_size
   Called by: Port_Ipw_SetPinDirection/4 (136550377 (estimated locally),0.13 per call) Port_Ipw_SetPinDirection/4 (73168010 (estimated locally),0.07 per call) 
   Calls: 
-Det_ReportError/19 (Det_ReportError) @05f6a8c0
+Det_ReportError/19 (Det_ReportError) @05e269a0
   Type: function
   Visibility: external public
   References: 
@@ -306,7 +306,7 @@ Det_ReportError/19 (Det_ReportError) @05f6a8c0
   Function flags: optimize_size
   Called by: Port_Ipw_SetPinMode/5 (159060892 (estimated locally),0.15 per call) Port_Ipw_SetPinMode/5 (237404317 (estimated locally),0.22 per call) Port_Ipw_SetPinMode/5 (354334802 (estimated locally),0.33 per call) Port_Ipw_SetPinDirection/4 (237404317 (estimated locally),0.22 per call) Port_Ipw_SetPinDirection/4 (354334802 (estimated locally),0.33 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_10/18 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_10) @05f6a700
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_10/18 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_10) @05e26e00
   Type: function
   Visibility: external public
   References: 
@@ -315,7 +315,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_10/18 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_10)
   Function flags: optimize_size
   Called by: Port_Ipw_Init_UnusedPins/2 (467112052 (estimated locally),3.95 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_10/17 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_10) @05f6a620
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_10/17 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_10) @05e26d20
   Type: function
   Visibility: external public
   References: 
@@ -324,7 +324,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_10/17 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_1
   Function flags: optimize_size
   Called by: Port_Ipw_Init_UnusedPins/2 (467112052 (estimated locally),3.95 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09/16 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09) @05f6a460
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09/16 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09) @05e26b60
   Type: function
   Visibility: external public
   References: 
@@ -333,7 +333,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09/16 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09)
   Function flags: optimize_size
   Called by: Port_Ipw_Init_UnusedPins/2 (467112052 (estimated locally),3.95 per call) Port_Ipw_Init_UnusedPins/2 (488518169 (estimated locally),4.14 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_09/15 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_09) @05f6a380
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_09/15 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_09) @05e26a80
   Type: function
   Visibility: external public
   References: 
@@ -342,7 +342,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_09/15 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_0
   Function flags: optimize_size
   Called by: Port_Ipw_Init_UnusedPins/2 (467112052 (estimated locally),3.95 per call) Port_Ipw_Init_UnusedPins/2 (488518169 (estimated locally),4.14 per call) 
   Calls: 
-Port_au32PortCiGpioBaseAddr/14 (Port_au32PortCiGpioBaseAddr) @05f6f5a0
+Port_au32PortCiGpioBaseAddr/14 (Port_au32PortCiGpioBaseAddr) @05e65438
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -350,7 +350,7 @@ Port_au32PortCiGpioBaseAddr/14 (Port_au32PortCiGpioBaseAddr) @05f6f5a0
   Referring: Port_Ipw_Init_UnusedPins/2 (read)Port_Ipw_Init_UnusedPins/2 (read)Port_Ipw_SetPinDirection/4 (read)Port_Ipw_SetGpioPadOutput/7 (read)Port_Ipw_SetGpioPadOutput/7 (read)Port_Ipw_Init_UnusedPins/2 (read)Port_Ipw_Init_UnusedPins/2 (read)Port_Ipw_Init_UnusedPins/2 (read)Port_Ipw_SetPinDirection/4 (read)Port_Ipw_SetPinDirection/4 (read)Port_Ipw_RefreshPortDirection/8 (read)Port_Ipw_RefreshPortDirection/8 (read)Port_Ipw_RefreshPortDirection/8 (read)
   Availability: not_available
   Varpool flags:
-Port_Ci_Port_Ip_Init/13 (Port_Ci_Port_Ip_Init) @05f6a1c0
+Port_Ci_Port_Ip_Init/13 (Port_Ci_Port_Ip_Init) @05e268c0
   Type: function
   Visibility: external public
   References: 
@@ -359,7 +359,7 @@ Port_Ci_Port_Ip_Init/13 (Port_Ci_Port_Ip_Init) @05f6a1c0
   Function flags: optimize_size
   Called by: Port_Ipw_Init/3 (97603132 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Port_PORT_EXCLUSIVE_AREA_15/12 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_15) @05f6a0e0
+SchM_Exit_Port_PORT_EXCLUSIVE_AREA_15/12 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_15) @05e267e0
   Type: function
   Visibility: external public
   References: 
@@ -368,7 +368,7 @@ SchM_Exit_Port_PORT_EXCLUSIVE_AREA_15/12 (SchM_Exit_Port_PORT_EXCLUSIVE_AREA_15)
   Function flags: optimize_size
   Called by: Port_Ipw_Init/3 (789698069 (estimated locally),8.09 per call) 
   Calls: 
-SchM_Enter_Port_PORT_EXCLUSIVE_AREA_15/11 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_15) @05f6a000
+SchM_Enter_Port_PORT_EXCLUSIVE_AREA_15/11 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_15) @05e26700
   Type: function
   Visibility: external public
   References: 
@@ -377,7 +377,7 @@ SchM_Enter_Port_PORT_EXCLUSIVE_AREA_15/11 (SchM_Enter_Port_PORT_EXCLUSIVE_AREA_1
   Function flags: optimize_size
   Called by: Port_Ipw_Init/3 (789698069 (estimated locally),8.09 per call) 
   Calls: 
-Port_Ci_Port_Ip_ConfigDigitalFilter/10 (Port_Ci_Port_Ip_ConfigDigitalFilter) @05eb92a0
+Port_Ci_Port_Ip_ConfigDigitalFilter/10 (Port_Ci_Port_Ip_ConfigDigitalFilter) @05e26620
   Type: function
   Visibility: external public
   References: 
@@ -386,7 +386,7 @@ Port_Ci_Port_Ip_ConfigDigitalFilter/10 (Port_Ci_Port_Ip_ConfigDigitalFilter) @05
   Function flags: optimize_size
   Called by: Port_Ipw_Init/3 (789698069 (estimated locally),8.09 per call) 
   Calls: 
-Port_au32PortCiPortBaseAddr/9 (Port_au32PortCiPortBaseAddr) @05e91dc8
+Port_au32PortCiPortBaseAddr/9 (Port_au32PortCiPortBaseAddr) @05d6ac60
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -394,7 +394,7 @@ Port_au32PortCiPortBaseAddr/9 (Port_au32PortCiPortBaseAddr) @05e91dc8
   Referring: Port_Ipw_Init_UnusedPins/2 (read)Port_Ipw_Init/3 (read)Port_Ipw_Init/3 (read)Port_Ipw_SetPinMode/5 (read)
   Availability: not_available
   Varpool flags:
-Port_Ipw_RefreshPortDirection/8 (Port_Ipw_RefreshPortDirection) @05eb9b60
+Port_Ipw_RefreshPortDirection/8 (Port_Ipw_RefreshPortDirection) @05e261c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiGpioBaseAddr/14 (read)
@@ -403,7 +403,7 @@ Port_Ipw_RefreshPortDirection/8 (Port_Ipw_RefreshPortDirection) @05eb9b60
   Function flags: count:118111600 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_20/32 (90242694 (estimated locally),0.76 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_20/31 (90242694 (estimated locally),0.76 per call) SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19/30 (90242694 (estimated locally),0.76 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_19/29 (90242694 (estimated locally),0.76 per call) SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19/30 (48354889 (estimated locally),0.41 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_19/29 (48354889 (estimated locally),0.41 per call) 
-Port_Ipw_SetGpioPadOutput/7 (Port_Ipw_SetGpioPadOutput) @05eb91c0
+Port_Ipw_SetGpioPadOutput/7 (Port_Ipw_SetGpioPadOutput) @05d75a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiGpioBaseAddr/14 (read)
@@ -412,7 +412,7 @@ Port_Ipw_SetGpioPadOutput/7 (Port_Ipw_SetGpioPadOutput) @05eb91c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Port_Ipw_SetPinMode/5 (14965976 (estimated locally),0.01 per call) 
   Calls: 
-Port_Ipw_SetGpioDirChangeability/6 (Port_Ipw_SetGpioDirChangeability) @05eafe00
+Port_Ipw_SetGpioDirChangeability/6 (Port_Ipw_SetGpioDirChangeability) @05d75460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_Ipw_au16GpioDirChangeability/1 (read)Port_Ipw_au16GpioDirChangeability/1 (write)
@@ -421,7 +421,7 @@ Port_Ipw_SetGpioDirChangeability/6 (Port_Ipw_SetGpioDirChangeability) @05eafe00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Port_Ipw_SetPinMode/5 (90052324 (estimated locally),0.08 per call) Port_Ipw_SetPinMode/5 (46390591 (estimated locally),0.04 per call) 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_18/28 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_18/27 (1073741824 (estimated locally),1.00 per call) 
-Port_Ipw_SetPinMode/5 (Port_Ipw_SetPinMode) @05eafb60
+Port_Ipw_SetPinMode/5 (Port_Ipw_SetPinMode) @05d751c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_au16PinDescription/24 (read)Port_au32PortCiPortBaseAddr/9 (read)
@@ -430,7 +430,7 @@ Port_Ipw_SetPinMode/5 (Port_Ipw_SetPinMode) @05eafb60
   Function flags: count:1073741823 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_27/26 (136442915 (estimated locally),0.13 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_27/25 (136442915 (estimated locally),0.13 per call) Port_Ipw_SetGpioDirChangeability/6 (90052324 (estimated locally),0.08 per call) Port_Ipw_SetPinDirection/4 (46390591 (estimated locally),0.04 per call) Port_Ipw_SetGpioPadOutput/7 (14965976 (estimated locally),0.01 per call) Port_Ipw_SetGpioDirChangeability/6 (46390591 (estimated locally),0.04 per call) Det_ReportError/19 (159060892 (estimated locally),0.15 per call) Det_ReportError/19 (237404317 (estimated locally),0.22 per call) Det_ReportError/19 (354334802 (estimated locally),0.33 per call) 
-Port_Ipw_SetPinDirection/4 (Port_Ipw_SetPinDirection) @05eaf540
+Port_Ipw_SetPinDirection/4 (Port_Ipw_SetPinDirection) @05d54e00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_Ipw_au16GpioDirChangeability/1 (read)Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiGpioBaseAddr/14 (read)
@@ -439,7 +439,7 @@ Port_Ipw_SetPinDirection/4 (Port_Ipw_SetPinDirection) @05eaf540
   Function flags: count:1073741823 (estimated locally) body optimize_size
   Called by: Port_Ipw_SetPinMode/5 (46390591 (estimated locally),0.04 per call) 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_17/23 (136550377 (estimated locally),0.13 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_17/22 (136550377 (estimated locally),0.13 per call) SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16/21 (136550377 (estimated locally),0.13 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_16/20 (136550377 (estimated locally),0.13 per call) SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16/21 (73168010 (estimated locally),0.07 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_16/20 (73168010 (estimated locally),0.07 per call) Det_ReportError/19 (237404317 (estimated locally),0.22 per call) Det_ReportError/19 (354334802 (estimated locally),0.33 per call) 
-Port_Ipw_Init/3 (Port_Ipw_Init) @05e93d20
+Port_Ipw_Init/3 (Port_Ipw_Init) @05d54460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Port_au32PortCiPortBaseAddr/9 (read)Port_au32PortCiPortBaseAddr/9 (read)Port_Ipw_au16GpioDirChangeability/1 (write)
@@ -448,7 +448,7 @@ Port_Ipw_Init/3 (Port_Ipw_Init) @05e93d20
   Function flags: count:97603132 (estimated locally) body optimize_size
   Called by: 
   Calls: Port_Ipw_Init_UnusedPins/2 (97603132 (estimated locally),1.00 per call) Port_Ci_Port_Ip_Init/13 (97603132 (estimated locally),1.00 per call) SchM_Exit_Port_PORT_EXCLUSIVE_AREA_15/12 (789698069 (estimated locally),8.09 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_15/11 (789698069 (estimated locally),8.09 per call) Port_Ci_Port_Ip_ConfigDigitalFilter/10 (789698069 (estimated locally),8.09 per call) 
-Port_Ipw_Init_UnusedPins/2 (Port_Ipw_Init_UnusedPins) @05e93a80
+Port_Ipw_Init_UnusedPins/2 (Port_Ipw_Init_UnusedPins) @05d541c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiGpioBaseAddr/14 (read)Port_au32PortCiPortBaseAddr/9 (read)
@@ -457,7 +457,7 @@ Port_Ipw_Init_UnusedPins/2 (Port_Ipw_Init_UnusedPins) @05e93a80
   Function flags: count:118111600 (estimated locally) body local optimize_size
   Called by: Port_Ipw_Init/3 (97603132 (estimated locally),1.00 per call) 
   Calls: SchM_Exit_Port_PORT_EXCLUSIVE_AREA_10/18 (467112052 (estimated locally),3.95 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_10/17 (467112052 (estimated locally),3.95 per call) SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09/16 (467112052 (estimated locally),3.95 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_09/15 (467112052 (estimated locally),3.95 per call) SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09/16 (488518169 (estimated locally),4.14 per call) SchM_Enter_Port_PORT_EXCLUSIVE_AREA_09/15 (488518169 (estimated locally),4.14 per call) 
-Port_Ipw_au16GpioDirChangeability/1 (Port_Ipw_au16GpioDirChangeability) @05f11e10
+Port_Ipw_au16GpioDirChangeability/1 (Port_Ipw_au16GpioDirChangeability) @05dcfca8
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 

@@ -13,61 +13,61 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Flexio_Mcl_Ip_SetDebugEnable/6 (Flexio_Mcl_Ip_SetDebugEnable) @05e74380
+Flexio_Mcl_Ip_SetDebugEnable/6 (Flexio_Mcl_Ip_SetDebugEnable) @0690fe00
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
-  Function flags: optimize_size
+  Function flags:
   Called by: Flexio_Mcl_Ip_InitDevice/2 
   Calls: 
-Flexio_Mcl_Ip_SetEnable/5 (Flexio_Mcl_Ip_SetEnable) @05e742a0
+Flexio_Mcl_Ip_SetEnable/5 (Flexio_Mcl_Ip_SetEnable) @0690fd20
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
-  Function flags: optimize_size
+  Function flags:
   Called by: Flexio_Mcl_Ip_InitDevice/2 
   Calls: 
-Flexio_Mcl_Ip_Init/4 (Flexio_Mcl_Ip_Init) @05e741c0
+Flexio_Mcl_Ip_Init/4 (Flexio_Mcl_Ip_Init) @0690fc40
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
-  Function flags: optimize_size
+  Function flags:
   Called by: Flexio_Mcl_Ip_DeinitDevice/3 Flexio_Mcl_Ip_InitDevice/2 
   Calls: 
-Flexio_Mcl_Ip_DeinitDevice/3 (Flexio_Mcl_Ip_DeinitDevice) @05d78700
+Flexio_Mcl_Ip_DeinitDevice/3 (Flexio_Mcl_Ip_DeinitDevice) @0690f7e0
   Type: function definition analyzed
-  Visibility: externally_visible public
+  Visibility: force_output externally_visible no_reorder public
   References: Flexio_Ip_baIpIsInitialized/1 (write)
   Referring: 
   Availability: available
-  Function flags: body optimize_size
+  Function flags: body
   Called by: 
   Calls: Flexio_Mcl_Ip_Init/4 
-Flexio_Mcl_Ip_InitDevice/2 (Flexio_Mcl_Ip_InitDevice) @05d78e00
+Flexio_Mcl_Ip_InitDevice/2 (Flexio_Mcl_Ip_InitDevice) @0690f540
   Type: function definition analyzed
-  Visibility: externally_visible public
+  Visibility: force_output externally_visible no_reorder public
   References: Flexio_Ip_baIpIsInitialized/1 (read)Flexio_Ip_baIpIsInitialized/1 (write)
   Referring: 
   Availability: available
-  Function flags: body optimize_size
+  Function flags: body
   Called by: 
   Calls: Flexio_Mcl_Ip_SetDebugEnable/6 Flexio_Mcl_Ip_SetEnable/5 Flexio_Mcl_Ip_Init/4 
-Flexio_Ip_baIpIsInitialized/1 (Flexio_Ip_baIpIsInitialized) @05d76630
+Flexio_Ip_baIpIsInitialized/1 (Flexio_Ip_baIpIsInitialized) @0690c4c8
   Type: variable definition analyzed
-  Visibility: externally_visible public
+  Visibility: force_output externally_visible no_reorder public
   References: 
   Referring: Flexio_Mcl_Ip_InitDevice/2 (read)Flexio_Mcl_Ip_InitDevice/2 (write)Flexio_Mcl_Ip_DeinitDevice/3 (write)
   Availability: available
   Varpool flags:
-Flexio_Ip_paxBase/0 (Flexio_Ip_paxBase) @05d765e8
+Flexio_Ip_paxBase/0 (Flexio_Ip_paxBase) @0690c480
   Type: variable definition analyzed
-  Visibility: externally_visible public
+  Visibility: force_output externally_visible no_reorder public
   References: 
   Referring: 
   Availability: available
@@ -77,12 +77,8 @@ Flexio_Mcl_Ip_DeinitDevice (uint32 instance)
   struct FLEXIO_Type * BaseAddr;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   BaseAddr = 1074110464B;
-  # DEBUG BEGIN_STMT
   Flexio_Mcl_Ip_Init (BaseAddr);
-  # DEBUG BEGIN_STMT
   Flexio_Ip_baIpIsInitialized[instance] = 0;
   return;
 
@@ -98,17 +94,11 @@ Flexio_Mcl_Ip_InitDevice (const struct Flexio_Ip_InstanceConfigType * const pFle
   Flexio_Ip_CommonStatusType D.5758;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   Status = 0;
-  # DEBUG BEGIN_STMT
   LocInstance = pFlexioInitType->instance;
-  # DEBUG BEGIN_STMT
   LocDebugEnable = pFlexioInitType->debugEnable;
-  # DEBUG BEGIN_STMT
   _1 = (int) LocInstance;
   BaseAddr = 1074110464B;
-  # DEBUG BEGIN_STMT
   _2 = (int) LocInstance;
   _3 = Flexio_Ip_baIpIsInitialized[_2];
   if (_3 != 0)
@@ -117,22 +107,18 @@ Flexio_Mcl_Ip_InitDevice (const struct Flexio_Ip_InstanceConfigType * const pFle
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   Status = 1;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   Flexio_Mcl_Ip_Init (BaseAddr);
-  # DEBUG BEGIN_STMT
   Flexio_Mcl_Ip_SetEnable (BaseAddr, 1);
-  # DEBUG BEGIN_STMT
   Flexio_Mcl_Ip_SetDebugEnable (BaseAddr, LocDebugEnable);
-  # DEBUG BEGIN_STMT
   _4 = (int) LocInstance;
   Flexio_Ip_baIpIsInitialized[_4] = 1;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   D.5758 = Status;
+
+  <bb 5> :
+<L2>:
   return D.5758;
 
 }

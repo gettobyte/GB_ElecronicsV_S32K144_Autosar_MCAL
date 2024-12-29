@@ -106,7 +106,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Pwm_ValidateGlobalConfigCall.constprop.0/15 (Pwm_ValidateGlobalConfigCall.constprop) @06ad98c0
+Pwm_ValidateGlobalConfigCall.constprop.0/15 (Pwm_ValidateGlobalConfigCall.constprop) @05eaf1c0
   Type: function definition analyzed
   Visibility:
   References: Pwm_aState/1 (read)
@@ -116,7 +116,7 @@ Pwm_ValidateGlobalConfigCall.constprop.0/15 (Pwm_ValidateGlobalConfigCall.constp
   Function flags: count:1073741824 (estimated locally) local optimize_size
   Called by: Pwm_Init/5 (715827876 (estimated locally),1.00 per call) Pwm_DeInit/6 (357913938 (estimated locally),1.00 per call) 
   Calls: Pwm_ValidateGlobalConfigCall.part.0/12 (177167400 (estimated locally),0.16 per call) Det_ReportError/9 (177167401 (estimated locally),0.17 per call) 
-Pwm_ValidateParamPtrInit.isra.0/13 (Pwm_ValidateParamPtrInit.isra.0) @06c7c0e0
+Pwm_ValidateParamPtrInit.isra.0/13 (Pwm_ValidateParamPtrInit.isra.0) @05ec12a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -125,7 +125,7 @@ Pwm_ValidateParamPtrInit.isra.0/13 (Pwm_ValidateParamPtrInit.isra.0) @06c7c0e0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Pwm_Init/5 (236223199 (estimated locally),0.33 per call) 
   Calls: Det_ReportError/9 (187153200 (estimated locally),0.17 per call) 
-Pwm_ValidateGlobalConfigCall.part.0/12 (Pwm_ValidateGlobalConfigCall.part.0) @06844ee0
+Pwm_ValidateGlobalConfigCall.part.0/12 (Pwm_ValidateGlobalConfigCall.part.0) @05c33460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -134,7 +134,7 @@ Pwm_ValidateGlobalConfigCall.part.0/12 (Pwm_ValidateGlobalConfigCall.part.0) @06
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: Pwm_ValidateGlobalConfigCall.constprop/15 (177167400 (estimated locally),0.16 per call) 
   Calls: Det_ReportError/9 (1073741824 (estimated locally),1.00 per call) 
-Pwm_Ipw_DeInitInstance/11 (Pwm_Ipw_DeInitInstance) @069bc620
+Pwm_Ipw_DeInitInstance/11 (Pwm_Ipw_DeInitInstance) @05ebc0e0
   Type: function
   Visibility: external public
   References: 
@@ -143,7 +143,7 @@ Pwm_Ipw_DeInitInstance/11 (Pwm_Ipw_DeInitInstance) @069bc620
   Function flags: optimize_size
   Called by: Pwm_DeInit/6 (955630225 (estimated locally),2.67 per call) 
   Calls: 
-Pwm_Ipw_DeInit/10 (Pwm_Ipw_DeInit) @069bc540
+Pwm_Ipw_DeInit/10 (Pwm_Ipw_DeInit) @05ebc000
   Type: function
   Visibility: external public
   References: 
@@ -152,7 +152,7 @@ Pwm_Ipw_DeInit/10 (Pwm_Ipw_DeInit) @069bc540
   Function flags: optimize_size
   Called by: Pwm_DeInit/6 (955630219 (estimated locally),2.67 per call) 
   Calls: 
-Det_ReportError/9 (Det_ReportError) @069bc1c0
+Det_ReportError/9 (Det_ReportError) @05eafee0
   Type: function
   Visibility: external public
   References: 
@@ -161,7 +161,7 @@ Det_ReportError/9 (Det_ReportError) @069bc1c0
   Function flags: optimize_size
   Called by: Pwm_ValidateGlobalConfigCall.constprop/15 (177167401 (estimated locally),0.17 per call) Pwm_ValidateParamPtrInit.isra.0/13 (187153200 (estimated locally),0.17 per call) Pwm_ValidateGlobalConfigCall.part.0/12 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Pwm_Ipw_Init/8 (Pwm_Ipw_Init) @069bc000
+Pwm_Ipw_Init/8 (Pwm_Ipw_Init) @05eafd20
   Type: function
   Visibility: external public
   References: 
@@ -170,7 +170,7 @@ Pwm_Ipw_Init/8 (Pwm_Ipw_Init) @069bc000
   Function flags: optimize_size
   Called by: Pwm_Init/5 (955630225 (estimated locally),1.34 per call) 
   Calls: 
-Pwm_Ipw_InitInstance/7 (Pwm_Ipw_InitInstance) @06ad99a0
+Pwm_Ipw_InitInstance/7 (Pwm_Ipw_InitInstance) @05eafb60
   Type: function
   Visibility: external public
   References: 
@@ -179,7 +179,7 @@ Pwm_Ipw_InitInstance/7 (Pwm_Ipw_InitInstance) @06ad99a0
   Function flags: optimize_size
   Called by: Pwm_Init/5 (955630219 (estimated locally),1.34 per call) 
   Calls: 
-Pwm_DeInit/6 (Pwm_DeInit) @06ad9e00
+Pwm_DeInit/6 (Pwm_DeInit) @05eaf700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (write)Pwm_aState/1 (write)
@@ -188,7 +188,7 @@ Pwm_DeInit/6 (Pwm_DeInit) @06ad9e00
   Function flags: count:357913938 (estimated locally) body optimize_size
   Called by: 
   Calls: Pwm_Ipw_DeInitInstance/11 (955630225 (estimated locally),2.67 per call) Pwm_Ipw_DeInit/10 (955630219 (estimated locally),2.67 per call) Pwm_ValidateGlobalConfigCall.constprop/15 (357913938 (estimated locally),1.00 per call) 
-Pwm_Init/5 (Pwm_Init) @06ad9b60
+Pwm_Init/5 (Pwm_Init) @05eaf460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)Pwm_aState/1 (read)Pwm_aState/1 (write)
@@ -197,7 +197,7 @@ Pwm_Init/5 (Pwm_Init) @06ad9b60
   Function flags: count:715827876 (estimated locally) body optimize_size
   Called by: 
   Calls: Pwm_Ipw_Init/8 (955630225 (estimated locally),1.34 per call) Pwm_Ipw_InitInstance/7 (955630219 (estimated locally),1.34 per call) Pwm_ValidateParamPtrInit.isra.0/13 (236223199 (estimated locally),0.33 per call) Pwm_ValidateGlobalConfigCall.constprop/15 (715827876 (estimated locally),1.00 per call) 
-Pwm_ValidateGlobalConfigCall/2 (Pwm_ValidateGlobalConfigCall) @06ad9380
+Pwm_ValidateGlobalConfigCall/2 (Pwm_ValidateGlobalConfigCall) @05dece00
   Type: function
   Body removed by symtab_remove_unreachable_nodes
   Visibility: prevailing_def_ironly
@@ -207,7 +207,7 @@ Pwm_ValidateGlobalConfigCall/2 (Pwm_ValidateGlobalConfigCall) @06ad9380
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Pwm_aState/1 (Pwm_aState) @06813b88
+Pwm_aState/1 (Pwm_aState) @05de4ab0
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 

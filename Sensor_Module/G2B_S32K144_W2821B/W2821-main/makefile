@@ -33,7 +33,7 @@ G2B_S32K144_W2821B.siz \
 all: G2B_S32K144_W2821B.elf secondary-outputs
 
 # Tool invocations
-G2B_S32K144_W2821B.elf: $(OBJS) D:/Demo_Plus_Devlopment/G2B_S32K144_W2821B/Project_Settings/Linker_Files/linker_flash_s32k144.ld $(USER_OBJS)
+G2B_S32K144_W2821B.elf: $(OBJS) C:/Users/Rohan/OneDrive/Documents/GB_ElecronicsV_S32K144_Autosar_MCAL/Sensor_Module/G2B_S32K144_W2821B/Project_Settings/Linker_Files/linker_flash_s32k144.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Standard S32DS C Linker'
 	arm-none-eabi-gcc -o "G2B_S32K144_W2821B.elf" "@G2B_S32K144_W2821B.args"  $(USER_OBJS)

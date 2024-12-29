@@ -1,36 +1,30 @@
 Clock_Ip_ClockSetSimTraceEnable_TrustedCall (const struct Clock_Ip_GateConfigType * Config)
 {
   uint32 RegValue;
-  short unsigned int _1;
+  struct SIM_Type * _1;
+  short unsigned int _2;
+  struct SIM_Type * _3;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  RegValue_4 ={v} MEM[(struct SIM_Type *)1074036736B].CLKDIV4;
-  # DEBUG RegValue => RegValue_4
-  # DEBUG BEGIN_STMT
-  _1 = Config_5(D)->Enable;
-  if (_1 == 1)
-    goto <bb 3>; [34.00%]
+  <bb 2> :
+  _1 = 1074036736B;
+  RegValue_6 ={v} _1->CLKDIV4;
+  _2 = Config_7(D)->Enable;
+  if (_2 == 1)
+    goto <bb 3>; [INV]
   else
-    goto <bb 4>; [66.00%]
+    goto <bb 4>; [INV]
 
-  <bb 3> [local count: 365072220]:
-  # DEBUG BEGIN_STMT
-  RegValue_7 = RegValue_4 | 268435456;
-  # DEBUG RegValue => RegValue_7
-  goto <bb 5>; [100.00%]
+  <bb 3> :
+  RegValue_9 = RegValue_6 | 268435456;
+  goto <bb 5>; [INV]
 
-  <bb 4> [local count: 708669605]:
-  # DEBUG BEGIN_STMT
-  RegValue_6 = RegValue_4 & 4026531839;
-  # DEBUG RegValue => RegValue_6
+  <bb 4> :
+  RegValue_8 = RegValue_6 & 4026531839;
 
-  <bb 5> [local count: 1073741824]:
-  # RegValue_2 = PHI <RegValue_7(3), RegValue_6(4)>
-  # DEBUG RegValue => RegValue_2
-  # DEBUG BEGIN_STMT
-  MEM[(struct SIM_Type *)1074036736B].CLKDIV4 ={v} RegValue_2;
+  <bb 5> :
+  # RegValue_4 = PHI <RegValue_9(3), RegValue_8(4)>
+  _3 = 1074036736B;
+  _3->CLKDIV4 ={v} RegValue_4;
   return;
 
 }
@@ -44,34 +38,27 @@ Clock_Ip_ClockSetSimGate_TrustedCall (const struct Clock_Ip_GateConfigType * Con
   short unsigned int _1;
   <unnamed type> _2;
   unsigned char _3;
-  long unsigned int _4;
+  struct SIM_Type * _4;
   long unsigned int _5;
   long unsigned int _6;
+  long unsigned int _7;
+  struct SIM_Type * _8;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  _1 = Config_8(D)->Enable;
-  Enable_9 = (uint32) _1;
-  # DEBUG Enable => Enable_9
-  # DEBUG BEGIN_STMT
-  _2 = Config_8(D)->Name;
+  <bb 2> :
+  _1 = Config_10(D)->Enable;
+  Enable_11 = (uint32) _1;
+  _2 = Config_10(D)->Name;
   _3 = Clock_Ip_au8ClockFeatures[_2][6];
-  GateIndex_10 = (uint32) _3;
-  # DEBUG GateIndex => GateIndex_10
-  # DEBUG BEGIN_STMT
-  RegValue_11 ={v} MEM[(struct SIM_Type *)1074036736B].PLATCGC;
-  # DEBUG RegValue => RegValue_11
-  # DEBUG BEGIN_STMT
-  _4 = 1 << GateIndex_10;
-  _5 = ~_4;
-  RegValue_12 = _5 & RegValue_11;
-  # DEBUG RegValue => RegValue_12
-  # DEBUG BEGIN_STMT
-  _6 = Enable_9 << GateIndex_10;
-  RegValue_13 = _6 | RegValue_12;
-  # DEBUG RegValue => RegValue_13
-  # DEBUG BEGIN_STMT
-  MEM[(struct SIM_Type *)1074036736B].PLATCGC ={v} RegValue_13;
+  GateIndex_12 = (uint32) _3;
+  _4 = 1074036736B;
+  RegValue_13 ={v} _4->PLATCGC;
+  _5 = 1 << GateIndex_12;
+  _6 = ~_5;
+  RegValue_14 = RegValue_13 & _6;
+  _7 = Enable_11 << GateIndex_12;
+  RegValue_15 = RegValue_14 | _7;
+  _8 = 1074036736B;
+  _8->PLATCGC ={v} RegValue_15;
   return;
 
 }
@@ -80,32 +67,34 @@ Clock_Ip_ClockSetSimGate_TrustedCall (const struct Clock_Ip_GateConfigType * Con
 Clock_Ip_ClockSetPccCgcEnable_TrustedCall (const struct Clock_Ip_GateConfigType * Config)
 {
   uint32 RegValue;
-  <unnamed type> _1;
-  unsigned char _2;
-  int _3;
-  short unsigned int _4;
-  long unsigned int _5;
+  struct PCC_Type * _1;
+  <unnamed type> _2;
+  unsigned char _3;
+  int _4;
+  short unsigned int _5;
   long unsigned int _6;
+  long unsigned int _7;
+  struct PCC_Type * _8;
+  <unnamed type> _9;
+  unsigned char _10;
+  int _11;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  _1 = Config_8(D)->Name;
-  _2 = Clock_Ip_au8ClockFeatures[_1][6];
-  _3 = (int) _2;
-  RegValue_9 ={v} MEM[(struct PCC_Type *)1074155520B].PCCn[_3];
-  # DEBUG RegValue => RegValue_9
-  # DEBUG BEGIN_STMT
-  RegValue_10 = RegValue_9 & 3221225471;
-  # DEBUG RegValue => RegValue_10
-  # DEBUG BEGIN_STMT
-  _4 = Config_8(D)->Enable;
-  _5 = (long unsigned int) _4;
-  _6 = _5 << 30;
-  RegValue_11 = _6 | RegValue_10;
-  # DEBUG RegValue => RegValue_11
-  # DEBUG BEGIN_STMT
-  MEM[(struct PCC_Type *)1074155520B].PCCn[_3] ={v} RegValue_11;
+  <bb 2> :
+  _1 = 1074155520B;
+  _2 = Config_13(D)->Name;
+  _3 = Clock_Ip_au8ClockFeatures[_2][6];
+  _4 = (int) _3;
+  RegValue_14 ={v} _1->PCCn[_4];
+  RegValue_15 = RegValue_14 & 3221225471;
+  _5 = Config_13(D)->Enable;
+  _6 = (long unsigned int) _5;
+  _7 = _6 << 30;
+  RegValue_16 = RegValue_15 | _7;
+  _8 = 1074155520B;
+  _9 = Config_13(D)->Name;
+  _10 = Clock_Ip_au8ClockFeatures[_9][6];
+  _11 = (int) _10;
+  _8->PCCn[_11] ={v} RegValue_16;
   return;
 
 }
@@ -114,26 +103,22 @@ Clock_Ip_ClockSetPccCgcEnable_TrustedCall (const struct Clock_Ip_GateConfigType 
 Clock_Ip_ClockSetSimClkoutEnable_TrustedCall (const struct Clock_Ip_GateConfigType * Config)
 {
   uint32 RegValue;
-  short unsigned int _1;
-  long unsigned int _2;
+  struct SIM_Type * _1;
+  short unsigned int _2;
   long unsigned int _3;
+  long unsigned int _4;
+  struct SIM_Type * _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  RegValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
-  # DEBUG RegValue => RegValue_5
-  # DEBUG BEGIN_STMT
-  RegValue_6 = RegValue_5 & 4294965247;
-  # DEBUG RegValue => RegValue_6
-  # DEBUG BEGIN_STMT
-  _1 = Config_7(D)->Enable;
-  _2 = (long unsigned int) _1;
-  _3 = _2 << 11;
-  RegValue_8 = _3 | RegValue_6;
-  # DEBUG RegValue => RegValue_8
-  # DEBUG BEGIN_STMT
-  MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} RegValue_8;
+  <bb 2> :
+  _1 = 1074036736B;
+  RegValue_7 ={v} _1->CHIPCTL;
+  RegValue_8 = RegValue_7 & 4294965247;
+  _2 = Config_9(D)->Enable;
+  _3 = (long unsigned int) _2;
+  _4 = _3 << 11;
+  RegValue_10 = RegValue_8 | _4;
+  _5 = 1074036736B;
+  _5->CHIPCTL ={v} RegValue_10;
   return;
 
 }
@@ -142,26 +127,22 @@ Clock_Ip_ClockSetSimClkoutEnable_TrustedCall (const struct Clock_Ip_GateConfigTy
 Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall (const struct Clock_Ip_GateConfigType * Config)
 {
   uint32 RegValue;
-  short unsigned int _1;
-  long unsigned int _2;
+  struct SIM_Type * _1;
+  short unsigned int _2;
   long unsigned int _3;
+  long unsigned int _4;
+  struct SIM_Type * _5;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  RegValue_5 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
-  # DEBUG RegValue => RegValue_5
-  # DEBUG BEGIN_STMT
-  RegValue_6 = RegValue_5 & 4294967293;
-  # DEBUG RegValue => RegValue_6
-  # DEBUG BEGIN_STMT
-  _1 = Config_7(D)->Enable;
-  _2 = (long unsigned int) _1;
-  _3 = _2 << 1;
-  RegValue_8 = _3 | RegValue_6;
-  # DEBUG RegValue => RegValue_8
-  # DEBUG BEGIN_STMT
-  MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} RegValue_8;
+  <bb 2> :
+  _1 = 1074036736B;
+  RegValue_7 ={v} _1->LPOCLKS;
+  RegValue_8 = RegValue_7 & 4294967293;
+  _2 = Config_9(D)->Enable;
+  _3 = (long unsigned int) _2;
+  _4 = _3 << 1;
+  RegValue_10 = RegValue_8 | _4;
+  _5 = 1074036736B;
+  _5->LPOCLKS ={v} RegValue_10;
   return;
 
 }
@@ -170,24 +151,20 @@ Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall (const struct Clock_Ip_GateConfigTy
 Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall (const struct Clock_Ip_GateConfigType * Config)
 {
   uint32 RegValue;
-  short unsigned int _1;
-  long unsigned int _2;
+  struct SIM_Type * _1;
+  short unsigned int _2;
+  long unsigned int _3;
+  struct SIM_Type * _4;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  RegValue_4 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
-  # DEBUG RegValue => RegValue_4
-  # DEBUG BEGIN_STMT
-  RegValue_5 = RegValue_4 & 4294967294;
-  # DEBUG RegValue => RegValue_5
-  # DEBUG BEGIN_STMT
-  _1 = Config_6(D)->Enable;
-  _2 = (long unsigned int) _1;
-  RegValue_7 = _2 | RegValue_5;
-  # DEBUG RegValue => RegValue_7
-  # DEBUG BEGIN_STMT
-  MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} RegValue_7;
+  <bb 2> :
+  _1 = 1074036736B;
+  RegValue_6 ={v} _1->LPOCLKS;
+  RegValue_7 = RegValue_6 & 4294967294;
+  _2 = Config_8(D)->Enable;
+  _3 = (long unsigned int) _2;
+  RegValue_9 = RegValue_7 | _3;
+  _4 = 1074036736B;
+  _4->LPOCLKS ={v} RegValue_9;
   return;
 
 }
@@ -197,32 +174,22 @@ Clock_Ip_ClockUpdateSimTraceEnable (Clock_Ip_NameType ClockName, boolean Gate)
 {
   struct Clock_Ip_GateConfigType Config;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Config.Name = ClockName_3(D);
-  # DEBUG BEGIN_STMT
   if (Gate_5(D) != 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 3> :
   Config.Enable = 0;
-  goto <bb 5>; [100.00%]
+  goto <bb 5>; [INV]
 
-  <bb 4> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   Config.Enable = 1;
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG Config => &Config
-  # DEBUG INLINE_ENTRY Clock_Ip_ClockSetSimTraceEnable
-  # DEBUG BEGIN_STMT
-  Clock_Ip_ClockSetSimTraceEnable_TrustedCall (&Config);
-  # DEBUG Config => NULL
+  <bb 5> :
+  Clock_Ip_ClockSetSimTraceEnable (&Config);
   Config ={v} {CLOBBER};
   return;
 
@@ -231,8 +198,7 @@ Clock_Ip_ClockUpdateSimTraceEnable (Clock_Ip_NameType ClockName, boolean Gate)
 
 Clock_Ip_ClockSetSimTraceEnable (const struct Clock_Ip_GateConfigType * Config)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Clock_Ip_ClockSetSimTraceEnable_TrustedCall (Config_2(D));
   return;
 
@@ -243,32 +209,22 @@ Clock_Ip_ClockUpdateSimGate (Clock_Ip_NameType ClockName, boolean Gate)
 {
   struct Clock_Ip_GateConfigType Config;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Config.Name = ClockName_3(D);
-  # DEBUG BEGIN_STMT
   if (Gate_5(D) != 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 3> :
   Config.Enable = 0;
-  goto <bb 5>; [100.00%]
+  goto <bb 5>; [INV]
 
-  <bb 4> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   Config.Enable = 1;
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG Config => &Config
-  # DEBUG INLINE_ENTRY Clock_Ip_ClockSetSimGate
-  # DEBUG BEGIN_STMT
-  Clock_Ip_ClockSetSimGate_TrustedCall (&Config);
-  # DEBUG Config => NULL
+  <bb 5> :
+  Clock_Ip_ClockSetSimGate (&Config);
   Config ={v} {CLOBBER};
   return;
 
@@ -277,8 +233,7 @@ Clock_Ip_ClockUpdateSimGate (Clock_Ip_NameType ClockName, boolean Gate)
 
 Clock_Ip_ClockSetSimGate (const struct Clock_Ip_GateConfigType * Config)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Clock_Ip_ClockSetSimGate_TrustedCall (Config_2(D));
   return;
 
@@ -289,32 +244,22 @@ Clock_Ip_ClockUpdatePccCgcEnable (Clock_Ip_NameType ClockName, boolean Gate)
 {
   struct Clock_Ip_GateConfigType Config;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Config.Name = ClockName_3(D);
-  # DEBUG BEGIN_STMT
   if (Gate_5(D) != 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 3> :
   Config.Enable = 0;
-  goto <bb 5>; [100.00%]
+  goto <bb 5>; [INV]
 
-  <bb 4> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   Config.Enable = 1;
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG Config => &Config
-  # DEBUG INLINE_ENTRY Clock_Ip_ClockSetPccCgcEnable
-  # DEBUG BEGIN_STMT
-  Clock_Ip_ClockSetPccCgcEnable_TrustedCall (&Config);
-  # DEBUG Config => NULL
+  <bb 5> :
+  Clock_Ip_ClockSetPccCgcEnable (&Config);
   Config ={v} {CLOBBER};
   return;
 
@@ -323,8 +268,7 @@ Clock_Ip_ClockUpdatePccCgcEnable (Clock_Ip_NameType ClockName, boolean Gate)
 
 Clock_Ip_ClockSetPccCgcEnable (const struct Clock_Ip_GateConfigType * Config)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Clock_Ip_ClockSetPccCgcEnable_TrustedCall (Config_2(D));
   return;
 
@@ -335,32 +279,22 @@ Clock_Ip_ClockUpdateSimClkoutEnable (Clock_Ip_NameType ClockName, boolean Gate)
 {
   struct Clock_Ip_GateConfigType Config;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Config.Name = ClockName_3(D);
-  # DEBUG BEGIN_STMT
   if (Gate_5(D) != 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 3> :
   Config.Enable = 0;
-  goto <bb 5>; [100.00%]
+  goto <bb 5>; [INV]
 
-  <bb 4> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   Config.Enable = 1;
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG Config => &Config
-  # DEBUG INLINE_ENTRY Clock_Ip_ClockSetSimClkoutEnable
-  # DEBUG BEGIN_STMT
-  Clock_Ip_ClockSetSimClkoutEnable_TrustedCall (&Config);
-  # DEBUG Config => NULL
+  <bb 5> :
+  Clock_Ip_ClockSetSimClkoutEnable (&Config);
   Config ={v} {CLOBBER};
   return;
 
@@ -369,8 +303,7 @@ Clock_Ip_ClockUpdateSimClkoutEnable (Clock_Ip_NameType ClockName, boolean Gate)
 
 Clock_Ip_ClockSetSimClkoutEnable (const struct Clock_Ip_GateConfigType * Config)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Clock_Ip_ClockSetSimClkoutEnable_TrustedCall (Config_2(D));
   return;
 
@@ -381,32 +314,22 @@ Clock_Ip_ClockUpdateSimLPO32KEnable (Clock_Ip_NameType ClockName, boolean Gate)
 {
   struct Clock_Ip_GateConfigType Config;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Config.Name = ClockName_3(D);
-  # DEBUG BEGIN_STMT
   if (Gate_5(D) != 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 3> :
   Config.Enable = 0;
-  goto <bb 5>; [100.00%]
+  goto <bb 5>; [INV]
 
-  <bb 4> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   Config.Enable = 1;
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG Config => &Config
-  # DEBUG INLINE_ENTRY Clock_Ip_ClockSetSimLPO32KEnable
-  # DEBUG BEGIN_STMT
-  Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall (&Config);
-  # DEBUG Config => NULL
+  <bb 5> :
+  Clock_Ip_ClockSetSimLPO32KEnable (&Config);
   Config ={v} {CLOBBER};
   return;
 
@@ -415,8 +338,7 @@ Clock_Ip_ClockUpdateSimLPO32KEnable (Clock_Ip_NameType ClockName, boolean Gate)
 
 Clock_Ip_ClockSetSimLPO32KEnable (const struct Clock_Ip_GateConfigType * Config)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall (Config_2(D));
   return;
 
@@ -427,32 +349,22 @@ Clock_Ip_ClockUpdateSimLPO1KEnable (Clock_Ip_NameType ClockName, boolean Gate)
 {
   struct Clock_Ip_GateConfigType Config;
 
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Config.Name = ClockName_3(D);
-  # DEBUG BEGIN_STMT
   if (Gate_5(D) != 0)
-    goto <bb 3>; [50.00%]
+    goto <bb 3>; [INV]
   else
-    goto <bb 4>; [50.00%]
+    goto <bb 4>; [INV]
 
-  <bb 3> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 3> :
   Config.Enable = 0;
-  goto <bb 5>; [100.00%]
+  goto <bb 5>; [INV]
 
-  <bb 4> [local count: 536870913]:
-  # DEBUG BEGIN_STMT
+  <bb 4> :
   Config.Enable = 1;
 
-  <bb 5> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG Config => &Config
-  # DEBUG INLINE_ENTRY Clock_Ip_ClockSetSimLPO1KEnable
-  # DEBUG BEGIN_STMT
-  Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall (&Config);
-  # DEBUG Config => NULL
+  <bb 5> :
+  Clock_Ip_ClockSetSimLPO1KEnable (&Config);
   Config ={v} {CLOBBER};
   return;
 
@@ -461,8 +373,7 @@ Clock_Ip_ClockUpdateSimLPO1KEnable (Clock_Ip_NameType ClockName, boolean Gate)
 
 Clock_Ip_ClockSetSimLPO1KEnable (const struct Clock_Ip_GateConfigType * Config)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall (Config_2(D));
   return;
 
@@ -471,9 +382,7 @@ Clock_Ip_ClockSetSimLPO1KEnable (const struct Clock_Ip_GateConfigType * Config)
 
 Clock_Ip_ClockUpdateGateEmpty (Clock_Ip_NameType ClockName, boolean Gate)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   return;
 
 }
@@ -481,8 +390,7 @@ Clock_Ip_ClockUpdateGateEmpty (Clock_Ip_NameType ClockName, boolean Gate)
 
 Clock_Ip_ClockSetGateEmpty (const struct Clock_Ip_GateConfigType * Config)
 {
-  <bb 2> [local count: 1073741824]:
-  # DEBUG BEGIN_STMT
+  <bb 2> :
   return;
 
 }

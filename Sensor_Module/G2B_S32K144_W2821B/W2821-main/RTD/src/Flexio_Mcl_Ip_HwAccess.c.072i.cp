@@ -306,7 +306,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45/34 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45) @06907000
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45/34 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45) @068e7620
   Type: function
   Visibility: external public
   References: 
@@ -315,7 +315,7 @@ SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45/34 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45) @06
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetTimerInterrupt/19 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45/33 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45) @068dfee0
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45/33 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45) @068e7540
   Type: function
   Visibility: external public
   References: 
@@ -324,7 +324,7 @@ SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45/33 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45) @
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetTimerInterrupt/19 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44/32 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44) @068dfc40
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44/32 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44) @068e72a0
   Type: function
   Visibility: external public
   References: 
@@ -333,7 +333,7 @@ SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44/32 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44) @06
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetShifterDMARequest/17 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44/31 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44) @068dfb60
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44/31 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44) @068e71c0
   Type: function
   Visibility: external public
   References: 
@@ -342,7 +342,7 @@ SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44/31 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44) @
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetShifterDMARequest/17 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43/30 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43) @068df9a0
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43/30 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43) @068e7000
   Type: function
   Visibility: external public
   References: 
@@ -351,7 +351,7 @@ SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43/30 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43) @06
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetShifterInterrupt/16 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43/29 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43) @068df8c0
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43/29 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43) @068bdee0
   Type: function
   Visibility: external public
   References: 
@@ -360,7 +360,7 @@ SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43/29 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43) @
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetShifterInterrupt/16 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42/28 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42) @068df700
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42/28 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42) @068bdd20
   Type: function
   Visibility: external public
   References: 
@@ -369,7 +369,7 @@ SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42/28 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42) @06
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetShifterErrorInterrupt/15 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42/27 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42) @068df620
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42/27 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42) @068bdc40
   Type: function
   Visibility: external public
   References: 
@@ -378,7 +378,7 @@ SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42/27 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42) @
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetShifterErrorInterrupt/15 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41/26 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41) @068da9a0
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41/26 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41) @068bd000
   Type: function
   Visibility: external public
   References: 
@@ -387,7 +387,7 @@ SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41/26 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41) @06
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetEnable/2 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41/25 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41) @068da8c0
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41/25 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41) @068b8620
   Type: function
   Visibility: external public
   References: 
@@ -396,7 +396,7 @@ SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41/25 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41) @
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetEnable/2 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40/24 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40) @068da700
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40/24 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40) @068b80e0
   Type: function
   Visibility: external public
   References: 
@@ -405,7 +405,7 @@ SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40/24 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40) @06
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetDebugEnable/1 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40/23 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40) @068da620
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40/23 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40) @068b8ee0
   Type: function
   Visibility: external public
   References: 
@@ -414,7 +414,7 @@ SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40/23 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40) @
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetDebugEnable/1 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_39/22 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_39) @068da460
+SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_39/22 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_39) @068b8d20
   Type: function
   Visibility: external public
   References: 
@@ -423,7 +423,7 @@ SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_39/22 (SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_39) @06
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetSoftwareReset/0 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_39/21 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_39) @068da380
+SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_39/21 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_39) @068b8c40
   Type: function
   Visibility: external public
   References: 
@@ -432,7 +432,7 @@ SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_39/21 (SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_39) @
   Function flags: optimize_size
   Called by: Flexio_Mcl_Ip_SetSoftwareReset/0 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Flexio_Mcl_Ip_Init/20 (Flexio_Mcl_Ip_Init) @067f8d20
+Flexio_Mcl_Ip_Init/20 (Flexio_Mcl_Ip_Init) @068b87e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -441,7 +441,7 @@ Flexio_Mcl_Ip_Init/20 (Flexio_Mcl_Ip_Init) @067f8d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Flexio_Mcl_Ip_SetSoftwareReset/0 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Mcl_Ip_SetTimerInterrupt/19 (Flexio_Mcl_Ip_SetTimerInterrupt) @067f87e0
+Flexio_Mcl_Ip_SetTimerInterrupt/19 (Flexio_Mcl_Ip_SetTimerInterrupt) @068b8540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -450,7 +450,7 @@ Flexio_Mcl_Ip_SetTimerInterrupt/19 (Flexio_Mcl_Ip_SetTimerInterrupt) @067f87e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45/34 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45/33 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Mcl_Ip_GetAllTimerInterrupt/18 (Flexio_Mcl_Ip_GetAllTimerInterrupt) @067f82a0
+Flexio_Mcl_Ip_GetAllTimerInterrupt/18 (Flexio_Mcl_Ip_GetAllTimerInterrupt) @068b82a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -459,7 +459,7 @@ Flexio_Mcl_Ip_GetAllTimerInterrupt/18 (Flexio_Mcl_Ip_GetAllTimerInterrupt) @067f
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_SetShifterDMARequest/17 (Flexio_Mcl_Ip_SetShifterDMARequest) @067f8ee0
+Flexio_Mcl_Ip_SetShifterDMARequest/17 (Flexio_Mcl_Ip_SetShifterDMARequest) @068b8000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -468,7 +468,7 @@ Flexio_Mcl_Ip_SetShifterDMARequest/17 (Flexio_Mcl_Ip_SetShifterDMARequest) @067f
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44/32 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44/31 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Mcl_Ip_SetShifterInterrupt/16 (Flexio_Mcl_Ip_SetShifterInterrupt) @067f8c40
+Flexio_Mcl_Ip_SetShifterInterrupt/16 (Flexio_Mcl_Ip_SetShifterInterrupt) @067d9b60
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -477,7 +477,7 @@ Flexio_Mcl_Ip_SetShifterInterrupt/16 (Flexio_Mcl_Ip_SetShifterInterrupt) @067f8c
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43/30 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43/29 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Mcl_Ip_SetShifterErrorInterrupt/15 (Flexio_Mcl_Ip_SetShifterErrorInterrupt) @067f89a0
+Flexio_Mcl_Ip_SetShifterErrorInterrupt/15 (Flexio_Mcl_Ip_SetShifterErrorInterrupt) @067d9620
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -486,7 +486,7 @@ Flexio_Mcl_Ip_SetShifterErrorInterrupt/15 (Flexio_Mcl_Ip_SetShifterErrorInterrup
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42/28 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42/27 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Mcl_Ip_GetAllShifterErrorInterrupt/14 (Flexio_Mcl_Ip_GetAllShifterErrorInterrupt) @067f8700
+Flexio_Mcl_Ip_GetAllShifterErrorInterrupt/14 (Flexio_Mcl_Ip_GetAllShifterErrorInterrupt) @067d90e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -495,7 +495,7 @@ Flexio_Mcl_Ip_GetAllShifterErrorInterrupt/14 (Flexio_Mcl_Ip_GetAllShifterErrorIn
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_GetAllShifterInterrupt/13 (Flexio_Mcl_Ip_GetAllShifterInterrupt) @067f8460
+Flexio_Mcl_Ip_GetAllShifterInterrupt/13 (Flexio_Mcl_Ip_GetAllShifterInterrupt) @067d9d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -504,7 +504,7 @@ Flexio_Mcl_Ip_GetAllShifterInterrupt/13 (Flexio_Mcl_Ip_GetAllShifterInterrupt) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_ClearTimerStatus/12 (Flexio_Mcl_Ip_ClearTimerStatus) @067f81c0
+Flexio_Mcl_Ip_ClearTimerStatus/12 (Flexio_Mcl_Ip_ClearTimerStatus) @067d9a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -513,7 +513,7 @@ Flexio_Mcl_Ip_ClearTimerStatus/12 (Flexio_Mcl_Ip_ClearTimerStatus) @067f81c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_GetAllTimerStatus/11 (Flexio_Mcl_Ip_GetAllTimerStatus) @067f5d20
+Flexio_Mcl_Ip_GetAllTimerStatus/11 (Flexio_Mcl_Ip_GetAllTimerStatus) @067d97e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -522,7 +522,7 @@ Flexio_Mcl_Ip_GetAllTimerStatus/11 (Flexio_Mcl_Ip_GetAllTimerStatus) @067f5d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_GetTimerInterruptEnable/10 (Flexio_Mcl_Ip_GetTimerInterruptEnable) @067f57e0
+Flexio_Mcl_Ip_GetTimerInterruptEnable/10 (Flexio_Mcl_Ip_GetTimerInterruptEnable) @067d9540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -531,7 +531,7 @@ Flexio_Mcl_Ip_GetTimerInterruptEnable/10 (Flexio_Mcl_Ip_GetTimerInterruptEnable)
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_GetTimerStatus/9 (Flexio_Mcl_Ip_GetTimerStatus) @067f52a0
+Flexio_Mcl_Ip_GetTimerStatus/9 (Flexio_Mcl_Ip_GetTimerStatus) @067d92a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -540,7 +540,7 @@ Flexio_Mcl_Ip_GetTimerStatus/9 (Flexio_Mcl_Ip_GetTimerStatus) @067f52a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_ClearShifterErrorStatus/8 (Flexio_Mcl_Ip_ClearShifterErrorStatus) @067f5ee0
+Flexio_Mcl_Ip_ClearShifterErrorStatus/8 (Flexio_Mcl_Ip_ClearShifterErrorStatus) @067d9000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -549,7 +549,7 @@ Flexio_Mcl_Ip_ClearShifterErrorStatus/8 (Flexio_Mcl_Ip_ClearShifterErrorStatus) 
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_GetAllShifterErrorStatus/7 (Flexio_Mcl_Ip_GetAllShifterErrorStatus) @067f5c40
+Flexio_Mcl_Ip_GetAllShifterErrorStatus/7 (Flexio_Mcl_Ip_GetAllShifterErrorStatus) @067d4b60
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -558,7 +558,7 @@ Flexio_Mcl_Ip_GetAllShifterErrorStatus/7 (Flexio_Mcl_Ip_GetAllShifterErrorStatus
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_GetShifterErrorStatus/6 (Flexio_Mcl_Ip_GetShifterErrorStatus) @067f59a0
+Flexio_Mcl_Ip_GetShifterErrorStatus/6 (Flexio_Mcl_Ip_GetShifterErrorStatus) @067d4620
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -567,7 +567,7 @@ Flexio_Mcl_Ip_GetShifterErrorStatus/6 (Flexio_Mcl_Ip_GetShifterErrorStatus) @067
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_ClearShifterStatus/5 (Flexio_Mcl_Ip_ClearShifterStatus) @067f5700
+Flexio_Mcl_Ip_ClearShifterStatus/5 (Flexio_Mcl_Ip_ClearShifterStatus) @067d40e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -576,7 +576,7 @@ Flexio_Mcl_Ip_ClearShifterStatus/5 (Flexio_Mcl_Ip_ClearShifterStatus) @067f5700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_GetAllShifterStatus/4 (Flexio_Mcl_Ip_GetAllShifterStatus) @067f5460
+Flexio_Mcl_Ip_GetAllShifterStatus/4 (Flexio_Mcl_Ip_GetAllShifterStatus) @067d4d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -585,7 +585,7 @@ Flexio_Mcl_Ip_GetAllShifterStatus/4 (Flexio_Mcl_Ip_GetAllShifterStatus) @067f546
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_GetShifterStatus/3 (Flexio_Mcl_Ip_GetShifterStatus) @067f51c0
+Flexio_Mcl_Ip_GetShifterStatus/3 (Flexio_Mcl_Ip_GetShifterStatus) @067d4a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -594,7 +594,7 @@ Flexio_Mcl_Ip_GetShifterStatus/3 (Flexio_Mcl_Ip_GetShifterStatus) @067f51c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Mcl_Ip_SetEnable/2 (Flexio_Mcl_Ip_SetEnable) @067f0d20
+Flexio_Mcl_Ip_SetEnable/2 (Flexio_Mcl_Ip_SetEnable) @067d47e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -603,7 +603,7 @@ Flexio_Mcl_Ip_SetEnable/2 (Flexio_Mcl_Ip_SetEnable) @067f0d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41/26 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41/25 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Mcl_Ip_SetDebugEnable/1 (Flexio_Mcl_Ip_SetDebugEnable) @067f0ee0
+Flexio_Mcl_Ip_SetDebugEnable/1 (Flexio_Mcl_Ip_SetDebugEnable) @067d4540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -612,7 +612,7 @@ Flexio_Mcl_Ip_SetDebugEnable/1 (Flexio_Mcl_Ip_SetDebugEnable) @067f0ee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40/24 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40/23 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Mcl_Ip_SetSoftwareReset/0 (Flexio_Mcl_Ip_SetSoftwareReset) @067f0c40
+Flexio_Mcl_Ip_SetSoftwareReset/0 (Flexio_Mcl_Ip_SetSoftwareReset) @067d42a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 

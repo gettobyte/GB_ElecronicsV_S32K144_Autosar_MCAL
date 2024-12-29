@@ -106,13 +106,13 @@ extern "C"{
 #define PWM_GET_OUTPUT_STATE_API                (STD_OFF)
 
 /** @brief        Switch to indicate that Pwm_SetDutyCycle API is supported */
-#define PWM_SET_DUTY_CYCLE_API                  (STD_OFF)
+#define PWM_SET_DUTY_CYCLE_API                  (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_SetPeriodAndDuty API is supported */
-#define PWM_SET_PERIOD_AND_DUTY_API             (STD_OFF)
+#define PWM_SET_PERIOD_AND_DUTY_API             (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_SetOutputToIdle API is supported */
-#define PWM_SET_OUTPUT_TO_IDLE_API              (STD_OFF)
+#define PWM_SET_OUTPUT_TO_IDLE_API              (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_GetChannelState API is supported */
 #define PWM_GET_CHANNEL_STATE_API               (STD_OFF)

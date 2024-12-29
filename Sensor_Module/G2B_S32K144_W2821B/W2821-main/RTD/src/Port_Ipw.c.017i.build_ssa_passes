@@ -5,16 +5,11 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
   uint16 u16NumPins;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   u16NumPins = pConfigPtr->u16NumPins;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   u16PinIndex = 0;
   goto <bb 13>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _1 = pConfigPtr->pUsedPadConfig;
   _2 = (unsigned int) u16PinIndex;
   _3 = _2 * 20;
@@ -27,7 +22,6 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
     goto <bb 12>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _7 = pConfigPtr->pUsedPadConfig;
   _8 = (unsigned int) u16PinIndex;
   _9 = _8 * 20;
@@ -39,13 +33,11 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
     goto <bb 12>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _12 = pConfigPtr->pUsedPadConfig;
   _13 = (unsigned int) u16PinIndex;
   _14 = _13 * 20;
   _15 = _12 + _14;
   PinPad = _15->Pin;
-  # DEBUG BEGIN_STMT
   _16 = pConfigPtr->pUsedPadConfig;
   _17 = (unsigned int) u16PinIndex;
   _18 = _17 * 20;
@@ -57,9 +49,7 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
     goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_19 ();
-  # DEBUG BEGIN_STMT
   _21 = PinPad >> 5;
   _22 = (long unsigned int) _21;
   _23 = Port_au32PortCiGpioBaseAddr[_22];
@@ -72,12 +62,10 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
   _30 = Port_au32PortCiGpioBaseAddr[_29];
   _31 = _24 | _27;
   _30->PDDR = _31;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19 ();
   goto <bb 12>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   _32 = pConfigPtr->pUsedPadConfig;
   _33 = (unsigned int) u16PinIndex;
   _34 = _33 * 20;
@@ -100,9 +88,7 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
     goto <bb 12>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_19 ();
-  # DEBUG BEGIN_STMT
   _42 = PinPad >> 5;
   _43 = (long unsigned int) _42;
   _44 = Port_au32PortCiGpioBaseAddr[_43];
@@ -116,11 +102,8 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
   _52 = Port_au32PortCiGpioBaseAddr[_51];
   _53 = _45 & _49;
   _52->PDDR = _53;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_19 ();
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_20 ();
-  # DEBUG BEGIN_STMT
   _54 = PinPad >> 5;
   _55 = (long unsigned int) _54;
   _56 = Port_au32PortCiGpioBaseAddr[_55];
@@ -134,7 +117,6 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
   _64 = Port_au32PortCiGpioBaseAddr[_63];
   _65 = _57 & _61;
   _64->PIDR = _65;
-  # DEBUG BEGIN_STMT
   _66 = pConfigPtr->pUsedPadConfig;
   _67 = (unsigned int) u16PinIndex;
   _68 = _67 * 20;
@@ -146,7 +128,6 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
     goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   _71 = PinPad >> 5;
   _72 = (long unsigned int) _71;
   _73 = Port_au32PortCiGpioBaseAddr[_72];
@@ -161,16 +142,13 @@ Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
   _80->PIDR = _81;
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_20 ();
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   u16PinIndex.3_82 = u16PinIndex;
   u16PinIndex = u16PinIndex.3_82 + 1;
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   if (u16PinIndex < u16NumPins)
     goto <bb 3>; [INV]
   else
@@ -188,24 +166,20 @@ Port_Ipw_SetGpioPadOutput (Port_PinType PinIndex, const struct Port_ConfigType *
   uint16 Pin;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = pConfigPtr->pUsedPadConfig;
   _2 = PinIndex * 20;
   _3 = _1 + _2;
   Pin = _3->Pin;
-  # DEBUG BEGIN_STMT
   _4 = pConfigPtr->pUsedPadConfig;
   _5 = PinIndex * 20;
   _6 = _4 + _5;
   u8LocalPDO = _6->u8PDO;
-  # DEBUG BEGIN_STMT
   if (u8LocalPDO == 1)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _7 = (long unsigned int) Pin;
   _8 = _7 & 31;
   _9 = Pin >> 5;
@@ -216,14 +190,12 @@ Port_Ipw_SetGpioPadOutput (Port_PinType PinIndex, const struct Port_ConfigType *
   goto <bb 6>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   if (u8LocalPDO == 0)
     goto <bb 5>; [INV]
   else
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _13 = (long unsigned int) Pin;
   _14 = _13 & 31;
   _15 = Pin >> 5;
@@ -233,7 +205,6 @@ Port_Ipw_SetGpioPadOutput (Port_PinType PinIndex, const struct Port_ConfigType *
   _17->PCOR = _18;
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   return;
 
 }
@@ -245,26 +216,19 @@ Port_Ipw_SetGpioDirChangeability (uint16 PadID, boolean bStatus)
   uint8 u8PinBitOffset;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_18 ();
-  # DEBUG BEGIN_STMT
   _1 = (unsigned char) PadID;
   u8PinBitOffset = _1 & 15;
-  # DEBUG BEGIN_STMT
   _2 = (unsigned char) PadID;
   _3 = _2 >> 4;
   _4 = (int) _3;
   u16PinDirFlagWord = Port_Ipw_au16GpioDirChangeability[_4];
-  # DEBUG BEGIN_STMT
   if (bStatus != 0)
     goto <bb 3>; [INV]
   else
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _5 = (int) u8PinBitOffset;
   _6 = 1 << _5;
   _7 = (short unsigned int) _6;
@@ -272,7 +236,6 @@ Port_Ipw_SetGpioDirChangeability (uint16 PadID, boolean bStatus)
   goto <bb 5>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _8 = (int) u8PinBitOffset;
   _9 = 1 << _8;
   _10 = (short unsigned int) _9;
@@ -280,12 +243,10 @@ Port_Ipw_SetGpioDirChangeability (uint16 PadID, boolean bStatus)
   u16PinDirFlagWord = u16PinDirFlagWord & _11;
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _12 = (unsigned char) PadID;
   _13 = _12 >> 4;
   _14 = (int) _13;
   Port_Ipw_au16GpioDirChangeability[_14] = u16PinDirFlagWord;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_18 ();
   return;
 
@@ -305,22 +266,13 @@ Port_Ipw_SetPinMode (Port_PinType PinIndex, Port_PinModeType PinMode, const stru
   Std_ReturnType D.6003;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   PinModeError = 0;
-  # DEBUG BEGIN_STMT
   _1 = pConfigPtr->pUsedPadConfig;
   _2 = PinIndex * 20;
   _3 = _1 + _2;
   PinPad = _3->Pin;
-  # DEBUG BEGIN_STMT
   PinCfgRegValue = PinMode;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   CoreId = 0;
-  # DEBUG BEGIN_STMT
   _4 = pConfigPtr->u16NumPins;
   _5 = (long unsigned int) _4;
   if (PinIndex >= _5)
@@ -329,12 +281,10 @@ Port_Ipw_SetPinMode (Port_PinType PinIndex, Port_PinModeType PinMode, const stru
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   Det_ReportError (124, 0, 4, 10);
   goto <bb 19>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _6 = pConfigPtr->pau32Port_PinToPartitionMap;
   _7 = PinIndex * 4;
   _8 = _6 + _7;
@@ -350,12 +300,10 @@ Port_Ipw_SetPinMode (Port_PinType PinIndex, Port_PinModeType PinMode, const stru
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   Det_ReportError (124, 0, 4, 240);
   goto <bb 19>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _15 = pConfigPtr->pUsedPadConfig;
   _16 = PinIndex * 20;
   _17 = _15 + _16;
@@ -367,33 +315,26 @@ Port_Ipw_SetPinMode (Port_PinType PinIndex, Port_PinModeType PinMode, const stru
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   Det_ReportError (124, 0, 4, 14);
   goto <bb 19>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   if (PinMode > 7)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   PinModeError = 13;
   goto <bb 19>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   ePadDirection = 0;
-  # DEBUG BEGIN_STMT
   u16PinDescBitOffset = PinPad & 15;
-  # DEBUG BEGIN_STMT
   _20 = (int) PinMode;
   _21 = PinPad >> 4;
   _22 = (int) _21;
   u16PinDescWord = Port_au16PinDescription[_20][_22];
-  # DEBUG BEGIN_STMT
   _23 = (int) u16PinDescWord;
   _24 = (int) u16PinDescBitOffset;
   _25 = _23 >> _24;
@@ -404,7 +345,6 @@ Port_Ipw_SetPinMode (Port_PinType PinIndex, Port_PinModeType PinMode, const stru
     goto <bb 18>; [INV]
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   _27 = (int) PinMode;
   if (_27 == 1)
     goto <bb 12>; [INV]
@@ -413,14 +353,11 @@ Port_Ipw_SetPinMode (Port_PinType PinIndex, Port_PinModeType PinMode, const stru
 
   <bb 12> :
 <L9>:
-  # DEBUG BEGIN_STMT
   Port_Ipw_SetGpioDirChangeability (PinPad, 1);
-  # DEBUG BEGIN_STMT
   _28 = pConfigPtr->pUsedPadConfig;
   _29 = PinIndex * 20;
   _30 = _28 + _29;
   ePadDirection = _30->ePadDir;
-  # DEBUG BEGIN_STMT
   if (ePadDirection != 1)
     goto <bb 13>; [INV]
   else
@@ -433,55 +370,45 @@ Port_Ipw_SetPinMode (Port_PinType PinIndex, Port_PinModeType PinMode, const stru
     goto <bb 15>; [INV]
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   Port_Ipw_SetGpioPadOutput (PinIndex, pConfigPtr);
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
   Port_Ipw_SetPinDirection (PinIndex, ePadDirection, pConfigPtr);
-  # DEBUG BEGIN_STMT
   goto <bb 17>; [INV]
 
   <bb 16> :
 <L14>:
-  # DEBUG BEGIN_STMT
   Port_Ipw_SetGpioDirChangeability (PinPad, 0);
-  # DEBUG BEGIN_STMT
 
   <bb 17> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_27 ();
-  # DEBUG BEGIN_STMT
   _31 = PinPad >> 5;
   _32 = (long unsigned int) _31;
   _33 = Port_au32PortCiPortBaseAddr[_32];
   _34 = (long unsigned int) PinPad;
   _35 = _34 & 31;
   u32LocalPCR = _33->PCR[_35];
-  # DEBUG BEGIN_STMT
   u32LocalPCR = u32LocalPCR & 4294965503;
-  # DEBUG BEGIN_STMT
   _36 = (long unsigned int) PinCfgRegValue;
   _37 = _36 << 8;
   u32LocalPCR = u32LocalPCR | _37;
-  # DEBUG BEGIN_STMT
   _38 = PinPad >> 5;
   _39 = (long unsigned int) _38;
   _40 = Port_au32PortCiPortBaseAddr[_39];
   _41 = (long unsigned int) PinPad;
   _42 = _41 & 31;
   _40->PCR[_42] = u32LocalPCR;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_27 ();
   goto <bb 19>; [INV]
 
   <bb 18> :
-  # DEBUG BEGIN_STMT
   PinModeError = 13;
 
   <bb 19> :
-  # DEBUG BEGIN_STMT
   D.6003 = PinModeError;
+
+  <bb 20> :
+<L22>:
   return D.6003;
 
 }
@@ -497,17 +424,12 @@ Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirectio
   Std_ReturnType D.5982;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = pConfigPtr->pUsedPadConfig;
   _2 = PinIndex * 20;
   _3 = _1 + _2;
   Pin = _3->Pin;
-  # DEBUG BEGIN_STMT
   PinDirError = 0;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   CoreId = 0;
-  # DEBUG BEGIN_STMT
   _4 = pConfigPtr->u16NumPins;
   _5 = (long unsigned int) _4;
   if (PinIndex >= _5)
@@ -516,12 +438,10 @@ Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirectio
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   Det_ReportError (124, 0, 1, 10);
-  goto <bb 16>; [INV]
+  goto <bb 17>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _6 = pConfigPtr->pau32Port_PinToPartitionMap;
   _7 = PinIndex * 4;
   _8 = _6 + _7;
@@ -537,20 +457,16 @@ Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirectio
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   Det_ReportError (124, 0, 1, 240);
-  goto <bb 16>; [INV]
+  goto <bb 17>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _15 = (unsigned char) Pin;
   u8PinDescBitOffset = _15 & 15;
-  # DEBUG BEGIN_STMT
   _16 = Pin >> 4;
   _17 = (unsigned char) _16;
   _18 = (int) _17;
   u16PinChangeDirFlagWord = Port_Ipw_au16GpioDirChangeability[_18];
-  # DEBUG BEGIN_STMT
   _19 = pConfigPtr->pUsedPadConfig;
   _20 = PinIndex * 20;
   _21 = _19 + _20;
@@ -568,19 +484,16 @@ Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirectio
   if (_26 != 0)
     goto <bb 8>; [INV]
   else
-    goto <bb 15>; [INV]
+    goto <bb 16>; [INV]
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
   if (eDirection == 2)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_16 ();
-  # DEBUG BEGIN_STMT
   _27 = Pin >> 5;
   _28 = (long unsigned int) _27;
   _29 = Port_au32PortCiGpioBaseAddr[_28];
@@ -593,12 +506,10 @@ Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirectio
   _36 = Port_au32PortCiGpioBaseAddr[_35];
   _37 = _30 | _33;
   _36->PDDR = _37;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16 ();
-  goto <bb 16>; [INV]
+  goto <bb 15>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   if (eDirection == 1)
     goto <bb 12>; [INV]
   else
@@ -608,12 +519,10 @@ Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirectio
   if (eDirection == 3)
     goto <bb 12>; [INV]
   else
-    goto <bb 16>; [INV]
+    goto <bb 15>; [INV]
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_16 ();
-  # DEBUG BEGIN_STMT
   _38 = Pin >> 5;
   _39 = (long unsigned int) _38;
   _40 = Port_au32PortCiGpioBaseAddr[_39];
@@ -627,11 +536,8 @@ Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirectio
   _48 = Port_au32PortCiGpioBaseAddr[_47];
   _49 = _41 & _45;
   _48->PDDR = _49;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_16 ();
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_17 ();
-  # DEBUG BEGIN_STMT
   _50 = Pin >> 5;
   _51 = (long unsigned int) _50;
   _52 = Port_au32PortCiGpioBaseAddr[_51];
@@ -645,14 +551,12 @@ Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirectio
   _60 = Port_au32PortCiGpioBaseAddr[_59];
   _61 = _53 & _57;
   _60->PIDR = _61;
-  # DEBUG BEGIN_STMT
   if (eDirection == 3)
     goto <bb 13>; [INV]
   else
     goto <bb 14>; [INV]
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   _62 = Pin >> 5;
   _63 = (long unsigned int) _62;
   _64 = Port_au32PortCiGpioBaseAddr[_63];
@@ -667,17 +571,19 @@ Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirectio
   _71->PIDR = _72;
 
   <bb 14> :
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_17 ();
-  goto <bb 16>; [INV]
 
   <bb 15> :
-  # DEBUG BEGIN_STMT
-  PinDirError = 1;
+  goto <bb 17>; [INV]
 
   <bb 16> :
-  # DEBUG BEGIN_STMT
+  PinDirError = 1;
+
+  <bb 17> :
   D.5982 = PinDirError;
+
+  <bb 18> :
+<L18>:
   return D.5982;
 
 }
@@ -690,22 +596,16 @@ Port_Ipw_Init (const struct Port_ConfigType * pConfigPtr)
   uint16 u16PinIndex;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   u8NumDigFilterPorts = pConfigPtr->u8NumDigitalFilterPorts;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   u16PinIndex = 0;
   goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   _1 = pConfigPtr->pDigitalFilterConfig;
   _2 = (unsigned int) u16PinIndex;
   _3 = _2 * 8;
   _4 = _1 + _3;
   u8Port = _4->u8Port;
-  # DEBUG BEGIN_STMT
   _5 = (int) u8Port;
   _6 = Port_au32PortCiPortBaseAddr[_5];
   _7 = pConfigPtr->pDigitalFilterConfig;
@@ -713,9 +613,7 @@ Port_Ipw_Init (const struct Port_ConfigType * pConfigPtr)
   _9 = _8 * 8;
   _10 = _7 + _9;
   Port_Ci_Port_Ip_ConfigDigitalFilter (_6, _10);
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_15 ();
-  # DEBUG BEGIN_STMT
   _11 = (int) u8Port;
   _12 = Port_au32PortCiPortBaseAddr[_11];
   _13 = _12->DFER;
@@ -728,14 +626,11 @@ Port_Ipw_Init (const struct Port_ConfigType * pConfigPtr)
   _20 = Port_au32PortCiPortBaseAddr[_19];
   _21 = _13 | _18;
   _20->DFER = _21;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_15 ();
-  # DEBUG BEGIN_STMT
   u16PinIndex.0_22 = u16PinIndex;
   u16PinIndex = u16PinIndex.0_22 + 1;
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   _23 = (short unsigned int) u8NumDigFilterPorts;
   if (u16PinIndex < _23)
     goto <bb 3>; [INV]
@@ -743,25 +638,19 @@ Port_Ipw_Init (const struct Port_ConfigType * pConfigPtr)
     goto <bb 5>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _24 = pConfigPtr->IpConfigPtr;
   Port_Ci_Port_Ip_Init (1, _24);
-  # DEBUG BEGIN_STMT
   Port_Ipw_Init_UnusedPins (pConfigPtr);
-  # DEBUG BEGIN_STMT
   u16PinIndex = 0;
   goto <bb 7>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   _25 = (int) u16PinIndex;
   Port_Ipw_au16GpioDirChangeability[_25] = 0;
-  # DEBUG BEGIN_STMT
   u16PinIndex.1_26 = u16PinIndex;
   u16PinIndex = u16PinIndex.1_26 + 1;
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   if (u16PinIndex <= 9)
     goto <bb 6>; [INV]
   else
@@ -782,38 +671,29 @@ Port_Ipw_Init_UnusedPins (const struct Port_ConfigType * pConfigPtr)
   uint16 u16PinIndex;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   u16NumUnusedPins = pConfigPtr->u16NumUnusedPins;
-  # DEBUG BEGIN_STMT
   _1 = pConfigPtr->pUnusedPadConfig;
   u8LocalPDO = _1->u8PDO;
-  # DEBUG BEGIN_STMT
   _2 = pConfigPtr->pUnusedPadConfig;
   u32LocalPCR = _2->u32PCR;
-  # DEBUG BEGIN_STMT
   _3 = pConfigPtr->pUnusedPadConfig;
   eLocalPDDIR = _3->ePadDir;
-  # DEBUG BEGIN_STMT
   u16PinIndex = 0;
   goto <bb 13>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   if (eLocalPDDIR == 2)
     goto <bb 4>; [INV]
   else
     goto <bb 9>; [INV]
 
   <bb 4> :
-  # DEBUG BEGIN_STMT
   if (u8LocalPDO == 1)
     goto <bb 5>; [INV]
   else
     goto <bb 6>; [INV]
 
   <bb 5> :
-  # DEBUG BEGIN_STMT
   _4 = pConfigPtr->pUnusedPads;
   _5 = (unsigned int) u16PinIndex;
   _6 = _5 * 2;
@@ -834,14 +714,12 @@ Port_Ipw_Init_UnusedPins (const struct Port_ConfigType * pConfigPtr)
   goto <bb 8>; [INV]
 
   <bb 6> :
-  # DEBUG BEGIN_STMT
   if (u8LocalPDO == 0)
     goto <bb 7>; [INV]
   else
     goto <bb 8>; [INV]
 
   <bb 7> :
-  # DEBUG BEGIN_STMT
   _20 = pConfigPtr->pUnusedPads;
   _21 = (unsigned int) u16PinIndex;
   _22 = _21 * 2;
@@ -861,10 +739,7 @@ Port_Ipw_Init_UnusedPins (const struct Port_ConfigType * pConfigPtr)
   _34->PCOR = _35;
 
   <bb 8> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_09 ();
-  # DEBUG BEGIN_STMT
   _36 = pConfigPtr->pUnusedPads;
   _37 = (unsigned int) u16PinIndex;
   _38 = _37 * 2;
@@ -892,14 +767,11 @@ Port_Ipw_Init_UnusedPins (const struct Port_ConfigType * pConfigPtr)
   _60 = Port_au32PortCiGpioBaseAddr[_59];
   _61 = _44 | _52;
   _60->PDDR = _61;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09 ();
   goto <bb 12>; [INV]
 
   <bb 9> :
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_09 ();
-  # DEBUG BEGIN_STMT
   _62 = pConfigPtr->pUnusedPads;
   _63 = (unsigned int) u16PinIndex;
   _64 = _63 * 2;
@@ -928,11 +800,8 @@ Port_Ipw_Init_UnusedPins (const struct Port_ConfigType * pConfigPtr)
   _87 = Port_au32PortCiGpioBaseAddr[_86];
   _88 = _70 & _79;
   _87->PDDR = _88;
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_09 ();
-  # DEBUG BEGIN_STMT
   SchM_Enter_Port_PORT_EXCLUSIVE_AREA_10 ();
-  # DEBUG BEGIN_STMT
   _89 = pConfigPtr->pUnusedPads;
   _90 = (unsigned int) u16PinIndex;
   _91 = _90 * 2;
@@ -961,14 +830,12 @@ Port_Ipw_Init_UnusedPins (const struct Port_ConfigType * pConfigPtr)
   _114 = Port_au32PortCiGpioBaseAddr[_113];
   _115 = _97 & _106;
   _114->PIDR = _115;
-  # DEBUG BEGIN_STMT
   if (eLocalPDDIR == 3)
     goto <bb 10>; [INV]
   else
     goto <bb 11>; [INV]
 
   <bb 10> :
-  # DEBUG BEGIN_STMT
   _116 = pConfigPtr->pUnusedPads;
   _117 = (unsigned int) u16PinIndex;
   _118 = _117 * 2;
@@ -998,11 +865,9 @@ Port_Ipw_Init_UnusedPins (const struct Port_ConfigType * pConfigPtr)
   _140->PIDR = _141;
 
   <bb 11> :
-  # DEBUG BEGIN_STMT
   SchM_Exit_Port_PORT_EXCLUSIVE_AREA_10 ();
 
   <bb 12> :
-  # DEBUG BEGIN_STMT
   _142 = pConfigPtr->pUnusedPads;
   _143 = (unsigned int) u16PinIndex;
   _144 = _143 * 2;
@@ -1019,12 +884,10 @@ Port_Ipw_Init_UnusedPins (const struct Port_ConfigType * pConfigPtr)
   _155 = (long unsigned int) _154;
   _156 = _155 & 31;
   _149->PCR[_156] = u32LocalPCR;
-  # DEBUG BEGIN_STMT
   u16PinIndex.2_157 = u16PinIndex;
   u16PinIndex = u16PinIndex.2_157 + 1;
 
   <bb 13> :
-  # DEBUG BEGIN_STMT
   if (u16PinIndex < u16NumUnusedPins)
     goto <bb 3>; [INV]
   else

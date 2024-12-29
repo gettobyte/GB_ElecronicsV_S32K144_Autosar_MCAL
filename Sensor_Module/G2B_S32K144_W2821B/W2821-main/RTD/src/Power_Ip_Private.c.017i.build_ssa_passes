@@ -4,14 +4,15 @@ Power_Ip_TimeoutExpired (uint32 * StartTimeInOut, uint32 * ElapsedTimeInOut, uin
   long unsigned int D.5690;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
   D.5690 = OsIf_GetElapsed (StartTimeInOut, 0);
   _1 = *ElapsedTimeInOut;
   _2 = D.5690 + _1;
   *ElapsedTimeInOut = _2;
-  # DEBUG BEGIN_STMT
   _3 = *ElapsedTimeInOut;
   D.5691 = TimeoutTicks <= _3;
+
+  <bb 3> :
+<L0>:
   return D.5691;
 
 }
@@ -20,12 +21,9 @@ Power_Ip_TimeoutExpired (uint32 * StartTimeInOut, uint32 * ElapsedTimeInOut, uin
 Power_Ip_StartTimeout (uint32 * StartTimeOut, uint32 * ElapsedTimeOut, uint32 * TimeoutTicksOut, uint32 TimeoutUs)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   _1 = OsIf_GetCounter (0);
   *StartTimeOut = _1;
-  # DEBUG BEGIN_STMT
   *ElapsedTimeOut = 0;
-  # DEBUG BEGIN_STMT
   _2 = OsIf_MicrosToTicks (TimeoutUs, 0);
   *TimeoutTicksOut = _2;
   return;
@@ -36,8 +34,6 @@ Power_Ip_StartTimeout (uint32 * StartTimeOut, uint32 * ElapsedTimeOut, uint32 * 
 Power_Ip_ReportPowerErrorsEmptyCallback (Power_Ip_ReportErrorType Error, uint8 ErrorCode)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   return;
 
 }
@@ -46,7 +42,6 @@ Power_Ip_ReportPowerErrorsEmptyCallback (Power_Ip_ReportErrorType Error, uint8 E
 Power_Ip_ReportPowerErrors (Power_Ip_ReportErrorType Error, uint8 ErrorCode)
 {
   <bb 2> :
-  # DEBUG BEGIN_STMT
   Power_Ip_pfReportErrorsCallback.0_1 = Power_Ip_pfReportErrorsCallback;
   Power_Ip_pfReportErrorsCallback.0_1 (Error, ErrorCode);
   return;

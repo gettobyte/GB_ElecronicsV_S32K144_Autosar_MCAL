@@ -3356,7 +3356,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Ftm_Pwm_Ip_UpdateWriteProtection.constprop.0/283 (Ftm_Pwm_Ip_UpdateWriteProtection.constprop) @05e08620
+Ftm_Pwm_Ip_UpdateWriteProtection.constprop.0/283 (Ftm_Pwm_Ip_UpdateWriteProtection.constprop) @05d7fc40
   Type: function definition analyzed
   Visibility:
   References: 
@@ -3366,7 +3366,7 @@ Ftm_Pwm_Ip_UpdateWriteProtection.constprop.0/283 (Ftm_Pwm_Ip_UpdateWriteProtecti
   Function flags: count:1073741824 (estimated locally) local optimize_size
   Called by: Ftm_Pwm_Ip_Reset/111 (119292716 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetFaultInputEn.constprop.0/282 (Ftm_Pwm_Ip_SetFaultInputEn.constprop) @05ce6c40
+Ftm_Pwm_Ip_SetFaultInputEn.constprop.0/282 (Ftm_Pwm_Ip_SetFaultInputEn.constprop) @05c8e2a0
   Type: function definition analyzed
   Visibility:
   References: 
@@ -3376,7 +3376,7 @@ Ftm_Pwm_Ip_SetFaultInputEn.constprop.0/282 (Ftm_Pwm_Ip_SetFaultInputEn.constprop
   Function flags: count:1073741824 (estimated locally) local optimize_size
   Called by: Ftm_Pwm_Ip_InitChFault/165 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetChnOutputPolarityCmd.part.0/217 (Ftm_Pwm_Ip_SetChnOutputPolarityCmd.part.0) @05dab1c0
+Ftm_Pwm_Ip_SetChnOutputPolarityCmd.part.0/217 (Ftm_Pwm_Ip_SetChnOutputPolarityCmd.part.0) @05c8e7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -3385,7 +3385,7 @@ Ftm_Pwm_Ip_SetChnOutputPolarityCmd.part.0/217 (Ftm_Pwm_Ip_SetChnOutputPolarityCm
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: Ftm_Pwm_Ip_InitPair/150 (131211251 (estimated locally),0.12 per call) Ftm_Pwm_Ip_InitPair/150 (54331336 (estimated locally),0.05 per call) Ftm_Pwm_Ip_SetChnOutputPolarityCmd/69 (536870912 (estimated locally),0.50 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetDualChnPwmSyncCmd.part.0/216 (Ftm_Pwm_Ip_SetDualChnPwmSyncCmd.part.0) @05ce6ee0
+Ftm_Pwm_Ip_SetDualChnPwmSyncCmd.part.0/216 (Ftm_Pwm_Ip_SetDualChnPwmSyncCmd.part.0) @05c8e540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -3394,7 +3394,7 @@ Ftm_Pwm_Ip_SetDualChnPwmSyncCmd.part.0/216 (Ftm_Pwm_Ip_SetDualChnPwmSyncCmd.part
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: Ftm_Pwm_Ip_SetDualChnPwmSyncCmd/57 (536870912 (estimated locally),0.50 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc.part.0/214 (Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc.part.0) @05ce6460
+Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc.part.0/214 (Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc.part.0) @05c5aa80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: 
@@ -3403,7 +3403,7 @@ Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc.part.0/214 (Ftm_Pwm_Ip_SetHardwareSyncTrigg
   Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
   Called by: Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (536870912 (estimated locally),0.50 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_13/213 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_13) @05fda0e0
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_13/213 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_13) @05e5f700
   Type: function
   Visibility: external public
   References: 
@@ -3412,7 +3412,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_13/213 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_13) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_SetChannelDeadTime/189 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_13/212 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_13) @05fda000
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_13/212 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_13) @05e5f620
   Type: function
   Visibility: external public
   References: 
@@ -3421,7 +3421,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_13/212 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_13) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_SetChannelDeadTime/189 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_12/211 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_12) @05fcce00
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_12/211 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_12) @05e5f460
   Type: function
   Visibility: external public
   References: 
@@ -3430,7 +3430,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_12/211 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_12) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_SyncUpdate/188 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_12/210 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_12) @05fccd20
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_12/210 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_12) @05e5f380
   Type: function
   Visibility: external public
   References: 
@@ -3439,7 +3439,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_12/210 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_12) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_SyncUpdate/188 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_11/209 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_11) @05fcca80
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_11/209 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_11) @05e5f0e0
   Type: function
   Visibility: external public
   References: 
@@ -3448,7 +3448,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_11/209 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_11) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_EnableTrigger/187 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_11/208 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_11) @05fcc9a0
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_11/208 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_11) @05e5f000
   Type: function
   Visibility: external public
   References: 
@@ -3457,7 +3457,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_11/208 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_11) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_EnableTrigger/187 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_10/207 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_10) @05fcc700
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_10/207 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_10) @05e54d20
   Type: function
   Visibility: external public
   References: 
@@ -3466,7 +3466,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_10/207 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_10) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_DisableTrigger/186 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_10/206 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_10) @05fcc620
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_10/206 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_10) @05e54c40
   Type: function
   Visibility: external public
   References: 
@@ -3475,7 +3475,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_10/206 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_10) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_DisableTrigger/186 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_09/205 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_09) @05fcc1c0
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_09/205 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_09) @05e547e0
   Type: function
   Visibility: external public
   References: 
@@ -3484,7 +3484,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_09/205 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_09) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_SetPhaseShift/184 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_09/204 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_09) @05fcc0e0
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_09/204 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_09) @05e54700
   Type: function
   Visibility: external public
   References: 
@@ -3493,7 +3493,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_09/204 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_09) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_SetPhaseShift/184 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_08/203 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_08) @05fb92a0
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_08/203 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_08) @05e54460
   Type: function
   Visibility: external public
   References: 
@@ -3502,7 +3502,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_08/203 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_08) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_UnMaskOutputChannels/183 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_08/202 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_08) @05fb9ee0
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_08/202 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_08) @05e54380
   Type: function
   Visibility: external public
   References: 
@@ -3511,7 +3511,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_08/202 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_08) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_UnMaskOutputChannels/183 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_07/201 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_07) @05fb9c40
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_07/201 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_07) @05e540e0
   Type: function
   Visibility: external public
   References: 
@@ -3520,7 +3520,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_07/201 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_07) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_MaskOutputChannels/182 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_07/200 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_07) @05fb9b60
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_07/200 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_07) @05e54000
   Type: function
   Visibility: external public
   References: 
@@ -3529,7 +3529,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_07/200 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_07) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_MaskOutputChannels/182 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_05/199 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_05) @05fb90e0
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_05/199 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_05) @05e3c700
   Type: function
   Visibility: external public
   References: 
@@ -3538,7 +3538,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_05/199 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_05) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_EnableNotification/176 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_05/198 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_05) @06115ee0
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_05/198 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_05) @05e3c540
   Type: function
   Visibility: external public
   References: 
@@ -3547,7 +3547,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_05/198 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_05) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_EnableNotification/176 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_04/197 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_04) @06115d20
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_04/197 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_04) @05e3c380
   Type: function
   Visibility: external public
   References: 
@@ -3556,7 +3556,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_04/197 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_04) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_DisableNotification/174 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_04/196 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_04) @06115c40
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_04/196 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_04) @05e3c2a0
   Type: function
   Visibility: external public
   References: 
@@ -3565,7 +3565,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_04/196 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_04) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_DisableNotification/174 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_03/195 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_03) @061159a0
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_03/195 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_03) @05e3c000
   Type: function
   Visibility: external public
   References: 
@@ -3574,7 +3574,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_03/195 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_03) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_GetOutputState/173 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_03/194 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_03) @061158c0
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_03/194 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_03) @0608fee0
   Type: function
   Visibility: external public
   References: 
@@ -3583,7 +3583,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_03/194 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_03) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_GetOutputState/173 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_01/193 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_01) @06115000
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_01/193 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_01) @0608f620
   Type: function
   Visibility: external public
   References: 
@@ -3592,7 +3592,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_01/193 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_01) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_01/192 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_01) @06100ee0
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_01/192 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_01) @0608f540
   Type: function
   Visibility: external public
   References: 
@@ -3601,7 +3601,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_01/192 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_01) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_00/191 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_00) @061009a0
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_00/191 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_00) @0608f000
   Type: function
   Visibility: external public
   References: 
@@ -3610,7 +3610,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_00/191 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_00) @0
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_00/190 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_00) @061007e0
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_00/190 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_00) @0607be00
   Type: function
   Visibility: external public
   References: 
@@ -3619,7 +3619,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_00/190 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_00) 
   Function flags: optimize_size
   Called by: Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetChannelDeadTime/189 (Ftm_Pwm_Ip_SetChannelDeadTime) @0608ba80
+Ftm_Pwm_Ip_SetChannelDeadTime/189 (Ftm_Pwm_Ip_SetChannelDeadTime) @060067e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3628,7 +3628,7 @@ Ftm_Pwm_Ip_SetChannelDeadTime/189 (Ftm_Pwm_Ip_SetChannelDeadTime) @0608ba80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_13/213 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetExtDeadtimeValue/63 (536870913 (estimated locally),0.50 per call) Ftm_Pwm_Ip_SetDeadtimeCount/60 (536870913 (estimated locally),0.50 per call) Ftm_Pwm_Ip_SetDeadtimeCount/60 (536870913 (estimated locally),0.50 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_13/212 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_ValidateParamDeadTime/148 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_GetDualChnDeadtimeCmd/108 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_GetDualChnCompCmd/107 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_SyncUpdate/188 (Ftm_Pwm_Ip_SyncUpdate) @0608b7e0
+Ftm_Pwm_Ip_SyncUpdate/188 (Ftm_Pwm_Ip_SyncUpdate) @060062a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3637,7 +3637,7 @@ Ftm_Pwm_Ip_SyncUpdate/188 (Ftm_Pwm_Ip_SyncUpdate) @0608b7e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_12/211 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_12/210 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_EnableTrigger/187 (Ftm_Pwm_Ip_EnableTrigger) @0608b540
+Ftm_Pwm_Ip_EnableTrigger/187 (Ftm_Pwm_Ip_EnableTrigger) @06006ee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3646,7 +3646,7 @@ Ftm_Pwm_Ip_EnableTrigger/187 (Ftm_Pwm_Ip_EnableTrigger) @0608b540
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_11/209 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_11/208 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_DisableTrigger/186 (Ftm_Pwm_Ip_DisableTrigger) @0608b2a0
+Ftm_Pwm_Ip_DisableTrigger/186 (Ftm_Pwm_Ip_DisableTrigger) @06006c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3655,7 +3655,7 @@ Ftm_Pwm_Ip_DisableTrigger/186 (Ftm_Pwm_Ip_DisableTrigger) @0608b2a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_10/207 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_10/206 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_SetDutyPhaseShift/185 (Ftm_Pwm_Ip_SetDutyPhaseShift) @0608b000
+Ftm_Pwm_Ip_SetDutyPhaseShift/185 (Ftm_Pwm_Ip_SetDutyPhaseShift) @060069a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aPeriod/132 (read)Ftm_Pwm_Ip_aPhaseShift/134 (write)Ftm_Pwm_Ip_aDutyCycle/133 (write)
@@ -3664,7 +3664,7 @@ Ftm_Pwm_Ip_SetDutyPhaseShift/185 (Ftm_Pwm_Ip_SetDutyPhaseShift) @0608b000
   Function flags: count:1073741823 (estimated locally) body optimize_size
   Called by: 
   Calls: Ftm_Pwm_Ip_UpdatePwmChannel/171 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_CalculatePhaseShift/149 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_GetChannelMode/109 (1073741823 (estimated locally),1.00 per call) DevAssert/0 (1073741823 (estimated locally),1.00 per call) DevAssert/0 (1073741823 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_SetPhaseShift/184 (Ftm_Pwm_Ip_SetPhaseShift) @0607db60
+Ftm_Pwm_Ip_SetPhaseShift/184 (Ftm_Pwm_Ip_SetPhaseShift) @06006700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aPeriod/132 (write)Ftm_Pwm_Ip_aDutyCycle/133 (write)
@@ -3673,7 +3673,7 @@ Ftm_Pwm_Ip_SetPhaseShift/184 (Ftm_Pwm_Ip_SetPhaseShift) @0607db60
   Function flags: count:1073741823 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_09/205 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_09/204 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_GetChannelMode/109 (1073741823 (estimated locally),1.00 per call) DevAssert/0 (1073741823 (estimated locally),1.00 per call) DevAssert/0 (1073741823 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_UnMaskOutputChannels/183 (Ftm_Pwm_Ip_UnMaskOutputChannels) @0607d620
+Ftm_Pwm_Ip_UnMaskOutputChannels/183 (Ftm_Pwm_Ip_UnMaskOutputChannels) @06006460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3682,7 +3682,7 @@ Ftm_Pwm_Ip_UnMaskOutputChannels/183 (Ftm_Pwm_Ip_UnMaskOutputChannels) @0607d620
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_08/203 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_08/202 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_MaskOutputChannels/182 (Ftm_Pwm_Ip_MaskOutputChannels) @0607d0e0
+Ftm_Pwm_Ip_MaskOutputChannels/182 (Ftm_Pwm_Ip_MaskOutputChannels) @060061c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3691,7 +3691,7 @@ Ftm_Pwm_Ip_MaskOutputChannels/182 (Ftm_Pwm_Ip_MaskOutputChannels) @0607d0e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_07/201 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_07/200 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_FastUpdatePwmDuty/181 (Ftm_Pwm_Ip_FastUpdatePwmDuty) @0607dd20
+Ftm_Pwm_Ip_FastUpdatePwmDuty/181 (Ftm_Pwm_Ip_FastUpdatePwmDuty) @05ffbe00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aDutyCycle/133 (write)
@@ -3700,7 +3700,7 @@ Ftm_Pwm_Ip_FastUpdatePwmDuty/181 (Ftm_Pwm_Ip_FastUpdatePwmDuty) @0607dd20
   Function flags: count:118111600 (estimated locally) body optimize_size
   Called by: 
   Calls: Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (118111601 (estimated locally),1.00 per call) DevAssert/0 (118111600 (estimated locally),1.00 per call) DevAssert/0 (118111600 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_GetChannelState/180 (Ftm_Pwm_Ip_GetChannelState) @0607da80
+Ftm_Pwm_Ip_GetChannelState/180 (Ftm_Pwm_Ip_GetChannelState) @05ffb8c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aDutyCycle/133 (read)
@@ -3709,7 +3709,7 @@ Ftm_Pwm_Ip_GetChannelState/180 (Ftm_Pwm_Ip_GetChannelState) @0607da80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_ResetCounter/179 (Ftm_Pwm_Ip_ResetCounter) @0607d7e0
+Ftm_Pwm_Ip_ResetCounter/179 (Ftm_Pwm_Ip_ResetCounter) @05ffb0e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3718,7 +3718,7 @@ Ftm_Pwm_Ip_ResetCounter/179 (Ftm_Pwm_Ip_ResetCounter) @0607d7e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd/82 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_SetClockMode/178 (Ftm_Pwm_Ip_SetClockMode) @0607d540
+Ftm_Pwm_Ip_SetClockMode/178 (Ftm_Pwm_Ip_SetClockMode) @05ffbd20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aAlternateClockPrescaler/145 (read)Ftm_Pwm_Ip_aClockPrescaler/144 (read)
@@ -3727,7 +3727,7 @@ Ftm_Pwm_Ip_SetClockMode/178 (Ftm_Pwm_Ip_SetClockMode) @0607d540
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Ftm_Pwm_Ip_SetClockPs/1 (708669605 (estimated locally),0.66 per call) Ftm_Pwm_Ip_SetClockPs/1 (365072220 (estimated locally),0.34 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_SetPowerState/177 (Ftm_Pwm_Ip_SetPowerState) @0607d2a0
+Ftm_Pwm_Ip_SetPowerState/177 (Ftm_Pwm_Ip_SetPowerState) @05ffba80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aClockSource/143 (read)
@@ -3736,7 +3736,7 @@ Ftm_Pwm_Ip_SetPowerState/177 (Ftm_Pwm_Ip_SetPowerState) @0607d2a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Ftm_Pwm_Ip_SetClockSource/3 (524845004 (estimated locally),0.49 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_EnableNotification/176 (Ftm_Pwm_Ip_EnableNotification) @0607d000
+Ftm_Pwm_Ip_EnableNotification/176 (Ftm_Pwm_Ip_EnableNotification) @05ffb7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aDutyCycle/133 (read)Ftm_Pwm_Ip_aPeriod/132 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)
@@ -3745,7 +3745,7 @@ Ftm_Pwm_Ip_EnableNotification/176 (Ftm_Pwm_Ip_EnableNotification) @0607d000
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_05/199 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_DisableCmpIrq/151 (722095672 (estimated locally),0.67 per call) Ftm_Pwm_Ip_SetNormalNotificationCase/175 (351646152 (estimated locally),0.33 per call) Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (258066288 (estimated locally),0.24 per call) Ftm_Pwm_Ip_UpdateNotificationState/152 (815675536 (estimated locally),0.76 per call) Ftm_Pwm_Ip_GetChannelMode/109 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_05/198 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_SetNormalNotificationCase/175 (Ftm_Pwm_Ip_SetNormalNotificationCase) @0606ba80
+Ftm_Pwm_Ip_SetNormalNotificationCase/175 (Ftm_Pwm_Ip_SetNormalNotificationCase) @05ffb540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)
@@ -3754,7 +3754,7 @@ Ftm_Pwm_Ip_SetNormalNotificationCase/175 (Ftm_Pwm_Ip_SetNormalNotificationCase) 
   Function flags: count:1073741823 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_EnableNotification/176 (351646152 (estimated locally),0.33 per call) 
   Calls: Ftm_Pwm_Ip_GetChannelMode/109 (1073741823 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_DisableNotification/174 (Ftm_Pwm_Ip_DisableNotification) @0606b2a0
+Ftm_Pwm_Ip_DisableNotification/174 (Ftm_Pwm_Ip_DisableNotification) @05ffb2a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aNotifIrq/140 (write)
@@ -3763,7 +3763,7 @@ Ftm_Pwm_Ip_DisableNotification/174 (Ftm_Pwm_Ip_DisableNotification) @0606b2a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_04/197 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_DisableCmpIrq/151 (827525513 (estimated locally),0.77 per call) Ftm_Pwm_Ip_DisableCmpIrq/151 (827525513 (estimated locally),0.77 per call) Ftm_Pwm_Ip_DisableCmpIrq/151 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_GetChannelMode/109 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_04/196 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_GetOutputState/173 (Ftm_Pwm_Ip_GetOutputState) @0606bee0
+Ftm_Pwm_Ip_GetOutputState/173 (Ftm_Pwm_Ip_GetOutputState) @05ffb000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3772,7 +3772,7 @@ Ftm_Pwm_Ip_GetOutputState/173 (Ftm_Pwm_Ip_GetOutputState) @0606bee0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_03/195 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_03/194 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_UpdatePwmPeriod/172 (Ftm_Pwm_Ip_UpdatePwmPeriod) @0606bc40
+Ftm_Pwm_Ip_UpdatePwmPeriod/172 (Ftm_Pwm_Ip_UpdatePwmPeriod) @05fe7a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aPeriod/132 (write)
@@ -3781,7 +3781,7 @@ Ftm_Pwm_Ip_UpdatePwmPeriod/172 (Ftm_Pwm_Ip_UpdatePwmPeriod) @0606bc40
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (1073741824 (estimated locally),1.00 per call) 
   Calls: Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_UpdatePwmChannel/171 (Ftm_Pwm_Ip_UpdatePwmChannel) @0606b9a0
+Ftm_Pwm_Ip_UpdatePwmChannel/171 (Ftm_Pwm_Ip_UpdatePwmChannel) @05fe7540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aPeriod/132 (read)
@@ -3790,7 +3790,7 @@ Ftm_Pwm_Ip_UpdatePwmChannel/171 (Ftm_Pwm_Ip_UpdatePwmChannel) @0606b9a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Ftm_Pwm_Ip_SetDutyPhaseShift/185 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (141167419 (estimated locally),0.13 per call) Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (141167419 (estimated locally),0.13 per call) Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (725288981 (estimated locally),0.68 per call) 
   Calls: Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (536870913 (estimated locally),0.50 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_SwOutputControl/170 (Ftm_Pwm_Ip_SwOutputControl) @0606b700
+Ftm_Pwm_Ip_SwOutputControl/170 (Ftm_Pwm_Ip_SwOutputControl) @05fe7ee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aChannelState/138 (read)Ftm_Pwm_Ip_aDutyCycle/133 (write)
@@ -3799,7 +3799,7 @@ Ftm_Pwm_Ip_SwOutputControl/170 (Ftm_Pwm_Ip_SwOutputControl) @0606b700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (217325345 (estimated locally),0.20 per call) Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (217325345 (estimated locally),0.20 per call) Ftm_Pwm_Ip_DeInitChannel/164 (1073741824 (estimated locally),1.00 per call) 
   Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_GetChannelMode/109 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty) @0606b460
+Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty) @05fe7c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aChannelState/138 (read)Ftm_Pwm_Ip_aChannelState/138 (write)Ftm_Pwm_Ip_aPeriod/132 (write)
@@ -3808,7 +3808,7 @@ Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty) @0606b
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_01/193 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdatePwmPeriod/172 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SwOutputControl/170 (217325345 (estimated locally),0.20 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_01/192 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel) @0606b1c0
+Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel) @05fe79a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aDutyCycle/133 (write)Ftm_Pwm_Ip_aChannelState/138 (read)Ftm_Pwm_Ip_aChannelState/138 (write)Ftm_Pwm_Ip_aPhaseShift/134 (read)
@@ -3817,7 +3817,7 @@ Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel) 
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_InitChannel/162 (435325 (estimated locally),0.71 per call) 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_00/191 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdatePwmChannel/171 (141167419 (estimated locally),0.13 per call) Ftm_Pwm_Ip_CalculatePhaseShift/149 (141167419 (estimated locally),0.13 per call) Ftm_Pwm_Ip_UpdatePwmChannel/171 (141167419 (estimated locally),0.13 per call) Ftm_Pwm_Ip_UpdatePwmChannel/171 (725288981 (estimated locally),0.68 per call) Ftm_Pwm_Ip_SwOutputControl/170 (217325345 (estimated locally),0.20 per call) Ftm_Pwm_Ip_GetChannelMode/109 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_00/190 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_DeInit/167 (Ftm_Pwm_Ip_DeInit) @0605bee0
+Ftm_Pwm_Ip_DeInit/167 (Ftm_Pwm_Ip_DeInit) @05fe7700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aChannelState/138 (read)
@@ -3826,7 +3826,7 @@ Ftm_Pwm_Ip_DeInit/167 (Ftm_Pwm_Ip_DeInit) @0605bee0
   Function flags: count:119292718 (estimated locally) body optimize_size
   Called by: 
   Calls: Ftm_Pwm_Ip_DeInitInstance/163 (119292717 (estimated locally),1.00 per call) Ftm_Pwm_Ip_DeInitChannel/164 (314968206 (estimated locally),2.64 per call) Ftm_Pwm_Ip_Reset/111 (119292718 (estimated locally),1.00 per call) DevAssert/0 (119292718 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_Init/166 (Ftm_Pwm_Ip_Init) @0605be00
+Ftm_Pwm_Ip_Init/166 (Ftm_Pwm_Ip_Init) @05fe7460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Ftm_Pwm_Ip_u8FaultCheck/131 (write)
@@ -3835,7 +3835,7 @@ Ftm_Pwm_Ip_Init/166 (Ftm_Pwm_Ip_Init) @0605be00
   Function flags: count:118111600 (estimated locally) body optimize_size
   Called by: 
   Calls: Ftm_Pwm_Ip_InitInstanceStart/159 (118111601 (estimated locally),1.00 per call) Ftm_Pwm_Ip_InitChFault/165 (477815113 (estimated locally),4.05 per call) Ftm_Pwm_Ip_InitChannel/162 (955630223 (estimated locally),8.09 per call) Ftm_Pwm_Ip_InitInstance/158 (118111600 (estimated locally),1.00 per call) DevAssert/0 (118111600 (estimated locally),1.00 per call) DevAssert/0 (118111600 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_InitChFault/165 (Ftm_Pwm_Ip_InitChFault) @0605bb60
+Ftm_Pwm_Ip_InitChFault/165 (Ftm_Pwm_Ip_InitChFault) @05fe71c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_pFaultIrqCallback/135 (write)
@@ -3844,7 +3844,7 @@ Ftm_Pwm_Ip_InitChFault/165 (Ftm_Pwm_Ip_InitChFault) @0605bb60
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_Init/166 (477815113 (estimated locally),4.05 per call) 
   Calls: Ftm_Pwm_Ip_SetFaultInputEn.constprop/282 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetFaultFilterEn/129 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetFaultPolarity/127 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_DeInitChannel/164 (Ftm_Pwm_Ip_DeInitChannel) @0605b8c0
+Ftm_Pwm_Ip_DeInitChannel/164 (Ftm_Pwm_Ip_DeInitChannel) @05fdbee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aIdleState/141 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aNotifIrq/140 (write)
@@ -3853,7 +3853,7 @@ Ftm_Pwm_Ip_DeInitChannel/164 (Ftm_Pwm_Ip_DeInitChannel) @0605b8c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_DeInit/167 (314968206 (estimated locally),2.64 per call) 
   Calls: Ftm_Pwm_Ip_SwOutputControl/170 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_DisableCmpIrq/151 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_DeInitInstance/163 (Ftm_Pwm_Ip_DeInitInstance) @0605b620
+Ftm_Pwm_Ip_DeInitInstance/163 (Ftm_Pwm_Ip_DeInitInstance) @05fdbc40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3862,7 +3862,7 @@ Ftm_Pwm_Ip_DeInitInstance/163 (Ftm_Pwm_Ip_DeInitInstance) @0605b620
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_DeInit/167 (119292717 (estimated locally),1.00 per call) 
   Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_InitChannel/162 (Ftm_Pwm_Ip_InitChannel) @0605b380
+Ftm_Pwm_Ip_InitChannel/162 (Ftm_Pwm_Ip_InitChannel) @05fdb9a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aDutyCycle/133 (write)Ftm_Pwm_Ip_aIdleState/141 (write)Ftm_Pwm_Ip_aPolarity/142 (write)Ftm_Pwm_Ip_aDutyCycle/133 (read)Ftm_Pwm_Ip_aChannelState/138 (write)Ftm_Pwm_Ip_aChIrqCallbacks/136 (write)Ftm_Pwm_Ip_aChIrqCallbacks/136 (write)
@@ -3871,7 +3871,7 @@ Ftm_Pwm_Ip_InitChannel/162 (Ftm_Pwm_Ip_InitChannel) @0605b380
   Function flags: count:613566 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_Init/166 (955630223 (estimated locally),8.09 per call) 
   Calls: Ftm_Pwm_Ip_EnablePwmChannelOutputs/15 (143657 (estimated locally),0.23 per call) Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl/161 (435325 (estimated locally),0.71 per call) Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (435325 (estimated locally),0.71 per call) Ftm_Pwm_Ip_ConfigurePairedChannel/160 (435325 (estimated locally),0.71 per call) Ftm_Pwm_Ip_SetChnMSBAMode/25 (435325 (estimated locally),0.71 per call) Ftm_Pwm_Ip_SetChnEdgeLevel/24 (435325 (estimated locally),0.71 per call) Ftm_Pwm_Ip_SetChnOutputInitStateCmd/48 (435325 (estimated locally),0.71 per call) Ftm_Pwm_Ip_SetChnOutputPolarityCmd/69 (435325 (estimated locally),0.71 per call) DevAssert/0 (335502 (estimated locally),0.55 per call) DevAssert/0 (156459 (estimated locally),0.25 per call) DevAssert/0 (613566 (estimated locally),1.00 per call) DevAssert/0 (613566 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl/161 (Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl) @0605b0e0
+Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl/161 (Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl) @05fdb700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3880,7 +3880,7 @@ Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl/161 (Ftm_Pwm_Ip_SetChnTriggerAndSoftware
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitChannel/162 (435325 (estimated locally),0.71 per call) 
   Calls: Ftm_Pwm_Ip_SetChnSoftwareCtrlVal/95 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd/97 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetPwmLoadChnSelCmd/99 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetChnTriggerCmd/112 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_ConfigurePairedChannel/160 (Ftm_Pwm_Ip_ConfigurePairedChannel) @0604e0e0
+Ftm_Pwm_Ip_ConfigurePairedChannel/160 (Ftm_Pwm_Ip_ConfigurePairedChannel) @05fdb460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3889,7 +3889,7 @@ Ftm_Pwm_Ip_ConfigurePairedChannel/160 (Ftm_Pwm_Ip_ConfigurePairedChannel) @0604e
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitChannel/162 (435325 (estimated locally),0.71 per call) 
   Calls: Ftm_Pwm_Ip_InitPair/150 (574129754 (estimated locally),0.53 per call) Ftm_Pwm_Ip_SetChnEdgeLevel/24 (203984103 (estimated locally),0.19 per call) Ftm_Pwm_Ip_SetChnEdgeLevel/24 (273804165 (estimated locally),0.25 per call) 
-Ftm_Pwm_Ip_InitInstanceStart/159 (Ftm_Pwm_Ip_InitInstanceStart) @0604ed20
+Ftm_Pwm_Ip_InitInstanceStart/159 (Ftm_Pwm_Ip_InitInstanceStart) @05fdb1c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3898,7 +3898,7 @@ Ftm_Pwm_Ip_InitInstanceStart/159 (Ftm_Pwm_Ip_InitInstanceStart) @0604ed20
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_Init/166 (118111601 (estimated locally),1.00 per call) 
   Calls: Ftm_Pwm_Ip_SetClockSource/3 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetClockPs/1 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetFaultControlMode/113 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetFaultOutputState/126 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetFaultFilterValue/125 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (217325345 (estimated locally),0.20 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_InitInstance/158 (Ftm_Pwm_Ip_InitInstance) @0604ea80
+Ftm_Pwm_Ip_InitInstance/158 (Ftm_Pwm_Ip_InitInstance) @05fc8d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aPeriod/132 (write)Ftm_Pwm_Ip_aClockSource/143 (write)Ftm_Pwm_Ip_aClockPrescaler/144 (write)Ftm_Pwm_Ip_aAlternateClockPrescaler/145 (write)Ftm_Pwm_Ip_pOverflowIrqCallback/137 (write)Ftm_Pwm_Ip_pOverflowIrqCallback/137 (write)
@@ -3907,7 +3907,7 @@ Ftm_Pwm_Ip_InitInstance/158 (Ftm_Pwm_Ip_InitInstance) @0604ea80
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_Init/166 (118111600 (estimated locally),1.00 per call) 
   Calls: Ftm_Pwm_Ip_SetInitTriggerMode/76 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetInitTriggerCmd/64 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdateSync/156 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (217325345 (estimated locally),0.20 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (Ftm_Pwm_Ip_ResetAndFirstConfigure) @0604e7e0
+Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (Ftm_Pwm_Ip_ResetAndFirstConfigure) @05fc8540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3916,7 +3916,7 @@ Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (Ftm_Pwm_Ip_ResetAndFirstConfigure) @0604e
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitInstance/158 (1073741824 (estimated locally),1.00 per call) 
   Calls: Ftm_Pwm_Ip_SetDeadtimePrescaler/61 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetExtDeadtimeValue/63 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetDeadtimeCount/60 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetBdmMode/73 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetCpwms/5 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_Reset/111 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_UpdateSync/156 (Ftm_Pwm_Ip_UpdateSync) @0604e540
+Ftm_Pwm_Ip_UpdateSync/156 (Ftm_Pwm_Ip_UpdateSync) @05fc8ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3925,7 +3925,7 @@ Ftm_Pwm_Ip_UpdateSync/156 (Ftm_Pwm_Ip_UpdateSync) @0604e540
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitInstance/158 (1073741824 (estimated locally),1.00 per call) 
   Calls: Ftm_Pwm_Ip_ConfigureSyncType/155 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_SetLoadFreq/72 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_SetHalfCycleCmd/100 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_SetMinLoadingCmd/42 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_SetMaxLoadingCmd/43 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd/77 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (233860969 (estimated locally),0.22 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_ConfigureSyncType/155 (Ftm_Pwm_Ip_ConfigureSyncType) @0604e2a0
+Ftm_Pwm_Ip_ConfigureSyncType/155 (Ftm_Pwm_Ip_ConfigureSyncType) @05fc8c40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3934,7 +3934,7 @@ Ftm_Pwm_Ip_ConfigureSyncType/155 (Ftm_Pwm_Ip_ConfigureSyncType) @0604e2a0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) 
   Calls: Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd/78 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd/80 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd/79 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd/45 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (Ftm_Pwm_Ip_ConfigureSWandHWSync) @0604e000
+Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (Ftm_Pwm_Ip_ConfigureSWandHWSync) @05fc89a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)
@@ -3943,7 +3943,7 @@ Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (Ftm_Pwm_Ip_ConfigureSWandHWSync) @0604e000
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) 
   Calls: Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd/87 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd/88 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd/90 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd/90 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd/89 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd/82 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd/83 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd/86 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd/85 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd/84 (357878150 (estimated locally),0.33 per call) 
-Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (Ftm_Pwm_Ip_UpdateNotificationStateCombine) @05f0cc40
+Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (Ftm_Pwm_Ip_UpdateNotificationStateCombine) @05fc8700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aPolarity/142 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aPolarity/142 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)
@@ -3952,7 +3952,7 @@ Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (Ftm_Pwm_Ip_UpdateNotificationStat
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_EnableNotification/176 (258066288 (estimated locally),0.24 per call) 
   Calls: 
-Ftm_Pwm_Ip_UpdateNotificationState/152 (Ftm_Pwm_Ip_UpdateNotificationState) @05f0c700
+Ftm_Pwm_Ip_UpdateNotificationState/152 (Ftm_Pwm_Ip_UpdateNotificationState) @05fc8460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aPolarity/142 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aPolarity/142 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)Ftm_Pwm_Ip_aNotifIrq/140 (read)Ftm_Pwm_Ip_aNotifIrq/140 (write)
@@ -3961,7 +3961,7 @@ Ftm_Pwm_Ip_UpdateNotificationState/152 (Ftm_Pwm_Ip_UpdateNotificationState) @05f
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_EnableNotification/176 (815675536 (estimated locally),0.76 per call) 
   Calls: 
-Ftm_Pwm_Ip_DisableCmpIrq/151 (Ftm_Pwm_Ip_DisableCmpIrq) @05f0ce00
+Ftm_Pwm_Ip_DisableCmpIrq/151 (Ftm_Pwm_Ip_DisableCmpIrq) @05fc81c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aNotifIrq/140 (read)
@@ -3970,7 +3970,7 @@ Ftm_Pwm_Ip_DisableCmpIrq/151 (Ftm_Pwm_Ip_DisableCmpIrq) @05f0ce00
   Function flags: count:171787418 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_EnableNotification/176 (722095672 (estimated locally),0.67 per call) Ftm_Pwm_Ip_DisableNotification/174 (827525513 (estimated locally),0.77 per call) Ftm_Pwm_Ip_DisableNotification/174 (827525513 (estimated locally),0.77 per call) Ftm_Pwm_Ip_DisableNotification/174 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_DeInitChannel/164 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_InitPair/150 (Ftm_Pwm_Ip_InitPair) @05f0cb60
+Ftm_Pwm_Ip_InitPair/150 (Ftm_Pwm_Ip_InitPair) @05cd0d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aPhaseShift/134 (write)
@@ -3979,7 +3979,7 @@ Ftm_Pwm_Ip_InitPair/150 (Ftm_Pwm_Ip_InitPair) @05f0cb60
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigurePairedChannel/160 (574129754 (estimated locally),0.53 per call) 
   Calls: Ftm_Pwm_Ip_SetChnTriggerCmd/112 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetDualChnDeadtimeCmd/56 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetDualChnPwmSyncCmd/57 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_EnablePwmChannelOutputs/15 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetChnOutputPolarityCmd.part.0/217 (131211251 (estimated locally),0.12 per call) Ftm_Pwm_Ip_SetChnOutputPolarityCmd.part.0/217 (54331336 (estimated locally),0.05 per call) Ftm_Pwm_Ip_SetDualChnCompCmd/55 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (354334802 (estimated locally),0.33 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_CalculatePhaseShift/149 (Ftm_Pwm_Ip_CalculatePhaseShift) @05f0c8c0
+Ftm_Pwm_Ip_CalculatePhaseShift/149 (Ftm_Pwm_Ip_CalculatePhaseShift) @05cd0ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aPeriod/132 (read)
@@ -3988,7 +3988,7 @@ Ftm_Pwm_Ip_CalculatePhaseShift/149 (Ftm_Pwm_Ip_CalculatePhaseShift) @05f0c8c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetDutyPhaseShift/185 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (141167419 (estimated locally),0.13 per call) 
   Calls: 
-Ftm_Pwm_Ip_ValidateParamDeadTime/148 (Ftm_Pwm_Ip_ValidateParamDeadTime) @05f0c620
+Ftm_Pwm_Ip_ValidateParamDeadTime/148 (Ftm_Pwm_Ip_ValidateParamDeadTime) @05cd0c40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: Ftm_Pwm_Ip_aFtmBase/146 (read)Ftm_Pwm_Ip_aPeriod/132 (read)
@@ -3997,126 +3997,126 @@ Ftm_Pwm_Ip_ValidateParamDeadTime/148 (Ftm_Pwm_Ip_ValidateParamDeadTime) @05f0c62
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetChannelDeadTime/189 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_aSimBase/147 (Ftm_Pwm_Ip_aSimBase) @05d7c828
+Ftm_Pwm_Ip_aSimBase/147 (Ftm_Pwm_Ip_aSimBase) @05cc9750
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: 
   Availability: available
   Varpool flags: initialized read-only const-value-known
-Ftm_Pwm_Ip_aFtmBase/146 (Ftm_Pwm_Ip_aFtmBase) @05d7c798
+Ftm_Pwm_Ip_aFtmBase/146 (Ftm_Pwm_Ip_aFtmBase) @05cc96c0
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Ftm_Pwm_Ip_UpdateSync/156 (read)Ftm_Pwm_Ip_ConfigureSyncType/155 (read)Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (read)Ftm_Pwm_Ip_InitPair/150 (read)Ftm_Pwm_Ip_DisableCmpIrq/151 (read)Ftm_Pwm_Ip_UpdatePwmChannel/171 (read)Ftm_Pwm_Ip_InitInstance/158 (read)Ftm_Pwm_Ip_SyncUpdate/188 (read)Ftm_Pwm_Ip_InitInstanceStart/159 (read)Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl/161 (read)Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (read)Ftm_Pwm_Ip_SwOutputControl/170 (read)Ftm_Pwm_Ip_SetNormalNotificationCase/175 (read)Ftm_Pwm_Ip_ValidateParamDeadTime/148 (read)Ftm_Pwm_Ip_ConfigurePairedChannel/160 (read)Ftm_Pwm_Ip_DeInit/167 (read)Ftm_Pwm_Ip_InitChannel/162 (read)Ftm_Pwm_Ip_InitChFault/165 (read)Ftm_Pwm_Ip_DeInitChannel/164 (read)Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (read)Ftm_Pwm_Ip_UpdatePwmPeriod/172 (read)Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (read)Ftm_Pwm_Ip_GetOutputState/173 (read)Ftm_Pwm_Ip_DeInitInstance/163 (read)Ftm_Pwm_Ip_DisableNotification/174 (read)Ftm_Pwm_Ip_EnableNotification/176 (read)Ftm_Pwm_Ip_SetPowerState/177 (read)Ftm_Pwm_Ip_SetClockMode/178 (read)Ftm_Pwm_Ip_ResetCounter/179 (read)Ftm_Pwm_Ip_FastUpdatePwmDuty/181 (read)Ftm_Pwm_Ip_MaskOutputChannels/182 (read)Ftm_Pwm_Ip_UnMaskOutputChannels/183 (read)Ftm_Pwm_Ip_SetPhaseShift/184 (read)Ftm_Pwm_Ip_SetDutyPhaseShift/185 (read)Ftm_Pwm_Ip_DisableTrigger/186 (read)Ftm_Pwm_Ip_EnableTrigger/187 (read)Ftm_Pwm_Ip_SetChannelDeadTime/189 (read)
   Availability: available
   Varpool flags: initialized read-only const-value-known
-Ftm_Pwm_Ip_aAlternateClockPrescaler/145 (Ftm_Pwm_Ip_aAlternateClockPrescaler) @05d7c708
+Ftm_Pwm_Ip_aAlternateClockPrescaler/145 (Ftm_Pwm_Ip_aAlternateClockPrescaler) @05cc9630
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: Ftm_Pwm_Ip_InitInstance/158 (write)Ftm_Pwm_Ip_SetClockMode/178 (read)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aClockPrescaler/144 (Ftm_Pwm_Ip_aClockPrescaler) @05d7c678
+Ftm_Pwm_Ip_aClockPrescaler/144 (Ftm_Pwm_Ip_aClockPrescaler) @05cc95a0
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: Ftm_Pwm_Ip_InitInstance/158 (write)Ftm_Pwm_Ip_SetClockMode/178 (read)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aClockSource/143 (Ftm_Pwm_Ip_aClockSource) @05d7c5e8
+Ftm_Pwm_Ip_aClockSource/143 (Ftm_Pwm_Ip_aClockSource) @05cc9510
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: Ftm_Pwm_Ip_InitInstance/158 (write)Ftm_Pwm_Ip_SetPowerState/177 (read)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aPolarity/142 (Ftm_Pwm_Ip_aPolarity) @05d7c558
+Ftm_Pwm_Ip_aPolarity/142 (Ftm_Pwm_Ip_aPolarity) @05cc9480
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: Ftm_Pwm_Ip_UpdateNotificationState/152 (read)Ftm_Pwm_Ip_UpdateNotificationState/152 (read)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (read)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (read)Ftm_Pwm_Ip_InitChannel/162 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aIdleState/141 (Ftm_Pwm_Ip_aIdleState) @05d7c4c8
+Ftm_Pwm_Ip_aIdleState/141 (Ftm_Pwm_Ip_aIdleState) @05cc93f0
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: Ftm_Pwm_Ip_DeInitChannel/164 (read)Ftm_Pwm_Ip_InitChannel/162 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aNotifIrq/140 (Ftm_Pwm_Ip_aNotifIrq) @05d7c438
+Ftm_Pwm_Ip_aNotifIrq/140 (Ftm_Pwm_Ip_aNotifIrq) @05cc9360
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (read)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (write)Ftm_Pwm_Ip_UpdateNotificationState/152 (write)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (write)Ftm_Pwm_Ip_SetNormalNotificationCase/175 (read)Ftm_Pwm_Ip_SetNormalNotificationCase/175 (read)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (read)Ftm_Pwm_Ip_SetNormalNotificationCase/175 (read)Ftm_Pwm_Ip_DeInitChannel/164 (write)Ftm_Pwm_Ip_DeInitChannel/164 (write)Ftm_Pwm_Ip_UpdateNotificationState/152 (read)Ftm_Pwm_Ip_UpdateNotificationState/152 (write)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (write)Ftm_Pwm_Ip_DisableNotification/174 (write)Ftm_Pwm_Ip_DisableNotification/174 (write)Ftm_Pwm_Ip_DisableCmpIrq/151 (read)Ftm_Pwm_Ip_UpdateNotificationState/152 (read)Ftm_Pwm_Ip_UpdateNotificationState/152 (write)Ftm_Pwm_Ip_UpdateNotificationState/152 (read)Ftm_Pwm_Ip_DisableNotification/174 (write)Ftm_Pwm_Ip_UpdateNotificationState/152 (read)Ftm_Pwm_Ip_UpdateNotificationState/152 (write)Ftm_Pwm_Ip_UpdateNotificationState/152 (read)Ftm_Pwm_Ip_UpdateNotificationState/152 (write)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (read)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (write)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (read)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (write)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (read)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (write)Ftm_Pwm_Ip_UpdateNotificationStateCombine/153 (read)Ftm_Pwm_Ip_EnableNotification/176 (read)Ftm_Pwm_Ip_EnableNotification/176 (write)Ftm_Pwm_Ip_EnableNotification/176 (read)Ftm_Pwm_Ip_EnableNotification/176 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aPreviousChannelState/139 (Ftm_Pwm_Ip_aPreviousChannelState) @05d7c3a8
+Ftm_Pwm_Ip_aPreviousChannelState/139 (Ftm_Pwm_Ip_aPreviousChannelState) @05cc92d0
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: 
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aChannelState/138 (Ftm_Pwm_Ip_aChannelState) @05d7c318
+Ftm_Pwm_Ip_aChannelState/138 (Ftm_Pwm_Ip_aChannelState) @05cc9240
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Ftm_Pwm_Ip_DeInit/167 (read)Ftm_Pwm_Ip_InitChannel/162 (write)Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (write)Ftm_Pwm_Ip_SwOutputControl/170 (read)Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (read)Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (read)Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_pOverflowIrqCallback/137 (Ftm_Pwm_Ip_pOverflowIrqCallback) @05d7c288
+Ftm_Pwm_Ip_pOverflowIrqCallback/137 (Ftm_Pwm_Ip_pOverflowIrqCallback) @05cc91b0
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Ftm_Pwm_Ip_InitInstance/158 (write)Ftm_Pwm_Ip_InitInstance/158 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aChIrqCallbacks/136 (Ftm_Pwm_Ip_aChIrqCallbacks) @05d7c1f8
+Ftm_Pwm_Ip_aChIrqCallbacks/136 (Ftm_Pwm_Ip_aChIrqCallbacks) @05cc9120
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Ftm_Pwm_Ip_InitChannel/162 (write)Ftm_Pwm_Ip_InitChannel/162 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_pFaultIrqCallback/135 (Ftm_Pwm_Ip_pFaultIrqCallback) @05d7c168
+Ftm_Pwm_Ip_pFaultIrqCallback/135 (Ftm_Pwm_Ip_pFaultIrqCallback) @05cc9090
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Ftm_Pwm_Ip_InitChFault/165 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aPhaseShift/134 (Ftm_Pwm_Ip_aPhaseShift) @05d7c0d8
+Ftm_Pwm_Ip_aPhaseShift/134 (Ftm_Pwm_Ip_aPhaseShift) @05cc9000
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: Ftm_Pwm_Ip_InitPair/150 (write)Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (read)Ftm_Pwm_Ip_SetDutyPhaseShift/185 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aDutyCycle/133 (Ftm_Pwm_Ip_aDutyCycle) @05d7c048
+Ftm_Pwm_Ip_aDutyCycle/133 (Ftm_Pwm_Ip_aDutyCycle) @05cbcf30
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: Ftm_Pwm_Ip_GetChannelState/180 (read)Ftm_Pwm_Ip_SwOutputControl/170 (write)Ftm_Pwm_Ip_SetPhaseShift/184 (write)Ftm_Pwm_Ip_FastUpdatePwmDuty/181 (write)Ftm_Pwm_Ip_InitChannel/162 (write)Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (write)Ftm_Pwm_Ip_InitChannel/162 (read)Ftm_Pwm_Ip_EnableNotification/176 (read)Ftm_Pwm_Ip_SetDutyPhaseShift/185 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_aPeriod/132 (Ftm_Pwm_Ip_aPeriod) @05d6ff78
+Ftm_Pwm_Ip_aPeriod/132 (Ftm_Pwm_Ip_aPeriod) @05cbcea0
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Ftm_Pwm_Ip_ValidateParamDeadTime/148 (read)Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (write)Ftm_Pwm_Ip_EnableNotification/176 (read)Ftm_Pwm_Ip_SetPhaseShift/184 (write)Ftm_Pwm_Ip_UpdatePwmChannel/171 (read)Ftm_Pwm_Ip_CalculatePhaseShift/149 (read)Ftm_Pwm_Ip_InitInstance/158 (write)Ftm_Pwm_Ip_UpdatePwmPeriod/172 (write)Ftm_Pwm_Ip_SetDutyPhaseShift/185 (read)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_u8FaultCheck/131 (Ftm_Pwm_Ip_u8FaultCheck) @05d6fee8
+Ftm_Pwm_Ip_u8FaultCheck/131 (Ftm_Pwm_Ip_u8FaultCheck) @05cbce10
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Ftm_Pwm_Ip_Init/166 (write)
   Availability: available
   Varpool flags:
-Ftm_Pwm_Ip_SetFaultFilterEn/129 (Ftm_Pwm_Ip_SetFaultFilterEn) @05e47700
+Ftm_Pwm_Ip_SetFaultFilterEn/129 (Ftm_Pwm_Ip_SetFaultFilterEn) @05dbcd20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4125,7 +4125,7 @@ Ftm_Pwm_Ip_SetFaultFilterEn/129 (Ftm_Pwm_Ip_SetFaultFilterEn) @05e47700
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitChFault/165 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetFaultInputEn/128 (Ftm_Pwm_Ip_SetFaultInputEn) @05e47460
+Ftm_Pwm_Ip_SetFaultInputEn/128 (Ftm_Pwm_Ip_SetFaultInputEn) @05dbca80
   Type: function
   Body removed by symtab_remove_unreachable_nodes
   Visibility: prevailing_def_ironly
@@ -4135,7 +4135,7 @@ Ftm_Pwm_Ip_SetFaultInputEn/128 (Ftm_Pwm_Ip_SetFaultInputEn) @05e47460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetFaultPolarity/127 (Ftm_Pwm_Ip_SetFaultPolarity) @05e471c0
+Ftm_Pwm_Ip_SetFaultPolarity/127 (Ftm_Pwm_Ip_SetFaultPolarity) @05dbc7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4144,7 +4144,7 @@ Ftm_Pwm_Ip_SetFaultPolarity/127 (Ftm_Pwm_Ip_SetFaultPolarity) @05e471c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitChFault/165 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetFaultOutputState/126 (Ftm_Pwm_Ip_SetFaultOutputState) @05e41ee0
+Ftm_Pwm_Ip_SetFaultOutputState/126 (Ftm_Pwm_Ip_SetFaultOutputState) @05dbc540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4153,7 +4153,7 @@ Ftm_Pwm_Ip_SetFaultOutputState/126 (Ftm_Pwm_Ip_SetFaultOutputState) @05e41ee0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitInstanceStart/159 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetFaultFilterValue/125 (Ftm_Pwm_Ip_SetFaultFilterValue) @05e41c40
+Ftm_Pwm_Ip_SetFaultFilterValue/125 (Ftm_Pwm_Ip_SetFaultFilterValue) @05dbc2a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4162,7 +4162,7 @@ Ftm_Pwm_Ip_SetFaultFilterValue/125 (Ftm_Pwm_Ip_SetFaultFilterValue) @05e41c40
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitInstanceStart/159 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetFaultControlMode/113 (Ftm_Pwm_Ip_SetFaultControlMode) @05e34a80
+Ftm_Pwm_Ip_SetFaultControlMode/113 (Ftm_Pwm_Ip_SetFaultControlMode) @05db40e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4171,7 +4171,7 @@ Ftm_Pwm_Ip_SetFaultControlMode/113 (Ftm_Pwm_Ip_SetFaultControlMode) @05e34a80
   Function flags: count:1073741823 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitInstanceStart/159 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetChnTriggerCmd/112 (Ftm_Pwm_Ip_SetChnTriggerCmd) @05e34460
+Ftm_Pwm_Ip_SetChnTriggerCmd/112 (Ftm_Pwm_Ip_SetChnTriggerCmd) @05dada80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4180,7 +4180,7 @@ Ftm_Pwm_Ip_SetChnTriggerCmd/112 (Ftm_Pwm_Ip_SetChnTriggerCmd) @05e34460
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl/161 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_InitPair/150 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_Reset/111 (Ftm_Pwm_Ip_Reset) @05e341c0
+Ftm_Pwm_Ip_Reset/111 (Ftm_Pwm_Ip_Reset) @05dad7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4189,7 +4189,7 @@ Ftm_Pwm_Ip_Reset/111 (Ftm_Pwm_Ip_Reset) @05e341c0
   Function flags: count:119292716 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_DeInit/167 (119292718 (estimated locally),1.00 per call) Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (1073741824 (estimated locally),1.00 per call) 
   Calls: Ftm_Pwm_Ip_UpdateWriteProtection.constprop/283 (119292716 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_UpdateWriteProtection/110 (Ftm_Pwm_Ip_UpdateWriteProtection) @05e2dc40
+Ftm_Pwm_Ip_UpdateWriteProtection/110 (Ftm_Pwm_Ip_UpdateWriteProtection) @05dad2a0
   Type: function
   Body removed by symtab_remove_unreachable_nodes
   Visibility: prevailing_def_ironly
@@ -4199,7 +4199,7 @@ Ftm_Pwm_Ip_UpdateWriteProtection/110 (Ftm_Pwm_Ip_UpdateWriteProtection) @05e2dc4
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @05e2d7e0
+Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @05da3e00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4208,7 +4208,7 @@ Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @05e2d7e0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetDutyPhaseShift/185 (1073741823 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetPhaseShift/184 (1073741823 (estimated locally),1.00 per call) Ftm_Pwm_Ip_EnableNotification/176 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_DisableNotification/174 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/168 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SwOutputControl/170 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_SetNormalNotificationCase/175 (1073741823 (estimated locally),1.00 per call) 
   Calls: Ftm_Pwm_Ip_GetChnMode/26 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_GetChnEdgeLevel/23 (1073741824 (estimated locally),1.00 per call) 
-Ftm_Pwm_Ip_GetDualChnDeadtimeCmd/108 (Ftm_Pwm_Ip_GetDualChnDeadtimeCmd) @05e2d540
+Ftm_Pwm_Ip_GetDualChnDeadtimeCmd/108 (Ftm_Pwm_Ip_GetDualChnDeadtimeCmd) @05da3b60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4217,7 +4217,7 @@ Ftm_Pwm_Ip_GetDualChnDeadtimeCmd/108 (Ftm_Pwm_Ip_GetDualChnDeadtimeCmd) @05e2d54
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetChannelDeadTime/189 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_GetDualChnCompCmd/107 (Ftm_Pwm_Ip_GetDualChnCompCmd) @05e2d2a0
+Ftm_Pwm_Ip_GetDualChnCompCmd/107 (Ftm_Pwm_Ip_GetDualChnCompCmd) @05da38c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4226,7 +4226,7 @@ Ftm_Pwm_Ip_GetDualChnCompCmd/107 (Ftm_Pwm_Ip_GetDualChnCompCmd) @05e2d2a0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetChannelDeadTime/189 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetHalfCycleCmd/100 (Ftm_Pwm_Ip_SetHalfCycleCmd) @05e28000
+Ftm_Pwm_Ip_SetHalfCycleCmd/100 (Ftm_Pwm_Ip_SetHalfCycleCmd) @05d9f620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4235,7 +4235,7 @@ Ftm_Pwm_Ip_SetHalfCycleCmd/100 (Ftm_Pwm_Ip_SetHalfCycleCmd) @05e28000
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetPwmLoadChnSelCmd/99 (Ftm_Pwm_Ip_SetPwmLoadChnSelCmd) @05e22d20
+Ftm_Pwm_Ip_SetPwmLoadChnSelCmd/99 (Ftm_Pwm_Ip_SetPwmLoadChnSelCmd) @05d9f380
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4244,7 +4244,7 @@ Ftm_Pwm_Ip_SetPwmLoadChnSelCmd/99 (Ftm_Pwm_Ip_SetPwmLoadChnSelCmd) @05e22d20
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl/161 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd/97 (Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd) @05e227e0
+Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd/97 (Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd) @05d9be00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4253,7 +4253,7 @@ Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd/97 (Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd) @05e227e0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl/161 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetChnSoftwareCtrlVal/95 (Ftm_Pwm_Ip_SetChnSoftwareCtrlVal) @05e222a0
+Ftm_Pwm_Ip_SetChnSoftwareCtrlVal/95 (Ftm_Pwm_Ip_SetChnSoftwareCtrlVal) @05d9b8c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4262,7 +4262,7 @@ Ftm_Pwm_Ip_SetChnSoftwareCtrlVal/95 (Ftm_Pwm_Ip_SetChnSoftwareCtrlVal) @05e222a0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl/161 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd/90 (Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd) @05e1c540
+Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd/90 (Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd) @05d96b60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4271,7 +4271,7 @@ Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd/90 (Ftm_Pwm_Ip_SetInvctrlHardwareSyncMo
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd/89 (Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd) @05e1c2a0
+Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd/89 (Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd) @05d968c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4280,7 +4280,7 @@ Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd/89 (Ftm_Pwm_Ip_SetOutmaskHardwareSyncMo
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd/88 (Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd) @05e1c000
+Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd/88 (Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd) @05d96620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4289,7 +4289,7 @@ Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd/88 (Ftm_Pwm_Ip_SetModCntinCvHardware
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd/87 (Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd) @05e19d20
+Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd/87 (Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd) @05d96380
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4298,7 +4298,7 @@ Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd/87 (Ftm_Pwm_Ip_SetCounterHardwareSyncMo
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd/86 (Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd) @05e19a80
+Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd/86 (Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd) @05d960e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4307,7 +4307,7 @@ Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd/86 (Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncMo
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd/85 (Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd) @05e197e0
+Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd/85 (Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd) @05d91e00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4316,7 +4316,7 @@ Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd/85 (Ftm_Pwm_Ip_SetInvctrlSoftwareSyncMo
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd/84 (Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd) @05e19540
+Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd/84 (Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd) @05d91b60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4325,7 +4325,7 @@ Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd/84 (Ftm_Pwm_Ip_SetOutmaskSoftwareSyncMo
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd/83 (Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd) @05e192a0
+Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd/83 (Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd) @05d918c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4334,7 +4334,7 @@ Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd/83 (Ftm_Pwm_Ip_SetModCntinCvSoftware
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd/82 (Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd) @05e19000
+Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd/82 (Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd) @05d91620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4343,7 +4343,7 @@ Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd/82 (Ftm_Pwm_Ip_SetCounterSoftwareSyncMo
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ResetCounter/179 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_ConfigureSWandHWSync/154 (357878150 (estimated locally),0.33 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd/80 (Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd) @05e13a80
+Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd/80 (Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd) @05d910e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4352,7 +4352,7 @@ Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd/80 (Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd) @05
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSyncType/155 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd/79 (Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd) @05e137e0
+Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd/79 (Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd) @05d8ce00
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4361,7 +4361,7 @@ Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd/79 (Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd) @05
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSyncType/155 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd/78 (Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd) @05e13540
+Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd/78 (Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd) @05d8cb60
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4370,7 +4370,7 @@ Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd/78 (Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd) @05e135
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSyncType/155 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd/77 (Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd) @05e132a0
+Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd/77 (Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd) @05d8c8c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4379,7 +4379,7 @@ Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd/77 (Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd) @05e1
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetInitTriggerMode/76 (Ftm_Pwm_Ip_SetInitTriggerMode) @05e13000
+Ftm_Pwm_Ip_SetInitTriggerMode/76 (Ftm_Pwm_Ip_SetInitTriggerMode) @05d8c620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4388,7 +4388,7 @@ Ftm_Pwm_Ip_SetInitTriggerMode/76 (Ftm_Pwm_Ip_SetInitTriggerMode) @05e13000
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitInstance/158 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetBdmMode/73 (Ftm_Pwm_Ip_SetBdmMode) @05e10700
+Ftm_Pwm_Ip_SetBdmMode/73 (Ftm_Pwm_Ip_SetBdmMode) @05d88d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4397,7 +4397,7 @@ Ftm_Pwm_Ip_SetBdmMode/73 (Ftm_Pwm_Ip_SetBdmMode) @05e10700
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetLoadFreq/72 (Ftm_Pwm_Ip_SetLoadFreq) @05e10380
+Ftm_Pwm_Ip_SetLoadFreq/72 (Ftm_Pwm_Ip_SetLoadFreq) @05d889a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4406,7 +4406,7 @@ Ftm_Pwm_Ip_SetLoadFreq/72 (Ftm_Pwm_Ip_SetLoadFreq) @05e10380
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetChnOutputPolarityCmd/69 (Ftm_Pwm_Ip_SetChnOutputPolarityCmd) @05e0ca80
+Ftm_Pwm_Ip_SetChnOutputPolarityCmd/69 (Ftm_Pwm_Ip_SetChnOutputPolarityCmd) @05d880e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4415,7 +4415,7 @@ Ftm_Pwm_Ip_SetChnOutputPolarityCmd/69 (Ftm_Pwm_Ip_SetChnOutputPolarityCmd) @05e0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitChannel/162 (435325 (estimated locally),0.71 per call) 
   Calls: Ftm_Pwm_Ip_SetChnOutputPolarityCmd.part.0/217 (536870912 (estimated locally),0.50 per call) 
-Ftm_Pwm_Ip_SetInitTriggerCmd/64 (Ftm_Pwm_Ip_SetInitTriggerCmd) @05e08c40
+Ftm_Pwm_Ip_SetInitTriggerCmd/64 (Ftm_Pwm_Ip_SetInitTriggerCmd) @05d832a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4424,7 +4424,7 @@ Ftm_Pwm_Ip_SetInitTriggerCmd/64 (Ftm_Pwm_Ip_SetInitTriggerCmd) @05e08c40
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitInstance/158 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetExtDeadtimeValue/63 (Ftm_Pwm_Ip_SetExtDeadtimeValue) @05e089a0
+Ftm_Pwm_Ip_SetExtDeadtimeValue/63 (Ftm_Pwm_Ip_SetExtDeadtimeValue) @05d83000
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4433,7 +4433,7 @@ Ftm_Pwm_Ip_SetExtDeadtimeValue/63 (Ftm_Pwm_Ip_SetExtDeadtimeValue) @05e089a0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetChannelDeadTime/189 (536870913 (estimated locally),0.50 per call) Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetDeadtimePrescaler/61 (Ftm_Pwm_Ip_SetDeadtimePrescaler) @05e08380
+Ftm_Pwm_Ip_SetDeadtimePrescaler/61 (Ftm_Pwm_Ip_SetDeadtimePrescaler) @05d7f9a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4442,7 +4442,7 @@ Ftm_Pwm_Ip_SetDeadtimePrescaler/61 (Ftm_Pwm_Ip_SetDeadtimePrescaler) @05e08380
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetDeadtimeCount/60 (Ftm_Pwm_Ip_SetDeadtimeCount) @05e08000
+Ftm_Pwm_Ip_SetDeadtimeCount/60 (Ftm_Pwm_Ip_SetDeadtimeCount) @05d7f620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4451,7 +4451,7 @@ Ftm_Pwm_Ip_SetDeadtimeCount/60 (Ftm_Pwm_Ip_SetDeadtimeCount) @05e08000
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetChannelDeadTime/189 (536870913 (estimated locally),0.50 per call) Ftm_Pwm_Ip_SetChannelDeadTime/189 (536870913 (estimated locally),0.50 per call) Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetDualChnPwmSyncCmd/57 (Ftm_Pwm_Ip_SetDualChnPwmSyncCmd) @05d26700
+Ftm_Pwm_Ip_SetDualChnPwmSyncCmd/57 (Ftm_Pwm_Ip_SetDualChnPwmSyncCmd) @05d79d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4460,7 +4460,7 @@ Ftm_Pwm_Ip_SetDualChnPwmSyncCmd/57 (Ftm_Pwm_Ip_SetDualChnPwmSyncCmd) @05d26700
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitPair/150 (1073741824 (estimated locally),1.00 per call) 
   Calls: Ftm_Pwm_Ip_SetDualChnPwmSyncCmd.part.0/216 (536870912 (estimated locally),0.50 per call) 
-Ftm_Pwm_Ip_SetDualChnDeadtimeCmd/56 (Ftm_Pwm_Ip_SetDualChnDeadtimeCmd) @05d26460
+Ftm_Pwm_Ip_SetDualChnDeadtimeCmd/56 (Ftm_Pwm_Ip_SetDualChnDeadtimeCmd) @05d79a80
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4469,7 +4469,7 @@ Ftm_Pwm_Ip_SetDualChnDeadtimeCmd/56 (Ftm_Pwm_Ip_SetDualChnDeadtimeCmd) @05d26460
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitPair/150 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetDualChnCompCmd/55 (Ftm_Pwm_Ip_SetDualChnCompCmd) @05d261c0
+Ftm_Pwm_Ip_SetDualChnCompCmd/55 (Ftm_Pwm_Ip_SetDualChnCompCmd) @05d797e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4478,7 +4478,7 @@ Ftm_Pwm_Ip_SetDualChnCompCmd/55 (Ftm_Pwm_Ip_SetDualChnCompCmd) @05d261c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitPair/150 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetChnOutputInitStateCmd/48 (Ftm_Pwm_Ip_SetChnOutputInitStateCmd) @05d1bee0
+Ftm_Pwm_Ip_SetChnOutputInitStateCmd/48 (Ftm_Pwm_Ip_SetChnOutputInitStateCmd) @05d75540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4487,7 +4487,7 @@ Ftm_Pwm_Ip_SetChnOutputInitStateCmd/48 (Ftm_Pwm_Ip_SetChnOutputInitStateCmd) @05
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitChannel/162 (435325 (estimated locally),0.71 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @05d1bc40
+Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @05d752a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4496,7 +4496,7 @@ Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @05d1bc40
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetPhaseShift/184 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UnMaskOutputChannels/183 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_MaskOutputChannels/182 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_FastUpdatePwmDuty/181 (118111601 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/169 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdatePwmPeriod/172 (1073741824 (estimated locally),1.00 per call) Ftm_Pwm_Ip_UpdatePwmChannel/171 (536870913 (estimated locally),0.50 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc) @05d1b9a0
+Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc) @05d75000
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4505,7 +4505,7 @@ Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc) @
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) 
   Calls: Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc.part.0/214 (536870912 (estimated locally),0.50 per call) 
-Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd/45 (Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd) @05d1b700
+Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd/45 (Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd) @05cfed20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4514,7 +4514,7 @@ Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd/45 (Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd) @05
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ConfigureSyncType/155 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetMaxLoadingCmd/43 (Ftm_Pwm_Ip_SetMaxLoadingCmd) @05d1b1c0
+Ftm_Pwm_Ip_SetMaxLoadingCmd/43 (Ftm_Pwm_Ip_SetMaxLoadingCmd) @05cfe7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4523,7 +4523,7 @@ Ftm_Pwm_Ip_SetMaxLoadingCmd/43 (Ftm_Pwm_Ip_SetMaxLoadingCmd) @05d1b1c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetMinLoadingCmd/42 (Ftm_Pwm_Ip_SetMinLoadingCmd) @05d17ee0
+Ftm_Pwm_Ip_SetMinLoadingCmd/42 (Ftm_Pwm_Ip_SetMinLoadingCmd) @05cfe540
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4532,7 +4532,7 @@ Ftm_Pwm_Ip_SetMinLoadingCmd/42 (Ftm_Pwm_Ip_SetMinLoadingCmd) @05d17ee0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_UpdateSync/156 (233860969 (estimated locally),0.22 per call) 
   Calls: 
-Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @05d0d2a0
+Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @05cf18c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4541,7 +4541,7 @@ Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @05d0d2a0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_GetChannelMode/109 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetChnMSBAMode/25 (Ftm_Pwm_Ip_SetChnMSBAMode) @05d0d000
+Ftm_Pwm_Ip_SetChnMSBAMode/25 (Ftm_Pwm_Ip_SetChnMSBAMode) @05cf1620
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4550,7 +4550,7 @@ Ftm_Pwm_Ip_SetChnMSBAMode/25 (Ftm_Pwm_Ip_SetChnMSBAMode) @05d0d000
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitChannel/162 (435325 (estimated locally),0.71 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetChnEdgeLevel/24 (Ftm_Pwm_Ip_SetChnEdgeLevel) @05db2d20
+Ftm_Pwm_Ip_SetChnEdgeLevel/24 (Ftm_Pwm_Ip_SetChnEdgeLevel) @05cf1380
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4559,7 +4559,7 @@ Ftm_Pwm_Ip_SetChnEdgeLevel/24 (Ftm_Pwm_Ip_SetChnEdgeLevel) @05db2d20
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitChannel/162 (435325 (estimated locally),0.71 per call) Ftm_Pwm_Ip_ConfigurePairedChannel/160 (203984103 (estimated locally),0.19 per call) Ftm_Pwm_Ip_ConfigurePairedChannel/160 (273804165 (estimated locally),0.25 per call) 
   Calls: 
-Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @05db2a80
+Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @05cf10e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4568,7 +4568,7 @@ Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @05db2a80
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_GetChannelMode/109 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_EnablePwmChannelOutputs/15 (Ftm_Pwm_Ip_EnablePwmChannelOutputs) @05dae380
+Ftm_Pwm_Ip_EnablePwmChannelOutputs/15 (Ftm_Pwm_Ip_EnablePwmChannelOutputs) @05c939a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4577,7 +4577,7 @@ Ftm_Pwm_Ip_EnablePwmChannelOutputs/15 (Ftm_Pwm_Ip_EnablePwmChannelOutputs) @05da
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_InitChannel/162 (143657 (estimated locally),0.23 per call) Ftm_Pwm_Ip_InitPair/150 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetCpwms/5 (Ftm_Pwm_Ip_SetCpwms) @05ce6700
+Ftm_Pwm_Ip_SetCpwms/5 (Ftm_Pwm_Ip_SetCpwms) @05c5ad20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4586,7 +4586,7 @@ Ftm_Pwm_Ip_SetCpwms/5 (Ftm_Pwm_Ip_SetCpwms) @05ce6700
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_ResetAndFirstConfigure/157 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetClockSource/3 (Ftm_Pwm_Ip_SetClockSource) @05ce61c0
+Ftm_Pwm_Ip_SetClockSource/3 (Ftm_Pwm_Ip_SetClockSource) @05c5a7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4595,7 +4595,7 @@ Ftm_Pwm_Ip_SetClockSource/3 (Ftm_Pwm_Ip_SetClockSource) @05ce61c0
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetPowerState/177 (524845004 (estimated locally),0.49 per call) Ftm_Pwm_Ip_InitInstanceStart/159 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Ftm_Pwm_Ip_SetClockPs/1 (Ftm_Pwm_Ip_SetClockPs) @05ce2c40
+Ftm_Pwm_Ip_SetClockPs/1 (Ftm_Pwm_Ip_SetClockPs) @05c5a1c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 
@@ -4604,7 +4604,7 @@ Ftm_Pwm_Ip_SetClockPs/1 (Ftm_Pwm_Ip_SetClockPs) @05ce2c40
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Ftm_Pwm_Ip_SetClockMode/178 (708669605 (estimated locally),0.66 per call) Ftm_Pwm_Ip_SetClockMode/178 (365072220 (estimated locally),0.34 per call) Ftm_Pwm_Ip_InitInstanceStart/159 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-DevAssert/0 (DevAssert) @05c12ee0
+DevAssert/0 (DevAssert) @05b9e2a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 

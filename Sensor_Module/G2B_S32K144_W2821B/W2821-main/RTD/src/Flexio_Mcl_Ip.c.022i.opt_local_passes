@@ -3,13 +3,8 @@ Flexio_Mcl_Ip_DeinitDevice (uint32 instance)
   struct FLEXIO_Type * BaseAddr;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   BaseAddr_1 = 1074110464B;
-  # DEBUG BaseAddr => BaseAddr_1
-  # DEBUG BEGIN_STMT
   Flexio_Mcl_Ip_Init (BaseAddr_1);
-  # DEBUG BEGIN_STMT
   Flexio_Ip_baIpIsInitialized[instance_4(D)] = 0;
   return;
 
@@ -22,6 +17,7 @@ Flexio_Mcl_Ip_InitDevice (const struct Flexio_Ip_InstanceConfigType * const pFle
   uint8 LocInstance;
   Flexio_Ip_CommonStatusType Status;
   struct FLEXIO_Type * BaseAddr;
+  Flexio_Ip_CommonStatusType D.5758;
   int _1;
   int _2;
   _Bool _3;
@@ -29,21 +25,11 @@ Flexio_Mcl_Ip_InitDevice (const struct Flexio_Ip_InstanceConfigType * const pFle
   Flexio_Ip_CommonStatusType _17;
 
   <bb 2> :
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   Status_6 = 0;
-  # DEBUG Status => Status_6
-  # DEBUG BEGIN_STMT
   LocInstance_9 = pFlexioInitType_8(D)->instance;
-  # DEBUG LocInstance => LocInstance_9
-  # DEBUG BEGIN_STMT
   LocDebugEnable_10 = pFlexioInitType_8(D)->debugEnable;
-  # DEBUG LocDebugEnable => LocDebugEnable_10
-  # DEBUG BEGIN_STMT
   _1 = (int) LocInstance_9;
   BaseAddr_11 = 1074110464B;
-  # DEBUG BaseAddr => BaseAddr_11
-  # DEBUG BEGIN_STMT
   _2 = (int) LocInstance_9;
   _3 = Flexio_Ip_baIpIsInitialized[_2];
   if (_3 != 0)
@@ -52,25 +38,19 @@ Flexio_Mcl_Ip_InitDevice (const struct Flexio_Ip_InstanceConfigType * const pFle
     goto <bb 4>; [INV]
 
   <bb 3> :
-  # DEBUG BEGIN_STMT
   Status_12 = 1;
-  # DEBUG Status => Status_12
 
   <bb 4> :
   # Status_5 = PHI <Status_6(2), Status_12(3)>
-  # DEBUG Status => Status_5
-  # DEBUG BEGIN_STMT
   Flexio_Mcl_Ip_Init (BaseAddr_11);
-  # DEBUG BEGIN_STMT
   Flexio_Mcl_Ip_SetEnable (BaseAddr_11, 1);
-  # DEBUG BEGIN_STMT
   Flexio_Mcl_Ip_SetDebugEnable (BaseAddr_11, LocDebugEnable_10);
-  # DEBUG BEGIN_STMT
   _4 = (int) LocInstance_9;
   Flexio_Ip_baIpIsInitialized[_4] = 1;
-  # DEBUG BEGIN_STMT
-  # DEBUG BEGIN_STMT
   _17 = Status_5;
+
+  <bb 5> :
+<L2>:
   return _17;
 
 }

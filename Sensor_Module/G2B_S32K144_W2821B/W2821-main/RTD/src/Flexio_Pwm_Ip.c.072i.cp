@@ -314,7 +314,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Flexio_Pwm_Ip_SetTimerPin.constprop.0/41 (Flexio_Pwm_Ip_SetTimerPin.constprop) @05d478c0
+Flexio_Pwm_Ip_SetTimerPin.constprop.0/41 (Flexio_Pwm_Ip_SetTimerPin.constprop) @05cb2ee0
   Type: function definition analyzed
   Visibility:
   References: 
@@ -324,7 +324,7 @@ Flexio_Pwm_Ip_SetTimerPin.constprop.0/41 (Flexio_Pwm_Ip_SetTimerPin.constprop) @
   Function flags: count:1073741824 (estimated locally) local optimize_size
   Called by: Flexio_Pwm_Ip_InitTimerPin.constprop/40 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Flexio_Pwm_Ip_InitTimerPin.constprop.0/40 (Flexio_Pwm_Ip_InitTimerPin.constprop) @05dde540
+Flexio_Pwm_Ip_InitTimerPin.constprop.0/40 (Flexio_Pwm_Ip_InitTimerPin.constprop) @05d4cd20
   Type: function definition analyzed
   Visibility:
   References: 
@@ -334,7 +334,7 @@ Flexio_Pwm_Ip_InitTimerPin.constprop.0/40 (Flexio_Pwm_Ip_InitTimerPin.constprop)
   Function flags: count:1073741824 (estimated locally) local optimize_size
   Called by: Flexio_Pwm_Ip_InitChannel/16 (1073741824 (estimated locally),1.00 per call) 
   Calls: Flexio_Pwm_Ip_SetTimerPin.constprop/41 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Pwm_Ip_ResetTimerRegisters.isra.0/33 (Flexio_Pwm_Ip_ResetTimerRegisters.isra.0) @05fb0e00
+Flexio_Pwm_Ip_ResetTimerRegisters.isra.0/33 (Flexio_Pwm_Ip_ResetTimerRegisters.isra.0) @05f23700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly artificial
   References: Flexio_Pwm_Ip_aState/12 (read)
@@ -343,7 +343,7 @@ Flexio_Pwm_Ip_ResetTimerRegisters.isra.0/33 (Flexio_Pwm_Ip_ResetTimerRegisters.i
   Function flags: count:1073741824 (estimated locally) body local optimize_size
   Called by: Flexio_Pwm_Ip_DeInitChannel/17 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_34/27 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_34) @05f6a7e0
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_34/27 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_34) @05edc000
   Type: function
   Visibility: external public
   References: 
@@ -352,7 +352,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_34/27 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_34) @05
   Function flags: optimize_size
   Called by: Flexio_Pwm_Ip_UpdateInterruptMode/20 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Flexio_Mcl_Ip_SetTimerInterrupt/26 (Flexio_Mcl_Ip_SetTimerInterrupt) @05f6a700
+Flexio_Mcl_Ip_SetTimerInterrupt/26 (Flexio_Mcl_Ip_SetTimerInterrupt) @05df9ee0
   Type: function
   Visibility: external public
   References: 
@@ -361,7 +361,7 @@ Flexio_Mcl_Ip_SetTimerInterrupt/26 (Flexio_Mcl_Ip_SetTimerInterrupt) @05f6a700
   Function flags: optimize_size
   Called by: Flexio_Pwm_Ip_UpdateInterruptMode/20 (217325345 (estimated locally),0.20 per call) Flexio_Pwm_Ip_UpdateInterruptMode/20 (1073741823 (estimated locally),1.00 per call) 
   Calls: 
-Flexio_Mcl_Ip_ClearTimerStatus/25 (Flexio_Mcl_Ip_ClearTimerStatus) @05f6a620
+Flexio_Mcl_Ip_ClearTimerStatus/25 (Flexio_Mcl_Ip_ClearTimerStatus) @05df9e00
   Type: function
   Visibility: external public
   References: 
@@ -370,7 +370,7 @@ Flexio_Mcl_Ip_ClearTimerStatus/25 (Flexio_Mcl_Ip_ClearTimerStatus) @05f6a620
   Function flags: optimize_size
   Called by: Flexio_Pwm_Ip_UpdateInterruptMode/20 (1073741823 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_34/24 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_34) @05f6a540
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_34/24 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_34) @05df9d20
   Type: function
   Visibility: external public
   References: 
@@ -379,7 +379,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_34/24 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_34) @
   Function flags: optimize_size
   Called by: Flexio_Pwm_Ip_UpdateInterruptMode/20 (1073741823 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_33/23 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_33) @05f6a1c0
+SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_33/23 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_33) @05df99a0
   Type: function
   Visibility: external public
   References: 
@@ -388,7 +388,7 @@ SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_33/23 (SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_33) @05
   Function flags: optimize_size
   Called by: Flexio_Pwm_Ip_UpdatePeriodDuty/18 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_33/22 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_33) @05f6a0e0
+SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_33/22 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_33) @05df98c0
   Type: function
   Visibility: external public
   References: 
@@ -397,7 +397,7 @@ SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_33/22 (SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_33) @
   Function flags: optimize_size
   Called by: Flexio_Pwm_Ip_UpdatePeriodDuty/18 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Flexio_Pwm_Ip_GetPeriod/21 (Flexio_Pwm_Ip_GetPeriod) @05e83460
+Flexio_Pwm_Ip_GetPeriod/21 (Flexio_Pwm_Ip_GetPeriod) @05d4f0e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -406,7 +406,7 @@ Flexio_Pwm_Ip_GetPeriod/21 (Flexio_Pwm_Ip_GetPeriod) @05e83460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Pwm_Ip_UpdateInterruptMode/20 (Flexio_Pwm_Ip_UpdateInterruptMode) @05e831c0
+Flexio_Pwm_Ip_UpdateInterruptMode/20 (Flexio_Pwm_Ip_UpdateInterruptMode) @05d4fd20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexio_Pwm_Ip_aState/12 (read)Flexio_Pwm_Ip_u8TimerIrqMask/13 (read)Flexio_Pwm_Ip_u8TimerIrqMask/13 (write)Flexio_Pwm_Ip_u8TimerIrqMask/13 (read)Flexio_Pwm_Ip_u8TimerIrqMask/13 (write)
@@ -415,7 +415,7 @@ Flexio_Pwm_Ip_UpdateInterruptMode/20 (Flexio_Pwm_Ip_UpdateInterruptMode) @05e831
   Function flags: count:1073741823 (estimated locally) body optimize_size
   Called by: Flexio_Pwm_Ip_DeInitChannel/17 (1073741824 (estimated locally),1.00 per call) Flexio_Pwm_Ip_InitChannel/16 (1073741824 (estimated locally),1.00 per call) 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_34/27 (1073741824 (estimated locally),1.00 per call) Flexio_Mcl_Ip_SetTimerInterrupt/26 (217325345 (estimated locally),0.20 per call) Flexio_Mcl_Ip_SetTimerInterrupt/26 (1073741823 (estimated locally),1.00 per call) Flexio_Mcl_Ip_ClearTimerStatus/25 (1073741823 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_34/24 (1073741823 (estimated locally),1.00 per call) DevAssert/0 (1073741823 (estimated locally),1.00 per call) DevAssert/0 (1073741823 (estimated locally),1.00 per call) 
-Flexio_Pwm_Ip_GetOutputState/19 (Flexio_Pwm_Ip_GetOutputState) @05ddee00
+Flexio_Pwm_Ip_GetOutputState/19 (Flexio_Pwm_Ip_GetOutputState) @05d4fa80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexio_Pwm_Ip_aState/12 (read)
@@ -424,7 +424,7 @@ Flexio_Pwm_Ip_GetOutputState/19 (Flexio_Pwm_Ip_GetOutputState) @05ddee00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Pwm_Ip_UpdatePeriodDuty/18 (Flexio_Pwm_Ip_UpdatePeriodDuty) @05dde8c0
+Flexio_Pwm_Ip_UpdatePeriodDuty/18 (Flexio_Pwm_Ip_UpdatePeriodDuty) @05d4f7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -433,7 +433,7 @@ Flexio_Pwm_Ip_UpdatePeriodDuty/18 (Flexio_Pwm_Ip_UpdatePeriodDuty) @05dde8c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_33/23 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Pwm_PWM_EXCLUSIVE_AREA_33/22 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Pwm_Ip_DeInitChannel/17 (Flexio_Pwm_Ip_DeInitChannel) @05dded20
+Flexio_Pwm_Ip_DeInitChannel/17 (Flexio_Pwm_Ip_DeInitChannel) @05d4f540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexio_Pwm_Ip_aState/12 (read)
@@ -442,7 +442,7 @@ Flexio_Pwm_Ip_DeInitChannel/17 (Flexio_Pwm_Ip_DeInitChannel) @05dded20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Flexio_Pwm_Ip_ResetTimerRegisters.isra.0/33 (1073741824 (estimated locally),1.00 per call) Flexio_Pwm_Ip_UpdateInterruptMode/20 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Pwm_Ip_InitChannel/16 (Flexio_Pwm_Ip_InitChannel) @05ddea80
+Flexio_Pwm_Ip_InitChannel/16 (Flexio_Pwm_Ip_InitChannel) @05d4f2a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Flexio_Pwm_Ip_aState/12 (write)
@@ -451,7 +451,7 @@ Flexio_Pwm_Ip_InitChannel/16 (Flexio_Pwm_Ip_InitChannel) @05ddea80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Flexio_Pwm_Ip_UpdateInterruptMode/20 (1073741824 (estimated locally),1.00 per call) Flexio_Pwm_Ip_InitTimerPin.constprop/40 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
-Flexio_Pwm_Ip_InitTimerPin/15 (Flexio_Pwm_Ip_InitTimerPin) @05dde7e0
+Flexio_Pwm_Ip_InitTimerPin/15 (Flexio_Pwm_Ip_InitTimerPin) @05d4f000
   Type: function
   Body removed by symtab_remove_unreachable_nodes
   Visibility: prevailing_def_ironly
@@ -461,28 +461,28 @@ Flexio_Pwm_Ip_InitTimerPin/15 (Flexio_Pwm_Ip_InitTimerPin) @05dde7e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Flexio_Pwm_Ip_u8TimerIrqMask/13 (Flexio_Pwm_Ip_u8TimerIrqMask) @05ddb360
+Flexio_Pwm_Ip_u8TimerIrqMask/13 (Flexio_Pwm_Ip_u8TimerIrqMask) @05d49288
   Type: variable definition analyzed
   Visibility: force_output externally_visible public
   References: 
   Referring: Flexio_Pwm_Ip_UpdateInterruptMode/20 (read)Flexio_Pwm_Ip_UpdateInterruptMode/20 (write)Flexio_Pwm_Ip_UpdateInterruptMode/20 (read)Flexio_Pwm_Ip_UpdateInterruptMode/20 (write)
   Availability: available
   Varpool flags:
-Flexio_Pwm_Ip_aState/12 (Flexio_Pwm_Ip_aState) @05ddb2d0
+Flexio_Pwm_Ip_aState/12 (Flexio_Pwm_Ip_aState) @05d491f8
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: Flexio_Pwm_Ip_GetOutputState/19 (read)Flexio_Pwm_Ip_UpdateInterruptMode/20 (read)Flexio_Pwm_Ip_ResetTimerRegisters.isra.0/33 (read)Flexio_Pwm_Ip_InitChannel/16 (write)Flexio_Pwm_Ip_DeInitChannel/17 (read)
   Availability: available
   Varpool flags:
-Flexio_Pwm_Ip_aBasePtr/11 (Flexio_Pwm_Ip_aBasePtr) @05ddb240
+Flexio_Pwm_Ip_aBasePtr/11 (Flexio_Pwm_Ip_aBasePtr) @05d49168
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: 
   Referring: 
   Availability: available
   Varpool flags: initialized read-only const-value-known
-Flexio_Pwm_Ip_SetTimerPin/4 (Flexio_Pwm_Ip_SetTimerPin) @05d437e0
+Flexio_Pwm_Ip_SetTimerPin/4 (Flexio_Pwm_Ip_SetTimerPin) @05c78e00
   Type: function
   Body removed by symtab_remove_unreachable_nodes
   Visibility: prevailing_def_ironly
@@ -492,7 +492,7 @@ Flexio_Pwm_Ip_SetTimerPin/4 (Flexio_Pwm_Ip_SetTimerPin) @05d437e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-DevAssert/0 (DevAssert) @05cadee0
+DevAssert/0 (DevAssert) @05c3a2a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   References: 

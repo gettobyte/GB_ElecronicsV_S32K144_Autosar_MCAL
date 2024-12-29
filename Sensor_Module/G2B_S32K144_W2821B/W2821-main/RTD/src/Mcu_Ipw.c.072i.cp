@@ -77,7 +77,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Power_Ip_EnableSleepOnExit/16 (Power_Ip_EnableSleepOnExit) @060b2700
+Power_Ip_EnableSleepOnExit/16 (Power_Ip_EnableSleepOnExit) @06063700
   Type: function
   Visibility: external public
   References: 
@@ -86,7 +86,7 @@ Power_Ip_EnableSleepOnExit/16 (Power_Ip_EnableSleepOnExit) @060b2700
   Function flags: optimize_size
   Called by: Mcu_Ipw_SleepOnExit/7 (536870913 (estimated locally),0.50 per call) 
   Calls: 
-Power_Ip_DisableSleepOnExit/15 (Power_Ip_DisableSleepOnExit) @060b2620
+Power_Ip_DisableSleepOnExit/15 (Power_Ip_DisableSleepOnExit) @06063620
   Type: function
   Visibility: external public
   References: 
@@ -95,7 +95,7 @@ Power_Ip_DisableSleepOnExit/15 (Power_Ip_DisableSleepOnExit) @060b2620
   Function flags: optimize_size
   Called by: Mcu_Ipw_SleepOnExit/7 (536870913 (estimated locally),0.50 per call) 
   Calls: 
-Power_Ip_GetResetRawValue/14 (Power_Ip_GetResetRawValue) @060b2460
+Power_Ip_GetResetRawValue/14 (Power_Ip_GetResetRawValue) @06063460
   Type: function
   Visibility: external public
   References: 
@@ -104,7 +104,7 @@ Power_Ip_GetResetRawValue/14 (Power_Ip_GetResetRawValue) @060b2460
   Function flags: optimize_size
   Called by: Mcu_Ipw_GetResetRawValue/6 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_GetResetReason/13 (Power_Ip_GetResetReason) @060b22a0
+Power_Ip_GetResetReason/13 (Power_Ip_GetResetReason) @060632a0
   Type: function
   Visibility: external public
   References: 
@@ -113,7 +113,7 @@ Power_Ip_GetResetReason/13 (Power_Ip_GetResetReason) @060b22a0
   Function flags: optimize_size
   Called by: Mcu_Ipw_GetResetReason/5 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_SetMode/12 (Power_Ip_SetMode) @060b20e0
+Power_Ip_SetMode/12 (Power_Ip_SetMode) @060630e0
   Type: function
   Visibility: external public
   References: 
@@ -122,7 +122,7 @@ Power_Ip_SetMode/12 (Power_Ip_SetMode) @060b20e0
   Function flags: optimize_size
   Called by: Mcu_Ipw_SetMode/4 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @05edc620
+Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @05202620
   Type: function
   Visibility: external public
   References: 
@@ -131,7 +131,7 @@ Clock_Ip_GetPllStatus/11 (Clock_Ip_GetPllStatus) @05edc620
   Function flags: optimize_size
   Called by: Mcu_Ipw_GetPllStatus/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_DistributePll/10 (Clock_Ip_DistributePll) @05edc0e0
+Clock_Ip_DistributePll/10 (Clock_Ip_DistributePll) @052020e0
   Type: function
   Visibility: external public
   References: 
@@ -140,7 +140,7 @@ Clock_Ip_DistributePll/10 (Clock_Ip_DistributePll) @05edc0e0
   Function flags: optimize_size
   Called by: Mcu_Ipw_DistributePllClock/2 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_InitClock/9 (Clock_Ip_InitClock) @05edce00
+Clock_Ip_InitClock/9 (Clock_Ip_InitClock) @05202e00
   Type: function
   Visibility: external public
   References: 
@@ -149,7 +149,7 @@ Clock_Ip_InitClock/9 (Clock_Ip_InitClock) @05edce00
   Function flags: optimize_size
   Called by: Mcu_Ipw_InitClock/1 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_Init/8 (Power_Ip_Init) @05edcc40
+Power_Ip_Init/8 (Power_Ip_Init) @05202c40
   Type: function
   Visibility: external public
   References: 
@@ -158,7 +158,7 @@ Power_Ip_Init/8 (Power_Ip_Init) @05edcc40
   Function flags: optimize_size
   Called by: Mcu_Ipw_Init/0 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Mcu_Ipw_SleepOnExit/7 (Mcu_Ipw_SleepOnExit) @05edc7e0
+Mcu_Ipw_SleepOnExit/7 (Mcu_Ipw_SleepOnExit) @052027e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -167,7 +167,7 @@ Mcu_Ipw_SleepOnExit/7 (Mcu_Ipw_SleepOnExit) @05edc7e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_EnableSleepOnExit/16 (536870913 (estimated locally),0.50 per call) Power_Ip_DisableSleepOnExit/15 (536870913 (estimated locally),0.50 per call) 
-Mcu_Ipw_GetResetRawValue/6 (Mcu_Ipw_GetResetRawValue) @05edc540
+Mcu_Ipw_GetResetRawValue/6 (Mcu_Ipw_GetResetRawValue) @05202540
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -176,7 +176,7 @@ Mcu_Ipw_GetResetRawValue/6 (Mcu_Ipw_GetResetRawValue) @05edc540
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_GetResetRawValue/14 (1073741824 (estimated locally),1.00 per call) 
-Mcu_Ipw_GetResetReason/5 (Mcu_Ipw_GetResetReason) @05edc2a0
+Mcu_Ipw_GetResetReason/5 (Mcu_Ipw_GetResetReason) @052022a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -185,7 +185,7 @@ Mcu_Ipw_GetResetReason/5 (Mcu_Ipw_GetResetReason) @05edc2a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_GetResetReason/13 (1073741824 (estimated locally),1.00 per call) 
-Mcu_Ipw_SetMode/4 (Mcu_Ipw_SetMode) @05edc000
+Mcu_Ipw_SetMode/4 (Mcu_Ipw_SetMode) @05202000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -194,7 +194,7 @@ Mcu_Ipw_SetMode/4 (Mcu_Ipw_SetMode) @05edc000
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_SetMode/12 (1073741824 (estimated locally),1.00 per call) 
-Mcu_Ipw_GetPllStatus/3 (Mcu_Ipw_GetPllStatus) @05ed6e00
+Mcu_Ipw_GetPllStatus/3 (Mcu_Ipw_GetPllStatus) @051fce00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -203,7 +203,7 @@ Mcu_Ipw_GetPllStatus/3 (Mcu_Ipw_GetPllStatus) @05ed6e00
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_GetPllStatus/11 (1073741824 (estimated locally),1.00 per call) 
-Mcu_Ipw_DistributePllClock/2 (Mcu_Ipw_DistributePllClock) @05ed68c0
+Mcu_Ipw_DistributePllClock/2 (Mcu_Ipw_DistributePllClock) @051fc8c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -212,7 +212,7 @@ Mcu_Ipw_DistributePllClock/2 (Mcu_Ipw_DistributePllClock) @05ed68c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_DistributePll/10 (1073741824 (estimated locally),1.00 per call) 
-Mcu_Ipw_InitClock/1 (Mcu_Ipw_InitClock) @05ed6d20
+Mcu_Ipw_InitClock/1 (Mcu_Ipw_InitClock) @051fcd20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -221,7 +221,7 @@ Mcu_Ipw_InitClock/1 (Mcu_Ipw_InitClock) @05ed6d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_InitClock/9 (1073741824 (estimated locally),1.00 per call) 
-Mcu_Ipw_Init/0 (Mcu_Ipw_Init) @05ed6a80
+Mcu_Ipw_Init/0 (Mcu_Ipw_Init) @051fca80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 

@@ -477,7 +477,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Clock_Ip_au8ClockFeatures/43 (Clock_Ip_au8ClockFeatures) @05f79cf0
+Clock_Ip_au8ClockFeatures/43 (Clock_Ip_au8ClockFeatures) @06dc8bd0
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -485,7 +485,7 @@ Clock_Ip_au8ClockFeatures/43 (Clock_Ip_au8ClockFeatures) @05f79cf0
   Referring: Clock_Ip_SetSimFtmoptSel_TrustedCall/32 (read)Clock_Ip_ResetPccPcsSelect_TrustedCall/35 (read)Clock_Ip_ResetSimFtmoptSel_TrustedCall/31 (read)Clock_Ip_SetPccPcsSelect_TrustedCall/36 (read)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_au8SelectorEntryPcsHardwareValue/42 (Clock_Ip_au8SelectorEntryPcsHardwareValue) @05f79870
+Clock_Ip_au8SelectorEntryPcsHardwareValue/42 (Clock_Ip_au8SelectorEntryPcsHardwareValue) @06dc8750
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -493,7 +493,7 @@ Clock_Ip_au8SelectorEntryPcsHardwareValue/42 (Clock_Ip_au8SelectorEntryPcsHardwa
   Referring: Clock_Ip_SetPccPcsSelect_TrustedCall/36 (read)Clock_Ip_ResetSimTraceSel_TrustedCall/37 (read)Clock_Ip_ResetSimLpoSel_TrustedCall/27 (read)Clock_Ip_SetSimLpoSel_TrustedCall/28 (read)Clock_Ip_SetSimTraceSel_TrustedCall/38 (read)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_au16SelectorEntryHardwareValue/41 (Clock_Ip_au16SelectorEntryHardwareValue) @05f79678
+Clock_Ip_au16SelectorEntryHardwareValue/41 (Clock_Ip_au16SelectorEntryHardwareValue) @06dc8558
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -501,7 +501,7 @@ Clock_Ip_au16SelectorEntryHardwareValue/41 (Clock_Ip_au16SelectorEntryHardwareVa
   Referring: Clock_Ip_ResetSimFtmoptSel_TrustedCall/31 (read)Clock_Ip_SetSimFtmoptSel_TrustedCall/32 (read)Clock_Ip_ResetSimRtcSel_TrustedCall/25 (read)Clock_Ip_SetSimRtcSel_TrustedCall/26 (read)Clock_Ip_SetSimClkoutSel_TrustedCall/34 (read)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_au8SelectorEntryScsHardwareValue/40 (Clock_Ip_au8SelectorEntryScsHardwareValue) @05f791f8
+Clock_Ip_au8SelectorEntryScsHardwareValue/40 (Clock_Ip_au8SelectorEntryScsHardwareValue) @06dc80d8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -509,14 +509,14 @@ Clock_Ip_au8SelectorEntryScsHardwareValue/40 (Clock_Ip_au8SelectorEntryScsHardwa
   Referring: Clock_Ip_SetScgHsrunSel_TrustedCall/24 (read)Clock_Ip_ResetScgClkoutSel_TrustedCall/29 (read)Clock_Ip_ResetScgRunSel_TrustedCall/20 (read)Clock_Ip_SetScgRunSel_TrustedCall/21 (read)Clock_Ip_SetScgVlprSel_TrustedCall/22 (read)Clock_Ip_ResetScgHsrunSel_TrustedCall/23 (read)Clock_Ip_SetScgClkoutSel_TrustedCall/30 (read)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_axSelectorCallbacks/39 (Clock_Ip_axSelectorCallbacks) @05ef5f30
+Clock_Ip_axSelectorCallbacks/39 (Clock_Ip_axSelectorCallbacks) @06b28e10
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_CallbackSelectorEmpty/0 (addr)Clock_Ip_CallbackSelectorEmpty/0 (addr)Clock_Ip_ResetScgRunSel/1 (addr)Clock_Ip_SetScgRunSel/2 (addr)Clock_Ip_CallbackSelectorEmpty/0 (addr)Clock_Ip_SetScgVlprSel/3 (addr)Clock_Ip_ResetScgHsrunSel/4 (addr)Clock_Ip_SetScgHsrunSel/5 (addr)Clock_Ip_ResetSimRtcSel/6 (addr)Clock_Ip_SetSimRtcSel/7 (addr)Clock_Ip_ResetSimLpoSel/8 (addr)Clock_Ip_SetSimLpoSel/9 (addr)Clock_Ip_ResetScgClkoutSel/10 (addr)Clock_Ip_SetScgClkoutSel/11 (addr)Clock_Ip_ResetSimFtmoptSel/12 (addr)Clock_Ip_SetSimFtmoptSel/13 (addr)Clock_Ip_ResetSimClkoutSel/14 (addr)Clock_Ip_SetSimClkoutSel/15 (addr)Clock_Ip_ResetPccPcsSelect/16 (addr)Clock_Ip_SetPccPcsSelect/17 (addr)Clock_Ip_ResetSimTraceSel/18 (addr)Clock_Ip_SetSimTraceSel/19 (addr)
   Referring: 
   Availability: available
   Varpool flags: initialized read-only const-value-known
-Clock_Ip_SetSimTraceSel_TrustedCall/38 (Clock_Ip_SetSimTraceSel_TrustedCall) @05f760e0
+Clock_Ip_SetSimTraceSel_TrustedCall/38 (Clock_Ip_SetSimTraceSel_TrustedCall) @06dc49a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryPcsHardwareValue/42 (read)
@@ -525,7 +525,7 @@ Clock_Ip_SetSimTraceSel_TrustedCall/38 (Clock_Ip_SetSimTraceSel_TrustedCall) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetSimTraceSel/19 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ResetSimTraceSel_TrustedCall/37 (Clock_Ip_ResetSimTraceSel_TrustedCall) @05f6fa80
+Clock_Ip_ResetSimTraceSel_TrustedCall/37 (Clock_Ip_ResetSimTraceSel_TrustedCall) @06dc4620
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryPcsHardwareValue/42 (read)
@@ -534,7 +534,7 @@ Clock_Ip_ResetSimTraceSel_TrustedCall/37 (Clock_Ip_ResetSimTraceSel_TrustedCall)
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ResetSimTraceSel/18 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetPccPcsSelect_TrustedCall/36 (Clock_Ip_SetPccPcsSelect_TrustedCall) @05f6f0e0
+Clock_Ip_SetPccPcsSelect_TrustedCall/36 (Clock_Ip_SetPccPcsSelect_TrustedCall) @06dc42a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8ClockFeatures/43 (read)Clock_Ip_au8SelectorEntryPcsHardwareValue/42 (read)
@@ -543,7 +543,7 @@ Clock_Ip_SetPccPcsSelect_TrustedCall/36 (Clock_Ip_SetPccPcsSelect_TrustedCall) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetPccPcsSelect/17 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ResetPccPcsSelect_TrustedCall/35 (Clock_Ip_ResetPccPcsSelect_TrustedCall) @05f6fc40
+Clock_Ip_ResetPccPcsSelect_TrustedCall/35 (Clock_Ip_ResetPccPcsSelect_TrustedCall) @06dbaee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8ClockFeatures/43 (read)
@@ -552,7 +552,7 @@ Clock_Ip_ResetPccPcsSelect_TrustedCall/35 (Clock_Ip_ResetPccPcsSelect_TrustedCal
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ResetPccPcsSelect/16 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetSimClkoutSel_TrustedCall/34 (Clock_Ip_SetSimClkoutSel_TrustedCall) @05f6f9a0
+Clock_Ip_SetSimClkoutSel_TrustedCall/34 (Clock_Ip_SetSimClkoutSel_TrustedCall) @06dba7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au16SelectorEntryHardwareValue/41 (read)
@@ -561,7 +561,7 @@ Clock_Ip_SetSimClkoutSel_TrustedCall/34 (Clock_Ip_SetSimClkoutSel_TrustedCall) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetSimClkoutSel/15 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ResetSimClkoutSel_TrustedCall/33 (Clock_Ip_ResetSimClkoutSel_TrustedCall) @05f6f700
+Clock_Ip_ResetSimClkoutSel_TrustedCall/33 (Clock_Ip_ResetSimClkoutSel_TrustedCall) @06dbae00
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -570,7 +570,7 @@ Clock_Ip_ResetSimClkoutSel_TrustedCall/33 (Clock_Ip_ResetSimClkoutSel_TrustedCal
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ResetSimClkoutSel/14 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetSimFtmoptSel_TrustedCall/32 (Clock_Ip_SetSimFtmoptSel_TrustedCall) @05f6f460
+Clock_Ip_SetSimFtmoptSel_TrustedCall/32 (Clock_Ip_SetSimFtmoptSel_TrustedCall) @06dbab60
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au16SelectorEntryHardwareValue/41 (read)Clock_Ip_au8ClockFeatures/43 (read)
@@ -579,7 +579,7 @@ Clock_Ip_SetSimFtmoptSel_TrustedCall/32 (Clock_Ip_SetSimFtmoptSel_TrustedCall) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetSimFtmoptSel/13 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ResetSimFtmoptSel_TrustedCall/31 (Clock_Ip_ResetSimFtmoptSel_TrustedCall) @05f6f000
+Clock_Ip_ResetSimFtmoptSel_TrustedCall/31 (Clock_Ip_ResetSimFtmoptSel_TrustedCall) @06dba700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au16SelectorEntryHardwareValue/41 (read)Clock_Ip_au8ClockFeatures/43 (read)
@@ -588,7 +588,7 @@ Clock_Ip_ResetSimFtmoptSel_TrustedCall/31 (Clock_Ip_ResetSimFtmoptSel_TrustedCal
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ResetSimFtmoptSel/12 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetScgClkoutSel_TrustedCall/30 (Clock_Ip_SetScgClkoutSel_TrustedCall) @05f67ee0
+Clock_Ip_SetScgClkoutSel_TrustedCall/30 (Clock_Ip_SetScgClkoutSel_TrustedCall) @06dba000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryScsHardwareValue/40 (read)
@@ -597,7 +597,7 @@ Clock_Ip_SetScgClkoutSel_TrustedCall/30 (Clock_Ip_SetScgClkoutSel_TrustedCall) @
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetScgClkoutSel/11 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ResetScgClkoutSel_TrustedCall/29 (Clock_Ip_ResetScgClkoutSel_TrustedCall) @05f67c40
+Clock_Ip_ResetScgClkoutSel_TrustedCall/29 (Clock_Ip_ResetScgClkoutSel_TrustedCall) @06db5a80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryScsHardwareValue/40 (read)
@@ -606,7 +606,7 @@ Clock_Ip_ResetScgClkoutSel_TrustedCall/29 (Clock_Ip_ResetScgClkoutSel_TrustedCal
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ResetScgClkoutSel/10 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetSimLpoSel_TrustedCall/28 (Clock_Ip_SetSimLpoSel_TrustedCall) @05f679a0
+Clock_Ip_SetSimLpoSel_TrustedCall/28 (Clock_Ip_SetSimLpoSel_TrustedCall) @06db5460
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryPcsHardwareValue/42 (read)
@@ -615,7 +615,7 @@ Clock_Ip_SetSimLpoSel_TrustedCall/28 (Clock_Ip_SetSimLpoSel_TrustedCall) @05f679
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetSimLpoSel/9 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ResetSimLpoSel_TrustedCall/27 (Clock_Ip_ResetSimLpoSel_TrustedCall) @05f67700
+Clock_Ip_ResetSimLpoSel_TrustedCall/27 (Clock_Ip_ResetSimLpoSel_TrustedCall) @06db5ee0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryPcsHardwareValue/42 (read)
@@ -624,7 +624,7 @@ Clock_Ip_ResetSimLpoSel_TrustedCall/27 (Clock_Ip_ResetSimLpoSel_TrustedCall) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ResetSimLpoSel/8 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetSimRtcSel_TrustedCall/26 (Clock_Ip_SetSimRtcSel_TrustedCall) @05f67460
+Clock_Ip_SetSimRtcSel_TrustedCall/26 (Clock_Ip_SetSimRtcSel_TrustedCall) @06db5c40
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au16SelectorEntryHardwareValue/41 (read)
@@ -633,7 +633,7 @@ Clock_Ip_SetSimRtcSel_TrustedCall/26 (Clock_Ip_SetSimRtcSel_TrustedCall) @05f674
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetSimRtcSel/7 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ResetSimRtcSel_TrustedCall/25 (Clock_Ip_ResetSimRtcSel_TrustedCall) @05f671c0
+Clock_Ip_ResetSimRtcSel_TrustedCall/25 (Clock_Ip_ResetSimRtcSel_TrustedCall) @06db59a0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au16SelectorEntryHardwareValue/41 (read)
@@ -642,7 +642,7 @@ Clock_Ip_ResetSimRtcSel_TrustedCall/25 (Clock_Ip_ResetSimRtcSel_TrustedCall) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ResetSimRtcSel/6 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetScgHsrunSel_TrustedCall/24 (Clock_Ip_SetScgHsrunSel_TrustedCall) @05f64e00
+Clock_Ip_SetScgHsrunSel_TrustedCall/24 (Clock_Ip_SetScgHsrunSel_TrustedCall) @06db5700
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryScsHardwareValue/40 (read)
@@ -651,7 +651,7 @@ Clock_Ip_SetScgHsrunSel_TrustedCall/24 (Clock_Ip_SetScgHsrunSel_TrustedCall) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetScgHsrunSel/5 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ResetScgHsrunSel_TrustedCall/23 (Clock_Ip_ResetScgHsrunSel_TrustedCall) @05f64380
+Clock_Ip_ResetScgHsrunSel_TrustedCall/23 (Clock_Ip_ResetScgHsrunSel_TrustedCall) @06db5380
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryScsHardwareValue/40 (read)
@@ -660,7 +660,7 @@ Clock_Ip_ResetScgHsrunSel_TrustedCall/23 (Clock_Ip_ResetScgHsrunSel_TrustedCall)
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ResetScgHsrunSel/4 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetScgVlprSel_TrustedCall/22 (Clock_Ip_SetScgVlprSel_TrustedCall) @05f64d20
+Clock_Ip_SetScgVlprSel_TrustedCall/22 (Clock_Ip_SetScgVlprSel_TrustedCall) @06db5000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryScsHardwareValue/40 (read)
@@ -669,7 +669,7 @@ Clock_Ip_SetScgVlprSel_TrustedCall/22 (Clock_Ip_SetScgVlprSel_TrustedCall) @05f6
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetScgVlprSel/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetScgRunSel_TrustedCall/21 (Clock_Ip_SetScgRunSel_TrustedCall) @05f649a0
+Clock_Ip_SetScgRunSel_TrustedCall/21 (Clock_Ip_SetScgRunSel_TrustedCall) @06b2e7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryScsHardwareValue/40 (read)
@@ -678,7 +678,7 @@ Clock_Ip_SetScgRunSel_TrustedCall/21 (Clock_Ip_SetScgRunSel_TrustedCall) @05f649
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_SetScgRunSel/2 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_ResetScgRunSel_TrustedCall/20 (Clock_Ip_ResetScgRunSel_TrustedCall) @05f64620
+Clock_Ip_ResetScgRunSel_TrustedCall/20 (Clock_Ip_ResetScgRunSel_TrustedCall) @06b2e000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Clock_Ip_au8SelectorEntryScsHardwareValue/40 (read)
@@ -687,7 +687,7 @@ Clock_Ip_ResetScgRunSel_TrustedCall/20 (Clock_Ip_ResetScgRunSel_TrustedCall) @05
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: Clock_Ip_ResetScgRunSel/1 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Clock_Ip_SetSimTraceSel/19 (Clock_Ip_SetSimTraceSel) @05f642a0
+Clock_Ip_SetSimTraceSel/19 (Clock_Ip_SetSimTraceSel) @06b2ec40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -697,7 +697,7 @@ Clock_Ip_SetSimTraceSel/19 (Clock_Ip_SetSimTraceSel) @05f642a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetSimTraceSel_TrustedCall/38 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ResetSimTraceSel/18 (Clock_Ip_ResetSimTraceSel) @05f64000
+Clock_Ip_ResetSimTraceSel/18 (Clock_Ip_ResetSimTraceSel) @06b2e9a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -707,7 +707,7 @@ Clock_Ip_ResetSimTraceSel/18 (Clock_Ip_ResetSimTraceSel) @05f64000
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ResetSimTraceSel_TrustedCall/37 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetPccPcsSelect/17 (Clock_Ip_SetPccPcsSelect) @05efbb60
+Clock_Ip_SetPccPcsSelect/17 (Clock_Ip_SetPccPcsSelect) @06b2e700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -717,7 +717,7 @@ Clock_Ip_SetPccPcsSelect/17 (Clock_Ip_SetPccPcsSelect) @05efbb60
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetPccPcsSelect_TrustedCall/36 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ResetPccPcsSelect/16 (Clock_Ip_ResetPccPcsSelect) @05efb620
+Clock_Ip_ResetPccPcsSelect/16 (Clock_Ip_ResetPccPcsSelect) @06b2e460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -727,7 +727,7 @@ Clock_Ip_ResetPccPcsSelect/16 (Clock_Ip_ResetPccPcsSelect) @05efb620
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ResetPccPcsSelect_TrustedCall/35 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetSimClkoutSel/15 (Clock_Ip_SetSimClkoutSel) @05efb0e0
+Clock_Ip_SetSimClkoutSel/15 (Clock_Ip_SetSimClkoutSel) @06b2e1c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -737,7 +737,7 @@ Clock_Ip_SetSimClkoutSel/15 (Clock_Ip_SetSimClkoutSel) @05efb0e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetSimClkoutSel_TrustedCall/34 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ResetSimClkoutSel/14 (Clock_Ip_ResetSimClkoutSel) @05efbd20
+Clock_Ip_ResetSimClkoutSel/14 (Clock_Ip_ResetSimClkoutSel) @06b2cd20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -747,7 +747,7 @@ Clock_Ip_ResetSimClkoutSel/14 (Clock_Ip_ResetSimClkoutSel) @05efbd20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ResetSimClkoutSel_TrustedCall/33 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetSimFtmoptSel/13 (Clock_Ip_SetSimFtmoptSel) @05efba80
+Clock_Ip_SetSimFtmoptSel/13 (Clock_Ip_SetSimFtmoptSel) @06b2c7e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -757,7 +757,7 @@ Clock_Ip_SetSimFtmoptSel/13 (Clock_Ip_SetSimFtmoptSel) @05efba80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetSimFtmoptSel_TrustedCall/32 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ResetSimFtmoptSel/12 (Clock_Ip_ResetSimFtmoptSel) @05efb7e0
+Clock_Ip_ResetSimFtmoptSel/12 (Clock_Ip_ResetSimFtmoptSel) @06b2c2a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -767,7 +767,7 @@ Clock_Ip_ResetSimFtmoptSel/12 (Clock_Ip_ResetSimFtmoptSel) @05efb7e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ResetSimFtmoptSel_TrustedCall/31 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetScgClkoutSel/11 (Clock_Ip_SetScgClkoutSel) @05efb540
+Clock_Ip_SetScgClkoutSel/11 (Clock_Ip_SetScgClkoutSel) @06b2cee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -777,7 +777,7 @@ Clock_Ip_SetScgClkoutSel/11 (Clock_Ip_SetScgClkoutSel) @05efb540
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetScgClkoutSel_TrustedCall/30 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ResetScgClkoutSel/10 (Clock_Ip_ResetScgClkoutSel) @05efb2a0
+Clock_Ip_ResetScgClkoutSel/10 (Clock_Ip_ResetScgClkoutSel) @06b2cc40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -787,7 +787,7 @@ Clock_Ip_ResetScgClkoutSel/10 (Clock_Ip_ResetScgClkoutSel) @05efb2a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ResetScgClkoutSel_TrustedCall/29 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetSimLpoSel/9 (Clock_Ip_SetSimLpoSel) @05efb000
+Clock_Ip_SetSimLpoSel/9 (Clock_Ip_SetSimLpoSel) @06b2c9a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -797,7 +797,7 @@ Clock_Ip_SetSimLpoSel/9 (Clock_Ip_SetSimLpoSel) @05efb000
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetSimLpoSel_TrustedCall/28 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ResetSimLpoSel/8 (Clock_Ip_ResetSimLpoSel) @05ef7b60
+Clock_Ip_ResetSimLpoSel/8 (Clock_Ip_ResetSimLpoSel) @06b2c700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -807,7 +807,7 @@ Clock_Ip_ResetSimLpoSel/8 (Clock_Ip_ResetSimLpoSel) @05ef7b60
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ResetSimLpoSel_TrustedCall/27 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetSimRtcSel/7 (Clock_Ip_SetSimRtcSel) @05ef7620
+Clock_Ip_SetSimRtcSel/7 (Clock_Ip_SetSimRtcSel) @06b2c460
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -817,7 +817,7 @@ Clock_Ip_SetSimRtcSel/7 (Clock_Ip_SetSimRtcSel) @05ef7620
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetSimRtcSel_TrustedCall/26 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ResetSimRtcSel/6 (Clock_Ip_ResetSimRtcSel) @05ef70e0
+Clock_Ip_ResetSimRtcSel/6 (Clock_Ip_ResetSimRtcSel) @06b2c1c0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -827,7 +827,7 @@ Clock_Ip_ResetSimRtcSel/6 (Clock_Ip_ResetSimRtcSel) @05ef70e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ResetSimRtcSel_TrustedCall/25 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetScgHsrunSel/5 (Clock_Ip_SetScgHsrunSel) @05ef7d20
+Clock_Ip_SetScgHsrunSel/5 (Clock_Ip_SetScgHsrunSel) @06b27d20
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -837,7 +837,7 @@ Clock_Ip_SetScgHsrunSel/5 (Clock_Ip_SetScgHsrunSel) @05ef7d20
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetScgHsrunSel_TrustedCall/24 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ResetScgHsrunSel/4 (Clock_Ip_ResetScgHsrunSel) @05ef7a80
+Clock_Ip_ResetScgHsrunSel/4 (Clock_Ip_ResetScgHsrunSel) @06b277e0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -847,7 +847,7 @@ Clock_Ip_ResetScgHsrunSel/4 (Clock_Ip_ResetScgHsrunSel) @05ef7a80
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ResetScgHsrunSel_TrustedCall/23 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetScgVlprSel/3 (Clock_Ip_SetScgVlprSel) @05ef77e0
+Clock_Ip_SetScgVlprSel/3 (Clock_Ip_SetScgVlprSel) @06b27ee0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -857,7 +857,7 @@ Clock_Ip_SetScgVlprSel/3 (Clock_Ip_SetScgVlprSel) @05ef77e0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetScgVlprSel_TrustedCall/22 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_SetScgRunSel/2 (Clock_Ip_SetScgRunSel) @05ef7540
+Clock_Ip_SetScgRunSel/2 (Clock_Ip_SetScgRunSel) @06b27c40
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -867,7 +867,7 @@ Clock_Ip_SetScgRunSel/2 (Clock_Ip_SetScgRunSel) @05ef7540
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_SetScgRunSel_TrustedCall/21 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_ResetScgRunSel/1 (Clock_Ip_ResetScgRunSel) @05ef72a0
+Clock_Ip_ResetScgRunSel/1 (Clock_Ip_ResetScgRunSel) @06b279a0
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.
@@ -877,7 +877,7 @@ Clock_Ip_ResetScgRunSel/1 (Clock_Ip_ResetScgRunSel) @05ef72a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Clock_Ip_ResetScgRunSel_TrustedCall/20 (1073741824 (estimated locally),1.00 per call) 
-Clock_Ip_CallbackSelectorEmpty/0 (Clock_Ip_CallbackSelectorEmpty) @05ef7000
+Clock_Ip_CallbackSelectorEmpty/0 (Clock_Ip_CallbackSelectorEmpty) @06b27700
   Type: function definition analyzed
   Visibility: prevailing_def_ironly
   Address is taken.

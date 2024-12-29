@@ -54,7 +54,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-undefined_handler/9 (undefined_handler) @05b517e0
+undefined_handler/9 (undefined_handler) @05b30d20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -63,7 +63,7 @@ undefined_handler/9 (undefined_handler) @05b517e0
   Function flags: count:107374 (estimated locally) body executed_once optimize_size
   Called by: 
   Calls: 
-SysTick_Handler/8 (SysTick_Handler) @05b51540
+SysTick_Handler/8 (SysTick_Handler) @05b30a80
   Type: function definition analyzed
   Visibility: externally_visible public weak
   References: 
@@ -72,7 +72,7 @@ SysTick_Handler/8 (SysTick_Handler) @05b51540
   Function flags: count:107374 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-PendSV_Handler/7 (PendSV_Handler) @05b512a0
+PendSV_Handler/7 (PendSV_Handler) @05b307e0
   Type: function definition analyzed
   Visibility: externally_visible public weak
   References: 
@@ -81,7 +81,7 @@ PendSV_Handler/7 (PendSV_Handler) @05b512a0
   Function flags: count:107374 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-DebugMon_Handler/6 (DebugMon_Handler) @05b51000
+DebugMon_Handler/6 (DebugMon_Handler) @05b30540
   Type: function definition analyzed
   Visibility: externally_visible public weak
   References: 
@@ -90,7 +90,7 @@ DebugMon_Handler/6 (DebugMon_Handler) @05b51000
   Function flags: count:107374 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-SVC_Handler/5 (SVC_Handler) @05b4db60
+SVC_Handler/5 (SVC_Handler) @05b302a0
   Type: function definition analyzed
   Visibility: externally_visible public weak
   References: 
@@ -99,7 +99,7 @@ SVC_Handler/5 (SVC_Handler) @05b4db60
   Function flags: count:107374 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-UsageFault_Handler/4 (UsageFault_Handler) @05b4d460
+UsageFault_Handler/4 (UsageFault_Handler) @05b2dee0
   Type: function definition analyzed
   Visibility: externally_visible public weak
   References: 
@@ -108,7 +108,7 @@ UsageFault_Handler/4 (UsageFault_Handler) @05b4d460
   Function flags: count:107374 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-BusFault_Handler/3 (BusFault_Handler) @05b4dd20
+BusFault_Handler/3 (BusFault_Handler) @05b2d9a0
   Type: function definition analyzed
   Visibility: externally_visible public weak
   References: 
@@ -117,7 +117,7 @@ BusFault_Handler/3 (BusFault_Handler) @05b4dd20
   Function flags: count:107374 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-MemManage_Handler/2 (MemManage_Handler) @05b4da80
+MemManage_Handler/2 (MemManage_Handler) @05b2de00
   Type: function definition analyzed
   Visibility: externally_visible public weak
   References: 
@@ -126,7 +126,7 @@ MemManage_Handler/2 (MemManage_Handler) @05b4da80
   Function flags: count:107374 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-HardFault_Handler/1 (HardFault_Handler) @05b4d7e0
+HardFault_Handler/1 (HardFault_Handler) @05b2db60
   Type: function definition analyzed
   Visibility: externally_visible public weak
   References: 
@@ -135,7 +135,7 @@ HardFault_Handler/1 (HardFault_Handler) @05b4d7e0
   Function flags: count:107374 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-NMI_Handler/0 (NMI_Handler) @05b31c40
+NMI_Handler/0 (NMI_Handler) @05b2d000
   Type: function definition analyzed
   Visibility: externally_visible public weak section:.systeminit
   References: 

@@ -71,7 +71,7 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Power_Ip_CM4_EnableSleepOnExit/20 (Power_Ip_CM4_EnableSleepOnExit) @05f2ca80
+Power_Ip_CM4_EnableSleepOnExit/20 (Power_Ip_CM4_EnableSleepOnExit) @05e280e0
   Type: function
   Visibility: external public
   References: 
@@ -80,7 +80,7 @@ Power_Ip_CM4_EnableSleepOnExit/20 (Power_Ip_CM4_EnableSleepOnExit) @05f2ca80
   Function flags: optimize_size
   Called by: Power_Ip_EnableSleepOnExit/7 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_CM4_DisableSleepOnExit/19 (Power_Ip_CM4_DisableSleepOnExit) @05f2c8c0
+Power_Ip_CM4_DisableSleepOnExit/19 (Power_Ip_CM4_DisableSleepOnExit) @05e23ee0
   Type: function
   Visibility: external public
   References: 
@@ -89,7 +89,7 @@ Power_Ip_CM4_DisableSleepOnExit/19 (Power_Ip_CM4_DisableSleepOnExit) @05f2c8c0
   Function flags: optimize_size
   Called by: Power_Ip_DisableSleepOnExit/6 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_SMC_AllowedModesConfig/18 (Power_Ip_SMC_AllowedModesConfig) @05f2c700
+Power_Ip_SMC_AllowedModesConfig/18 (Power_Ip_SMC_AllowedModesConfig) @05e23d20
   Type: function
   Visibility: external public
   References: 
@@ -98,7 +98,7 @@ Power_Ip_SMC_AllowedModesConfig/18 (Power_Ip_SMC_AllowedModesConfig) @05f2c700
   Function flags: optimize_size
   Called by: Power_Ip_Init/5 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_PMC_PowerInit/17 (Power_Ip_PMC_PowerInit) @05f2c620
+Power_Ip_PMC_PowerInit/17 (Power_Ip_PMC_PowerInit) @05e23c40
   Type: function
   Visibility: external public
   References: 
@@ -107,7 +107,7 @@ Power_Ip_PMC_PowerInit/17 (Power_Ip_PMC_PowerInit) @05f2c620
   Function flags: optimize_size
   Called by: Power_Ip_Init/5 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_RCM_ResetInit/16 (Power_Ip_RCM_ResetInit) @05f2c540
+Power_Ip_RCM_ResetInit/16 (Power_Ip_RCM_ResetInit) @05e23b60
   Type: function
   Visibility: external public
   References: 
@@ -116,7 +116,7 @@ Power_Ip_RCM_ResetInit/16 (Power_Ip_RCM_ResetInit) @05f2c540
   Function flags: optimize_size
   Called by: Power_Ip_Init/5 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_RCM_GetResetRawValue/15 (Power_Ip_RCM_GetResetRawValue) @05f2c380
+Power_Ip_RCM_GetResetRawValue/15 (Power_Ip_RCM_GetResetRawValue) @05e239a0
   Type: function
   Visibility: external public
   References: 
@@ -125,14 +125,14 @@ Power_Ip_RCM_GetResetRawValue/15 (Power_Ip_RCM_GetResetRawValue) @05f2c380
   Function flags: optimize_size
   Called by: Power_Ip_GetResetRawValue/4 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-ResetReasonArray.5730/14 (ResetReasonArray) @05f2d2d0
+ResetReasonArray.5730/14 (ResetReasonArray) @05e27168
   Type: variable definition analyzed
   Visibility: prevailing_def_ironly
   References: 
   Referring: Power_Ip_GetResetReason/3 (read)
   Availability: available
   Varpool flags: initialized read-only const-value-known
-Power_Ip_RCM_GetResetReason/13 (Power_Ip_RCM_GetResetReason) @05f2c0e0
+Power_Ip_RCM_GetResetReason/13 (Power_Ip_RCM_GetResetReason) @05e23700
   Type: function
   Visibility: external public
   References: 
@@ -141,7 +141,7 @@ Power_Ip_RCM_GetResetReason/13 (Power_Ip_RCM_GetResetReason) @05f2c0e0
   Function flags: optimize_size
   Called by: Power_Ip_GetResetReason/3 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_ReportPowerErrors/12 (Power_Ip_ReportPowerErrors) @05f27a80
+Power_Ip_ReportPowerErrors/12 (Power_Ip_ReportPowerErrors) @05e23540
   Type: function
   Visibility: external public
   References: 
@@ -150,7 +150,7 @@ Power_Ip_ReportPowerErrors/12 (Power_Ip_ReportPowerErrors) @05f27a80
   Function flags: optimize_size
   Called by: Power_Ip_SetMode/1 (719407023 (estimated locally),0.67 per call) 
   Calls: 
-Power_Ip_SMC_ModeConfig/11 (Power_Ip_SMC_ModeConfig) @05f277e0
+Power_Ip_SMC_ModeConfig/11 (Power_Ip_SMC_ModeConfig) @05e23460
   Type: function
   Visibility: external public
   References: 
@@ -159,7 +159,7 @@ Power_Ip_SMC_ModeConfig/11 (Power_Ip_SMC_ModeConfig) @05f277e0
   Function flags: optimize_size
   Called by: Power_Ip_SetMode/1 (536870913 (estimated locally),0.50 per call) 
   Calls: 
-Power_Ip_SMC_ModeCheckEntry/10 (Power_Ip_SMC_ModeCheckEntry) @05f27540
+Power_Ip_SMC_ModeCheckEntry/10 (Power_Ip_SMC_ModeCheckEntry) @05e23380
   Type: function
   Visibility: external public
   References: 
@@ -168,7 +168,7 @@ Power_Ip_SMC_ModeCheckEntry/10 (Power_Ip_SMC_ModeCheckEntry) @05f27540
   Function flags: optimize_size
   Called by: Power_Ip_SetMode/1 (1073741824 (estimated locally),1.00 per call) 
   Calls: 
-Power_Ip_ReportPowerErrorsEmptyCallback/9 (Power_Ip_ReportPowerErrorsEmptyCallback) @05f27d20
+Power_Ip_ReportPowerErrorsEmptyCallback/9 (Power_Ip_ReportPowerErrorsEmptyCallback) @05e1ee00
   Type: function
   Visibility: external public
   Address is taken.
@@ -178,7 +178,7 @@ Power_Ip_ReportPowerErrorsEmptyCallback/9 (Power_Ip_ReportPowerErrorsEmptyCallba
   Function flags: optimize_size
   Called by: 
   Calls: 
-Power_Ip_InstallNotificationsCallback/8 (Power_Ip_InstallNotificationsCallback) @05f27c40
+Power_Ip_InstallNotificationsCallback/8 (Power_Ip_InstallNotificationsCallback) @05e1eb60
   Type: function definition analyzed
   Visibility: externally_visible public
   References: Power_Ip_pfReportErrorsCallback/0 (write)
@@ -187,7 +187,7 @@ Power_Ip_InstallNotificationsCallback/8 (Power_Ip_InstallNotificationsCallback) 
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: 
-Power_Ip_EnableSleepOnExit/7 (Power_Ip_EnableSleepOnExit) @05f279a0
+Power_Ip_EnableSleepOnExit/7 (Power_Ip_EnableSleepOnExit) @05e1e620
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -196,7 +196,7 @@ Power_Ip_EnableSleepOnExit/7 (Power_Ip_EnableSleepOnExit) @05f279a0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_CM4_EnableSleepOnExit/20 (1073741824 (estimated locally),1.00 per call) 
-Power_Ip_DisableSleepOnExit/6 (Power_Ip_DisableSleepOnExit) @05f27700
+Power_Ip_DisableSleepOnExit/6 (Power_Ip_DisableSleepOnExit) @05e1e000
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -205,7 +205,7 @@ Power_Ip_DisableSleepOnExit/6 (Power_Ip_DisableSleepOnExit) @05f27700
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_CM4_DisableSleepOnExit/19 (1073741824 (estimated locally),1.00 per call) 
-Power_Ip_Init/5 (Power_Ip_Init) @05f27460
+Power_Ip_Init/5 (Power_Ip_Init) @05e1ed20
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -214,7 +214,7 @@ Power_Ip_Init/5 (Power_Ip_Init) @05f27460
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_SMC_AllowedModesConfig/18 (1073741824 (estimated locally),1.00 per call) Power_Ip_PMC_PowerInit/17 (1073741824 (estimated locally),1.00 per call) Power_Ip_RCM_ResetInit/16 (1073741824 (estimated locally),1.00 per call) 
-Power_Ip_GetResetRawValue/4 (Power_Ip_GetResetRawValue) @05f271c0
+Power_Ip_GetResetRawValue/4 (Power_Ip_GetResetRawValue) @05e1ea80
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -223,7 +223,7 @@ Power_Ip_GetResetRawValue/4 (Power_Ip_GetResetRawValue) @05f271c0
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_RCM_GetResetRawValue/15 (1073741824 (estimated locally),1.00 per call) 
-Power_Ip_GetResetReason/3 (Power_Ip_GetResetReason) @05efbc40
+Power_Ip_GetResetReason/3 (Power_Ip_GetResetReason) @05e1e7e0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: ResetReasonArray.5730/14 (read)
@@ -232,7 +232,7 @@ Power_Ip_GetResetReason/3 (Power_Ip_GetResetReason) @05efbc40
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_RCM_GetResetReason/13 (1073741824 (estimated locally),1.00 per call) 
-Power_Ip_SetMode/1 (Power_Ip_SetMode) @05efbb60
+Power_Ip_SetMode/1 (Power_Ip_SetMode) @05e1e1c0
   Type: function definition analyzed
   Visibility: externally_visible public
   References: 
@@ -241,7 +241,7 @@ Power_Ip_SetMode/1 (Power_Ip_SetMode) @05efbb60
   Function flags: count:1073741824 (estimated locally) body optimize_size
   Called by: 
   Calls: Power_Ip_ReportPowerErrors/12 (719407023 (estimated locally),0.67 per call) Power_Ip_SMC_ModeConfig/11 (536870913 (estimated locally),0.50 per call) Power_Ip_SMC_ModeCheckEntry/10 (1073741824 (estimated locally),1.00 per call) 
-Power_Ip_pfReportErrorsCallback/0 (Power_Ip_pfReportErrorsCallback) @05f12168
+Power_Ip_pfReportErrorsCallback/0 (Power_Ip_pfReportErrorsCallback) @05e5e000
   Type: variable definition analyzed
   Visibility: externally_visible public
   References: Power_Ip_ReportPowerErrorsEmptyCallback/9 (addr)
