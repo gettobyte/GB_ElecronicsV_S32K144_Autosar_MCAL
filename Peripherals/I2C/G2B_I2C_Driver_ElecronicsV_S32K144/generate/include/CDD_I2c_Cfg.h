@@ -171,7 +171,7 @@ extern "C"
 /**
 * @brief            Enable/Disable the API for reporting the Dem Error.
 */
-#define I2C_DISABLE_DEM_REPORT_ERROR_STATUS   STD_OFF
+#define I2C_DISABLE_DEM_REPORT_ERROR_STATUS   STD_ON
 /**
 * @brief            Enable/Disable Multi Core Support.
 */
