@@ -1,0 +1,41 @@
+/* Including necessary configuration files. */
+#include "Mcal.h"
+#include "Clock_Ip.h"
+#include "Port.h"
+#include "Spi.h"
+
+volatile int exit_code = 0;
+/* User includes */
+
+int main(void)
+{
+	Clock_Ip_StatusType clockStatus;
+	/*********************Clock Configuration***********************/
+	clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+	while (clockStatus != CLOCK_IP_SUCCESS)
+	{
+		clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+	}
+	/***************************************************************/
+
+	/* Initialize all pins using the Port driver */
+	Port_Init(NULL_PTR);
+
+	Spi_Init(&Spi_Config_BOARD_InitPeripherals);
+
+	uint8 temp_var = 0xAA;
+
+//	Std_ReturnType check = Spi_WriteIB(0, &temp_var);
+	Std_ReturnType check_1 = Spi_SyncTransmit(0);
+
+    for(;;)
+    {
+        if(exit_code != 0)
+        {
+            break;
+        }
+    }
+    return exit_code;
+}
+
+/** @} */
