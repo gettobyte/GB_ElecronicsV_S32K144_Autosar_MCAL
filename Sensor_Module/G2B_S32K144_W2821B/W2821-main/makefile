@@ -12,6 +12,7 @@ RM := rm -rf
 -include generate/src/subdir.mk
 -include generate/IntCtrl_Ip/subdir.mk
 -include board/subdir.mk
+-include S_M_Driver/src/subdir.mk
 -include RTD/src/subdir.mk
 -include Project_Settings/Startup_Code/subdir.mk
 -include subdir.mk

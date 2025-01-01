@@ -8,9 +8,18 @@
 
 volatile int exit_code = 0;
 /* User includes */
+uint32 counter = 0;
 void W2821_Callback(void)
 {
-
+//	counter++;
+//	if (counter < 8)
+//	{
+//		Pwm_SetDutyCycle(0, 20971);
+//	}
+//	else
+//	{
+//		Pwm_SetDutyCycle(0, 11797);
+//	}
 }
 
 int main(void)
@@ -38,34 +47,9 @@ int main(void)
 	/* Initialize all PWM Notification using the PWM driver */
 	Pwm_EnableNotification(0, PWM_RISING_EDGE);
 
+	Pwm_SetDutyCycle(0, 11797);
     for(;;)
     {
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
 
         if(exit_code != 0)
         {

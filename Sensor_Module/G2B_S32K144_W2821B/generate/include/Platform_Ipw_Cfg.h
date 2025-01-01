@@ -74,6 +74,8 @@
 
 /* Definition of the configuration structure for Platform IPW */
 extern const Platform_Ipw_ConfigType ipwConfig;
+/* Definition of the configuration structure for non core Platform IPW */
+extern const Platform_Ipw_NonCoreConfigType ipwNonCoreConfig;
 
 #define PLATFORM_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Platform_MemMap.h"
