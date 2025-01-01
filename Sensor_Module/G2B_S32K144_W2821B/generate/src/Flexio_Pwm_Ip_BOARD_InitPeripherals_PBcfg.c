@@ -90,18 +90,14 @@ extern "C"{
 /*==================================================================================================
 *                                         LOCAL VARIABLES
 ==================================================================================================*/
-#define PWM_START_SEC_CONFIG_DATA_UNSPECIFIED
-#include "Pwm_MemMap.h"
-
-
-#define PWM_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-#include "Pwm_MemMap.h"
 /*==================================================================================================
 *                                    LOCAL FUNCTION PROTOTYPES
 ==================================================================================================*/
 #define PWM_START_SEC_CODE
 #include "Pwm_MemMap.h"
 
+/** @brief  Prototypes of Pwm notification callback */
+extern void Pwm_Ipw_Notification(uint8 Channel);
 
 #define PWM_STOP_SEC_CODE
 #include "Pwm_MemMap.h"

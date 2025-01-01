@@ -437,7 +437,7 @@ Ftm_Pwm_Ip_FastUpdatePwmDuty (uint8 Instance, uint8 NumberOfChannels, const uint
 Ftm_Pwm_Ip_GetChannelState (uint8 Instance, uint8 Channel)
 {
   uint16 DutyCycle;
-  uint16 D.7362;
+  uint16 D.7446;
 
   <bb 2> :
   _1 = Instance <= 3;
@@ -447,11 +447,11 @@ Ftm_Pwm_Ip_GetChannelState (uint8 Instance, uint8 Channel)
   _3 = (int) Instance;
   _4 = (int) Channel;
   DutyCycle = Ftm_Pwm_Ip_aDutyCycle[_3][_4];
-  D.7362 = DutyCycle;
+  D.7446 = DutyCycle;
 
   <bb 3> :
 <L0>:
-  return D.7362;
+  return D.7446;
 
 }
 
@@ -815,7 +815,7 @@ Ftm_Pwm_Ip_GetOutputState (uint8 Instance, uint8 Channel)
 {
   Ftm_Pwm_Ip_OutputStateType OutputValue;
   const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase;
-  Ftm_Pwm_Ip_OutputStateType D.7320;
+  Ftm_Pwm_Ip_OutputStateType D.7404;
 
   <bb 2> :
   _1 = (int) Instance;
@@ -840,11 +840,11 @@ Ftm_Pwm_Ip_GetOutputState (uint8 Instance, uint8 Channel)
 
   <bb 5> :
   SchM_Exit_Pwm_PWM_EXCLUSIVE_AREA_03 ();
-  D.7320 = OutputValue;
+  D.7404 = OutputValue;
 
   <bb 6> :
 <L3>:
-  return D.7320;
+  return D.7404;
 
 }
 
@@ -853,7 +853,7 @@ Ftm_Pwm_Ip_UpdatePwmPeriod (uint8 Instance, uint32 NewValue, boolean SoftwareTri
 {
   uint32 FtmPeriod;
   struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
-  Ftm_Pwm_Ip_StatusType D.7315;
+  Ftm_Pwm_Ip_StatusType D.7399;
 
   <bb 2> :
   _1 = (int) Instance;
@@ -882,11 +882,11 @@ Ftm_Pwm_Ip_UpdatePwmPeriod (uint8 Instance, uint32 NewValue, boolean SoftwareTri
   _6 = (short unsigned int) FtmPeriod;
   Ftm_Pwm_Ip_SetMod (FtmBase, _6);
   Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase, SoftwareTrigger);
-  D.7315 = 0;
+  D.7399 = 0;
 
   <bb 6> :
 <L3>:
-  return D.7315;
+  return D.7399;
 
 }
 
@@ -899,7 +899,7 @@ Ftm_Pwm_Ip_UpdatePwmChannel (uint8 Instance, uint8 Channel, uint16 FirstEdge, ui
   uint16 HwFirstEdge;
   Ftm_Pwm_Ip_StatusType RetStatus;
   struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
-  Ftm_Pwm_Ip_StatusType D.7308;
+  Ftm_Pwm_Ip_StatusType D.7392;
 
   <bb 2> :
   _1 = (int) Instance;
@@ -980,11 +980,11 @@ Ftm_Pwm_Ip_UpdatePwmChannel (uint8 Instance, uint8 Channel, uint16 FirstEdge, ui
   Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase, SoftwareTrigger);
 
   <bb 14> :
-  D.7308 = RetStatus;
+  D.7392 = RetStatus;
 
   <bb 15> :
 <L13>:
-  return D.7308;
+  return D.7392;
 
 }
 
@@ -1022,95 +1022,109 @@ Ftm_Pwm_Ip_SwOutputControl (uint8 Instance, uint8 Channel, Ftm_Pwm_Ip_OutputStat
   _7 = (int) Instance;
   _8 = (int) Channel;
   Ftm_Pwm_Ip_aDutyCycle[_7][_8] = 0;
+  Ftm_Pwm_Ip_SetOutputForIdleChannel (Instance, Channel);
+  goto <bb 6>; [INV]
 
   <bb 4> :
-  SwoCtrlRegVal = Ftm_Pwm_Ip_GetSoftwareOutputControl (FtmBase);
-  if (ChMode == 34)
-    goto <bb 8>; [INV]
-  else
+  _9 = (int) Instance;
+  _10 = (int) Channel;
+  _11 = Ftm_Pwm_Ip_aChannelState[_9][_10];
+  if (_11 == 3)
     goto <bb 5>; [INV]
-
-  <bb 5> :
-  if (ChMode == 98)
-    goto <bb 8>; [INV]
   else
     goto <bb 6>; [INV]
 
+  <bb 5> :
+  Ftm_Pwm_Ip_SetOutputForForcedChannel (Instance, Channel, ActiveState);
+
   <bb 6> :
-  if (ChMode == 97)
-    goto <bb 8>; [INV]
+  SwoCtrlRegVal = Ftm_Pwm_Ip_GetSoftwareOutputControl (FtmBase);
+  if (ChMode == 34)
+    goto <bb 10>; [INV]
   else
     goto <bb 7>; [INV]
 
   <bb 7> :
-  if (ChMode == 33)
+  if (ChMode == 98)
+    goto <bb 10>; [INV]
+  else
     goto <bb 8>; [INV]
+
+  <bb 8> :
+  if (ChMode == 97)
+    goto <bb 10>; [INV]
   else
     goto <bb 9>; [INV]
 
-  <bb 8> :
-  ChannelMask = 3;
-  goto <bb 10>; [INV]
-
   <bb 9> :
-  ChannelMask = 1;
+  if (ChMode == 33)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
 
   <bb 10> :
-  _9 = Ftm_Pwm_Ip_GetPolInstance (FtmBase);
-  _10 = (long unsigned int) ChannelMask;
-  _11 = (int) Channel;
-  _12 = _10 << _11;
-  _13 = (short unsigned int) _12;
-  TempPolVal = _9 & _13;
+  ChannelMask = 3;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  ChannelMask = 1;
+
+  <bb 12> :
+  _12 = Ftm_Pwm_Ip_GetPolInstance (FtmBase);
+  _13 = (long unsigned int) ChannelMask;
+  _14 = (int) Channel;
+  _15 = _13 << _14;
+  _16 = (short unsigned int) _15;
+  TempPolVal = _12 & _16;
   TempPolVal = TempPolVal << 8;
-  _14 = (long unsigned int) ChannelMask;
-  _15 = (unsigned int) Channel;
-  _16 = _15 + 8;
-  _17 = _14 << _16;
-  _18 = (short unsigned int) _17;
-  _19 = ~_18;
-  SwoCtrlRegVal = SwoCtrlRegVal & _19;
+  _17 = (long unsigned int) ChannelMask;
+  _18 = (unsigned int) Channel;
+  _19 = _18 + 8;
+  _20 = _17 << _19;
+  _21 = (short unsigned int) _20;
+  _22 = ~_21;
+  SwoCtrlRegVal = SwoCtrlRegVal & _22;
   if (ActiveState != 0)
-    goto <bb 11>; [INV]
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  if (OutputState == 1)
+    goto <bb 14>; [INV]
   else
     goto <bb 15>; [INV]
 
-  <bb 11> :
-  if (OutputState == 1)
-    goto <bb 12>; [INV]
-  else
-    goto <bb 13>; [INV]
-
-  <bb 12> :
-  _20 = (long unsigned int) ChannelMask;
-  _21 = (unsigned int) Channel;
-  _22 = _21 + 8;
-  _23 = _20 << _22;
-  SwoCtrlBitMask = (uint16) _23;
-  goto <bb 14>; [INV]
-
-  <bb 13> :
-  SwoCtrlBitMask = 0;
-
   <bb 14> :
-  _24 = SwoCtrlBitMask ^ TempPolVal;
-  SwoCtrlRegVal = SwoCtrlRegVal | _24;
-  _25 = (long unsigned int) ChannelMask;
-  _26 = (int) Channel;
-  _27 = _25 << _26;
-  _28 = (short unsigned int) _27;
-  SwoCtrlRegVal = SwoCtrlRegVal | _28;
+  _23 = (long unsigned int) ChannelMask;
+  _24 = (unsigned int) Channel;
+  _25 = _24 + 8;
+  _26 = _23 << _25;
+  SwoCtrlBitMask = (uint16) _26;
   goto <bb 16>; [INV]
 
   <bb 15> :
-  _29 = (long unsigned int) ChannelMask;
-  _30 = (int) Channel;
-  _31 = _29 << _30;
-  _32 = (short unsigned int) _31;
-  _33 = ~_32;
-  SwoCtrlRegVal = SwoCtrlRegVal & _33;
+  SwoCtrlBitMask = 0;
 
   <bb 16> :
+  _27 = SwoCtrlBitMask ^ TempPolVal;
+  SwoCtrlRegVal = SwoCtrlRegVal | _27;
+  _28 = (long unsigned int) ChannelMask;
+  _29 = (int) Channel;
+  _30 = _28 << _29;
+  _31 = (short unsigned int) _30;
+  SwoCtrlRegVal = SwoCtrlRegVal | _31;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  _32 = (long unsigned int) ChannelMask;
+  _33 = (int) Channel;
+  _34 = _32 << _33;
+  _35 = (short unsigned int) _34;
+  _36 = ~_35;
+  SwoCtrlRegVal = SwoCtrlRegVal & _36;
+
+  <bb 18> :
   Ftm_Pwm_Ip_SoftwareOutputControl (FtmBase, SwoCtrlRegVal);
   Ftm_Pwm_Ip_SetSoftwareTriggerCmd (FtmBase, 1);
   return;
@@ -1193,6 +1207,7 @@ Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel (uint8 Instance, uint8 Channel, uint16 Duty
   _5 = (int) Channel;
   Ftm_Pwm_Ip_aDutyCycle[_4][_5] = DutyCycle;
   ChMode = Ftm_Pwm_Ip_GetChannelMode (FtmBase, Channel);
+  Ftm_Pwm_Ip_CheckNotification (Instance, Channel);
   _6 = (int) Instance;
   _7 = (int) Channel;
   _8 = Ftm_Pwm_Ip_aChannelState[_6][_7];
@@ -1317,8 +1332,8 @@ Ftm_Pwm_Ip_DeInit (uint8 Instance)
   Ftm_Pwm_Ip_DeInitChannel (Instance, ChannelId);
 
   <bb 5> :
-  ChannelId.34_6 = ChannelId;
-  ChannelId = ChannelId.34_6 + 1;
+  ChannelId.35_6 = ChannelId;
+  ChannelId = ChannelId.35_6 + 1;
 
   <bb 6> :
   if (ChannelId <= 7)
@@ -1356,8 +1371,8 @@ Ftm_Pwm_Ip_Init (uint8 Instance, const struct Ftm_Pwm_Ip_UserCfgType * UserCfg)
   _7 = _4 + _6;
   _8 = *_7;
   Ftm_Pwm_Ip_InitChannel (Instance, _8);
-  Index.32_9 = Index;
-  Index = Index.32_9 + 1;
+  Index.33_9 = Index;
+  Index = Index.33_9 + 1;
 
   <bb 4> :
   _10 = UserCfg->NoOfConfiguredCh;
@@ -1384,8 +1399,8 @@ Ftm_Pwm_Ip_Init (uint8 Instance, const struct Ftm_Pwm_Ip_UserCfgType * UserCfg)
   _15 = _12 + _14;
   _16 = *_15;
   Ftm_Pwm_Ip_InitChFault (Instance, _16);
-  Index.33_17 = Index;
-  Index = Index.33_17 + 1;
+  Index.34_17 = Index;
+  Index = Index.34_17 + 1;
 
   <bb 8> :
   _18 = UserCfg->NoOfFaultCfg;
@@ -1584,32 +1599,35 @@ Ftm_Pwm_Ip_InitChannel (uint8 Instance, const struct Ftm_Pwm_Ip_ChannelConfigTyp
   <bb 15> :
   _21 = (int) Instance;
   _22 = (int) ChannelId;
-  _23 = UserChCfg->DutyCycle;
-  Ftm_Pwm_Ip_aDutyCycle[_21][_22] = _23;
-  _24 = (int) Instance;
-  _25 = (int) ChannelId;
-  _26 = UserChCfg->InitOut;
-  Ftm_Pwm_Ip_aIdleState[_24][_25] = _26;
-  _27 = (int) Instance;
-  _28 = (int) ChannelId;
-  _29 = UserChCfg->Polarity;
-  Ftm_Pwm_Ip_aPolarity[_27][_28] = _29;
-  _30 = UserChCfg->Polarity;
-  Ftm_Pwm_Ip_SetChnOutputPolarityCmd (FtmBase, ChannelId, _30);
-  _31 = UserChCfg->InitOut;
-  Ftm_Pwm_Ip_SetChnOutputInitStateCmd (FtmBase, ChannelId, _31);
-  _32 = UserChCfg->ChannelMode;
-  Ftm_Pwm_Ip_SetChnEdgeLevel (FtmBase, ChannelId, _32);
-  _33 = UserChCfg->ChannelMode;
-  Ftm_Pwm_Ip_SetChnMSBAMode (FtmBase, ChannelId, _33);
+  Ftm_Pwm_Ip_aNotifIrq[_21][_22] = 0;
+  _23 = (int) Instance;
+  _24 = (int) ChannelId;
+  _25 = UserChCfg->DutyCycle;
+  Ftm_Pwm_Ip_aDutyCycle[_23][_24] = _25;
+  _26 = (int) Instance;
+  _27 = (int) ChannelId;
+  _28 = UserChCfg->InitOut;
+  Ftm_Pwm_Ip_aIdleState[_26][_27] = _28;
+  _29 = (int) Instance;
+  _30 = (int) ChannelId;
+  _31 = UserChCfg->Polarity;
+  Ftm_Pwm_Ip_aPolarity[_29][_30] = _31;
+  _32 = UserChCfg->Polarity;
+  Ftm_Pwm_Ip_SetChnOutputPolarityCmd (FtmBase, ChannelId, _32);
+  _33 = UserChCfg->InitOut;
+  Ftm_Pwm_Ip_SetChnOutputInitStateCmd (FtmBase, ChannelId, _33);
+  _34 = UserChCfg->ChannelMode;
+  Ftm_Pwm_Ip_SetChnEdgeLevel (FtmBase, ChannelId, _34);
+  _35 = UserChCfg->ChannelMode;
+  Ftm_Pwm_Ip_SetChnMSBAMode (FtmBase, ChannelId, _35);
   Ftm_Pwm_Ip_ConfigurePairedChannel (Instance, UserChCfg);
-  _34 = (int) Instance;
-  _35 = (int) ChannelId;
-  _36 = Ftm_Pwm_Ip_aDutyCycle[_34][_35];
-  Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel (Instance, ChannelId, _36, 1);
+  _36 = (int) Instance;
+  _37 = (int) ChannelId;
+  _38 = Ftm_Pwm_Ip_aDutyCycle[_36][_37];
+  Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel (Instance, ChannelId, _38, 1);
   Ftm_Pwm_Ip_SetChnTriggerAndSoftwareCtrl (Instance, UserChCfg);
-  _37 = UserChCfg->ChOutputEn;
-  if (_37 != 0)
+  _39 = UserChCfg->ChOutputEn;
+  if (_39 != 0)
     goto <bb 16>; [INV]
   else
     goto <bb 17>; [INV]
@@ -1618,24 +1636,24 @@ Ftm_Pwm_Ip_InitChannel (uint8 Instance, const struct Ftm_Pwm_Ip_ChannelConfigTyp
   Ftm_Pwm_Ip_EnablePwmChannelOutputs (FtmBase, ChannelId);
 
   <bb 17> :
-  _38 = (int) Instance;
-  _39 = (int) ChannelId;
-  Ftm_Pwm_Ip_aChannelState[_38][_39] = 1;
-  _40 = UserChCfg->ChIrqEn;
-  if (_40 != 0)
+  _40 = (int) Instance;
+  _41 = (int) ChannelId;
+  Ftm_Pwm_Ip_aChannelState[_40][_41] = 1;
+  _42 = UserChCfg->ChIrqEn;
+  if (_42 != 0)
     goto <bb 18>; [INV]
   else
     goto <bb 19>; [INV]
 
   <bb 18> :
-  _41 = (int) Instance;
-  _42 = (int) ChannelId;
-  _43 = UserChCfg->ChannelCb.FunctionCallback;
-  Ftm_Pwm_Ip_aChIrqCallbacks[_41][_42].FunctionCallback = _43;
-  _44 = (int) Instance;
-  _45 = (int) ChannelId;
-  _46 = UserChCfg->ChannelCb.CbParam;
-  Ftm_Pwm_Ip_aChIrqCallbacks[_44][_45].CbParam = _46;
+  _43 = (int) Instance;
+  _44 = (int) ChannelId;
+  _45 = UserChCfg->ChannelCb.FunctionCallback;
+  Ftm_Pwm_Ip_aChIrqCallbacks[_43][_44].FunctionCallback = _45;
+  _46 = (int) Instance;
+  _47 = (int) ChannelId;
+  _48 = UserChCfg->ChannelCb.CbParam;
+  Ftm_Pwm_Ip_aChIrqCallbacks[_46][_47].CbParam = _48;
 
   <bb 19> :
   return;
@@ -1911,12 +1929,293 @@ Ftm_Pwm_Ip_ResetAndFirstConfigure (uint8 Instance, const struct Ftm_Pwm_Ip_Insta
 }
 
 
+Ftm_Pwm_Ip_CheckNotification (uint8 Instance, uint8 Channel)
+{
+  <bb 2> :
+  _1 = (int) Instance;
+  _2 = Ftm_Pwm_Ip_aPeriod[_1];
+  _3 = (int) Instance;
+  _4 = (int) Channel;
+  _5 = Ftm_Pwm_Ip_aDutyCycle[_3][_4];
+  if (_2 == _5)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _6 = (int) Instance;
+  _7 = (int) Channel;
+  _8 = Ftm_Pwm_Ip_aDutyCycle[_6][_7];
+  if (_8 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  Ftm_Pwm_Ip_SpecialCheckNotification (Instance, Channel);
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  Ftm_Pwm_Ip_NormalCheckNotification (Instance, Channel);
+
+  <bb 6> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_NormalCheckNotification (uint8 Instance, uint8 Channel)
+{
+  uint8 PairChId;
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+
+  <bb 2> :
+  _1 = (int) Instance;
+  FtmBase = Ftm_Pwm_Ip_aFtmBase[_1];
+  PairChId = Channel >> 1;
+  ChMode = Ftm_Pwm_Ip_GetChannelMode (FtmBase, Channel);
+  _2 = (int) Instance;
+  _3 = (int) Channel;
+  _4 = Ftm_Pwm_Ip_aNotifIrq[_2][_3];
+  _5 = (int) _4;
+  _6 = _5 & 2;
+  if (_6 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _7 = (int) Instance;
+  _8 = (int) Channel;
+  _9 = Ftm_Pwm_Ip_aNotifIrq[_7][_8];
+  _10 = (int) Instance;
+  _11 = (int) Channel;
+  _12 = _9 & 251;
+  Ftm_Pwm_Ip_aNotifIrq[_10][_11] = _12;
+  Ftm_Pwm_Ip_SetTimerOverflowInt (FtmBase, 1);
+
+  <bb 4> :
+  _13 = (int) Instance;
+  _14 = (int) Channel;
+  _15 = Ftm_Pwm_Ip_aNotifIrq[_13][_14];
+  _16 = (int) _15;
+  _17 = _16 & 8;
+  if (_17 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  _18 = (int) Instance;
+  _19 = (int) Channel;
+  _20 = Ftm_Pwm_Ip_aNotifIrq[_18][_19];
+  _21 = (int) Instance;
+  _22 = (int) Channel;
+  _23 = _20 & 247;
+  Ftm_Pwm_Ip_aNotifIrq[_21][_22] = _23;
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance, Channel);
+  if (ChMode == 34)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  if (ChMode == 98)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  if (ChMode == 97)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  if (ChMode == 33)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _24 = PairChId * 2;
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance, _24);
+  _25 = PairChId * 2;
+  _26 = _25 + 1;
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance, _26);
+
+  <bb 10> :
+  _27 = (int) Instance;
+  _28 = (int) Channel;
+  _29 = Ftm_Pwm_Ip_aNotifIrq[_27][_28];
+  _30 = (int) _29;
+  _31 = _30 & 1;
+  if (_31 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase, Channel, 1);
+
+  <bb 12> :
+  if (ChMode == 34)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  if (ChMode == 98)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  if (ChMode == 97)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  if (ChMode == 33)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 16> :
+  _32 = (int) Instance;
+  _33 = PairChId * 2;
+  _34 = (int) _33;
+  _35 = Ftm_Pwm_Ip_aNotifIrq[_32][_34];
+  _36 = (int) _35;
+  _37 = _36 & 1;
+  if (_37 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  _38 = PairChId * 2;
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase, _38, 1);
+
+  <bb 18> :
+  _39 = (int) Instance;
+  _40 = PairChId * 2;
+  _41 = _40 + 1;
+  _42 = (int) _41;
+  _43 = Ftm_Pwm_Ip_aNotifIrq[_39][_42];
+  _44 = (int) _43;
+  _45 = _44 & 1;
+  if (_45 != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  _46 = PairChId * 2;
+  _47 = _46 + 1;
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase, _47, 1);
+
+  <bb 20> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SpecialCheckNotification (uint8 Instance, uint8 Channel)
+{
+  uint8 PairChId;
+  Ftm_Pwm_Ip_ChannelModeType ChMode;
+
+  <bb 2> :
+  PairChId = Channel >> 1;
+  _1 = (int) Instance;
+  _2 = Ftm_Pwm_Ip_aFtmBase[_1];
+  ChMode = Ftm_Pwm_Ip_GetChannelMode (_2, Channel);
+  _3 = (int) Instance;
+  _4 = (int) Channel;
+  _5 = Ftm_Pwm_Ip_aNotifIrq[_3][_4];
+  _6 = (int) _5;
+  _7 = _6 & 2;
+  if (_7 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _8 = (int) Instance;
+  _9 = (int) Channel;
+  _10 = Ftm_Pwm_Ip_aNotifIrq[_8][_9];
+  _11 = (int) Instance;
+  _12 = (int) Channel;
+  _13 = _10 | 4;
+  Ftm_Pwm_Ip_aNotifIrq[_11][_12] = _13;
+
+  <bb 4> :
+  _14 = (int) Instance;
+  _15 = (int) Channel;
+  _16 = Ftm_Pwm_Ip_aNotifIrq[_14][_15];
+  _17 = (int) _16;
+  _18 = _17 & 8;
+  if (_18 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _19 = (int) Instance;
+  _20 = (int) Channel;
+  _21 = Ftm_Pwm_Ip_aNotifIrq[_19][_20];
+  _22 = (int) Instance;
+  _23 = (int) Channel;
+  _24 = _21 & 247;
+  Ftm_Pwm_Ip_aNotifIrq[_22][_23] = _24;
+
+  <bb 6> :
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance, Channel);
+  if (ChMode == 34)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  if (ChMode == 98)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  if (ChMode == 97)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  if (ChMode == 33)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _25 = PairChId * 2;
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance, _25);
+  _26 = PairChId * 2;
+  _27 = _26 + 1;
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance, _27);
+
+  <bb 11> :
+  return;
+
+}
+
+
 Ftm_Pwm_Ip_UpdateSync (uint8 Instance, const struct Ftm_Pwm_Ip_SyncCfgType * SyncCfg)
 {
   boolean HardwareSync;
   Ftm_Pwm_Ip_StatusType RetStatus;
   struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
-  Ftm_Pwm_Ip_StatusType D.7108;
+  Ftm_Pwm_Ip_StatusType D.7156;
   int iftmp.18;
 
   <bb 2> :
@@ -2010,11 +2309,11 @@ Ftm_Pwm_Ip_UpdateSync (uint8 Instance, const struct Ftm_Pwm_Ip_SyncCfgType * Syn
   Ftm_Pwm_Ip_ConfigureSyncType (Instance, SyncCfg);
 
   <bb 14> :
-  D.7108 = RetStatus;
+  D.7156 = RetStatus;
 
   <bb 15> :
 <L13>:
-  return D.7108;
+  return D.7156;
 
 }
 
@@ -2332,8 +2631,8 @@ Ftm_Pwm_Ip_DisableCmpIrq (uint8 Instance, uint8 Channel)
   goto <bb 7>; [INV]
 
   <bb 5> :
-  Index.2_5 = Index;
-  Index = Index.2_5 + 1;
+  Index.4_5 = Index;
+  Index = Index.4_5 + 1;
 
   <bb 6> :
   if (Index <= 7)
@@ -2459,7 +2758,7 @@ Ftm_Pwm_Ip_InitPair (uint8 Instance, const struct Ftm_Pwm_Ip_PairCfgType * UserP
 Ftm_Pwm_Ip_CalculatePhaseShift (uint8 Instance, uint16 DutyCycle, uint16 PhaseShift)
 {
   uint16 CnVValue;
-  uint16 D.6973;
+  uint16 D.7029;
 
   <bb 2> :
   CnVValue = 0;
@@ -2496,11 +2795,11 @@ Ftm_Pwm_Ip_CalculatePhaseShift (uint8 Instance, uint16 DutyCycle, uint16 PhaseSh
   CnVValue = (uint16) _10;
 
   <bb 7> :
-  D.6973 = CnVValue;
+  D.7029 = CnVValue;
 
   <bb 8> :
 <L6>:
-  return D.6973;
+  return D.7029;
 
 }
 
@@ -2516,7 +2815,7 @@ Ftm_Pwm_Ip_ValidateParamDeadTime (uint8 Instance, uint8 Channel, uint16 DeadTime
   uint8 PairId;
   boolean RetVal;
   const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase;
-  boolean D.6959;
+  boolean D.7015;
 
   <bb 2> :
   _1 = (int) Instance;
@@ -2586,11 +2885,118 @@ Ftm_Pwm_Ip_ValidateParamDeadTime (uint8 Instance, uint8 Channel, uint16 DeadTime
   RetVal = 0;
 
   <bb 12> :
-  D.6959 = RetVal;
+  D.7015 = RetVal;
 
   <bb 13> :
 <L13>:
-  return D.6959;
+  return D.7015;
+
+}
+
+
+Ftm_Pwm_Ip_SetOutputForForcedChannel (uint8 Instance, uint8 Channel, boolean ActiveState)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+
+  <bb 2> :
+  _1 = (int) Instance;
+  FtmBase = Ftm_Pwm_Ip_aFtmBase[_1];
+  if (ActiveState != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance, Channel);
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  _2 = (int) Instance;
+  _3 = (int) Channel;
+  _4 = Ftm_Pwm_Ip_aNotifIrq[_2][_3];
+  _5 = (int) _4;
+  _6 = _5 & 2;
+  if (_6 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  Ftm_Pwm_Ip_SetTimerOverflowInt (FtmBase, 1);
+
+  <bb 6> :
+  _7 = (int) Instance;
+  _8 = (int) Channel;
+  _9 = Ftm_Pwm_Ip_aNotifIrq[_7][_8];
+  _10 = (int) _9;
+  _11 = _10 & 1;
+  if (_11 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  Ftm_Pwm_Ip_UpdateChnInt (FtmBase, Channel, 1);
+
+  <bb 8> :
+  return;
+
+}
+
+
+Ftm_Pwm_Ip_SetOutputForIdleChannel (uint8 Instance, uint8 Channel)
+{
+  struct Ftm_Pwm_Ip_HwAddrType * FtmBase;
+
+  <bb 2> :
+  _1 = (int) Instance;
+  FtmBase = Ftm_Pwm_Ip_aFtmBase[_1];
+  _2 = (int) Instance;
+  _3 = (int) Channel;
+  _4 = Ftm_Pwm_Ip_aNotifIrq[_2][_3];
+  _5 = (int) _4;
+  _6 = _5 & 2;
+  if (_6 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _7 = (int) Instance;
+  _8 = (int) Channel;
+  _9 = Ftm_Pwm_Ip_aNotifIrq[_7][_8];
+  _10 = (int) Instance;
+  _11 = (int) Channel;
+  _12 = _9 | 4;
+  Ftm_Pwm_Ip_aNotifIrq[_10][_11] = _12;
+
+  <bb 4> :
+  _13 = Ftm_Pwm_Ip_IsEnableFaultControlMode (FtmBase);
+  if (_13 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _14 = Ftm_Pwm_Ip_IsEnableFaultInput (FtmBase);
+  if (_14 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _15 = (int) Instance;
+  _16 = (int) Channel;
+  _17 = Ftm_Pwm_Ip_aNotifIrq[_15][_16];
+  _18 = (int) Instance;
+  _19 = (int) Channel;
+  _20 = _17 | 8;
+  Ftm_Pwm_Ip_aNotifIrq[_18][_19] = _20;
+  Ftm_Pwm_Ip_SetTimerOverflowInt (FtmBase, 1);
+
+  <bb 7> :
+  Ftm_Pwm_Ip_DisableCmpIrq (Instance, Channel);
+  return;
 
 }
 
@@ -2611,7 +3017,7 @@ Ftm_Pwm_Ip_SetSimOutputBufferEn (struct Ftm_Pwm_Ip_SimType * const SimBase, uint
 Ftm_Pwm_Ip_SetFaultFilterEn (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 FaultId, boolean FaultFilEn)
 {
   uint32 FaultFilterEn;
-  long unsigned int iftmp.30;
+  long unsigned int iftmp.31;
 
   <bb 2> :
   if (FaultFilEn != 0)
@@ -2620,14 +3026,14 @@ Ftm_Pwm_Ip_SetFaultFilterEn (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.30 = 1;
+  iftmp.31 = 1;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.30 = 0;
+  iftmp.31 = 0;
 
   <bb 5> :
-  FaultFilterEn = iftmp.30;
+  FaultFilterEn = iftmp.31;
   _1 = FtmBase->FLTCTRL;
   _2 = (int) FaultId;
   _3 = 16 << _2;
@@ -2646,7 +3052,7 @@ Ftm_Pwm_Ip_SetFaultFilterEn (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8
 Ftm_Pwm_Ip_SetFaultInputEn (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 FaultId, boolean FaultEn)
 {
   uint32 FaultInEn;
-  long unsigned int iftmp.31;
+  long unsigned int iftmp.32;
 
   <bb 2> :
   if (FaultEn != 0)
@@ -2655,14 +3061,14 @@ Ftm_Pwm_Ip_SetFaultInputEn (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.31 = 1;
+  iftmp.32 = 1;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.31 = 0;
+  iftmp.32 = 0;
 
   <bb 5> :
-  FaultInEn = iftmp.31;
+  FaultInEn = iftmp.32;
   _1 = FtmBase->FLTCTRL;
   _2 = (int) FaultId;
   _3 = 1 << _2;
@@ -2701,7 +3107,7 @@ Ftm_Pwm_Ip_SetFaultPolarity (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8
 
 Ftm_Pwm_Ip_SetFaultOutputState (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm_Ip_FaultOutputStateType FaultState)
 {
-  long unsigned int iftmp.27;
+  long unsigned int iftmp.28;
 
   <bb 2> :
   _1 = FtmBase->FLTCTRL;
@@ -2712,14 +3118,14 @@ Ftm_Pwm_Ip_SetFaultOutputState (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ft
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.27 = 32768;
+  iftmp.28 = 32768;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.27 = 0;
+  iftmp.28 = 0;
 
   <bb 5> :
-  _3 = iftmp.27 | _2;
+  _3 = iftmp.28 | _2;
   FtmBase->FLTCTRL = _3;
   return;
 
@@ -2741,9 +3147,42 @@ Ftm_Pwm_Ip_SetFaultFilterValue (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, ui
 }
 
 
+Ftm_Pwm_Ip_IsEnableFaultInput (const struct Ftm_Pwm_Ip_HwAddrType * FtmBase)
+{
+  boolean D.6985;
+
+  <bb 2> :
+  _1 = FtmBase->FLTCTRL;
+  _2 = _1 & 15;
+  D.6985 = _2 != 0;
+
+  <bb 3> :
+<L0>:
+  return D.6985;
+
+}
+
+
+Ftm_Pwm_Ip_IsEnableFaultControlMode (const struct Ftm_Pwm_Ip_HwAddrType * FtmBase)
+{
+  boolean D.6983;
+
+  <bb 2> :
+  _1 = FtmBase->MODE;
+  _2 = _1 >> 5;
+  _3 = _2 & 3;
+  D.6983 = _3 != 0;
+
+  <bb 3> :
+<L0>:
+  return D.6983;
+
+}
+
+
 Ftm_Pwm_Ip_SetFaultInterruptEnable (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
 {
-  long unsigned int iftmp.28;
+  long unsigned int iftmp.29;
 
   <bb 2> :
   _1 = FtmBase->MODE;
@@ -2754,14 +3193,14 @@ Ftm_Pwm_Ip_SetFaultInterruptEnable (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.28 = 128;
+  iftmp.29 = 128;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.28 = 0;
+  iftmp.29 = 0;
 
   <bb 5> :
-  _3 = iftmp.28 | _2;
+  _3 = iftmp.29 | _2;
   FtmBase->MODE = _3;
   return;
 
@@ -2940,8 +3379,8 @@ Ftm_Pwm_Ip_Reset (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
   FtmBase->CONTROLS[_4].CSC = 0;
   _5 = (int) ChnIndex;
   FtmBase->CONTROLS[_5].CV = 0;
-  ChnIndex.23_6 = ChnIndex;
-  ChnIndex = ChnIndex.23_6 + 1;
+  ChnIndex.24_6 = ChnIndex;
+  ChnIndex = ChnIndex.24_6 + 1;
 
   <bb 4> :
   if (ChnIndex <= 7)
@@ -2995,10 +3434,10 @@ Ftm_Pwm_Ip_GetChannelMode (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, u
   uint8 Combine;
   uint8 RetValue;
   Ftm_Pwm_Ip_ChannelModeType ChMode;
-  Ftm_Pwm_Ip_ChannelModeType D.7262;
-  unsigned char D.7261;
-  unsigned char D.7260;
-  uint8 iftmp.35;
+  Ftm_Pwm_Ip_ChannelModeType D.7195;
+  unsigned char D.7194;
+  unsigned char D.7193;
+  uint8 iftmp.23;
 
   <bb 2> :
   ChPairId = Channel >> 1;
@@ -3026,22 +3465,22 @@ Ftm_Pwm_Ip_GetChannelMode (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, u
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.35 = 1;
+  iftmp.23 = 1;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.35 = 0;
+  iftmp.23 = 0;
 
   <bb 5> :
-  Mcombine = iftmp.35;
+  Mcombine = iftmp.23;
   RetValue = Ftm_Pwm_Ip_GetChnEdgeLevel (FtmBase, Channel);
   _17 = Ftm_Pwm_Ip_GetChnMode (FtmBase, Channel);
-  D.7260 = _17 << 2;
-  RetValue = D.7260 | RetValue;
+  D.7193 = _17 << 2;
+  RetValue = D.7193 | RetValue;
   _18 = Ftm_Pwm_Ip_GetCpwms (FtmBase);
   _19 = (unsigned char) _18;
-  D.7261 = _19 << 4;
-  RetValue = D.7261 | RetValue;
+  D.7194 = _19 << 4;
+  RetValue = D.7194 | RetValue;
   _20 = Combine << 5;
   RetValue = RetValue | _20;
   _21 = Mcombine << 6;
@@ -3094,11 +3533,11 @@ Ftm_Pwm_Ip_GetChannelMode (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, u
   ChMode = 255;
 
   <bb 15> :
-  D.7262 = ChMode;
+  D.7195 = ChMode;
 
   <bb 16> :
 <L13>:
-  return D.7262;
+  return D.7195;
 
 }
 
@@ -3107,7 +3546,7 @@ Ftm_Pwm_Ip_GetDualChnDeadtimeCmd (const struct Ftm_Pwm_Ip_HwAddrType * const Ftm
 {
   uint8 DetEnable;
   uint8 ChPairId;
-  boolean D.7409;
+  boolean D.7493;
 
   <bb 2> :
   ChPairId = Channel >> 1;
@@ -3120,11 +3559,11 @@ Ftm_Pwm_Ip_GetDualChnDeadtimeCmd (const struct Ftm_Pwm_Ip_HwAddrType * const Ftm
   _7 = _6 * 8;
   _8 = _5 >> _7;
   DetEnable = (uint8) _8;
-  D.7409 = DetEnable == 16;
+  D.7493 = DetEnable == 16;
 
   <bb 3> :
 <L0>:
-  return D.7409;
+  return D.7493;
 
 }
 
@@ -3133,7 +3572,7 @@ Ftm_Pwm_Ip_GetDualChnCompCmd (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase
 {
   uint8 Comp;
   uint8 ChPairId;
-  boolean D.7407;
+  boolean D.7491;
 
   <bb 2> :
   ChPairId = Channel >> 1;
@@ -3146,41 +3585,41 @@ Ftm_Pwm_Ip_GetDualChnCompCmd (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase
   _7 = _6 * 8;
   _8 = _5 >> _7;
   Comp = (uint8) _8;
-  D.7407 = Comp == 2;
+  D.7491 = Comp == 2;
 
   <bb 3> :
 <L0>:
-  return D.7407;
+  return D.7491;
 
 }
 
 
 Ftm_Pwm_Ip_GetPolInstance (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
 {
-  uint16 D.7293;
+  uint16 D.7377;
 
   <bb 2> :
   _1 = FtmBase->POL;
-  D.7293 = (uint16) _1;
+  D.7377 = (uint16) _1;
 
   <bb 3> :
 <L0>:
-  return D.7293;
+  return D.7377;
 
 }
 
 
 Ftm_Pwm_Ip_GetSoftwareOutputControl (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
 {
-  uint16 D.7291;
+  uint16 D.7375;
 
   <bb 2> :
   _1 = FtmBase->SWOCTRL;
-  D.7291 = (uint16) _1;
+  D.7375 = (uint16) _1;
 
   <bb 3> :
 <L0>:
-  return D.7291;
+  return D.7375;
 
 }
 
@@ -3743,7 +4182,7 @@ Ftm_Pwm_Ip_SetLoadFreq (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Val)
 
 Ftm_Pwm_Ip_GetChnOutputPolarity (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
 {
-  Ftm_Pwm_Ip_PolarityType D.6994;
+  Ftm_Pwm_Ip_PolarityType D.7050;
 
   <bb 2> :
   _1 = FtmBase->POL;
@@ -3751,11 +4190,11 @@ Ftm_Pwm_Ip_GetChnOutputPolarity (const struct Ftm_Pwm_Ip_HwAddrType * const FtmB
   _3 = _1 >> _2;
   _4 = _3 & 1;
   _5 = _4 == 1;
-  D.6994 = (Ftm_Pwm_Ip_PolarityType) _5;
+  D.7050 = (Ftm_Pwm_Ip_PolarityType) _5;
 
   <bb 3> :
 <L0>:
-  return D.6994;
+  return D.7050;
 
 }
 
@@ -3817,7 +4256,7 @@ Ftm_Pwm_Ip_DisableTriggerMask (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uin
 
 Ftm_Pwm_Ip_SetInitTriggerCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
 {
-  long unsigned int iftmp.26;
+  long unsigned int iftmp.27;
 
   <bb 2> :
   _1 = FtmBase->EXTTRIG;
@@ -3828,14 +4267,14 @@ Ftm_Pwm_Ip_SetInitTriggerCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, bool
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.26 = 64;
+  iftmp.27 = 64;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.26 = 0;
+  iftmp.27 = 0;
 
   <bb 5> :
-  _3 = iftmp.26 | _2;
+  _3 = iftmp.27 | _2;
   FtmBase->EXTTRIG = _3;
   return;
 
@@ -3859,7 +4298,7 @@ Ftm_Pwm_Ip_SetExtDeadtimeValue (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, ui
 
 Ftm_Pwm_Ip_GetDeadtimePrescaler (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
 {
-  uint8 D.6965;
+  uint8 D.7021;
 
   <bb 2> :
   _1 = FtmBase->DEADTIME;
@@ -3867,11 +4306,11 @@ Ftm_Pwm_Ip_GetDeadtimePrescaler (const struct Ftm_Pwm_Ip_HwAddrType * const FtmB
   _3 = (int) _2;
   _4 = _3 >> 6;
   _5 = (unsigned char) _4;
-  D.6965 = _5 & 3;
+  D.7021 = _5 & 3;
 
   <bb 3> :
 <L0>:
-  return D.6965;
+  return D.7021;
 
 }
 
@@ -4036,7 +4475,7 @@ Ftm_Pwm_Ip_SetDualChnCompCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint
 
 Ftm_Pwm_Ip_GetDualChnCombineCmd (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 ChPairId)
 {
-  boolean D.7310;
+  boolean D.7394;
 
   <bb 2> :
   _1 = FtmBase->COMBINE;
@@ -4044,11 +4483,11 @@ Ftm_Pwm_Ip_GetDualChnCombineCmd (const struct Ftm_Pwm_Ip_HwAddrType * const FtmB
   _3 = _2 * 8;
   _4 = _1 >> _3;
   _5 = _4 & 1;
-  D.7310 = _5 != 0;
+  D.7394 = _5 != 0;
 
   <bb 3> :
 <L0>:
-  return D.7310;
+  return D.7394;
 
 }
 
@@ -4172,7 +4611,7 @@ Ftm_Pwm_Ip_SetChnOutputInitStateCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBas
 
 Ftm_Pwm_Ip_SetSoftwareTriggerCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
 {
-  long unsigned int iftmp.1;
+  long unsigned int iftmp.3;
 
   <bb 2> :
   _1 = FtmBase->SYNC;
@@ -4183,14 +4622,14 @@ Ftm_Pwm_Ip_SetSoftwareTriggerCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, 
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.1 = 128;
+  iftmp.3 = 128;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.1 = 0;
+  iftmp.3 = 0;
 
   <bb 5> :
-  _3 = iftmp.1 | _2;
+  _3 = iftmp.3 | _2;
   FtmBase->SYNC = _3;
   return;
 
@@ -4310,7 +4749,7 @@ Ftm_Pwm_Ip_SetMinLoadingCmd (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boole
 
 Ftm_Pwm_Ip_SetPwmSyncMode (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
 {
-  long unsigned int iftmp.29;
+  long unsigned int iftmp.30;
 
   <bb 2> :
   _1 = FtmBase->MODE;
@@ -4321,14 +4760,14 @@ Ftm_Pwm_Ip_SetPwmSyncMode (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.29 = 8;
+  iftmp.30 = 8;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.29 = 0;
+  iftmp.30 = 0;
 
   <bb 5> :
-  _3 = iftmp.29 | _2;
+  _3 = iftmp.30 | _2;
   FtmBase->MODE = _3;
   return;
 
@@ -4337,7 +4776,7 @@ Ftm_Pwm_Ip_SetPwmSyncMode (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean
 
 Ftm_Pwm_Ip_Enable (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
 {
-  long unsigned int iftmp.25;
+  long unsigned int iftmp.26;
 
   <bb 2> :
   _1 = FtmBase->MODE;
@@ -4348,14 +4787,14 @@ Ftm_Pwm_Ip_Enable (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Enable)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.25 = 1;
+  iftmp.26 = 1;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.25 = 0;
+  iftmp.26 = 0;
 
   <bb 5> :
-  _3 = iftmp.25 | _2;
+  _3 = iftmp.26 | _2;
   FtmBase->MODE = _3;
   return;
 
@@ -4377,16 +4816,16 @@ Ftm_Pwm_Ip_SetCounterInitVal (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint
 
 Ftm_Pwm_Ip_GetChnCountVal (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
 {
-  uint16 D.6961;
+  uint16 D.7017;
 
   <bb 2> :
   _1 = (int) Channel;
   _2 = FtmBase->CONTROLS[_1].CV;
-  D.6961 = (uint16) _2;
+  D.7017 = (uint16) _2;
 
   <bb 3> :
 <L0>:
-  return D.6961;
+  return D.7017;
 
 }
 
@@ -4404,17 +4843,17 @@ Ftm_Pwm_Ip_SetChnCountVal (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 C
 
 Ftm_Pwm_Ip_GetChOutputValue (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
 {
-  boolean D.7322;
+  boolean D.7406;
 
   <bb 2> :
   _1 = (int) Channel;
   _2 = FtmBase->CONTROLS[_1].CSC;
   _3 = _2 & 1024;
-  D.7322 = _3 != 0;
+  D.7406 = _3 != 0;
 
   <bb 3> :
 <L0>:
-  return D.7322;
+  return D.7406;
 
 }
 
@@ -4434,7 +4873,7 @@ Ftm_Pwm_Ip_ClearChnEventFlag (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint
 
 Ftm_Pwm_Ip_UpdateChnInt (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel, boolean Enable)
 {
-  long unsigned int iftmp.3;
+  long unsigned int iftmp.1;
 
   <bb 2> :
   _1 = (int) Channel;
@@ -4446,15 +4885,15 @@ Ftm_Pwm_Ip_UpdateChnInt (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Cha
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.3 = 64;
+  iftmp.1 = 64;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.3 = 0;
+  iftmp.1 = 0;
 
   <bb 5> :
   _4 = (int) Channel;
-  _5 = iftmp.3 | _3;
+  _5 = iftmp.1 | _3;
   FtmBase->CONTROLS[_4].CSC = _5;
   return;
 
@@ -4464,8 +4903,8 @@ Ftm_Pwm_Ip_UpdateChnInt (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Cha
 Ftm_Pwm_Ip_GetChnMode (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
 {
   uint8 RetValue;
-  uint8 D.7268;
-  unsigned char D.7267;
+  uint8 D.7201;
+  unsigned char D.7200;
 
   <bb 2> :
   _1 = (int) Channel;
@@ -4478,13 +4917,13 @@ Ftm_Pwm_Ip_GetChnMode (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8
   _7 = _6 >> 5;
   _8 = (unsigned char) _7;
   _9 = _8 << 1;
-  D.7267 = _9 & 2;
-  RetValue = D.7267 | RetValue;
-  D.7268 = RetValue;
+  D.7200 = _9 & 2;
+  RetValue = D.7200 | RetValue;
+  D.7201 = RetValue;
 
   <bb 3> :
 <L0>:
-  return D.7268;
+  return D.7201;
 
 }
 
@@ -4546,8 +4985,8 @@ Ftm_Pwm_Ip_SetChnEdgeLevel (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 
 Ftm_Pwm_Ip_GetChnEdgeLevel (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, uint8 Channel)
 {
   uint8 RetValue;
-  uint8 D.7265;
-  unsigned char D.7264;
+  uint8 D.7198;
+  unsigned char D.7197;
 
   <bb 2> :
   _1 = (int) Channel;
@@ -4560,13 +4999,13 @@ Ftm_Pwm_Ip_GetChnEdgeLevel (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, 
   _7 = _6 >> 3;
   _8 = (unsigned char) _7;
   _9 = _8 << 1;
-  D.7264 = _9 & 2;
-  RetValue = D.7264 | RetValue;
-  D.7265 = RetValue;
+  D.7197 = _9 & 2;
+  RetValue = D.7197 | RetValue;
+  D.7198 = RetValue;
 
   <bb 3> :
 <L0>:
-  return D.7265;
+  return D.7198;
 
 }
 
@@ -4624,7 +5063,7 @@ Ftm_Pwm_Ip_ClearTimerOverflow (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
 
 Ftm_Pwm_Ip_SetTimerOverflowInt (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean State)
 {
-  long unsigned int iftmp.4;
+  long unsigned int iftmp.0;
 
   <bb 2> :
   _1 = FtmBase->SC;
@@ -4635,14 +5074,14 @@ Ftm_Pwm_Ip_SetTimerOverflowInt (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, bo
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.4 = 256;
+  iftmp.0 = 256;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.4 = 0;
+  iftmp.0 = 0;
 
   <bb 5> :
-  _3 = iftmp.4 | _2;
+  _3 = iftmp.0 | _2;
   FtmBase->SC = _3;
   return;
 
@@ -4651,24 +5090,24 @@ Ftm_Pwm_Ip_SetTimerOverflowInt (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, bo
 
 Ftm_Pwm_Ip_GetCpwms (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
 {
-  Ftm_Pwm_Ip_CounterModeType D.7220;
+  Ftm_Pwm_Ip_CounterModeType D.7203;
 
   <bb 2> :
   _1 = FtmBase->SC;
   _2 = _1 & 32;
   _3 = _2 != 0;
-  D.7220 = (Ftm_Pwm_Ip_CounterModeType) _3;
+  D.7203 = (Ftm_Pwm_Ip_CounterModeType) _3;
 
   <bb 3> :
 <L0>:
-  return D.7220;
+  return D.7203;
 
 }
 
 
 Ftm_Pwm_Ip_SetCpwms (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Mode)
 {
-  long unsigned int iftmp.24;
+  long unsigned int iftmp.25;
 
   <bb 2> :
   _1 = FtmBase->SC;
@@ -4679,14 +5118,14 @@ Ftm_Pwm_Ip_SetCpwms (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, boolean Mode)
     goto <bb 4>; [INV]
 
   <bb 3> :
-  iftmp.24 = 32;
+  iftmp.25 = 32;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  iftmp.24 = 0;
+  iftmp.25 = 0;
 
   <bb 5> :
-  _3 = iftmp.24 | _2;
+  _3 = iftmp.25 | _2;
   FtmBase->SC = _3;
   return;
 
@@ -4709,16 +5148,16 @@ Ftm_Pwm_Ip_SetClockSource (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm
 
 Ftm_Pwm_Ip_GetClockPs (const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase)
 {
-  uint8 D.6963;
+  uint8 D.7019;
 
   <bb 2> :
   _1 = FtmBase->SC;
   _2 = (unsigned char) _1;
-  D.6963 = _2 & 7;
+  D.7019 = _2 & 7;
 
   <bb 3> :
 <L0>:
-  return D.6963;
+  return D.7019;
 
 }
 
@@ -4739,8 +5178,8 @@ Ftm_Pwm_Ip_SetClockPs (struct Ftm_Pwm_Ip_HwAddrType * const FtmBase, Ftm_Pwm_Ip_
 DevAssert (volatile boolean x)
 {
   <bb 2> :
-  x.0_1 = x;
-  if (x.0_1 != 0)
+  x.2_1 = x;
+  if (x.2_1 != 0)
     goto <bb 4>; [INV]
   else
     goto <bb 3>; [INV]

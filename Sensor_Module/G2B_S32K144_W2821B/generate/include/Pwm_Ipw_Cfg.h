@@ -118,7 +118,7 @@ extern "C"{
 #define PWM_GET_CHANNEL_STATE_API               (STD_OFF)
 
 /** @brief        Switch to indicate that the notifications are supported */
-#define PWM_NOTIFICATION_SUPPORTED              (STD_OFF)
+#define PWM_NOTIFICATION_SUPPORTED              (STD_ON)
 
 /** @brief        Switch to enable the dual clock feature (Pwm_SetClockMode API) */
 #define PWM_SET_CLOCK_MODE_API                  (STD_OFF)

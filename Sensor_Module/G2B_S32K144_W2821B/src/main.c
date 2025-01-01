@@ -3,10 +3,15 @@
 #include "Clock_Ip.h"
 #include "Port.h"
 #include "Pwm.h"
+#include "Platform.h"
 #include "W2821B.h"
 
 volatile int exit_code = 0;
 /* User includes */
+void W2821_Callback(void)
+{
+
+}
 
 int main(void)
 {
@@ -25,8 +30,13 @@ int main(void)
 	/* Initialize all pins using the Port driver */
 	Port_Init(NULL_PTR);
 
+	/* Initialize all ISR using the Platform driver */
+	Platform_Init(NULL_PTR);
+
 	/* Initialize all PWM Configuration using the PWM driver */
 	Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+	/* Initialize all PWM Notification using the PWM driver */
+	Pwm_EnableNotification(0, PWM_RISING_EDGE);
 
     for(;;)
     {

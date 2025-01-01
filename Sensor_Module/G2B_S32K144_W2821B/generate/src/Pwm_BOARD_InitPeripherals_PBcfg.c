@@ -113,6 +113,10 @@ extern "C"{
 #include "Pwm_MemMap.h"
 
 
+/** @brief  Prototypes of PWM channels User Notifications */
+
+extern void W2821_Callback(void);
+
 #define PWM_STOP_SEC_CODE
 #include "Pwm_MemMap.h"
 
@@ -151,7 +155,8 @@ const Pwm_ChannelConfigType Pwm_Channels_BOARD_InitPeripherals_PB[PWM_BOARD_Init
             0U
         },
         /** @brief  The state of the channel output in idle mode */
-        PWM_LOW
+        PWM_LOW,
+        &W2821_Callback
     }
 };
 
@@ -184,6 +189,25 @@ const Pwm_ConfigType Pwm_Config_BOARD_InitPeripherals =
     (Pwm_InstanceType)PWM_BOARD_InitPeripherals_PB_CFG_INSTANCES_COUNT,
     /** @brief  Pointer to the list of Pwm configured channels */
     &Pwm_Instances_BOARD_InitPeripherals_PB,
+#endif
+#if (PWM_NOTIFICATION_SUPPORTED == STD_ON)
+    /** @brief  Hardware to logic channel map. Array containing a number of elements
+                equal to total number of available channels on all IP. */
+    {
+        /* Index of channels 0 - 7 of FTM_0 in the array of logic PWM channels */
+        (Pwm_ChannelType)0, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        /* Index of channels 0 - 7 of FTM_1 in the array of logic PWM channels */
+        (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        /* Index of channels 0 - 7 of FTM_2 in the array of logic PWM channels */
+        (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        /* Index of channels 0 - 7 of FTM_3 in the array of logic PWM channels */
+        (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        /*---------------------Flexio_0---------------------------*/
+        (Pwm_ChannelType)255,            /* Flexio_0_0 unused */
+        (Pwm_ChannelType)255,            /* Flexio_0_1 unused */
+        (Pwm_ChannelType)255,            /* Flexio_0_2 unused */
+        (Pwm_ChannelType)255            /* Flexio_0_3 unused */
+    }
 #endif
 };
 

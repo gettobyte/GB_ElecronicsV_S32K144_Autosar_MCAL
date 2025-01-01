@@ -23,6 +23,7 @@ SUBDIRS := \
 Project_Settings/Startup_Code \
 RTD/src \
 board \
+generate/IntCtrl_Ip \
 generate/src \
 src \
 

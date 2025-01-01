@@ -72,7 +72,7 @@ extern "C"{
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
 /** @brief        Switch to enable the notifications feature */
-#define FTM_PWM_IP_NOTIFICATION_SUPPORT             (STD_OFF)
+#define FTM_PWM_IP_NOTIFICATION_SUPPORT             (STD_ON)
 
 /* FTM INSTANCE FEATURES */
 /* @brief Ftm module has fault control mode */

@@ -16,6 +16,8 @@ C_SRCS += \
 ../generate/src/Mcu_BOARD_InitPeripherals_PBcfg.c \
 ../generate/src/Mcu_Cfg.c \
 ../generate/src/OsIf_Cfg.c \
+../generate/src/Platform_Cfg.c \
+../generate/src/Platform_Ipw_Cfg.c \
 ../generate/src/Port_BOARD_InitPeripherals_PBcfg.c \
 ../generate/src/Port_Cfg.c \
 ../generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.c \
@@ -40,6 +42,8 @@ OBJS += \
 ./generate/src/Mcu_BOARD_InitPeripherals_PBcfg.o \
 ./generate/src/Mcu_Cfg.o \
 ./generate/src/OsIf_Cfg.o \
+./generate/src/Platform_Cfg.o \
+./generate/src/Platform_Ipw_Cfg.o \
 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.o \
 ./generate/src/Port_Cfg.o \
 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.o \
@@ -64,6 +68,8 @@ C_DEPS += \
 ./generate/src/Mcu_BOARD_InitPeripherals_PBcfg.d \
 ./generate/src/Mcu_Cfg.d \
 ./generate/src/OsIf_Cfg.d \
+./generate/src/Platform_Cfg.d \
+./generate/src/Platform_Ipw_Cfg.d \
 ./generate/src/Port_BOARD_InitPeripherals_PBcfg.d \
 ./generate/src/Port_Cfg.d \
 ./generate/src/Port_Ci_Port_Ip_BOARD_InitPeripherals_PBcfg.d \

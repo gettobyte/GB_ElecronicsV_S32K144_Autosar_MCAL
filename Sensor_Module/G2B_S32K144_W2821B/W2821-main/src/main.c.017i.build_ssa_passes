@@ -1,7 +1,7 @@
 main ()
 {
   Clock_Ip_StatusType clockStatus;
-  int D.6449;
+  int D.7137;
 
   <bb 2> :
   clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
@@ -28,7 +28,9 @@ main ()
   <bb 7> :
   Clock_Ip_DistributePll ();
   Port_Init (0B);
+  Platform_Init (0B);
   Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
+  Pwm_EnableNotification (0, 1);
 
   <bb 8> :
   Pwm_SetDutyCycle (0, 20971);
@@ -68,11 +70,19 @@ main ()
   goto <bb 8>; [INV]
 
   <bb 11> :
-  D.6449 = exit_code;
+  D.7137 = exit_code;
 
   <bb 12> :
 <L10>:
-  return D.6449;
+  return D.7137;
+
+}
+
+
+W2821_Callback ()
+{
+  <bb 2> :
+  return;
 
 }
 

@@ -1,16 +1,86 @@
+Trivially needed symbols: FTM_0_CH_0_CH_1_ISR FTM_0_OVF_ISR Ftm_Pwm_Ip_ProcessCommonInterrupt Ftm_Pwm_Ip_ProcessTofInterrupt Ftm_Pwm_Ip_ProcessErrata
 
 
 Initial Symbol table:
 
-Ftm_Pwm_Ip_SetSimOutputBufferEn/130 (Ftm_Pwm_Ip_SetSimOutputBufferEn) @06b232a0
-  Type: function definition
-  Visibility: no_reorder
+Ftm_Pwm_Ip_pOverflowIrqCallback/139 (Ftm_Pwm_Ip_pOverflowIrqCallback) @05f869d8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_aNotifIrq/138 (Ftm_Pwm_Ip_aNotifIrq) @05f86948
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_u8FaultCheck/137 (Ftm_Pwm_Ip_u8FaultCheck) @05ca9318
+  Type: variable
+  Visibility: external public
   References: 
+  Referring: Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_aFtmBase/136 (Ftm_Pwm_Ip_aFtmBase) @05ca9288
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)FTM_0_OVF_ISR/134 (read)FTM_0_CH_0_CH_1_ISR/135 (read)
+  Availability: not-ready
+  Varpool flags: read-only
+FTM_0_CH_0_CH_1_ISR/135 (FTM_0_CH_0_CH_1_ISR) @05c9d1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @01733ea0
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
   Referring: 
-  Function flags:
+  Function flags: body
   Called by: 
-  Calls: 
-Ftm_Pwm_Ip_SetFaultFilterEn/129 (Ftm_Pwm_Ip_SetFaultFilterEn) @06b23000
+  Calls: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_HasChnEventOccurred/30 
+FTM_0_OVF_ISR/134 (FTM_0_OVF_ISR) @05c9de00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05c9d1c0
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_ProcessTofInterrupt/132 Ftm_Pwm_Ip_GetTimerOverflow/13 
+Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (Ftm_Pwm_Ip_ProcessCommonInterrupt) @05c9db60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @05c9de00
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_CH_0_CH_1_ISR/135 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearChnEventFlag/29 Ftm_Pwm_Ip_HasChnEventOccurred/30 Ftm_Pwm_Ip_IsChnIntEnabled/28 
+   Indirect call
+   Indirect call
+   Indirect call
+Ftm_Pwm_Ip_ProcessTofInterrupt/132 (Ftm_Pwm_Ip_ProcessTofInterrupt) @05c9d8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @05c9db60
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_OVF_ISR/134 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearTimerOverflow/14 Ftm_Pwm_Ip_GetTimerOverflow/13 Ftm_Pwm_Ip_IsOverflowIntEnabled/12 Ftm_Pwm_Ip_ProcessErrata/131 
+   Indirect call
+Ftm_Pwm_Ip_ProcessErrata/131 (Ftm_Pwm_Ip_ProcessErrata) @05c9d620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @05c9d8c0
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_ClearOutmaskReg/51 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_SetFaultModeStatus/122 Ftm_Pwm_Ip_GetFaultModeStatus/121 Ftm_Pwm_Ip_SetOutmaskReg/50 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetFaultDetectionFlag/119 
+Ftm_Pwm_Ip_SetSimOutputBufferEn/130 (Ftm_Pwm_Ip_SetSimOutputBufferEn) @05e20620
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -18,7 +88,7 @@ Ftm_Pwm_Ip_SetFaultFilterEn/129 (Ftm_Pwm_Ip_SetFaultFilterEn) @06b23000
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetFaultInputEn/128 (Ftm_Pwm_Ip_SetFaultInputEn) @06b1ed20
+Ftm_Pwm_Ip_SetFaultFilterEn/129 (Ftm_Pwm_Ip_SetFaultFilterEn) @05e20380
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -26,7 +96,7 @@ Ftm_Pwm_Ip_SetFaultInputEn/128 (Ftm_Pwm_Ip_SetFaultInputEn) @06b1ed20
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetFaultPolarity/127 (Ftm_Pwm_Ip_SetFaultPolarity) @06b1ea80
+Ftm_Pwm_Ip_SetFaultInputEn/128 (Ftm_Pwm_Ip_SetFaultInputEn) @05e200e0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -34,7 +104,7 @@ Ftm_Pwm_Ip_SetFaultPolarity/127 (Ftm_Pwm_Ip_SetFaultPolarity) @06b1ea80
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetFaultOutputState/126 (Ftm_Pwm_Ip_SetFaultOutputState) @06b1e7e0
+Ftm_Pwm_Ip_SetFaultPolarity/127 (Ftm_Pwm_Ip_SetFaultPolarity) @05e1de00
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -42,7 +112,7 @@ Ftm_Pwm_Ip_SetFaultOutputState/126 (Ftm_Pwm_Ip_SetFaultOutputState) @06b1e7e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetFaultFilterValue/125 (Ftm_Pwm_Ip_SetFaultFilterValue) @06b1e540
+Ftm_Pwm_Ip_SetFaultOutputState/126 (Ftm_Pwm_Ip_SetFaultOutputState) @05e1db60
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -50,7 +120,7 @@ Ftm_Pwm_Ip_SetFaultFilterValue/125 (Ftm_Pwm_Ip_SetFaultFilterValue) @06b1e540
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_IsEnableFaultInput/124 (Ftm_Pwm_Ip_IsEnableFaultInput) @06b1e1c0
+Ftm_Pwm_Ip_SetFaultFilterValue/125 (Ftm_Pwm_Ip_SetFaultFilterValue) @05e1d8c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -58,7 +128,7 @@ Ftm_Pwm_Ip_IsEnableFaultInput/124 (Ftm_Pwm_Ip_IsEnableFaultInput) @06b1e1c0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_IsEnableFaultControlMode/123 (Ftm_Pwm_Ip_IsEnableFaultControlMode) @06b1bee0
+Ftm_Pwm_Ip_IsEnableFaultInput/124 (Ftm_Pwm_Ip_IsEnableFaultInput) @05e1d540
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -66,7 +136,7 @@ Ftm_Pwm_Ip_IsEnableFaultControlMode/123 (Ftm_Pwm_Ip_IsEnableFaultControlMode) @0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetFaultModeStatus/122 (Ftm_Pwm_Ip_SetFaultModeStatus) @06b1bc40
+Ftm_Pwm_Ip_IsEnableFaultControlMode/123 (Ftm_Pwm_Ip_IsEnableFaultControlMode) @05e1d2a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -74,23 +144,25 @@ Ftm_Pwm_Ip_SetFaultModeStatus/122 (Ftm_Pwm_Ip_SetFaultModeStatus) @06b1bc40
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetFaultModeStatus/121 (Ftm_Pwm_Ip_GetFaultModeStatus) @06b1b9a0
-  Type: function definition
+Ftm_Pwm_Ip_SetFaultModeStatus/122 (Ftm_Pwm_Ip_SetFaultModeStatus) @05e1d000
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05de2700
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
   Calls: 
-Ftm_Pwm_Ip_GetFaultDetectionFlagId/120 (Ftm_Pwm_Ip_GetFaultDetectionFlagId) @06b1b700
-  Type: function definition
+Ftm_Pwm_Ip_GetFaultModeStatus/121 (Ftm_Pwm_Ip_GetFaultModeStatus) @05e1ad20
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05e1d000
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
   Calls: 
-Ftm_Pwm_Ip_GetFaultDetectionFlag/119 (Ftm_Pwm_Ip_GetFaultDetectionFlag) @06b1b460
+Ftm_Pwm_Ip_GetFaultDetectionFlagId/120 (Ftm_Pwm_Ip_GetFaultDetectionFlagId) @05e1aa80
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -98,15 +170,16 @@ Ftm_Pwm_Ip_GetFaultDetectionFlag/119 (Ftm_Pwm_Ip_GetFaultDetectionFlag) @06b1b46
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_ClearFaultFlagId/118 (Ftm_Pwm_Ip_ClearFaultFlagId) @06b1b1c0
-  Type: function definition
+Ftm_Pwm_Ip_GetFaultDetectionFlag/119 (Ftm_Pwm_Ip_GetFaultDetectionFlag) @05e1a7e0
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cdc0e0
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
   Calls: 
-Ftm_Pwm_Ip_ClearFaultFlag/117 (Ftm_Pwm_Ip_ClearFaultFlag) @06b18ee0
+Ftm_Pwm_Ip_ClearFaultFlagId/118 (Ftm_Pwm_Ip_ClearFaultFlagId) @05e1a540
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -114,7 +187,7 @@ Ftm_Pwm_Ip_ClearFaultFlag/117 (Ftm_Pwm_Ip_ClearFaultFlag) @06b18ee0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_IsFaultEnabled/116 (Ftm_Pwm_Ip_IsFaultEnabled) @06b18b60
+Ftm_Pwm_Ip_ClearFaultFlag/117 (Ftm_Pwm_Ip_ClearFaultFlag) @05e1a2a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -122,7 +195,7 @@ Ftm_Pwm_Ip_IsFaultEnabled/116 (Ftm_Pwm_Ip_IsFaultEnabled) @06b18b60
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetFaultInterruptEnable/115 (Ftm_Pwm_Ip_SetFaultInterruptEnable) @06b188c0
+Ftm_Pwm_Ip_IsFaultEnabled/116 (Ftm_Pwm_Ip_IsFaultEnabled) @05df3ee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -130,7 +203,7 @@ Ftm_Pwm_Ip_SetFaultInterruptEnable/115 (Ftm_Pwm_Ip_SetFaultInterruptEnable) @06b
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetDualChFaultCtr/114 (Ftm_Pwm_Ip_SetDualChFaultCtr) @06b18620
+Ftm_Pwm_Ip_SetFaultInterruptEnable/115 (Ftm_Pwm_Ip_SetFaultInterruptEnable) @05df3c40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -138,7 +211,7 @@ Ftm_Pwm_Ip_SetDualChFaultCtr/114 (Ftm_Pwm_Ip_SetDualChFaultCtr) @06b18620
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetFaultControlMode/113 (Ftm_Pwm_Ip_SetFaultControlMode) @06b18380
+Ftm_Pwm_Ip_SetDualChFaultCtr/114 (Ftm_Pwm_Ip_SetDualChFaultCtr) @05df39a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -146,7 +219,7 @@ Ftm_Pwm_Ip_SetFaultControlMode/113 (Ftm_Pwm_Ip_SetFaultControlMode) @06b18380
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetChnTriggerCmd/112 (Ftm_Pwm_Ip_SetChnTriggerCmd) @06aeed20
+Ftm_Pwm_Ip_SetFaultControlMode/113 (Ftm_Pwm_Ip_SetFaultControlMode) @05df3700
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -154,7 +227,7 @@ Ftm_Pwm_Ip_SetChnTriggerCmd/112 (Ftm_Pwm_Ip_SetChnTriggerCmd) @06aeed20
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_Reset/111 (Ftm_Pwm_Ip_Reset) @06aeea80
+Ftm_Pwm_Ip_SetChnTriggerCmd/112 (Ftm_Pwm_Ip_SetChnTriggerCmd) @05df30e0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -162,7 +235,7 @@ Ftm_Pwm_Ip_Reset/111 (Ftm_Pwm_Ip_Reset) @06aeea80
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_UpdateWriteProtection/110 (Ftm_Pwm_Ip_UpdateWriteProtection) @06aee540
+Ftm_Pwm_Ip_Reset/111 (Ftm_Pwm_Ip_Reset) @05dece00
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -170,7 +243,7 @@ Ftm_Pwm_Ip_UpdateWriteProtection/110 (Ftm_Pwm_Ip_UpdateWriteProtection) @06aee54
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @06aee0e0
+Ftm_Pwm_Ip_UpdateWriteProtection/110 (Ftm_Pwm_Ip_UpdateWriteProtection) @05dec8c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -178,7 +251,16 @@ Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @06aee0e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetDualChnDeadtimeCmd/108 (Ftm_Pwm_Ip_GetDualChnDeadtimeCmd) @06ae9e00
+Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @05dec460
+  Type: function definition analyzed
+  Visibility: no_reorder
+  Aux: @05c9db60
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_GetCpwms/6 Ftm_Pwm_Ip_GetChnMode/26 Ftm_Pwm_Ip_GetChnEdgeLevel/23 
+Ftm_Pwm_Ip_GetDualChnDeadtimeCmd/108 (Ftm_Pwm_Ip_GetDualChnDeadtimeCmd) @05dec1c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -186,7 +268,7 @@ Ftm_Pwm_Ip_GetDualChnDeadtimeCmd/108 (Ftm_Pwm_Ip_GetDualChnDeadtimeCmd) @06ae9e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetDualChnCompCmd/107 (Ftm_Pwm_Ip_GetDualChnCompCmd) @06ae9b60
+Ftm_Pwm_Ip_GetDualChnCompCmd/107 (Ftm_Pwm_Ip_GetDualChnCompCmd) @05de8ee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -194,7 +276,7 @@ Ftm_Pwm_Ip_GetDualChnCompCmd/107 (Ftm_Pwm_Ip_GetDualChnCompCmd) @06ae9b60
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetPolInstance/106 (Ftm_Pwm_Ip_GetPolInstance) @06ae98c0
+Ftm_Pwm_Ip_GetPolInstance/106 (Ftm_Pwm_Ip_GetPolInstance) @05de8c40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -202,15 +284,16 @@ Ftm_Pwm_Ip_GetPolInstance/106 (Ftm_Pwm_Ip_GetPolInstance) @06ae98c0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetSoftwareOutputControl/105 (Ftm_Pwm_Ip_GetSoftwareOutputControl) @06ae9620
-  Type: function definition
+Ftm_Pwm_Ip_GetSoftwareOutputControl/105 (Ftm_Pwm_Ip_GetSoftwareOutputControl) @05de89a0
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cdc380
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
   Calls: 
-Ftm_Pwm_Ip_SetHalfCycleValue/104 (Ftm_Pwm_Ip_SetHalfCycleValue) @06ae9380
+Ftm_Pwm_Ip_SetHalfCycleValue/104 (Ftm_Pwm_Ip_SetHalfCycleValue) @05de8700
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -218,7 +301,7 @@ Ftm_Pwm_Ip_SetHalfCycleValue/104 (Ftm_Pwm_Ip_SetHalfCycleValue) @06ae9380
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetGlobalLoadCmd/103 (Ftm_Pwm_Ip_SetGlobalLoadCmd) @06ae90e0
+Ftm_Pwm_Ip_SetGlobalLoadCmd/103 (Ftm_Pwm_Ip_SetGlobalLoadCmd) @05de8460
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -226,7 +309,7 @@ Ftm_Pwm_Ip_SetGlobalLoadCmd/103 (Ftm_Pwm_Ip_SetGlobalLoadCmd) @06ae90e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetLoadCmd/102 (Ftm_Pwm_Ip_SetLoadCmd) @06ae2e00
+Ftm_Pwm_Ip_SetLoadCmd/102 (Ftm_Pwm_Ip_SetLoadCmd) @05de81c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -234,7 +317,7 @@ Ftm_Pwm_Ip_SetLoadCmd/102 (Ftm_Pwm_Ip_SetLoadCmd) @06ae2e00
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetPwmLoadCmd/101 (Ftm_Pwm_Ip_SetPwmLoadCmd) @06ae2b60
+Ftm_Pwm_Ip_SetPwmLoadCmd/101 (Ftm_Pwm_Ip_SetPwmLoadCmd) @05de2ee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -242,7 +325,7 @@ Ftm_Pwm_Ip_SetPwmLoadCmd/101 (Ftm_Pwm_Ip_SetPwmLoadCmd) @06ae2b60
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetHalfCycleCmd/100 (Ftm_Pwm_Ip_SetHalfCycleCmd) @06ae28c0
+Ftm_Pwm_Ip_SetHalfCycleCmd/100 (Ftm_Pwm_Ip_SetHalfCycleCmd) @05de2c40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -250,7 +333,7 @@ Ftm_Pwm_Ip_SetHalfCycleCmd/100 (Ftm_Pwm_Ip_SetHalfCycleCmd) @06ae28c0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetPwmLoadChnSelCmd/99 (Ftm_Pwm_Ip_SetPwmLoadChnSelCmd) @06ae2620
+Ftm_Pwm_Ip_SetPwmLoadChnSelCmd/99 (Ftm_Pwm_Ip_SetPwmLoadChnSelCmd) @05de29a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -258,15 +341,16 @@ Ftm_Pwm_Ip_SetPwmLoadChnSelCmd/99 (Ftm_Pwm_Ip_SetPwmLoadChnSelCmd) @06ae2620
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SoftwareOutputControl/98 (Ftm_Pwm_Ip_SoftwareOutputControl) @06ae2380
-  Type: function definition
+Ftm_Pwm_Ip_SoftwareOutputControl/98 (Ftm_Pwm_Ip_SoftwareOutputControl) @05de2700
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cdc620
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
   Calls: 
-Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd/97 (Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd) @06ae20e0
+Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd/97 (Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd) @05de2460
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -274,7 +358,7 @@ Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd/97 (Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd) @06ae20e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetAllChnSoftwareCtrlCmd/96 (Ftm_Pwm_Ip_SetAllChnSoftwareCtrlCmd) @06adee00
+Ftm_Pwm_Ip_SetAllChnSoftwareCtrlCmd/96 (Ftm_Pwm_Ip_SetAllChnSoftwareCtrlCmd) @05de21c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -282,7 +366,7 @@ Ftm_Pwm_Ip_SetAllChnSoftwareCtrlCmd/96 (Ftm_Pwm_Ip_SetAllChnSoftwareCtrlCmd) @06
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetChnSoftwareCtrlVal/95 (Ftm_Pwm_Ip_SetChnSoftwareCtrlVal) @06adeb60
+Ftm_Pwm_Ip_SetChnSoftwareCtrlVal/95 (Ftm_Pwm_Ip_SetChnSoftwareCtrlVal) @05ddcee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -290,7 +374,7 @@ Ftm_Pwm_Ip_SetChnSoftwareCtrlVal/95 (Ftm_Pwm_Ip_SetChnSoftwareCtrlVal) @06adeb60
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetAllChnSoftwareCtrlVal/94 (Ftm_Pwm_Ip_SetAllChnSoftwareCtrlVal) @06ade8c0
+Ftm_Pwm_Ip_SetAllChnSoftwareCtrlVal/94 (Ftm_Pwm_Ip_SetAllChnSoftwareCtrlVal) @05ddcc40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -298,7 +382,7 @@ Ftm_Pwm_Ip_SetAllChnSoftwareCtrlVal/94 (Ftm_Pwm_Ip_SetAllChnSoftwareCtrlVal) @06
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetDualChnInvertCmd/93 (Ftm_Pwm_Ip_SetDualChnInvertCmd) @06ade620
+Ftm_Pwm_Ip_SetDualChnInvertCmd/93 (Ftm_Pwm_Ip_SetDualChnInvertCmd) @05ddc9a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -306,7 +390,7 @@ Ftm_Pwm_Ip_SetDualChnInvertCmd/93 (Ftm_Pwm_Ip_SetDualChnInvertCmd) @06ade620
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetInvctrlReg/92 (Ftm_Pwm_Ip_SetInvctrlReg) @06ade380
+Ftm_Pwm_Ip_SetInvctrlReg/92 (Ftm_Pwm_Ip_SetInvctrlReg) @05ddc700
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -314,7 +398,7 @@ Ftm_Pwm_Ip_SetInvctrlReg/92 (Ftm_Pwm_Ip_SetInvctrlReg) @06ade380
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetSwoctrlHardwareSyncModeCmd/91 (Ftm_Pwm_Ip_SetSwoctrlHardwareSyncModeCmd) @06ade0e0
+Ftm_Pwm_Ip_SetSwoctrlHardwareSyncModeCmd/91 (Ftm_Pwm_Ip_SetSwoctrlHardwareSyncModeCmd) @05ddc460
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -322,7 +406,7 @@ Ftm_Pwm_Ip_SetSwoctrlHardwareSyncModeCmd/91 (Ftm_Pwm_Ip_SetSwoctrlHardwareSyncMo
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd/90 (Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd) @06ad9e00
+Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd/90 (Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd) @05ddc1c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -330,7 +414,7 @@ Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd/90 (Ftm_Pwm_Ip_SetInvctrlHardwareSyncMo
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd/89 (Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd) @06ad9b60
+Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd/89 (Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd) @05dd8ee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -338,7 +422,7 @@ Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd/89 (Ftm_Pwm_Ip_SetOutmaskHardwareSyncMo
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd/88 (Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd) @06ad98c0
+Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd/88 (Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd) @05dd8c40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -346,7 +430,7 @@ Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd/88 (Ftm_Pwm_Ip_SetModCntinCvHardware
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd/87 (Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd) @06ad9620
+Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd/87 (Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd) @05dd89a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -354,7 +438,7 @@ Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd/87 (Ftm_Pwm_Ip_SetCounterHardwareSyncMo
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd/86 (Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd) @06ad9380
+Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd/86 (Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd) @05dd8700
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -362,7 +446,7 @@ Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd/86 (Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncMo
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd/85 (Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd) @06ad90e0
+Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd/85 (Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd) @05dd8460
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -370,7 +454,7 @@ Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd/85 (Ftm_Pwm_Ip_SetInvctrlSoftwareSyncMo
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd/84 (Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd) @06ad5e00
+Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd/84 (Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd) @05dd81c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -378,7 +462,7 @@ Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd/84 (Ftm_Pwm_Ip_SetOutmaskSoftwareSyncMo
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd/83 (Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd) @06ad5b60
+Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd/83 (Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd) @05dd3ee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -386,7 +470,7 @@ Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd/83 (Ftm_Pwm_Ip_SetModCntinCvSoftware
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd/82 (Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd) @06ad58c0
+Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd/82 (Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd) @05dd3c40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -394,7 +478,7 @@ Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd/82 (Ftm_Pwm_Ip_SetCounterSoftwareSyncMo
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetPwmSyncModeCmd/81 (Ftm_Pwm_Ip_SetPwmSyncModeCmd) @06ad5620
+Ftm_Pwm_Ip_SetPwmSyncModeCmd/81 (Ftm_Pwm_Ip_SetPwmSyncModeCmd) @05dd39a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -402,7 +486,7 @@ Ftm_Pwm_Ip_SetPwmSyncModeCmd/81 (Ftm_Pwm_Ip_SetPwmSyncModeCmd) @06ad5620
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd/80 (Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd) @06ad5380
+Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd/80 (Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd) @05dd3700
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -410,7 +494,7 @@ Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd/80 (Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd) @06
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd/79 (Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd) @06ad50e0
+Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd/79 (Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd) @05dd3460
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -418,7 +502,7 @@ Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd/79 (Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd) @06
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd/78 (Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd) @06ad0e00
+Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd/78 (Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd) @05dd31c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -426,7 +510,7 @@ Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd/78 (Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd) @06ad0e
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd/77 (Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd) @06ad0b60
+Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd/77 (Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd) @05dcfee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -434,7 +518,7 @@ Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd/77 (Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd) @06ad
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetInitTriggerMode/76 (Ftm_Pwm_Ip_SetInitTriggerMode) @06ad08c0
+Ftm_Pwm_Ip_SetInitTriggerMode/76 (Ftm_Pwm_Ip_SetInitTriggerMode) @05dcfc40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -442,7 +526,7 @@ Ftm_Pwm_Ip_SetInitTriggerMode/76 (Ftm_Pwm_Ip_SetInitTriggerMode) @06ad08c0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetGlobalTimeBaseOutputCmd/75 (Ftm_Pwm_Ip_SetGlobalTimeBaseOutputCmd) @06ad0540
+Ftm_Pwm_Ip_SetGlobalTimeBaseOutputCmd/75 (Ftm_Pwm_Ip_SetGlobalTimeBaseOutputCmd) @05dcf8c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -450,7 +534,7 @@ Ftm_Pwm_Ip_SetGlobalTimeBaseOutputCmd/75 (Ftm_Pwm_Ip_SetGlobalTimeBaseOutputCmd)
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetGlobalTimeBaseCmd/74 (Ftm_Pwm_Ip_SetGlobalTimeBaseCmd) @06ad02a0
+Ftm_Pwm_Ip_SetGlobalTimeBaseCmd/74 (Ftm_Pwm_Ip_SetGlobalTimeBaseCmd) @05dcf620
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -458,7 +542,7 @@ Ftm_Pwm_Ip_SetGlobalTimeBaseCmd/74 (Ftm_Pwm_Ip_SetGlobalTimeBaseCmd) @06ad02a0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetBdmMode/73 (Ftm_Pwm_Ip_SetBdmMode) @06ad0000
+Ftm_Pwm_Ip_SetBdmMode/73 (Ftm_Pwm_Ip_SetBdmMode) @05dcf380
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -466,7 +550,7 @@ Ftm_Pwm_Ip_SetBdmMode/73 (Ftm_Pwm_Ip_SetBdmMode) @06ad0000
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetLoadFreq/72 (Ftm_Pwm_Ip_SetLoadFreq) @06acdc40
+Ftm_Pwm_Ip_SetLoadFreq/72 (Ftm_Pwm_Ip_SetLoadFreq) @05dcf000
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -474,7 +558,7 @@ Ftm_Pwm_Ip_SetLoadFreq/72 (Ftm_Pwm_Ip_SetLoadFreq) @06acdc40
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_IsWriteProtectionEnabled/71 (Ftm_Pwm_Ip_IsWriteProtectionEnabled) @06acd8c0
+Ftm_Pwm_Ip_IsWriteProtectionEnabled/71 (Ftm_Pwm_Ip_IsWriteProtectionEnabled) @05dcbc40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -482,7 +566,7 @@ Ftm_Pwm_Ip_IsWriteProtectionEnabled/71 (Ftm_Pwm_Ip_IsWriteProtectionEnabled) @06
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetChnOutputPolarity/70 (Ftm_Pwm_Ip_GetChnOutputPolarity) @06acd620
+Ftm_Pwm_Ip_GetChnOutputPolarity/70 (Ftm_Pwm_Ip_GetChnOutputPolarity) @05dcb9a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -490,7 +574,7 @@ Ftm_Pwm_Ip_GetChnOutputPolarity/70 (Ftm_Pwm_Ip_GetChnOutputPolarity) @06acd620
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetChnOutputPolarityCmd/69 (Ftm_Pwm_Ip_SetChnOutputPolarityCmd) @06acd380
+Ftm_Pwm_Ip_SetChnOutputPolarityCmd/69 (Ftm_Pwm_Ip_SetChnOutputPolarityCmd) @05dcb700
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -498,7 +582,7 @@ Ftm_Pwm_Ip_SetChnOutputPolarityCmd/69 (Ftm_Pwm_Ip_SetChnOutputPolarityCmd) @06ac
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_EnableTriggerMask/68 (Ftm_Pwm_Ip_EnableTriggerMask) @06acd0e0
+Ftm_Pwm_Ip_EnableTriggerMask/68 (Ftm_Pwm_Ip_EnableTriggerMask) @05dcb460
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -506,7 +590,7 @@ Ftm_Pwm_Ip_EnableTriggerMask/68 (Ftm_Pwm_Ip_EnableTriggerMask) @06acd0e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_DisableTriggerMask/67 (Ftm_Pwm_Ip_DisableTriggerMask) @06ac9e00
+Ftm_Pwm_Ip_DisableTriggerMask/67 (Ftm_Pwm_Ip_DisableTriggerMask) @05dcb1c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -514,7 +598,7 @@ Ftm_Pwm_Ip_DisableTriggerMask/67 (Ftm_Pwm_Ip_DisableTriggerMask) @06ac9e00
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_ClearChnTriggerFlag/66 (Ftm_Pwm_Ip_ClearChnTriggerFlag) @06ac9b60
+Ftm_Pwm_Ip_ClearChnTriggerFlag/66 (Ftm_Pwm_Ip_ClearChnTriggerFlag) @05dc7ee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -522,7 +606,7 @@ Ftm_Pwm_Ip_ClearChnTriggerFlag/66 (Ftm_Pwm_Ip_ClearChnTriggerFlag) @06ac9b60
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_IsChnTriggerGenerated/65 (Ftm_Pwm_Ip_IsChnTriggerGenerated) @06ac97e0
+Ftm_Pwm_Ip_IsChnTriggerGenerated/65 (Ftm_Pwm_Ip_IsChnTriggerGenerated) @05dc7b60
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -530,7 +614,7 @@ Ftm_Pwm_Ip_IsChnTriggerGenerated/65 (Ftm_Pwm_Ip_IsChnTriggerGenerated) @06ac97e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetInitTriggerCmd/64 (Ftm_Pwm_Ip_SetInitTriggerCmd) @06ac9540
+Ftm_Pwm_Ip_SetInitTriggerCmd/64 (Ftm_Pwm_Ip_SetInitTriggerCmd) @05dc78c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -538,7 +622,7 @@ Ftm_Pwm_Ip_SetInitTriggerCmd/64 (Ftm_Pwm_Ip_SetInitTriggerCmd) @06ac9540
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetExtDeadtimeValue/63 (Ftm_Pwm_Ip_SetExtDeadtimeValue) @06ac92a0
+Ftm_Pwm_Ip_SetExtDeadtimeValue/63 (Ftm_Pwm_Ip_SetExtDeadtimeValue) @05dc7620
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -546,7 +630,7 @@ Ftm_Pwm_Ip_SetExtDeadtimeValue/63 (Ftm_Pwm_Ip_SetExtDeadtimeValue) @06ac92a0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetDeadtimePrescaler/62 (Ftm_Pwm_Ip_GetDeadtimePrescaler) @069e1ee0
+Ftm_Pwm_Ip_GetDeadtimePrescaler/62 (Ftm_Pwm_Ip_GetDeadtimePrescaler) @05dc72a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -554,7 +638,7 @@ Ftm_Pwm_Ip_GetDeadtimePrescaler/62 (Ftm_Pwm_Ip_GetDeadtimePrescaler) @069e1ee0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetDeadtimePrescaler/61 (Ftm_Pwm_Ip_SetDeadtimePrescaler) @069e1c40
+Ftm_Pwm_Ip_SetDeadtimePrescaler/61 (Ftm_Pwm_Ip_SetDeadtimePrescaler) @05dc7000
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -562,7 +646,7 @@ Ftm_Pwm_Ip_SetDeadtimePrescaler/61 (Ftm_Pwm_Ip_SetDeadtimePrescaler) @069e1c40
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetDeadtimeCount/60 (Ftm_Pwm_Ip_SetDeadtimeCount) @069e18c0
+Ftm_Pwm_Ip_SetDeadtimeCount/60 (Ftm_Pwm_Ip_SetDeadtimeCount) @05cdfc40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -570,7 +654,7 @@ Ftm_Pwm_Ip_SetDeadtimeCount/60 (Ftm_Pwm_Ip_SetDeadtimeCount) @069e18c0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetDualChnMCombineCmd/59 (Ftm_Pwm_Ip_GetDualChnMCombineCmd) @069e1540
+Ftm_Pwm_Ip_GetDualChnMCombineCmd/59 (Ftm_Pwm_Ip_GetDualChnMCombineCmd) @05cdf8c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -578,7 +662,7 @@ Ftm_Pwm_Ip_GetDualChnMCombineCmd/59 (Ftm_Pwm_Ip_GetDualChnMCombineCmd) @069e1540
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetDualChnMCombineCmd/58 (Ftm_Pwm_Ip_SetDualChnMCombineCmd) @069e12a0
+Ftm_Pwm_Ip_SetDualChnMCombineCmd/58 (Ftm_Pwm_Ip_SetDualChnMCombineCmd) @05cdf620
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -586,7 +670,7 @@ Ftm_Pwm_Ip_SetDualChnMCombineCmd/58 (Ftm_Pwm_Ip_SetDualChnMCombineCmd) @069e12a0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetDualChnPwmSyncCmd/57 (Ftm_Pwm_Ip_SetDualChnPwmSyncCmd) @069e1000
+Ftm_Pwm_Ip_SetDualChnPwmSyncCmd/57 (Ftm_Pwm_Ip_SetDualChnPwmSyncCmd) @05cdf380
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -594,7 +678,7 @@ Ftm_Pwm_Ip_SetDualChnPwmSyncCmd/57 (Ftm_Pwm_Ip_SetDualChnPwmSyncCmd) @069e1000
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetDualChnDeadtimeCmd/56 (Ftm_Pwm_Ip_SetDualChnDeadtimeCmd) @069ddd20
+Ftm_Pwm_Ip_SetDualChnDeadtimeCmd/56 (Ftm_Pwm_Ip_SetDualChnDeadtimeCmd) @05cdf0e0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -602,7 +686,7 @@ Ftm_Pwm_Ip_SetDualChnDeadtimeCmd/56 (Ftm_Pwm_Ip_SetDualChnDeadtimeCmd) @069ddd20
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetDualChnCompCmd/55 (Ftm_Pwm_Ip_SetDualChnCompCmd) @069dda80
+Ftm_Pwm_Ip_SetDualChnCompCmd/55 (Ftm_Pwm_Ip_SetDualChnCompCmd) @05cdce00
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -610,7 +694,7 @@ Ftm_Pwm_Ip_SetDualChnCompCmd/55 (Ftm_Pwm_Ip_SetDualChnCompCmd) @069dda80
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetDualChnCombineCmd/54 (Ftm_Pwm_Ip_GetDualChnCombineCmd) @069dd7e0
+Ftm_Pwm_Ip_GetDualChnCombineCmd/54 (Ftm_Pwm_Ip_GetDualChnCombineCmd) @05cdcb60
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -618,7 +702,7 @@ Ftm_Pwm_Ip_GetDualChnCombineCmd/54 (Ftm_Pwm_Ip_GetDualChnCombineCmd) @069dd7e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetDualChnCombineCmd/53 (Ftm_Pwm_Ip_SetDualChnCombineCmd) @069dd540
+Ftm_Pwm_Ip_SetDualChnCombineCmd/53 (Ftm_Pwm_Ip_SetDualChnCombineCmd) @05cdc8c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -626,31 +710,34 @@ Ftm_Pwm_Ip_SetDualChnCombineCmd/53 (Ftm_Pwm_Ip_SetDualChnCombineCmd) @069dd540
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetOutputMask/52 (Ftm_Pwm_Ip_GetOutputMask) @069dd2a0
-  Type: function definition
+Ftm_Pwm_Ip_GetOutputMask/52 (Ftm_Pwm_Ip_GetOutputMask) @05cdc620
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05de89a0
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
   Calls: 
-Ftm_Pwm_Ip_ClearOutmaskReg/51 (Ftm_Pwm_Ip_ClearOutmaskReg) @069dd000
-  Type: function definition
+Ftm_Pwm_Ip_ClearOutmaskReg/51 (Ftm_Pwm_Ip_ClearOutmaskReg) @05cdc380
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cd88c0
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
   Calls: 
-Ftm_Pwm_Ip_SetOutmaskReg/50 (Ftm_Pwm_Ip_SetOutmaskReg) @069d8d20
-  Type: function definition
+Ftm_Pwm_Ip_SetOutmaskReg/50 (Ftm_Pwm_Ip_SetOutmaskReg) @05cdc0e0
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05e1ad20
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
   Calls: 
-Ftm_Pwm_Ip_SetChnOutputMask/49 (Ftm_Pwm_Ip_SetChnOutputMask) @069d8a80
+Ftm_Pwm_Ip_SetChnOutputMask/49 (Ftm_Pwm_Ip_SetChnOutputMask) @05cd8e00
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -658,7 +745,7 @@ Ftm_Pwm_Ip_SetChnOutputMask/49 (Ftm_Pwm_Ip_SetChnOutputMask) @069d8a80
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetChnOutputInitStateCmd/48 (Ftm_Pwm_Ip_SetChnOutputInitStateCmd) @069d87e0
+Ftm_Pwm_Ip_SetChnOutputInitStateCmd/48 (Ftm_Pwm_Ip_SetChnOutputInitStateCmd) @05cd8b60
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -666,15 +753,16 @@ Ftm_Pwm_Ip_SetChnOutputInitStateCmd/48 (Ftm_Pwm_Ip_SetChnOutputInitStateCmd) @06
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @069d8540
-  Type: function definition
+Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @05cd88c0
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05c9d8c0
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
   Calls: 
-Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc) @069d82a0
+Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc) @05cd8620
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -682,7 +770,7 @@ Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc/46 (Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc) @
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd/45 (Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd) @069d8000
+Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd/45 (Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd) @05cd8380
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -690,7 +778,7 @@ Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd/45 (Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd) @06
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetCountReinitSyncCmd/44 (Ftm_Pwm_Ip_SetCountReinitSyncCmd) @069cfd20
+Ftm_Pwm_Ip_SetCountReinitSyncCmd/44 (Ftm_Pwm_Ip_SetCountReinitSyncCmd) @05cd80e0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -698,7 +786,7 @@ Ftm_Pwm_Ip_SetCountReinitSyncCmd/44 (Ftm_Pwm_Ip_SetCountReinitSyncCmd) @069cfd20
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetMaxLoadingCmd/43 (Ftm_Pwm_Ip_SetMaxLoadingCmd) @069cfa80
+Ftm_Pwm_Ip_SetMaxLoadingCmd/43 (Ftm_Pwm_Ip_SetMaxLoadingCmd) @05ccfe00
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -706,7 +794,7 @@ Ftm_Pwm_Ip_SetMaxLoadingCmd/43 (Ftm_Pwm_Ip_SetMaxLoadingCmd) @069cfa80
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetMinLoadingCmd/42 (Ftm_Pwm_Ip_SetMinLoadingCmd) @069cf7e0
+Ftm_Pwm_Ip_SetMinLoadingCmd/42 (Ftm_Pwm_Ip_SetMinLoadingCmd) @05ccfb60
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -714,7 +802,7 @@ Ftm_Pwm_Ip_SetMinLoadingCmd/42 (Ftm_Pwm_Ip_SetMinLoadingCmd) @069cf7e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetPwmSyncMode/41 (Ftm_Pwm_Ip_SetPwmSyncMode) @069cf540
+Ftm_Pwm_Ip_SetPwmSyncMode/41 (Ftm_Pwm_Ip_SetPwmSyncMode) @05ccf8c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -722,7 +810,7 @@ Ftm_Pwm_Ip_SetPwmSyncMode/41 (Ftm_Pwm_Ip_SetPwmSyncMode) @069cf540
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetInitChnOutputCmd/40 (Ftm_Pwm_Ip_SetInitChnOutputCmd) @069cf2a0
+Ftm_Pwm_Ip_SetInitChnOutputCmd/40 (Ftm_Pwm_Ip_SetInitChnOutputCmd) @05ccf620
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -730,7 +818,7 @@ Ftm_Pwm_Ip_SetInitChnOutputCmd/40 (Ftm_Pwm_Ip_SetInitChnOutputCmd) @069cf2a0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_IsFtmEnable/39 (Ftm_Pwm_Ip_IsFtmEnable) @069cf000
+Ftm_Pwm_Ip_IsFtmEnable/39 (Ftm_Pwm_Ip_IsFtmEnable) @05ccf380
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -738,7 +826,7 @@ Ftm_Pwm_Ip_IsFtmEnable/39 (Ftm_Pwm_Ip_IsFtmEnable) @069cf000
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_Enable/38 (Ftm_Pwm_Ip_Enable) @069ccd20
+Ftm_Pwm_Ip_Enable/38 (Ftm_Pwm_Ip_Enable) @05ccf0e0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -746,7 +834,7 @@ Ftm_Pwm_Ip_Enable/38 (Ftm_Pwm_Ip_Enable) @069ccd20
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_ClearChnEventStatus/37 (Ftm_Pwm_Ip_ClearChnEventStatus) @069cca80
+Ftm_Pwm_Ip_ClearChnEventStatus/37 (Ftm_Pwm_Ip_ClearChnEventStatus) @05ccbe00
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -754,7 +842,7 @@ Ftm_Pwm_Ip_ClearChnEventStatus/37 (Ftm_Pwm_Ip_ClearChnEventStatus) @069cca80
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetChnEventStatus/36 (Ftm_Pwm_Ip_GetChnEventStatus) @069cc7e0
+Ftm_Pwm_Ip_GetChnEventStatus/36 (Ftm_Pwm_Ip_GetChnEventStatus) @05ccbb60
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -762,7 +850,7 @@ Ftm_Pwm_Ip_GetChnEventStatus/36 (Ftm_Pwm_Ip_GetChnEventStatus) @069cc7e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetCounterInitVal/35 (Ftm_Pwm_Ip_GetCounterInitVal) @069cc540
+Ftm_Pwm_Ip_GetCounterInitVal/35 (Ftm_Pwm_Ip_GetCounterInitVal) @05ccb8c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -770,7 +858,7 @@ Ftm_Pwm_Ip_GetCounterInitVal/35 (Ftm_Pwm_Ip_GetCounterInitVal) @069cc540
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetCounterInitVal/34 (Ftm_Pwm_Ip_SetCounterInitVal) @069cc2a0
+Ftm_Pwm_Ip_SetCounterInitVal/34 (Ftm_Pwm_Ip_SetCounterInitVal) @05ccb620
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -778,7 +866,7 @@ Ftm_Pwm_Ip_SetCounterInitVal/34 (Ftm_Pwm_Ip_SetCounterInitVal) @069cc2a0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetChnCountVal/33 (Ftm_Pwm_Ip_GetChnCountVal) @069caee0
+Ftm_Pwm_Ip_GetChnCountVal/33 (Ftm_Pwm_Ip_GetChnCountVal) @05ccb2a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -786,7 +874,7 @@ Ftm_Pwm_Ip_GetChnCountVal/33 (Ftm_Pwm_Ip_GetChnCountVal) @069caee0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetChnCountVal/32 (Ftm_Pwm_Ip_SetChnCountVal) @069cac40
+Ftm_Pwm_Ip_SetChnCountVal/32 (Ftm_Pwm_Ip_SetChnCountVal) @05ccb000
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -794,7 +882,7 @@ Ftm_Pwm_Ip_SetChnCountVal/32 (Ftm_Pwm_Ip_SetChnCountVal) @069cac40
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetChOutputValue/31 (Ftm_Pwm_Ip_GetChOutputValue) @069ca9a0
+Ftm_Pwm_Ip_GetChOutputValue/31 (Ftm_Pwm_Ip_GetChOutputValue) @05cc9d20
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -802,31 +890,34 @@ Ftm_Pwm_Ip_GetChOutputValue/31 (Ftm_Pwm_Ip_GetChOutputValue) @069ca9a0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_HasChnEventOccurred/30 (Ftm_Pwm_Ip_HasChnEventOccurred) @069ca700
-  Type: function definition
+Ftm_Pwm_Ip_HasChnEventOccurred/30 (Ftm_Pwm_Ip_HasChnEventOccurred) @05cc9a80
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cc97e0
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: FTM_0_CH_0_CH_1_ISR/135 Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
   Calls: 
-Ftm_Pwm_Ip_ClearChnEventFlag/29 (Ftm_Pwm_Ip_ClearChnEventFlag) @069ca460
-  Type: function definition
+Ftm_Pwm_Ip_ClearChnEventFlag/29 (Ftm_Pwm_Ip_ClearChnEventFlag) @05cc97e0
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05c9de00
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
   Calls: 
-Ftm_Pwm_Ip_IsChnIntEnabled/28 (Ftm_Pwm_Ip_IsChnIntEnabled) @069ca0e0
-  Type: function definition
+Ftm_Pwm_Ip_IsChnIntEnabled/28 (Ftm_Pwm_Ip_IsChnIntEnabled) @05cc9460
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cc9a80
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
   Calls: 
-Ftm_Pwm_Ip_UpdateChnInt/27 (Ftm_Pwm_Ip_UpdateChnInt) @069c6e00
+Ftm_Pwm_Ip_UpdateChnInt/27 (Ftm_Pwm_Ip_UpdateChnInt) @05cc91c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -834,15 +925,16 @@ Ftm_Pwm_Ip_UpdateChnInt/27 (Ftm_Pwm_Ip_UpdateChnInt) @069c6e00
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @069c6b60
-  Type: function definition
+Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @05cc5ee0
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cb6620
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
   Calls: 
-Ftm_Pwm_Ip_SetChnMSBAMode/25 (Ftm_Pwm_Ip_SetChnMSBAMode) @069c68c0
+Ftm_Pwm_Ip_SetChnMSBAMode/25 (Ftm_Pwm_Ip_SetChnMSBAMode) @05cc5c40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -850,7 +942,7 @@ Ftm_Pwm_Ip_SetChnMSBAMode/25 (Ftm_Pwm_Ip_SetChnMSBAMode) @069c68c0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetChnEdgeLevel/24 (Ftm_Pwm_Ip_SetChnEdgeLevel) @069c6620
+Ftm_Pwm_Ip_SetChnEdgeLevel/24 (Ftm_Pwm_Ip_SetChnEdgeLevel) @05cc59a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -858,15 +950,16 @@ Ftm_Pwm_Ip_SetChnEdgeLevel/24 (Ftm_Pwm_Ip_SetChnEdgeLevel) @069c6620
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @069c6380
-  Type: function definition
+Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @05cc5700
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cc5ee0
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
   Calls: 
-Ftm_Pwm_Ip_IsChnDma/22 (Ftm_Pwm_Ip_IsChnDma) @069c60e0
+Ftm_Pwm_Ip_IsChnDma/22 (Ftm_Pwm_Ip_IsChnDma) @05cc5460
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -874,7 +967,7 @@ Ftm_Pwm_Ip_IsChnDma/22 (Ftm_Pwm_Ip_IsChnDma) @069c60e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetChnDmaCmd/21 (Ftm_Pwm_Ip_SetChnDmaCmd) @069bfe00
+Ftm_Pwm_Ip_SetChnDmaCmd/21 (Ftm_Pwm_Ip_SetChnDmaCmd) @05cc51c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -882,7 +975,7 @@ Ftm_Pwm_Ip_SetChnDmaCmd/21 (Ftm_Pwm_Ip_SetChnDmaCmd) @069bfe00
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetMod/20 (Ftm_Pwm_Ip_GetMod) @069bfb60
+Ftm_Pwm_Ip_GetMod/20 (Ftm_Pwm_Ip_GetMod) @05cbeee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -890,7 +983,7 @@ Ftm_Pwm_Ip_GetMod/20 (Ftm_Pwm_Ip_GetMod) @069bfb60
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetMod/19 (Ftm_Pwm_Ip_SetMod) @069bf8c0
+Ftm_Pwm_Ip_SetMod/19 (Ftm_Pwm_Ip_SetMod) @05cbec40
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -898,7 +991,7 @@ Ftm_Pwm_Ip_SetMod/19 (Ftm_Pwm_Ip_SetMod) @069bf8c0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetCounter/18 (Ftm_Pwm_Ip_GetCounter) @069bf540
+Ftm_Pwm_Ip_GetCounter/18 (Ftm_Pwm_Ip_GetCounter) @05cbe8c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -906,7 +999,7 @@ Ftm_Pwm_Ip_GetCounter/18 (Ftm_Pwm_Ip_GetCounter) @069bf540
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetCounter/17 (Ftm_Pwm_Ip_SetCounter) @069bf2a0
+Ftm_Pwm_Ip_SetCounter/17 (Ftm_Pwm_Ip_SetCounter) @05cbe620
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -914,7 +1007,7 @@ Ftm_Pwm_Ip_SetCounter/17 (Ftm_Pwm_Ip_SetCounter) @069bf2a0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_DisablePwmChannelOutputs/16 (Ftm_Pwm_Ip_DisablePwmChannelOutputs) @069bbee0
+Ftm_Pwm_Ip_DisablePwmChannelOutputs/16 (Ftm_Pwm_Ip_DisablePwmChannelOutputs) @05cbe2a0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -922,7 +1015,7 @@ Ftm_Pwm_Ip_DisablePwmChannelOutputs/16 (Ftm_Pwm_Ip_DisablePwmChannelOutputs) @06
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_EnablePwmChannelOutputs/15 (Ftm_Pwm_Ip_EnablePwmChannelOutputs) @069bbc40
+Ftm_Pwm_Ip_EnablePwmChannelOutputs/15 (Ftm_Pwm_Ip_EnablePwmChannelOutputs) @05cbe000
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -930,31 +1023,34 @@ Ftm_Pwm_Ip_EnablePwmChannelOutputs/15 (Ftm_Pwm_Ip_EnablePwmChannelOutputs) @069b
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_ClearTimerOverflow/14 (Ftm_Pwm_Ip_ClearTimerOverflow) @069bb9a0
-  Type: function definition
+Ftm_Pwm_Ip_ClearTimerOverflow/14 (Ftm_Pwm_Ip_ClearTimerOverflow) @05cbad20
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05dec460
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
   Calls: 
-Ftm_Pwm_Ip_GetTimerOverflow/13 (Ftm_Pwm_Ip_GetTimerOverflow) @069bb620
-  Type: function definition
+Ftm_Pwm_Ip_GetTimerOverflow/13 (Ftm_Pwm_Ip_GetTimerOverflow) @05cba9a0
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cbad20
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: FTM_0_OVF_ISR/134 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
   Calls: 
-Ftm_Pwm_Ip_IsOverflowIntEnabled/12 (Ftm_Pwm_Ip_IsOverflowIntEnabled) @069bb380
-  Type: function definition
+Ftm_Pwm_Ip_IsOverflowIntEnabled/12 (Ftm_Pwm_Ip_IsOverflowIntEnabled) @05cba700
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05cba9a0
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
   Calls: 
-Ftm_Pwm_Ip_SetTimerOverflowInt/11 (Ftm_Pwm_Ip_SetTimerOverflowInt) @069bb0e0
+Ftm_Pwm_Ip_SetTimerOverflowInt/11 (Ftm_Pwm_Ip_SetTimerOverflowInt) @05cba460
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -962,7 +1058,7 @@ Ftm_Pwm_Ip_SetTimerOverflowInt/11 (Ftm_Pwm_Ip_SetTimerOverflowInt) @069bb0e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_ClearReloadFlag/10 (Ftm_Pwm_Ip_ClearReloadFlag) @069b7e00
+Ftm_Pwm_Ip_ClearReloadFlag/10 (Ftm_Pwm_Ip_ClearReloadFlag) @05cba1c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -970,7 +1066,7 @@ Ftm_Pwm_Ip_ClearReloadFlag/10 (Ftm_Pwm_Ip_ClearReloadFlag) @069b7e00
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetReloadFlag/9 (Ftm_Pwm_Ip_GetReloadFlag) @069b7a80
+Ftm_Pwm_Ip_GetReloadFlag/9 (Ftm_Pwm_Ip_GetReloadFlag) @05cb6e00
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -978,7 +1074,7 @@ Ftm_Pwm_Ip_GetReloadFlag/9 (Ftm_Pwm_Ip_GetReloadFlag) @069b7a80
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_IsReloadIntEnabled/8 (Ftm_Pwm_Ip_IsReloadIntEnabled) @069b77e0
+Ftm_Pwm_Ip_IsReloadIntEnabled/8 (Ftm_Pwm_Ip_IsReloadIntEnabled) @05cb6b60
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -986,7 +1082,7 @@ Ftm_Pwm_Ip_IsReloadIntEnabled/8 (Ftm_Pwm_Ip_IsReloadIntEnabled) @069b77e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetReIntEnabledCmd/7 (Ftm_Pwm_Ip_SetReIntEnabledCmd) @069b7540
+Ftm_Pwm_Ip_SetReIntEnabledCmd/7 (Ftm_Pwm_Ip_SetReIntEnabledCmd) @05cb68c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -994,15 +1090,16 @@ Ftm_Pwm_Ip_SetReIntEnabledCmd/7 (Ftm_Pwm_Ip_SetReIntEnabledCmd) @069b7540
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetCpwms/6 (Ftm_Pwm_Ip_GetCpwms) @069b72a0
-  Type: function definition
+Ftm_Pwm_Ip_GetCpwms/6 (Ftm_Pwm_Ip_GetCpwms) @05cb6620
+  Type: function definition analyzed
   Visibility: no_reorder
+  Aux: @05c9db60
   References: 
   Referring: 
-  Function flags:
-  Called by: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
   Calls: 
-Ftm_Pwm_Ip_SetCpwms/5 (Ftm_Pwm_Ip_SetCpwms) @069b7000
+Ftm_Pwm_Ip_SetCpwms/5 (Ftm_Pwm_Ip_SetCpwms) @05cb6380
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -1010,7 +1107,7 @@ Ftm_Pwm_Ip_SetCpwms/5 (Ftm_Pwm_Ip_SetCpwms) @069b7000
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetClockSource/4 (Ftm_Pwm_Ip_GetClockSource) @06999e00
+Ftm_Pwm_Ip_GetClockSource/4 (Ftm_Pwm_Ip_GetClockSource) @05cb60e0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -1018,7 +1115,7 @@ Ftm_Pwm_Ip_GetClockSource/4 (Ftm_Pwm_Ip_GetClockSource) @06999e00
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetClockSource/3 (Ftm_Pwm_Ip_SetClockSource) @06999b60
+Ftm_Pwm_Ip_SetClockSource/3 (Ftm_Pwm_Ip_SetClockSource) @05c94ee0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -1026,7 +1123,7 @@ Ftm_Pwm_Ip_SetClockSource/3 (Ftm_Pwm_Ip_SetClockSource) @06999b60
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_GetClockPs/2 (Ftm_Pwm_Ip_GetClockPs) @069997e0
+Ftm_Pwm_Ip_GetClockPs/2 (Ftm_Pwm_Ip_GetClockPs) @05c94b60
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -1034,7 +1131,7 @@ Ftm_Pwm_Ip_GetClockPs/2 (Ftm_Pwm_Ip_GetClockPs) @069997e0
   Function flags:
   Called by: 
   Calls: 
-Ftm_Pwm_Ip_SetClockPs/1 (Ftm_Pwm_Ip_SetClockPs) @06999540
+Ftm_Pwm_Ip_SetClockPs/1 (Ftm_Pwm_Ip_SetClockPs) @05c948c0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -1042,7 +1139,7 @@ Ftm_Pwm_Ip_SetClockPs/1 (Ftm_Pwm_Ip_SetClockPs) @06999540
   Function flags:
   Called by: 
   Calls: 
-DevAssert/0 (DevAssert) @068989a0
+DevAssert/0 (DevAssert) @05b8ee00
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -1051,25 +1148,949 @@ DevAssert/0 (DevAssert) @068989a0
   Called by: 
   Calls: 
 
-Removing unused symbols: Ftm_Pwm_Ip_SetSimOutputBufferEn Ftm_Pwm_Ip_SetFaultFilterEn Ftm_Pwm_Ip_SetFaultInputEn Ftm_Pwm_Ip_SetFaultPolarity Ftm_Pwm_Ip_SetFaultOutputState Ftm_Pwm_Ip_SetFaultFilterValue Ftm_Pwm_Ip_IsEnableFaultInput Ftm_Pwm_Ip_IsEnableFaultControlMode Ftm_Pwm_Ip_SetFaultModeStatus Ftm_Pwm_Ip_GetFaultModeStatus Ftm_Pwm_Ip_GetFaultDetectionFlagId Ftm_Pwm_Ip_GetFaultDetectionFlag Ftm_Pwm_Ip_ClearFaultFlagId Ftm_Pwm_Ip_ClearFaultFlag Ftm_Pwm_Ip_IsFaultEnabled Ftm_Pwm_Ip_SetFaultInterruptEnable Ftm_Pwm_Ip_SetDualChFaultCtr Ftm_Pwm_Ip_SetFaultControlMode Ftm_Pwm_Ip_SetChnTriggerCmd Ftm_Pwm_Ip_Reset Ftm_Pwm_Ip_UpdateWriteProtection Ftm_Pwm_Ip_GetChannelMode Ftm_Pwm_Ip_GetDualChnDeadtimeCmd Ftm_Pwm_Ip_GetDualChnCompCmd Ftm_Pwm_Ip_GetPolInstance Ftm_Pwm_Ip_GetSoftwareOutputControl Ftm_Pwm_Ip_SetHalfCycleValue Ftm_Pwm_Ip_SetGlobalLoadCmd Ftm_Pwm_Ip_SetLoadCmd Ftm_Pwm_Ip_SetPwmLoadCmd Ftm_Pwm_Ip_SetHalfCycleCmd Ftm_Pwm_Ip_SetPwmLoadChnSelCmd Ftm_Pwm_Ip_SoftwareOutputControl Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd Ftm_Pwm_Ip_SetAllChnSoftwareCtrlCmd Ftm_Pwm_Ip_SetChnSoftwareCtrlVal Ftm_Pwm_Ip_SetAllChnSoftwareCtrlVal Ftm_Pwm_Ip_SetDualChnInvertCmd Ftm_Pwm_Ip_SetInvctrlReg Ftm_Pwm_Ip_SetSwoctrlHardwareSyncModeCmd Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd Ftm_Pwm_Ip_SetPwmSyncModeCmd Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd Ftm_Pwm_Ip_SetInitTriggerMode Ftm_Pwm_Ip_SetGlobalTimeBaseOutputCmd Ftm_Pwm_Ip_SetGlobalTimeBaseCmd Ftm_Pwm_Ip_SetBdmMode Ftm_Pwm_Ip_SetLoadFreq Ftm_Pwm_Ip_IsWriteProtectionEnabled Ftm_Pwm_Ip_GetChnOutputPolarity Ftm_Pwm_Ip_SetChnOutputPolarityCmd Ftm_Pwm_Ip_EnableTriggerMask Ftm_Pwm_Ip_DisableTriggerMask Ftm_Pwm_Ip_ClearChnTriggerFlag Ftm_Pwm_Ip_IsChnTriggerGenerated Ftm_Pwm_Ip_SetInitTriggerCmd Ftm_Pwm_Ip_SetExtDeadtimeValue Ftm_Pwm_Ip_GetDeadtimePrescaler Ftm_Pwm_Ip_SetDeadtimePrescaler Ftm_Pwm_Ip_SetDeadtimeCount Ftm_Pwm_Ip_GetDualChnMCombineCmd Ftm_Pwm_Ip_SetDualChnMCombineCmd Ftm_Pwm_Ip_SetDualChnPwmSyncCmd Ftm_Pwm_Ip_SetDualChnDeadtimeCmd Ftm_Pwm_Ip_SetDualChnCompCmd Ftm_Pwm_Ip_GetDualChnCombineCmd Ftm_Pwm_Ip_SetDualChnCombineCmd Ftm_Pwm_Ip_GetOutputMask Ftm_Pwm_Ip_ClearOutmaskReg Ftm_Pwm_Ip_SetOutmaskReg Ftm_Pwm_Ip_SetChnOutputMask Ftm_Pwm_Ip_SetChnOutputInitStateCmd Ftm_Pwm_Ip_SetSoftwareTriggerCmd Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd Ftm_Pwm_Ip_SetCountReinitSyncCmd Ftm_Pwm_Ip_SetMaxLoadingCmd Ftm_Pwm_Ip_SetMinLoadingCmd Ftm_Pwm_Ip_SetPwmSyncMode Ftm_Pwm_Ip_SetInitChnOutputCmd Ftm_Pwm_Ip_IsFtmEnable Ftm_Pwm_Ip_Enable Ftm_Pwm_Ip_ClearChnEventStatus Ftm_Pwm_Ip_GetChnEventStatus Ftm_Pwm_Ip_GetCounterInitVal Ftm_Pwm_Ip_SetCounterInitVal Ftm_Pwm_Ip_GetChnCountVal Ftm_Pwm_Ip_SetChnCountVal Ftm_Pwm_Ip_GetChOutputValue Ftm_Pwm_Ip_HasChnEventOccurred Ftm_Pwm_Ip_ClearChnEventFlag Ftm_Pwm_Ip_IsChnIntEnabled Ftm_Pwm_Ip_UpdateChnInt Ftm_Pwm_Ip_GetChnMode Ftm_Pwm_Ip_SetChnMSBAMode Ftm_Pwm_Ip_SetChnEdgeLevel Ftm_Pwm_Ip_GetChnEdgeLevel Ftm_Pwm_Ip_IsChnDma Ftm_Pwm_Ip_SetChnDmaCmd Ftm_Pwm_Ip_GetMod Ftm_Pwm_Ip_SetMod Ftm_Pwm_Ip_GetCounter Ftm_Pwm_Ip_SetCounter Ftm_Pwm_Ip_DisablePwmChannelOutputs Ftm_Pwm_Ip_EnablePwmChannelOutputs Ftm_Pwm_Ip_ClearTimerOverflow Ftm_Pwm_Ip_GetTimerOverflow Ftm_Pwm_Ip_IsOverflowIntEnabled Ftm_Pwm_Ip_SetTimerOverflowInt Ftm_Pwm_Ip_ClearReloadFlag Ftm_Pwm_Ip_GetReloadFlag Ftm_Pwm_Ip_IsReloadIntEnabled Ftm_Pwm_Ip_SetReIntEnabledCmd Ftm_Pwm_Ip_GetCpwms Ftm_Pwm_Ip_SetCpwms Ftm_Pwm_Ip_GetClockSource Ftm_Pwm_Ip_SetClockSource Ftm_Pwm_Ip_GetClockPs Ftm_Pwm_Ip_SetClockPs DevAssert
+Removing unused symbols: Ftm_Pwm_Ip_SetSimOutputBufferEn Ftm_Pwm_Ip_SetFaultFilterEn Ftm_Pwm_Ip_SetFaultInputEn Ftm_Pwm_Ip_SetFaultPolarity Ftm_Pwm_Ip_SetFaultOutputState Ftm_Pwm_Ip_SetFaultFilterValue Ftm_Pwm_Ip_IsEnableFaultInput Ftm_Pwm_Ip_IsEnableFaultControlMode Ftm_Pwm_Ip_GetFaultDetectionFlagId Ftm_Pwm_Ip_ClearFaultFlagId Ftm_Pwm_Ip_ClearFaultFlag Ftm_Pwm_Ip_IsFaultEnabled Ftm_Pwm_Ip_SetFaultInterruptEnable Ftm_Pwm_Ip_SetDualChFaultCtr Ftm_Pwm_Ip_SetFaultControlMode Ftm_Pwm_Ip_SetChnTriggerCmd Ftm_Pwm_Ip_Reset Ftm_Pwm_Ip_UpdateWriteProtection Ftm_Pwm_Ip_GetDualChnDeadtimeCmd Ftm_Pwm_Ip_GetDualChnCompCmd Ftm_Pwm_Ip_GetPolInstance Ftm_Pwm_Ip_SetHalfCycleValue Ftm_Pwm_Ip_SetGlobalLoadCmd Ftm_Pwm_Ip_SetLoadCmd Ftm_Pwm_Ip_SetPwmLoadCmd Ftm_Pwm_Ip_SetHalfCycleCmd Ftm_Pwm_Ip_SetPwmLoadChnSelCmd Ftm_Pwm_Ip_SetChnSoftwareCtrlCmd Ftm_Pwm_Ip_SetAllChnSoftwareCtrlCmd Ftm_Pwm_Ip_SetChnSoftwareCtrlVal Ftm_Pwm_Ip_SetAllChnSoftwareCtrlVal Ftm_Pwm_Ip_SetDualChnInvertCmd Ftm_Pwm_Ip_SetInvctrlReg Ftm_Pwm_Ip_SetSwoctrlHardwareSyncModeCmd Ftm_Pwm_Ip_SetInvctrlHardwareSyncModeCmd Ftm_Pwm_Ip_SetOutmaskHardwareSyncModeCmd Ftm_Pwm_Ip_SetModCntinCvHardwareSyncModeCmd Ftm_Pwm_Ip_SetCounterHardwareSyncModeCmd Ftm_Pwm_Ip_SetSwoctrlSoftwareSyncModeCmd Ftm_Pwm_Ip_SetInvctrlSoftwareSyncModeCmd Ftm_Pwm_Ip_SetOutmaskSoftwareSyncModeCmd Ftm_Pwm_Ip_SetModCntinCvSoftwareSyncModeCmd Ftm_Pwm_Ip_SetCounterSoftwareSyncModeCmd Ftm_Pwm_Ip_SetPwmSyncModeCmd Ftm_Pwm_Ip_SetSwoctrlPwmSyncModeCmd Ftm_Pwm_Ip_SetInvctrlPwmSyncModeCmd Ftm_Pwm_Ip_SetCntinPwmSyncModeCmd Ftm_Pwm_Ip_SetHwTriggerSyncModeCmd Ftm_Pwm_Ip_SetInitTriggerMode Ftm_Pwm_Ip_SetGlobalTimeBaseOutputCmd Ftm_Pwm_Ip_SetGlobalTimeBaseCmd Ftm_Pwm_Ip_SetBdmMode Ftm_Pwm_Ip_SetLoadFreq Ftm_Pwm_Ip_IsWriteProtectionEnabled Ftm_Pwm_Ip_GetChnOutputPolarity Ftm_Pwm_Ip_SetChnOutputPolarityCmd Ftm_Pwm_Ip_EnableTriggerMask Ftm_Pwm_Ip_DisableTriggerMask Ftm_Pwm_Ip_ClearChnTriggerFlag Ftm_Pwm_Ip_IsChnTriggerGenerated Ftm_Pwm_Ip_SetInitTriggerCmd Ftm_Pwm_Ip_SetExtDeadtimeValue Ftm_Pwm_Ip_GetDeadtimePrescaler Ftm_Pwm_Ip_SetDeadtimePrescaler Ftm_Pwm_Ip_SetDeadtimeCount Ftm_Pwm_Ip_GetDualChnMCombineCmd Ftm_Pwm_Ip_SetDualChnMCombineCmd Ftm_Pwm_Ip_SetDualChnPwmSyncCmd Ftm_Pwm_Ip_SetDualChnDeadtimeCmd Ftm_Pwm_Ip_SetDualChnCompCmd Ftm_Pwm_Ip_GetDualChnCombineCmd Ftm_Pwm_Ip_SetDualChnCombineCmd Ftm_Pwm_Ip_SetChnOutputMask Ftm_Pwm_Ip_SetChnOutputInitStateCmd Ftm_Pwm_Ip_SetHardwareSyncTriggerSrc Ftm_Pwm_Ip_SetOutmaskPwmSyncModeCmd Ftm_Pwm_Ip_SetCountReinitSyncCmd Ftm_Pwm_Ip_SetMaxLoadingCmd Ftm_Pwm_Ip_SetMinLoadingCmd Ftm_Pwm_Ip_SetPwmSyncMode Ftm_Pwm_Ip_SetInitChnOutputCmd Ftm_Pwm_Ip_IsFtmEnable Ftm_Pwm_Ip_Enable Ftm_Pwm_Ip_ClearChnEventStatus Ftm_Pwm_Ip_GetChnEventStatus Ftm_Pwm_Ip_GetCounterInitVal Ftm_Pwm_Ip_SetCounterInitVal Ftm_Pwm_Ip_GetChnCountVal Ftm_Pwm_Ip_SetChnCountVal Ftm_Pwm_Ip_GetChOutputValue Ftm_Pwm_Ip_UpdateChnInt Ftm_Pwm_Ip_SetChnMSBAMode Ftm_Pwm_Ip_SetChnEdgeLevel Ftm_Pwm_Ip_IsChnDma Ftm_Pwm_Ip_SetChnDmaCmd Ftm_Pwm_Ip_GetMod Ftm_Pwm_Ip_SetMod Ftm_Pwm_Ip_GetCounter Ftm_Pwm_Ip_SetCounter Ftm_Pwm_Ip_DisablePwmChannelOutputs Ftm_Pwm_Ip_EnablePwmChannelOutputs Ftm_Pwm_Ip_SetTimerOverflowInt Ftm_Pwm_Ip_ClearReloadFlag Ftm_Pwm_Ip_GetReloadFlag Ftm_Pwm_Ip_IsReloadIntEnabled Ftm_Pwm_Ip_SetReIntEnabledCmd Ftm_Pwm_Ip_SetCpwms Ftm_Pwm_Ip_GetClockSource Ftm_Pwm_Ip_SetClockSource Ftm_Pwm_Ip_GetClockPs Ftm_Pwm_Ip_SetClockPs DevAssert
 
 Reclaimed Symbol table:
 
+Ftm_Pwm_Ip_pOverflowIrqCallback/139 (Ftm_Pwm_Ip_pOverflowIrqCallback) @05f869d8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_aNotifIrq/138 (Ftm_Pwm_Ip_aNotifIrq) @05f86948
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_u8FaultCheck/137 (Ftm_Pwm_Ip_u8FaultCheck) @05ca9318
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_aFtmBase/136 (Ftm_Pwm_Ip_aFtmBase) @05ca9288
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)FTM_0_OVF_ISR/134 (read)FTM_0_CH_0_CH_1_ISR/135 (read)
+  Availability: not-ready
+  Varpool flags: read-only
+FTM_0_CH_0_CH_1_ISR/135 (FTM_0_CH_0_CH_1_ISR) @05c9d1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_HasChnEventOccurred/30 
+FTM_0_OVF_ISR/134 (FTM_0_OVF_ISR) @05c9de00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_ProcessTofInterrupt/132 Ftm_Pwm_Ip_GetTimerOverflow/13 
+Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (Ftm_Pwm_Ip_ProcessCommonInterrupt) @05c9db60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_CH_0_CH_1_ISR/135 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearChnEventFlag/29 Ftm_Pwm_Ip_HasChnEventOccurred/30 Ftm_Pwm_Ip_IsChnIntEnabled/28 
+   Indirect call
+   Indirect call
+   Indirect call
+Ftm_Pwm_Ip_ProcessTofInterrupt/132 (Ftm_Pwm_Ip_ProcessTofInterrupt) @05c9d8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_OVF_ISR/134 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearTimerOverflow/14 Ftm_Pwm_Ip_GetTimerOverflow/13 Ftm_Pwm_Ip_IsOverflowIntEnabled/12 Ftm_Pwm_Ip_ProcessErrata/131 
+   Indirect call
+Ftm_Pwm_Ip_ProcessErrata/131 (Ftm_Pwm_Ip_ProcessErrata) @05c9d620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_ClearOutmaskReg/51 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_SetFaultModeStatus/122 Ftm_Pwm_Ip_GetFaultModeStatus/121 Ftm_Pwm_Ip_SetOutmaskReg/50 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetFaultDetectionFlag/119 
+Ftm_Pwm_Ip_SetFaultModeStatus/122 (Ftm_Pwm_Ip_SetFaultModeStatus) @05e1d000
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultModeStatus/121 (Ftm_Pwm_Ip_GetFaultModeStatus) @05e1ad20
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultDetectionFlag/119 (Ftm_Pwm_Ip_GetFaultDetectionFlag) @05e1a7e0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @05dec460
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_GetCpwms/6 Ftm_Pwm_Ip_GetChnMode/26 Ftm_Pwm_Ip_GetChnEdgeLevel/23 
+Ftm_Pwm_Ip_GetSoftwareOutputControl/105 (Ftm_Pwm_Ip_GetSoftwareOutputControl) @05de89a0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SoftwareOutputControl/98 (Ftm_Pwm_Ip_SoftwareOutputControl) @05de2700
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetOutputMask/52 (Ftm_Pwm_Ip_GetOutputMask) @05cdc620
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_ClearOutmaskReg/51 (Ftm_Pwm_Ip_ClearOutmaskReg) @05cdc380
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SetOutmaskReg/50 (Ftm_Pwm_Ip_SetOutmaskReg) @05cdc0e0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @05cd88c0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_HasChnEventOccurred/30 (Ftm_Pwm_Ip_HasChnEventOccurred) @05cc9a80
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_CH_0_CH_1_ISR/135 Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_ClearChnEventFlag/29 (Ftm_Pwm_Ip_ClearChnEventFlag) @05cc97e0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_IsChnIntEnabled/28 (Ftm_Pwm_Ip_IsChnIntEnabled) @05cc9460
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @05cc5ee0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
+Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @05cc5700
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
+Ftm_Pwm_Ip_ClearTimerOverflow/14 (Ftm_Pwm_Ip_ClearTimerOverflow) @05cbad20
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_GetTimerOverflow/13 (Ftm_Pwm_Ip_GetTimerOverflow) @05cba9a0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_OVF_ISR/134 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_IsOverflowIntEnabled/12 (Ftm_Pwm_Ip_IsOverflowIntEnabled) @05cba700
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_GetCpwms/6 (Ftm_Pwm_Ip_GetCpwms) @05cb6620
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
 
 
 Initial Symbol table:
 
+Ftm_Pwm_Ip_pOverflowIrqCallback/139 (Ftm_Pwm_Ip_pOverflowIrqCallback) @05f869d8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_aNotifIrq/138 (Ftm_Pwm_Ip_aNotifIrq) @05f86948
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_u8FaultCheck/137 (Ftm_Pwm_Ip_u8FaultCheck) @05ca9318
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_aFtmBase/136 (Ftm_Pwm_Ip_aFtmBase) @05ca9288
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)FTM_0_OVF_ISR/134 (read)FTM_0_CH_0_CH_1_ISR/135 (read)
+  Availability: not-ready
+  Varpool flags: read-only
+FTM_0_CH_0_CH_1_ISR/135 (FTM_0_CH_0_CH_1_ISR) @05c9d1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_HasChnEventOccurred/30 
+FTM_0_OVF_ISR/134 (FTM_0_OVF_ISR) @05c9de00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_ProcessTofInterrupt/132 Ftm_Pwm_Ip_GetTimerOverflow/13 
+Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (Ftm_Pwm_Ip_ProcessCommonInterrupt) @05c9db60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_CH_0_CH_1_ISR/135 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearChnEventFlag/29 Ftm_Pwm_Ip_HasChnEventOccurred/30 Ftm_Pwm_Ip_IsChnIntEnabled/28 
+   Indirect call
+   Indirect call
+   Indirect call
+Ftm_Pwm_Ip_ProcessTofInterrupt/132 (Ftm_Pwm_Ip_ProcessTofInterrupt) @05c9d8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_OVF_ISR/134 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearTimerOverflow/14 Ftm_Pwm_Ip_GetTimerOverflow/13 Ftm_Pwm_Ip_IsOverflowIntEnabled/12 Ftm_Pwm_Ip_ProcessErrata/131 
+   Indirect call
+Ftm_Pwm_Ip_ProcessErrata/131 (Ftm_Pwm_Ip_ProcessErrata) @05c9d620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_ClearOutmaskReg/51 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_SetFaultModeStatus/122 Ftm_Pwm_Ip_GetFaultModeStatus/121 Ftm_Pwm_Ip_SetOutmaskReg/50 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetFaultDetectionFlag/119 
+Ftm_Pwm_Ip_SetFaultModeStatus/122 (Ftm_Pwm_Ip_SetFaultModeStatus) @05e1d000
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultModeStatus/121 (Ftm_Pwm_Ip_GetFaultModeStatus) @05e1ad20
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultDetectionFlag/119 (Ftm_Pwm_Ip_GetFaultDetectionFlag) @05e1a7e0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @05dec460
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_GetCpwms/6 Ftm_Pwm_Ip_GetChnMode/26 Ftm_Pwm_Ip_GetChnEdgeLevel/23 
+Ftm_Pwm_Ip_GetSoftwareOutputControl/105 (Ftm_Pwm_Ip_GetSoftwareOutputControl) @05de89a0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SoftwareOutputControl/98 (Ftm_Pwm_Ip_SoftwareOutputControl) @05de2700
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetOutputMask/52 (Ftm_Pwm_Ip_GetOutputMask) @05cdc620
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_ClearOutmaskReg/51 (Ftm_Pwm_Ip_ClearOutmaskReg) @05cdc380
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SetOutmaskReg/50 (Ftm_Pwm_Ip_SetOutmaskReg) @05cdc0e0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @05cd88c0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_HasChnEventOccurred/30 (Ftm_Pwm_Ip_HasChnEventOccurred) @05cc9a80
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_CH_0_CH_1_ISR/135 Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_ClearChnEventFlag/29 (Ftm_Pwm_Ip_ClearChnEventFlag) @05cc97e0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_IsChnIntEnabled/28 (Ftm_Pwm_Ip_IsChnIntEnabled) @05cc9460
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @05cc5ee0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
+Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @05cc5700
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
+Ftm_Pwm_Ip_ClearTimerOverflow/14 (Ftm_Pwm_Ip_ClearTimerOverflow) @05cbad20
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_GetTimerOverflow/13 (Ftm_Pwm_Ip_GetTimerOverflow) @05cba9a0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_OVF_ISR/134 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_IsOverflowIntEnabled/12 (Ftm_Pwm_Ip_IsOverflowIntEnabled) @05cba700
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_GetCpwms/6 (Ftm_Pwm_Ip_GetCpwms) @05cb6620
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
 
 Removing unused symbols:
 
 Reclaimed Symbol table:
 
+Ftm_Pwm_Ip_pOverflowIrqCallback/139 (Ftm_Pwm_Ip_pOverflowIrqCallback) @05f869d8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_aNotifIrq/138 (Ftm_Pwm_Ip_aNotifIrq) @05f86948
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_u8FaultCheck/137 (Ftm_Pwm_Ip_u8FaultCheck) @05ca9318
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)
+  Availability: not-ready
+  Varpool flags:
+Ftm_Pwm_Ip_aFtmBase/136 (Ftm_Pwm_Ip_aFtmBase) @05ca9288
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)FTM_0_OVF_ISR/134 (read)FTM_0_CH_0_CH_1_ISR/135 (read)
+  Availability: not-ready
+  Varpool flags: read-only
+FTM_0_CH_0_CH_1_ISR/135 (FTM_0_CH_0_CH_1_ISR) @05c9d1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_HasChnEventOccurred/30 
+FTM_0_OVF_ISR/134 (FTM_0_OVF_ISR) @05c9de00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_ProcessTofInterrupt/132 Ftm_Pwm_Ip_GetTimerOverflow/13 
+Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (Ftm_Pwm_Ip_ProcessCommonInterrupt) @05c9db60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_CH_0_CH_1_ISR/135 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearChnEventFlag/29 Ftm_Pwm_Ip_HasChnEventOccurred/30 Ftm_Pwm_Ip_IsChnIntEnabled/28 
+   Indirect call
+   Indirect call
+   Indirect call
+Ftm_Pwm_Ip_ProcessTofInterrupt/132 (Ftm_Pwm_Ip_ProcessTofInterrupt) @05c9d8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_OVF_ISR/134 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearTimerOverflow/14 Ftm_Pwm_Ip_GetTimerOverflow/13 Ftm_Pwm_Ip_IsOverflowIntEnabled/12 Ftm_Pwm_Ip_ProcessErrata/131 
+   Indirect call
+Ftm_Pwm_Ip_ProcessErrata/131 (Ftm_Pwm_Ip_ProcessErrata) @05c9d620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_ClearOutmaskReg/51 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_SetFaultModeStatus/122 Ftm_Pwm_Ip_GetFaultModeStatus/121 Ftm_Pwm_Ip_SetOutmaskReg/50 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetFaultDetectionFlag/119 
+Ftm_Pwm_Ip_SetFaultModeStatus/122 (Ftm_Pwm_Ip_SetFaultModeStatus) @05e1d000
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultModeStatus/121 (Ftm_Pwm_Ip_GetFaultModeStatus) @05e1ad20
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultDetectionFlag/119 (Ftm_Pwm_Ip_GetFaultDetectionFlag) @05e1a7e0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @05dec460
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_GetCpwms/6 Ftm_Pwm_Ip_GetChnMode/26 Ftm_Pwm_Ip_GetChnEdgeLevel/23 
+Ftm_Pwm_Ip_GetSoftwareOutputControl/105 (Ftm_Pwm_Ip_GetSoftwareOutputControl) @05de89a0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SoftwareOutputControl/98 (Ftm_Pwm_Ip_SoftwareOutputControl) @05de2700
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetOutputMask/52 (Ftm_Pwm_Ip_GetOutputMask) @05cdc620
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_ClearOutmaskReg/51 (Ftm_Pwm_Ip_ClearOutmaskReg) @05cdc380
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SetOutmaskReg/50 (Ftm_Pwm_Ip_SetOutmaskReg) @05cdc0e0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @05cd88c0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_HasChnEventOccurred/30 (Ftm_Pwm_Ip_HasChnEventOccurred) @05cc9a80
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_CH_0_CH_1_ISR/135 Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_ClearChnEventFlag/29 (Ftm_Pwm_Ip_ClearChnEventFlag) @05cc97e0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_IsChnIntEnabled/28 (Ftm_Pwm_Ip_IsChnIntEnabled) @05cc9460
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @05cc5ee0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
+Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @05cc5700
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
+Ftm_Pwm_Ip_ClearTimerOverflow/14 (Ftm_Pwm_Ip_ClearTimerOverflow) @05cbad20
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_GetTimerOverflow/13 (Ftm_Pwm_Ip_GetTimerOverflow) @05cba9a0
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: FTM_0_OVF_ISR/134 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_IsOverflowIntEnabled/12 (Ftm_Pwm_Ip_IsOverflowIntEnabled) @05cba700
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_GetCpwms/6 (Ftm_Pwm_Ip_GetCpwms) @05cb6620
+  Type: function definition analyzed
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
 
 Reclaiming functions:
 Reclaiming variables:
 Clearing address taken flags:
 Optimized Symbol table:
 
+Ftm_Pwm_Ip_pOverflowIrqCallback/139 (Ftm_Pwm_Ip_pOverflowIrqCallback) @05f869d8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not_available
+  Varpool flags:
+Ftm_Pwm_Ip_aNotifIrq/138 (Ftm_Pwm_Ip_aNotifIrq) @05f86948
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)
+  Availability: not_available
+  Varpool flags:
+Ftm_Pwm_Ip_u8FaultCheck/137 (Ftm_Pwm_Ip_u8FaultCheck) @05ca9318
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessErrata/131 (write)
+  Availability: not_available
+  Varpool flags:
+Ftm_Pwm_Ip_aFtmBase/136 (Ftm_Pwm_Ip_aFtmBase) @05ca9288
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (read)FTM_0_OVF_ISR/134 (read)Ftm_Pwm_Ip_ProcessErrata/131 (read)Ftm_Pwm_Ip_ProcessTofInterrupt/132 (read)FTM_0_CH_0_CH_1_ISR/135 (read)
+  Availability: not_available
+  Varpool flags: read-only
+FTM_0_CH_0_CH_1_ISR/135 (FTM_0_CH_0_CH_1_ISR) @05c9d1c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_HasChnEventOccurred/30 
+FTM_0_OVF_ISR/134 (FTM_0_OVF_ISR) @05c9de00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_ProcessTofInterrupt/132 Ftm_Pwm_Ip_GetTimerOverflow/13 
+Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (Ftm_Pwm_Ip_ProcessCommonInterrupt) @05c9db60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FTM_0_CH_0_CH_1_ISR/135 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearChnEventFlag/29 Ftm_Pwm_Ip_HasChnEventOccurred/30 Ftm_Pwm_Ip_IsChnIntEnabled/28 
+   Indirect call
+   Indirect call
+   Indirect call
+Ftm_Pwm_Ip_ProcessTofInterrupt/132 (Ftm_Pwm_Ip_ProcessTofInterrupt) @05c9d8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_aNotifIrq/138 (read)Ftm_Pwm_Ip_pOverflowIrqCallback/139 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: FTM_0_OVF_ISR/134 
+  Calls: Ftm_Pwm_Ip_GetChannelMode/109 Ftm_Pwm_Ip_ClearTimerOverflow/14 Ftm_Pwm_Ip_GetTimerOverflow/13 Ftm_Pwm_Ip_IsOverflowIntEnabled/12 Ftm_Pwm_Ip_ProcessErrata/131 
+   Indirect call
+Ftm_Pwm_Ip_ProcessErrata/131 (Ftm_Pwm_Ip_ProcessErrata) @05c9d620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: Ftm_Pwm_Ip_aFtmBase/136 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (read)Ftm_Pwm_Ip_u8FaultCheck/137 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_ClearOutmaskReg/51 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_SoftwareOutputControl/98 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 Ftm_Pwm_Ip_SetFaultModeStatus/122 Ftm_Pwm_Ip_GetFaultModeStatus/121 Ftm_Pwm_Ip_SetOutmaskReg/50 Ftm_Pwm_Ip_GetOutputMask/52 Ftm_Pwm_Ip_GetSoftwareOutputControl/105 Ftm_Pwm_Ip_GetFaultDetectionFlag/119 
+Ftm_Pwm_Ip_SetFaultModeStatus/122 (Ftm_Pwm_Ip_SetFaultModeStatus) @05e1d000
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultModeStatus/121 (Ftm_Pwm_Ip_GetFaultModeStatus) @05e1ad20
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultDetectionFlag/119 (Ftm_Pwm_Ip_GetFaultDetectionFlag) @05e1a7e0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @05dec460
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: Ftm_Pwm_Ip_GetCpwms/6 Ftm_Pwm_Ip_GetChnMode/26 Ftm_Pwm_Ip_GetChnEdgeLevel/23 
+Ftm_Pwm_Ip_GetSoftwareOutputControl/105 (Ftm_Pwm_Ip_GetSoftwareOutputControl) @05de89a0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SoftwareOutputControl/98 (Ftm_Pwm_Ip_SoftwareOutputControl) @05de2700
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_GetOutputMask/52 (Ftm_Pwm_Ip_GetOutputMask) @05cdc620
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_ClearOutmaskReg/51 (Ftm_Pwm_Ip_ClearOutmaskReg) @05cdc380
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SetOutmaskReg/50 (Ftm_Pwm_Ip_SetOutmaskReg) @05cdc0e0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @05cd88c0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessErrata/131 Ftm_Pwm_Ip_ProcessErrata/131 
+  Calls: 
+Ftm_Pwm_Ip_HasChnEventOccurred/30 (Ftm_Pwm_Ip_HasChnEventOccurred) @05cc9a80
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: FTM_0_CH_0_CH_1_ISR/135 Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_ClearChnEventFlag/29 (Ftm_Pwm_Ip_ClearChnEventFlag) @05cc97e0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_IsChnIntEnabled/28 (Ftm_Pwm_Ip_IsChnIntEnabled) @05cc9460
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessCommonInterrupt/133 
+  Calls: 
+Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @05cc5ee0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
+Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @05cc5700
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
+Ftm_Pwm_Ip_ClearTimerOverflow/14 (Ftm_Pwm_Ip_ClearTimerOverflow) @05cbad20
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_GetTimerOverflow/13 (Ftm_Pwm_Ip_GetTimerOverflow) @05cba9a0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: FTM_0_OVF_ISR/134 Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_IsOverflowIntEnabled/12 (Ftm_Pwm_Ip_IsOverflowIntEnabled) @05cba700
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_ProcessTofInterrupt/132 
+  Calls: 
+Ftm_Pwm_Ip_GetCpwms/6 (Ftm_Pwm_Ip_GetCpwms) @05cb6620
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local
+  Called by: Ftm_Pwm_Ip_GetChannelMode/109 
+  Calls: 
 Materializing clones
 Materialization Call site updates done.
 
@@ -1081,3 +2102,251 @@ Removing variables:
 
 Final Symbol table:
 
+Ftm_Pwm_Ip_pOverflowIrqCallback/139 (Ftm_Pwm_Ip_pOverflowIrqCallback) @05f869d8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+Ftm_Pwm_Ip_aNotifIrq/138 (Ftm_Pwm_Ip_aNotifIrq) @05f86948
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+Ftm_Pwm_Ip_u8FaultCheck/137 (Ftm_Pwm_Ip_u8FaultCheck) @05ca9318
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+Ftm_Pwm_Ip_aFtmBase/136 (Ftm_Pwm_Ip_aFtmBase) @05ca9288
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+FTM_0_CH_0_CH_1_ISR/135 (FTM_0_CH_0_CH_1_ISR) @05c9d1c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+FTM_0_OVF_ISR/134 (FTM_0_OVF_ISR) @05c9de00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_ProcessCommonInterrupt/133 (Ftm_Pwm_Ip_ProcessCommonInterrupt) @05c9db60
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_ProcessTofInterrupt/132 (Ftm_Pwm_Ip_ProcessTofInterrupt) @05c9d8c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_ProcessErrata/131 (Ftm_Pwm_Ip_ProcessErrata) @05c9d620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_SetFaultModeStatus/122 (Ftm_Pwm_Ip_SetFaultModeStatus) @05e1d000
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultModeStatus/121 (Ftm_Pwm_Ip_GetFaultModeStatus) @05e1ad20
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_GetFaultDetectionFlag/119 (Ftm_Pwm_Ip_GetFaultDetectionFlag) @05e1a7e0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_GetChannelMode/109 (Ftm_Pwm_Ip_GetChannelMode) @05dec460
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_GetSoftwareOutputControl/105 (Ftm_Pwm_Ip_GetSoftwareOutputControl) @05de89a0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_SoftwareOutputControl/98 (Ftm_Pwm_Ip_SoftwareOutputControl) @05de2700
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_GetOutputMask/52 (Ftm_Pwm_Ip_GetOutputMask) @05cdc620
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_ClearOutmaskReg/51 (Ftm_Pwm_Ip_ClearOutmaskReg) @05cdc380
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_SetOutmaskReg/50 (Ftm_Pwm_Ip_SetOutmaskReg) @05cdc0e0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_SetSoftwareTriggerCmd/47 (Ftm_Pwm_Ip_SetSoftwareTriggerCmd) @05cd88c0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_HasChnEventOccurred/30 (Ftm_Pwm_Ip_HasChnEventOccurred) @05cc9a80
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_ClearChnEventFlag/29 (Ftm_Pwm_Ip_ClearChnEventFlag) @05cc97e0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_IsChnIntEnabled/28 (Ftm_Pwm_Ip_IsChnIntEnabled) @05cc9460
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_GetChnMode/26 (Ftm_Pwm_Ip_GetChnMode) @05cc5ee0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_GetChnEdgeLevel/23 (Ftm_Pwm_Ip_GetChnEdgeLevel) @05cc5700
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_ClearTimerOverflow/14 (Ftm_Pwm_Ip_ClearTimerOverflow) @05cbad20
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_GetTimerOverflow/13 (Ftm_Pwm_Ip_GetTimerOverflow) @05cba9a0
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_IsOverflowIntEnabled/12 (Ftm_Pwm_Ip_IsOverflowIntEnabled) @05cba700
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
+Ftm_Pwm_Ip_GetCpwms/6 (Ftm_Pwm_Ip_GetCpwms) @05cb6620
+  Type: function definition analyzed
+  Visibility: no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: local
+  Called by: 
+  Calls: 
