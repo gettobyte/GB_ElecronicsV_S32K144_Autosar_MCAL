@@ -1,9 +1,9 @@
 main ()
 {
   Clock_Ip_StatusType clockStatus;
-  int D.7138;
+  int D.7149;
   <unnamed type> _1;
-  int exit_code.0_2;
+  int exit_code.6_2;
   int _16;
 
   <bb 2> :
@@ -35,11 +35,11 @@ main ()
   Platform_Init (0B);
   Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
   Pwm_EnableNotification (0, 1);
-  Pwm_SetDutyCycle (0, 11797);
+  Pwm_SetDutyCycle (0, 5000);
 
   <bb 8> :
-  exit_code.0_2 ={v} exit_code;
-  if (exit_code.0_2 != 0)
+  exit_code.6_2 ={v} exit_code;
+  if (exit_code.6_2 != 0)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
@@ -62,7 +62,69 @@ main ()
 
 W2821_Callback ()
 {
+  uint8_t current_bit;
+  unsigned char bit_index.0_1;
+  long unsigned int data.1_2;
+  unsigned char bit_index.2_3;
+  int _4;
+  int _5;
+  long unsigned int _6;
+  unsigned char _7;
+  unsigned char prev_bit_flag.3_8;
+  unsigned char bit_index.4_9;
+  unsigned char bit_index.5_10;
+  unsigned char _11;
+
   <bb 2> :
+  bit_index.0_1 ={v} bit_index;
+  if (bit_index.0_1 <= 23)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  data.1_2 ={v} data;
+  bit_index.2_3 ={v} bit_index;
+  _4 = (int) bit_index.2_3;
+  _5 = 23 - _4;
+  _6 = data.1_2 >> _5;
+  _7 = (unsigned char) _6;
+  current_bit_19 = _7 & 1;
+  prev_bit_flag.3_8 ={v} prev_bit_flag;
+  if (current_bit_19 != prev_bit_flag.3_8)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  if (current_bit_19 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  Pwm_SetDutyCycle (0, 10768);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  Pwm_SetDutyCycle (0, 22000);
+
+  <bb 7> :
+  prev_bit_flag ={v} current_bit_19;
+
+  <bb 8> :
+  bit_index.4_9 ={v} bit_index;
+  bit_index.5_10 = bit_index.4_9;
+  _11 = bit_index.5_10 + 1;
+  bit_index ={v} _11;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  TestDelay (2400000);
+  bit_index ={v} 0;
+  prev_bit_flag ={v} 2;
+
+  <bb 10> :
   return;
 
 }

@@ -8,18 +8,31 @@
 
 volatile int exit_code = 0;
 /* User includes */
-uint32 counter = 0;
+volatile uint32_t data = 0b000000001111111100000000; // Example data
+volatile uint8_t bit_index = 0;
+volatile uint8_t prev_bit_flag = 2; // Initialize to an invalid state (e.g., 2)
 void W2821_Callback(void)
 {
-//	counter++;
-//	if (counter < 8)
-//	{
-//		Pwm_SetDutyCycle(0, 20971);
-//	}
-//	else
-//	{
-//		Pwm_SetDutyCycle(0, 11797);
-//	}
+	if (bit_index < 24) {
+	        // Extract the current bit (starting from MSB)
+	        uint8_t current_bit = (data >> (23 - bit_index)) & 0x01;
+
+	        // Only update the duty cycle if the current bit differs from the previous bit
+	        if (current_bit != prev_bit_flag) {
+	            if (current_bit == 0) {
+	                Pwm_SetDutyCycle(0, 10768); // Set 40% for 0
+	            } else {
+	            	Pwm_SetDutyCycle(0, 22000); // Set 60% for 1
+	            }
+	            prev_bit_flag = current_bit; // Update the previous bit flag
+	        }
+
+	        bit_index++; // Move to the next bit
+	    } else {
+	    	TestDelay(2400000);
+	        bit_index = 0;         // Reset after completing 24 bits
+	        prev_bit_flag = 2;     // Reset flag for new data
+	    }
 }
 
 int main(void)
@@ -47,8 +60,9 @@ int main(void)
 	/* Initialize all PWM Notification using the PWM driver */
 	Pwm_EnableNotification(0, PWM_RISING_EDGE);
 
-	Pwm_SetDutyCycle(0, 11797);
-    for(;;)
+	Pwm_SetDutyCycle(0, 5000);
+
+	for(;;)
     {
 
         if(exit_code != 0)

@@ -1,4 +1,4 @@
-FTM_0_CH_0_CH_1_ISR ()
+FTM_2_CH_4_CH_5_ISR ()
 {
   const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase;
   uint8 ChfStatus;
@@ -7,11 +7,11 @@ FTM_0_CH_0_CH_1_ISR ()
   uint8 iftmp.12;
 
   <bb 2> :
-  InstanceId = 0;
-  ChanneId = 0;
+  InstanceId = 2;
+  ChanneId = 4;
   _1 = (int) InstanceId;
   FtmBase = Ftm_Pwm_Ip_aFtmBase[_1];
-  ChanneId = 0;
+  ChanneId = 4;
   goto <bb 9>; [INV]
 
   <bb 3> :
@@ -43,7 +43,7 @@ FTM_0_CH_0_CH_1_ISR ()
   ChanneId = ChanneId.13_3 + 1;
 
   <bb 9> :
-  if (ChanneId <= 1)
+  if (ChanneId <= 5)
     goto <bb 3>; [INV]
   else
     goto <bb 10>; [INV]
@@ -55,7 +55,7 @@ FTM_0_CH_0_CH_1_ISR ()
 }
 
 
-FTM_0_OVF_ISR ()
+FTM_2_OVF_ISR ()
 {
   const struct Ftm_Pwm_Ip_HwAddrType * const FtmBase;
   uint8 TofStatus;
@@ -63,7 +63,7 @@ FTM_0_OVF_ISR ()
   uint8 iftmp.11;
 
   <bb 2> :
-  InstanceId = 0;
+  InstanceId = 2;
   _1 = (int) InstanceId;
   FtmBase = Ftm_Pwm_Ip_aFtmBase[_1];
   _2 = Ftm_Pwm_Ip_GetTimerOverflow (FtmBase);
