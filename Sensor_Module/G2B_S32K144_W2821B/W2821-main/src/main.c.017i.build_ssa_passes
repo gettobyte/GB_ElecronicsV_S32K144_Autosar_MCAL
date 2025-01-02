@@ -1,7 +1,7 @@
 main ()
 {
   Clock_Ip_StatusType clockStatus;
-  int D.7149;
+  int D.7152;
 
   <bb 2> :
   clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
@@ -34,8 +34,8 @@ main ()
   Pwm_SetDutyCycle (0, 5000);
 
   <bb 8> :
-  exit_code.6_2 = exit_code;
-  if (exit_code.6_2 != 0)
+  exit_code.9_2 = exit_code;
+  if (exit_code.9_2 != 0)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
@@ -47,11 +47,11 @@ main ()
   goto <bb 8>; [INV]
 
   <bb 11> :
-  D.7149 = exit_code;
+  D.7152 = exit_code;
 
   <bb 12> :
 <L10>:
-  return D.7149;
+  return D.7152;
 
 }
 
@@ -102,14 +102,26 @@ W2821_Callback ()
   bit_index.5_10 = bit_index.4_9;
   _11 = bit_index.5_10 + 1;
   bit_index = _11;
-  goto <bb 10>; [INV]
+  goto <bb 11>; [INV]
 
   <bb 9> :
-  TestDelay (2400000);
   bit_index = 0;
   prev_bit_flag = 2;
+  transmission_count.6_12 = transmission_count;
+  transmission_count.7_13 = transmission_count.6_12;
+  _14 = transmission_count.7_13 + 1;
+  transmission_count = _14;
+  transmission_count.8_15 = transmission_count;
+  if (transmission_count.8_15 > 2)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
 
   <bb 10> :
+  TestDelay (2400000);
+  transmission_count = 0;
+
+  <bb 11> :
   return;
 
 }

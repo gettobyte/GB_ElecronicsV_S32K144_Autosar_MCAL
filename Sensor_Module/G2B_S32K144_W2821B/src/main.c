@@ -11,30 +11,43 @@ volatile int exit_code = 0;
 volatile uint32_t data = 0b000000001111111100000000; // Example data
 volatile uint8_t bit_index = 0;
 volatile uint8_t prev_bit_flag = 2; // Initialize to an invalid state (e.g., 2)
+volatile uint8_t transmission_count = 0; // Count the number of 24-bit transmissions
+
 void W2821_Callback(void)
 {
-	if (bit_index < 24) {
-	        // Extract the current bit (starting from MSB)
-	        uint8_t current_bit = (data >> (23 - bit_index)) & 0x01;
+	if (bit_index < 24)
+	{
+		// Extract the current bit (starting from MSB)
+		uint8_t current_bit = (data >> (23 - bit_index)) & 0x01;
 
-	        // Only update the duty cycle if the current bit differs from the previous bit
-	        if (current_bit != prev_bit_flag) {
-	            if (current_bit == 0) {
-	                Pwm_SetDutyCycle(0, 10768); // Set 40% for 0
-	            } else {
-	            	Pwm_SetDutyCycle(0, 22000); // Set 60% for 1
-	            }
-	            prev_bit_flag = current_bit; // Update the previous bit flag
-	        }
+		// Only update the duty cycle if the current bit differs from the previous bit
+		if (current_bit != prev_bit_flag)
+		{
+			if (current_bit == 0)
+			{
+				Pwm_SetDutyCycle(0, 10768); // Set 40% for 0
+			} else
+			{
+				Pwm_SetDutyCycle(0, 22000); // Set 60% for 1
+			}
+			prev_bit_flag = current_bit; // Update the previous bit flag
+			}
 
 	        bit_index++; // Move to the next bit
-	    } else {
-	    	TestDelay(2400000);
-	        bit_index = 0;         // Reset after completing 24 bits
-	        prev_bit_flag = 2;     // Reset flag for new data
-	    }
-}
+	}
+	else
+	{
+		bit_index = 0;         // Reset after completing 24 bits
+		prev_bit_flag = 2;     // Reset flag for new data
+		transmission_count++;         // Increment the transmission count
 
+		if (transmission_count >= 3)
+		{
+			TestDelay(2400000); // Set complete flag after 3 transmissions
+			transmission_count = 0;      // Reset the counter for future batches
+		}
+	}
+}
 int main(void)
 {
 	Clock_Ip_StatusType clockStatus;

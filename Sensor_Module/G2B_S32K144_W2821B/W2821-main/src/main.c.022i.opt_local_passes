@@ -1,9 +1,9 @@
 main ()
 {
   Clock_Ip_StatusType clockStatus;
-  int D.7149;
+  int D.7152;
   <unnamed type> _1;
-  int exit_code.6_2;
+  int exit_code.9_2;
   int _16;
 
   <bb 2> :
@@ -38,8 +38,8 @@ main ()
   Pwm_SetDutyCycle (0, 5000);
 
   <bb 8> :
-  exit_code.6_2 ={v} exit_code;
-  if (exit_code.6_2 != 0)
+  exit_code.9_2 ={v} exit_code;
+  if (exit_code.9_2 != 0)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
@@ -74,6 +74,10 @@ W2821_Callback ()
   unsigned char bit_index.4_9;
   unsigned char bit_index.5_10;
   unsigned char _11;
+  unsigned char transmission_count.6_12;
+  unsigned char transmission_count.7_13;
+  unsigned char _14;
+  unsigned char transmission_count.8_15;
 
   <bb 2> :
   bit_index.0_1 ={v} bit_index;
@@ -89,15 +93,15 @@ W2821_Callback ()
   _5 = 23 - _4;
   _6 = data.1_2 >> _5;
   _7 = (unsigned char) _6;
-  current_bit_19 = _7 & 1;
+  current_bit_25 = _7 & 1;
   prev_bit_flag.3_8 ={v} prev_bit_flag;
-  if (current_bit_19 != prev_bit_flag.3_8)
+  if (current_bit_25 != prev_bit_flag.3_8)
     goto <bb 4>; [INV]
   else
     goto <bb 8>; [INV]
 
   <bb 4> :
-  if (current_bit_19 == 0)
+  if (current_bit_25 == 0)
     goto <bb 5>; [INV]
   else
     goto <bb 6>; [INV]
@@ -110,21 +114,33 @@ W2821_Callback ()
   Pwm_SetDutyCycle (0, 22000);
 
   <bb 7> :
-  prev_bit_flag ={v} current_bit_19;
+  prev_bit_flag ={v} current_bit_25;
 
   <bb 8> :
   bit_index.4_9 ={v} bit_index;
   bit_index.5_10 = bit_index.4_9;
   _11 = bit_index.5_10 + 1;
   bit_index ={v} _11;
-  goto <bb 10>; [INV]
+  goto <bb 11>; [INV]
 
   <bb 9> :
-  TestDelay (2400000);
   bit_index ={v} 0;
   prev_bit_flag ={v} 2;
+  transmission_count.6_12 ={v} transmission_count;
+  transmission_count.7_13 = transmission_count.6_12;
+  _14 = transmission_count.7_13 + 1;
+  transmission_count ={v} _14;
+  transmission_count.8_15 ={v} transmission_count;
+  if (transmission_count.8_15 > 2)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
 
   <bb 10> :
+  TestDelay (2400000);
+  transmission_count ={v} 0;
+
+  <bb 11> :
   return;
 
 }
