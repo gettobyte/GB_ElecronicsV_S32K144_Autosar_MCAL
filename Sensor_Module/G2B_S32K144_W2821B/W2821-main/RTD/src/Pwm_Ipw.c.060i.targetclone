@@ -1,7 +1,7 @@
 Pwm_Ipw_GetMaxPeriodValue (const struct Pwm_IpwChannelConfigType * const IpConfig)
 {
   uint32 RetVal;
-  uint32 D.6081;
+  uint32 D.6137;
   <unnamed type> _1;
   uint32 _7;
 
@@ -35,7 +35,7 @@ Pwm_Ipw_GetMaxPeriodValue (const struct Pwm_IpwChannelConfigType * const IpConfi
 Pwm_Ipw_ValidateSetOutPutToIdle (const struct Pwm_IpwChannelConfigType * const IpConfig)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6079;
+  Std_ReturnType D.6135;
   <unnamed type> _1;
   Std_ReturnType _8;
 
@@ -63,6 +63,150 @@ Pwm_Ipw_ValidateSetOutPutToIdle (const struct Pwm_IpwChannelConfigType * const I
   <bb 6> :
 <L4>:
   return _8;
+
+}
+
+
+Pwm_Ipw_ValidateNotification (Pwm_EdgeNotificationType Notification, const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6133;
+  <unnamed type> _1;
+  Std_ReturnType _8;
+
+  <bb 2> :
+  RetVal_3 = 0;
+  _1 = IpConfig_5(D)->ChannelType;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+<L0>:
+  RetVal_6 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+<L1>:
+  RetVal_7 = 1;
+
+  <bb 5> :
+  # RetVal_2 = PHI <RetVal_6(3), RetVal_7(4)>
+  _8 = RetVal_2;
+
+  <bb 6> :
+<L4>:
+  return _8;
+
+}
+
+
+Pwm_Ipw_EnableNotification (Pwm_EdgeNotificationType Notification, const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  Ftm_Ftm_Ip_EdgeNotifType FtmNotification;
+  <unnamed type> _1;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _2;
+  unsigned char _3;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _4;
+  unsigned char _5;
+
+  <bb 2> :
+  if (Notification_9(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  FtmNotification_12 = 1;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  if (Notification_9(D) == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  FtmNotification_11 = 2;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  FtmNotification_10 = 3;
+
+  <bb 7> :
+  # FtmNotification_6 = PHI <FtmNotification_12(3), FtmNotification_11(5), FtmNotification_10(6)>
+  _1 = IpConfig_14(D)->ChannelType;
+  switch (_1) <default: <L10> [INV], case 0: <L9> [INV], case 1: <L6> [INV]>
+
+  <bb 8> :
+<L6>:
+  _2 = IpConfig_14(D)->FtmChConfig;
+  if (_2 != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _3 = IpConfig_14(D)->ChannelInstanceId;
+  _4 = IpConfig_14(D)->FtmChConfig;
+  _5 = _4->ChannelId;
+  Ftm_Pwm_Ip_EnableNotification (_3, _5, FtmNotification_6);
+
+  <bb 10> :
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+<L9>:
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+<L10>:
+
+  <bb 13> :
+  return;
+
+}
+
+
+Pwm_Ipw_DisableNotification (const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  <unnamed type> _1;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _2;
+  unsigned char _3;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _4;
+  unsigned char _5;
+
+  <bb 2> :
+  _1 = IpConfig_9(D)->ChannelType;
+  switch (_1) <default: <L4> [INV], case 0: <L3> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  _2 = IpConfig_9(D)->FtmChConfig;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _3 = IpConfig_9(D)->ChannelInstanceId;
+  _4 = IpConfig_9(D)->FtmChConfig;
+  _5 = _4->ChannelId;
+  Ftm_Pwm_Ip_DisableNotification (_3, _5);
+
+  <bb 5> :
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L3>:
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L4>:
+
+  <bb 8> :
+  return;
 
 }
 
@@ -201,7 +345,7 @@ Pwm_Ipw_SetDutyCycle (uint16 DutyCycle, const struct Pwm_IpwChannelConfigType * 
 {
   uint16 FtmDutyCycle;
   Std_ReturnType RetVal;
-  Std_ReturnType D.6072;
+  Std_ReturnType D.6116;
   <unnamed type> _1;
   const struct Ftm_Pwm_Ip_ChannelConfigType * _2;
   unsigned char _3;

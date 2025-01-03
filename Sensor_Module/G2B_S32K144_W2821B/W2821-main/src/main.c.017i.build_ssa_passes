@@ -1,7 +1,7 @@
 main ()
 {
   Clock_Ip_StatusType clockStatus;
-  int D.6449;
+  int D.7152;
 
   <bb 2> :
   clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
@@ -28,35 +28,14 @@ main ()
   <bb 7> :
   Clock_Ip_DistributePll ();
   Port_Init (0B);
+  Platform_Init (0B);
   Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
+  Pwm_EnableNotification (0, 1);
+  Pwm_SetDutyCycle (0, 5000);
 
   <bb 8> :
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  exit_code.0_2 = exit_code;
-  if (exit_code.0_2 != 0)
+  exit_code.9_2 = exit_code;
+  if (exit_code.9_2 != 0)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
@@ -68,11 +47,82 @@ main ()
   goto <bb 8>; [INV]
 
   <bb 11> :
-  D.6449 = exit_code;
+  D.7152 = exit_code;
 
   <bb 12> :
 <L10>:
-  return D.6449;
+  return D.7152;
+
+}
+
+
+W2821_Callback ()
+{
+  uint8_t current_bit;
+
+  <bb 2> :
+  bit_index.0_1 = bit_index;
+  if (bit_index.0_1 <= 23)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  data.1_2 = data;
+  bit_index.2_3 = bit_index;
+  _4 = (int) bit_index.2_3;
+  _5 = 23 - _4;
+  _6 = data.1_2 >> _5;
+  _7 = (unsigned char) _6;
+  current_bit = _7 & 1;
+  prev_bit_flag.3_8 = prev_bit_flag;
+  if (current_bit != prev_bit_flag.3_8)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  if (current_bit == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  Pwm_SetDutyCycle (0, 10768);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  Pwm_SetDutyCycle (0, 22000);
+
+  <bb 7> :
+  prev_bit_flag = current_bit;
+
+  <bb 8> :
+  bit_index.4_9 = bit_index;
+  bit_index.5_10 = bit_index.4_9;
+  _11 = bit_index.5_10 + 1;
+  bit_index = _11;
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+  bit_index = 0;
+  prev_bit_flag = 2;
+  transmission_count.6_12 = transmission_count;
+  transmission_count.7_13 = transmission_count.6_12;
+  _14 = transmission_count.7_13 + 1;
+  transmission_count = _14;
+  transmission_count.8_15 = transmission_count;
+  if (transmission_count.8_15 > 2)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  TestDelay (2400000);
+  transmission_count = 0;
+
+  <bb 11> :
+  return;
 
 }
 

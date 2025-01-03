@@ -142,7 +142,7 @@ extern "C"{
 #define FTM_PWM_IP_DEV_ERROR_DETECT           (STD_ON)
 
 /** @brief        Switch to enable the notifications feature */
-#define FTM_PWM_IP_NOTIFICATION_SUPPORTED     (STD_OFF)
+#define FTM_PWM_IP_NOTIFICATION_SUPPORTED     (STD_ON)
 
 /** @brief    Support for User mode */
 #define FTM_PWM_IP_ENABLE_USER_MODE_SUPPORT   (STD_OFF)
@@ -168,10 +168,10 @@ extern "C"{
 #endif
 
 /* Macros that indicate FTM instances used by Pwm */
-#ifndef FTM_0_USED
-    #define FTM_0_USED
+#ifndef FTM_2_USED
+    #define FTM_2_USED
 #else
-    #error "FTM_0 instance cannot be used by Pwm. Instance locked by another driver!"
+    #error "FTM_2 instance cannot be used by Pwm. Instance locked by another driver!"
 #endif
 /* FTM module features */
 
@@ -204,6 +204,8 @@ extern "C"{
 /** Number of instances of the SIM module. */
 #define FTM_PWM_IP_SIM_INSTANCE_COUNT                  (SIM_INSTANCE_COUNT)
 
+#define FTM_PWM_IP_2_OVF_ISR_USED
+#define FTM_PWM_IP_2_CH_4_CH_5_ISR_USED
 
 #define FTM_PWM_IP_FAULT_NUMBER_CHANNELS                  (4U)
 /*==================================================================================================

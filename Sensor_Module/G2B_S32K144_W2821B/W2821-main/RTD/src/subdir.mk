@@ -36,6 +36,7 @@ C_SRCS += \
 ../RTD/src/Ftm_Mcl_Ip.c \
 ../RTD/src/Ftm_Pwm_Ip.c \
 ../RTD/src/Ftm_Pwm_Ip_Irq.c \
+../RTD/src/IntCtrl_Ip.c \
 ../RTD/src/Mcu.c \
 ../RTD/src/Mcu_Dem_Wrapper.c \
 ../RTD/src/Mcu_Ipw.c \
@@ -44,6 +45,8 @@ C_SRCS += \
 ../RTD/src/OsIf_Timer.c \
 ../RTD/src/OsIf_Timer_System.c \
 ../RTD/src/OsIf_Timer_System_Internal_Systick.c \
+../RTD/src/Platform.c \
+../RTD/src/Platform_Ipw.c \
 ../RTD/src/Port.c \
 ../RTD/src/Port_Ci_Port_Ip.c \
 ../RTD/src/Port_Ipw.c \
@@ -64,6 +67,7 @@ C_SRCS += \
 ../RTD/src/SchM_Mcu.c \
 ../RTD/src/SchM_Port.c \
 ../RTD/src/SchM_Pwm.c \
+../RTD/src/System_Ip.c \
 ../RTD/src/Trgmux_Ip.c \
 ../RTD/src/Trgmux_Ip_HwAcc.c 
 
@@ -100,6 +104,7 @@ OBJS += \
 ./RTD/src/Ftm_Mcl_Ip.o \
 ./RTD/src/Ftm_Pwm_Ip.o \
 ./RTD/src/Ftm_Pwm_Ip_Irq.o \
+./RTD/src/IntCtrl_Ip.o \
 ./RTD/src/Mcu.o \
 ./RTD/src/Mcu_Dem_Wrapper.o \
 ./RTD/src/Mcu_Ipw.o \
@@ -108,6 +113,8 @@ OBJS += \
 ./RTD/src/OsIf_Timer.o \
 ./RTD/src/OsIf_Timer_System.o \
 ./RTD/src/OsIf_Timer_System_Internal_Systick.o \
+./RTD/src/Platform.o \
+./RTD/src/Platform_Ipw.o \
 ./RTD/src/Port.o \
 ./RTD/src/Port_Ci_Port_Ip.o \
 ./RTD/src/Port_Ipw.o \
@@ -128,6 +135,7 @@ OBJS += \
 ./RTD/src/SchM_Mcu.o \
 ./RTD/src/SchM_Port.o \
 ./RTD/src/SchM_Pwm.o \
+./RTD/src/System_Ip.o \
 ./RTD/src/Trgmux_Ip.o \
 ./RTD/src/Trgmux_Ip_HwAcc.o 
 
@@ -164,6 +172,7 @@ C_DEPS += \
 ./RTD/src/Ftm_Mcl_Ip.d \
 ./RTD/src/Ftm_Pwm_Ip.d \
 ./RTD/src/Ftm_Pwm_Ip_Irq.d \
+./RTD/src/IntCtrl_Ip.d \
 ./RTD/src/Mcu.d \
 ./RTD/src/Mcu_Dem_Wrapper.d \
 ./RTD/src/Mcu_Ipw.d \
@@ -172,6 +181,8 @@ C_DEPS += \
 ./RTD/src/OsIf_Timer.d \
 ./RTD/src/OsIf_Timer_System.d \
 ./RTD/src/OsIf_Timer_System_Internal_Systick.d \
+./RTD/src/Platform.d \
+./RTD/src/Platform_Ipw.d \
 ./RTD/src/Port.d \
 ./RTD/src/Port_Ci_Port_Ip.d \
 ./RTD/src/Port_Ipw.d \
@@ -192,6 +203,7 @@ C_DEPS += \
 ./RTD/src/SchM_Mcu.d \
 ./RTD/src/SchM_Port.d \
 ./RTD/src/SchM_Pwm.d \
+./RTD/src/System_Ip.d \
 ./RTD/src/Trgmux_Ip.d \
 ./RTD/src/Trgmux_Ip_HwAcc.d 
 

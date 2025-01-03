@@ -84,7 +84,7 @@ extern "C"{
 *                                          CONSTANTS
 ==================================================================================================*/
 /* Ftm instance index for configuration PwmFtmCh_0 */
-#define FTM_PWM_IP_BOARD_InitPeripherals_I0_CH0_CFG      (0U)
+#define FTM_PWM_IP_BOARD_InitPeripherals_I2_CH5_CFG      (2U)
 
 /*==================================================================================================
 *                                      DEFINES AND MACROS
@@ -109,18 +109,18 @@ extern "C"{
 #include "Pwm_MemMap.h"
 
 /*================================================================================================*/
-/* Ftm instance 0 User configuration structure */
-extern const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0;
+/* Ftm instance 2 User configuration structure */
+extern const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg2;
 
-/* Ftm instance 0 configuration structure */
-extern const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0;
+/* Ftm instance 2 configuration structure */
+extern const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg2;
 
-/* Ftm instance 0 synchronization configuration structure */
-extern const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg0;
+/* Ftm instance 2 synchronization configuration structure */
+extern const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg2;
 
-/* Channel configurations for Ftm instance 0 */
-/* Ftm channel 0 configuration */
-extern const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0;
+/* Channel configurations for Ftm instance 2 */
+/* Ftm channel 5 configuration */
+extern const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I2_Ch5;
 
 
 #define PWM_STOP_SEC_CONFIG_DATA_UNSPECIFIED

@@ -101,7 +101,7 @@ extern "C"{
 ==================================================================================================*/
 #define PWM_START_SEC_CODE
 #include "Pwm_MemMap.h"
-
+extern void Pwm_Notification(uint8 Channel);
 #define PWM_STOP_SEC_CODE
 #include "Pwm_MemMap.h"
 
@@ -116,8 +116,8 @@ extern "C"{
 
 /*================================================================================================*/
 
-/* Ftm instance 0 synchronization initialization configuration */
-const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg0 =
+/* Ftm instance 2 synchronization initialization configuration */
+const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg2 =
 {
     /* SyncMode */              FTM_PWM_IP_SYNC_SWTRIGGER,
     /* HwSync0 */               (boolean)FALSE,
@@ -138,26 +138,26 @@ const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg0 =
 };
 
 
-/* Ftm instance 0 initialization configuration */
-const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0 =
+/* Ftm instance 2 initialization configuration */
+const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg2 =
 {
     /* ClkSrc */                FTM_PWM_IP_CLOCK_SOURCE_FIXEDCLK,
     /* ClkPs */                 FTM_PWM_IP_CLOCK_DIV_1,
     /* AlternateclkPs */        FTM_PWM_IP_CLOCK_DIV_1,
     /* CntMode */               FTM_PWM_IP_EDGE_ALIGNED,
-    /* OverflowIrqEn */         (boolean)FALSE,
+    /* OverflowIrqEn */         (boolean)TRUE,
     /* OverflowCb */            {
-        /* FunctionCallback */      NULL_PTR,
-        /* CbParam */               NULL_PTR
+        /* FunctionCallback */      &Pwm_Notification,
+        /* CbParam */               0U
                                 },
 #if (defined(FTM_PWM_IP_HAS_RELOAD_POINT) && (FTM_PWM_IP_HAS_RELOAD_POINT == STD_ON))
-    /* ReloadIrqEn */           (boolean)FALSE,
+    /* ReloadIrqEn */           (boolean)TRUE,
     /* ReloadCb */              {
-        /* FunctionCallback */      NULL_PTR,
-        /* CbParam */               NULL_PTR
+        /* FunctionCallback */      &Pwm_Notification,
+        /* CbParam */               0U
                                 },
 #endif
-    /* DebugMode */             FTM_PWM_IP_BDM_MODE_11,
+    /* DebugMode */             FTM_PWM_IP_BDM_MODE_10,
     /* WriteProtection */       (boolean)FALSE,
     /* InitTriggerEn */         (boolean)FALSE,
     /* InitTrigMode */          FTM_PWM_IP_INIT_TRIGG_RELOAD_POINT,
@@ -173,25 +173,25 @@ const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0 =
     /* FaultInFilter */         0U,
     /* FaultIrqEn */            (boolean)FALSE,
 #endif    
-    /* SyncCfg */               &Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg0
+    /* SyncCfg */               &Ftm_Pwm_Ip_BOARD_InitPeripherals_SyncCfg2
 };
 
 
-/* Ftm instance 0 paired channels initialization configuration */
+/* Ftm instance 2 paired channels initialization configuration */
 
 
 
-/* Ftm instance 0 channels initialization configuration */
+/* Ftm instance 2 channels initialization configuration */
 
-/* Ftm channel 0 configuration */
-const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0 =
+/* Ftm channel 5 configuration */
+const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I2_Ch5 =
 {
-    /* ChannelId */             0U,
+    /* ChannelId */             5U,
     /* ChannelMode */           FTM_PWM_IP_MODE_EDGE_ALIGNED_HIGH,
-    /* ChIrqEn */               (boolean)FALSE,
+    /* ChIrqEn */               (boolean)TRUE,
     /* ChannelCb */             {
-        /* FunctionCallback */      NULL_PTR,
-        /* CbParam */               NULL_PTR
+        /* FunctionCallback */      &Pwm_Notification,
+        /* CbParam */               5U
                                 },
     /* ChOutputEn */            (boolean)TRUE,
     /* SwControlEn */           (boolean)FALSE,
@@ -209,16 +209,16 @@ const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0 =
 
 
 /* Ftm channels configuration array */
-const Ftm_Pwm_Ip_ChannelConfigType * const Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_ChArray[1U] =
+const Ftm_Pwm_Ip_ChannelConfigType * const Ftm_Pwm_Ip_BOARD_InitPeripherals_I2_ChArray[1U] =
 {
-    &Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch0
+    &Ftm_Pwm_Ip_BOARD_InitPeripherals_I2_Ch5
 };
 
-/* Ftm instance 0 User configuration structure */
-const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg0 =
+/* Ftm instance 2 User configuration structure */
+const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_UserCfg2 =
 {
-    /* InstanceCfg */           &Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg0,
-    /* ConfiguredChArray */     Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_ChArray,
+    /* InstanceCfg */           &Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg2,
+    /* ConfiguredChArray */     Ftm_Pwm_Ip_BOARD_InitPeripherals_I2_ChArray,
     /* NoOfConfiguredCh */      1U
 #if (defined(FTM_PWM_IP_HAS_FAULT) && (FTM_PWM_IP_HAS_FAULT == STD_ON))
     ,

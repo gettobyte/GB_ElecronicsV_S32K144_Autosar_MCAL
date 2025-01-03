@@ -22,7 +22,9 @@ C_DEPS :=
 SUBDIRS := \
 Project_Settings/Startup_Code \
 RTD/src \
+S_M_Driver/src \
 board \
+generate/IntCtrl_Ip \
 generate/src \
 src \
 
