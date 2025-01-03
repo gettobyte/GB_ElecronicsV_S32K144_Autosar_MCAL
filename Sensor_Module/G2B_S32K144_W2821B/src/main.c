@@ -7,7 +7,15 @@
 
 volatile int exit_code = 0;
 /* User includes */
-
+void TestDelay(uint32 delay)
+{
+   static volatile uint32 DelayTimer = 0;
+   while(DelayTimer<delay)
+   {
+       DelayTimer++;
+   }
+   DelayTimer=0;
+}
 int main(void)
 {
 	Clock_Ip_StatusType clockStatus;
@@ -31,32 +39,9 @@ int main(void)
     for(;;)
     {
     	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-    	Pwm_SetDutyCycle(0, 20971);
-
+    	TestDelay(480000);
     	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-    	Pwm_SetDutyCycle(0, 11796);
-
+		TestDelay(960000);
         if(exit_code != 0)
         {
             break;

@@ -1,108 +1,124 @@
 Symbol table:
 
-Pwm_SetDutyCycle/10 (Pwm_SetDutyCycle) @063910e0
+Pwm_SetDutyCycle/12 (Pwm_SetDutyCycle) @06cf5380
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-Pwm_Config_BOARD_InitPeripherals/9 (Pwm_Config_BOARD_InitPeripherals) @063901b0
+Pwm_Config_BOARD_InitPeripherals/11 (Pwm_Config_BOARD_InitPeripherals) @064214c8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: main/2 (addr)
+  Referring: main/3 (addr)
   Availability: not_available
   Varpool flags: read-only
-Pwm_Init/8 (Pwm_Init) @06391000
+Pwm_Init/10 (Pwm_Init) @06cf52a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Port_Init/7 (Port_Init) @0638cee0
+Port_Init/9 (Port_Init) @06cf51c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_DistributePll/6 (Clock_Ip_DistributePll) @0638ce00
+Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06cf50e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_GetPllStatus/5 (Clock_Ip_GetPllStatus) @0638cd20
+Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06cf5000
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06390000
+Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06421318
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: main/2 (addr)main/2 (addr)
+  Referring: main/3 (addr)main/3 (addr)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_Init/3 (Clock_Ip_Init) @0638cc40
+Clock_Ip_Init/5 (Clock_Ip_Init) @0641c620
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-main/2 (main) @0638c7e0
+DelayTimer.6434/4 (DelayTimer) @0641bd80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: TestDelay/2 (read)TestDelay/2 (write)TestDelay/2 (read)TestDelay/2 (write)
+  Availability: available
+  Varpool flags: initialized
+main/3 (main) @0641ca80
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
-  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Pwm_Config_BOARD_InitPeripherals/9 (addr)exit_code/1 (read)exit_code/1 (read)
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Pwm_Config_BOARD_InitPeripherals/11 (addr)exit_code/1 (read)exit_code/1 (read)
   Referring: 
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_Init/8 Port_Init/7 Clock_Ip_DistributePll/6 Clock_Ip_GetPllStatus/5 Clock_Ip_Init/3 Clock_Ip_Init/3 
-exit_code/1 (exit_code) @0638b828
+  Calls: TestDelay/2 Pwm_SetDutyCycle/12 TestDelay/2 Pwm_SetDutyCycle/12 Pwm_Init/10 Port_Init/9 Clock_Ip_DistributePll/8 Clock_Ip_GetPllStatus/7 Clock_Ip_Init/5 Clock_Ip_Init/5 
+TestDelay/2 (TestDelay) @0641c7e0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: DelayTimer.6434/4 (read)DelayTimer.6434/4 (write)DelayTimer.6434/4 (read)DelayTimer.6434/4 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: main/3 main/3 
+  Calls: 
+exit_code/1 (exit_code) @0641b828
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
-  Referring: main/2 (read)main/2 (read)
+  Referring: main/3 (read)main/3 (read)
   Availability: available
   Varpool flags: initialized
 main ()
 {
   Clock_Ip_StatusType clockStatus;
-  int D.6449;
+  int D.6456;
   <unnamed type> _1;
-  int exit_code.0_2;
-  int _38;
+  int exit_code.2_2;
+  int _18;
 
   <bb 2> :
   clockStatus_9 = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
   goto <bb 4>; [INV]
 
   <bb 3> :
-  clockStatus_40 = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+  clockStatus_20 = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
 
   <bb 4> :
-  # clockStatus_3 = PHI <clockStatus_9(2), clockStatus_40(3)>
+  # clockStatus_3 = PHI <clockStatus_9(2), clockStatus_20(3)>
   if (clockStatus_3 != 0)
     goto <bb 3>; [INV]
   else
@@ -124,31 +140,11 @@ main ()
 
   <bb 8> :
   Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
+  TestDelay (480000);
   Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  exit_code.0_2 ={v} exit_code;
-  if (exit_code.0_2 != 0)
+  TestDelay (960000);
+  exit_code.2_2 ={v} exit_code;
+  if (exit_code.2_2 != 0)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
@@ -160,11 +156,40 @@ main ()
   goto <bb 8>; [INV]
 
   <bb 11> :
-  _38 ={v} exit_code;
+  _18 ={v} exit_code;
 
   <bb 12> :
 <L10>:
-  return _38;
+  return _18;
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+  long unsigned int DelayTimer.0_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.1_3;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 ={v} DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  DelayTimer.1_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer ={v} 0;
+  return;
 
 }
 

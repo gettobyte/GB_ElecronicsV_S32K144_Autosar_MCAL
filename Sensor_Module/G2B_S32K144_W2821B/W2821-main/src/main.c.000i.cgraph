@@ -1,88 +1,106 @@
-Trivially needed symbols: main exit_code
+Trivially needed symbols: main TestDelay exit_code
+Trivially needed symbols: DelayTimer
 
 
 Initial Symbol table:
 
-Pwm_SetDutyCycle/10 (Pwm_SetDutyCycle) @063910e0
+Pwm_SetDutyCycle/12 (Pwm_SetDutyCycle) @06cf5380
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-Pwm_Config_BOARD_InitPeripherals/9 (Pwm_Config_BOARD_InitPeripherals) @063901b0
+Pwm_Config_BOARD_InitPeripherals/11 (Pwm_Config_BOARD_InitPeripherals) @064214c8
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/2 (addr)
+  Referring: main/3 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Pwm_Init/8 (Pwm_Init) @06391000
+Pwm_Init/10 (Pwm_Init) @06cf52a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Port_Init/7 (Port_Init) @0638cee0
+Port_Init/9 (Port_Init) @06cf51c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_DistributePll/6 (Clock_Ip_DistributePll) @0638ce00
+Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06cf50e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_GetPllStatus/5 (Clock_Ip_GetPllStatus) @0638cd20
+Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06cf5000
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06390000
+Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06421318
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/2 (addr)main/2 (addr)
+  Referring: main/3 (addr)main/3 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Clock_Ip_Init/3 (Clock_Ip_Init) @0638cc40
+Clock_Ip_Init/5 (Clock_Ip_Init) @0641c620
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-main/2 (main) @0638c7e0
+DelayTimer/4 (DelayTimer) @0641bd80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @0641ca80
+  References: 
+  Referring: TestDelay/2 (read)TestDelay/2 (write)TestDelay/2 (read)TestDelay/2 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/3 (main) @0641ca80
   Type: function definition analyzed
   Visibility: force_output no_reorder public
   Aux: @01733ea0
-  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Pwm_Config_BOARD_InitPeripherals/9 (addr)exit_code/1 (read)exit_code/1 (read)
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Pwm_Config_BOARD_InitPeripherals/11 (addr)exit_code/1 (read)exit_code/1 (read)
   Referring: 
   Function flags: body
   Called by: 
-  Calls: Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_Init/8 Port_Init/7 Clock_Ip_DistributePll/6 Clock_Ip_GetPllStatus/5 Clock_Ip_Init/3 Clock_Ip_Init/3 
-exit_code/1 (exit_code) @0638b828
+  Calls: TestDelay/2 Pwm_SetDutyCycle/12 TestDelay/2 Pwm_SetDutyCycle/12 Pwm_Init/10 Port_Init/9 Clock_Ip_DistributePll/8 Clock_Ip_GetPllStatus/7 Clock_Ip_Init/5 Clock_Ip_Init/5 
+TestDelay/2 (TestDelay) @0641c7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @0641ca80
+  References: DelayTimer/4 (read)DelayTimer/4 (write)DelayTimer/4 (read)DelayTimer/4 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/3 main/3 
+  Calls: 
+exit_code/1 (exit_code) @0641b828
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0638c7e0
+  Aux: @0641c7e0
   References: 
-  Referring: main/2 (read)main/2 (read)
+  Referring: main/3 (read)main/3 (read)
   Availability: not-ready
   Varpool flags: initialized
-DevAssert/0 (DevAssert) @0695b540
+DevAssert/0 (DevAssert) @069e9540
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -95,162 +113,192 @@ Removing unused symbols: DevAssert
 
 Reclaimed Symbol table:
 
-Pwm_SetDutyCycle/10 (Pwm_SetDutyCycle) @063910e0
+Pwm_SetDutyCycle/12 (Pwm_SetDutyCycle) @06cf5380
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-Pwm_Config_BOARD_InitPeripherals/9 (Pwm_Config_BOARD_InitPeripherals) @063901b0
+Pwm_Config_BOARD_InitPeripherals/11 (Pwm_Config_BOARD_InitPeripherals) @064214c8
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/2 (addr)
+  Referring: main/3 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Pwm_Init/8 (Pwm_Init) @06391000
+Pwm_Init/10 (Pwm_Init) @06cf52a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Port_Init/7 (Port_Init) @0638cee0
+Port_Init/9 (Port_Init) @06cf51c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_DistributePll/6 (Clock_Ip_DistributePll) @0638ce00
+Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06cf50e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_GetPllStatus/5 (Clock_Ip_GetPllStatus) @0638cd20
+Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06cf5000
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06390000
+Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06421318
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/2 (addr)main/2 (addr)
+  Referring: main/3 (addr)main/3 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Clock_Ip_Init/3 (Clock_Ip_Init) @0638cc40
+Clock_Ip_Init/5 (Clock_Ip_Init) @0641c620
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-main/2 (main) @0638c7e0
+DelayTimer/4 (DelayTimer) @0641bd80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/2 (read)TestDelay/2 (write)TestDelay/2 (read)TestDelay/2 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/3 (main) @0641ca80
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Pwm_Config_BOARD_InitPeripherals/9 (addr)exit_code/1 (read)exit_code/1 (read)
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Pwm_Config_BOARD_InitPeripherals/11 (addr)exit_code/1 (read)exit_code/1 (read)
   Referring: 
   Function flags: body
   Called by: 
-  Calls: Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_Init/8 Port_Init/7 Clock_Ip_DistributePll/6 Clock_Ip_GetPllStatus/5 Clock_Ip_Init/3 Clock_Ip_Init/3 
-exit_code/1 (exit_code) @0638b828
+  Calls: TestDelay/2 Pwm_SetDutyCycle/12 TestDelay/2 Pwm_SetDutyCycle/12 Pwm_Init/10 Port_Init/9 Clock_Ip_DistributePll/8 Clock_Ip_GetPllStatus/7 Clock_Ip_Init/5 Clock_Ip_Init/5 
+TestDelay/2 (TestDelay) @0641c7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer/4 (read)DelayTimer/4 (write)DelayTimer/4 (read)DelayTimer/4 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/3 main/3 
+  Calls: 
+exit_code/1 (exit_code) @0641b828
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: main/2 (read)main/2 (read)
+  Referring: main/3 (read)main/3 (read)
   Availability: not-ready
   Varpool flags: initialized
 
 
 Initial Symbol table:
 
-Pwm_SetDutyCycle/10 (Pwm_SetDutyCycle) @063910e0
+Pwm_SetDutyCycle/12 (Pwm_SetDutyCycle) @06cf5380
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-Pwm_Config_BOARD_InitPeripherals/9 (Pwm_Config_BOARD_InitPeripherals) @063901b0
+Pwm_Config_BOARD_InitPeripherals/11 (Pwm_Config_BOARD_InitPeripherals) @064214c8
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/2 (addr)
+  Referring: main/3 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Pwm_Init/8 (Pwm_Init) @06391000
+Pwm_Init/10 (Pwm_Init) @06cf52a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Port_Init/7 (Port_Init) @0638cee0
+Port_Init/9 (Port_Init) @06cf51c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_DistributePll/6 (Clock_Ip_DistributePll) @0638ce00
+Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06cf50e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_GetPllStatus/5 (Clock_Ip_GetPllStatus) @0638cd20
+Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06cf5000
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06390000
+Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06421318
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/2 (addr)main/2 (addr)
+  Referring: main/3 (addr)main/3 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Clock_Ip_Init/3 (Clock_Ip_Init) @0638cc40
+Clock_Ip_Init/5 (Clock_Ip_Init) @0641c620
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-main/2 (main) @0638c7e0
+DelayTimer.6434/4 (DelayTimer) @0641bd80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/2 (read)TestDelay/2 (write)TestDelay/2 (read)TestDelay/2 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/3 (main) @0641ca80
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Pwm_Config_BOARD_InitPeripherals/9 (addr)exit_code/1 (read)exit_code/1 (read)
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Pwm_Config_BOARD_InitPeripherals/11 (addr)exit_code/1 (read)exit_code/1 (read)
   Referring: 
   Function flags: body
   Called by: 
-  Calls: Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_Init/8 Port_Init/7 Clock_Ip_DistributePll/6 Clock_Ip_GetPllStatus/5 Clock_Ip_Init/3 Clock_Ip_Init/3 
-exit_code/1 (exit_code) @0638b828
+  Calls: TestDelay/2 Pwm_SetDutyCycle/12 TestDelay/2 Pwm_SetDutyCycle/12 Pwm_Init/10 Port_Init/9 Clock_Ip_DistributePll/8 Clock_Ip_GetPllStatus/7 Clock_Ip_Init/5 Clock_Ip_Init/5 
+TestDelay/2 (TestDelay) @0641c7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer.6434/4 (read)DelayTimer.6434/4 (write)DelayTimer.6434/4 (read)DelayTimer.6434/4 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/3 main/3 
+  Calls: 
+exit_code/1 (exit_code) @0641b828
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: main/2 (read)main/2 (read)
+  Referring: main/3 (read)main/3 (read)
   Availability: not-ready
   Varpool flags: initialized
 
@@ -258,81 +306,96 @@ Removing unused symbols:
 
 Reclaimed Symbol table:
 
-Pwm_SetDutyCycle/10 (Pwm_SetDutyCycle) @063910e0
+Pwm_SetDutyCycle/12 (Pwm_SetDutyCycle) @06cf5380
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-Pwm_Config_BOARD_InitPeripherals/9 (Pwm_Config_BOARD_InitPeripherals) @063901b0
+Pwm_Config_BOARD_InitPeripherals/11 (Pwm_Config_BOARD_InitPeripherals) @064214c8
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/2 (addr)
+  Referring: main/3 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Pwm_Init/8 (Pwm_Init) @06391000
+Pwm_Init/10 (Pwm_Init) @06cf52a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Port_Init/7 (Port_Init) @0638cee0
+Port_Init/9 (Port_Init) @06cf51c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_DistributePll/6 (Clock_Ip_DistributePll) @0638ce00
+Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06cf50e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_GetPllStatus/5 (Clock_Ip_GetPllStatus) @0638cd20
+Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06cf5000
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06390000
+Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06421318
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/2 (addr)main/2 (addr)
+  Referring: main/3 (addr)main/3 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Clock_Ip_Init/3 (Clock_Ip_Init) @0638cc40
+Clock_Ip_Init/5 (Clock_Ip_Init) @0641c620
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-main/2 (main) @0638c7e0
+DelayTimer.6434/4 (DelayTimer) @0641bd80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/2 (read)TestDelay/2 (write)TestDelay/2 (read)TestDelay/2 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/3 (main) @0641ca80
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Pwm_Config_BOARD_InitPeripherals/9 (addr)exit_code/1 (read)exit_code/1 (read)
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Pwm_Config_BOARD_InitPeripherals/11 (addr)exit_code/1 (read)exit_code/1 (read)
   Referring: 
   Function flags: body
   Called by: 
-  Calls: Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_Init/8 Port_Init/7 Clock_Ip_DistributePll/6 Clock_Ip_GetPllStatus/5 Clock_Ip_Init/3 Clock_Ip_Init/3 
-exit_code/1 (exit_code) @0638b828
+  Calls: TestDelay/2 Pwm_SetDutyCycle/12 TestDelay/2 Pwm_SetDutyCycle/12 Pwm_Init/10 Port_Init/9 Clock_Ip_DistributePll/8 Clock_Ip_GetPllStatus/7 Clock_Ip_Init/5 Clock_Ip_Init/5 
+TestDelay/2 (TestDelay) @0641c7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: DelayTimer.6434/4 (read)DelayTimer.6434/4 (write)DelayTimer.6434/4 (read)DelayTimer.6434/4 (write)
+  Referring: 
+  Function flags: body
+  Called by: main/3 main/3 
+  Calls: 
+exit_code/1 (exit_code) @0641b828
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: main/2 (read)main/2 (read)
+  Referring: main/3 (read)main/3 (read)
   Availability: not-ready
   Varpool flags: initialized
 
@@ -341,90 +404,106 @@ Reclaiming variables:
 Clearing address taken flags:
 Optimized Symbol table:
 
-Pwm_SetDutyCycle/10 (Pwm_SetDutyCycle) @063910e0
+Pwm_SetDutyCycle/12 (Pwm_SetDutyCycle) @06cf5380
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-Pwm_Config_BOARD_InitPeripherals/9 (Pwm_Config_BOARD_InitPeripherals) @063901b0
+Pwm_Config_BOARD_InitPeripherals/11 (Pwm_Config_BOARD_InitPeripherals) @064214c8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: main/2 (addr)
+  Referring: main/3 (addr)
   Availability: not_available
   Varpool flags: read-only
-Pwm_Init/8 (Pwm_Init) @06391000
+Pwm_Init/10 (Pwm_Init) @06cf52a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Port_Init/7 (Port_Init) @0638cee0
+Port_Init/9 (Port_Init) @06cf51c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_DistributePll/6 (Clock_Ip_DistributePll) @0638ce00
+Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06cf50e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Clock_Ip_GetPllStatus/5 (Clock_Ip_GetPllStatus) @0638cd20
+Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06cf5000
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 
+  Called by: main/3 
   Calls: 
-Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06390000
+Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06421318
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: main/2 (addr)main/2 (addr)
+  Referring: main/3 (addr)main/3 (addr)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_Init/3 (Clock_Ip_Init) @0638cc40
+Clock_Ip_Init/5 (Clock_Ip_Init) @0641c620
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/2 main/2 
+  Called by: main/3 main/3 
   Calls: 
-main/2 (main) @0638c7e0
+DelayTimer.6434/4 (DelayTimer) @0641bd80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: TestDelay/2 (read)TestDelay/2 (write)TestDelay/2 (read)TestDelay/2 (write)
+  Availability: available
+  Varpool flags: initialized
+main/3 (main) @0641ca80
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
-  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (addr)Pwm_Config_BOARD_InitPeripherals/9 (addr)exit_code/1 (read)exit_code/1 (read)
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (addr)Pwm_Config_BOARD_InitPeripherals/11 (addr)exit_code/1 (read)exit_code/1 (read)
   Referring: 
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_SetDutyCycle/10 Pwm_Init/8 Port_Init/7 Clock_Ip_DistributePll/6 Clock_Ip_GetPllStatus/5 Clock_Ip_Init/3 Clock_Ip_Init/3 
-exit_code/1 (exit_code) @0638b828
+  Calls: TestDelay/2 Pwm_SetDutyCycle/12 TestDelay/2 Pwm_SetDutyCycle/12 Pwm_Init/10 Port_Init/9 Clock_Ip_DistributePll/8 Clock_Ip_GetPllStatus/7 Clock_Ip_Init/5 Clock_Ip_Init/5 
+TestDelay/2 (TestDelay) @0641c7e0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: DelayTimer.6434/4 (read)DelayTimer.6434/4 (write)DelayTimer.6434/4 (read)DelayTimer.6434/4 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: main/3 main/3 
+  Calls: 
+exit_code/1 (exit_code) @0641b828
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
-  Referring: main/2 (read)main/2 (read)
+  Referring: main/3 (read)main/3 (read)
   Availability: available
   Varpool flags: initialized
 Materializing clones
@@ -433,12 +512,12 @@ Materialization Call site updates done.
 Reclaiming functions:
 Reclaiming variables:
 Clearing address taken flags:
-Trivially needed variables: exit_code
+Trivially needed variables: DelayTimer.6434 exit_code
 Removing variables:
 
 Final Symbol table:
 
-Pwm_SetDutyCycle/10 (Pwm_SetDutyCycle) @063910e0
+Pwm_SetDutyCycle/12 (Pwm_SetDutyCycle) @06cf5380
   Type: function
   Visibility: external public
   References: 
@@ -447,7 +526,7 @@ Pwm_SetDutyCycle/10 (Pwm_SetDutyCycle) @063910e0
   Function flags:
   Called by: 
   Calls: 
-Pwm_Config_BOARD_InitPeripherals/9 (Pwm_Config_BOARD_InitPeripherals) @063901b0
+Pwm_Config_BOARD_InitPeripherals/11 (Pwm_Config_BOARD_InitPeripherals) @064214c8
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -455,7 +534,7 @@ Pwm_Config_BOARD_InitPeripherals/9 (Pwm_Config_BOARD_InitPeripherals) @063901b0
   Referring: 
   Availability: not_available
   Varpool flags: read-only
-Pwm_Init/8 (Pwm_Init) @06391000
+Pwm_Init/10 (Pwm_Init) @06cf52a0
   Type: function
   Visibility: external public
   References: 
@@ -464,7 +543,7 @@ Pwm_Init/8 (Pwm_Init) @06391000
   Function flags:
   Called by: 
   Calls: 
-Port_Init/7 (Port_Init) @0638cee0
+Port_Init/9 (Port_Init) @06cf51c0
   Type: function
   Visibility: external public
   References: 
@@ -473,7 +552,7 @@ Port_Init/7 (Port_Init) @0638cee0
   Function flags:
   Called by: 
   Calls: 
-Clock_Ip_DistributePll/6 (Clock_Ip_DistributePll) @0638ce00
+Clock_Ip_DistributePll/8 (Clock_Ip_DistributePll) @06cf50e0
   Type: function
   Visibility: external public
   References: 
@@ -482,7 +561,7 @@ Clock_Ip_DistributePll/6 (Clock_Ip_DistributePll) @0638ce00
   Function flags:
   Called by: 
   Calls: 
-Clock_Ip_GetPllStatus/5 (Clock_Ip_GetPllStatus) @0638cd20
+Clock_Ip_GetPllStatus/7 (Clock_Ip_GetPllStatus) @06cf5000
   Type: function
   Visibility: external public
   References: 
@@ -491,7 +570,7 @@ Clock_Ip_GetPllStatus/5 (Clock_Ip_GetPllStatus) @0638cd20
   Function flags:
   Called by: 
   Calls: 
-Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06390000
+Mcu_aClockConfigPB_BOARD_InitPeripherals/6 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06421318
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -499,7 +578,7 @@ Mcu_aClockConfigPB_BOARD_InitPeripherals/4 (Mcu_aClockConfigPB_BOARD_InitPeriphe
   Referring: 
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_Init/3 (Clock_Ip_Init) @0638cc40
+Clock_Ip_Init/5 (Clock_Ip_Init) @0641c620
   Type: function
   Visibility: external public
   References: 
@@ -508,7 +587,15 @@ Clock_Ip_Init/3 (Clock_Ip_Init) @0638cc40
   Function flags:
   Called by: 
   Calls: 
-main/2 (main) @0638c7e0
+DelayTimer.6434/4 (DelayTimer) @0641bd80
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+main/3 (main) @0641ca80
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
   References: 
@@ -517,10 +604,19 @@ main/2 (main) @0638c7e0
   Function flags:
   Called by: 
   Calls: 
-exit_code/1 (exit_code) @0638b828
+TestDelay/2 (TestDelay) @0641c7e0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+exit_code/1 (exit_code) @0641b828
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @00000001
+  Aux: @0641bd80
   References: 
   Referring: 
   Availability: available

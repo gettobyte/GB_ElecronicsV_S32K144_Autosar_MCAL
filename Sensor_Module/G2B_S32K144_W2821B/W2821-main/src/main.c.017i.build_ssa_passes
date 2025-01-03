@@ -1,7 +1,7 @@
 main ()
 {
   Clock_Ip_StatusType clockStatus;
-  int D.6449;
+  int D.6456;
 
   <bb 2> :
   clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
@@ -32,31 +32,11 @@ main ()
 
   <bb 8> :
   Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
-  Pwm_SetDutyCycle (0, 20971);
+  TestDelay (480000);
   Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  Pwm_SetDutyCycle (0, 11796);
-  exit_code.0_2 = exit_code;
-  if (exit_code.0_2 != 0)
+  TestDelay (960000);
+  exit_code.2_2 = exit_code;
+  if (exit_code.2_2 != 0)
     goto <bb 9>; [INV]
   else
     goto <bb 10>; [INV]
@@ -68,11 +48,37 @@ main ()
   goto <bb 8>; [INV]
 
   <bb 11> :
-  D.6449 = exit_code;
+  D.6456 = exit_code;
 
   <bb 12> :
 <L10>:
-  return D.6449;
+  return D.6456;
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 = DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  DelayTimer.1_3 = DelayTimer;
+  if (delay > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer = 0;
+  return;
 
 }
 

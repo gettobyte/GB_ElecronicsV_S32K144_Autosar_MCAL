@@ -239,7 +239,7 @@ static const uint16 Port_au16NoUnUsedPadsArrayDefault_BOARD_InitPeripherals[PORT
 static const Port_UnUsedPinConfigType Port_UnUsedPin_BOARD_InitPeripherals =
 {
     /* @note: Configuration of Default pin */
-    (uint32)0x00000100, (Port_PinDirectionType)1, (uint8)1
+    (uint32)0x00000000, (Port_PinDirectionType)1, (uint8)1
 };
 
 /**
