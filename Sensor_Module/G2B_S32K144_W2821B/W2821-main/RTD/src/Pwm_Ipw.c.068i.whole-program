@@ -2,7 +2,7 @@
 Marking local functions:
 
 
-Marking externally visible functions: Pwm_Ipw_GetMaxPeriodValue Pwm_Ipw_ValidateSetOutPutToIdle Pwm_Ipw_ValidateNotification Pwm_Ipw_EnableNotification Pwm_Ipw_DisableNotification Pwm_Ipw_SetOutputToIdle Pwm_Ipw_SetPeriodAndDuty Pwm_Ipw_SetDutyCycle Pwm_Ipw_DeInitInstance Pwm_Ipw_DeInit Pwm_Ipw_InitInstance Pwm_Ipw_Init
+Marking externally visible functions: Pwm_Ipw_GetMaxPeriodValue Pwm_Ipw_ValidateSetOutPutToIdle Pwm_Ipw_ValidateForceOutputToZero Pwm_Ipw_ValidateNotification Pwm_Ipw_ForceOutputToZero Pwm_Ipw_EnableNotification Pwm_Ipw_DisableNotification Pwm_Ipw_GetOutputState Pwm_Ipw_SetOutputToIdle Pwm_Ipw_SetPeriodAndDuty Pwm_Ipw_SetDutyCycle Pwm_Ipw_DeInitInstance Pwm_Ipw_DeInit Pwm_Ipw_InitInstance Pwm_Ipw_Init
 
 
 Marking externally visible variables: Pwm_Ipw_aFtmDutyCycle
@@ -13,42 +13,59 @@ Reclaiming variables:
 Clearing address taken flags:
 Symbol table:
 
-Ftm_Pwm_Ip_EnableNotification/22 (Ftm_Pwm_Ip_EnableNotification) @05f25000
-  Type: function
-  Visibility: external public
-  References: 
-  Referring: 
-  Availability: not_available
-  Function flags:
-  Called by: Pwm_Ipw_EnableNotification/10 
-  Calls: 
-Ftm_Pwm_Ip_DisableNotification/21 (Ftm_Pwm_Ip_DisableNotification) @05d4fe00
-  Type: function
-  Visibility: external public
-  References: 
-  Referring: 
-  Availability: not_available
-  Function flags:
-  Called by: Pwm_Ipw_DisableNotification/9 
-  Calls: 
-Ftm_Pwm_Ip_SwOutputControl/20 (Ftm_Pwm_Ip_SwOutputControl) @05d4fc40
-  Type: function
-  Visibility: external public
-  References: 
-  Referring: 
-  Availability: not_available
-  Function flags:
-  Called by: Pwm_Ipw_SetOutputToIdle/8 
-  Calls: 
-Ftm_Pwm_Ip_aChannelState/19 (Ftm_Pwm_Ip_aChannelState) @05d58120
+Ftm_Pwm_Ip_aPreviousChannelState/27 (Ftm_Pwm_Ip_aPreviousChannelState) @05e66168
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: Pwm_Ipw_SetOutputToIdle/8 (read)Pwm_Ipw_SetOutputToIdle/8 (write)
+  Referring: Pwm_Ipw_ForceOutputToZero/12 (write)Pwm_Ipw_ForceOutputToZero/12 (read)
   Availability: not_available
   Varpool flags:
-Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/18 (Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty) @05d4fa80
+Ftm_Pwm_Ip_EnableNotification/26 (Ftm_Pwm_Ip_EnableNotification) @05fd0d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Pwm_Ipw_EnableNotification/11 
+  Calls: 
+Ftm_Pwm_Ip_DisableNotification/25 (Ftm_Pwm_Ip_DisableNotification) @05fd0b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Pwm_Ipw_DisableNotification/10 
+  Calls: 
+Ftm_Pwm_Ip_GetOutputState/24 (Ftm_Pwm_Ip_GetOutputState) @05fd09a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Pwm_Ipw_GetOutputState/9 
+  Calls: 
+Ftm_Pwm_Ip_SwOutputControl/23 (Ftm_Pwm_Ip_SwOutputControl) @05fd07e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Pwm_Ipw_ForceOutputToZero/12 Pwm_Ipw_SetOutputToIdle/8 
+  Calls: 
+Ftm_Pwm_Ip_aChannelState/22 (Ftm_Pwm_Ip_aChannelState) @05e5d240
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Pwm_Ipw_SetOutputToIdle/8 (read)Pwm_Ipw_SetOutputToIdle/8 (write)Pwm_Ipw_ForceOutputToZero/12 (read)Pwm_Ipw_ForceOutputToZero/12 (read)Pwm_Ipw_ForceOutputToZero/12 (write)Pwm_Ipw_ForceOutputToZero/12 (write)Pwm_Ipw_ForceOutputToZero/12 (read)
+  Availability: not_available
+  Varpool flags:
+Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/21 (Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty) @05fd0620
   Type: function
   Visibility: external public
   References: 
@@ -57,7 +74,7 @@ Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/18 (Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty) @05d4fa
   Function flags:
   Called by: Pwm_Ipw_SetPeriodAndDuty/7 
   Calls: 
-Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/17 (Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel) @05d4f8c0
+Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/20 (Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel) @05fd0460
   Type: function
   Visibility: external public
   References: 
@@ -66,7 +83,7 @@ Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/17 (Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel) @
   Function flags:
   Called by: Pwm_Ipw_SetDutyCycle/6 
   Calls: 
-Ftm_Pwm_Ip_aPeriod/16 (Ftm_Pwm_Ip_aPeriod) @05d50af8
+Ftm_Pwm_Ip_aPeriod/19 (Ftm_Pwm_Ip_aPeriod) @05fccc18
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -74,7 +91,7 @@ Ftm_Pwm_Ip_aPeriod/16 (Ftm_Pwm_Ip_aPeriod) @05d50af8
   Referring: Pwm_Ipw_SetDutyCycle/6 (read)
   Availability: not_available
   Varpool flags:
-Ftm_Pwm_Ip_DeInit/15 (Ftm_Pwm_Ip_DeInit) @05d4f700
+Ftm_Pwm_Ip_DeInit/18 (Ftm_Pwm_Ip_DeInit) @05fd02a0
   Type: function
   Visibility: external public
   References: 
@@ -83,7 +100,7 @@ Ftm_Pwm_Ip_DeInit/15 (Ftm_Pwm_Ip_DeInit) @05d4f700
   Function flags:
   Called by: Pwm_Ipw_DeInitInstance/5 
   Calls: 
-Ftm_Pwm_Ip_Init/14 (Ftm_Pwm_Ip_Init) @05d4f460
+Ftm_Pwm_Ip_Init/17 (Ftm_Pwm_Ip_Init) @05fd0000
   Type: function
   Visibility: external public
   References: 
@@ -92,7 +109,7 @@ Ftm_Pwm_Ip_Init/14 (Ftm_Pwm_Ip_Init) @05d4f460
   Function flags:
   Called by: Pwm_Ipw_InitInstance/3 
   Calls: 
-Pwm_Ipw_GetMaxPeriodValue/13 (Pwm_Ipw_GetMaxPeriodValue) @05c3dd20
+Pwm_Ipw_GetMaxPeriodValue/16 (Pwm_Ipw_GetMaxPeriodValue) @05d400e0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -101,7 +118,7 @@ Pwm_Ipw_GetMaxPeriodValue/13 (Pwm_Ipw_GetMaxPeriodValue) @05c3dd20
   Function flags: body
   Called by: 
   Calls: 
-Pwm_Ipw_ValidateSetOutPutToIdle/12 (Pwm_Ipw_ValidateSetOutPutToIdle) @05c3d7e0
+Pwm_Ipw_ValidateSetOutPutToIdle/15 (Pwm_Ipw_ValidateSetOutPutToIdle) @05d40d20
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -110,7 +127,7 @@ Pwm_Ipw_ValidateSetOutPutToIdle/12 (Pwm_Ipw_ValidateSetOutPutToIdle) @05c3d7e0
   Function flags: body
   Called by: 
   Calls: 
-Pwm_Ipw_ValidateNotification/11 (Pwm_Ipw_ValidateNotification) @05c3d2a0
+Pwm_Ipw_ValidateForceOutputToZero/14 (Pwm_Ipw_ValidateForceOutputToZero) @05d40a80
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -119,7 +136,7 @@ Pwm_Ipw_ValidateNotification/11 (Pwm_Ipw_ValidateNotification) @05c3d2a0
   Function flags: body
   Called by: 
   Calls: 
-Pwm_Ipw_EnableNotification/10 (Pwm_Ipw_EnableNotification) @05c3dee0
+Pwm_Ipw_ValidateNotification/13 (Pwm_Ipw_ValidateNotification) @05d407e0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -127,8 +144,17 @@ Pwm_Ipw_EnableNotification/10 (Pwm_Ipw_EnableNotification) @05c3dee0
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Ftm_Pwm_Ip_EnableNotification/22 
-Pwm_Ipw_DisableNotification/9 (Pwm_Ipw_DisableNotification) @05c3dc40
+  Calls: 
+Pwm_Ipw_ForceOutputToZero/12 (Pwm_Ipw_ForceOutputToZero) @05d40540
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Ftm_Pwm_Ip_aChannelState/22 (read)Ftm_Pwm_Ip_aChannelState/22 (read)Ftm_Pwm_Ip_aPreviousChannelState/27 (write)Ftm_Pwm_Ip_aChannelState/22 (write)Ftm_Pwm_Ip_aPreviousChannelState/27 (read)Ftm_Pwm_Ip_aChannelState/22 (write)Ftm_Pwm_Ip_aChannelState/22 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_SwOutputControl/23 
+Pwm_Ipw_EnableNotification/11 (Pwm_Ipw_EnableNotification) @05d402a0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -136,17 +162,35 @@ Pwm_Ipw_DisableNotification/9 (Pwm_Ipw_DisableNotification) @05c3dc40
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Ftm_Pwm_Ip_DisableNotification/21 
-Pwm_Ipw_SetOutputToIdle/8 (Pwm_Ipw_SetOutputToIdle) @05c3d9a0
+  Calls: Ftm_Pwm_Ip_EnableNotification/26 
+Pwm_Ipw_DisableNotification/10 (Pwm_Ipw_DisableNotification) @05d40000
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
-  References: Ftm_Pwm_Ip_aChannelState/19 (read)Ftm_Pwm_Ip_aChannelState/19 (write)Pwm_Ipw_aFtmDutyCycle/1 (write)
+  References: 
   Referring: 
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Ftm_Pwm_Ip_SwOutputControl/20 
-Pwm_Ipw_SetPeriodAndDuty/7 (Pwm_Ipw_SetPeriodAndDuty) @05c3d700
+  Calls: Ftm_Pwm_Ip_DisableNotification/25 
+Pwm_Ipw_GetOutputState/9 (Pwm_Ipw_GetOutputState) @05d36b60
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_GetOutputState/24 
+Pwm_Ipw_SetOutputToIdle/8 (Pwm_Ipw_SetOutputToIdle) @05d36620
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Ftm_Pwm_Ip_aChannelState/22 (read)Ftm_Pwm_Ip_aChannelState/22 (write)Pwm_Ipw_aFtmDutyCycle/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Ftm_Pwm_Ip_SwOutputControl/23 
+Pwm_Ipw_SetPeriodAndDuty/7 (Pwm_Ipw_SetPeriodAndDuty) @05d360e0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: Pwm_Ipw_aFtmDutyCycle/1 (write)
@@ -154,17 +198,17 @@ Pwm_Ipw_SetPeriodAndDuty/7 (Pwm_Ipw_SetPeriodAndDuty) @05c3d700
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/18 
-Pwm_Ipw_SetDutyCycle/6 (Pwm_Ipw_SetDutyCycle) @05c3d460
+  Calls: Ftm_Pwm_Ip_UpdatePwmPeriodAndDuty/21 
+Pwm_Ipw_SetDutyCycle/6 (Pwm_Ipw_SetDutyCycle) @05d36d20
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
-  References: Ftm_Pwm_Ip_aPeriod/16 (read)Pwm_Ipw_aFtmDutyCycle/1 (write)
+  References: Ftm_Pwm_Ip_aPeriod/19 (read)Pwm_Ipw_aFtmDutyCycle/1 (write)
   Referring: 
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/17 
-Pwm_Ipw_DeInitInstance/5 (Pwm_Ipw_DeInitInstance) @05c3d1c0
+  Calls: Ftm_Pwm_Ip_UpdatePwmDutyCycleChannel/20 
+Pwm_Ipw_DeInitInstance/5 (Pwm_Ipw_DeInitInstance) @05d36a80
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -172,8 +216,8 @@ Pwm_Ipw_DeInitInstance/5 (Pwm_Ipw_DeInitInstance) @05c3d1c0
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Ftm_Pwm_Ip_DeInit/15 
-Pwm_Ipw_DeInit/4 (Pwm_Ipw_DeInit) @05c38e00
+  Calls: Ftm_Pwm_Ip_DeInit/18 
+Pwm_Ipw_DeInit/4 (Pwm_Ipw_DeInit) @05d367e0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: Pwm_Ipw_aFtmDutyCycle/1 (write)
@@ -182,7 +226,7 @@ Pwm_Ipw_DeInit/4 (Pwm_Ipw_DeInit) @05c38e00
   Function flags: body
   Called by: 
   Calls: 
-Pwm_Ipw_InitInstance/3 (Pwm_Ipw_InitInstance) @05c38620
+Pwm_Ipw_InitInstance/3 (Pwm_Ipw_InitInstance) @05d36540
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -190,8 +234,8 @@ Pwm_Ipw_InitInstance/3 (Pwm_Ipw_InitInstance) @05c38620
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Ftm_Pwm_Ip_Init/14 
-Pwm_Ipw_Init/2 (Pwm_Ipw_Init) @05c382a0
+  Calls: Ftm_Pwm_Ip_Init/17 
+Pwm_Ipw_Init/2 (Pwm_Ipw_Init) @05d362a0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: Pwm_Ipw_aFtmDutyCycle/1 (write)
@@ -200,7 +244,7 @@ Pwm_Ipw_Init/2 (Pwm_Ipw_Init) @05c382a0
   Function flags: body
   Called by: 
   Calls: 
-Pwm_Ipw_aFtmDutyCycle/1 (Pwm_Ipw_aFtmDutyCycle) @05c3a000
+Pwm_Ipw_aFtmDutyCycle/1 (Pwm_Ipw_aFtmDutyCycle) @05d35000
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -210,7 +254,7 @@ Pwm_Ipw_aFtmDutyCycle/1 (Pwm_Ipw_aFtmDutyCycle) @05c3a000
 Pwm_Ipw_GetMaxPeriodValue (const struct Pwm_IpwChannelConfigType * const IpConfig)
 {
   uint32 RetVal;
-  uint32 D.6137;
+  uint32 D.6194;
   <unnamed type> _1;
   uint32 _7;
 
@@ -244,7 +288,7 @@ Pwm_Ipw_GetMaxPeriodValue (const struct Pwm_IpwChannelConfigType * const IpConfi
 Pwm_Ipw_ValidateSetOutPutToIdle (const struct Pwm_IpwChannelConfigType * const IpConfig)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6135;
+  Std_ReturnType D.6192;
   <unnamed type> _1;
   Std_ReturnType _8;
 
@@ -276,10 +320,27 @@ Pwm_Ipw_ValidateSetOutPutToIdle (const struct Pwm_IpwChannelConfigType * const I
 }
 
 
+Pwm_Ipw_ValidateForceOutputToZero (const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6190;
+  Std_ReturnType _2;
+
+  <bb 2> :
+  RetVal_1 = 0;
+  _2 = RetVal_1;
+
+  <bb 3> :
+<L0>:
+  return _2;
+
+}
+
+
 Pwm_Ipw_ValidateNotification (Pwm_EdgeNotificationType Notification, const struct Pwm_IpwChannelConfigType * const IpConfig)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6133;
+  Std_ReturnType D.6188;
   <unnamed type> _1;
   Std_ReturnType _8;
 
@@ -307,6 +368,118 @@ Pwm_Ipw_ValidateNotification (Pwm_EdgeNotificationType Notification, const struc
   <bb 6> :
 <L4>:
   return _8;
+
+}
+
+
+Pwm_Ipw_ForceOutputToZero (boolean Force, const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  Ftm_Pwm_Ip_OutputStateType OutputState;
+  Ftm_Pwm_Ip_PolarityType PolCh;
+  boolean ForceOutput;
+  uint8 Channel;
+  uint8 Instance;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _1;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _2;
+  _Bool _3;
+  int _4;
+  int _5;
+  <unnamed type> _6;
+  int _7;
+  int _8;
+  int _9;
+  int _10;
+  <unnamed type> _11;
+  int _12;
+  int _13;
+  _Bool _14;
+  int _15;
+  int _16;
+  int _17;
+  int _18;
+  <unnamed type> _19;
+  int _20;
+  int _21;
+  <unnamed type> _22;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _23;
+  <unnamed type> _24;
+
+  <bb 2> :
+  Instance_31 = IpConfig_30(D)->ChannelInstanceId;
+  _1 = IpConfig_30(D)->FtmChConfig;
+  Channel_32 = _1->ChannelId;
+  ForceOutput_34 = Force_33(D);
+  _2 = IpConfig_30(D)->FtmChConfig;
+  PolCh_35 = _2->Polarity;
+  _3 = PolCh_35 == 1;
+  OutputState_36 = (Ftm_Pwm_Ip_OutputStateType) _3;
+  _4 = (int) Instance_31;
+  _5 = (int) Channel_32;
+  _6 = Ftm_Pwm_Ip_aChannelState[_4][_5];
+  if (_6 != 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  if (ForceOutput_34 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  _7 = (int) Instance_31;
+  _8 = (int) Channel_32;
+  _9 = (int) Instance_31;
+  _10 = (int) Channel_32;
+  _11 = Ftm_Pwm_Ip_aChannelState[_7][_8];
+  Ftm_Pwm_Ip_aPreviousChannelState[_9][_10] = _11;
+  _12 = (int) Instance_31;
+  _13 = (int) Channel_32;
+  Ftm_Pwm_Ip_aChannelState[_12][_13] = 3;
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  _14 = ~ForceOutput_34;
+  if (_14 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  _15 = (int) Instance_31;
+  _16 = (int) Channel_32;
+  _17 = (int) Instance_31;
+  _18 = (int) Channel_32;
+  _19 = Ftm_Pwm_Ip_aPreviousChannelState[_15][_16];
+  Ftm_Pwm_Ip_aChannelState[_17][_18] = _19;
+  _20 = (int) Instance_31;
+  _21 = (int) Channel_32;
+  _22 = Ftm_Pwm_Ip_aChannelState[_20][_21];
+  if (_22 == 2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _23 = IpConfig_30(D)->FtmChConfig;
+  OutputState_38 = _23->InitOut;
+  ForceOutput_39 = 1;
+
+  <bb 8> :
+  # ForceOutput_25 = PHI <ForceOutput_34(4), ForceOutput_34(5), ForceOutput_39(7), ForceOutput_34(3), ForceOutput_34(6)>
+  # OutputState_26 = PHI <OutputState_36(4), OutputState_36(5), OutputState_38(7), OutputState_36(3), OutputState_36(6)>
+  _24 = IpConfig_30(D)->ChannelType;
+  if (_24 == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  Ftm_Pwm_Ip_SwOutputControl (Instance_31, Channel_32, OutputState_26, ForceOutput_25);
+
+  <bb 10> :
+  return;
 
 }
 
@@ -416,6 +589,71 @@ Pwm_Ipw_DisableNotification (const struct Pwm_IpwChannelConfigType * const IpCon
 
   <bb 8> :
   return;
+
+}
+
+
+Pwm_Ipw_GetOutputState (const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  Ftm_Pwm_Ip_OutputStateType FtmRetVal;
+  Pwm_OutputStateType RetVal;
+  Pwm_OutputStateType D.6162;
+  <unnamed type> _1;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _2;
+  unsigned char _3;
+  const struct Ftm_Pwm_Ip_ChannelConfigType * _4;
+  unsigned char _5;
+  Pwm_OutputStateType _18;
+
+  <bb 2> :
+  RetVal_10 = 0;
+  FtmRetVal_11 = 0;
+  _1 = IpConfig_13(D)->ChannelType;
+  switch (_1) <default: <L7> [INV], case 0: <L6> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  _2 = IpConfig_13(D)->FtmChConfig;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  _3 = IpConfig_13(D)->ChannelInstanceId;
+  _4 = IpConfig_13(D)->FtmChConfig;
+  _5 = _4->ChannelId;
+  FtmRetVal_15 = Ftm_Pwm_Ip_GetOutputState (_3, _5);
+  if (FtmRetVal_15 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  RetVal_17 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  RetVal_16 = 1;
+
+  <bb 7> :
+  # RetVal_6 = PHI <RetVal_10(3), RetVal_17(5), RetVal_16(6)>
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+<L6>:
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+<L7>:
+
+  <bb 10> :
+  # RetVal_7 = PHI <RetVal_6(7), RetVal_10(8), RetVal_10(9)>
+  _18 = RetVal_7;
+
+  <bb 11> :
+<L9>:
+  return _18;
 
 }
 
@@ -554,7 +792,7 @@ Pwm_Ipw_SetDutyCycle (uint16 DutyCycle, const struct Pwm_IpwChannelConfigType * 
 {
   uint16 FtmDutyCycle;
   Std_ReturnType RetVal;
-  Std_ReturnType D.6116;
+  Std_ReturnType D.6150;
   <unnamed type> _1;
   const struct Ftm_Pwm_Ip_ChannelConfigType * _2;
   unsigned char _3;

@@ -157,10 +157,10 @@ const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_BOARD_InitPeripherals_InstCfg2 =
         /* CbParam */               0U
                                 },
 #endif
-    /* DebugMode */             FTM_PWM_IP_BDM_MODE_10,
+    /* DebugMode */             FTM_PWM_IP_BDM_MODE_00,
     /* WriteProtection */       (boolean)FALSE,
     /* InitTriggerEn */         (boolean)FALSE,
-    /* InitTrigMode */          FTM_PWM_IP_INIT_TRIGG_RELOAD_POINT,
+    /* InitTrigMode */          FTM_PWM_IP_INIT_TRIGG_CNT_UPDATE,
     /* PwmPeriod */             10U,
 #if (defined(FTM_PWM_IP_HAS_DITHERING) && (FTM_PWM_IP_HAS_DITHERING == STD_ON))
     /* PwmPeriodDither */       0U,

@@ -103,7 +103,7 @@ extern "C"{
 #define PWM_DE_INIT_API                         (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_GetOutputState API is supported */
-#define PWM_GET_OUTPUT_STATE_API                (STD_OFF)
+#define PWM_GET_OUTPUT_STATE_API                (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_SetDutyCycle API is supported */
 #define PWM_SET_DUTY_CYCLE_API                  (STD_ON)

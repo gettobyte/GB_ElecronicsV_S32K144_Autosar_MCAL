@@ -1,3 +1,46 @@
+Pwm_ForceOutputToZero (Pwm_ChannelType ChannelNumber, boolean Force)
+{
+  Pwm_ChannelType PartitionChannelIdx;
+  uint32 CoreId;
+  unsigned char _1;
+  unsigned char _2;
+  const struct Pwm_ChannelConfigType * _3;
+  unsigned int _4;
+  unsigned int _5;
+  const struct Pwm_ChannelConfigType * _6;
+  const struct Pwm_IpwChannelConfigType * _7;
+
+  <bb 2> :
+  CoreId_9 = 0;
+  _1 = Pwm_ValidateChannelConfigCall (CoreId_9, ChannelNumber_11(D), 33);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  PartitionChannelIdx_14 = Pwm_GetPartitionChannelIdx (CoreId_9, ChannelNumber_11(D));
+  _2 = Pwm_ValidateForceOutputToZero (CoreId_9, PartitionChannelIdx_14);
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _3 = Pwm_aState[CoreId_9].PwmChannelConfigs[0];
+  _4 = (unsigned int) PartitionChannelIdx_14;
+  _5 = _4 * 28;
+  _6 = _3 + _5;
+  _7 = &_6->IpwChannelCfg;
+  Pwm_Ipw_ForceOutputToZero (Force_16(D), _7);
+
+  <bb 5> :
+  Pwm_EndValidateChannelConfigCall (ChannelNumber_11(D));
+  return;
+
+}
+
+
 Pwm_Notification (uint8 Channel)
 {
   void (*Pwm_NotifyType) (void) Notify;
@@ -118,6 +161,50 @@ Pwm_DisableNotification (Pwm_ChannelType ChannelNumber)
   <bb 4> :
   Pwm_EndValidateChannelConfigCall (ChannelNumber_10(D));
   return;
+
+}
+
+
+Pwm_GetOutputState (Pwm_ChannelType ChannelNumber)
+{
+  Pwm_OutputStateType RetVal;
+  Pwm_ChannelType PartitionChannelIdx;
+  uint32 CoreId;
+  Pwm_OutputStateType D.6448;
+  unsigned char _1;
+  const struct Pwm_ChannelConfigType * _2;
+  unsigned int _3;
+  unsigned int _4;
+  const struct Pwm_ChannelConfigType * _5;
+  const struct Pwm_IpwChannelConfigType * _6;
+  Pwm_OutputStateType _19;
+
+  <bb 2> :
+  RetVal_9 = 0;
+  CoreId_10 = 0;
+  _1 = Pwm_ValidateChannelConfigCall (CoreId_10, ChannelNumber_12(D), 5);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  PartitionChannelIdx_15 = Pwm_GetPartitionChannelIdx (CoreId_10, ChannelNumber_12(D));
+  _2 = Pwm_aState[CoreId_10].PwmChannelConfigs[0];
+  _3 = (unsigned int) PartitionChannelIdx_15;
+  _4 = _3 * 28;
+  _5 = _2 + _4;
+  _6 = &_5->IpwChannelCfg;
+  RetVal_17 = Pwm_Ipw_GetOutputState (_6);
+
+  <bb 4> :
+  # RetVal_7 = PHI <RetVal_9(2), RetVal_17(3)>
+  Pwm_EndValidateChannelConfigCall (ChannelNumber_12(D));
+  _19 = RetVal_7;
+
+  <bb 5> :
+<L2>:
+  return _19;
 
 }
 
@@ -504,7 +591,7 @@ Pwm_Init (const struct Pwm_ConfigType * ConfigPtr)
 Pwm_ValidateSetOutPutToIdle (uint32 CoreId, Pwm_ChannelType ChannelNumber)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6412;
+  Std_ReturnType D.6444;
   const struct Pwm_ChannelConfigType * _1;
   unsigned int _2;
   unsigned int _3;
@@ -538,11 +625,48 @@ Pwm_ValidateSetOutPutToIdle (uint32 CoreId, Pwm_ChannelType ChannelNumber)
 }
 
 
+Pwm_ValidateForceOutputToZero (uint32 CoreId, Pwm_ChannelType ChannelNumber)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6473;
+  const struct Pwm_ChannelConfigType * _1;
+  unsigned int _2;
+  unsigned int _3;
+  const struct Pwm_ChannelConfigType * _4;
+  const struct Pwm_IpwChannelConfigType * _5;
+  Std_ReturnType _14;
+
+  <bb 2> :
+  RetVal_7 = 0;
+  _1 = Pwm_aState[CoreId_9(D)].PwmChannelConfigs[0];
+  _2 = (unsigned int) ChannelNumber_10(D);
+  _3 = _2 * 28;
+  _4 = _1 + _3;
+  _5 = &_4->IpwChannelCfg;
+  RetVal_12 = Pwm_Ipw_ValidateForceOutputToZero (_5);
+  if (RetVal_12 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Det_ReportError (121, 0, 33, 62);
+
+  <bb 4> :
+  _14 = RetVal_12;
+
+  <bb 5> :
+<L2>:
+  return _14;
+
+}
+
+
 Pwm_ValidateParamNotification (uint32 CoreId, Pwm_ChannelType ChannelNumber, Pwm_EdgeNotificationType Notification)
 {
   void (*Pwm_NotifyType) (void) PwmChannelNotification;
   Std_ReturnType RetVal;
-  Std_ReturnType D.6425;
+  Std_ReturnType D.6461;
   const struct Pwm_ChannelConfigType * _1;
   unsigned int _2;
   unsigned int _3;
@@ -601,7 +725,7 @@ Pwm_ValidateParamsPeriodClass (uint32 CoreId, Pwm_ChannelType ChannelNumber, Pwm
 {
   uint32 PeriodMaxValue;
   Std_ReturnType RetVal;
-  Std_ReturnType D.6404;
+  Std_ReturnType D.6436;
   const struct Pwm_ChannelConfigType * _1;
   unsigned int _2;
   unsigned int _3;
@@ -654,7 +778,7 @@ Pwm_ValidateParamsPeriodClass (uint32 CoreId, Pwm_ChannelType ChannelNumber, Pwm
 Pwm_ValidateParamDuty (uint16 DutyCycle, uint8 ServiceId)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6390;
+  Std_ReturnType D.6422;
   Std_ReturnType _9;
 
   <bb 2> :
@@ -682,7 +806,7 @@ Pwm_ValidateParamDuty (uint16 DutyCycle, uint8 ServiceId)
 Pwm_ValidateParamPtrInit (uint32 CoreId, const struct Pwm_ConfigType * ConfigPtr)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6360;
+  Std_ReturnType D.6392;
   Std_ReturnType _8;
 
   <bb 2> :
@@ -719,7 +843,7 @@ Pwm_ValidateChannelConfigCall (uint32 CoreId, Pwm_ChannelType ChannelNumber, uin
 {
   Pwm_ChannelType PartitionChannelIdx;
   Std_ReturnType RetVal;
-  Std_ReturnType D.6384;
+  Std_ReturnType D.6416;
   <unnamed type> _1;
   const struct Pwm_ConfigType * _2;
   unsigned char _3;
@@ -803,7 +927,7 @@ Pwm_EndValidateGlobalConfigCall (uint32 CoreId, Std_ReturnType ValidCall, uint8 
 Pwm_ValidateGlobalConfigCall (uint32 CoreId, uint8 ServiceId)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6351;
+  Std_ReturnType D.6383;
   <unnamed type> _1;
   Std_ReturnType _12;
 
@@ -849,7 +973,7 @@ Pwm_ValidateGlobalConfigCall (uint32 CoreId, uint8 ServiceId)
 
 Pwm_GetPartitionChannelIdx (uint32 CoreId, Pwm_ChannelType ChannelNumber)
 {
-  uint8 D.6386;
+  uint8 D.6418;
   uint8 _2;
 
   <bb 2> :

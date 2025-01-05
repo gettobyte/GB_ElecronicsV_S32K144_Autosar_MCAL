@@ -1,3 +1,39 @@
+Pwm_ForceOutputToZero (Pwm_ChannelType ChannelNumber, boolean Force)
+{
+  Pwm_ChannelType PartitionChannelIdx;
+  uint32 CoreId;
+
+  <bb 2> :
+  CoreId = 0;
+  _1 = Pwm_ValidateChannelConfigCall (CoreId, ChannelNumber, 33);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  PartitionChannelIdx = Pwm_GetPartitionChannelIdx (CoreId, ChannelNumber);
+  _2 = Pwm_ValidateForceOutputToZero (CoreId, PartitionChannelIdx);
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _3 = Pwm_aState[CoreId].PwmChannelConfigs[0];
+  _4 = (unsigned int) PartitionChannelIdx;
+  _5 = _4 * 28;
+  _6 = _3 + _5;
+  _7 = &_6->IpwChannelCfg;
+  Pwm_Ipw_ForceOutputToZero (Force, _7);
+
+  <bb 5> :
+  Pwm_EndValidateChannelConfigCall (ChannelNumber);
+  return;
+
+}
+
+
 Pwm_Notification (uint8 Channel)
 {
   void (*Pwm_NotifyType) (void) Notify;
@@ -98,6 +134,42 @@ Pwm_DisableNotification (Pwm_ChannelType ChannelNumber)
   <bb 4> :
   Pwm_EndValidateChannelConfigCall (ChannelNumber);
   return;
+
+}
+
+
+Pwm_GetOutputState (Pwm_ChannelType ChannelNumber)
+{
+  Pwm_OutputStateType RetVal;
+  Pwm_ChannelType PartitionChannelIdx;
+  uint32 CoreId;
+  Pwm_OutputStateType D.6448;
+
+  <bb 2> :
+  RetVal = 0;
+  CoreId = 0;
+  _1 = Pwm_ValidateChannelConfigCall (CoreId, ChannelNumber, 5);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  PartitionChannelIdx = Pwm_GetPartitionChannelIdx (CoreId, ChannelNumber);
+  _2 = Pwm_aState[CoreId].PwmChannelConfigs[0];
+  _3 = (unsigned int) PartitionChannelIdx;
+  _4 = _3 * 28;
+  _5 = _2 + _4;
+  _6 = &_5->IpwChannelCfg;
+  RetVal = Pwm_Ipw_GetOutputState (_6);
+
+  <bb 4> :
+  Pwm_EndValidateChannelConfigCall (ChannelNumber);
+  D.6448 = RetVal;
+
+  <bb 5> :
+<L2>:
+  return D.6448;
 
 }
 
@@ -405,7 +477,7 @@ Pwm_Init (const struct Pwm_ConfigType * ConfigPtr)
 Pwm_ValidateSetOutPutToIdle (uint32 CoreId, Pwm_ChannelType ChannelNumber)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6412;
+  Std_ReturnType D.6444;
 
   <bb 2> :
   RetVal = 0;
@@ -424,11 +496,42 @@ Pwm_ValidateSetOutPutToIdle (uint32 CoreId, Pwm_ChannelType ChannelNumber)
   Det_ReportError (121, 0, 4, 66);
 
   <bb 4> :
-  D.6412 = RetVal;
+  D.6444 = RetVal;
 
   <bb 5> :
 <L2>:
-  return D.6412;
+  return D.6444;
+
+}
+
+
+Pwm_ValidateForceOutputToZero (uint32 CoreId, Pwm_ChannelType ChannelNumber)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6473;
+
+  <bb 2> :
+  RetVal = 0;
+  _1 = Pwm_aState[CoreId].PwmChannelConfigs[0];
+  _2 = (unsigned int) ChannelNumber;
+  _3 = _2 * 28;
+  _4 = _1 + _3;
+  _5 = &_4->IpwChannelCfg;
+  RetVal = Pwm_Ipw_ValidateForceOutputToZero (_5);
+  if (RetVal != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Det_ReportError (121, 0, 33, 62);
+
+  <bb 4> :
+  D.6473 = RetVal;
+
+  <bb 5> :
+<L2>:
+  return D.6473;
 
 }
 
@@ -437,7 +540,7 @@ Pwm_ValidateParamNotification (uint32 CoreId, Pwm_ChannelType ChannelNumber, Pwm
 {
   void (*Pwm_NotifyType) (void) PwmChannelNotification;
   Std_ReturnType RetVal;
-  Std_ReturnType D.6425;
+  Std_ReturnType D.6461;
 
   <bb 2> :
   RetVal = 0;
@@ -472,11 +575,11 @@ Pwm_ValidateParamNotification (uint32 CoreId, Pwm_ChannelType ChannelNumber, Pwm
   Det_ReportError (121, 0, 7, 48);
 
   <bb 6> :
-  D.6425 = RetVal;
+  D.6461 = RetVal;
 
   <bb 7> :
 <L5>:
-  return D.6425;
+  return D.6461;
 
 }
 
@@ -485,7 +588,7 @@ Pwm_ValidateParamsPeriodClass (uint32 CoreId, Pwm_ChannelType ChannelNumber, Pwm
 {
   uint32 PeriodMaxValue;
   Std_ReturnType RetVal;
-  Std_ReturnType D.6404;
+  Std_ReturnType D.6436;
 
   <bb 2> :
   RetVal = 0;
@@ -518,11 +621,11 @@ Pwm_ValidateParamsPeriodClass (uint32 CoreId, Pwm_ChannelType ChannelNumber, Pwm
   RetVal = 1;
 
   <bb 6> :
-  D.6404 = RetVal;
+  D.6436 = RetVal;
 
   <bb 7> :
 <L6>:
-  return D.6404;
+  return D.6436;
 
 }
 
@@ -530,7 +633,7 @@ Pwm_ValidateParamsPeriodClass (uint32 CoreId, Pwm_ChannelType ChannelNumber, Pwm
 Pwm_ValidateParamDuty (uint16 DutyCycle, uint8 ServiceId)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6390;
+  Std_ReturnType D.6422;
 
   <bb 2> :
   RetVal = 0;
@@ -544,11 +647,11 @@ Pwm_ValidateParamDuty (uint16 DutyCycle, uint8 ServiceId)
   RetVal = 1;
 
   <bb 4> :
-  D.6390 = RetVal;
+  D.6422 = RetVal;
 
   <bb 5> :
 <L2>:
-  return D.6390;
+  return D.6422;
 
 }
 
@@ -556,7 +659,7 @@ Pwm_ValidateParamDuty (uint16 DutyCycle, uint8 ServiceId)
 Pwm_ValidateParamPtrInit (uint32 CoreId, const struct Pwm_ConfigType * ConfigPtr)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6360;
+  Std_ReturnType D.6392;
 
   <bb 2> :
   RetVal = 0;
@@ -570,11 +673,11 @@ Pwm_ValidateParamPtrInit (uint32 CoreId, const struct Pwm_ConfigType * ConfigPtr
   RetVal = 1;
 
   <bb 4> :
-  D.6360 = RetVal;
+  D.6392 = RetVal;
 
   <bb 5> :
 <L3>:
-  return D.6360;
+  return D.6392;
 
 }
 
@@ -591,7 +694,7 @@ Pwm_ValidateChannelConfigCall (uint32 CoreId, Pwm_ChannelType ChannelNumber, uin
 {
   Pwm_ChannelType PartitionChannelIdx;
   Std_ReturnType RetVal;
-  Std_ReturnType D.6384;
+  Std_ReturnType D.6416;
 
   <bb 2> :
   RetVal = 0;
@@ -631,11 +734,11 @@ Pwm_ValidateChannelConfigCall (uint32 CoreId, Pwm_ChannelType ChannelNumber, uin
   Det_ReportError (121, 0, ServiceId, 64);
 
   <bb 8> :
-  D.6384 = RetVal;
+  D.6416 = RetVal;
 
   <bb 9> :
 <L9>:
-  return D.6384;
+  return D.6416;
 
 }
 
@@ -670,7 +773,7 @@ Pwm_EndValidateGlobalConfigCall (uint32 CoreId, Std_ReturnType ValidCall, uint8 
 Pwm_ValidateGlobalConfigCall (uint32 CoreId, uint8 ServiceId)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6351;
+  Std_ReturnType D.6383;
 
   <bb 2> :
   RetVal = 0;
@@ -702,25 +805,25 @@ Pwm_ValidateGlobalConfigCall (uint32 CoreId, uint8 ServiceId)
   RetVal = 1;
 
   <bb 7> :
-  D.6351 = RetVal;
+  D.6383 = RetVal;
 
   <bb 8> :
 <L7>:
-  return D.6351;
+  return D.6383;
 
 }
 
 
 Pwm_GetPartitionChannelIdx (uint32 CoreId, Pwm_ChannelType ChannelNumber)
 {
-  uint8 D.6386;
+  uint8 D.6418;
 
   <bb 2> :
-  D.6386 = ChannelNumber;
+  D.6418 = ChannelNumber;
 
   <bb 3> :
 <L0>:
-  return D.6386;
+  return D.6418;
 
 }
 

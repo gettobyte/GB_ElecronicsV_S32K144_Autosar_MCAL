@@ -1,7 +1,7 @@
 Pwm_Ipw_GetMaxPeriodValue (const struct Pwm_IpwChannelConfigType * const IpConfig)
 {
   uint32 RetVal;
-  uint32 D.6137;
+  uint32 D.6194;
 
   <bb 2> :
   RetVal = 65535;
@@ -20,11 +20,11 @@ Pwm_Ipw_GetMaxPeriodValue (const struct Pwm_IpwChannelConfigType * const IpConfi
 <L1>:
 
   <bb 5> :
-  D.6137 = RetVal;
+  D.6194 = RetVal;
 
   <bb 6> :
 <L4>:
-  return D.6137;
+  return D.6194;
 
 }
 
@@ -32,7 +32,7 @@ Pwm_Ipw_GetMaxPeriodValue (const struct Pwm_IpwChannelConfigType * const IpConfi
 Pwm_Ipw_ValidateSetOutPutToIdle (const struct Pwm_IpwChannelConfigType * const IpConfig)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6135;
+  Std_ReturnType D.6192;
 
   <bb 2> :
   RetVal = 0;
@@ -52,11 +52,27 @@ Pwm_Ipw_ValidateSetOutPutToIdle (const struct Pwm_IpwChannelConfigType * const I
   RetVal = 1;
 
   <bb 5> :
-  D.6135 = RetVal;
+  D.6192 = RetVal;
 
   <bb 6> :
 <L4>:
-  return D.6135;
+  return D.6192;
+
+}
+
+
+Pwm_Ipw_ValidateForceOutputToZero (const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6190;
+
+  <bb 2> :
+  RetVal = 0;
+  D.6190 = RetVal;
+
+  <bb 3> :
+<L0>:
+  return D.6190;
 
 }
 
@@ -64,7 +80,7 @@ Pwm_Ipw_ValidateSetOutPutToIdle (const struct Pwm_IpwChannelConfigType * const I
 Pwm_Ipw_ValidateNotification (Pwm_EdgeNotificationType Notification, const struct Pwm_IpwChannelConfigType * const IpConfig)
 {
   Std_ReturnType RetVal;
-  Std_ReturnType D.6133;
+  Std_ReturnType D.6188;
 
   <bb 2> :
   RetVal = 0;
@@ -84,11 +100,97 @@ Pwm_Ipw_ValidateNotification (Pwm_EdgeNotificationType Notification, const struc
   RetVal = 1;
 
   <bb 5> :
-  D.6133 = RetVal;
+  D.6188 = RetVal;
 
   <bb 6> :
 <L4>:
-  return D.6133;
+  return D.6188;
+
+}
+
+
+Pwm_Ipw_ForceOutputToZero (boolean Force, const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  Ftm_Pwm_Ip_OutputStateType OutputState;
+  Ftm_Pwm_Ip_PolarityType PolCh;
+  boolean ForceOutput;
+  uint8 Channel;
+  uint8 Instance;
+
+  <bb 2> :
+  Instance = IpConfig->ChannelInstanceId;
+  _1 = IpConfig->FtmChConfig;
+  Channel = _1->ChannelId;
+  ForceOutput = Force;
+  _2 = IpConfig->FtmChConfig;
+  PolCh = _2->Polarity;
+  _3 = PolCh == 1;
+  OutputState = (Ftm_Pwm_Ip_OutputStateType) _3;
+  _4 = (int) Instance;
+  _5 = (int) Channel;
+  _6 = Ftm_Pwm_Ip_aChannelState[_4][_5];
+  if (_6 != 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  if (ForceOutput != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  _7 = (int) Instance;
+  _8 = (int) Channel;
+  _9 = (int) Instance;
+  _10 = (int) Channel;
+  _11 = Ftm_Pwm_Ip_aChannelState[_7][_8];
+  Ftm_Pwm_Ip_aPreviousChannelState[_9][_10] = _11;
+  _12 = (int) Instance;
+  _13 = (int) Channel;
+  Ftm_Pwm_Ip_aChannelState[_12][_13] = 3;
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  _14 = ~ForceOutput;
+  if (_14 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  _15 = (int) Instance;
+  _16 = (int) Channel;
+  _17 = (int) Instance;
+  _18 = (int) Channel;
+  _19 = Ftm_Pwm_Ip_aPreviousChannelState[_15][_16];
+  Ftm_Pwm_Ip_aChannelState[_17][_18] = _19;
+  _20 = (int) Instance;
+  _21 = (int) Channel;
+  _22 = Ftm_Pwm_Ip_aChannelState[_20][_21];
+  if (_22 == 2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _23 = IpConfig->FtmChConfig;
+  OutputState = _23->InitOut;
+  ForceOutput = 1;
+
+  <bb 8> :
+  _24 = IpConfig->ChannelType;
+  if (_24 == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  Ftm_Pwm_Ip_SwOutputControl (Instance, Channel, OutputState, ForceOutput);
+
+  <bb 10> :
+  return;
 
 }
 
@@ -186,6 +288,63 @@ Pwm_Ipw_DisableNotification (const struct Pwm_IpwChannelConfigType * const IpCon
 
   <bb 8> :
   return;
+
+}
+
+
+Pwm_Ipw_GetOutputState (const struct Pwm_IpwChannelConfigType * const IpConfig)
+{
+  Ftm_Pwm_Ip_OutputStateType FtmRetVal;
+  Pwm_OutputStateType RetVal;
+  Pwm_OutputStateType D.6162;
+
+  <bb 2> :
+  RetVal = 0;
+  FtmRetVal = 0;
+  _1 = IpConfig->ChannelType;
+  switch (_1) <default: <L7> [INV], case 0: <L6> [INV], case 1: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  _2 = IpConfig->FtmChConfig;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  _3 = IpConfig->ChannelInstanceId;
+  _4 = IpConfig->FtmChConfig;
+  _5 = _4->ChannelId;
+  FtmRetVal = Ftm_Pwm_Ip_GetOutputState (_3, _5);
+  if (FtmRetVal == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  RetVal = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  RetVal = 1;
+
+  <bb 7> :
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+<L6>:
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+<L7>:
+
+  <bb 10> :
+  D.6162 = RetVal;
+
+  <bb 11> :
+<L9>:
+  return D.6162;
 
 }
 
@@ -296,7 +455,7 @@ Pwm_Ipw_SetDutyCycle (uint16 DutyCycle, const struct Pwm_IpwChannelConfigType * 
 {
   uint16 FtmDutyCycle;
   Std_ReturnType RetVal;
-  Std_ReturnType D.6116;
+  Std_ReturnType D.6150;
 
   <bb 2> :
   RetVal = 0;
@@ -343,11 +502,11 @@ Pwm_Ipw_SetDutyCycle (uint16 DutyCycle, const struct Pwm_IpwChannelConfigType * 
 <L4>:
 
   <bb 8> :
-  D.6116 = RetVal;
+  D.6150 = RetVal;
 
   <bb 9> :
 <L6>:
-  return D.6116;
+  return D.6150;
 
 }
 
