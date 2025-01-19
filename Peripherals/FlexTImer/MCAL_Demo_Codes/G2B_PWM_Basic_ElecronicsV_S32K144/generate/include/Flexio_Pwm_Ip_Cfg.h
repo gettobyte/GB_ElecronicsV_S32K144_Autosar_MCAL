@@ -129,7 +129,7 @@ extern "C"{
 *                                       DEFINES AND MACROS
 ==================================================================================================*/
 /** @brief      Switch to enable the development error detection. */
-#define FLEXIO_PWM_IP_DEV_ERROR_DETECT          (STD_ON)
+#define FLEXIO_PWM_IP_DEV_ERROR_DETECT          (STD_OFF)
 /** @brief      Number of instances for Flexio */
 #define FLEXIO_PWM_IP_INSTANCE_COUNT            (FLEXIO_INSTANCE_COUNT)
 /** @brief      Number of channels available for PWM on Flexio */

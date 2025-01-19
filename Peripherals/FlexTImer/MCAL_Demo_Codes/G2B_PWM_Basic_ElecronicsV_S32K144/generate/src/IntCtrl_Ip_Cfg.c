@@ -222,7 +222,7 @@ static const IntCtrl_Ip_IrqRouteConfigType aIrqRouteConfig[] = {
     {CAN2_Error_IRQn, 0U, undefined_handler},
     {CAN2_ORed_0_15_MB_IRQn, 0U, undefined_handler},
     {FTM0_Ch0_Ch1_IRQn, 0U, FTM_0_CH_0_CH_1_ISR},
-    {FTM0_Ch2_Ch3_IRQn, 0U, FTM_0_CH_2_CH_3_ISR},
+    {FTM0_Ch2_Ch3_IRQn, 0U, undefined_handler},
     {FTM0_Ch4_Ch5_IRQn, 0U, undefined_handler},
     {FTM0_Ch6_Ch7_IRQn, 0U, undefined_handler},
     {FTM0_Fault_IRQn, 0U, undefined_handler},
