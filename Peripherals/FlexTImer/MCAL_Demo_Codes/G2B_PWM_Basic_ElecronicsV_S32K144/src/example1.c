@@ -83,7 +83,22 @@ int x= 0;
 int color_byte_index = 0;
 int color_bit_index = 0;
 
+// Call back function that gets invoked when Timer overflow
+// happens. As we want to change duty cycle of PWM pulse after completion
+//of one PWM pulse. And on completion of one PWM pulse, our timer overflow event gets
+// hit and we have enabled its interrupt and called its callback.
+// in the call back function of overflow event, we are deinit the PWM peripheral
+// so that continous PWM pulses are not generated.
 void pwm_callback(void)
+{
+
+	pwm_signal_state = Pwm_GetOutputState(channel0);
+
+	Pwm_DeInit();
+}
+
+// Function to generate the 24 PWM pulses with varying duty cycle
+void _ws821_color(uint32 color)
 {
 
 	color_byte_green = ((color >> 16)) & 0xff;
@@ -107,51 +122,69 @@ void pwm_callback(void)
 		}
 	}
 
-	// CV val - 0x26 = 38( 64 percent),
-	// CV val: 0x12 = 18( 32 percent)
-	//MOD val: 0x3B = 59( 100 percent), 0x1f = 31
+		for ( color_byte_index = 0; color_byte_index<3; color_byte_index++)
+			{
+			  for (color_bit_index =7; color_bit_index>=0;color_bit_index--)
+			   {
+				  if(color_byte_index == 0)
+				  {
+				    if(color_byte_green_array[color_bit_index] == 0)
+				    {
+					Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+				    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+				    Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
+				    }
+				    else if (color_byte_green_array[color_bit_index] == 1)
+				    {
+					Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+				    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+				    Pwm_SetDutyCycle(channel0,pwm_duty_cycle(64));
+				    }
 
-	for ( color_byte_index = 0; color_byte_index<3; color_byte_index++)
-		{
-		  for (color_bit_index =7; color_bit_index>=0;color_bit_index--)
-		   {
-			  if(color_byte_index == 0)
-			  {
-			    if(color_byte_green_array[color_bit_index] == 0)
-		        Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
-			    else if (color_byte_green_array[color_bit_index] == 1)
-				Pwm_SetDutyCycle(channel0,pwm_duty_cycle(64));
-			  } else if (color_byte_index == 1)
-			  {
-				if(color_byte_red_array[color_bit_index] == 0)
-				Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
-				else if (color_byte_red_array[color_bit_index] == 1)
-				Pwm_SetDutyCycle(channel0,pwm_duty_cycle(64));
-			  } else if(color_byte_index ==2)
-			  {
-				    if(color_byte_blue_array[color_bit_index] == 0)
-			        Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
+					Pwm_DeInit();
+
+
+				  }else if (color_byte_index == 1)
+				  {
+					  if(color_byte_red_array[color_bit_index] == 0)
+				    {
+					Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+				    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+				    Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
+				    }
+				    else if (color_byte_red_array[color_bit_index] == 1)
+				    {
+					Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+				    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+				    Pwm_SetDutyCycle(channel0,pwm_duty_cycle(64));
+				    }
+
+					Pwm_DeInit();
+
+				  } else if(color_byte_index ==2)
+				  {
+					  if(color_byte_blue_array[color_bit_index] == 0)
+				    {
+					Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+				    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+				    Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
+				    }
 				    else if (color_byte_blue_array[color_bit_index] == 1)
-					Pwm_SetDutyCycle(channel0,pwm_duty_cycle(64));
+				    {
+					Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+				    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+				    Pwm_SetDutyCycle(channel0,pwm_duty_cycle(64));
+				    }
 
-//				    if(i == 7)
-//				    {
-//				       Pwm_DisableNotification(channel0);
-//
-//				       x = 10;
-//				    }
+					Pwm_DeInit();
 
-			  }
+				  }
 
-		   }
-		}
-	// returns the output state of PWM signal whether high or low
-	pwm_signal_state = Pwm_GetOutputState(channel0);
+			   }
+			}
 
-}
 
-void _ws821_color()
-{
+
     //Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
 
 
@@ -203,17 +236,18 @@ int main(void)
 	    IntCtrl_Ip_InstallHandler(FTM0_Ovf_Reload_IRQn, FTM_0_OVF_ISR, NULL_PTR);
 	    IntCtrl_Ip_EnableIrq(FTM0_Ovf_Reload_IRQn);
 
-	    Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
+//	    Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
 
+	    _ws821_color(0xAA7258);
 
 	    //When we want to use the Interrupts, so that call back function can be hit on every time PWM signal edge changes
-	    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
+//	    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
 
 //	 //   zyz =  pwm_duty_cycle(32);
 //        /*Duty cycle update*/
-//	   Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
+	   Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
 
-	   Pwm_SetDutyCycle(channel0,pwm_duty_cycle(64));
+	   Pwm_SetDutyCycle(channel0,pwm_duty_cycle(34));
 
 
 //	    TestDelay(700000);
@@ -258,6 +292,8 @@ int main(void)
 
     for(;;)
     {
+
+	    _ws821_color(0xAA7258);
 
 
     }
