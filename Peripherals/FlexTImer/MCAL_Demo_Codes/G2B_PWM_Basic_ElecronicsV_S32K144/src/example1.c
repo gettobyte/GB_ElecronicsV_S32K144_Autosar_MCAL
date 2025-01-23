@@ -32,6 +32,18 @@ void FTM_0_OVF_ISR(void);
 Pwm_OutputStateType pwm_signal_state;
 uint16 pwm_signal_duty;
 
+void TestDelay(uint32 delay);
+void TestDelay(uint32 delay)
+{
+   static volatile uint32 DelayTimer = 0;
+   while(DelayTimer<delay)
+   {
+       DelayTimer++;
+   }
+   DelayTimer=0;
+}
+
+
 uint16_t pwm_duty_cycle(uint8_t duty_cycle_percent)
 {
 
@@ -95,6 +107,8 @@ void pwm_callback(void)
 	pwm_signal_state = Pwm_GetOutputState(channel0);
 
 	Pwm_DeInit();
+
+	TestDelay(200000);
 }
 
 // Function to generate the 24 PWM pulses with varying duty cycle
@@ -132,13 +146,13 @@ void _ws821_color(uint32 color)
 				    {
 					Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
 				    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
-				    Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
+				    Pwm_SetDutyCycle(channel0,10400);
 				    }
 				    else if (color_byte_green_array[color_bit_index] == 1)
 				    {
 					Pwm_Init(&Pwm_Config_BOARD_InitPeripherals);
 				    Pwm_EnableNotification(channel0, PWM_BOTH_EDGES);
-				    Pwm_SetDutyCycle(channel0,pwm_duty_cycle(64));
+				    Pwm_SetDutyCycle(channel0,21000);
 				    }
 
 					Pwm_DeInit();
@@ -195,16 +209,16 @@ void _ws821_color(uint32 color)
  * - startup asm routine
  * - main()
 */
-void TestDelay(uint32 delay);
-void TestDelay(uint32 delay)
-{
-   static volatile uint32 DelayTimer = 0;
-   while(DelayTimer<delay)
-   {
-       DelayTimer++;
-   }
-   DelayTimer=0;
-}
+//void TestDelay(uint32 delay);
+//void TestDelay(uint32 delay)
+//{
+//   static volatile uint32 DelayTimer = 0;
+//   while(DelayTimer<delay)
+//   {
+//       DelayTimer++;
+//   }
+//   DelayTimer=0;
+//}
 uint8_t IntrPriority;
 
 uint16_t zyz;
@@ -245,9 +259,9 @@ int main(void)
 
 //	 //   zyz =  pwm_duty_cycle(32);
 //        /*Duty cycle update*/
-	   Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
+	  // Pwm_SetDutyCycle(channel0,pwm_duty_cycle(32));
 
-	   Pwm_SetDutyCycle(channel0,pwm_duty_cycle(34));
+//	   Pwm_SetDutyCycle(channel0,pwm_duty_cycle(64));
 
 
 //	    TestDelay(700000);
