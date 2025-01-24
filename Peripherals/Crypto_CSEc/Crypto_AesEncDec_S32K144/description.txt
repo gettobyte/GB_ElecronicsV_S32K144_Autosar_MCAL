@@ -1,0 +1,42 @@
+1. Example Description
+        Exercises the AES128 ECB Encryption and Decryption features of Crypto driver
+    1.1 The application software functionality
+        Performs 2 synchronous encryption/decryption operations with 2 different values for the key and 2 different plain/cipher texts
+        Assumes that both the value of the key and the data to encrypt/decrypt can change at run-time, so they are stored in the RAM key slot
+        At the end of the example run, the Csec keys are erased in order to restore the device to its original state
+
+        Configuration:
+          - Because the value(Key Material) of the AES128 key that is used is changed at run-time, the key element that stores the key must be stored
+        in the RAM key slot so it can be updated for as many times as needed.
+          - The Crypto Driver Object that is used to process the jobs (CDO_Symmetric) should have the AES128_Encrypt and AES128_Decrypt primitives set
+
+2. Installation steps
+    2.1 Hardware installation
+        2.1.1 Supported boards
+            - S32K144EVB-Q100
+        2.1.2 Connections
+            No special wiring connections are needed for this example.
+        2.1.3 Debugger
+            The application can be debugged using the onboard OpenSDA debugger
+    2.2 Software installation
+        2.2.1 Importing the S32 Design Studio project
+            After opening S32 Design Studio, go to "File -> New -> S32DS Project From Example" and select this example. Then click on "Finish".
+            The project should now be copied into your current workspace.
+
+3. Generating, building and running the example application
+    3.1 Generating the S32 configuration
+        Before running the example a configuration needs to be generated.  First go to Project Explorer View in S32 DS and select the current project. Select the "S32 Configuration Tool" menu then click on the desired configuration tool (Pins, Cocks, Peripherals etc...). Clicking on any one of those will generate all the components. Make the desired changes(if any) then click on the "S32 Configuration Tool->Update Code" button.
+    3.2 Compiling the application
+        Select the configuration to be built: FLASH (Debug_FLASH) by left clicking on the downward arrow corresponding to the build button in S32 Design Studio.
+        Use Project > Build to build the project.
+        Wait for the build action to be completed before continuing to the next step. Check the compiler console for error messages; upon completion, the *.elf binary file
+        should be created.
+    3.3 Running the application on the board
+        Go to Run and select Debug Configurations. There will be a debug configuration for this project:
+
+        Configuration Name                  Description
+        -------------------------------     -----------------------
+        $(example)_debug_flash_pemicro      Debug the FLASH configuration using PEmicro probe
+
+        Select the desired debug configuration and click on Launch. Now the perspective will change to the Debug Perspective.
+        Use the controls to control the program flow.
