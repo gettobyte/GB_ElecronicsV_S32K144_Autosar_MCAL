@@ -327,6 +327,8 @@
                                     <setting name="1" value="/Crypto_1/Crypto/CryptoPrimitives_0/CryptoPrimitive_AES128_Decrypt"/>
                                     <setting name="2" value="/Crypto_1/Crypto/CryptoPrimitives_0/CryptoPrimitive_AES128CBC_Encrypt"/>
                                     <setting name="3" value="/Crypto_1/Crypto/CryptoPrimitives_0/CryptoPrimitive_AES128CBC_Decrypt"/>
+                                    <setting name="4" value="/Crypto_1/Crypto/CryptoPrimitives_0/CryptoPrimitive_CMAC_Generate"/>
+                                    <setting name="5" value="/Crypto_1/Crypto/CryptoPrimitives_0/CryptoPrimitive_CMAC_Verify"/>
                                  </array>
                                  <array name="CryptoDriverObjectEcucPartitionRef"/>
                               </struct>
@@ -364,6 +366,20 @@
                                     <setting name="UseCsecKey" value="false"/>
                                     <setting name="CsecKeySlot" value="CSEC_IP_MASTER_ECU_KEY"/>
                                  </struct>
+                                 <struct name="2">
+                                    <setting name="Name" value="CryptoKeyElement_MAC"/>
+                                    <setting name="CryptoKeyElementAllowPartialAccess" value="false"/>
+                                    <setting name="CryptoKeyElementFormat" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                                    <setting name="CryptoKeyElementId" value="1"/>
+                                    <setting name="CryptoKeyElementInitValue" value=""/>
+                                    <setting name="CryptoKeyElementPersist" value="false"/>
+                                    <setting name="CryptoKeyElementReadAccess" value="CRYPTO_RA_ALLOWED"/>
+                                    <setting name="CryptoKeyElementSize" value="16"/>
+                                    <setting name="CryptoKeyElementWriteAccess" value="CRYPTO_WA_ALLOWED"/>
+                                    <array name="CryptoKeyElementVirtualTargetRef"/>
+                                    <setting name="UseCsecKey" value="true"/>
+                                    <setting name="CsecKeySlot" value="CSEC_IP_RAM_KEY"/>
+                                 </struct>
                               </array>
                            </struct>
                         </array>
@@ -384,6 +400,12 @@
                                        <setting name="1" value="/Crypto_1/Crypto/CryptoKeyElements/CryptoKeyElement_Cbc"/>
                                     </array>
                                  </struct>
+                                 <struct name="2">
+                                    <setting name="Name" value="CryptoKeyType_MAC"/>
+                                    <array name="CryptoKeyElementRef">
+                                       <setting name="0" value="/Crypto_1/Crypto/CryptoKeyElements/CryptoKeyElement_MAC"/>
+                                    </array>
+                                 </struct>
                               </array>
                            </struct>
                         </array>
@@ -400,6 +422,11 @@
                                     <setting name="Name" value="CryptoKey_1"/>
                                     <setting name="CryptoKeyId" value="1"/>
                                     <setting name="CryptoKeyTypeRef" value="/Crypto_1/Crypto/CryptoKeyTypes/CryptoKeyType_Cbc"/>
+                                 </struct>
+                                 <struct name="2">
+                                    <setting name="Name" value="CryptoKey_2"/>
+                                    <setting name="CryptoKeyId" value="2"/>
+                                    <setting name="CryptoKeyTypeRef" value="/Crypto_1/Crypto/CryptoKeyTypes/CryptoKeyType_MAC"/>
                                  </struct>
                               </array>
                            </struct>
@@ -435,6 +462,20 @@
                                     <setting name="CryptoPrimitiveAlgorithmMode" value="CRYPTO_ALGOMODE_CBC"/>
                                     <setting name="CryptoPrimitiveAlgorithmSecondaryFamily" value="CRYPTO_ALGOFAM_NOT_SET"/>
                                     <setting name="CryptoPrimitiveService" value="DECRYPT"/>
+                                 </struct>
+                                 <struct name="4">
+                                    <setting name="Name" value="CryptoPrimitive_CMAC_Generate"/>
+                                    <setting name="CryptoPrimitiveAlgorithmFamily" value="CRYPTO_ALGOFAM_CUSTOM"/>
+                                    <setting name="CryptoPrimitiveAlgorithmMode" value="CRYPTO_ALGOMODE_CMAC"/>
+                                    <setting name="CryptoPrimitiveAlgorithmSecondaryFamily" value="CRYPTO_ALGOFAM_NOT_SET"/>
+                                    <setting name="CryptoPrimitiveService" value="MAC_GENERATE"/>
+                                 </struct>
+                                 <struct name="5">
+                                    <setting name="Name" value="CryptoPrimitive_CMAC_Verify"/>
+                                    <setting name="CryptoPrimitiveAlgorithmFamily" value="CRYPTO_ALGOFAM_CUSTOM"/>
+                                    <setting name="CryptoPrimitiveAlgorithmMode" value="CRYPTO_ALGOMODE_CMAC"/>
+                                    <setting name="CryptoPrimitiveAlgorithmSecondaryFamily" value="CRYPTO_ALGOFAM_NOT_SET"/>
+                                    <setting name="CryptoPrimitiveService" value="MAC_VERIFY"/>
                                  </struct>
                               </array>
                            </struct>

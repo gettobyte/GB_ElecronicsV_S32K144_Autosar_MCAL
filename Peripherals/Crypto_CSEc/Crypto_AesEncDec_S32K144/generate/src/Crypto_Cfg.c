@@ -149,6 +149,12 @@ static const uint32 Crypto_au32KeyElementList_CryptoKey_1[2U] =
     1U
 };
 
+/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_2 */
+static const uint32 Crypto_au32KeyElementList_CryptoKey_2[1U] =
+{
+    2U
+};
+
 #define CRYPTO_STOP_SEC_CONST_32
 #include "Crypto_MemMap.h"
 
@@ -156,7 +162,7 @@ static const uint32 Crypto_au32KeyElementList_CryptoKey_1[2U] =
 #include "Crypto_MemMap.h"
 
 /* Array storing the Crypto primitives in the Crypto Driver Object CDO_Symmetric */
-static const Crypto_PrimitiveType Crypto_aPrimitives_CDO_Symmetric[4U] =
+static const Crypto_PrimitiveType Crypto_aPrimitives_CDO_Symmetric[6U] =
 {
     {
         ENCRYPT,
@@ -181,6 +187,18 @@ static const Crypto_PrimitiveType Crypto_aPrimitives_CDO_Symmetric[4U] =
         (uint8)CRYPTO_ALGOFAM_AES,
         (uint8)CRYPTO_ALGOMODE_CBC,
         (uint8)CRYPTO_ALGOFAM_NOT_SET
+    },
+    {
+        MAC_GENERATE,
+        (uint8)CRYPTO_ALGOFAM_CUSTOM,
+        (uint8)CRYPTO_ALGOMODE_CMAC,
+        (uint8)CRYPTO_ALGOFAM_NOT_SET
+    },
+    {
+        MAC_VERIFY,
+        (uint8)CRYPTO_ALGOFAM_CUSTOM,
+        (uint8)CRYPTO_ALGOMODE_CMAC,
+        (uint8)CRYPTO_ALGOFAM_NOT_SET
     }
 };
 
@@ -194,7 +212,7 @@ static const Crypto_PrimitiveType Crypto_aPrimitives_CDO_Symmetric[4U] =
 #include "Crypto_MemMap.h"
 
 /* Array storing the key element information that is volatile (no need to be persistent across resets) */
-VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[24U], 4U)
+VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[28U], 4U)
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
@@ -218,7 +236,7 @@ const Crypto_ObjectType Crypto_aDriverObjectList[CRYPTO_NUMBER_OF_DRIVER_OBJECTS
         /* Reference to the Crypto primitives list */
         Crypto_aPrimitives_CDO_Symmetric,
         /* Number of crypto primitives */
-        4U
+        6U
     }
 };
 
@@ -236,6 +254,12 @@ const Crypto_KeyType Crypto_aKeyList[CRYPTO_NUMBER_OF_KEYS_U32] =
         2U,
         /* Reference to the list of key elements in the key CryptoKey_1 */
         Crypto_au32KeyElementList_CryptoKey_1
+    },
+    {
+        /* Number of key elements in the key CryptoKey_2 */
+        1U,
+        /* Reference to the list of key elements in the key CryptoKey_2 */
+        Crypto_au32KeyElementList_CryptoKey_2
     }
 };
 
@@ -287,6 +311,29 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         &Crypto_au8VolatileKeyElemValues[8U],
         /* Identifier of the CSEc key */
         CSEC_IP_KEY_INVALID
+    },
+    /* Structure containing information for Key Element CryptoKeyElement_MAC */
+    {
+        /* KeyElementId */
+        1U,
+        /* Allow partial access */
+        (boolean)FALSE,
+        /* Key element format */
+        CRYPTO_KE_FORMAT_BIN_OCTET,
+        /* Key element persistent */
+        (boolean)FALSE,
+        /* Read access type */
+        CRYPTO_RA_ALLOWED,
+        /* Key element max size */
+        16U,
+        /* Write access type */
+        CRYPTO_WA_ALLOWED,
+        /* Pointer to location storing the Key Element actual size */
+        (uint32*)&Crypto_au8VolatileKeyElemValues[24U],
+        /* Pointer to location storing the Key Element value */
+        NULL_PTR,
+        /* Identifier of the CSEc key */
+        CSEC_IP_RAM_KEY
     }
 };
 

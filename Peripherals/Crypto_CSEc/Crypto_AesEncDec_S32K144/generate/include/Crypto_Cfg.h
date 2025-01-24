@@ -130,10 +130,10 @@ extern "C"{
 #define CRYPTO_KEYS_EXIST                               (STD_ON)
 
 /* Number of Crypto keys */
-#define CRYPTO_NUMBER_OF_KEYS_U32                       ((uint32)2U)
+#define CRYPTO_NUMBER_OF_KEYS_U32                       ((uint32)3U)
 
 /* Number of Crypto key elements */
-#define CRYPTO_NUMBER_OF_KEY_ELEMENTS_U32               ((uint32)2U)
+#define CRYPTO_NUMBER_OF_KEY_ELEMENTS_U32               ((uint32)3U)
 
 /* Identifiers for the blobs of information that need to be stored in NVRAM used by the Crypto driver */
 #define CRYPTO_NVRAM_BLOB_0_ID                          (0U)
@@ -179,10 +179,12 @@ extern "C"{
 /* Symbolic names for the CryptoKeyId attribute of all the Crypto keys */
 #define CryptoConf_CryptoKey_Crypto_Key_AES128_Encrypt_Decrypt                   ((uint32)0U)
 #define CryptoConf_CryptoKey_CryptoKey_1                                         ((uint32)1U)
+#define CryptoConf_CryptoKey_CryptoKey_2                                         ((uint32)2U)
 
 /* Symbolic names for the CryptoKeyElementId attribute of all the Crypto key elements */
 #define CryptoConf_CryptoKeyElement_Crypto_KE_AES128_Encrypt_Decrypt_CIPHER_KEY  ((uint32)1U)
 #define CryptoConf_CryptoKeyElement_CryptoKeyElement_Cbc                         ((uint32)5U)
+#define CryptoConf_CryptoKeyElement_CryptoKeyElement_MAC                         ((uint32)1U)
 
 /*==================================================================================================
 *                                              ENUMS
