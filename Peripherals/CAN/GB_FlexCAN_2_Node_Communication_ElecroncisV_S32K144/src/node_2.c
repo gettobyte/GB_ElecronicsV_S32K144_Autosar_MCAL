@@ -41,10 +41,10 @@ GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
 }
 
 
-uint8 CanData1[8] = {1,2,3,4,5,6,7,8};  // 8 Bytes of Data
-uint8 CanData2[8] = {11,22,33,44,55};   // 5 Bytes of Data
-uint8 CanData3[8] = {10,20,30};      //3 Bytes of Data
-uint8 CanData4[8] = {21,22,23,24,25,26,27};    //7 Bytes of Data
+uint8 CanData1[16] = {1,2,3,4,5,6,7,8, 9, 10, 11, 12, 13, 14, 15, 16, 17};  // 8 Bytes of Data
+uint8 CanData2[8] = {11,22,33,44,55, 66, 77, 88};   // 5 Bytes of Data
+uint8 CanData3[8] = {10,20,30, 40, 50, 60, 70, 60};      //3 Bytes of Data
+uint8 CanData4[8] = {21,22,23,24,25,26,27, 28};    //7 Bytes of Data
 
 
 void TestDelay(uint32 delay);
@@ -127,42 +127,58 @@ int main(void)
 	{
 
 
-		if(Dio_ReadChannel(DioConf_DioChannel_Switch_1) == STD_LOW)
-		{
-	//	   Sending Data Frame(Extended) from Node 2:
-			FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData1);
-			{
-				while(FlexCAN_State0.mbs[TX_MB_IDX0].state == FLEXCAN_MB_TX_BUSY)
-				{
-					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
-					TestDelay(2000000);
-					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
-					TestDelay(2000000);
-				}
-				Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
-				TestDelay(2000000);
-				Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
-			}
-		}
-//      Receiving Data Frame(Standard) from Node 1:
-		else
-		{
-			if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs != 0)
-				   {
-						if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->msgId == 1280)
-							{
-								TestDelay(6000000);
-								for (int var = 0; var < 5; var++)
-								{
-									Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_LOW);
-									TestDelay(2000000);
-									Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_HIGH);
-									TestDelay(2000000);
-								}
-							}
-						memset(&FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs, 0x0, sizeof(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs));
-				   }
-		}
+//		if(Dio_ReadChannel(DioConf_DioChannel_Switch_1) == STD_LOW)
+//		{
+//	//	   Sending Data Frame(Extended) from Node 2:
+//			FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData1);
+//			{
+//				while(FlexCAN_State0.mbs[TX_MB_IDX0].state == FLEXCAN_MB_TX_BUSY)
+//				{
+//					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
+//					TestDelay(2000000);
+//					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
+//					TestDelay(2000000);
+//				}
+//				Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
+//				TestDelay(2000000);
+//				Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
+//			}
+//		}
+////      Receiving Data Frame(Standard) from Node 1:
+//		else
+//		{
+//			if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs != 0)
+//				   {
+//						if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->msgId == 1280)
+//							{
+//								TestDelay(6000000);
+//								for (int var = 0; var < 5; var++)
+//								{
+//									Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_LOW);
+//									TestDelay(2000000);
+//									Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_HIGH);
+//									TestDelay(2000000);
+//								}
+//							}
+//						memset(&FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs, 0x0, sizeof(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs));
+//				   }
+//		}
+
+
+		FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData1, 1000);
+		TestDelay(6000000);
+
+		FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData2, 1000);
+		TestDelay(6000000);
+
+		FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData3, 1000);
+		TestDelay(6000000);
+
+
+		FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData4, 1000);
+		TestDelay(6000000);
+
+
 
 	}
 

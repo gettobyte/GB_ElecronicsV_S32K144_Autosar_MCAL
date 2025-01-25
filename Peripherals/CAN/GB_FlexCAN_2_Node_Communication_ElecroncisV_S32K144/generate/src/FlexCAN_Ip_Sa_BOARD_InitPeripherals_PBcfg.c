@@ -132,7 +132,7 @@ const Flexcan_Ip_ConfigType FlexCAN_Config0  = {
 #endif
     FLEXCAN_NORMAL_MODE,
      /*ctrlOptions*/
-    (uint32)(\
+    (uint32)(FLEXCAN_IP_ISO_U32 | \
     FLEXCAN_IP_BUSOFF_RECOVERY_U32 | \
     \
     0U),
@@ -141,7 +141,7 @@ const Flexcan_Ip_ConfigType FlexCAN_Config0  = {
       FLEXCAN_PAYLOAD_SIZE_8
     },
         /*Can FD enabled .fd_enable*/
-        (boolean)FALSE,
+        (boolean)TRUE,
 #if (FLEXCAN_IP_FEATURE_HAS_PE_CLKSRC_SELECT == STD_ON)
         /* Can PE clock selected .is_pe_clock */
         (boolean)TRUE,

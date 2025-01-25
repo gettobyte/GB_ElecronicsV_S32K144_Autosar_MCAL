@@ -107,6 +107,9 @@ int main(void)
 
     Flexcan_Ip_MsgBuffType txData1, txData2;
 
+    Flexcan_Ip_MsgBuffType rxData1, rxData2, rxData3, rxData4;
+
+
     FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
     FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);
 
@@ -115,32 +118,46 @@ int main(void)
 	FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX1, &tx_info_ext_remote, MSG_ID3);
 
 
-	FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &txData1, false);
-	FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX1, &txData2, false);
+//	FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &txData1, false);
+//	FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX1, &txData2, false);
+
+
+	   FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData1, false);
+
+
+	   FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData2, false);
+
+
+	   FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData3, false);
+
+
+	   FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData4, false);
+
+
 
 
    for(;;)
    {
-
-	   if(Dio_ReadChannel(DioConf_DioChannel_Switch_1) == STD_LOW)
-	   {
-//			   Sending Data Frame(Standard) from Node 1:
-			FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &tx_info_std, MSG_ID0, (uint8 *)&CanData1);
-			{
-				while(FlexCAN_State0.mbs[TX_MB_IDX0].state == FLEXCAN_MB_TX_BUSY)
-			   {
-					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
-					TestDelay(2000000);
-					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
-					TestDelay(2000000);
-			   }
-			   Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
-			   TestDelay(2000000);
-			   Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
-			}
-	   }
-//	   Receiving Data Frame(Extended) from Node 2:
-	   else
+//
+//	   if(Dio_ReadChannel(DioConf_DioChannel_Switch_1) == STD_LOW)
+//	   {
+////			   Sending Data Frame(Standard) from Node 1:
+//			FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX0, &tx_info_std, MSG_ID0, (uint8 *)&CanData1);
+//			{
+//				while(FlexCAN_State0.mbs[TX_MB_IDX0].state == FLEXCAN_MB_TX_BUSY)
+//			   {
+//					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_LOW);
+//					TestDelay(2000000);
+//					Dio_WriteChannel(DioConf_DioChannel_RED_LED, STD_HIGH);
+//					TestDelay(2000000);
+//			   }
+//			   Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_LOW);
+//			   TestDelay(2000000);
+//			   Dio_WriteChannel(DioConf_DioChannel_BLUE_LED, STD_HIGH);
+//			}
+//	   }
+////	   Receiving Data Frame(Extended) from Node 2:
+//	   else
 	   {
 		   if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs != 0)
 		   	   {
@@ -158,6 +175,17 @@ int main(void)
 			   	   memset(&FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs, 0x0, sizeof(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs));
 		   	   }
 	   }
+
+//
+//	   FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData2, false);
+//
+//
+//	   FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData3, false);
+//
+//
+//	   FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData4, false);
+//
+
 
 
    }
