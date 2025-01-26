@@ -1,0 +1,50 @@
+IPA summary for Csec_Ip_Isr/0 is missing.
+
+Flattening functions:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :        1 calls, 1.000000 freq, 0 count
+IPA summary for Csec_Ip_Isr/0 is missing.
+Symbol table:
+
+Csec_Ip_IrqHandler/1 (Csec_Ip_IrqHandler) @068ae540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: Csec_Ip_Isr/0 
+  Calls: 
+Csec_Ip_Isr/0 (Csec_Ip_Isr) @068ae000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Csec_Ip_IrqHandler/1 
+
+;; Function Csec_Ip_Isr (Csec_Ip_Isr, funcdef_no=0, decl_uid=5761, cgraph_uid=1, symbol_order=0)
+
+Csec_Ip_Isr ()
+{
+  <bb 2> :
+  Csec_Ip_IrqHandler ();
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+

@@ -1,0 +1,1481 @@
+Trivially needed symbols: ST7789_Float ST7789_WriteDec ST7789_WriteStringBox ST7789_WriteString ST7789_WriteChar ST7789DrawPixel ST7789_DrawImage j i length ST7789_Fill_Color total ST7789_SetAddressWindow GB_ST7789_Init GB_ST7789_SendDataIm GB_ST7789_SendData GB_ST7789_SendCommand GB_STT7789_SPI_CS_high GB_STT7789_SPI_CS_low GB_MA_SPI_exchange_byte GB_MA_SPI_send_byte_conti rx_val TestDelay
+Trivially needed symbols: val DelayTimer
+
+
+Initial Symbol table:
+
+sprintf/31 (sprintf) @05e65460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: ST7789_Float/25 
+  Calls: 
+Dio_WriteChannel/30 (Dio_WriteChannel) @05e26700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789DrawPixel/20 ST7789_DrawImage/19 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_STT7789_SPI_CS_high/8 GB_STT7789_SPI_CS_low/7 
+  Calls: 
+val/29 (val) @05e24828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @05ded460
+  References: 
+  Referring: GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals) @05e246c0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: GB_MA_SPI_send_byte_conti/5 (addr)GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpspi_Ip_SyncTransmit/27 (Lpspi_Ip_SyncTransmit) @05e26460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: GB_MA_SPI_exchange_byte/6 GB_MA_SPI_send_byte_conti/5 
+  Calls: 
+DelayTimer/26 (DelayTimer) @05e24558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @05deb168
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_Float/25 (ST7789_Float) @05df7e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteString/22 sprintf/31 
+ST7789_WriteDec/24 (ST7789_WriteDec) @05df78c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05df7e00
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteStringBox/23 (ST7789_WriteStringBox) @05df7380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05df78c0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteString/22 (ST7789_WriteString) @05df7d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05df7380
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_Float/25 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteChar/21 (ST7789_WriteChar) @05df7a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05df7d20
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteDec/24 ST7789_WriteStringBox/23 ST7789_WriteString/22 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789DrawPixel/20 (ST7789DrawPixel) @05df77e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05df7a80
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789_DrawImage/19 (ST7789_DrawImage) @05df7540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05df77e0
+  References: j/18 (write)j/18 (read)j/18 (read)j/18 (write)j/18 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendDataIm/11 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+j/18 (j) @05deb990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05df7540
+  References: 
+  Referring: ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)
+  Availability: not-ready
+  Varpool flags:
+i/17 (i) @05deb900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05deb990
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+length/16 (length) @05deb8b8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05deb900
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_Fill_Color/15 (ST7789_Fill_Color) @05df7000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05deb8b8
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+total/14 (total) @05deb708
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05df7000
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_SetAddressWindow/13 (ST7789_SetAddressWindow) @05ded7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05deb708
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_DrawImage/19 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+GB_ST7789_Init/12 (GB_ST7789_Init) @05ded2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05ded7e0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 
+GB_ST7789_SendDataIm/11 (GB_ST7789_SendDataIm) @05dedee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05ded2a0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_DrawImage/19 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendData/10 (GB_ST7789_SendData) @05dedc40
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05dedee0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_Fill_Color/15 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendCommand/9 (GB_ST7789_SendCommand) @05ded9a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05dedc40
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_high/8 (GB_STT7789_SPI_CS_high) @05ded700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05ded9a0
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_low/7 (GB_STT7789_SPI_CS_low) @05ded460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05ded700
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_MA_SPI_exchange_byte/6 (GB_MA_SPI_exchange_byte) @05ded1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05ded460
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)val/29 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+GB_MA_SPI_send_byte_conti/5 (GB_MA_SPI_send_byte_conti) @05de9ee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05ded1c0
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)
+  Referring: 
+  Function flags: body
+  Called by: GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+rx_val/4 (rx_val) @05deb168
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  Aux: @05de9ee0
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+TestDelay/3 (TestDelay) @05de9620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  Aux: @05deb168
+  References: DelayTimer/26 (read)DelayTimer/26 (write)DelayTimer/26 (read)DelayTimer/26 (write)
+  Referring: 
+  Function flags: body
+  Called by: GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: 
+_putchar_unlocked/2 (_putchar_unlocked) @05dc77e0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+_getchar_unlocked/1 (_getchar_unlocked) @05dc7540
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+__sputc_r/0 (__sputc_r) @05dc70e0
+  Type: function definition
+  Visibility: no_reorder
+  References: 
+  Referring: 
+  Function flags:
+  Called by: 
+  Calls: 
+
+Removing unused symbols: _putchar_unlocked _getchar_unlocked __sputc_r
+
+Reclaimed Symbol table:
+
+sprintf/31 (sprintf) @05e65460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: ST7789_Float/25 
+  Calls: 
+Dio_WriteChannel/30 (Dio_WriteChannel) @05e26700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789DrawPixel/20 ST7789_DrawImage/19 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_STT7789_SPI_CS_high/8 GB_STT7789_SPI_CS_low/7 
+  Calls: 
+val/29 (val) @05e24828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals) @05e246c0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: GB_MA_SPI_send_byte_conti/5 (addr)GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpspi_Ip_SyncTransmit/27 (Lpspi_Ip_SyncTransmit) @05e26460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: GB_MA_SPI_exchange_byte/6 GB_MA_SPI_send_byte_conti/5 
+  Calls: 
+DelayTimer/26 (DelayTimer) @05e24558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_Float/25 (ST7789_Float) @05df7e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteString/22 sprintf/31 
+ST7789_WriteDec/24 (ST7789_WriteDec) @05df78c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteStringBox/23 (ST7789_WriteStringBox) @05df7380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteString/22 (ST7789_WriteString) @05df7d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_Float/25 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteChar/21 (ST7789_WriteChar) @05df7a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteDec/24 ST7789_WriteStringBox/23 ST7789_WriteString/22 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789DrawPixel/20 (ST7789DrawPixel) @05df77e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789_DrawImage/19 (ST7789_DrawImage) @05df7540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: j/18 (write)j/18 (read)j/18 (read)j/18 (write)j/18 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendDataIm/11 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+j/18 (j) @05deb990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)
+  Availability: not-ready
+  Varpool flags:
+i/17 (i) @05deb900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+length/16 (length) @05deb8b8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_Fill_Color/15 (ST7789_Fill_Color) @05df7000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+total/14 (total) @05deb708
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_SetAddressWindow/13 (ST7789_SetAddressWindow) @05ded7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_DrawImage/19 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+GB_ST7789_Init/12 (GB_ST7789_Init) @05ded2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 
+GB_ST7789_SendDataIm/11 (GB_ST7789_SendDataIm) @05dedee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_DrawImage/19 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendData/10 (GB_ST7789_SendData) @05dedc40
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_Fill_Color/15 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendCommand/9 (GB_ST7789_SendCommand) @05ded9a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_high/8 (GB_STT7789_SPI_CS_high) @05ded700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_low/7 (GB_STT7789_SPI_CS_low) @05ded460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_MA_SPI_exchange_byte/6 (GB_MA_SPI_exchange_byte) @05ded1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)val/29 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+GB_MA_SPI_send_byte_conti/5 (GB_MA_SPI_send_byte_conti) @05de9ee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)
+  Referring: 
+  Function flags: body
+  Called by: GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+rx_val/4 (rx_val) @05deb168
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+TestDelay/3 (TestDelay) @05de9620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: DelayTimer/26 (read)DelayTimer/26 (write)DelayTimer/26 (read)DelayTimer/26 (write)
+  Referring: 
+  Function flags: body
+  Called by: GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: 
+
+
+Initial Symbol table:
+
+sprintf/31 (sprintf) @05e65460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: ST7789_Float/25 
+  Calls: 
+Dio_WriteChannel/30 (Dio_WriteChannel) @05e26700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789DrawPixel/20 ST7789_DrawImage/19 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_STT7789_SPI_CS_high/8 GB_STT7789_SPI_CS_low/7 
+  Calls: 
+val.6604/29 (val) @05e24828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals) @05e246c0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: GB_MA_SPI_send_byte_conti/5 (addr)GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpspi_Ip_SyncTransmit/27 (Lpspi_Ip_SyncTransmit) @05e26460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: GB_MA_SPI_exchange_byte/6 GB_MA_SPI_send_byte_conti/5 
+  Calls: 
+DelayTimer.6587/26 (DelayTimer) @05e24558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_Float/25 (ST7789_Float) @05df7e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteString/22 sprintf/31 
+ST7789_WriteDec/24 (ST7789_WriteDec) @05df78c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteStringBox/23 (ST7789_WriteStringBox) @05df7380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteString/22 (ST7789_WriteString) @05df7d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_Float/25 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteChar/21 (ST7789_WriteChar) @05df7a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteDec/24 ST7789_WriteStringBox/23 ST7789_WriteString/22 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789DrawPixel/20 (ST7789DrawPixel) @05df77e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789_DrawImage/19 (ST7789_DrawImage) @05df7540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: j/18 (write)j/18 (read)j/18 (read)j/18 (write)j/18 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendDataIm/11 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+j/18 (j) @05deb990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)
+  Availability: not-ready
+  Varpool flags:
+i/17 (i) @05deb900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+length/16 (length) @05deb8b8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_Fill_Color/15 (ST7789_Fill_Color) @05df7000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+total/14 (total) @05deb708
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_SetAddressWindow/13 (ST7789_SetAddressWindow) @05ded7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_DrawImage/19 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+GB_ST7789_Init/12 (GB_ST7789_Init) @05ded2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 
+GB_ST7789_SendDataIm/11 (GB_ST7789_SendDataIm) @05dedee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_DrawImage/19 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendData/10 (GB_ST7789_SendData) @05dedc40
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_Fill_Color/15 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendCommand/9 (GB_ST7789_SendCommand) @05ded9a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_high/8 (GB_STT7789_SPI_CS_high) @05ded700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_low/7 (GB_STT7789_SPI_CS_low) @05ded460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_MA_SPI_exchange_byte/6 (GB_MA_SPI_exchange_byte) @05ded1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)val.6604/29 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+GB_MA_SPI_send_byte_conti/5 (GB_MA_SPI_send_byte_conti) @05de9ee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)
+  Referring: 
+  Function flags: body
+  Called by: GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+rx_val/4 (rx_val) @05deb168
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+TestDelay/3 (TestDelay) @05de9620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: DelayTimer.6587/26 (read)DelayTimer.6587/26 (write)DelayTimer.6587/26 (read)DelayTimer.6587/26 (write)
+  Referring: 
+  Function flags: body
+  Called by: GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+sprintf/31 (sprintf) @05e65460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: ST7789_Float/25 
+  Calls: 
+Dio_WriteChannel/30 (Dio_WriteChannel) @05e26700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789DrawPixel/20 ST7789_DrawImage/19 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_STT7789_SPI_CS_high/8 GB_STT7789_SPI_CS_low/7 
+  Calls: 
+val.6604/29 (val) @05e24828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals) @05e246c0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: GB_MA_SPI_send_byte_conti/5 (addr)GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Lpspi_Ip_SyncTransmit/27 (Lpspi_Ip_SyncTransmit) @05e26460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags:
+  Called by: GB_MA_SPI_exchange_byte/6 GB_MA_SPI_send_byte_conti/5 
+  Calls: 
+DelayTimer.6587/26 (DelayTimer) @05e24558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_Float/25 (ST7789_Float) @05df7e00
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteString/22 sprintf/31 
+ST7789_WriteDec/24 (ST7789_WriteDec) @05df78c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteStringBox/23 (ST7789_WriteStringBox) @05df7380
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteString/22 (ST7789_WriteString) @05df7d20
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_Float/25 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteChar/21 (ST7789_WriteChar) @05df7a80
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteDec/24 ST7789_WriteStringBox/23 ST7789_WriteString/22 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789DrawPixel/20 (ST7789DrawPixel) @05df77e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789_DrawImage/19 (ST7789_DrawImage) @05df7540
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: j/18 (write)j/18 (read)j/18 (read)j/18 (write)j/18 (read)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendDataIm/11 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+j/18 (j) @05deb990
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)
+  Availability: not-ready
+  Varpool flags:
+i/17 (i) @05deb900
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+length/16 (length) @05deb8b8
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_Fill_Color/15 (ST7789_Fill_Color) @05df7000
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+total/14 (total) @05deb708
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+ST7789_SetAddressWindow/13 (ST7789_SetAddressWindow) @05ded7e0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_DrawImage/19 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+GB_ST7789_Init/12 (GB_ST7789_Init) @05ded2a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 
+GB_ST7789_SendDataIm/11 (GB_ST7789_SendDataIm) @05dedee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_DrawImage/19 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendData/10 (GB_ST7789_SendData) @05dedc40
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_Fill_Color/15 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendCommand/9 (GB_ST7789_SendCommand) @05ded9a0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_high/8 (GB_STT7789_SPI_CS_high) @05ded700
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_low/7 (GB_STT7789_SPI_CS_low) @05ded460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_MA_SPI_exchange_byte/6 (GB_MA_SPI_exchange_byte) @05ded1c0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)val.6604/29 (addr)
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+GB_MA_SPI_send_byte_conti/5 (GB_MA_SPI_send_byte_conti) @05de9ee0
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)
+  Referring: 
+  Function flags: body
+  Called by: GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+rx_val/4 (rx_val) @05deb168
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+TestDelay/3 (TestDelay) @05de9620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder
+  References: DelayTimer.6587/26 (read)DelayTimer.6587/26 (write)DelayTimer.6587/26 (read)DelayTimer.6587/26 (write)
+  Referring: 
+  Function flags: body
+  Called by: GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+sprintf/31 (sprintf) @05e65460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: ST7789_Float/25 
+  Calls: 
+Dio_WriteChannel/30 (Dio_WriteChannel) @05e26700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789DrawPixel/20 ST7789_DrawImage/19 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_STT7789_SPI_CS_high/8 GB_STT7789_SPI_CS_low/7 
+  Calls: 
+val.6604/29 (val) @05e24828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: available
+  Varpool flags: initialized
+Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals) @05e246c0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: GB_MA_SPI_send_byte_conti/5 (addr)GB_MA_SPI_exchange_byte/6 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Lpspi_Ip_SyncTransmit/27 (Lpspi_Ip_SyncTransmit) @05e26460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: GB_MA_SPI_exchange_byte/6 GB_MA_SPI_send_byte_conti/5 
+  Calls: 
+DelayTimer.6587/26 (DelayTimer) @05e24558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: 
+  Referring: TestDelay/3 (read)TestDelay/3 (write)TestDelay/3 (read)TestDelay/3 (write)
+  Availability: available
+  Varpool flags: initialized
+ST7789_Float/25 (ST7789_Float) @05df7e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteString/22 sprintf/31 
+ST7789_WriteDec/24 (ST7789_WriteDec) @05df78c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteStringBox/23 (ST7789_WriteStringBox) @05df7380
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteString/22 (ST7789_WriteString) @05df7d20
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: ST7789_Float/25 
+  Calls: ST7789_WriteChar/21 
+ST7789_WriteChar/21 (ST7789_WriteChar) @05df7a80
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: ST7789_WriteDec/24 ST7789_WriteStringBox/23 ST7789_WriteString/22 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789DrawPixel/20 (ST7789DrawPixel) @05df77e0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+ST7789_DrawImage/19 (ST7789_DrawImage) @05df7540
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: j/18 (write)j/18 (read)j/18 (read)j/18 (write)j/18 (read)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendDataIm/11 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 ST7789_SetAddressWindow/13 
+j/18 (j) @05deb990
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (read)ST7789_DrawImage/19 (write)ST7789_DrawImage/19 (read)
+  Availability: available
+  Varpool flags:
+i/17 (i) @05deb900
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+length/16 (length) @05deb8b8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+ST7789_Fill_Color/15 (ST7789_Fill_Color) @05df7000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+total/14 (total) @05deb708
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+ST7789_SetAddressWindow/13 (ST7789_SetAddressWindow) @05ded7e0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_DrawImage/19 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 
+GB_ST7789_Init/12 (GB_ST7789_Init) @05ded2a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 TestDelay/3 Dio_WriteChannel/30 
+GB_ST7789_SendDataIm/11 (GB_ST7789_SendDataIm) @05dedee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: ST7789_DrawImage/19 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendData/10 (GB_ST7789_SendData) @05dedc40
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_WriteChar/21 ST7789DrawPixel/20 ST7789_Fill_Color/15 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_ST7789_SendCommand/9 (GB_ST7789_SendCommand) @05ded9a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: ST7789_WriteChar/21 ST7789_DrawImage/19 ST7789_Fill_Color/15 ST7789_SetAddressWindow/13 ST7789_SetAddressWindow/13 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 GB_MA_SPI_send_byte_conti/5 Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_high/8 (GB_STT7789_SPI_CS_high) @05ded700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_STT7789_SPI_CS_low/7 (GB_STT7789_SPI_CS_low) @05ded460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Dio_WriteChannel/30 
+GB_MA_SPI_exchange_byte/6 (GB_MA_SPI_exchange_byte) @05ded1c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)val.6604/29 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+GB_MA_SPI_send_byte_conti/5 (GB_MA_SPI_send_byte_conti) @05de9ee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: GB_ST7789_SendDataIm/11 GB_ST7789_SendData/10 GB_ST7789_SendCommand/9 GB_ST7789_SendCommand/9 
+  Calls: Lpspi_Ip_SyncTransmit/27 
+rx_val/4 (rx_val) @05deb168
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+TestDelay/3 (TestDelay) @05de9620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly
+  References: DelayTimer.6587/26 (read)DelayTimer.6587/26 (write)DelayTimer.6587/26 (read)DelayTimer.6587/26 (write)
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: GB_ST7789_Init/12 GB_ST7789_Init/12 
+  Calls: 
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Trivially needed variables: val.6604 DelayTimer.6587 j i length total rx_val
+Removing variables:
+
+Final Symbol table:
+
+sprintf/31 (sprintf) @05e65460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+Dio_WriteChannel/30 (Dio_WriteChannel) @05e26700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+val.6604/29 (val) @05e24828
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals/28 (Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals) @05e246c0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Lpspi_Ip_SyncTransmit/27 (Lpspi_Ip_SyncTransmit) @05e26460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags:
+  Called by: 
+  Calls: 
+DelayTimer.6587/26 (DelayTimer) @05e24558
+  Type: variable definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  Aux: @05e24828
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+ST7789_Float/25 (ST7789_Float) @05df7e00
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+ST7789_WriteDec/24 (ST7789_WriteDec) @05df78c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+ST7789_WriteStringBox/23 (ST7789_WriteStringBox) @05df7380
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+ST7789_WriteString/22 (ST7789_WriteString) @05df7d20
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+ST7789_WriteChar/21 (ST7789_WriteChar) @05df7a80
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+ST7789DrawPixel/20 (ST7789DrawPixel) @05df77e0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+ST7789_DrawImage/19 (ST7789_DrawImage) @05df7540
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+j/18 (j) @05deb990
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @05e24558
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+i/17 (i) @05deb900
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @05deb990
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+length/16 (length) @05deb8b8
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @05deb900
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+ST7789_Fill_Color/15 (ST7789_Fill_Color) @05df7000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+total/14 (total) @05deb708
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @05deb8b8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+ST7789_SetAddressWindow/13 (ST7789_SetAddressWindow) @05ded7e0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+GB_ST7789_Init/12 (GB_ST7789_Init) @05ded2a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+GB_ST7789_SendDataIm/11 (GB_ST7789_SendDataIm) @05dedee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+GB_ST7789_SendData/10 (GB_ST7789_SendData) @05dedc40
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+GB_ST7789_SendCommand/9 (GB_ST7789_SendCommand) @05ded9a0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+GB_STT7789_SPI_CS_high/8 (GB_STT7789_SPI_CS_high) @05ded700
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+GB_STT7789_SPI_CS_low/7 (GB_STT7789_SPI_CS_low) @05ded460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+GB_MA_SPI_exchange_byte/6 (GB_MA_SPI_exchange_byte) @05ded1c0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+GB_MA_SPI_send_byte_conti/5 (GB_MA_SPI_send_byte_conti) @05de9ee0
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 
+rx_val/4 (rx_val) @05deb168
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible no_reorder asm_written public
+  Aux: @05deb708
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+TestDelay/3 (TestDelay) @05de9620
+  Type: function definition analyzed
+  Visibility: force_output no_reorder prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: available
+  Function flags:
+  Called by: 
+  Calls: 

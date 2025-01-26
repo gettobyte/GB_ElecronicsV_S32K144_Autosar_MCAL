@@ -1,0 +1,843 @@
+main ()
+{
+  Lpspi_Ip_StatusType x;
+  Clock_Ip_StatusType clockStatus;
+  Std_ReturnType RetVal;
+  int D.7210;
+
+  <bb 2> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  Port_Init (0B);
+  Lpspi_Ip_Init (&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
+  GB_ST7789_Init ();
+  TestDelay (7000);
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  ST7789_Fill_Color (0);
+  TestDelay (7000);
+  ST7789_WriteString (0, 140, "Demonstrating  Embedded Cryptography DiY Projects: Part 1", Font_16x26, 53241, 0);
+  TestDelay (7000);
+  ST7789_SetAddressWindow (0, 80, 239, 319);
+  ST7789_Fill_Color (0);
+  TestDelay (70000);
+  RetVal = App_InitCsecHw (3, 0);
+  _1 = RetVal != 0;
+  _2 = (int) _1;
+  _3 = (long unsigned int) _2;
+  u32NumFailedApiCalls.41_4 = u32NumFailedApiCalls;
+  _5 = _3 + u32NumFailedApiCalls.41_4;
+  u32NumFailedApiCalls = _5;
+  OsIf_Init (0B);
+  Crypto_Init (0B);
+  RetVal = Crypto_KeyElementSet (0, 1, &App_au8Aes128EcbKey_1, 16);
+  _6 = RetVal != 0;
+  _7 = (int) _6;
+  _8 = (long unsigned int) _7;
+  u32NumFailedApiCalls.42_9 = u32NumFailedApiCalls;
+  _10 = _8 + u32NumFailedApiCalls.42_9;
+  u32NumFailedApiCalls = _10;
+  RetVal = Crypto_KeySetValid (0);
+  _11 = RetVal != 0;
+  _12 = (int) _11;
+  _13 = (long unsigned int) _12;
+  u32NumFailedApiCalls.43_14 = u32NumFailedApiCalls;
+  _15 = _13 + u32NumFailedApiCalls.43_14;
+  u32NumFailedApiCalls = _15;
+  App_u32Aes128EcbResultSize = 64;
+  Util_Memset (&App_au8Aes128EcbResult, 0, 64);
+  App_PrepareAes128EcbEncryptJob (0, &App_au8Aes128EcbPlaintext_1, 16, &App_au8Aes128EcbResult, &App_u32Aes128EcbResultSize);
+  RetVal = Crypto_ProcessJob (0, &App_JobAes128EcbEncrypt);
+  ST7789_WriteString (0, 80, "Original Data", Font_11x18, 65535, 0);
+  ST7789_WriteString (20, 100, &App_au8Aes128EcbPlaintext_1, Font_16x26, 65535, 0);
+  MACGeneratedSize = 64;
+  RetVal = Crypto_KeyElementSet (2, 1, &App_au8Aes128CbcKey_1, 16);
+  _16 = RetVal != 0;
+  _17 = (int) _16;
+  _18 = (long unsigned int) _17;
+  u32NumFailedApiCalls.44_19 = u32NumFailedApiCalls;
+  _20 = _18 + u32NumFailedApiCalls.44_19;
+  u32NumFailedApiCalls = _20;
+  RetVal = Crypto_KeySetValid (2);
+  _21 = RetVal != 0;
+  _22 = (int) _21;
+  _23 = (long unsigned int) _22;
+  u32NumFailedApiCalls.45_24 = u32NumFailedApiCalls;
+  _25 = _23 + u32NumFailedApiCalls.45_24;
+  u32NumFailedApiCalls = _25;
+  App_PrepareCMACGenerateJob (2, &App_au8Aes128EcbResult, 16, &MACGenerated, &MACGeneratedSize);
+  RetVal = Crypto_ProcessJob (0, &App_JobCMAC_Generate);
+  App_PrepareCMACVerifyJob (2, &App_au8Aes128EcbResult, 16, &MACGenerated, &MACGeneratedSize, &CMAC_Result);
+  RetVal = Crypto_ProcessJob (0, &App_JobCMAC_Verify);
+  App_EraseCsecKeys ();
+  u32NumFailedApiCalls.46_26 = u32NumFailedApiCalls;
+  _27 = u32NumFailedApiCalls.46_26 == 0;
+  Exit_Example (_27);
+  D.7210 = 0;
+
+  <bb 6> :
+<L3>:
+  return D.7210;
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.39_1 = DelayTimer;
+  _2 = DelayTimer.39_1 + 1;
+  DelayTimer = _2;
+
+  <bb 4> :
+  DelayTimer.40_3 = DelayTimer;
+  if (delay > DelayTimer.40_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer = 0;
+  return;
+
+}
+
+
+Util_Memset (void * pDest, uint8 u8Value, uint32 u32Size)
+{
+  uint8 * ptr;
+  uint32 u32Counter;
+
+  <bb 2> :
+  ptr = pDest;
+  u32Counter = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  *ptr = u8Value;
+  ptr = ptr + 1;
+  u32Counter = u32Counter + 1;
+
+  <bb 4> :
+  if (u32Counter < u32Size)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+Util_Memcmp (uint8 * pSource, uint8 * pDest, uint32 u32Size)
+{
+  uint32 u32InputSize;
+  boolean bResult;
+  boolean D.7208;
+
+  <bb 2> :
+  bResult = 1;
+  u32InputSize = u32Size;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  _1 = *pSource;
+  _2 = *pDest;
+  if (_1 == _2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  pSource = pSource + 1;
+  pDest = pDest + 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  bResult = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  u32InputSize.38_3 = u32InputSize;
+  u32InputSize = u32InputSize.38_3 + 4294967295;
+  if (u32InputSize.38_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  D.7208 = bResult;
+
+  <bb 8> :
+<L6>:
+  return D.7208;
+
+}
+
+
+App_LoadCsecKey (uint8 keyId, uint8 authKeyId, const uint8 * pNewKey, const uint8 * pAuthKey, uint32 counter, uint8 flags, const uint8 * pUID)
+{
+  struct Csec_Ip_ReqType CsecIpReq;
+  boolean bValidationStatus;
+  uint8 u8Idx;
+  Csec_Ip_ErrorCodeType CsecResponse;
+
+  <bb 2> :
+  bValidationStatus = 1;
+  CsecIpReq.eReqType = 0;
+  u8Idx = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (sizetype) u8Idx;
+  _2 = pAuthKey + _1;
+  _3 = (int) u8Idx;
+  _4 = *_2;
+  aK1Plain[_3] = _4;
+  _5 = (sizetype) u8Idx;
+  _6 = pAuthKey + _5;
+  _7 = (int) u8Idx;
+  _8 = *_6;
+  aK2Plain[_7] = _8;
+  u8Idx.12_9 = u8Idx;
+  u8Idx = u8Idx.12_9 + 1;
+
+  <bb 4> :
+  if (u8Idx <= 15)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  CsecResponse = Csec_Ip_MpCompress (&aK1Plain, 2, &aK1);
+  _10 = CsecResponse != 1;
+  _11 = (int) _10;
+  _12 = (long unsigned int) _11;
+  u32NumFailedApiCalls.13_13 = u32NumFailedApiCalls;
+  _14 = _12 + u32NumFailedApiCalls.13_13;
+  u32NumFailedApiCalls = _14;
+  CsecResponse = Csec_Ip_MpCompress (&aK2Plain, 2, &aK2);
+  _15 = CsecResponse != 1;
+  _16 = (int) _15;
+  _17 = (long unsigned int) _16;
+  u32NumFailedApiCalls.14_18 = u32NumFailedApiCalls;
+  _19 = _17 + u32NumFailedApiCalls.14_18;
+  u32NumFailedApiCalls = _19;
+  u8Idx = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _20 = (sizetype) u8Idx;
+  _21 = pUID + _20;
+  _22 = (int) u8Idx;
+  _23 = *_21;
+  aM1[_22] = _23;
+  u8Idx.15_24 = u8Idx;
+  u8Idx = u8Idx.15_24 + 1;
+
+  <bb 7> :
+  if (u8Idx <= 14)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  authKeyId.16_25 = (signed char) authKeyId;
+  _26 = authKeyId.16_25 & 15;
+  _27 = (int) keyId;
+  _28 = _27 << 4;
+  _29 = (signed char) _28;
+  _30 = _26 | _29;
+  _31 = (unsigned char) _30;
+  aM1[15] = _31;
+  u8Idx = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _32 = (sizetype) u8Idx;
+  _33 = pNewKey + _32;
+  _34 = (unsigned int) u8Idx;
+  _35 = _34 + 16;
+  _36 = *_33;
+  aM2Plain[_35] = _36;
+  u8Idx.17_37 = u8Idx;
+  u8Idx = u8Idx.17_37 + 1;
+
+  <bb 10> :
+  if (u8Idx <= 15)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  _38 = counter << 4;
+  _39 = _38 >> 24;
+  _40 = (unsigned char) _39;
+  aM2Plain[0] = _40;
+  _41 = counter << 4;
+  _42 = _41 >> 16;
+  _43 = (unsigned char) _42;
+  aM2Plain[1] = _43;
+  _44 = counter << 4;
+  _45 = _44 >> 8;
+  _46 = (unsigned char) _45;
+  aM2Plain[2] = _46;
+  _47 = (unsigned char) counter;
+  _48 = _47 << 4;
+  aM2Plain[3] = _48;
+  _49 = aM2Plain[3];
+  _50 = (signed char) _49;
+  _51 = (int) flags;
+  _52 = _51 >> 1;
+  _53 = (signed char) _52;
+  _54 = _53 & 15;
+  _55 = _50 | _54;
+  _56 = (unsigned char) _55;
+  aM2Plain[3] = _56;
+  _57 = aM2Plain[4];
+  _58 = (signed char) _57;
+  _59 = (int) flags;
+  _60 = _59 << 7;
+  _61 = (signed char) _60;
+  _62 = _58 | _61;
+  _63 = (unsigned char) _62;
+  aM2Plain[4] = _63;
+  CsecResponse = Csec_Ip_LoadPlainKey (&aK1);
+  _64 = CsecResponse != 1;
+  _65 = (int) _64;
+  _66 = (long unsigned int) _65;
+  u32NumFailedApiCalls.18_67 = u32NumFailedApiCalls;
+  _68 = _66 + u32NumFailedApiCalls.18_67;
+  u32NumFailedApiCalls = _68;
+  CsecResponse = Csec_Ip_EncryptCbc (&CsecIpReq, 15, &aM2Plain, 32, &aEmptyIV, &aM2);
+  _69 = CsecResponse != 1;
+  _70 = (int) _69;
+  _71 = (long unsigned int) _70;
+  u32NumFailedApiCalls.19_72 = u32NumFailedApiCalls;
+  _73 = _71 + u32NumFailedApiCalls.19_72;
+  u32NumFailedApiCalls = _73;
+  u8Idx = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _74 = (int) u8Idx;
+  _75 = (int) u8Idx;
+  _76 = aM1[_74];
+  aM1M2[_75] = _76;
+  _77 = (int) u8Idx;
+  _78 = (unsigned int) u8Idx;
+  _79 = _78 + 16;
+  _80 = aM2[_77];
+  aM1M2[_79] = _80;
+  _81 = (unsigned int) u8Idx;
+  _82 = _81 + 16;
+  _83 = (unsigned int) u8Idx;
+  _84 = _83 + 32;
+  _85 = aM2[_82];
+  aM1M2[_84] = _85;
+  u8Idx.20_86 = u8Idx;
+  u8Idx = u8Idx.20_86 + 1;
+
+  <bb 13> :
+  if (u8Idx <= 15)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  CsecResponse = Csec_Ip_LoadPlainKey (&aK2);
+  _87 = CsecResponse != 1;
+  _88 = (int) _87;
+  _89 = (long unsigned int) _88;
+  u32NumFailedApiCalls.21_90 = u32NumFailedApiCalls;
+  _91 = _89 + u32NumFailedApiCalls.21_90;
+  u32NumFailedApiCalls = _91;
+  CsecResponse = Csec_Ip_GenerateMac (&CsecIpReq, 15, &aM1M2, 384, &aM3);
+  _92 = CsecResponse != 1;
+  _93 = (int) _92;
+  _94 = (long unsigned int) _93;
+  u32NumFailedApiCalls.22_95 = u32NumFailedApiCalls;
+  _96 = _94 + u32NumFailedApiCalls.22_95;
+  u32NumFailedApiCalls = _96;
+  _97 = (<unnamed type>) keyId;
+  CsecResponse = Csec_Ip_LoadKey (_97, &aM1, &aM2, &aM3, &aM4, &aM5);
+  _98 = CsecResponse != 1;
+  _99 = (int) _98;
+  _100 = (long unsigned int) _99;
+  u32NumFailedApiCalls.23_101 = u32NumFailedApiCalls;
+  _102 = _100 + u32NumFailedApiCalls.23_101;
+  u32NumFailedApiCalls = _102;
+  u8Idx = 0;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  _103 = (sizetype) u8Idx;
+  _104 = pNewKey + _103;
+  _105 = (int) u8Idx;
+  _106 = *_104;
+  aK1Plain[_105] = _106;
+  _107 = (sizetype) u8Idx;
+  _108 = pNewKey + _107;
+  _109 = (int) u8Idx;
+  _110 = *_108;
+  aK2Plain[_109] = _110;
+  u8Idx.24_111 = u8Idx;
+  u8Idx = u8Idx.24_111 + 1;
+
+  <bb 16> :
+  if (u8Idx <= 15)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  CsecResponse = Csec_Ip_MpCompress (&aK1Plain, 2, &aK3);
+  _112 = CsecResponse != 1;
+  _113 = (int) _112;
+  _114 = (long unsigned int) _113;
+  u32NumFailedApiCalls.25_115 = u32NumFailedApiCalls;
+  _116 = _114 + u32NumFailedApiCalls.25_115;
+  u32NumFailedApiCalls = _116;
+  CsecResponse = Csec_Ip_MpCompress (&aK2Plain, 2, &aK4);
+  _117 = CsecResponse != 1;
+  _118 = (int) _117;
+  _119 = (long unsigned int) _118;
+  u32NumFailedApiCalls.26_120 = u32NumFailedApiCalls;
+  _121 = _119 + u32NumFailedApiCalls.26_120;
+  u32NumFailedApiCalls = _121;
+  _122 = counter << 4;
+  _123 = _122 >> 24;
+  _124 = (unsigned char) _123;
+  aM4Plain[0] = _124;
+  _125 = counter << 4;
+  _126 = _125 >> 16;
+  _127 = (unsigned char) _126;
+  aM4Plain[1] = _127;
+  _128 = counter << 4;
+  _129 = _128 >> 8;
+  _130 = (unsigned char) _129;
+  aM4Plain[2] = _130;
+  _131 = (unsigned char) counter;
+  _132 = _131 << 4;
+  aM4Plain[3] = _132;
+  _133 = aM4Plain[3];
+  _134 = _133 | 8;
+  aM4Plain[3] = _134;
+  CsecResponse = Csec_Ip_LoadPlainKey (&aK3);
+  _135 = CsecResponse != 1;
+  _136 = (int) _135;
+  _137 = (long unsigned int) _136;
+  u32NumFailedApiCalls.27_138 = u32NumFailedApiCalls;
+  _139 = _137 + u32NumFailedApiCalls.27_138;
+  u32NumFailedApiCalls = _139;
+  CsecResponse = Csec_Ip_EncryptEcb (&CsecIpReq, 15, &aM4Plain, 16, &aM4Ref);
+  _140 = CsecResponse != 1;
+  _141 = (int) _140;
+  _142 = (long unsigned int) _141;
+  u32NumFailedApiCalls.28_143 = u32NumFailedApiCalls;
+  _144 = _142 + u32NumFailedApiCalls.28_143;
+  u32NumFailedApiCalls = _144;
+  _145 = aM4[15];
+  _146 = _145 >> 4;
+  _147 = (int) _146;
+  _148 = (int) keyId;
+  _149 = _148 & 15;
+  _150 = _147 != _149;
+  _151 = (int) _150;
+  _152 = (long unsigned int) _151;
+  u32NumFailedApiCalls.29_153 = u32NumFailedApiCalls;
+  _154 = _152 + u32NumFailedApiCalls.29_153;
+  u32NumFailedApiCalls = _154;
+  _155 = aM4[15];
+  _156 = authKeyId ^ _155;
+  _157 = (int) _156;
+  _158 = _157 & 15;
+  _159 = _158 != 0;
+  _160 = (int) _159;
+  _161 = (long unsigned int) _160;
+  u32NumFailedApiCalls.30_162 = u32NumFailedApiCalls;
+  _163 = _161 + u32NumFailedApiCalls.30_162;
+  u32NumFailedApiCalls = _163;
+  u8Idx = 0;
+  goto <bb 21>; [INV]
+
+  <bb 18> :
+  _164 = (int) u8Idx;
+  _165 = aM4Ref[_164];
+  _166 = (unsigned int) u8Idx;
+  _167 = _166 + 16;
+  _168 = aM4[_167];
+  if (_165 != _168)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  bValidationStatus = 0;
+
+  <bb 20> :
+  u8Idx.31_169 = u8Idx;
+  u8Idx = u8Idx.31_169 + 1;
+
+  <bb 21> :
+  if (u8Idx <= 15)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 22> :
+  bValidationStatus.32_170 = bValidationStatus;
+  _171 = ~bValidationStatus.32_170;
+  _172 = (long unsigned int) _171;
+  u32NumFailedApiCalls.33_173 = u32NumFailedApiCalls;
+  _174 = _172 + u32NumFailedApiCalls.33_173;
+  u32NumFailedApiCalls = _174;
+  CsecResponse = Csec_Ip_LoadPlainKey (&aK4);
+  _175 = CsecResponse != 1;
+  _176 = (int) _175;
+  _177 = (long unsigned int) _176;
+  u32NumFailedApiCalls.34_178 = u32NumFailedApiCalls;
+  _179 = _177 + u32NumFailedApiCalls.34_178;
+  u32NumFailedApiCalls = _179;
+  CsecResponse = Csec_Ip_VerifyMac (&CsecIpReq, 15, &aM4, 256, &aM5, 0, &bValidationStatus);
+  _180 = CsecResponse != 1;
+  _181 = (int) _180;
+  _182 = (long unsigned int) _181;
+  u32NumFailedApiCalls.35_183 = u32NumFailedApiCalls;
+  _184 = _182 + u32NumFailedApiCalls.35_183;
+  u32NumFailedApiCalls = _184;
+  bValidationStatus.36_185 = bValidationStatus;
+  _186 = ~bValidationStatus.36_185;
+  _187 = (long unsigned int) _186;
+  u32NumFailedApiCalls.37_188 = u32NumFailedApiCalls;
+  _189 = _187 + u32NumFailedApiCalls.37_188;
+  u32NumFailedApiCalls = _189;
+  bValidationStatus = {CLOBBER};
+  CsecIpReq = {CLOBBER};
+  return;
+
+}
+
+
+App_EraseCsecKeys ()
+{
+  uint8 u8Idx;
+  uint8 u8Status;
+  struct Csec_Ip_ReqType CsecIpReq;
+  Csec_Ip_ErrorCodeType CsecResponse;
+
+  <bb 2> :
+  CsecIpReq.eReqType = 0;
+  u32Counter.1_1 = 2;
+  u8Flags.2_2 = 0;
+  App_LoadCsecKey (1, 1, &aMasterEcuKey, &aEmptyKey, u32Counter.1_1, u8Flags.2_2, &aEmptyUID);
+  CsecResponse = Csec_Ip_GetId (&aChallenge, &aUID, &u8Status, &aMAC);
+  _3 = CsecResponse != 1;
+  _4 = (int) _3;
+  _5 = (long unsigned int) _4;
+  u32NumFailedApiCalls.3_6 = u32NumFailedApiCalls;
+  _7 = _5 + u32NumFailedApiCalls.3_6;
+  u32NumFailedApiCalls = _7;
+  u8Idx = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _8 = (int) u8Idx;
+  _9 = (int) u8Idx;
+  _10 = _9 + 16;
+  _11 = aUID[_8];
+  aAuthPlain[_10] = _11;
+  u8Idx.4_12 = u8Idx;
+  u8Idx = u8Idx.4_12 + 1;
+
+  <bb 4> :
+  if (u8Idx <= 14)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  u8Idx = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _13 = (int) u8Idx;
+  _14 = (int) u8Idx;
+  _15 = aMasterEcuKey[_13];
+  aKeyPlain[_14] = _15;
+  u8Idx.5_16 = u8Idx;
+  u8Idx = u8Idx.5_16 + 1;
+
+  <bb 7> :
+  if (u8Idx <= 15)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  CsecResponse = Csec_Ip_MpCompress (&aKeyPlain, 2, &aKey);
+  _17 = CsecResponse != 1;
+  _18 = (int) _17;
+  _19 = (long unsigned int) _18;
+  u32NumFailedApiCalls.6_20 = u32NumFailedApiCalls;
+  _21 = _19 + u32NumFailedApiCalls.6_20;
+  u32NumFailedApiCalls = _21;
+  CsecResponse = Csec_Ip_LoadPlainKey (&aKey);
+  _22 = CsecResponse != 1;
+  _23 = (int) _22;
+  _24 = (long unsigned int) _23;
+  u32NumFailedApiCalls.7_25 = u32NumFailedApiCalls;
+  _26 = _24 + u32NumFailedApiCalls.7_25;
+  u32NumFailedApiCalls = _26;
+  CsecResponse = Csec_Ip_DbgChal (&aChallenge);
+  _27 = CsecResponse != 1;
+  _28 = (int) _27;
+  _29 = (long unsigned int) _28;
+  u32NumFailedApiCalls.8_30 = u32NumFailedApiCalls;
+  _31 = _29 + u32NumFailedApiCalls.8_30;
+  u32NumFailedApiCalls = _31;
+  u8Idx = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _32 = (int) u8Idx;
+  _33 = (int) u8Idx;
+  _34 = aChallenge[_32];
+  aAuthPlain[_33] = _34;
+  u8Idx.9_35 = u8Idx;
+  u8Idx = u8Idx.9_35 + 1;
+
+  <bb 10> :
+  if (u8Idx <= 15)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  CsecResponse = Csec_Ip_GenerateMac (&CsecIpReq, 15, &aAuthPlain, 248, &aAuthorization);
+  _36 = CsecResponse != 1;
+  _37 = (int) _36;
+  _38 = (long unsigned int) _37;
+  u32NumFailedApiCalls.10_39 = u32NumFailedApiCalls;
+  _40 = _38 + u32NumFailedApiCalls.10_39;
+  u32NumFailedApiCalls = _40;
+  CsecResponse = Csec_Ip_DbgAuth (&aAuthorization);
+  _41 = CsecResponse != 1;
+  _42 = (int) _41;
+  _43 = (long unsigned int) _42;
+  u32NumFailedApiCalls.11_44 = u32NumFailedApiCalls;
+  _45 = _43 + u32NumFailedApiCalls.11_44;
+  u32NumFailedApiCalls = _45;
+  CsecIpReq = {CLOBBER};
+  u8Status = {CLOBBER};
+  return;
+
+}
+
+
+App_InitCsecHw (uint8 u8KeySize, uint8 u8Sfe)
+{
+  uint8 u8FStat;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7201;
+
+  <bb 2> :
+  RetVal = 1;
+  u8FStat = 0;
+  _1 = 1073872896B;
+  _2 = _1->FCNFG;
+  _3 = (unsigned int) _2;
+  _4 = _3 & 2;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _5 = 1073872896B;
+  _6 = _5->FCNFG;
+  _7 = (unsigned int) _6;
+  _8 = _7 & 1;
+  if (_8 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  _9 = 1073872896B;
+  _9->FCCOB[3] = 128;
+  _10 = 1073872896B;
+  _10->FCCOB[2] = u8KeySize;
+  _11 = 1073872896B;
+  _11->FCCOB[1] = u8Sfe;
+  _12 = 1073872896B;
+  _12->FCCOB[0] = 0;
+  _13 = 1073872896B;
+  _13->FCCOB[7] = 2;
+  _14 = 1073872896B;
+  _14->FCCOB[6] = 3;
+  _15 = 1073872896B;
+  _15->FSTAT = 128;
+
+  <bb 5> :
+  _16 = 1073872896B;
+  _17 = _16->FSTAT;
+  _18 = (signed char) _17;
+  if (_18 >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _19 = 1073872896B;
+  u8FStat = _19->FSTAT;
+  _20 = (unsigned int) u8FStat;
+  _21 = _20 & 33;
+  if (_21 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  RetVal = 0;
+
+  <bb 8> :
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  RetVal = 0;
+
+  <bb 10> :
+  D.7201 = RetVal;
+
+  <bb 11> :
+<L9>:
+  return D.7201;
+
+}
+
+
+App_PrepareCMACVerifyJob (uint32 u32KeyId, uint8 * MACReceived, uint32 MACReceivedSize, uint8 * MACTobeChecked, uint32 * MACTobeCheckedTextSize, Crypto_VerifyResultType * verifyResult)
+{
+  <bb 2> :
+  App_JobCMACVerifyPrimitiveInfo.cryIfKeyId = u32KeyId;
+  App_JobCMAC_Verify.jobPrimitiveInputOutput.inputPtr = MACReceived;
+  App_JobCMAC_Verify.jobPrimitiveInputOutput.inputLength = MACReceivedSize;
+  App_JobCMAC_Verify.jobPrimitiveInputOutput.secondaryInputPtr = MACTobeChecked;
+  MACTobeCheckedTextSize.0_1 = (long unsigned int) MACTobeCheckedTextSize;
+  App_JobCMAC_Verify.jobPrimitiveInputOutput.secondaryInputLength = MACTobeCheckedTextSize.0_1;
+  App_JobCMAC_Verify.jobPrimitiveInputOutput.verifyPtr = verifyResult;
+  return;
+
+}
+
+
+App_PrepareCMACGenerateJob (uint32 u32KeyId, uint8 * pPlainText, uint32 u32PlainTextSize, uint8 * MACGenerated, uint32 * MACGeneratedTextSize)
+{
+  <bb 2> :
+  App_JobCMACGeneratePrimitiveInfo.cryIfKeyId = u32KeyId;
+  App_JobCMAC_Generate.jobPrimitiveInputOutput.inputPtr = pPlainText;
+  App_JobCMAC_Generate.jobPrimitiveInputOutput.inputLength = u32PlainTextSize;
+  App_JobCMAC_Generate.jobPrimitiveInputOutput.outputPtr = MACGenerated;
+  App_JobCMAC_Generate.jobPrimitiveInputOutput.outputLengthPtr = MACGeneratedTextSize;
+  return;
+
+}
+
+
+App_PrepareAes128CbcDecryptJob (uint32 u32KeyId, uint8 * pCipherText, uint32 pu32CipherTextSize, uint8 * iv, uint32 ivlength, uint8 * pPlainText, uint32 * u32PlainTextSize)
+{
+  <bb 2> :
+  App_JobAes128CbcDecryptPrimitiveInfo.cryIfKeyId = u32KeyId;
+  App_JobAes128CbcDecrypt.jobPrimitiveInputOutput.inputPtr = pCipherText;
+  App_JobAes128CbcDecrypt.jobPrimitiveInputOutput.inputLength = pu32CipherTextSize;
+  App_JobAes128CbcDecrypt.jobPrimitiveInputOutput.secondaryInputPtr = iv;
+  App_JobAes128CbcDecrypt.jobPrimitiveInputOutput.secondaryInputLength = ivlength;
+  App_JobAes128CbcDecrypt.jobPrimitiveInputOutput.outputPtr = pPlainText;
+  App_JobAes128CbcDecrypt.jobPrimitiveInputOutput.outputLengthPtr = u32PlainTextSize;
+  return;
+
+}
+
+
+App_PrepareAes128CbcEncryptJob (uint32 u32KeyId, uint8 * pPlainText, uint32 u32PlainTextSize, uint8 * iv, uint32 ivlength, uint8 * pCipherText, uint32 * pu32CipherTextSize)
+{
+  <bb 2> :
+  App_JobAes128CbcEncryptPrimitiveInfo.cryIfKeyId = u32KeyId;
+  App_JobAes128CbcEncrypt.jobPrimitiveInputOutput.inputPtr = pPlainText;
+  App_JobAes128CbcEncrypt.jobPrimitiveInputOutput.inputLength = u32PlainTextSize;
+  App_JobAes128CbcEncrypt.jobPrimitiveInputOutput.secondaryInputPtr = iv;
+  App_JobAes128CbcEncrypt.jobPrimitiveInputOutput.secondaryInputLength = ivlength;
+  App_JobAes128CbcEncrypt.jobPrimitiveInputOutput.outputPtr = pCipherText;
+  App_JobAes128CbcEncrypt.jobPrimitiveInputOutput.outputLengthPtr = pu32CipherTextSize;
+  return;
+
+}
+
+
+App_PrepareAes128EcbDecryptJob (uint32 u32KeyId, uint8 * pCipherText, uint32 u32CipherTextSize, uint8 * pPlainText, uint32 * pu32PlainTextSize)
+{
+  <bb 2> :
+  App_JobAes128EcbDecryptPrimitiveInfo.cryIfKeyId = u32KeyId;
+  App_JobAes128EcbDecrypt.jobPrimitiveInputOutput.inputPtr = pCipherText;
+  App_JobAes128EcbDecrypt.jobPrimitiveInputOutput.inputLength = u32CipherTextSize;
+  App_JobAes128EcbDecrypt.jobPrimitiveInputOutput.outputPtr = pPlainText;
+  App_JobAes128EcbDecrypt.jobPrimitiveInputOutput.outputLengthPtr = pu32PlainTextSize;
+  return;
+
+}
+
+
+App_PrepareAes128EcbEncryptJob (uint32 u32KeyId, uint8 * pPlainText, uint32 u32PlainTextSize, uint8 * pCipherText, uint32 * pu32CipherTextSize)
+{
+  <bb 2> :
+  App_JobAes128EcbEncryptPrimitiveInfo.cryIfKeyId = u32KeyId;
+  App_JobAes128EcbEncrypt.jobPrimitiveInputOutput.inputPtr = pPlainText;
+  App_JobAes128EcbEncrypt.jobPrimitiveInputOutput.inputLength = u32PlainTextSize;
+  App_JobAes128EcbEncrypt.jobPrimitiveInputOutput.outputPtr = pCipherText;
+  App_JobAes128EcbEncrypt.jobPrimitiveInputOutput.outputLengthPtr = pu32CipherTextSize;
+  return;
+
+}
+
+
+Exit_Example (boolean result)
+{
+  volatile uint8 * testResultBasePtr;
+
+  <bb 2> :
+  testResultBasePtr = 536838144B;
+  if (result != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  *testResultBasePtr = 90;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  *testResultBasePtr = 51;
+
+  <bb 5> :
+  return;
+
+}
+
+
