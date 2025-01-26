@@ -174,7 +174,7 @@ extern "C"{
 #define CRYPTO_SPT_PBKDF2                               (STD_OFF)
 
 /* Symbolic names for the CryptoDriverObjectId attribute of all the Crypto Driver Objects */
-#define CryptoConf_CryptoDriverObject_CDO_Symmetric                              ((uint32)0U)
+#define CryptoConf_CryptoDriverObject_CryptoDriverObject_0                       ((uint32)0U)
 
 /* Symbolic names for the CryptoKeyId attribute of all the Crypto keys */
 #define CryptoConf_CryptoKey_Crypto_Key_AES128_Encrypt_Decrypt                   ((uint32)0U)

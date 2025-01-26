@@ -30,13 +30,83 @@ extern "C" {
 #include "Dio.h"
 #include "ST7789_low_level.h"
 #include "fonts.h"
-
+#include "FlexCAN_Ip.h"
 #include "Crypto.h"
 #include "OsIf.h"
 #include "check_example.h"
 
+#include "string.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include "IntCtrl_Ip.h"
 
 
+//Tx for standard frame
+#define MSG_ID0 0x500
+#define TX_MB_IDX0 0
+
+//Rx for extended frame
+#define MSG_ID1 0x152F5AAF
+#define RX_MB_IDX0 1
+
+
+extern void CAN0_ORED_0_15_MB_IRQHandler(void);
+
+const char* uint8_to_string(uint8 uint8_val[], size_t len)
+{
+//	char formattedString[len * 5];
+
+	char* formattedString = (char*) malloc(len *5);
+
+	char* ptr = formattedString;
+	for(size_t i = 0; i<len; i++)
+	{
+		if(i < len -1)
+		{
+			ptr += sprintf(ptr, "0x%02x, ", uint8_val[i]);
+		} else {
+			ptr += sprintf(ptr, "0x%02X", uint8_val[i]);
+		}
+	}
+
+	const char* constFormattedString = formattedString;
+
+	free(formattedString);
+
+	return constFormattedString;
+
+
+}
+
+const char* string1, string2;
+
+
+
+#define GB_RxMailBox_CALLBACK 0
+GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
+                  uint32 buffIdx, const Flexcan_Ip_StateType * flexcanState)
+{
+#if GB_RxMailBox_CALLBACK
+	Flexcan_Ip_StateType * state = flexcanState;
+	state->mbs[buffIdx].state = FLEXCAN_MB_RX_BUSY;
+	   {
+		   if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs != 0)
+		   	   {
+			   	   if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->msgId == 355424943)
+			   		   {
+			   		      string1 = uint8_to_string(&(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->data), FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->dataLen);
+			   	           ST7789_WriteString(0, 140, string1 , Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+			   		   }
+			   	   memset(&FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs, 0x0, sizeof(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs));
+		   	   }
+	   }
+#else
+
+	uint8_t callback = 0;
+	/* Do Nothing */
+#endif
+}
 
 
 /*==================================================================================================
@@ -56,7 +126,9 @@ extern "C" {
 /* Take the generated value of the AES128 Encrypt/Decrypt key id from the configuration file */
 #define APP_AES128_KEY_ID                   (CryptoConf_CryptoKey_Crypto_Key_AES128_Encrypt_Decrypt)
 
-#define APP_CBC_Keys CryptoConf_CryptoKey_CryptoKey_1
+#define APP_CBC_Keys                         CryptoConf_CryptoKey_CryptoKey_1
+#define APP_MAC_Keys                         CryptoConf_CryptoKey_CryptoKey_2
+
 
 /* Size in bytes of the AES128 Encrypt/Decrypt key */
 #define APP_AES128_KEY_SIZE                 (16U)
@@ -83,6 +155,11 @@ extern "C" {
 /* Size in bytes of the buffer where the Crypto driver will place the result of the encrypt/decrypt operations
    In this sample app, should be large enough to fit encryption/decryption of a 16 byte and respectively 64 bytes blocks of data */
 #define APP_AES128_CBC_RESULT_SIZE          (64U)
+
+/* Size in bytes of the buffer where the Crypto driver will place the result of the encrypt/decrypt operations
+   In this sample app, should be large enough to fit encryption/decryption of a 16 byte and respectively 64 bytes blocks of data */
+#define APP_CMAC_RESULT_SIZE          (64U)
+
 
 
 /* Identifier of the KeyElement that contains the key material */
@@ -133,7 +210,7 @@ extern "C" {
 *                                      LOCAL CONSTANTS
 ==================================================================================================*/
 /* ---- Crypto job sub-structures for AES 128 ECB Encrypt ---------------------------------------------------------------------------------- */
-static const Crypto_PrimitiveInfoType App_Aes128EcbEncryptPrimitiveInfo = 
+static const Crypto_PrimitiveInfoType App_Aes128EcbEncryptPrimitiveInfo =
 {
     APP_AES128_ECB_RESULT_SIZE,         /* resultLength                - Contains the result length in bytes. */
     CRYPTO_ENCRYPT,                     /* service                     - Contains the enum of the used service, e.g. Encrypt */
@@ -158,23 +235,8 @@ static const Crypto_PrimitiveInfoType App_Aes128CbcEncryptPrimitiveInfo =
     }
 };
 
-
-
-static const Crypto_JobInfoType App_JobAes128EcbEncryptInfo = 
-{
-    0U,                                 /* jobId                       - The identifier of the job */
-    0U                                  /* jobPriority                 - Specifies the importance of the job (the higher, the more important) */
-};
-
-static const Crypto_JobInfoType App_JobAes128CbcEncryptInfo =
-{
-    0U,                                 /* jobId                       - The identifier of the job */
-    0U                                  /* jobPriority                 - Specifies the importance of the job (the higher, the more important) */
-};
-
-
 /* ---- Crypto job sub-structures for AES 128 ECB Decrypt ---------------------------------------------------------------------------------- */
-static const Crypto_PrimitiveInfoType App_Aes128EcbDecryptPrimitiveInfo = 
+static const Crypto_PrimitiveInfoType App_Aes128EcbDecryptPrimitiveInfo =
 {
     APP_AES128_ECB_RESULT_SIZE,         /* resultLength                - Contains the result length in bytes. */
     CRYPTO_DECRYPT,                     /* service                     - Contains the enum of the used service, e.g. Encrypt */
@@ -199,7 +261,59 @@ static const Crypto_PrimitiveInfoType App_Aes128CbcDecryptPrimitiveInfo =
     }
 };
 
-static const Crypto_JobInfoType App_JobAes128EcbDecryptInfo = 
+/* ---- Crypto job sub-structures for AES 128 CBC Encrypt ---------------------------------------------------------------------------------- */
+static const Crypto_PrimitiveInfoType App_Aes128MACGeneratePrimitiveInfo =
+{
+	APP_CMAC_RESULT_SIZE,         /* resultLength                - Contains the result length in bytes. */
+	CRYPTO_MACGENERATE,                     /* service                     - Contains the enum of the used service, e.g. Encrypt */
+    {
+    	CRYPTO_ALGOFAM_CUSTOM,             /* family                      - The family of the algorithm */
+        CRYPTO_ALGOFAM_NOT_SET,         /* secondaryFamily             - The secondary family of the algorithm  */
+        (APP_AES128_KEY_SIZE << 3U),    /* keyLength                   - The key length in bits to be used with that algorithm */
+		CRYPTO_ALGOMODE_CMAC             /* mode                        - The operation mode to be used with that algorithm */
+    }
+};
+
+/* ---- Crypto job sub-structures for AES 128 CBC Encrypt ---------------------------------------------------------------------------------- */
+static const Crypto_PrimitiveInfoType App_Aes128MACVerifyPrimitiveInfo =
+{
+	APP_CMAC_RESULT_SIZE,         /* resultLength                - Contains the result length in bytes. */
+	CRYPTO_MACVERIFY,                     /* service                     - Contains the enum of the used service, e.g. Encrypt */
+    {
+    	CRYPTO_ALGOFAM_CUSTOM,             /* family                      - The family of the algorithm */
+        CRYPTO_ALGOFAM_NOT_SET,         /* secondaryFamily             - The secondary family of the algorithm  */
+        (APP_AES128_KEY_SIZE << 3U),    /* keyLength                   - The key length in bits to be used with that algorithm */
+		CRYPTO_ALGOMODE_CMAC             /* mode                        - The operation mode to be used with that algorithm */
+    }
+};
+
+
+
+static const Crypto_JobInfoType App_JobAes128EcbEncryptInfo =
+{
+    0U,                                 /* jobId                       - The identifier of the job */
+    0U                                  /* jobPriority                 - Specifies the importance of the job (the higher, the more important) */
+};
+
+static const Crypto_JobInfoType App_JobAes128CbcEncryptInfo =
+{
+    0U,                                 /* jobId                       - The identifier of the job */
+    0U                                  /* jobPriority                 - Specifies the importance of the job (the higher, the more important) */
+};
+
+static const Crypto_JobInfoType App_JobCMACGenerateInfo =
+{
+    0U,                                 /* jobId                       - The identifier of the job */
+    0U                                  /* jobPriority                 - Specifies the importance of the job (the higher, the more important) */
+};
+
+static const Crypto_JobInfoType App_JobCMACVerifyInfo =
+{
+    0U,                                 /* jobId                       - The identifier of the job */
+    0U                                  /* jobPriority                 - Specifies the importance of the job (the higher, the more important) */
+};
+
+static const Crypto_JobInfoType App_JobAes128EcbDecryptInfo =
 {
     0U,                                 /* jobId                       - The identifier of the job */
     0U                                  /* jobPriority                 - Specifies the importance of the job (the higher, the more important) */
@@ -213,19 +327,19 @@ static const Crypto_JobInfoType App_JobAes128CbcDecryptInfo =
 
 
 /* ---- Constant information used in the function App_EraseCsecKeys() that restores the Csec to original state after running the example's code */
-static const uint8 aMasterEcuKey[16] = 
+static const uint8 aMasterEcuKey[16] =
 {
     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
     0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
 };
 
-static const uint8 aEmptyKey[16] = 
+static const uint8 aEmptyKey[16] =
 {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 };
 
-static const uint8 aEmptyUID[15] = 
+static const uint8 aEmptyUID[15] =
 {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -242,12 +356,12 @@ static const uint8 u8Flags     = 0U;
 #define CRYPTO_START_SEC_VAR_INIT_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
 
-static uint8 App_au8Aes128EcbKey_1[APP_AES128_KEY_SIZE] __attribute__((aligned)) = 
+static uint8 App_au8Aes128EcbKey_1[APP_AES128_KEY_SIZE] __attribute__((aligned)) =
 {
     0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f
 };
 
-static uint8 App_au8Aes128EcbKey_2[APP_AES128_KEY_SIZE] __attribute__((aligned)) = 
+static uint8 App_au8Aes128EcbKey_2[APP_AES128_KEY_SIZE] __attribute__((aligned)) =
 {
     0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f
 };
@@ -263,12 +377,12 @@ static uint8 App_au8Aes128CbcKey_2[APP_AES128_KEY_SIZE] __attribute__((aligned))
 };
 
 
-//static uint8 App_au8Aes128EcbPlaintext_1[APP_AES128_ECB_PLAIN_TEXT_SIZE_1] =
-//{
-//    0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
-//};
+static uint8 App_au8Aes128EcbPlaintext_1[APP_AES128_ECB_PLAIN_TEXT_SIZE_1] =
+{
+    0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
+};
 
-static uint8 App_au8Aes128EcbPlaintext_1[APP_AES128_ECB_PLAIN_TEXT_SIZE_1] = " Gettobyte";
+//static uint8 App_au8Aes128EcbPlaintext_1[APP_AES128_ECB_PLAIN_TEXT_SIZE_1] = " Gettobyte";
 
 
 
@@ -277,9 +391,9 @@ static uint8 App_au8Aes128EcbPlaintext_1[APP_AES128_ECB_PLAIN_TEXT_SIZE_1] = " G
 //    0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
 //};
 
-static uint8 App_au8Aes128CbcPlaintext_1[APP_AES128_CBC_PLAIN_TEXT_SIZE_1] = " Gettobyte";
+//static uint8 App_au8Aes128CbcPlaintext_1[APP_AES128_CBC_PLAIN_TEXT_SIZE_1] = " Gettobyte";
 
-static uint8 App_au8Aes128EcbPlaintext_2[APP_AES128_ECB_PLAIN_TEXT_SIZE_2] = 
+static uint8 App_au8Aes128EcbPlaintext_2[APP_AES128_ECB_PLAIN_TEXT_SIZE_2] =
 {
     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
     0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
@@ -299,12 +413,12 @@ static uint8 iv[CBC_IV_LENGTH] = {
 		0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F
 };
 
-static uint8 App_au8Aes128EcbCiphertext_1[APP_AES128_ECB_CIPHER_TEXT_SIZE_1] = 
+static uint8 App_au8Aes128EcbCiphertext_1[APP_AES128_ECB_CIPHER_TEXT_SIZE_1] =
 {
     0x9c, 0x54, 0xd5, 0x71, 0x70, 0x2c, 0xfa, 0x0f, 0x03, 0xf3, 0x62, 0x15, 0x67, 0x6b, 0xab, 0x78
 };
 
-static uint8 App_au8Aes128EcbCiphertext_2[APP_AES128_ECB_CIPHER_TEXT_SIZE_2] = 
+static uint8 App_au8Aes128EcbCiphertext_2[APP_AES128_ECB_CIPHER_TEXT_SIZE_2] =
 {
     0xdb, 0x7c, 0xe6, 0x7a, 0xf1, 0x3d, 0xe5, 0x7a, 0x95, 0xd9, 0x22, 0xe5, 0x32, 0x5a, 0xbf, 0x13,
     0x77, 0x10, 0x98, 0xa6, 0xb7, 0x8c, 0xb4, 0x5c, 0x02, 0x9c, 0xf1, 0xc0, 0xdd, 0xee, 0x0f, 0x1b,
@@ -319,7 +433,7 @@ static uint8 App_au8Aes128EcbCiphertext_2[APP_AES128_ECB_CIPHER_TEXT_SIZE_2] =
 #define CRYPTO_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
 
-static uint8  App_au8Aes128EcbResult[APP_AES128_ECB_RESULT_SIZE], App_au8Aes128CbcResult[APP_AES128_CBC_RESULT_SIZE];
+static uint8  App_au8Aes128EcbResult[APP_AES128_ECB_RESULT_SIZE], App_au8Aes128CbcResult[APP_AES128_CBC_RESULT_SIZE], MACGenerated[16];
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
@@ -328,27 +442,27 @@ static uint8  App_au8Aes128EcbResult[APP_AES128_ECB_RESULT_SIZE], App_au8Aes128C
 #define CRYPTO_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
 #include "Crypto_MemMap.h"
 
-static uint32 App_u32Aes128EcbResultSize, App_u32Aes128CbcResultSize;
+static uint32 App_u32Aes128EcbResultSize, App_u32Aes128CbcResultSize, MACGeneratedSize;
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
 #include "Crypto_MemMap.h"
 
 
 /* ---- Crypto job sub-structures for AES 128 ECB Encrypt ---------------------------------------------------------------------------------- */
-static Crypto_JobPrimitiveInfoType App_JobAes128EcbEncryptPrimitiveInfo = 
+static Crypto_JobPrimitiveInfoType App_JobAes128EcbEncryptPrimitiveInfo =
 {
     0U,                                  /* callbackId                 - Identifier of the callback function, to be called, if the configured service finished. */
-    &App_Aes128EcbEncryptPrimitiveInfo,  /* primitiveInfo              - Pointer to a structure containing further configuration of the crypto primitives */    
+    &App_Aes128EcbEncryptPrimitiveInfo,  /* primitiveInfo              - Pointer to a structure containing further configuration of the crypto primitives */
     0U,                                  /* cryIfKeyId                 - Identifier of the CryIf key. */
     CRYPTO_PROCESSING_SYNC,              /* processingType             - Determines the synchronous or asynchronous behavior. */
     (boolean)FALSE                       /* callbackUpdateNotification - Indicates, whether the callback function shall be called, if the UPDATE operation has finished. */
 };
 
 /* ---- Crypto job sub-structures for AES 128 ECB Decrypt ---------------------------------------------------------------------------------- */
-static Crypto_JobPrimitiveInfoType App_JobAes128EcbDecryptPrimitiveInfo = 
+static Crypto_JobPrimitiveInfoType App_JobAes128EcbDecryptPrimitiveInfo =
 {
     0U,                                  /* callbackId                 - Identifier of the callback function, to be called, if the configured service finished. */
-    &App_Aes128EcbDecryptPrimitiveInfo,  /* primitiveInfo              - Pointer to a structure containing further configuration of the crypto primitives */    
+    &App_Aes128EcbDecryptPrimitiveInfo,  /* primitiveInfo              - Pointer to a structure containing further configuration of the crypto primitives */
     0U,                                  /* cryIfKeyId                 - Identifier of the CryIf key. */
     CRYPTO_PROCESSING_SYNC,              /* processingType             - Determines the synchronous or asynchronous behavior. */
     (boolean)FALSE                       /* callbackUpdateNotification - Indicates, whether the callback function shall be called, if the UPDATE operation has finished. */
@@ -374,10 +488,30 @@ static Crypto_JobPrimitiveInfoType App_JobAes128CbcDecryptPrimitiveInfo =
     (boolean)FALSE                       /* callbackUpdateNotification - Indicates, whether the callback function shall be called, if the UPDATE operation has finished. */
 };
 
+/* ---- Crypto job sub-structures for AES 128 CBC Decrypt ---------------------------------------------------------------------------------- */
+static Crypto_JobPrimitiveInfoType App_JobCMACGeneratePrimitiveInfo =
+{
+    0U,                                  /* callbackId                 - Identifier of the callback function, to be called, if the configured service finished. */
+    &App_Aes128MACGeneratePrimitiveInfo,  /* primitiveInfo              - Pointer to a structure containing further configuration of the crypto primitives */
+    2U,                                  /* cryIfKeyId                 - Identifier of the CryIf key. */
+    CRYPTO_PROCESSING_SYNC,              /* processingType             - Determines the synchronous or asynchronous behavior. */
+    (boolean)FALSE                       /* callbackUpdateNotification - Indicates, whether the callback function shall be called, if the UPDATE operation has finished. */
+};
+
+/* ---- Crypto job sub-structures for AES 128 CBC Decrypt ---------------------------------------------------------------------------------- */
+static Crypto_JobPrimitiveInfoType App_JobCMACVerifyPrimitiveInfo =
+{
+    0U,                                  /* callbackId                 - Identifier of the callback function, to be called, if the configured service finished. */
+    &App_Aes128MACVerifyPrimitiveInfo,  /* primitiveInfo              - Pointer to a structure containing further configuration of the crypto primitives */
+    2U,                                  /* cryIfKeyId                 - Identifier of the CryIf key. */
+    CRYPTO_PROCESSING_SYNC,              /* processingType             - Determines the synchronous or asynchronous behavior. */
+    (boolean)FALSE                       /* callbackUpdateNotification - Indicates, whether the callback function shall be called, if the UPDATE operation has finished. */
+};
+
 
 
 /* --- Structure of the job to be passed to Crypto driver, requesting Aes128 ECB Encrypt --------------------------------------------------------------------- */
-static Crypto_JobType App_JobAes128EcbEncrypt = 
+static Crypto_JobType App_JobAes128EcbEncrypt =
 {
     1U,                                     /* jobId                      - Identifier for the job structure */
     CRYPTO_JOBSTATE_IDLE,                   /* jobState                   - Determines the current job state */
@@ -398,14 +532,14 @@ static Crypto_JobType App_JobAes128EcbEncrypt =
         CRYPTO_OPERATIONMODE_SINGLECALL,    /* mode                       - Indicator of the mode(s)/operation(s) to be performed */
         0U,                                 /* cryIfKeyId                 - Holds the CryIf key id for key operation services. */
         0U,                                 /* targetCryIfKeyId           - Holds the target CryIf key id for key operation services. */
-    }, 
+    },
     &App_JobAes128EcbEncryptPrimitiveInfo,  /* jobPrimitiveInfo           - Pointer to a structure containing further information, which depends on the job and the crypto primitive */
     &App_JobAes128EcbEncryptInfo,           /* jobInfo                    - Pointer to a structure containing further information, which depends on the job and the crypto primitive */
     NULL_PTR                                /* jobRedirectionInfoRef      - Pointer to a structure containing further information on the usage of keys as input and output for jobs. */
 };
 
 /* --- Structure of the job to be passed to Crypto driver, requesting Aes128 ECB Encrypt --------------------------------------------------------------------- */
-static Crypto_JobType App_JobAes128EcbDecrypt = 
+static Crypto_JobType App_JobAes128EcbDecrypt =
 {
     2U,                                     /* jobId                      - Identifier for the job structure */
     CRYPTO_JOBSTATE_IDLE,                   /* jobState                   - Determines the current job state */
@@ -426,7 +560,7 @@ static Crypto_JobType App_JobAes128EcbDecrypt =
         CRYPTO_OPERATIONMODE_SINGLECALL,    /* mode                       - Indicator of the mode(s)/operation(s) to be performed */
         0U,                                 /* cryIfKeyId                 - Holds the CryIf key id for key operation services. */
         0U,                                 /* targetCryIfKeyId           - Holds the target CryIf key id for key operation services. */
-    }, 
+    },
     &App_JobAes128EcbDecryptPrimitiveInfo,  /* jobPrimitiveInfo           - Pointer to a structure containing further information, which depends on the job and the crypto primitive */
     &App_JobAes128EcbDecryptInfo,           /* jobInfo                    - Pointer to a structure containing further information, which depends on the job and the crypto primitive */
     NULL_PTR                                /* jobRedirectionInfoRef      - Pointer to a structure containing further information on the usage of keys as input and output for jobs. */
@@ -489,6 +623,61 @@ static Crypto_JobType App_JobAes128CbcDecrypt =
     NULL_PTR                                /* jobRedirectionInfoRef      - Pointer to a structure containing further information on the usage of keys as input and output for jobs. */
 };
 
+/* --- Structure of the job to be passed to Crypto driver, requesting Aes128 CBC Decrypt --------------------------------------------------------------------- */
+static Crypto_JobType App_JobCMAC_Generate =
+{
+    5U,                                     /* jobId                      - Identifier for the job structure */
+    CRYPTO_JOBSTATE_IDLE,                   /* jobState                   - Determines the current job state */
+    {
+        NULL_PTR,                           /* inputPtr                   - Pointer to the input data. */
+        0,                                  /* inputLength                - Contains the input length in bytes. */
+        NULL_PTR,                           /* secondaryInputPtr          - Pointer to the secondary input data (for MacVerify, SignatureVerify). */
+        0U,                                 /* secondaryInputLength       - Contains the secondary input length in bytes. */
+        NULL_PTR,                           /* tertiaryInputPtr           - Pointer to the tertiary input data (for MacVerify, SignatureVerify). */
+        0U,                                 /* tertiaryInputLength        - Contains the tertiary input length in bytes. */
+        NULL_PTR,                           /* outputPtr                  - Pointer to the output data. */
+        NULL_PTR,                           /* outputLengthPtr            - Holds a pointer to a memory location containing the output length in bytes. */
+        NULL_PTR,                           /* secondaryOutputPtr         - Pointer to the secondary output data. */
+        NULL_PTR,                           /* secondaryOutputLengthPtr   - Holds a pointer to a memory location containing the secondary output length in bytes. */
+        0U,                                 /* input64                    - Versatile input parameter */
+        NULL_PTR,                           /* verifyPtr                  - Output pointer to a memory location holding a Crypto_VerifyResultType */
+        NULL_PTR,                           /* output64Ptr                - Output pointer to a memory location holding an uint64. */
+        CRYPTO_OPERATIONMODE_SINGLECALL,    /* mode                       - Indicator of the mode(s)/operation(s) to be performed */
+        0U,                                 /* cryIfKeyId                 - Holds the CryIf key id for key operation services. */
+        0U,                                 /* targetCryIfKeyId           - Holds the target CryIf key id for key operation services. */
+    },
+    &App_JobCMACGeneratePrimitiveInfo,  /* jobPrimitiveInfo           - Pointer to a structure containing further information, which depends on the job and the crypto primitive */
+    &App_JobCMACGenerateInfo,           /* jobInfo                    - Pointer to a structure containing further information, which depends on the job and the crypto primitive */
+    NULL_PTR                                /* jobRedirectionInfoRef      - Pointer to a structure containing further information on the usage of keys as input and output for jobs. */
+};
+
+/* --- Structure of the job to be passed to Crypto driver, requesting Aes128 CBC Decrypt --------------------------------------------------------------------- */
+static Crypto_JobType App_JobCMAC_Verify =
+{
+    6U,                                     /* jobId                      - Identifier for the job structure */
+    CRYPTO_JOBSTATE_IDLE,                   /* jobState                   - Determines the current job state */
+    {
+        NULL_PTR,                           /* inputPtr                   - Pointer to the input data. */
+        0,                                  /* inputLength                - Contains the input length in bytes. */
+        NULL_PTR,                           /* secondaryInputPtr          - Pointer to the secondary input data (for MacVerify, SignatureVerify). */
+        0U,                                 /* secondaryInputLength       - Contains the secondary input length in bytes. */
+        NULL_PTR,                           /* tertiaryInputPtr           - Pointer to the tertiary input data (for MacVerify, SignatureVerify). */
+        0U,                                 /* tertiaryInputLength        - Contains the tertiary input length in bytes. */
+        NULL_PTR,                           /* outputPtr                  - Pointer to the output data. */
+        NULL_PTR,                           /* outputLengthPtr            - Holds a pointer to a memory location containing the output length in bytes. */
+        NULL_PTR,                           /* secondaryOutputPtr         - Pointer to the secondary output data. */
+        NULL_PTR,                           /* secondaryOutputLengthPtr   - Holds a pointer to a memory location containing the secondary output length in bytes. */
+        0U,                                 /* input64                    - Versatile input parameter */
+        NULL_PTR,                           /* verifyPtr                  - Output pointer to a memory location holding a Crypto_VerifyResultType */
+        NULL_PTR,                           /* output64Ptr                - Output pointer to a memory location holding an uint64. */
+        CRYPTO_OPERATIONMODE_SINGLECALL,    /* mode                       - Indicator of the mode(s)/operation(s) to be performed */
+        0U,                                 /* cryIfKeyId                 - Holds the CryIf key id for key operation services. */
+        0U,                                 /* targetCryIfKeyId           - Holds the target CryIf key id for key operation services. */
+    },
+    &App_JobCMACVerifyPrimitiveInfo,  /* jobPrimitiveInfo           - Pointer to a structure containing further information, which depends on the job and the crypto primitive */
+    &App_JobCMACVerifyInfo,           /* jobInfo                    - Pointer to a structure containing further information, which depends on the job and the crypto primitive */
+    NULL_PTR                                /* jobRedirectionInfoRef      - Pointer to a structure containing further information on the usage of keys as input and output for jobs. */
+};
 
 
 
@@ -501,16 +690,16 @@ static uint8 aMAC[16]           = { 0x00 };
 static uint8 aUID[15]           = { 0x00 };
 static uint8 aKey[16]           = { 0x00 };
 
-static uint8 aKeyPlain[32] = 
+static uint8 aKeyPlain[32] =
 {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x01, 0x03, 0x53, 0x48, 0x45, 0x00, 0x80, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0,  
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0,
 };
 
 /* Variables used by the function App_LoadCsecKey() that is used to load masterEcuKey in order to be able to erase all CSEc keys at the end of example execution */
-static uint8 aK1Plain[32U] = 
+static uint8 aK1Plain[32U] =
 {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -518,7 +707,7 @@ static uint8 aK1Plain[32U] =
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0
 };
 
-static uint8 aK2Plain[32U] = 
+static uint8 aK2Plain[32U] =
 {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -602,7 +791,7 @@ static void App_PrepareAes128CbcDecryptJob
 
 static Std_ReturnType App_InitCsecHw
 (
-    uint8 u8KeySize, 
+    uint8 u8KeySize,
     uint8 u8Sfe
 );
 
@@ -715,15 +904,53 @@ static void App_PrepareAes128CbcDecryptJob
 	App_JobAes128CbcDecrypt.jobPrimitiveInputOutput.outputLengthPtr = u32PlainTextSize;
 }
 
+static void App_PrepareCMACGenerateJob
+(
+    uint32  u32KeyId,             /* IN     - Identifier of the used Crypto key                                                */
+    uint8*  pPlainText,           /* IN     - Pointer to the buffer storing the plain text                                     */
+	uint32  u32PlainTextSize,     /* IN     - Size of the plain text                                                           */
+    uint8*  MACGenerated,          /* IN     - Pointer to the buffer where the cipherText will be stored                        */
+    uint32* MACGeneratedTextSize    /* IN/OUT - IN:  Contains the max size of the app buffer where the cipher text will be stored
+                                              OUT: Is updated by the Crypto driver with the actual size of the cipher text     */
+)
+{
+	App_JobCMACGeneratePrimitiveInfo.cryIfKeyId                 = u32KeyId;
+	App_JobCMAC_Generate.jobPrimitiveInputOutput.inputPtr        = pPlainText;
+	App_JobCMAC_Generate.jobPrimitiveInputOutput.inputLength     = u32PlainTextSize;
+	App_JobCMAC_Generate.jobPrimitiveInputOutput.outputPtr       = MACGenerated;
+	App_JobCMAC_Generate.jobPrimitiveInputOutput.outputLengthPtr = MACGeneratedTextSize;
+}
+
+static void App_PrepareCMACVerifyJob
+(
+    uint32  u32KeyId,             /* IN     - Identifier of the used Crypto key                                                */
+    uint8*  MACReceived,           /* IN     - Pointer to the buffer storing the plain text                                     */
+	uint32  MACReceivedSize,     /* IN     - Size of the plain text                                                           */
+    uint8*  MACTobeChecked,          /* IN     - Pointer to the buffer where the cipherText will be stored                        */
+    uint32* MACTobeCheckedTextSize,    /* IN/OUT - IN:  Contains the max size of the app buffer where the cipher text will be stored
+                                              OUT: Is updated by the Crypto driver with the actual size of the cipher text     */
+	Crypto_VerifyResultType* verifyResult
+)
+{
+	App_JobCMACVerifyPrimitiveInfo.cryIfKeyId                 = u32KeyId;
+	App_JobCMAC_Verify.jobPrimitiveInputOutput.inputPtr        = MACReceived;
+	App_JobCMAC_Verify.jobPrimitiveInputOutput.inputLength     = MACReceivedSize;
+	App_JobCMAC_Verify.jobPrimitiveInputOutput.secondaryInputPtr       = MACTobeChecked;
+	App_JobCMAC_Verify.jobPrimitiveInputOutput.secondaryInputLength = MACTobeCheckedTextSize;
+	App_JobCMAC_Verify.jobPrimitiveInputOutput.verifyPtr = verifyResult;
+}
+
+
+
 static Std_ReturnType App_InitCsecHw
 (
-    uint8 u8KeySize, 
+    uint8 u8KeySize,
     uint8 u8Sfe
 )
 {
     Std_ReturnType RetVal  = (Std_ReturnType)E_NOT_OK;
     uint8          u8FStat = 0U;
-    
+
     /* CSEc IP hardware is not initialized if RAMRDY bit is set or EEERDY bit is clear */
     if ((APP_CSEC_IP_RAMRDY_IS_SET) || (!APP_CSEC_IP_EEERDY_IS_SET))
     {
@@ -745,7 +972,7 @@ static Std_ReturnType App_InitCsecHw
 
         /* Wait for command to finish */
         while (!((CSEC_IP_FLASH->FSTAT) & CSEC_IP_FSTAT_CCIF_MASK));
-        
+
         u8FStat = CSEC_IP_FLASH->FSTAT;
         if( 0x00U == ((u8FStat & APP_CSEC_IP_MGSTAT0_MASK) | (u8FStat & CSEC_IP_FSTAT_ACCERR_MASK)) )
         {
@@ -757,7 +984,7 @@ static Std_ReturnType App_InitCsecHw
         /* Csec IP hardware is already initialized */
         RetVal = (Std_ReturnType)E_OK;
     }
-    
+
     return RetVal;
 }
 
@@ -767,7 +994,7 @@ static void App_EraseCsecKeys(void)
     Csec_Ip_ReqType       CsecIpReq;
     uint8                 u8Status;
     uint8                 u8Idx;
-    
+
     /* Mark the future requests made to Csec Ip as synchronous */
     CsecIpReq.eReqType = CSEC_IP_REQTYPE_SYNC;
 
@@ -782,9 +1009,9 @@ static void App_EraseCsecKeys(void)
     {
         aAuthPlain[u8Idx + 16] = aUID[u8Idx];
     }
-    
+
     /* Derive the debug key K = KDF(MASTER_ECU_KEY, DEBUG_KEY_C) */
-    for (u8Idx = 0; u8Idx < 16; u8Idx++) 
+    for (u8Idx = 0; u8Idx < 16; u8Idx++)
     {
         aKeyPlain[u8Idx] = aMasterEcuKey[u8Idx];
     }
@@ -798,16 +1025,16 @@ static void App_EraseCsecKeys(void)
     /* Generate the debug challenge */
     CsecResponse = Csec_Ip_DbgChal(aChallenge);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     for (u8Idx = 0; u8Idx < 16; u8Idx++)
     {
         aAuthPlain[u8Idx] = aChallenge[u8Idx];
     }
-        
+
     /* Generate the authorization MAC */
     CsecResponse = Csec_Ip_GenerateMac(&CsecIpReq, CSEC_IP_RAM_KEY, aAuthPlain, 248, aAuthorization);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-  
+
     /* Request the authentication */
     CsecResponse = Csec_Ip_DbgAuth(aAuthorization);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
@@ -835,95 +1062,95 @@ static void App_LoadCsecKey
     CsecIpReq.eReqType = CSEC_IP_REQTYPE_SYNC;
 
     /* Generate K1 & K2 */
-    for (u8Idx = 0; u8Idx < 16U; u8Idx++) 
+    for (u8Idx = 0; u8Idx < 16U; u8Idx++)
     {
         aK1Plain[u8Idx] = pAuthKey[u8Idx];
         aK2Plain[u8Idx] = pAuthKey[u8Idx];
     }
-    
+
     CsecResponse = Csec_Ip_MpCompress(aK1Plain, 2, aK1);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     CsecResponse = Csec_Ip_MpCompress(aK2Plain, 2, aK2);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     /* Prepare M1 */
     for (u8Idx = 0; u8Idx < 15U; u8Idx++)
     {
         aM1[u8Idx] = pUID[u8Idx];
     }
-    
+
     aM1[15] = (authKeyId & 0x0F) | ((keyId & 0x0F) << 4);
-    
+
     /* Generate M2 */
     for (u8Idx = 0; u8Idx < 16; u8Idx++)
     {
         aM2Plain[u8Idx + 16U] = pNewKey[u8Idx];
     }
-    
+
     aM2Plain[0] = ((counter << 0x04) & 0xff000000) >> 0x18;
     aM2Plain[1] = ((counter << 0x04) & 0x00ff0000) >> 0x10;
     aM2Plain[2] = ((counter << 0x04) & 0x0000ff00) >> 0x08;
     aM2Plain[3] = ((counter << 0x04) & 0x000000ff) >> 0x00;
-    
+
     aM2Plain[3] |= (flags & 0x1e) >> 1U;
     aM2Plain[4] |= (flags & 0x01) << 7U;
-    
+
     /* Encrypt M2 */
     CsecResponse = Csec_Ip_LoadPlainKey(aK1);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     CsecResponse = Csec_Ip_EncryptCbc(&CsecIpReq, CSEC_IP_RAM_KEY, aM2Plain, 32, aEmptyIV, aM2);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
-    /* Generate M3 */    
-    for (u8Idx = 0; u8Idx < 16U; u8Idx++) 
+
+    /* Generate M3 */
+    for (u8Idx = 0; u8Idx < 16U; u8Idx++)
     {
         aM1M2[u8Idx]       = aM1[u8Idx];
         aM1M2[u8Idx + 16U] = aM2[u8Idx];
         aM1M2[u8Idx + 32U] = aM2[u8Idx + 16U];
     }
-    
+
     CsecResponse = Csec_Ip_LoadPlainKey(aK2);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     CsecResponse = Csec_Ip_GenerateMac(&CsecIpReq, CSEC_IP_RAM_KEY, aM1M2, 384, aM3);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     /* Load Key */
     CsecResponse = Csec_Ip_LoadKey((Csec_Ip_KeyIdType)keyId, aM1, aM2, aM3, aM4, aM5);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     /* Generate K3 & K4 */
-    for (u8Idx = 0; u8Idx < 16; u8Idx++) 
+    for (u8Idx = 0; u8Idx < 16; u8Idx++)
     {
         aK1Plain[u8Idx] = pNewKey[u8Idx];
         aK2Plain[u8Idx] = pNewKey[u8Idx];
     }
-    
+
     CsecResponse = Csec_Ip_MpCompress(aK1Plain, 2, aK3);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     CsecResponse = Csec_Ip_MpCompress(aK2Plain, 2, aK4);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
-    /* Prepare M4' (aM4Ref) */   
+
+    /* Prepare M4' (aM4Ref) */
     aM4Plain[0]  = ((counter << 0x04) & 0xff000000) >> 0x18;
     aM4Plain[1]  = ((counter << 0x04) & 0x00ff0000) >> 0x10;
     aM4Plain[2]  = ((counter << 0x04) & 0x0000ff00) >> 0x08;
     aM4Plain[3]  = ((counter << 0x04) & 0x000000ff) >> 0x00;
     aM4Plain[3] |= 0x08;
-    
+
     CsecResponse = Csec_Ip_LoadPlainKey(aK3);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     CsecResponse = Csec_Ip_EncryptEcb(&CsecIpReq, CSEC_IP_RAM_KEY, aM4Plain, 16, aM4Ref);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
+
     /* Validate M4 */
     App_SetSuccessStatus(((aM4[15] & 0xf0) >> 4) == (keyId & 0x0f));
     App_SetSuccessStatus((aM4[15] & 0x0f) == (authKeyId & 0x0f));
-    
+
     for (u8Idx = 0; u8Idx < 16U; u8Idx++)
     {
         if (aM4Ref[u8Idx] != aM4[u8Idx + 16U])
@@ -931,14 +1158,14 @@ static void App_LoadCsecKey
             bValidationStatus = (boolean)FALSE;
         }
     }
-    
+
     App_SetSuccessStatus((boolean)TRUE == bValidationStatus);
-    
+
     /* Generate M5 */
     CsecResponse = Csec_Ip_LoadPlainKey(aK4);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
-    
-    /* Validate M5 */    
+
+    /* Validate M5 */
     CsecResponse = Csec_Ip_VerifyMac(&CsecIpReq, CSEC_IP_RAM_KEY, aM4, 256, aM5, 0, &bValidationStatus);
     App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
     App_SetSuccessStatus((boolean)TRUE == bValidationStatus);
@@ -955,13 +1182,13 @@ static boolean Util_Memcmp
 {
     boolean bResult      = (boolean)TRUE;
     uint32  u32InputSize = u32Size;
-    
-    while (0U < u32InputSize--) 
+
+    while (0U < u32InputSize--)
     {
         if (*pSource == *pDest)
         {
             pSource++;
-            pDest++; 
+            pDest++;
         }
         else
         {
@@ -982,7 +1209,7 @@ static void Util_Memset
     uint32 u32Counter;
     uint8* ptr = (uint8*)pDest;
 
-    for (u32Counter = 0U; u32Counter < u32Size; u32Counter++) 
+    for (u32Counter = 0U; u32Counter < u32Size; u32Counter++)
     {
         *ptr = u8Value;
         ptr++;
@@ -1011,12 +1238,17 @@ void TestDelay(uint32 delay)
 *                 At the end of the example run, the Csec keys are erased in order to restore the device to its original state
 *
 *                 Xdm configuration:
-*                   - Because the value(Key Material) of the AES128 key that is used is changed at run-time, the key element that stores the key must be stored 
+*                   - Because the value(Key Material) of the AES128 key that is used is changed at run-time, the key element that stores the key must be stored
 *                 in the RAM key slot so it can be updated for as many times as needed.
 *                   - The Crypto Driver Object that is used to process the jobs (CDO_Symmetric) should have the AES128_Encrypt and AES128_Decrypt primitives set
 */
-int main(void) 
+
+
+Crypto_VerifyResultType CMAC_Result;
+int main(void)
 {
+	Flexcan_Ip_StatusType FlexCAN_Api_Status;
+
     Std_ReturnType RetVal;
 
 
@@ -1032,31 +1264,54 @@ int main(void)
     		clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB[0]);
     	}
 
+//        IntCtrl_Ip_EnableIrq(CAN0_ORed_0_15_MB_IRQn);
+//        IntCtrl_Ip_InstallHandler(CAN0_ORed_0_15_MB_IRQn, CAN0_ORED_0_15_MB_IRQHandler, NULL_PTR);
+//
+
+
     	/* Initialize all pins using the Port driver */
     	Port_Init(NULL_PTR);
+
+    	Flexcan_Ip_DataInfoType rx_info_std = {
+    			.msg_id_type = FLEXCAN_MSG_ID_STD,
+    			.data_length = 8u,
+    			.is_polling = FALSE,
+    			.is_remote = FALSE
+    	};
+
+    	Flexcan_Ip_DataInfoType rx_info_std_remote = {
+    				.msg_id_type = FLEXCAN_MSG_ID_STD,
+    				.data_length = 8u,
+    				.is_polling = FALSE,
+    				.is_remote = TRUE
+    	};
+
+    	Flexcan_Ip_DataInfoType rx_info_ext = {
+    			.msg_id_type = FLEXCAN_MSG_ID_EXT,
+    			.data_length = 8u,
+    			.is_polling = FALSE,
+    			.is_remote = FALSE,
+    	};
+
+    	Flexcan_Ip_DataInfoType rx_info_ext_remote = {
+    				.msg_id_type = FLEXCAN_MSG_ID_EXT,
+    				.data_length = 8u,
+    				.is_polling = FALSE,
+    				.is_remote = TRUE,
+    	};
+
+        Flexcan_Ip_MsgBuffType rxData1, rxData2;
+
 
       Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
     	GB_ST7789_Init();
 
+        FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
+        FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);
 
-
-    	TestDelay(700000);
-    	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
-    	ST7789_Fill_Color(ST77XX_BLACK);
-    	TestDelay(700000);
-
-
-        ST7789_WriteString(00, 140, "Demonstrating  Embedded Cryptography DiY Projects: Part 1", Font_16x26,ST77XX_NEON_GREEN, ST77XX_BLACK);
-
-    	TestDelay(7000000);
-
-
-    	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
-    	ST7789_Fill_Color(ST77XX_BLACK);
-    	TestDelay(7000000);
 
     /* =============================================================================================================================== */
-    /*    Initialization                                                                                                               */ 
+    /*    Initialization                                                                                                               */
     /* =============================================================================================================================== */
     /* Initialize CSEc hardware */
     RetVal = App_InitCsecHw(KEY_SIZE,SFE);
@@ -1065,11 +1320,28 @@ int main(void)
     OsIf_Init(NULL_PTR);
     /* Initialize Crypto driver */
     Crypto_Init(NULL_PTR);
-    
+
+
+
+	TestDelay(7000);
+	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+	ST7789_Fill_Color(ST77XX_BLACK);
+	TestDelay(7000);
+
+    ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+    ST7789_WriteString(0, 80, "Sending CAN Data", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+
+    ST7789_WriteString(00, 110, "Demonstrating  Embedded Cryptography DiY Projects: Part 1", Font_16x26,ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+	TestDelay(7000);
+
+
+
     /* =============================================================================================================================== */
-    /*    Encryption Example 1: Using first key to encrypt 16 bytes of data                                                            */ 
+    /*    Encryption Example 1: Using first key to encrypt 16 bytes of data                                                            */
     /* =============================================================================================================================== */
-    
+
     /* ------------------------------------------------------------------------------------------------------------------------------- */
     /*    Key management                                                                                                               */
     /* ------------------------------------------------------------------------------------------------------------------------------- */
@@ -1098,62 +1370,60 @@ int main(void)
     /* Request Crypto driver to perform AES128 Encryption */
     RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobAes128EcbEncrypt);
 
-//  const char *str =   (const char *)App_au8Aes128EcbPlaintext_1;
-//  ST7789_WriteString(0, 106, str, Font_16x26,ST77XX_WHITE, ST77XX_BLACK );
+    ST7789_WriteString(0, 180, "Encrypted Data", Font_11x18,ST77XX_WHITE, ST77XX_BLACK);
+ // ST7789_WriteString(0, 104, "0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F", Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
 
-    ST7789_WriteString(0, 80, "Original Data", Font_11x18,ST77XX_WHITE, ST77XX_BLACK);
-//  ST7789_WriteString(0, 104, "0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F", Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
+//   ST7789_WriteString(20, 100, &App_au8Aes128EcbPlaintext_1, Font_16x26,ST77XX_WHITE, ST77XX_BLACK );
 
-    ST7789_WriteString(20, 100, &App_au8Aes128EcbPlaintext_1, Font_16x26,ST77XX_WHITE, ST77XX_BLACK );
-
-    TestDelay(7000000);
-    ST7789_WriteString(0, 144, "AES ECB Encryption", Font_11x18,ST77XX_BLACK, ST77XX_NEON_GREEN);
-    TestDelay(7000000);
-
-    ST7789_WriteString(0, 174, "Encrypted Data", Font_11x18,ST77XX_BLACK,ST77XX_NEON_GREEN );
-    ST7789_WriteString(0, 204, &App_au8Aes128EcbResult, Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
-    TestDelay(7000000);
-
-    App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
-    App_SetSuccessStatus(App_u32Aes128EcbResultSize == APP_AES128_ECB_CIPHER_TEXT_SIZE_1);
-    App_SetSuccessStatus(Util_Memcmp(App_au8Aes128EcbResult, App_au8Aes128EcbCiphertext_1, APP_AES128_ECB_CIPHER_TEXT_SIZE_1));
+   string1 = uint8_to_string(App_au8Aes128EcbResult, 8);
+   ST7789_WriteString(0, 220, string1 , Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
 
 
+   while(1)
+   {
+
+	   FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&App_au8Aes128EcbResult, 1000);
+   	TestDelay(6000000);
+   }
+
+
+
+
+
+
+
+
+
+
+/*********************************************************************/
+    MACGeneratedSize = APP_AES128_ECB_RESULT_SIZE;
 
     /* Load the value of the first AES128 key into CSEc RAM key slot */
-      RetVal = Crypto_KeyElementSet(APP_CBC_Keys, CRYPTO_KE_CIPHER_IV, App_au8Aes128CbcKey_1, APP_AES128_KEY_SIZE);
+      RetVal = Crypto_KeyElementSet(APP_MAC_Keys, KEY_MATERIAL_ELEMENT_ID_U32, App_au8Aes128CbcKey_1, APP_AES128_KEY_SIZE);
       App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
       /* Mark the key as valid, so it can be used by Crypto driver in future job requests */
-      RetVal = Crypto_KeySetValid(APP_CBC_Keys);
+      RetVal = Crypto_KeySetValid(APP_MAC_Keys);
       App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
-
-
-    /* This variable will be used to inform Crypto driver about the max length in bytes of the buffer where it can put the result of the encryption */
-    App_u32Aes128CbcResultSize = APP_AES128_CBC_RESULT_SIZE;
-
-    /* Clear the result buffer, in order to be able to check the successful result of encryption */
-    Util_Memset(App_au8Aes128CbcResult, 0U, APP_AES128_CBC_RESULT_SIZE);
-
-    /* Prepare the information in the job to be sent to Crypto driver */
-    App_PrepareAes128CbcEncryptJob(APP_CBC_Keys, App_au8Aes128CbcPlaintext_1, APP_AES128_CBC_PLAIN_TEXT_SIZE_1, iv,CBC_IV_LENGTH, App_au8Aes128CbcResult, &App_u32Aes128CbcResultSize);
-
+    App_PrepareCMACGenerateJob(APP_MAC_Keys, App_au8Aes128EcbResult, 16U, MACGenerated, &MACGeneratedSize);
     /* Request Crypto driver to perform AES128 Encryption */
-    RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobAes128CbcEncrypt);
+    RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobCMAC_Generate);
 
-    ST7789_WriteString(0, 234, "AES CBC Encryption", Font_11x18,ST77XX_BLACK, ST77XX_WHITE);
-    TestDelay(7000000);
-    ST7789_WriteString(0, 254, "Encrypted Data", Font_11x18,ST77XX_BLACK,ST77XX_WHITE );
-    ST7789_WriteString(0, 284, &App_au8Aes128CbcResult, Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
+
+    App_PrepareCMACVerifyJob(APP_MAC_Keys,App_au8Aes128EcbResult, 16, MACGenerated,&MACGeneratedSize, &CMAC_Result);
+
+    RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobCMAC_Verify);
+
+
 
     /* =============================================================================================================================== */
-    /*    Erase keys in order to restore CSEc Hw to its original state                                                                 */ 
+    /*    Erase keys in order to restore CSEc Hw to its original state                                                                 */
     /* =============================================================================================================================== */
     App_EraseCsecKeys();
 
     /* =============================================================================================================================== */
-    /*    Finish application execution, signaling the status                                                                           */ 
+    /*    Finish application execution, signaling the status                                                                           */
     /* =============================================================================================================================== */
     Exit_Example(App_GetSuccessStatus());
     return (0U);

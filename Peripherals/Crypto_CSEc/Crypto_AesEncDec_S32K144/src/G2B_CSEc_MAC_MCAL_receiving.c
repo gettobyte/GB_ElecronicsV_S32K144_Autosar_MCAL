@@ -30,10 +30,82 @@ extern "C" {
 #include "Dio.h"
 #include "ST7789_low_level.h"
 #include "fonts.h"
-
+#include "FlexCAN_Ip.h"
 #include "Crypto.h"
 #include "OsIf.h"
 #include "check_example.h"
+#include "IntCtrl_Ip.h"
+
+#include "string.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+//Tx for standard frame
+#define MSG_ID0 0x500
+#define TX_MB_IDX0 0
+
+//Rx for extended frame
+#define MSG_ID1 0x152F5AAF
+#define RX_MB_IDX0 1
+
+
+extern void CAN0_ORED_0_15_MB_IRQHandler(void);
+
+const char* uint8_to_string(uint8 uint8_val[], size_t len)
+{
+//	char formattedString[len * 5];
+
+	char* formattedString = (char*) malloc(len *5);
+
+	char* ptr = formattedString;
+	for(size_t i = 0; i<len; i++)
+	{
+		if(i < len -1)
+		{
+			ptr += sprintf(ptr, "0x%02x, ", uint8_val[i]);
+		} else {
+			ptr += sprintf(ptr, "0x%02X", uint8_val[i]);
+		}
+	}
+
+	const char* constFormattedString = formattedString;
+
+	free(formattedString);
+
+	return constFormattedString;
+
+
+}
+
+const char* string1, string2;
+
+
+
+#define GB_RxMailBox_CALLBACK 1
+GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
+                  uint32 buffIdx, const Flexcan_Ip_StateType * flexcanState)
+{
+#if GB_RxMailBox_CALLBACK
+	Flexcan_Ip_StateType * state = flexcanState;
+	state->mbs[buffIdx].state = FLEXCAN_MB_RX_BUSY;
+	   {
+		   if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs != 0)
+		   	   {
+			   	   if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->msgId == 355424943)
+			   		   {
+			   		      string1 = uint8_to_string(&(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->data), FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->dataLen);
+			   	           ST7789_WriteString(0, 140, string1 , Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+			   		   }
+			   	   memset(&FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs, 0x0, sizeof(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs));
+		   	   }
+	   }
+#else
+
+	uint8_t callback = 0;
+	/* Do Nothing */
+#endif
+}
 
 
 /*==================================================================================================
@@ -49,7 +121,7 @@ extern "C" {
 #define App_GetSuccessStatus()              (0U == u32NumFailedApiCalls)
 
 /* Take the generated value of the Crypto Driver Object Id used for AES128 encryption/decryption from the configuration file */
-#define APP_AES128_CDO_ID                   (CryptoConf_CryptoDriverObject_CDO_Symmetric)
+#define APP_AES128_CDO_ID                   (CryptoConf_CryptoDriverObject_CryptoDriverObject_0)
 /* Take the generated value of the AES128 Encrypt/Decrypt key id from the configuration file */
 #define APP_AES128_KEY_ID                   (CryptoConf_CryptoKey_Crypto_Key_AES128_Encrypt_Decrypt)
 
@@ -1174,6 +1246,8 @@ void TestDelay(uint32 delay)
 Crypto_VerifyResultType CMAC_Result;
 int main(void)
 {
+	Flexcan_Ip_StatusType FlexCAN_Api_Status;
+
     Std_ReturnType RetVal;
 
 
@@ -1192,25 +1266,59 @@ int main(void)
     	/* Initialize all pins using the Port driver */
     	Port_Init(NULL_PTR);
 
-      Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
-    	GB_ST7789_Init();
+
+    	 Flexcan_Ip_DataInfoType tx_info_std = {
+    	            .msg_id_type = FLEXCAN_MSG_ID_STD,
+    	            .data_length = 8u,
+    	            .is_polling = FALSE,
+    	            .is_remote = FALSE
+    	    };
+
+    	    Flexcan_Ip_DataInfoType tx_info_std_remote = {
+    	                .msg_id_type = FLEXCAN_MSG_ID_STD,
+    	                .data_length = 8u,
+    	                .is_polling = FALSE,
+    	                .is_remote = TRUE
+    	        };
+
+    	    Flexcan_Ip_DataInfoType tx_info_ext = {
+    	    		.msg_id_type = FLEXCAN_MSG_ID_EXT,
+    				.data_length = 8u,
+    				.is_polling = FALSE,
+    				.is_remote = FALSE,
+    	    };
+
+    	    Flexcan_Ip_DataInfoType tx_info_ext_remote = {
+    	        		.msg_id_type = FLEXCAN_MSG_ID_EXT,
+    	    			.data_length = 8u,
+    	    			.is_polling = FALSE,
+    	    			.is_remote = TRUE,
+    		};
+
+    	    Flexcan_Ip_MsgBuffType txData1, txData2;
+
+    	    Flexcan_Ip_MsgBuffType rxData1, rxData2, rxData3, rxData4;
+
+    	FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
+        FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);
+
+
+        FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX0, &tx_info_ext, MSG_ID1);
+
+
+    	FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData1, false);
+
+    	 Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
+    	 GB_ST7789_Init();
+
+    	 ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+    	 ST7789_WriteString(0, 80, "Receiving CAN Data", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+         IntCtrl_Ip_EnableIrq(CAN0_ORed_0_15_MB_IRQn);
+         IntCtrl_Ip_InstallHandler(CAN0_ORed_0_15_MB_IRQn, CAN0_ORED_0_15_MB_IRQHandler, NULL_PTR);
 
 
 
-    	TestDelay(7000);
-    	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
-    	ST7789_Fill_Color(ST77XX_BLACK);
-    	TestDelay(7000);
-
-
-        ST7789_WriteString(00, 140, "Demonstrating  Embedded Cryptography DiY Projects: Part 1", Font_16x26,ST77XX_NEON_GREEN, ST77XX_BLACK);
-
-    	TestDelay(7000);
-
-
-    	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
-    	ST7789_Fill_Color(ST77XX_BLACK);
-    	TestDelay(70000);
 
     /* =============================================================================================================================== */
     /*    Initialization                                                                                                               */
@@ -1222,6 +1330,25 @@ int main(void)
     OsIf_Init(NULL_PTR);
     /* Initialize Crypto driver */
     Crypto_Init(NULL_PTR);
+
+
+
+	TestDelay(7000);
+	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+	ST7789_Fill_Color(ST77XX_BLACK);
+	TestDelay(7000);
+
+
+    ST7789_WriteString(00, 140, "Demonstrating  Embedded Cryptography DiY Projects: Part 1", Font_16x26,ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+	TestDelay(7000);
+
+
+
+
+
+
+	/*********************************/
 
     /* =============================================================================================================================== */
     /*    Encryption Example 1: Using first key to encrypt 16 bytes of data                                                            */
@@ -1288,11 +1415,12 @@ int main(void)
     /* =============================================================================================================================== */
     App_EraseCsecKeys();
 
-    /* =============================================================================================================================== */
-    /*    Finish application execution, signaling the status                                                                           */
-    /* =============================================================================================================================== */
-    Exit_Example(App_GetSuccessStatus());
-    return (0U);
+    while(1)
+    {
+
+        MACGeneratedSize = APP_AES128_ECB_RESULT_SIZE;
+
+    }
 }
 
 

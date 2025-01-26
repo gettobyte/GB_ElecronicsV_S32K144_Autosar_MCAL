@@ -161,8 +161,8 @@ static const uint32 Crypto_au32KeyElementList_CryptoKey_2[1U] =
 #define CRYPTO_START_SEC_CONST_UNSPECIFIED
 #include "Crypto_MemMap.h"
 
-/* Array storing the Crypto primitives in the Crypto Driver Object CDO_Symmetric */
-static const Crypto_PrimitiveType Crypto_aPrimitives_CDO_Symmetric[6U] =
+/* Array storing the Crypto primitives in the Crypto Driver Object CryptoDriverObject_0 */
+static const Crypto_PrimitiveType Crypto_aPrimitives_CryptoDriverObject_0[6U] =
 {
     {
         ENCRYPT,
@@ -227,14 +227,14 @@ VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[28U], 4U)
 /* Array of structures storing the information about the Crypto Driver Objects */
 const Crypto_ObjectType Crypto_aDriverObjectList[CRYPTO_NUMBER_OF_DRIVER_OBJECTS_U32] =
 {
-    /* Structure storing the information about Crypto Driver Object CDO_Symmetric */
+    /* Structure storing the information about Crypto Driver Object CryptoDriverObject_0 */
     {
         /* Reference to the jobs queue */
         NULL_PTR,
         /* Jobs queue size */
         0U,
         /* Reference to the Crypto primitives list */
-        Crypto_aPrimitives_CDO_Symmetric,
+        Crypto_aPrimitives_CryptoDriverObject_0,
         /* Number of crypto primitives */
         6U
     }

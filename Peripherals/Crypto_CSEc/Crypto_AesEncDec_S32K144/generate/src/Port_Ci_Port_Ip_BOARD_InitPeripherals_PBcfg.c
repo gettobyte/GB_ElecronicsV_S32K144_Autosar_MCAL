@@ -111,6 +111,30 @@ extern "C"{
 const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr_BOARD_InitPeripherals[NUM_OF_CONFIGURED_PINS] = 
 {
     {
+        .portBase              = IP_PORTE,
+        .gpioBase              = NULL_PTR,
+        .pinPortIdx            = 4,
+        .mux                   = PORT_MUX_ALT5,
+        .direction             = PORT_CI_PORT_PIN_IN,
+        .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength         = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter         = (boolean)FALSE,
+        .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter         = (boolean)FALSE
+    },
+    {
+        .portBase              = IP_PORTE,
+        .gpioBase              = NULL_PTR,
+        .pinPortIdx            = 5,
+        .mux                   = PORT_MUX_ALT5,
+        .direction             = PORT_CI_PORT_PIN_OUT,
+        .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength         = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter         = (boolean)FALSE,
+        .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter         = (boolean)FALSE
+    },
+    {
         .portBase              = IP_PORTB,
         .gpioBase              = IP_PTB,
         .pinPortIdx            = 13,
