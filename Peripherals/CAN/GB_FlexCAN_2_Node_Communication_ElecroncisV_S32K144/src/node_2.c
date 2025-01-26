@@ -7,6 +7,10 @@
 #include "IntCtrl_Ip.h"
 #include "Dio.h"
 
+#include "Lpspi_Ip.h"
+#include "ST7789_low_level.h"
+#include "fonts.h"
+
 
 //Rx for standard frame
 #define MSG_ID0 0x500
@@ -25,7 +29,7 @@
 #define TX_MB_IDX1 3U
 
 extern void CAN0_ORED_0_15_MB_IRQHandler(void);
-#define GB_RxMailBox_CALLBACK 1
+#define GB_RxMailBox_CALLBACK 0
 
 GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
                   uint32 buffIdx, const Flexcan_Ip_StateType * flexcanState)
@@ -41,7 +45,7 @@ GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
 }
 
 
-uint8 CanData1[16] = {1,2,3,4,5,6,7,8, 9, 10, 11, 12, 13, 14, 15, 16, 17};  // 8 Bytes of Data
+uint8 CanData10[8] = {1,2,3,4,5,6,7,8};  // 8 Bytes of Data
 uint8 CanData2[8] = {11,22,33,44,55, 66, 77, 88};   // 5 Bytes of Data
 uint8 CanData3[8] = {10,20,30, 40, 50, 60, 70, 60};      //3 Bytes of Data
 uint8 CanData4[8] = {21,22,23,24,25,26,27, 28};    //7 Bytes of Data
@@ -109,8 +113,20 @@ int main(void)
 
     Flexcan_Ip_MsgBuffType rxData1, rxData2;
 
+
+    Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
+  	GB_ST7789_Init();
+
+  	TestDelay(700000);
+  	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+  	ST7789_Fill_Color(ST77XX_RED);
+  	TestDelay(700000);
+
+
+
     FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
     FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);
+
 
 
     FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX0, &rx_info_std, MSG_ID0);
@@ -123,9 +139,13 @@ int main(void)
     FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX1, &rxData2, false);
 
 
+ 	ST7789_Fill_Color(ST77XX_BLACK);
+
+    ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+    ST7789_WriteString(0, 80, "Sending CAN Data", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
 	for(;;)
 	{
-
 
 //		if(Dio_ReadChannel(DioConf_DioChannel_Switch_1) == STD_LOW)
 //		{
@@ -164,20 +184,27 @@ int main(void)
 //				   }
 //		}
 
-
-		FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData1, 1000);
+		FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData10, 1000);
 		TestDelay(6000000);
+
+	    ST7789_WriteString(0, 140, &CanData10 , Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
 
 		FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData2, 1000);
 		TestDelay(6000000);
 
+	    ST7789_WriteString(0, 140, &CanData2 , Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
 		FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData3, 1000);
 		TestDelay(6000000);
+
+	    ST7789_WriteString(0, 140, &CanData3 , Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
 
 
 		FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&CanData4, 1000);
 		TestDelay(6000000);
 
+
+	    ST7789_WriteString(0, 140, &CanData4 , Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
 
 
 	}

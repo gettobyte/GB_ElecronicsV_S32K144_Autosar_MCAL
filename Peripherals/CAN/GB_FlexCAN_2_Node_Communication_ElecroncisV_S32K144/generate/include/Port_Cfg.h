@@ -701,6 +701,11 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 #define PortConfigSet_RGB_Port_Container_Blue_Port_PIN 4
 #define PortConfigSet_Switch_PortContainer_PortPin_0 5
 #define PortConfigSet_Switch_PortContainer_PortPin_1 6
+#define PortConfigSet_ST7789_Pins_PortPin_0 7
+#define PortConfigSet_ST7789_Pins_PortPin_1 8
+#define PortConfigSet_ST7789_Pins_PortPin_2 9
+#define PortConfigSet_ST7789_Pins_PortPin_3 10
+#define PortConfigSet_ST7789_Pins_PortPin_4 11
 
 /**
 * @brief Number of available pad modes options
@@ -720,12 +725,12 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 /**
 * @brief The maximum number of configured pins
 */
-#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)7)
+#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)12)
 
 /**
  * @brief Number of UnUsed pin array
 */
-#define PORT_MAX_UNUSED_PADS_U16    (77U)
+#define PORT_MAX_UNUSED_PADS_U16    (72U)
 
 /**
 * @brief Port driver Pre-Compile configuration switch

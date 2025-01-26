@@ -247,6 +247,27 @@ extern "C" {
 *
 */
 #define DioConf_DioChannel_Switch_2  ((uint16)0x004dU)
+/* ---------- GB_ST7789_GPIO_Pins ---------- */
+
+/**
+* @brief          Symbolic name for the port GB_ST7789_GPIO_Pins.
+*/
+#define DioConf_DioPort_GB_ST7789_GPIO_Pins  ((uint8)0x01U)
+/**
+* @brief          Symbolic name for the channel GB_ST7789_DC.
+*
+*/
+#define DioConf_DioChannel_GB_ST7789_DC  ((uint16)0x002dU)
+/**
+* @brief          Symbolic name for the channel GB_ST7789_Reset.
+*
+*/
+#define DioConf_DioChannel_GB_ST7789_Reset  ((uint16)0x002cU)
+/**
+* @brief          Symbolic name for the channel GB_ST7789_CS.
+*
+*/
+#define DioConf_DioChannel_GB_ST7789_CS  ((uint16)0x0031U)
 
 /*=================================================================================================
 *                                             ENUMS

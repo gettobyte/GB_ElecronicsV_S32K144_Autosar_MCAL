@@ -7,6 +7,13 @@
 #include "string.h"
 #include "Dio.h"
 
+
+
+#include "Lpspi_Ip.h"
+#include "ST7789_low_level.h"
+#include "fonts.h"
+
+
 //Tx for standard frame
 #define MSG_ID0 0x500
 #define TX_MB_IDX0 0
@@ -25,6 +32,7 @@
 
 extern void CAN0_ORED_0_15_MB_IRQHandler(void);
 
+#define GB_RxMailBox_CALLBACK 1
 GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
                   uint32 buffIdx, const Flexcan_Ip_StateType * flexcanState)
 {
@@ -110,6 +118,15 @@ int main(void)
     Flexcan_Ip_MsgBuffType rxData1, rxData2, rxData3, rxData4;
 
 
+    Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
+  	GB_ST7789_Init();
+
+  	TestDelay(700000);
+  	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+  	ST7789_Fill_Color(ST77XX_RED);
+  	TestDelay(700000);
+
+
     FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
     FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);
 
@@ -135,10 +152,12 @@ int main(void)
 
 
 
+	 	ST7789_Fill_Color(ST77XX_BLACK);
+	    ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+	    ST7789_WriteString(0, 80, "Receiving CAN Data", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
 
    for(;;)
    {
-//
 //	   if(Dio_ReadChannel(DioConf_DioChannel_Switch_1) == STD_LOW)
 //	   {
 ////			   Sending Data Frame(Standard) from Node 1:
@@ -158,19 +177,16 @@ int main(void)
 //	   }
 ////	   Receiving Data Frame(Extended) from Node 2:
 //	   else
+
 	   {
 		   if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs != 0)
 		   	   {
 			   	   if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->msgId == 355424943)
 			   		   {
+
+			   	           ST7789_WriteString(0, 140, &(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->data) , Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
 			   		   	   TestDelay(6000000);
-			   		   	   for (int var = 0; var < 5; var++)
-			   		   	   	   {
-			   		   		   	   Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_LOW);
-			   		   		   	   TestDelay(2000000);
-			   		   		   	   Dio_WriteChannel(DioConf_DioChannel_GREEN_LED, STD_HIGH);
-			   		   		   	   TestDelay(2000000);
-			   		   	   	   }
+
 			   		   }
 			   	   memset(&FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs, 0x0, sizeof(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs));
 		   	   }

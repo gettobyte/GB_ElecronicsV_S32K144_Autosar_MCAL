@@ -126,7 +126,7 @@
                   <clock_output id="LPO_32K_CLK.outFreq" value="32 kHz" locked="false" accuracy=""/>
                   <clock_output id="LPO_CLK.outFreq" value="128 kHz" locked="false" accuracy=""/>
                   <clock_output id="LPSPI0_CLK.outFreq" value="8 MHz" locked="false" accuracy=""/>
-                  <clock_output id="LPSPI1_CLK.outFreq" value="8 MHz" locked="false" accuracy=""/>
+                  <clock_output id="LPSPI1_CLK.outFreq" value="48 MHz" locked="false" accuracy=""/>
                   <clock_output id="LPSPI2_CLK.outFreq" value="8 MHz" locked="false" accuracy=""/>
                   <clock_output id="LPTMR0_CLK.outFreq" value="8 MHz" locked="false" accuracy=""/>
                   <clock_output id="LPUART0_CLK.outFreq" value="8 MHz" locked="false" accuracy=""/>
@@ -163,6 +163,7 @@
                   <setting id="HSRUN:DIVBUS.scale" value="1" locked="true"/>
                   <setting id="HSRUN:DIVCORE.scale" value="1" locked="true"/>
                   <setting id="HSRUN:DIVSLOW.scale" value="4" locked="true"/>
+                  <setting id="MODULE_CLOCKS.PCC_LPSPI1_MUX.sel" value="FIRCDIV2" locked="false"/>
                   <setting id="PREDIV.scale" value="1" locked="true"/>
                   <setting id="RUN:DIVBUS.scale" value="1" locked="true"/>
                   <setting id="RUN:DIVCORE.scale" value="1" locked="true"/>
@@ -258,6 +259,16 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.lpspi" description="Lpspi not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.lpspi" description="Unsupported version of the Lpspi in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/Port_Ci_Port_Ip_Cfg.h" update_enabled="true"/>
@@ -268,6 +279,8 @@
             <file path="generate/include/Gpio_Dio_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/IntCtrl_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/IntCtrl_Ip_CfgDefines.h" update_enabled="true"/>
+            <file path="generate/include/Lpspi_Ip_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/Lpspi_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/OsIf_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Port_BOARD_InitPeripherals_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Port_Cfg.h" update_enabled="true"/>
@@ -278,6 +291,7 @@
             <file path="generate/src/Dio_Cfg.c" update_enabled="true"/>
             <file path="generate/src/FlexCAN_Ip_Sa_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/IntCtrl_Ip_Cfg.c" update_enabled="true"/>
+            <file path="generate/src/Lpspi_Ip_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/OsIf_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Port_BOARD_InitPeripherals_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Port_Cfg.c" update_enabled="true"/>
@@ -1541,6 +1555,96 @@
                                     </struct>
                                  </array>
                               </struct>
+                              <struct name="3">
+                                 <setting name="Name" value="ST7789_Pins"/>
+                                 <array name="PortPin">
+                                    <struct name="0">
+                                       <setting name="Name" value="PortPin_0"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="8"/>
+                                       <setting name="PortPinPcr" value="45"/>
+                                       <setting name="PortPinMode" value="GPIO"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="1">
+                                       <setting name="Name" value="PortPin_1"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="9"/>
+                                       <setting name="PortPinPcr" value="46"/>
+                                       <setting name="PortPinMode" value="LPSPI1_SCK"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="2">
+                                       <setting name="Name" value="PortPin_2"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="10"/>
+                                       <setting name="PortPinPcr" value="47"/>
+                                       <setting name="PortPinMode" value="LPSPI1_SIN"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="3">
+                                       <setting name="Name" value="PortPin_3"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="11"/>
+                                       <setting name="PortPinPcr" value="48"/>
+                                       <setting name="PortPinMode" value="LPSPI1_SOUT"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="4">
+                                       <setting name="Name" value="PortPin_4"/>
+                                       <setting name="PortPinPFE" value="false"/>
+                                       <setting name="PortPinLK" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinId" value="12"/>
+                                       <setting name="PortPinPcr" value="49"/>
+                                       <setting name="PortPinMode" value="LPSPI1_PCS3"/>
+                                       <setting name="PortPinDSE" value="Low_Drive_Strength"/>
+                                       <setting name="PortPinPE" value="PullDisabled"/>
+                                       <setting name="PortPinPS" value="PullDown"/>
+                                       <setting name="PortPinDirection" value="PORT_PIN_OUT"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="PortPinLevelValue" value="PORT_PIN_LEVEL_HIGH"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                 </array>
+                              </struct>
                            </array>
                            <array name="UnTouchedPortPin">
                               <struct name="0">
@@ -1644,6 +1748,29 @@
                                  <array name="DioChannelGroup"/>
                                  <array name="DioPortEcucPartitionRef"/>
                               </struct>
+                              <struct name="2">
+                                 <setting name="Name" value="GB_ST7789_GPIO_Pins"/>
+                                 <setting name="DioPortId" value="1"/>
+                                 <array name="DioChannel">
+                                    <struct name="0">
+                                       <setting name="Name" value="GB_ST7789_DC"/>
+                                       <setting name="DioChannelId" value="13"/>
+                                       <array name="DioChannelEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="1">
+                                       <setting name="Name" value="GB_ST7789_Reset"/>
+                                       <setting name="DioChannelId" value="12"/>
+                                       <array name="DioChannelEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="2">
+                                       <setting name="Name" value="GB_ST7789_CS"/>
+                                       <setting name="DioChannelId" value="17"/>
+                                       <array name="DioChannelEcucPartitionRef"/>
+                                    </struct>
+                                 </array>
+                                 <array name="DioChannelGroup"/>
+                                 <array name="DioPortEcucPartitionRef"/>
+                              </struct>
                            </array>
                         </struct>
                         <struct name="CommonPublishedInformation" quick_selection="Default">
@@ -1657,6 +1784,59 @@
                            <setting name="SwPatchVersion" value="0"/>
                            <setting name="VendorApiInfix" value=""/>
                            <setting name="VendorId" value="43"/>
+                        </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="Lpspi_1" uuid="b9986d35-3b4d-4571-97c4-c3704170a70f" type="Lpspi" type_id="Lpspi" mode="lpspi" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="Lpspi">
+                        <setting name="Name" value="Lpspi"/>
+                        <struct name="SpiDriver">
+                           <setting name="Name" value="SpiDriver"/>
+                           <array name="SpiExternalDevice">
+                              <struct name="0">
+                                 <setting name="Name" value="SpiExternalDevice_0"/>
+                                 <setting name="SpiBaudrate" value="14000000"/>
+                                 <setting name="SpiCsIdentifier" value="PCS3"/>
+                                 <setting name="SpiCsPolarity" value="LOW"/>
+                                 <setting name="SpiDataShiftEdge" value="TRAILING"/>
+                                 <setting name="SpiHwUnit" value="CSIB0"/>
+                                 <setting name="SpiShiftClockIdleLevel" value="LOW"/>
+                                 <setting name="SpiDataWidth" value="8"/>
+                                 <setting name="SpiDefaultData" value="0"/>
+                                 <setting name="SpiTransferStart" value="MSB"/>
+                                 <setting name="SpiTimeClk2Cs" value="0.000001"/>
+                                 <setting name="SpiTimeCs2Clk" value="0.000001"/>
+                                 <setting name="SpiTimeCs2Cs" value="0.0000064"/>
+                                 <setting name="SpiDeviceHalfDuplexSupport" value="false"/>
+                                 <setting name="SpiTransferWidth" value="TRANSFER_1_BIT"/>
+                                 <setting name="SpiHalfDuplexPinSelect" value="HALF_DUPLEX_SIN"/>
+                                 <setting name="SpiCsContinous" value="FALSE"/>
+                              </struct>
+                           </array>
+                        </struct>
+                        <struct name="SpiGeneral">
+                           <setting name="Name" value="SpiGeneral"/>
+                           <setting name="SpiEnableUserModeSupport" value="false"/>
+                           <setting name="SpiEnableDmaFastTransferSupport" value="false"/>
+                           <setting name="SpiHalfDuplexModeSupport" value="false"/>
+                           <setting name="LpspiIpDevErrorDetect" value="true"/>
+                           <setting name="SpiGlobalDmaEnable" value="false"/>
+                           <setting name="SpiTimeoutMethod" value="OSIF_COUNTER_DUMMY"/>
+                           <setting name="SpiTransmitTimeout" value="1"/>
+                           <array name="SpiPhyUnit">
+                              <struct name="0">
+                                 <setting name="Name" value="SpiPhyUnit_0"/>
+                                 <setting name="SpiPhyUnitMapping" value="LPSPI_1"/>
+                                 <setting name="SpiPinConfiguration" value="0"/>
+                                 <setting name="SpiSamplePoint" value="0"/>
+                                 <setting name="SpiPhyUnitClockFunctionalGroupRef" value="BOARD_BootClockRUN"/>
+                                 <setting name="SpiPhyUnitMode" value="SPI_MASTER"/>
+                                 <setting name="SpiPhyUnitAsyncUseDma" value="false"/>
+                                 <array name="SpiPhyTxDmaChannel"/>
+                                 <array name="SpiPhyRxDmaChannel"/>
+                                 <array name="SpiMaxDmaFastTransfer"/>
+                              </struct>
+                           </array>
                         </struct>
                      </config_set>
                   </instance>

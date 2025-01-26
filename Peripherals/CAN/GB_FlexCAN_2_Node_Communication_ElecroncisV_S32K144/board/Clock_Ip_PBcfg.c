@@ -207,7 +207,7 @@ outputs:
 - {id: LPO_32K_CLK.outFreq, value: 32 kHz}
 - {id: LPO_CLK.outFreq, value: 128 kHz}
 - {id: LPSPI0_CLK.outFreq, value: 8 MHz}
-- {id: LPSPI1_CLK.outFreq, value: 8 MHz}
+- {id: LPSPI1_CLK.outFreq, value: 48 MHz}
 - {id: LPSPI2_CLK.outFreq, value: 8 MHz}
 - {id: LPTMR0_CLK.outFreq, value: 8 MHz}
 - {id: LPUART0_CLK.outFreq, value: 8 MHz}
@@ -243,6 +243,7 @@ settings:
 - {id: 'HSRUN:DIVBUS.scale', value: '1', locked: true}
 - {id: 'HSRUN:DIVCORE.scale', value: '1', locked: true}
 - {id: 'HSRUN:DIVSLOW.scale', value: '4', locked: true}
+- {id: MODULE_CLOCKS.PCC_LPSPI1_MUX.sel, value: FIRCDIV2}
 - {id: PREDIV.scale, value: '1', locked: true}
 - {id: 'RUN:DIVBUS.scale', value: '1', locked: true}
 - {id: 'RUN:DIVCORE.scale', value: '1', locked: true}
@@ -487,7 +488,7 @@ sources:
             #if CLOCK_SELECTORS_NO > 18U
             {
                 LPSPI1_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                FIRCDIV2_CLK,                    /* Name of the selected input source */
             },
             #endif
 
