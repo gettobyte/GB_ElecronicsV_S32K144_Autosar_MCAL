@@ -434,6 +434,7 @@ static uint8 App_au8Aes128EcbCiphertext_2[APP_AES128_ECB_CIPHER_TEXT_SIZE_2] =
 #include "Crypto_MemMap.h"
 
 static uint8  App_au8Aes128EcbResult[APP_AES128_ECB_RESULT_SIZE], App_au8Aes128CbcResult[APP_AES128_CBC_RESULT_SIZE], MACGenerated[16];
+static uint8 Ecb_Crypto_original_data[APP_AES128_ECB_RESULT_SIZE];
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
@@ -443,7 +444,7 @@ static uint8  App_au8Aes128EcbResult[APP_AES128_ECB_RESULT_SIZE], App_au8Aes128C
 #include "Crypto_MemMap.h"
 
 static uint32 App_u32Aes128EcbResultSize, App_u32Aes128CbcResultSize, MACGeneratedSize;
-
+static uint32 Ecb_Crypto_original_data_size;
 #define CRYPTO_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
 #include "Crypto_MemMap.h"
 
@@ -1245,6 +1246,8 @@ void TestDelay(uint32 delay)
 
 
 Crypto_VerifyResultType CMAC_Result;
+
+
 int main(void)
 {
 	Flexcan_Ip_StatusType FlexCAN_Api_Status;
@@ -1300,6 +1303,18 @@ int main(void)
     				.is_remote = TRUE,
     	};
 
+    	Flexcan_Ip_DataInfoType tx_can_fd = {
+    				.msg_id_type = FLEXCAN_MSG_ID_STD,
+    				.data_length = 16u,
+    				.fd_enable = TRUE,
+    				.fd_padding = 0xAA,
+    				.enable_brs = TRUE,
+    				.is_polling = TRUE,
+    				.is_remote = FALSE,
+    	};
+
+
+
         Flexcan_Ip_MsgBuffType rxData1, rxData2;
 
 
@@ -1329,14 +1344,11 @@ int main(void)
 	TestDelay(7000);
 
     ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
-    ST7789_WriteString(0, 80, "Sending CAN Data", Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+    ST7789_WriteString(0, 80, "Sending CAN Data", Font_11x18, ST77XX_NEON_GREEN, ST77XX_BLACK);
 
-
-    ST7789_WriteString(00, 110, "Demonstrating  Embedded Cryptography DiY Projects: Part 1", Font_16x26,ST77XX_NEON_GREEN, ST77XX_BLACK);
+    ST7789_WriteString(00, 100, "Demonstrating  Embedded Cryptography DiY Projects: Part 1", Font_11x18,ST77XX_NEON_GREEN, ST77XX_BLACK);
 
 	TestDelay(7000);
-
-
 
     /* =============================================================================================================================== */
     /*    Encryption Example 1: Using first key to encrypt 16 bytes of data                                                            */
@@ -1364,56 +1376,64 @@ int main(void)
     /* Clear the result buffer, in order to be able to check the successful result of encryption */
     Util_Memset(App_au8Aes128EcbResult, 0U, APP_AES128_ECB_RESULT_SIZE);
 
+    ST7789_WriteString(0, 160, "Original Data", Font_11x18,ST77XX_WHITE, ST77XX_BLACK);
+
+    string1 = uint8_to_string(App_au8Aes128EcbPlaintext_1, 8);
+    ST7789_WriteString(0, 180, string1 , Font_11x18, ST77XX_MAGENTA, ST77XX_BLACK);
+
+
+	TestDelay(16000000);
+
     /* Prepare the information in the job to be sent to Crypto driver */
     App_PrepareAes128EcbEncryptJob(APP_AES128_KEY_ID, App_au8Aes128EcbPlaintext_1, APP_AES128_ECB_PLAIN_TEXT_SIZE_1, App_au8Aes128EcbResult, &App_u32Aes128EcbResultSize);
 
     /* Request Crypto driver to perform AES128 Encryption */
     RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobAes128EcbEncrypt);
 
-    ST7789_WriteString(0, 180, "Encrypted Data", Font_11x18,ST77XX_WHITE, ST77XX_BLACK);
+    ST7789_WriteString(0, 240, "Sending Encrypted Data", Font_11x18,ST77XX_WHITE, ST77XX_BLACK);
  // ST7789_WriteString(0, 104, "0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F", Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
 
 //   ST7789_WriteString(20, 100, &App_au8Aes128EcbPlaintext_1, Font_16x26,ST77XX_WHITE, ST77XX_BLACK );
 
    string1 = uint8_to_string(App_au8Aes128EcbResult, 8);
-   ST7789_WriteString(0, 220, string1 , Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+   ST7789_WriteString(0, 260, string1 , Font_11x18, ST77XX_ORANGE, ST77XX_BLACK);
 
+   Ecb_Crypto_original_data_size = APP_AES128_ECB_RESULT_SIZE;
+
+   App_PrepareAes128EcbDecryptJob(APP_AES128_KEY_ID, App_au8Aes128EcbResult, APP_AES128_ECB_CIPHER_TEXT_SIZE_1, Ecb_Crypto_original_data, &Ecb_Crypto_original_data_size);
+
+   /* Request Crypto driver to perform AES128 Encryption */
+   RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobAes128EcbDecrypt);
+
+	TestDelay(16000000);
 
    while(1)
    {
 
-	   FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &rx_info_ext, MSG_ID1, (uint8 *)&App_au8Aes128EcbResult, 1000);
-   	TestDelay(6000000);
+	   FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX0, &tx_can_fd, MSG_ID0, (uint8 *)&App_au8Aes128EcbResult, 1000);
+	   TestDelay(16000000);
+
    }
 
-
-
-
-
-
-
-
-
-
 /*********************************************************************/
-    MACGeneratedSize = APP_AES128_ECB_RESULT_SIZE;
-
-    /* Load the value of the first AES128 key into CSEc RAM key slot */
-      RetVal = Crypto_KeyElementSet(APP_MAC_Keys, KEY_MATERIAL_ELEMENT_ID_U32, App_au8Aes128CbcKey_1, APP_AES128_KEY_SIZE);
-      App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
-
-      /* Mark the key as valid, so it can be used by Crypto driver in future job requests */
-      RetVal = Crypto_KeySetValid(APP_MAC_Keys);
-      App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
-
-    App_PrepareCMACGenerateJob(APP_MAC_Keys, App_au8Aes128EcbResult, 16U, MACGenerated, &MACGeneratedSize);
-    /* Request Crypto driver to perform AES128 Encryption */
-    RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobCMAC_Generate);
-
-
-    App_PrepareCMACVerifyJob(APP_MAC_Keys,App_au8Aes128EcbResult, 16, MACGenerated,&MACGeneratedSize, &CMAC_Result);
-
-    RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobCMAC_Verify);
+//    MACGeneratedSize = APP_AES128_ECB_RESULT_SIZE;
+//
+//    /* Load the value of the first AES128 key into CSEc RAM key slot */
+//      RetVal = Crypto_KeyElementSet(APP_MAC_Keys, KEY_MATERIAL_ELEMENT_ID_U32, App_au8Aes128CbcKey_1, APP_AES128_KEY_SIZE);
+//      App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+//
+//      /* Mark the key as valid, so it can be used by Crypto driver in future job requests */
+//      RetVal = Crypto_KeySetValid(APP_MAC_Keys);
+//      App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+//
+//    App_PrepareCMACGenerateJob(APP_MAC_Keys, App_au8Aes128EcbResult, 16U, MACGenerated, &MACGeneratedSize);
+//    /* Request Crypto driver to perform AES128 Encryption */
+//    RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobCMAC_Generate);
+//
+//
+//    App_PrepareCMACVerifyJob(APP_MAC_Keys,App_au8Aes128EcbResult, 16, MACGenerated,&MACGeneratedSize, &CMAC_Result);
+//
+//    RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobCMAC_Verify);
 
 
 

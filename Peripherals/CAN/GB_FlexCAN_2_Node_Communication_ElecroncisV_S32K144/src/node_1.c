@@ -128,28 +128,39 @@ int main(void)
     /* Initialize all pins using the Port driver */
     Port_Init(NULL_PTR);
 
-    Flexcan_Ip_DataInfoType tx_info_std = {
+    Flexcan_Ip_DataInfoType rx_info_std = {
             .msg_id_type = FLEXCAN_MSG_ID_STD,
             .data_length = 8u,
             .is_polling = FALSE,
             .is_remote = FALSE
     };
 
-    Flexcan_Ip_DataInfoType tx_info_std_remote = {
+    Flexcan_Ip_DataInfoType rx_info_can_fd = {
+				.msg_id_type = FLEXCAN_MSG_ID_STD,
+				.data_length = 64u,
+				.fd_enable = TRUE,
+				.fd_padding = 0xAA,
+				.enable_brs = TRUE,
+				.is_polling = TRUE,
+				.is_remote = FALSE,
+	};
+
+
+    Flexcan_Ip_DataInfoType rx_info_std_remote = {
                 .msg_id_type = FLEXCAN_MSG_ID_STD,
                 .data_length = 8u,
                 .is_polling = FALSE,
                 .is_remote = TRUE
         };
 
-    Flexcan_Ip_DataInfoType tx_info_ext = {
+    Flexcan_Ip_DataInfoType rx_info_ext = {
     		.msg_id_type = FLEXCAN_MSG_ID_EXT,
 			.data_length = 8u,
 			.is_polling = FALSE,
 			.is_remote = FALSE,
     };
 
-    Flexcan_Ip_DataInfoType tx_info_ext_remote = {
+    Flexcan_Ip_DataInfoType rx_info_ext_remote = {
         		.msg_id_type = FLEXCAN_MSG_ID_EXT,
     			.data_length = 8u,
     			.is_polling = FALSE,
@@ -160,7 +171,6 @@ int main(void)
 
     Flexcan_Ip_MsgBuffType rxData1, rxData2, rxData3, rxData4;
 
-
     Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
   	GB_ST7789_Init();
 
@@ -169,14 +179,15 @@ int main(void)
   	ST7789_Fill_Color(ST77XX_RED);
   	TestDelay(700000);
 
-
     FlexCAN_Ip_Init(INST_FLEXCAN_0, &FlexCAN_State0, &FlexCAN_Config0);
     FlexCAN_Api_Status = FlexCAN_Ip_SetStartMode(INST_FLEXCAN_0);
 
+    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX0, &rx_info_can_fd, MSG_ID1);
 
-    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX0, &tx_info_ext, MSG_ID1);
+//    FlexCAN_Api_Status = FlexCAN_Ip_ConfigRxMb(INST_FLEXCAN_0, RX_MB_IDX0, &rx_info_ext, MSG_ID1);
+//
+
     FlexCAN_Api_Status = FlexCAN_Ip_Receive(INST_FLEXCAN_0, RX_MB_IDX0, &rxData1, false);
-
 
 
 

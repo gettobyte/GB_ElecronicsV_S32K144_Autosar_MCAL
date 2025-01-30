@@ -138,7 +138,7 @@ const Flexcan_Ip_ConfigType FlexCAN_Config0  = {
     0U),
      /* Can FD RamBlock specified *//*.payload*/
     {
-      FLEXCAN_PAYLOAD_SIZE_8
+      FLEXCAN_PAYLOAD_SIZE_16
     },
         /*Can FD enabled .fd_enable*/
         (boolean)TRUE,

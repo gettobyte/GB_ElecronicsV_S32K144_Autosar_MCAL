@@ -115,7 +115,7 @@ Flexcan_Ip_StateType FlexCAN_State0;
 
 const Flexcan_Ip_ConfigType FlexCAN_Config0  = {
     /* Number Of Message Buffer used .max_num_mb  */
-    (uint8)16,
+    (uint8)7,
     /*Can Hw filter count* .num_id_filters*- aici exista variatna sa generez toate filtrele si sa referentiezi tu in cod */
     FLEXCAN_RX_FIFO_ID_FILTERS_8,
     /* Legacy FIFO ENABLED .is_rx_fifo_needed*/
@@ -138,7 +138,7 @@ const Flexcan_Ip_ConfigType FlexCAN_Config0  = {
     0U),
      /* Can FD RamBlock specified *//*.payload*/
     {
-      FLEXCAN_PAYLOAD_SIZE_8
+      FLEXCAN_PAYLOAD_SIZE_64
     },
         /*Can FD enabled .fd_enable*/
         (boolean)TRUE,
