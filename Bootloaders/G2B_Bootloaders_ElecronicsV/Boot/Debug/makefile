@@ -10,9 +10,6 @@ RM := rm -rf
 -include sources.mk
 -include startup/subdir.mk
 -include lib/subdir.mk
--include core/ARMCM4_S32K14/GCC/subdir.mk
--include core/ARMCM4_S32K14/subdir.mk
--include core/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -36,7 +33,7 @@ openblt_s32k144.siz \
 all: openblt_s32k144.elf secondary-outputs
 
 # Tool invocations
-openblt_s32k144.elf: $(OBJS) D:/openblt_v011800/Target/Demo/ARMCM4_S32K14_S32K144EVB_GCC/Boot/S32K144_64_flash.ld $(USER_OBJS)
+openblt_s32k144.elf: $(OBJS) C:/Users/Rohan/OneDrive/Documents/GB_ElecronicsV_S32K144_Autosar_MCAL/Bootloaders/G2B_Bootloaders_ElecronicsV/Boot/S32K144_64_flash.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Standard S32DS C Linker'
 	arm-none-eabi-gcc -o "openblt_s32k144.elf" "@openblt_s32k144.args"  $(USER_OBJS) $(LIBS)

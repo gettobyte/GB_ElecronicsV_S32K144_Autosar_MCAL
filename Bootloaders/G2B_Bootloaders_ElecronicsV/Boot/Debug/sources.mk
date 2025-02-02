@@ -22,9 +22,6 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 . \
-core/ARMCM4_S32K14/GCC \
-core/ARMCM4_S32K14 \
-core \
 lib \
 startup \
 
