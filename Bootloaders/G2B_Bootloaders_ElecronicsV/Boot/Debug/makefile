@@ -10,6 +10,9 @@ RM := rm -rf
 -include sources.mk
 -include startup/subdir.mk
 -include lib/subdir.mk
+-include core/ARMCM4_S32K14/GCC/subdir.mk
+-include core/ARMCM4_S32K14/subdir.mk
+-include core/subdir.mk
 -include subdir.mk
 -include objects.mk
 

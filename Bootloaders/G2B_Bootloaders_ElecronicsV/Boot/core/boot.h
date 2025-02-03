@@ -48,7 +48,7 @@
  * be handy if you use the bootloader in several projects with a different configuration,
  * and enables you to have just one bootloader source base.
  */
-#include "types.h"                                    /* variable types                */
+#include <types.h>                                    /* variable types                */
 #include "asserts.h"                                  /* assertion checks              */
 #ifdef PROJ_BLT_CONF_H
 #include PROJ_BLT_CONF_H                              /* custom configuration          */

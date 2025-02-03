@@ -38,8 +38,6 @@ Discarded input sections
  .text          0x00000000        0x0 ./boot.o
  .data          0x00000000        0x0 ./boot.o
  .bss           0x00000000        0x0 ./boot.o
- .text.BootActivate
-                0x00000000        0x8 ./boot.o
  .group         0x00000000        0xc ./led.o
  .group         0x00000000        0xc ./led.o
  .group         0x00000000        0xc ./led.o
@@ -186,6 +184,8 @@ Discarded input sections
  .text          0x00000000        0x0 ./startup/startup.o
  .data          0x00000000        0x0 ./startup/startup.o
  .bss           0x00000000        0x0 ./startup/startup.o
+ .rodata.s_vectors
+                0x00000000        0x4 ./startup/startup.o
  .debug_macro   0x00000000      0x8ce ./startup/startup.o
  .debug_macro   0x00000000       0x22 ./startup/startup.o
  .debug_macro   0x00000000       0x56 ./startup/startup.o
@@ -282,7 +282,7 @@ LOAD d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/
  .FlashConfig   0x00002400       0x10 ./startup/startup_S32K144.o
                 0x00002410                . = ALIGN (0x4)
 
-.text           0x00002410      0xa88
+.text           0x00002410      0xebc
                 0x00002410                . = ALIGN (0x4)
  *(.text)
  .text          0x00002410       0xa4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
@@ -425,137 +425,163 @@ LOAD d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/
                 0x00002598                DMA1_IRQHandler
                 0x00002598                Reserved113_IRQHandler
  *(.text*)
- .text.CanDisabledModeExit
-                0x0000259c       0x38 ./boot.o
- .text.CanFreezeModeEnter
-                0x000025d4       0x34 ./boot.o
  .text.BootComInit
-                0x00002608      0x30c ./boot.o
-                0x00002608                BootComInit
+                0x0000259c       0x10 ./boot.o
+                0x0000259c                BootComInit
  .text.BootComCheckActivationRequest
-                0x00002914      0x11c ./boot.o
-                0x00002914                BootComCheckActivationRequest
- .text.LedInit  0x00002a30       0x28 ./led.o
-                0x00002a30                LedInit
+                0x000025ac       0x10 ./boot.o
+                0x000025ac                BootComCheckActivationRequest
+ .text.BootActivate
+                0x000025bc        0xc ./boot.o
+                0x000025bc                BootActivate
+ .text.BootComRs232Init
+                0x000025c8      0x110 ./boot.o
+ .text.BootComRs232CheckActivationRequest
+                0x000026d8       0xb4 ./boot.o
+ .text.Rs232ReceiveByte
+                0x0000278c       0x38 ./boot.o
+ .text.CanGetSpeedConfig
+                0x000027c4       0xf8 ./boot.o
+ .text.CanFreezeModeEnter
+                0x000028bc       0x54 ./boot.o
+ .text.CanFreezeModeExit
+                0x00002910       0x54 ./boot.o
+ .text.CanDisabledModeEnter
+                0x00002964       0x50 ./boot.o
+ .text.CanDisabledModeExit
+                0x000029b4       0x50 ./boot.o
+ .text.BootComCanInit
+                0x00002a04      0x204 ./boot.o
+ .text.BootComCanCheckActivationRequest
+                0x00002c08       0x8c ./boot.o
+ .text.LedInit  0x00002c94       0x3c ./led.o
+                0x00002c94                LedInit
  .text.LedToggle
-                0x00002a58       0x4c ./led.o
-                0x00002a58                LedToggle
- .text.main     0x00002aa4      0x114 ./main.o
-                0x00002aa4                main
+                0x00002cd0       0x64 ./led.o
+                0x00002cd0                LedToggle
+ .text.main     0x00002d34       0x16 ./main.o
+                0x00002d34                main
+ *fill*         0x00002d4a        0x2 
+ .text.Init     0x00002d4c       0x84 ./main.o
+ .text.SystemClockConfig
+                0x00002dd0       0xdc ./main.o
  .text.TimerInit
-                0x00002bb8       0x30 ./timer.o
-                0x00002bb8                TimerInit
+                0x00002eac       0x44 ./timer.o
+                0x00002eac                TimerInit
  .text.TimerGet
-                0x00002be8        0xc ./timer.o
-                0x00002be8                TimerGet
+                0x00002ef0       0x18 ./timer.o
+                0x00002ef0                TimerGet
  .text.SysTick_Handler
-                0x00002bf4       0x10 ./timer.o
-                0x00002bf4                SysTick_Handler
+                0x00002f08       0x1c ./timer.o
+                0x00002f08                SysTick_Handler
  .text.SystemInit
-                0x00002c04       0x3c ./lib/system_S32K144.o
-                0x00002c04                SystemInit
+                0x00002f24       0x58 ./lib/system_S32K144.o
+                0x00002f24                SystemInit
  .text.SystemCoreClockUpdate
-                0x00002c40       0x80 ./lib/system_S32K144.o
-                0x00002c40                SystemCoreClockUpdate
+                0x00002f7c       0xf0 ./lib/system_S32K144.o
+                0x00002f7c                SystemCoreClockUpdate
  .text.SystemSoftwareReset
-                0x00002cc0       0x18 ./lib/system_S32K144.o
-                0x00002cc0                SystemSoftwareReset
+                0x0000306c       0x40 ./lib/system_S32K144.o
+                0x0000306c                SystemSoftwareReset
  .text.init_data_bss
-                0x00002cd8       0xd8 ./startup/startup.o
-                0x00002cd8                init_data_bss
- .text.exit     0x00002db0       0x28 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
-                0x00002db0                exit
+                0x000030ac      0x12c ./startup/startup.o
+                0x000030ac                init_data_bss
+ .text.exit     0x000031d8       0x28 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+                0x000031d8                exit
  .text.__libc_init_array
-                0x00002dd8       0x48 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
-                0x00002dd8                __libc_init_array
- .text.memset   0x00002e20       0x10 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
-                0x00002e20                memset
- .text._exit    0x00002e30        0x2 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
-                0x00002e30                _exit
+                0x00003200       0x48 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+                0x00003200                __libc_init_array
+ .text.memset   0x00003248       0x10 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+                0x00003248                memset
+ .text._exit    0x00003258        0x2 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+                0x00003258                _exit
  *(.rodata)
+ *fill*         0x0000325a        0x2 
+ .rodata        0x0000325c        0x8 ./boot.o
  *(.rodata*)
- *fill*         0x00002e32        0x2 
  .rodata.canTiming
-                0x00002e34       0x48 ./boot.o
+                0x00003264       0x48 ./boot.o
+ .rodata.fircFreq.6321
+                0x000032ac        0x4 ./lib/system_S32K144.o
  .rodata._global_impure_ptr
-                0x00002e7c        0x4 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
-                0x00002e7c                _global_impure_ptr
+                0x000032b0        0x4 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+                0x000032b0                _global_impure_ptr
  *(.glue_7)
- .glue_7        0x00002e80        0x0 linker stubs
+ .glue_7        0x000032b4        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x00002e80        0x0 linker stubs
+ .glue_7t       0x000032b4        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x00002e80        0x0 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .eh_frame      0x000032b4        0x0 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
  *(.init)
- .init          0x00002e80        0x4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crti.o
-                0x00002e80                _init
- .init          0x00002e84        0x8 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+ .init          0x000032b4        0x4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x000032b4                _init
+ .init          0x000032b8        0x8 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
  *(.fini)
- .fini          0x00002e8c        0x4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crti.o
-                0x00002e8c                _fini
- .fini          0x00002e90        0x8 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
-                0x00002e98                . = ALIGN (0x4)
+ .fini          0x000032c0        0x4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x000032c0                _fini
+ .fini          0x000032c4        0x8 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+                0x000032cc                . = ALIGN (0x4)
 
-.vfp11_veneer   0x00002e98        0x0
- .vfp11_veneer  0x00002e98        0x0 linker stubs
+.vfp11_veneer   0x000032cc        0x0
+ .vfp11_veneer  0x000032cc        0x0 linker stubs
 
-.v4_bx          0x00002e98        0x0
- .v4_bx         0x00002e98        0x0 linker stubs
+.v4_bx          0x000032cc        0x0
+ .v4_bx         0x000032cc        0x0 linker stubs
 
-.iplt           0x00002e98        0x0
- .iplt          0x00002e98        0x0 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+.iplt           0x000032cc        0x0
+ .iplt          0x000032cc        0x0 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x00002e98        0x8
-                0x00002e98                __exidx_start = .
+.ARM            0x000032cc        0x8
+                0x000032cc                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x00002e98        0x8 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .ARM.exidx     0x000032cc        0x8 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
                                  0x10 (size before relaxing)
-                0x00002ea0                __exidx_end = .
+                0x000032d4                __exidx_end = .
 
-.rel.dyn        0x00002ea0        0x0
- .rel.iplt      0x00002ea0        0x0 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+.rel.dyn        0x000032d4        0x0
+ .rel.iplt      0x000032d4        0x0 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
 
-.ctors          0x00002ea0        0x0
-                0x00002ea0                __CTOR_LIST__ = .
+.ctors          0x000032d4        0x0
+                0x000032d4                __CTOR_LIST__ = .
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
  *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
-                0x00002ea0                __CTOR_END__ = .
+                0x000032d4                __CTOR_END__ = .
 
-.dtors          0x00002ea0        0x0
-                0x00002ea0                __DTOR_LIST__ = .
+.dtors          0x000032d4        0x0
+                0x000032d4                __DTOR_LIST__ = .
  *crtbegin.o(.dtors)
  *crtbegin?.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
-                0x00002ea0                __DTOR_END__ = .
+                0x000032d4                __DTOR_END__ = .
 
-.preinit_array  0x00002ea0        0x0
-                0x00002ea0                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x000032d4        0x0
+                0x000032d4                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x00002ea0                PROVIDE (__preinit_array_end = .)
+                0x000032d4                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x00002ea0        0x4
-                0x00002ea0                PROVIDE (__init_array_start = .)
+.init_array     0x000032d4        0x4
+                0x000032d4                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x00002ea0        0x4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
-                0x00002ea4                PROVIDE (__init_array_end = .)
+ .init_array    0x000032d4        0x4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x000032d8                PROVIDE (__init_array_end = .)
 
-.fini_array     0x00002ea4        0x4
+.fini_array     0x000032d8        0x4
                 [!provide]                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x00002ea4        0x4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .fini_array    0x000032d8        0x4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
                 [!provide]                PROVIDE (__fini_array_end = .)
-                0x00002ea8                __etext = .
-                0x00002ea8                __DATA_ROM = .
+                0x000032dc                __etext = .
+                0x000032dc                __DATA_ROM = .
 
 .interrupts_ram
                 0x1fff8000      0x400
@@ -571,7 +597,7 @@ LOAD d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/
                 0x1fff8000                __VECTOR_RAM = DEFINED (__flash_vector_table__)?ORIGIN (m_interrupts):__VECTOR_RAM__
                 0x00000400                __RAM_VECTOR_TABLE_SIZE = DEFINED (__flash_vector_table__)?0x0:(__interrupts_ram_end__ - __interrupts_ram_start__)
 
-.data           0x1fff8400       0x68 load address 0x00002ea8
+.data           0x1fff8400       0x68 load address 0x000032dc
                 0x1fff8400                . = ALIGN (0x4)
                 0x1fff8400                __DATA_RAM = .
                 0x1fff8400                __data_start__ = .
@@ -587,20 +613,20 @@ LOAD d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/
  .jcr           0x1fff8464        0x4 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
                 0x1fff8468                . = ALIGN (0x4)
                 0x1fff8468                __data_end__ = .
-                0x00002f10                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
-                0x00002f10                __CODE_ROM = __DATA_END
+                0x00003344                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
+                0x00003344                __CODE_ROM = __DATA_END
 
 .tm_clone_table
-                0x1fff8468        0x0 load address 0x00002f10
+                0x1fff8468        0x0 load address 0x00003344
  .tm_clone_table
                 0x1fff8468        0x0 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
  .tm_clone_table
                 0x1fff8468        0x0 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
 
-.igot.plt       0x1fff8468        0x0 load address 0x00002f10
+.igot.plt       0x1fff8468        0x0 load address 0x00003344
  .igot.plt      0x1fff8468        0x0 d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
 
-.code           0x1fff8468        0x0 load address 0x00002f10
+.code           0x1fff8468        0x0 load address 0x00003344
                 0x1fff8468                . = ALIGN (0x4)
                 0x1fff8468                __CODE_RAM = .
                 0x1fff8468                __code_start__ = .
@@ -609,17 +635,17 @@ LOAD d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/
                 0x1fff8468                . = ALIGN (0x4)
                 0x1fff8468                __code_end__ = .
                 0x1fff8468                __code_ram_end__ = .
-                0x00002f10                __CODE_END = (__CODE_ROM + (__code_end__ - __code_start__))
-                0x00002f10                __CUSTOM_ROM = __CODE_END
+                0x00003344                __CODE_END = (__CODE_ROM + (__code_end__ - __code_start__))
+                0x00003344                __CUSTOM_ROM = __CODE_END
 
 .customSectionBlock
-                0x20000000        0x0 load address 0x00002f10
+                0x20000000        0x0 load address 0x00003344
                 0x20000000                __customSection_start__ = .
  *(.customSection)
                 0x20000000                __customSection_end__ = .
-                0x00002f10                __CUSTOM_END = (__CUSTOM_ROM + (__customSection_end__ - __customSection_start__))
+                0x00003344                __CUSTOM_END = (__CUSTOM_ROM + (__customSection_end__ - __customSection_start__))
 
-.bss            0x20000000       0xb4
+.bss            0x20000000       0xbc
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                __BSS_START = .
                 0x20000000                __bss_start__ = .
@@ -628,40 +654,43 @@ LOAD d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/
  *(.bss*)
  .bss.dummyTimerVal
                 0x2000001c        0x4 ./boot.o
- .bss.xcpCtoReqPacket.6351
-                0x20000020       0x82 ./boot.o
  .bss.xcpCtoRxInProgress.6353
-                0x200000a2        0x1 ./boot.o
- .bss.xcpCtoRxLength.6352
-                0x200000a3        0x1 ./boot.o
+                0x20000020        0x1 ./boot.o
+ *fill*         0x20000021        0x3 
+ .bss.xcpCtoReqPacket.6351
+                0x20000024       0x82 ./boot.o
+ *fill*         0x200000a6        0x2 
  .bss.xcpCtoRxStartTime.6354
-                0x200000a4        0x4 ./boot.o
- .bss.led_toggle_state.6328
-                0x200000a8        0x1 ./led.o
- *fill*         0x200000a9        0x3 
+                0x200000a8        0x4 ./boot.o
+ .bss.xcpCtoRxLength.6352
+                0x200000ac        0x1 ./boot.o
+ *fill*         0x200000ad        0x3 
  .bss.timer_counter_last.6329
-                0x200000ac        0x4 ./led.o
+                0x200000b0        0x4 ./led.o
+ .bss.led_toggle_state.6328
+                0x200000b4        0x1 ./led.o
+ *fill*         0x200000b5        0x3 
  .bss.millisecond_counter
-                0x200000b0        0x4 ./timer.o
+                0x200000b8        0x4 ./timer.o
  *(COMMON)
-                0x200000b4                . = ALIGN (0x4)
-                0x200000b4                __bss_end__ = .
-                0x200000b4                __BSS_END = .
+                0x200000bc                . = ALIGN (0x4)
+                0x200000bc                __bss_end__ = .
+                0x200000bc                __BSS_END = .
 
-.heap           0x200000b4      0x404
-                0x200000b8                . = ALIGN (0x8)
- *fill*         0x200000b4        0x4 
-                0x200000b8                __end__ = .
-                0x200000b8                __heap_start__ = .
+.heap           0x200000bc      0x404
+                0x200000c0                . = ALIGN (0x8)
+ *fill*         0x200000bc        0x4 
+                0x200000c0                __end__ = .
+                0x200000c0                __heap_start__ = .
                 [!provide]                PROVIDE (end = .)
                 [!provide]                PROVIDE (_end = .)
                 [!provide]                PROVIDE (__end = .)
-                0x200000b8                __HeapBase = .
-                0x200004b8                . = (. + HEAP_SIZE)
- *fill*         0x200000b8      0x400 
-                0x200004b8                __HeapLimit = .
-                0x200004b8                __heap_limit = .
-                0x200004b8                __heap_end__ = .
+                0x200000c0                __HeapBase = .
+                0x200004c0                . = (. + HEAP_SIZE)
+ *fill*         0x200000c0      0x400 
+                0x200004c0                __HeapLimit = .
+                0x200004c0                __heap_limit = .
+                0x200004c0                __heap_end__ = .
                 0x20007000                __StackTop = (ORIGIN (m_data_2) + LENGTH (m_data_2))
                 0x20006c00                __StackLimit = (__StackTop - STACK_SIZE)
                 0x20007000                PROVIDE (__stack = __StackTop)
@@ -674,7 +703,7 @@ LOAD d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/
  *fill*         0x20006c00      0x400 
                 0x20007000                __stack_end__ = .
                 0x20000000                __START_BSS = __BSS_START
-                0x200000b4                __END_BSS = __BSS_END
+                0x200000bc                __END_BSS = __BSS_END
                 0x20007000                __SP_INIT = __StackTop
 
 .ARM.attributes
@@ -728,52 +757,47 @@ OUTPUT(demoprog_s32k144.elf elf32-littlearm)
  .comment       0x0000007e       0x7f ./startup/startup.o
  .comment       0x0000007e       0x7f d:/nxp/s32ds.3.4/s32ds/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
 
-.debug_info     0x00000000     0x1c7a
- .debug_info    0x00000000      0xca9 ./boot.o
- .debug_info    0x00000ca9      0x26d ./led.o
- .debug_info    0x00000f16      0x434 ./main.o
- .debug_info    0x0000134a      0x134 ./timer.o
- .debug_info    0x0000147e      0x525 ./lib/system_S32K144.o
- .debug_info    0x000019a3      0x2b1 ./startup/startup.o
- .debug_info    0x00001c54       0x26 ./startup/startup_S32K144.o
+.debug_info     0x00000000     0x1b14
+ .debug_info    0x00000000      0xa2c ./boot.o
+ .debug_info    0x00000a2c      0x25a ./led.o
+ .debug_info    0x00000c86      0x3a1 ./main.o
+ .debug_info    0x00001027      0x134 ./timer.o
+ .debug_info    0x0000115b      0x522 ./lib/system_S32K144.o
+ .debug_info    0x0000167d      0x471 ./startup/startup.o
+ .debug_info    0x00001aee       0x26 ./startup/startup_S32K144.o
 
-.debug_abbrev   0x00000000      0x7c7
- .debug_abbrev  0x00000000      0x29b ./boot.o
- .debug_abbrev  0x0000029b      0x100 ./led.o
- .debug_abbrev  0x0000039b      0x120 ./main.o
- .debug_abbrev  0x000004bb       0xd2 ./timer.o
- .debug_abbrev  0x0000058d      0x143 ./lib/system_S32K144.o
- .debug_abbrev  0x000006d0       0xe3 ./startup/startup.o
- .debug_abbrev  0x000007b3       0x14 ./startup/startup_S32K144.o
+.debug_abbrev   0x00000000      0x694
+ .debug_abbrev  0x00000000      0x1a5 ./boot.o
+ .debug_abbrev  0x000001a5       0xe4 ./led.o
+ .debug_abbrev  0x00000289       0xf8 ./main.o
+ .debug_abbrev  0x00000381       0xd2 ./timer.o
+ .debug_abbrev  0x00000453      0x125 ./lib/system_S32K144.o
+ .debug_abbrev  0x00000578      0x108 ./startup/startup.o
+ .debug_abbrev  0x00000680       0x14 ./startup/startup_S32K144.o
 
-.debug_loc      0x00000000      0x5c0
- .debug_loc     0x00000000      0x3e9 ./boot.o
- .debug_loc     0x000003e9       0xeb ./lib/system_S32K144.o
- .debug_loc     0x000004d4       0xec ./startup/startup.o
+.debug_aranges  0x00000000      0x178
+ .debug_aranges
+                0x00000000       0x80 ./boot.o
+ .debug_aranges
+                0x00000080       0x28 ./led.o
+ .debug_aranges
+                0x000000a8       0x30 ./main.o
+ .debug_aranges
+                0x000000d8       0x30 ./timer.o
+ .debug_aranges
+                0x00000108       0x30 ./lib/system_S32K144.o
+ .debug_aranges
+                0x00000138       0x20 ./startup/startup.o
+ .debug_aranges
+                0x00000158       0x20 ./startup/startup_S32K144.o
 
-.debug_aranges  0x00000000      0x128
- .debug_aranges
-                0x00000000       0x40 ./boot.o
- .debug_aranges
-                0x00000040       0x28 ./led.o
- .debug_aranges
-                0x00000068       0x20 ./main.o
- .debug_aranges
-                0x00000088       0x30 ./timer.o
- .debug_aranges
-                0x000000b8       0x30 ./lib/system_S32K144.o
- .debug_aranges
-                0x000000e8       0x20 ./startup/startup.o
- .debug_aranges
-                0x00000108       0x20 ./startup/startup_S32K144.o
-
-.debug_ranges   0x00000000      0x118
- .debug_ranges  0x00000000       0xa0 ./boot.o
- .debug_ranges  0x000000a0       0x18 ./led.o
- .debug_ranges  0x000000b8       0x10 ./main.o
- .debug_ranges  0x000000c8       0x20 ./timer.o
- .debug_ranges  0x000000e8       0x20 ./lib/system_S32K144.o
- .debug_ranges  0x00000108       0x10 ./startup/startup.o
+.debug_ranges   0x00000000       0xf8
+ .debug_ranges  0x00000000       0x70 ./boot.o
+ .debug_ranges  0x00000070       0x18 ./led.o
+ .debug_ranges  0x00000088       0x20 ./main.o
+ .debug_ranges  0x000000a8       0x20 ./timer.o
+ .debug_ranges  0x000000c8       0x20 ./lib/system_S32K144.o
+ .debug_ranges  0x000000e8       0x10 ./startup/startup.o
 
 .debug_macro    0x00000000    0x1f9a7
  .debug_macro   0x00000000      0x11b ./boot.o
@@ -800,39 +824,39 @@ OUTPUT(demoprog_s32k144.elf elf32-littlearm)
  .debug_macro   0x00010c35     0xed32 ./startup/startup.o
  .debug_macro   0x0001f967       0x40 ./startup/startup.o
 
-.debug_line     0x00000000     0x147d
- .debug_line    0x00000000      0x432 ./boot.o
- .debug_line    0x00000432      0x340 ./led.o
- .debug_line    0x00000772      0x356 ./main.o
- .debug_line    0x00000ac8      0x34a ./timer.o
- .debug_line    0x00000e12      0x2e0 ./lib/system_S32K144.o
- .debug_line    0x000010f2      0x310 ./startup/startup.o
- .debug_line    0x00001402       0x7b ./startup/startup_S32K144.o
+.debug_line     0x00000000     0x18ed
+ .debug_line    0x00000000      0x5c1 ./boot.o
+ .debug_line    0x000005c1      0x401 ./led.o
+ .debug_line    0x000009c2      0x45f ./main.o
+ .debug_line    0x00000e21      0x40b ./timer.o
+ .debug_line    0x0000122c      0x2ec ./lib/system_S32K144.o
+ .debug_line    0x00001518      0x35a ./startup/startup.o
+ .debug_line    0x00001872       0x7b ./startup/startup_S32K144.o
 
-.debug_str      0x00000000    0x6932d
- .debug_str     0x00000000    0x68d64 ./boot.o
-                              0x68ee1 (size before relaxing)
- .debug_str     0x00068d64       0xc9 ./led.o
-                              0x68a03 (size before relaxing)
- .debug_str     0x00068e2d       0x41 ./main.o
-                              0x68aa7 (size before relaxing)
- .debug_str     0x00068e6e       0x46 ./timer.o
-                              0x68962 (size before relaxing)
- .debug_str     0x00068eb4       0xf6 ./lib/system_S32K144.o
-                              0x6883b (size before relaxing)
- .debug_str     0x00068faa      0x35a ./startup/startup.o
-                              0x689c1 (size before relaxing)
- .debug_str     0x00069304       0x29 ./startup/startup_S32K144.o
-                                 0x70 (size before relaxing)
+.debug_str      0x00000000    0x69372
+ .debug_str     0x00000000    0x68d8c ./boot.o
+                              0x68f09 (size before relaxing)
+ .debug_str     0x00068d8c       0xc9 ./led.o
+                              0x68a3f (size before relaxing)
+ .debug_str     0x00068e55       0x21 ./main.o
+                              0x68a90 (size before relaxing)
+ .debug_str     0x00068e76       0x59 ./timer.o
+                              0x689a7 (size before relaxing)
+ .debug_str     0x00068ecf      0x120 ./lib/system_S32K144.o
+                              0x68880 (size before relaxing)
+ .debug_str     0x00068fef      0x35a ./startup/startup.o
+                              0x68aab (size before relaxing)
+ .debug_str     0x00069349       0x29 ./startup/startup_S32K144.o
+                                 0xb4 (size before relaxing)
 
-.debug_frame    0x00000000      0x244
- .debug_frame   0x00000000       0xa4 ./boot.o
- .debug_frame   0x000000a4       0x38 ./led.o
- .debug_frame   0x000000dc       0x28 ./main.o
- .debug_frame   0x00000104       0x40 ./timer.o
- .debug_frame   0x00000144       0x40 ./lib/system_S32K144.o
- .debug_frame   0x00000184       0x2c ./startup/startup.o
- .debug_frame   0x000001b0       0x28 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
- .debug_frame   0x000001d8       0x2c D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
- .debug_frame   0x00000204       0x20 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
- .debug_frame   0x00000224       0x20 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+.debug_frame    0x00000000      0x444
+ .debug_frame   0x00000000      0x1d0 ./boot.o
+ .debug_frame   0x000001d0       0x54 ./led.o
+ .debug_frame   0x00000224       0x64 ./main.o
+ .debug_frame   0x00000288       0x70 ./timer.o
+ .debug_frame   0x000002f8       0x80 ./lib/system_S32K144.o
+ .debug_frame   0x00000378       0x38 ./startup/startup.o
+ .debug_frame   0x000003b0       0x28 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+ .debug_frame   0x000003d8       0x2c D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+ .debug_frame   0x00000404       0x20 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+ .debug_frame   0x00000424       0x20 D:/NXP/S32DS.3.4/S32DS/build_tools/gcc_b1620/gcc-6.3-arm32-eabi/arm-none-eabi/newlib/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)

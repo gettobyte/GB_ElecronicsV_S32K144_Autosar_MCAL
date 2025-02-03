@@ -33,8 +33,8 @@
 #include "device_registers.h"                    /* device registers                   */
 #include "system_S32K144.h"                      /* device sconfiguration              */
 
-#define APP_START_ADDRESS1	0x2000
-#define APP_START_ADDRESS2	0x4000
+#define APP_START_ADDRESS1	0x4000
+#define APP_START_ADDRESS2	0x8000
 /****************************************************************************************
 * Function prototypes
 ****************************************************************************************/

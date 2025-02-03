@@ -33,7 +33,7 @@ demoprog_s32k144.siz \
 all: demoprog_s32k144.elf secondary-outputs
 
 # Tool invocations
-demoprog_s32k144.elf: $(OBJS) D:/openblt_v011800/Target/Demo/ARMCM4_S32K14_S32K144EVB_GCC/Prog/S32K144_64_flash.ld $(USER_OBJS)
+demoprog_s32k144.elf: $(OBJS) C:/Users/Rohan/OneDrive/Documents/GB_ElecronicsV_S32K144_Autosar_MCAL/Bootloaders/G2B_Application_for_Bootloaders_ElecronicsV/Prog_1/S32K144_64_flash.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Standard S32DS C Linker'
 	arm-none-eabi-gcc -o "demoprog_s32k144.elf" "@demoprog_s32k144.args"  $(USER_OBJS) $(LIBS)

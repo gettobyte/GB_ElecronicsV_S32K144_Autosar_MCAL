@@ -31,7 +31,7 @@
 /****************************************************************************************
 * Include files
 ****************************************************************************************/
-#include "../Boot/blt_conf.h"                          /* bootloader configuration     */
+#include "../blt_conf.h"                          /* bootloader configuration     */
 #include "boot.h"                                      /* bootloader interface driver  */
 #include "led.h"                                       /* LED driver                   */
 #include "timer.h"                                     /* Timer driver                 */
