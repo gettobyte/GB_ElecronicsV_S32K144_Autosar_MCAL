@@ -35,6 +35,8 @@
 
 #define APP_START_ADDRESS1	0x4000
 #define APP_START_ADDRESS2	0x8000
+
+char * test;
 /****************************************************************************************
 * Function prototypes
 ****************************************************************************************/
@@ -42,6 +44,7 @@ static void Init(void);
 static void SystemClockConfig(void);
 void JumpToUserApplication1( unsigned int userSP,  unsigned int userStartup);
 void JumpToUserApplication2( unsigned int userSP,  unsigned int userStartup);
+//bool CommandCheck(char *data);
 
 /************************************************************************************//**
 ** \brief     This is the entry point for the bootloader application and is called
@@ -61,17 +64,17 @@ int main(void)
   {
 
 	  if (!(PTC->PDIR & (1<<12))) {   /* If SW1 is pushed */
-			  /* Check if a valid application is loaded and jump to it */
-			  JumpToUserApplication1(*((uint32_t*)APP_START_ADDRESS1), *((uint32_t*)(APP_START_ADDRESS1 + 4)));
-	      }
-	      else if(!(PTC->PDIR & (1<<13))) {                      /* If SW2 is pushed */
-	    	  /* Check if a valid application is loaded and jump to it */
-			  JumpToUserApplication2(*((uint32_t*)APP_START_ADDRESS2), *((uint32_t*)(APP_START_ADDRESS2 + 4)));
-	      }
-	      else{
-			  /* Run the bootloader task. */
-			  BootTask();
-	      }
+		  /* Check if a valid application is loaded and jump to it */
+		  JumpToUserApplication1(*((uint32_t*)APP_START_ADDRESS1), *((uint32_t*)(APP_START_ADDRESS1 + 4)));
+	  }
+	  else if(!(PTC->PDIR & (1<<13))) {                      /* If SW2 is pushed */
+		  /* Check if a valid application is loaded and jump to it */
+		  JumpToUserApplication2(*((uint32_t*)APP_START_ADDRESS2), *((uint32_t*)(APP_START_ADDRESS2 + 4)));
+	  }
+	  else{
+		  /* Run the bootloader task. */
+		  BootTask();
+	  }
   }
 
   /* Program should never get here. */
@@ -89,6 +92,7 @@ static void Init(void)
   /* Configure the system clock. */
   SystemClockConfig();
   /* Enable the peripheral clock for the ports that are used. */
+  PCC->PCCn[PCC_PORTA_INDEX] |= PCC_PCCn_CGC_MASK;
   PCC->PCCn[PCC_PORTC_INDEX] |= PCC_PCCn_CGC_MASK;
   PCC->PCCn[PCC_PORTD_INDEX] |= PCC_PCCn_CGC_MASK;
   PCC->PCCn[PCC_PORTE_INDEX] |= PCC_PCCn_CGC_MASK;
@@ -115,11 +119,15 @@ static void Init(void)
   PORTC->PCR[9] |= PORT_PCR_MUX(2);
 #endif
 #if (BOOT_COM_CAN_ENABLE > 0)
-  /* CAN RX GPIO pin configuration. PE4 = CAN0 RX, MUX = ALT5. */
-  PORTE->PCR[4] |= PORT_PCR_MUX(5);
-  /* CAN TX GPIO pin configuration. PE5 = CAN0 TX, MUX = ALT5. */
-  PORTE->PCR[5] |= PORT_PCR_MUX(5);
+  /* CAN RX GPIO pin configuration. PA12 = CAN1 RX, MUX = ALT3. */
+  PORTA->PCR[12] |= PORT_PCR_MUX(3);
+  /* CAN TX GPIO pin configuration. PA13 = CAN1 TX, MUX = ALT3. */
+  PORTA->PCR[13] |= PORT_PCR_MUX(3);
 #endif
+  /* UART RX GPIO pin configuration. PC6 = UART1 RX, MUX = ALT2. */
+  PORTC->PCR[6] |= PORT_PCR_MUX(2);
+  /* UART TX GPIO pin configuration. PC7 = UART1 TX, MUX = ALT2. */
+  PORTC->PCR[7] |= PORT_PCR_MUX(2);
 } /*** end of Init ***/
 
 
@@ -273,4 +281,24 @@ void JumpToUserApplication2( unsigned int userSP,  unsigned int userStartup)
 	/* Jump to application PC (r1) */
 	__asm("mov pc, r1");
 }
+
+/*
+ * Used for verification of incoming signal
+ */
+//bool CommandCheck(char *data)
+//{
+//	bool result = false;
+//
+//	  /* Check if a new byte was received by means of the RDRF-bit. */
+//	  if (((LPUART1->STAT & LPUART_STAT_RDRF_MASK) >> LPUART_STAT_RDRF_SHIFT) != 0U)
+//	  {
+//	    /* Retrieve and store the newly received byte. */
+//	    *data = LPUART1->DATA;
+//	    /* Update the result. */
+//	    result = true;
+//	  }
+//
+//	  /* Give the result back to the caller. */
+//	  return result;
+//}
 /*********************************** end of main.c *************************************/

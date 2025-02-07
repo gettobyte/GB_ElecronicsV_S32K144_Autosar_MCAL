@@ -101,7 +101,7 @@
 /** \brief Configure number of bytes in the host->target CAN message. */
 #define BOOT_COM_CAN_RX_MAX_DATA        (8)
 /** \brief Select the desired CAN peripheral as a zero based index. */
-#define BOOT_COM_CAN_CHANNEL_INDEX      (0)
+#define BOOT_COM_CAN_CHANNEL_INDEX      (1)
 
 
 /****************************************************************************************
