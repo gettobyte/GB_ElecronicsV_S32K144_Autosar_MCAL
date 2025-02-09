@@ -63,11 +63,11 @@ int main(void)
   while (1)
   {
 
-	  if (!(PTC->PDIR & (1<<12))) {   /* If SW1 is pushed */
+	  if ((PTC->PDIR & (1<<12))) {   /* If SW1 is pushed */
 		  /* Check if a valid application is loaded and jump to it */
 		  JumpToUserApplication1(*((uint32_t*)APP_START_ADDRESS1), *((uint32_t*)(APP_START_ADDRESS1 + 4)));
 	  }
-	  else if(!(PTC->PDIR & (1<<13))) {                      /* If SW2 is pushed */
+	  else if((PTC->PDIR & (1<<13))) {                      /* If SW2 is pushed */
 		  /* Check if a valid application is loaded and jump to it */
 		  JumpToUserApplication2(*((uint32_t*)APP_START_ADDRESS2), *((uint32_t*)(APP_START_ADDRESS2 + 4)));
 	  }
@@ -149,17 +149,17 @@ static void SystemClockConfig(void)
 {
   /* --------- SOSC Initialization (8 MHz) ------------------------------------------- */
   /* SOSCDIV1 & SOSCDIV2 =1: divide by 1. */
-  SCG->SOSCDIV = SCG_SOSCDIV_SOSCDIV1(1) | SCG_SOSCDIV_SOSCDIV2(1);
+//  SCG->SOSCDIV = SCG_SOSCDIV_SOSCDIV1(1) | SCG_SOSCDIV_SOSCDIV2(1);
   /* Range=2: Medium freq (SOSC betw 1MHz-8MHz).
    * HGO=0:   Config xtal osc for low power.
    * EREFS=1: Input is external XTAL.
    */
-  SCG->SOSCCFG = SCG_SOSCCFG_RANGE(2) | SCG_SOSCCFG_EREFS_MASK;
+//  SCG->SOSCCFG = SCG_SOSCCFG_RANGE(2) | SCG_SOSCCFG_EREFS_MASK;
   /* Ensure SOSCCSR unlocked. */
-  while (SCG->SOSCCSR & SCG_SOSCCSR_LK_MASK)
-  {
-    ;
-  }
+//  while (SCG->SOSCCSR & SCG_SOSCCSR_LK_MASK)
+//  {
+//    ;
+//  }
   /* LK=0:          SOSCCSR can be written.
    * SOSCCMRE=0:    OSC CLK monitor IRQ if enabled.
    * SOSCCM=0:      OSC CLK monitor disabled.
@@ -168,65 +168,105 @@ static void SystemClockConfig(void)
    * SOSCSTEN=0:    Sys OSC disabled in Stop modes.
    * SOSCEN=1:      Enable oscillator.
    */
-  SCG->SOSCCSR = SCG_SOSCCSR_SOSCEN_MASK;
+//  SCG->SOSCCSR = SCG_SOSCCSR_SOSCEN_MASK;
   /* Wait for system OSC clock to become valid. */
-  while (!(SCG->SOSCCSR & SCG_SOSCCSR_SOSCVLD_MASK))
-  {
-    ;
-  }
+//  while (!(SCG->SOSCCSR & SCG_SOSCCSR_SOSCVLD_MASK))
+//  {
+//    ;
+//  }
 
   /* --------- SPLL Initialization (160 MHz) ----------------------------------------- */
   /* Ensure SPLLCSR is unlocked. */
-  while (SCG->SPLLCSR & SCG_SPLLCSR_LK_MASK)
-  {
-    ;
-  }
+//  while (SCG->SPLLCSR & SCG_SPLLCSR_LK_MASK)
+//  {
+//    ;
+//  }
   /* SPLLEN=0: SPLL is disabled (default). */
-  SCG->SPLLCSR &= ~SCG_SPLLCSR_SPLLEN_MASK;
+//  SCG->SPLLCSR &= ~SCG_SPLLCSR_SPLLEN_MASK;
   /* SPLLDIV1 divide by 2 and SPLLDIV2 divide by 4. */
-  SCG->SPLLDIV |= SCG_SPLLDIV_SPLLDIV1(2) | SCG_SPLLDIV_SPLLDIV2(3);
+//  SCG->SPLLDIV |= SCG_SPLLDIV_SPLLDIV1(2) | SCG_SPLLDIV_SPLLDIV2(3);
   /* PREDIV=0: Divide SOSC_CLK by 0+1=1.
    * MULT=24:  Multiply sys pll by 4+24=40.
    * SPLL_CLK = 8MHz / 1 * 40 / 2 = 160 MHz.
    */
-  SCG->SPLLCFG = SCG_SPLLCFG_MULT(24);
+//  SCG->SPLLCFG = SCG_SPLLCFG_MULT(24);
   /* Ensure SPLLCSR is unlocked. */
-  while (SCG->SPLLCSR & SCG_SPLLCSR_LK_MASK)
-  {
-    ;
-  }
+//  while (SCG->SPLLCSR & SCG_SPLLCSR_LK_MASK)
+//  {
+//    ;
+//  }
   /* LK=0:        SPLLCSR can be written.
    * SPLLCMRE=0:  SPLL CLK monitor IRQ if enabled.
    * SPLLCM=0:    SPLL CLK monitor disabled.
    * SPLLSTEN=0:  SPLL disabled in Stop modes.
    * SPLLEN=1:    Enable SPLL.
    */
-  SCG->SPLLCSR |= SCG_SPLLCSR_SPLLEN_MASK;
+//  SCG->SPLLCSR |= SCG_SPLLCSR_SPLLEN_MASK;
   /* Wait for SPLL to become valid. */
-  while (!(SCG->SPLLCSR & SCG_SPLLCSR_SPLLVLD_MASK))
+//  while (!(SCG->SPLLCSR & SCG_SPLLCSR_SPLLVLD_MASK))
+//  {
+//    ;
+//  }
+
+  /* --------- SIRC Initialization --------------------------------------------------- */
+  /* Slow IRC is enabled with high range (8 MHz) in reset.
+   */
+//	.sircConfig =
+//	        {
+//	            .initialize = true,
+//	            .enableInStop = true,                 /* Enable SIRC in stop mode */
+//	            .enableInLowPower = true,             /* Enable SIRC in low power mode */
+//	            .locked = false,                      /* unlocked */
+//	            .range = SCG_SIRC_RANGE_HIGH,         /* Slow IRC high range clock (8 MHz) */
+//	            .div1 = SCG_ASYNC_CLOCK_DIV_BY_1,     /* Slow IRC Clock Divider 1: divided by 1 */
+//	            .div2 = SCG_ASYNC_CLOCK_DIV_BY_1,     /* Slow IRC Clock Divider 3: divided by 1 */
+//	        }
+  SCG->SIRCDIV = SCG_SIRCDIV_SIRCDIV1(1U) | SCG_SIRCDIV_SIRCDIV2(1U);
+  SCG->SIRCCFG = SCG_SIRCCFG_RANGE(1U);
+  SCG->SIRCCSR = SCG_SIRCCSR_SIRCEN(1U)   |
+          	  	 SCG_SIRCCSR_SIRCSTEN(1U) |
+				 SCG_SIRCCSR_SIRCLPEN(1U) |
+				 SCG_SIRCCSR_LK(0U);
+  while (!(SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK))
   {
     ;
   }
 
-  /* --------- SIRC Initialization --------------------------------------------------- */
-  /* Slow IRC is enabled with high range (8 MHz) in reset. Enable SIRCDIV2_CLK and
-   * SIRCDIV1_CLK, divide by 1 = 8MHz asynchronous clock source.
+  /* --------- FIRC Initialization --------------------------------------------------- */
+  /* Fast IRC is enabled with high range (48 MHz) in reset.
    */
-  SCG->SIRCDIV = SCG_SIRCDIV_SIRCDIV1(1) | SCG_SIRCDIV_SIRCDIV2(1);
+//  .fircConfig =
+//          {
+//              .initialize = true,
+//              .regulator = true,                    /* FIRC regulator is enabled */
+//              .locked = false,                      /* unlocked */
+//              .range = SCG_FIRC_RANGE_48M,           /*!< RANGE      */
+//              .div1 = SCG_ASYNC_CLOCK_DIV_BY_1,     /* Fast IRC Clock Divider 1: divided by 1 */
+//              .div2 = SCG_ASYNC_CLOCK_DIV_BY_1,     /* Fast IRC Clock Divider 3: divided by 1 */
+//          }
+  SCG->FIRCDIV = SCG_FIRCDIV_FIRCDIV1(1U) | SCG_FIRCDIV_FIRCDIV2(1U);
+  SCG->SIRCCFG = SCG_FIRCCFG_RANGE(0U);
+  SCG->SIRCCSR = SCG_FIRCCSR_FIRCEN(1U)                             |
+           	   	 SCG_FIRCCSR_FIRCREGOFF(1U)    |
+				 SCG_FIRCCSR_LK(0U);
+  while (!(SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK))
+  {
+    ;
+  }
 
-  /* --------- Change to normal RUN mode with 8MHz SOSC, 80 MHz PLL ------------------ */
+  /* --------- Change to normal RUN mode with 48MHz FIRC ------------------ */
   /* Note that flash memory should not be programmed or erased when the microcontroller
    * is operating in VLPr or HSRUN mode. Therefore normal RUN mode is configured.
    */
-  /* Select PLL as clock source.
+  /* Select FIRC as clock source.
    * DIVCORE=1, div. by 2: Core clock = 160/2 MHz = 80 MHz.
    * DIVBUS=1, div. by 2: bus clock = 40 MHz.
    * DIVSLOW=2, div. by 2: SCG slow, flash clock= 26 2/3 MHz.
    */
-   SCG->RCCR= SCG_RCCR_SCS(6) | SCG_RCCR_DIVCORE(1) | SCG_RCCR_DIVBUS(1) |
-              SCG_RCCR_DIVSLOW(2);
-   /* Wait until system clock source is SPLL. */
-   while (((SCG->CSR & SCG_CSR_SCS_MASK) >> SCG_CSR_SCS_SHIFT ) != 6U)
+   SCG->RCCR= SCG_RCCR_SCS(3) | SCG_RCCR_DIVCORE(0) | SCG_RCCR_DIVBUS(0) |
+              SCG_RCCR_DIVSLOW(1);
+   /* Wait until system clock source is FIRC. */
+   while (((SCG->CSR & SCG_CSR_SCS_MASK) >> SCG_CSR_SCS_SHIFT ) != 3U)
    {
      ;
    }
