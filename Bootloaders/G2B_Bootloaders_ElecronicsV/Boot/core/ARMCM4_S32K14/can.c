@@ -380,16 +380,21 @@ void CanInit(void)
   CanFreezeModeEnter();
 
   /* Obtain bittiming configuration information. */
-  if (CanGetSpeedConfig(BOOT_COM_CAN_BAUDRATE/1000, &prescaler, &timingCfg) == BLT_FALSE)
-  {
-    /* Incorrect configuration. The specified baudrate is not supported for the given
-     * clock configuration. Verify the following settings in blt_conf.h:
-     *   - BOOT_COM_CAN_BAUDRATE
-     *   - BOOT_CPU_XTAL_SPEED_KHZ
-     *   - BOOT_CPU_SYSTEM_SPEED_KHZ
-     */
-    ASSERT_RT(BLT_FALSE);
-  }
+//  if (CanGetSpeedConfig(BOOT_COM_CAN_BAUDRATE/1000, &prescaler, &timingCfg) == BLT_FALSE)
+//  {
+//    /* Incorrect configuration. The specified baudrate is not supported for the given
+//     * clock configuration. Verify the following settings in blt_conf.h:
+//     *   - BOOT_COM_CAN_BAUDRATE
+//     *   - BOOT_CPU_XTAL_SPEED_KHZ
+//     *   - BOOT_CPU_SYSTEM_SPEED_KHZ
+//     */
+//    ASSERT_RT(BLT_FALSE);
+//  }
+  prescaler = 6;
+  timingCfg.timeQuanta = 16;
+  timingCfg.propSeg = 5;
+  timingCfg.phaseSeg1 = 8;
+  timingCfg.phaseSeg2 = 2
 
   /* Reset the current bittiming configuration. */
   CANx->CTRL1 &= ~(CAN_CTRL1_PRESDIV_MASK | CAN_CTRL1_PROPSEG_MASK |
