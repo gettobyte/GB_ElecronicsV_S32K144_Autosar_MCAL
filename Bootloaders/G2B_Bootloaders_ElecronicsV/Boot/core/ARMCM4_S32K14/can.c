@@ -373,7 +373,7 @@ void CanInit(void)
    * is available, which is typically the case to meet the clock tolerance requirements
    * of the CAN 2.0B secification.
    */
-  CANx->CTRL1 &= ~CAN_CTRL1_CLKSRC_MASK;
+  CANx->CTRL1 |= CAN_CTRL1_CLKSRC(1); //This changes the CAN_CLK to FIRC
   /* Leave disabled mode. */
   CanDisabledModeExit();
   /* Make sure freeze mode is active to be able to initialize the CAN controller. */
@@ -392,9 +392,9 @@ void CanInit(void)
 //  }
   prescaler = 6;
   timingCfg.timeQuanta = 16;
-  timingCfg.propSeg = 5;
-  timingCfg.phaseSeg1 = 8;
-  timingCfg.phaseSeg2 = 2
+  timingCfg.propSeg = 6;
+  timingCfg.phaseSeg1 = 5;
+  timingCfg.phaseSeg2 = 4;
 
   /* Reset the current bittiming configuration. */
   CANx->CTRL1 &= ~(CAN_CTRL1_PRESDIV_MASK | CAN_CTRL1_PROPSEG_MASK |
