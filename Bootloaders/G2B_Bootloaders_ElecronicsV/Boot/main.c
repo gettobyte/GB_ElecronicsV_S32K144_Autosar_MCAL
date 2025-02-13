@@ -33,8 +33,8 @@
 #include "device_registers.h"                    /* device registers                   */
 #include "system_S32K144.h"                      /* device sconfiguration              */
 
+#define TIMEOUT_MS 5000U
 #define APP_START_ADDRESS1	0x4000
-#define APP_START_ADDRESS2	0x8000
 
 char * test;
 /****************************************************************************************
@@ -60,29 +60,24 @@ int main(void)
   BootInit();
 
   /* Start the infinite program loop. */
-  while (1)
-  {
+  uint32_t start_time = TimerGet(); // Get the start time
 
-	  if ((PTC->PDIR & (1<<12))) {   /* If SW1 is pushed */
-		  /* Check if a valid application is loaded and jump to it */
-		  JumpToUserApplication1(*((uint32_t*)APP_START_ADDRESS1), *((uint32_t*)(APP_START_ADDRESS1 + 4)));
-	  }
-	  else if((PTC->PDIR & (1<<13))) {                      /* If SW2 is pushed */
-		  /* Check if a valid application is loaded and jump to it */
-		  JumpToUserApplication2(*((uint32_t*)APP_START_ADDRESS2), *((uint32_t*)(APP_START_ADDRESS2 + 4)));
-	  }
-	  else{
-		  /* Run the bootloader task. */
-		  BootTask();
-	  }
+  while((TimerGet() - start_time) < TIMEOUT_MS)
+  {
+	  BootTask();
+	  start_time = TimerGet();
   }
 
+  JumpToUserApplication1(*((uint32_t*)APP_START_ADDRESS1), *((uint32_t*)(APP_START_ADDRESS1 + 4)));
+
   /* Program should never get here. */
+  while (1);
+
   return 0;
 } /*** end of main ***/
 
 
-/************************************************************************************//**
+/***************************************************************************************
 ** \brief     Initializes the microcontroller.
 ** \return    none.
 **
@@ -280,7 +275,7 @@ static void SystemClockConfig(void)
 
 /**
  * Used to jump to the entry point of the user application
- * The Vector table of the user application must be located at 0x2000
+ * The Vector table of the user application must be located at 0x4000
  * */
 void JumpToUserApplication1( unsigned int userSP,  unsigned int userStartup)
 {
@@ -295,28 +290,6 @@ void JumpToUserApplication1( unsigned int userSP,  unsigned int userStartup)
 
 	/* Relocate vector table */
 	S32_SCB->VTOR = (uint32_t)APP_START_ADDRESS1;
-
-	/* Jump to application PC (r1) */
-	__asm("mov pc, r1");
-}
-
-/**
- * Used to jump to the entry point of the user application
- * The Vector table of the user application must be located at 0x4000
- * */
-void JumpToUserApplication2( unsigned int userSP,  unsigned int userStartup)
-{
-	/* Check if Entry address is erased and return if erased */
-	if(userSP == 0xFFFFFFFF){
-		return;
-	}
-
-	/* Set up stack pointer */
-	__asm("msr msp, r0");
-	__asm("msr psp, r0");
-
-	/* Relocate vector table */
-	S32_SCB->VTOR = (uint32_t)APP_START_ADDRESS2;
 
 	/* Jump to application PC (r1) */
 	__asm("mov pc, r1");
