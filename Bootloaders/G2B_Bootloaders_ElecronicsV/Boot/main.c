@@ -61,11 +61,11 @@ int main(void)
 
   /* Start the infinite program loop. */
   uint32_t start_time = TimerGet(); // Get the start time
-
-  while((TimerGet() - start_time) < TIMEOUT_MS)
+  uint32_t current_time = 0;        // Get the current time
+  while((current_time - start_time) < TIMEOUT_MS)
   {
 	  BootTask();
-	  start_time = TimerGet();
+	  current_time = TimerGet();    // Reset timer for next check
   }
 
   JumpToUserApplication1(*((uint32_t*)APP_START_ADDRESS1), *((uint32_t*)(APP_START_ADDRESS1 + 4)));

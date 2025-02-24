@@ -51,7 +51,7 @@ openblt_s32k144.srec: openblt_s32k144.elf
 
 openblt_s32k144.siz: openblt_s32k144.elf
 	@echo 'Invoking: Standard S32DS Print Size'
-	arm-none-eabi-size --format=berkeley openblt_s32k144.elf
+	arm-none-eabi-size --format=berkeley --totals openblt_s32k144.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
