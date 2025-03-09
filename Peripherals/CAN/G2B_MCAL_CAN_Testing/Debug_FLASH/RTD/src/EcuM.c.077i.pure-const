@@ -1,0 +1,250 @@
+
+
+ local analysis of EcuM_CheckWakeup
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of EcuM_ValidateWakeupEvent
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of EcuM_SetWakeupEvent
+   scanning: EcuMLastWakeupEvent = events_2(D);
+  scanning: return;
+Function is locally const.
+callgraph:
+
+EcuM_ValidateWakeupEvent/4 (EcuM_ValidateWakeupEvent) @05c152a0
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 2
+  Aux: @057c47a0
+  References: 
+  Referring: 
+  Function EcuM_ValidateWakeupEvent/4 is inline copy in EcuM_CheckWakeup/3
+  Clone of EcuM_ValidateWakeupEvent/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EcuM_CheckWakeup/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EcuM_CheckWakeup/3 (EcuM_CheckWakeup) @05c0d700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057c49c0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EcuM_ValidateWakeupEvent/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EcuM_ValidateWakeupEvent/2 (EcuM_ValidateWakeupEvent) @05c0d460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 4
+  Aux: @057c4960
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EcuM_SetWakeupEvent/1 (EcuM_SetWakeupEvent) @05c0d1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057c4ae0
+  References: EcuMLastWakeupEvent/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+EcuM_ValidateWakeupEvent/4 (EcuM_ValidateWakeupEvent) @05c152a0
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 2
+  Aux: @057c47a0
+  References: 
+  Referring: 
+  Function EcuM_ValidateWakeupEvent/4 is inline copy in EcuM_CheckWakeup/3
+  Clone of EcuM_ValidateWakeupEvent/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EcuM_CheckWakeup/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EcuM_CheckWakeup/3 (EcuM_CheckWakeup) @05c0d700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057c49c0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EcuM_ValidateWakeupEvent/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EcuM_ValidateWakeupEvent/2 (EcuM_ValidateWakeupEvent) @05c0d460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 4
+  Aux: @057c4960
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EcuM_SetWakeupEvent/1 (EcuM_SetWakeupEvent) @05c0d1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057c4ae0
+  References: EcuMLastWakeupEvent/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+EcuM_ValidateWakeupEvent: malloc_bottom
+EcuM_CheckWakeup: malloc_bottom
+EcuM_ValidateWakeupEvent: malloc_bottom
+EcuM_SetWakeupEvent: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+EcuM_ValidateWakeupEvent: malloc_bottom
+EcuM_CheckWakeup: malloc_bottom
+EcuM_ValidateWakeupEvent: malloc_bottom
+EcuM_SetWakeupEvent: malloc_bottom
+callgraph:
+
+EcuM_ValidateWakeupEvent/4 (EcuM_ValidateWakeupEvent) @05c152a0
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 2
+  Aux: @057c4a80
+  References: 
+  Referring: 
+  Function EcuM_ValidateWakeupEvent/4 is inline copy in EcuM_CheckWakeup/3
+  Clone of EcuM_ValidateWakeupEvent/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EcuM_CheckWakeup/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EcuM_CheckWakeup/3 (EcuM_CheckWakeup) @05c0d700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057c4ae0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EcuM_ValidateWakeupEvent/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EcuM_ValidateWakeupEvent/2 (EcuM_ValidateWakeupEvent) @05c0d460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 4
+  Aux: @057c4ac0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EcuM_SetWakeupEvent/1 (EcuM_SetWakeupEvent) @05c0d1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057c4740
+  References: EcuMLastWakeupEvent/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+EcuM_CheckWakeup/3 (EcuM_CheckWakeup) @05c0d700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057c4ae0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EcuM_ValidateWakeupEvent/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EcuM_ValidateWakeupEvent/4 (EcuM_ValidateWakeupEvent) @05c152a0
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 2
+  Aux: @057c4a80
+  References: 
+  Referring: 
+  Function EcuM_ValidateWakeupEvent/4 is inline copy in EcuM_CheckWakeup/3
+  Clone of EcuM_ValidateWakeupEvent/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EcuM_CheckWakeup/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EcuM_ValidateWakeupEvent/2 (EcuM_ValidateWakeupEvent) @05c0d460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 4
+  Aux: @057c4ac0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EcuM_SetWakeupEvent/1 (EcuM_SetWakeupEvent) @05c0d1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @057c4740
+  References: EcuMLastWakeupEvent/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: EcuM_SetWakeupEvent
+Function found not to call free: EcuM_ValidateWakeupEvent
+Function found not to call free: EcuM_ValidateWakeupEvent
+Function found not to call free: EcuM_CheckWakeup
+EcuM_CheckWakeup (EcuM_WakeupSourceType wakeupSource)
+{
+  <bb 2> [local count: 1073741824]:
+  EcuM_ValidateWakeupEvent (wakeupSource_1(D)); [tail call]
+  return;
+
+}
+
+
+EcuM_ValidateWakeupEvent (EcuM_WakeupSourceType events)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EcuM_SetWakeupEvent (EcuM_WakeupSourceType events)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  EcuMLastWakeupEvent = events_2(D);
+  return;
+
+}
+
+
