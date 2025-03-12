@@ -265,34 +265,43 @@
                            <setting name="linStateStructure" value="lin2_State"/>
                            <array name="linConfiguration">
                               <struct name="0">
-                                 <setting name="name" value="lin2_InitConfig0"/>
+                                 <setting name="name" value="lin2_MasterConfig"/>
                                  <setting name="baudRate" value="9600"/>
                                  <setting name="nodeFunction" value="(bool)MASTER"/>
                                  <setting name="autobaudEnable" value="0"/>
                                  <setting name="timerGetTimeIntervalCallback" value="NULL"/>
-                                 <setting name="classicPidType" value="Classic"/>
+                                 <setting name="classicPidType" value="Enhanced"/>
+                                 <array name="numOfClassicPID"/>
+                              </struct>
+                              <struct name="1">
+                                 <setting name="name" value="lin2_SlaveConfig"/>
+                                 <setting name="baudRate" value="9600"/>
+                                 <setting name="nodeFunction" value="(bool)SLAVE"/>
+                                 <setting name="autobaudEnable" value="0"/>
+                                 <setting name="timerGetTimeIntervalCallback" value="NULLL"/>
+                                 <setting name="classicPidType" value="Enhanced"/>
                                  <array name="numOfClassicPID"/>
                               </struct>
                            </array>
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="adc_config_1" uuid="cf8b9fa6-d697-4b00-8a05-40a7def08517" type="adc_config" type_id="adc" mode="general" peripheral="ADC_0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="adc_config_1" uuid="cbe46993-93ec-40d7-90d9-46f85372e208" type="adc_config" type_id="adc" mode="general" peripheral="ADC_0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="adc">
                         <array name="adcConverterCfg">
                            <struct name="0">
                               <setting name="name" value="adc_config_1_ConvConfig0"/>
-                              <setting name="readonly" value="false"/>
+                              <setting name="readonly" value="true"/>
                               <setting name="clockDivide" value="ADC_CLK_DIVIDE_1"/>
                               <setting name="sampleTime" value="255"/>
-                              <setting name="resolution" value="ADC_RESOLUTION_12BIT"/>
+                              <setting name="resolution" value="ADC_RESOLUTION_8BIT"/>
                               <setting name="inputClock" value="ADC_CLK_ALT_1"/>
                               <setting name="trigger" value="ADC_TRIGGER_SOFTWARE"/>
                               <setting name="pretriggerSel" value="ADC_PRETRIGGER_SEL_PDB"/>
                               <setting name="triggerSel" value="ADC_TRIGGER_SEL_PDB"/>
                               <setting name="dmaEnable" value="false"/>
                               <setting name="voltageRef" value="ADC_VOLTAGEREF_VREF"/>
-                              <setting name="continuousConvEnable" value="true"/>
+                              <setting name="continuousConvEnable" value="false"/>
                               <setting name="supplyMonitoringEnable" value="false"/>
                            </struct>
                         </array>

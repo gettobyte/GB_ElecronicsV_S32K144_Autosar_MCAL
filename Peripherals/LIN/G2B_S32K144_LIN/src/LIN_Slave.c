@@ -1,5 +1,5 @@
 /*
- *  Module main.c
+ *  Slave main.c
  *
  *  Created on: 09-Mar-2025
  *      Author: Rohan
@@ -10,7 +10,7 @@
 
 volatile int exit_code = 0;
 /* User includes */
-uint8_t txBuff1[8] = {0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8};
+uint8_t rxBuff1[8];
 status_t error;
 
 
@@ -37,14 +37,12 @@ int main(void)
     PINS_DRV_SetPins(PTE, (0x1u << (9UL)));
 
     /* Initialize LIN network interface */
-    error = LIN_DRV_Init(INST_LIN2, &lin2_InitConfig0, &lin2_State);
+    error = LIN_DRV_Init(INST_LIN2, &lin2_SlaveConfig, &lin2_State);
 
     for(;;)
     {
-		error = LIN_DRV_MasterSendHeader(INST_LIN2, 1);
-		OSIF_TimeDelay(10);
-		error = LIN_DRV_SendFrameData(INST_LIN2, txBuff1, sizeof(txBuff1));
-		OSIF_TimeDelay(10);
+    	error = LIN_DRV_ReceiveFrameDataBlocking(INST_LIN2, rxBuff1, sizeof(rxBuff1), 2000);
+    	OSIF_TimeDelay(100);
         if(exit_code != 0)
         {
             break;

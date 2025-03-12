@@ -42,17 +42,17 @@ instance:
     - adcConverterCfg:
       - 0:
         - name: 'adc_config_1_ConvConfig0'
-        - readonly: 'false'
+        - readonly: 'true'
         - clockDivide: 'ADC_CLK_DIVIDE_1'
         - sampleTime: '255'
-        - resolution: 'ADC_RESOLUTION_12BIT'
+        - resolution: 'ADC_RESOLUTION_8BIT'
         - inputClock: 'ADC_CLK_ALT_1'
         - trigger: 'ADC_TRIGGER_SOFTWARE'
         - pretriggerSel: 'ADC_PRETRIGGER_SEL_PDB'
         - triggerSel: 'ADC_TRIGGER_SEL_PDB'
         - dmaEnable: 'false'
         - voltageRef: 'ADC_VOLTAGEREF_VREF'
-        - continuousConvEnable: 'true'
+        - continuousConvEnable: 'false'
         - supplyMonitoringEnable: 'false'
     - adcCompareCfg: []
     - adcAverageCfg: []
@@ -74,17 +74,17 @@ instance:
  *
  */
 
-adc_converter_config_t adc_config_1_ConvConfig0 = {
+const adc_converter_config_t adc_config_1_ConvConfig0 = {
   .clockDivide = ADC_CLK_DIVIDE_1,
   .sampleTime = 255U,
-  .resolution = ADC_RESOLUTION_12BIT,
+  .resolution = ADC_RESOLUTION_8BIT,
   .inputClock = ADC_CLK_ALT_1,
   .trigger = ADC_TRIGGER_SOFTWARE,
   .pretriggerSel = ADC_PRETRIGGER_SEL_PDB,
   .triggerSel = ADC_TRIGGER_SEL_PDB,
   .dmaEnable = false,
   .voltageRef = ADC_VOLTAGEREF_VREF,
-  .continuousConvEnable = true,
+  .continuousConvEnable = false,
   .supplyMonitoringEnable = false
 };
 
