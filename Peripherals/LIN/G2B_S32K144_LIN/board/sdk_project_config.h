@@ -7,4 +7,19 @@
 #define SDK_PROJECT_CONFIG_H_
 
 
+/**
+ * @page misra_violations MISRA-C:2012 violations
+ *
+ * @section [global]
+ * Violates MISRA 2012 Advisory Rule 2.5, Global macro not referenced.
+ * The global macro will be used in function call of the module.
+ *
+ */
+/* Include header files for all configured components */
+#include "clock_config.h"
+#include "pin_mux.h"
+#include "peripherals_lin_1.h"
+
+
 #endif /* SDK_PROJECT_CONFIG_H_ */
+
