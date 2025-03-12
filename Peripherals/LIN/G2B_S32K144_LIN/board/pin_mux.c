@@ -39,12 +39,26 @@ BOARD_InitPins:
   - {pin_num: '31', peripheral: LPUART2, signal: txd, pin_signal: PTD7, direction: OUTPUT}
   - {pin_num: '32', peripheral: LPUART2, signal: rxd, pin_signal: PTD6}
   - {pin_num: '23', peripheral: PORTE, signal: 'port, 9', pin_signal: PTE9, direction: OUTPUT}
+  - {pin_num: '46', peripheral: ADC0, signal: 'se, 12', pin_signal: PTC14}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
 
 /* Generate array of configured pin structures */
 pin_settings_config_t g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS0] = {
+    {
+        .base            = PORTC,
+        .pinPortIdx      = 14U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveSelect     = PORT_LOW_DRIVE_STRENGTH,
+        .passiveFilter   = false,
+        .mux             = PORT_PIN_DISABLED,
+        .pinLock         = false,
+        .intConfig       = PORT_DMA_INT_DISABLED,
+        .clearIntFlag    = false,
+        .gpioBase        = NULL,
+        .digitalFilter   = false,
+    },
     {
         .base            = PORTD,
         .pinPortIdx      = 6U,

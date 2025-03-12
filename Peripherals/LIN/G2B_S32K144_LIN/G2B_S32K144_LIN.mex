@@ -45,6 +45,7 @@
                         <pin_feature name="direction" value="OUTPUT"/>
                      </pin_features>
                   </pin>
+                  <pin peripheral="ADC0" signal="se, 12" pin_num="46" pin_signal="PTC14"/>
                </pins>
             </function>
          </functions_list>
@@ -231,8 +232,20 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.adc" description="ADC driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.adc" description="Unsupported version of the ADC driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
+            <file path="board/peripherals_adc_config_1.c" update_enabled="true"/>
+            <file path="board/peripherals_adc_config_1.h" update_enabled="true"/>
             <file path="board/peripherals_lin_1.c" update_enabled="true"/>
             <file path="board/peripherals_lin_1.h" update_enabled="true"/>
             <file path="board/sdk_project_config.h" update_enabled="true"/>
@@ -262,6 +275,37 @@
                               </struct>
                            </array>
                         </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="adc_config_1" uuid="cf8b9fa6-d697-4b00-8a05-40a7def08517" type="adc_config" type_id="adc" mode="general" peripheral="ADC_0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="adc">
+                        <array name="adcConverterCfg">
+                           <struct name="0">
+                              <setting name="name" value="adc_config_1_ConvConfig0"/>
+                              <setting name="readonly" value="false"/>
+                              <setting name="clockDivide" value="ADC_CLK_DIVIDE_1"/>
+                              <setting name="sampleTime" value="255"/>
+                              <setting name="resolution" value="ADC_RESOLUTION_12BIT"/>
+                              <setting name="inputClock" value="ADC_CLK_ALT_1"/>
+                              <setting name="trigger" value="ADC_TRIGGER_SOFTWARE"/>
+                              <setting name="pretriggerSel" value="ADC_PRETRIGGER_SEL_PDB"/>
+                              <setting name="triggerSel" value="ADC_TRIGGER_SEL_PDB"/>
+                              <setting name="dmaEnable" value="false"/>
+                              <setting name="voltageRef" value="ADC_VOLTAGEREF_VREF"/>
+                              <setting name="continuousConvEnable" value="true"/>
+                              <setting name="supplyMonitoringEnable" value="false"/>
+                           </struct>
+                        </array>
+                        <array name="adcCompareCfg"/>
+                        <array name="adcAverageCfg"/>
+                        <array name="adcChanCfg">
+                           <struct name="0">
+                              <setting name="name" value="adc_config_1_ChnConfig0"/>
+                              <setting name="readonly" value="false"/>
+                              <setting name="interruptEnable" value="false"/>
+                              <setting name="channel" value="ADC_INPUTCHAN_EXT12"/>
+                           </struct>
+                        </array>
                      </config_set>
                   </instance>
                </instances>
