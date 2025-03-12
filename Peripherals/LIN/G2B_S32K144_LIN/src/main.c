@@ -10,7 +10,7 @@
 
 volatile int exit_code = 0;
 /* User includes */
-uint8_t txBuff1[4] = {0x1, 0x2, 0x3, 0x4};
+uint8_t txBuff1[8] = {0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8};
 status_t error;
 
 
@@ -42,7 +42,9 @@ int main(void)
     for(;;)
     {
 		error = LIN_DRV_MasterSendHeader(INST_LIN2, 1);
+		OSIF_TimeDelay(10);
 		error = LIN_DRV_SendFrameData(INST_LIN2, txBuff1, sizeof(txBuff1));
+		OSIF_TimeDelay(10);
         if(exit_code != 0)
         {
             break;
