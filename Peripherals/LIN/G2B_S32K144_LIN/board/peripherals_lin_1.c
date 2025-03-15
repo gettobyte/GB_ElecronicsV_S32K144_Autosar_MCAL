@@ -47,7 +47,7 @@ instance:
           - baudRate: '9600'
           - nodeFunction: '(bool)MASTER'
           - autobaudEnable: '0'
-          - timerGetTimeIntervalCallback: 'NULL'
+          - timerGetTimeIntervalCallback: 'G2B_TimeIntervalCallback0'
           - classicPidType: 'Enhanced'
           - numOfClassicPID: []
         - 1:
@@ -55,7 +55,7 @@ instance:
           - baudRate: '9600'
           - nodeFunction: '(bool)SLAVE'
           - autobaudEnable: '0'
-          - timerGetTimeIntervalCallback: 'NULLL'
+          - timerGetTimeIntervalCallback: 'G2B_TimeIntervalCallback1'
           - classicPidType: 'Enhanced'
           - numOfClassicPID: []
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
@@ -80,7 +80,7 @@ lin_user_config_t lin2_MasterConfig =
     .baudRate                     = 9600UL,                        /* LPUART baudRate */
     .nodeFunction                 = (bool)MASTER,                    /* true - MASTER, false - SLAVE */
     .autobaudEnable               = false,                          /* Disable auto baudRate */
-    .timerGetTimeIntervalCallback = NULL,
+    .timerGetTimeIntervalCallback = G2B_TimeIntervalCallback0,
     .classicPID                   = NULL,                               /* ClassicPID */
     .numOfClassicPID              = 0U                                  /* Number of classicPID */
 };
@@ -91,7 +91,7 @@ lin_user_config_t lin2_SlaveConfig =
     .baudRate                     = 9600UL,                        /* LPUART baudRate */
     .nodeFunction                 = (bool)SLAVE,                    /* true - MASTER, false - SLAVE */
     .autobaudEnable               = false,                                    /* true - Enbale auto baudRate; false - Disable auto baudRate*/
-    .timerGetTimeIntervalCallback = NULL,
+    .timerGetTimeIntervalCallback = G2B_TimeIntervalCallback1,
     .classicPID                   = NULL,                               /* ClassicPID */
     .numOfClassicPID              = 0U                                  /* Number of classicPID */
 };

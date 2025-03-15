@@ -10,9 +10,94 @@
 
 volatile int exit_code = 0;
 /* User includes */
-uint8_t rxBuff1[8];
+uint8_t txBuff1[8];
 status_t error;
+#define FRAME_MASTER_RECEIVE_DATA     (59U)
+#define TIMER_COMPARE_VAL             (uint16_t)(2000U)
+#define TIMER_TICKS_1US               (uint16_t)(4U)
+#define TIMEOUT                       (500U)
 
+uint16_t timerOverflowInterruptCount = 0U;
+
+void adc_convert(void);
+uint16_t adcRawValue;
+
+/*!
+ * @brief LPTMR Interrupt Service Routine
+ * The ISR will call LIN timeout service every 500us
+ */
+void G2B_LPTMR_ISR(void)
+{
+    /* Timer Interrupt Handler */
+    LIN_DRV_TimeoutService(INST_LIN2);
+    /* Increment overflow count */
+    timerOverflowInterruptCount++;
+    /* Clear compare flag */
+    LPTMR_DRV_ClearCompareFlag(INST_LPTMR_1);
+}
+
+/*!
+ * @brief Callback function to get time interval in nano seconds
+ * @param[out] ns - number of nanoseconds passed since the last call of the function
+ * @return dummy value
+ */
+uint32_t G2B_TimeIntervalCallback1(uint32_t *ns)
+{
+    static uint32_t previousCountValue = 0UL;
+    uint32_t counterValue;
+
+    counterValue = LPTMR_DRV_GetCounterValueByCount(INST_LPTMR_1);
+    *ns = ((uint32_t)(counterValue + timerOverflowInterruptCount * TIMER_COMPARE_VAL - previousCountValue)) * 1000U / TIMER_TICKS_1US;
+    timerOverflowInterruptCount = 0UL;
+    previousCountValue = counterValue;
+
+    return 0UL;
+}
+
+/**
+* Func:     CallbackHandler()
+* Desc:     Declare Callback handler function
+*/
+lin_callback_t G2B_CallbackHandler(uint32_t instance, lin_state_t * lin1_State)
+{
+    lin_callback_t callbackCurrent;
+    callbackCurrent = lin1_State->Callback;
+    (void)instance;
+
+    switch (lin1_State->currentEventId)
+    {
+        case LIN_PID_OK:
+            /* Set timeout */
+            LIN_DRV_SetTimeoutCounter(INST_LIN2, TIMEOUT);
+
+        	if(FRAME_MASTER_RECEIVE_DATA == lin1_State->currentId)
+        	{
+        		adc_convert();
+        		LIN_DRV_SendFrameData(INST_LIN2, txBuff1, sizeof(txBuff1));
+        	}
+
+            break;
+        case LIN_PID_ERROR:
+        case LIN_TX_COMPLETED:
+        case LIN_RX_COMPLETED:
+        case LIN_CHECKSUM_ERROR:
+        case LIN_READBACK_ERROR:
+        case LIN_FRAME_ERROR:
+        case LIN_RECV_BREAK_FIELD_OK:
+            /* Set timeout */
+            LIN_DRV_SetTimeoutCounter(INST_LIN2, TIMEOUT);
+            break;
+        case LIN_WAKEUP_SIGNAL:
+        case LIN_SYNC_ERROR:
+        case LIN_BAUDRATE_ADJUSTED:
+        case LIN_NO_EVENT:
+        case LIN_SYNC_OK:
+        default:
+        /* do nothing */
+            break;
+    }
+    return callbackCurrent;
+}
 
 int main(void)
 {
@@ -36,13 +121,20 @@ int main(void)
     /* Wake up LIN transceiver */
     PINS_DRV_SetPins(PTE, (0x1u << (9UL)));
 
+    /* Initialize LPTMR */
+    LPTMR_DRV_Init(INST_LPTMR_1, &lptmr_1_config0, false);
+    INT_SYS_InstallHandler(LPTMR0_IRQn, G2B_LPTMR_ISR, (isr_t *)NULL);
+    INT_SYS_EnableIRQ(LPTMR0_IRQn);
+    LPTMR_DRV_StartCounter(INST_LPTMR_1);
+
     /* Initialize LIN network interface */
     error = LIN_DRV_Init(INST_LIN2, &lin2_SlaveConfig, &lin2_State);
+    /* Install callback function */
+    LIN_DRV_InstallCallback(INST_LIN2, (lin_callback_t)G2B_CallbackHandler);
 
     for(;;)
     {
-    	error = LIN_DRV_ReceiveFrameDataBlocking(INST_LIN2, rxBuff1, sizeof(rxBuff1), 2000);
-    	OSIF_TimeDelay(100);
+    	OSIF_TimeDelay(10);
         if(exit_code != 0)
         {
             break;
@@ -51,3 +143,21 @@ int main(void)
     return exit_code;
 }
 
+void adc_convert(void)
+{
+	/* Configure ADC channel and software trigger a conversion */
+	ADC_DRV_ConfigChan(INST_ADC_CONFIG_1, 0U, &adc_config_1_ChnConfig0);
+	/* Wait for the conversion to be done */
+	ADC_DRV_WaitConvDone(INST_ADC_CONFIG_1);
+	/* Store the channel result into a local variable */
+	ADC_DRV_GetChanResult(INST_ADC_CONFIG_1, 0U, &adcRawValue);
+	/* Conversion Array filled */
+	txBuff1[0] = adcRawValue;
+	txBuff1[1] = adcRawValue;
+	txBuff1[2] = adcRawValue;
+	txBuff1[3] = adcRawValue;
+	txBuff1[4] = adcRawValue;
+	txBuff1[5] = adcRawValue;
+	txBuff1[6] = adcRawValue;
+	txBuff1[7] = adcRawValue;
+}

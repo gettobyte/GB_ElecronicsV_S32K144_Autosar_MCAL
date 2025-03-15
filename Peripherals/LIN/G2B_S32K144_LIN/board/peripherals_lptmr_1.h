@@ -3,8 +3,8 @@
  * will be overwritten if the respective S32 Config Tools is used to update this file.
  **********************************************************************************************************************/
 
-#ifndef lin_1_H
-#define lin_1_H
+#ifndef lptmr_1_H
+#define lptmr_1_H
 
 /**
  * @page misra_violations MISRA-C:2012 violations
@@ -17,33 +17,20 @@
 /*******************************************************************************
  * Included files 
  ******************************************************************************/
-#include "stddef.h"
-#include "lin_driver.h"
+#include "lptmr_driver.h"
 
 /*******************************************************************************
  * Definitions 
  ******************************************************************************/
-
-/*! @brief Device instance number */
-#define INST_LIN2  (2U)
+#define INST_LPTMR_1  (0U)
 
 /*******************************************************************************
  * Global variables 
  ******************************************************************************/
 
-/*! @brief LIN State structure */
-extern lin_state_t lin2_State;
-
-/*! @brief Extern LIN user configuration structure */
-/*! @brief Extern LIN configuration lin2_MasterConfig */
-extern lin_user_config_t lin2_MasterConfig;
-/*! @brief Extern LIN configuration lin2_SlaveConfig */
-extern lin_user_config_t lin2_SlaveConfig;
-/*! @brief Extern Timer get time interval callback function0 */
-extern uint32_t  G2B_TimeIntervalCallback0(uint32_t *ns);
-/*! @brief Extern Timer get time interval callback function1 */
-extern uint32_t  G2B_TimeIntervalCallback1(uint32_t *ns);
+/* LPTMR Configuration 0 */
+extern const lptmr_config_t lptmr_1_config0;
 
 
 
-#endif /* lin_1_H */
+#endif /* lptmr_1_H */

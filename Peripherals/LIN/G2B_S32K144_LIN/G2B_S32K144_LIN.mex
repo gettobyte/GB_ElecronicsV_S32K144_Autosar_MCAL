@@ -46,6 +46,21 @@
                      </pin_features>
                   </pin>
                   <pin peripheral="ADC0" signal="se, 12" pin_num="46" pin_signal="PTC14"/>
+                  <pin peripheral="PORTD" signal="port, 0" pin_num="4" pin_signal="PTD0">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="PORTD" signal="port, 15" pin_num="22" pin_signal="PTD15">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="PORTD" signal="port, 16" pin_num="21" pin_signal="PTD16">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
                </pins>
             </function>
          </functions_list>
@@ -242,12 +257,24 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.lptmr" description="LPTMR Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.lptmr" description="Unsupported version of the LPTMR Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/peripherals_adc_config_1.c" update_enabled="true"/>
             <file path="board/peripherals_adc_config_1.h" update_enabled="true"/>
             <file path="board/peripherals_lin_1.c" update_enabled="true"/>
             <file path="board/peripherals_lin_1.h" update_enabled="true"/>
+            <file path="board/peripherals_lptmr_1.c" update_enabled="true"/>
+            <file path="board/peripherals_lptmr_1.h" update_enabled="true"/>
             <file path="board/sdk_project_config.h" update_enabled="true"/>
          </generated_project_files>
          <peripherals_profile>
@@ -269,7 +296,7 @@
                                  <setting name="baudRate" value="9600"/>
                                  <setting name="nodeFunction" value="(bool)MASTER"/>
                                  <setting name="autobaudEnable" value="0"/>
-                                 <setting name="timerGetTimeIntervalCallback" value="NULL"/>
+                                 <setting name="timerGetTimeIntervalCallback" value="G2B_TimeIntervalCallback0"/>
                                  <setting name="classicPidType" value="Enhanced"/>
                                  <array name="numOfClassicPID"/>
                               </struct>
@@ -278,7 +305,7 @@
                                  <setting name="baudRate" value="9600"/>
                                  <setting name="nodeFunction" value="(bool)SLAVE"/>
                                  <setting name="autobaudEnable" value="0"/>
-                                 <setting name="timerGetTimeIntervalCallback" value="NULLL"/>
+                                 <setting name="timerGetTimeIntervalCallback" value="G2B_TimeIntervalCallback1"/>
                                  <setting name="classicPidType" value="Enhanced"/>
                                  <array name="numOfClassicPID"/>
                               </struct>
@@ -313,6 +340,27 @@
                               <setting name="readonly" value="false"/>
                               <setting name="interruptEnable" value="false"/>
                               <setting name="channel" value="ADC_INPUTCHAN_EXT12"/>
+                           </struct>
+                        </array>
+                     </config_set>
+                  </instance>
+                  <instance name="lptmr_1" uuid="8c7ab13c-a826-458e-b514-1b50e8f1d43d" type="lptmr" type_id="lptmr" mode="general" peripheral="LPTMR_0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="lptmr">
+                        <array name="lptmrConfig">
+                           <struct name="0">
+                              <setting name="name" value="lptmr_1_config0"/>
+                              <setting name="readOnly" value="true"/>
+                              <setting name="workMode" value="LPTMR_WORKMODE_TIMER"/>
+                              <setting name="dmaRequest" value="false"/>
+                              <setting name="interruptEnable" value="true"/>
+                              <setting name="freeRun" value="false"/>
+                              <setting name="compareValue" value="1999"/>
+                              <setting name="counterUnits" value="LPTMR_COUNTER_UNITS_TICKS"/>
+                              <setting name="clockSelect" value="LPTMR_CLOCKSOURCE_PCC"/>
+                              <setting name="prescaler" value="LPTMR_PRESCALE_2"/>
+                              <setting name="bypassPrescaler" value="false"/>
+                              <setting name="pinSelect" value="LPTMR_PINSELECT_TRGMUX"/>
+                              <setting name="pinPolarity" value="LPTMR_PINPOLARITY_RISING"/>
                            </struct>
                         </array>
                      </config_set>
