@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive Power Window Control</title>
+    <script>
+        var adcDisplay;
+        function initialize() {
+            adcDisplay = document.getElementById("adcValue");
+            setInterval(updateADCValue, 100); // Update every 100ms
+        }
+
+        function updateADCValue() {
+            if (freemaster.ReadVariable("Window")) {
+                let adcValue = freemaster.LastVariable_vValue; // ADC range: 0-255
+                adcDisplay.innerText = adcValue;
+                
+                let position = (adcValue / 255) * 100; // Convert to percentage for window movement
+                document.getElementById("windowPosition").style.height = position + "%";
+            } else {
+                adcDisplay.innerText = "ERROR: " + freemaster.LastRetMsg;
+            }
+        }
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
+        h2 { color: #333; }
+        .window-container {
+            width: 120px;
+            height: 250px;
+            border: 3px solid #333;
+            position: relative;
+            margin: 20px auto;
+            background: #aaa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        .window-glass {
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.5));
+            position: absolute;
+            bottom: 0;
+            transition: height 0.3s ease-in-out;
+            border-top: 2px solid #007bff;
+        }
+        .status {
+            font-size: 18px;
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body onload="initialize()">
+    <object
+        id="freemaster"
+        width="0"
+        height="0"
+        classid="clsid:48A185F1-FFDB-11D3-80E3-00C04F176153">
+    </object>
+    <h1>Automotive Power Window Control via LIN</h1>
+    <p class="status">ADC Value: <span id="adcValue">0</span></p>
+    <div class="window-container">
+        <div id="windowPosition" class="window-glass"></div>
+    </div>
+</body>
+</html>

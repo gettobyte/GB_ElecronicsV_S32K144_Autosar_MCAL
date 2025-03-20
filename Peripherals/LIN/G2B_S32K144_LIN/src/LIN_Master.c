@@ -7,6 +7,7 @@
 
 /* Including necessary configuration files. */
 #include "sdk_project_config.h"
+#include "freemaster.h"
 
 volatile int exit_code = 0;
 /* User includes */
@@ -136,6 +137,8 @@ int main(void)
     /* Install callback function */
     LIN_DRV_InstallCallback(INST_LIN2, (lin_callback_t)G2B_CallbackHandler);
 
+    FMSTR_Init();
+
     for(;;)
     {
     	/* Header API */
@@ -144,6 +147,8 @@ int main(void)
 //		/* Unconditional Frame Data send API */
 //		error = LIN_DRV_SendFrameData(INST_LIN2, txBuff1, sizeof(txBuff1));
 		OSIF_TimeDelay(500);
+
+		FMSTR_Poll();
 
         if ( RxBuff1[0] < 50 )
         {
