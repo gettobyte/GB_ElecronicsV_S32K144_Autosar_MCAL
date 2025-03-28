@@ -117,6 +117,8 @@ extern "C"{
 
 extern void pwm_callback(void);
 
+extern void pwm_callback(void);
+
 #define PWM_STOP_SEC_CODE
 #include "Pwm_MemMap.h"
 
@@ -138,7 +140,7 @@ const Pwm_ChannelConfigType Pwm_Channels_BOARD_InitPeripherals_PB[PWM_BOARD_Init
         /** @brief  Channel Id */
         (Pwm_ChannelType)0U,
         /** @brief  Channel class */
-        PWM_FIXED_PERIOD,
+        PWM_VARIABLE_PERIOD,
         /** @brief  Ip channel configuration */
         {
             /** @brief  Hardware Channel Type */
@@ -152,10 +154,60 @@ const Pwm_ChannelConfigType Pwm_Channels_BOARD_InitPeripherals_PB[PWM_BOARD_Init
             /** @brief  Hardware Channel Instance ID */
             (Pwm_IpwInstanceType)FTM_PWM_IP_BOARD_InitPeripherals_I0_CH0_CFG,
             /** @brief The duty cycle of this channel */
+            3000U
+        },
+        /** @brief  The state of the channel output in idle mode */
+        PWM_HIGH,
+        &pwm_callback
+    },
+    /* PwmChannel_1 */
+    {
+        /** @brief  Channel Id */
+        (Pwm_ChannelType)1U,
+        /** @brief  Channel class */
+        PWM_VARIABLE_PERIOD,
+        /** @brief  Ip channel configuration */
+        {
+            /** @brief  Hardware Channel Type */
+            PWM_CHANNEL_FTM,
+            /** @brief  Hardware Channel Configuration Pointer */
+            (const void *)(&Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch1),
+        #if (defined(PWM_FLEXIO_USED) && (PWM_FLEXIO_USED == STD_ON))
+            /** @brief  Pointer to the Flexio ip channel configuration structure */
+            NULL_PTR,
+        #endif
+            /** @brief  Hardware Channel Instance ID */
+            (Pwm_IpwInstanceType)FTM_PWM_IP_BOARD_InitPeripherals_I0_CH1_CFG,
+            /** @brief The duty cycle of this channel */
             0U
         },
         /** @brief  The state of the channel output in idle mode */
         PWM_HIGH,
+        NULL_PTR
+    },
+    /* PwmChannel_2 */
+    {
+        /** @brief  Channel Id */
+        (Pwm_ChannelType)2U,
+        /** @brief  Channel class */
+        PWM_VARIABLE_PERIOD,
+        /** @brief  Ip channel configuration */
+        {
+            /** @brief  Hardware Channel Type */
+            PWM_CHANNEL_FTM,
+            /** @brief  Hardware Channel Configuration Pointer */
+            (const void *)(&Ftm_Pwm_Ip_BOARD_InitPeripherals_I0_Ch2),
+        #if (defined(PWM_FLEXIO_USED) && (PWM_FLEXIO_USED == STD_ON))
+            /** @brief  Pointer to the Flexio ip channel configuration structure */
+            NULL_PTR,
+        #endif
+            /** @brief  Hardware Channel Instance ID */
+            (Pwm_IpwInstanceType)FTM_PWM_IP_BOARD_InitPeripherals_I0_CH2_CFG,
+            /** @brief The duty cycle of this channel */
+            2000U
+        },
+        /** @brief  The state of the channel output in idle mode */
+        PWM_LOW,
         &pwm_callback
     }
 };
@@ -195,7 +247,7 @@ const Pwm_ConfigType Pwm_Config_BOARD_InitPeripherals =
                 equal to total number of available channels on all IP. */
     {
         /* Index of channels 0 - 7 of FTM_0 in the array of logic PWM channels */
-        (Pwm_ChannelType)0, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        (Pwm_ChannelType)0, (Pwm_ChannelType)1, (Pwm_ChannelType)2, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
         /* Index of channels 0 - 7 of FTM_1 in the array of logic PWM channels */
         (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
         /* Index of channels 0 - 7 of FTM_2 in the array of logic PWM channels */

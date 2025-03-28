@@ -97,7 +97,7 @@ extern "C"{
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
 /** @brief        Switch to enable the development error detection. */
-#define PWM_DEV_ERROR_DETECT                    (STD_OFF)
+#define PWM_DEV_ERROR_DETECT                    (STD_ON)
 
 /** @brief        Switch to indicate that Pwm_DeInit API is supported */
 #define PWM_DE_INIT_API                         (STD_ON)

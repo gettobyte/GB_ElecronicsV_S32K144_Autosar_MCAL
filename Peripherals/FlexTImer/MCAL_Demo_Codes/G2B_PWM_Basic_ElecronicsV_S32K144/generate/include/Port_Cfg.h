@@ -695,10 +695,10 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 * @details Get All Symbolic Names from configuration tool
 *
 */
-#define PortConfigSet_pwm_pins_edge_aligned_ch0 0
-#define PortConfigSet_pwm_pins_complementary_pin1 1
-#define PortConfigSet_pwm_pins_complementary_pin2 2
-#define PortConfigSet_pwm_pins_edge_aligned_ch1 3
+#define PortConfigSet_pwm_pins_edge_aligned_ch0_ptb12 0
+#define PortConfigSet_pwm_pins_complementary_pin1_ptc2 1
+#define PortConfigSet_pwm_pins_complementary_pin2_ptc3 2
+#define PortConfigSet_pwm_pins_edge_aligned_ch1_ptb13 3
 #define PortConfigSet_pwm_pins_lpuart1_rx 4
 #define PortConfigSet_pwm_pins_lpuart1_tx 5
 

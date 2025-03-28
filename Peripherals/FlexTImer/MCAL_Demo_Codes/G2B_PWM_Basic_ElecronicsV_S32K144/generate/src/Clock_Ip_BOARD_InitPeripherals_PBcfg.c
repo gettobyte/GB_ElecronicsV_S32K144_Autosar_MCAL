@@ -218,7 +218,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_BOARD_InitPeripherals[1U] = {
             #if CLOCK_IP_XOSCS_NO > 0U
             {
                 SOSC_CLK,              /* Clock name associated to xosc */
-                0U,              /* External oscillator frequency */ 
+                8000000U,              /* External oscillator frequency */ 
                 1U,                     /* Enable xosc */
                 0U,                   /* Startup stabilization time */
                 0U,                   /* XOSC bypass option */ 
@@ -242,7 +242,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_BOARD_InitPeripherals[1U] = {
                 0U,                     /* Bypass */
                 1U,                      /* predivider */
                 0U,                     /* numeratorFracLoopDiv */
-                40U,                   /* mulFactorDiv */
+                24U,                   /* mulFactorDiv */
                 0U,                     /* modulation */
                 0U,                     /* Modulaton type: Spread spectrum modulation not bypassed */ 
                 0U,                     /* modulationPeriod */
@@ -268,7 +268,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_BOARD_InitPeripherals[1U] = {
             #if CLOCK_IP_SELECTORS_NO > 0U
             {
                 SCS_RUN_CLK,                    /* Clock name associated to selector */
-                SPLL_CLK,                    /* Name of the selected input source */
+                FIRC_CLK,                    /* Name of the selected input source */
             },
             #endif
 
@@ -550,7 +550,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_BOARD_InitPeripherals[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 8U
             {
                 CORE_RUN_CLK,                    /* name */
-                2U,                              /* value */
+                1U,                              /* value */
                 {
                     0U,
                 }
@@ -580,7 +580,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_BOARD_InitPeripherals[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 11U
             {
                 BUS_RUN_CLK,                    /* name */
-                2U,                              /* value */
+                1U,                              /* value */
                 {
                     0U,
                 }
@@ -720,7 +720,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_BOARD_InitPeripherals[1U] = {
             #if CLOCK_IP_EXT_CLKS_NO > 3U
             {
                 RTC_CLKIN,                    /* name */
-                0U,                              /* value */
+                32768U,                              /* value */
             },
             #endif
         },

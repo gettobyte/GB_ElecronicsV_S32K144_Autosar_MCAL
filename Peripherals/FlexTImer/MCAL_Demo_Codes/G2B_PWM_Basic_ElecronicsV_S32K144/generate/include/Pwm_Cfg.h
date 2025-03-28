@@ -123,7 +123,7 @@ extern "C"{
 #define PWM_INDEX                               (0U)
 
 /** @brief      Total number of Pwm logic channels configured. */
-#define PWM_CONFIG_LOGIC_CHANNELS               (1U)
+#define PWM_CONFIG_LOGIC_CHANNELS               (3U)
 
 #define PWM_HW_CHANNEL_NO                       (36U)
 
@@ -133,13 +133,18 @@ extern "C"{
 /** @brief      Macro used to initialize the driver state structure */
 #define PWM_DRIVER_STATE_INITIALIZATION         {\
                                                     {\
+                                                        PWM_STATE_UNINIT,\
                                                         NULL_PTR,\
                                                         PWM_NODEFINE_POWER,\
                                                         PWM_NODEFINE_POWER,\
                                                         {\
+                                                            NULL_PTR,\
+                                                            NULL_PTR,\
                                                             NULL_PTR\
                                                         },\
                                                         {\
+                                                            (boolean)FALSE,\
+                                                            (boolean)FALSE,\
                                                             (boolean)FALSE\
                                                         }\
                                                     }\
@@ -251,12 +256,16 @@ extern "C"{
 *
 */
 #define PwmChannel_0                            ((Pwm_ChannelType)0U)
+#define PwmChannel_1                            ((Pwm_ChannelType)1U)
+#define PwmChannel_2                            ((Pwm_ChannelType)2U)
 
 /**
 * @brief        Symbolic name for configured channels - TPS_ECUC_02108 compliant.
 *
 */
 #define PwmConf_PwmChannelConfigSet_PwmChannel_0          ((Pwm_ChannelType)0U)
+#define PwmConf_PwmChannelConfigSet_PwmChannel_1          ((Pwm_ChannelType)1U)
+#define PwmConf_PwmChannelConfigSet_PwmChannel_2          ((Pwm_ChannelType)2U)
 
 /*==================================================================================================
 *                                              ENUMS
