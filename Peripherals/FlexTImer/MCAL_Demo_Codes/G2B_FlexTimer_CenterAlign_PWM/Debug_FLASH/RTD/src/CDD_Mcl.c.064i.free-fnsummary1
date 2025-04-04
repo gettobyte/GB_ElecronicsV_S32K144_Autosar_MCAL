@@ -1,0 +1,42 @@
+Mcl_DeInit ()
+{
+  const struct Mcl_ConfigType * Mcl_pxConfig.2_1;
+
+  <bb 2> :
+  Mcl_pxConfig.2_1 = Mcl_pxConfig;
+  if (Mcl_pxConfig.2_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Mcl_pxConfig = 0B;
+
+  <bb 4> :
+  return;
+
+}
+
+
+Mcl_Init (const struct Mcl_ConfigType * const ConfigPtr)
+{
+  const struct Mcl_ConfigType * Mcl_pxConfig.0_1;
+  const struct Mcl_ConfigType * Mcl_pxConfig.1_2;
+
+  <bb 2> :
+  Mcl_pxConfig.0_1 = Mcl_pxConfig;
+  if (Mcl_pxConfig.0_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Mcl_pxConfig = ConfigPtr_5(D);
+  Mcl_pxConfig.1_2 = Mcl_pxConfig;
+
+  <bb 4> :
+  return;
+
+}
+
+

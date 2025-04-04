@@ -1,0 +1,51 @@
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+  int D.6464;
+
+  <bb 2> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[0]);
+
+  <bb 4> :
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+
+  <bb 6> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  Pwm_Init (&Pwm_Config_BOARD_InitPeripherals);
+  TestDelay (700000);
+
+  <bb 8> :
+  _2 = pwm_duty_cycle (4);
+  Pwm_SetDutyCycle (0, _2);
+  TestDelay (700000);
+  _3 = pwm_duty_cycle (8);
+  Pwm_SetDutyCycle (0, _3);
+  TestDelay (700000);
+  _4 = pwm_duty_cycle (10);
+  Pwm_SetDutyCycle (0, _4);
+  TestDelay (700000);
+  _5 = pwm_duty_cycle (3);
+  Pwm_SetDutyCycle (0, _5);
+  TestDelay (700000);
+  goto <bb 8>; [INV]
+
+}
+
+

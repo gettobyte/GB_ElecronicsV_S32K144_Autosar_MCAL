@@ -87,6 +87,17 @@ static void TestDelay(uint32 delay)
  uint8_t rx_val[10];
 
 
+
+ void GB_MA_SPI_send_byte_conti_image(uint8_t *val, uint16_t count)
+ {
+ 	uint8_t rx_value;
+ 	Lpspi_Ip_AsyncTransmit(&Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals,val, &rx_value, count,NULL); //Transfer the data from MOSI to MISO
+
+ 	//Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals,val, rx_val, count, timeout); //Transfer the data from MOSI to MISO
+
+ }
+
+
 void GB_MA_SPI_send_byte_conti(uint8_t *val, uint16_t count, uint32_t timeout)
 {
 	uint8_t rx_value;
@@ -148,6 +159,7 @@ void GB_ST7789_SendDataIm( const uint8_t *data, uint32_t data_size)
 {
 	gb_ST7789_DC_pin_high();
 
+	//GB_MA_SPI_send_byte_conti_image(data, data_size);
 	GB_MA_SPI_send_byte_conti(data, data_size, 5000);
 }
 

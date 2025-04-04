@@ -1,0 +1,225 @@
+servo_sweep_with_step (float32 steps)
+{
+  float32 step;
+  int8_t direction;
+  float32 currentValue;
+  short unsigned int _1;
+  unsigned char _2;
+  short unsigned int _3;
+  unsigned char _4;
+  short unsigned int _5;
+
+  <bb 2> :
+  _1 = pwm_duty_cycle (2);
+  Pwm_SetDutyCycle (0, _1);
+  currentValue_15 = 2.5e+0;
+  direction_16 = 0;
+  step_18 = steps_17(D);
+
+  <bb 3> :
+  # currentValue_6 = PHI <currentValue_15(2), currentValue_7(11)>
+  # direction_8 = PHI <direction_16(2), direction_9(11)>
+  if (direction_8 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  if (currentValue_6 <= 1.25e+1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _2 = (unsigned char) currentValue_6;
+  _3 = pwm_duty_cycle (_2);
+  Pwm_SetDutyCycle (0, _3);
+  TestDelay (100000);
+  currentValue_28 = currentValue_6 + step_18;
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  direction_24 = 1;
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+  if (direction_8 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  if (currentValue_6 >= 2.5e+0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _4 = (unsigned char) currentValue_6;
+  _5 = pwm_duty_cycle (_4);
+  Pwm_SetDutyCycle (0, _5);
+  TestDelay (100000);
+  currentValue_23 = currentValue_6 - step_18;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  direction_19 = 0;
+
+  <bb 11> :
+  # currentValue_7 = PHI <currentValue_6(6), currentValue_6(7), currentValue_23(9), currentValue_6(10), currentValue_28(5)>
+  # direction_9 = PHI <direction_24(6), direction_8(7), direction_8(9), direction_19(10), direction_8(5)>
+  goto <bb 3>; [INV]
+
+}
+
+
+servo_sweep ()
+{
+  float32 step;
+  int8_t direction;
+  float32 currentValue;
+  short unsigned int _1;
+  unsigned char _2;
+  short unsigned int _3;
+  unsigned char _4;
+  short unsigned int _5;
+
+  <bb 2> :
+  _1 = pwm_duty_cycle (2);
+  Pwm_SetDutyCycle (0, _1);
+  currentValue_15 = 2.5e+0;
+  direction_16 = 0;
+  step_17 = 1.00000001490116119384765625e-1;
+
+  <bb 3> :
+  # currentValue_6 = PHI <currentValue_15(2), currentValue_7(11)>
+  # direction_8 = PHI <direction_16(2), direction_9(11)>
+  if (direction_8 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  if (currentValue_6 <= 1.25e+1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _2 = (unsigned char) currentValue_6;
+  _3 = pwm_duty_cycle (_2);
+  Pwm_SetDutyCycle (0, _3);
+  TestDelay (10000);
+  currentValue_27 = currentValue_6 + step_17;
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  direction_23 = 1;
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+  if (direction_8 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  if (currentValue_6 >= 2.5e+0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _4 = (unsigned char) currentValue_6;
+  _5 = pwm_duty_cycle (_4);
+  Pwm_SetDutyCycle (0, _5);
+  TestDelay (10000);
+  currentValue_22 = currentValue_6 - step_17;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  direction_18 = 0;
+
+  <bb 11> :
+  # currentValue_7 = PHI <currentValue_6(6), currentValue_6(7), currentValue_22(9), currentValue_6(10), currentValue_27(5)>
+  # direction_9 = PHI <direction_23(6), direction_8(7), direction_8(9), direction_18(10), direction_8(5)>
+  goto <bb 3>; [INV]
+
+}
+
+
+servo_setPosition (int32_t degree)
+{
+  float32 z;
+  float32 y;
+  float32 x;
+  long int _1;
+  unsigned char _2;
+  short unsigned int _3;
+
+  <bb 2> :
+  _1 = degree_4(D) / 180;
+  x_5 = (float32) _1;
+  y_6 = x_5 * 1.0e+1;
+  z_7 = y_6 + 2.5e+0;
+  _2 = (unsigned char) z_7;
+  _3 = pwm_duty_cycle (_2);
+  Pwm_SetDutyCycle (0, _3);
+  TestDelay (10000);
+  return;
+
+}
+
+
+pwm_duty_cycle (uint8_t duty_cycle_percent)
+{
+  uint16_t duty_cycle;
+  uint16_t D.6023;
+  int _1;
+  int _2;
+  int _3;
+  uint16_t _6;
+
+  <bb 2> :
+  _1 = (int) duty_cycle_percent_4(D);
+  _2 = _1 * 32768;
+  _3 = _2 / 100;
+  duty_cycle_5 = (uint16_t) _3;
+  _6 = duty_cycle_5;
+
+  <bb 3> :
+<L0>:
+  return _6;
+
+}
+
+
+TestDelay (uint32_t delay)
+{
+  static volatile uint32_t DelayTimer = 0;
+  long unsigned int DelayTimer.0_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.1_3;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.0_1 ={v} DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  DelayTimer.1_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer ={v} 0;
+  return;
+
+}
+
+
