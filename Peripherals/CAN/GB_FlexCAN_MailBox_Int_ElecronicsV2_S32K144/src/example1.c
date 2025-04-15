@@ -20,6 +20,9 @@ extern void CAN0_ORED_0_15_MB_IRQHandler(void);
 #define MSG_ID 800u
 #define TX_MB_IDX 0
 
+#define MSG_ID1 801u
+#define TX_MB_IDX1 1
+
 /* User includes */
 uint8 dummyData[8] = {1,2,3,4,5,6,7};
 
@@ -71,7 +74,7 @@ int main(void)
     Flexcan_Ip_DataInfoType rx_info = {
             .msg_id_type = FLEXCAN_MSG_ID_STD,
             .data_length = 8u,
-            .is_polling = FALSE,
+            .is_polling = TRUE,
             .is_remote = FALSE
     };
 
@@ -81,7 +84,11 @@ int main(void)
 
    for(;;)
    {
-	   FlexCAN_Api_Status = FlexCAN_Ip_Send(INST_FLEXCAN_0, TX_MB_IDX, &rx_info, MSG_ID, (uint8 *)&dummyData);
+	   FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX, &rx_info, MSG_ID, (uint8 *)&dummyData, 2000);
+
+	   FlexCAN_Api_Status = FlexCAN_Ip_SendBlocking(INST_FLEXCAN_0, TX_MB_IDX1, &rx_info, MSG_ID1, (uint8 *)&dummyData, 2000);
+
+
 	   TestDelay(2000000);
    }
 
