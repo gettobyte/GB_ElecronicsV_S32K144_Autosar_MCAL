@@ -1674,6 +1674,7 @@ Lpspi_Ip_StatusType Lpspi_Ip_DeInit(uint8 Instance)
     return Status;
 }
 
+
 /*================================================================================================*/
 Lpspi_Ip_StatusType Lpspi_Ip_SyncTransmit(
                                             const Lpspi_Ip_ExternalDeviceType *ExternalDevice,

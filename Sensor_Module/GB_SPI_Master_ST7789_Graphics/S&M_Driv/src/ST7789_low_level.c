@@ -97,14 +97,13 @@ static void TestDelay(uint32 delay)
 
  }
 
+	//uint8_t rx_value;
+
 
 void GB_MA_SPI_send_byte_conti(uint8_t *val, uint16_t count, uint32_t timeout)
 {
-	uint8_t rx_value;
-	Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals,val, &rx_value, count, timeout); //Transfer the data from MOSI to MISO
-
-	//Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_W25_SPI_Flash_BOARD_InitPeripherals,val, rx_val, count, timeout); //Transfer the data from MOSI to MISO
-
+	 uint8_t rx_value;
+	Lpspi_Ip_SyncTransmit(&Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_BOARD_InitPeripherals,val, NULL, count, timeout); //Transfer the data from MOSI to MISO
 }
 
 
