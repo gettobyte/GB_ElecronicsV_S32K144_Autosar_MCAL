@@ -21,6 +21,7 @@
 #include "peripherals_lin_1.h"
 #include "peripherals_adc_config_1.h"
 #include "peripherals_lptmr_1.h"
+#include "peripherals_flexTimer_pwm_1.h"
 
 
 #endif /* SDK_PROJECT_CONFIG_H_ */
