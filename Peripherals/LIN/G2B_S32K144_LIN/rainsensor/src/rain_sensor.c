@@ -7,6 +7,11 @@
 
 #include "rain_sensor.h"
 
+uint16_t timerOverflowInterruptCount = 0U;
+uint8_t RxBuff1[8];
+status_t error;
+ftm_state_t ftmStateStruct;
+
 /*!
  * @brief Callback function to get time interval in nano seconds
  * @param[out] ns - number of nanoseconds passed since the last call of the function
@@ -16,7 +21,6 @@ uint32_t G2B_TimeIntervalCallback0(uint32_t *ns)
 {
     static uint32_t previousCountValue = 0UL;
     uint32_t counterValue;
-
     counterValue = LPTMR_DRV_GetCounterValueByCount(INST_LPTMR_1);
     *ns = ((uint32_t)(counterValue + timerOverflowInterruptCount * TIMER_COMPARE_VAL - previousCountValue)) * 1000U / TIMER_TICKS_1US;
     timerOverflowInterruptCount = 0UL;
@@ -136,4 +140,42 @@ void LIN_Init(void)
     error = LIN_DRV_Init(INST_LIN2, &lin2_MasterConfig, &lin2_State);
     /* Install callback function */
     LIN_DRV_InstallCallback(INST_LIN2, (lin_callback_t)G2B_CallbackHandler);
+}
+
+void LED_Dimmer1(uint8_t dutyCycle)
+{
+	if (dutyCycle > 100)
+	{
+		dutyCycle = 100;  // Clamp to max 100%
+	}
+
+	uint16_t converted_dutyCycle = ((dutyCycle * 0x8000) / 100);
+
+	FTM_DRV_UpdatePwmChannel(INST_FLEXTIMER_PWM_1,
+	                         flexTimer_pwm_1_IndependentChannelsConfig[0].hwChannelId,
+							 FTM_PWM_UPDATE_IN_DUTY_CYCLE,
+							 converted_dutyCycle, 0U,
+	                         true);
+}
+
+void LED_Dimmer2(uint8_t dutyCycle)
+{
+	if (dutyCycle > 100)
+	{
+		dutyCycle = 100;  // Clamp to max 100%
+	}
+
+	uint16_t converted_dutyCycle = ((dutyCycle * 0x8000) / 100);
+
+	FTM_DRV_UpdatePwmChannel(INST_FLEXTIMER_PWM_1,
+	                         flexTimer_pwm_1_IndependentChannelsConfig[1].hwChannelId,
+							 FTM_PWM_UPDATE_IN_DUTY_CYCLE,
+							 converted_dutyCycle, 0U,
+	                         true);
+}
+
+void LED_SetFrequency(uint32_t frequencyHz)
+{
+	FTM_DRV_UpdatePwmPeriod(INST_FLEXTIMER_PWM_1, FTM_PWM_UPDATE_IN_DUTY_CYCLE,
+							frequencyHz, true);
 }

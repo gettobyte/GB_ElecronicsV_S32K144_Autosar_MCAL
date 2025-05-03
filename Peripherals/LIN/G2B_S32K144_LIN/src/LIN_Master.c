@@ -8,6 +8,7 @@
 /* Including necessary configuration files. */
 #include "sdk_project_config.h"
 #include "freemaster.h"
+#include "rain_sensor.h"
 
 volatile int exit_code = 0;
 
@@ -30,121 +31,34 @@ int main(void)
     	/* Header API */
 //		error = LIN_DRV_MasterSendHeader(INST_LIN2, FRAME_MASTER_RECEIVE_DATA);
 //		OSIF_TimeDelay(50);
-//
-//		FMSTR_Poll();
 
-        /* Increase the brightness */
-        for (dutyCycle = 0; dutyCycle < 32768; dutyCycle += 50)
-        {
-            FTM_DRV_UpdatePwmChannel(INST_FLEXTIMER_PWM_1,
-                                     flexTimer_pwm_1_IndependentChannelsConfig[0].hwChannelId,
-                                     FTM_PWM_UPDATE_IN_TICKS, (uint16_t)dutyCycle,
-                                     0U,
-                                     true);
-            OSIF_TimeDelay(1);
+        // Increase duty cycle: 0% to 100%
+        for (uint8_t i = 0; i <= 100; i++) {
+        	LED_Dimmer1(i);
+            OSIF_TimeDelay(10);  // 50 ms delay
         }
-        OSIF_TimeDelay(100);
 
-        /* Decrease the brightness */
-        for (dutyCycle = 32768; dutyCycle > 0; dutyCycle -= 50)
-        {
-            FTM_DRV_UpdatePwmChannel(INST_FLEXTIMER_PWM_1,
-                                     flexTimer_pwm_1_IndependentChannelsConfig[0].hwChannelId,
-                                     FTM_PWM_UPDATE_IN_TICKS, (uint16_t)dutyCycle,
-                                     0U,
-                                     true);
-            OSIF_TimeDelay(1);
+        // Decrease duty cycle: 100% to 0%
+        for (int8_t i = 100; i >= 0; i--) {
+        	LED_Dimmer1(i);
+            OSIF_TimeDelay(10);  // 50 ms delay
         }
-        OSIF_TimeDelay(100);
 
-        /* Increase the brightness */
-        for (dutyCycle = 0; dutyCycle < 32768; dutyCycle += 50)
-        {
-            FTM_DRV_UpdatePwmChannel(INST_FLEXTIMER_PWM_1,
-                                     flexTimer_pwm_1_IndependentChannelsConfig[1].hwChannelId,
-                                     FTM_PWM_UPDATE_IN_TICKS, (uint16_t)dutyCycle,
-                                     0U,
-                                     true);
-            OSIF_TimeDelay(1);
+        // Increase duty cycle: 0% to 100%
+        for (uint8_t i = 0; i <= 100; i++) {
+        	LED_Dimmer2(i);
+            OSIF_TimeDelay(10);  // 50 ms delay
         }
-        OSIF_TimeDelay(100);
 
-        /* Decrease the brightness */
-        for (dutyCycle = 32768; dutyCycle > 0; dutyCycle -= 50)
-        {
-            FTM_DRV_UpdatePwmChannel(INST_FLEXTIMER_PWM_1,
-                                     flexTimer_pwm_1_IndependentChannelsConfig[1].hwChannelId,
-                                     FTM_PWM_UPDATE_IN_TICKS, (uint16_t)dutyCycle,
-                                     0U,
-                                     true);
-            OSIF_TimeDelay(1);
+        // Decrease duty cycle: 100% to 0%
+        for (int8_t i = 100; i >= 0; i--) {
+        	LED_Dimmer2(i);
+            OSIF_TimeDelay(10);  // 50 ms delay
         }
-        OSIF_TimeDelay(100);
 
-        /* Increase the brightness */
-        for (dutyCycle = 0; dutyCycle < 32768; dutyCycle += 50)
-        {
-            FTM_DRV_UpdatePwmChannel(INST_FLEXTIMER_PWM_1,
-                                     flexTimer_pwm_1_IndependentChannelsConfig[2].hwChannelId,
-                                     FTM_PWM_UPDATE_IN_TICKS, (uint16_t)dutyCycle,
-                                     0U,
-                                     true);
-            OSIF_TimeDelay(1);
-        }
-        OSIF_TimeDelay(100);
+        LED_SetFrequency(500);
 
-        /* Decrease the brightness */
-        for (dutyCycle = 32768; dutyCycle > 0; dutyCycle -= 50)
-        {
-            FTM_DRV_UpdatePwmChannel(INST_FLEXTIMER_PWM_1,
-                                     flexTimer_pwm_1_IndependentChannelsConfig[2].hwChannelId,
-                                     FTM_PWM_UPDATE_IN_TICKS, (uint16_t)dutyCycle,
-                                     0U,
-                                     true);
-            OSIF_TimeDelay(1);
-        }
-        OSIF_TimeDelay(100);
-//        if ( RxBuff1[0] < 50 )
-//        {
-//            /* Turn off all LEDs */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED1_INDEX, 1U);
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED0_INDEX, 1U);
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED2_INDEX, 1U);
-//        }
-//
-//        else if (RxBuff1[0] <= 100)
-//        {
-//            /* Turn on Green LED */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED2_INDEX, 0U);
-//            /* Turn off Red LED */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED1_INDEX, 1U);
-//            /* Turn off Blue LED */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED0_INDEX, 1U);
-//        }
-//
-//        else if (RxBuff1[0] <= 175)
-//        {
-//            /* Turn off Green LED */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED2_INDEX, 1U);
-//            /* Turn off Red LED */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED1_INDEX, 1U);
-//            /* Turn on Blue LED */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED0_INDEX, 0U);
-//        }
-//
-//        else if (RxBuff1[0] <= 255)
-//        {
-//            /* Turn off Green LED */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED2_INDEX, 1U);
-//            /* Turn on Red LED */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED1_INDEX, 0U);
-//            /* Turn off Blue LED */
-//            PINS_DRV_WritePin(LED_GPIO_PORT, PORT_LED0_INDEX, 1U);
-//        }
-//        else
-//        {
-//
-//        }
+		FMSTR_Poll();
 
         if(exit_code != 0)
         {

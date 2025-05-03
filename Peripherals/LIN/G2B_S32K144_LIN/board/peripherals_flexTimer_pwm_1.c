@@ -96,29 +96,19 @@ instance:
                 - ftmpwmIndptName: 'flexTimer_pwm_1_IndependentChannelConfig0'
                 - ftmPwmIndptHwChnId: '0'
                 - polarity: 'FTM_POLARITY_LOW'
-                - uDutyCyclePercent: '0x4000'
+                - uDutyCyclePercent: '0'
                 - enableExternalTrigger: 'false'
-                - safeState: 'FTM_LOW_STATE'
+                - safeState: 'FTM_HIGH_STATE'
                 - enableSecondChannelOutput: 'false'
                 - secondChannelPolarity: 'FTM_MAIN_INVERTED'
                 - IndptdeadTimeEn: 'false'
               - 1:
                 - ftmpwmIndptName: 'flexTimer_pwm_1_IndependentChannelConfig1'
-                - ftmPwmIndptHwChnId: '1'
-                - polarity: 'FTM_POLARITY_LOW'
-                - uDutyCyclePercent: '0x4000'
-                - enableExternalTrigger: 'false'
-                - safeState: 'FTM_LOW_STATE'
-                - enableSecondChannelOutput: 'false'
-                - secondChannelPolarity: 'FTM_MAIN_INVERTED'
-                - IndptdeadTimeEn: 'false'
-              - 2:
-                - ftmpwmIndptName: 'flexTimer_pwm_1_IndependentChannelConfig2'
                 - ftmPwmIndptHwChnId: '2'
                 - polarity: 'FTM_POLARITY_LOW'
-                - uDutyCyclePercent: '0x4000'
+                - uDutyCyclePercent: '0'
                 - enableExternalTrigger: 'false'
-                - safeState: 'FTM_LOW_STATE'
+                - safeState: 'FTM_HIGH_STATE'
                 - enableSecondChannelOutput: 'false'
                 - secondChannelPolarity: 'FTM_MAIN_INVERTED'
                 - IndptdeadTimeEn: 'false'
@@ -193,24 +183,14 @@ ftm_pwm_fault_param_t flexTimer_pwm_1_FaultConfig =
 };
 
 /* The independent channels configuration structure for flexTimer_pwm_1_IndependentChannelsConfig */
-ftm_independent_ch_param_t flexTimer_pwm_1_IndependentChannelsConfig[3] =
+ftm_independent_ch_param_t flexTimer_pwm_1_IndependentChannelsConfig[2] =
 {
     {
         0, /* Hardware channel Id */
         FTM_POLARITY_LOW, /* Polarity of the PWM signal */
-        16384U, /* Duty cycle percent 0-0x8000 */
+        0U, /* Duty cycle percent 0-0x8000 */
         false, /* External Trigger */
-        FTM_LOW_STATE, /* Safe state of the PWM channel when faults are detected */
-        false, /* Enabled/disabled the channel (n+1) output */
-        FTM_MAIN_INVERTED, /* Select channel (n+1) output relative to channel (n) */
-        false, /* Dead time enabled/disabled */
-    },
-    {
-        1, /* Hardware channel Id */
-        FTM_POLARITY_LOW, /* Polarity of the PWM signal */
-        16384U, /* Duty cycle percent 0-0x8000 */
-        false, /* External Trigger */
-        FTM_LOW_STATE, /* Safe state of the PWM channel when faults are detected */
+        FTM_HIGH_STATE, /* Safe state of the PWM channel when faults are detected */
         false, /* Enabled/disabled the channel (n+1) output */
         FTM_MAIN_INVERTED, /* Select channel (n+1) output relative to channel (n) */
         false, /* Dead time enabled/disabled */
@@ -218,9 +198,9 @@ ftm_independent_ch_param_t flexTimer_pwm_1_IndependentChannelsConfig[3] =
     {
         2, /* Hardware channel Id */
         FTM_POLARITY_LOW, /* Polarity of the PWM signal */
-        16384U, /* Duty cycle percent 0-0x8000 */
+        0U, /* Duty cycle percent 0-0x8000 */
         false, /* External Trigger */
-        FTM_LOW_STATE, /* Safe state of the PWM channel when faults are detected */
+        FTM_HIGH_STATE, /* Safe state of the PWM channel when faults are detected */
         false, /* Enabled/disabled the channel (n+1) output */
         FTM_MAIN_INVERTED, /* Select channel (n+1) output relative to channel (n) */
         false, /* Dead time enabled/disabled */
@@ -230,7 +210,7 @@ ftm_independent_ch_param_t flexTimer_pwm_1_IndependentChannelsConfig[3] =
 /* PWM configuration for flexTimer_pwm_1 */
 ftm_pwm_param_t flexTimer_pwm_1_PwmConfig =
 {
-    3U, /* Number of independent PWM channels */
+    2U, /* Number of independent PWM channels */
     0U, /* Number of combined PWM channels */
     FTM_MODE_EDGE_ALIGNED_PWM, /* PWM mode */
     0U, /* Dead time value */

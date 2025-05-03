@@ -37,7 +37,7 @@ extern ftm_pwm_fault_param_t flexTimer_pwm_1_FaultConfig;
 extern ftm_pwm_param_t flexTimer_pwm_1_PwmConfig;
 
 /* Channels configuration structure for the independent channels */
-extern ftm_independent_ch_param_t flexTimer_pwm_1_IndependentChannelsConfig[3];
+extern ftm_independent_ch_param_t flexTimer_pwm_1_IndependentChannelsConfig[2];
 
 /* Global configuration of flexTimer */
 extern ftm_user_config_t flexTimer_pwm_1_InitConfig;
