@@ -13,7 +13,7 @@
 /**
  * @brief LIN Frame ID used by master to receive data from the slave node.
  */
-#define FRAME_MASTER_RECEIVE_DATA     (59U)
+#define FRAME_MASTER_SEND_DATA     (58U)
 
 /**
  * @brief Timer compare value for LPTMR or FTM-based timing.
@@ -40,14 +40,14 @@
 extern uint16_t timerOverflowInterruptCount;
 
 /**
- * @brief Buffer to hold received LIN data (8 bytes max typical in LIN).
+ * @brief Buffer to hold recieve LIN data (3 bytes).
  */
-extern uint8_t RxBuff1[8];
+extern uint8_t RxBuff1[3];
 
 /**
- * @brief Buffer to hold transmit LIN data (8 bytes max typical in LIN).
+ * @brief Buffer to hold transmit LIN data (3 bytes).
  */
-extern uint8_t TxBuff1[8];
+extern uint8_t TxBuff1[3];
 
 /**
  * @brief Holds the status code of the last driver function (e.g., CLOCK, LIN, PWM).

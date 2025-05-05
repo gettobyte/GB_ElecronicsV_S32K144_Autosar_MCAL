@@ -48,7 +48,7 @@ instance:
           - nodeFunction: '(bool)MASTER'
           - autobaudEnable: '0'
           - timerGetTimeIntervalCallback: 'G2B_TimeIntervalCallback0'
-          - classicPidType: 'Enhanced'
+          - classicPidType: 'Classic'
           - numOfClassicPID: []
         - 1:
           - name: 'lin2_SlaveConfig'
@@ -56,7 +56,7 @@ instance:
           - nodeFunction: '(bool)SLAVE'
           - autobaudEnable: '0'
           - timerGetTimeIntervalCallback: 'G2B_TimeIntervalCallback1'
-          - classicPidType: 'Enhanced'
+          - classicPidType: 'Classic'
           - numOfClassicPID: []
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
@@ -82,7 +82,7 @@ lin_user_config_t lin2_MasterConfig =
     .autobaudEnable               = false,                          /* Disable auto baudRate */
     .timerGetTimeIntervalCallback = G2B_TimeIntervalCallback0,
     .classicPID                   = NULL,                               /* ClassicPID */
-    .numOfClassicPID              = 0U                                  /* Number of classicPID */
+    .numOfClassicPID              = 255U                                /* Number of classicPID */
 };
 
 /*! @brief LIN configuration lin2_SlaveConfig */
@@ -93,7 +93,7 @@ lin_user_config_t lin2_SlaveConfig =
     .autobaudEnable               = false,                                    /* true - Enbale auto baudRate; false - Disable auto baudRate*/
     .timerGetTimeIntervalCallback = G2B_TimeIntervalCallback1,
     .classicPID                   = NULL,                               /* ClassicPID */
-    .numOfClassicPID              = 0U                                  /* Number of classicPID */
+    .numOfClassicPID              = 255U                                /* Number of classicPID */
 };
 
 

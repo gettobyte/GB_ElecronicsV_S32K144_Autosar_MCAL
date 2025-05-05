@@ -10,11 +10,11 @@
 // Timer overflow count for tracking extended time intervals
 uint16_t timerOverflowInterruptCount = 0U;
 
-// LIN receive buffer (8 bytes)
-uint8_t RxBuff1[8];
+// LIN receive buffer (3 bytes)
+uint8_t RxBuff1[3];
 
-// LIN transmit buffer (8 bytes)
-uint8_t TxBuff1[8];
+// LIN transmit buffer (3 bytes)
+uint8_t TxBuff1[3];
 
 // Error status returned from various SDK drivers
 status_t error;
@@ -85,9 +85,9 @@ lin_callback_t G2B_Master_CallbackHandler(uint32_t instance, lin_state_t * lin1_
     {
         case LIN_PID_OK:
             LIN_DRV_SetTimeoutCounter(INST_LIN2, TIMEOUT);
-            if(FRAME_MASTER_RECEIVE_DATA == lin1_State->currentId)
+            if(FRAME_MASTER_SEND_DATA == lin1_State->currentId)
             {
-                LIN_DRV_ReceiveFrameData(INST_LIN2, RxBuff1, sizeof(RxBuff1));
+            	LIN_DRV_SendFrameData(instance, TxBuff1, sizeof(TxBuff1));
             }
             break;
 
@@ -125,10 +125,9 @@ lin_callback_t G2B_Slave_CallbackHandler(uint32_t instance, lin_state_t * lin1_S
             /* Set timeout */
             LIN_DRV_SetTimeoutCounter(INST_LIN2, TIMEOUT);
 
-        	if(FRAME_MASTER_RECEIVE_DATA == lin1_State->currentId)
+        	if(FRAME_MASTER_SEND_DATA == lin1_State->currentId)
         	{
-//        		adc_convert();
-//        		LIN_DRV_SendFrameData(INST_LIN2, txBuff1, sizeof(txBuff1));
+        		LIN_DRV_ReceiveFrameData(INST_LIN2, RxBuff1, sizeof(RxBuff1));
         	}
 
             break;
@@ -338,9 +337,8 @@ status_t LIN_Transmit_Data(uint32_t instance,
 					   uint8_t wipeReq,
 					   uint8_t responseError)
 {
-	uint8_t txData[3];
 	// Pack control message fields into a 3-byte LIN data array
-	packControlMessage(txData,
+	packControlMessage(TxBuff1,
 					   calibrationMode,
 					   0U,
 					   wipeMode,
@@ -351,10 +349,6 @@ status_t LIN_Transmit_Data(uint32_t instance,
 					   responseError);
 	// Send LIN frame header with specified frame ID
 	status_t headerStatus = LIN_DRV_MasterSendHeader(instance, frameID);
-	if (headerStatus != STATUS_SUCCESS)
-	{
-		return headerStatus;
-	}
-	// Send LIN data payload
-	return LIN_DRV_SendFrameData(instance, txData, sizeof(txData));
+
+	return headerStatus;
 }

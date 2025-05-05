@@ -28,11 +28,11 @@ int main(void)
 
     for(;;)
     {
-    	LIN_Transmit_Data(INST_LIN2, 58U, 1U,
+    	error = LIN_Transmit_Data(INST_LIN2, 58U, 1U,
     					  2U, 100U, 0U,
 						  1U, 1U,
 						  0U);
-//		OSIF_TimeDelay(50);
+		OSIF_TimeDelay(1000);
 
 
 
