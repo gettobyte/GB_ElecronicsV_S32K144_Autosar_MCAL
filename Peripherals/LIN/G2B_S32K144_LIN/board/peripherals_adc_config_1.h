@@ -36,7 +36,7 @@
 extern const adc_converter_config_t adc_config_1_ConvConfig0;
 
 /* Channel configuration 0 */
-extern adc_chan_config_t adc_config_1_ChnConfig0;
+extern const adc_chan_config_t adc_config_1_ChnConfig0;
 
 
 

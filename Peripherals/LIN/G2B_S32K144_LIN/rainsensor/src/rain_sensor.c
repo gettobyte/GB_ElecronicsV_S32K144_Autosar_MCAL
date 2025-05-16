@@ -10,17 +10,26 @@
 // Timer overflow count for tracking extended time intervals
 uint16_t timerOverflowInterruptCount = 0U;
 
-// LIN receive buffer (3 bytes)
-uint8_t RxBuff1[3];
+// Master LIN receive buffer (5 bytes)
+uint8_t MASTER_RxBuff1[5];
 
-// LIN transmit buffer (3 bytes)
-uint8_t TxBuff1[3];
+// Master LIN transmit buffer (5 bytes)
+uint8_t MASTER_TxBuff1[5];
+
+// Slave LIN receive buffer (3 bytes)
+uint8_t SLAVE_RxBuff1[3];
+
+// Slave LIN transmit buffer (3 bytes)
+uint8_t SLAVE_TxBuff1[3];
 
 // Error status returned from various SDK drivers
 status_t error;
 
 // FTM (FlexTimer Module) driver state structure
 ftm_state_t ftmStateStruct;
+
+// Boolean Variable Flag for checking whether LIN is asked to wakeup
+volatile bool wakeupSignalFlag = false;
 
 /*!
  * @brief Get elapsed time since last call in nanoseconds
@@ -85,22 +94,46 @@ lin_callback_t G2B_Master_CallbackHandler(uint32_t instance, lin_state_t * lin1_
     {
         case LIN_PID_OK:
             LIN_DRV_SetTimeoutCounter(INST_LIN2, TIMEOUT);
+
             if(FRAME_MASTER_SEND_DATA == lin1_State->currentId)
             {
-            	LIN_DRV_SendFrameData(instance, TxBuff1, sizeof(TxBuff1));
+            	LIN_DRV_SendFrameData(instance, MASTER_TxBuff1, sizeof(MASTER_TxBuff1));
             }
+
+            if(FRAME_MASTER_RECIEVE_DATA == lin1_State->currentId)
+			{
+            	LIN_DRV_ReceiveFrameData(instance, SLAVE_RxBuff1, sizeof(SLAVE_RxBuff1));
+			}
+
             break;
 
         case LIN_PID_ERROR:
+        	/* Go to idle mode */
+			LIN_DRV_GoToSleepMode(INST_LIN2);
+			DisableOutputDrain1();
+			DisableOutputDrain2();
+			LED_Dimmer1(0);
+			LED_Dimmer2(0);
+			break;
         case LIN_TX_COMPLETED:
         case LIN_RX_COMPLETED:
+        	/* Go to idle mode */
+        	LIN_DRV_GotoIdleState(INST_LIN2);
+        	break;
         case LIN_CHECKSUM_ERROR:
         case LIN_READBACK_ERROR:
         case LIN_FRAME_ERROR:
         case LIN_RECV_BREAK_FIELD_OK:
             LIN_DRV_SetTimeoutCounter(INST_LIN2, TIMEOUT);
             break;
-
+        case LIN_WAKEUP_SIGNAL:
+            /* Set wakeup signal flag */
+            wakeupSignalFlag = true;
+            break;
+        case LIN_SYNC_ERROR:
+        case LIN_BAUDRATE_ADJUSTED:
+        case LIN_NO_EVENT:
+        case LIN_SYNC_OK:
         default:
             break;
     }
@@ -127,13 +160,28 @@ lin_callback_t G2B_Slave_CallbackHandler(uint32_t instance, lin_state_t * lin1_S
 
         	if(FRAME_MASTER_SEND_DATA == lin1_State->currentId)
         	{
-        		LIN_DRV_ReceiveFrameData(INST_LIN2, RxBuff1, sizeof(RxBuff1));
+        		LIN_DRV_ReceiveFrameData(INST_LIN2, MASTER_RxBuff1, sizeof(MASTER_RxBuff1));
+        	}
+
+        	if(FRAME_MASTER_RECIEVE_DATA == lin1_State->currentId)
+        	{
+        		LIN_DRV_SendFrameData(INST_LIN2, SLAVE_TxBuff1, sizeof(SLAVE_TxBuff1));
         	}
 
             break;
         case LIN_PID_ERROR:
+        	/* Go to idle mode */
+			LIN_DRV_GoToSleepMode(INST_LIN2);
+			DisableOutputDrain1();
+			DisableOutputDrain2();
+			LED_Dimmer1(0);
+			LED_Dimmer2(0);
+			break;
         case LIN_TX_COMPLETED:
         case LIN_RX_COMPLETED:
+        	/* Go to idle mode */
+			LIN_DRV_GoToSleepMode(INST_LIN2);
+			break;
         case LIN_CHECKSUM_ERROR:
         case LIN_READBACK_ERROR:
         case LIN_FRAME_ERROR:
@@ -154,9 +202,9 @@ lin_callback_t G2B_Slave_CallbackHandler(uint32_t instance, lin_state_t * lin1_S
 }
 
 /*!
- * @brief Packs control message into 3-byte array for transmission
+ * @brief Slave Packs control message into 3-byte array for transmission
  */
-void packControlMessage(uint8_t msg[3],
+void SLAVE_packControlMessage(uint8_t msg[3],
                         uint8_t calibrationMode,
                         uint8_t devMode,
                         uint8_t wipeMode,
@@ -183,9 +231,9 @@ void packControlMessage(uint8_t msg[3],
 }
 
 /*!
- * @brief Packs control message into 3-byte array for transmission
+ * @brief Slave Packs control message into 3-byte array for transmission
  */
-void unpackControlMessage(const uint8_t msg[3],
+void SLAVE_unpackControlMessage(const uint8_t msg[3],
                           uint8_t *calibrationMode,
                           uint8_t *devMode,
                           uint8_t *wipeMode,
@@ -205,6 +253,55 @@ void unpackControlMessage(const uint8_t msg[3],
     *splash          = (packed >> 3)  & 0x03;
     *wipeReq         = (packed >> 1)  & 0x03;
     *responseError   = (packed >> 0)  & 0x01;
+}
+
+/*!
+ * @brief Master Packs control message into 5-byte array for transmission
+ */
+void MASTER_packControl_Command(uint8_t packed_data[5],
+							  uint8_t vehicle_speed,
+							  uint8_t ambient_temp,
+							  uint8_t sensitivity,
+							  uint8_t vehicle_type,
+							  uint8_t windscreen_type,
+							  uint8_t wash_wipe,
+							  uint8_t wiper_parkpos,
+							  uint8_t wiping_comm,
+							  uint8_t dev_mode)
+{
+    packed_data[0] = vehicle_speed;
+    packed_data[1] = ambient_temp;
+    packed_data[2] = ((sensitivity & 0x0F) << 4) | (vehicle_type & 0x0F);
+    packed_data[3] = ((windscreen_type & 0x0F) << 4) |
+                     ((wash_wipe & 0x03) << 2) |
+                     (wiper_parkpos & 0x03);
+    packed_data[4] = ((wiping_comm & 0x03) << 6) |
+                     ((dev_mode & 0x0F) << 2);  // Reserved 2 LSBs set to 0
+}
+
+/*!
+ * @brief Master Packs control message into 5-byte array for transmission
+ */
+void MASTER_unpackControl_Command(const uint8_t packed_data[5],
+									  uint8_t *vehicle_speed,
+									  uint8_t *ambient_temp,
+									  uint8_t *sensitivity,
+									  uint8_t *vehicle_type,
+									  uint8_t *windscreen_type,
+									  uint8_t *wash_wipe,
+									  uint8_t *wiper_parkpos,
+									  uint8_t *wiping_comm,
+									  uint8_t *dev_mode)
+{
+    *vehicle_speed    = packed_data[0];
+    *ambient_temp     = packed_data[1];
+    *sensitivity      = (packed_data[2] >> 4) & 0x0F;
+    *vehicle_type     = packed_data[2] & 0x0F;
+    *windscreen_type  = (packed_data[3] >> 4) & 0x0F;
+    *wash_wipe        = (packed_data[3] >> 2) & 0x03;
+    *wiper_parkpos    = packed_data[3] & 0x03;
+    *wiping_comm      = (packed_data[4] >> 6) & 0x03;
+    *dev_mode         = (packed_data[4] >> 2) & 0x0F;
 }
 
 void Clock_Init(void)
@@ -236,9 +333,15 @@ void Port_Init(void)
 void Timer_Init(void)
 {
     /* Initialize LPTMR */
+
+	// LPTMR Init for LIN Timeout Service
     LPTMR_DRV_Init(INST_LPTMR_1, &lptmr_1_config0, false);
+    // ISR Installer for LIN Timeout Service
     INT_SYS_InstallHandler(LPTMR0_IRQn, G2B_LPTMR_ISR, (isr_t *)NULL);
+    // IRQ Enable
     INT_SYS_EnableIRQ(LPTMR0_IRQn);
+
+    // Starting the counter
     LPTMR_DRV_StartCounter(INST_LPTMR_1);
 }
 
@@ -265,6 +368,44 @@ void LIN_Slave_Init(void)
     error = LIN_DRV_Init(INST_LIN2, &lin2_SlaveConfig, &lin2_State);
     /* Install callback function */
     LIN_DRV_InstallCallback(INST_LIN2, (lin_callback_t)G2B_Slave_CallbackHandler);
+}
+
+/**
+ * @brief Initializes and calibrates the ADC.
+ *
+ * This function sets up the ADC converter using the configuration structure
+ * defined in adc_driver_cfg.h and triggers the auto-calibration sequence.
+ */
+void ADC_Init(void)
+{
+	ADC_DRV_ConfigConverter(INST_ADC_CONFIG_1, &adc_config_1_ConvConfig0);
+	ADC_DRV_AutoCalibration(INST_ADC_CONFIG_1);
+}
+
+
+/**
+ * @brief Triggers an ADC conversion and returns the scaled value.
+ *
+ * Configures the ADC channel, triggers a conversion, waits for completion,
+ * retrieves the raw ADC value (8-bit), and scales it from 0–255 to 0–100.
+ *
+ * @return uint8_t Scaled ADC value in the range 0–100.
+ */
+uint8_t ADC_Conv(void)
+{
+	uint16_t adcRawValue;
+
+	/* Configure ADC channel and software trigger a conversion */
+	ADC_DRV_ConfigChan(INST_ADC_CONFIG_1, 0U, &adc_config_1_ChnConfig0);
+	/* Wait for the conversion to be done */
+	ADC_DRV_WaitConvDone(INST_ADC_CONFIG_1);
+	/* Store the channel result into a local variable */
+	ADC_DRV_GetChanResult(INST_ADC_CONFIG_1, 0U, &adcRawValue);
+
+    // Scale the 8-bit result (0–255) to range 0–100
+    uint8_t scaledValue = (adcRawValue * 100U) / 255U;
+
+	return scaledValue;
 }
 
 void LED_Dimmer1(uint8_t dutyCycle)
@@ -327,28 +468,47 @@ void DisableOutputDrain2(void)
 	PINS_DRV_ClearPins(PTB, (0x1u << (1UL)));
 }
 
-status_t LIN_Transmit_Data(uint32_t instance,
-					   uint8_t frameID,
-					   uint8_t calibrationMode,
-					   uint8_t wipeMode,
-					   uint8_t rainInfo,
-					   uint8_t sensorFail,
-					   uint8_t splash,
-					   uint8_t wipeReq,
-					   uint8_t responseError)
+/**
+ * @brief Prepares and transmits control command (Message ID 59) from master to slave.
+ *
+ * @param vehicle_speed 8-bit vehicle speed.
+ * @param ambient_temp 8-bit ambient temperature.
+ * @param sensitivity 4-bit sensitivity value.
+ * @param vehicle_type 4-bit vehicle type value.
+ * @param windscreen_type 4-bit windscreen type value.
+ * @param wash_wipe 2-bit wash wipe value.
+ * @param wiper_parkpos 2-bit wiper park position.
+ * @param wiping_comm 2-bit wiping command.
+ * @param dev_mode 4-bit developer mode value.
+ */
+status_t LIN_MASTER_Transmit_Data(uint8_t vehicle_speed,
+	    						  uint8_t ambient_temp,
+								  uint8_t sensitivity,
+								  uint8_t vehicle_type,
+								  uint8_t windscreen_type,
+								  uint8_t wash_wipe,
+								  uint8_t wiper_parkpos,
+								  uint8_t wiping_comm)
+// add the DEV module parameter with passing in API
 {
-	// Pack control message fields into a 3-byte LIN data array
-	packControlMessage(TxBuff1,
-					   calibrationMode,
-					   0U,
-					   wipeMode,
-					   rainInfo,
-					   sensorFail,
-					   splash,
-					   wipeReq,
-					   responseError);
+	// Master Pack control message fields into a 5-byte LIN data array
+	MASTER_packControl_Command(MASTER_TxBuff1, vehicle_speed, ambient_temp,
+							   sensitivity, vehicle_type, windscreen_type,
+							   wash_wipe, wiper_parkpos, wiping_comm, 0U);
+
 	// Send LIN frame header with specified frame ID
-	status_t headerStatus = LIN_DRV_MasterSendHeader(instance, frameID);
+	status_t headerStatus = LIN_DRV_MasterSendHeader(INST_LIN2, 59U);
+
+	return headerStatus;
+}
+
+/*!
+ * @brief Master sends the header for receiving the data from Slave node
+ */
+status_t LIN_MASTER_Receive_Data(void)
+{
+	// Send LIN frame header with specified frame ID
+	status_t headerStatus = LIN_DRV_MasterSendHeader(INST_LIN2, 58U);
 
 	return headerStatus;
 }

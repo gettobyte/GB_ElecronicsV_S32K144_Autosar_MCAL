@@ -59,7 +59,7 @@ instance:
     - adcChanCfg:
       - 0:
         - name: 'adc_config_1_ChnConfig0'
-        - readonly: 'false'
+        - readonly: 'true'
         - interruptEnable: 'false'
         - channel: 'ADC_INPUTCHAN_EXT12'
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
@@ -88,7 +88,7 @@ const adc_converter_config_t adc_config_1_ConvConfig0 = {
   .supplyMonitoringEnable = false
 };
 
-adc_chan_config_t adc_config_1_ChnConfig0 = {
+const adc_chan_config_t adc_config_1_ChnConfig0 = {
   .interruptEnable = false,
   .channel = ADC_INPUTCHAN_EXT12
 };

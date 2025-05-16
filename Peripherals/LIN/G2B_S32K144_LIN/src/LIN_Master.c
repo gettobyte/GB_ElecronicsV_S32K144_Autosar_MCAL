@@ -11,16 +11,14 @@
 #include "rain_sensor.h"
 
 volatile int exit_code = 0;
-
+uint8_t calib, dev, wipe,
+		rain, fail, splash,
+		req, resp_error;
 
 int main(void)
 {
-
-	int dutyCycle = 0U;
-
 	Clock_Init();
 	Port_Init();
-	PWM_Init();
 	LIN_Master_Init();
 	Timer_Init();
 
@@ -28,42 +26,21 @@ int main(void)
 
     for(;;)
     {
-    	error = LIN_Transmit_Data(INST_LIN2, 58U, 1U,
-    					  2U, 100U, 0U,
-						  1U, 1U,
-						  0U);
+    	// Message ID is 59U
+    	error = LIN_MASTER_Transmit_Data(120U, 25U, 8U, 8U,
+    									 8U, 1U, 1U, 1U);
+
 		OSIF_TimeDelay(1000);
 
+		error = LIN_MASTER_Receive_Data();
 
+		OSIF_TimeDelay(1000);
 
-//        // Increase duty cycle: 0% to 100%
-//        for (uint32_t i = 0; i <= 100; i++) {
-//        	LED_Dimmer1(i);
-//            OSIF_TimeDelay(1);  // 50 ms delay
-//        }
-//
-//        // Decrease duty cycle: 100% to 0%
-//        for (int32_t i = 100; i >= 100; i--) {
-//        	LED_Dimmer1(i);
-//            OSIF_TimeDelay(1);  // 50 ms delay
-//        }
+		SLAVE_unpackControlMessage(SLAVE_RxBuff1, &calib, &dev,
+		    						 &wipe, &rain, &fail,
+									 &splash, &req, &resp_error);
 
-//        // Increase duty cycle: 0% to 100%
-//        for (uint8_t i = 0; i <= 100; i++) {
-//        	LED_Dimmer2(i);
-//            OSIF_TimeDelay(10);  // 50 ms delay
-//        }
-//
-//        // Decrease duty cycle: 100% to 0%
-//        for (int8_t i = 100; i >= 0; i--) {
-//        	LED_Dimmer2(i);
-//            OSIF_TimeDelay(10);  // 50 ms delay
-//        }
-
-//        EnableOutputDrain1();
-//        EnableOutputDrain2();
-//        DisableOutputDrain1();
-//        DisableOutputDrain2();
+		OSIF_TimeDelay(1000);
 
 		FMSTR_Poll();
 

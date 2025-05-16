@@ -98,7 +98,7 @@ instance:
                 - polarity: 'FTM_POLARITY_LOW'
                 - uDutyCyclePercent: '0'
                 - enableExternalTrigger: 'false'
-                - safeState: 'FTM_HIGH_STATE'
+                - safeState: 'FTM_LOW_STATE'
                 - enableSecondChannelOutput: 'false'
                 - secondChannelPolarity: 'FTM_MAIN_INVERTED'
                 - IndptdeadTimeEn: 'false'
@@ -108,7 +108,7 @@ instance:
                 - polarity: 'FTM_POLARITY_LOW'
                 - uDutyCyclePercent: '0'
                 - enableExternalTrigger: 'false'
-                - safeState: 'FTM_HIGH_STATE'
+                - safeState: 'FTM_LOW_STATE'
                 - enableSecondChannelOutput: 'false'
                 - secondChannelPolarity: 'FTM_MAIN_INVERTED'
                 - IndptdeadTimeEn: 'false'
@@ -190,7 +190,7 @@ ftm_independent_ch_param_t flexTimer_pwm_1_IndependentChannelsConfig[2] =
         FTM_POLARITY_LOW, /* Polarity of the PWM signal */
         0U, /* Duty cycle percent 0-0x8000 */
         false, /* External Trigger */
-        FTM_HIGH_STATE, /* Safe state of the PWM channel when faults are detected */
+        FTM_LOW_STATE, /* Safe state of the PWM channel when faults are detected */
         false, /* Enabled/disabled the channel (n+1) output */
         FTM_MAIN_INVERTED, /* Select channel (n+1) output relative to channel (n) */
         false, /* Dead time enabled/disabled */
@@ -200,7 +200,7 @@ ftm_independent_ch_param_t flexTimer_pwm_1_IndependentChannelsConfig[2] =
         FTM_POLARITY_LOW, /* Polarity of the PWM signal */
         0U, /* Duty cycle percent 0-0x8000 */
         false, /* External Trigger */
-        FTM_HIGH_STATE, /* Safe state of the PWM channel when faults are detected */
+        FTM_LOW_STATE, /* Safe state of the PWM channel when faults are detected */
         false, /* Enabled/disabled the channel (n+1) output */
         FTM_MAIN_INVERTED, /* Select channel (n+1) output relative to channel (n) */
         false, /* Dead time enabled/disabled */
