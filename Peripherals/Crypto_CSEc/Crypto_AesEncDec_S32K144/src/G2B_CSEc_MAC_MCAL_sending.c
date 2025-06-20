@@ -1378,7 +1378,6 @@ int main(void)
     Util_Memset(App_au8Aes128EcbResult, 0U, APP_AES128_ECB_RESULT_SIZE);
 
     ST7789_WriteString(0, 160, "Original Data", Font_11x18,ST77XX_WHITE, ST77XX_BLACK);
-
     string1 = uint8_to_string(App_au8Aes128EcbPlaintext_1, 8);
     ST7789_WriteString(0, 180, string1 , Font_11x18, ST77XX_MAGENTA, ST77XX_BLACK);
 
@@ -1392,7 +1391,6 @@ int main(void)
     RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobAes128EcbEncrypt);
 
     ST7789_WriteString(0, 240, "Sending Encrypted Data", Font_11x18,ST77XX_WHITE, ST77XX_BLACK);
- // ST7789_WriteString(0, 104, "0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F", Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
 
 //   ST7789_WriteString(20, 100, &App_au8Aes128EcbPlaintext_1, Font_16x26,ST77XX_WHITE, ST77XX_BLACK );
 

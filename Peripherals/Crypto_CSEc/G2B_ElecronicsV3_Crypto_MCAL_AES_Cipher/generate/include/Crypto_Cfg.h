@@ -130,7 +130,7 @@ extern "C"{
 #define CRYPTO_KEYS_EXIST                               (STD_ON)
 
 /* Number of Crypto keys */
-#define CRYPTO_NUMBER_OF_KEYS_U32                       ((uint32)1U)
+#define CRYPTO_NUMBER_OF_KEYS_U32                       ((uint32)2U)
 
 /* Number of Crypto key elements */
 #define CRYPTO_NUMBER_OF_KEY_ELEMENTS_U32               ((uint32)2U)
@@ -141,7 +141,7 @@ extern "C"{
 
 /* Sizes for the blobs of information used by the Crypto driver */
 #define CRYPTO_SIZEOF_NVRAM_BLOB_0                      (1U)
-#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (8U)
+#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (4U)
 
 /* Compile time switch stating that support for Nvram read/write operations is enabled or disabled */
 #define CRYPTO_ENABLE_NVRAM_READ_WRITE_SUPPORT          (STD_OFF)
@@ -177,7 +177,8 @@ extern "C"{
 #define CryptoConf_CryptoDriverObject_CryptoDriverObject_AES_ECB     ((uint32)0U)
 
 /* Symbolic names for the CryptoKeyId attribute of all the Crypto keys */
-#define CryptoConf_CryptoKey_CryptoKey_0                             ((uint32)0U)
+#define CryptoConf_CryptoKey_CryptoKey_MasterECU                     ((uint32)0U)
+#define CryptoConf_CryptoKey_CryptoKey_AES                           ((uint32)1U)
 
 /* Symbolic names for the CryptoKeyElementId attribute of all the Crypto key elements */
 #define CryptoConf_CryptoKeyElement_CryptoKeyElement_MASTER_ECU_KEY  ((uint32)1U)

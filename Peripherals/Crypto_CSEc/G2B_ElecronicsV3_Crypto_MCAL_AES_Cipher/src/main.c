@@ -84,6 +84,10 @@ volatile int exit_code = 0;
 #define APP_CSEC_IP_RAMRDY_IS_SET       ((CSEC_IP_FLASH->FCNFG & APP_CSEC_IP_FCNFG_RAMRDY_MASK) != 0U)
 #define APP_CSEC_IP_EEERDY_IS_SET       ((CSEC_IP_FLASH->FCNFG & APP_CSEC_IP_FCNFG_EEERDY_MASK) != 0U)
 
+static uint32 u32NumFailedApiCalls = 0U;
+#define App_SetSuccessStatus(value)         (u32NumFailedApiCalls += ((value) ? 0U : 1U))
+
+
 static Std_ReturnType App_InitCsecHw
 (
     uint8 u8KeySize,
@@ -130,13 +134,173 @@ static Std_ReturnType App_InitCsecHw
     return RetVal;
 }
 
-#define KEY_SIZE        (0x03U)
+#define KEY_SIZE                    (0x03U)
 #define SFE                         (0x00U)
+
+
+#define G2B_AES128_ECB_PLAIN_TEXT_SIZE 16
+static uint8_t G2B_Aes128EcbPlaintext_1[G2B_AES128_ECB_PLAIN_TEXT_SIZE]=
+{
+		   0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
+};
+
+#define G2B_AES128_ECB_RESULT_TEXT_SIZE 16
+#define APP_AES128_KEY_SIZE 16
+static uint8_t App_au8Aes128EcbResult[G2B_AES128_ECB_RESULT_TEXT_SIZE];
+
+static uint8_t App_au8Aes128EcbOriginalMessage[G2B_AES128_ECB_RESULT_TEXT_SIZE];
+
+#define APP_AES128_KEY_ID CryptoConf_CryptoKey_CryptoKey_AES
+#define KEY_MATERIAL_ELEMENT_ID_U32 CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY
+#define APP_AES128_CDO_ID CryptoConf_CryptoDriverObject_CryptoDriverObject_AES_ECB
+
+uint32 ResultLength = 16;
+
+
+static Crypto_JobType G2B_AES128_ECB_Decrypt_ProcessJob =
+{
+		.jobId = 1U,
+		.jobState = CRYPTO_JOBSTATE_IDLE,
+
+	// Crypto_JobPrimitiveInputOutputType: structure, in this we specify different
+	// buffer value's to input and out put data.
+
+		 .jobPrimitiveInputOutput =
+		 {
+			.inputPtr = App_au8Aes128EcbResult,
+			.inputLength = G2B_AES128_ECB_PLAIN_TEXT_SIZE,
+			.secondaryInputPtr = NULL_PTR,
+			.secondaryInputLength = 0,
+			.tertiaryInputPtr = NULL_PTR,
+			.tertiaryInputLength = 0,
+			.outputPtr = App_au8Aes128EcbOriginalMessage,
+			.outputLengthPtr = &ResultLength,
+			.secondaryOutputPtr = NULL_PTR,
+			.secondaryOutputLengthPtr = NULL_PTR,
+			.input64 = 0,
+			.verifyPtr = NULL_PTR,
+			.output64Ptr = NULL_PTR,
+			.mode = CRYPTO_OPERATIONMODE_SINGLECALL,
+			.cryIfKeyId = APP_AES128_KEY_ID,
+			.targetCryIfKeyId = 0,
+		 },
+
+	// Crypto_JobPrimitiveInfoType: structure, in this we brief about the crypto primitive that
+	// we need to use.
+	.jobPrimitiveInfo = &(Crypto_JobPrimitiveInfoType)
+	{
+			.callbackId = 0,
+			.primitiveInfo = &(Crypto_PrimitiveInfoType)
+					{
+				       .resultLength = G2B_AES128_ECB_RESULT_TEXT_SIZE,
+					   .service = CRYPTO_DECRYPT,
+					   .algorithm =
+					   {
+							.family = CRYPTO_ALGOFAM_AES,
+							.secondaryFamily = CRYPTO_ALGOFAM_NOT_SET ,
+							.keyLength = 128, // 16 bytes which is 128 in bits
+							.mode = CRYPTO_ALGOMODE_ECB,// Type of AES Mode we want to perform
+					   },
+					},
+
+			 .cryIfKeyId = APP_AES128_KEY_ID,
+			 .processingType = CRYPTO_PROCESSING_SYNC,
+			 .callbackUpdateNotification = FALSE,
+
+	},
+
+	.jobInfo = &(Crypto_JobInfoType)
+	{
+	//Crypto_JobInfoType: structure, in which we specify particular job will be
+	//performed at which priority and ID.
+	.jobId = 0,
+	.jobPriority = 0,
+	},
+
+
+	.jobRedirectionInfoRef = NULL_PTR
+
+};
+
+
+
+
+static Crypto_JobType G2B_AES128_ECB_Encrypt_ProcessJob =
+{
+		.jobId = 1U,
+		.jobState = CRYPTO_JOBSTATE_IDLE,
+
+	// Crypto_JobPrimitiveInputOutputType: structure, in this we specify different
+	// buffer value's to input and out put data.
+
+		 .jobPrimitiveInputOutput =
+		 {
+			.inputPtr = G2B_Aes128EcbPlaintext_1,
+			.inputLength = G2B_AES128_ECB_PLAIN_TEXT_SIZE,
+			.secondaryInputPtr = NULL_PTR,
+			.secondaryInputLength = 0,
+			.tertiaryInputPtr = NULL_PTR,
+			.tertiaryInputLength = 0,
+			.outputPtr = App_au8Aes128EcbResult,
+			.outputLengthPtr = &ResultLength,
+			.secondaryOutputPtr = NULL_PTR,
+			.secondaryOutputLengthPtr = NULL_PTR,
+			.input64 = 0,
+			.verifyPtr = NULL_PTR,
+			.output64Ptr = NULL_PTR,
+			.mode = CRYPTO_OPERATIONMODE_SINGLECALL,
+			.cryIfKeyId = APP_AES128_KEY_ID,
+			.targetCryIfKeyId = 0,
+		 },
+
+	// Crypto_JobPrimitiveInfoType: structure, in this we brief about the crypto primitive that
+	// we need to use.
+	.jobPrimitiveInfo = &(Crypto_JobPrimitiveInfoType)
+	{
+			.callbackId = 0,
+			.primitiveInfo = &(Crypto_PrimitiveInfoType)
+					{
+				       .resultLength = G2B_AES128_ECB_RESULT_TEXT_SIZE,
+					   .service = CRYPTO_ENCRYPT,
+					   .algorithm =
+					   {
+							.family = CRYPTO_ALGOFAM_AES,
+							.secondaryFamily = CRYPTO_ALGOFAM_NOT_SET ,
+							.keyLength = 128, // 16 bytes which is 128 in bits
+							.mode = CRYPTO_ALGOMODE_ECB,// Type of AES Mode we want to perform
+					   },
+					},
+
+			 .cryIfKeyId = APP_AES128_KEY_ID,
+			 .processingType = CRYPTO_PROCESSING_SYNC,
+			 .callbackUpdateNotification = FALSE,
+
+	},
+
+	.jobInfo = &(Crypto_JobInfoType)
+	{
+	//Crypto_JobInfoType: structure, in which we specify particular job will be
+	//performed at which priority and ID.
+	.jobId = 0,
+	.jobPriority = 0,
+	},
+
+
+	.jobRedirectionInfoRef = NULL_PTR
+
+};
+
+static uint8_t AES_128_EcbKey[APP_AES128_KEY_SIZE] = {
+		   0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f
+
+};
+
+
 int main(void)
 {
     /* Write your code here */
 
-  //  Std_ReturnType RetVal;
+    Std_ReturnType RetVal;
 
     Clock_Ip_StatusType clockStatus;
     clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB[0]);
@@ -145,22 +309,29 @@ int main(void)
        clockStatus = Clock_Ip_Init(&Mcu_aClockConfigPB[0]);
     }
 
-
-    // This function will initialize
+    //This function will initialize CSEc Peripheral
     RetVal = App_InitCsecHw(KEY_SIZE,SFE);
-    /* Initialize Crypto driver */
+    //Initialize Crypto driver */
     Crypto_Init(NULL_PTR);
 
 
     for(;;)
     {
 
-//    	Crypto_KeyElementSet();
-//    	Crypto_KeySetValid();
-//
-//		Crypto_ProcessJob();
-//
-//
+    	RetVal = Crypto_KeyElementSet(APP_AES128_KEY_ID, KEY_MATERIAL_ELEMENT_ID_U32, AES_128_EcbKey, APP_AES128_KEY_SIZE  );
+        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+
+
+    	RetVal = Crypto_KeySetValid(APP_AES128_KEY_ID);
+        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+
+    	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_ECB_Encrypt_ProcessJob);
+        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+
+
+    	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_ECB_Decrypt_ProcessJob);
+        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+
 //		//Run AES128 Encryption/Decryption()
 //
 //

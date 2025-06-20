@@ -354,7 +354,7 @@
                                     <setting name="CryptoKeyElementWriteAccess" value="CRYPTO_WA_ALLOWED"/>
                                     <array name="CryptoKeyElementVirtualTargetRef"/>
                                     <setting name="UseCsecKey" value="true"/>
-                                    <setting name="CsecKeySlot" value="CSEC_IP_KEY_1"/>
+                                    <setting name="CsecKeySlot" value="CSEC_IP_RAM_KEY"/>
                                  </struct>
                               </array>
                            </struct>
@@ -364,9 +364,15 @@
                               <setting name="Name" value="CryptoKeyTypes"/>
                               <array name="CryptoKeyType">
                                  <struct name="0">
-                                    <setting name="Name" value="CryptoKeyType_0"/>
+                                    <setting name="Name" value="CryptoKeyType_MasterECU"/>
                                     <array name="CryptoKeyElementRef">
                                        <setting name="0" value="/Crypto_1/Crypto/CryptoKeyElements/CryptoKeyElement_MASTER_ECU_KEY"/>
+                                    </array>
+                                 </struct>
+                                 <struct name="1">
+                                    <setting name="Name" value="CryptoKeyType_AES"/>
+                                    <array name="CryptoKeyElementRef">
+                                       <setting name="0" value="/Crypto_1/Crypto/CryptoKeyElements/CryptoKeyElement_AES_KEY"/>
                                     </array>
                                  </struct>
                               </array>
@@ -377,9 +383,14 @@
                               <setting name="Name" value="CryptoKeys"/>
                               <array name="CryptoKey">
                                  <struct name="0">
-                                    <setting name="Name" value="CryptoKey_0"/>
+                                    <setting name="Name" value="CryptoKey_MasterECU"/>
                                     <setting name="CryptoKeyId" value="0"/>
-                                    <setting name="CryptoKeyTypeRef" value="/Crypto_1/Crypto/CryptoKeyTypes/CryptoKeyType_0"/>
+                                    <setting name="CryptoKeyTypeRef" value="/Crypto_1/Crypto/CryptoKeyTypes/CryptoKeyType_MasterECU"/>
+                                 </struct>
+                                 <struct name="1">
+                                    <setting name="Name" value="CryptoKey_AES"/>
+                                    <setting name="CryptoKeyId" value="1"/>
+                                    <setting name="CryptoKeyTypeRef" value="/Crypto_1/Crypto/CryptoKeyTypes/CryptoKeyType_AES"/>
                                  </struct>
                               </array>
                            </struct>

@@ -136,10 +136,16 @@ extern "C"{
 #define CRYPTO_START_SEC_CONST_32
 #include "Crypto_MemMap.h"
 
-/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_0 */
-static const uint32 Crypto_au32KeyElementList_CryptoKey_0[1U] =
+/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_MasterECU */
+static const uint32 Crypto_au32KeyElementList_CryptoKey_MasterECU[1U] =
 {
     0U
+};
+
+/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_AES */
+static const uint32 Crypto_au32KeyElementList_CryptoKey_AES[1U] =
+{
+    1U
 };
 
 #define CRYPTO_STOP_SEC_CONST_32
@@ -171,6 +177,15 @@ static const Crypto_PrimitiveType Crypto_aPrimitives_CryptoDriverObject_AES_ECB[
 /*==================================================================================================
 *                                         LOCAL VARIABLES
 ==================================================================================================*/
+#define CRYPTO_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#include "Crypto_MemMap.h"
+
+/* Array storing the key element information that is volatile (no need to be persistent across resets) */
+VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[4U], 4U)
+
+#define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#include "Crypto_MemMap.h"
+
 
 /*==================================================================================================
 *                                        GLOBAL CONSTANTS
@@ -198,10 +213,16 @@ const Crypto_ObjectType Crypto_aDriverObjectList[CRYPTO_NUMBER_OF_DRIVER_OBJECTS
 const Crypto_KeyType Crypto_aKeyList[CRYPTO_NUMBER_OF_KEYS_U32] =
 {
     {
-        /* Number of key elements in the key CryptoKey_0 */
+        /* Number of key elements in the key CryptoKey_MasterECU */
         1U,
-        /* Reference to the list of key elements in the key CryptoKey_0 */
-        Crypto_au32KeyElementList_CryptoKey_0
+        /* Reference to the list of key elements in the key CryptoKey_MasterECU */
+        Crypto_au32KeyElementList_CryptoKey_MasterECU
+    },
+    {
+        /* Number of key elements in the key CryptoKey_AES */
+        1U,
+        /* Reference to the list of key elements in the key CryptoKey_AES */
+        Crypto_au32KeyElementList_CryptoKey_AES
     }
 };
 
@@ -240,7 +261,7 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         /* Key element format */
         CRYPTO_KE_FORMAT_BIN_OCTET,
         /* Key element persistent */
-        (boolean)TRUE,
+        (boolean)FALSE,
         /* Read access type */
         CRYPTO_RA_ALLOWED,
         /* Key element max size */
@@ -248,11 +269,11 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         /* Write access type */
         CRYPTO_WA_ALLOWED,
         /* Pointer to location storing the Key Element actual size */
-        (uint32*)&Crypto_au8NvramBlob1[4U],
+        (uint32*)&Crypto_au8VolatileKeyElemValues[0U],
         /* Pointer to location storing the Key Element value */
         NULL_PTR,
         /* Identifier of the CSEc key */
-        CSEC_IP_KEY_1
+        CSEC_IP_RAM_KEY
     }
 };
 
