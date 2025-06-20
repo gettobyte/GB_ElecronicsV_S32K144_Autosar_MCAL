@@ -1,0 +1,4387 @@
+Csec_Ip_GenerateMacAddrMode (Csec_Ip_KeyIdType eKeyId, const uint8 * pMsg, uint32 u32MsgLen, uint8 * pCmac)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.352_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.353_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.354_4;
+  long unsigned int pMsg.355_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.356_6;
+  short unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.357_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.358_10;
+  struct Csec_Ip_StateType * Csec_Ip_pState.359_11;
+  Csec_Ip_ErrorCodeType _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.352_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.352_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.353_3 = Csec_Ip_pState;
+  Csec_Ip_pState.353_3->ErrCode = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.354_4 = Csec_Ip_pState;
+  Csec_Ip_pState.354_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  pMsg.355_5 = (long unsigned int) pMsg_17(D);
+  Csec_Ip_WriteCommandWord (16, pMsg.355_5);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandWord (12, u32MsgLen_19(D));
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCmdAndWait (5, 1, 0, eKeyId_21(D));
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.356_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.356_6->ErrCode = _7;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.357_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.357_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (32, pCmac_25(D), 16);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.358_10 = Csec_Ip_pState;
+  Csec_Ip_pState.358_10->bCmdInProgress = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.359_11 = Csec_Ip_pState;
+  _29 = Csec_Ip_pState.359_11->ErrCode;
+  return _29;
+
+}
+
+
+Csec_Ip_VerifyMacAddrMode (Csec_Ip_KeyIdType eKeyId, const uint8 * pMsg, uint32 u32MsgLen, const uint8 * pMac, uint16 u16MacLen, boolean * pbVerifStatus)
+{
+  uint32 u32VerifWord;
+  struct Csec_Ip_StateType * Csec_Ip_pState.344_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.345_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.346_4;
+  long unsigned int pMsg.347_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.348_6;
+  short unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.349_8;
+  short unsigned int _9;
+  long unsigned int _10;
+  _Bool _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.350_12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.351_13;
+  Csec_Ip_ErrorCodeType _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.344_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.344_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.345_3 = Csec_Ip_pState;
+  Csec_Ip_pState.345_3->ErrCode = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.346_4 = Csec_Ip_pState;
+  Csec_Ip_pState.346_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  pMsg.347_5 = (long unsigned int) pMsg_19(D);
+  Csec_Ip_WriteCommandWord (16, pMsg.347_5);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandBytes (32, pMac_21(D), 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandWord (12, u32MsgLen_23(D));
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHalfWord (8, u16MacLen_25(D));
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCmdAndWait (6, 1, 0, eKeyId_27(D));
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.348_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.348_6->ErrCode = _7;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.349_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.349_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  u32VerifWord_32 = Csec_Ip_ReadCommandWord (20);
+  # DEBUG u32VerifWord => u32VerifWord_32
+  # DEBUG BEGIN_STMT
+  _10 = u32VerifWord_32 & 4294901760;
+  _11 = _10 == 0;
+  *pbVerifStatus_33(D) = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.350_12 = Csec_Ip_pState;
+  Csec_Ip_pState.350_12->bCmdInProgress = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.351_13 = Csec_Ip_pState;
+  _37 = Csec_Ip_pState.351_13->ErrCode;
+  return _37;
+
+}
+
+
+Csec_Ip_GetStatus ()
+{
+  struct FTFC_Type * _1;
+  Csec_Ip_StatusType _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1073872896B;
+  _3 ={v} _1->FCSESTAT;
+  return _3;
+
+}
+
+
+Csec_Ip_SetSynchronousCmdTimeout (uint32 u32Timeout)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.343_1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.343_1 = Csec_Ip_pState;
+  Csec_Ip_pState.343_1->u32Timeout = u32Timeout_3(D);
+  return;
+
+}
+
+
+Csec_Ip_IrqHandler ()
+{
+  struct FTFC_Type * _1;
+  unsigned char _2;
+  signed char _3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.341_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.342_5;
+  _Bool _6;
+  _Bool _7;
+  struct FTFC_Type * _8;
+  unsigned char _9;
+  signed char _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1073872896B;
+  _2 ={v} _1->FCNFG;
+  _3 = (signed char) _2;
+  if (_3 >= 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.341_4 = Csec_Ip_pState;
+  if (Csec_Ip_pState.341_4 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (0);
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.342_5 = Csec_Ip_pState;
+  _6 = Csec_Ip_pState.342_5->bCmdInProgress;
+  _7 = ~_6;
+  if (_7 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (0);
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _8 = 1073872896B;
+  _9 ={v} _8->FSTAT;
+  _10 = (signed char) _9;
+  if (_10 >= 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ProcessReceivedResponse (1);
+
+  <bb 9> :
+  return;
+
+}
+
+
+Csec_Ip_CancelCommand ()
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.330_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.331_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.332_4;
+  short unsigned int _5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.333_6;
+  <unnamed type> _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.334_8;
+  <unnamed type> _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.335_10;
+  long unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.336_12;
+  long unsigned int _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.337_14;
+  <unnamed type> _15;
+  struct Csec_Ip_StateType * Csec_Ip_pState.338_16;
+  <unnamed type> _17;
+  struct Csec_Ip_StateType * Csec_Ip_pState.339_18;
+  short unsigned int _19;
+  struct Csec_Ip_StateType * Csec_Ip_pState.340_20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.330_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.330_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.331_3 = Csec_Ip_pState;
+  Csec_Ip_pState.331_3->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WaitCommandCompletion (10000000, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.332_4 = Csec_Ip_pState;
+  _5 = Csec_Ip_pState.332_4->ErrCode;
+  if (_5 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.333_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.333_6->eCmd;
+  if (_7 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  Csec_Ip_pState.334_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.334_8->eCmd;
+  if (_9 != 3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.335_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_pState.335_10->u32InputSize;
+  Csec_Ip_pState.336_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.336_12->u32Index;
+  if (_11 != _13)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.337_14 = Csec_Ip_pState;
+  _15 = Csec_Ip_pState.337_14->eCmd;
+  Csec_Ip_pState.338_16 = Csec_Ip_pState;
+  _17 = Csec_Ip_pState.338_16->eKeyId;
+  Csec_Ip_WriteCommandHeader (_15, 0, 0, _17);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WaitCommandCompletion (10000000, 0);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.339_18 = Csec_Ip_pState;
+  _19 = Csec_Ip_pState.339_18->ErrCode;
+  if (_19 == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.340_20 = Csec_Ip_pState;
+  Csec_Ip_pState.340_20->bCmdInProgress = 0;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Csec_Ip_MainFunction ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ProcessReceivedResponse (2);
+  return;
+
+}
+
+
+Csec_Ip_MpCompress (const uint8 * pMsg, uint16 u16MsgLen, uint8 * pMpCompress)
+{
+  uint8 u8NumBytes;
+  uint8 u8NumPages;
+  uint16 u16NumPagesLeft;
+  uint32 u32ElapsedTime;
+  uint32 u32NumBytes;
+  struct Csec_Ip_StateType * Csec_Ip_pState.302_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.303_3;
+  long unsigned int _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.305_5;
+  long unsigned int _6;
+  const uint8 * _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.306_8;
+  <unnamed type> _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.307_10;
+  long unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.308_12;
+  short unsigned int _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.309_14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.310_15;
+  short unsigned int _16;
+  struct Csec_Ip_StateType * Csec_Ip_pState.311_17;
+  short unsigned int _18;
+  short unsigned int _19;
+  struct Csec_Ip_StateType * Csec_Ip_pState.312_20;
+  long unsigned int _21;
+  long unsigned int _22;
+  struct Csec_Ip_StateType * Csec_Ip_pState.313_23;
+  long unsigned int _24;
+  struct Csec_Ip_StateType * Csec_Ip_pState.314_25;
+  <unnamed type> _26;
+  struct Csec_Ip_StateType * Csec_Ip_pState.315_27;
+  struct Csec_Ip_StateType * Csec_Ip_pState.316_28;
+  short unsigned int _29;
+  struct Csec_Ip_StateType * Csec_Ip_pState.317_30;
+  struct Csec_Ip_StateType * Csec_Ip_pState.318_31;
+  unsigned char iftmp.304_34;
+  unsigned char iftmp.304_49;
+  unsigned char iftmp.304_50;
+  Csec_Ip_ErrorCodeType _68;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32ElapsedTime_40 = 0;
+  # DEBUG u32ElapsedTime => u32ElapsedTime_40
+  # DEBUG BEGIN_STMT
+  u16NumPagesLeft_42 = u16MsgLen_41(D);
+  # DEBUG u16NumPagesLeft => u16NumPagesLeft_42
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.302_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.302_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.303_3 = Csec_Ip_pState;
+  Csec_Ip_pState.303_3->ErrCode = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) u16MsgLen_41(D);
+  u32NumBytes_45 = _4 << 4;
+  # DEBUG u32NumBytes => u32NumBytes_45
+  # DEBUG BEGIN_STMT
+  Csec_Ip_UpdateState (0, 22, pMsg_46(D), pMpCompress_47(D), u32NumBytes_45);
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (u16NumPagesLeft_33 <= 7)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.304_50 = (unsigned char) u16NumPagesLeft_33;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.304_49 = 7;
+
+  <bb 8> :
+  # iftmp.304_34 = PHI <iftmp.304_50(6), iftmp.304_49(7)>
+  u8NumPages_51 = iftmp.304_34;
+  # DEBUG u8NumPages => u8NumPages_51
+  # DEBUG BEGIN_STMT
+  u8NumBytes_52 = u8NumPages_51 << 4;
+  # DEBUG u8NumBytes => u8NumBytes_52
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.305_5 = Csec_Ip_pState;
+  _6 = Csec_Ip_pState.305_5->u32Index;
+  _7 = pMsg_46(D) + _6;
+  Csec_Ip_WriteCommandBytes (16, _7, u8NumBytes_52);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHalfWord (14, u16MsgLen_41(D));
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.306_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.306_8->eSeq;
+  Csec_Ip_WriteCommandHeader (22, 0, _9, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.307_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_pState.307_10->u32Timeout;
+  u32ElapsedTime_57 = Csec_Ip_WaitCommandCompletion (_11, u32ElapsedTime_32);
+  # DEBUG u32ElapsedTime => u32ElapsedTime_57
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.308_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.308_12->ErrCode;
+  if (_13 == 65534)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_CancelCommand ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.309_14 = Csec_Ip_pState;
+  Csec_Ip_pState.309_14->bCmdInProgress = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.310_15 = Csec_Ip_pState;
+  _16 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.310_15->ErrCode = _16;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.311_17 = Csec_Ip_pState;
+  _18 = Csec_Ip_pState.311_17->ErrCode;
+  if (_18 != 1)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _19 = (short unsigned int) u8NumPages_51;
+  u16NumPagesLeft_62 = u16NumPagesLeft_33 - _19;
+  # DEBUG u16NumPagesLeft => u16NumPagesLeft_62
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.312_20 = Csec_Ip_pState;
+  _21 = Csec_Ip_pState.312_20->u32Index;
+  _22 = (long unsigned int) u8NumBytes_52;
+  Csec_Ip_pState.313_23 = Csec_Ip_pState;
+  _24 = _21 + _22;
+  Csec_Ip_pState.313_23->u32Index = _24;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.314_25 = Csec_Ip_pState;
+  _26 = Csec_Ip_pState.314_25->eSeq;
+  if (_26 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.315_27 = Csec_Ip_pState;
+  Csec_Ip_pState.315_27->eSeq = 1;
+
+  <bb 14> :
+  # u32ElapsedTime_32 = PHI <u32ElapsedTime_40(4), u32ElapsedTime_57(12), u32ElapsedTime_57(13)>
+  # u16NumPagesLeft_33 = PHI <u16NumPagesLeft_42(4), u16NumPagesLeft_62(12), u16NumPagesLeft_62(13)>
+  # DEBUG u16NumPagesLeft => u16NumPagesLeft_33
+  # DEBUG u32ElapsedTime => u32ElapsedTime_32
+  # DEBUG BEGIN_STMT
+  if (u16NumPagesLeft_33 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.316_28 = Csec_Ip_pState;
+  _29 = Csec_Ip_pState.316_28->ErrCode;
+  if (_29 == 1)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (16, pMpCompress_47(D), 16);
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.317_30 = Csec_Ip_pState;
+  Csec_Ip_pState.317_30->bCmdInProgress = 0;
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.318_31 = Csec_Ip_pState;
+  _68 = Csec_Ip_pState.318_31->ErrCode;
+  return _68;
+
+}
+
+
+Csec_Ip_DbgAuth (const uint8 * pAuthorization)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.293_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.294_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.295_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.296_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.297_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.298_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.299_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.300_12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.301_13;
+  Csec_Ip_ErrorCodeType _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.293_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.293_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.294_3 = Csec_Ip_pState;
+  Csec_Ip_pState.294_3->ErrCode = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.295_4 = Csec_Ip_pState;
+  Csec_Ip_pState.295_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.296_5 = Csec_Ip_pState;
+  Csec_Ip_pState.296_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandBytes (16, pAuthorization_20(D), 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (19, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.297_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.297_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.298_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.298_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.299_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.299_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.300_12 = Csec_Ip_pState;
+  Csec_Ip_pState.300_12->bCmdInProgress = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.301_13 = Csec_Ip_pState;
+  _28 = Csec_Ip_pState.301_13->ErrCode;
+  return _28;
+
+}
+
+
+Csec_Ip_DbgChal (uint8 * pChallenge)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.283_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.284_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.285_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.286_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.287_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.288_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.289_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.290_12;
+  short unsigned int _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.291_14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.292_15;
+  Csec_Ip_ErrorCodeType _31;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.283_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.283_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.284_3 = Csec_Ip_pState;
+  Csec_Ip_pState.284_3->ErrCode = 65535;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.285_4 = Csec_Ip_pState;
+  Csec_Ip_pState.285_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.286_5 = Csec_Ip_pState;
+  Csec_Ip_pState.286_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (18, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.287_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.287_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.288_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.288_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.289_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.289_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.290_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.290_12->ErrCode;
+  if (_13 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (16, pChallenge_27(D), 16);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.291_14 = Csec_Ip_pState;
+  Csec_Ip_pState.291_14->bCmdInProgress = 0;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.292_15 = Csec_Ip_pState;
+  _31 = Csec_Ip_pState.292_15->ErrCode;
+  return _31;
+
+}
+
+
+Csec_Ip_GetId (const uint8 * pChallenge, uint8 * pUid, uint8 * pSreg, uint8 * pMac)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.273_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.274_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.275_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.276_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.277_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.278_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.279_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.280_12;
+  short unsigned int _13;
+  unsigned char _14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.281_15;
+  struct Csec_Ip_StateType * Csec_Ip_pState.282_16;
+  Csec_Ip_ErrorCodeType _39;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.273_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.273_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.274_3 = Csec_Ip_pState;
+  Csec_Ip_pState.274_3->ErrCode = 65535;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.275_4 = Csec_Ip_pState;
+  Csec_Ip_pState.275_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.276_5 = Csec_Ip_pState;
+  Csec_Ip_pState.276_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandBytes (16, pChallenge_24(D), 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (16, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.277_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.277_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.278_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.278_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.279_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.279_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.280_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.280_12->ErrCode;
+  if (_13 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (32, pUid_30(D), 15);
+  # DEBUG BEGIN_STMT
+  _14 = Csec_Ip_ReadCommandByte (47);
+  *pSreg_33(D) = _14;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (48, pMac_35(D), 16);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.281_15 = Csec_Ip_pState;
+  Csec_Ip_pState.281_15->bCmdInProgress = 0;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.282_16 = Csec_Ip_pState;
+  _39 = Csec_Ip_pState.282_16->ErrCode;
+  return _39;
+
+}
+
+
+Csec_Ip_BootDefine (uint32 u32BootSize, Csec_Ip_BootFlavorType eBootFlavor)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.264_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.265_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.266_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.267_5;
+  unsigned char _6;
+  struct Csec_Ip_StateType * Csec_Ip_pState.268_7;
+  long unsigned int _8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.269_9;
+  short unsigned int _10;
+  struct Csec_Ip_StateType * Csec_Ip_pState.270_11;
+  short unsigned int _12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.271_13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.272_14;
+  Csec_Ip_ErrorCodeType _31;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.264_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.264_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.265_3 = Csec_Ip_pState;
+  Csec_Ip_pState.265_3->ErrCode = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.266_4 = Csec_Ip_pState;
+  Csec_Ip_pState.266_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.267_5 = Csec_Ip_pState;
+  Csec_Ip_pState.267_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandWord (28, u32BootSize_21(D));
+  # DEBUG BEGIN_STMT
+  _6 = (unsigned char) eBootFlavor_23(D);
+  Csec_Ip_WriteCommandByte (27, _6);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (17, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.268_7 = Csec_Ip_pState;
+  _8 = Csec_Ip_pState.268_7->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_8, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.269_9 = Csec_Ip_pState;
+  _10 = Csec_Ip_pState.269_9->ErrCode;
+  if (_10 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.270_11 = Csec_Ip_pState;
+  _12 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.270_11->ErrCode = _12;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.271_13 = Csec_Ip_pState;
+  Csec_Ip_pState.271_13->bCmdInProgress = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.272_14 = Csec_Ip_pState;
+  _31 = Csec_Ip_pState.272_14->ErrCode;
+  return _31;
+
+}
+
+
+Csec_Ip_BootOk ()
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.255_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.256_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.257_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.258_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.259_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.260_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.261_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.262_12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.263_13;
+  Csec_Ip_ErrorCodeType _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.255_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.255_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.256_3 = Csec_Ip_pState;
+  Csec_Ip_pState.256_3->ErrCode = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.257_4 = Csec_Ip_pState;
+  Csec_Ip_pState.257_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.258_5 = Csec_Ip_pState;
+  Csec_Ip_pState.258_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (15, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.259_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.259_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.260_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.260_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.261_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.261_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.262_12 = Csec_Ip_pState;
+  Csec_Ip_pState.262_12->bCmdInProgress = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.263_13 = Csec_Ip_pState;
+  _26 = Csec_Ip_pState.263_13->ErrCode;
+  return _26;
+
+}
+
+
+Csec_Ip_BootFailure ()
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.246_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.247_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.248_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.249_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.250_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.251_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.252_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.253_12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.254_13;
+  Csec_Ip_ErrorCodeType _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.246_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.246_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.247_3 = Csec_Ip_pState;
+  Csec_Ip_pState.247_3->ErrCode = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.248_4 = Csec_Ip_pState;
+  Csec_Ip_pState.248_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.249_5 = Csec_Ip_pState;
+  Csec_Ip_pState.249_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (14, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.250_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.250_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.251_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.251_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.252_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.252_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.253_12 = Csec_Ip_pState;
+  Csec_Ip_pState.253_12->bCmdInProgress = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.254_13 = Csec_Ip_pState;
+  _26 = Csec_Ip_pState.254_13->ErrCode;
+  return _26;
+
+}
+
+
+Csec_Ip_GenerateRnd (const struct Csec_Ip_ReqType * pRequest, uint8 * pRnd)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.234_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.235_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.236_4;
+  <unnamed type> _5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.237_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.238_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.239_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.240_12;
+  short unsigned int _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.241_14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.242_15;
+  void (*<T4c5>) (Csec_Ip_ErrorCodeType, Csec_Ip_CmdType, void *) _16;
+  struct Csec_Ip_StateType * Csec_Ip_pState.243_17;
+  void * _18;
+  struct Csec_Ip_StateType * Csec_Ip_pState.244_19;
+  <unnamed type> _20;
+  <unnamed type> _21;
+  struct Csec_Ip_StateType * Csec_Ip_pState.245_22;
+  Csec_Ip_ErrorCodeType _44;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.234_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.234_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.235_3 = Csec_Ip_pState;
+  Csec_Ip_pState.235_3->ErrCode = 65535;
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.236_4 = Csec_Ip_pState;
+  Csec_Ip_pState.236_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_UpdateState (255, 12, 0B, pRnd_28(D), 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  _5 = pRequest_31(D)->eReqType;
+  if (_5 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (12, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.237_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.237_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.238_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.238_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.239_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.239_10->ErrCode = _11;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.240_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.240_12->ErrCode;
+  if (_13 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (16, pRnd_28(D), 16);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.241_14 = Csec_Ip_pState;
+  Csec_Ip_pState.241_14->bCmdInProgress = 0;
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.242_15 = Csec_Ip_pState;
+  _16 = pRequest_31(D)->pfCallback;
+  Csec_Ip_pState.242_15->pfCallback = _16;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.243_17 = Csec_Ip_pState;
+  _18 = pRequest_31(D)->pCallbackParam;
+  Csec_Ip_pState.243_17->pCallbackParam = _18;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.244_19 = Csec_Ip_pState;
+  _20 = pRequest_31(D)->eReqType;
+  Csec_Ip_pState.244_19->eReqType = _20;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (12, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  _21 = pRequest_31(D)->eReqType;
+  if (_21 == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (1);
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.245_22 = Csec_Ip_pState;
+  _44 = Csec_Ip_pState.245_22->ErrCode;
+  return _44;
+
+}
+
+
+Csec_Ip_ExtendSeed (const uint8 * pEntropy)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.225_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.226_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.227_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.228_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.229_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.230_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.231_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.232_12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.233_13;
+  Csec_Ip_ErrorCodeType _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.225_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.225_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.226_3 = Csec_Ip_pState;
+  Csec_Ip_pState.226_3->ErrCode = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.227_4 = Csec_Ip_pState;
+  Csec_Ip_pState.227_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.228_5 = Csec_Ip_pState;
+  Csec_Ip_pState.228_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandBytes (16, pEntropy_20(D), 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (11, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.229_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.229_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.230_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.230_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.231_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.231_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.232_12 = Csec_Ip_pState;
+  Csec_Ip_pState.232_12->bCmdInProgress = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.233_13 = Csec_Ip_pState;
+  _28 = Csec_Ip_pState.233_13->ErrCode;
+  return _28;
+
+}
+
+
+Csec_Ip_InitRng ()
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.216_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.217_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.218_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.219_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.220_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.221_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.222_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.223_12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.224_13;
+  Csec_Ip_ErrorCodeType _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.216_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.216_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.217_3 = Csec_Ip_pState;
+  Csec_Ip_pState.217_3->ErrCode = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.218_4 = Csec_Ip_pState;
+  Csec_Ip_pState.218_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.219_5 = Csec_Ip_pState;
+  Csec_Ip_pState.219_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (10, 0, 0, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.220_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.220_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.221_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.221_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.222_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.222_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.223_12 = Csec_Ip_pState;
+  Csec_Ip_pState.223_12->bCmdInProgress = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.224_13 = Csec_Ip_pState;
+  _26 = Csec_Ip_pState.224_13->ErrCode;
+  return _26;
+
+}
+
+
+Csec_Ip_ExportRamKey (uint8 * pM1, uint8 * pM2, uint8 * pM3, uint8 * pM4, uint8 * pM5)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.206_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.207_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.208_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.209_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.210_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.211_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.212_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.213_12;
+  short unsigned int _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.214_14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.215_15;
+  Csec_Ip_ErrorCodeType _39;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.206_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.206_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.207_3 = Csec_Ip_pState;
+  Csec_Ip_pState.207_3->ErrCode = 65535;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.208_4 = Csec_Ip_pState;
+  Csec_Ip_pState.208_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.209_5 = Csec_Ip_pState;
+  Csec_Ip_pState.209_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (9, 0, 0, 15);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.210_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.210_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.211_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.211_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.212_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.212_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.213_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.213_12->ErrCode;
+  if (_13 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (16, pM1_27(D), 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (32, pM2_29(D), 32);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (64, pM3_31(D), 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (80, pM4_33(D), 32);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (112, pM5_35(D), 16);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.214_14 = Csec_Ip_pState;
+  Csec_Ip_pState.214_14->bCmdInProgress = 0;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.215_15 = Csec_Ip_pState;
+  _39 = Csec_Ip_pState.215_15->ErrCode;
+  return _39;
+
+}
+
+
+Csec_Ip_LoadPlainKey (const uint8 * pPlainKey)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.197_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.198_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.199_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.200_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.201_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.202_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.203_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.204_12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.205_13;
+  Csec_Ip_ErrorCodeType _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.197_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.197_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.198_3 = Csec_Ip_pState;
+  Csec_Ip_pState.198_3->ErrCode = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.199_4 = Csec_Ip_pState;
+  Csec_Ip_pState.199_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.200_5 = Csec_Ip_pState;
+  Csec_Ip_pState.200_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandBytes (16, pPlainKey_20(D), 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (8, 0, 0, 15);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.201_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.201_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.202_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.202_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.203_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.203_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.204_12 = Csec_Ip_pState;
+  Csec_Ip_pState.204_12->bCmdInProgress = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.205_13 = Csec_Ip_pState;
+  _28 = Csec_Ip_pState.205_13->ErrCode;
+  return _28;
+
+}
+
+
+Csec_Ip_LoadKey (Csec_Ip_KeyIdType eKeyId, const uint8 * pM1, const uint8 * pM2, const uint8 * pM3, uint8 * pM4, uint8 * pM5)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.187_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.188_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.189_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.190_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.191_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.192_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.193_10;
+  short unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.194_12;
+  short unsigned int _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.195_14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.196_15;
+  Csec_Ip_ErrorCodeType _40;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.187_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.187_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.188_3 = Csec_Ip_pState;
+  Csec_Ip_pState.188_3->ErrCode = 65535;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.189_4 = Csec_Ip_pState;
+  Csec_Ip_pState.189_4->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.190_5 = Csec_Ip_pState;
+  Csec_Ip_pState.190_5->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandBytes (16, pM1_23(D), 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandBytes (32, pM2_25(D), 32);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandBytes (64, pM3_27(D), 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHeader (7, 0, 0, eKeyId_29(D));
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.191_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.191_6->u32Timeout;
+  Csec_Ip_WaitCommandCompletion (_7, 0);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.192_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.192_8->ErrCode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.193_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.193_10->ErrCode = _11;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.194_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.194_12->ErrCode;
+  if (_13 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (80, pM4_34(D), 32);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ReadCommandBytes (112, pM5_36(D), 16);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.195_14 = Csec_Ip_pState;
+  Csec_Ip_pState.195_14->bCmdInProgress = 0;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.196_15 = Csec_Ip_pState;
+  _40 = Csec_Ip_pState.196_15->ErrCode;
+  return _40;
+
+}
+
+
+Csec_Ip_VerifyMac (const struct Csec_Ip_ReqType * pRequest, Csec_Ip_KeyIdType eKeyId, const uint8 * pMsg, uint32 u32MsgLen, const uint8 * pMac, uint16 u16MacLen, boolean * pbVerifStatus)
+{
+  uint32 u32ByteSize;
+  uint32 u32ElapsedTime;
+  struct Csec_Ip_StateType * Csec_Ip_pState.145_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.146_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.147_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.148_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.149_6;
+  struct Csec_Ip_StateType * Csec_Ip_pState.150_7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.151_8;
+  <unnamed type> _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.152_10;
+  long unsigned int _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.153_12;
+  short unsigned int _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.154_14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.155_15;
+  _Bool _16;
+  struct Csec_Ip_StateType * Csec_Ip_pState.156_17;
+  Csec_Ip_ErrorCodeType _47;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32ElapsedTime_21 = 0;
+  # DEBUG u32ElapsedTime => u32ElapsedTime_21
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.145_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.145_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.146_3 = Csec_Ip_pState;
+  Csec_Ip_pState.146_3->ErrCode = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  u32ByteSize_26 = Csec_Ip_BitsToBytesWithRound (u32MsgLen_24(D));
+  # DEBUG u32ByteSize => u32ByteSize_26
+  # DEBUG BEGIN_STMT
+  Csec_Ip_UpdateState (eKeyId_27(D), 6, pMsg_28(D), 0B, u32ByteSize_26);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.147_4 = Csec_Ip_pState;
+  Csec_Ip_pState.147_4->u32MsgLen = u32MsgLen_24(D);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.148_5 = Csec_Ip_pState;
+  Csec_Ip_pState.148_5->pbVerifStatus = pbVerifStatus_31(D);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.149_6 = Csec_Ip_pState;
+  Csec_Ip_pState.149_6->bMacWritten = 0;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.150_7 = Csec_Ip_pState;
+  Csec_Ip_pState.150_7->pMac = pMac_34(D);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.151_8 = Csec_Ip_pState;
+  Csec_Ip_pState.151_8->u16MacLen = u16MacLen_36(D);
+  # DEBUG BEGIN_STMT
+  _9 = pRequest_38(D)->eReqType;
+  if (_9 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartVerifMACCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.152_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_pState.152_10->u32Timeout;
+  u32ElapsedTime_42 = Csec_Ip_WaitCommandCompletion (_11, u32ElapsedTime_18);
+  # DEBUG u32ElapsedTime => u32ElapsedTime_42
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.153_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.153_12->ErrCode;
+  if (_13 == 65534)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_CancelCommand ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.154_14 = Csec_Ip_pState;
+  Csec_Ip_pState.154_14->bCmdInProgress = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueVerifMACCmd ();
+
+  <bb 9> :
+  # u32ElapsedTime_18 = PHI <u32ElapsedTime_21(5), u32ElapsedTime_42(7), u32ElapsedTime_42(8)>
+  # DEBUG u32ElapsedTime => u32ElapsedTime_18
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.155_15 = Csec_Ip_pState;
+  _16 = Csec_Ip_pState.155_15->bCmdInProgress;
+  if (_16 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_VerifyMacAsync (pRequest_38(D));
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.156_17 = Csec_Ip_pState;
+  _47 = Csec_Ip_pState.156_17->ErrCode;
+  return _47;
+
+}
+
+
+Csec_Ip_GenerateMac (const struct Csec_Ip_ReqType * pRequest, Csec_Ip_KeyIdType eKeyId, const uint8 * pMsg, uint32 u32MsgLen, uint8 * pCmac)
+{
+  uint32 u32ByteSize;
+  uint32 u32ElapsedTime;
+  struct Csec_Ip_StateType * Csec_Ip_pState.110_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.111_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.112_4;
+  <unnamed type> _5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.113_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.114_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.115_10;
+  struct Csec_Ip_StateType * Csec_Ip_pState.116_11;
+  _Bool _12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.117_13;
+  Csec_Ip_ErrorCodeType _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32ElapsedTime_17 = 0;
+  # DEBUG u32ElapsedTime => u32ElapsedTime_17
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.110_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.110_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.111_3 = Csec_Ip_pState;
+  Csec_Ip_pState.111_3->ErrCode = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  u32ByteSize_22 = Csec_Ip_BitsToBytesWithRound (u32MsgLen_20(D));
+  # DEBUG u32ByteSize => u32ByteSize_22
+  # DEBUG BEGIN_STMT
+  Csec_Ip_UpdateState (eKeyId_23(D), 5, pMsg_24(D), pCmac_25(D), u32ByteSize_22);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.112_4 = Csec_Ip_pState;
+  Csec_Ip_pState.112_4->u32MsgLen = u32MsgLen_20(D);
+  # DEBUG BEGIN_STMT
+  _5 = pRequest_28(D)->eReqType;
+  if (_5 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartGenMACCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.113_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.113_6->u32Timeout;
+  u32ElapsedTime_32 = Csec_Ip_WaitCommandCompletion (_7, u32ElapsedTime_14);
+  # DEBUG u32ElapsedTime => u32ElapsedTime_32
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.114_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.114_8->ErrCode;
+  if (_9 == 65534)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_CancelCommand ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.115_10 = Csec_Ip_pState;
+  Csec_Ip_pState.115_10->bCmdInProgress = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueGenMACCmd ();
+
+  <bb 9> :
+  # u32ElapsedTime_14 = PHI <u32ElapsedTime_17(5), u32ElapsedTime_32(7), u32ElapsedTime_32(8)>
+  # DEBUG u32ElapsedTime => u32ElapsedTime_14
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.116_11 = Csec_Ip_pState;
+  _12 = Csec_Ip_pState.116_11->bCmdInProgress;
+  if (_12 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_GenerateMacAsync (pRequest_28(D));
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.117_13 = Csec_Ip_pState;
+  _37 = Csec_Ip_pState.117_13->ErrCode;
+  return _37;
+
+}
+
+
+Csec_Ip_DecryptCbc (const struct Csec_Ip_ReqType * pRequest, Csec_Ip_KeyIdType eKeyId, const uint8 * pCipherText, uint32 u32Length, const uint8 * pIV, uint8 * pPlainText)
+{
+  uint32 u32ElapsedTime;
+  struct Csec_Ip_StateType * Csec_Ip_pState.99_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.100_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.101_4;
+  <unnamed type> _5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.102_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.103_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.104_10;
+  struct Csec_Ip_StateType * Csec_Ip_pState.105_11;
+  _Bool _12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.106_13;
+  Csec_Ip_ErrorCodeType _36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32ElapsedTime_17 = 0;
+  # DEBUG u32ElapsedTime => u32ElapsedTime_17
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.99_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.99_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.100_3 = Csec_Ip_pState;
+  Csec_Ip_pState.100_3->ErrCode = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_UpdateState (eKeyId_20(D), 4, pCipherText_21(D), pPlainText_22(D), u32Length_23(D));
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.101_4 = Csec_Ip_pState;
+  Csec_Ip_pState.101_4->pIV = pIV_25(D);
+  # DEBUG BEGIN_STMT
+  _5 = pRequest_27(D)->eReqType;
+  if (_5 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecCBCCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.102_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.102_6->u32Timeout;
+  u32ElapsedTime_31 = Csec_Ip_WaitCommandCompletion (_7, u32ElapsedTime_14);
+  # DEBUG u32ElapsedTime => u32ElapsedTime_31
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.103_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.103_8->ErrCode;
+  if (_9 == 65534)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_CancelCommand ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.104_10 = Csec_Ip_pState;
+  Csec_Ip_pState.104_10->bCmdInProgress = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueEncDecCBCCmd ();
+
+  <bb 9> :
+  # u32ElapsedTime_14 = PHI <u32ElapsedTime_17(5), u32ElapsedTime_31(7), u32ElapsedTime_31(8)>
+  # DEBUG u32ElapsedTime => u32ElapsedTime_14
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.105_11 = Csec_Ip_pState;
+  _12 = Csec_Ip_pState.105_11->bCmdInProgress;
+  if (_12 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_DecryptCbcAsync (pRequest_27(D));
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.106_13 = Csec_Ip_pState;
+  _36 = Csec_Ip_pState.106_13->ErrCode;
+  return _36;
+
+}
+
+
+Csec_Ip_EncryptCbc (const struct Csec_Ip_ReqType * pRequest, Csec_Ip_KeyIdType eKeyId, const uint8 * pPlainText, uint32 u32Length, const uint8 * pIV, uint8 * pCipherText)
+{
+  uint32 u32ElapsedTime;
+  struct Csec_Ip_StateType * Csec_Ip_pState.56_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.57_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.58_4;
+  <unnamed type> _5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.59_6;
+  long unsigned int _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.60_8;
+  short unsigned int _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.61_10;
+  struct Csec_Ip_StateType * Csec_Ip_pState.62_11;
+  _Bool _12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.63_13;
+  Csec_Ip_ErrorCodeType _36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32ElapsedTime_17 = 0;
+  # DEBUG u32ElapsedTime => u32ElapsedTime_17
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.56_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.56_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.57_3 = Csec_Ip_pState;
+  Csec_Ip_pState.57_3->ErrCode = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_UpdateState (eKeyId_20(D), 2, pPlainText_21(D), pCipherText_22(D), u32Length_23(D));
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.58_4 = Csec_Ip_pState;
+  Csec_Ip_pState.58_4->pIV = pIV_25(D);
+  # DEBUG BEGIN_STMT
+  _5 = pRequest_27(D)->eReqType;
+  if (_5 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecCBCCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.59_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.59_6->u32Timeout;
+  u32ElapsedTime_31 = Csec_Ip_WaitCommandCompletion (_7, u32ElapsedTime_14);
+  # DEBUG u32ElapsedTime => u32ElapsedTime_31
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.60_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.60_8->ErrCode;
+  if (_9 == 65534)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_CancelCommand ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.61_10 = Csec_Ip_pState;
+  Csec_Ip_pState.61_10->bCmdInProgress = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueEncDecCBCCmd ();
+
+  <bb 9> :
+  # u32ElapsedTime_14 = PHI <u32ElapsedTime_17(5), u32ElapsedTime_31(7), u32ElapsedTime_31(8)>
+  # DEBUG u32ElapsedTime => u32ElapsedTime_14
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.62_11 = Csec_Ip_pState;
+  _12 = Csec_Ip_pState.62_11->bCmdInProgress;
+  if (_12 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_EncryptCbcAsync (pRequest_27(D));
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.63_13 = Csec_Ip_pState;
+  _36 = Csec_Ip_pState.63_13->ErrCode;
+  return _36;
+
+}
+
+
+Csec_Ip_DecryptEcb (const struct Csec_Ip_ReqType * pRequest, Csec_Ip_KeyIdType eKeyId, const uint8 * pCipherText, uint32 u32Length, uint8 * pPlainText)
+{
+  uint32 u32ElapsedTime;
+  struct Csec_Ip_StateType * Csec_Ip_pState.46_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.47_3;
+  <unnamed type> _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.48_5;
+  long unsigned int _6;
+  struct Csec_Ip_StateType * Csec_Ip_pState.49_7;
+  short unsigned int _8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.50_9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.51_10;
+  _Bool _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.52_12;
+  Csec_Ip_ErrorCodeType _33;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32ElapsedTime_16 = 0;
+  # DEBUG u32ElapsedTime => u32ElapsedTime_16
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.46_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.46_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.47_3 = Csec_Ip_pState;
+  Csec_Ip_pState.47_3->ErrCode = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_UpdateState (eKeyId_19(D), 3, pCipherText_20(D), pPlainText_21(D), u32Length_22(D));
+  # DEBUG BEGIN_STMT
+  _4 = pRequest_24(D)->eReqType;
+  if (_4 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecECBCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.48_5 = Csec_Ip_pState;
+  _6 = Csec_Ip_pState.48_5->u32Timeout;
+  u32ElapsedTime_28 = Csec_Ip_WaitCommandCompletion (_6, u32ElapsedTime_13);
+  # DEBUG u32ElapsedTime => u32ElapsedTime_28
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.49_7 = Csec_Ip_pState;
+  _8 = Csec_Ip_pState.49_7->ErrCode;
+  if (_8 == 65534)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_CancelCommand ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.50_9 = Csec_Ip_pState;
+  Csec_Ip_pState.50_9->bCmdInProgress = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueEncDecECBCmd ();
+
+  <bb 9> :
+  # u32ElapsedTime_13 = PHI <u32ElapsedTime_16(5), u32ElapsedTime_28(7), u32ElapsedTime_28(8)>
+  # DEBUG u32ElapsedTime => u32ElapsedTime_13
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.51_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_pState.51_10->bCmdInProgress;
+  if (_11 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_DecryptEcbAsync (pRequest_24(D));
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.52_12 = Csec_Ip_pState;
+  _33 = Csec_Ip_pState.52_12->ErrCode;
+  return _33;
+
+}
+
+
+Csec_Ip_EncryptEcb (const struct Csec_Ip_ReqType * pRequest, Csec_Ip_KeyIdType eKeyId, const uint8 * pPlainText, uint32 u32Length, uint8 * pCipherText)
+{
+  uint32 u32ElapsedTime;
+  struct Csec_Ip_StateType * Csec_Ip_pState.2_1;
+  _Bool _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.3_3;
+  <unnamed type> _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.4_5;
+  long unsigned int _6;
+  struct Csec_Ip_StateType * Csec_Ip_pState.5_7;
+  short unsigned int _8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.6_9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.7_10;
+  _Bool _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.8_12;
+  Csec_Ip_ErrorCodeType _33;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32ElapsedTime_16 = 0;
+  # DEBUG u32ElapsedTime => u32ElapsedTime_16
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.2_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.2_1->bCmdInProgress;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.3_3 = Csec_Ip_pState;
+  Csec_Ip_pState.3_3->ErrCode = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ClearErrorFlags ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_UpdateState (eKeyId_19(D), 1, pPlainText_20(D), pCipherText_21(D), u32Length_22(D));
+  # DEBUG BEGIN_STMT
+  _4 = pRequest_24(D)->eReqType;
+  if (_4 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecECBCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.4_5 = Csec_Ip_pState;
+  _6 = Csec_Ip_pState.4_5->u32Timeout;
+  u32ElapsedTime_28 = Csec_Ip_WaitCommandCompletion (_6, u32ElapsedTime_13);
+  # DEBUG u32ElapsedTime => u32ElapsedTime_28
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.5_7 = Csec_Ip_pState;
+  _8 = Csec_Ip_pState.5_7->ErrCode;
+  if (_8 == 65534)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_CancelCommand ();
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.6_9 = Csec_Ip_pState;
+  Csec_Ip_pState.6_9->bCmdInProgress = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueEncDecECBCmd ();
+
+  <bb 9> :
+  # u32ElapsedTime_13 = PHI <u32ElapsedTime_16(5), u32ElapsedTime_28(7), u32ElapsedTime_28(8)>
+  # DEBUG u32ElapsedTime => u32ElapsedTime_13
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.7_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_pState.7_10->bCmdInProgress;
+  if (_11 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_EncryptEcbAsync (pRequest_24(D));
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.8_12 = Csec_Ip_pState;
+  _33 = Csec_Ip_pState.8_12->ErrCode;
+  return _33;
+
+}
+
+
+Csec_Ip_Deinit ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState = 0B;
+  return;
+
+}
+
+
+Csec_Ip_Init (struct Csec_Ip_StateType * pState)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.0_1;
+  struct Csec_Ip_StateType * Csec_Ip_pState.1_2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState = pState_4(D);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.0_1 = Csec_Ip_pState;
+  Csec_Ip_pState.0_1->bCmdInProgress = 0;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.1_2 = Csec_Ip_pState;
+  Csec_Ip_pState.1_2->u32Timeout = 1000000000;
+  return;
+
+}
+
+
+Csec_Ip_VerifyMacAsync (const struct Csec_Ip_ReqType * pRequest)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.184_1;
+  void (*<T4c5>) (Csec_Ip_ErrorCodeType, Csec_Ip_CmdType, void *) _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.185_3;
+  void * _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.186_5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.184_1 = Csec_Ip_pState;
+  _2 = pRequest_10(D)->pfCallback;
+  Csec_Ip_pState.184_1->pfCallback = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.185_3 = Csec_Ip_pState;
+  _4 = pRequest_10(D)->pCallbackParam;
+  Csec_Ip_pState.185_3->pCallbackParam = _4;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.186_5 = Csec_Ip_pState;
+  _6 = pRequest_10(D)->eReqType;
+  Csec_Ip_pState.186_5->eReqType = _6;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartVerifMACCmd ();
+  # DEBUG BEGIN_STMT
+  _7 = pRequest_10(D)->eReqType;
+  if (_7 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (1);
+
+  <bb 4> :
+  return;
+
+}
+
+
+Csec_Ip_GenerateMacAsync (const struct Csec_Ip_ReqType * pRequest)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.142_1;
+  void (*<T4c5>) (Csec_Ip_ErrorCodeType, Csec_Ip_CmdType, void *) _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.143_3;
+  void * _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.144_5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.142_1 = Csec_Ip_pState;
+  _2 = pRequest_10(D)->pfCallback;
+  Csec_Ip_pState.142_1->pfCallback = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.143_3 = Csec_Ip_pState;
+  _4 = pRequest_10(D)->pCallbackParam;
+  Csec_Ip_pState.143_3->pCallbackParam = _4;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.144_5 = Csec_Ip_pState;
+  _6 = pRequest_10(D)->eReqType;
+  Csec_Ip_pState.144_5->eReqType = _6;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartGenMACCmd ();
+  # DEBUG BEGIN_STMT
+  _7 = pRequest_10(D)->eReqType;
+  if (_7 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (1);
+
+  <bb 4> :
+  return;
+
+}
+
+
+Csec_Ip_DecryptCbcAsync (const struct Csec_Ip_ReqType * pRequest)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.107_1;
+  void (*<T4c5>) (Csec_Ip_ErrorCodeType, Csec_Ip_CmdType, void *) _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.108_3;
+  void * _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.109_5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.107_1 = Csec_Ip_pState;
+  _2 = pRequest_10(D)->pfCallback;
+  Csec_Ip_pState.107_1->pfCallback = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.108_3 = Csec_Ip_pState;
+  _4 = pRequest_10(D)->pCallbackParam;
+  Csec_Ip_pState.108_3->pCallbackParam = _4;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.109_5 = Csec_Ip_pState;
+  _6 = pRequest_10(D)->eReqType;
+  Csec_Ip_pState.109_5->eReqType = _6;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecCBCCmd ();
+  # DEBUG BEGIN_STMT
+  _7 = pRequest_10(D)->eReqType;
+  if (_7 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (1);
+
+  <bb 4> :
+  return;
+
+}
+
+
+Csec_Ip_EncryptCbcAsync (const struct Csec_Ip_ReqType * pRequest)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.96_1;
+  void (*<T4c5>) (Csec_Ip_ErrorCodeType, Csec_Ip_CmdType, void *) _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.97_3;
+  void * _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.98_5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.96_1 = Csec_Ip_pState;
+  _2 = pRequest_10(D)->pfCallback;
+  Csec_Ip_pState.96_1->pfCallback = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.97_3 = Csec_Ip_pState;
+  _4 = pRequest_10(D)->pCallbackParam;
+  Csec_Ip_pState.97_3->pCallbackParam = _4;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.98_5 = Csec_Ip_pState;
+  _6 = pRequest_10(D)->eReqType;
+  Csec_Ip_pState.98_5->eReqType = _6;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecCBCCmd ();
+  # DEBUG BEGIN_STMT
+  _7 = pRequest_10(D)->eReqType;
+  if (_7 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (1);
+
+  <bb 4> :
+  return;
+
+}
+
+
+Csec_Ip_DecryptEcbAsync (const struct Csec_Ip_ReqType * pRequest)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.53_1;
+  void (*<T4c5>) (Csec_Ip_ErrorCodeType, Csec_Ip_CmdType, void *) _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.54_3;
+  void * _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.55_5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.53_1 = Csec_Ip_pState;
+  _2 = pRequest_10(D)->pfCallback;
+  Csec_Ip_pState.53_1->pfCallback = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.54_3 = Csec_Ip_pState;
+  _4 = pRequest_10(D)->pCallbackParam;
+  Csec_Ip_pState.54_3->pCallbackParam = _4;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.55_5 = Csec_Ip_pState;
+  _6 = pRequest_10(D)->eReqType;
+  Csec_Ip_pState.55_5->eReqType = _6;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecECBCmd ();
+  # DEBUG BEGIN_STMT
+  _7 = pRequest_10(D)->eReqType;
+  if (_7 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (1);
+
+  <bb 4> :
+  return;
+
+}
+
+
+Csec_Ip_EncryptEcbAsync (const struct Csec_Ip_ReqType * pRequest)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.42_1;
+  void (*<T4c5>) (Csec_Ip_ErrorCodeType, Csec_Ip_CmdType, void *) _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.43_3;
+  void * _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.44_5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.42_1 = Csec_Ip_pState;
+  _2 = pRequest_10(D)->pfCallback;
+  Csec_Ip_pState.42_1->pfCallback = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.43_3 = Csec_Ip_pState;
+  _4 = pRequest_10(D)->pCallbackParam;
+  Csec_Ip_pState.43_3->pCallbackParam = _4;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.44_5 = Csec_Ip_pState;
+  _6 = pRequest_10(D)->eReqType;
+  Csec_Ip_pState.44_5->eReqType = _6;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecECBCmd ();
+  # DEBUG BEGIN_STMT
+  _7 = pRequest_10(D)->eReqType;
+  if (_7 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (1);
+
+  <bb 4> :
+  return;
+
+}
+
+
+Csec_Ip_ProcessReceivedResponse (Csec_Ip_ReqTypeType eReqType)
+{
+  struct FTFC_Type * _1;
+  unsigned char _2;
+  signed char _3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.319_4;
+  _Bool _5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.320_6;
+  <unnamed type> _7;
+  short unsigned int _8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.321_9;
+  uint8 * _10;
+  struct Csec_Ip_StateType * Csec_Ip_pState.322_11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.323_12;
+  _Bool _13;
+  _Bool _14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.324_15;
+  void (*<T4c5>) (Csec_Ip_ErrorCodeType, Csec_Ip_CmdType, void *) _16;
+  struct Csec_Ip_StateType * Csec_Ip_pState.325_17;
+  short unsigned int _18;
+  struct Csec_Ip_StateType * Csec_Ip_pState.326_19;
+  void (*<T4c5>) (Csec_Ip_ErrorCodeType, Csec_Ip_CmdType, void *) _20;
+  struct Csec_Ip_StateType * Csec_Ip_pState.327_21;
+  short unsigned int _22;
+  struct Csec_Ip_StateType * Csec_Ip_pState.328_23;
+  <unnamed type> _24;
+  struct Csec_Ip_StateType * Csec_Ip_pState.329_25;
+  void * _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1073872896B;
+  _2 ={v} _1->FSTAT;
+  _3 = (signed char) _2;
+  if (_3 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 3> :
+  Csec_Ip_pState.319_4 = Csec_Ip_pState;
+  _5 = Csec_Ip_pState.319_4->bCmdInProgress;
+  if (_5 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.320_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.320_6->eCmd;
+  switch (_7) <default: <L21> [INV], case 1: <L2> [INV], case 2: <L4> [INV], case 3: <L2> [INV], case 4: <L4> [INV], case 5: <L6> [INV], case 6: <L7> [INV], case 12: <L8> [INV]>
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueEncDecECBCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueEncDecCBCCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueGenMACCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  Csec_Ip_ContinueVerifMACCmd ();
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  _8 = Csec_Ip_ReadErrorBits ();
+  if (_8 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.321_9 = Csec_Ip_pState;
+  _10 = Csec_Ip_pState.321_9->pOutputBuff;
+  Csec_Ip_ReadCommandBytes (16, _10, 16);
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.322_11 = Csec_Ip_pState;
+  Csec_Ip_pState.322_11->bCmdInProgress = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 12> :
+<L21>:
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.323_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.323_12->bCmdInProgress;
+  _14 = ~_13;
+  if (_14 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  if (eReqType_39(D) == 1)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetInterrupt (0);
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.324_15 = Csec_Ip_pState;
+  _16 = Csec_Ip_pState.324_15->pfCallback;
+  if (_16 != 0B)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.325_17 = Csec_Ip_pState;
+  _18 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.325_17->ErrCode = _18;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.326_19 = Csec_Ip_pState;
+  _20 = Csec_Ip_pState.326_19->pfCallback;
+  Csec_Ip_pState.327_21 = Csec_Ip_pState;
+  _22 = Csec_Ip_pState.327_21->ErrCode;
+  Csec_Ip_pState.328_23 = Csec_Ip_pState;
+  _24 = Csec_Ip_pState.328_23->eCmd;
+  Csec_Ip_pState.329_25 = Csec_Ip_pState;
+  _26 = Csec_Ip_pState.329_25->pCallbackParam;
+  _20 (_22, _24, _26);
+
+  <bb 17> :
+  return;
+
+}
+
+
+Csec_Ip_ContinueVerifMACCmd ()
+{
+  uint32 u32VerifWord;
+  struct Csec_Ip_StateType * Csec_Ip_pState.172_1;
+  short unsigned int _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.173_3;
+  short unsigned int _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.174_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.175_6;
+  <unnamed type> _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.176_8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.177_9;
+  long unsigned int _10;
+  struct Csec_Ip_StateType * Csec_Ip_pState.178_11;
+  unsigned char _12;
+  long unsigned int _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.179_14;
+  long unsigned int _15;
+  struct Csec_Ip_StateType * Csec_Ip_pState.180_16;
+  _Bool _17;
+  int _18;
+  _Bool _19;
+  _Bool _20;
+  int _21;
+  struct Csec_Ip_StateType * Csec_Ip_pState.181_22;
+  _Bool _23;
+  struct Csec_Ip_StateType * Csec_Ip_pState.182_24;
+  _Bool _25;
+  long unsigned int _26;
+  struct Csec_Ip_StateType * Csec_Ip_pState.183_27;
+  boolean * _28;
+  _Bool _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.172_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.172_1->ErrCode = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.173_3 = Csec_Ip_pState;
+  _4 = Csec_Ip_pState.173_3->ErrCode;
+  if (_4 != 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.174_5 = Csec_Ip_pState;
+  Csec_Ip_pState.174_5->bCmdInProgress = 0;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.175_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.175_6->eSeq;
+  if (_7 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.176_8 = Csec_Ip_pState;
+  Csec_Ip_pState.176_8->eSeq = 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.177_9 = Csec_Ip_pState;
+  _10 = Csec_Ip_pState.177_9->u32Index;
+  Csec_Ip_pState.178_11 = Csec_Ip_pState;
+  _12 = Csec_Ip_pState.178_11->u8PartialSize;
+  _13 = (long unsigned int) _12;
+  Csec_Ip_pState.179_14 = Csec_Ip_pState;
+  _15 = _10 + _13;
+  Csec_Ip_pState.179_14->u32Index = _15;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.180_16 = Csec_Ip_pState;
+  _17 = Csec_Ip_pState.180_16->bMacWritten;
+  _18 = (int) _17;
+  _19 = _18 != 0;
+  _20 = ~_19;
+  _21 = (int) _20;
+  Csec_Ip_pState.181_22 = Csec_Ip_pState;
+  _23 = (_Bool) _21;
+  Csec_Ip_pState.181_22->bCmdInProgress = _23;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.182_24 = Csec_Ip_pState;
+  _25 = Csec_Ip_pState.182_24->bCmdInProgress;
+  if (_25 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartVerifMACCmd ();
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  u32VerifWord_39 = Csec_Ip_ReadCommandWord (20);
+  # DEBUG u32VerifWord => u32VerifWord_39
+  # DEBUG BEGIN_STMT
+  _26 = u32VerifWord_39 & 4294901760;
+  Csec_Ip_pState.183_27 = Csec_Ip_pState;
+  _28 = Csec_Ip_pState.183_27->pbVerifStatus;
+  _29 = _26 == 0;
+  *_28 = _29;
+
+  <bb 9> :
+  return;
+
+}
+
+
+Csec_Ip_StartVerifMACCmd ()
+{
+  uint8 u8MacOffset;
+  uint8 u8NumBytes;
+  struct Csec_Ip_StateType * Csec_Ip_pState.158_1;
+  long unsigned int _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.159_3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.160_6;
+  long unsigned int _7;
+  unsigned char _8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.161_9;
+  long unsigned int _10;
+  unsigned char _11;
+  unsigned char _12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.162_13;
+  const uint8 * _14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.163_15;
+  long unsigned int _16;
+  const uint8 * _17;
+  struct Csec_Ip_StateType * Csec_Ip_pState.164_18;
+  long unsigned int _19;
+  struct Csec_Ip_StateType * Csec_Ip_pState.165_20;
+  short unsigned int _21;
+  unsigned char _22;
+  struct Csec_Ip_StateType * Csec_Ip_pState.166_23;
+  const uint8 * _24;
+  struct Csec_Ip_StateType * Csec_Ip_pState.167_25;
+  struct Csec_Ip_StateType * Csec_Ip_pState.168_26;
+  struct Csec_Ip_StateType * Csec_Ip_pState.169_27;
+  <unnamed type> _28;
+  struct Csec_Ip_StateType * Csec_Ip_pState.170_29;
+  <unnamed type> _30;
+  struct Csec_Ip_StateType * Csec_Ip_pState.171_31;
+  <unnamed type> _32;
+  unsigned char iftmp.157_33;
+  unsigned char iftmp.157_36;
+  unsigned char iftmp.157_37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.158_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.158_1->u32InputSize;
+  Csec_Ip_pState.159_3 = Csec_Ip_pState;
+  _4 = Csec_Ip_pState.159_3->u32Index;
+  _5 = _2 - _4;
+  if (_5 <= 112)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Csec_Ip_pState.160_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.160_6->u32InputSize;
+  _8 = (unsigned char) _7;
+  Csec_Ip_pState.161_9 = Csec_Ip_pState;
+  _10 = Csec_Ip_pState.161_9->u32Index;
+  _11 = (unsigned char) _10;
+  iftmp.157_37 = _8 - _11;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.157_36 = 112;
+
+  <bb 5> :
+  # iftmp.157_33 = PHI <iftmp.157_37(3), iftmp.157_36(4)>
+  u8NumBytes_38 = iftmp.157_33;
+  # DEBUG u8NumBytes => u8NumBytes_38
+  # DEBUG BEGIN_STMT
+  _12 = u8NumBytes_38 + 15;
+  u8MacOffset_39 = _12 & 240;
+  # DEBUG u8MacOffset => u8MacOffset_39
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.162_13 = Csec_Ip_pState;
+  _14 = Csec_Ip_pState.162_13->pInputBuff;
+  Csec_Ip_pState.163_15 = Csec_Ip_pState;
+  _16 = Csec_Ip_pState.163_15->u32Index;
+  _17 = _14 + _16;
+  Csec_Ip_WriteCommandBytes (16, _17, u8NumBytes_38);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.164_18 = Csec_Ip_pState;
+  _19 = Csec_Ip_pState.164_18->u32MsgLen;
+  Csec_Ip_WriteCommandWord (12, _19);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.165_20 = Csec_Ip_pState;
+  _21 = Csec_Ip_pState.165_20->u16MacLen;
+  Csec_Ip_WriteCommandHalfWord (8, _21);
+  # DEBUG BEGIN_STMT
+  if (u8MacOffset_39 <= 95)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _22 = u8MacOffset_39 + 16;
+  Csec_Ip_pState.166_23 = Csec_Ip_pState;
+  _24 = Csec_Ip_pState.166_23->pMac;
+  Csec_Ip_WriteCommandBytes (_22, _24, 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.167_25 = Csec_Ip_pState;
+  Csec_Ip_pState.167_25->bMacWritten = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.168_26 = Csec_Ip_pState;
+  Csec_Ip_pState.168_26->u8PartialSize = u8NumBytes_38;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.169_27 = Csec_Ip_pState;
+  _28 = Csec_Ip_pState.169_27->eCmd;
+  Csec_Ip_pState.170_29 = Csec_Ip_pState;
+  _30 = Csec_Ip_pState.170_29->eSeq;
+  Csec_Ip_pState.171_31 = Csec_Ip_pState;
+  _32 = Csec_Ip_pState.171_31->eKeyId;
+  Csec_Ip_WriteCommandHeader (_28, 0, _30, _32);
+  return;
+
+}
+
+
+Csec_Ip_ContinueGenMACCmd ()
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.130_1;
+  short unsigned int _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.131_3;
+  short unsigned int _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.132_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.133_6;
+  <unnamed type> _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.134_8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.135_9;
+  long unsigned int _10;
+  struct Csec_Ip_StateType * Csec_Ip_pState.136_11;
+  unsigned char _12;
+  long unsigned int _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.137_14;
+  long unsigned int _15;
+  struct Csec_Ip_StateType * Csec_Ip_pState.138_16;
+  long unsigned int _17;
+  struct Csec_Ip_StateType * Csec_Ip_pState.139_18;
+  long unsigned int _19;
+  struct Csec_Ip_StateType * Csec_Ip_pState.140_20;
+  struct Csec_Ip_StateType * Csec_Ip_pState.141_21;
+  uint8 * _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.130_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.130_1->ErrCode = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.131_3 = Csec_Ip_pState;
+  _4 = Csec_Ip_pState.131_3->ErrCode;
+  if (_4 != 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.132_5 = Csec_Ip_pState;
+  Csec_Ip_pState.132_5->bCmdInProgress = 0;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.133_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.133_6->eSeq;
+  if (_7 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.134_8 = Csec_Ip_pState;
+  Csec_Ip_pState.134_8->eSeq = 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.135_9 = Csec_Ip_pState;
+  _10 = Csec_Ip_pState.135_9->u32Index;
+  Csec_Ip_pState.136_11 = Csec_Ip_pState;
+  _12 = Csec_Ip_pState.136_11->u8PartialSize;
+  _13 = (long unsigned int) _12;
+  Csec_Ip_pState.137_14 = Csec_Ip_pState;
+  _15 = _10 + _13;
+  Csec_Ip_pState.137_14->u32Index = _15;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.138_16 = Csec_Ip_pState;
+  _17 = Csec_Ip_pState.138_16->u32Index;
+  Csec_Ip_pState.139_18 = Csec_Ip_pState;
+  _19 = Csec_Ip_pState.139_18->u32InputSize;
+  if (_17 >= _19)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.140_20 = Csec_Ip_pState;
+  Csec_Ip_pState.140_20->bCmdInProgress = 0;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.141_21 = Csec_Ip_pState;
+  _22 = Csec_Ip_pState.141_21->pOutputBuff;
+  Csec_Ip_ReadCommandBytes (32, _22, 16);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartGenMACCmd ();
+
+  <bb 9> :
+  return;
+
+}
+
+
+Csec_Ip_StartGenMACCmd ()
+{
+  uint8 u8NumBytes;
+  struct Csec_Ip_StateType * Csec_Ip_pState.119_1;
+  long unsigned int _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.120_3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.121_6;
+  long unsigned int _7;
+  unsigned char _8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.122_9;
+  long unsigned int _10;
+  unsigned char _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.123_12;
+  const uint8 * _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.124_14;
+  long unsigned int _15;
+  const uint8 * _16;
+  struct Csec_Ip_StateType * Csec_Ip_pState.125_17;
+  long unsigned int _18;
+  struct Csec_Ip_StateType * Csec_Ip_pState.126_19;
+  struct Csec_Ip_StateType * Csec_Ip_pState.127_20;
+  <unnamed type> _21;
+  struct Csec_Ip_StateType * Csec_Ip_pState.128_22;
+  <unnamed type> _23;
+  struct Csec_Ip_StateType * Csec_Ip_pState.129_24;
+  <unnamed type> _25;
+  unsigned char iftmp.118_26;
+  unsigned char iftmp.118_28;
+  unsigned char iftmp.118_29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.119_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.119_1->u32InputSize;
+  Csec_Ip_pState.120_3 = Csec_Ip_pState;
+  _4 = Csec_Ip_pState.120_3->u32Index;
+  _5 = _2 - _4;
+  if (_5 <= 112)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  Csec_Ip_pState.121_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.121_6->u32InputSize;
+  _8 = (unsigned char) _7;
+  Csec_Ip_pState.122_9 = Csec_Ip_pState;
+  _10 = Csec_Ip_pState.122_9->u32Index;
+  _11 = (unsigned char) _10;
+  iftmp.118_29 = _8 - _11;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.118_28 = 112;
+
+  <bb 5> :
+  # iftmp.118_26 = PHI <iftmp.118_29(3), iftmp.118_28(4)>
+  u8NumBytes_30 = iftmp.118_26;
+  # DEBUG u8NumBytes => u8NumBytes_30
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.123_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.123_12->pInputBuff;
+  Csec_Ip_pState.124_14 = Csec_Ip_pState;
+  _15 = Csec_Ip_pState.124_14->u32Index;
+  _16 = _13 + _15;
+  Csec_Ip_WriteCommandBytes (16, _16, u8NumBytes_30);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.125_17 = Csec_Ip_pState;
+  _18 = Csec_Ip_pState.125_17->u32MsgLen;
+  Csec_Ip_WriteCommandWord (12, _18);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.126_19 = Csec_Ip_pState;
+  Csec_Ip_pState.126_19->u8PartialSize = u8NumBytes_30;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.127_20 = Csec_Ip_pState;
+  _21 = Csec_Ip_pState.127_20->eCmd;
+  Csec_Ip_pState.128_22 = Csec_Ip_pState;
+  _23 = Csec_Ip_pState.128_22->eSeq;
+  Csec_Ip_pState.129_24 = Csec_Ip_pState;
+  _25 = Csec_Ip_pState.129_24->eKeyId;
+  Csec_Ip_WriteCommandHeader (_21, 0, _23, _25);
+  return;
+
+}
+
+
+Csec_Ip_ContinueEncDecCBCCmd ()
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.79_1;
+  short unsigned int _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.80_3;
+  short unsigned int _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.81_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.82_6;
+  <unnamed type> _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.83_8;
+  uint8 * _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.84_10;
+  long unsigned int _11;
+  uint8 * _12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.85_13;
+  unsigned char _14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.86_15;
+  struct Csec_Ip_StateType * Csec_Ip_pState.87_16;
+  uint8 * _17;
+  struct Csec_Ip_StateType * Csec_Ip_pState.88_18;
+  long unsigned int _19;
+  uint8 * _20;
+  struct Csec_Ip_StateType * Csec_Ip_pState.89_21;
+  unsigned char _22;
+  struct Csec_Ip_StateType * Csec_Ip_pState.90_23;
+  long unsigned int _24;
+  struct Csec_Ip_StateType * Csec_Ip_pState.91_25;
+  unsigned char _26;
+  long unsigned int _27;
+  struct Csec_Ip_StateType * Csec_Ip_pState.92_28;
+  long unsigned int _29;
+  struct Csec_Ip_StateType * Csec_Ip_pState.93_30;
+  long unsigned int _31;
+  struct Csec_Ip_StateType * Csec_Ip_pState.94_32;
+  long unsigned int _33;
+  struct Csec_Ip_StateType * Csec_Ip_pState.95_34;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.79_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.79_1->ErrCode = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.80_3 = Csec_Ip_pState;
+  _4 = Csec_Ip_pState.80_3->ErrCode;
+  if (_4 != 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.81_5 = Csec_Ip_pState;
+  Csec_Ip_pState.81_5->bCmdInProgress = 0;
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.82_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.82_6->eSeq;
+  if (_7 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.83_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.83_8->pOutputBuff;
+  Csec_Ip_pState.84_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_pState.84_10->u32Index;
+  _12 = _9 + _11;
+  Csec_Ip_pState.85_13 = Csec_Ip_pState;
+  _14 = Csec_Ip_pState.85_13->u8PartialSize;
+  Csec_Ip_ReadCommandBytes (32, _12, _14);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.86_15 = Csec_Ip_pState;
+  Csec_Ip_pState.86_15->eSeq = 1;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.87_16 = Csec_Ip_pState;
+  _17 = Csec_Ip_pState.87_16->pOutputBuff;
+  Csec_Ip_pState.88_18 = Csec_Ip_pState;
+  _19 = Csec_Ip_pState.88_18->u32Index;
+  _20 = _17 + _19;
+  Csec_Ip_pState.89_21 = Csec_Ip_pState;
+  _22 = Csec_Ip_pState.89_21->u8PartialSize;
+  Csec_Ip_ReadCommandBytes (16, _20, _22);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.90_23 = Csec_Ip_pState;
+  _24 = Csec_Ip_pState.90_23->u32Index;
+  Csec_Ip_pState.91_25 = Csec_Ip_pState;
+  _26 = Csec_Ip_pState.91_25->u8PartialSize;
+  _27 = (long unsigned int) _26;
+  Csec_Ip_pState.92_28 = Csec_Ip_pState;
+  _29 = _24 + _27;
+  Csec_Ip_pState.92_28->u32Index = _29;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.93_30 = Csec_Ip_pState;
+  _31 = Csec_Ip_pState.93_30->u32Index;
+  Csec_Ip_pState.94_32 = Csec_Ip_pState;
+  _33 = Csec_Ip_pState.94_32->u32InputSize;
+  if (_31 >= _33)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.95_34 = Csec_Ip_pState;
+  Csec_Ip_pState.95_34->bCmdInProgress = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecCBCCmd ();
+
+  <bb 10> :
+  return;
+
+}
+
+
+Csec_Ip_StartEncDecCBCCmd ()
+{
+  uint8 u8NumBytes;
+  uint16 u16NumPages;
+  uint32 u32NumPagesLeft;
+  struct Csec_Ip_StateType * Csec_Ip_pState.64_1;
+  long unsigned int _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.65_3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned char _6;
+  struct Csec_Ip_StateType * Csec_Ip_pState.67_7;
+  <unnamed type> _8;
+  unsigned char _9;
+  struct Csec_Ip_StateType * Csec_Ip_pState.69_10;
+  const uint8 * _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.70_12;
+  const uint8 * _13;
+  struct Csec_Ip_StateType * Csec_Ip_pState.71_14;
+  long unsigned int _15;
+  const uint8 * _16;
+  struct Csec_Ip_StateType * Csec_Ip_pState.72_17;
+  const uint8 * _18;
+  struct Csec_Ip_StateType * Csec_Ip_pState.73_19;
+  long unsigned int _20;
+  const uint8 * _21;
+  struct Csec_Ip_StateType * Csec_Ip_pState.74_22;
+  long unsigned int _23;
+  long unsigned int _24;
+  short unsigned int _25;
+  struct Csec_Ip_StateType * Csec_Ip_pState.75_26;
+  struct Csec_Ip_StateType * Csec_Ip_pState.76_27;
+  <unnamed type> _28;
+  struct Csec_Ip_StateType * Csec_Ip_pState.77_29;
+  <unnamed type> _30;
+  struct Csec_Ip_StateType * Csec_Ip_pState.78_31;
+  <unnamed type> _32;
+  short unsigned int iftmp.66_34;
+  short unsigned int iftmp.68_35;
+  short unsigned int iftmp.66_39;
+  short unsigned int iftmp.66_40;
+  short unsigned int iftmp.68_44;
+  short unsigned int iftmp.68_45;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.64_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.64_1->u32InputSize;
+  Csec_Ip_pState.65_3 = Csec_Ip_pState;
+  _4 = Csec_Ip_pState.65_3->u32Index;
+  _5 = _2 - _4;
+  u32NumPagesLeft_38 = _5 >> 4;
+  # DEBUG u32NumPagesLeft => u32NumPagesLeft_38
+  # DEBUG BEGIN_STMT
+  if (u32NumPagesLeft_38 <= 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.66_40 = (short unsigned int) u32NumPagesLeft_38;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.66_39 = 7;
+
+  <bb 5> :
+  # iftmp.66_34 = PHI <iftmp.66_40(3), iftmp.66_39(4)>
+  u16NumPages_41 = iftmp.66_34;
+  # DEBUG u16NumPages => u16NumPages_41
+  # DEBUG BEGIN_STMT
+  _6 = (unsigned char) u16NumPages_41;
+  u8NumBytes_42 = _6 << 4;
+  # DEBUG u8NumBytes => u8NumBytes_42
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.67_7 = Csec_Ip_pState;
+  _8 = Csec_Ip_pState.67_7->eSeq;
+  if (_8 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (u32NumPagesLeft_38 <= 6)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.68_45 = (short unsigned int) u32NumPagesLeft_38;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.68_44 = 6;
+
+  <bb 9> :
+  # iftmp.68_35 = PHI <iftmp.68_45(7), iftmp.68_44(8)>
+  u16NumPages_46 = iftmp.68_35;
+  # DEBUG u16NumPages => u16NumPages_46
+  # DEBUG BEGIN_STMT
+  _9 = (unsigned char) u16NumPages_46;
+  u8NumBytes_47 = _9 << 4;
+  # DEBUG u8NumBytes => u8NumBytes_47
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.69_10 = Csec_Ip_pState;
+  _11 = Csec_Ip_pState.69_10->pIV;
+  Csec_Ip_WriteCommandBytes (16, _11, 16);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.70_12 = Csec_Ip_pState;
+  _13 = Csec_Ip_pState.70_12->pInputBuff;
+  Csec_Ip_pState.71_14 = Csec_Ip_pState;
+  _15 = Csec_Ip_pState.71_14->u32Index;
+  _16 = _13 + _15;
+  Csec_Ip_WriteCommandBytes (32, _16, u8NumBytes_47);
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.72_17 = Csec_Ip_pState;
+  _18 = Csec_Ip_pState.72_17->pInputBuff;
+  Csec_Ip_pState.73_19 = Csec_Ip_pState;
+  _20 = Csec_Ip_pState.73_19->u32Index;
+  _21 = _18 + _20;
+  Csec_Ip_WriteCommandBytes (16, _21, u8NumBytes_42);
+
+  <bb 11> :
+  # u8NumBytes_33 = PHI <u8NumBytes_47(9), u8NumBytes_42(10)>
+  # DEBUG u8NumBytes => u8NumBytes_33
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.74_22 = Csec_Ip_pState;
+  _23 = Csec_Ip_pState.74_22->u32InputSize;
+  _24 = _23 >> 4;
+  _25 = (short unsigned int) _24;
+  Csec_Ip_WriteCommandHalfWord (14, _25);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.75_26 = Csec_Ip_pState;
+  Csec_Ip_pState.75_26->u8PartialSize = u8NumBytes_33;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.76_27 = Csec_Ip_pState;
+  _28 = Csec_Ip_pState.76_27->eCmd;
+  Csec_Ip_pState.77_29 = Csec_Ip_pState;
+  _30 = Csec_Ip_pState.77_29->eSeq;
+  Csec_Ip_pState.78_31 = Csec_Ip_pState;
+  _32 = Csec_Ip_pState.78_31->eKeyId;
+  Csec_Ip_WriteCommandHeader (_28, 0, _30, _32);
+  return;
+
+}
+
+
+Csec_Ip_ContinueEncDecECBCmd ()
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.29_1;
+  short unsigned int _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.30_3;
+  short unsigned int _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.31_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.32_6;
+  uint8 * _7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.33_8;
+  long unsigned int _9;
+  uint8 * _10;
+  struct Csec_Ip_StateType * Csec_Ip_pState.34_11;
+  unsigned char _12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.35_13;
+  long unsigned int _14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.36_15;
+  unsigned char _16;
+  long unsigned int _17;
+  struct Csec_Ip_StateType * Csec_Ip_pState.37_18;
+  long unsigned int _19;
+  struct Csec_Ip_StateType * Csec_Ip_pState.38_20;
+  long unsigned int _21;
+  struct Csec_Ip_StateType * Csec_Ip_pState.39_22;
+  long unsigned int _23;
+  struct Csec_Ip_StateType * Csec_Ip_pState.40_24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.29_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_ReadErrorBits ();
+  Csec_Ip_pState.29_1->ErrCode = _2;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.30_3 = Csec_Ip_pState;
+  _4 = Csec_Ip_pState.30_3->ErrCode;
+  if (_4 != 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.31_5 = Csec_Ip_pState;
+  Csec_Ip_pState.31_5->bCmdInProgress = 0;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.32_6 = Csec_Ip_pState;
+  _7 = Csec_Ip_pState.32_6->pOutputBuff;
+  Csec_Ip_pState.33_8 = Csec_Ip_pState;
+  _9 = Csec_Ip_pState.33_8->u32Index;
+  _10 = _7 + _9;
+  Csec_Ip_pState.34_11 = Csec_Ip_pState;
+  _12 = Csec_Ip_pState.34_11->u8PartialSize;
+  Csec_Ip_ReadCommandBytes (16, _10, _12);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.35_13 = Csec_Ip_pState;
+  _14 = Csec_Ip_pState.35_13->u32Index;
+  Csec_Ip_pState.36_15 = Csec_Ip_pState;
+  _16 = Csec_Ip_pState.36_15->u8PartialSize;
+  _17 = (long unsigned int) _16;
+  Csec_Ip_pState.37_18 = Csec_Ip_pState;
+  _19 = _14 + _17;
+  Csec_Ip_pState.37_18->u32Index = _19;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.38_20 = Csec_Ip_pState;
+  _21 = Csec_Ip_pState.38_20->u32Index;
+  Csec_Ip_pState.39_22 = Csec_Ip_pState;
+  _23 = Csec_Ip_pState.39_22->u32InputSize;
+  if (_21 >= _23)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.40_24 = Csec_Ip_pState;
+  Csec_Ip_pState.40_24->bCmdInProgress = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_StartEncDecECBCmd ();
+
+  <bb 7> :
+  return;
+
+}
+
+
+Csec_Ip_StartEncDecECBCmd ()
+{
+  uint8 u8NumBytes;
+  uint16 u16NumPages;
+  uint32 u32NumPagesLeft;
+  struct Csec_Ip_StateType * Csec_Ip_pState.18_1;
+  long unsigned int _2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.19_3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned char _6;
+  struct Csec_Ip_StateType * Csec_Ip_pState.21_7;
+  const uint8 * _8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.22_9;
+  long unsigned int _10;
+  const uint8 * _11;
+  struct Csec_Ip_StateType * Csec_Ip_pState.23_12;
+  struct Csec_Ip_StateType * Csec_Ip_pState.24_13;
+  <unnamed type> _14;
+  struct Csec_Ip_StateType * Csec_Ip_pState.25_15;
+  <unnamed type> _16;
+  struct Csec_Ip_StateType * Csec_Ip_pState.26_17;
+  <unnamed type> _18;
+  short unsigned int iftmp.20_19;
+  short unsigned int iftmp.20_22;
+  short unsigned int iftmp.20_23;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.18_1 = Csec_Ip_pState;
+  _2 = Csec_Ip_pState.18_1->u32InputSize;
+  Csec_Ip_pState.19_3 = Csec_Ip_pState;
+  _4 = Csec_Ip_pState.19_3->u32Index;
+  _5 = _2 - _4;
+  u32NumPagesLeft_21 = _5 >> 4;
+  # DEBUG u32NumPagesLeft => u32NumPagesLeft_21
+  # DEBUG BEGIN_STMT
+  if (u32NumPagesLeft_21 <= 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.20_23 = (short unsigned int) u32NumPagesLeft_21;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.20_22 = 7;
+
+  <bb 5> :
+  # iftmp.20_19 = PHI <iftmp.20_23(3), iftmp.20_22(4)>
+  u16NumPages_24 = iftmp.20_19;
+  # DEBUG u16NumPages => u16NumPages_24
+  # DEBUG BEGIN_STMT
+  _6 = (unsigned char) u16NumPages_24;
+  u8NumBytes_25 = _6 << 4;
+  # DEBUG u8NumBytes => u8NumBytes_25
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.21_7 = Csec_Ip_pState;
+  _8 = Csec_Ip_pState.21_7->pInputBuff;
+  Csec_Ip_pState.22_9 = Csec_Ip_pState;
+  _10 = Csec_Ip_pState.22_9->u32Index;
+  _11 = _8 + _10;
+  Csec_Ip_WriteCommandBytes (16, _11, u8NumBytes_25);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_WriteCommandHalfWord (14, u16NumPages_24);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.23_12 = Csec_Ip_pState;
+  Csec_Ip_pState.23_12->u8PartialSize = u8NumBytes_25;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.24_13 = Csec_Ip_pState;
+  _14 = Csec_Ip_pState.24_13->eCmd;
+  Csec_Ip_pState.25_15 = Csec_Ip_pState;
+  _16 = Csec_Ip_pState.25_15->eSeq;
+  Csec_Ip_pState.26_17 = Csec_Ip_pState;
+  _18 = Csec_Ip_pState.26_17->eKeyId;
+  Csec_Ip_WriteCommandHeader (_14, 0, _16, _18);
+  return;
+
+}
+
+
+Csec_Ip_WriteCommandWord (const uint8 u8Offset, const uint32 u32Word)
+{
+  uint8 u8IndexWord;
+  struct Csec_Ip_PramType * _1;
+  int _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u8IndexWord_4 = u8Offset_3(D) >> 2;
+  # DEBUG u8IndexWord => u8IndexWord_4
+  # DEBUG BEGIN_STMT
+  _1 = 335548416B;
+  _2 = (int) u8IndexWord_4;
+  _1->Csec_Ip_aPramRegister[_2] ={v} u32Word_6(D);
+  return;
+
+}
+
+
+Csec_Ip_BitsToBytesWithRound (uint32 u32Size)
+{
+  uint32 u32Result;
+  long unsigned int _1;
+  uint32 _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = u32Size_2(D) + 7;
+  u32Result_3 = _1 & 4294967288;
+  # DEBUG u32Result => u32Result_3
+  # DEBUG BEGIN_STMT
+  u32Result_4 = u32Result_3 >> 3;
+  # DEBUG u32Result => u32Result_4
+  # DEBUG BEGIN_STMT
+  _5 = u32Result_4;
+  return _5;
+
+}
+
+
+Csec_Ip_SetInterrupt (boolean bEnable)
+{
+  uint8 u8FCNFG;
+  struct FTFC_Type * _1;
+  unsigned char _2;
+  struct FTFC_Type * _3;
+  unsigned char _4;
+  unsigned char iftmp.45_5;
+  unsigned char iftmp.45_10;
+  unsigned char iftmp.45_11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Crypto_CRYPTO_EXCLUSIVE_AREA_12 ();
+  # DEBUG BEGIN_STMT
+  _1 = 1073872896B;
+  u8FCNFG_8 ={v} _1->FCNFG;
+  # DEBUG u8FCNFG => u8FCNFG_8
+  # DEBUG BEGIN_STMT
+  _2 = u8FCNFG_8 & 127;
+  if (bEnable_9(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.45_11 = 128;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.45_10 = 0;
+
+  <bb 5> :
+  # iftmp.45_5 = PHI <iftmp.45_11(3), iftmp.45_10(4)>
+  _3 = 1073872896B;
+  _4 = iftmp.45_5 | _2;
+  _3->FCNFG ={v} _4;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Crypto_CRYPTO_EXCLUSIVE_AREA_12 ();
+  return;
+
+}
+
+
+Csec_Ip_ReadCommandBytes (uint8 u8Offset, uint8 * pOutputbytes, uint8 u8NumBytes)
+{
+  uint32 u32Temp;
+  uint8 u8Index;
+  struct Csec_Ip_PramType * _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  long unsigned int _6;
+  sizetype _7;
+  uint8 * _8;
+  unsigned char _9;
+  long unsigned int _10;
+  sizetype _11;
+  sizetype _12;
+  uint8 * _13;
+  unsigned char _14;
+  long unsigned int _15;
+  sizetype _16;
+  sizetype _17;
+  uint8 * _18;
+  unsigned char _19;
+  sizetype _20;
+  sizetype _21;
+  uint8 * _22;
+  unsigned char _23;
+  unsigned int _24;
+  unsigned int _25;
+  unsigned int _26;
+  unsigned char _27;
+  sizetype _28;
+  uint8 * _29;
+  unsigned char _30;
+  unsigned char u8Index.41_31;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u8Index_36 = 0;
+  # DEBUG u8Index => u8Index_36
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = 335548416B;
+  _2 = (int) u8Offset_39(D);
+  _3 = (int) u8Index_32;
+  _4 = _2 + _3;
+  _5 = _4 >> 2;
+  u32Temp_44 ={v} _1->Csec_Ip_aPramRegister[_5];
+  # DEBUG u32Temp => u32Temp_44
+  # DEBUG BEGIN_STMT
+  _6 = u32Temp_44 >> 24;
+  _7 = (sizetype) u8Index_32;
+  _8 = pOutputbytes_40(D) + _7;
+  _9 = (unsigned char) _6;
+  *_8 = _9;
+  # DEBUG BEGIN_STMT
+  _10 = u32Temp_44 >> 16;
+  _11 = (sizetype) u8Index_32;
+  _12 = _11 + 1;
+  _13 = pOutputbytes_40(D) + _12;
+  _14 = (unsigned char) _10;
+  *_13 = _14;
+  # DEBUG BEGIN_STMT
+  _15 = u32Temp_44 >> 8;
+  _16 = (sizetype) u8Index_32;
+  _17 = _16 + 2;
+  _18 = pOutputbytes_40(D) + _17;
+  _19 = (unsigned char) _15;
+  *_18 = _19;
+  # DEBUG BEGIN_STMT
+  _20 = (sizetype) u8Index_32;
+  _21 = _20 + 3;
+  _22 = pOutputbytes_40(D) + _21;
+  _23 = (unsigned char) u32Temp_44;
+  *_22 = _23;
+  # DEBUG BEGIN_STMT
+  u8Index_49 = u8Index_32 + 4;
+  # DEBUG u8Index => u8Index_49
+
+  <bb 4> :
+  # u8Index_32 = PHI <u8Index_36(2), u8Index_49(3)>
+  # DEBUG u8Index => u8Index_32
+  # DEBUG BEGIN_STMT
+  _24 = (unsigned int) u8Index_32;
+  _25 = _24 + 3;
+  _26 = (unsigned int) u8NumBytes_38(D);
+  if (_25 < _26)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _27 = u8Offset_39(D) + u8Index_33;
+  _28 = (sizetype) u8Index_33;
+  _29 = pOutputbytes_40(D) + _28;
+  _30 = Csec_Ip_ReadCommandByte (_27);
+  *_29 = _30;
+  # DEBUG BEGIN_STMT
+  u8Index.41_31 = u8Index_33;
+  u8Index_43 = u8Index.41_31 + 1;
+  # DEBUG u8Index => u8Index_43
+
+  <bb 6> :
+  # u8Index_33 = PHI <u8Index_32(4), u8Index_43(5)>
+  # DEBUG u8Index => u8Index_33
+  # DEBUG BEGIN_STMT
+  if (u8Index_33 < u8NumBytes_38(D))
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+
+Csec_Ip_ReadCommandByte (uint8 u8Offset)
+{
+  uint8 u8ByteValue;
+  uint8 u8ByteX;
+  uint32 u32Temp;
+  struct Csec_Ip_PramType * _1;
+  unsigned char _2;
+  int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  uint8 _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 335548416B;
+  _2 = u8Offset_13(D) >> 2;
+  _3 = (int) _2;
+  u32Temp_15 ={v} _1->Csec_Ip_aPramRegister[_3];
+  # DEBUG u32Temp => u32Temp_15
+  # DEBUG BEGIN_STMT
+  u8ByteX_16 = u8Offset_13(D) & 3;
+  # DEBUG u8ByteX => u8ByteX_16
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) u8ByteX_16;
+  _5 = 3 - _4;
+  _6 = _5 * 8;
+  _7 = 255 << _6;
+  _8 = u32Temp_15 & _7;
+  _9 = (long unsigned int) u8ByteX_16;
+  _10 = 3 - _9;
+  _11 = _10 * 8;
+  _12 = _8 >> _11;
+  u8ByteValue_17 = (uint8) _12;
+  # DEBUG u8ByteValue => u8ByteValue_17
+  # DEBUG BEGIN_STMT
+  _18 = u8ByteValue_17;
+  return _18;
+
+}
+
+
+Csec_Ip_ReadErrorBits ()
+{
+  Csec_Ip_ErrorCodeType CsecResponse;
+  uint32 u32ErrWord;
+  long unsigned int _1;
+  Csec_Ip_ErrorCodeType _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32ErrWord_4 = Csec_Ip_ReadCommandWord (4);
+  # DEBUG u32ErrWord => u32ErrWord_4
+  # DEBUG BEGIN_STMT
+  _1 = u32ErrWord_4 >> 16;
+  CsecResponse_5 = (Csec_Ip_ErrorCodeType) _1;
+  # DEBUG CsecResponse => CsecResponse_5
+  # DEBUG BEGIN_STMT
+  _6 = CsecResponse_5;
+  return _6;
+
+}
+
+
+Csec_Ip_ReadCommandWord (uint8 u8Offset)
+{
+  struct Csec_Ip_PramType * _1;
+  unsigned char _2;
+  int _3;
+  uint32 _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 335548416B;
+  _2 = u8Offset_4(D) >> 2;
+  _3 = (int) _2;
+  _6 ={v} _1->Csec_Ip_aPramRegister[_3];
+  return _6;
+
+}
+
+
+Csec_Ip_WaitCommandCompletion (uint32 u32Timeout, uint32 u32ElapsedTimeInTicks)
+{
+  uint32 u32CurrentTicks;
+  uint32 u32TimeoutTicks;
+  uint32 u32ElapsedTicks;
+  long unsigned int _1;
+  struct FTFC_Type * _2;
+  unsigned char _3;
+  signed char _4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.28_5;
+  long unsigned int _18;
+  uint32 _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32ElapsedTicks_10 = u32ElapsedTimeInTicks_9(D);
+  # DEBUG u32ElapsedTicks => u32ElapsedTicks_10
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32TimeoutTicks_14 = OsIf_MicrosToTicks (u32Timeout_12(D), 0);
+  # DEBUG u32TimeoutTicks => u32TimeoutTicks_14
+  # DEBUG BEGIN_STMT
+  _1 = OsIf_GetCounter (0);
+  u32CurrentTicks = _1;
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _18 = OsIf_GetElapsed (&u32CurrentTicks, 0);
+  u32ElapsedTicks_19 = _18 + u32ElapsedTicks_6;
+  # DEBUG u32ElapsedTicks => u32ElapsedTicks_19
+
+  <bb 4> :
+  # u32ElapsedTicks_6 = PHI <u32ElapsedTicks_10(2), u32ElapsedTicks_19(3)>
+  # DEBUG u32ElapsedTicks => u32ElapsedTicks_6
+  # DEBUG BEGIN_STMT
+  _2 = 1073872896B;
+  _3 ={v} _2->FSTAT;
+  _4 = (signed char) _3;
+  if (_4 >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  if (u32ElapsedTicks_6 < u32TimeoutTicks_14)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (u32ElapsedTicks_6 >= u32TimeoutTicks_14)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.28_5 = Csec_Ip_pState;
+  Csec_Ip_pState.28_5->ErrCode = 65534;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _21 = u32ElapsedTicks_6;
+  u32CurrentTicks ={v} {CLOBBER};
+  return _21;
+
+}
+
+
+Csec_Ip_WriteCommandHeader (Csec_Ip_CmdType eFuncId, Csec_Ip_FuncFormatType eFuncFormat, Csec_Ip_CallSequenceType eCallSeq, Csec_Ip_KeyIdType eKeyId)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  struct Csec_Ip_PramType * _9;
+  long unsigned int _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = eFuncId_11(D) << 24;
+  _2 = eFuncFormat_12(D) << 16;
+  _3 = _2 & 16711680;
+  _4 = _1 | _3;
+  _5 = eCallSeq_13(D) << 8;
+  _6 = _5 & 65535;
+  _7 = _4 | _6;
+  _8 = eKeyId_14(D) & 255;
+  _9 = 335548416B;
+  _10 = _7 | _8;
+  _9->Csec_Ip_aPramRegister[0] ={v} _10;
+  return;
+
+}
+
+
+Csec_Ip_WriteCommandHalfWord (uint8 u8Offset, uint16 u16HalfWord)
+{
+  uint32 u32Temp;
+  struct Csec_Ip_PramType * _1;
+  unsigned char _2;
+  int _3;
+  int _4;
+  int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  struct Csec_Ip_PramType * _9;
+  unsigned char _10;
+  int _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 335548416B;
+  _2 = u8Offset_13(D) >> 2;
+  _3 = (int) _2;
+  u32Temp_15 ={v} _1->Csec_Ip_aPramRegister[_3];
+  # DEBUG u32Temp => u32Temp_15
+  # DEBUG BEGIN_STMT
+  _4 = (int) u8Offset_13(D);
+  _5 = _4 & 2;
+  if (_5 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  u32Temp_19 = u32Temp_15 & 4294901760;
+  # DEBUG u32Temp => u32Temp_19
+  # DEBUG BEGIN_STMT
+  _6 = (long unsigned int) u16HalfWord_17(D);
+  u32Temp_20 = u32Temp_19 | _6;
+  # DEBUG u32Temp => u32Temp_20
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  u32Temp_16 = u32Temp_15 & 65535;
+  # DEBUG u32Temp => u32Temp_16
+  # DEBUG BEGIN_STMT
+  _7 = (long unsigned int) u16HalfWord_17(D);
+  _8 = _7 << 16;
+  u32Temp_18 = u32Temp_16 | _8;
+  # DEBUG u32Temp => u32Temp_18
+
+  <bb 5> :
+  # u32Temp_12 = PHI <u32Temp_20(3), u32Temp_18(4)>
+  # DEBUG u32Temp => u32Temp_12
+  # DEBUG BEGIN_STMT
+  _9 = 335548416B;
+  _10 = u8Offset_13(D) >> 2;
+  _11 = (int) _10;
+  _9->Csec_Ip_aPramRegister[_11] ={v} u32Temp_12;
+  return;
+
+}
+
+
+Csec_Ip_WriteCommandByte (const uint8 u8Offset, const uint8 u8InputByte)
+{
+  uint8 u8ByteX;
+  uint32 u32Temp;
+  struct Csec_Ip_PramType * _1;
+  unsigned char _2;
+  int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  struct Csec_Ip_PramType * _19;
+  unsigned char _20;
+  int _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 335548416B;
+  _2 = u8Offset_22(D) >> 2;
+  _3 = (int) _2;
+  u32Temp_24 ={v} _1->Csec_Ip_aPramRegister[_3];
+  # DEBUG u32Temp => u32Temp_24
+  # DEBUG BEGIN_STMT
+  u8ByteX_25 = u8Offset_22(D) & 3;
+  # DEBUG u8ByteX => u8ByteX_25
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) u8ByteX_25;
+  _5 = 3 - _4;
+  _6 = _5 * 8;
+  _7 = 255 << _6;
+  _8 = ~_7;
+  u32Temp_26 = u32Temp_24 & _8;
+  # DEBUG u32Temp => u32Temp_26
+  # DEBUG BEGIN_STMT
+  _9 = (long unsigned int) u8InputByte_27(D);
+  _10 = (long unsigned int) u8ByteX_25;
+  _11 = 3 - _10;
+  _12 = _11 * 8;
+  _13 = _9 << _12;
+  _14 = (long unsigned int) u8ByteX_25;
+  _15 = 3 - _14;
+  _16 = _15 * 8;
+  _17 = 255 << _16;
+  _18 = _13 & _17;
+  u32Temp_28 = u32Temp_26 | _18;
+  # DEBUG u32Temp => u32Temp_28
+  # DEBUG BEGIN_STMT
+  _19 = 335548416B;
+  _20 = u8Offset_22(D) >> 2;
+  _21 = (int) _20;
+  _19->Csec_Ip_aPramRegister[_21] ={v} u32Temp_28;
+  return;
+
+}
+
+
+Csec_Ip_WriteCommandBytes (const uint8 u8Offset, const uint8 * pInputBytes, const uint8 u8NumBytes)
+{
+  uint8 u8Index;
+  sizetype _1;
+  const uint8 * _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  sizetype _6;
+  sizetype _7;
+  const uint8 * _8;
+  unsigned char _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  sizetype _14;
+  sizetype _15;
+  const uint8 * _16;
+  unsigned char _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  sizetype _22;
+  sizetype _23;
+  const uint8 * _24;
+  unsigned char _25;
+  long unsigned int _26;
+  struct Csec_Ip_PramType * _27;
+  int _28;
+  int _29;
+  int _30;
+  int _31;
+  long unsigned int _32;
+  unsigned int _33;
+  unsigned int _34;
+  unsigned int _35;
+  unsigned char _36;
+  sizetype _37;
+  const uint8 * _38;
+  unsigned char _39;
+  unsigned char u8Index.27_40;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u8Index_45 = 0;
+  # DEBUG u8Index => u8Index_45
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = (sizetype) u8Index_41;
+  _2 = pInputBytes_49(D) + _1;
+  _3 = *_2;
+  _4 = (long unsigned int) _3;
+  _5 = _4 << 24;
+  _6 = (sizetype) u8Index_41;
+  _7 = _6 + 1;
+  _8 = pInputBytes_49(D) + _7;
+  _9 = *_8;
+  _10 = (long unsigned int) _9;
+  _11 = _10 << 16;
+  _12 = _11 & 16711680;
+  _13 = _5 | _12;
+  _14 = (sizetype) u8Index_41;
+  _15 = _14 + 2;
+  _16 = pInputBytes_49(D) + _15;
+  _17 = *_16;
+  _18 = (long unsigned int) _17;
+  _19 = _18 << 8;
+  _20 = _19 & 65535;
+  _21 = _13 | _20;
+  _22 = (sizetype) u8Index_41;
+  _23 = _22 + 3;
+  _24 = pInputBytes_49(D) + _23;
+  _25 = *_24;
+  _26 = (long unsigned int) _25;
+  _27 = 335548416B;
+  _28 = (int) u8Offset_48(D);
+  _29 = (int) u8Index_41;
+  _30 = _28 + _29;
+  _31 = _30 >> 2;
+  _32 = _21 | _26;
+  _27->Csec_Ip_aPramRegister[_31] ={v} _32;
+  # DEBUG BEGIN_STMT
+  u8Index_53 = u8Index_41 + 4;
+  # DEBUG u8Index => u8Index_53
+
+  <bb 4> :
+  # u8Index_41 = PHI <u8Index_45(2), u8Index_53(3)>
+  # DEBUG u8Index => u8Index_41
+  # DEBUG BEGIN_STMT
+  _33 = (unsigned int) u8Index_41;
+  _34 = _33 + 3;
+  _35 = (unsigned int) u8NumBytes_47(D);
+  if (_34 < _35)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _36 = u8Offset_48(D) + u8Index_42;
+  _37 = (sizetype) u8Index_42;
+  _38 = pInputBytes_49(D) + _37;
+  _39 = *_38;
+  Csec_Ip_WriteCommandByte (_36, _39);
+  # DEBUG BEGIN_STMT
+  u8Index.27_40 = u8Index_42;
+  u8Index_51 = u8Index.27_40 + 1;
+  # DEBUG u8Index => u8Index_51
+
+  <bb 6> :
+  # u8Index_42 = PHI <u8Index_41(4), u8Index_51(5)>
+  # DEBUG u8Index => u8Index_42
+  # DEBUG BEGIN_STMT
+  if (u8Index_42 < u8NumBytes_47(D))
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+
+Csec_Ip_UpdateState (Csec_Ip_KeyIdType eKeyId, Csec_Ip_CmdType eCmd, const uint8 * pInputBuff, uint8 * pOutputBuff, uint32 u32InputSize)
+{
+  struct Csec_Ip_StateType * Csec_Ip_pState.9_1;
+  struct Csec_Ip_StateType * Csec_Ip_pState.10_2;
+  struct Csec_Ip_StateType * Csec_Ip_pState.11_3;
+  struct Csec_Ip_StateType * Csec_Ip_pState.12_4;
+  struct Csec_Ip_StateType * Csec_Ip_pState.13_5;
+  struct Csec_Ip_StateType * Csec_Ip_pState.14_6;
+  struct Csec_Ip_StateType * Csec_Ip_pState.15_7;
+  struct Csec_Ip_StateType * Csec_Ip_pState.16_8;
+  struct Csec_Ip_StateType * Csec_Ip_pState.17_9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.9_1 = Csec_Ip_pState;
+  Csec_Ip_pState.9_1->bCmdInProgress = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.10_2 = Csec_Ip_pState;
+  Csec_Ip_pState.10_2->eCmd = eCmd_12(D);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.11_3 = Csec_Ip_pState;
+  Csec_Ip_pState.11_3->pInputBuff = pInputBuff_14(D);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.12_4 = Csec_Ip_pState;
+  Csec_Ip_pState.12_4->pOutputBuff = pOutputBuff_16(D);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.13_5 = Csec_Ip_pState;
+  Csec_Ip_pState.13_5->eKeyId = eKeyId_18(D);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.14_6 = Csec_Ip_pState;
+  Csec_Ip_pState.14_6->u32InputSize = u32InputSize_20(D);
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.15_7 = Csec_Ip_pState;
+  Csec_Ip_pState.15_7->u32Index = 0;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.16_8 = Csec_Ip_pState;
+  Csec_Ip_pState.16_8->ErrCode = 1;
+  # DEBUG BEGIN_STMT
+  Csec_Ip_pState.17_9 = Csec_Ip_pState;
+  Csec_Ip_pState.17_9->eSeq = 0;
+  return;
+
+}
+
+
+Csec_Ip_ClearErrorFlags ()
+{
+  struct FTFC_Type * _1;
+  unsigned char _2;
+  signed char _3;
+  struct FTFC_Type * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1073872896B;
+  _2 ={v} _1->FSTAT;
+  _3 = (signed char) _2;
+  if (_3 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = 1073872896B;
+  _4->FSTAT ={v} 48;
+
+  <bb 4> :
+  return;
+
+}
+
+
+Csec_Ip_WriteCmdAndWait (Csec_Ip_CmdType eFuncId, Csec_Ip_FuncFormatType eFuncFormat, Csec_Ip_CallSequenceType eCallSeq, Csec_Ip_KeyIdType eKeyId)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  struct Csec_Ip_PramType * _9;
+  long unsigned int _10;
+  struct FTFC_Type * _11;
+  unsigned char _12;
+  signed char _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = eFuncId_14(D) << 24;
+  _2 = eFuncFormat_15(D) << 16;
+  _3 = _2 & 16711680;
+  _4 = _1 | _3;
+  _5 = eCallSeq_16(D) << 8;
+  _6 = _5 & 65535;
+  _7 = _4 | _6;
+  _8 = eKeyId_17(D) & 255;
+  _9 = 335548416B;
+  _10 = _7 | _8;
+  _9->Csec_Ip_aPramRegister[0] ={v} _10;
+  # DEBUG BEGIN_STMT
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = 1073872896B;
+  _12 ={v} _11->FSTAT;
+  _13 = (signed char) _12;
+  if (_13 >= 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  return;
+
+}
+
+

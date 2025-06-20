@@ -1,0 +1,201 @@
+
+Marking local functions: App_InitCsecHw
+
+
+Marking externally visible functions: main
+
+
+Marking externally visible variables: exit_code
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Crypto_Init/5 (Crypto_Init) @0696a540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/2 
+  Calls: 
+Mcu_aClockConfigPB/4 (Mcu_aClockConfigPB) @069695e8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/2 (addr)main/2 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/3 (Clock_Ip_Init) @0696a460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/2 main/2 
+  Calls: 
+main/2 (main) @0696a000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcu_aClockConfigPB/4 (addr)Mcu_aClockConfigPB/4 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Crypto_Init/5 App_InitCsecHw/1 Clock_Ip_Init/3 Clock_Ip_Init/3 
+App_InitCsecHw/1 (App_InitCsecHw) @06963d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: main/2 
+  Calls: 
+exit_code/0 (exit_code) @069ba7e0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+  Std_ReturnType RetVal;
+  int D.6433;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  clockStatus = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (clockStatus != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetVal = App_InitCsecHw (3, 0);
+  # DEBUG BEGIN_STMT
+  Crypto_Init (0B);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+}
+
+
+App_InitCsecHw (uint8 u8KeySize, uint8 u8Sfe)
+{
+  uint8 u8FStat;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6441;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u8FStat = 0;
+  # DEBUG BEGIN_STMT
+  _1 = 1073872896B;
+  _2 = _1->FCNFG;
+  _3 = (unsigned int) _2;
+  _4 = _3 & 2;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _5 = 1073872896B;
+  _6 = _5->FCNFG;
+  _7 = (unsigned int) _6;
+  _8 = _7 & 1;
+  if (_8 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _9 = 1073872896B;
+  _9->FCCOB[3] = 128;
+  # DEBUG BEGIN_STMT
+  _10 = 1073872896B;
+  _10->FCCOB[2] = u8KeySize;
+  # DEBUG BEGIN_STMT
+  _11 = 1073872896B;
+  _11->FCCOB[1] = u8Sfe;
+  # DEBUG BEGIN_STMT
+  _12 = 1073872896B;
+  _12->FCCOB[0] = 0;
+  # DEBUG BEGIN_STMT
+  _13 = 1073872896B;
+  _13->FCCOB[7] = 2;
+  # DEBUG BEGIN_STMT
+  _14 = 1073872896B;
+  _14->FCCOB[6] = 3;
+  # DEBUG BEGIN_STMT
+  _15 = 1073872896B;
+  _15->FSTAT = 128;
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = 1073872896B;
+  _17 = _16->FSTAT;
+  _18 = (signed char) _17;
+  if (_18 >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _19 = 1073872896B;
+  u8FStat = _19->FSTAT;
+  # DEBUG BEGIN_STMT
+  _20 = (unsigned int) u8FStat;
+  _21 = _20 & 33;
+  if (_21 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  D.6441 = RetVal;
+  return D.6441;
+
+}
+
+

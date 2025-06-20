@@ -1,0 +1,167 @@
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+  Std_ReturnType RetVal;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus_5 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_5
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  clockStatus_10 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_10
+
+  <bb 4> :
+  # clockStatus_1 = PHI <clockStatus_5(2), clockStatus_10(3)>
+  # DEBUG clockStatus => clockStatus_1
+  # DEBUG BEGIN_STMT
+  if (clockStatus_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetVal_7 = App_InitCsecHw (3, 0);
+  # DEBUG RetVal => RetVal_7
+  # DEBUG BEGIN_STMT
+  Crypto_Init (0B);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+}
+
+
+App_InitCsecHw (uint8 u8KeySize, uint8 u8Sfe)
+{
+  uint8 u8FStat;
+  Std_ReturnType RetVal;
+  struct FTFC_Type * _1;
+  unsigned char _2;
+  unsigned int _3;
+  unsigned int _4;
+  struct FTFC_Type * _5;
+  unsigned char _6;
+  unsigned int _7;
+  unsigned int _8;
+  struct FTFC_Type * _9;
+  struct FTFC_Type * _10;
+  struct FTFC_Type * _11;
+  struct FTFC_Type * _12;
+  struct FTFC_Type * _13;
+  struct FTFC_Type * _14;
+  struct FTFC_Type * _15;
+  struct FTFC_Type * _16;
+  unsigned char _17;
+  signed char _18;
+  struct FTFC_Type * _19;
+  unsigned int _20;
+  unsigned int _21;
+  Std_ReturnType _39;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal_24 = 1;
+  # DEBUG RetVal => RetVal_24
+  # DEBUG BEGIN_STMT
+  u8FStat_25 = 0;
+  # DEBUG u8FStat => u8FStat_25
+  # DEBUG BEGIN_STMT
+  _1 = 1073872896B;
+  _2 ={v} _1->FCNFG;
+  _3 = (unsigned int) _2;
+  _4 = _3 & 2;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _5 = 1073872896B;
+  _6 ={v} _5->FCNFG;
+  _7 = (unsigned int) _6;
+  _8 = _7 & 1;
+  if (_8 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _9 = 1073872896B;
+  _9->FCCOB[3] ={v} 128;
+  # DEBUG BEGIN_STMT
+  _10 = 1073872896B;
+  _10->FCCOB[2] ={v} u8KeySize_29(D);
+  # DEBUG BEGIN_STMT
+  _11 = 1073872896B;
+  _11->FCCOB[1] ={v} u8Sfe_31(D);
+  # DEBUG BEGIN_STMT
+  _12 = 1073872896B;
+  _12->FCCOB[0] ={v} 0;
+  # DEBUG BEGIN_STMT
+  _13 = 1073872896B;
+  _13->FCCOB[7] ={v} 2;
+  # DEBUG BEGIN_STMT
+  _14 = 1073872896B;
+  _14->FCCOB[6] ={v} 3;
+  # DEBUG BEGIN_STMT
+  _15 = 1073872896B;
+  _15->FSTAT ={v} 128;
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = 1073872896B;
+  _17 ={v} _16->FSTAT;
+  _18 = (signed char) _17;
+  if (_18 >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _19 = 1073872896B;
+  u8FStat_37 ={v} _19->FSTAT;
+  # DEBUG u8FStat => u8FStat_37
+  # DEBUG BEGIN_STMT
+  _20 = (unsigned int) u8FStat_37;
+  _21 = _20 & 33;
+  if (_21 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  RetVal_38 = 0;
+  # DEBUG RetVal => RetVal_38
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  RetVal_27 = 0;
+  # DEBUG RetVal => RetVal_27
+
+  <bb 9> :
+  # RetVal_22 = PHI <RetVal_38(7), RetVal_27(8), RetVal_24(6)>
+  # DEBUG RetVal => RetVal_22
+  # DEBUG BEGIN_STMT
+  _39 = RetVal_22;
+  return _39;
+
+}
+
+

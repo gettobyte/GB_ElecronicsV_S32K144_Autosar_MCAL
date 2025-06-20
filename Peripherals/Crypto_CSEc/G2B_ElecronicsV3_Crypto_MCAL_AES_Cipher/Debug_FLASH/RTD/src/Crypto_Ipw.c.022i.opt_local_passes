@@ -1,0 +1,1917 @@
+Crypto_Ipw_SheMPCompression (const uint32 u32PartitionId, const uint8 * pInput, const uint32 u32InputLen, uint8 * pResult, const uint32 * pResultLen)
+{
+  uint16 u16InputPageLen;
+  Csec_Ip_ErrorCodeType CsecResponse;
+  Std_ReturnType RetVal;
+  long unsigned int _1;
+  Std_ReturnType _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = u32InputLen_2(D) >> 4;
+  u16InputPageLen_3 = (uint16) _1;
+  # DEBUG u16InputPageLen => u16InputPageLen_3
+  # DEBUG BEGIN_STMT
+  CsecResponse_8 = Csec_Ip_MpCompress (pInput_5(D), u16InputPageLen_3, pResult_6(D));
+  # DEBUG CsecResponse => CsecResponse_8
+  # DEBUG BEGIN_STMT
+  RetVal_10 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_8);
+  # DEBUG RetVal => RetVal_10
+  # DEBUG BEGIN_STMT
+  _11 = RetVal_10;
+  return _11;
+
+}
+
+
+Crypto_Ipw_SheDebugAuth (const uint32 u32PartitionId, const uint8 * pAuthorization)
+{
+  Csec_Ip_ErrorCodeType CsecResponse;
+  Std_ReturnType RetVal;
+  Std_ReturnType _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CsecResponse_4 = Csec_Ip_DbgAuth (pAuthorization_2(D));
+  # DEBUG CsecResponse => CsecResponse_4
+  # DEBUG BEGIN_STMT
+  RetVal_6 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_4);
+  # DEBUG RetVal => RetVal_6
+  # DEBUG BEGIN_STMT
+  _7 = RetVal_6;
+  return _7;
+
+}
+
+
+Crypto_Ipw_SheDebugChal (const uint32 u32PartitionId, uint8 * pChallenge)
+{
+  Csec_Ip_ErrorCodeType CsecResponse;
+  Std_ReturnType RetVal;
+  Std_ReturnType _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CsecResponse_4 = Csec_Ip_DbgChal (pChallenge_2(D));
+  # DEBUG CsecResponse => CsecResponse_4
+  # DEBUG BEGIN_STMT
+  RetVal_6 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_4);
+  # DEBUG RetVal => RetVal_6
+  # DEBUG BEGIN_STMT
+  _7 = RetVal_6;
+  return _7;
+
+}
+
+
+Crypto_Ipw_SheGetId (const uint32 u32PartitionId, const uint8 * pChallenge, uint8 * pId, uint8 * pSreg, uint8 * pMac)
+{
+  Csec_Ip_ErrorCodeType CsecResponse;
+  Std_ReturnType RetVal;
+  Std_ReturnType _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CsecResponse_7 = Csec_Ip_GetId (pChallenge_2(D), pId_3(D), pSreg_4(D), pMac_5(D));
+  # DEBUG CsecResponse => CsecResponse_7
+  # DEBUG BEGIN_STMT
+  RetVal_9 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_7);
+  # DEBUG RetVal => RetVal_9
+  # DEBUG BEGIN_STMT
+  _10 = RetVal_9;
+  return _10;
+
+}
+
+
+Crypto_Ipw_SheGetStatus (const uint32 u32PartitionId, uint8 * pStatus)
+{
+  unsigned char _1;
+  Std_ReturnType _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Csec_Ip_GetStatus ();
+  *pStatus_4(D) = _1;
+  # DEBUG BEGIN_STMT
+  _6 = 0;
+  return _6;
+
+}
+
+
+Crypto_Ipw_SheSetBootStatus (const uint32 u32PartitionId, const boolean bStatus)
+{
+  Csec_Ip_ErrorCodeType CsecResponse;
+  Std_ReturnType RetVal;
+  Std_ReturnType _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (bStatus_3(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  CsecResponse_8 = Csec_Ip_BootOk ();
+  # DEBUG CsecResponse => CsecResponse_8
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  CsecResponse_6 = Csec_Ip_BootFailure ();
+  # DEBUG CsecResponse => CsecResponse_6
+
+  <bb 5> :
+  # CsecResponse_1 = PHI <CsecResponse_8(3), CsecResponse_6(4)>
+  # DEBUG CsecResponse => CsecResponse_1
+  # DEBUG BEGIN_STMT
+  RetVal_10 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_1);
+  # DEBUG RetVal => RetVal_10
+  # DEBUG BEGIN_STMT
+  _11 = RetVal_10;
+  return _11;
+
+}
+
+
+Crypto_Ipw_SetSynchronousRequestsTimeout (const uint32 u32PartitionId, const uint32 u32Timeout)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Csec_Ip_SetSynchronousCmdTimeout (u32Timeout_2(D));
+  return;
+
+}
+
+
+Crypto_Ipw_MainFunction (const uint32 u32PartitionId)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Csec_Ip_MainFunction ();
+  return;
+
+}
+
+
+Crypto_Ipw_CertificateVerify (const uint32 u32PartitionId, const uint32 u32CryptoKeyIdx, const uint32 u32VerifyCryptoKeyIdx, const Crypto_VerifyResultType * const verifyPtr)
+{
+  Std_ReturnType _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 129;
+  return _1;
+
+}
+
+
+Crypto_Ipw_CertificateParse (const uint32 u32PartitionId, const uint32 u32CryptoKeyIdx)
+{
+  Std_ReturnType _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 129;
+  return _1;
+
+}
+
+
+Crypto_Ipw_CalcSecret (const uint32 u32PartitionId, const uint32 u32CryptoKeyIdx, const uint8 * const pPartnerPublicValue, const uint32 u32PartnerPublicValueLength)
+{
+  Std_ReturnType _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 129;
+  return _1;
+
+}
+
+
+Crypto_Ipw_KeyDerive (const uint32 u32PartitionId, const uint32 u32CryptoKeyIdx, const uint32 u32TargetKeyIdx)
+{
+  Std_ReturnType _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 129;
+  return _1;
+
+}
+
+
+Crypto_Ipw_KeyGenerate (const uint32 u32PartitionId, const uint32 u32CryptoKeyIdx)
+{
+  Std_ReturnType _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 129;
+  return _1;
+
+}
+
+
+Crypto_Ipw_RandomSeed (const uint32 u32PartitionId, const uint32 u32CryptoKeyIdx, const uint8 * const seedPtr, const uint32 seedLength)
+{
+  Csec_Ip_ErrorCodeType CsecResponse;
+  Std_ReturnType RetVal;
+  Std_ReturnType _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CsecResponse_4 = Csec_Ip_ExtendSeed (seedPtr_2(D));
+  # DEBUG CsecResponse => CsecResponse_4
+  # DEBUG BEGIN_STMT
+  RetVal_6 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_4);
+  # DEBUG RetVal => RetVal_6
+  # DEBUG BEGIN_STMT
+  _7 = RetVal_6;
+  return _7;
+
+}
+
+
+Crypto_Ipw_ExportKey (const uint32 u32PartitionId, const uint32 u32KeyMaterialKeyElemIdx, const uint32 u32KeyExportKeyElemIdx, uint8 * const pResult, uint32 * const pResultLength)
+{
+  Csec_Ip_KeyIdType eKeyId;
+  Std_ReturnType RetVal;
+  Csec_Ip_ErrorCodeType CsecResponse;
+  uint8 * _1;
+  uint8 * _2;
+  uint8 * _3;
+  uint8 * _4;
+  Std_ReturnType _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RetVal_7 = 1;
+  # DEBUG RetVal => RetVal_7
+  # DEBUG BEGIN_STMT
+  eKeyId_10 = Crypto_aKeyElementList[u32KeyMaterialKeyElemIdx_9(D)].eKeyId;
+  # DEBUG eKeyId => eKeyId_10
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (eKeyId_10 == 15)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = pResult_11(D) + 16;
+  _2 = pResult_11(D) + 48;
+  _3 = pResult_11(D) + 64;
+  _4 = pResult_11(D) + 96;
+  CsecResponse_13 = Csec_Ip_ExportRamKey (pResult_11(D), _1, _2, _3, _4);
+  # DEBUG CsecResponse => CsecResponse_13
+  # DEBUG BEGIN_STMT
+  RetVal_15 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_13);
+  # DEBUG RetVal => RetVal_15
+  # DEBUG BEGIN_STMT
+  if (RetVal_15 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *pResultLength_16(D) = 112;
+
+  <bb 5> :
+  # RetVal_5 = PHI <RetVal_7(2), RetVal_15(3), RetVal_15(4)>
+  # DEBUG RetVal => RetVal_5
+  # DEBUG BEGIN_STMT
+  _18 = RetVal_5;
+  return _18;
+
+}
+
+
+Crypto_Ipw_ImportKey (const uint32 u32PartitionId, const uint8 * const pKey, const uint32 u32KeyLength, const uint32 u32CryptoKeyIdx, const uint32 u32CryptoKeyElementIdx)
+{
+  uint32 u32CipherProofKeyElemIdx;
+  uint32 u32MacProofKeyElemIdx;
+  Csec_Ip_KeyIdType eKeyId;
+  Crypto_KeyElementWriteAccessType eKeyElementWriteAccess;
+  Std_ReturnType RetVal;
+  Std_ReturnType _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal_3 = 1;
+  # DEBUG RetVal => RetVal_3
+  # DEBUG BEGIN_STMT
+  eKeyElementWriteAccess_6 = Crypto_aKeyElementList[u32CryptoKeyElementIdx_5(D)].eCryptoKeyElementWriteAccess;
+  # DEBUG eKeyElementWriteAccess => eKeyElementWriteAccess_6
+  # DEBUG BEGIN_STMT
+  eKeyId_7 = Crypto_aKeyElementList[u32CryptoKeyElementIdx_5(D)].eKeyId;
+  # DEBUG eKeyId => eKeyId_7
+  # DEBUG BEGIN_STMT
+  u32MacProofKeyElemIdx_10 = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx_8(D), 2);
+  # DEBUG u32MacProofKeyElemIdx => u32MacProofKeyElemIdx_10
+  # DEBUG BEGIN_STMT
+  u32CipherProofKeyElemIdx_12 = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx_8(D), 6);
+  # DEBUG u32CipherProofKeyElemIdx => u32CipherProofKeyElemIdx_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (eKeyElementWriteAccess_6 == 4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetVal_17 = Crypto_Ipw_SheLoadEncryptedKey (eKeyId_7, pKey_13(D), u32MacProofKeyElemIdx_10, u32CipherProofKeyElemIdx_12);
+  # DEBUG RetVal => RetVal_17
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (eKeyId_7 == 15)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetVal_15 = Crypto_Ipw_SheLoadPlainKey (pKey_13(D));
+  # DEBUG RetVal => RetVal_15
+
+  <bb 6> :
+  # RetVal_1 = PHI <RetVal_17(3), RetVal_3(4), RetVal_15(5)>
+  # DEBUG RetVal => RetVal_1
+  # DEBUG BEGIN_STMT
+  _18 = RetVal_1;
+  return _18;
+
+}
+
+
+Crypto_Ipw_CancelJob (const uint32 u32PartitionId, const uint32 u32ObjectIdx, const struct Crypto_JobInfoType * const pJobInfo)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  Std_ReturnType _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_Ipw_State.u32CurrentlyProcessedJobId;
+  _2 = pJobInfo_5(D)->jobId;
+  if (_1 == _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Csec_Ip_CancelCommand ();
+  # DEBUG BEGIN_STMT
+  Crypto_Ipw_State.u32CurrentlyProcessedJobId = 2779404885;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Crypto_Util_DequeueJob (u32ObjectIdx_6(D), pJobInfo_5(D));
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _10 = 0;
+  return _10;
+
+}
+
+
+Crypto_Ipw_ProcessJob (const uint32 u32PartitionId, const uint32 u32ObjectIdx, struct Crypto_JobType * const pJob)
+{
+  Std_ReturnType RetVal;
+  <unnamed type> _1;
+  const struct Crypto_JobPrimitiveInfoType * _2;
+  <unnamed type> _3;
+  const struct Crypto_JobPrimitiveInfoType * _4;
+  <unnamed type> _5;
+  long unsigned int _6;
+  _Bool _7;
+  const struct Crypto_JobPrimitiveInfoType * _8;
+  <unnamed type> _9;
+  const struct Crypto_JobInfoType * _10;
+  long unsigned int _11;
+  Std_ReturnType _27;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal_15 = 1;
+  # DEBUG RetVal => RetVal_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pJob_17(D)->jobPrimitiveInputOutput.mode;
+  if (_1 == 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetVal_19 = Crypto_Ipw_ProcessOperation (pJob_17(D));
+  # DEBUG RetVal => RetVal_19
+  # DEBUG BEGIN_STMT
+  _2 = pJob_17(D)->jobPrimitiveInfo;
+  _3 = _2->processingType;
+  if (_3 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  pJob_17(D)->jobState = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (RetVal_19 == 2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _4 = pJob_17(D)->jobPrimitiveInfo;
+  _5 = _4->processingType;
+  if (_5 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 7> :
+  _6 = Crypto_aDriverObjectList[u32ObjectIdx_23(D)].u32CryptoQueueSize;
+  if (_6 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _7 = Crypto_Util_QueueJob (u32ObjectIdx_23(D), pJob_17(D));
+  if (_7 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal_26 = 0;
+  # DEBUG RetVal => RetVal_26
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  RetVal_25 = 5;
+  # DEBUG RetVal => RetVal_25
+  goto <bb 15>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (RetVal_19 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  pJob_17(D)->jobState = 0;
+  goto <bb 15>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _8 = pJob_17(D)->jobPrimitiveInfo;
+  _9 = _8->processingType;
+  if (_9 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _10 = pJob_17(D)->jobInfo;
+  _11 = _10->jobId;
+  Crypto_Ipw_State.u32CurrentlyProcessedJobId = _11;
+
+  <bb 15> :
+  # RetVal_12 = PHI <RetVal_15(2), RetVal_19(7), RetVal_19(12), RetVal_19(13), RetVal_19(14), RetVal_19(6), RetVal_25(10), RetVal_26(9)>
+  # DEBUG RetVal => RetVal_12
+  # DEBUG BEGIN_STMT
+  _27 = RetVal_12;
+  return _27;
+
+}
+
+
+Crypto_Ipw_Init (const uint32 u32PartitionId)
+{
+  Csec_Ip_ErrorCodeType CsecResponse;
+  Std_ReturnType RetVal;
+  Std_ReturnType _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Csec_Ip_Init (&Crypto_Ipw_State.Csec_Ip_State);
+  # DEBUG BEGIN_STMT
+  Crypto_Ipw_State.u32CurrentlyProcessedJobId = 2779404885;
+  # DEBUG BEGIN_STMT
+  CsecResponse_5 = Csec_Ip_InitRng ();
+  # DEBUG CsecResponse => CsecResponse_5
+  # DEBUG BEGIN_STMT
+  RetVal_7 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_5);
+  # DEBUG RetVal => RetVal_7
+  # DEBUG BEGIN_STMT
+  _8 = RetVal_7;
+  return _8;
+
+}
+
+
+Crypto_Ipw_Random (struct Crypto_JobType * pJob)
+{
+  uint32 * pOutputLength;
+  Crypto_ProcessingType eProcessingType;
+  Std_ReturnType RetVal;
+  struct Csec_Ip_ReqType CsecIpReq;
+  Csec_Ip_ErrorCodeType CsecResponse;
+  const struct Crypto_JobPrimitiveInfoType * _1;
+  long unsigned int _2;
+  uint8 * _3;
+  Std_ReturnType _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RetVal_7 = 1;
+  # DEBUG RetVal => RetVal_7
+  # DEBUG BEGIN_STMT
+  _1 = pJob_9(D)->jobPrimitiveInfo;
+  eProcessingType_10 = _1->processingType;
+  # DEBUG eProcessingType => eProcessingType_10
+  # DEBUG BEGIN_STMT
+  pOutputLength_11 = pJob_9(D)->jobPrimitiveInputOutput.outputLengthPtr;
+  # DEBUG pOutputLength => pOutputLength_11
+  # DEBUG BEGIN_STMT
+  _2 = *pOutputLength_11;
+  if (_2 > 15)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (eProcessingType_10 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 0;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 2;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pfCallback = Crypto_Ipw_ProcessAsyncCsecResponse;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pCallbackParam = pJob_9(D);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = pJob_9(D)->jobPrimitiveInputOutput.outputPtr;
+  CsecResponse_18 = Csec_Ip_GenerateRnd (&CsecIpReq, _3);
+  # DEBUG CsecResponse => CsecResponse_18
+  # DEBUG BEGIN_STMT
+  RetVal_20 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_18);
+  # DEBUG RetVal => RetVal_20
+  # DEBUG BEGIN_STMT
+  if (RetVal_20 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  if (eProcessingType_10 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *pOutputLength_11 = 16;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal_12 = 3;
+  # DEBUG RetVal => RetVal_12
+
+  <bb 10> :
+  # RetVal_4 = PHI <RetVal_20(7), RetVal_12(9), RetVal_20(6), RetVal_20(8)>
+  # DEBUG RetVal => RetVal_4
+  # DEBUG BEGIN_STMT
+  _22 = RetVal_4;
+  CsecIpReq ={v} {CLOBBER};
+  return _22;
+
+}
+
+
+Crypto_Ipw_TranslateCsecResponse (Csec_Ip_ErrorCodeType CsecResponse)
+{
+  Std_ReturnType RetVal;
+  int _1;
+  Std_ReturnType _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) CsecResponse_3(D);
+  switch (_1) <default: <L14> [INV], case 1: <L0> [INV], case 2: <L3> [INV], case 4: <L12> [INV], case 8: <L13> [INV], case 16: <L10> [INV], case 32: <L3> [INV], case 64: <L11> [INV], case 128: <L3> [INV], case 256: <L3> [INV], case 512: <L3> [INV], case 1024: <L3> [INV], case 2048: <L3> [INV], case 65534: <L2> [INV], case 65535: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  RetVal_11 = 0;
+  # DEBUG RetVal => RetVal_11
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  RetVal_4 = 2;
+  # DEBUG RetVal => RetVal_4
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  RetVal_5 = 128;
+  # DEBUG RetVal => RetVal_5
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  RetVal_10 = 1;
+  # DEBUG RetVal => RetVal_10
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  RetVal_7 = 13;
+  # DEBUG RetVal => RetVal_7
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  RetVal_6 = 7;
+  # DEBUG RetVal => RetVal_6
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  RetVal_9 = 8;
+  # DEBUG RetVal => RetVal_9
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  RetVal_8 = 9;
+  # DEBUG RetVal => RetVal_8
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  RetVal_12 = 1;
+  # DEBUG RetVal => RetVal_12
+  # DEBUG BEGIN_STMT
+
+  <bb 12> :
+  # RetVal_2 = PHI <RetVal_11(3), RetVal_4(4), RetVal_5(5), RetVal_10(6), RetVal_7(7), RetVal_6(8), RetVal_9(9), RetVal_8(10), RetVal_12(11)>
+  # DEBUG RetVal => RetVal_2
+  # DEBUG BEGIN_STMT
+  _13 = RetVal_2;
+  return _13;
+
+}
+
+
+Crypto_Ipw_ProcessOperation (struct Crypto_JobType * pJob)
+{
+  Std_ReturnType RetVal;
+  const struct Crypto_JobPrimitiveInfoType * _1;
+  const struct Crypto_PrimitiveInfoType * _2;
+  <unnamed type> _3;
+  const struct Crypto_JobPrimitiveInfoType * _4;
+  const struct Crypto_PrimitiveInfoType * _5;
+  <unnamed type> _6;
+  Std_ReturnType _23;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal_9 = 1;
+  # DEBUG RetVal => RetVal_9
+  # DEBUG BEGIN_STMT
+  pJob_11(D)->jobState = 1;
+  # DEBUG BEGIN_STMT
+  _1 = pJob_11(D)->jobPrimitiveInfo;
+  _2 = _1->primitiveInfo;
+  _3 = _2->service;
+  switch (_3) <default: <L5> [INV], case 1: <L0> [INV], case 2: <L1> [INV], case 3 ... 4: <L2> [INV], case 11: <L4> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  RetVal_20 = Crypto_Ipw_MacGenerate (pJob_11(D));
+  # DEBUG RetVal => RetVal_20
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  RetVal_18 = Crypto_Ipw_MacVerify (pJob_11(D));
+  # DEBUG RetVal => RetVal_18
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _4 = pJob_11(D)->jobPrimitiveInfo;
+  _5 = _4->primitiveInfo;
+  _6 = _5->service;
+  RetVal_16 = Crypto_Ipw_EncDec (pJob_11(D), _6);
+  # DEBUG RetVal => RetVal_16
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  RetVal_14 = Crypto_Ipw_Random (pJob_11(D));
+  # DEBUG RetVal => RetVal_14
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  RetVal_21 = 1;
+  # DEBUG RetVal => RetVal_21
+  # DEBUG BEGIN_STMT
+  pJob_11(D)->jobState = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # RetVal_7 = PHI <RetVal_20(3), RetVal_18(4), RetVal_16(5), RetVal_14(6), RetVal_21(7)>
+  # DEBUG RetVal => RetVal_7
+  # DEBUG BEGIN_STMT
+  _23 = RetVal_7;
+  return _23;
+
+}
+
+
+Crypto_Ipw_PushJobFromCdoQueueToCsec ()
+{
+  const uint32 u32PartitionId;
+  uint32 u32HeadOfQueuedJobs;
+  struct Crypto_JobType * pJob;
+  Std_ReturnType StdRetVal;
+  <unnamed type> _1;
+  long unsigned int _2;
+  struct Crypto_QueueElementType * _3;
+  long unsigned int _4;
+  struct Crypto_QueueElementType * _5;
+  const struct Crypto_JobInfoType * _6;
+  long unsigned int _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32PartitionId_9 = 0;
+  # DEBUG u32PartitionId => u32PartitionId_9
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aeDriverState[0];
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Crypto_aObjectQueueList[0].u32HeadOfQueuedJobs;
+  if (_2 != 4294967295)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  u32HeadOfQueuedJobs_11 = Crypto_aObjectQueueList[0].u32HeadOfQueuedJobs;
+  # DEBUG u32HeadOfQueuedJobs => u32HeadOfQueuedJobs_11
+  # DEBUG BEGIN_STMT
+  _3 = Crypto_aDriverObjectList[0].pQueuedJobs;
+  _4 = u32HeadOfQueuedJobs_11 * 8;
+  _5 = _3 + _4;
+  pJob_12 = _5->pJob;
+  # DEBUG pJob => pJob_12
+  # DEBUG BEGIN_STMT
+  StdRetVal_14 = Crypto_Ipw_ProcessOperation (pJob_12);
+  # DEBUG StdRetVal => StdRetVal_14
+  # DEBUG BEGIN_STMT
+  if (StdRetVal_14 != 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Crypto_Util_DequeueHeadJob (0);
+  # DEBUG BEGIN_STMT
+  if (StdRetVal_14 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  pJob_12->jobState = 0;
+  # DEBUG BEGIN_STMT
+  CryIf_CallbackNotification (pJob_12, StdRetVal_14);
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _6 = pJob_12->jobInfo;
+  _7 = _6->jobId;
+  Crypto_Ipw_State.u32CurrentlyProcessedJobId = _7;
+
+  <bb 8> :
+  return;
+
+}
+
+
+Crypto_Ipw_ProcessAsyncCsecResponse (Csec_Ip_ErrorCodeType ErrCode, Csec_Ip_CmdType u32CompletedCmd, void * pCallbackParam)
+{
+  Crypto_ServiceInfoType eService;
+  uint32 * pOutputLength;
+  uint8 * pOutputPtr;
+  uint32 u32ResultLength;
+  uint32 u32InputLength;
+  Std_ReturnType CryptoErrorCode;
+  struct Crypto_JobType * const pCryptoJob;
+  const struct Crypto_JobPrimitiveInfoType * _1;
+  const struct Crypto_PrimitiveInfoType * _2;
+  const struct Crypto_JobPrimitiveInfoType * _3;
+  const struct Crypto_PrimitiveInfoType * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pCryptoJob_7 = pCallbackParam_6(D);
+  # DEBUG pCryptoJob => pCryptoJob_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32InputLength_9 = pCryptoJob_7->jobPrimitiveInputOutput.inputLength;
+  # DEBUG u32InputLength => u32InputLength_9
+  # DEBUG BEGIN_STMT
+  _1 = pCryptoJob_7->jobPrimitiveInfo;
+  _2 = _1->primitiveInfo;
+  u32ResultLength_10 = _2->resultLength;
+  # DEBUG u32ResultLength => u32ResultLength_10
+  # DEBUG BEGIN_STMT
+  pOutputPtr_11 = pCryptoJob_7->jobPrimitiveInputOutput.outputPtr;
+  # DEBUG pOutputPtr => pOutputPtr_11
+  # DEBUG BEGIN_STMT
+  pOutputLength_12 = pCryptoJob_7->jobPrimitiveInputOutput.outputLengthPtr;
+  # DEBUG pOutputLength => pOutputLength_12
+  # DEBUG BEGIN_STMT
+  _3 = pCryptoJob_7->jobPrimitiveInfo;
+  _4 = _3->primitiveInfo;
+  eService_13 = _4->service;
+  # DEBUG eService => eService_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Crypto_Ipw_PushJobFromCdoQueueToCsec ();
+  # DEBUG BEGIN_STMT
+  Crypto_Ipw_State.u32CurrentlyProcessedJobId = 2779404885;
+  # DEBUG BEGIN_STMT
+  CryptoErrorCode_18 = Crypto_Ipw_TranslateCsecResponse (ErrCode_16(D));
+  # DEBUG CryptoErrorCode => CryptoErrorCode_18
+  # DEBUG BEGIN_STMT
+  Crypto_Ipw_FillVerifyPtr (pCryptoJob_7, ErrCode_16(D));
+  # DEBUG BEGIN_STMT
+  pCryptoJob_7->jobState = 0;
+  # DEBUG BEGIN_STMT
+  if (CryptoErrorCode_18 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  switch (eService_13) <default: <L8> [INV], case 1: <L1> [INV], case 3 ... 4: <L2> [INV], case 11: <L4> [INV]>
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  Crypto_Ipw_CopyOutputResult (pOutputPtr_11, pOutputLength_12, u32ResultLength_10);
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *pOutputLength_12 = u32InputLength_9;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  *pOutputLength_12 = 16;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  CryIf_CallbackNotification (pCryptoJob_7, CryptoErrorCode_18);
+  return;
+
+}
+
+
+Crypto_Ipw_FillVerifyPtr (const struct Crypto_JobType * pCryptoJob, const Csec_Ip_ErrorCodeType CsecResponse)
+{
+  Crypto_ServiceInfoType eCryptoService;
+  const struct Crypto_JobPrimitiveInfoType * _1;
+  const struct Crypto_PrimitiveInfoType * _2;
+  _Bool _3;
+  Crypto_VerifyResultType * _4;
+  Crypto_VerifyResultType * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pCryptoJob_8(D)->jobPrimitiveInfo;
+  _2 = _1->primitiveInfo;
+  eCryptoService_9 = _2->service;
+  # DEBUG eCryptoService => eCryptoService_9
+  # DEBUG BEGIN_STMT
+  if (eCryptoService_9 == 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (CsecResponse_10(D) == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  _3 = Crypto_Ipw_State.bMacVerificationSuccessful;
+  if (_3 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = pCryptoJob_8(D)->jobPrimitiveInputOutput.verifyPtr;
+  *_4 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _5 = pCryptoJob_8(D)->jobPrimitiveInputOutput.verifyPtr;
+  *_5 = 1;
+
+  <bb 7> :
+  return;
+
+}
+
+
+Crypto_Ipw_EncDecCbc (struct Crypto_JobType * pJob, Crypto_ServiceInfoType eService, Csec_Ip_KeyIdType eKeyId, const uint8 * pIV)
+{
+  uint32 * pOutputLength;
+  uint32 u32InputLength;
+  Crypto_ProcessingType eProcessingType;
+  Std_ReturnType RetVal;
+  struct Csec_Ip_ReqType CsecIpReq;
+  Csec_Ip_ErrorCodeType CsecResponse;
+  const struct Crypto_JobPrimitiveInfoType * _1;
+  long unsigned int _2;
+  const uint8 * _3;
+  long unsigned int _4;
+  uint8 * _5;
+  const uint8 * _6;
+  long unsigned int _7;
+  uint8 * _8;
+  Std_ReturnType _36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RetVal_15 = 1;
+  # DEBUG RetVal => RetVal_15
+  # DEBUG BEGIN_STMT
+  _1 = pJob_17(D)->jobPrimitiveInfo;
+  eProcessingType_18 = _1->processingType;
+  # DEBUG eProcessingType => eProcessingType_18
+  # DEBUG BEGIN_STMT
+  u32InputLength_19 = pJob_17(D)->jobPrimitiveInputOutput.inputLength;
+  # DEBUG u32InputLength => u32InputLength_19
+  # DEBUG BEGIN_STMT
+  pOutputLength_20 = pJob_17(D)->jobPrimitiveInputOutput.outputLengthPtr;
+  # DEBUG pOutputLength => pOutputLength_20
+  # DEBUG BEGIN_STMT
+  _2 = *pOutputLength_20;
+  if (u32InputLength_19 <= _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (eProcessingType_18 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 0;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 2;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pfCallback = Crypto_Ipw_ProcessAsyncCsecResponse;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pCallbackParam = pJob_17(D);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (eService_26(D) == 3)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _3 = pJob_17(D)->jobPrimitiveInputOutput.inputPtr;
+  _4 = pJob_17(D)->jobPrimitiveInputOutput.inputLength;
+  _5 = pJob_17(D)->jobPrimitiveInputOutput.outputPtr;
+  CsecResponse_32 = Csec_Ip_EncryptCbc (&CsecIpReq, eKeyId_27(D), _3, _4, pIV_28(D), _5);
+  # DEBUG CsecResponse => CsecResponse_32
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _6 = pJob_17(D)->jobPrimitiveInputOutput.inputPtr;
+  _7 = pJob_17(D)->jobPrimitiveInputOutput.inputLength;
+  _8 = pJob_17(D)->jobPrimitiveInputOutput.outputPtr;
+  CsecResponse_30 = Csec_Ip_DecryptCbc (&CsecIpReq, eKeyId_27(D), _6, _7, pIV_28(D), _8);
+  # DEBUG CsecResponse => CsecResponse_30
+
+  <bb 9> :
+  # CsecResponse_9 = PHI <CsecResponse_32(7), CsecResponse_30(8)>
+  # DEBUG CsecResponse => CsecResponse_9
+  # DEBUG BEGIN_STMT
+  if (CsecResponse_9 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  if (eProcessingType_18 == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  *pOutputLength_20 = u32InputLength_19;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  RetVal_35 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_9);
+  # DEBUG RetVal => RetVal_35
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  RetVal_21 = 3;
+  # DEBUG RetVal => RetVal_21
+
+  <bb 14> :
+  # RetVal_10 = PHI <RetVal_35(12), RetVal_21(13)>
+  # DEBUG RetVal => RetVal_10
+  # DEBUG BEGIN_STMT
+  _36 = RetVal_10;
+  CsecIpReq ={v} {CLOBBER};
+  return _36;
+
+}
+
+
+Crypto_Ipw_EncDecEcb (struct Crypto_JobType * pJob, Crypto_ServiceInfoType eService, Csec_Ip_KeyIdType eKeyId)
+{
+  uint32 * pOutputLength;
+  uint32 u32InputLength;
+  Crypto_ProcessingType eProcessingType;
+  Std_ReturnType RetVal;
+  struct Csec_Ip_ReqType CsecIpReq;
+  Csec_Ip_ErrorCodeType CsecResponse;
+  const struct Crypto_JobPrimitiveInfoType * _1;
+  long unsigned int _2;
+  const uint8 * _3;
+  long unsigned int _4;
+  uint8 * _5;
+  const uint8 * _6;
+  long unsigned int _7;
+  uint8 * _8;
+  Std_ReturnType _35;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RetVal_15 = 1;
+  # DEBUG RetVal => RetVal_15
+  # DEBUG BEGIN_STMT
+  _1 = pJob_17(D)->jobPrimitiveInfo;
+  eProcessingType_18 = _1->processingType;
+  # DEBUG eProcessingType => eProcessingType_18
+  # DEBUG BEGIN_STMT
+  u32InputLength_19 = pJob_17(D)->jobPrimitiveInputOutput.inputLength;
+  # DEBUG u32InputLength => u32InputLength_19
+  # DEBUG BEGIN_STMT
+  pOutputLength_20 = pJob_17(D)->jobPrimitiveInputOutput.outputLengthPtr;
+  # DEBUG pOutputLength => pOutputLength_20
+  # DEBUG BEGIN_STMT
+  _2 = *pOutputLength_20;
+  if (u32InputLength_19 <= _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (eProcessingType_18 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 0;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 2;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pfCallback = Crypto_Ipw_ProcessAsyncCsecResponse;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pCallbackParam = pJob_17(D);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (eService_26(D) == 3)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _3 = pJob_17(D)->jobPrimitiveInputOutput.inputPtr;
+  _4 = pJob_17(D)->jobPrimitiveInputOutput.inputLength;
+  _5 = pJob_17(D)->jobPrimitiveInputOutput.outputPtr;
+  CsecResponse_31 = Csec_Ip_EncryptEcb (&CsecIpReq, eKeyId_27(D), _3, _4, _5);
+  # DEBUG CsecResponse => CsecResponse_31
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _6 = pJob_17(D)->jobPrimitiveInputOutput.inputPtr;
+  _7 = pJob_17(D)->jobPrimitiveInputOutput.inputLength;
+  _8 = pJob_17(D)->jobPrimitiveInputOutput.outputPtr;
+  CsecResponse_29 = Csec_Ip_DecryptEcb (&CsecIpReq, eKeyId_27(D), _6, _7, _8);
+  # DEBUG CsecResponse => CsecResponse_29
+
+  <bb 9> :
+  # CsecResponse_9 = PHI <CsecResponse_31(7), CsecResponse_29(8)>
+  # DEBUG CsecResponse => CsecResponse_9
+  # DEBUG BEGIN_STMT
+  if (CsecResponse_9 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  if (eProcessingType_18 == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  *pOutputLength_20 = u32InputLength_19;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  RetVal_34 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_9);
+  # DEBUG RetVal => RetVal_34
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  RetVal_21 = 3;
+  # DEBUG RetVal => RetVal_21
+
+  <bb 14> :
+  # RetVal_10 = PHI <RetVal_34(12), RetVal_21(13)>
+  # DEBUG RetVal => RetVal_10
+  # DEBUG BEGIN_STMT
+  _35 = RetVal_10;
+  CsecIpReq ={v} {CLOBBER};
+  return _35;
+
+}
+
+
+Crypto_Ipw_EncDec (struct Crypto_JobType * pJob, Crypto_ServiceInfoType eService)
+{
+  uint32 u32KeyMaterialKeyElemIdx;
+  uint32 u32CryptoKeyIdx;
+  Std_ReturnType RetVal;
+  Csec_Ip_KeyIdType eKeyId;
+  uint32 u32CipherIvKeyElemIdx;
+  const struct Crypto_JobPrimitiveInfoType * _1;
+  long unsigned int _2;
+  const struct Crypto_JobPrimitiveInfoType * _3;
+  const struct Crypto_PrimitiveInfoType * _4;
+  <unnamed type> _5;
+  uint8 * _6;
+  const struct Crypto_JobPrimitiveInfoType * _7;
+  const struct Crypto_PrimitiveInfoType * _8;
+  <unnamed type> _9;
+  const long unsigned int iftmp.2_11;
+  const long unsigned int iftmp.2_16;
+  const long unsigned int iftmp.2_17;
+  Std_ReturnType _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RetVal_13 = 1;
+  # DEBUG RetVal => RetVal_13
+  # DEBUG BEGIN_STMT
+  _1 = pJob_15(D)->jobPrimitiveInfo;
+  _2 = _1->cryIfKeyId;
+  if (_2 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.2_17 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.2_16 = 4294967295;
+
+  <bb 5> :
+  # iftmp.2_11 = PHI <iftmp.2_17(3), iftmp.2_16(4)>
+  u32CryptoKeyIdx_18 = iftmp.2_11;
+  # DEBUG u32CryptoKeyIdx => u32CryptoKeyIdx_18
+  # DEBUG BEGIN_STMT
+  u32KeyMaterialKeyElemIdx_20 = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx_18, 1);
+  # DEBUG u32KeyMaterialKeyElemIdx => u32KeyMaterialKeyElemIdx_20
+  # DEBUG BEGIN_STMT
+  if (u32KeyMaterialKeyElemIdx_20 != 4294967295)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eKeyId_21 = Crypto_aKeyElementList[u32KeyMaterialKeyElemIdx_20].eKeyId;
+  # DEBUG eKeyId => eKeyId_21
+  # DEBUG BEGIN_STMT
+  _3 = pJob_15(D)->jobPrimitiveInfo;
+  _4 = _3->primitiveInfo;
+  _5 = _4->algorithm.mode;
+  if (_5 == 2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  u32CipherIvKeyElemIdx_26 = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx_18, 5);
+  # DEBUG u32CipherIvKeyElemIdx => u32CipherIvKeyElemIdx_26
+  # DEBUG BEGIN_STMT
+  if (u32CipherIvKeyElemIdx_26 != 4294967295)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _6 = Crypto_aKeyElementList[u32CipherIvKeyElemIdx_26].pCryptoElementArray;
+  RetVal_28 = Crypto_Ipw_EncDecCbc (pJob_15(D), eService_22(D), eKeyId_21, _6);
+  # DEBUG RetVal => RetVal_28
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _7 = pJob_15(D)->jobPrimitiveInfo;
+  _8 = _7->primitiveInfo;
+  _9 = _8->algorithm.mode;
+  if (_9 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  RetVal_24 = Crypto_Ipw_EncDecEcb (pJob_15(D), eService_22(D), eKeyId_21);
+  # DEBUG RetVal => RetVal_24
+
+  <bb 11> :
+  # RetVal_10 = PHI <RetVal_13(5), RetVal_28(8), RetVal_13(9), RetVal_24(10), RetVal_13(7)>
+  # DEBUG RetVal => RetVal_10
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _29 = RetVal_10;
+  return _29;
+
+}
+
+
+Crypto_Ipw_MacVerify (struct Crypto_JobType * pJob)
+{
+  uint16 u16MacBitLen;
+  uint32 u32KeyMaterialKeyElemIdx;
+  uint32 u32InputBitsLength;
+  uint32 u32CryptoKeyIdx;
+  Crypto_ProcessingType eProcessingType;
+  Std_ReturnType RetVal;
+  struct Csec_Ip_ReqType CsecIpReq;
+  Csec_Ip_KeyIdType eKeyId;
+  Csec_Ip_ErrorCodeType CsecResponse;
+  const struct Crypto_JobPrimitiveInfoType * _1;
+  const struct Crypto_JobPrimitiveInfoType * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  short unsigned int _6;
+  const uint8 * _7;
+  const uint8 * _8;
+  const long unsigned int iftmp.1_10;
+  const long unsigned int iftmp.1_18;
+  const long unsigned int iftmp.1_19;
+  Std_ReturnType _35;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RetVal_14 = 1;
+  # DEBUG RetVal => RetVal_14
+  # DEBUG BEGIN_STMT
+  _1 = pJob_16(D)->jobPrimitiveInfo;
+  eProcessingType_17 = _1->processingType;
+  # DEBUG eProcessingType => eProcessingType_17
+  # DEBUG BEGIN_STMT
+  _2 = pJob_16(D)->jobPrimitiveInfo;
+  _3 = _2->cryIfKeyId;
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.1_19 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.1_18 = 4294967295;
+
+  <bb 5> :
+  # iftmp.1_10 = PHI <iftmp.1_19(3), iftmp.1_18(4)>
+  u32CryptoKeyIdx_20 = iftmp.1_10;
+  # DEBUG u32CryptoKeyIdx => u32CryptoKeyIdx_20
+  # DEBUG BEGIN_STMT
+  _4 = pJob_16(D)->jobPrimitiveInputOutput.inputLength;
+  u32InputBitsLength_21 = _4 << 3;
+  # DEBUG u32InputBitsLength => u32InputBitsLength_21
+  # DEBUG BEGIN_STMT
+  u32KeyMaterialKeyElemIdx_23 = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx_20, 1);
+  # DEBUG u32KeyMaterialKeyElemIdx => u32KeyMaterialKeyElemIdx_23
+  # DEBUG BEGIN_STMT
+  _5 = pJob_16(D)->jobPrimitiveInputOutput.secondaryInputLength;
+  _6 = (short unsigned int) _5;
+  u16MacBitLen_24 = _6 << 3;
+  # DEBUG u16MacBitLen => u16MacBitLen_24
+  # DEBUG BEGIN_STMT
+  if (u32KeyMaterialKeyElemIdx_23 != 4294967295)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eKeyId_25 = Crypto_aKeyElementList[u32KeyMaterialKeyElemIdx_23].eKeyId;
+  # DEBUG eKeyId => eKeyId_25
+  # DEBUG BEGIN_STMT
+  if (eProcessingType_17 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 2;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pfCallback = Crypto_Ipw_ProcessAsyncCsecResponse;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pCallbackParam = pJob_16(D);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _7 = pJob_16(D)->jobPrimitiveInputOutput.inputPtr;
+  _8 = pJob_16(D)->jobPrimitiveInputOutput.secondaryInputPtr;
+  CsecResponse_31 = Csec_Ip_VerifyMac (&CsecIpReq, eKeyId_25, _7, u32InputBitsLength_21, _8, u16MacBitLen_24, &Crypto_Ipw_State.bMacVerificationSuccessful);
+  # DEBUG CsecResponse => CsecResponse_31
+  # DEBUG BEGIN_STMT
+  if (eProcessingType_17 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Crypto_Ipw_FillVerifyPtr (pJob_16(D), CsecResponse_31);
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  RetVal_34 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_31);
+  # DEBUG RetVal => RetVal_34
+
+  <bb 12> :
+  # RetVal_9 = PHI <RetVal_14(5), RetVal_34(11)>
+  # DEBUG RetVal => RetVal_9
+  # DEBUG BEGIN_STMT
+  _35 = RetVal_9;
+  CsecIpReq ={v} {CLOBBER};
+  return _35;
+
+}
+
+
+Crypto_Ipw_MacGenerate (struct Crypto_JobType * pJob)
+{
+  uint32 * pOutputLength;
+  uint8 * pOutputPtr;
+  uint32 u32ResultLength;
+  uint32 u32KeyMaterialKeyElemIdx;
+  uint32 u32InputBitsLength;
+  uint32 u32CryptoKeyIdx;
+  Crypto_ProcessingType eProcessingType;
+  Std_ReturnType RetVal;
+  struct Csec_Ip_ReqType CsecIpReq;
+  Csec_Ip_KeyIdType eKeyId;
+  Csec_Ip_ErrorCodeType CsecResponse;
+  const struct Crypto_JobPrimitiveInfoType * _1;
+  const struct Crypto_JobPrimitiveInfoType * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  const struct Crypto_JobPrimitiveInfoType * _5;
+  const struct Crypto_PrimitiveInfoType * _6;
+  long unsigned int _7;
+  const uint8 * _8;
+  const long unsigned int iftmp.0_10;
+  const long unsigned int iftmp.0_18;
+  const long unsigned int iftmp.0_19;
+  Std_ReturnType _38;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RetVal_14 = 1;
+  # DEBUG RetVal => RetVal_14
+  # DEBUG BEGIN_STMT
+  _1 = pJob_16(D)->jobPrimitiveInfo;
+  eProcessingType_17 = _1->processingType;
+  # DEBUG eProcessingType => eProcessingType_17
+  # DEBUG BEGIN_STMT
+  _2 = pJob_16(D)->jobPrimitiveInfo;
+  _3 = _2->cryIfKeyId;
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.0_19 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.0_18 = 4294967295;
+
+  <bb 5> :
+  # iftmp.0_10 = PHI <iftmp.0_19(3), iftmp.0_18(4)>
+  u32CryptoKeyIdx_20 = iftmp.0_10;
+  # DEBUG u32CryptoKeyIdx => u32CryptoKeyIdx_20
+  # DEBUG BEGIN_STMT
+  _4 = pJob_16(D)->jobPrimitiveInputOutput.inputLength;
+  u32InputBitsLength_21 = _4 << 3;
+  # DEBUG u32InputBitsLength => u32InputBitsLength_21
+  # DEBUG BEGIN_STMT
+  u32KeyMaterialKeyElemIdx_23 = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx_20, 1);
+  # DEBUG u32KeyMaterialKeyElemIdx => u32KeyMaterialKeyElemIdx_23
+  # DEBUG BEGIN_STMT
+  _5 = pJob_16(D)->jobPrimitiveInfo;
+  _6 = _5->primitiveInfo;
+  u32ResultLength_24 = _6->resultLength;
+  # DEBUG u32ResultLength => u32ResultLength_24
+  # DEBUG BEGIN_STMT
+  pOutputPtr_25 = pJob_16(D)->jobPrimitiveInputOutput.outputPtr;
+  # DEBUG pOutputPtr => pOutputPtr_25
+  # DEBUG BEGIN_STMT
+  pOutputLength_26 = pJob_16(D)->jobPrimitiveInputOutput.outputLengthPtr;
+  # DEBUG pOutputLength => pOutputLength_26
+  # DEBUG BEGIN_STMT
+  if (u32KeyMaterialKeyElemIdx_23 != 4294967295)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eKeyId_27 = Crypto_aKeyElementList[u32KeyMaterialKeyElemIdx_23].eKeyId;
+  # DEBUG eKeyId => eKeyId_27
+  # DEBUG BEGIN_STMT
+  _7 = *pOutputLength_26;
+  if (u32ResultLength_24 <= _7)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (eProcessingType_17 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  CsecIpReq.eReqType = 2;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pfCallback = Crypto_Ipw_ProcessAsyncCsecResponse;
+  # DEBUG BEGIN_STMT
+  CsecIpReq.pCallbackParam = pJob_16(D);
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _8 = pJob_16(D)->jobPrimitiveInputOutput.inputPtr;
+  CsecResponse_34 = Csec_Ip_GenerateMac (&CsecIpReq, eKeyId_27, _8, u32InputBitsLength_21, &u8aOutputResultTemp);
+  # DEBUG CsecResponse => CsecResponse_34
+  # DEBUG BEGIN_STMT
+  if (CsecResponse_34 == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 11> :
+  if (eProcessingType_17 == 1)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Crypto_Ipw_CopyOutputResult (pOutputPtr_25, pOutputLength_26, u32ResultLength_24);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  RetVal_37 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_34);
+  # DEBUG RetVal => RetVal_37
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  RetVal_28 = 3;
+  # DEBUG RetVal => RetVal_28
+
+  <bb 15> :
+  # RetVal_9 = PHI <RetVal_14(5), RetVal_37(13), RetVal_28(14)>
+  # DEBUG RetVal => RetVal_9
+  # DEBUG BEGIN_STMT
+  _38 = RetVal_9;
+  CsecIpReq ={v} {CLOBBER};
+  return _38;
+
+}
+
+
+Crypto_Ipw_CopyOutputResult (uint8 * pOutputPtr, uint32 * pOutputLength, uint32 u32ResultLength)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (u32ResultLength_2(D) > 15)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *pOutputLength_4(D) = 16;
+  # DEBUG BEGIN_STMT
+  Crypto_Util_Memcpy8 (pOutputPtr_6(D), &u8aOutputResultTemp, 16);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *pOutputLength_4(D) = u32ResultLength_2(D);
+  # DEBUG BEGIN_STMT
+  Crypto_Util_Memcpy8 (pOutputPtr_6(D), &u8aOutputResultTemp, u32ResultLength_2(D));
+
+  <bb 5> :
+  return;
+
+}
+
+
+Crypto_Ipw_SheLoadPlainKey (const uint8 * pKeyMaterial)
+{
+  Csec_Ip_ErrorCodeType CsecResponse;
+  Std_ReturnType RetVal;
+  Std_ReturnType _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CsecResponse_4 = Csec_Ip_LoadPlainKey (pKeyMaterial_2(D));
+  # DEBUG CsecResponse => CsecResponse_4
+  # DEBUG BEGIN_STMT
+  RetVal_6 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_4);
+  # DEBUG RetVal => RetVal_6
+  # DEBUG BEGIN_STMT
+  _7 = RetVal_6;
+  return _7;
+
+}
+
+
+Crypto_Ipw_SheLoadEncryptedKey (Csec_Ip_KeyIdType eKeyId, const uint8 * pKeyMaterial, uint32 u32MacProofKeyElemIdx, uint32 u32CipherProofKeyElemIdx)
+{
+  uint8 au8DummyM5[16];
+  uint8 au8DummyM4[32];
+  const uint8 * pM3;
+  const uint8 * pM2;
+  const uint8 * pM1;
+  Std_ReturnType RetVal;
+  boolean bRequestOk;
+  boolean bM4M5Requested;
+  uint8 * pM5;
+  uint8 * pM4;
+  Csec_Ip_ErrorCodeType CsecResponse;
+  long unsigned int _1;
+  long unsigned int _2;
+  uint32 * _3;
+  uint32 * _4;
+  Std_ReturnType _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bM4M5Requested_12 = 0;
+  # DEBUG bM4M5Requested => bM4M5Requested_12
+  # DEBUG BEGIN_STMT
+  bRequestOk_13 = 1;
+  # DEBUG bRequestOk => bRequestOk_13
+  # DEBUG BEGIN_STMT
+  RetVal_14 = 1;
+  # DEBUG RetVal => RetVal_14
+  # DEBUG BEGIN_STMT
+  pM1_16 = pKeyMaterial_15(D);
+  # DEBUG pM1 => pM1_16
+  # DEBUG BEGIN_STMT
+  pM2_17 = pKeyMaterial_15(D) + 16;
+  # DEBUG pM2 => pM2_17
+  # DEBUG BEGIN_STMT
+  pM3_18 = pKeyMaterial_15(D) + 48;
+  # DEBUG pM3 => pM3_18
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (u32CipherProofKeyElemIdx_19(D) != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  if (u32MacProofKeyElemIdx_20(D) != 4294967295)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyElementList[u32CipherProofKeyElemIdx_19(D)].u32CryptoKeyElementMaxSize;
+  if (_1 > 31)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _2 = Crypto_aKeyElementList[u32MacProofKeyElemIdx_20(D)].u32CryptoKeyElementMaxSize;
+  if (_2 > 15)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  pM4_22 = Crypto_aKeyElementList[u32CipherProofKeyElemIdx_19(D)].pCryptoElementArray;
+  # DEBUG pM4 => pM4_22
+  # DEBUG BEGIN_STMT
+  pM5_23 = Crypto_aKeyElementList[u32MacProofKeyElemIdx_20(D)].pCryptoElementArray;
+  # DEBUG pM5 => pM5_23
+  # DEBUG BEGIN_STMT
+  bM4M5Requested_24 = 1;
+  # DEBUG bM4M5Requested => bM4M5Requested_24
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  bRequestOk_25 = 0;
+  # DEBUG bRequestOk => bRequestOk_25
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  pM4_28 = &au8DummyM4;
+  # DEBUG pM4 => pM4_28
+  # DEBUG BEGIN_STMT
+  pM5_29 = &au8DummyM5;
+  # DEBUG pM5 => pM5_29
+
+  <bb 9> :
+  # pM4_5 = PHI <pM4_26(D)(7), pM4_28(8), pM4_22(6)>
+  # pM5_6 = PHI <pM5_27(D)(7), pM5_29(8), pM5_23(6)>
+  # bM4M5Requested_7 = PHI <bM4M5Requested_12(7), bM4M5Requested_12(8), bM4M5Requested_24(6)>
+  # bRequestOk_8 = PHI <bRequestOk_25(7), bRequestOk_13(8), bRequestOk_13(6)>
+  # DEBUG bRequestOk => bRequestOk_8
+  # DEBUG bM4M5Requested => bM4M5Requested_7
+  # DEBUG pM5 => pM5_6
+  # DEBUG pM4 => pM4_5
+  # DEBUG BEGIN_STMT
+  if (bRequestOk_8 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  CsecResponse_32 = Csec_Ip_LoadKey (eKeyId_30(D), pM1_16, pM2_17, pM3_18, pM4_5, pM5_6);
+  # DEBUG CsecResponse => CsecResponse_32
+  # DEBUG BEGIN_STMT
+  RetVal_34 = Crypto_Ipw_TranslateCsecResponse (CsecResponse_32);
+  # DEBUG RetVal => RetVal_34
+
+  <bb 11> :
+  # RetVal_9 = PHI <RetVal_14(9), RetVal_34(10)>
+  # DEBUG RetVal => RetVal_9
+  # DEBUG BEGIN_STMT
+  if (RetVal_9 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  if (bM4M5Requested_7 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _3 = Crypto_aKeyElementList[u32CipherProofKeyElemIdx_19(D)].pu32CryptoElementActualSize;
+  *_3 = 32;
+  # DEBUG BEGIN_STMT
+  _4 = Crypto_aKeyElementList[u32MacProofKeyElemIdx_20(D)].pu32CryptoElementActualSize;
+  *_4 = 16;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _37 = RetVal_9;
+  au8DummyM4 ={v} {CLOBBER};
+  au8DummyM5 ={v} {CLOBBER};
+  return _37;
+
+}
+
+

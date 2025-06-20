@@ -1,0 +1,3109 @@
+Crypto_ReportErrorToDet (uint8 u8ServiceId, uint8 u8Error)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8Error;
+  switch (_1) <default: <L4> [INV], case 128: <L0> [INV], case 131: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  Det_ReportRuntimeError (114, 0, u8ServiceId, 128);
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  Det_ReportRuntimeError (114, 0, u8ServiceId, 129);
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+<L4>:
+  return;
+
+}
+
+
+Crypto_MainFunction ()
+{
+  const uint32 u32PartitionId;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  Crypto_Ipw_MainFunction (0);
+  return;
+
+}
+
+
+Crypto_CertificateVerify (uint32 cryptoKeyId, uint32 verifyCryptoKeyId, Crypto_VerifyResultType * verifyPtr)
+{
+  uint32 u32VerifyCryptoKeyIdx;
+  uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7217;
+  long unsigned int iftmp.43;
+  long unsigned int iftmp.42;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.42 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.42 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.42;
+  # DEBUG BEGIN_STMT
+  if (verifyCryptoKeyId == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.43 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.43 = 4294967295;
+
+  <bb 8> :
+  u32VerifyCryptoKeyIdx = iftmp.43;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_CertificateVerify (0, u32CryptoKeyIdx, u32VerifyCryptoKeyIdx, verifyPtr);
+  # DEBUG BEGIN_STMT
+  RetVal.44_1 = (signed char) RetVal;
+  if (RetVal.44_1 < 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7217 = RetVal;
+  return D.7217;
+
+}
+
+
+Crypto_CertificateParse (uint32 cryptoKeyId)
+{
+  uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7205;
+  long unsigned int iftmp.40;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.40 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.40 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.40;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_CertificateParse (0, u32CryptoKeyIdx);
+  # DEBUG BEGIN_STMT
+  RetVal.41_1 = (signed char) RetVal;
+  if (RetVal.41_1 < 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7205 = RetVal;
+  return D.7205;
+
+}
+
+
+Crypto_KeyExchangeCalcSecret (uint32 cryptoKeyId, const uint8 * partnerPublicValuePtr, uint32 partnerPublicValueLength)
+{
+  const uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7189;
+  long unsigned int iftmp.38;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.38 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.38 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.38;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_GetNonDetErrorsForKeyExchCalcSecret (u32CryptoKeyIdx);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_CalcSecret (0, u32CryptoKeyIdx, partnerPublicValuePtr, partnerPublicValueLength);
+  # DEBUG BEGIN_STMT
+  RetVal.39_1 = (signed char) RetVal;
+  if (RetVal.39_1 < 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (10, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.7189 = RetVal;
+  return D.7189;
+
+}
+
+
+Crypto_KeyExchangeCalcPubVal (uint32 cryptoKeyId, uint8 * publicValuePtr, uint32 * publicValueLengthPtr)
+{
+  uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7168;
+  long unsigned int iftmp.36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.36 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.36 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.36;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_GetNonDetErrorsForKeyExchCalcPubVal (9, u32CryptoKeyIdx, publicValuePtr, publicValueLengthPtr);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_CopyDataFromPubValKeyElementToUser (0, u32CryptoKeyIdx, publicValuePtr, publicValueLengthPtr);
+  # DEBUG BEGIN_STMT
+  RetVal.37_1 = (signed char) RetVal;
+  if (RetVal.37_1 < 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (9, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.7168 = RetVal;
+  return D.7168;
+
+}
+
+
+Crypto_KeyDerive (uint32 cryptoKeyId, uint32 targetCryptoKeyId)
+{
+  const uint32 u32TargetKeyIdx;
+  const uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7147;
+  long unsigned int iftmp.34;
+  long unsigned int iftmp.33;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.33 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.33 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.33;
+  # DEBUG BEGIN_STMT
+  if (targetCryptoKeyId == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.34 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.34 = 4294967295;
+
+  <bb 8> :
+  u32TargetKeyIdx = iftmp.34;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_GetNonDetErrorsForKeyDerive (u32CryptoKeyIdx, u32TargetKeyIdx);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_KeyDerive (0, u32CryptoKeyIdx, u32TargetKeyIdx);
+  # DEBUG BEGIN_STMT
+  RetVal.35_1 = (signed char) RetVal;
+  if (RetVal.35_1 < 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (8, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  D.7147 = RetVal;
+  return D.7147;
+
+}
+
+
+Crypto_KeyGenerate (uint32 cryptoKeyId)
+{
+  uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7120;
+  long unsigned int iftmp.31;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.31 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.31 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.31;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_GetNonDetErrorsForKeyGenerate (u32CryptoKeyIdx);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_KeyGenerate (0, u32CryptoKeyIdx);
+  # DEBUG BEGIN_STMT
+  RetVal.32_1 = (signed char) RetVal;
+  if (RetVal.32_1 < 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (7, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.7120 = RetVal;
+  return D.7120;
+
+}
+
+
+Crypto_RandomSeed (uint32 cryptoKeyId, const uint8 * seedPtr, uint32 seedLength)
+{
+  const uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7106;
+  long unsigned int iftmp.29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.29 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.29 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.29;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_GetNonDetErrorsForRandomSeed (u32CryptoKeyIdx);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_RandomSeed (0, u32CryptoKeyIdx, seedPtr, seedLength);
+  # DEBUG BEGIN_STMT
+  RetVal.30_1 = (signed char) RetVal;
+  if (RetVal.30_1 < 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (13, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7106 = RetVal;
+  return D.7106;
+
+}
+
+
+Crypto_KeyElementIdsGet (uint32 cryptoKeyId, uint32 * keyElementIdsPtr, uint32 * keyElementIdsLengthPtr)
+{
+  uint32 u32Index;
+  uint32 u32CryptoKeyIdx;
+  uint32 * pKeyElementIds;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7096;
+  long unsigned int iftmp.28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  pKeyElementIds = keyElementIdsPtr;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.28 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.28 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.28;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyList[u32CryptoKeyIdx].u32NumCryptoKeyElements;
+  *keyElementIdsLengthPtr = _1;
+  # DEBUG BEGIN_STMT
+  u32Index = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _3 = u32Index * 4;
+  _4 = _2 + _3;
+  _5 = *_4;
+  _6 = Crypto_aKeyElementList[_5].u32CryptoKeyElementId;
+  *pKeyElementIds = _6;
+  # DEBUG BEGIN_STMT
+  pKeyElementIds = pKeyElementIds + 4;
+  # DEBUG BEGIN_STMT
+  u32Index = u32Index + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _7 = Crypto_aKeyList[u32CryptoKeyIdx].u32NumCryptoKeyElements;
+  if (u32Index < _7)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  D.7096 = RetVal;
+  return D.7096;
+
+}
+
+
+Crypto_KeyCopy (uint32 cryptoKeyId, uint32 targetCryptoKeyId)
+{
+  uint32 u32TargetKeyMaterialElementIndex;
+  uint32 u32KeyMaterialElementIndex;
+  uint32 u32TargetKeyIdx;
+  uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7053;
+  long unsigned int iftmp.25;
+  long unsigned int iftmp.24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.24 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.24 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.24;
+  # DEBUG BEGIN_STMT
+  if (targetCryptoKeyId == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.25 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.25 = 4294967295;
+
+  <bb 8> :
+  u32TargetKeyIdx = iftmp.25;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyList[u32CryptoKeyIdx].u32NumCryptoKeyElements;
+  _2 = Crypto_aKeyList[u32TargetKeyIdx].u32NumCryptoKeyElements;
+  if (_1 > _2)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_CheckKeyCopyValid (u32CryptoKeyIdx, u32TargetKeyIdx);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 129)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (16, 129);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  u32KeyMaterialElementIndex = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 1);
+  # DEBUG BEGIN_STMT
+  u32TargetKeyMaterialElementIndex = Crypto_Util_GetKeyElementIdx (u32TargetKeyIdx, 1);
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_CopyKeyElements (0, u32KeyMaterialElementIndex, u32CryptoKeyIdx, u32TargetKeyIdx, u32TargetKeyMaterialElementIndex);
+  # DEBUG BEGIN_STMT
+  RetVal.26_3 = (signed char) RetVal;
+  if (RetVal.26_3 < 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (16, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  D.7053 = RetVal;
+  return D.7053;
+
+}
+
+
+Crypto_KeyElementCopyPartial (uint32 cryptoKeyId, uint32 keyElementId, uint32 keyElementSourceOffset, uint32 keyElementTargetOffset, uint32 keyElementCopyLength, uint32 targetCryptoKeyId, uint32 targetKeyElementId)
+{
+  uint8 * pCryptoTargetElementArray;
+  const uint8 * pCryptoSourceElementArray;
+  uint32 u32TargetCryptoKeyElementActualSize;
+  uint32 u32CryptoTargetKeyElementIdx;
+  uint32 u32CryptoKeyElementIdx;
+  uint32 u32TargetKeyIdx;
+  uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7015;
+  long unsigned int iftmp.23;
+  long unsigned int iftmp.22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.22 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.22 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.22;
+  # DEBUG BEGIN_STMT
+  if (targetCryptoKeyId == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.23 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.23 = 4294967295;
+
+  <bb 8> :
+  u32TargetKeyIdx = iftmp.23;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, keyElementId);
+  # DEBUG BEGIN_STMT
+  u32CryptoTargetKeyElementIdx = Crypto_Util_GetKeyElementIdx (u32TargetKeyIdx, targetKeyElementId);
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_CheckParamAndConfForKeyElementCopyPartial (u32CryptoKeyElementIdx, u32CryptoTargetKeyElementIdx, keyElementSourceOffset, keyElementTargetOffset, keyElementCopyLength);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].pu32CryptoElementActualSize;
+  u32TargetCryptoKeyElementActualSize = *_1;
+  # DEBUG BEGIN_STMT
+  pCryptoSourceElementArray = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pCryptoElementArray;
+  # DEBUG BEGIN_STMT
+  pCryptoTargetElementArray = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].pCryptoElementArray;
+  # DEBUG BEGIN_STMT
+  if (keyElementId != 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 10> :
+  if (targetKeyElementId != 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _2 = pCryptoTargetElementArray + keyElementTargetOffset;
+  _3 = pCryptoSourceElementArray + keyElementSourceOffset;
+  Crypto_Util_Memcpy8 (_2, _3, keyElementCopyLength);
+  # DEBUG BEGIN_STMT
+  _4 = keyElementTargetOffset + keyElementCopyLength;
+  if (u32TargetCryptoKeyElementActualSize < _4)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _5 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].pu32CryptoElementActualSize;
+  _6 = keyElementTargetOffset + keyElementCopyLength;
+  *_5 = _6;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (19, 129);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  D.7015 = RetVal;
+  return D.7015;
+
+}
+
+
+Crypto_KeyElementCopy (uint32 cryptoKeyId, uint32 keyElementId, uint32 targetCryptoKeyId, uint32 targetKeyElementId)
+{
+  uint32 u32CryptoTargetKeyElementIdx;
+  uint32 u32CryptoKeyElementIdx;
+  uint32 u32TargetKeyIdx;
+  uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6977;
+  long unsigned int iftmp.19;
+  long unsigned int iftmp.18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.18 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.18 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.18;
+  # DEBUG BEGIN_STMT
+  if (targetCryptoKeyId == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.19 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.19 = 4294967295;
+
+  <bb 8> :
+  u32TargetKeyIdx = iftmp.19;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, keyElementId);
+  # DEBUG BEGIN_STMT
+  u32CryptoTargetKeyElementIdx = Crypto_Util_GetKeyElementIdx (u32TargetKeyIdx, targetKeyElementId);
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_CheckParamAndConfForKeyElementCopy (u32CryptoKeyElementIdx, u32CryptoTargetKeyElementIdx);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (keyElementId != 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (targetKeyElementId == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pCryptoElementArray;
+  _2 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _3 = *_2;
+  RetVal = Crypto_Ipw_ImportKey (0, _1, _3, u32TargetKeyIdx, u32CryptoTargetKeyElementIdx);
+  # DEBUG BEGIN_STMT
+  RetVal.20_4 = (signed char) RetVal;
+  if (RetVal.20_4 < 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (15, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  goto <bb 20>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _5 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].pCryptoElementArray;
+  if (_5 != 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _6 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].pCryptoElementArray;
+  _7 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pCryptoElementArray;
+  _8 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _9 = *_8;
+  Crypto_Util_Memcpy8 (_6, _7, _9);
+  # DEBUG BEGIN_STMT
+  _10 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _11 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].pu32CryptoElementActualSize;
+  _12 = *_10;
+  *_11 = _12;
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  goto <bb 20>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  goto <bb 20>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  if (targetKeyElementId != 1)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  _13 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].pCryptoElementArray;
+  _14 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].pu32CryptoElementActualSize;
+  RetVal = Crypto_Ipw_ExportKey (0, u32CryptoKeyElementIdx, 4294967295, _13, _14);
+  # DEBUG BEGIN_STMT
+  RetVal.21_15 = (signed char) RetVal;
+  if (RetVal.21_15 < 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (15, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  D.6977 = RetVal;
+  return D.6977;
+
+}
+
+
+Crypto_KeyElementGet (uint32 cryptoKeyId, uint32 keyElementId, uint8 * resultPtr, uint32 * resultLengthPtr)
+{
+  uint32 u32CryptoKeyElementIdx;
+  uint32 u32CryptoKeyElementExpIdx;
+  uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6949;
+  long unsigned int iftmp.16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.16 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.16 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.16;
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementExpIdx = 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, keyElementId);
+  # DEBUG BEGIN_STMT
+  if (u32CryptoKeyElementIdx != 4294967295)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].eCryptoKeyElementReadAccess;
+  if (_1 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  RetVal = 6;
+  goto <bb 18>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _2 = *resultLengthPtr;
+  _3 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _4 = *_3;
+  if (_2 < _4)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal = 3;
+  goto <bb 18>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (keyElementId == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_ExportKey (0, u32CryptoKeyElementIdx, u32CryptoKeyElementExpIdx, resultPtr, resultLengthPtr);
+  # DEBUG BEGIN_STMT
+  RetVal.17_5 = (signed char) RetVal;
+  if (RetVal.17_5 < 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (6, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  goto <bb 18>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _6 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _7 = *_6;
+  if (_7 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _8 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pCryptoElementArray;
+  if (_8 != 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _9 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pCryptoElementArray;
+  _10 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _11 = *_10;
+  Crypto_Util_Memcpy8 (resultPtr, _9, _11);
+  # DEBUG BEGIN_STMT
+  _12 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _13 = *_12;
+  *resultLengthPtr = _13;
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  RetVal = 13;
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  if (RetVal == 8)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  Det_ReportRuntimeError (114, 0, 6, 1);
+  goto <bb 22>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  if (RetVal == 6)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  Det_ReportRuntimeError (114, 0, 6, 2);
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6949 = RetVal;
+  return D.6949;
+
+}
+
+
+Crypto_KeySetValid (uint32 cryptoKeyId)
+{
+  uint32 u32CryptoKeyIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6916;
+  long unsigned int iftmp.15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.15 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.15 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.15;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_MarkKeyAsValid (0, u32CryptoKeyIdx, 5);
+  # DEBUG BEGIN_STMT
+  D.6916 = RetVal;
+  return D.6916;
+
+}
+
+
+Crypto_KeyElementSet (uint32 cryptoKeyId, uint32 keyElementId, const uint8 * keyPtr, uint32 keyLength)
+{
+  uint32 u32CryptoKeyIdx;
+  uint32 u32CryptoKeyElementIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6886;
+  long unsigned int D.6885;
+  long unsigned int iftmp.5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (cryptoKeyId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.5 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.5 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.5;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_CheckForErrorsInKeyElementSet (0, u32CryptoKeyIdx, keyPtr, keyLength, keyElementId, &u32CryptoKeyElementIdx);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (keyElementId == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  if (keyElementId == 98)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx.6_1 = u32CryptoKeyElementIdx;
+  RetVal = Crypto_Ipw_ImportKey (0, keyPtr, keyLength, u32CryptoKeyIdx, u32CryptoKeyElementIdx.6_1);
+  # DEBUG BEGIN_STMT
+  RetVal.7_2 = (signed char) RetVal;
+  if (RetVal.7_2 < 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (4, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx.8_3 = u32CryptoKeyElementIdx;
+  _4 = Crypto_aKeyElementList[u32CryptoKeyElementIdx.8_3].pCryptoElementArray;
+  if (_4 != 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx.9_5 = u32CryptoKeyElementIdx;
+  _6 = Crypto_aKeyElementList[u32CryptoKeyElementIdx.9_5].pCryptoElementArray;
+  Crypto_Util_Memcpy8 (_6, keyPtr, keyLength);
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx.10_7 = u32CryptoKeyElementIdx;
+  _8 = Crypto_aKeyElementList[u32CryptoKeyElementIdx.10_7].eCryptoKeyFormat;
+  if (_8 == 2)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx.11_9 = u32CryptoKeyElementIdx;
+  _10 = Crypto_aKeyElementList[u32CryptoKeyElementIdx.11_9].eCryptoKeyElementWriteAccess;
+  if (_10 == 4)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx.12_11 = u32CryptoKeyElementIdx;
+  _12 = Crypto_aKeyElementList[u32CryptoKeyElementIdx.12_11].pu32CryptoElementActualSize;
+  *_12 = 16;
+  goto <bb 19>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx.13_13 = u32CryptoKeyElementIdx;
+  _14 = Crypto_aKeyElementList[u32CryptoKeyElementIdx.13_13].pu32CryptoElementActualSize;
+  *_14 = 112;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx.14_15 = u32CryptoKeyElementIdx;
+  _16 = Crypto_aKeyElementList[u32CryptoKeyElementIdx.14_15].pu32CryptoElementActualSize;
+  *_16 = keyLength;
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  D.6885 = u32CryptoKeyIdx / 8;
+  _17 = Crypto_au8NvramBlob0[D.6885];
+  _18 = (signed char) _17;
+  _19 = u32CryptoKeyIdx & 7;
+  _20 = 1 << _19;
+  _21 = (signed char) _20;
+  _22 = ~_21;
+  _23 = _18 & _22;
+  _24 = (unsigned char) _23;
+  Crypto_au8NvramBlob0[D.6885] = _24;
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  D.6886 = RetVal;
+  u32CryptoKeyElementIdx = {CLOBBER};
+  return D.6886;
+
+}
+
+
+Crypto_CancelJob (uint32 objectId, struct Crypto_JobInfoType * job)
+{
+  uint32 u32ObjectIdx;
+  Std_ReturnType RetVal;
+  const uint32 u32PartitionId;
+  Std_ReturnType D.6860;
+  long unsigned int iftmp.3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  if (objectId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.3 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.3 = 4294967295;
+
+  <bb 5> :
+  u32ObjectIdx = iftmp.3;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_CancelJob (0, u32ObjectIdx, job);
+  # DEBUG BEGIN_STMT
+  RetVal.4_1 = (signed char) RetVal;
+  if (RetVal.4_1 < 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (14, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.6860 = RetVal;
+  return D.6860;
+
+}
+
+
+Crypto_ProcessJob (uint32 objectId, struct Crypto_JobType * job)
+{
+  Std_ReturnType RetVal;
+  const uint32 u32ObjectIdx;
+  const uint32 u32PartitionId;
+  Std_ReturnType D.6759;
+  long unsigned int iftmp.0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  if (objectId == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.0 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.0 = 4294967295;
+
+  <bb 5> :
+  u32ObjectIdx = iftmp.0;
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_CheckForErrorsInProcessJob (0, u32ObjectIdx, job);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_ProcessJobAndCheckNonDetErrors (job, 0);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_ProcessJob (0, u32ObjectIdx, job);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (RetVal == 3)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Det_ReportRuntimeError (114, 0, 3, 0);
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  RetVal.1_1 = (signed char) RetVal;
+  if (RetVal.1_1 < 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Crypto_ReportErrorToDet (3, RetVal);
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  D.6759 = RetVal;
+  return D.6759;
+
+}
+
+
+Crypto_GetVersionInfo (struct Std_VersionInfoType * versioninfo)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  versioninfo->moduleID = 114;
+  # DEBUG BEGIN_STMT
+  versioninfo->vendorID = 43;
+  # DEBUG BEGIN_STMT
+  versioninfo->sw_major_version = 1;
+  # DEBUG BEGIN_STMT
+  versioninfo->sw_minor_version = 0;
+  # DEBUG BEGIN_STMT
+  versioninfo->sw_patch_version = 0;
+  return;
+
+}
+
+
+Crypto_Init (const Crypto_ConfigType * configPtr)
+{
+  const uint32 u32PartitionId;
+  Std_ReturnType RetVal;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32PartitionId = 0;
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aeDriverState[0];
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_Init (0);
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Crypto_Util_InitJobQueues ();
+  # DEBUG BEGIN_STMT
+  Crypto_aeDriverState[0] = 1;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Crypto_ProcessJobAndCheckNonDetErrors (struct Crypto_JobType * pJob, const uint32 u32PartitionId)
+{
+  uint32 u32CryptoKeyIdx;
+  Crypto_ServiceInfoType eJobService;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6840;
+  const long unsigned int iftmp.2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = pJob->jobPrimitiveInfo;
+  _2 = _1->primitiveInfo;
+  eJobService = _2->service;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = pJob->jobPrimitiveInfo;
+  _4 = _3->cryIfKeyId;
+  if (_4 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.2 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.2 = 4294967295;
+
+  <bb 5> :
+  u32CryptoKeyIdx = iftmp.2;
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_VerifyKeyValidity (u32CryptoKeyIdx, eJobService);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6840 = RetVal;
+  return D.6840;
+
+}
+
+
+Crypto_CheckForErrorsInProcessJob (const uint32 u32PartitionId, const uint32 u32ObjectIdx, const struct Crypto_JobType * pJob)
+{
+  Crypto_ProcessJobErrorType eProcessJobError;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6770;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  eProcessJobError = Crypto_GetProcessJobError (pJob);
+  # DEBUG BEGIN_STMT
+  if (eProcessJobError == 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetVal = 9;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (eProcessJobError == 3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetVal = 129;
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (eProcessJobError == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6770 = RetVal;
+  return D.6770;
+
+}
+
+
+Crypto_CheckForErrorsInKeyElementSet (const uint32 u32PartitionId, uint32 u32CryptoKeyIdx, const uint8 * pKey, uint32 u32KeyLength, uint32 u32KeyElementId, uint32 * pCryptoKeyElementIdx)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6910;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, u32KeyElementId);
+  *pCryptoKeyElementIdx = _1;
+  # DEBUG BEGIN_STMT
+  _2 = *pCryptoKeyElementIdx;
+  if (_2 != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _3 = *pCryptoKeyElementIdx;
+  _4 = Crypto_aKeyElementList[_3].eCryptoKeyElementWriteAccess;
+  if (_4 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  RetVal = 7;
+  goto <bb 17>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _5 = *pCryptoKeyElementIdx;
+  _6 = Crypto_aKeyElementList[_5].eCryptoKeyFormat;
+  if (_6 == 2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _7 = *pCryptoKeyElementIdx;
+  _8 = Crypto_aKeyElementList[_7].eCryptoKeyElementWriteAccess;
+  if (_8 == 4)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (u32KeyLength != 64)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _9 = *pCryptoKeyElementIdx;
+  _10 = Crypto_aKeyElementList[_9].u32CryptoKeyElementMaxSize;
+  if (_10 <= 15)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal = 10;
+  goto <bb 17>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (u32KeyLength != 16)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  _11 = *pCryptoKeyElementIdx;
+  _12 = Crypto_aKeyElementList[_11].u32CryptoKeyElementMaxSize;
+  if (_12 <= 15)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  RetVal = 10;
+  goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _13 = *pCryptoKeyElementIdx;
+  _14 = Crypto_aKeyElementList[_13].bCryptoKeyElementAllowPartialAccess;
+  _15 = ~_14;
+  if (_15 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  _16 = *pCryptoKeyElementIdx;
+  _17 = Crypto_aKeyElementList[_16].u32CryptoKeyElementMaxSize;
+  if (u32KeyLength < _17)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  _18 = *pCryptoKeyElementIdx;
+  _19 = Crypto_aKeyElementList[_18].u32CryptoKeyElementMaxSize;
+  if (u32KeyLength > _19)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  RetVal = 10;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  D.6910 = RetVal;
+  return D.6910;
+
+}
+
+
+Crypto_CheckParamAndConfForKeyElementCopyPartial (const uint32 u32CryptoKeyElementIdx, const uint32 u32CryptoTargetKeyElementIdx, const uint32 u32KeyElementSourceOffset, const uint32 u32KeyElementTargetOffset, const uint32 u32KeyElementCopyLength)
+{
+  uint32 u32CryptoKeyElementActualSize;
+  uint32 u32TargetCryptoKeyElementMaxSize;
+  uint32 u32CryptoKeyElementMaxSize;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7034;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (u32CryptoKeyElementIdx != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 3> :
+  if (u32CryptoTargetKeyElementIdx != 4294967295)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementMaxSize = Crypto_aKeyElementList[u32CryptoKeyElementIdx].u32CryptoKeyElementMaxSize;
+  # DEBUG BEGIN_STMT
+  u32TargetCryptoKeyElementMaxSize = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].u32CryptoKeyElementMaxSize;
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  u32CryptoKeyElementActualSize = *_1;
+  # DEBUG BEGIN_STMT
+  _2 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].eCryptoKeyElementReadAccess;
+  if (_2 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetVal = 6;
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].eCryptoKeyElementWriteAccess;
+  if (_3 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  RetVal = 7;
+  goto <bb 14>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _4 = u32KeyElementSourceOffset + u32KeyElementCopyLength;
+  if (u32CryptoKeyElementMaxSize < _4)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _5 = u32KeyElementTargetOffset + u32KeyElementCopyLength;
+  if (u32TargetCryptoKeyElementMaxSize < _5)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  RetVal = 10;
+  goto <bb 14>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (u32CryptoKeyElementActualSize == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  RetVal = 13;
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  D.7034 = RetVal;
+  return D.7034;
+
+}
+
+
+Crypto_CheckParamAndConfForKeyElementCopy (const uint32 u32CryptoKeyElementIdx, const uint32 u32CryptoTargetKeyElementIdx)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6997;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  if (u32CryptoKeyElementIdx != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 3> :
+  if (u32CryptoTargetKeyElementIdx != 4294967295)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].eCryptoKeyElementReadAccess;
+  if (_1 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetVal = 6;
+  goto <bb 15>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].eCryptoKeyElementWriteAccess;
+  if (_2 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  RetVal = 7;
+  goto <bb 15>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _4 = *_3;
+  _5 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].u32CryptoKeyElementMaxSize;
+  if (_4 > _5)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _6 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _7 = *_6;
+  _8 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].u32CryptoKeyElementMaxSize;
+  if (_7 != _8)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  _9 = Crypto_aKeyElementList[u32CryptoTargetKeyElementIdx].bCryptoKeyElementAllowPartialAccess;
+  _10 = ~_9;
+  if (_10 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  RetVal = 10;
+  goto <bb 15>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _11 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].pu32CryptoElementActualSize;
+  _12 = *_11;
+  if (_12 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  RetVal = 13;
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  D.6997 = RetVal;
+  return D.6997;
+
+}
+
+
+Crypto_CheckKeyCopyValidKeyElements (uint32 u32CryptoKeyIdx, uint32 u32CryptoKeyElemIdx, uint32 u32TargetKeyIdx, boolean * pbFound)
+{
+  uint32 u32Counter;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7081;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32Counter = 0;
+  goto <bb 14>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _2 = u32CryptoKeyElemIdx * 4;
+  _3 = _1 + _2;
+  _4 = *_3;
+  _5 = Crypto_aKeyElementList[_4].u32CryptoKeyElementId;
+  _6 = Crypto_aKeyList[u32TargetKeyIdx].pCryptoKeyElementList;
+  _7 = u32Counter * 4;
+  _8 = _6 + _7;
+  _9 = *_8;
+  _10 = Crypto_aKeyElementList[_9].u32CryptoKeyElementId;
+  if (_5 == _10)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *pbFound = 1;
+  # DEBUG BEGIN_STMT
+  _11 = Crypto_aKeyList[u32TargetKeyIdx].pCryptoKeyElementList;
+  _12 = u32Counter * 4;
+  _13 = _11 + _12;
+  _14 = *_13;
+  _15 = Crypto_aKeyElementList[_14].eCryptoKeyElementWriteAccess;
+  if (_15 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetVal = 7;
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _16 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _17 = u32CryptoKeyElemIdx * 4;
+  _18 = _16 + _17;
+  _19 = *_18;
+  _20 = Crypto_aKeyElementList[_19].pu32CryptoElementActualSize;
+  _21 = *_20;
+  _22 = Crypto_aKeyList[u32TargetKeyIdx].pCryptoKeyElementList;
+  _23 = u32Counter * 4;
+  _24 = _22 + _23;
+  _25 = *_24;
+  _26 = Crypto_aKeyElementList[_25].u32CryptoKeyElementMaxSize;
+  if (_21 > _26)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _27 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _28 = u32CryptoKeyElemIdx * 4;
+  _29 = _27 + _28;
+  _30 = *_29;
+  _31 = Crypto_aKeyElementList[_30].pu32CryptoElementActualSize;
+  _32 = *_31;
+  _33 = Crypto_aKeyList[u32TargetKeyIdx].pCryptoKeyElementList;
+  _34 = u32Counter * 4;
+  _35 = _33 + _34;
+  _36 = *_35;
+  _37 = Crypto_aKeyElementList[_36].u32CryptoKeyElementMaxSize;
+  if (_32 != _37)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  _38 = Crypto_aKeyList[u32TargetKeyIdx].pCryptoKeyElementList;
+  _39 = u32Counter * 4;
+  _40 = _38 + _39;
+  _41 = *_40;
+  _42 = Crypto_aKeyElementList[_41].bCryptoKeyElementAllowPartialAccess;
+  _43 = ~_42;
+  if (_43 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal = 10;
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _44 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _45 = u32CryptoKeyElemIdx * 4;
+  _46 = _44 + _45;
+  _47 = *_46;
+  _48 = Crypto_aKeyElementList[_47].u32CryptoKeyElementId;
+  if (_48 == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  RetVal = 129;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (RetVal != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  u32Counter = u32Counter + 1;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _49 = Crypto_aKeyList[u32TargetKeyIdx].u32NumCryptoKeyElements;
+  if (u32Counter < _49)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  D.7081 = RetVal;
+  return D.7081;
+
+}
+
+
+Crypto_CheckKeyCopyValid (uint32 u32CryptoKeyIdx, uint32 u32TargetKeyIdx)
+{
+  boolean bFound;
+  uint32 u32Counter;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7064;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32Counter = 0;
+  goto <bb 12>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _2 = u32Counter * 4;
+  _3 = _1 + _2;
+  _4 = *_3;
+  _5 = Crypto_aKeyElementList[_4].eCryptoKeyElementReadAccess;
+  if (_5 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  RetVal = 6;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  bFound = 0;
+  # DEBUG BEGIN_STMT
+  if (RetVal == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_CheckKeyCopyValidKeyElements (u32CryptoKeyIdx, u32Counter, u32TargetKeyIdx, &bFound);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  bFound.27_6 = bFound;
+  _7 = ~bFound.27_6;
+  if (_7 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  if (RetVal == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (RetVal != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  u32Counter = u32Counter + 1;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _8 = Crypto_aKeyList[u32CryptoKeyIdx].u32NumCryptoKeyElements;
+  if (u32Counter < _8)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  D.7064 = RetVal;
+  bFound = {CLOBBER};
+  return D.7064;
+
+}
+
+
+Crypto_MarkKeyAsValid (const uint32 u32PartitionId, const uint32 u32CryptoKeyIdx, const uint8 u8ServiceId)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6918;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = u32CryptoKeyIdx / 8;
+  _2 = Crypto_au8NvramBlob0[_1];
+  _3 = u32CryptoKeyIdx & 7;
+  _4 = 1 << _3;
+  _5 = (unsigned char) _4;
+  _6 = u32CryptoKeyIdx / 8;
+  _7 = _2 | _5;
+  Crypto_au8NvramBlob0[_6] = _7;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6918 = RetVal;
+  return D.6918;
+
+}
+
+
+Crypto_GetNonDetErrorsForKeyExchCalcSecret (const uint32 u32CryptoKeyIdx)
+{
+  const uint32 u32CryptoKeyElementSharedIdx;
+  const uint32 u32CryptoKeyElementPubIdx;
+  const uint32 u32CryptoKeyElementPrivIdx;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7197;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementPrivIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 9);
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementPubIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 10);
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementSharedIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 1);
+  # DEBUG BEGIN_STMT
+  if (u32CryptoKeyElementPrivIdx != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  if (u32CryptoKeyElementPubIdx != 4294967295)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  if (u32CryptoKeyElementSharedIdx != 4294967295)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  D.7197 = RetVal;
+  return D.7197;
+
+}
+
+
+Crypto_CopyDataFromPubValKeyElementToUser (const uint32 u32PartitionId, const uint32 u32CryptoKeyIdx, uint8 * const publicValuePtr, uint32 * const publicValueLengthPtr)
+{
+  const uint32 u32CryptoKeyElementIdx;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7179;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 10);
+  # DEBUG BEGIN_STMT
+  RetVal = Crypto_Ipw_ExportKey (u32PartitionId, u32CryptoKeyElementIdx, 4294967295, publicValuePtr, publicValueLengthPtr);
+  # DEBUG BEGIN_STMT
+  D.7179 = RetVal;
+  return D.7179;
+
+}
+
+
+Crypto_GetNonDetErrorsForKeyExchCalcPubVal (const uint8 u8ServiceId, const uint32 u32CryptoKeyIdx, const uint8 * const publicValuePtr, const uint32 * const publicValueLengthPtr)
+{
+  const uint32 u32CryptoKeyElementIdx;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7177;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 10);
+  # DEBUG BEGIN_STMT
+  if (u32CryptoKeyElementIdx != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = *publicValueLengthPtr;
+  _2 = Crypto_aKeyElementList[u32CryptoKeyElementIdx].u32CryptoKeyElementMaxSize;
+  if (_1 < _2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (u8ServiceId == 9)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportRuntimeError (114, 0, 9, 0);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = 3;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7177 = RetVal;
+  return D.7177;
+
+}
+
+
+Crypto_GetNonDetErrorsForKeyDerive (const uint32 u32CryptoKeyIdx, const uint32 u32CryptoTargetKeyIdx)
+{
+  const uint32 u32DerivSecondAlgoKeyElemIdx;
+  const uint32 u32TargetPasswordKeyElemIdx;
+  const uint32 u32DerivSaltKeyElemIdx;
+  const uint32 u32DerivAlgoKeyElemIdx;
+  const uint32 u32PasswordKeyElemIdx;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7158;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  u32PasswordKeyElemIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 1);
+  # DEBUG BEGIN_STMT
+  u32DerivAlgoKeyElemIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 15);
+  # DEBUG BEGIN_STMT
+  u32DerivSaltKeyElemIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 13);
+  # DEBUG BEGIN_STMT
+  u32TargetPasswordKeyElemIdx = Crypto_Util_GetKeyElementIdx (u32CryptoTargetKeyIdx, 1);
+  # DEBUG BEGIN_STMT
+  u32DerivSecondAlgoKeyElemIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 100);
+  # DEBUG BEGIN_STMT
+  if (u32DerivSecondAlgoKeyElemIdx != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  if (u32PasswordKeyElemIdx != 4294967295)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  if (u32DerivAlgoKeyElemIdx != 4294967295)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  if (u32DerivSaltKeyElemIdx != 4294967295)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  if (u32TargetPasswordKeyElemIdx != 4294967295)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyElementList[u32PasswordKeyElemIdx].pu32CryptoElementActualSize;
+  _2 = *_1;
+  if (_2 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  RetVal = 13;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.7158 = RetVal;
+  return D.7158;
+
+}
+
+
+Crypto_GetNonDetErrorsForKeyGenerate (const uint32 u32CryptoKeyIdx)
+{
+  const uint32 u32CurveIdKeyElemIdx;
+  const uint32 u32CryptoKeyBaseExchangeIdx;
+  const uint32 u32AlgoFamKeyElemIdx;
+  const uint32 u32CryptoKeyElementIdx;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7133;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyElementIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 1);
+  # DEBUG BEGIN_STMT
+  u32AlgoFamKeyElemIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 17);
+  # DEBUG BEGIN_STMT
+  u32CryptoKeyBaseExchangeIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 8);
+  # DEBUG BEGIN_STMT
+  u32CurveIdKeyElemIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 29);
+  # DEBUG BEGIN_STMT
+  if (u32CryptoKeyBaseExchangeIdx != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = Crypto_aKeyElementList[u32CryptoKeyBaseExchangeIdx].pu32CryptoElementActualSize;
+  _2 = *_1;
+  if (_2 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (u32CurveIdKeyElemIdx != 4294967295)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _3 = Crypto_aKeyElementList[u32CurveIdKeyElemIdx].pu32CryptoElementActualSize;
+  _4 = *_3;
+  if (_4 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  if (u32AlgoFamKeyElemIdx != 4294967295)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  _5 = Crypto_aKeyElementList[u32AlgoFamKeyElemIdx].pu32CryptoElementActualSize;
+  _6 = *_5;
+  if (_6 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  RetVal = 13;
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (u32CryptoKeyElementIdx != 4294967295)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7133 = RetVal;
+  return D.7133;
+
+}
+
+
+Crypto_GetNonDetErrorsForRandomSeed (const uint32 u32CryptoKeyIdx)
+{
+  const uint32 u32CryptoSeedStateIdx;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7110;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+  # DEBUG BEGIN_STMT
+  u32CryptoSeedStateIdx = Crypto_Util_GetKeyElementIdx (u32CryptoKeyIdx, 3);
+  # DEBUG BEGIN_STMT
+  if (u32CryptoSeedStateIdx != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.7110 = RetVal;
+  return D.7110;
+
+}
+
+
+Crypto_GetProcessJobError (const struct Crypto_JobType * const pJob)
+{
+  Crypto_ProcessJobErrorType eRetVal;
+  const Crypto_OperationModeType eJobMode;
+  const struct Crypto_JobPrimitiveInputOutputType * const pJobPrimitiveInputOutput;
+  const Crypto_ServiceInfoType eJobService;
+  Crypto_ProcessJobErrorType D.6772;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pJob->jobPrimitiveInfo;
+  _2 = _1->primitiveInfo;
+  eJobService = _2->service;
+  # DEBUG BEGIN_STMT
+  pJobPrimitiveInputOutput = &pJob->jobPrimitiveInputOutput;
+  # DEBUG BEGIN_STMT
+  eJobMode = pJobPrimitiveInputOutput->mode;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  eRetVal = Crypto_GetJobErrorForService (eJobService, pJobPrimitiveInputOutput, eJobMode);
+  # DEBUG BEGIN_STMT
+  D.6772 = eRetVal;
+  return D.6772;
+
+}
+
+
+Crypto_GetJobErrorForOutAndVerifyPtrs (const Crypto_ServiceInfoType eJobService, const struct Crypto_JobPrimitiveInputOutputType * const pJobPrimitiveInputOutput, const Crypto_OperationModeType eJobMode)
+{
+  Crypto_ProcessJobErrorType eRetVal;
+  Crypto_ProcessJobErrorType D.6808;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  eRetVal = Crypto_GetJobErrorForOutputPtr (eJobService, pJobPrimitiveInputOutput, eJobMode);
+  # DEBUG BEGIN_STMT
+  if (eRetVal == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  eRetVal = Crypto_GetJobErrorForSecondaryOutputPtr (eJobService, pJobPrimitiveInputOutput, eJobMode);
+  # DEBUG BEGIN_STMT
+  if (eRetVal == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  eRetVal = Crypto_GetJobErrorForVerifyPtr (eJobService, pJobPrimitiveInputOutput, eJobMode);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.6808 = eRetVal;
+  return D.6808;
+
+}
+
+
+Crypto_GetJobErrorForService (const Crypto_ServiceInfoType eJobService, const struct Crypto_JobPrimitiveInputOutputType * const pJobPrimitiveInputOutput, const Crypto_OperationModeType eJobMode)
+{
+  Crypto_ProcessJobErrorType eRetVal;
+  Crypto_ProcessJobErrorType D.6784;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) eJobService;
+  _2 = (int) _1;
+  _3 = Crypto_aProcessJobServiceParams[_2].bSingleCallOnly;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  if (eJobMode != 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 1;
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  eRetVal = Crypto_GetJobErrorForInputPtr (eJobService, pJobPrimitiveInputOutput, eJobMode);
+  # DEBUG BEGIN_STMT
+  if (eRetVal == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eRetVal = Crypto_GetJobErrorForSecondaryInputPtr (eJobService, pJobPrimitiveInputOutput, eJobMode);
+  # DEBUG BEGIN_STMT
+  if (eRetVal == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  eRetVal = Crypto_GetJobErrorForTertiaryInputPtr (eJobService, pJobPrimitiveInputOutput, eJobMode);
+  # DEBUG BEGIN_STMT
+  if (eRetVal == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  eRetVal = Crypto_GetJobErrorForOutAndVerifyPtrs (eJobService, pJobPrimitiveInputOutput, eJobMode);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  D.6784 = eRetVal;
+  return D.6784;
+
+}
+
+
+Crypto_GetJobErrorForVerifyPtr (const Crypto_ServiceInfoType eJobService, const struct Crypto_JobPrimitiveInputOutputType * const pJobPrimitiveInputOutput, const Crypto_OperationModeType eJobMode)
+{
+  Crypto_ProcessJobErrorType eRetVal;
+  Crypto_ProcessJobErrorType D.6834;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) eJobMode;
+  _2 = Crypto_aProcessJobServiceParams[eJobService].u8VerifyPtrModeMask;
+  _3 = _1 & _2;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = pJobPrimitiveInputOutput->verifyPtr;
+  if (_4 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 4;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.6834 = eRetVal;
+  return D.6834;
+
+}
+
+
+Crypto_GetJobErrorForSecondaryOutputPtr (const Crypto_ServiceInfoType eJobService, const struct Crypto_JobPrimitiveInputOutputType * const pJobPrimitiveInputOutput, const Crypto_OperationModeType eJobMode)
+{
+  Crypto_ProcessJobErrorType eRetVal;
+  Crypto_ProcessJobErrorType D.6828;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) eJobMode;
+  _2 = Crypto_aProcessJobServiceParams[eJobService].u8SecondaryOutputModeMask;
+  _3 = _1 & _2;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = pJobPrimitiveInputOutput->secondaryOutputPtr;
+  if (_4 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _5 = pJobPrimitiveInputOutput->secondaryOutputLengthPtr;
+  if (_5 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 4;
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _6 = pJobPrimitiveInputOutput->secondaryOutputLengthPtr;
+  _7 = *_6;
+  if (_7 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 5;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6828 = eRetVal;
+  return D.6828;
+
+}
+
+
+Crypto_GetJobErrorForOutputPtr (const Crypto_ServiceInfoType eJobService, const struct Crypto_JobPrimitiveInputOutputType * const pJobPrimitiveInputOutput, const Crypto_OperationModeType eJobMode)
+{
+  Crypto_ProcessJobErrorType eRetVal;
+  Crypto_ProcessJobErrorType D.6818;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) eJobMode;
+  _2 = Crypto_aProcessJobServiceParams[eJobService].u8OutputModeMask;
+  _3 = _1 & _2;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = pJobPrimitiveInputOutput->outputPtr;
+  if (_4 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _5 = pJobPrimitiveInputOutput->outputLengthPtr;
+  if (_5 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 4;
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _6 = pJobPrimitiveInputOutput->outputLengthPtr;
+  _7 = *_6;
+  if (_7 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 5;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6818 = eRetVal;
+  return D.6818;
+
+}
+
+
+Crypto_GetJobErrorForTertiaryInputPtr (const Crypto_ServiceInfoType eJobService, const struct Crypto_JobPrimitiveInputOutputType * const pJobPrimitiveInputOutput, const Crypto_OperationModeType eJobMode)
+{
+  Crypto_ProcessJobErrorType eRetVal;
+  Crypto_ProcessJobErrorType D.6802;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) eJobMode;
+  _2 = Crypto_aProcessJobServiceParams[eJobService].u8TertiaryInputModeMask;
+  _3 = _1 & _2;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = pJobPrimitiveInputOutput->tertiaryInputPtr;
+  if (_4 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 4;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.6802 = eRetVal;
+  return D.6802;
+
+}
+
+
+Crypto_GetJobErrorForSecondaryInputPtr (const Crypto_ServiceInfoType eJobService, const struct Crypto_JobPrimitiveInputOutputType * const pJobPrimitiveInputOutput, const Crypto_OperationModeType eJobMode)
+{
+  Crypto_ProcessJobErrorType eRetVal;
+  Crypto_ProcessJobErrorType D.6796;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) eJobMode;
+  _2 = Crypto_aProcessJobServiceParams[eJobService].u8SecondaryInputModeMask;
+  _3 = _1 & _2;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = pJobPrimitiveInputOutput->secondaryInputPtr;
+  if (_4 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 4;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.6796 = eRetVal;
+  return D.6796;
+
+}
+
+
+Crypto_GetJobErrorForInputPtr (const Crypto_ServiceInfoType eJobService, const struct Crypto_JobPrimitiveInputOutputType * const pJobPrimitiveInputOutput, const Crypto_OperationModeType eJobMode)
+{
+  Crypto_ProcessJobErrorType eRetVal;
+  Crypto_ProcessJobErrorType D.6790;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) eJobMode;
+  _2 = Crypto_aProcessJobServiceParams[eJobService].u8InputModeMask;
+  _3 = _1 & _2;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = pJobPrimitiveInputOutput->inputPtr;
+  if (_4 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  eRetVal = 4;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.6790 = eRetVal;
+  return D.6790;
+
+}
+
+
+Crypto_CopyKeyElements (const uint32 u32PartitionId, const uint32 u32KeyMaterialElementIndex, const uint32 u32CryptoKeyIdx, const uint32 u32TargetKeyIdx, const uint32 u32TargetKeyElementIndex)
+{
+  uint32 u32Counter2;
+  uint32 u32Counter1;
+  boolean bFound;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.7090;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32Counter1 = 0;
+  goto <bb 12>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  bFound = 0;
+  # DEBUG BEGIN_STMT
+  u32Counter2 = 0;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _2 = u32Counter1 * 4;
+  _3 = _1 + _2;
+  _4 = *_3;
+  _5 = Crypto_aKeyElementList[_4].u32CryptoKeyElementId;
+  _6 = Crypto_aKeyList[u32TargetKeyIdx].pCryptoKeyElementList;
+  _7 = u32Counter2 * 4;
+  _8 = _6 + _7;
+  _9 = *_8;
+  _10 = Crypto_aKeyElementList[_9].u32CryptoKeyElementId;
+  if (_5 == _10)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  _11 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _12 = u32Counter1 * 4;
+  _13 = _11 + _12;
+  _14 = *_13;
+  _15 = Crypto_aKeyElementList[_14].u32CryptoKeyElementId;
+  if (_15 != 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  _16 = Crypto_aKeyList[u32TargetKeyIdx].pCryptoKeyElementList;
+  _17 = u32Counter2 * 4;
+  _18 = _16 + _17;
+  _19 = *_18;
+  _20 = Crypto_aKeyElementList[_19].pCryptoElementArray;
+  if (_20 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  bFound = 1;
+  # DEBUG BEGIN_STMT
+  _21 = Crypto_aKeyList[u32TargetKeyIdx].pCryptoKeyElementList;
+  _22 = u32Counter2 * 4;
+  _23 = _21 + _22;
+  _24 = *_23;
+  _25 = Crypto_aKeyElementList[_24].pCryptoElementArray;
+  _26 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _27 = u32Counter1 * 4;
+  _28 = _26 + _27;
+  _29 = *_28;
+  _30 = Crypto_aKeyElementList[_29].pCryptoElementArray;
+  _31 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _32 = u32Counter1 * 4;
+  _33 = _31 + _32;
+  _34 = *_33;
+  _35 = Crypto_aKeyElementList[_34].pu32CryptoElementActualSize;
+  _36 = *_35;
+  Crypto_Util_Memcpy8 (_25, _30, _36);
+  # DEBUG BEGIN_STMT
+  _37 = Crypto_aKeyList[u32CryptoKeyIdx].pCryptoKeyElementList;
+  _38 = u32Counter1 * 4;
+  _39 = _37 + _38;
+  _40 = *_39;
+  _41 = Crypto_aKeyElementList[_40].pu32CryptoElementActualSize;
+  _42 = Crypto_aKeyList[u32TargetKeyIdx].pCryptoKeyElementList;
+  _43 = u32Counter2 * 4;
+  _44 = _42 + _43;
+  _45 = *_44;
+  _46 = Crypto_aKeyElementList[_45].pu32CryptoElementActualSize;
+  _47 = *_41;
+  *_46 = _47;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  u32Counter2 = u32Counter2 + 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _48 = Crypto_aKeyList[u32TargetKeyIdx].u32NumCryptoKeyElements;
+  if (u32Counter2 < _48)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _49 = ~bFound;
+  if (_49 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  u32Counter1 = u32Counter1 + 1;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _50 = Crypto_aKeyList[u32CryptoKeyIdx].u32NumCryptoKeyElements;
+  if (u32Counter1 < _50)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7090 = RetVal;
+  return D.7090;
+
+}
+
+
+Crypto_VerifyKeyValidity (const uint32 u32CryptoKeyIdx, const Crypto_ServiceInfoType eJobService)
+{
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6851;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetVal = 0;
+  # DEBUG BEGIN_STMT
+  if (eJobService != 11)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  if (eJobService != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (u32CryptoKeyIdx != 4294967295)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = u32CryptoKeyIdx / 8;
+  _2 = Crypto_au8NvramBlob0[_1];
+  _3 = u32CryptoKeyIdx & 7;
+  _4 = 1 << _3;
+  _5 = (unsigned char) _4;
+  _6 = _2 & _5;
+  if (_6 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetVal = 9;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  RetVal = 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6851 = RetVal;
+  return D.6851;
+
+}
+
+

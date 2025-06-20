@@ -1,0 +1,210 @@
+init_data_bss ()
+{
+  const uint32 * zeroTable_Ptr;
+  const uint32 * initTable_Ptr;
+  uint32 j;
+  uint32 i;
+  uint32 size;
+  uint32 len;
+  uint8 * ram;
+  const uint8 * rom;
+  const struct Sys_ZeroLayoutType * zero_layout;
+  const struct Sys_CopyLayoutType * copy_layout;
+  long unsigned int _1;
+  const struct Sys_CopyLayoutType * _2;
+  long unsigned int _3;
+  const struct Sys_CopyLayoutType * _4;
+  long unsigned int _5;
+  const struct Sys_CopyLayoutType * _6;
+  uint8 * _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  const struct Sys_CopyLayoutType * _10;
+  uint8 * _11;
+  long unsigned int _12;
+  const uint8 * _13;
+  uint8 * _14;
+  unsigned char _15;
+  long unsigned int _16;
+  const struct Sys_ZeroLayoutType * _17;
+  long unsigned int _18;
+  const struct Sys_ZeroLayoutType * _19;
+  uint8 * _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  const struct Sys_ZeroLayoutType * _23;
+  uint8 * _24;
+  long unsigned int _25;
+  uint8 * _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  len_35 = 0;
+  # DEBUG len => len_35
+  # DEBUG BEGIN_STMT
+  size_36 = 0;
+  # DEBUG size => size_36
+  # DEBUG BEGIN_STMT
+  i_37 = 0;
+  # DEBUG i => i_37
+  # DEBUG BEGIN_STMT
+  j_38 = 0;
+  # DEBUG j => j_38
+  # DEBUG BEGIN_STMT
+  initTable_Ptr_39 = &__INIT_TABLE;
+  # DEBUG initTable_Ptr => initTable_Ptr_39
+  # DEBUG BEGIN_STMT
+  zeroTable_Ptr_40 = &__ZERO_TABLE;
+  # DEBUG zeroTable_Ptr => zeroTable_Ptr_40
+  # DEBUG BEGIN_STMT
+  len_42 = *initTable_Ptr_39;
+  # DEBUG len => len_42
+  # DEBUG BEGIN_STMT
+  initTable_Ptr_43 = initTable_Ptr_39 + 4;
+  # DEBUG initTable_Ptr => initTable_Ptr_43
+  # DEBUG BEGIN_STMT
+  copy_layout_44 = initTable_Ptr_43;
+  # DEBUG copy_layout => copy_layout_44
+  # DEBUG BEGIN_STMT
+  i_45 = 0;
+  # DEBUG i => i_45
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = i_27 * 12;
+  _2 = copy_layout_44 + _1;
+  rom_56 = _2->rom_start;
+  # DEBUG rom => rom_56
+  # DEBUG BEGIN_STMT
+  _3 = i_27 * 12;
+  _4 = copy_layout_44 + _3;
+  ram_57 = _4->ram_start;
+  # DEBUG ram => ram_57
+  # DEBUG BEGIN_STMT
+  _5 = i_27 * 12;
+  _6 = copy_layout_44 + _5;
+  _7 = _6->rom_end;
+  _8 = (long unsigned int) _7;
+  _9 = i_27 * 12;
+  _10 = copy_layout_44 + _9;
+  _11 = _10->rom_start;
+  _12 = (long unsigned int) _11;
+  size_58 = _8 - _12;
+  # DEBUG size => size_58
+  # DEBUG BEGIN_STMT
+  j_59 = 0;
+  # DEBUG j => j_59
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _13 = rom_56 + j_29;
+  _14 = ram_57 + j_29;
+  _15 = *_13;
+  *_14 = _15;
+  # DEBUG BEGIN_STMT
+  j_62 = j_29 + 1;
+  # DEBUG j => j_62
+
+  <bb 5> :
+  # j_29 = PHI <j_59(3), j_62(4)>
+  # DEBUG j => j_29
+  # DEBUG BEGIN_STMT
+  if (j_29 < size_58)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  i_60 = i_27 + 1;
+  # DEBUG i => i_60
+
+  <bb 7> :
+  # i_27 = PHI <i_45(2), i_60(6)>
+  # DEBUG i => i_27
+  # DEBUG BEGIN_STMT
+  if (i_27 < len_42)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  len_46 = *zeroTable_Ptr_40;
+  # DEBUG len => len_46
+  # DEBUG BEGIN_STMT
+  zeroTable_Ptr_47 = zeroTable_Ptr_40 + 4;
+  # DEBUG zeroTable_Ptr => zeroTable_Ptr_47
+  # DEBUG BEGIN_STMT
+  zero_layout_48 = zeroTable_Ptr_47;
+  # DEBUG zero_layout => zero_layout_48
+  # DEBUG BEGIN_STMT
+  i_49 = 0;
+  # DEBUG i => i_49
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _16 = i_28 * 8;
+  _17 = zero_layout_48 + _16;
+  ram_50 = _17->ram_start;
+  # DEBUG ram => ram_50
+  # DEBUG BEGIN_STMT
+  _18 = i_28 * 8;
+  _19 = zero_layout_48 + _18;
+  _20 = _19->ram_end;
+  _21 = (long unsigned int) _20;
+  _22 = i_28 * 8;
+  _23 = zero_layout_48 + _22;
+  _24 = _23->ram_start;
+  _25 = (long unsigned int) _24;
+  size_51 = _21 - _25;
+  # DEBUG size => size_51
+  # DEBUG BEGIN_STMT
+  j_52 = 0;
+  # DEBUG j => j_52
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _26 = ram_50 + j_30;
+  *_26 = 0;
+  # DEBUG BEGIN_STMT
+  j_55 = j_30 + 1;
+  # DEBUG j => j_55
+
+  <bb 11> :
+  # j_30 = PHI <j_52(9), j_55(10)>
+  # DEBUG j => j_30
+  # DEBUG BEGIN_STMT
+  if (j_30 < size_51)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  i_53 = i_28 + 1;
+  # DEBUG i => i_53
+
+  <bb 13> :
+  # i_28 = PHI <i_49(8), i_53(12)>
+  # DEBUG i => i_28
+  # DEBUG BEGIN_STMT
+  if (i_28 < len_46)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  return;
+
+}
+
+

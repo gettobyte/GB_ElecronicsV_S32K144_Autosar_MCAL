@@ -1,0 +1,140 @@
+callgraph:
+
+App_InitCsecHw.constprop.0/6 (App_InitCsecHw.constprop) @06ab3000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function App_InitCsecHw.constprop/6 is inline copy in main/2
+  Clone of App_InitCsecHw/1
+  Availability: local
+  Function flags: count:107374 (estimated locally) local nonfreeing_fn executed_once optimize_size
+  Called by: main/2 (inlined) (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Crypto_Init/5 (Crypto_Init) @0696a540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/2 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Clock_Ip_Init/3 (Clock_Ip_Init) @0696a460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/2 (868753 (estimated locally),8.09 per call) main/2 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+main/2 (main) @0696a000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcu_aClockConfigPB/4 (addr)Mcu_aClockConfigPB/4 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: Crypto_Init/5 (107374 (estimated locally),1.00 per call) App_InitCsecHw.constprop/6 (inlined) (107374 (estimated locally),1.00 per call) Clock_Ip_Init/3 (868753 (estimated locally),8.09 per call) Clock_Ip_Init/3 (107374 (estimated locally),1.00 per call) 
+App_InitCsecHw/1 (App_InitCsecHw) @06963d20
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:157482133 (estimated locally) body executed_once optimize_size
+  Called by: 
+  Calls: 
+Clearing variable flags:
+
+Function name:App_InitCsecHw.constprop/6:
+  locals read: 
+  locals written: 
+Function name:main/2:
+  locals read: 
+  locals written: 
+
+ ordered call graph: reduced
+main/2 (main) @0696a000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @063f4960
+  References: Mcu_aClockConfigPB/4 (addr)Mcu_aClockConfigPB/4 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: Crypto_Init/5 (107374 (estimated locally),1.00 per call) App_InitCsecHw.constprop/6 (inlined) (107374 (estimated locally),1.00 per call) Clock_Ip_Init/3 (868753 (estimated locally),8.09 per call) Clock_Ip_Init/3 (107374 (estimated locally),1.00 per call) 
+App_InitCsecHw.constprop.0/6 (App_InitCsecHw.constprop) @06ab3000
+  Type: function definition analyzed
+  Visibility:
+  Aux: @063f4b80
+  References: 
+  Referring: 
+  Function App_InitCsecHw.constprop/6 is inline copy in main/2
+  Clone of App_InitCsecHw/1
+  Availability: local
+  Function flags: count:107374 (estimated locally) local nonfreeing_fn executed_once optimize_size
+  Called by: main/2 (inlined) (107374 (estimated locally),1.00 per call) 
+  Calls: 
+
+
+Function name:App_InitCsecHw.constprop.0/6:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:main/2:
+    locals read: 
+    locals written: 
+  globals read: ALL
+  globals written: ALL
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+
+  <bb 2> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus_5 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_5
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 868753]:
+  # DEBUG BEGIN_STMT
+  clockStatus_9 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_9
+
+  <bb 4> [local count: 976127]:
+  # clockStatus_1 = PHI <clockStatus_5(2), clockStatus_9(3)>
+  # DEBUG clockStatus => clockStatus_1
+  # DEBUG BEGIN_STMT
+  if (clockStatus_1 != 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  App_InitCsecHw (3, 0);
+  # DEBUG RetVal => NULL
+  # DEBUG BEGIN_STMT
+  Crypto_Init (0B);
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1073741824]:
+  goto <bb 6>; [100.00%]
+
+}
+
+

@@ -1,0 +1,570 @@
+Parsed function:ClockSetSimTraceEnable_TrustedCall.isra.0
+Parsed function:ClockSetSimClkoutEnable_TrustedCall.isra.0
+Parsed function:ClockSetSimLPO32KEnable_TrustedCall.isra.0
+Parsed function:ClockSetSimLPO1KEnable_TrustedCall.isra.0
+Parsed function:ClockUpdateSimTraceEnable
+Parsed function:ClockSetSimTraceEnable
+Parsed function:ClockUpdateSimGate
+Parsed function:ClockSetSimGate
+Parsed function:ClockSetSimGate_TrustedCall
+Parsed function:ClockUpdatePccCgcEnable
+Parsed function:ClockSetPccCgcEnable
+Parsed function:ClockSetPccCgcEnable_TrustedCall
+Parsed function:ClockUpdateSimClkoutEnable
+Parsed function:ClockSetSimClkoutEnable
+Parsed function:ClockUpdateSimLPO32KEnable
+Parsed function:ClockSetSimLPO32KEnable
+Parsed function:ClockUpdateSimLPO1KEnable
+Parsed function:ClockSetSimLPO1KEnable
+Parsed function:ClockUpdateGateEmpty
+Parsed function:ClockSetGateEmpty
+Dump after hash based groups
+Congruence classes: 12 (unique hash values: 12), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 9 classes
+[2]: 1 classes
+[4]: 1 classes
+[6]: 1 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 12 (unique hash values: 12), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 9 classes
+[2]: 1 classes
+[4]: 1 classes
+[6]: 1 classes
+
+
+Worklist has been filled with: 11
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 21 (unique hash values: 12), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 21 classes
+
+
+Init called for 0 items (0.00%).
+Dump after full equality comparison of groups
+Congruence classes: 21 (unique hash values: 12), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 21 classes
+
+
+Worklist has been filled with: 20
+Address reference subdivision created: 0 new classes.
+Congruence classes: 21 (unique hash values: 12), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 21 classes
+
+
+
+Item count: 21
+Congruent classes before: 21, after: 21
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+ClockSetSimTraceEnable_TrustedCall.isra.0 (const uint16 ISRA.21)
+{
+  uint32 regValue;
+  short unsigned int _3;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_1 ={v} MEM[(struct SIM_Type *)1074036736B].CLKDIV4;
+  # DEBUG regValue => regValue_1
+  # DEBUG BEGIN_STMT
+  _3 = ISRA.21_9(D);
+  if (_3 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  regValue_4 = regValue_1 | 268435456;
+  # DEBUG regValue => regValue_4
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  regValue_5 = regValue_1 & 4026531839;
+  # DEBUG regValue => regValue_5
+
+  <bb 5> [local count: 1073741824]:
+  # regValue_6 = PHI <regValue_4(3), regValue_5(4)>
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].CLKDIV4 ={v} regValue_6;
+  return;
+
+}
+
+
+ClockSetSimClkoutEnable_TrustedCall.isra.0 (const uint16 ISRA.11)
+{
+  uint32 regValue;
+  short unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_1 ={v} MEM[(struct SIM_Type *)1074036736B].CHIPCTL;
+  # DEBUG regValue => regValue_1
+  # DEBUG BEGIN_STMT
+  regValue_2 = regValue_1 & 4294965247;
+  # DEBUG regValue => regValue_2
+  # DEBUG BEGIN_STMT
+  _4 = ISRA.11_10(D);
+  _5 = (long unsigned int) _4;
+  _6 = _5 << 11;
+  regValue_7 = regValue_2 | _6;
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].CHIPCTL ={v} regValue_7;
+  return;
+
+}
+
+
+ClockSetSimLPO32KEnable_TrustedCall.isra.0 (const uint16 ISRA.7)
+{
+  uint32 regValue;
+  short unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_1 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+  # DEBUG regValue => regValue_1
+  # DEBUG BEGIN_STMT
+  regValue_2 = regValue_1 & 4294967293;
+  # DEBUG regValue => regValue_2
+  # DEBUG BEGIN_STMT
+  _4 = ISRA.7_10(D);
+  _5 = (long unsigned int) _4;
+  _6 = _5 << 1;
+  regValue_7 = regValue_2 | _6;
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_7;
+  return;
+
+}
+
+
+ClockSetSimLPO1KEnable_TrustedCall.isra.0 (const uint16 ISRA.3)
+{
+  uint32 regValue;
+  short unsigned int _4;
+  long unsigned int _5;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regValue_1 ={v} MEM[(struct SIM_Type *)1074036736B].LPOCLKS;
+  # DEBUG regValue => regValue_1
+  # DEBUG BEGIN_STMT
+  regValue_2 = regValue_1 & 4294967294;
+  # DEBUG regValue => regValue_2
+  # DEBUG BEGIN_STMT
+  _4 = ISRA.3_9(D);
+  _5 = (long unsigned int) _4;
+  regValue_6 = regValue_2 | _5;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} regValue_6;
+  return;
+
+}
+
+
+ClockUpdateSimTraceEnable (Clock_Ip_NameType clockName, boolean gate)
+{
+  struct Clock_Ip_GateConfigType config;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config.name = clockName_3(D);
+  # DEBUG BEGIN_STMT
+  if (gate_5(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 0;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ClockSetSimTraceEnable (&config);
+  config ={v} {CLOBBER};
+  return;
+
+}
+
+
+ClockSetSimTraceEnable (const struct Clock_Ip_GateConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#4 => config_2(D)
+  ClockSetSimTraceEnable_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ClockUpdateSimGate (Clock_Ip_NameType clockName, boolean gate)
+{
+  struct Clock_Ip_GateConfigType config;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config.name = clockName_3(D);
+  # DEBUG BEGIN_STMT
+  if (gate_5(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 0;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG config => &config
+  # DEBUG INLINE_ENTRY ClockSetSimGate
+  # DEBUG BEGIN_STMT
+  ClockSetSimGate_TrustedCall (&config);
+  # DEBUG config => NULL
+  config ={v} {CLOBBER};
+  return;
+
+}
+
+
+ClockSetSimGate (const struct Clock_Ip_GateConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ClockSetSimGate_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ClockSetSimGate_TrustedCall (const struct Clock_Ip_GateConfigType * config)
+{
+  uint32 regValue;
+  uint32 gateIndex;
+  uint32 enable;
+  short unsigned int _1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = config_8(D)->enable;
+  enable_9 = (uint32) _1;
+  # DEBUG enable => enable_9
+  # DEBUG BEGIN_STMT
+  _2 = config_8(D)->name;
+  _3 = clockFeatures[_2][6];
+  gateIndex_10 = (uint32) _3;
+  # DEBUG gateIndex => gateIndex_10
+  # DEBUG BEGIN_STMT
+  regValue_11 ={v} MEM[(struct SIM_Type *)1074036736B].PLATCGC;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  _4 = 1 << gateIndex_10;
+  _5 = ~_4;
+  regValue_12 = _5 & regValue_11;
+  # DEBUG regValue => regValue_12
+  # DEBUG BEGIN_STMT
+  _6 = enable_9 << gateIndex_10;
+  regValue_13 = _6 | regValue_12;
+  # DEBUG regValue => regValue_13
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].PLATCGC ={v} regValue_13;
+  return;
+
+}
+
+
+ClockUpdatePccCgcEnable (Clock_Ip_NameType clockName, boolean gate)
+{
+  struct Clock_Ip_GateConfigType config;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config.name = clockName_3(D);
+  # DEBUG BEGIN_STMT
+  if (gate_5(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 0;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG config => &config
+  # DEBUG INLINE_ENTRY ClockSetPccCgcEnable
+  # DEBUG BEGIN_STMT
+  ClockSetPccCgcEnable_TrustedCall (&config);
+  # DEBUG config => NULL
+  config ={v} {CLOBBER};
+  return;
+
+}
+
+
+ClockSetPccCgcEnable (const struct Clock_Ip_GateConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ClockSetPccCgcEnable_TrustedCall (config_2(D));
+  return;
+
+}
+
+
+ClockSetPccCgcEnable_TrustedCall (const struct Clock_Ip_GateConfigType * config)
+{
+  uint32 regValue;
+  <unnamed type> _1;
+  unsigned char _2;
+  int _3;
+  short unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_8(D)->name;
+  _2 = clockFeatures[_1][6];
+  _3 = (int) _2;
+  regValue_9 ={v} MEM[(struct PCC_Type *)1074155520B].PCCn[_3];
+  # DEBUG regValue => regValue_9
+  # DEBUG BEGIN_STMT
+  regValue_10 = regValue_9 & 3221225471;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  _4 = config_8(D)->enable;
+  _5 = (long unsigned int) _4;
+  _6 = _5 << 30;
+  regValue_11 = _6 | regValue_10;
+  # DEBUG regValue => regValue_11
+  # DEBUG BEGIN_STMT
+  MEM[(struct PCC_Type *)1074155520B].PCCn[_3] ={v} regValue_11;
+  return;
+
+}
+
+
+ClockUpdateSimClkoutEnable (Clock_Ip_NameType clockName, boolean gate)
+{
+  struct Clock_Ip_GateConfigType config;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config.name = clockName_3(D);
+  # DEBUG BEGIN_STMT
+  if (gate_5(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 0;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ClockSetSimClkoutEnable (&config);
+  config ={v} {CLOBBER};
+  return;
+
+}
+
+
+ClockSetSimClkoutEnable (const struct Clock_Ip_GateConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#3 => config_2(D)
+  ClockSetSimClkoutEnable_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ClockUpdateSimLPO32KEnable (Clock_Ip_NameType clockName, boolean gate)
+{
+  struct Clock_Ip_GateConfigType config;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config.name = clockName_3(D);
+  # DEBUG BEGIN_STMT
+  if (gate_5(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 0;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ClockSetSimLPO32KEnable (&config);
+  config ={v} {CLOBBER};
+  return;
+
+}
+
+
+ClockSetSimLPO32KEnable (const struct Clock_Ip_GateConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#2 => config_2(D)
+  ClockSetSimLPO32KEnable_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ClockUpdateSimLPO1KEnable (Clock_Ip_NameType clockName, boolean gate)
+{
+  struct Clock_Ip_GateConfigType config;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  config.name = clockName_3(D);
+  # DEBUG BEGIN_STMT
+  if (gate_5(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 0;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  config.enable = 1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ClockSetSimLPO1KEnable (&config);
+  config ={v} {CLOBBER};
+  return;
+
+}
+
+
+ClockSetSimLPO1KEnable (const struct Clock_Ip_GateConfigType * config)
+{
+  short unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(short unsigned int *)config_2(D) + 4B];
+  # DEBUG D#1 => config_2(D)
+  ClockSetSimLPO1KEnable_TrustedCall.isra.0 (_4);
+  return;
+
+}
+
+
+ClockUpdateGateEmpty (Clock_Ip_NameType clockName, boolean gate)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+ClockSetGateEmpty (const struct Clock_Ip_GateConfigType * config)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

@@ -1,0 +1,134 @@
+Histogram:
+Node App_InitCsecHw promoted to executed once.
+main ()
+{
+  Clock_Ip_StatusType clockStatus;
+
+  <bb 2> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus_5 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_5
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 868753]:
+  # DEBUG BEGIN_STMT
+  clockStatus_9 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_9
+
+  <bb 4> [local count: 976127]:
+  # clockStatus_1 = PHI <clockStatus_5(2), clockStatus_9(3)>
+  # DEBUG clockStatus => clockStatus_1
+  # DEBUG BEGIN_STMT
+  if (clockStatus_1 != 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  App_InitCsecHw (3, 0);
+  # DEBUG RetVal => NULL
+  # DEBUG BEGIN_STMT
+  Crypto_Init (0B);
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1073741824]:
+  goto <bb 6>; [100.00%]
+
+}
+
+
+App_InitCsecHw (uint8 u8KeySize, uint8 u8Sfe)
+{
+  uint8 u8FStat;
+  Std_ReturnType RetVal;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+  signed char _5;
+  unsigned char _8;
+  unsigned char _9;
+
+  <bb 2> [local count: 157482133]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RetVal => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FStat => 0
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct FTFC_Type *)1073872896B].FCNFG;
+  _8 = _2 & 2;
+  if (_8 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 78741067]:
+  _3 ={v} MEM[(struct FTFC_Type *)1073872896B].FCNFG;
+  _9 = _3 & 1;
+  if (_9 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 4> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[3] ={v} 128;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[2] ={v} u8KeySize_12(D);
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[1] ={v} u8Sfe_14(D);
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[0] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[7] ={v} 2;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[6] ={v} 3;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FSTAT ={v} 128;
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 ={v} MEM[(struct FTFC_Type *)1073872896B].FSTAT;
+  _5 = (signed char) _4;
+  if (_5 >= 0)
+    goto <bb 9>; [89.00%]
+  else
+    goto <bb 6>; [11.00%]
+
+  <bb 9> [local count: 955630224]:
+  goto <bb 5>; [100.00%]
+
+  <bb 6> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  u8FStat_20 ={v} MEM[(struct FTFC_Type *)1073872896B].FSTAT;
+  # DEBUG u8FStat => u8FStat_20
+  # DEBUG BEGIN_STMT
+  _1 = u8FStat_20 & 33;
+  if (_1 == 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 59055800]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RetVal => 0
+
+  <bb 8> [local count: 157482134]:
+  # RetVal_6 = PHI <0(7), 0(3), 1(6)>
+  # DEBUG RetVal => RetVal_6
+  # DEBUG BEGIN_STMT
+  return RetVal_6;
+
+}
+
+

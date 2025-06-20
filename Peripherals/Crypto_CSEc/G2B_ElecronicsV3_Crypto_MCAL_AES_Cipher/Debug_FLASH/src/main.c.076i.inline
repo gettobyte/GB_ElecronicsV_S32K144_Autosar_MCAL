@@ -1,0 +1,318 @@
+IPA function summary for App_InitCsecHw.constprop/6 inlinable
+  global time:     36.704546
+  self size:       25
+  global size:     25
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:22.000000, time:34.704546
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+IPA function summary for main/2 inlinable
+  global time:     150.272692
+  self size:       15
+  global size:     15
+  min size:       22
+  self stack:      0
+  global stack:    0
+    size:2.000000, time:18.181813
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+    Crypto_Init/5 function body not available
+      loop depth: 0 freq:1.00 size: 2 time: 11
+       op0 is compile time invariant
+    App_InitCsecHw.constprop/6 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size:12 stack: 0
+       op0 is compile time invariant
+       op1 is compile time invariant
+    Clock_Ip_Init/3 function body not available
+      loop depth: 1 freq:8.09 size: 3 time: 12
+       op0 is compile time invariant
+    Clock_Ip_Init/3 function body not available
+      loop depth: 0 freq:1.00 size: 3 time: 12
+       op0 is compile time invariant
+
+
+Flattening functions:
+Overall time estimate: 186.977237 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+Enqueueing calls in App_InitCsecHw.constprop/6.
+Enqueueing calls in main/2.
+
+Considering App_InitCsecHw.constprop/6 with 25 size
+ to be inlined into main/2 in ../src/main.c:149
+ Estimated badness is -0.086687, frequency 1.00.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 172.977237 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :        3 calls, 10.090907 freq, 0 count
+IPA function summary for main/2 inlinable
+  global time:     172.977237
+  self size:       15
+  global size:     34
+  min size:       38
+  self stack:      0
+  global stack:    0
+    size:24.000000, time:52.886359
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+    Crypto_Init/5 function body not available
+      loop depth: 0 freq:1.00 size: 2 time: 11
+       op0 is compile time invariant
+    App_InitCsecHw.constprop/6 inlined
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size:12 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+    Clock_Ip_Init/3 function body not available
+      loop depth: 1 freq:8.09 size: 3 time: 12
+       op0 is compile time invariant
+    Clock_Ip_Init/3 function body not available
+      loop depth: 0 freq:1.00 size: 3 time: 12
+       op0 is compile time invariant
+
+Symbol table:
+
+App_InitCsecHw.constprop.0/6 (App_InitCsecHw.constprop) @06ab3000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function App_InitCsecHw.constprop/6 is inline copy in main/2
+  Clone of App_InitCsecHw/1
+  Availability: local
+  Function flags: count:107374 (estimated locally) local executed_once optimize_size
+  Called by: main/2 (inlined) (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Crypto_Init/5 (Crypto_Init) @0696a540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/2 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Mcu_aClockConfigPB/4 (Mcu_aClockConfigPB) @069695e8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/2 (addr)main/2 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/3 (Clock_Ip_Init) @0696a460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/2 (868753 (estimated locally),8.09 per call) main/2 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+main/2 (main) @0696a000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcu_aClockConfigPB/4 (addr)Mcu_aClockConfigPB/4 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: Crypto_Init/5 (107374 (estimated locally),1.00 per call) App_InitCsecHw.constprop/6 (inlined) (107374 (estimated locally),1.00 per call) Clock_Ip_Init/3 (868753 (estimated locally),8.09 per call) Clock_Ip_Init/3 (107374 (estimated locally),1.00 per call) 
+App_InitCsecHw/1 (App_InitCsecHw) @06963d20
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:157482133 (estimated locally) body executed_once optimize_size
+  Called by: 
+  Calls: 
+exit_code/0 (exit_code) @069ba7e0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+
+;; Function main (main, funcdef_no=1, decl_uid=6421, cgraph_uid=2, symbol_order=2) (executed once)
+
+
+Symbols to be put in SSA form
+{ D.6444 D.6458 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 18
+Number of blocks to update: 17 ( 94%)
+
+
+Removing basic block 5
+Merging blocks 6 and 7
+Removing basic block 9
+Removing basic block 14
+Merging blocks 17 and 8
+;; 4 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9 10 11 12
+;;
+;; Loop 2
+;;  header 12, latch 12
+;;  depth 1, outer 0
+;;  nodes: 12
+;;
+;; Loop 3
+;;  header 8, latch 8
+;;  depth 1, outer 0
+;;  nodes: 8
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 7 6 }
+;; 6 succs { 7 11 }
+;; 7 succs { 8 }
+;; 8 succs { 8 9 }
+;; 9 succs { 10 11 }
+;; 10 succs { 11 }
+;; 11 succs { 12 }
+;; 12 succs { 12 }
+main ()
+{
+  uint8 u8FStat;
+  Std_ReturnType RetVal;
+  Std_ReturnType D.6458;
+  Clock_Ip_StatusType clockStatus;
+  unsigned char _10;
+  unsigned char _11;
+  unsigned char _12;
+  unsigned char _13;
+  unsigned char _14;
+  signed char _15;
+  unsigned char _17;
+
+  <bb 2> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus_5 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_5
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 868753]:
+  # DEBUG BEGIN_STMT
+  clockStatus_9 = Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG clockStatus => clockStatus_9
+
+  <bb 4> [local count: 976127]:
+  # clockStatus_1 = PHI <clockStatus_5(2), clockStatus_9(3)>
+  # DEBUG clockStatus => clockStatus_1
+  # DEBUG BEGIN_STMT
+  if (clockStatus_1 != 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY App_InitCsecHw
+  # DEBUG u8Sfe => 0
+  # DEBUG u8KeySize => 3
+  # DEBUG BEGIN_STMT
+  # DEBUG RetVal => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FStat => 0
+  # DEBUG BEGIN_STMT
+  _10 ={v} MEM[(struct FTFC_Type *)1073872896B].FCNFG;
+  _11 = _10 & 2;
+  if (_11 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 53687]:
+  _12 ={v} MEM[(struct FTFC_Type *)1073872896B].FCNFG;
+  _13 = _12 & 1;
+  if (_13 == 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 7> [local count: 80530]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[3] ={v} 128;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[2] ={v} 3;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[1] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[0] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[7] ={v} 2;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FCCOB[6] ={v} 3;
+  # DEBUG BEGIN_STMT
+  MEM[(struct FTFC_Type *)1073872896B].FSTAT ={v} 128;
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 732095]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 ={v} MEM[(struct FTFC_Type *)1073872896B].FSTAT;
+  _15 = (signed char) _14;
+  if (_15 >= 0)
+    goto <bb 8>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 80531]:
+  # DEBUG BEGIN_STMT
+  u8FStat_16 ={v} MEM[(struct FTFC_Type *)1073872896B].FSTAT;
+  # DEBUG u8FStat => u8FStat_16
+  # DEBUG BEGIN_STMT
+  _17 = u8FStat_16 & 33;
+  if (_17 == 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 10> [local count: 40265]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RetVal => 0
+
+  <bb 11> [local count: 107374]:
+  # RetVal_18 = PHI <0(6), 1(9), 0(10)>
+  # DEBUG RetVal => RetVal_18
+  # DEBUG BEGIN_STMT
+  _27 = RetVal_18;
+  # DEBUG RetVal => NULL
+  # DEBUG u8FStat => NULL
+  # DEBUG u8KeySize => NULL
+  # DEBUG u8Sfe => NULL
+  # DEBUG RetVal => NULL
+  # DEBUG BEGIN_STMT
+  Crypto_Init (0B);
+
+  <bb 12> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+}
+
+
