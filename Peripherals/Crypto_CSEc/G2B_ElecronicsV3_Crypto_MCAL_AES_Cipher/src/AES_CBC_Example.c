@@ -204,9 +204,7 @@ static Crypto_JobType G2B_AES128_CBC_Decrypt_ProcessJob =
 	.jobPriority = 0,
 	},
 
-
 	.jobRedirectionInfoRef = NULL_PTR
-
 };
 
 
