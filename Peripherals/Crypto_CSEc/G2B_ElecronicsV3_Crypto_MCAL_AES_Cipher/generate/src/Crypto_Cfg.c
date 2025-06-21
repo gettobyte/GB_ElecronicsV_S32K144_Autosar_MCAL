@@ -136,16 +136,23 @@ extern "C"{
 #define CRYPTO_START_SEC_CONST_32
 #include "Crypto_MemMap.h"
 
-/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_MasterECU */
-static const uint32 Crypto_au32KeyElementList_CryptoKey_MasterECU[1U] =
+/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_AES_ECB */
+static const uint32 Crypto_au32KeyElementList_CryptoKey_AES_ECB[1U] =
 {
     0U
 };
 
-/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_AES */
-static const uint32 Crypto_au32KeyElementList_CryptoKey_AES[1U] =
+/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_AES_CBC */
+static const uint32 Crypto_au32KeyElementList_CryptoKey_AES_CBC[2U] =
 {
+    0U,
     1U
+};
+
+/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_AES_CMAC */
+static const uint32 Crypto_au32KeyElementList_CryptoKey_AES_CMAC[1U] =
+{
+    2U
 };
 
 #define CRYPTO_STOP_SEC_CONST_32
@@ -154,8 +161,8 @@ static const uint32 Crypto_au32KeyElementList_CryptoKey_AES[1U] =
 #define CRYPTO_START_SEC_CONST_UNSPECIFIED
 #include "Crypto_MemMap.h"
 
-/* Array storing the Crypto primitives in the Crypto Driver Object CryptoDriverObject_AES_ECB */
-static const Crypto_PrimitiveType Crypto_aPrimitives_CryptoDriverObject_AES_ECB[2U] =
+/* Array storing the Crypto primitives in the Crypto Driver Object CryptoDriverObject_AES */
+static const Crypto_PrimitiveType Crypto_aPrimitives_CryptoDriverObject_AES[4U] =
 {
     {
         ENCRYPT,
@@ -168,6 +175,35 @@ static const Crypto_PrimitiveType Crypto_aPrimitives_CryptoDriverObject_AES_ECB[
         (uint8)CRYPTO_ALGOFAM_AES,
         (uint8)CRYPTO_ALGOMODE_ECB,
         (uint8)CRYPTO_ALGOFAM_NOT_SET
+    },
+    {
+        ENCRYPT,
+        (uint8)CRYPTO_ALGOFAM_AES,
+        (uint8)CRYPTO_ALGOMODE_CBC,
+        (uint8)CRYPTO_ALGOFAM_NOT_SET
+    },
+    {
+        DECRYPT,
+        (uint8)CRYPTO_ALGOFAM_AES,
+        (uint8)CRYPTO_ALGOMODE_CBC,
+        (uint8)CRYPTO_ALGOFAM_NOT_SET
+    }
+};
+
+/* Array storing the Crypto primitives in the Crypto Driver Object CryptoDriverObject_MAC */
+static const Crypto_PrimitiveType Crypto_aPrimitives_CryptoDriverObject_MAC[2U] =
+{
+    {
+        MAC_GENERATE,
+        (uint8)CRYPTO_ALGOFAM_CUSTOM,
+        (uint8)CRYPTO_ALGOMODE_CMAC,
+        (uint8)CRYPTO_ALGOFAM_CUSTOM
+    },
+    {
+        MAC_VERIFY,
+        (uint8)CRYPTO_ALGOFAM_CUSTOM,
+        (uint8)CRYPTO_ALGOMODE_CMAC,
+        (uint8)CRYPTO_ALGOFAM_CUSTOM
     }
 };
 
@@ -181,7 +217,7 @@ static const Crypto_PrimitiveType Crypto_aPrimitives_CryptoDriverObject_AES_ECB[
 #include "Crypto_MemMap.h"
 
 /* Array storing the key element information that is volatile (no need to be persistent across resets) */
-VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[4U], 4U)
+VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[20U], 4U)
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
@@ -196,14 +232,25 @@ VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[4U], 4U)
 /* Array of structures storing the information about the Crypto Driver Objects */
 const Crypto_ObjectType Crypto_aDriverObjectList[CRYPTO_NUMBER_OF_DRIVER_OBJECTS_U32] =
 {
-    /* Structure storing the information about Crypto Driver Object CryptoDriverObject_AES_ECB */
+    /* Structure storing the information about Crypto Driver Object CryptoDriverObject_AES */
     {
         /* Reference to the jobs queue */
         NULL_PTR,
         /* Jobs queue size */
         0U,
         /* Reference to the Crypto primitives list */
-        Crypto_aPrimitives_CryptoDriverObject_AES_ECB,
+        Crypto_aPrimitives_CryptoDriverObject_AES,
+        /* Number of crypto primitives */
+        4U
+    },
+    /* Structure storing the information about Crypto Driver Object CryptoDriverObject_MAC */
+    {
+        /* Reference to the jobs queue */
+        NULL_PTR,
+        /* Jobs queue size */
+        0U,
+        /* Reference to the Crypto primitives list */
+        Crypto_aPrimitives_CryptoDriverObject_MAC,
         /* Number of crypto primitives */
         2U
     }
@@ -213,28 +260,34 @@ const Crypto_ObjectType Crypto_aDriverObjectList[CRYPTO_NUMBER_OF_DRIVER_OBJECTS
 const Crypto_KeyType Crypto_aKeyList[CRYPTO_NUMBER_OF_KEYS_U32] =
 {
     {
-        /* Number of key elements in the key CryptoKey_MasterECU */
+        /* Number of key elements in the key CryptoKey_AES_ECB */
         1U,
-        /* Reference to the list of key elements in the key CryptoKey_MasterECU */
-        Crypto_au32KeyElementList_CryptoKey_MasterECU
+        /* Reference to the list of key elements in the key CryptoKey_AES_ECB */
+        Crypto_au32KeyElementList_CryptoKey_AES_ECB
     },
     {
-        /* Number of key elements in the key CryptoKey_AES */
+        /* Number of key elements in the key CryptoKey_AES_CBC */
+        2U,
+        /* Reference to the list of key elements in the key CryptoKey_AES_CBC */
+        Crypto_au32KeyElementList_CryptoKey_AES_CBC
+    },
+    {
+        /* Number of key elements in the key CryptoKey_AES_CMAC */
         1U,
-        /* Reference to the list of key elements in the key CryptoKey_AES */
-        Crypto_au32KeyElementList_CryptoKey_AES
+        /* Reference to the list of key elements in the key CryptoKey_AES_CMAC */
+        Crypto_au32KeyElementList_CryptoKey_AES_CMAC
     }
 };
 
 /* Array of structures storing the information about the Crypto Key Elements */
 const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS_U32] =
 {
-    /* Structure containing information for Key Element CryptoKeyElement_MASTER_ECU_KEY */
+    /* Structure containing information for Key Element CryptoKeyElement_AES_KEY_ECB */
     {
         /* KeyElementId */
         1U,
         /* Allow partial access */
-        (boolean)TRUE,
+        (boolean)FALSE,
         /* Key element format */
         CRYPTO_KE_FORMAT_BIN_OCTET,
         /* Key element persistent */
@@ -250,14 +303,14 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         /* Pointer to location storing the Key Element value */
         NULL_PTR,
         /* Identifier of the CSEc key */
-        CSEC_IP_MASTER_ECU_KEY
+        CSEC_IP_KEY_1
     },
-    /* Structure containing information for Key Element CryptoKeyElement_AES_KEY */
+    /* Structure containing information for Key Element CryptoKeyElement_AES_KEY_CBC */
     {
         /* KeyElementId */
-        1U,
+        5U,
         /* Allow partial access */
-        (boolean)TRUE,
+        (boolean)FALSE,
         /* Key element format */
         CRYPTO_KE_FORMAT_BIN_OCTET,
         /* Key element persistent */
@@ -271,9 +324,32 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         /* Pointer to location storing the Key Element actual size */
         (uint32*)&Crypto_au8VolatileKeyElemValues[0U],
         /* Pointer to location storing the Key Element value */
+        &Crypto_au8VolatileKeyElemValues[4U],
+        /* Identifier of the CSEc key */
+        CSEC_IP_KEY_INVALID
+    },
+    /* Structure containing information for Key Element CryptoKeyElement_CMAC */
+    {
+        /* KeyElementId */
+        1U,
+        /* Allow partial access */
+        (boolean)FALSE,
+        /* Key element format */
+        CRYPTO_KE_FORMAT_BIN_SHEKEYS,
+        /* Key element persistent */
+        (boolean)TRUE,
+        /* Read access type */
+        CRYPTO_RA_ALLOWED,
+        /* Key element max size */
+        16U,
+        /* Write access type */
+        CRYPTO_WA_ALLOWED,
+        /* Pointer to location storing the Key Element actual size */
+        (uint32*)&Crypto_au8NvramBlob1[4U],
+        /* Pointer to location storing the Key Element value */
         NULL_PTR,
         /* Identifier of the CSEc key */
-        CSEC_IP_RAM_KEY
+        CSEC_IP_KEY_2
     }
 };
 

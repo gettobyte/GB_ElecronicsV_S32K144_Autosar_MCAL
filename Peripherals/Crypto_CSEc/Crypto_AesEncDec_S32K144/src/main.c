@@ -30,14 +30,36 @@ extern "C" {
 #include "Dio.h"
 #include "ST7789_low_level.h"
 #include "fonts.h"
-
+#include "FlexCAN_Ip.h"
 #include "Crypto.h"
 #include "OsIf.h"
 #include "check_example.h"
 
 
 
+GB_MailBox_CallBack(uint8 instance, Flexcan_Ip_EventType eventType,
+                  uint32 buffIdx, const Flexcan_Ip_StateType * flexcanState)
+{
+#if GB_RxMailBox_CALLBACK
+	Flexcan_Ip_StateType * state = flexcanState;
+	state->mbs[buffIdx].state = FLEXCAN_MB_RX_BUSY;
+	   {
+		   if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs != 0)
+		   	   {
+			   	   if(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->msgId == 0x500)
+			   		   {
+			   		      can_receive_flag = 1;
+			   		      memcpy(received_encrypted_data, FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->data, sizeof(received_encrypted_data));
+	   }
+			   	   memset(&FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs, 0x0, sizeof(FlexCAN_State0.mbs[RX_MB_IDX0].pMBmessage->cs));
+		   	   }
+	   }
+#else
 
+	uint8_t callback = 0;
+	/* Do Nothing */
+#endif
+}
 
 /*==================================================================================================
 *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
@@ -1040,20 +1062,20 @@ int main(void)
 
 
 
-    	TestDelay(700000);
-    	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
-    	ST7789_Fill_Color(ST77XX_BLACK);
-    	TestDelay(700000);
-
-
-        ST7789_WriteString(00, 140, "Demonstrating  Embedded Cryptography DiY Projects: Part 1", Font_16x26,ST77XX_NEON_GREEN, ST77XX_BLACK);
-
-    	TestDelay(7000000);
-
-
-    	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
-    	ST7789_Fill_Color(ST77XX_BLACK);
-    	TestDelay(7000000);
+//    	TestDelay(700000);
+//    	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+//    	ST7789_Fill_Color(ST77XX_BLACK);
+//    	TestDelay(700000);
+//
+//
+//        ST7789_WriteString(00, 140, "Demonstrating  Embedded Cryptography DiY Projects: Part 1", Font_16x26,ST77XX_NEON_GREEN, ST77XX_BLACK);
+//
+//    	TestDelay(7000000);
+//
+//
+//    	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+//    	ST7789_Fill_Color(ST77XX_BLACK);
+//    	TestDelay(7000000);
 
     /* =============================================================================================================================== */
     /*    Initialization                                                                                                               */ 
@@ -1074,51 +1096,51 @@ int main(void)
     /*    Key management                                                                                                               */
     /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-    /* Load the value of the first AES128 key into CSEc RAM key slot */
-    RetVal = Crypto_KeyElementSet(APP_AES128_KEY_ID, KEY_MATERIAL_ELEMENT_ID_U32, App_au8Aes128EcbKey_1, APP_AES128_KEY_SIZE);
-    App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
-
-    /* Mark the key as valid, so it can be used by Crypto driver in future job requests */
-    RetVal = Crypto_KeySetValid(APP_AES128_KEY_ID);
-    App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
-
-    /* ------------------------------------------------------------------------------------------------------------------------------- */
-    /*    AES128 ECB Encryption                                                                                                        */
-    /* ------------------------------------------------------------------------------------------------------------------------------- */
-
-    /* This variable will be used to inform Crypto driver about the max length in bytes of the buffer where it can put the result of the encryption */
-    App_u32Aes128EcbResultSize = APP_AES128_ECB_RESULT_SIZE;
-
-    /* Clear the result buffer, in order to be able to check the successful result of encryption */
-    Util_Memset(App_au8Aes128EcbResult, 0U, APP_AES128_ECB_RESULT_SIZE);
-
-    /* Prepare the information in the job to be sent to Crypto driver */
-    App_PrepareAes128EcbEncryptJob(APP_AES128_KEY_ID, App_au8Aes128EcbPlaintext_1, APP_AES128_ECB_PLAIN_TEXT_SIZE_1, App_au8Aes128EcbResult, &App_u32Aes128EcbResultSize);
-
-    /* Request Crypto driver to perform AES128 Encryption */
-    RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobAes128EcbEncrypt);
-
-//  const char *str =   (const char *)App_au8Aes128EcbPlaintext_1;
-//  ST7789_WriteString(0, 106, str, Font_16x26,ST77XX_WHITE, ST77XX_BLACK );
-
-    ST7789_WriteString(0, 80, "Original Data", Font_11x18,ST77XX_WHITE, ST77XX_BLACK);
-//  ST7789_WriteString(0, 104, "0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F", Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
-
-    ST7789_WriteString(20, 100, &App_au8Aes128EcbPlaintext_1, Font_16x26,ST77XX_WHITE, ST77XX_BLACK );
-
-    TestDelay(7000000);
-    ST7789_WriteString(0, 144, "AES ECB Encryption", Font_11x18,ST77XX_BLACK, ST77XX_NEON_GREEN);
-    TestDelay(7000000);
-
-    ST7789_WriteString(0, 174, "Encrypted Data", Font_11x18,ST77XX_BLACK,ST77XX_NEON_GREEN );
-    ST7789_WriteString(0, 204, &App_au8Aes128EcbResult, Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
-    TestDelay(7000000);
-
-    App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
-    App_SetSuccessStatus(App_u32Aes128EcbResultSize == APP_AES128_ECB_CIPHER_TEXT_SIZE_1);
-    App_SetSuccessStatus(Util_Memcmp(App_au8Aes128EcbResult, App_au8Aes128EcbCiphertext_1, APP_AES128_ECB_CIPHER_TEXT_SIZE_1));
-
-
+//    /* Load the value of the first AES128 key into CSEc RAM key slot */
+//    RetVal = Crypto_KeyElementSet(APP_AES128_KEY_ID, KEY_MATERIAL_ELEMENT_ID_U32, App_au8Aes128EcbKey_1, APP_AES128_KEY_SIZE);
+//    App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+//
+//    /* Mark the key as valid, so it can be used by Crypto driver in future job requests */
+//    RetVal = Crypto_KeySetValid(APP_AES128_KEY_ID);
+//    App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+//
+//    /* ------------------------------------------------------------------------------------------------------------------------------- */
+//    /*    AES128 ECB Encryption                                                                                                        */
+//    /* ------------------------------------------------------------------------------------------------------------------------------- */
+//
+//    /* This variable will be used to inform Crypto driver about the max length in bytes of the buffer where it can put the result of the encryption */
+//    App_u32Aes128EcbResultSize = APP_AES128_ECB_RESULT_SIZE;
+//
+//    /* Clear the result buffer, in order to be able to check the successful result of encryption */
+//    Util_Memset(App_au8Aes128EcbResult, 0U, APP_AES128_ECB_RESULT_SIZE);
+//
+//    /* Prepare the information in the job to be sent to Crypto driver */
+//    App_PrepareAes128EcbEncryptJob(APP_AES128_KEY_ID, App_au8Aes128EcbPlaintext_1, APP_AES128_ECB_PLAIN_TEXT_SIZE_1, App_au8Aes128EcbResult, &App_u32Aes128EcbResultSize);
+//
+//    /* Request Crypto driver to perform AES128 Encryption */
+//    RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &App_JobAes128EcbEncrypt);
+//
+////  const char *str =   (const char *)App_au8Aes128EcbPlaintext_1;
+////  ST7789_WriteString(0, 106, str, Font_16x26,ST77XX_WHITE, ST77XX_BLACK );
+//
+//    ST7789_WriteString(0, 80, "Original Data", Font_11x18,ST77XX_WHITE, ST77XX_BLACK);
+////  ST7789_WriteString(0, 104, "0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F", Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
+//
+//    ST7789_WriteString(20, 100, &App_au8Aes128EcbPlaintext_1, Font_16x26,ST77XX_WHITE, ST77XX_BLACK );
+//
+//    TestDelay(7000000);
+//    ST7789_WriteString(0, 144, "AES ECB Encryption", Font_11x18,ST77XX_BLACK, ST77XX_NEON_GREEN);
+//    TestDelay(7000000);
+//
+//    ST7789_WriteString(0, 174, "Encrypted Data", Font_11x18,ST77XX_BLACK,ST77XX_NEON_GREEN );
+//    ST7789_WriteString(0, 204, &App_au8Aes128EcbResult, Font_11x18,ST77XX_WHITE, ST77XX_BLACK );
+//    TestDelay(7000000);
+//
+//    App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+//    App_SetSuccessStatus(App_u32Aes128EcbResultSize == APP_AES128_ECB_CIPHER_TEXT_SIZE_1);
+//    App_SetSuccessStatus(Util_Memcmp(App_au8Aes128EcbResult, App_au8Aes128EcbCiphertext_1, APP_AES128_ECB_CIPHER_TEXT_SIZE_1));
+//
+//
 
     /* Load the value of the first AES128 key into CSEc RAM key slot */
       RetVal = Crypto_KeyElementSet(APP_CBC_Keys, CRYPTO_KE_CIPHER_IV, App_au8Aes128CbcKey_1, APP_AES128_KEY_SIZE);

@@ -124,16 +124,16 @@ extern "C"{
 #define CRYPTO_MAX_NUMBER_PARTITIONS_U8                 ((uint8)1U)
 
 /* Number of configured Crypto driver objects */
-#define CRYPTO_NUMBER_OF_DRIVER_OBJECTS_U32             ((uint32)1U)
+#define CRYPTO_NUMBER_OF_DRIVER_OBJECTS_U32             ((uint32)2U)
 
 /* Compile time switch stating that there is at least one configured key */
 #define CRYPTO_KEYS_EXIST                               (STD_ON)
 
 /* Number of Crypto keys */
-#define CRYPTO_NUMBER_OF_KEYS_U32                       ((uint32)2U)
+#define CRYPTO_NUMBER_OF_KEYS_U32                       ((uint32)3U)
 
 /* Number of Crypto key elements */
-#define CRYPTO_NUMBER_OF_KEY_ELEMENTS_U32               ((uint32)2U)
+#define CRYPTO_NUMBER_OF_KEY_ELEMENTS_U32               ((uint32)3U)
 
 /* Identifiers for the blobs of information that need to be stored in NVRAM used by the Crypto driver */
 #define CRYPTO_NVRAM_BLOB_0_ID                          (0U)
@@ -141,7 +141,7 @@ extern "C"{
 
 /* Sizes for the blobs of information used by the Crypto driver */
 #define CRYPTO_SIZEOF_NVRAM_BLOB_0                      (1U)
-#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (4U)
+#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (8U)
 
 /* Compile time switch stating that support for Nvram read/write operations is enabled or disabled */
 #define CRYPTO_ENABLE_NVRAM_READ_WRITE_SUPPORT          (STD_OFF)
@@ -174,15 +174,18 @@ extern "C"{
 #define CRYPTO_SPT_PBKDF2                               (STD_OFF)
 
 /* Symbolic names for the CryptoDriverObjectId attribute of all the Crypto Driver Objects */
-#define CryptoConf_CryptoDriverObject_CryptoDriverObject_AES_ECB     ((uint32)0U)
+#define CryptoConf_CryptoDriverObject_CryptoDriverObject_AES      ((uint32)0U)
+#define CryptoConf_CryptoDriverObject_CryptoDriverObject_MAC      ((uint32)1U)
 
 /* Symbolic names for the CryptoKeyId attribute of all the Crypto keys */
-#define CryptoConf_CryptoKey_CryptoKey_MasterECU                     ((uint32)0U)
-#define CryptoConf_CryptoKey_CryptoKey_AES                           ((uint32)1U)
+#define CryptoConf_CryptoKey_CryptoKey_AES_ECB                    ((uint32)0U)
+#define CryptoConf_CryptoKey_CryptoKey_AES_CBC                    ((uint32)1U)
+#define CryptoConf_CryptoKey_CryptoKey_AES_CMAC                   ((uint32)2U)
 
 /* Symbolic names for the CryptoKeyElementId attribute of all the Crypto key elements */
-#define CryptoConf_CryptoKeyElement_CryptoKeyElement_MASTER_ECU_KEY  ((uint32)1U)
-#define CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY         ((uint32)1U)
+#define CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_ECB  ((uint32)1U)
+#define CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_CBC  ((uint32)5U)
+#define CryptoConf_CryptoKeyElement_CryptoKeyElement_CMAC         ((uint32)1U)
 
 /*==================================================================================================
 *                                              ENUMS
