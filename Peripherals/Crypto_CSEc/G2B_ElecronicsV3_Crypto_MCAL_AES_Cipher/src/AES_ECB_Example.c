@@ -61,6 +61,8 @@ static uint8_t App_au8Aes128EcbOriginalMessage[G2B_AES128_ECB_RESULT_TEXT_SIZE];
 
 #define APP_AES128_KEY_ID CryptoConf_CryptoKey_CryptoKey_AES_ECB
 #define KEY_MATERIAL_ELEMENT_ID_U32 CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_ECB
+//#define KEY_MATERIAL_ELEMENT_ID_U32 1
+
 #define APP_AES128_CDO_ID CryptoConf_CryptoDriverObject_CryptoDriverObject_AES
 
 uint32 ResultLength = 16;

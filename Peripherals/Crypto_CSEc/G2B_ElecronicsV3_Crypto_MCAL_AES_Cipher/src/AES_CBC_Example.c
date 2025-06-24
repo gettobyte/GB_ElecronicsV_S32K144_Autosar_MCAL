@@ -71,7 +71,10 @@ static uint8_t App_au8Aes128Ecb_Encrypted_Message[G2B_AES128_CBC_Encrypted_Messa
 static uint8_t App_au8Aes128Ecb_Decrypted_Message[G2B_AES128_CBC_Decrypted_Message_TEXT_SIZE];
 
 #define APP_AES128_CBC_KEY_ID CryptoConf_CryptoKey_CryptoKey_AES_CBC
+
 #define KEY_MATERIAL_AES_CBC_ELEMENT_ID_U32 CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_CBC
+#define KEY_MATERIAL_AES_CBC_IV_ELEMENT_ID_U32 CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_CBC_IV
+
 #define APP_AES128_CDO_ID CryptoConf_CryptoDriverObject_CryptoDriverObject_AES
 
 uint32 ResultLength = 16;
@@ -236,6 +239,9 @@ int main(void)
     {
 
     	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_ELEMENT_ID_U32, AES_128_CbcKey, APP_AES128_KEY_SIZE  );
+        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+
+    	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_IV_ELEMENT_ID_U32, G2B_Aes128CBC_IV, APP_AES128_KEY_SIZE  );
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
 

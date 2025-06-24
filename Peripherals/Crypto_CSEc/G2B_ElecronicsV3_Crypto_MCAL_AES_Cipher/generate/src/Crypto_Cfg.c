@@ -146,7 +146,7 @@ static const uint32 Crypto_au32KeyElementList_CryptoKey_AES_ECB[1U] =
 static const uint32 Crypto_au32KeyElementList_CryptoKey_AES_CBC[2U] =
 {
     1U,
-    0U
+    3U
 };
 
 /* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_AES_CMAC */
@@ -217,7 +217,7 @@ static const Crypto_PrimitiveType Crypto_aPrimitives_CryptoDriverObject_MAC[2U] 
 #include "Crypto_MemMap.h"
 
 /* Array storing the key element information that is volatile (no need to be persistent across resets) */
-VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[28U], 4U)
+VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[32U], 4U)
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
@@ -305,7 +305,7 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         /* Identifier of the CSEc key */
         CSEC_IP_RAM_KEY
     },
-    /* Structure containing information for Key Element CryptoKeyElement_AES_KEY_CBC */
+    /* Structure containing information for Key Element CryptoKeyElement_AES_KEY_CBC_IV */
     {
         /* KeyElementId */
         5U,
@@ -346,6 +346,29 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         CRYPTO_WA_ALLOWED,
         /* Pointer to location storing the Key Element actual size */
         (uint32*)&Crypto_au8VolatileKeyElemValues[24U],
+        /* Pointer to location storing the Key Element value */
+        NULL_PTR,
+        /* Identifier of the CSEc key */
+        CSEC_IP_RAM_KEY
+    },
+    /* Structure containing information for Key Element CryptoKeyElement_AES_KEY_CBC */
+    {
+        /* KeyElementId */
+        1U,
+        /* Allow partial access */
+        (boolean)FALSE,
+        /* Key element format */
+        CRYPTO_KE_FORMAT_BIN_OCTET,
+        /* Key element persistent */
+        (boolean)FALSE,
+        /* Read access type */
+        CRYPTO_RA_ALLOWED,
+        /* Key element max size */
+        16U,
+        /* Write access type */
+        CRYPTO_WA_ALLOWED,
+        /* Pointer to location storing the Key Element actual size */
+        (uint32*)&Crypto_au8VolatileKeyElemValues[28U],
         /* Pointer to location storing the Key Element value */
         NULL_PTR,
         /* Identifier of the CSEc key */
