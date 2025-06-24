@@ -141,7 +141,7 @@ extern "C"{
 
 /* Sizes for the blobs of information used by the Crypto driver */
 #define CRYPTO_SIZEOF_NVRAM_BLOB_0                      (1U)
-#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (8U)
+#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (4U)
 
 /* Compile time switch stating that support for Nvram read/write operations is enabled or disabled */
 #define CRYPTO_ENABLE_NVRAM_READ_WRITE_SUPPORT          (STD_OFF)

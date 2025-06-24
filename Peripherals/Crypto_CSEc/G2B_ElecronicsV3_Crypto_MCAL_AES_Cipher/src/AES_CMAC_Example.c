@@ -47,37 +47,31 @@ volatile int exit_code = 0;
 /* Defines related to the CSEc Hw Ip, depending on the derivative */
 
 
-#define G2B_AES128_CBC_Original_Message_TEXT_SIZE 16
-#define G2B_AES128_CBC_Encrypted_Message_TEXT_SIZE 16
-#define G2B_AES128_CBC_Decrypted_Message_TEXT_SIZE 16
-#define G2B_AES128_CBC_IV_TEXT_SIZE 16
+#define G2B_AES128_CMAC_Original_Message_TEXT_SIZE 16
+#define G2B_MAC_Generated_Message_TEXT_SIZE 16
+#define G2B_MAC_Verify_Message_TEXT_SIZE 16
 
 
-#define APP_AES128_KEY_SIZE 16
+#define APP_AES128_CMAC_KEY_SIZE 16
 
 
-static uint8_t G2B_Aes128CBC_Original_Message[G2B_AES128_CBC_Original_Message_TEXT_SIZE]=
+static uint8_t G2B_Aes128_CMAC_Original_Message[G2B_AES128_CMAC_Original_Message_TEXT_SIZE]=
 {
 		   0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
 };
 
-static uint8_t G2B_Aes128CBC_IV[G2B_AES128_CBC_IV_TEXT_SIZE]=
-{
-		   0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35
-};
 
+static uint8_t App_au8Aes128Mac_Generated_Message[G2B_MAC_Generated_Message_TEXT_SIZE];
+//static uint8_t App_au8Aes128Mac_Verify_Message[G2B_MAC_Verify_Message_TEXT_SIZE];
 
-static uint8_t App_au8Aes128Ecb_Encrypted_Message[G2B_AES128_CBC_Encrypted_Message_TEXT_SIZE];
-static uint8_t App_au8Aes128Ecb_Decrypted_Message[G2B_AES128_CBC_Decrypted_Message_TEXT_SIZE];
-
-#define APP_AES128_CBC_KEY_ID CryptoConf_CryptoKey_CryptoKey_AES_CBC
-#define KEY_MATERIAL_AES_CBC_ELEMENT_ID_U32 CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_CBC
-#define APP_AES128_CDO_ID CryptoConf_CryptoDriverObject_CryptoDriverObject_AES
+#define APP_AES128_MAC_KEY_ID CryptoConf_CryptoKey_CryptoKey_AES_CMAC
+#define KEY_MATERIAL_MAC_ELEMENT_ID_U32 CryptoConf_CryptoKeyElement_CryptoKeyElement_CMAC
+#define APP_AES128_CDO_ID CryptoConf_CryptoDriverObject_CryptoDriverObject_MAC
 
 uint32 ResultLength = 16;
 
 
-static Crypto_JobType G2B_AES128_CBC_Encrypt_ProcessJob =
+static Crypto_JobType G2B_AES128_MAC_Generate_ProcessJob =
 {
 		.jobId = 1U,
 		.jobState = CRYPTO_JOBSTATE_IDLE,
@@ -87,13 +81,13 @@ static Crypto_JobType G2B_AES128_CBC_Encrypt_ProcessJob =
 
 		 .jobPrimitiveInputOutput =
 		 {
-			.inputPtr = G2B_Aes128CBC_Original_Message,
-			.inputLength = G2B_AES128_CBC_Original_Message_TEXT_SIZE,
-			.secondaryInputPtr = G2B_Aes128CBC_IV,
-			.secondaryInputLength = G2B_AES128_CBC_IV_TEXT_SIZE,
+			.inputPtr = G2B_Aes128_CMAC_Original_Message,
+			.inputLength = G2B_AES128_CMAC_Original_Message_TEXT_SIZE,
+			.secondaryInputPtr = NULL_PTR,
+			.secondaryInputLength = 0,
 			.tertiaryInputPtr = NULL_PTR,
 			.tertiaryInputLength = 0,
-			.outputPtr = App_au8Aes128Ecb_Encrypted_Message,
+			.outputPtr = App_au8Aes128Mac_Generated_Message,
 			.outputLengthPtr = &ResultLength,
 			.secondaryOutputPtr = NULL_PTR,
 			.secondaryOutputLengthPtr = NULL_PTR,
@@ -112,18 +106,18 @@ static Crypto_JobType G2B_AES128_CBC_Encrypt_ProcessJob =
 			.callbackId = 0,
 			.primitiveInfo = &(Crypto_PrimitiveInfoType)
 					{
-				       .resultLength = G2B_AES128_CBC_Encrypted_Message_TEXT_SIZE,
-					   .service = CRYPTO_ENCRYPT,
+				       .resultLength = G2B_AES128_CMAC_Original_Message_TEXT_SIZE,
+					   .service = CRYPTO_MACGENERATE,
 					   .algorithm =
 					   {
-							.family = CRYPTO_ALGOFAM_AES,
-							.secondaryFamily = CRYPTO_ALGOFAM_NOT_SET ,
+							.family = CRYPTO_ALGOFAM_CUSTOM,
+							.secondaryFamily = CRYPTO_ALGOFAM_CUSTOM ,
 							.keyLength = 128, // 16 bytes which is 128 in bits
-							.mode = CRYPTO_ALGOMODE_CBC,// Type of AES Mode we want to perform
+							.mode = CRYPTO_ALGOMODE_CMAC,// Type of AES Mode we want to perform
 					   },
 					},
 
-			 .cryIfKeyId = APP_AES128_CBC_KEY_ID,
+			 .cryIfKeyId = APP_AES128_MAC_KEY_ID,
 			 .processingType = CRYPTO_PROCESSING_SYNC,
 			 .callbackUpdateNotification = FALSE,
 
@@ -143,74 +137,74 @@ static Crypto_JobType G2B_AES128_CBC_Encrypt_ProcessJob =
 };
 
 
+//
+//static Crypto_JobType G2B_AES128_CBC_Decrypt_ProcessJob =
+//{
+//		.jobId = 1U,
+//		.jobState = CRYPTO_JOBSTATE_IDLE,
+//
+//	// Crypto_JobPrimitiveInputOutputType: structure, in this we specify different
+//	// buffer value's to input and out put data.
+//
+//		 .jobPrimitiveInputOutput =
+//		 {
+//			.inputPtr = App_au8Aes128Ecb_Encrypted_Message,
+//			.inputLength = G2B_AES128_CBC_Encrypted_Message_TEXT_SIZE,
+//			.secondaryInputPtr = G2B_Aes128CBC_IV,
+//			.secondaryInputLength = G2B_AES128_CBC_IV_TEXT_SIZE,
+//			.tertiaryInputPtr = NULL_PTR,
+//			.tertiaryInputLength = 0,
+//			.outputPtr = App_au8Aes128Ecb_Decrypted_Message,
+//			.outputLengthPtr = &ResultLength,
+//			.secondaryOutputPtr = NULL_PTR,
+//			.secondaryOutputLengthPtr = NULL_PTR,
+//			.input64 = 0,
+//			.verifyPtr = NULL_PTR,
+//			.output64Ptr = NULL_PTR,
+//			.mode = CRYPTO_OPERATIONMODE_SINGLECALL,
+//			.cryIfKeyId = APP_AES128_CBC_KEY_ID,
+//			.targetCryIfKeyId = 0,
+//		 },
+//
+//	// Crypto_JobPrimitiveInfoType: structure, in this we brief about the crypto primitive that
+//	// we need to use.
+//	.jobPrimitiveInfo = &(Crypto_JobPrimitiveInfoType)
+//	{
+//			.callbackId = 0,
+//			.primitiveInfo = &(Crypto_PrimitiveInfoType)
+//					{
+//				       .resultLength = G2B_AES128_CBC_Decrypted_Message_TEXT_SIZE,
+//					   .service = CRYPTO_DECRYPT,
+//					   .algorithm =
+//					   {
+//							.family = CRYPTO_ALGOFAM_AES,
+//							.secondaryFamily = CRYPTO_ALGOFAM_NOT_SET ,
+//							.keyLength = 128, // 16 bytes which is 128 in bits
+//							.mode = CRYPTO_ALGOMODE_CBC,// Type of AES Mode we want to perform
+//					   },
+//					},
+//
+//			 .cryIfKeyId = APP_AES128_CBC_KEY_ID,
+//			 .processingType = CRYPTO_PROCESSING_SYNC,
+//			 .callbackUpdateNotification = FALSE,
+//
+//	},
+//
+//	.jobInfo = &(Crypto_JobInfoType)
+//	{
+//	//Crypto_JobInfoType: structure, in which we specify particular job will be
+//	//performed at which priority and ID.
+//	.jobId = 0,
+//	.jobPriority = 0,
+//	},
+//
+//
+//	.jobRedirectionInfoRef = NULL_PTR
+//
+//};
 
-static Crypto_JobType G2B_AES128_CBC_Decrypt_ProcessJob =
-{
-		.jobId = 1U,
-		.jobState = CRYPTO_JOBSTATE_IDLE,
 
-	// Crypto_JobPrimitiveInputOutputType: structure, in this we specify different
-	// buffer value's to input and out put data.
-
-		 .jobPrimitiveInputOutput =
-		 {
-			.inputPtr = App_au8Aes128Ecb_Encrypted_Message,
-			.inputLength = G2B_AES128_CBC_Encrypted_Message_TEXT_SIZE,
-			.secondaryInputPtr = G2B_Aes128CBC_IV,
-			.secondaryInputLength = G2B_AES128_CBC_IV_TEXT_SIZE,
-			.tertiaryInputPtr = NULL_PTR,
-			.tertiaryInputLength = 0,
-			.outputPtr = App_au8Aes128Ecb_Decrypted_Message,
-			.outputLengthPtr = &ResultLength,
-			.secondaryOutputPtr = NULL_PTR,
-			.secondaryOutputLengthPtr = NULL_PTR,
-			.input64 = 0,
-			.verifyPtr = NULL_PTR,
-			.output64Ptr = NULL_PTR,
-			.mode = CRYPTO_OPERATIONMODE_SINGLECALL,
-			.cryIfKeyId = APP_AES128_CBC_KEY_ID,
-			.targetCryIfKeyId = 0,
-		 },
-
-	// Crypto_JobPrimitiveInfoType: structure, in this we brief about the crypto primitive that
-	// we need to use.
-	.jobPrimitiveInfo = &(Crypto_JobPrimitiveInfoType)
-	{
-			.callbackId = 0,
-			.primitiveInfo = &(Crypto_PrimitiveInfoType)
-					{
-				       .resultLength = G2B_AES128_CBC_Decrypted_Message_TEXT_SIZE,
-					   .service = CRYPTO_DECRYPT,
-					   .algorithm =
-					   {
-							.family = CRYPTO_ALGOFAM_AES,
-							.secondaryFamily = CRYPTO_ALGOFAM_NOT_SET ,
-							.keyLength = 128, // 16 bytes which is 128 in bits
-							.mode = CRYPTO_ALGOMODE_CBC,// Type of AES Mode we want to perform
-					   },
-					},
-
-			 .cryIfKeyId = APP_AES128_CBC_KEY_ID,
-			 .processingType = CRYPTO_PROCESSING_SYNC,
-			 .callbackUpdateNotification = FALSE,
-
-	},
-
-	.jobInfo = &(Crypto_JobInfoType)
-	{
-	//Crypto_JobInfoType: structure, in which we specify particular job will be
-	//performed at which priority and ID.
-	.jobId = 0,
-	.jobPriority = 0,
-	},
-
-
-	.jobRedirectionInfoRef = NULL_PTR
-
-};
-
-
-static uint8_t AES_128_CbcKey[APP_AES128_KEY_SIZE] = {
+static uint8_t AES_128_CMACKey[APP_AES128_CMAC_KEY_SIZE] = {
 		   0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f
 };
 
@@ -237,19 +231,19 @@ int main(void)
     for(;;)
     {
 
-    	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_ELEMENT_ID_U32, AES_128_CbcKey, APP_AES128_KEY_SIZE  );
+    	RetVal = Crypto_KeyElementSet(APP_AES128_MAC_KEY_ID, KEY_MATERIAL_MAC_ELEMENT_ID_U32, AES_128_CMACKey, APP_AES128_CMAC_KEY_SIZE  );
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
 
-    	RetVal = Crypto_KeySetValid(APP_AES128_CBC_KEY_ID);
+    	RetVal = Crypto_KeySetValid(APP_AES128_MAC_KEY_ID);
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
-    	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_CBC_Encrypt_ProcessJob);
+    	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_MAC_Generate_ProcessJob);
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
 
-    	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_CBC_Decrypt_ProcessJob);
-        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+//    	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_CBC_Decrypt_ProcessJob);
+//        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
 //		//Run AES128 Encryption/Decryption()
 //
