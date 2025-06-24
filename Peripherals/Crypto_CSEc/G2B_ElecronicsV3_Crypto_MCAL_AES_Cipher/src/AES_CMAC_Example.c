@@ -60,6 +60,11 @@ static uint8_t G2B_Aes128_CMAC_Original_Message[G2B_AES128_CMAC_Original_Message
 		   0x10, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
 };
 
+static uint8_t G2B_Aes128_CMAC_Original_Message_false[G2B_AES128_CMAC_Original_Message_TEXT_SIZE]=
+{
+		   0x20, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
+};
+
 
 static uint8_t App_au8Aes128Mac_Generated_Message[G2B_MAC_Generated_Message_TEXT_SIZE];
 //static uint8_t App_au8Aes128Mac_Verify_Message[G2B_MAC_Verify_Message_TEXT_SIZE];
@@ -135,6 +140,74 @@ static Crypto_JobType G2B_AES128_MAC_Generate_ProcessJob =
 	.jobRedirectionInfoRef = NULL_PTR
 
 };
+
+Crypto_VerifyResultType MAC_verify_status;
+
+static Crypto_JobType G2B_AES128_MAC_Verify_ProcessJob =
+{
+		.jobId = 1U,
+		.jobState = CRYPTO_JOBSTATE_IDLE,
+
+	// Crypto_JobPrimitiveInputOutputType: structure, in this we specify different
+	// buffer value's to input and out put data.
+
+		 .jobPrimitiveInputOutput =
+		 {
+			.inputPtr = G2B_Aes128_CMAC_Original_Message_false,
+			.inputLength = G2B_AES128_CMAC_Original_Message_TEXT_SIZE,
+			.secondaryInputPtr = App_au8Aes128Mac_Generated_Message,
+			.secondaryInputLength = G2B_AES128_CMAC_Original_Message_TEXT_SIZE,
+			.tertiaryInputPtr = NULL_PTR,
+			.tertiaryInputLength = 0,
+			.outputPtr = NULL_PTR,
+			.outputLengthPtr = 0,
+			.secondaryOutputPtr = NULL_PTR,
+			.secondaryOutputLengthPtr = NULL_PTR,
+			.input64 = 0,
+			.verifyPtr = &MAC_verify_status,
+			.output64Ptr = NULL_PTR,
+			.mode = CRYPTO_OPERATIONMODE_SINGLECALL,
+			.cryIfKeyId = 0,
+			.targetCryIfKeyId = 0,
+		 },
+
+	// Crypto_JobPrimitiveInfoType: structure, in this we brief about the crypto primitive that
+	// we need to use.
+	.jobPrimitiveInfo = &(Crypto_JobPrimitiveInfoType)
+	{
+			.callbackId = 0,
+			.primitiveInfo = &(Crypto_PrimitiveInfoType)
+					{
+				       .resultLength = G2B_AES128_CMAC_Original_Message_TEXT_SIZE,
+					   .service = CRYPTO_MACVERIFY,
+					   .algorithm =
+					   {
+							.family = CRYPTO_ALGOFAM_CUSTOM,
+							.secondaryFamily = CRYPTO_ALGOFAM_CUSTOM ,
+							.keyLength = 128, // 16 bytes which is 128 in bits
+							.mode = CRYPTO_ALGOMODE_CMAC,// Type of AES Mode we want to perform
+					   },
+					},
+
+			 .cryIfKeyId = APP_AES128_MAC_KEY_ID,
+			 .processingType = CRYPTO_PROCESSING_SYNC,
+			 .callbackUpdateNotification = FALSE,
+
+	},
+
+	.jobInfo = &(Crypto_JobInfoType)
+	{
+	//Crypto_JobInfoType: structure, in which we specify particular job will be
+	//performed at which priority and ID.
+	.jobId = 0,
+	.jobPriority = 0,
+	},
+
+
+	.jobRedirectionInfoRef = NULL_PTR
+
+};
+
 
 
 //
@@ -240,6 +313,10 @@ int main(void)
 
     	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_MAC_Generate_ProcessJob);
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+
+    	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_MAC_Verify_ProcessJob);
+        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+
 
 
 //    	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_CBC_Decrypt_ProcessJob);
