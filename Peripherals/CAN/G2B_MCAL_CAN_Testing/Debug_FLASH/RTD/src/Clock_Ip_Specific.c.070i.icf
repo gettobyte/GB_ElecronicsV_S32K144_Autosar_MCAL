@@ -1,0 +1,1799 @@
+Parsed function:Clock_Ip_Command
+Parsed function:Clock_Ip_ClockPowerModeChangeNotification
+Parsed function:Clock_Ip_ClockInitializeObjects
+Parsed function:getSlowDividerConfig
+Parsed function:getBusDividerConfig
+Parsed function:getCoreDividerConfig
+Parsed function:getSelectorConfig
+Parsed function:getSpllConfig
+Parsed function:getSoscConfig
+Parsed function:getFircConfig
+Parsed function:Clock_Ip_SpecificPlatformInitClock
+Parsed function:SetSimLpoclksRegister_TrustedCall
+Parsed function:SetFircToResetValue_TrustedCall
+Parsed function:DisableSafeClock
+Dump after hash based groups
+Congruence classes: 15 (unique hash values: 15), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 15 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 15 (unique hash values: 15), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 15 classes
+
+
+Worklist has been filled with: 13
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 15 (unique hash values: 15), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 15 classes
+
+
+Init called for 0 items (0.00%).
+Dump after full equality comparison of groups
+Congruence classes: 15 (unique hash values: 15), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 15 classes
+
+
+Worklist has been filled with: 13
+Address reference subdivision created: 0 new classes.
+Congruence classes: 15 (unique hash values: 15), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 15 classes
+
+
+
+Item count: 15
+Congruent classes before: 15, after: 15
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+Clock_Ip_Command (const struct Clock_Ip_ClockConfigType * Config, Clock_Ip_CommandType Command)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  switch (Command_2(D)) <default: <L5> [25.00%], case 1: <L1> [25.00%], case 2: <L0> [25.00%], case 4: <L2> [25.00%]>
+
+  <bb 3> [local count: 268435456]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_ClockInitializeObjects ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 268435456]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_SpecificPlatformInitClock (Config_4(D));
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 268435456]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  DisableSafeClock (Config_4(D));
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+<L5>:
+  return;
+
+}
+
+
+Clock_Ip_ClockPowerModeChangeNotification (Clock_Ip_PowerModesType PowerMode, Clock_Ip_PowerNotificationType Notification)
+{
+  const struct Clock_Ip_SelectorCallbackType * Clock_Ip_pxScsRunClockSelector.0_1;
+  void (*<T5b2>) (const struct Clock_Ip_SelectorConfigType *) _2;
+  const struct Clock_Ip_SelectorConfigType * Clock_Ip_pxScsConfigVlprMode.1_3;
+  const struct Clock_Ip_DividerCallbackType * Clock_Ip_pxCoreRunClockDivider.2_4;
+  void (*<T577>) (const struct Clock_Ip_DividerConfigType *) _5;
+  const struct Clock_Ip_DividerConfigType * Clock_Ip_pxCoreConfigVlprMode.3_6;
+  const struct Clock_Ip_DividerCallbackType * Clock_Ip_pxBusRunClockDivider.4_7;
+  void (*<T577>) (const struct Clock_Ip_DividerConfigType *) _8;
+  const struct Clock_Ip_DividerConfigType * Clock_Ip_pxBusConfigVlprMode.5_9;
+  const struct Clock_Ip_DividerCallbackType * Clock_Ip_pxSlowRunClockDivider.6_10;
+  void (*<T577>) (const struct Clock_Ip_DividerConfigType *) _11;
+  const struct Clock_Ip_DividerConfigType * Clock_Ip_pxSlowConfigVlprMode.7_12;
+  const struct Clock_Ip_PllCallbackType * Clock_Ip_pxSpllClock.8_13;
+  void (*<T55d>) (Clock_Ip_NameType) _14;
+  const struct Clock_Ip_PllConfigType * Clock_Ip_pxSpllConfig.9_15;
+  <unnamed type> _16;
+  const struct Clock_Ip_ExtOscCallbackType * Clock_Ip_pxSoscClock.10_17;
+  void (*<T55d>) (Clock_Ip_NameType) _18;
+  const struct Clock_Ip_XoscConfigType * Clock_Ip_pxSoscConfig.11_19;
+  <unnamed type> _20;
+  const struct Clock_Ip_IntOscCallbackType * Clock_Ip_pxFircClock.12_21;
+  void (*<T55d>) (Clock_Ip_NameType) _22;
+  const struct Clock_Ip_IrcoscConfigType * Clock_Ip_pxFircConfig.13_23;
+  <unnamed type> _24;
+  const struct Clock_Ip_IntOscCallbackType * Clock_Ip_pxFircClock.14_25;
+  void (*<T55a>) (const struct Clock_Ip_IrcoscConfigType *) _26;
+  const struct Clock_Ip_IrcoscConfigType * Clock_Ip_pxFircConfig.15_27;
+  const struct Clock_Ip_ExtOscCallbackType * Clock_Ip_pxSoscClock.16_28;
+  void (*<T569>) (const struct Clock_Ip_XoscConfigType *) _29;
+  const struct Clock_Ip_XoscConfigType * Clock_Ip_pxSoscConfig.17_30;
+  const struct Clock_Ip_ExtOscCallbackType * Clock_Ip_pxSoscClock.18_31;
+  void (*<T569>) (const struct Clock_Ip_XoscConfigType *) _32;
+  const struct Clock_Ip_XoscConfigType * Clock_Ip_pxSoscConfig.19_33;
+  const struct Clock_Ip_PllCallbackType * Clock_Ip_pxSpllClock.20_34;
+  void (*<T59f>) (const struct Clock_Ip_PllConfigType *) _35;
+  const struct Clock_Ip_PllConfigType * Clock_Ip_pxSpllConfig.21_36;
+  const struct Clock_Ip_PllCallbackType * Clock_Ip_pxSpllClock.22_37;
+  Clock_Ip_PllStatusReturnType (*<T5a5>) (Clock_Ip_NameType) _38;
+  const struct Clock_Ip_PllConfigType * Clock_Ip_pxSpllConfig.23_39;
+  <unnamed type> _40;
+  const struct Clock_Ip_SelectorCallbackType * Clock_Ip_pxScsRunClockSelector.24_41;
+  void (*<T5b2>) (const struct Clock_Ip_SelectorConfigType *) _42;
+  const struct Clock_Ip_SelectorConfigType * Clock_Ip_pxScsConfigRunMode.25_43;
+  const struct Clock_Ip_DividerCallbackType * Clock_Ip_pxCoreRunClockDivider.26_44;
+  void (*<T577>) (const struct Clock_Ip_DividerConfigType *) _45;
+  const struct Clock_Ip_DividerConfigType * Clock_Ip_pxCoreConfigRunMode.27_46;
+  const struct Clock_Ip_DividerCallbackType * Clock_Ip_pxBusRunClockDivider.28_47;
+  void (*<T577>) (const struct Clock_Ip_DividerConfigType *) _48;
+  const struct Clock_Ip_DividerConfigType * Clock_Ip_pxBusConfigRunMode.29_49;
+  const struct Clock_Ip_DividerCallbackType * Clock_Ip_pxSlowRunClockDivider.30_50;
+  void (*<T577>) (const struct Clock_Ip_DividerConfigType *) _51;
+  const struct Clock_Ip_DividerConfigType * Clock_Ip_pxSlowConfigRunMode.31_52;
+  const struct Clock_Ip_IntOscCallbackType * Clock_Ip_pxFircClock.32_53;
+  void (*<T55a>) (const struct Clock_Ip_IrcoscConfigType *) _54;
+  const struct Clock_Ip_IrcoscConfigType * Clock_Ip_pxFircConfig.33_55;
+  const struct Clock_Ip_ExtOscCallbackType * Clock_Ip_pxSoscClock.34_56;
+  void (*<T569>) (const struct Clock_Ip_XoscConfigType *) _57;
+  const struct Clock_Ip_XoscConfigType * Clock_Ip_pxSoscConfig.35_58;
+  const struct Clock_Ip_ExtOscCallbackType * Clock_Ip_pxSoscClock.36_59;
+  void (*<T569>) (const struct Clock_Ip_XoscConfigType *) _60;
+  const struct Clock_Ip_XoscConfigType * Clock_Ip_pxSoscConfig.37_61;
+  const struct Clock_Ip_PllCallbackType * Clock_Ip_pxSpllClock.38_62;
+  void (*<T59f>) (const struct Clock_Ip_PllConfigType *) _63;
+  const struct Clock_Ip_PllConfigType * Clock_Ip_pxSpllConfig.39_64;
+  const struct Clock_Ip_PllCallbackType * Clock_Ip_pxSpllClock.40_65;
+  Clock_Ip_PllStatusReturnType (*<T5a5>) (Clock_Ip_NameType) _66;
+  const struct Clock_Ip_PllConfigType * Clock_Ip_pxSpllConfig.41_67;
+  <unnamed type> _68;
+  const struct Clock_Ip_SelectorCallbackType * Clock_Ip_pxScsHsrunClockSelector.42_69;
+  void (*<T5b2>) (const struct Clock_Ip_SelectorConfigType *) _70;
+  const struct Clock_Ip_SelectorConfigType * Clock_Ip_pxScsConfigHsrunMode.43_71;
+  const struct Clock_Ip_DividerCallbackType * Clock_Ip_pxCoreHsrunClockDivider.44_72;
+  void (*<T577>) (const struct Clock_Ip_DividerConfigType *) _73;
+  const struct Clock_Ip_DividerConfigType * Clock_Ip_pxCoreConfigHsrunMode.45_74;
+  const struct Clock_Ip_DividerCallbackType * Clock_Ip_pxBusHsrunClockDivider.46_75;
+  void (*<T577>) (const struct Clock_Ip_DividerConfigType *) _76;
+  const struct Clock_Ip_DividerConfigType * Clock_Ip_pxBusConfigHsrunMode.47_77;
+  const struct Clock_Ip_DividerCallbackType * Clock_Ip_pxSlowHsrunClockDivider.48_78;
+  void (*<T577>) (const struct Clock_Ip_DividerConfigType *) _79;
+  const struct Clock_Ip_DividerConfigType * Clock_Ip_pxSlowConfigHsrunMode.49_80;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  switch (PowerMode_82(D)) <default: <L12> [25.00%], case 0: <L4> [25.00%], case 1 ... 2: <L0> [25.00%], case 3: <L7> [25.00%]>
+
+  <bb 3> [local count: 268435456]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  if (Notification_84(D) == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 4> [local count: 134217728]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxScsRunClockSelector.0_1 = Clock_Ip_pxScsRunClockSelector;
+  _2 = Clock_Ip_pxScsRunClockSelector.0_1->Set;
+  Clock_Ip_pxScsConfigVlprMode.1_3 = Clock_Ip_pxScsConfigVlprMode;
+  _2 (Clock_Ip_pxScsConfigVlprMode.1_3);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxCoreRunClockDivider.2_4 = Clock_Ip_pxCoreRunClockDivider;
+  _5 = Clock_Ip_pxCoreRunClockDivider.2_4->Set;
+  Clock_Ip_pxCoreConfigVlprMode.3_6 = Clock_Ip_pxCoreConfigVlprMode;
+  _5 (Clock_Ip_pxCoreConfigVlprMode.3_6);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxBusRunClockDivider.4_7 = Clock_Ip_pxBusRunClockDivider;
+  _8 = Clock_Ip_pxBusRunClockDivider.4_7->Set;
+  Clock_Ip_pxBusConfigVlprMode.5_9 = Clock_Ip_pxBusConfigVlprMode;
+  _8 (Clock_Ip_pxBusConfigVlprMode.5_9);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSlowRunClockDivider.6_10 = Clock_Ip_pxSlowRunClockDivider;
+  _11 = Clock_Ip_pxSlowRunClockDivider.6_10->Set;
+  Clock_Ip_pxSlowConfigVlprMode.7_12 = Clock_Ip_pxSlowConfigVlprMode;
+  _11 (Clock_Ip_pxSlowConfigVlprMode.7_12);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.8_13 = Clock_Ip_pxSpllClock;
+  _14 = Clock_Ip_pxSpllClock.8_13->Disable;
+  Clock_Ip_pxSpllConfig.9_15 = Clock_Ip_pxSpllConfig;
+  _16 = Clock_Ip_pxSpllConfig.9_15->Name;
+  _14 (_16);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.10_17 = Clock_Ip_pxSoscClock;
+  _18 = Clock_Ip_pxSoscClock.10_17->Disable;
+  Clock_Ip_pxSoscConfig.11_19 = Clock_Ip_pxSoscConfig;
+  _20 = Clock_Ip_pxSoscConfig.11_19->Name;
+  _18 (_20);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxFircClock.12_21 = Clock_Ip_pxFircClock;
+  _22 = Clock_Ip_pxFircClock.12_21->Disable;
+  Clock_Ip_pxFircConfig.13_23 = Clock_Ip_pxFircConfig;
+  _24 = Clock_Ip_pxFircConfig.13_23->Name;
+  _22 (_24);
+  goto <bb 9>; [100.00%]
+
+  <bb 5> [local count: 268435456]:
+<L4>:
+  # DEBUG BEGIN_STMT
+  if (Notification_84(D) == 2)
+    goto <bb 6>; [34.00%]
+  else
+    goto <bb 9>; [66.00%]
+
+  <bb 6> [local count: 91268055]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxFircClock.14_25 = Clock_Ip_pxFircClock;
+  _26 = Clock_Ip_pxFircClock.14_25->Enable;
+  Clock_Ip_pxFircConfig.15_27 = Clock_Ip_pxFircConfig;
+  _26 (Clock_Ip_pxFircConfig.15_27);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.16_28 = Clock_Ip_pxSoscClock;
+  _29 = Clock_Ip_pxSoscClock.16_28->Enable;
+  Clock_Ip_pxSoscConfig.17_30 = Clock_Ip_pxSoscConfig;
+  _29 (Clock_Ip_pxSoscConfig.17_30);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.18_31 = Clock_Ip_pxSoscClock;
+  _32 = Clock_Ip_pxSoscClock.18_31->Complete;
+  Clock_Ip_pxSoscConfig.19_33 = Clock_Ip_pxSoscConfig;
+  _32 (Clock_Ip_pxSoscConfig.19_33);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.20_34 = Clock_Ip_pxSpllClock;
+  _35 = Clock_Ip_pxSpllClock.20_34->Enable;
+  Clock_Ip_pxSpllConfig.21_36 = Clock_Ip_pxSpllConfig;
+  _35 (Clock_Ip_pxSpllConfig.21_36);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.22_37 = Clock_Ip_pxSpllClock;
+  _38 = Clock_Ip_pxSpllClock.22_37->Complete;
+  Clock_Ip_pxSpllConfig.23_39 = Clock_Ip_pxSpllConfig;
+  _40 = Clock_Ip_pxSpllConfig.23_39->Name;
+  _38 (_40);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxScsRunClockSelector.24_41 = Clock_Ip_pxScsRunClockSelector;
+  _42 = Clock_Ip_pxScsRunClockSelector.24_41->Set;
+  Clock_Ip_pxScsConfigRunMode.25_43 = Clock_Ip_pxScsConfigRunMode;
+  _42 (Clock_Ip_pxScsConfigRunMode.25_43);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxCoreRunClockDivider.26_44 = Clock_Ip_pxCoreRunClockDivider;
+  _45 = Clock_Ip_pxCoreRunClockDivider.26_44->Set;
+  Clock_Ip_pxCoreConfigRunMode.27_46 = Clock_Ip_pxCoreConfigRunMode;
+  _45 (Clock_Ip_pxCoreConfigRunMode.27_46);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxBusRunClockDivider.28_47 = Clock_Ip_pxBusRunClockDivider;
+  _48 = Clock_Ip_pxBusRunClockDivider.28_47->Set;
+  Clock_Ip_pxBusConfigRunMode.29_49 = Clock_Ip_pxBusConfigRunMode;
+  _48 (Clock_Ip_pxBusConfigRunMode.29_49);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSlowRunClockDivider.30_50 = Clock_Ip_pxSlowRunClockDivider;
+  _51 = Clock_Ip_pxSlowRunClockDivider.30_50->Set;
+  Clock_Ip_pxSlowConfigRunMode.31_52 = Clock_Ip_pxSlowConfigRunMode;
+  _51 (Clock_Ip_pxSlowConfigRunMode.31_52);
+  goto <bb 9>; [100.00%]
+
+  <bb 7> [local count: 268435456]:
+<L7>:
+  # DEBUG BEGIN_STMT
+  if (Notification_84(D) == 2)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 9>; [66.00%]
+
+  <bb 8> [local count: 91268055]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxFircClock.32_53 = Clock_Ip_pxFircClock;
+  _54 = Clock_Ip_pxFircClock.32_53->Enable;
+  Clock_Ip_pxFircConfig.33_55 = Clock_Ip_pxFircConfig;
+  _54 (Clock_Ip_pxFircConfig.33_55);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.34_56 = Clock_Ip_pxSoscClock;
+  _57 = Clock_Ip_pxSoscClock.34_56->Enable;
+  Clock_Ip_pxSoscConfig.35_58 = Clock_Ip_pxSoscConfig;
+  _57 (Clock_Ip_pxSoscConfig.35_58);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSoscClock.36_59 = Clock_Ip_pxSoscClock;
+  _60 = Clock_Ip_pxSoscClock.36_59->Complete;
+  Clock_Ip_pxSoscConfig.37_61 = Clock_Ip_pxSoscConfig;
+  _60 (Clock_Ip_pxSoscConfig.37_61);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.38_62 = Clock_Ip_pxSpllClock;
+  _63 = Clock_Ip_pxSpllClock.38_62->Enable;
+  Clock_Ip_pxSpllConfig.39_64 = Clock_Ip_pxSpllConfig;
+  _63 (Clock_Ip_pxSpllConfig.39_64);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSpllClock.40_65 = Clock_Ip_pxSpllClock;
+  _66 = Clock_Ip_pxSpllClock.40_65->Complete;
+  Clock_Ip_pxSpllConfig.41_67 = Clock_Ip_pxSpllConfig;
+  _68 = Clock_Ip_pxSpllConfig.41_67->Name;
+  _66 (_68);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxScsHsrunClockSelector.42_69 = Clock_Ip_pxScsHsrunClockSelector;
+  _70 = Clock_Ip_pxScsHsrunClockSelector.42_69->Set;
+  Clock_Ip_pxScsConfigHsrunMode.43_71 = Clock_Ip_pxScsConfigHsrunMode;
+  _70 (Clock_Ip_pxScsConfigHsrunMode.43_71);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxCoreHsrunClockDivider.44_72 = Clock_Ip_pxCoreHsrunClockDivider;
+  _73 = Clock_Ip_pxCoreHsrunClockDivider.44_72->Set;
+  Clock_Ip_pxCoreConfigHsrunMode.45_74 = Clock_Ip_pxCoreConfigHsrunMode;
+  _73 (Clock_Ip_pxCoreConfigHsrunMode.45_74);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxBusHsrunClockDivider.46_75 = Clock_Ip_pxBusHsrunClockDivider;
+  _76 = Clock_Ip_pxBusHsrunClockDivider.46_75->Set;
+  Clock_Ip_pxBusConfigHsrunMode.47_77 = Clock_Ip_pxBusConfigHsrunMode;
+  _76 (Clock_Ip_pxBusConfigHsrunMode.47_77);
+  # DEBUG BEGIN_STMT
+  Clock_Ip_pxSlowHsrunClockDivider.48_78 = Clock_Ip_pxSlowHsrunClockDivider;
+  _79 = Clock_Ip_pxSlowHsrunClockDivider.48_78->Set;
+  Clock_Ip_pxSlowConfigHsrunMode.49_80 = Clock_Ip_pxSlowConfigHsrunMode;
+  _79 (Clock_Ip_pxSlowConfigHsrunMode.49_80);
+
+  <bb 9> [local count: 1073741824]:
+<L12>:
+  return;
+
+}
+
+
+Clock_Ip_ClockInitializeObjects ()
+{
+  static boolean Clock_Ip_bObjsAreInitialized = 0;
+  _Bool Clock_Ip_bObjsAreInitialized.50_1;
+  unsigned char _2;
+  int _3;
+  const struct Clock_Ip_PllCallbackType * _4;
+  unsigned char _5;
+  int _6;
+  const struct Clock_Ip_ExtOscCallbackType * _7;
+  unsigned char _8;
+  int _9;
+  const struct Clock_Ip_IntOscCallbackType * _10;
+  unsigned char _11;
+  int _12;
+  const struct Clock_Ip_SelectorCallbackType * _13;
+  unsigned char _14;
+  int _15;
+  const struct Clock_Ip_SelectorCallbackType * _16;
+  unsigned char _17;
+  int _18;
+  const struct Clock_Ip_DividerCallbackType * _19;
+  unsigned char _20;
+  int _21;
+  const struct Clock_Ip_DividerCallbackType * _22;
+  unsigned char _23;
+  int _24;
+  const struct Clock_Ip_DividerCallbackType * _25;
+  unsigned char _26;
+  int _27;
+  const struct Clock_Ip_DividerCallbackType * _28;
+  unsigned char _29;
+  int _30;
+  const struct Clock_Ip_DividerCallbackType * _31;
+  unsigned char _32;
+  int _33;
+  const struct Clock_Ip_DividerCallbackType * _34;
+  const struct Clock_Ip_IrcoscConfigType * _35;
+  const struct Clock_Ip_XoscConfigType * _36;
+  const struct Clock_Ip_PllConfigType * _37;
+  const struct Clock_Ip_SelectorConfigType * _38;
+  const struct Clock_Ip_SelectorConfigType * _39;
+  const struct Clock_Ip_SelectorConfigType * _40;
+  const struct Clock_Ip_DividerConfigType * _41;
+  const struct Clock_Ip_DividerConfigType * _42;
+  const struct Clock_Ip_DividerConfigType * _43;
+  const struct Clock_Ip_DividerConfigType * _44;
+  const struct Clock_Ip_DividerConfigType * _45;
+  const struct Clock_Ip_DividerConfigType * _46;
+  const struct Clock_Ip_DividerConfigType * _47;
+  const struct Clock_Ip_DividerConfigType * _48;
+  const struct Clock_Ip_DividerConfigType * _49;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_bObjsAreInitialized.50_1 = Clock_Ip_bObjsAreInitialized;
+  if (Clock_Ip_bObjsAreInitialized.50_1 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_bObjsAreInitialized = 1;
+  # DEBUG BEGIN_STMT
+  _2 = Clock_Ip_au8PllCallbackIndex[1];
+  _3 = (int) _2;
+  _4 = &Clock_Ip_axPllCallbacks[_3];
+  Clock_Ip_pxSpllClock = _4;
+  # DEBUG BEGIN_STMT
+  _5 = Clock_Ip_au8XoscCallbackIndex[1];
+  _6 = (int) _5;
+  _7 = &Clock_Ip_axExtOscCallbacks[_6];
+  Clock_Ip_pxSoscClock = _7;
+  # DEBUG BEGIN_STMT
+  _8 = Clock_Ip_au8IrcoscCallbackIndex[4];
+  _9 = (int) _8;
+  _10 = &Clock_Ip_axIntOscCallbacks[_9];
+  Clock_Ip_pxFircClock = _10;
+  # DEBUG BEGIN_STMT
+  _11 = Clock_Ip_au8SelectorCallbackIndex[5];
+  _12 = (int) _11;
+  _13 = &Clock_Ip_axSelectorCallbacks[_12];
+  Clock_Ip_pxScsRunClockSelector = _13;
+  # DEBUG BEGIN_STMT
+  _14 = Clock_Ip_au8SelectorCallbackIndex[7];
+  _15 = (int) _14;
+  _16 = &Clock_Ip_axSelectorCallbacks[_15];
+  Clock_Ip_pxScsHsrunClockSelector = _16;
+  # DEBUG BEGIN_STMT
+  _17 = Clock_Ip_au8DividerCallbackIndex[6];
+  _18 = (int) _17;
+  _19 = &Clock_Ip_axDividerCallbacks[_18];
+  Clock_Ip_pxCoreRunClockDivider = _19;
+  # DEBUG BEGIN_STMT
+  _20 = Clock_Ip_au8DividerCallbackIndex[8];
+  _21 = (int) _20;
+  _22 = &Clock_Ip_axDividerCallbacks[_21];
+  Clock_Ip_pxCoreHsrunClockDivider = _22;
+  # DEBUG BEGIN_STMT
+  _23 = Clock_Ip_au8DividerCallbackIndex[9];
+  _24 = (int) _23;
+  _25 = &Clock_Ip_axDividerCallbacks[_24];
+  Clock_Ip_pxBusRunClockDivider = _25;
+  # DEBUG BEGIN_STMT
+  _26 = Clock_Ip_au8DividerCallbackIndex[11];
+  _27 = (int) _26;
+  _28 = &Clock_Ip_axDividerCallbacks[_27];
+  Clock_Ip_pxBusHsrunClockDivider = _28;
+  # DEBUG BEGIN_STMT
+  _29 = Clock_Ip_au8DividerCallbackIndex[12];
+  _30 = (int) _29;
+  _31 = &Clock_Ip_axDividerCallbacks[_30];
+  Clock_Ip_pxSlowRunClockDivider = _31;
+  # DEBUG BEGIN_STMT
+  _32 = Clock_Ip_au8DividerCallbackIndex[14];
+  _33 = (int) _32;
+  _34 = &Clock_Ip_axDividerCallbacks[_33];
+  Clock_Ip_pxSlowHsrunClockDivider = _34;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _35 = getFircConfig ();
+  Clock_Ip_pxFircConfig = _35;
+  # DEBUG BEGIN_STMT
+  _36 = getSoscConfig ();
+  Clock_Ip_pxSoscConfig = _36;
+  # DEBUG BEGIN_STMT
+  _37 = getSpllConfig ();
+  Clock_Ip_pxSpllConfig = _37;
+  # DEBUG BEGIN_STMT
+  _38 = getSelectorConfig (25);
+  Clock_Ip_pxScsConfigRunMode = _38;
+  # DEBUG BEGIN_STMT
+  _39 = getSelectorConfig (26);
+  Clock_Ip_pxScsConfigVlprMode = _39;
+  # DEBUG BEGIN_STMT
+  _40 = getSelectorConfig (27);
+  Clock_Ip_pxScsConfigHsrunMode = _40;
+  # DEBUG BEGIN_STMT
+  _41 = getCoreDividerConfig (29);
+  Clock_Ip_pxCoreConfigRunMode = _41;
+  # DEBUG BEGIN_STMT
+  _42 = getCoreDividerConfig (30);
+  Clock_Ip_pxCoreConfigVlprMode = _42;
+  # DEBUG BEGIN_STMT
+  _43 = getCoreDividerConfig (31);
+  Clock_Ip_pxCoreConfigHsrunMode = _43;
+  # DEBUG BEGIN_STMT
+  _44 = getBusDividerConfig (33);
+  Clock_Ip_pxBusConfigRunMode = _44;
+  # DEBUG BEGIN_STMT
+  _45 = getBusDividerConfig (34);
+  Clock_Ip_pxBusConfigVlprMode = _45;
+  # DEBUG BEGIN_STMT
+  _46 = getBusDividerConfig (35);
+  Clock_Ip_pxBusConfigHsrunMode = _46;
+  # DEBUG BEGIN_STMT
+  _47 = getSlowDividerConfig (37);
+  Clock_Ip_pxSlowConfigRunMode = _47;
+  # DEBUG BEGIN_STMT
+  _48 = getSlowDividerConfig (38);
+  Clock_Ip_pxSlowConfigVlprMode = _48;
+  # DEBUG BEGIN_STMT
+  _49 = getSlowDividerConfig (39);
+  Clock_Ip_pxSlowConfigHsrunMode = _49;
+  return;
+
+}
+
+
+getSlowDividerConfig (Clock_Ip_NameType Name)
+{
+  uint32 Index;
+  uint32 DividerConfigIndex;
+  static struct Clock_Ip_DividerConfigType DividerConfigurations[3];
+  const struct Clock_Ip_DividerConfigType * ReturnValue;
+  const struct Clock_Ip_ClockConfigType * Clock_Ip_apConfig.75_1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+
+  <bb 2> [local count: 164107171]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG DividerConfigIndex => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (Name_20(D)) <default: <L20> [33.33%], case 38: <L1> [33.33%], case 39: <L2> [33.33%]>
+
+  <bb 3> [local count: 54696920]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  # DEBUG DividerConfigIndex => 1
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 54696920]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  # DEBUG DividerConfigIndex => 2
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 164090760]:
+  # DividerConfigIndex_16 = PHI <0(2), 1(3), 2(4)>
+<L20>:
+  # DEBUG DividerConfigIndex => DividerConfigIndex_16
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.75_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.75_1 != 0B)
+    goto <bb 16>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 16> [local count: 114863532]:
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 1014686026]:
+  # DEBUG BEGIN_STMT
+  _2 = Clock_Ip_apConfig.75_1->Dividers[Index_17].Name;
+  if (_2 == Name_20(D))
+    goto <bb 7>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 7> [local count: 55807731]:
+  # Index_19 = PHI <Index_17(6)>
+  # DEBUG BEGIN_STMT
+  ReturnValue_23 = &Clock_Ip_apConfig.75_1->Dividers[Index_19];
+  # DEBUG ReturnValue => ReturnValue_23
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [100.00%]
+
+  <bb 8> [local count: 958878294]:
+  # DEBUG BEGIN_STMT
+  Index_22 = Index_17 + 1;
+  # DEBUG Index => Index_22
+
+  <bb 9> [local count: 1073741824]:
+  # Index_17 = PHI <Index_22(8), 0(16)>
+  # DEBUG Index => Index_17
+  # DEBUG BEGIN_STMT
+  _3 = Clock_Ip_apConfig.75_1->DividersCount;
+  _4 = (long unsigned int) _3;
+  if (_4 > Index_17)
+    goto <bb 6>; [94.50%]
+  else
+    goto <bb 10>; [5.50%]
+
+  <bb 10> [local count: 114863532]:
+  # ReturnValue_14 = PHI <0B(9), ReturnValue_23(7)>
+  # DEBUG ReturnValue => ReturnValue_14
+  # DEBUG BEGIN_STMT
+  if (ReturnValue_14 == 0B)
+    goto <bb 11>; [30.00%]
+  else
+    goto <bb 15>; [70.00%]
+
+  <bb 11> [local count: 83686288]:
+  # DEBUG ReturnValue => NULL
+  # DEBUG BEGIN_STMT
+  ReturnValue_24 = &DividerConfigurations[DividerConfigIndex_16];
+  # DEBUG ReturnValue => ReturnValue_24
+  # DEBUG BEGIN_STMT
+  DividerConfigurations[DividerConfigIndex_16].Name = Name_20(D);
+  # DEBUG BEGIN_STMT
+  switch (Name_20(D)) <default: <L21> [25.00%], case 37: <L13> [25.00%], case 38: <L14> [25.00%], case 39: <L15> [25.00%]>
+
+  <bb 12> [local count: 20921572]:
+<L13>:
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+  _6 = _5 & 15;
+  _7 = _6 + 1;
+  DividerConfigurations[DividerConfigIndex_16].Value = _7;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 13> [local count: 20921572]:
+<L14>:
+  # DEBUG BEGIN_STMT
+  _8 ={v} MEM[(struct SCG_Type *)1074151424B].VCCR;
+  _9 = _8 & 15;
+  _10 = _9 + 1;
+  DividerConfigurations[DividerConfigIndex_16].Value = _10;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 20921572]:
+<L15>:
+  # DEBUG BEGIN_STMT
+  _11 ={v} MEM[(struct SCG_Type *)1074151424B].HCCR;
+  _12 = _11 & 15;
+  _13 = _12 + 1;
+  DividerConfigurations[DividerConfigIndex_16].Value = _13;
+  # DEBUG BEGIN_STMT
+
+  <bb 15> [local count: 164090760]:
+  # ReturnValue_15 = PHI <ReturnValue_14(10), ReturnValue_24(12), ReturnValue_24(13), ReturnValue_24(14), ReturnValue_24(11)>
+<L21>:
+  # DEBUG ReturnValue => ReturnValue_15
+  # DEBUG BEGIN_STMT
+  return ReturnValue_15;
+
+}
+
+
+getBusDividerConfig (Clock_Ip_NameType Name)
+{
+  uint32 Index;
+  uint32 DividerConfigIndex;
+  static struct Clock_Ip_DividerConfigType DividerConfigurations[3];
+  const struct Clock_Ip_DividerConfigType * ReturnValue;
+  const struct Clock_Ip_ClockConfigType * Clock_Ip_apConfig.71_1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+
+  <bb 2> [local count: 164107171]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG DividerConfigIndex => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (Name_23(D)) <default: <L20> [33.33%], case 34: <L1> [33.33%], case 35: <L2> [33.33%]>
+
+  <bb 3> [local count: 54696920]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  # DEBUG DividerConfigIndex => 1
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 54696920]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  # DEBUG DividerConfigIndex => 2
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 164090760]:
+  # DividerConfigIndex_19 = PHI <0(2), 1(3), 2(4)>
+<L20>:
+  # DEBUG DividerConfigIndex => DividerConfigIndex_19
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.71_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.71_1 != 0B)
+    goto <bb 16>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 16> [local count: 114863532]:
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 1014686026]:
+  # DEBUG BEGIN_STMT
+  _2 = Clock_Ip_apConfig.71_1->Dividers[Index_20].Name;
+  if (_2 == Name_23(D))
+    goto <bb 7>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 7> [local count: 55807731]:
+  # Index_22 = PHI <Index_20(6)>
+  # DEBUG BEGIN_STMT
+  ReturnValue_26 = &Clock_Ip_apConfig.71_1->Dividers[Index_22];
+  # DEBUG ReturnValue => ReturnValue_26
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [100.00%]
+
+  <bb 8> [local count: 958878294]:
+  # DEBUG BEGIN_STMT
+  Index_25 = Index_20 + 1;
+  # DEBUG Index => Index_25
+
+  <bb 9> [local count: 1073741824]:
+  # Index_20 = PHI <Index_25(8), 0(16)>
+  # DEBUG Index => Index_20
+  # DEBUG BEGIN_STMT
+  _3 = Clock_Ip_apConfig.71_1->DividersCount;
+  _4 = (long unsigned int) _3;
+  if (_4 > Index_20)
+    goto <bb 6>; [94.50%]
+  else
+    goto <bb 10>; [5.50%]
+
+  <bb 10> [local count: 114863532]:
+  # ReturnValue_17 = PHI <0B(9), ReturnValue_26(7)>
+  # DEBUG ReturnValue => ReturnValue_17
+  # DEBUG BEGIN_STMT
+  if (ReturnValue_17 == 0B)
+    goto <bb 11>; [30.00%]
+  else
+    goto <bb 15>; [70.00%]
+
+  <bb 11> [local count: 83686288]:
+  # DEBUG ReturnValue => NULL
+  # DEBUG BEGIN_STMT
+  ReturnValue_27 = &DividerConfigurations[DividerConfigIndex_19];
+  # DEBUG ReturnValue => ReturnValue_27
+  # DEBUG BEGIN_STMT
+  DividerConfigurations[DividerConfigIndex_19].Name = Name_23(D);
+  # DEBUG BEGIN_STMT
+  switch (Name_23(D)) <default: <L21> [25.00%], case 33: <L13> [25.00%], case 34: <L14> [25.00%], case 35: <L15> [25.00%]>
+
+  <bb 12> [local count: 20921572]:
+<L13>:
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+  _6 = _5 >> 4;
+  _7 = _6 & 15;
+  _8 = _7 + 1;
+  DividerConfigurations[DividerConfigIndex_19].Value = _8;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 13> [local count: 20921572]:
+<L14>:
+  # DEBUG BEGIN_STMT
+  _9 ={v} MEM[(struct SCG_Type *)1074151424B].VCCR;
+  _10 = _9 >> 4;
+  _11 = _10 & 15;
+  _12 = _11 + 1;
+  DividerConfigurations[DividerConfigIndex_19].Value = _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 20921572]:
+<L15>:
+  # DEBUG BEGIN_STMT
+  _13 ={v} MEM[(struct SCG_Type *)1074151424B].HCCR;
+  _14 = _13 >> 4;
+  _15 = _14 & 15;
+  _16 = _15 + 1;
+  DividerConfigurations[DividerConfigIndex_19].Value = _16;
+  # DEBUG BEGIN_STMT
+
+  <bb 15> [local count: 164090760]:
+  # ReturnValue_18 = PHI <ReturnValue_17(10), ReturnValue_27(12), ReturnValue_27(13), ReturnValue_27(14), ReturnValue_27(11)>
+<L21>:
+  # DEBUG ReturnValue => ReturnValue_18
+  # DEBUG BEGIN_STMT
+  return ReturnValue_18;
+
+}
+
+
+getCoreDividerConfig (Clock_Ip_NameType Name)
+{
+  uint32 Index;
+  uint32 DividerConfigIndex;
+  static struct Clock_Ip_DividerConfigType DividerConfigurations[3];
+  const struct Clock_Ip_DividerConfigType * ReturnValue;
+  const struct Clock_Ip_ClockConfigType * Clock_Ip_apConfig.67_1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+
+  <bb 2> [local count: 164107171]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG DividerConfigIndex => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (Name_23(D)) <default: <L20> [33.33%], case 30: <L1> [33.33%], case 31: <L2> [33.33%]>
+
+  <bb 3> [local count: 54696920]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  # DEBUG DividerConfigIndex => 1
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 54696920]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  # DEBUG DividerConfigIndex => 2
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 164090760]:
+  # DividerConfigIndex_19 = PHI <0(2), 1(3), 2(4)>
+<L20>:
+  # DEBUG DividerConfigIndex => DividerConfigIndex_19
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.67_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.67_1 != 0B)
+    goto <bb 16>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 16> [local count: 114863532]:
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 1014686026]:
+  # DEBUG BEGIN_STMT
+  _2 = Clock_Ip_apConfig.67_1->Dividers[Index_20].Name;
+  if (_2 == Name_23(D))
+    goto <bb 7>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 7> [local count: 55807731]:
+  # Index_22 = PHI <Index_20(6)>
+  # DEBUG BEGIN_STMT
+  ReturnValue_26 = &Clock_Ip_apConfig.67_1->Dividers[Index_22];
+  # DEBUG ReturnValue => ReturnValue_26
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [100.00%]
+
+  <bb 8> [local count: 958878294]:
+  # DEBUG BEGIN_STMT
+  Index_25 = Index_20 + 1;
+  # DEBUG Index => Index_25
+
+  <bb 9> [local count: 1073741824]:
+  # Index_20 = PHI <Index_25(8), 0(16)>
+  # DEBUG Index => Index_20
+  # DEBUG BEGIN_STMT
+  _3 = Clock_Ip_apConfig.67_1->DividersCount;
+  _4 = (long unsigned int) _3;
+  if (_4 > Index_20)
+    goto <bb 6>; [94.50%]
+  else
+    goto <bb 10>; [5.50%]
+
+  <bb 10> [local count: 114863532]:
+  # ReturnValue_17 = PHI <0B(9), ReturnValue_26(7)>
+  # DEBUG ReturnValue => ReturnValue_17
+  # DEBUG BEGIN_STMT
+  if (ReturnValue_17 == 0B)
+    goto <bb 11>; [30.00%]
+  else
+    goto <bb 15>; [70.00%]
+
+  <bb 11> [local count: 83686288]:
+  # DEBUG ReturnValue => NULL
+  # DEBUG BEGIN_STMT
+  ReturnValue_27 = &DividerConfigurations[DividerConfigIndex_19];
+  # DEBUG ReturnValue => ReturnValue_27
+  # DEBUG BEGIN_STMT
+  DividerConfigurations[DividerConfigIndex_19].Name = Name_23(D);
+  # DEBUG BEGIN_STMT
+  switch (Name_23(D)) <default: <L21> [25.00%], case 29: <L13> [25.00%], case 30: <L14> [25.00%], case 31: <L15> [25.00%]>
+
+  <bb 12> [local count: 20921572]:
+<L13>:
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+  _6 = _5 >> 16;
+  _7 = _6 & 15;
+  _8 = _7 + 1;
+  DividerConfigurations[DividerConfigIndex_19].Value = _8;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 13> [local count: 20921572]:
+<L14>:
+  # DEBUG BEGIN_STMT
+  _9 ={v} MEM[(struct SCG_Type *)1074151424B].VCCR;
+  _10 = _9 >> 16;
+  _11 = _10 & 15;
+  _12 = _11 + 1;
+  DividerConfigurations[DividerConfigIndex_19].Value = _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 20921572]:
+<L15>:
+  # DEBUG BEGIN_STMT
+  _13 ={v} MEM[(struct SCG_Type *)1074151424B].HCCR;
+  _14 = _13 >> 16;
+  _15 = _14 & 15;
+  _16 = _15 + 1;
+  DividerConfigurations[DividerConfigIndex_19].Value = _16;
+  # DEBUG BEGIN_STMT
+
+  <bb 15> [local count: 164090760]:
+  # ReturnValue_18 = PHI <ReturnValue_17(10), ReturnValue_27(12), ReturnValue_27(13), ReturnValue_27(14), ReturnValue_27(11)>
+<L21>:
+  # DEBUG ReturnValue => ReturnValue_18
+  # DEBUG BEGIN_STMT
+  return ReturnValue_18;
+
+}
+
+
+getSelectorConfig (Clock_Ip_NameType Name)
+{
+  static const Clock_Ip_NameType ClockSource[7] = {0, 8, 2, 5, 0, 0, 9};
+  uint32 Index;
+  uint32 SelectorConfigIndex;
+  static struct Clock_Ip_SelectorConfigType SelectorConfigurations[3];
+  const struct Clock_Ip_SelectorConfigType * ReturnValue;
+  const struct Clock_Ip_ClockConfigType * Clock_Ip_apConfig.63_1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  <unnamed type> _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  <unnamed type> _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  <unnamed type> _16;
+
+  <bb 2> [local count: 164107171]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (Name_23(D)) <default: <L21> [33.33%], case 26: <L1> [33.33%], case 27: <L2> [33.33%]>
+
+  <bb 3> [local count: 54696920]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  # DEBUG SelectorConfigIndex => 1
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 54696920]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  # DEBUG SelectorConfigIndex => 2
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 164090760]:
+  # SelectorConfigIndex_19 = PHI <0(2), 1(3), 2(4)>
+<L21>:
+  # DEBUG SelectorConfigIndex => SelectorConfigIndex_19
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.63_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.63_1 != 0B)
+    goto <bb 16>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 16> [local count: 114863532]:
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 1014686026]:
+  # DEBUG BEGIN_STMT
+  _2 = Clock_Ip_apConfig.63_1->Selectors[Index_20].Name;
+  if (_2 == Name_23(D))
+    goto <bb 7>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 7> [local count: 55807731]:
+  # Index_22 = PHI <Index_20(6)>
+  # DEBUG BEGIN_STMT
+  ReturnValue_26 = &Clock_Ip_apConfig.63_1->Selectors[Index_22];
+  # DEBUG ReturnValue => ReturnValue_26
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [100.00%]
+
+  <bb 8> [local count: 958878294]:
+  # DEBUG BEGIN_STMT
+  Index_25 = Index_20 + 1;
+  # DEBUG Index => Index_25
+
+  <bb 9> [local count: 1073741824]:
+  # Index_20 = PHI <Index_25(8), 0(16)>
+  # DEBUG Index => Index_20
+  # DEBUG BEGIN_STMT
+  _3 = Clock_Ip_apConfig.63_1->SelectorsCount;
+  _4 = (long unsigned int) _3;
+  if (_4 > Index_20)
+    goto <bb 6>; [94.50%]
+  else
+    goto <bb 10>; [5.50%]
+
+  <bb 10> [local count: 114863532]:
+  # ReturnValue_17 = PHI <0B(9), ReturnValue_26(7)>
+  # DEBUG ReturnValue => ReturnValue_17
+  # DEBUG BEGIN_STMT
+  if (ReturnValue_17 == 0B)
+    goto <bb 11>; [30.00%]
+  else
+    goto <bb 15>; [70.00%]
+
+  <bb 11> [local count: 83686288]:
+  # DEBUG ReturnValue => NULL
+  # DEBUG BEGIN_STMT
+  ReturnValue_27 = &SelectorConfigurations[SelectorConfigIndex_19];
+  # DEBUG ReturnValue => ReturnValue_27
+  # DEBUG BEGIN_STMT
+  SelectorConfigurations[SelectorConfigIndex_19].Name = Name_23(D);
+  # DEBUG BEGIN_STMT
+  switch (Name_23(D)) <default: <L20> [25.00%], case 25: <L13> [25.00%], case 26: <L14> [25.00%], case 27: <L15> [25.00%]>
+
+  <bb 12> [local count: 20921572]:
+<L13>:
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].RCCR;
+  _6 = _5 >> 24;
+  _7 = _6 & 15;
+  _8 = ClockSource[_7];
+  SelectorConfigurations[SelectorConfigIndex_19].Value = _8;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 13> [local count: 20921572]:
+<L14>:
+  # DEBUG BEGIN_STMT
+  _9 ={v} MEM[(struct SCG_Type *)1074151424B].VCCR;
+  _10 = _9 >> 24;
+  _11 = _10 & 15;
+  _12 = ClockSource[_11];
+  SelectorConfigurations[SelectorConfigIndex_19].Value = _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 20921572]:
+<L15>:
+  # DEBUG BEGIN_STMT
+  _13 ={v} MEM[(struct SCG_Type *)1074151424B].HCCR;
+  _14 = _13 >> 24;
+  _15 = _14 & 15;
+  _16 = ClockSource[_15];
+  SelectorConfigurations[SelectorConfigIndex_19].Value = _16;
+  # DEBUG BEGIN_STMT
+
+  <bb 15> [local count: 164090760]:
+  # ReturnValue_18 = PHI <ReturnValue_17(10), ReturnValue_27(12), ReturnValue_27(13), ReturnValue_27(14), ReturnValue_27(11)>
+<L20>:
+  # DEBUG ReturnValue => ReturnValue_18
+  # DEBUG BEGIN_STMT
+  return ReturnValue_18;
+
+}
+
+
+getSpllConfig ()
+{
+  static struct Clock_Ip_PllConfigType SpllConfiguration;
+  const struct Clock_Ip_PllConfigType * ReturnValue;
+  uint32 Index;
+  const struct Clock_Ip_ClockConfigType * Clock_Ip_apConfig.59_1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  unsigned char _10;
+  unsigned char _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  unsigned char _14;
+  unsigned char _15;
+
+  <bb 2> [local count: 164090760]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.59_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.59_1 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 10> [local count: 114863532]:
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  _2 = Clock_Ip_apConfig.59_1->Plls[Index_16].Name;
+  if (_2 == 9)
+    goto <bb 4>; [5.50%]
+  else
+    goto <bb 5>; [94.50%]
+
+  <bb 4> [local count: 55807731]:
+  # Index_20 = PHI <Index_16(3)>
+  # DEBUG BEGIN_STMT
+  ReturnValue_23 = &Clock_Ip_apConfig.59_1->Plls[Index_20];
+  # DEBUG ReturnValue => ReturnValue_23
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 958878294]:
+  # DEBUG BEGIN_STMT
+  Index_22 = Index_16 + 1;
+  # DEBUG Index => Index_22
+
+  <bb 6> [local count: 1073741824]:
+  # Index_16 = PHI <Index_22(5), 0(10)>
+  # DEBUG Index => Index_16
+  # DEBUG BEGIN_STMT
+  _3 = Clock_Ip_apConfig.59_1->PllsCount;
+  _4 = (long unsigned int) _3;
+  if (_4 > Index_16)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 7>; [5.50%]
+
+  <bb 7> [local count: 114863532]:
+  # ReturnValue_17 = PHI <0B(6), ReturnValue_23(4)>
+  # DEBUG ReturnValue => ReturnValue_17
+  # DEBUG BEGIN_STMT
+  if (ReturnValue_17 == 0B)
+    goto <bb 8>; [30.00%]
+  else
+    goto <bb 9>; [70.00%]
+
+  <bb 8> [local count: 83686288]:
+  # DEBUG ReturnValue => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => &SpllConfiguration
+  # DEBUG BEGIN_STMT
+  SpllConfiguration.Name = 9;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _6 = (short unsigned int) _5;
+  _7 = _6 & 1;
+  SpllConfiguration.Enable = _7;
+  # DEBUG BEGIN_STMT
+  _8 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+  _9 = _8 >> 8;
+  _10 = (unsigned char) _9;
+  _11 = _10 & 7;
+  SpllConfiguration.Predivider = _11;
+  # DEBUG BEGIN_STMT
+  _12 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCFG;
+  _13 = _12 >> 16;
+  _14 = (unsigned char) _13;
+  _15 = _14 & 31;
+  SpllConfiguration.MulFactorDiv = _15;
+
+  <bb 9> [local count: 164090760]:
+  # ReturnValue_18 = PHI <ReturnValue_17(7), &SpllConfiguration(8)>
+  # DEBUG ReturnValue => ReturnValue_18
+  # DEBUG BEGIN_STMT
+  return ReturnValue_18;
+
+}
+
+
+getSoscConfig ()
+{
+  static struct Clock_Ip_XoscConfigType SoscConfiguration;
+  const struct Clock_Ip_XoscConfigType * ReturnValue;
+  uint32 Index;
+  const struct Clock_Ip_ClockConfigType * Clock_Ip_apConfig.55_1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  short unsigned int _6;
+  short unsigned int _7;
+
+  <bb 2> [local count: 164090760]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.55_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.55_1 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 10> [local count: 114863532]:
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  _2 = Clock_Ip_apConfig.55_1->Xoscs[Index_8].Name;
+  if (_2 == 8)
+    goto <bb 4>; [5.50%]
+  else
+    goto <bb 5>; [94.50%]
+
+  <bb 4> [local count: 55807731]:
+  # Index_12 = PHI <Index_8(3)>
+  # DEBUG BEGIN_STMT
+  ReturnValue_15 = &Clock_Ip_apConfig.55_1->Xoscs[Index_12];
+  # DEBUG ReturnValue => ReturnValue_15
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 958878294]:
+  # DEBUG BEGIN_STMT
+  Index_14 = Index_8 + 1;
+  # DEBUG Index => Index_14
+
+  <bb 6> [local count: 1073741824]:
+  # Index_8 = PHI <Index_14(5), 0(10)>
+  # DEBUG Index => Index_8
+  # DEBUG BEGIN_STMT
+  _3 = Clock_Ip_apConfig.55_1->XoscsCount;
+  _4 = (long unsigned int) _3;
+  if (_4 > Index_8)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 7>; [5.50%]
+
+  <bb 7> [local count: 114863532]:
+  # ReturnValue_9 = PHI <0B(6), ReturnValue_15(4)>
+  # DEBUG ReturnValue => ReturnValue_9
+  # DEBUG BEGIN_STMT
+  if (ReturnValue_9 == 0B)
+    goto <bb 8>; [30.00%]
+  else
+    goto <bb 9>; [70.00%]
+
+  <bb 8> [local count: 83686288]:
+  # DEBUG ReturnValue => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => &SoscConfiguration
+  # DEBUG BEGIN_STMT
+  SoscConfiguration.Name = 8;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _6 = (short unsigned int) _5;
+  _7 = _6 & 1;
+  SoscConfiguration.Enable = _7;
+  # DEBUG BEGIN_STMT
+  SoscConfiguration.Freq = 40000000;
+
+  <bb 9> [local count: 164090760]:
+  # ReturnValue_10 = PHI <ReturnValue_9(7), &SoscConfiguration(8)>
+  # DEBUG ReturnValue => ReturnValue_10
+  # DEBUG BEGIN_STMT
+  return ReturnValue_10;
+
+}
+
+
+getFircConfig ()
+{
+  static struct Clock_Ip_IrcoscConfigType FircConfiguration;
+  const struct Clock_Ip_IrcoscConfigType * ReturnValue;
+  uint32 Index;
+  const struct Clock_Ip_ClockConfigType * Clock_Ip_apConfig.51_1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _6;
+  short unsigned int _7;
+  short unsigned int _8;
+  long unsigned int _9;
+  unsigned char _10;
+  unsigned char _11;
+  long unsigned int _12;
+  int _13;
+  unsigned char _14;
+  unsigned char _15;
+  int _21;
+  int _24;
+
+  <bb 2> [local count: 164090760]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.51_1 = Clock_Ip_apConfig;
+  if (Clock_Ip_apConfig.51_1 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 10> [local count: 114863532]:
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  _2 = Clock_Ip_apConfig.51_1->Ircoscs[Index_16].Name;
+  if (_2 == 5)
+    goto <bb 4>; [5.50%]
+  else
+    goto <bb 5>; [94.50%]
+
+  <bb 4> [local count: 55807731]:
+  # Index_5 = PHI <Index_16(3)>
+  # DEBUG BEGIN_STMT
+  ReturnValue_23 = &Clock_Ip_apConfig.51_1->Ircoscs[Index_5];
+  # DEBUG ReturnValue => ReturnValue_23
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 958878294]:
+  # DEBUG BEGIN_STMT
+  Index_22 = Index_16 + 1;
+  # DEBUG Index => Index_22
+
+  <bb 6> [local count: 1073741824]:
+  # Index_16 = PHI <Index_22(5), 0(10)>
+  # DEBUG Index => Index_16
+  # DEBUG BEGIN_STMT
+  _3 = Clock_Ip_apConfig.51_1->IrcoscsCount;
+  _4 = (long unsigned int) _3;
+  if (_4 > Index_16)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 7>; [5.50%]
+
+  <bb 7> [local count: 114863532]:
+  # ReturnValue_17 = PHI <0B(6), ReturnValue_23(4)>
+  # DEBUG ReturnValue => ReturnValue_17
+  # DEBUG BEGIN_STMT
+  if (ReturnValue_17 == 0B)
+    goto <bb 8>; [30.00%]
+  else
+    goto <bb 9>; [70.00%]
+
+  <bb 8> [local count: 83686288]:
+  # DEBUG ReturnValue => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG ReturnValue => &FircConfiguration
+  # DEBUG BEGIN_STMT
+  FircConfiguration.Name = 5;
+  # DEBUG BEGIN_STMT
+  _6 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _7 = (short unsigned int) _6;
+  _8 = _7 & 1;
+  FircConfiguration.Enable = _8;
+  # DEBUG BEGIN_STMT
+  _9 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCFG;
+  _10 = (unsigned char) _9;
+  _11 = _10 & 3;
+  FircConfiguration.Range = _11;
+  # DEBUG BEGIN_STMT
+  _12 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _21 = (int) _12;
+  _24 = _21 >> 3;
+  _13 = _24 & 31;
+  _14 = (unsigned char) _13;
+  _15 = _14 & 1;
+  FircConfiguration.Regulator = _15;
+
+  <bb 9> [local count: 164090760]:
+  # ReturnValue_18 = PHI <ReturnValue_17(7), &FircConfiguration(8)>
+  # DEBUG ReturnValue => ReturnValue_18
+  # DEBUG BEGIN_STMT
+  return ReturnValue_18;
+
+}
+
+
+Clock_Ip_SpecificPlatformInitClock (const struct Clock_Ip_ClockConfigType * Config)
+{
+  uint32 IrcoscStatus;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  boolean TimeoutOccurred;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int TimeoutTicks.79_5;
+
+  <bb 2> [local count: 348071309]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig = Config_10(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _2 = _1 & 1;
+  if (_2 == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 3> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_bFircWasEnabledBeforeMcuInit = 0;
+  # DEBUG BEGIN_STMT
+  SetFircToResetValue_TrustedCall ();
+  # DEBUG BEGIN_STMT
+  Clock_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _4 = _3 >> 24;
+  IrcoscStatus_16 = _4 & 1;
+  # DEBUG IrcoscStatus => IrcoscStatus_16
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.79_5 = TimeoutTicks;
+  TimeoutOccurred_18 = Clock_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.79_5);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_18
+  # DEBUG BEGIN_STMT
+  if (IrcoscStatus_16 == 0)
+    goto <bb 5>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 5> [local count: 1014686025]:
+  if (TimeoutOccurred_18 != 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 10>; [94.50%]
+
+  <bb 10> [local count: 958878292]:
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 114863532]:
+  # TimeoutOccurred_8 = PHI <TimeoutOccurred_18(4), TimeoutOccurred_18(5)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_8 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 7> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_ReportClockErrors (1, 5);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 233207777]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_bFircWasEnabledBeforeMcuInit = 1;
+
+  <bb 9> [local count: 348071309]:
+  # DEBUG BEGIN_STMT
+  SetSimLpoclksRegister_TrustedCall (Config_10(D));
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+SetSimLpoclksRegister_TrustedCall (const struct Clock_Ip_ClockConfigType * Config)
+{
+  uint32 Index;
+  uint32 SimLpoValue;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  <unnamed type> _7;
+  unsigned char _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned char _11;
+  long unsigned int _12;
+  <unnamed type> _13;
+  short unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  short unsigned int _17;
+  long unsigned int _18;
+  unsigned char _19;
+  long unsigned int _20;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG SimLpoValue => 3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG Index => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 3> [local count: 955630220]:
+  # DEBUG BEGIN_STMT
+  _1 = Config_30(D)->Selectors[Index_27].Name;
+  if (_1 == 40)
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 4> [local count: 324914275]:
+  # DEBUG BEGIN_STMT
+  _2 = Config_30(D)->Selectors[Index_27].Value;
+  _3 = Clock_Ip_au16SelectorEntryHardwareValue[_2];
+  _4 = (long unsigned int) _3;
+  _5 = _4 << 4;
+  SimLpoValue_35 = _5 | SimLpoValue_23;
+  # DEBUG SimLpoValue => SimLpoValue_35
+
+  <bb 5> [local count: 955630222]:
+  # SimLpoValue_21 = PHI <SimLpoValue_23(3), SimLpoValue_35(4)>
+  # DEBUG SimLpoValue => SimLpoValue_21
+  # DEBUG BEGIN_STMT
+  if (_1 == 41)
+    goto <bb 6>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 6> [local count: 324914275]:
+  # DEBUG BEGIN_STMT
+  _7 = Config_30(D)->Selectors[Index_27].Value;
+  _8 = Clock_Ip_au8SelectorEntryPcsHardwareValue[_7];
+  _9 = (long unsigned int) _8;
+  _10 = _9 << 2;
+  SimLpoValue_36 = _10 | SimLpoValue_21;
+  # DEBUG SimLpoValue => SimLpoValue_36
+
+  <bb 7> [local count: 955630222]:
+  # SimLpoValue_22 = PHI <SimLpoValue_21(5), SimLpoValue_36(6)>
+  # DEBUG SimLpoValue => SimLpoValue_22
+  # DEBUG BEGIN_STMT
+  Index_37 = Index_27 + 1;
+  # DEBUG Index => Index_37
+
+  <bb 8> [local count: 1073741821]:
+  # SimLpoValue_23 = PHI <3(2), SimLpoValue_22(7)>
+  # Index_27 = PHI <0(2), Index_37(7)>
+  # DEBUG Index => Index_27
+  # DEBUG SimLpoValue => SimLpoValue_23
+  # DEBUG BEGIN_STMT
+  _11 = Config_30(D)->SelectorsCount;
+  _12 = (long unsigned int) _11;
+  if (_12 > Index_27)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 17>; [11.00%]
+
+  <bb 17> [local count: 118111600]:
+  goto <bb 15>; [100.00%]
+
+  <bb 10> [local count: 955630224]:
+  # DEBUG BEGIN_STMT
+  _13 = Config_30(D)->Gates[Index_28].Name;
+  if (_13 == 18)
+    goto <bb 11>; [34.00%]
+  else
+    goto <bb 12>; [66.00%]
+
+  <bb 11> [local count: 324914276]:
+  # DEBUG BEGIN_STMT
+  _14 = Config_30(D)->Gates[Index_28].Enable;
+  _15 = (long unsigned int) _14;
+  _16 = _15 << 1;
+  SimLpoValue_32 = _16 | SimLpoValue_26;
+  # DEBUG SimLpoValue => SimLpoValue_32
+
+  <bb 12> [local count: 955630224]:
+  # SimLpoValue_24 = PHI <SimLpoValue_26(10), SimLpoValue_32(11)>
+  # DEBUG SimLpoValue => SimLpoValue_24
+  # DEBUG BEGIN_STMT
+  if (_13 == 19)
+    goto <bb 13>; [34.00%]
+  else
+    goto <bb 14>; [66.00%]
+
+  <bb 13> [local count: 324914276]:
+  # DEBUG BEGIN_STMT
+  _17 = Config_30(D)->Gates[Index_28].Enable;
+  _18 = (long unsigned int) _17;
+  SimLpoValue_33 = _18 | SimLpoValue_24;
+  # DEBUG SimLpoValue => SimLpoValue_33
+
+  <bb 14> [local count: 955630224]:
+  # SimLpoValue_25 = PHI <SimLpoValue_24(12), SimLpoValue_33(13)>
+  # DEBUG SimLpoValue => SimLpoValue_25
+  # DEBUG BEGIN_STMT
+  Index_34 = Index_28 + 1;
+  # DEBUG Index => Index_34
+
+  <bb 15> [local count: 1073741824]:
+  # SimLpoValue_26 = PHI <SimLpoValue_25(14), SimLpoValue_23(17)>
+  # Index_28 = PHI <Index_34(14), 0(17)>
+  # DEBUG Index => Index_28
+  # DEBUG SimLpoValue => SimLpoValue_26
+  # DEBUG BEGIN_STMT
+  _19 = Config_30(D)->GatesCount;
+  _20 = (long unsigned int) _19;
+  if (_20 > Index_28)
+    goto <bb 10>; [89.00%]
+  else
+    goto <bb 16>; [11.00%]
+
+  <bb 16> [local count: 118111601]:
+  # SimLpoValue_6 = PHI <SimLpoValue_26(15)>
+  # DEBUG BEGIN_STMT
+  MEM[(struct SIM_Type *)1074036736B].LPOCLKS ={v} SimLpoValue_6;
+  return;
+
+}
+
+
+SetFircToResetValue_TrustedCall ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct SCG_Type *)1074151424B].FIRCCFG ={v} 0;
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].FIRCCSR;
+  _2 = _1 | 1;
+  MEM[(struct SCG_Type *)1074151424B].FIRCCSR ={v} _2;
+  return;
+
+}
+
+
+DisableSafeClock (const struct Clock_Ip_ClockConfigType * Config)
+{
+  uint32 Index;
+  <unnamed type> _1;
+  short unsigned int _2;
+  unsigned char _3;
+  int _4;
+  void (*<T55d>) (Clock_Ip_NameType) _5;
+  const struct Clock_Ip_ClockConfigType * Clock_Ip_apConfig.82_6;
+  unsigned char _7;
+  long unsigned int _8;
+  _Bool Clock_Ip_bFircWasEnabledBeforeMcuInit.83_9;
+  unsigned char _10;
+  int _11;
+  void (*<T55d>) (Clock_Ip_NameType) _12;
+  const struct Clock_Ip_ClockConfigType * Clock_Ip_apConfig.82_15;
+
+  <bb 2> [local count: 164090760]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG FircConfigFound => 0
+  # DEBUG BEGIN_STMT
+  if (Config_16(D) != 0B)
+    goto <bb 11>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 11> [local count: 114863532]:
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_apConfig.82_6->Ircoscs[Index_13].Name;
+  if (_1 == 5)
+    goto <bb 4>; [5.50%]
+  else
+    goto <bb 6>; [94.50%]
+
+  <bb 4> [local count: 55807731]:
+  # Clock_Ip_apConfig.82_15 = PHI <Clock_Ip_apConfig.82_6(3)>
+  # Index_19 = PHI <Index_13(3)>
+  # DEBUG BEGIN_STMT
+  # DEBUG FircConfigFound => 1
+  # DEBUG BEGIN_STMT
+  _2 = Clock_Ip_apConfig.82_15->Ircoscs[Index_19].Enable;
+  if (_2 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 5> [local count: 27903866]:
+  # DEBUG BEGIN_STMT
+  _3 = Clock_Ip_au8IrcoscCallbackIndex[4];
+  _4 = (int) _3;
+  _5 = Clock_Ip_axIntOscCallbacks[_4].Disable;
+  _5 (5);
+  # DEBUG FircConfigFound => 1
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [100.00%]
+
+  <bb 6> [local count: 958878294]:
+  # DEBUG BEGIN_STMT
+  Index_18 = Index_13 + 1;
+  # DEBUG Index => Index_18
+
+  <bb 7> [local count: 1073741824]:
+  # Index_13 = PHI <Index_18(6), 0(11)>
+  # DEBUG Index => Index_13
+  # DEBUG BEGIN_STMT
+  Clock_Ip_apConfig.82_6 = Clock_Ip_apConfig;
+  _7 = Clock_Ip_apConfig.82_6->IrcoscsCount;
+  _8 = (long unsigned int) _7;
+  if (_8 > Index_13)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 8>; [5.50%]
+
+  <bb 8> [local count: 108283028]:
+  # DEBUG FircConfigFound => NULL
+  Clock_Ip_bFircWasEnabledBeforeMcuInit.83_9 = Clock_Ip_bFircWasEnabledBeforeMcuInit;
+  if (Clock_Ip_bFircWasEnabledBeforeMcuInit.83_9 != 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 9> [local count: 54141514]:
+  # DEBUG BEGIN_STMT
+  _10 = Clock_Ip_au8IrcoscCallbackIndex[4];
+  _11 = (int) _10;
+  _12 = Clock_Ip_axIntOscCallbacks[_11].Disable;
+  _12 (5);
+
+  <bb 10> [local count: 164090760]:
+  # DEBUG FircConfigFound => NULL
+  return;
+
+}
+
+

@@ -1,0 +1,412 @@
+
+IPA constant propagation start:
+
+IPA structures before propagation:
+
+Jump functions:
+  Jump functions of caller  Can_Write/21:
+  Jump functions of caller  Can_SetControllerMode/20:
+  Jump functions of caller  Can_Init/18:
+  Jump functions of caller  Port_Init/17:
+  Jump functions of caller  Clock_Ip_DistributePll/16:
+  Jump functions of caller  Clock_Ip_GetPllStatus/15:
+  Jump functions of caller  Clock_Ip_Init/13:
+  Jump functions of caller  main/11:
+  Jump functions of caller  CanIf_RxIndication/10:
+  Jump functions of caller  CanIf_TxConfirmation/9:
+  Jump functions of caller  CanIf_ControllerModeIndication/8:
+  Jump functions of caller  CanIf_ControllerBusOff/7:
+
+ Propagating constants:
+
+Not considering main for cloning; -fipa-cp-clone disabled.
+Not considering CanIf_RxIndication for cloning; -fipa-cp-clone disabled.
+Not considering CanIf_TxConfirmation for cloning; -fipa-cp-clone disabled.
+Not considering CanIf_ControllerModeIndication for cloning; -fipa-cp-clone disabled.
+Not considering CanIf_ControllerBusOff for cloning; -fipa-cp-clone disabled.
+
+overall_size: 58, max_new_size: 11001
+ - context independent values, size: 7, time_benefit: 2.000000
+ - context independent values, size: 7, time_benefit: 1.000000
+ - context independent values, size: 3, time_benefit: 2.000000
+ - context independent values, size: 3, time_benefit: 1.000000
+
+IPA lattices after all propagation:
+
+Lattices:
+  Node: main/11:
+  Node: CanIf_RxIndication/10:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: CanIf_TxConfirmation/9:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: CanIf_ControllerModeIndication/8:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: CanIf_ControllerBusOff/7:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+
+IPA decision stage:
+
+
+IPA constant propagation end
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Can_Write/21 (Can_Write) @06fc22a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/11 (1073741824 (estimated locally),9.09 per call) 
+  Calls: 
+Can_SetControllerMode/20 (Can_SetControllerMode) @06fc21c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/11 (118111600 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Config_BOARD_InitPeripherals/19 (Can_Config_BOARD_InitPeripherals) @06fc10d8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/11 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Can_Init/18 (Can_Init) @06fc20e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/11 (118111600 (estimated locally),1.00 per call) 
+  Calls: 
+Port_Init/17 (Port_Init) @06fc2000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/11 (118111600 (estimated locally),1.00 per call) 
+  Calls: 
+Clock_Ip_DistributePll/16 (Clock_Ip_DistributePll) @06f86ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/11 (118111600 (estimated locally),1.00 per call) 
+  Calls: 
+Clock_Ip_GetPllStatus/15 (Clock_Ip_GetPllStatus) @06f86e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/11 (1073741818 (estimated locally),9.09 per call) 
+  Calls: 
+Mcu_aClockConfigPB_BOARD_InitPeripherals/14 (Mcu_aClockConfigPB_BOARD_InitPeripherals) @06f85ee8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/11 (addr)main/11 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/13 (Clock_Ip_Init) @06f86d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/11 (955630214 (estimated locally),8.09 per call) main/11 (118111599 (estimated locally),1.00 per call) 
+  Calls: 
+*.LC0/12 (*.LC0) @06f85a20
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: dummyData/6 (addr)
+  Referring: main/11 (read)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+main/11 (main) @06f86540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcu_aClockConfigPB_BOARD_InitPeripherals/14 (addr)Mcu_aClockConfigPB_BOARD_InitPeripherals/14 (addr)*.LC0/12 (read)Can_Config_BOARD_InitPeripherals/19 (addr)exit_code/1 (read)exit_code/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:118111599 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: Can_Write/21 (1073741824 (estimated locally),9.09 per call) Can_SetControllerMode/20 (118111600 (estimated locally),1.00 per call) Can_Init/18 (118111600 (estimated locally),1.00 per call) Port_Init/17 (118111600 (estimated locally),1.00 per call) Clock_Ip_DistributePll/16 (118111600 (estimated locally),1.00 per call) Clock_Ip_GetPllStatus/15 (1073741818 (estimated locally),9.09 per call) Clock_Ip_Init/13 (955630214 (estimated locally),8.09 per call) Clock_Ip_Init/13 (118111599 (estimated locally),1.00 per call) 
+CanIf_RxIndication/10 (CanIf_RxIndication) @06f862a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: CanIf_u8RxIndicationCnt/4 (read)CanIf_u8RxIndicationCnt/4 (write)CanIf_bRxFlag/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+CanIf_TxConfirmation/9 (CanIf_TxConfirmation) @06f86000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: CanIf_u8TxConfirmCnt/2 (read)CanIf_u8TxConfirmCnt/2 (write)CanIf_bTxFlag/3 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+CanIf_ControllerModeIndication/8 (CanIf_ControllerModeIndication) @06f84d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+CanIf_ControllerBusOff/7 (CanIf_ControllerBusOff) @06f84a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dummyData/6 (dummyData) @06f82ea0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: *.LC0/12 (addr)
+  Availability: available
+  Varpool flags: initialized
+CanIf_bRxFlag/5 (CanIf_bRxFlag) @06f82dc8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: CanIf_RxIndication/10 (write)
+  Availability: available
+  Varpool flags: initialized
+CanIf_u8RxIndicationCnt/4 (CanIf_u8RxIndicationCnt) @06f82d38
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: CanIf_RxIndication/10 (read)CanIf_RxIndication/10 (write)
+  Availability: available
+  Varpool flags: initialized
+CanIf_bTxFlag/3 (CanIf_bTxFlag) @06f82ca8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: CanIf_TxConfirmation/9 (write)
+  Availability: available
+  Varpool flags: initialized
+CanIf_u8TxConfirmCnt/2 (CanIf_u8TxConfirmCnt) @06f82c18
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: CanIf_TxConfirmation/9 (read)CanIf_TxConfirmation/9 (write)
+  Availability: available
+  Varpool flags: initialized
+exit_code/1 (exit_code) @06f82b88
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: main/11 (read)main/11 (read)
+  Availability: available
+  Varpool flags: initialized
+
+;; Function CanIf_ControllerBusOff (CanIf_ControllerBusOff, funcdef_no=1, decl_uid=7179, cgraph_uid=2, symbol_order=7)
+
+Modification phase of node CanIf_ControllerBusOff/7
+CanIf_ControllerBusOff (uint8 ControllerId)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function CanIf_ControllerModeIndication (CanIf_ControllerModeIndication, funcdef_no=2, decl_uid=7183, cgraph_uid=3, symbol_order=8)
+
+Modification phase of node CanIf_ControllerModeIndication/8
+CanIf_ControllerModeIndication (uint8 ControllerId, Can_ControllerStateType ControllerMode)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function CanIf_TxConfirmation (CanIf_TxConfirmation, funcdef_no=3, decl_uid=7186, cgraph_uid=4, symbol_order=9)
+
+Modification phase of node CanIf_TxConfirmation/9
+CanIf_TxConfirmation (PduIdType CanTxPduId)
+{
+  unsigned char CanIf_u8TxConfirmCnt.0_1;
+  unsigned char _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  CanIf_u8TxConfirmCnt.0_1 = CanIf_u8TxConfirmCnt;
+  _2 = CanIf_u8TxConfirmCnt.0_1 + 1;
+  CanIf_u8TxConfirmCnt = _2;
+  # DEBUG BEGIN_STMT
+  CanIf_bTxFlag = 1;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function CanIf_RxIndication (CanIf_RxIndication, funcdef_no=4, decl_uid=7190, cgraph_uid=5, symbol_order=10)
+
+Modification phase of node CanIf_RxIndication/10
+CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType * PduInfoPtr)
+{
+  unsigned char CanIf_u8RxIndicationCnt.2_1;
+  unsigned char _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  CanIf_u8RxIndicationCnt.2_1 = CanIf_u8RxIndicationCnt;
+  _2 = CanIf_u8RxIndicationCnt.2_1 + 1;
+  CanIf_u8RxIndicationCnt = _2;
+  # DEBUG BEGIN_STMT
+  CanIf_bRxFlag = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=5, decl_uid=7193, cgraph_uid=6, symbol_order=11) (executed once)
+
+Modification phase of node main/11
+main ()
+{
+  struct Can_PduType tx_message;
+  Clock_Ip_StatusType clockStatus;
+  <unnamed type> _1;
+  int exit_code.4_2;
+  int _17;
+
+  <bb 2> [local count: 118111599]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockStatus_9 = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[1]);
+  # DEBUG clockStatus => clockStatus_9
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630214]:
+  # DEBUG BEGIN_STMT
+  clockStatus_20 = Clock_Ip_Init (&Mcu_aClockConfigPB_BOARD_InitPeripherals[1]);
+  # DEBUG clockStatus => clockStatus_20
+
+  <bb 4> [local count: 1073741815]:
+  # clockStatus_3 = PHI <clockStatus_9(2), clockStatus_20(3)>
+  # DEBUG clockStatus => clockStatus_3
+  # DEBUG BEGIN_STMT
+  if (clockStatus_3 != 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 118111599]:
+
+  <bb 5> [local count: 1073741818]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 11>; [89.00%]
+  else
+    goto <bb 6>; [11.00%]
+
+  <bb 11> [local count: 955630217]:
+  goto <bb 5>; [100.00%]
+
+  <bb 6> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  tx_message = *.LC0;
+  # DEBUG BEGIN_STMT
+  Can_Init (&Can_Config_BOARD_InitPeripherals);
+  # DEBUG BEGIN_STMT
+  Can_SetControllerMode (0, 1);
+  # DEBUG status => NULL
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Can_Write (0, &tx_message);
+  # DEBUG BEGIN_STMT
+  exit_code.4_2 ={v} exit_code;
+  if (exit_code.4_2 != 0)
+    goto <bb 8>; [11.00%]
+  else
+    goto <bb 10>; [89.00%]
+
+  <bb 10> [local count: 955630224]:
+  goto <bb 7>; [100.00%]
+
+  <bb 8> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  _17 ={v} exit_code;
+  tx_message ={v} {CLOBBER};
+  return _17;
+
+}
+
+
