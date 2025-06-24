@@ -141,7 +141,7 @@ extern "C"{
 
 /* Sizes for the blobs of information used by the Crypto driver */
 #define CRYPTO_SIZEOF_NVRAM_BLOB_0                      (1U)
-#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (4U)
+#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (0U)
 
 /* Compile time switch stating that support for Nvram read/write operations is enabled or disabled */
 #define CRYPTO_ENABLE_NVRAM_READ_WRITE_SUPPORT          (STD_OFF)
@@ -234,16 +234,6 @@ typedef struct
 extern uint8 Crypto_au8NvramBlob0[CRYPTO_SIZEOF_NVRAM_BLOB_0];
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_8
-#include "Crypto_MemMap.h"
-
-
-#define CRYPTO_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-#include "Crypto_MemMap.h"
-
-/* Array storing blob 1 containing information that should be persistent between resets */
-extern uint8 Crypto_au8NvramBlob1[CRYPTO_SIZEOF_NVRAM_BLOB_1];
-
-#define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
 
 /*==================================================================================================
