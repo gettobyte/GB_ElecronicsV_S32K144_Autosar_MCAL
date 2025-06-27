@@ -223,7 +223,7 @@ static const Crypto_PrimitiveType Crypto_aPrimitives_CryptoDriverObject_MAC[2U] 
 #include "Crypto_MemMap.h"
 
 /* Array storing the key element information that is volatile (no need to be persistent across resets) */
-VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[32U], 4U)
+VAR_ALIGN(static uint8 Crypto_au8VolatileKeyElemValues[28U], 4U)
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
@@ -372,7 +372,7 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         /* Key element format */
         CRYPTO_KE_FORMAT_BIN_OCTET,
         /* Key element persistent */
-        (boolean)FALSE,
+        (boolean)TRUE,
         /* Read access type */
         CRYPTO_RA_ALLOWED,
         /* Key element max size */
@@ -380,11 +380,11 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         /* Write access type */
         CRYPTO_WA_ALLOWED,
         /* Pointer to location storing the Key Element actual size */
-        (uint32*)&Crypto_au8VolatileKeyElemValues[28U],
+        (uint32*)&Crypto_au8NvramBlob1[0U],
         /* Pointer to location storing the Key Element value */
         NULL_PTR,
         /* Identifier of the CSEc key */
-        CSEC_IP_RAM_KEY
+        CSEC_IP_KEY_1
     },
     /* Structure containing information for Key Element CryptoKeyElement_Master_Key */
     {
@@ -403,7 +403,7 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         /* Write access type */
         CRYPTO_WA_ENCRYPTED,
         /* Pointer to location storing the Key Element actual size */
-        (uint32*)&Crypto_au8NvramBlob1[0U],
+        (uint32*)&Crypto_au8NvramBlob1[4U],
         /* Pointer to location storing the Key Element value */
         NULL_PTR,
         /* Identifier of the CSEc key */

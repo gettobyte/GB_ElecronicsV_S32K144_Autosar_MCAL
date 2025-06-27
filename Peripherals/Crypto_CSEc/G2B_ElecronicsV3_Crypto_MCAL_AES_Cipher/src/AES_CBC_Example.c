@@ -215,6 +215,188 @@ static uint8_t AES_128_CbcKey[APP_AES128_KEY_SIZE] = {
 		   0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f
 };
 
+static const uint32 u32Counter = 2U;
+
+static const uint8 u8Flags     = 0U;
+
+
+static const uint8 aEmptyKey[16] =
+{
+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
+};
+
+static const uint8 aEmptyUID[15] =
+{
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+
+static uint8 aK1Plain[32U] =
+{
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x01, 0x01, 0x53, 0x48, 0x45, 0x00, 0x80, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0
+};
+
+static uint8 aK2Plain[32U] =
+{
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x01, 0x02, 0x53, 0x48, 0x45, 0x00, 0x80, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0
+};
+
+
+static const uint8 aEmptyIV[16] = { 0x00 };
+
+static uint8 aK1[16]      = { 0x00 };
+static uint8 aK2[16]      = { 0x00 };
+static uint8 aK3[16]      = { 0x00 };
+static uint8 aK4[16]      = { 0x00 };
+
+static uint8 aM1[16]      = { 0x00 };
+static uint8 aM2[32]      = { 0x00 };
+static uint8 aM2Plain[32] = { 0x00 };
+static uint8 aM3[16]      = { 0x00 };
+static uint8 aM4Ref[16]   = { 0x00 };
+static uint8 aM4Plain[16] = { 0x00 };
+static uint8 aM4[32]      = { 0x00 };
+static uint8 aM5[16]      = { 0x00 };
+static uint8 aM1M2[48]    = { 0x00 };
+
+static void App_LoadCsecKey
+(
+    uint8  keyId,
+    uint8  authKeyId,
+    const  uint8* pNewKey,
+    const  uint8* pAuthKey,
+    uint32 counter,
+    uint8  flags,
+    const  uint8* pUID
+)
+{
+
+    Csec_Ip_ErrorCodeType CsecResponse;
+    uint8                 u8Idx;
+    boolean               bValidationStatus = (boolean)TRUE;
+    Csec_Ip_ReqType       CsecIpReq;
+
+    /* Mark the future requests made to Csec Ip as synchronous */
+    CsecIpReq.eReqType = CSEC_IP_REQTYPE_SYNC;
+
+    /* Generate K1 & K2 */
+    for (u8Idx = 0; u8Idx < 16U; u8Idx++)
+    {
+        aK1Plain[u8Idx] = pAuthKey[u8Idx];
+        aK2Plain[u8Idx] = pAuthKey[u8Idx];
+    }
+
+    CsecResponse = Csec_Ip_MpCompress(aK1Plain, 2, aK1);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    CsecResponse = Csec_Ip_MpCompress(aK2Plain, 2, aK2);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    /* Prepare M1 */
+    for (u8Idx = 0; u8Idx < 15U; u8Idx++)
+    {
+        aM1[u8Idx] = pUID[u8Idx];
+    }
+
+    aM1[15] = (authKeyId & 0x0F) | ((keyId & 0x0F) << 4);
+
+    /* Generate M2 */
+    for (u8Idx = 0; u8Idx < 16; u8Idx++)
+    {
+        aM2Plain[u8Idx + 16U] = pNewKey[u8Idx];
+    }
+
+    aM2Plain[0] = ((counter << 0x04) & 0xff000000) >> 0x18;
+    aM2Plain[1] = ((counter << 0x04) & 0x00ff0000) >> 0x10;
+    aM2Plain[2] = ((counter << 0x04) & 0x0000ff00) >> 0x08;
+    aM2Plain[3] = ((counter << 0x04) & 0x000000ff) >> 0x00;
+
+    aM2Plain[3] |= (flags & 0x1e) >> 1U;
+    aM2Plain[4] |= (flags & 0x01) << 7U;
+
+    /* Encrypt M2 */
+    CsecResponse = Csec_Ip_LoadPlainKey(aK1);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    CsecResponse = Csec_Ip_EncryptCbc(&CsecIpReq, CSEC_IP_RAM_KEY, aM2Plain, 32, aEmptyIV, aM2);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    /* Generate M3 */
+    for (u8Idx = 0; u8Idx < 16U; u8Idx++)
+    {
+        aM1M2[u8Idx]       = aM1[u8Idx];
+        aM1M2[u8Idx + 16U] = aM2[u8Idx];
+        aM1M2[u8Idx + 32U] = aM2[u8Idx + 16U];
+    }
+
+    CsecResponse = Csec_Ip_LoadPlainKey(aK2);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    CsecResponse = Csec_Ip_GenerateMac(&CsecIpReq, CSEC_IP_RAM_KEY, aM1M2, 384, aM3);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    /* Load Key */
+    CsecResponse = Csec_Ip_LoadKey((Csec_Ip_KeyIdType)keyId, aM1, aM2, aM3, aM4, aM5);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    /* Generate K3 & K4 */
+    for (u8Idx = 0; u8Idx < 16; u8Idx++)
+    {
+        aK1Plain[u8Idx] = pNewKey[u8Idx];
+        aK2Plain[u8Idx] = pNewKey[u8Idx];
+    }
+
+    CsecResponse = Csec_Ip_MpCompress(aK1Plain, 2, aK3);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    CsecResponse = Csec_Ip_MpCompress(aK2Plain, 2, aK4);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    /* Prepare M4' (aM4Ref) */
+    aM4Plain[0]  = ((counter << 0x04) & 0xff000000) >> 0x18;
+    aM4Plain[1]  = ((counter << 0x04) & 0x00ff0000) >> 0x10;
+    aM4Plain[2]  = ((counter << 0x04) & 0x0000ff00) >> 0x08;
+    aM4Plain[3]  = ((counter << 0x04) & 0x000000ff) >> 0x00;
+    aM4Plain[3] |= 0x08;
+
+    CsecResponse = Csec_Ip_LoadPlainKey(aK3);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    CsecResponse = Csec_Ip_EncryptEcb(&CsecIpReq, CSEC_IP_RAM_KEY, aM4Plain, 16, aM4Ref);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    /* Validate M4 */
+    App_SetSuccessStatus(((aM4[15] & 0xf0) >> 4) == (keyId & 0x0f));
+    App_SetSuccessStatus((aM4[15] & 0x0f) == (authKeyId & 0x0f));
+
+    for (u8Idx = 0; u8Idx < 16U; u8Idx++)
+    {
+        if (aM4Ref[u8Idx] != aM4[u8Idx + 16U])
+        {
+            bValidationStatus = (boolean)FALSE;
+        }
+    }
+
+    App_SetSuccessStatus((boolean)TRUE == bValidationStatus);
+
+    /* Generate M5 */
+    CsecResponse = Csec_Ip_LoadPlainKey(aK4);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+
+    /* Validate M5 */
+    CsecResponse = Csec_Ip_VerifyMac(&CsecIpReq, CSEC_IP_RAM_KEY, aM4, 256, aM5, 0, &bValidationStatus);
+    App_SetSuccessStatus(CSEC_IP_ERC_NO_ERROR == CsecResponse);
+    App_SetSuccessStatus((boolean)TRUE == bValidationStatus);
+}
+
+
 
 int main(void)
 {
@@ -238,9 +420,14 @@ int main(void)
     for(;;)
     {
 
-    	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_ELEMENT_ID_U32, AES_128_CbcKey, APP_AES128_KEY_SIZE  );
-        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+    	App_LoadCsecKey(CSEC_IP_KEY_1, CSEC_IP_MASTER_ECU_KEY, AES_128_CbcKey, aEmptyKey, u32Counter, u8Flags, aEmptyUID  );
 
+//    	//for importing CBC Key ( RAM_Key_Slot)
+//    	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_ELEMENT_ID_U32, AES_128_CbcKey, APP_AES128_KEY_SIZE  );
+//        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+//
+
+        // IV value for CBC is stored not on CSEc IP but stored in internal buffer's
     	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_IV_ELEMENT_ID_U32, G2B_Aes128CBC_IV, APP_AES128_KEY_SIZE  );
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
