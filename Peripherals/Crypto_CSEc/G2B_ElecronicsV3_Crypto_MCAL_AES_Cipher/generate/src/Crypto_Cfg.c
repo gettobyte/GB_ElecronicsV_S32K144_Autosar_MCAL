@@ -155,6 +155,12 @@ static const uint32 Crypto_au32KeyElementList_CryptoKey_AES_CMAC[1U] =
     2U
 };
 
+/* Array of indexes for each Crypto Key Element referred by Crypto Key CryptoKey_Master_ECU */
+static const uint32 Crypto_au32KeyElementList_CryptoKey_Master_ECU[1U] =
+{
+    4U
+};
+
 #define CRYPTO_STOP_SEC_CONST_32
 #include "Crypto_MemMap.h"
 
@@ -276,6 +282,12 @@ const Crypto_KeyType Crypto_aKeyList[CRYPTO_NUMBER_OF_KEYS_U32] =
         1U,
         /* Reference to the list of key elements in the key CryptoKey_AES_CMAC */
         Crypto_au32KeyElementList_CryptoKey_AES_CMAC
+    },
+    {
+        /* Number of key elements in the key CryptoKey_Master_ECU */
+        1U,
+        /* Reference to the list of key elements in the key CryptoKey_Master_ECU */
+        Crypto_au32KeyElementList_CryptoKey_Master_ECU
     }
 };
 
@@ -373,6 +385,29 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         NULL_PTR,
         /* Identifier of the CSEc key */
         CSEC_IP_RAM_KEY
+    },
+    /* Structure containing information for Key Element CryptoKeyElement_Master_Key */
+    {
+        /* KeyElementId */
+        1U,
+        /* Allow partial access */
+        (boolean)FALSE,
+        /* Key element format */
+        CRYPTO_KE_FORMAT_BIN_OCTET,
+        /* Key element persistent */
+        (boolean)TRUE,
+        /* Read access type */
+        CRYPTO_RA_ALLOWED,
+        /* Key element max size */
+        16U,
+        /* Write access type */
+        CRYPTO_WA_ENCRYPTED,
+        /* Pointer to location storing the Key Element actual size */
+        (uint32*)&Crypto_au8NvramBlob1[0U],
+        /* Pointer to location storing the Key Element value */
+        NULL_PTR,
+        /* Identifier of the CSEc key */
+        CSEC_IP_MASTER_ECU_KEY
     }
 };
 
@@ -389,6 +424,16 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
 uint8 Crypto_au8NvramBlob0[CRYPTO_SIZEOF_NVRAM_BLOB_0];
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_8
+#include "Crypto_MemMap.h"
+
+
+#define CRYPTO_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#include "Crypto_MemMap.h"
+
+/* Array storing blob 1 containing information that should be persistent between resets */
+VAR_ALIGN(uint8 Crypto_au8NvramBlob1[CRYPTO_SIZEOF_NVRAM_BLOB_1], 4U)
+
+#define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
 
 

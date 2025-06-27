@@ -63,6 +63,10 @@ static uint8_t App_au8Aes128EcbOriginalMessage[G2B_AES128_ECB_RESULT_TEXT_SIZE];
 #define KEY_MATERIAL_ELEMENT_ID_U32 CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_ECB
 //#define KEY_MATERIAL_ELEMENT_ID_U32 1
 
+#define APP_Master_ECU_KeyID CryptoConf_CryptoKey_CryptoKey_Master_ECU
+#define APP_Master_ECU_KeyID_ElementID CryptoConf_CryptoKeyElement_CryptoKeyElement_Master_Key
+
+
 #define APP_AES128_CDO_ID CryptoConf_CryptoDriverObject_CryptoDriverObject_AES
 
 uint32 ResultLength = 16;
@@ -204,6 +208,9 @@ static Crypto_JobType G2B_AES128_ECB_Encrypt_ProcessJob =
 static uint8_t AES_128_EcbKey[APP_AES128_KEY_SIZE] = {
 		   0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f
 };
+static uint8_t G2B_Master_ECU_Key[16] = {
+		0x99, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x22, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16
+};
 
 
 int main(void)
@@ -221,23 +228,24 @@ int main(void)
 
     //This function will initialize CSEc Peripheral
     RetVal = App_InitCsecHw(KEY_SIZE,SFE);
-    //Initialize Crypto driver */
+    //Initialize Crypto driver
     Crypto_Init(NULL_PTR);
 
 
     for(;;)
     {
 
-    	RetVal = Crypto_KeyElementSet(APP_AES128_KEY_ID, KEY_MATERIAL_ELEMENT_ID_U32, AES_128_EcbKey, APP_AES128_KEY_SIZE  );
+    	RetVal = Crypto_KeyElementSet(APP_Master_ECU_KeyID, APP_Master_ECU_KeyID_ElementID, G2B_Master_ECU_Key, APP_AES128_KEY_SIZE  );
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
+    	RetVal = Crypto_KeyElementSet(APP_AES128_KEY_ID, KEY_MATERIAL_ELEMENT_ID_U32, AES_128_EcbKey, APP_AES128_KEY_SIZE  );
+        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
     	RetVal = Crypto_KeySetValid(APP_AES128_KEY_ID);
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
     	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_ECB_Encrypt_ProcessJob);
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
-
 
     	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_ECB_Decrypt_ProcessJob);
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);

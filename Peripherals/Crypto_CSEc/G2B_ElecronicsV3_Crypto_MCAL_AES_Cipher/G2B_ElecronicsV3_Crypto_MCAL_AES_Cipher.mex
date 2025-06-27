@@ -396,6 +396,20 @@
                                     <setting name="UseCsecKey" value="true"/>
                                     <setting name="CsecKeySlot" value="CSEC_IP_RAM_KEY"/>
                                  </struct>
+                                 <struct name="4">
+                                    <setting name="Name" value="CryptoKeyElement_Master_Key"/>
+                                    <setting name="CryptoKeyElementAllowPartialAccess" value="false"/>
+                                    <setting name="CryptoKeyElementFormat" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                                    <setting name="CryptoKeyElementId" value="1"/>
+                                    <setting name="CryptoKeyElementInitValue" value=""/>
+                                    <setting name="CryptoKeyElementPersist" value="false"/>
+                                    <setting name="CryptoKeyElementReadAccess" value="CRYPTO_RA_ALLOWED"/>
+                                    <setting name="CryptoKeyElementSize" value="16"/>
+                                    <setting name="CryptoKeyElementWriteAccess" value="CRYPTO_WA_ENCRYPTED"/>
+                                    <array name="CryptoKeyElementVirtualTargetRef"/>
+                                    <setting name="UseCsecKey" value="true"/>
+                                    <setting name="CsecKeySlot" value="CSEC_IP_MASTER_ECU_KEY"/>
+                                 </struct>
                               </array>
                            </struct>
                         </array>
@@ -422,6 +436,18 @@
                                        <setting name="0" value="/Crypto_1/Crypto/CryptoKeyElements/CryptoKeyElement_CMAC"/>
                                     </array>
                                  </struct>
+                                 <struct name="3">
+                                    <setting name="Name" value="CryptoKeyType_Master_ECU_Key"/>
+                                    <array name="CryptoKeyElementRef">
+                                       <setting name="0" value="/Crypto_1/Crypto/CryptoKeyElements/CryptoKeyElement_Master_Key"/>
+                                    </array>
+                                 </struct>
+                                 <struct name="4">
+                                    <setting name="Name" value="CryptoKeyType_MASTER_ECU_Keys"/>
+                                    <array name="CryptoKeyElementRef">
+                                       <setting name="0" value="/Crypto_1/Crypto/CryptoKeyElements/CryptoKeyElement_Master_Key"/>
+                                    </array>
+                                 </struct>
                               </array>
                            </struct>
                         </array>
@@ -443,6 +469,11 @@
                                     <setting name="Name" value="CryptoKey_AES_CMAC"/>
                                     <setting name="CryptoKeyId" value="2"/>
                                     <setting name="CryptoKeyTypeRef" value="/Crypto_1/Crypto/CryptoKeyTypes/CryptoKeyType_CMAC"/>
+                                 </struct>
+                                 <struct name="3">
+                                    <setting name="Name" value="CryptoKey_Master_ECU"/>
+                                    <setting name="CryptoKeyId" value="3"/>
+                                    <setting name="CryptoKeyTypeRef" value="/Crypto_1/Crypto/CryptoKeyTypes/CryptoKeyType_Master_ECU_Key"/>
                                  </struct>
                               </array>
                            </struct>

@@ -130,10 +130,10 @@ extern "C"{
 #define CRYPTO_KEYS_EXIST                               (STD_ON)
 
 /* Number of Crypto keys */
-#define CRYPTO_NUMBER_OF_KEYS_U32                       ((uint32)3U)
+#define CRYPTO_NUMBER_OF_KEYS_U32                       ((uint32)4U)
 
 /* Number of Crypto key elements */
-#define CRYPTO_NUMBER_OF_KEY_ELEMENTS_U32               ((uint32)4U)
+#define CRYPTO_NUMBER_OF_KEY_ELEMENTS_U32               ((uint32)5U)
 
 /* Identifiers for the blobs of information that need to be stored in NVRAM used by the Crypto driver */
 #define CRYPTO_NVRAM_BLOB_0_ID                          (0U)
@@ -141,7 +141,7 @@ extern "C"{
 
 /* Sizes for the blobs of information used by the Crypto driver */
 #define CRYPTO_SIZEOF_NVRAM_BLOB_0                      (1U)
-#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (0U)
+#define CRYPTO_SIZEOF_NVRAM_BLOB_1                      (4U)
 
 /* Compile time switch stating that support for Nvram read/write operations is enabled or disabled */
 #define CRYPTO_ENABLE_NVRAM_READ_WRITE_SUPPORT          (STD_OFF)
@@ -181,12 +181,14 @@ extern "C"{
 #define CryptoConf_CryptoKey_CryptoKey_AES_ECB                       ((uint32)0U)
 #define CryptoConf_CryptoKey_CryptoKey_AES_CBC                       ((uint32)1U)
 #define CryptoConf_CryptoKey_CryptoKey_AES_CMAC                      ((uint32)2U)
+#define CryptoConf_CryptoKey_CryptoKey_Master_ECU                    ((uint32)3U)
 
 /* Symbolic names for the CryptoKeyElementId attribute of all the Crypto key elements */
 #define CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_ECB     ((uint32)1U)
 #define CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_CBC_IV  ((uint32)5U)
 #define CryptoConf_CryptoKeyElement_CryptoKeyElement_CMAC            ((uint32)1U)
 #define CryptoConf_CryptoKeyElement_CryptoKeyElement_AES_KEY_CBC     ((uint32)1U)
+#define CryptoConf_CryptoKeyElement_CryptoKeyElement_Master_Key      ((uint32)1U)
 
 /*==================================================================================================
 *                                              ENUMS
@@ -235,6 +237,16 @@ typedef struct
 extern uint8 Crypto_au8NvramBlob0[CRYPTO_SIZEOF_NVRAM_BLOB_0];
 
 #define CRYPTO_STOP_SEC_VAR_CLEARED_8
+#include "Crypto_MemMap.h"
+
+
+#define CRYPTO_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#include "Crypto_MemMap.h"
+
+/* Array storing blob 1 containing information that should be persistent between resets */
+extern uint8 Crypto_au8NvramBlob1[CRYPTO_SIZEOF_NVRAM_BLOB_1];
+
+#define CRYPTO_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Crypto_MemMap.h"
 
 /*==================================================================================================
