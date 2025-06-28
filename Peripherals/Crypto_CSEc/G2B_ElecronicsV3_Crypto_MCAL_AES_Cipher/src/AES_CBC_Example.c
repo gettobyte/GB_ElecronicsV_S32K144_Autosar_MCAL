@@ -215,7 +215,16 @@ static uint8_t AES_128_CbcKey[APP_AES128_KEY_SIZE] = {
 		   0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f
 };
 
-static const uint32 u32Counter = 2U;
+static uint8_t Master_ECU_Key[APP_AES128_KEY_SIZE] = {
+		0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
+		    0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
+
+static uint8_t AES_128_CbcKey2[APP_AES128_KEY_SIZE] = {
+		   0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55
+};
+
+
+static const uint32 u32Counter = 11U;
 
 static const uint8 u8Flags     = 0U;
 
@@ -265,6 +274,10 @@ static uint8 aM4Plain[16] = { 0x00 };
 static uint8 aM4[32]      = { 0x00 };
 static uint8 aM5[16]      = { 0x00 };
 static uint8 aM1M2[48]    = { 0x00 };
+
+//static uint8 M1[16] {
+//
+//};
 
 static void App_LoadCsecKey
 (
@@ -416,11 +429,15 @@ int main(void)
     //Initialize Crypto driver */
     Crypto_Init(NULL_PTR);
 
+	App_LoadCsecKey(CSEC_IP_MASTER_ECU_KEY, CSEC_IP_MASTER_ECU_KEY, Master_ECU_Key, aEmptyKey, 1, u8Flags, aEmptyUID  );
 
-    for(;;)
+	for(;;)
     {
 
-    	App_LoadCsecKey(CSEC_IP_KEY_1, CSEC_IP_MASTER_ECU_KEY, AES_128_CbcKey, aEmptyKey, u32Counter, u8Flags, aEmptyUID  );
+    	App_LoadCsecKey(CSEC_IP_KEY_3, CSEC_IP_MASTER_ECU_KEY, AES_128_CbcKey, Master_ECU_Key, 2, u8Flags, aEmptyUID  );
+
+    	//App_LoadCsecKey(CSEC_IP_KEY_2, CSEC_IP_MASTER_ECU_KEY, AES_128_CbcKey2, aEmptyKey, 19 , u8Flags, aEmptyUID  );
+
 
 //    	//for importing CBC Key ( RAM_Key_Slot)
 //    	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_ELEMENT_ID_U32, AES_128_CbcKey, APP_AES128_KEY_SIZE  );

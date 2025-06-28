@@ -384,7 +384,7 @@ const Crypto_KeyElementType Crypto_aKeyElementList[CRYPTO_NUMBER_OF_KEY_ELEMENTS
         /* Pointer to location storing the Key Element value */
         NULL_PTR,
         /* Identifier of the CSEc key */
-        CSEC_IP_KEY_1
+        CSEC_IP_KEY_3
     },
     /* Structure containing information for Key Element CryptoKeyElement_Master_Key */
     {

@@ -48,7 +48,7 @@ Std_ReturnType App_InitCsecHw
     else
     {
         /* Csec IP hardware is already initialized */
-        RetVal = (Std_ReturnType)E_OK;
+        RetVal = (Std_ReturnType)0xAA;
     }
 
     return RetVal;
