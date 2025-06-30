@@ -1,0 +1,175 @@
+Parsed function:OsIf_MicrosToTicks
+Parsed function:OsIf_SetTimerFrequency
+Parsed function:OsIf_GetElapsed
+Parsed function:OsIf_GetCounter
+Parsed function:OsIf_Init
+Dump after hash based groups
+Congruence classes: 4 (unique hash values: 4), with total: 5 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 3 classes
+[2]: 1 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 5 (unique hash values: 4), with total: 5 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 5 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 5 (unique hash values: 4), with total: 5 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 5 classes
+
+
+Init called for 0 items (0.00%).
+Dump after full equality comparison of groups
+Congruence classes: 5 (unique hash values: 4), with total: 5 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 5 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Congruence classes: 5 (unique hash values: 4), with total: 5 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 5 classes
+
+
+
+Item count: 5
+Congruent classes before: 5, after: 5
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+OsIf_MicrosToTicks (uint32 Micros, OsIf_CounterType SelectedCounter)
+{
+  uint32 Value;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 0
+  # DEBUG BEGIN_STMT
+  if (SelectedCounter_2(D) == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Micros => Micros_4(D)
+  # DEBUG INLINE_ENTRY NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG Micros => NULL
+  # DEBUG Value => Micros_4(D)
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # Value_1 = PHI <Micros_4(D)(3), 0(2)>
+  # DEBUG Value => Value_1
+  # DEBUG BEGIN_STMT
+  return Value_1;
+
+}
+
+
+OsIf_SetTimerFrequency (uint32 Freq, OsIf_CounterType SelectedCounter)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Freq => NULL
+  return;
+
+}
+
+
+OsIf_GetElapsed (uint32 * const CurrentRef, OsIf_CounterType SelectedCounter)
+{
+  uint32 Value;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 0
+  # DEBUG BEGIN_STMT
+  if (SelectedCounter_2(D) == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => CurrentRef_4(D)
+  # DEBUG INLINE_ENTRY NULL
+  # DEBUG CurrentRef => D#1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 1
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # Value_1 = PHI <1(3), 0(2)>
+  # DEBUG Value => Value_1
+  # DEBUG BEGIN_STMT
+  return Value_1;
+
+}
+
+
+OsIf_GetCounter (OsIf_CounterType SelectedCounter)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Value => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+OsIf_Init (const void * Config)
+{
+  volatile boolean x;
+  _Bool x.0_4;
+
+  <bb 2> [local count: 306783]:
+  # DEBUG BEGIN_STMT
+  if (Config_2(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 3> [local count: 214748]:
+  # DEBUG BEGIN_STMT
+  x ={v} 0;
+  # DEBUG x => x
+  # DEBUG INLINE_ENTRY DevAssert
+  # DEBUG BEGIN_STMT
+  x.0_4 ={v} x;
+  if (x.0_4 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 107374]:
+
+  <bb 4> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 199409]:
+  # DEBUG x => NULL
+  return;
+
+}
+
+

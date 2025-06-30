@@ -1,0 +1,109 @@
+Parsed function:Flexio_Mcl_Ip_DeinitDevice
+Parsed function:Flexio_Mcl_Ip_InitDevice
+Dump after hash based groups
+Congruence classes: 3 (unique hash values: 3), with total: 3 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 3 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 3 (unique hash values: 3), with total: 3 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 3 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 3 (unique hash values: 3), with total: 3 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 3 classes
+
+
+Init called for 0 items (0.00%).
+Dump after full equality comparison of groups
+Congruence classes: 3 (unique hash values: 3), with total: 3 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 3 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Congruence classes: 3 (unique hash values: 3), with total: 3 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 3 classes
+
+
+
+Item count: 3
+Congruent classes before: 3, after: 3
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+Flexio_Mcl_Ip_DeinitDevice (uint32 instance)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG baseAddr => 1074110464B
+  # DEBUG BEGIN_STMT
+  Flexio_Mcl_Ip_Init (1074110464B);
+  # DEBUG BEGIN_STMT
+  Flexio_Ip_IpIsInitialized[instance_3(D)] = 0;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_InitDevice (const struct Flexio_Ip_InstanceConfigType * const pFlexioInitType)
+{
+  boolean LocDebugEnable;
+  uint8 LocInstance;
+  Flexio_Ip_CommonStatusType status;
+  int _1;
+  _Bool _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG status => 0
+  # DEBUG BEGIN_STMT
+  LocInstance_6 = pFlexioInitType_5(D)->instance;
+  # DEBUG LocInstance => LocInstance_6
+  # DEBUG BEGIN_STMT
+  LocDebugEnable_7 = pFlexioInitType_5(D)->debugEnable;
+  # DEBUG LocDebugEnable => LocDebugEnable_7
+  # DEBUG BEGIN_STMT
+  _1 = (int) LocInstance_6;
+  # DEBUG baseAddr => 1074110464B
+  # DEBUG BEGIN_STMT
+  _2 = Flexio_Ip_IpIsInitialized[_1];
+  if (_2 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG status => 1
+
+  <bb 4> [local count: 1073741824]:
+  # status_3 = PHI <0(2), 1(3)>
+  # DEBUG status => status_3
+  # DEBUG BEGIN_STMT
+  Flexio_Mcl_Ip_Init (1074110464B);
+  # DEBUG BEGIN_STMT
+  Flexio_Mcl_Ip_SetEnable (1074110464B, 1);
+  # DEBUG BEGIN_STMT
+  Flexio_Mcl_Ip_SetDebugEnable (1074110464B, LocDebugEnable_7);
+  # DEBUG BEGIN_STMT
+  Flexio_Ip_IpIsInitialized[_1] = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return status_3;
+
+}
+
+

@@ -1,0 +1,167 @@
+Histogram:
+Platform_Ipw_InitNonCore (const struct Platform_Ipw_NonCoreConfigType * pConfig)
+{
+  uint32 irqIdx;
+  const struct IntCtrl_Ip_GlobalRouteConfigType * _1;
+  const struct IntCtrl_Ip_IrqRouteConfigType * _2;
+  long unsigned int _3;
+  const struct IntCtrl_Ip_IrqRouteConfigType * _4;
+  <unnamed type> _5;
+  const struct IntCtrl_Ip_GlobalRouteConfigType * _6;
+  const struct IntCtrl_Ip_IrqRouteConfigType * _7;
+  const struct IntCtrl_Ip_IrqRouteConfigType * _8;
+  <unnamed type> _9;
+  void (*<T5ec>) (void) _10;
+  const struct IntCtrl_Ip_GlobalRouteConfigType * _11;
+  long unsigned int _12;
+
+  <bb 2> [local count: 168730857]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pConfig_17(D)->pIntRouteConfig;
+  if (_1 != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 6> [local count: 118111600]:
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630225]:
+  # DEBUG BEGIN_STMT
+  _2 = _11->aIrqConfig;
+  _3 = irqIdx_13 * 12;
+  _4 = _2 + _3;
+  _5 = _4->eIrqNumber;
+  IntCtrl_Ip_ClearPending (_5);
+  # DEBUG BEGIN_STMT
+  _6 = pConfig_17(D)->pIntRouteConfig;
+  _7 = _6->aIrqConfig;
+  _8 = _7 + _3;
+  _9 = _8->eIrqNumber;
+  _10 = _8->pfHandler;
+  IntCtrl_Ip_InstallHandler (_9, _10, 0B);
+  # DEBUG BEGIN_STMT
+  irqIdx_20 = irqIdx_13 + 1;
+  # DEBUG irqIdx => irqIdx_20
+
+  <bb 4> [local count: 1073741824]:
+  # irqIdx_13 = PHI <irqIdx_20(3), 0(6)>
+  # DEBUG irqIdx => irqIdx_13
+  # DEBUG BEGIN_STMT
+  _11 = pConfig_17(D)->pIntRouteConfig;
+  _12 = _11->u32ConfigIrqCount;
+  if (_12 > irqIdx_13)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 168730858]:
+  return;
+
+}
+
+
+Platform_Ipw_Init (const struct Platform_Ipw_ConfigType * pConfig)
+{
+  const struct IntCtrl_Ip_CtrlConfigType * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = pConfig_3(D)->pIntCtrlConfig;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  Platform_Ipw_InitIntCtrl (_1);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 499612071]:
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Platform_Ipw_InitIntCtrl (const struct IntCtrl_Ip_CtrlConfigType * pIntCtrlCtrlConfig)
+{
+  uint32 irqIdx;
+  const struct IntCtrl_Ip_IrqConfigType * _1;
+  long unsigned int _2;
+  const struct IntCtrl_Ip_IrqConfigType * _3;
+  <unnamed type> _4;
+  unsigned char _5;
+  const struct IntCtrl_Ip_IrqConfigType * _6;
+  const struct IntCtrl_Ip_IrqConfigType * _7;
+  _Bool _8;
+  <unnamed type> _9;
+  <unnamed type> _10;
+  long unsigned int _11;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG irqIdx => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _1 = pIntCtrlCtrlConfig_16(D)->aIrqConfig;
+  _2 = irqIdx_12 * 8;
+  _3 = _1 + _2;
+  _4 = _3->eIrqNumber;
+  _5 = _3->u8IrqPriority;
+  IntCtrl_Ip_SetPriority (_4, _5);
+  # DEBUG BEGIN_STMT
+  _6 = pIntCtrlCtrlConfig_16(D)->aIrqConfig;
+  _7 = _6 + _2;
+  _8 = _7->bIrqEnabled;
+  if (_8 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 477815111]:
+  # DEBUG BEGIN_STMT
+  _9 = _7->eIrqNumber;
+  IntCtrl_Ip_EnableIrq (_9);
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 477815111]:
+  # DEBUG BEGIN_STMT
+  _10 = _7->eIrqNumber;
+  IntCtrl_Ip_DisableIrq (_10);
+
+  <bb 6> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  irqIdx_20 = irqIdx_12 + 1;
+  # DEBUG irqIdx => irqIdx_20
+
+  <bb 7> [local count: 1073741824]:
+  # irqIdx_12 = PHI <0(2), irqIdx_20(6)>
+  # DEBUG irqIdx => irqIdx_12
+  # DEBUG BEGIN_STMT
+  _11 = pIntCtrlCtrlConfig_16(D)->u32ConfigIrqCount;
+  if (_11 > irqIdx_12)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+

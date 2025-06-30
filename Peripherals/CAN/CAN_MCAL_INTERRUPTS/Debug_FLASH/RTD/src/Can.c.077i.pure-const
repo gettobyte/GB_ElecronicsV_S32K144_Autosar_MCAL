@@ -1,0 +1,2800 @@
+
+
+ local analysis of Can_ProcessBusOffInterrupt
+   scanning: _1 = Can_apxConfig[0];
+  scanning: if (_1 != 0B)
+  scanning: _2 = _1->Can_pCtrlOffsetToCtrlIDMap;
+    Indirect ref read is not const
+  scanning: _3 = (sizetype) u8CtrlOffset_14(D);
+  scanning: _4 = _2 + _3;
+  scanning: u8ControllerID_15 = *_4;
+    Indirect ref read is not const
+  scanning: _5 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _6 = (unsigned int) u8ControllerID_15;
+  scanning: _7 = _6 * 4;
+  scanning: _8 = _5 + _7;
+  scanning: Can_pController_16 = *_8;
+    Indirect ref read is not const
+  scanning: if (Can_pController_16 != 0B)
+  scanning: _9 = Can_Ipw_SetControllerToStopMode (Can_pController_16);
+  scanning: if (_9 == 0)
+  scanning: _10 = (int) u8ControllerID_15;
+  scanning: Can_eControllerState[_10] = 2;
+  scanning: _11 = Can_pController_16->Can_u8AbstControllerID;
+    Indirect ref read is not const
+  scanning: CanIf_ControllerBusOff (_11);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of Can_ProcessMesgBufferCommonInterrupt
+   scanning: _1 = Can_apxConfig[0];
+  scanning: if (_1 != 0B)
+  scanning: _2 = _1->Can_pCtrlOffsetToCtrlIDMap;
+    Indirect ref read is not const
+  scanning: _3 = (sizetype) u8CtrlOffset_14(D);
+  scanning: _4 = _2 + _3;
+  scanning: u8ControllerID_15 = *_4;
+    Indirect ref read is not const
+  scanning: _5 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _6 = (unsigned int) u8ControllerID_15;
+  scanning: _7 = _6 * 4;
+  scanning: _8 = _5 + _7;
+  scanning: Can_pController_16 = *_8;
+    Indirect ref read is not const
+  scanning: if (Can_pController_16 != 0B)
+  scanning: switch (mbType_17(D)) <default: <L9> [25.00%], case 0: <L3> [25.00%], case 1: <L4> [25.00%], case 3: <L2> [25.00%]>
+  scanning: <L2>:
+  scanning: _9 = _1->Can_pHwObjectConfig;
+    Indirect ref read is not const
+  scanning: Can_Ipw_ProcessTxMesgBuffer (Can_pController_16, _9, u8MbIdx_18(D));
+  scanning: <L3>:
+  scanning: _10 = _1->Can_pHwObjectConfig;
+    Indirect ref read is not const
+  scanning: Can_Ipw_ProcessRxMesgBuffer (Can_pController_16, _10, u8MbIdx_18(D));
+  scanning: <L4>:
+  scanning: _11 = _1->Can_pHwObjectConfig;
+    Indirect ref read is not const
+  scanning: Can_Ipw_ProcessRxMesgBuffer (Can_pController_16, _11, u8MbIdx_18(D));
+  scanning: <L9>:
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of Can_MainFunction_Mode
+   scanning: _1 = Can_apxConfig[0];
+  scanning: if (_1 != 0B)
+  scanning: _2 = Can_apxConfig[0];
+  scanning: _3 = _2->Can_ppController;
+    Indirect ref read is not const
+  scanning: _6 = _3;
+  scanning: Can_pController_14 = *_6;
+    Indirect ref read is not const
+  scanning: if (Can_pController_14 != 0B)
+  scanning: _7 = Can_pController_14->Can_bActivation;
+    Indirect ref read is not const
+  scanning: if (_7 != 0)
+  scanning: Can_Ipw_MainFunction_Mode (Can_pController_14, &MEM[(void *)&Can_eControllerState]);
+  scanning: if (u8ControllerID_9 == 0)
+  scanning: return;
+;; 4 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 11 3 13 4 12 5 7 10 9 8
+;;
+;; Loop 1
+;;  header 7, latch 5
+;;  depth 1, outer 0
+;;  nodes: 7 5 4 3 9 10 13 12
+;;
+;; Loop 3
+;;  header 10, latch 12
+;;  depth 2, outer 1
+;;  nodes: 10 12 4 3 9 13
+;;
+;; Loop 2
+;;  header 9, latch 13
+;;  depth 3, outer 3
+;;  nodes: 9 13 3
+;; 2 succs { 11 8 }
+;; 11 succs { 7 }
+;; 3 succs { 4 13 }
+;; 13 succs { 9 }
+;; 4 succs { 5 12 }
+;; 12 succs { 10 }
+;; 5 succs { 7 }
+;; 7 succs { 10 }
+;; 10 succs { 9 }
+;; 9 succs { 3 8 }
+;; 8 succs { 1 }
+    cannot prove finiteness of loop 1
+Function is locally looping.
+Function is locally pure.
+
+
+ local analysis of Can_MainFunction_BusOff
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of Can_MainFunction_Read
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of Can_MainFunction_Write
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of Can_Write
+   scanning: _1 = Can_apxConfig[0];
+  scanning: _2 = _1->Can_pHwObjIDToCtrlIDMap;
+    Indirect ref read is not const
+  scanning: _3 = (sizetype) Hth_16(D);
+  scanning: _4 = _2 + _3;
+  scanning: u8ControllerID_17 = *_4;
+    Indirect ref read is not const
+  scanning: _5 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _6 = (unsigned int) u8ControllerID_17;
+  scanning: _7 = _6 * 4;
+  scanning: _8 = _5 + _7;
+  scanning: Can_pController_18 = *_8;
+    Indirect ref read is not const
+  scanning: if (Can_pController_18 != 0B)
+  scanning: _9 = _1->Can_pHwObjectConfig;
+    Indirect ref read is not const
+  scanning: _10 = _3 * 36;
+  scanning: Can_pHwObject_19 = _9 + _10;
+  scanning: _11 = (int) u8ControllerID_17;
+  scanning: _12 = Can_eControllerState[_11];
+  scanning: if (_12 == 1)
+  scanning: eRetVal_22 = Can_Ipw_Write (Can_pController_18, Can_pHwObject_19, PduInfo_20(D));
+  scanning: return eRetVal_13;
+Function is locally pure.
+
+
+ local analysis of Can_GetControllerTxErrorCounter
+   scanning: _1 = Can_apxConfig[0];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _3 = (unsigned int) ControllerId_8(D);
+  scanning: _4 = _3 * 4;
+  scanning: _5 = _2 + _4;
+  scanning: Can_pController_9 = *_5;
+    Indirect ref read is not const
+  scanning: _6 = Can_Ipw_GetControllerTxErrorCounter (Can_pController_9);
+  scanning: *TxErrorCounterPtr_11(D) = _6;
+    Indirect ref write is not const/pure
+  scanning: return 0;
+
+
+ local analysis of Can_GetControllerRxErrorCounter
+   scanning: _1 = Can_apxConfig[0];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _3 = (unsigned int) ControllerId_8(D);
+  scanning: _4 = _3 * 4;
+  scanning: _5 = _2 + _4;
+  scanning: Can_pController_9 = *_5;
+    Indirect ref read is not const
+  scanning: _6 = Can_Ipw_GetControllerRxErrorCounter (Can_pController_9);
+  scanning: *RxErrorCounterPtr_11(D) = _6;
+    Indirect ref write is not const/pure
+  scanning: return 0;
+
+
+ local analysis of Can_GetControllerMode
+   scanning: _1 = (int) Controller_3(D);
+  scanning: _2 = Can_eControllerState[_1];
+  scanning: *ControllerModePtr_5(D) = _2;
+    Indirect ref write is not const/pure
+  scanning: return 0;
+
+
+ local analysis of Can_GetControllerErrorState
+   scanning: _1 = Can_apxConfig[0];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _3 = (unsigned int) ControllerId_9(D);
+  scanning: _4 = _3 * 4;
+  scanning: _5 = _2 + _4;
+  scanning: Can_pController_10 = *_5;
+    Indirect ref read is not const
+  scanning: _6 = Can_Ipw_GetControllerErrorState (Can_pController_10);
+  scanning: switch (_6) <default: <L2> [33.33%], case 0: <L0> [33.33%], case 1: <L1> [33.33%]>
+  scanning: <L0>:
+  scanning: *ErrorStatePtr_12(D) = 0;
+    Indirect ref write is not const/pure
+  scanning: <L1>:
+  scanning: *ErrorStatePtr_12(D) = 1;
+    Indirect ref write is not const/pure
+  scanning: <L2>:
+  scanning: *ErrorStatePtr_12(D) = 2;
+    Indirect ref write is not const/pure
+  scanning: return 0;
+
+
+ local analysis of Can_EnableControllerInterrupts
+   scanning: _1 = Can_apxConfig[0];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _3 = (unsigned int) Controller_13(D);
+  scanning: _4 = _3 * 4;
+  scanning: _5 = _2 + _4;
+  scanning: Can_pController_14 = *_5;
+    Indirect ref read is not const
+  scanning: SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01 ();
+  scanning: _6 = (int) Controller_13(D);
+  scanning: _7 = Can_au8DisableInterruptLevel[_6];
+  scanning: if (_7 != 0)
+  scanning: _8 = _7 + 255;
+  scanning: Can_au8DisableInterruptLevel[_6] = _8;
+  scanning: SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01 ();
+  scanning: _9 = Can_au8DisableInterruptLevel[_6];
+  scanning: if (_9 == 0)
+  scanning: Can_Ipw_EnableControllerInterrupts (Can_pController_14);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of Can_DisableControllerInterrupts
+   scanning: _1 = Can_apxConfig[0];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _3 = (unsigned int) Controller_10(D);
+  scanning: _4 = _3 * 4;
+  scanning: _5 = _2 + _4;
+  scanning: Can_pController_11 = *_5;
+    Indirect ref read is not const
+  scanning: SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00 ();
+  scanning: _6 = (int) Controller_10(D);
+  scanning: _7 = Can_au8DisableInterruptLevel[_6];
+  scanning: _8 = _7 + 1;
+  scanning: Can_au8DisableInterruptLevel[_6] = _8;
+  scanning: SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00 ();
+  scanning: Can_Ipw_DisableControllerInterrupts (Can_pController_11);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of Can_SetControllerMode
+   scanning: _1 = Can_apxConfig[0];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _3 = (unsigned int) Controller_21(D);
+  scanning: _4 = _3 * 4;
+  scanning: _5 = _2 + _4;
+  scanning: Can_pController_22 = *_5;
+    Indirect ref read is not const
+  scanning: switch (Transition_23(D)) <default: <L22> [25.00%], case 1: <L0> [25.00%], case 2: <L5> [25.00%], case 3: <L13> [25.00%]>
+  scanning: <L0>:
+  scanning: _6 = (int) Controller_21(D);
+  scanning: _7 = Can_eControllerState[_6];
+  scanning: if (_7 == 2)
+  scanning: _8 = Can_Ipw_SetControllerToStartMode (Can_pController_22);
+  scanning: if (_8 == 0)
+  scanning: Can_eControllerState[_6] = 1;
+  scanning: _9 = Can_pController_22->Can_u8AbstControllerID;
+    Indirect ref read is not const
+  scanning: CanIf_ControllerModeIndication (_9, 1);
+  scanning: <L5>:
+  scanning: _10 = (int) Controller_21(D);
+  scanning: _11 = Can_eControllerState[_10];
+  scanning: switch (_11) <default: <L22> [33.33%], case 1: <L6> [33.33%], case 2 ... 3: <L9> [33.33%]>
+  scanning: <L6>:
+  scanning: _12 = Can_Ipw_SetControllerToStopMode (Can_pController_22);
+  scanning: if (_12 == 0)
+  scanning: Can_eControllerState[_10] = 2;
+  scanning: _13 = Can_pController_22->Can_u8AbstControllerID;
+    Indirect ref read is not const
+  scanning: CanIf_ControllerModeIndication (_13, 2);
+  scanning: <L9>:
+  scanning: Can_eControllerState[_10] = 2;
+  scanning: _14 = Can_pController_22->Can_u8AbstControllerID;
+    Indirect ref read is not const
+  scanning: CanIf_ControllerModeIndication (_14, 2);
+  scanning: <L13>:
+  scanning: _15 = (int) Controller_21(D);
+  scanning: _16 = Can_eControllerState[_15];
+  scanning: _24 = _16 + 4294967294;
+  scanning: if (_24 <= 1)
+  scanning: <L14>:
+  scanning: Can_eControllerState[_15] = 3;
+  scanning: _17 = Can_pController_22->Can_u8AbstControllerID;
+    Indirect ref read is not const
+  scanning: CanIf_ControllerModeIndication (_17, 3);
+  scanning: <L22>:
+  scanning: return eRetVal_18;
+Function is locally pure.
+
+
+ local analysis of Can_DeInit
+   scanning: _1 = Can_apxConfig[0];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _4 = _2;
+  scanning: _5 = *_4;
+    Indirect ref read is not const
+  scanning: if (_5 != 0B)
+  scanning: _6 = Can_eControllerState[0];
+  scanning: if (_6 == 1)
+  scanning: if (u8ControllerID_7 == 0)
+  scanning: if (bCtrlBusy_8 != 0)
+  scanning: Can_DeInitControllers (0);
+  scanning: Can_apxConfig[0] = 0B;
+  scanning: return;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 11 4 10 5 6 7 8 9
+;;
+;; Loop 1
+;;  header 5, latch 10
+;;  depth 1, outer 0
+;;  nodes: 5 10 4 3 6 11
+;;
+;; Loop 2
+;;  header 6, latch 11
+;;  depth 2, outer 1
+;;  nodes: 6 11 3
+;; 2 succs { 5 }
+;; 3 succs { 4 11 }
+;; 11 succs { 6 }
+;; 4 succs { 7 10 }
+;; 10 succs { 5 }
+;; 5 succs { 6 }
+;; 6 succs { 3 7 }
+;; 7 succs { 8 9 }
+;; 8 succs { 9 }
+;; 9 succs { 1 }
+    cannot prove finiteness of loop 1
+Function is locally looping.
+Function is locally pure.
+
+
+ local analysis of Can_Init
+   scanning: Can_apxConfig[0] = Config_3(D);
+  scanning: bCtrlBusy_5 = Can_IsControllersBusy (0);
+  scanning: if (bCtrlBusy_5 != 0)
+  scanning: Can_InitControllers (0);
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of Can_DeInitControllers
+   scanning: _1 = Can_apxConfig[u32CoreId_13(D)];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _5 = _2;
+  scanning: _6 = *_5;
+    Indirect ref read is not const
+  scanning: if (_6 != 0B)
+  scanning: _7 = _6->Can_bActivation;
+    Indirect ref read is not const
+  scanning: if (_7 != 0)
+  scanning: Can_eControllerState[0] = 0;
+  scanning: Can_Ipw_DeInit (_6);
+  scanning: if (u8ControllerID_9 == 0)
+  scanning: return;
+;; 4 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 12 4 11 5 7 10 9 8
+;;
+;; Loop 1
+;;  header 7, latch 5
+;;  depth 1, outer 0
+;;  nodes: 7 5 4 3 9 10 12 11
+;;
+;; Loop 3
+;;  header 10, latch 11
+;;  depth 2, outer 1
+;;  nodes: 10 11 4 3 9 12
+;;
+;; Loop 2
+;;  header 9, latch 12
+;;  depth 3, outer 3
+;;  nodes: 9 12 3
+;; 2 succs { 7 }
+;; 3 succs { 4 12 }
+;; 12 succs { 9 }
+;; 4 succs { 5 11 }
+;; 11 succs { 10 }
+;; 5 succs { 7 }
+;; 7 succs { 10 }
+;; 10 succs { 9 }
+;; 9 succs { 3 8 }
+;; 8 succs { 1 }
+    cannot prove finiteness of loop 1
+Function is locally looping.
+Function is locally pure.
+
+
+ local analysis of Can_InitControllers
+   scanning: _1 = Can_apxConfig[u32CoreId_25(D)];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _5 = _2;
+  scanning: _6 = *_5;
+    Indirect ref read is not const
+  scanning: if (_6 != 0B)
+  scanning: _7 = _6->Can_bActivation;
+    Indirect ref read is not const
+  scanning: if (_7 != 0)
+  scanning: Can_au8DisableInterruptLevel[0] = 0;
+  scanning: RetVal_28 = Can_Ipw_Init (_6);
+  scanning: if (RetVal_28 == 0)
+  scanning: RetVal_30 = Can_Ipw_InitRx (_6);
+  scanning: if (RetVal_16 == 0)
+  scanning: Can_eControllerState[0] = 2;
+  scanning: if (u8ControllerID_14 == 0)
+  scanning: if (bCtrlBusy_13 != 0)
+  scanning: _9 = Can_apxConfig[u32CoreId_25(D)];
+  scanning: _10 = _9->Can_ppController;
+    Indirect ref read is not const
+  scanning: _11 = _10;
+  scanning: _12 = *_11;
+    Indirect ref read is not const
+  scanning: if (_12 != 0B)
+  scanning: Can_eControllerState[0] = 0;
+  scanning: if (u8ControllerID_15 == 0)
+  scanning: return;
+;; 6 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 23 4 22 5 6 7 8 10 19 18 11 20 12 21 13 15 17 16
+;;
+;; Loop 2
+;;  header 15, latch 13
+;;  depth 1, outer 0
+;;  nodes: 15 13 12 17 21
+;;
+;; Loop 3
+;;  header 17, latch 21
+;;  depth 2, outer 2
+;;  nodes: 17 21 12
+;;
+;; Loop 1
+;;  header 10, latch 8
+;;  depth 1, outer 0
+;;  nodes: 10 8 7 5 6 4 3 18 19 23 22
+;;
+;; Loop 5
+;;  header 19, latch 22
+;;  depth 2, outer 1
+;;  nodes: 19 22 4 3 18 23
+;;
+;; Loop 4
+;;  header 18, latch 23
+;;  depth 3, outer 5
+;;  nodes: 18 23 3
+;; 2 succs { 10 }
+;; 3 succs { 4 23 }
+;; 23 succs { 18 }
+;; 4 succs { 5 22 }
+;; 22 succs { 19 }
+;; 5 succs { 6 7 }
+;; 6 succs { 7 }
+;; 7 succs { 8 11 }
+;; 8 succs { 10 }
+;; 10 succs { 19 }
+;; 19 succs { 18 }
+;; 18 succs { 3 11 }
+;; 11 succs { 20 16 }
+;; 20 succs { 15 }
+;; 12 succs { 13 21 }
+;; 21 succs { 17 }
+;; 13 succs { 15 }
+;; 15 succs { 17 }
+;; 17 succs { 12 16 }
+;; 16 succs { 1 }
+    cannot prove finiteness of loop 2
+Function is locally looping.
+Function is locally pure.
+
+
+ local analysis of Can_IsControllersBusy
+   scanning: _1 = Can_apxConfig[u32CoreId_10(D)];
+  scanning: _2 = _1->Can_ppController;
+    Indirect ref read is not const
+  scanning: _4 = _2;
+  scanning: _5 = *_4;
+    Indirect ref read is not const
+  scanning: if (_5 != 0B)
+  scanning: _6 = Can_eControllerState[0];
+  scanning: if (_6 != 0)
+  scanning: if (u8ControllerID_8 == 0)
+  scanning: return bCtrlBusy_7;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 9 4 8 5 7 6
+;;
+;; Loop 1
+;;  header 5, latch 8
+;;  depth 1, outer 0
+;;  nodes: 5 8 4 3 7 9
+;;
+;; Loop 2
+;;  header 7, latch 9
+;;  depth 2, outer 1
+;;  nodes: 7 9 3
+;; 2 succs { 5 }
+;; 3 succs { 4 9 }
+;; 9 succs { 7 }
+;; 4 succs { 6 8 }
+;; 8 succs { 5 }
+;; 5 succs { 7 }
+;; 7 succs { 3 6 }
+;; 6 succs { 1 }
+    cannot prove finiteness of loop 1
+Function is locally looping.
+Function is locally pure.
+callgraph:
+
+Can_MainFunction_Write/46 (Can_MainFunction_Write) @06396b60
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 45
+  Aux: @05df32e0
+  References: 
+  Referring: 
+  Function Can_MainFunction_Write/46 is inline copy in Can_MainFunction_Read/17
+  Clone of Can_MainFunction_Write/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: Can_MainFunction_Read/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_MainFunction_Write/45 (Can_MainFunction_Write) @06396a80
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 16
+  previous sharing asm name: 46
+  Aux: @05df34e0
+  References: 
+  Referring: 
+  Function Can_MainFunction_Write/45 is inline copy in Can_MainFunction_BusOff/18
+  Clone of Can_MainFunction_Write/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: Can_MainFunction_BusOff/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_IsControllersBusy.constprop.0/44 (Can_IsControllersBusy.constprop) @06396460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df3420
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)
+  Referring: 
+  Function Can_IsControllersBusy.constprop/44 is inline copy in Can_Init/6
+  Clone of Can_IsControllersBusy/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: Can_Init/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_InitControllers.constprop.0/43 (Can_InitControllers.constprop) @063962a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df3360
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (write)Can_eControllerState/1 (write)Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Function Can_InitControllers.constprop/43 is inline copy in Can_Init/6
+  Clone of Can_InitControllers/4
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Can_Init/6 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: Can_Ipw_Init/22 (216797491 (estimated locally),0.20 per call) Can_Ipw_InitRx/23 (71543170 (estimated locally),0.07 per call) 
+Can_DeInitControllers.constprop.0/42 (Can_DeInitControllers.constprop) @063960e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df34c0
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Function Can_DeInitControllers.constprop/42 is inline copy in Can_DeInit/7
+  Clone of Can_DeInitControllers/5
+  Availability: local
+  Function flags: count:31827504 (estimated locally) local optimize_size
+  Called by: Can_DeInit/7 (inlined) (31827504 (estimated locally),0.33 per call) 
+  Calls: Can_Ipw_DeInit/24 (20151585 (estimated locally),0.21 per call) 
+CanIf_ControllerBusOff/41 (CanIf_ControllerBusOff) @0619d9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_ProcessBusOffInterrupt/21 (132623973 (estimated locally),0.12 per call) 
+  Calls: 
+Can_Ipw_ProcessRxMesgBuffer/40 (Can_Ipw_ProcessRxMesgBuffer) @0619d700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_ProcessMesgBufferCommonInterrupt/20 (131533373 (estimated locally),0.12 per call) Can_ProcessMesgBufferCommonInterrupt/20 (131533373 (estimated locally),0.12 per call) 
+  Calls: 
+Can_Ipw_ProcessTxMesgBuffer/39 (Can_Ipw_ProcessTxMesgBuffer) @0619d620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_ProcessMesgBufferCommonInterrupt/20 (131533373 (estimated locally),0.12 per call) 
+  Calls: 
+Can_Ipw_MainFunction_Mode/38 (Can_Ipw_MainFunction_Mode) @0619d460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_MainFunction_Mode/19 (37391180 (estimated locally),0.44 per call) 
+  Calls: 
+Can_Ipw_Write/37 (Can_Ipw_Write) @0619d000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_Write/15 (152127742 (estimated locally),0.14 per call) 
+  Calls: 
+Can_Ipw_GetControllerTxErrorCounter/36 (Can_Ipw_GetControllerTxErrorCounter) @06191e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_GetControllerTxErrorCounter/14 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_GetControllerRxErrorCounter/35 (Can_Ipw_GetControllerRxErrorCounter) @06191c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_GetControllerRxErrorCounter/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_GetControllerErrorState/34 (Can_Ipw_GetControllerErrorState) @061919a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_GetControllerErrorState/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_EnableControllerInterrupts/33 (Can_Ipw_EnableControllerInterrupts) @061917e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_EnableControllerInterrupts/10 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01/32 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01) @06191700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_EnableControllerInterrupts/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01/31 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01) @06191620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_EnableControllerInterrupts/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_DisableControllerInterrupts/30 (Can_Ipw_DisableControllerInterrupts) @06191460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_DisableControllerInterrupts/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00/29 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00) @06191380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_DisableControllerInterrupts/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00/28 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00) @061912a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_DisableControllerInterrupts/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_SetControllerToStopMode/27 (Can_Ipw_SetControllerToStopMode) @06191000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_ProcessBusOffInterrupt/21 (401890828 (estimated locally),0.37 per call) Can_SetControllerMode/8 (89469538 (estimated locally),0.08 per call) 
+  Calls: 
+CanIf_ControllerModeIndication/26 (CanIf_ControllerModeIndication) @062bbee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_SetControllerMode/8 (68451041 (estimated locally),0.06 per call) Can_SetControllerMode/8 (89469538 (estimated locally),0.08 per call) Can_SetControllerMode/8 (29524947 (estimated locally),0.03 per call) Can_SetControllerMode/8 (17929341 (estimated locally),0.02 per call) 
+  Calls: 
+Can_Ipw_SetControllerToStartMode/25 (Can_Ipw_SetControllerToStartMode) @062bbe00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_SetControllerMode/8 (54331336 (estimated locally),0.05 per call) 
+  Calls: 
+Can_Ipw_DeInit/24 (Can_Ipw_DeInit) @062bbb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_DeInitControllers.constprop/42 (20151585 (estimated locally),0.21 per call) 
+  Calls: 
+Can_Ipw_InitRx/23 (Can_Ipw_InitRx) @062bb7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_InitControllers.constprop/43 (71543170 (estimated locally),0.07 per call) 
+  Calls: 
+Can_Ipw_Init/22 (Can_Ipw_Init) @062bb700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_InitControllers.constprop/43 (216797491 (estimated locally),0.20 per call) 
+  Calls: 
+Can_ProcessBusOffInterrupt/21 (Can_ProcessBusOffInterrupt) @062bb000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3200
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CanIf_ControllerBusOff/41 (132623973 (estimated locally),0.12 per call) Can_Ipw_SetControllerToStopMode/27 (401890828 (estimated locally),0.37 per call) 
+Can_ProcessMesgBufferCommonInterrupt/20 (Can_ProcessMesgBufferCommonInterrupt) @062afb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3540
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_ProcessRxMesgBuffer/40 (131533373 (estimated locally),0.12 per call) Can_Ipw_ProcessRxMesgBuffer/40 (131533373 (estimated locally),0.12 per call) Can_Ipw_ProcessTxMesgBuffer/39 (131533373 (estimated locally),0.12 per call) 
+Can_MainFunction_Mode/19 (Can_MainFunction_Mode) @062af620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df32c0
+  References: Can_apxConfig/2 (read)Can_apxConfig/2 (read)Can_eControllerState/1 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:84365427 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_MainFunction_Mode/38 (37391180 (estimated locally),0.44 per call) 
+Can_MainFunction_BusOff/18 (Can_MainFunction_BusOff) @062af0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3440
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: Can_MainFunction_Write/45 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_MainFunction_Read/17 (Can_MainFunction_Read) @062afd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3520
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: Can_MainFunction_Write/46 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_MainFunction_Write/16 (Can_MainFunction_Write) @062afa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 45
+  Aux: @05df33a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+Can_Write/15 (Can_Write) @062af7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3340
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_Write/37 (152127742 (estimated locally),0.14 per call) 
+Can_GetControllerTxErrorCounter/14 (Can_GetControllerTxErrorCounter) @062af540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3300
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerTxErrorCounter/36 (1073741824 (estimated locally),1.00 per call) 
+Can_GetControllerRxErrorCounter/13 (Can_GetControllerRxErrorCounter) @062af2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3380
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerRxErrorCounter/35 (1073741824 (estimated locally),1.00 per call) 
+Can_GetControllerMode/12 (Can_GetControllerMode) @062af000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3460
+  References: Can_eControllerState/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Can_GetControllerErrorState/11 (Can_GetControllerErrorState) @0624fb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3480
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerErrorState/34 (1073741824 (estimated locally),1.00 per call) 
+Can_EnableControllerInterrupts/10 (Can_EnableControllerInterrupts) @0624f620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3560
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (read)Can_au8DisableInterruptLevel/0 (write)Can_au8DisableInterruptLevel/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_EnableControllerInterrupts/33 (354334802 (estimated locally),0.33 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01/32 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01/31 (1073741824 (estimated locally),1.00 per call) 
+Can_DisableControllerInterrupts/9 (Can_DisableControllerInterrupts) @0624f0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3240
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (read)Can_au8DisableInterruptLevel/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_DisableControllerInterrupts/30 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00/29 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00/28 (1073741824 (estimated locally),1.00 per call) 
+Can_SetControllerMode/8 (Can_SetControllerMode) @0624fd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3220
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)Can_eControllerState/1 (write)Can_eControllerState/1 (read)Can_eControllerState/1 (write)Can_eControllerState/1 (write)Can_eControllerState/1 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CanIf_ControllerModeIndication/26 (68451041 (estimated locally),0.06 per call) CanIf_ControllerModeIndication/26 (89469538 (estimated locally),0.08 per call) CanIf_ControllerModeIndication/26 (29524947 (estimated locally),0.03 per call) Can_Ipw_SetControllerToStopMode/27 (89469538 (estimated locally),0.08 per call) CanIf_ControllerModeIndication/26 (17929341 (estimated locally),0.02 per call) Can_Ipw_SetControllerToStartMode/25 (54331336 (estimated locally),0.05 per call) 
+Can_DeInit/7 (Can_DeInit) @0624fa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3400
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)Can_apxConfig/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:96446979 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_DeInitControllers.constprop/42 (inlined) (31827504 (estimated locally),0.33 per call) 
+Can_Init/6 (Can_Init) @0624f7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df33c0
+  References: Can_apxConfig/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_InitControllers.constprop/43 (inlined) (354334802 (estimated locally),0.33 per call) Can_IsControllersBusy.constprop/44 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_DeInitControllers/5 (Can_DeInitControllers) @0624f540
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:59055799 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Can_InitControllers/4 (Can_InitControllers) @0624f2a0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:61112314 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Can_IsControllersBusy/3 (Can_IsControllersBusy) @0624f000
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:96446979 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+Can_MainFunction_Write/46 (Can_MainFunction_Write) @06396b60
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 45
+  Aux: @05df32e0
+  References: 
+  Referring: 
+  Function Can_MainFunction_Write/46 is inline copy in Can_MainFunction_Read/17
+  Clone of Can_MainFunction_Write/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: Can_MainFunction_Read/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_MainFunction_Write/45 (Can_MainFunction_Write) @06396a80
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 16
+  previous sharing asm name: 46
+  Aux: @05df34e0
+  References: 
+  Referring: 
+  Function Can_MainFunction_Write/45 is inline copy in Can_MainFunction_BusOff/18
+  Clone of Can_MainFunction_Write/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: Can_MainFunction_BusOff/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_IsControllersBusy.constprop.0/44 (Can_IsControllersBusy.constprop) @06396460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df3420
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)
+  Referring: 
+  Function Can_IsControllersBusy.constprop/44 is inline copy in Can_Init/6
+  Clone of Can_IsControllersBusy/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: Can_Init/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_InitControllers.constprop.0/43 (Can_InitControllers.constprop) @063962a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df3360
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (write)Can_eControllerState/1 (write)Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Function Can_InitControllers.constprop/43 is inline copy in Can_Init/6
+  Clone of Can_InitControllers/4
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Can_Init/6 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: Can_Ipw_Init/22 (216797491 (estimated locally),0.20 per call) Can_Ipw_InitRx/23 (71543170 (estimated locally),0.07 per call) 
+Can_DeInitControllers.constprop.0/42 (Can_DeInitControllers.constprop) @063960e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df34c0
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Function Can_DeInitControllers.constprop/42 is inline copy in Can_DeInit/7
+  Clone of Can_DeInitControllers/5
+  Availability: local
+  Function flags: count:31827504 (estimated locally) local optimize_size
+  Called by: Can_DeInit/7 (inlined) (31827504 (estimated locally),0.33 per call) 
+  Calls: Can_Ipw_DeInit/24 (20151585 (estimated locally),0.21 per call) 
+Can_ProcessBusOffInterrupt/21 (Can_ProcessBusOffInterrupt) @062bb000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3200
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CanIf_ControllerBusOff/41 (132623973 (estimated locally),0.12 per call) Can_Ipw_SetControllerToStopMode/27 (401890828 (estimated locally),0.37 per call) 
+Can_ProcessMesgBufferCommonInterrupt/20 (Can_ProcessMesgBufferCommonInterrupt) @062afb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3540
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_ProcessRxMesgBuffer/40 (131533373 (estimated locally),0.12 per call) Can_Ipw_ProcessRxMesgBuffer/40 (131533373 (estimated locally),0.12 per call) Can_Ipw_ProcessTxMesgBuffer/39 (131533373 (estimated locally),0.12 per call) 
+Can_MainFunction_Mode/19 (Can_MainFunction_Mode) @062af620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df32c0
+  References: Can_apxConfig/2 (read)Can_apxConfig/2 (read)Can_eControllerState/1 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:84365427 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_MainFunction_Mode/38 (37391180 (estimated locally),0.44 per call) 
+Can_MainFunction_BusOff/18 (Can_MainFunction_BusOff) @062af0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3440
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: Can_MainFunction_Write/45 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_MainFunction_Read/17 (Can_MainFunction_Read) @062afd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3520
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: Can_MainFunction_Write/46 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_MainFunction_Write/16 (Can_MainFunction_Write) @062afa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 45
+  Aux: @05df33a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+Can_Write/15 (Can_Write) @062af7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3340
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_Write/37 (152127742 (estimated locally),0.14 per call) 
+Can_GetControllerTxErrorCounter/14 (Can_GetControllerTxErrorCounter) @062af540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3300
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerTxErrorCounter/36 (1073741824 (estimated locally),1.00 per call) 
+Can_GetControllerRxErrorCounter/13 (Can_GetControllerRxErrorCounter) @062af2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3380
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerRxErrorCounter/35 (1073741824 (estimated locally),1.00 per call) 
+Can_GetControllerMode/12 (Can_GetControllerMode) @062af000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3460
+  References: Can_eControllerState/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Can_GetControllerErrorState/11 (Can_GetControllerErrorState) @0624fb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3480
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerErrorState/34 (1073741824 (estimated locally),1.00 per call) 
+Can_EnableControllerInterrupts/10 (Can_EnableControllerInterrupts) @0624f620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3560
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (read)Can_au8DisableInterruptLevel/0 (write)Can_au8DisableInterruptLevel/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_EnableControllerInterrupts/33 (354334802 (estimated locally),0.33 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01/32 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01/31 (1073741824 (estimated locally),1.00 per call) 
+Can_DisableControllerInterrupts/9 (Can_DisableControllerInterrupts) @0624f0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3240
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (read)Can_au8DisableInterruptLevel/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_DisableControllerInterrupts/30 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00/29 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00/28 (1073741824 (estimated locally),1.00 per call) 
+Can_SetControllerMode/8 (Can_SetControllerMode) @0624fd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3220
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)Can_eControllerState/1 (write)Can_eControllerState/1 (read)Can_eControllerState/1 (write)Can_eControllerState/1 (write)Can_eControllerState/1 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CanIf_ControllerModeIndication/26 (68451041 (estimated locally),0.06 per call) CanIf_ControllerModeIndication/26 (89469538 (estimated locally),0.08 per call) CanIf_ControllerModeIndication/26 (29524947 (estimated locally),0.03 per call) Can_Ipw_SetControllerToStopMode/27 (89469538 (estimated locally),0.08 per call) CanIf_ControllerModeIndication/26 (17929341 (estimated locally),0.02 per call) Can_Ipw_SetControllerToStartMode/25 (54331336 (estimated locally),0.05 per call) 
+Can_DeInit/7 (Can_DeInit) @0624fa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3400
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)Can_apxConfig/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:96446979 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_DeInitControllers.constprop/42 (inlined) (31827504 (estimated locally),0.33 per call) 
+Can_Init/6 (Can_Init) @0624f7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df33c0
+  References: Can_apxConfig/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_InitControllers.constprop/43 (inlined) (354334802 (estimated locally),0.33 per call) Can_IsControllersBusy.constprop/44 (inlined) (1073741824 (estimated locally),1.00 per call) 
+
+
+
+MALLOC LATTICE Initial:
+Can_MainFunction_Write: malloc_bottom
+Can_MainFunction_Write: malloc_bottom
+Can_IsControllersBusy.constprop: malloc_bottom
+Can_InitControllers.constprop: malloc_bottom
+Can_DeInitControllers.constprop: malloc_bottom
+Can_ProcessBusOffInterrupt: malloc_bottom
+Can_ProcessMesgBufferCommonInterrupt: malloc_bottom
+Can_MainFunction_Mode: malloc_bottom
+Can_MainFunction_BusOff: malloc_bottom
+Can_MainFunction_Read: malloc_bottom
+Can_MainFunction_Write: malloc_bottom
+Can_Write: malloc_bottom
+Can_GetControllerTxErrorCounter: malloc_bottom
+Can_GetControllerRxErrorCounter: malloc_bottom
+Can_GetControllerMode: malloc_bottom
+Can_GetControllerErrorState: malloc_bottom
+Can_EnableControllerInterrupts: malloc_bottom
+Can_DisableControllerInterrupts: malloc_bottom
+Can_SetControllerMode: malloc_bottom
+Can_DeInit: malloc_bottom
+Can_Init: malloc_bottom
+Can_DeInitControllers: malloc_bottom
+Can_InitControllers: malloc_bottom
+Can_IsControllersBusy: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Can_MainFunction_Write: malloc_bottom
+Can_MainFunction_Write: malloc_bottom
+Can_IsControllersBusy.constprop: malloc_bottom
+Can_InitControllers.constprop: malloc_bottom
+Can_DeInitControllers.constprop: malloc_bottom
+Can_ProcessBusOffInterrupt: malloc_bottom
+Can_ProcessMesgBufferCommonInterrupt: malloc_bottom
+Can_MainFunction_Mode: malloc_bottom
+Can_MainFunction_BusOff: malloc_bottom
+Can_MainFunction_Read: malloc_bottom
+Can_MainFunction_Write: malloc_bottom
+Can_Write: malloc_bottom
+Can_GetControllerTxErrorCounter: malloc_bottom
+Can_GetControllerRxErrorCounter: malloc_bottom
+Can_GetControllerMode: malloc_bottom
+Can_GetControllerErrorState: malloc_bottom
+Can_EnableControllerInterrupts: malloc_bottom
+Can_DisableControllerInterrupts: malloc_bottom
+Can_SetControllerMode: malloc_bottom
+Can_DeInit: malloc_bottom
+Can_Init: malloc_bottom
+Can_DeInitControllers: malloc_bottom
+Can_InitControllers: malloc_bottom
+Can_IsControllersBusy: malloc_bottom
+callgraph:
+
+Can_MainFunction_Write/46 (Can_MainFunction_Write) @06396b60
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 45
+  Aux: @05df3340
+  References: 
+  Referring: 
+  Function Can_MainFunction_Write/46 is inline copy in Can_MainFunction_Read/17
+  Clone of Can_MainFunction_Write/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: Can_MainFunction_Read/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_MainFunction_Write/45 (Can_MainFunction_Write) @06396a80
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 16
+  previous sharing asm name: 46
+  Aux: @05df33a0
+  References: 
+  Referring: 
+  Function Can_MainFunction_Write/45 is inline copy in Can_MainFunction_BusOff/18
+  Clone of Can_MainFunction_Write/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: Can_MainFunction_BusOff/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_IsControllersBusy.constprop.0/44 (Can_IsControllersBusy.constprop) @06396460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df31c0
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)
+  Referring: 
+  Function Can_IsControllersBusy.constprop/44 is inline copy in Can_Init/6
+  Clone of Can_IsControllersBusy/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: Can_Init/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_InitControllers.constprop.0/43 (Can_InitControllers.constprop) @063962a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df33c0
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (write)Can_eControllerState/1 (write)Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Function Can_InitControllers.constprop/43 is inline copy in Can_Init/6
+  Clone of Can_InitControllers/4
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Can_Init/6 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: Can_Ipw_Init/22 (216797491 (estimated locally),0.20 per call) Can_Ipw_InitRx/23 (71543170 (estimated locally),0.07 per call) 
+Can_DeInitControllers.constprop.0/42 (Can_DeInitControllers.constprop) @063960e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df3380
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Function Can_DeInitControllers.constprop/42 is inline copy in Can_DeInit/7
+  Clone of Can_DeInitControllers/5
+  Availability: local
+  Function flags: count:31827504 (estimated locally) local optimize_size
+  Called by: Can_DeInit/7 (inlined) (31827504 (estimated locally),0.33 per call) 
+  Calls: Can_Ipw_DeInit/24 (20151585 (estimated locally),0.21 per call) 
+CanIf_ControllerBusOff/41 (CanIf_ControllerBusOff) @0619d9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_ProcessBusOffInterrupt/21 (132623973 (estimated locally),0.12 per call) 
+  Calls: 
+Can_Ipw_ProcessRxMesgBuffer/40 (Can_Ipw_ProcessRxMesgBuffer) @0619d700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_ProcessMesgBufferCommonInterrupt/20 (131533373 (estimated locally),0.12 per call) Can_ProcessMesgBufferCommonInterrupt/20 (131533373 (estimated locally),0.12 per call) 
+  Calls: 
+Can_Ipw_ProcessTxMesgBuffer/39 (Can_Ipw_ProcessTxMesgBuffer) @0619d620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_ProcessMesgBufferCommonInterrupt/20 (131533373 (estimated locally),0.12 per call) 
+  Calls: 
+Can_Ipw_MainFunction_Mode/38 (Can_Ipw_MainFunction_Mode) @0619d460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_MainFunction_Mode/19 (37391180 (estimated locally),0.44 per call) 
+  Calls: 
+Can_Ipw_Write/37 (Can_Ipw_Write) @0619d000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_Write/15 (152127742 (estimated locally),0.14 per call) 
+  Calls: 
+Can_Ipw_GetControllerTxErrorCounter/36 (Can_Ipw_GetControllerTxErrorCounter) @06191e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_GetControllerTxErrorCounter/14 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_GetControllerRxErrorCounter/35 (Can_Ipw_GetControllerRxErrorCounter) @06191c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_GetControllerRxErrorCounter/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_GetControllerErrorState/34 (Can_Ipw_GetControllerErrorState) @061919a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_GetControllerErrorState/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_EnableControllerInterrupts/33 (Can_Ipw_EnableControllerInterrupts) @061917e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_EnableControllerInterrupts/10 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01/32 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01) @06191700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_EnableControllerInterrupts/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01/31 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01) @06191620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_EnableControllerInterrupts/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_DisableControllerInterrupts/30 (Can_Ipw_DisableControllerInterrupts) @06191460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_DisableControllerInterrupts/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00/29 (SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00) @06191380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_DisableControllerInterrupts/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00/28 (SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00) @061912a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_DisableControllerInterrupts/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Ipw_SetControllerToStopMode/27 (Can_Ipw_SetControllerToStopMode) @06191000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_ProcessBusOffInterrupt/21 (401890828 (estimated locally),0.37 per call) Can_SetControllerMode/8 (89469538 (estimated locally),0.08 per call) 
+  Calls: 
+CanIf_ControllerModeIndication/26 (CanIf_ControllerModeIndication) @062bbee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_SetControllerMode/8 (68451041 (estimated locally),0.06 per call) Can_SetControllerMode/8 (89469538 (estimated locally),0.08 per call) Can_SetControllerMode/8 (29524947 (estimated locally),0.03 per call) Can_SetControllerMode/8 (17929341 (estimated locally),0.02 per call) 
+  Calls: 
+Can_Ipw_SetControllerToStartMode/25 (Can_Ipw_SetControllerToStartMode) @062bbe00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_SetControllerMode/8 (54331336 (estimated locally),0.05 per call) 
+  Calls: 
+Can_Ipw_DeInit/24 (Can_Ipw_DeInit) @062bbb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_DeInitControllers.constprop/42 (20151585 (estimated locally),0.21 per call) 
+  Calls: 
+Can_Ipw_InitRx/23 (Can_Ipw_InitRx) @062bb7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_InitControllers.constprop/43 (71543170 (estimated locally),0.07 per call) 
+  Calls: 
+Can_Ipw_Init/22 (Can_Ipw_Init) @062bb700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Can_InitControllers.constprop/43 (216797491 (estimated locally),0.20 per call) 
+  Calls: 
+Can_ProcessBusOffInterrupt/21 (Can_ProcessBusOffInterrupt) @062bb000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3420
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CanIf_ControllerBusOff/41 (132623973 (estimated locally),0.12 per call) Can_Ipw_SetControllerToStopMode/27 (401890828 (estimated locally),0.37 per call) 
+Can_ProcessMesgBufferCommonInterrupt/20 (Can_ProcessMesgBufferCommonInterrupt) @062afb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3220
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_ProcessRxMesgBuffer/40 (131533373 (estimated locally),0.12 per call) Can_Ipw_ProcessRxMesgBuffer/40 (131533373 (estimated locally),0.12 per call) Can_Ipw_ProcessTxMesgBuffer/39 (131533373 (estimated locally),0.12 per call) 
+Can_MainFunction_Mode/19 (Can_MainFunction_Mode) @062af620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df33e0
+  References: Can_apxConfig/2 (read)Can_apxConfig/2 (read)Can_eControllerState/1 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:84365427 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_MainFunction_Mode/38 (37391180 (estimated locally),0.44 per call) 
+Can_MainFunction_BusOff/18 (Can_MainFunction_BusOff) @062af0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3400
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: Can_MainFunction_Write/45 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_MainFunction_Read/17 (Can_MainFunction_Read) @062afd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df34a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: Can_MainFunction_Write/46 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_MainFunction_Write/16 (Can_MainFunction_Write) @062afa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 45
+  Aux: @05df3540
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+Can_Write/15 (Can_Write) @062af7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df34c0
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_Write/37 (152127742 (estimated locally),0.14 per call) 
+Can_GetControllerTxErrorCounter/14 (Can_GetControllerTxErrorCounter) @062af540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df34e0
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerTxErrorCounter/36 (1073741824 (estimated locally),1.00 per call) 
+Can_GetControllerRxErrorCounter/13 (Can_GetControllerRxErrorCounter) @062af2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3500
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerRxErrorCounter/35 (1073741824 (estimated locally),1.00 per call) 
+Can_GetControllerMode/12 (Can_GetControllerMode) @062af000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3520
+  References: Can_eControllerState/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Can_GetControllerErrorState/11 (Can_GetControllerErrorState) @0624fb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3200
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerErrorState/34 (1073741824 (estimated locally),1.00 per call) 
+Can_EnableControllerInterrupts/10 (Can_EnableControllerInterrupts) @0624f620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3280
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (read)Can_au8DisableInterruptLevel/0 (write)Can_au8DisableInterruptLevel/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_EnableControllerInterrupts/33 (354334802 (estimated locally),0.33 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01/32 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01/31 (1073741824 (estimated locally),1.00 per call) 
+Can_DisableControllerInterrupts/9 (Can_DisableControllerInterrupts) @0624f0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3440
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (read)Can_au8DisableInterruptLevel/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_DisableControllerInterrupts/30 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00/29 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00/28 (1073741824 (estimated locally),1.00 per call) 
+Can_SetControllerMode/8 (Can_SetControllerMode) @0624fd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3560
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)Can_eControllerState/1 (write)Can_eControllerState/1 (read)Can_eControllerState/1 (write)Can_eControllerState/1 (write)Can_eControllerState/1 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CanIf_ControllerModeIndication/26 (68451041 (estimated locally),0.06 per call) CanIf_ControllerModeIndication/26 (89469538 (estimated locally),0.08 per call) CanIf_ControllerModeIndication/26 (29524947 (estimated locally),0.03 per call) Can_Ipw_SetControllerToStopMode/27 (89469538 (estimated locally),0.08 per call) CanIf_ControllerModeIndication/26 (17929341 (estimated locally),0.02 per call) Can_Ipw_SetControllerToStartMode/25 (54331336 (estimated locally),0.05 per call) 
+Can_DeInit/7 (Can_DeInit) @0624fa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3580
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)Can_apxConfig/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:96446979 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_DeInitControllers.constprop/42 (inlined) (31827504 (estimated locally),0.33 per call) 
+Can_Init/6 (Can_Init) @0624f7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3240
+  References: Can_apxConfig/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_InitControllers.constprop/43 (inlined) (354334802 (estimated locally),0.33 per call) Can_IsControllersBusy.constprop/44 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_DeInitControllers/5 (Can_DeInitControllers) @0624f540
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:59055799 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Can_InitControllers/4 (Can_InitControllers) @0624f2a0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:61112314 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Can_IsControllersBusy/3 (Can_IsControllersBusy) @0624f000
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:96446979 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+Can_ProcessBusOffInterrupt/21 (Can_ProcessBusOffInterrupt) @062bb000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3420
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CanIf_ControllerBusOff/41 (132623973 (estimated locally),0.12 per call) Can_Ipw_SetControllerToStopMode/27 (401890828 (estimated locally),0.37 per call) 
+Can_ProcessMesgBufferCommonInterrupt/20 (Can_ProcessMesgBufferCommonInterrupt) @062afb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3220
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_ProcessRxMesgBuffer/40 (131533373 (estimated locally),0.12 per call) Can_Ipw_ProcessRxMesgBuffer/40 (131533373 (estimated locally),0.12 per call) Can_Ipw_ProcessTxMesgBuffer/39 (131533373 (estimated locally),0.12 per call) 
+Can_MainFunction_Mode/19 (Can_MainFunction_Mode) @062af620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df33e0
+  References: Can_apxConfig/2 (read)Can_apxConfig/2 (read)Can_eControllerState/1 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:84365427 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_MainFunction_Mode/38 (37391180 (estimated locally),0.44 per call) 
+Can_MainFunction_BusOff/18 (Can_MainFunction_BusOff) @062af0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3400
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: Can_MainFunction_Write/45 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_MainFunction_Write/45 (Can_MainFunction_Write) @06396a80
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 16
+  previous sharing asm name: 46
+  Aux: @05df33a0
+  References: 
+  Referring: 
+  Function Can_MainFunction_Write/45 is inline copy in Can_MainFunction_BusOff/18
+  Clone of Can_MainFunction_Write/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: Can_MainFunction_BusOff/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_MainFunction_Read/17 (Can_MainFunction_Read) @062afd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df34a0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: Can_MainFunction_Write/46 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_MainFunction_Write/46 (Can_MainFunction_Write) @06396b60
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 45
+  Aux: @05df3340
+  References: 
+  Referring: 
+  Function Can_MainFunction_Write/46 is inline copy in Can_MainFunction_Read/17
+  Clone of Can_MainFunction_Write/16
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: Can_MainFunction_Read/17 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_MainFunction_Write/16 (Can_MainFunction_Write) @062afa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 45
+  Aux: @05df3540
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+Can_Write/15 (Can_Write) @062af7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df34c0
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_Write/37 (152127742 (estimated locally),0.14 per call) 
+Can_GetControllerTxErrorCounter/14 (Can_GetControllerTxErrorCounter) @062af540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df34e0
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerTxErrorCounter/36 (1073741824 (estimated locally),1.00 per call) 
+Can_GetControllerRxErrorCounter/13 (Can_GetControllerRxErrorCounter) @062af2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3500
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerRxErrorCounter/35 (1073741824 (estimated locally),1.00 per call) 
+Can_GetControllerMode/12 (Can_GetControllerMode) @062af000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3520
+  References: Can_eControllerState/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Can_GetControllerErrorState/11 (Can_GetControllerErrorState) @0624fb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3200
+  References: Can_apxConfig/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_GetControllerErrorState/34 (1073741824 (estimated locally),1.00 per call) 
+Can_EnableControllerInterrupts/10 (Can_EnableControllerInterrupts) @0624f620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3280
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (read)Can_au8DisableInterruptLevel/0 (write)Can_au8DisableInterruptLevel/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_EnableControllerInterrupts/33 (354334802 (estimated locally),0.33 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01/32 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01/31 (1073741824 (estimated locally),1.00 per call) 
+Can_DisableControllerInterrupts/9 (Can_DisableControllerInterrupts) @0624f0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3440
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (read)Can_au8DisableInterruptLevel/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_Ipw_DisableControllerInterrupts/30 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00/29 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00/28 (1073741824 (estimated locally),1.00 per call) 
+Can_SetControllerMode/8 (Can_SetControllerMode) @0624fd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3560
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)Can_eControllerState/1 (write)Can_eControllerState/1 (read)Can_eControllerState/1 (write)Can_eControllerState/1 (write)Can_eControllerState/1 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: CanIf_ControllerModeIndication/26 (68451041 (estimated locally),0.06 per call) CanIf_ControllerModeIndication/26 (89469538 (estimated locally),0.08 per call) CanIf_ControllerModeIndication/26 (29524947 (estimated locally),0.03 per call) Can_Ipw_SetControllerToStopMode/27 (89469538 (estimated locally),0.08 per call) CanIf_ControllerModeIndication/26 (17929341 (estimated locally),0.02 per call) Can_Ipw_SetControllerToStartMode/25 (54331336 (estimated locally),0.05 per call) 
+Can_DeInit/7 (Can_DeInit) @0624fa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3580
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)Can_apxConfig/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:96446979 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_DeInitControllers.constprop/42 (inlined) (31827504 (estimated locally),0.33 per call) 
+Can_DeInitControllers.constprop.0/42 (Can_DeInitControllers.constprop) @063960e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df3380
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Function Can_DeInitControllers.constprop/42 is inline copy in Can_DeInit/7
+  Clone of Can_DeInitControllers/5
+  Availability: local
+  Function flags: count:31827504 (estimated locally) local optimize_size
+  Called by: Can_DeInit/7 (inlined) (31827504 (estimated locally),0.33 per call) 
+  Calls: Can_Ipw_DeInit/24 (20151585 (estimated locally),0.21 per call) 
+Can_Init/6 (Can_Init) @0624f7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05df3240
+  References: Can_apxConfig/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Can_InitControllers.constprop/43 (inlined) (354334802 (estimated locally),0.33 per call) Can_IsControllersBusy.constprop/44 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Can_IsControllersBusy.constprop.0/44 (Can_IsControllersBusy.constprop) @06396460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df31c0
+  References: Can_apxConfig/2 (read)Can_eControllerState/1 (read)
+  Referring: 
+  Function Can_IsControllersBusy.constprop/44 is inline copy in Can_Init/6
+  Clone of Can_IsControllersBusy/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: Can_Init/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Can_InitControllers.constprop.0/43 (Can_InitControllers.constprop) @063962a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @05df33c0
+  References: Can_apxConfig/2 (read)Can_au8DisableInterruptLevel/0 (write)Can_eControllerState/1 (write)Can_apxConfig/2 (read)Can_eControllerState/1 (write)
+  Referring: 
+  Function Can_InitControllers.constprop/43 is inline copy in Can_Init/6
+  Clone of Can_InitControllers/4
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Can_Init/6 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: Can_Ipw_Init/22 (216797491 (estimated locally),0.20 per call) Can_Ipw_InitRx/23 (71543170 (estimated locally),0.07 per call) 
+
+Function found not to call free: Can_IsControllersBusy.constprop
+Function found not to call free: Can_GetControllerMode
+Function found not to call free: Can_MainFunction_Write
+Function found not to call free: Can_MainFunction_Write
+Function found not to call free: Can_MainFunction_Read
+Function found not to call free: Can_MainFunction_Write
+Function found not to call free: Can_MainFunction_BusOff
+Can_ProcessBusOffInterrupt (uint8 u8CtrlOffset)
+{
+  const struct Can_ControllerConfigType * Can_pController;
+  uint8 u8ControllerID;
+  const struct Can_ConfigType * _1;
+  const uint8 * _2;
+  sizetype _3;
+  const uint8 * _4;
+  const struct Can_ControllerConfigType * const * _5;
+  unsigned int _6;
+  unsigned int _7;
+  const struct Can_ControllerConfigType * const * _8;
+  unsigned char _9;
+  int _10;
+  unsigned char _11;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8ControllerID => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  if (_1 != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _2 = _1->Can_pCtrlOffsetToCtrlIDMap;
+  _3 = (sizetype) u8CtrlOffset_14(D);
+  _4 = _2 + _3;
+  u8ControllerID_15 = *_4;
+  # DEBUG u8ControllerID => u8ControllerID_15
+  # DEBUG BEGIN_STMT
+  _5 = _1->Can_ppController;
+  _6 = (unsigned int) u8ControllerID_15;
+  _7 = _6 * 4;
+  _8 = _5 + _7;
+  Can_pController_16 = *_8;
+  # DEBUG Can_pController => Can_pController_16
+  # DEBUG BEGIN_STMT
+  if (Can_pController_16 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 6>; [46.53%]
+
+  <bb 4> [local count: 401890828]:
+  # DEBUG BEGIN_STMT
+  _9 = Can_Ipw_SetControllerToStopMode (Can_pController_16);
+  if (_9 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 132623973]:
+  # DEBUG BEGIN_STMT
+  _10 = (int) u8ControllerID_15;
+  Can_eControllerState[_10] = 2;
+  # DEBUG BEGIN_STMT
+  _11 = Can_pController_16->Can_u8AbstControllerID;
+  CanIf_ControllerBusOff (_11);
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+
+Can_ProcessMesgBufferCommonInterrupt (uint8 u8CtrlOffset, uint8 u8MbIdx, Can_MbType mbType)
+{
+  const struct Can_ControllerConfigType * Can_pController;
+  uint8 u8ControllerID;
+  const struct Can_ConfigType * _1;
+  const uint8 * _2;
+  sizetype _3;
+  const uint8 * _4;
+  const struct Can_ControllerConfigType * const * _5;
+  unsigned int _6;
+  unsigned int _7;
+  const struct Can_ControllerConfigType * const * _8;
+  const struct Can_HwObjectConfigType * _9;
+  const struct Can_HwObjectConfigType * _10;
+  const struct Can_HwObjectConfigType * _11;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8ControllerID => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  if (_1 != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _2 = _1->Can_pCtrlOffsetToCtrlIDMap;
+  _3 = (sizetype) u8CtrlOffset_14(D);
+  _4 = _2 + _3;
+  u8ControllerID_15 = *_4;
+  # DEBUG u8ControllerID => u8ControllerID_15
+  # DEBUG BEGIN_STMT
+  _5 = _1->Can_ppController;
+  _6 = (unsigned int) u8ControllerID_15;
+  _7 = _6 * 4;
+  _8 = _5 + _7;
+  Can_pController_16 = *_8;
+  # DEBUG Can_pController => Can_pController_16
+  # DEBUG BEGIN_STMT
+  if (Can_pController_16 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 4> [local count: 526133494]:
+  # DEBUG BEGIN_STMT
+  switch (mbType_17(D)) <default: <L9> [25.00%], case 0: <L3> [25.00%], case 1: <L4> [25.00%], case 3: <L2> [25.00%]>
+
+  <bb 5> [local count: 131533373]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  _9 = _1->Can_pHwObjectConfig;
+  Can_Ipw_ProcessTxMesgBuffer (Can_pController_16, _9, u8MbIdx_18(D));
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 131533373]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  _10 = _1->Can_pHwObjectConfig;
+  Can_Ipw_ProcessRxMesgBuffer (Can_pController_16, _10, u8MbIdx_18(D));
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 131533373]:
+<L4>:
+  # DEBUG BEGIN_STMT
+  _11 = _1->Can_pHwObjectConfig;
+  Can_Ipw_ProcessRxMesgBuffer (Can_pController_16, _11, u8MbIdx_18(D));
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741823]:
+<L9>:
+  return;
+
+}
+
+
+Can_MainFunction_Mode ()
+{
+  const struct Can_ControllerConfigType * Can_pController;
+  uint8 u8ControllerID;
+  const struct Can_ConfigType * _1;
+  const struct Can_ConfigType * _2;
+  const struct Can_ControllerConfigType * const * _3;
+  const struct Can_ControllerConfigType * const * _6;
+  _Bool _7;
+
+  <bb 2> [local count: 84365427]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8ControllerID => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  if (_1 != 0B)
+    goto <bb 11>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 11> [local count: 59055799]:
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  _2 = Can_apxConfig[0];
+  _3 = _2->Can_ppController;
+  _6 = _3;
+  Can_pController_14 = *_6;
+  # DEBUG Can_pController => Can_pController_14
+  # DEBUG BEGIN_STMT
+  if (Can_pController_14 != 0B)
+    goto <bb 4>; [67.00%]
+  else
+    goto <bb 13>; [33.00%]
+
+  <bb 13> [local count: 334846388]:
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 679839636]:
+  # DEBUG BEGIN_STMT
+  _7 = Can_pController_14->Can_bActivation;
+  if (_7 != 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 12>; [94.50%]
+
+  <bb 12> [local count: 642448455]:
+  goto <bb 10>; [100.00%]
+
+  <bb 5> [local count: 37391180]:
+  # DEBUG BEGIN_STMT
+  Can_Ipw_MainFunction_Mode (Can_pController_14, &MEM[(void *)&Can_eControllerState]);
+
+  <bb 7> [local count: 96446979]:
+  # u8ControllerID_5 = PHI <1(5), 0(11)>
+
+  <bb 10> [local count: 738895436]:
+  # u8ControllerID_10 = PHI <u8ControllerID_5(7), 1(12)>
+
+  <bb 9> [local count: 1073741824]:
+  # u8ControllerID_9 = PHI <u8ControllerID_10(10), 1(13)>
+  # DEBUG u8ControllerID => u8ControllerID_9
+  # DEBUG BEGIN_STMT
+  if (u8ControllerID_9 == 0)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 8>; [5.50%]
+
+  <bb 8> [local count: 84365429]:
+  return;
+
+}
+
+
+Can_MainFunction_BusOff ()
+{
+  <bb 2> [local count: 1073741824]:
+  Can_MainFunction_Write (); [tail call]
+  return;
+
+}
+
+
+Can_MainFunction_Read ()
+{
+  <bb 2> [local count: 1073741824]:
+  Can_MainFunction_Write (); [tail call]
+  return;
+
+}
+
+
+Can_MainFunction_Write ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Can_Write (Can_HwHandleType Hth, const struct Can_PduType * PduInfo)
+{
+  const struct Can_HwObjectConfigType * Can_pHwObject;
+  const struct Can_ControllerConfigType * Can_pController;
+  uint8 u8ControllerID;
+  Std_ReturnType eRetVal;
+  const struct Can_ConfigType * _1;
+  const uint8 * _2;
+  sizetype _3;
+  const uint8 * _4;
+  const struct Can_ControllerConfigType * const * _5;
+  unsigned int _6;
+  unsigned int _7;
+  const struct Can_ControllerConfigType * const * _8;
+  const struct Can_HwObjectConfigType * _9;
+  unsigned int _10;
+  int _11;
+  <unnamed type> _12;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG u8ControllerID => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pHwObject => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  _2 = _1->Can_pHwObjIDToCtrlIDMap;
+  _3 = (sizetype) Hth_16(D);
+  _4 = _2 + _3;
+  u8ControllerID_17 = *_4;
+  # DEBUG u8ControllerID => u8ControllerID_17
+  # DEBUG BEGIN_STMT
+  _5 = _1->Can_ppController;
+  _6 = (unsigned int) u8ControllerID_17;
+  _7 = _6 * 4;
+  _8 = _5 + _7;
+  Can_pController_18 = *_8;
+  # DEBUG Can_pController => Can_pController_18
+  # DEBUG BEGIN_STMT
+  if (Can_pController_18 != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 3> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  _9 = _1->Can_pHwObjectConfig;
+  _10 = _3 * 36;
+  Can_pHwObject_19 = _9 + _10;
+  # DEBUG Can_pHwObject => Can_pHwObject_19
+  # DEBUG BEGIN_STMT
+  _11 = (int) u8ControllerID_17;
+  _12 = Can_eControllerState[_11];
+  if (_12 == 1)
+    goto <bb 4>; [20.24%]
+  else
+    goto <bb 5>; [79.76%]
+
+  <bb 4> [local count: 152127742]:
+  # DEBUG BEGIN_STMT
+  eRetVal_22 = Can_Ipw_Write (Can_pController_18, Can_pHwObject_19, PduInfo_20(D));
+  # DEBUG eRetVal => eRetVal_22
+
+  <bb 5> [local count: 1073741824]:
+  # eRetVal_13 = PHI <1(2), 1(3), eRetVal_22(4)>
+  # DEBUG eRetVal => eRetVal_13
+  # DEBUG BEGIN_STMT
+  return eRetVal_13;
+
+}
+
+
+Can_GetControllerTxErrorCounter (uint8 ControllerId, uint8 * TxErrorCounterPtr)
+{
+  const struct Can_ControllerConfigType * Can_pController;
+  const struct Can_ConfigType * _1;
+  const struct Can_ControllerConfigType * const * _2;
+  unsigned int _3;
+  unsigned int _4;
+  const struct Can_ControllerConfigType * const * _5;
+  unsigned char _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  _2 = _1->Can_ppController;
+  _3 = (unsigned int) ControllerId_8(D);
+  _4 = _3 * 4;
+  _5 = _2 + _4;
+  Can_pController_9 = *_5;
+  # DEBUG Can_pController => Can_pController_9
+  # DEBUG BEGIN_STMT
+  _6 = Can_Ipw_GetControllerTxErrorCounter (Can_pController_9);
+  *TxErrorCounterPtr_11(D) = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Can_GetControllerRxErrorCounter (uint8 ControllerId, uint8 * RxErrorCounterPtr)
+{
+  const struct Can_ControllerConfigType * Can_pController;
+  const struct Can_ConfigType * _1;
+  const struct Can_ControllerConfigType * const * _2;
+  unsigned int _3;
+  unsigned int _4;
+  const struct Can_ControllerConfigType * const * _5;
+  unsigned char _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  _2 = _1->Can_ppController;
+  _3 = (unsigned int) ControllerId_8(D);
+  _4 = _3 * 4;
+  _5 = _2 + _4;
+  Can_pController_9 = *_5;
+  # DEBUG Can_pController => Can_pController_9
+  # DEBUG BEGIN_STMT
+  _6 = Can_Ipw_GetControllerRxErrorCounter (Can_pController_9);
+  *RxErrorCounterPtr_11(D) = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Can_GetControllerMode (uint8 Controller, Can_ControllerStateType * ControllerModePtr)
+{
+  int _1;
+  <unnamed type> _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 1
+  # DEBUG BEGIN_STMT
+  _1 = (int) Controller_3(D);
+  _2 = Can_eControllerState[_1];
+  *ControllerModePtr_5(D) = _2;
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Can_GetControllerErrorState (uint8 ControllerId, Can_ErrorStateType * ErrorStatePtr)
+{
+  const struct Can_ControllerConfigType * Can_pController;
+  const struct Can_ConfigType * _1;
+  const struct Can_ControllerConfigType * const * _2;
+  unsigned int _3;
+  unsigned int _4;
+  const struct Can_ControllerConfigType * const * _5;
+  unsigned char _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  _2 = _1->Can_ppController;
+  _3 = (unsigned int) ControllerId_9(D);
+  _4 = _3 * 4;
+  _5 = _2 + _4;
+  Can_pController_10 = *_5;
+  # DEBUG Can_pController => Can_pController_10
+  # DEBUG BEGIN_STMT
+  _6 = Can_Ipw_GetControllerErrorState (Can_pController_10);
+  switch (_6) <default: <L2> [33.33%], case 0: <L0> [33.33%], case 1: <L1> [33.33%]>
+
+  <bb 3> [local count: 357878150]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  *ErrorStatePtr_12(D) = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 357878150]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  *ErrorStatePtr_12(D) = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 357878150]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  *ErrorStatePtr_12(D) = 2;
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073634451]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Can_EnableControllerInterrupts (uint8 Controller)
+{
+  const struct Can_ControllerConfigType * Can_pController;
+  const struct Can_ConfigType * _1;
+  const struct Can_ControllerConfigType * const * _2;
+  unsigned int _3;
+  unsigned int _4;
+  const struct Can_ControllerConfigType * const * _5;
+  int _6;
+  unsigned char _7;
+  unsigned char _8;
+  unsigned char _9;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  _2 = _1->Can_ppController;
+  _3 = (unsigned int) Controller_13(D);
+  _4 = _3 * 4;
+  _5 = _2 + _4;
+  Can_pController_14 = *_5;
+  # DEBUG Can_pController => Can_pController_14
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Can_CAN_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  _6 = (int) Controller_13(D);
+  _7 = Can_au8DisableInterruptLevel[_6];
+  if (_7 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _8 = _7 + 255;
+  Can_au8DisableInterruptLevel[_6] = _8;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Can_CAN_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  _9 = Can_au8DisableInterruptLevel[_6];
+  if (_9 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Can_Ipw_EnableControllerInterrupts (Can_pController_14);
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+
+Can_DisableControllerInterrupts (uint8 Controller)
+{
+  const struct Can_ControllerConfigType * Can_pController;
+  const struct Can_ConfigType * _1;
+  const struct Can_ControllerConfigType * const * _2;
+  unsigned int _3;
+  unsigned int _4;
+  const struct Can_ControllerConfigType * const * _5;
+  int _6;
+  unsigned char _7;
+  unsigned char _8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  _2 = _1->Can_ppController;
+  _3 = (unsigned int) Controller_10(D);
+  _4 = _3 * 4;
+  _5 = _2 + _4;
+  Can_pController_11 = *_5;
+  # DEBUG Can_pController => Can_pController_11
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Can_CAN_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  _6 = (int) Controller_10(D);
+  _7 = Can_au8DisableInterruptLevel[_6];
+  _8 = _7 + 1;
+  Can_au8DisableInterruptLevel[_6] = _8;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Can_CAN_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  Can_Ipw_DisableControllerInterrupts (Can_pController_11);
+  return;
+
+}
+
+
+Can_SetControllerMode (uint8 Controller, Can_ControllerStateType Transition)
+{
+  const struct Can_ControllerConfigType * Can_pController;
+  Std_ReturnType eRetVal;
+  const struct Can_ConfigType * _1;
+  const struct Can_ControllerConfigType * const * _2;
+  unsigned int _3;
+  unsigned int _4;
+  const struct Can_ControllerConfigType * const * _5;
+  int _6;
+  <unnamed type> _7;
+  unsigned char _8;
+  unsigned char _9;
+  int _10;
+  <unnamed type> _11;
+  unsigned char _12;
+  unsigned char _13;
+  unsigned char _14;
+  int _15;
+  <unnamed type> _16;
+  unsigned char _17;
+  <unnamed type> _24;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG Can_pController => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  _2 = _1->Can_ppController;
+  _3 = (unsigned int) Controller_21(D);
+  _4 = _3 * 4;
+  _5 = _2 + _4;
+  Can_pController_22 = *_5;
+  # DEBUG Can_pController => Can_pController_22
+  # DEBUG BEGIN_STMT
+  switch (Transition_23(D)) <default: <L22> [25.00%], case 1: <L0> [25.00%], case 2: <L5> [25.00%], case 3: <L13> [25.00%]>
+
+  <bb 3> [local count: 268435456]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  _6 = (int) Controller_21(D);
+  _7 = Can_eControllerState[_6];
+  if (_7 == 2)
+    goto <bb 4>; [20.24%]
+  else
+    goto <bb 12>; [79.76%]
+
+  <bb 4> [local count: 54331336]:
+  # DEBUG BEGIN_STMT
+  _8 = Can_Ipw_SetControllerToStartMode (Can_pController_22);
+  if (_8 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 5> [local count: 17929341]:
+  # DEBUG BEGIN_STMT
+  Can_eControllerState[_6] = 1;
+  # DEBUG BEGIN_STMT
+  _9 = Can_pController_22->Can_u8AbstControllerID;
+  CanIf_ControllerModeIndication (_9, 1);
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 0
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 268435456]:
+<L5>:
+  # DEBUG BEGIN_STMT
+  _10 = (int) Controller_21(D);
+  _11 = Can_eControllerState[_10];
+  switch (_11) <default: <L22> [33.33%], case 1: <L6> [33.33%], case 2 ... 3: <L9> [33.33%]>
+
+  <bb 7> [local count: 89469538]:
+<L6>:
+  # DEBUG BEGIN_STMT
+  _12 = Can_Ipw_SetControllerToStopMode (Can_pController_22);
+  if (_12 == 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 8> [local count: 29524947]:
+  # DEBUG BEGIN_STMT
+  Can_eControllerState[_10] = 2;
+  # DEBUG BEGIN_STMT
+  _13 = Can_pController_22->Can_u8AbstControllerID;
+  CanIf_ControllerModeIndication (_13, 2);
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 0
+  goto <bb 12>; [100.00%]
+
+  <bb 9> [local count: 89469538]:
+<L9>:
+  # DEBUG BEGIN_STMT
+  Can_eControllerState[_10] = 2;
+  # DEBUG BEGIN_STMT
+  _14 = Can_pController_22->Can_u8AbstControllerID;
+  CanIf_ControllerModeIndication (_14, 2);
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 268435456]:
+<L13>:
+  # DEBUG BEGIN_STMT
+  _15 = (int) Controller_21(D);
+  _16 = Can_eControllerState[_15];
+  _24 = _16 + 4294967294;
+  if (_24 <= 1)
+    goto <bb 11>; [25.50%]
+  else
+    goto <bb 12>; [74.50%]
+
+  <bb 11> [local count: 68451041]:
+<L14>:
+  # DEBUG BEGIN_STMT
+  Can_eControllerState[_15] = 3;
+  # DEBUG BEGIN_STMT
+  _17 = Can_pController_22->Can_u8AbstControllerID;
+  CanIf_ControllerModeIndication (_17, 3);
+  # DEBUG BEGIN_STMT
+  # DEBUG eRetVal => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 1073714982]:
+  # eRetVal_18 = PHI <1(4), 0(9), 1(10), 1(2), 1(3), 0(5), 0(8), 1(7), 1(6), 0(11)>
+<L22>:
+  # DEBUG eRetVal => eRetVal_18
+  # DEBUG BEGIN_STMT
+  return eRetVal_18;
+
+}
+
+
+Can_DeInit ()
+{
+  boolean bCtrlBusy;
+  uint8 u8ControllerID;
+  const struct Can_ConfigType * _1;
+  const struct Can_ControllerConfigType * const * _2;
+  const struct Can_ControllerConfigType * const * _4;
+  const struct Can_ControllerConfigType * _5;
+  <unnamed type> _6;
+
+  <bb 2> [local count: 96446979]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8ControllerID => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG bCtrlBusy => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG u8ControllerID => 0
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  _1 = Can_apxConfig[0];
+  _2 = _1->Can_ppController;
+  _4 = _2;
+  _5 = *_4;
+  if (_5 != 0B)
+    goto <bb 4>; [67.00%]
+  else
+    goto <bb 11>; [33.00%]
+
+  <bb 11> [local count: 334846388]:
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 679839636]:
+  # DEBUG BEGIN_STMT
+  _6 = Can_eControllerState[0];
+  if (_6 == 1)
+    goto <bb 7>; [5.50%]
+  else
+    goto <bb 10>; [94.50%]
+
+  <bb 10> [local count: 642448456]:
+
+  <bb 5> [local count: 738895437]:
+  # u8ControllerID_3 = PHI <0(2), 1(10)>
+
+  <bb 6> [local count: 1073741824]:
+  # u8ControllerID_7 = PHI <u8ControllerID_3(5), 1(11)>
+  # DEBUG u8ControllerID => u8ControllerID_7
+  # DEBUG BEGIN_STMT
+  if (u8ControllerID_7 == 0)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 7>; [5.50%]
+
+  <bb 7> [local count: 96446980]:
+  # bCtrlBusy_8 = PHI <1(4), 0(6)>
+  # DEBUG bCtrlBusy => bCtrlBusy_8
+  # DEBUG BEGIN_STMT
+  if (bCtrlBusy_8 != 0)
+    goto <bb 9>; [67.00%]
+  else
+    goto <bb 8>; [33.00%]
+
+  <bb 8> [local count: 31827504]:
+  # DEBUG BEGIN_STMT
+  Can_DeInitControllers (0);
+  # DEBUG BEGIN_STMT
+  Can_apxConfig[0] = 0B;
+
+  <bb 9> [local count: 96446980]:
+  return;
+
+}
+
+
+Can_Init (const struct Can_ConfigType * Config)
+{
+  boolean bCtrlBusy;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG bCtrlBusy => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG u32CoreId => 0
+  # DEBUG BEGIN_STMT
+  Can_apxConfig[0] = Config_3(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bCtrlBusy_5 = Can_IsControllersBusy (0);
+  # DEBUG bCtrlBusy => bCtrlBusy_5
+  # DEBUG BEGIN_STMT
+  if (bCtrlBusy_5 != 0)
+    goto <bb 4>; [67.00%]
+  else
+    goto <bb 3>; [33.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Can_InitControllers (0);
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+

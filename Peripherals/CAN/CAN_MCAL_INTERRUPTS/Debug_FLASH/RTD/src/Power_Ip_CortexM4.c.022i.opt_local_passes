@@ -1,0 +1,100 @@
+Power_Ip_CM4_DisableDeepSleep ()
+{
+  uint32 tempValue;
+  struct Power_Ip_CM4_Type * pCM4.6_1;
+  struct Power_Ip_CM4_Type * pCM4.7_2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  tempValue_3 = 0;
+  # DEBUG tempValue => tempValue_3
+  # DEBUG BEGIN_STMT
+  pCM4.6_1 = pCM4;
+  tempValue_5 ={v} pCM4.6_1->SCR;
+  # DEBUG tempValue => tempValue_5
+  # DEBUG BEGIN_STMT
+  tempValue_6 = tempValue_5 & 4294967291;
+  # DEBUG tempValue => tempValue_6
+  # DEBUG BEGIN_STMT
+  pCM4.7_2 = pCM4;
+  pCM4.7_2->SCR ={v} tempValue_6;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableDeepSleep ()
+{
+  uint32 tempValue;
+  struct Power_Ip_CM4_Type * pCM4.4_1;
+  struct Power_Ip_CM4_Type * pCM4.5_2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  tempValue_3 = 0;
+  # DEBUG tempValue => tempValue_3
+  # DEBUG BEGIN_STMT
+  pCM4.4_1 = pCM4;
+  tempValue_5 ={v} pCM4.4_1->SCR;
+  # DEBUG tempValue => tempValue_5
+  # DEBUG BEGIN_STMT
+  tempValue_6 = tempValue_5 | 4;
+  # DEBUG tempValue => tempValue_6
+  # DEBUG BEGIN_STMT
+  pCM4.5_2 = pCM4;
+  pCM4.5_2->SCR ={v} tempValue_6;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableSleepOnExit ()
+{
+  uint32 tempValue;
+  struct Power_Ip_CM4_Type * pCM4.2_1;
+  struct Power_Ip_CM4_Type * pCM4.3_2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  tempValue_3 = 0;
+  # DEBUG tempValue => tempValue_3
+  # DEBUG BEGIN_STMT
+  pCM4.2_1 = pCM4;
+  tempValue_5 ={v} pCM4.2_1->SCR;
+  # DEBUG tempValue => tempValue_5
+  # DEBUG BEGIN_STMT
+  tempValue_6 = tempValue_5 | 2;
+  # DEBUG tempValue => tempValue_6
+  # DEBUG BEGIN_STMT
+  pCM4.3_2 = pCM4;
+  pCM4.3_2->SCR ={v} tempValue_6;
+  return;
+
+}
+
+
+Power_Ip_CM4_DisableSleepOnExit ()
+{
+  uint32 tempValue;
+  struct Power_Ip_CM4_Type * pCM4.0_1;
+  struct Power_Ip_CM4_Type * pCM4.1_2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  tempValue_3 = 0;
+  # DEBUG tempValue => tempValue_3
+  # DEBUG BEGIN_STMT
+  pCM4.0_1 = pCM4;
+  tempValue_5 ={v} pCM4.0_1->SCR;
+  # DEBUG tempValue => tempValue_5
+  # DEBUG BEGIN_STMT
+  tempValue_6 = tempValue_5 & 4294967293;
+  # DEBUG tempValue => tempValue_6
+  # DEBUG BEGIN_STMT
+  pCM4.1_2 = pCM4;
+  pCM4.1_2->SCR ={v} tempValue_6;
+  return;
+
+}
+
+

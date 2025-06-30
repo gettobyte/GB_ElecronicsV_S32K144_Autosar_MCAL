@@ -1,0 +1,53 @@
+MCL_FLEXIO_ISR ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Flexio_Mcl_Ip_CommonIrq ();
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_CommonIrq ()
+{
+  struct FLEXIO_Type * baseAddr;
+  long unsigned int _1;
+  long unsigned int _2;
+  _Bool _3;
+  long unsigned int _11;
+  long unsigned int _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  baseAddr_6 = flexioBase[0];
+  # DEBUG baseAddr => baseAddr_6
+  # DEBUG BEGIN_STMT
+  _1 = Flexio_Mcl_Ip_GetAllShifterErrorStatus (baseAddr_6);
+  # DEBUG u8ShifterErrMaskFlag => (uint8) _1
+  # DEBUG BEGIN_STMT
+  _2 = Flexio_Mcl_Ip_GetAllTimerStatus (baseAddr_6);
+  # DEBUG u8TimerMaskFlag => (uint8) _2
+  # DEBUG BEGIN_STMT
+  _3 = Flexio_Ip_IpIsInitialized[0];
+  if (_3 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _11 = _1 & 255;
+  baseAddr_6->SHIFTERR ={v} _11;
+  # DEBUG BEGIN_STMT
+  _12 = _2 & 255;
+  baseAddr_6->TIMSTAT ={v} _12;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+

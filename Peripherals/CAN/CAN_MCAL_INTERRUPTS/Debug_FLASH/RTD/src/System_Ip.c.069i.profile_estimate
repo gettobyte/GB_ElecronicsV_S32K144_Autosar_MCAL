@@ -1,0 +1,52 @@
+Histogram:
+System_Ip_ConfigIrq (System_Ip_IrqType eIrq, boolean bEnable)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  System_Ip_ConfigIrqPrivileged (eIrq_2(D), bEnable_3(D));
+  return;
+
+}
+
+
+System_Ip_ConfigIrqPrivileged (System_Ip_IrqType eIrq, boolean bEnable)
+{
+  uint32 regValTemp;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  regValTemp_6 ={v} MEM[(struct MCM_Type *)3758620672B].ISCR;
+  # DEBUG regValTemp => regValTemp_6
+  # DEBUG BEGIN_STMT
+  if (bEnable_7(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = 1 << eIrq_8(D);
+  regValTemp_10 = _1 | regValTemp_6;
+  # DEBUG regValTemp => regValTemp_10
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _2 = 1 << eIrq_8(D);
+  _3 = ~_2;
+  regValTemp_9 = _3 & regValTemp_6;
+  # DEBUG regValTemp => regValTemp_9
+
+  <bb 5> [local count: 1073741824]:
+  # regValTemp_4 = PHI <regValTemp_10(3), regValTemp_9(4)>
+  # DEBUG regValTemp => regValTemp_4
+  # DEBUG BEGIN_STMT
+  MEM[(struct MCM_Type *)3758620672B].ISCR ={v} regValTemp_4;
+  return;
+
+}
+
+

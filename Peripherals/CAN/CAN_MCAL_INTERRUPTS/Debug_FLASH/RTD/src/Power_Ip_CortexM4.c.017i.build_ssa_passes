@@ -1,0 +1,80 @@
+Power_Ip_CM4_DisableDeepSleep ()
+{
+  uint32 tempValue;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  tempValue = 0;
+  # DEBUG BEGIN_STMT
+  pCM4.6_1 = pCM4;
+  tempValue = pCM4.6_1->SCR;
+  # DEBUG BEGIN_STMT
+  tempValue = tempValue & 4294967291;
+  # DEBUG BEGIN_STMT
+  pCM4.7_2 = pCM4;
+  pCM4.7_2->SCR = tempValue;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableDeepSleep ()
+{
+  uint32 tempValue;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  tempValue = 0;
+  # DEBUG BEGIN_STMT
+  pCM4.4_1 = pCM4;
+  tempValue = pCM4.4_1->SCR;
+  # DEBUG BEGIN_STMT
+  tempValue = tempValue | 4;
+  # DEBUG BEGIN_STMT
+  pCM4.5_2 = pCM4;
+  pCM4.5_2->SCR = tempValue;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableSleepOnExit ()
+{
+  uint32 tempValue;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  tempValue = 0;
+  # DEBUG BEGIN_STMT
+  pCM4.2_1 = pCM4;
+  tempValue = pCM4.2_1->SCR;
+  # DEBUG BEGIN_STMT
+  tempValue = tempValue | 2;
+  # DEBUG BEGIN_STMT
+  pCM4.3_2 = pCM4;
+  pCM4.3_2->SCR = tempValue;
+  return;
+
+}
+
+
+Power_Ip_CM4_DisableSleepOnExit ()
+{
+  uint32 tempValue;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  tempValue = 0;
+  # DEBUG BEGIN_STMT
+  pCM4.0_1 = pCM4;
+  tempValue = pCM4.0_1->SCR;
+  # DEBUG BEGIN_STMT
+  tempValue = tempValue & 4294967293;
+  # DEBUG BEGIN_STMT
+  pCM4.1_2 = pCM4;
+  pCM4.1_2->SCR = tempValue;
+  return;
+
+}
+
+

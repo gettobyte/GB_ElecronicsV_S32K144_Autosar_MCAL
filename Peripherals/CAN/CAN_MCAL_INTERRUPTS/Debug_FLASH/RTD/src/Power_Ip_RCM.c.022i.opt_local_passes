@@ -1,0 +1,228 @@
+Power_Ip_RCM_GetResetRawValue ()
+{
+  uint32 u32RegValue;
+  uint32 u32RawReset;
+  struct RCM_Type * _1;
+  long unsigned int _2;
+  struct RCM_Type * _3;
+  long unsigned int _4;
+  Power_Ip_RawResetType _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074262016B;
+  _2 ={v} _1->SSRS;
+  u32RegValue_7 = _2 & 12286;
+  # DEBUG u32RegValue => u32RegValue_7
+  # DEBUG BEGIN_STMT
+  if (u32RegValue_7 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = 1074262016B;
+  _4 = u32RegValue_7 & 12286;
+  _3->SSRS ={v} _4;
+  # DEBUG BEGIN_STMT
+  u32ResetStatus = u32RegValue_7;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  u32RawReset_10 = u32ResetStatus;
+  # DEBUG u32RawReset => u32RawReset_10
+  # DEBUG BEGIN_STMT
+  _11 = u32RawReset_10;
+  return _11;
+
+}
+
+
+Power_Ip_RCM_GetResetReason ()
+{
+  uint32 u32NumberOfFlags;
+  uint32 u32Position;
+  uint32 u32DynamicMask;
+  uint32 u32Index;
+  uint32 u32ActiveValue;
+  uint32 u32RegValue;
+  uint32 eResetReason;
+  struct RCM_Type * _1;
+  long unsigned int _2;
+  struct RCM_Type * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  uint32 _36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eResetReason_19 = 12;
+  # DEBUG eResetReason => eResetReason_19
+  # DEBUG BEGIN_STMT
+  u32RegValue_20 = 0;
+  # DEBUG u32RegValue => u32RegValue_20
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32Position_21 = 0;
+  # DEBUG u32Position => u32Position_21
+  # DEBUG BEGIN_STMT
+  u32NumberOfFlags_22 = 0;
+  # DEBUG u32NumberOfFlags => u32NumberOfFlags_22
+  # DEBUG BEGIN_STMT
+  _1 = 1074262016B;
+  _2 ={v} _1->SSRS;
+  u32RegValue_24 = _2 & 12286;
+  # DEBUG u32RegValue => u32RegValue_24
+  # DEBUG BEGIN_STMT
+  if (u32RegValue_24 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = 1074262016B;
+  _4 = u32RegValue_24 & 12286;
+  _3->SSRS ={v} _4;
+  # DEBUG BEGIN_STMT
+  u32ResetStatus = u32RegValue_24;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  u32ActiveValue_27 = u32ResetStatus;
+  # DEBUG u32ActiveValue => u32ActiveValue_27
+  # DEBUG BEGIN_STMT
+  _5 = u32ActiveValue_27 & 12286;
+  if (_5 == 130)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  eResetReason_35 = 5;
+  # DEBUG eResetReason => eResetReason_35
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  u32Index_28 = 0;
+  # DEBUG u32Index => u32Index_28
+  goto <bb 13>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  u32DynamicMask_29 = 2147483648 >> u32Index_12;
+  # DEBUG u32DynamicMask => u32DynamicMask_29
+  # DEBUG BEGIN_STMT
+  _6 = u32DynamicMask_29 & 12286;
+  if (_6 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _7 = u32DynamicMask_29 & u32ActiveValue_27;
+  if (_7 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  eResetReason_30 = u32Position_14;
+  # DEBUG eResetReason => eResetReason_30
+  # DEBUG BEGIN_STMT
+  u32NumberOfFlags_31 = u32NumberOfFlags_17 + 1;
+  # DEBUG u32NumberOfFlags => u32NumberOfFlags_31
+  # DEBUG BEGIN_STMT
+  if (u32NumberOfFlags_31 > 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  eResetReason_32 = 13;
+  # DEBUG eResetReason => eResetReason_32
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 11> :
+  # eResetReason_8 = PHI <eResetReason_10(8), eResetReason_30(9)>
+  # u32NumberOfFlags_15 = PHI <u32NumberOfFlags_17(8), u32NumberOfFlags_31(9)>
+  # DEBUG u32NumberOfFlags => u32NumberOfFlags_15
+  # DEBUG eResetReason => eResetReason_8
+  # DEBUG BEGIN_STMT
+  u32Position_33 = u32Position_14 + 1;
+  # DEBUG u32Position => u32Position_33
+
+  <bb 12> :
+  # eResetReason_9 = PHI <eResetReason_10(7), eResetReason_8(11)>
+  # u32Position_13 = PHI <u32Position_14(7), u32Position_33(11)>
+  # u32NumberOfFlags_16 = PHI <u32NumberOfFlags_17(7), u32NumberOfFlags_15(11)>
+  # DEBUG u32NumberOfFlags => u32NumberOfFlags_16
+  # DEBUG u32Position => u32Position_13
+  # DEBUG eResetReason => eResetReason_9
+  # DEBUG BEGIN_STMT
+  u32Index_34 = u32Index_12 + 1;
+  # DEBUG u32Index => u32Index_34
+
+  <bb 13> :
+  # eResetReason_10 = PHI <eResetReason_19(6), eResetReason_9(12)>
+  # u32Index_12 = PHI <u32Index_28(6), u32Index_34(12)>
+  # u32Position_14 = PHI <u32Position_21(6), u32Position_13(12)>
+  # u32NumberOfFlags_17 = PHI <u32NumberOfFlags_22(6), u32NumberOfFlags_16(12)>
+  # DEBUG u32NumberOfFlags => u32NumberOfFlags_17
+  # DEBUG u32Position => u32Position_14
+  # DEBUG u32Index => u32Index_12
+  # DEBUG eResetReason => eResetReason_10
+  # DEBUG BEGIN_STMT
+  if (u32Index_12 <= 31)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  # eResetReason_11 = PHI <eResetReason_35(5), eResetReason_32(10), eResetReason_10(13)>
+  # DEBUG eResetReason => eResetReason_11
+  # DEBUG BEGIN_STMT
+  _36 = eResetReason_11;
+  return _36;
+
+}
+
+
+Power_Ip_RCM_ResetInit (const struct Power_Ip_RCM_ConfigType * RCM_pConfigPtr)
+{
+  long unsigned int _1;
+  struct RCM_Type * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  struct RCM_Type * _5;
+  long unsigned int _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = RCM_pConfigPtr_8(D)->u32ResetPinControlConfig;
+  _2 = 1074262016B;
+  _3 = _1 & 7943;
+  _2->RPC ={v} _3;
+  # DEBUG BEGIN_STMT
+  _4 = RCM_pConfigPtr_8(D)->u32ResetInterruptEnableConfig;
+  _5 = 1074262016B;
+  _6 = _4 & 12287;
+  _5->SRIE ={v} _6;
+  return;
+
+}
+
+

@@ -1,0 +1,48 @@
+Power_Ip_SCG_DisableSpllClock ()
+{
+  struct SCG_Type * _1;
+  long unsigned int _2;
+  struct SCG_Type * _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1074151424B;
+  _2 ={v} _1->SPLLCSR;
+  _3 = 1074151424B;
+  _4 = _2 & 4294967294;
+  _3->SPLLCSR ={v} _4;
+  return;
+
+}
+
+
+Power_Ip_SCG_DisableClockMonitors ()
+{
+  struct SCG_Type * _1;
+  long unsigned int _2;
+  struct SCG_Type * _3;
+  long unsigned int _4;
+  struct SCG_Type * _5;
+  long unsigned int _6;
+  struct SCG_Type * _7;
+  long unsigned int _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1074151424B;
+  _2 ={v} _1->SOSCCSR;
+  _3 = 1074151424B;
+  _4 = _2 & 4294901759;
+  _3->SOSCCSR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 = 1074151424B;
+  _6 ={v} _5->SPLLCSR;
+  _7 = 1074151424B;
+  _8 = _6 & 4294901759;
+  _7->SPLLCSR ={v} _8;
+  return;
+
+}
+
+

@@ -1,0 +1,562 @@
+Parsed function:Flexio_Mcl_Ip_Init
+Parsed function:Flexio_Mcl_Ip_SetTimerInterrupt
+Parsed function:Flexio_Mcl_Ip_GetAllTimerInterrupt
+Parsed function:Flexio_Mcl_Ip_SetShifterDMARequest
+Parsed function:Flexio_Mcl_Ip_SetShifterInterrupt
+Parsed function:Flexio_Mcl_Ip_SetShifterErrorInterrupt
+Parsed function:Flexio_Mcl_Ip_GetAllShifterErrorInterrupt
+Parsed function:Flexio_Mcl_Ip_GetAllShifterInterrupt
+Parsed function:Flexio_Mcl_Ip_ClearTimerStatus
+Parsed function:Flexio_Mcl_Ip_GetAllTimerStatus
+Parsed function:Flexio_Mcl_Ip_GetTimerInterruptEnable
+Parsed function:Flexio_Mcl_Ip_GetTimerStatus
+Parsed function:Flexio_Mcl_Ip_ClearShifterErrorStatus
+Parsed function:Flexio_Mcl_Ip_GetAllShifterErrorStatus
+Parsed function:Flexio_Mcl_Ip_GetShifterErrorStatus
+Parsed function:Flexio_Mcl_Ip_ClearShifterStatus
+Parsed function:Flexio_Mcl_Ip_GetAllShifterStatus
+Parsed function:Flexio_Mcl_Ip_GetShifterStatus
+Parsed function:Flexio_Mcl_Ip_SetEnable
+Parsed function:Flexio_Mcl_Ip_SetDebugEnable
+Parsed function:Flexio_Mcl_Ip_SetSoftwareReset
+Dump after hash based groups
+Congruence classes: 8 (unique hash values: 8), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 4 classes
+[3]: 1 classes
+[4]: 2 classes
+[6]: 1 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 11 (unique hash values: 8), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 8 classes
+[3]: 1 classes
+[4]: 1 classes
+[6]: 1 classes
+
+
+Worklist has been filled with: 1
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 11 (unique hash values: 8), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 8 classes
+[3]: 1 classes
+[4]: 1 classes
+[6]: 1 classes
+
+
+Init called for 13 items (61.90%).
+Dump after full equality comparison of groups
+Congruence classes: 21 (unique hash values: 8), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 21 classes
+
+
+Worklist has been filled with: 1
+Address reference subdivision created: 0 new classes.
+Congruence classes: 21 (unique hash values: 8), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 21 classes
+
+
+
+Item count: 21
+Congruent classes before: 21, after: 21
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+Flexio_Mcl_Ip_Init (struct FLEXIO_Type * baseAddr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Flexio_Mcl_Ip_SetSoftwareReset (baseAddr_2(D), 1);
+  # DEBUG BEGIN_STMT
+  baseAddr_2(D)->CTRL ={v} 0;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetTimerInterrupt (struct FLEXIO_Type * baseAddr, uint8 interruptMask, boolean enable)
+{
+  uint32 tmp;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_45 ();
+  # DEBUG BEGIN_STMT
+  tmp_8 ={v} baseAddr_7(D)->TIMIEN;
+  # DEBUG tmp => tmp_8
+  # DEBUG BEGIN_STMT
+  if (enable_9(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) interruptMask_10(D);
+  tmp_12 = _1 | tmp_8;
+  # DEBUG tmp => tmp_12
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) interruptMask_10(D);
+  _3 = ~_2;
+  tmp_11 = _3 & tmp_8;
+  # DEBUG tmp => tmp_11
+
+  <bb 5> [local count: 1073741824]:
+  # tmp_4 = PHI <tmp_12(3), tmp_11(4)>
+  # DEBUG tmp => tmp_4
+  # DEBUG BEGIN_STMT
+  baseAddr_7(D)->TIMIEN ={v} tmp_4;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_45 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllTimerInterrupt (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} baseAddr_2(D)->TIMIEN;
+  return _3;
+
+}
+
+
+Flexio_Mcl_Ip_SetShifterDMARequest (struct FLEXIO_Type * baseAddr, uint8 requestMask, boolean enable)
+{
+  uint32 tmp;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_44 ();
+  # DEBUG BEGIN_STMT
+  tmp_8 ={v} baseAddr_7(D)->SHIFTSDEN;
+  # DEBUG tmp => tmp_8
+  # DEBUG BEGIN_STMT
+  if (enable_9(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) requestMask_10(D);
+  tmp_12 = _1 | tmp_8;
+  # DEBUG tmp => tmp_12
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) requestMask_10(D);
+  _3 = ~_2;
+  tmp_11 = _3 & tmp_8;
+  # DEBUG tmp => tmp_11
+
+  <bb 5> [local count: 1073741824]:
+  # tmp_4 = PHI <tmp_12(3), tmp_11(4)>
+  # DEBUG tmp => tmp_4
+  # DEBUG BEGIN_STMT
+  baseAddr_7(D)->SHIFTSDEN ={v} tmp_4;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_44 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetShifterInterrupt (struct FLEXIO_Type * baseAddr, uint8 interruptMask, boolean enable)
+{
+  uint32 tmp;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_43 ();
+  # DEBUG BEGIN_STMT
+  tmp_8 ={v} baseAddr_7(D)->SHIFTSIEN;
+  # DEBUG tmp => tmp_8
+  # DEBUG BEGIN_STMT
+  if (enable_9(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) interruptMask_10(D);
+  tmp_12 = _1 | tmp_8;
+  # DEBUG tmp => tmp_12
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) interruptMask_10(D);
+  _3 = ~_2;
+  tmp_11 = _3 & tmp_8;
+  # DEBUG tmp => tmp_11
+
+  <bb 5> [local count: 1073741824]:
+  # tmp_4 = PHI <tmp_12(3), tmp_11(4)>
+  # DEBUG tmp => tmp_4
+  # DEBUG BEGIN_STMT
+  baseAddr_7(D)->SHIFTSIEN ={v} tmp_4;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_43 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetShifterErrorInterrupt (struct FLEXIO_Type * baseAddr, uint8 interruptMask, boolean enable)
+{
+  uint32 tmp;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_42 ();
+  # DEBUG BEGIN_STMT
+  tmp_8 ={v} baseAddr_7(D)->SHIFTEIEN;
+  # DEBUG tmp => tmp_8
+  # DEBUG BEGIN_STMT
+  if (enable_9(D) != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) interruptMask_10(D);
+  tmp_12 = _1 | tmp_8;
+  # DEBUG tmp => tmp_12
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) interruptMask_10(D);
+  _3 = ~_2;
+  tmp_11 = _3 & tmp_8;
+  # DEBUG tmp => tmp_11
+
+  <bb 5> [local count: 1073741824]:
+  # tmp_4 = PHI <tmp_12(3), tmp_11(4)>
+  # DEBUG tmp => tmp_4
+  # DEBUG BEGIN_STMT
+  baseAddr_7(D)->SHIFTEIEN ={v} tmp_4;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_42 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllShifterErrorInterrupt (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} baseAddr_2(D)->SHIFTEIEN;
+  return _3;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllShifterInterrupt (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} baseAddr_2(D)->SHIFTSIEN;
+  return _3;
+
+}
+
+
+Flexio_Mcl_Ip_ClearTimerStatus (struct FLEXIO_Type * baseAddr, uint8 timer)
+{
+  int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) timer_3(D);
+  _2 = 1 << _1;
+  baseAddr_5(D)->TIMSTAT ={v} _2;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllTimerStatus (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} baseAddr_2(D)->TIMSTAT;
+  return _3;
+
+}
+
+
+Flexio_Mcl_Ip_GetTimerInterruptEnable (const struct FLEXIO_Type * baseAddr, uint8 timer)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  boolean _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} baseAddr_5(D)->TIMIEN;
+  _2 = (int) timer_6(D);
+  _3 = _1 >> _2;
+  _7 = (boolean) _3;
+  return _7;
+
+}
+
+
+Flexio_Mcl_Ip_GetTimerStatus (const struct FLEXIO_Type * baseAddr, uint8 timer)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  boolean _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} baseAddr_5(D)->TIMSTAT;
+  _2 = (int) timer_6(D);
+  _3 = _1 >> _2;
+  _7 = (boolean) _3;
+  return _7;
+
+}
+
+
+Flexio_Mcl_Ip_ClearShifterErrorStatus (struct FLEXIO_Type * baseAddr, uint8 shifter)
+{
+  int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) shifter_3(D);
+  _2 = 1 << _1;
+  baseAddr_5(D)->SHIFTERR ={v} _2;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllShifterErrorStatus (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} baseAddr_2(D)->SHIFTERR;
+  return _3;
+
+}
+
+
+Flexio_Mcl_Ip_GetShifterErrorStatus (const struct FLEXIO_Type * baseAddr, uint8 shifter)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  boolean _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} baseAddr_5(D)->SHIFTERR;
+  _2 = (int) shifter_6(D);
+  _3 = _1 >> _2;
+  _7 = (boolean) _3;
+  return _7;
+
+}
+
+
+Flexio_Mcl_Ip_ClearShifterStatus (struct FLEXIO_Type * baseAddr, uint8 shifter)
+{
+  int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) shifter_3(D);
+  _2 = 1 << _1;
+  baseAddr_5(D)->SHIFTSTAT ={v} _2;
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_GetAllShifterStatus (const struct FLEXIO_Type * baseAddr)
+{
+  uint32 _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 ={v} baseAddr_2(D)->SHIFTSTAT;
+  return _3;
+
+}
+
+
+Flexio_Mcl_Ip_GetShifterStatus (const struct FLEXIO_Type * baseAddr, uint8 shifter)
+{
+  long unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  boolean _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} baseAddr_5(D)->SHIFTSTAT;
+  _2 = (int) shifter_6(D);
+  _3 = _1 >> _2;
+  _7 = (boolean) _3;
+  return _7;
+
+}
+
+
+Flexio_Mcl_Ip_SetEnable (struct FLEXIO_Type * baseAddr, boolean enable)
+{
+  uint32 regValue;
+  long unsigned int iftmp.2_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_41 ();
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} baseAddr_4(D)->CTRL;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4294967294;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  if (enable_7(D) != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+
+  <bb 4> [local count: 1073741824]:
+  # iftmp.2_1 = PHI <1(2), 0(3)>
+  regValue_8 = iftmp.2_1 | regValue_6;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  baseAddr_4(D)->CTRL ={v} regValue_8;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_41 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetDebugEnable (struct FLEXIO_Type * baseAddr, boolean enable)
+{
+  uint32 regValue;
+  long unsigned int iftmp.1_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_40 ();
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} baseAddr_4(D)->CTRL;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 3221225471;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  if (enable_7(D) != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+
+  <bb 4> [local count: 1073741824]:
+  # iftmp.1_1 = PHI <1073741824(2), 0(3)>
+  regValue_8 = iftmp.1_1 | regValue_6;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  baseAddr_4(D)->CTRL ={v} regValue_8;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_40 ();
+  return;
+
+}
+
+
+Flexio_Mcl_Ip_SetSoftwareReset (struct FLEXIO_Type * baseAddr, boolean enable)
+{
+  uint32 regValue;
+  long unsigned int iftmp.0_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_39 ();
+  # DEBUG BEGIN_STMT
+  regValue_5 ={v} baseAddr_4(D)->CTRL;
+  # DEBUG regValue => regValue_5
+  # DEBUG BEGIN_STMT
+  regValue_6 = regValue_5 & 4294967293;
+  # DEBUG regValue => regValue_6
+  # DEBUG BEGIN_STMT
+  if (enable_7(D) != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+
+  <bb 4> [local count: 1073741824]:
+  # iftmp.0_1 = PHI <2(2), 0(3)>
+  regValue_8 = iftmp.0_1 | regValue_6;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  baseAddr_4(D)->CTRL ={v} regValue_8;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_39 ();
+  return;
+
+}
+
+

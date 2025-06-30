@@ -1,0 +1,1297 @@
+Trivially needed symbols: main TestDelay CanIf_ControllerBusOff CanIf_RxIndication CanIf_TxConfirmation CanIf_ControllerModeIndication exit_code dummyData2 dummyData1 dummyData0
+Trivially needed symbols: DelayTimer
+
+
+Initial Symbol table:
+
+Can_Write/26 (Can_Write) @070ec000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 main/10 main/10 
+  Calls: 
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @070e4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 main/10 main/10 
+  Calls: 
+Can_EnableControllerInterrupts/24 (Can_EnableControllerInterrupts) @070e4e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Can_SetControllerMode/23 (Can_SetControllerMode) @070e4d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @070eb1b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Can_Init/21 (Can_Init) @070e4c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Platform_Init/20 (Platform_Init) @070e4b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Port_Init/19 (Port_Init) @070e4a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Clock_Ip_DistributePll/18 (Clock_Ip_DistributePll) @070e49a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Clock_Ip_GetPllStatus/17 (Clock_Ip_GetPllStatus) @070e48c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Mcu_aClockConfigPB/16 (Mcu_aClockConfigPB) @070eb000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/15 (Clock_Ip_Init) @070e47e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+*.LC2/14 (*.LC2) @07049b88
+  Type: variable definition analyzed
+  Visibility: artificial
+  Aux: @07049af8
+  References: dummyData2/3 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC1/13 (*.LC1) @07049af8
+  Type: variable definition analyzed
+  Visibility: artificial
+  Aux: @07049a68
+  References: dummyData1/2 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC0/12 (*.LC0) @07049a68
+  Type: variable definition analyzed
+  Visibility: artificial
+  Aux: @01733ea0
+  References: dummyData0/1 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+DelayTimer/11 (DelayTimer) @07049948
+  Type: variable definition analyzed
+  Visibility: force_output
+  Aux: @07045ee0
+  References: 
+  Referring: TestDelay/9 (read)TestDelay/9 (write)TestDelay/9 (read)TestDelay/9 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/10 (main) @07045ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: Mcu_aClockConfigPB/16 (addr)*.LC0/12 (read)*.LC1/13 (read)*.LC2/14 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: TestDelay/9 TestDelay/9 Can_MainFunction_Write/25 Can_Write/26 TestDelay/9 Can_MainFunction_Write/25 Can_Write/26 TestDelay/9 Can_Write/26 Can_MainFunction_Write/25 Can_EnableControllerInterrupts/24 Can_SetControllerMode/23 Can_Init/21 Platform_Init/20 Port_Init/19 Clock_Ip_DistributePll/18 Clock_Ip_GetPllStatus/17 Clock_Ip_Init/15 
+TestDelay/9 (TestDelay) @07045620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07045ee0
+  References: DelayTimer/11 (read)DelayTimer/11 (write)DelayTimer/11 (read)DelayTimer/11 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: main/10 main/10 main/10 main/10 
+  Calls: 
+CanIf_ControllerBusOff/8 (CanIf_ControllerBusOff) @07045d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07045620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_RxIndication/7 (CanIf_RxIndication) @07045a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07045d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_TxConfirmation/6 (CanIf_TxConfirmation) @070457e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07045a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_ControllerModeIndication/5 (CanIf_ControllerModeIndication) @07045540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @070457e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+exit_code/4 (exit_code) @07041d80
+  Type: variable definition analyzed
+  Visibility: force_output public
+  Aux: @07045540
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData2/3 (dummyData2) @07041ca8
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @07041d80
+  References: 
+  Referring: *.LC2/14 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData1/2 (dummyData1) @07041bd0
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @07041ca8
+  References: 
+  Referring: *.LC1/13 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData0/1 (dummyData0) @07041af8
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @07041bd0
+  References: 
+  Referring: *.LC0/12 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+DevAssert/0 (DevAssert) @06b150e0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: DevAssert
+
+Reclaimed Symbol table:
+
+Can_Write/26 (Can_Write) @070ec000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 main/10 main/10 
+  Calls: 
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @070e4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 main/10 main/10 
+  Calls: 
+Can_EnableControllerInterrupts/24 (Can_EnableControllerInterrupts) @070e4e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Can_SetControllerMode/23 (Can_SetControllerMode) @070e4d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @070eb1b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Can_Init/21 (Can_Init) @070e4c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Platform_Init/20 (Platform_Init) @070e4b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Port_Init/19 (Port_Init) @070e4a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Clock_Ip_DistributePll/18 (Clock_Ip_DistributePll) @070e49a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Clock_Ip_GetPllStatus/17 (Clock_Ip_GetPllStatus) @070e48c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Mcu_aClockConfigPB/16 (Mcu_aClockConfigPB) @070eb000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/15 (Clock_Ip_Init) @070e47e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+*.LC2/14 (*.LC2) @07049b88
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: dummyData2/3 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC1/13 (*.LC1) @07049af8
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: dummyData1/2 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC0/12 (*.LC0) @07049a68
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: dummyData0/1 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+DelayTimer/11 (DelayTimer) @07049948
+  Type: variable definition analyzed
+  Visibility: force_output
+  References: 
+  Referring: TestDelay/9 (read)TestDelay/9 (write)TestDelay/9 (read)TestDelay/9 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/10 (main) @07045ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: Mcu_aClockConfigPB/16 (addr)*.LC0/12 (read)*.LC1/13 (read)*.LC2/14 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: TestDelay/9 TestDelay/9 Can_MainFunction_Write/25 Can_Write/26 TestDelay/9 Can_MainFunction_Write/25 Can_Write/26 TestDelay/9 Can_Write/26 Can_MainFunction_Write/25 Can_EnableControllerInterrupts/24 Can_SetControllerMode/23 Can_Init/21 Platform_Init/20 Port_Init/19 Clock_Ip_DistributePll/18 Clock_Ip_GetPllStatus/17 Clock_Ip_Init/15 
+TestDelay/9 (TestDelay) @07045620
+  Type: function definition analyzed
+  Visibility: public
+  References: DelayTimer/11 (read)DelayTimer/11 (write)DelayTimer/11 (read)DelayTimer/11 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: main/10 main/10 main/10 main/10 
+  Calls: 
+CanIf_ControllerBusOff/8 (CanIf_ControllerBusOff) @07045d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_RxIndication/7 (CanIf_RxIndication) @07045a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_TxConfirmation/6 (CanIf_TxConfirmation) @070457e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_ControllerModeIndication/5 (CanIf_ControllerModeIndication) @07045540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+exit_code/4 (exit_code) @07041d80
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData2/3 (dummyData2) @07041ca8
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: *.LC2/14 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData1/2 (dummyData1) @07041bd0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: *.LC1/13 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData0/1 (dummyData0) @07041af8
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: *.LC0/12 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+
+
+Initial Symbol table:
+
+Can_Write/26 (Can_Write) @070ec000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 main/10 main/10 
+  Calls: 
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @070e4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 main/10 main/10 
+  Calls: 
+Can_EnableControllerInterrupts/24 (Can_EnableControllerInterrupts) @070e4e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Can_SetControllerMode/23 (Can_SetControllerMode) @070e4d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @070eb1b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Can_Init/21 (Can_Init) @070e4c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Platform_Init/20 (Platform_Init) @070e4b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Port_Init/19 (Port_Init) @070e4a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Clock_Ip_DistributePll/18 (Clock_Ip_DistributePll) @070e49a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Clock_Ip_GetPllStatus/17 (Clock_Ip_GetPllStatus) @070e48c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Mcu_aClockConfigPB/16 (Mcu_aClockConfigPB) @070eb000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/15 (Clock_Ip_Init) @070e47e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+*.LC2/14 (*.LC2) @07049b88
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: dummyData2/3 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC1/13 (*.LC1) @07049af8
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: dummyData1/2 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC0/12 (*.LC0) @07049a68
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: dummyData0/1 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+DelayTimer.7590/11 (DelayTimer) @07049948
+  Type: variable definition analyzed
+  Visibility: force_output
+  References: 
+  Referring: TestDelay/9 (read)TestDelay/9 (write)TestDelay/9 (read)TestDelay/9 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/10 (main) @07045ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: Mcu_aClockConfigPB/16 (addr)*.LC0/12 (read)*.LC1/13 (read)*.LC2/14 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: TestDelay/9 TestDelay/9 Can_MainFunction_Write/25 Can_Write/26 TestDelay/9 Can_MainFunction_Write/25 Can_Write/26 TestDelay/9 Can_Write/26 Can_MainFunction_Write/25 Can_EnableControllerInterrupts/24 Can_SetControllerMode/23 Can_Init/21 Platform_Init/20 Port_Init/19 Clock_Ip_DistributePll/18 Clock_Ip_GetPllStatus/17 Clock_Ip_Init/15 
+TestDelay/9 (TestDelay) @07045620
+  Type: function definition analyzed
+  Visibility: public
+  References: DelayTimer.7590/11 (read)DelayTimer.7590/11 (write)DelayTimer.7590/11 (read)DelayTimer.7590/11 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: main/10 main/10 main/10 main/10 
+  Calls: 
+CanIf_ControllerBusOff/8 (CanIf_ControllerBusOff) @07045d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_RxIndication/7 (CanIf_RxIndication) @07045a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_TxConfirmation/6 (CanIf_TxConfirmation) @070457e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_ControllerModeIndication/5 (CanIf_ControllerModeIndication) @07045540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+exit_code/4 (exit_code) @07041d80
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData2/3 (dummyData2) @07041ca8
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: *.LC2/14 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData1/2 (dummyData1) @07041bd0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: *.LC1/13 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData0/1 (dummyData0) @07041af8
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: *.LC0/12 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+Can_Write/26 (Can_Write) @070ec000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 main/10 main/10 
+  Calls: 
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @070e4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 main/10 main/10 
+  Calls: 
+Can_EnableControllerInterrupts/24 (Can_EnableControllerInterrupts) @070e4e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Can_SetControllerMode/23 (Can_SetControllerMode) @070e4d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @070eb1b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Can_Init/21 (Can_Init) @070e4c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Platform_Init/20 (Platform_Init) @070e4b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Port_Init/19 (Port_Init) @070e4a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Clock_Ip_DistributePll/18 (Clock_Ip_DistributePll) @070e49a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Clock_Ip_GetPllStatus/17 (Clock_Ip_GetPllStatus) @070e48c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+Mcu_aClockConfigPB/16 (Mcu_aClockConfigPB) @070eb000
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Clock_Ip_Init/15 (Clock_Ip_Init) @070e47e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: main/10 
+  Calls: 
+*.LC2/14 (*.LC2) @07049b88
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: dummyData2/3 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC1/13 (*.LC1) @07049af8
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: dummyData1/2 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC0/12 (*.LC0) @07049a68
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: dummyData0/1 (addr)
+  Referring: main/10 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+DelayTimer.7590/11 (DelayTimer) @07049948
+  Type: variable definition analyzed
+  Visibility: force_output
+  References: 
+  Referring: TestDelay/9 (read)TestDelay/9 (write)TestDelay/9 (read)TestDelay/9 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+main/10 (main) @07045ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: Mcu_aClockConfigPB/16 (addr)*.LC0/12 (read)*.LC1/13 (read)*.LC2/14 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: TestDelay/9 TestDelay/9 Can_MainFunction_Write/25 Can_Write/26 TestDelay/9 Can_MainFunction_Write/25 Can_Write/26 TestDelay/9 Can_Write/26 Can_MainFunction_Write/25 Can_EnableControllerInterrupts/24 Can_SetControllerMode/23 Can_Init/21 Platform_Init/20 Port_Init/19 Clock_Ip_DistributePll/18 Clock_Ip_GetPllStatus/17 Clock_Ip_Init/15 
+TestDelay/9 (TestDelay) @07045620
+  Type: function definition analyzed
+  Visibility: public
+  References: DelayTimer.7590/11 (read)DelayTimer.7590/11 (write)DelayTimer.7590/11 (read)DelayTimer.7590/11 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: main/10 main/10 main/10 main/10 
+  Calls: 
+CanIf_ControllerBusOff/8 (CanIf_ControllerBusOff) @07045d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_RxIndication/7 (CanIf_RxIndication) @07045a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_TxConfirmation/6 (CanIf_TxConfirmation) @070457e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+CanIf_ControllerModeIndication/5 (CanIf_ControllerModeIndication) @07045540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+exit_code/4 (exit_code) @07041d80
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData2/3 (dummyData2) @07041ca8
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: *.LC2/14 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData1/2 (dummyData1) @07041bd0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: *.LC1/13 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+dummyData0/1 (dummyData0) @07041af8
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: *.LC0/12 (addr)
+  Availability: not-ready
+  Varpool flags: initialized
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+Can_Write/26 (Can_Write) @070ec000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (107374 (estimated locally),1.00 per call) main/10 (107374 (estimated locally),1.00 per call) main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @070e4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (107374 (estimated locally),1.00 per call) main/10 (107374 (estimated locally),1.00 per call) main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Can_EnableControllerInterrupts/24 (Can_EnableControllerInterrupts) @070e4e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Can_SetControllerMode/23 (Can_SetControllerMode) @070e4d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @070eb1b0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Can_Init/21 (Can_Init) @070e4c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Platform_Init/20 (Platform_Init) @070e4b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Port_Init/19 (Port_Init) @070e4a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Clock_Ip_DistributePll/18 (Clock_Ip_DistributePll) @070e49a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+Clock_Ip_GetPllStatus/17 (Clock_Ip_GetPllStatus) @070e48c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (976127 (estimated locally),9.09 per call) 
+  Calls: 
+Mcu_aClockConfigPB/16 (Mcu_aClockConfigPB) @070eb000
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: main/10 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/15 (Clock_Ip_Init) @070e47e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+*.LC2/14 (*.LC2) @07049b88
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: dummyData2/3 (addr)
+  Referring: main/10 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+*.LC1/13 (*.LC1) @07049af8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: dummyData1/2 (addr)
+  Referring: main/10 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+*.LC0/12 (*.LC0) @07049a68
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: dummyData0/1 (addr)
+  Referring: main/10 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+DelayTimer.7590/11 (DelayTimer) @07049948
+  Type: variable definition analyzed
+  Visibility: force_output prevailing_def_ironly
+  References: 
+  Referring: TestDelay/9 (read)TestDelay/9 (write)TestDelay/9 (read)TestDelay/9 (write)
+  Availability: available
+  Varpool flags: initialized
+main/10 (main) @07045ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Mcu_aClockConfigPB/16 (addr)*.LC0/12 (read)*.LC1/13 (read)*.LC2/14 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: TestDelay/9 (1073741824 (estimated locally),10000.02 per call) TestDelay/9 (107374 (estimated locally),1.00 per call) Can_MainFunction_Write/25 (107374 (estimated locally),1.00 per call) Can_Write/26 (107374 (estimated locally),1.00 per call) TestDelay/9 (107374 (estimated locally),1.00 per call) Can_MainFunction_Write/25 (107374 (estimated locally),1.00 per call) Can_Write/26 (107374 (estimated locally),1.00 per call) TestDelay/9 (107374 (estimated locally),1.00 per call) Can_Write/26 (107374 (estimated locally),1.00 per call) Can_MainFunction_Write/25 (107374 (estimated locally),1.00 per call) Can_EnableControllerInterrupts/24 (107374 (estimated locally),1.00 per call) Can_SetControllerMode/23 (107374 (estimated locally),1.00 per call) Can_Init/21 (107374 (estimated locally),1.00 per call) Platform_Init/20 (107374 (estimated locally),1.00 per call) Port_Init/19 (107374 (estimated locally),1.00 per call) Clock_Ip_DistributePll/18 (107374 (estimated locally),1.00 per call) Clock_Ip_GetPllStatus/17 (976127 (estimated locally),9.09 per call) Clock_Ip_Init/15 (107374 (estimated locally),1.00 per call) 
+TestDelay/9 (TestDelay) @07045620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: DelayTimer.7590/11 (read)DelayTimer.7590/11 (write)DelayTimer.7590/11 (read)DelayTimer.7590/11 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: main/10 (1073741824 (estimated locally),10000.02 per call) main/10 (107374 (estimated locally),1.00 per call) main/10 (107374 (estimated locally),1.00 per call) main/10 (107374 (estimated locally),1.00 per call) 
+  Calls: 
+CanIf_ControllerBusOff/8 (CanIf_ControllerBusOff) @07045d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+CanIf_RxIndication/7 (CanIf_RxIndication) @07045a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+CanIf_TxConfirmation/6 (CanIf_TxConfirmation) @070457e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+CanIf_ControllerModeIndication/5 (CanIf_ControllerModeIndication) @07045540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+exit_code/4 (exit_code) @07041d80
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+dummyData2/3 (dummyData2) @07041ca8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: *.LC2/14 (addr)
+  Availability: available
+  Varpool flags: initialized
+dummyData1/2 (dummyData1) @07041bd0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: *.LC1/13 (addr)
+  Availability: available
+  Varpool flags: initialized
+dummyData0/1 (dummyData0) @07041af8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: *.LC0/12 (addr)
+  Availability: available
+  Varpool flags: initialized
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:CanIf_ControllerModeIndication:0
+Time profile order in expand_all_functions:CanIf_TxConfirmation:0
+Time profile order in expand_all_functions:CanIf_RxIndication:0
+Time profile order in expand_all_functions:CanIf_ControllerBusOff:0
+Time profile order in expand_all_functions:TestDelay:0
+Time profile order in expand_all_functions:main:0
+Trivially needed variables: *.LC2 *.LC1 *.LC0 DelayTimer.7590 exit_code dummyData2 dummyData1 dummyData0
+Removing variables:
+
+Final Symbol table:
+
+Can_Write/26 (Can_Write) @070ec000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @070e4ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Can_EnableControllerInterrupts/24 (Can_EnableControllerInterrupts) @070e4e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Can_SetControllerMode/23 (Can_SetControllerMode) @070e4d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @070eb1b0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Can_Init/21 (Can_Init) @070e4c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Platform_Init/20 (Platform_Init) @070e4b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Port_Init/19 (Port_Init) @070e4a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Clock_Ip_DistributePll/18 (Clock_Ip_DistributePll) @070e49a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Clock_Ip_GetPllStatus/17 (Clock_Ip_GetPllStatus) @070e48c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Mcu_aClockConfigPB/16 (Mcu_aClockConfigPB) @070eb000
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Clock_Ip_Init/15 (Clock_Ip_Init) @070e47e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+*.LC2/14 (*.LC2) @07049b88
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written artificial
+  Aux: @00000001
+  References: dummyData2/3 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+*.LC1/13 (*.LC1) @07049af8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written artificial
+  Aux: @07049b88
+  References: dummyData1/2 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+*.LC0/12 (*.LC0) @07049a68
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written artificial
+  Aux: @07049af8
+  References: dummyData0/1 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+DelayTimer.7590/11 (DelayTimer) @07049948
+  Type: variable definition analyzed
+  Visibility: force_output prevailing_def_ironly asm_written
+  Aux: @07049a68
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+main/10 (main) @07045ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) only_called_at_startup executed_once optimize_size
+  Called by: 
+  Calls: 
+TestDelay/9 (TestDelay) @07045620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+CanIf_ControllerBusOff/8 (CanIf_ControllerBusOff) @07045d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+CanIf_RxIndication/7 (CanIf_RxIndication) @07045a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+CanIf_TxConfirmation/6 (CanIf_TxConfirmation) @070457e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+CanIf_ControllerModeIndication/5 (CanIf_ControllerModeIndication) @07045540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+exit_code/4 (exit_code) @07041d80
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible asm_written public
+  Aux: @07049948
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+dummyData2/3 (dummyData2) @07041ca8
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @07041d80
+  References: 
+  Referring: *.LC2/14 (addr)
+  Availability: available
+  Varpool flags: initialized
+dummyData1/2 (dummyData1) @07041bd0
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @07041ca8
+  References: 
+  Referring: *.LC1/13 (addr)
+  Availability: available
+  Varpool flags: initialized
+dummyData0/1 (dummyData0) @07041af8
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @07041bd0
+  References: 
+  Referring: *.LC0/12 (addr)
+  Availability: available
+  Varpool flags: initialized
