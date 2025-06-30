@@ -429,20 +429,20 @@ int main(void)
     //Initialize Crypto driver */
     Crypto_Init(NULL_PTR);
 
-	App_LoadCsecKey(CSEC_IP_MASTER_ECU_KEY, CSEC_IP_MASTER_ECU_KEY, Master_ECU_Key, aEmptyKey, 1, u8Flags, aEmptyUID  );
+	//App_LoadCsecKey(CSEC_IP_MASTER_ECU_KEY, CSEC_IP_MASTER_ECU_KEY, Master_ECU_Key, aEmptyKey, 1, u8Flags, aEmptyUID  );
 
 	for(;;)
     {
 
-    	App_LoadCsecKey(CSEC_IP_KEY_3, CSEC_IP_MASTER_ECU_KEY, AES_128_CbcKey, Master_ECU_Key, 2, u8Flags, aEmptyUID  );
+    //	App_LoadCsecKey(CSEC_IP_KEY_3, CSEC_IP_MASTER_ECU_KEY, AES_128_CbcKey, Master_ECU_Key, 2, u8Flags, aEmptyUID  );
 
     	//App_LoadCsecKey(CSEC_IP_KEY_2, CSEC_IP_MASTER_ECU_KEY, AES_128_CbcKey2, aEmptyKey, 19 , u8Flags, aEmptyUID  );
 
 
-//    	//for importing CBC Key ( RAM_Key_Slot)
-//    	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_ELEMENT_ID_U32, AES_128_CbcKey, APP_AES128_KEY_SIZE  );
-//        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
-//
+    	//for importing CBC Key ( RAM_Key_Slot)
+    	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_ELEMENT_ID_U32, AES_128_CbcKey, APP_AES128_KEY_SIZE  );
+        App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+
 
         // IV value for CBC is stored not on CSEc IP but stored in internal buffer's
     	RetVal = Crypto_KeyElementSet(APP_AES128_CBC_KEY_ID, KEY_MATERIAL_AES_CBC_IV_ELEMENT_ID_U32, G2B_Aes128CBC_IV, APP_AES128_KEY_SIZE  );

@@ -74,7 +74,7 @@ uint32 ResultLength = 16;
 
 static Crypto_JobType G2B_AES128_ECB_Decrypt_ProcessJob =
 {
-		.jobId = 1U,
+		.jobId = 2U,
 		.jobState = CRYPTO_JOBSTATE_IDLE,
 
 	// Crypto_JobPrimitiveInputOutputType: structure, in this we specify different
