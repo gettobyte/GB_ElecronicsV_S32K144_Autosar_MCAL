@@ -1,0 +1,157 @@
+Power_Ip_InstallNotificationsCallback (void (*Power_Ip_ReportErrorsCallbackType) (Power_Ip_PowerReportErrorType, uint8) reportErrorsCallback)
+{
+  <bb 2> :
+  powerReportErrorsCallback = reportErrorsCallback;
+  return;
+
+}
+
+
+Power_Ip_EnableSleepOnExit ()
+{
+  <bb 2> :
+  Power_Ip_CM4_EnableSleepOnExit ();
+  return;
+
+}
+
+
+Power_Ip_DisableSleepOnExit ()
+{
+  <bb 2> :
+  Power_Ip_CM4_DisableSleepOnExit ();
+  return;
+
+}
+
+
+Power_Ip_InitPower (const struct Power_Ip_HwIPsConfigType * Power_Ip_pHwIPsConfigPtr)
+{
+  <bb 2> :
+  _1 = Power_Ip_pHwIPsConfigPtr->PMC_pConfig;
+  Power_Ip_PMC_PowerInit (_1);
+  _2 = Power_Ip_pHwIPsConfigPtr->SMC_pConfig;
+  Power_Ip_SMC_AllowedModesConfig (_2);
+  return;
+
+}
+
+
+Power_Ip_InitReset (const struct Power_Ip_HwIPsConfigType * Power_Ip_pHwIPsConfigPtr)
+{
+  <bb 2> :
+  _1 = Power_Ip_pHwIPsConfigPtr->RCM_pConfig;
+  Power_Ip_RCM_ResetInit (_1);
+  return;
+
+}
+
+
+Power_Ip_GetResetRawValue ()
+{
+  Power_Ip_RawResetType ResetReason;
+  Power_Ip_RawResetType D.5810;
+
+  <bb 2> :
+  ResetReason = Power_Ip_RCM_GetResetRawValue ();
+  D.5810 = ResetReason;
+
+  <bb 3> :
+<L0>:
+  return D.5810;
+
+}
+
+
+Power_Ip_GetResetReason ()
+{
+  uint32 resetVal;
+  Power_Ip_ResetType eResetReason;
+  Power_Ip_ResetType D.5808;
+
+  <bb 2> :
+  eResetReason = 14;
+  resetVal = Power_Ip_RCM_GetResetReason ();
+  eResetReason = Power_Ip_ConvertIntergeToResetType (resetVal);
+  D.5808 = eResetReason;
+
+  <bb 3> :
+<L0>:
+  return D.5808;
+
+}
+
+
+Power_Ip_ConvertIntergeToResetType (uint32 resetReasonIndex)
+{
+  static const Power_Ip_ResetType resetReasonArray[15] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+  Power_Ip_ResetType eResetReason;
+  Power_Ip_ResetType D.5806;
+
+  <bb 2> :
+  eResetReason = 12;
+  _1 = resetReasonArray[resetReasonIndex];
+  if (_1 <= 14)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _2 = resetReasonArray[resetReasonIndex];
+  if (_2 != 33)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  eResetReason = resetReasonArray[resetReasonIndex];
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  eResetReason = 12;
+
+  <bb 6> :
+  D.5806 = eResetReason;
+
+  <bb 7> :
+<L4>:
+  return D.5806;
+
+}
+
+
+Power_Ip_SetMode (const struct Power_Ip_ModeConfigType * Power_Ip_pModeConfigPtr)
+{
+  Power_Ip_PowerModeType ePowerMode;
+  uint32 ePowerSwitchMode;
+
+  <bb 2> :
+  ePowerMode = Power_Ip_pModeConfigPtr->Power_Ip_ePowerMode;
+  _1 = Power_Ip_SMC_ModeCheckEntry (ePowerMode);
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  ePowerSwitchMode = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  ePowerSwitchMode = Power_Ip_SMC_ModeConfig (Power_Ip_pModeConfigPtr);
+
+  <bb 5> :
+  if (ePowerSwitchMode == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  ReportPowerErrors (3, 255);
+
+  <bb 7> :
+  return;
+
+}
+
+

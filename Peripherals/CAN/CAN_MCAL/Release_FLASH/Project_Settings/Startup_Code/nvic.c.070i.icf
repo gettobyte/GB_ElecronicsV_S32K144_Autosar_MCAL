@@ -1,0 +1,129 @@
+Parsed function:NVIC_SetPriority
+Parsed function:NVIC_DisableIRQ
+Parsed function:NVIC_EnableIRQ
+Parsed function:NVIC_SetPriorityGrouping
+Dump after hash based groups
+Congruence classes: 3 (unique hash values: 3), with total: 4 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 2 classes
+[2]: 1 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 3 (unique hash values: 3), with total: 4 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 2 classes
+[2]: 1 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 3 (unique hash values: 3), with total: 4 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 2 classes
+[2]: 1 classes
+
+
+Init called for 2 items (50.00%).
+Dump after full equality comparison of groups
+Congruence classes: 4 (unique hash values: 3), with total: 4 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 4 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Congruence classes: 4 (unique hash values: 3), with total: 4 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 4 classes
+
+
+
+Item count: 4
+Congruent classes before: 4, after: 4
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+NVIC_SetPriority (uint8 IRQn, uint8 priority)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG shift => 4
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) priority_5(D);
+  _2 = _1 << 4;
+  _3 = (long unsigned int) IRQn_6(D);
+  _4 = (unsigned char) _2;
+  MEM[(struct S32_NVIC_Type *)3758153984B].IP[_3] ={v} _4;
+  return;
+
+}
+
+
+NVIC_DisableIRQ (uint8 IRQn)
+{
+  long unsigned int _1;
+  unsigned char _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = IRQn_6(D) & 31;
+  _1 = (long unsigned int) _2;
+  _3 = IRQn_6(D) >> 5;
+  _4 = (long unsigned int) _3;
+  _5 = 1 << _1;
+  MEM[(struct S32_NVIC_Type *)3758153984B].ICER[_4] ={v} _5;
+  return;
+
+}
+
+
+NVIC_EnableIRQ (uint8 IRQn)
+{
+  long unsigned int _1;
+  unsigned char _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = IRQn_6(D) & 31;
+  _1 = (long unsigned int) _2;
+  _3 = IRQn_6(D) >> 5;
+  _4 = (long unsigned int) _3;
+  _5 = 1 << _1;
+  MEM[(struct S32_NVIC_Type *)3758153984B].ISER[_4] ={v} _5;
+  return;
+
+}
+
+
+NVIC_SetPriorityGrouping (uint32 PriorityGroup)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].AIRCR;
+  _2 = _1 & 4294965503;
+  _3 = _2 | PriorityGroup_5(D);
+  MEM[(struct S32_SCB_Type *)3758153728B].AIRCR ={v} _3;
+  return;
+
+}
+
+

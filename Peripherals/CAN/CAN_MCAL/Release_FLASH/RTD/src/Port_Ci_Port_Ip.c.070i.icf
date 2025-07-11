@@ -1,0 +1,597 @@
+Parsed function:Port_Ci_Port_Ip_SetGlobalPinControl
+Parsed function:Port_Ci_Port_Ip_ConfigDigitalFilter
+Parsed function:Port_Ci_Port_Ip_DisableDigitalFilter
+Parsed function:Port_Ci_Port_Ip_EnableDigitalFilter
+Parsed function:Port_Ci_Port_Ip_SetMuxModeSel
+Parsed function:Port_Ci_Port_Ip_Init
+Parsed function:Port_Ci_Port_Ip_SetDFER
+Parsed function:Port_Ci_Port_Ip_SetPIDR
+Parsed function:Port_Ci_Port_Ip_ClearPDDR
+Parsed function:Port_Ci_Port_Ip_SetPDDR
+Parsed function:Port_Ci_Port_Ip_SetPCOR
+Parsed function:Port_Ci_Port_Ip_SetPSOR
+Parsed function:Port_Ci_Port_Ip_SetPCR
+Parsed function:Port_Ci_Port_Ip_ReadPCR
+Parsed function:Port_Ci_Port_Ip_PinInit
+Dump after hash based groups
+Congruence classes: 12 (unique hash values: 12), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 10 classes
+[2]: 1 classes
+[3]: 1 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 14 (unique hash values: 12), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 13 classes
+[2]: 1 classes
+
+
+Worklist has been filled with: 1
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 14 (unique hash values: 12), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 13 classes
+[2]: 1 classes
+
+
+Init called for 2 items (13.33%).
+Dump after full equality comparison of groups
+Congruence classes: 15 (unique hash values: 12), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 15 classes
+
+
+Worklist has been filled with: 1
+Address reference subdivision created: 0 new classes.
+Congruence classes: 15 (unique hash values: 12), with total: 15 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 15 classes
+
+
+
+Item count: 15
+Congruent classes before: 15, after: 15
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+Port_Ci_Port_Ip_SetGlobalPinControl (struct PORT_Type * const base, uint16 pins, uint16 value, Port_Ci_Port_Ip_PortGlobalControlPins halfPort)
+{
+  uint16 mask;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => 3
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => 19
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => 83
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => 1875
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => 34643
+  # DEBUG BEGIN_STMT
+  mask_11 = value_10(D) & 34643;
+  # DEBUG mask => mask_11
+  # DEBUG BEGIN_STMT
+  switch (halfPort_12(D)) <default: <L4> [33.33%], case 0: <L0> [33.33%], case 1: <L1> [33.33%]>
+
+  <bb 3> [local count: 357878150]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) pins_14(D);
+  _2 = _1 << 16;
+  _3 = (long unsigned int) mask_11;
+  _4 = _2 | _3;
+  base_15(D)->GPCLR ={v} _4;
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 357878150]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  _5 = (long unsigned int) pins_14(D);
+  _6 = _5 << 16;
+  _7 = (long unsigned int) mask_11;
+  _8 = _6 | _7;
+  base_15(D)->GPCHR ={v} _8;
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 1073634451]:
+<L4>:
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_ConfigDigitalFilter (struct PORT_Type * const base, const struct Port_Ci_Port_Ip_DigitalFilterConfigType * config)
+{
+  unsigned char _1;
+  long unsigned int _2;
+  unsigned char _3;
+  long unsigned int _4;
+  unsigned char _10;
+  unsigned char _11;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_6(D)->u8Clock;
+  _10 = _1 & 1;
+  _2 = (long unsigned int) _10;
+  base_7(D)->DFCR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 = config_6(D)->u8Width;
+  _11 = _3 & 31;
+  _4 = (long unsigned int) _11;
+  base_7(D)->DFWR ={v} _4;
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_DisableDigitalFilter (struct PORT_Type * const base, uint32 pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_7(D)->DFER;
+  _2 = 1 << pin_8(D);
+  _3 = ~_2;
+  _4 = _1 & _3;
+  base_7(D)->DFER ={v} _4;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_EnableDigitalFilter (struct PORT_Type * const base, uint32 pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_6(D)->DFER;
+  _2 = 1 << pin_7(D);
+  _3 = _1 | _2;
+  base_6(D)->DFER ={v} _3;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetMuxModeSel (struct PORT_Type * const base, uint32 pin, Port_Ci_Port_Ip_PortMux mux)
+{
+  uint32 regValue;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06 ();
+  # DEBUG BEGIN_STMT
+  regValue_7 ={v} base_5(D)->PCR[pin_6(D)];
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  regValue_8 = regValue_7 & 4294965503;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  _1 = mux_9(D) << 8;
+  _2 = _1 & 1792;
+  regValue_10 = _2 | regValue_8;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  base_5(D)->PCR[pin_6(D)] ={v} regValue_10;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_Init (uint32 pinCount, const struct Port_Ci_Port_Ip_PinSettingsConfig * config)
+{
+  uint32 i;
+  long unsigned int _1;
+  const struct Port_Ci_Port_Ip_PinSettingsConfig * _2;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _1 = i_3 * 40;
+  _2 = config_7(D) + _1;
+  Port_Ci_Port_Ip_PinInit (_2);
+  # DEBUG BEGIN_STMT
+  i_9 = i_3 + 1;
+  # DEBUG i => i_9
+
+  <bb 4> [local count: 1073741824]:
+  # i_3 = PHI <0(2), i_9(3)>
+  # DEBUG i => i_3
+  # DEBUG BEGIN_STMT
+  if (i_3 < pinCount_6(D))
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+Port_Ci_Port_Ip_SetDFER (struct PORT_Type * base, uint32 pinMask)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_5(D)->DFER;
+  _2 = _1 | pinMask_6(D);
+  base_5(D)->DFER ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPIDR (struct GPIO_Type * base, uint32 Pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_5(D)->PIDR;
+  _2 = _1 | Pin_6(D);
+  base_5(D)->PIDR ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_ClearPDDR (struct GPIO_Type * base, uint32 Pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_6(D)->PDDR;
+  _2 = ~Pin_7(D);
+  _3 = _1 & _2;
+  base_6(D)->PDDR ={v} _3;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPDDR (struct GPIO_Type * base, uint32 Pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_5(D)->PDDR;
+  _2 = _1 | Pin_6(D);
+  base_5(D)->PDDR ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPCOR (struct GPIO_Type * base, uint32 Pin)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  base_2(D)->PCOR ={v} Pin_3(D);
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPSOR (struct GPIO_Type * base, uint32 Pin)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  base_2(D)->PSOR ={v} Pin_3(D);
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPCR (struct PORT_Type * base, uint32 MscrInstance, uint32 value)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  base_2(D)->PCR[MscrInstance_3(D)] ={v} value_4(D);
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_ReadPCR (const struct PORT_Type * base, uint32 MscrInstance)
+{
+  uint32 _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 ={v} base_2(D)->PCR[MscrInstance_3(D)];
+  return _4;
+
+}
+
+
+Port_Ci_Port_Ip_PinInit (const struct Port_Ci_Port_Ip_PinSettingsConfig * config)
+{
+  uint32 digitalFilters;
+  uint32 pinsValues;
+  <unnamed type> _1;
+  long unsigned int _2;
+  <unnamed type> _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  <unnamed type> _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  _Bool _9;
+  <unnamed type> _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  struct PORT_Type * _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  _Bool _17;
+  long unsigned int _18;
+  <unnamed type> _19;
+  <unnamed type> _20;
+  unsigned char _21;
+  struct GPIO_Type * _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  struct GPIO_Type * _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  struct GPIO_Type * _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  struct GPIO_Type * _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  struct PORT_Type * _36;
+  long unsigned int _37;
+  long unsigned int iftmp.0_39;
+  long unsigned int iftmp.1_40;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pinsValues => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_44(D)->pullConfig;
+  if (_1 != 2)
+    goto <bb 3>; [66.00%]
+  else
+    goto <bb 4>; [34.00%]
+
+  <bb 3> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pinsValues => 2
+  # DEBUG BEGIN_STMT
+  _2 = _1 & 1;
+  pinsValues_45 = _2 | 2;
+  # DEBUG pinsValues => pinsValues_45
+
+  <bb 4> [local count: 1073741824]:
+  # pinsValues_38 = PHI <0(2), pinsValues_45(3)>
+  # DEBUG pinsValues => pinsValues_38
+  # DEBUG BEGIN_STMT
+  _3 = config_44(D)->driveStrength;
+  _4 = _3 << 6;
+  _5 = _4 & 64;
+  pinsValues_46 = _5 | pinsValues_38;
+  # DEBUG pinsValues => pinsValues_46
+  # DEBUG BEGIN_STMT
+  _6 = config_44(D)->lockRegister;
+  _7 = _6 << 15;
+  _8 = _7 & 65535;
+  pinsValues_47 = _8 | pinsValues_46;
+  # DEBUG pinsValues => pinsValues_47
+  # DEBUG BEGIN_STMT
+  _9 = config_44(D)->passiveFilter;
+  if (_9 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+
+  <bb 6> [local count: 1073741824]:
+  # iftmp.0_39 = PHI <16(4), 0(5)>
+  pinsValues_48 = iftmp.0_39 | pinsValues_47;
+  # DEBUG pinsValues => pinsValues_48
+  # DEBUG BEGIN_STMT
+  _10 = config_44(D)->mux;
+  _11 = _10 << 8;
+  _12 = _11 & 1792;
+  pinsValues_49 = _12 | pinsValues_48;
+  # DEBUG pinsValues => pinsValues_49
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  _13 = config_44(D)->portBase;
+  digitalFilters_51 ={v} _13->DFER;
+  # DEBUG digitalFilters => digitalFilters_51
+  # DEBUG BEGIN_STMT
+  _14 = config_44(D)->pinPortIdx;
+  _15 = 1 << _14;
+  _16 = ~_15;
+  digitalFilters_52 = _16 & digitalFilters_51;
+  # DEBUG digitalFilters => digitalFilters_52
+  # DEBUG BEGIN_STMT
+  _17 = config_44(D)->digitalFilter;
+  if (_17 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 536870913]:
+
+  <bb 8> [local count: 1073741824]:
+  # iftmp.1_40 = PHI <1(6), 0(7)>
+  _18 = iftmp.1_40 << _14;
+  digitalFilters_53 = _18 | digitalFilters_52;
+  # DEBUG digitalFilters => digitalFilters_53
+  # DEBUG BEGIN_STMT
+  _13->DFER ={v} digitalFilters_53;
+  # DEBUG BEGIN_STMT
+  _19 = config_44(D)->mux;
+  if (_19 == 1)
+    goto <bb 9>; [34.00%]
+  else
+    goto <bb 17>; [66.00%]
+
+  <bb 9> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _20 = config_44(D)->direction;
+  if (_20 == 2)
+    goto <bb 10>; [34.00%]
+  else
+    goto <bb 15>; [66.00%]
+
+  <bb 10> [local count: 124124555]:
+  # DEBUG BEGIN_STMT
+  _21 = config_44(D)->initValue;
+  if (_21 == 1)
+    goto <bb 11>; [34.00%]
+  else
+    goto <bb 12>; [66.00%]
+
+  <bb 11> [local count: 42202349]:
+  # DEBUG BEGIN_STMT
+  _22 = config_44(D)->gpioBase;
+  _23 ={v} _22->PSOR;
+  _24 = _15 | _23;
+  _22->PSOR ={v} _24;
+  goto <bb 14>; [100.00%]
+
+  <bb 12> [local count: 81922206]:
+  # DEBUG BEGIN_STMT
+  if (_21 == 0)
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 13> [local count: 40961103]:
+  # DEBUG BEGIN_STMT
+  _25 = config_44(D)->gpioBase;
+  _26 ={v} _25->PCOR;
+  _27 = _15 | _26;
+  _25->PCOR ={v} _27;
+
+  <bb 14> [local count: 124124555]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _28 = config_44(D)->gpioBase;
+  _29 ={v} _28->PDDR;
+  _30 = _15 | _29;
+  _28->PDDR ={v} _30;
+  goto <bb 17>; [100.00%]
+
+  <bb 15> [local count: 240947665]:
+  # DEBUG BEGIN_STMT
+  _31 = config_44(D)->gpioBase;
+  _32 ={v} _31->PDDR;
+  _33 = _16 & _32;
+  _31->PDDR ={v} _33;
+  # DEBUG BEGIN_STMT
+  if (_20 == 3)
+    goto <bb 16>; [34.00%]
+  else
+    goto <bb 17>; [66.00%]
+
+  <bb 16> [local count: 81922206]:
+  # DEBUG BEGIN_STMT
+  _34 ={v} _31->PIDR;
+  _35 = _15 | _34;
+  _31->PIDR ={v} _35;
+
+  <bb 17> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  _36 = config_44(D)->portBase;
+  _37 = config_44(D)->pinPortIdx;
+  _36->PCR[_37] ={v} pinsValues_49;
+  return;
+
+}
+
+

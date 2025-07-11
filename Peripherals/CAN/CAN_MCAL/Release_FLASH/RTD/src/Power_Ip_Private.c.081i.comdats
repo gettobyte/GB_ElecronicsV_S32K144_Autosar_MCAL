@@ -1,0 +1,62 @@
+PowerTimeoutExpired (uint32 * startTimeInOut, uint32 * elapsedTimeInOut, uint32 TimeoutTicks)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _6;
+  boolean _10;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _6 = OsIf_GetElapsed (startTimeInOut_4(D), 0);
+  _1 = *elapsedTimeInOut_7(D);
+  _2 = _1 + _6;
+  *elapsedTimeInOut_7(D) = _2;
+  # DEBUG BEGIN_STMT
+  _10 = _2 >= TimeoutTicks_9(D);
+  return _10;
+
+}
+
+
+PowerStartTimeout (uint32 * startTimeOut, uint32 * elapsedTimeOut, uint32 * timeoutTicksOut, uint32 timeoutUs)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = OsIf_GetCounter (0);
+  *startTimeOut_5(D) = _1;
+  # DEBUG BEGIN_STMT
+  *elapsedTimeOut_7(D) = 0;
+  # DEBUG BEGIN_STMT
+  _2 = OsIf_MicrosToTicks (timeoutUs_9(D), 0);
+  *timeoutTicksOut_11(D) = _2;
+  return;
+
+}
+
+
+ReportPowerErrorsEmptyCallback (Power_Ip_PowerReportErrorType error, uint8 u8ErrorCode)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+ReportPowerErrors (Power_Ip_PowerReportErrorType error, uint8 u8ErrorCode)
+{
+  void (*<T4c6>) (Power_Ip_PowerReportErrorType, uint8) powerReportErrorsCallback.0_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  powerReportErrorsCallback.0_1 = powerReportErrorsCallback;
+  powerReportErrorsCallback.0_1 (error_3(D), u8ErrorCode_4(D));
+  return;
+
+}
+
+

@@ -1,0 +1,23 @@
+Can_ErrorIrqCallback (uint8 u8Instance, Flexcan_Ip_EventType event, uint32 u32ErrStatus, const struct Flexcan_Ip_StateType * driverState)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (event_2(D) == 7)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 4>; [79.76%]
+
+  <bb 3> [local count: 217325345]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  Can_ProcessBusOffInterrupt (u8Instance_4(D));
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+

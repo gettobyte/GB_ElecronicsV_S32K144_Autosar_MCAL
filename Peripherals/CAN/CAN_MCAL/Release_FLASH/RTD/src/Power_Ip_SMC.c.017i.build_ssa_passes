@@ -1,0 +1,271 @@
+Power_Ip_SMC_ModeConfig (const struct Power_Ip_ModeConfigType * pModeConfigPtr)
+{
+  boolean TimeoutOccurred;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  uint32 u32PowerModeStatus;
+  uint32 u32TempValue;
+  Power_Ip_PowerModeType ePowerMode;
+  uint32 ePowerSwitchMode;
+  uint32 D.5727;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ePowerSwitchMode = 0;
+  # DEBUG BEGIN_STMT
+  ePowerMode = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutOccurred = 0;
+  # DEBUG BEGIN_STMT
+  ePowerMode = pModeConfigPtr->Power_Ip_ePowerMode;
+  # DEBUG BEGIN_STMT
+  switch (ePowerMode) <default: <L18> [INV], case 0: <L0> [INV], case 1: <L6> [INV], case 2: <L12> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = 1074257920B;
+  u32TempValue = _1->PMCTRL;
+  # DEBUG BEGIN_STMT
+  u32TempValue = u32TempValue & 4294967199;
+  # DEBUG BEGIN_STMT
+  u32TempValue = u32TempValue;
+  # DEBUG BEGIN_STMT
+  _2 = 1074257920B;
+  _2->PMCTRL = u32TempValue;
+  # DEBUG BEGIN_STMT
+  PowerStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_3 = TimeoutTicks;
+  TimeoutOccurred = PowerTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_3);
+  # DEBUG BEGIN_STMT
+  _4 = 1074257920B;
+  _5 = _4->PMSTAT;
+  u32PowerModeStatus = _5 & 1;
+  # DEBUG BEGIN_STMT
+  if (u32PowerModeStatus != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _6 = ~TimeoutOccurred;
+  if (_6 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ePowerSwitchMode = 1;
+  goto <bb 19>; [INV]
+
+  <bb 8> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _7 = 1074257920B;
+  u32TempValue = _7->PMCTRL;
+  # DEBUG BEGIN_STMT
+  u32TempValue = u32TempValue & 4294967199;
+  # DEBUG BEGIN_STMT
+  u32TempValue = u32TempValue | 96;
+  # DEBUG BEGIN_STMT
+  _8 = 1074257920B;
+  _8->PMCTRL = u32TempValue;
+  # DEBUG BEGIN_STMT
+  PowerStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.1_9 = TimeoutTicks;
+  TimeoutOccurred = PowerTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.1_9);
+  # DEBUG BEGIN_STMT
+  _10 = 1074257920B;
+  _11 = _10->PMSTAT;
+  u32PowerModeStatus = _11 & 128;
+  # DEBUG BEGIN_STMT
+  if (u32PowerModeStatus != 128)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _12 = ~TimeoutOccurred;
+  if (_12 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ePowerSwitchMode = 1;
+  goto <bb 19>; [INV]
+
+  <bb 13> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  _13 = 1074257920B;
+  u32TempValue = _13->PMCTRL;
+  # DEBUG BEGIN_STMT
+  u32TempValue = u32TempValue & 4294967199;
+  # DEBUG BEGIN_STMT
+  u32TempValue = u32TempValue | 64;
+  # DEBUG BEGIN_STMT
+  _14 = 1074257920B;
+  _14->PMCTRL = u32TempValue;
+  # DEBUG BEGIN_STMT
+  PowerStartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.2_15 = TimeoutTicks;
+  TimeoutOccurred = PowerTimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.2_15);
+  # DEBUG BEGIN_STMT
+  _16 = 1074257920B;
+  _17 = _16->PMSTAT;
+  u32PowerModeStatus = _17 & 4;
+  # DEBUG BEGIN_STMT
+  if (u32PowerModeStatus != 4)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _18 = ~TimeoutOccurred;
+  if (_18 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  ePowerSwitchMode = 1;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+<L18>:
+  # DEBUG BEGIN_STMT
+  ePowerSwitchMode = 1;
+  # DEBUG BEGIN_STMT
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  D.5727 = ePowerSwitchMode;
+  StartTime = {CLOBBER};
+  ElapsedTime = {CLOBBER};
+  TimeoutTicks = {CLOBBER};
+  return D.5727;
+
+}
+
+
+Power_Ip_SMC_ModeCheckEntry (Power_Ip_PowerModeType ePowerMode)
+{
+  uint32 eCurrentPowerMode;
+  Power_Ip_SMC_ModeStatusType ePowerModeCheck;
+  Power_Ip_SMC_ModeStatusType D.5715;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ePowerModeCheck = 1;
+  # DEBUG BEGIN_STMT
+  eCurrentPowerMode = 1;
+  # DEBUG BEGIN_STMT
+  _1 = 1074257920B;
+  _2 = _1->PMSTAT;
+  eCurrentPowerMode = _2 & 255;
+  # DEBUG BEGIN_STMT
+  switch (ePowerMode) <default: <L11> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L4> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  ePowerModeCheck = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  if (eCurrentPowerMode == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ePowerModeCheck = 0;
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  if (eCurrentPowerMode == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  if (eCurrentPowerMode == 16)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  ePowerModeCheck = 0;
+
+  <bb 9> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  D.5715 = ePowerModeCheck;
+  return D.5715;
+
+}
+
+
+Power_Ip_SMC_AllowedModesConfig (const struct Power_Ip_SMC_ConfigType * pConfigPtr)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pConfigPtr->u32AllowedModes;
+  _2 = 1074257920B;
+  _3 = _1 & 160;
+  _2->PMPROT = _3;
+  return;
+
+}
+
+

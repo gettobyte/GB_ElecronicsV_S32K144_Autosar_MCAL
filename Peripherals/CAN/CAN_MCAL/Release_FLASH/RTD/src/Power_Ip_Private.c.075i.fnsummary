@@ -1,0 +1,238 @@
+
+Analyzing function: PowerTimeoutExpired/3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: PowerTimeoutExpired
+
+IPA function summary for PowerTimeoutExpired/3 inlinable
+  global time:     19.000000
+  self size:       11
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:4.000000, time:3.000000,  executed if:(not inlined)
+  calls:
+    OsIf_GetElapsed/7 function body not available
+      loop depth: 0 freq:1.00 size: 4 time: 13
+       op1 is compile time invariant
+
+
+Analyzing function: PowerStartTimeout/2
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: PowerStartTimeout
+
+IPA function summary for PowerStartTimeout/2 inlinable
+  global time:     30.000000
+  self size:       13
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:1.500000, time:1.500000
+    size:4.500000, time:3.500000,  executed if:(not inlined)
+  calls:
+    OsIf_MicrosToTicks/6 function body not available
+      loop depth: 0 freq:1.00 size: 4 time: 13
+       op1 is compile time invariant
+    OsIf_GetCounter/5 function body not available
+      loop depth: 0 freq:1.00 size: 3 time: 12
+       op0 is compile time invariant
+
+
+Analyzing function: ReportPowerErrorsEmptyCallback/1
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: ReportPowerErrorsEmptyCallback
+
+IPA function summary for ReportPowerErrorsEmptyCallback/1 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: ReportPowerErrors/0
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: ReportPowerErrors
+
+IPA function summary for ReportPowerErrors/0 inlinable
+  global time:     20.000000
+  self size:       9
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:1.000000, time:1.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    indirect call loop depth: 0 freq:1.00 size: 5 time: 17
+
+Symbol table:
+
+OsIf_GetElapsed/7 (OsIf_GetElapsed) @0688e460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PowerTimeoutExpired/3 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+OsIf_MicrosToTicks/6 (OsIf_MicrosToTicks) @0688e2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PowerStartTimeout/2 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+OsIf_GetCounter/5 (OsIf_GetCounter) @0688e1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: PowerStartTimeout/2 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+powerReportErrorsCallback/4 (powerReportErrorsCallback) @0688a360
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: ReportPowerErrors/0 (read)
+  Availability: not_available
+  Varpool flags:
+PowerTimeoutExpired/3 (PowerTimeoutExpired) @06887e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_GetElapsed/7 (1073741824 (estimated locally),1.00 per call) 
+PowerStartTimeout/2 (PowerStartTimeout) @06887b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: OsIf_MicrosToTicks/6 (1073741824 (estimated locally),1.00 per call) OsIf_GetCounter/5 (1073741824 (estimated locally),1.00 per call) 
+ReportPowerErrorsEmptyCallback/1 (ReportPowerErrorsEmptyCallback) @068878c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+ReportPowerErrors/0 (ReportPowerErrors) @06887620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: powerReportErrorsCallback/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(1073741824 (estimated locally),1.00 per call) 
+PowerTimeoutExpired (uint32 * startTimeInOut, uint32 * elapsedTimeInOut, uint32 TimeoutTicks)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _6;
+  boolean _10;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _6 = OsIf_GetElapsed (startTimeInOut_4(D), 0);
+  _1 = *elapsedTimeInOut_7(D);
+  _2 = _1 + _6;
+  *elapsedTimeInOut_7(D) = _2;
+  # DEBUG BEGIN_STMT
+  _10 = _2 >= TimeoutTicks_9(D);
+  return _10;
+
+}
+
+
+PowerStartTimeout (uint32 * startTimeOut, uint32 * elapsedTimeOut, uint32 * timeoutTicksOut, uint32 timeoutUs)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = OsIf_GetCounter (0);
+  *startTimeOut_5(D) = _1;
+  # DEBUG BEGIN_STMT
+  *elapsedTimeOut_7(D) = 0;
+  # DEBUG BEGIN_STMT
+  _2 = OsIf_MicrosToTicks (timeoutUs_9(D), 0);
+  *timeoutTicksOut_11(D) = _2;
+  return;
+
+}
+
+
+ReportPowerErrorsEmptyCallback (Power_Ip_PowerReportErrorType error, uint8 u8ErrorCode)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+ReportPowerErrors (Power_Ip_PowerReportErrorType error, uint8 u8ErrorCode)
+{
+  void (*<T4c6>) (Power_Ip_PowerReportErrorType, uint8) powerReportErrorsCallback.0_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  powerReportErrorsCallback.0_1 = powerReportErrorsCallback;
+  powerReportErrorsCallback.0_1 (error_3(D), u8ErrorCode_4(D));
+  return;
+
+}
+
+

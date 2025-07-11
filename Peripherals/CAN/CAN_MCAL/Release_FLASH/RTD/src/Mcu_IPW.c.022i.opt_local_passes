@@ -1,0 +1,136 @@
+Mcu_Ipw_SleepOnExit (Mcu_SleepOnExitType SleepOnExit)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (SleepOnExit_2(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Power_Ip_DisableSleepOnExit ();
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Power_Ip_EnableSleepOnExit ();
+
+  <bb 5> :
+  return;
+
+}
+
+
+Mcu_Ipw_GetResetRawValue ()
+{
+  Mcu_RawResetType _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _3 = Power_Ip_GetResetRawValue ();
+  return _3;
+
+}
+
+
+Mcu_Ipw_GetResetReason ()
+{
+  Mcu_ResetType _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _3 = Power_Ip_GetResetReason ();
+  return _3;
+
+}
+
+
+Mcu_Ipw_SetMode (const struct Mcu_ModeConfigType * Mcu_pModeConfigPtr)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Power_Ip_SetMode (Mcu_pModeConfigPtr_2(D));
+  return;
+
+}
+
+
+Mcu_Ipw_GetPllStatus ()
+{
+  Mcu_PllStatusType ePllStatus;
+  <unnamed type> _1;
+  Mcu_PllStatusType _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  switch (_1) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  ePllStatus_6 = 51;
+  # DEBUG ePllStatus => ePllStatus_6
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  ePllStatus_5 = 204;
+  # DEBUG ePllStatus => ePllStatus_5
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  ePllStatus_7 = 90;
+  # DEBUG ePllStatus => ePllStatus_7
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # ePllStatus_2 = PHI <ePllStatus_6(3), ePllStatus_5(4), ePllStatus_7(5)>
+  # DEBUG ePllStatus => ePllStatus_2
+  # DEBUG BEGIN_STMT
+  _8 = ePllStatus_2;
+  return _8;
+
+}
+
+
+Mcu_Ipw_DistributePllClock ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  return;
+
+}
+
+
+Mcu_Ipw_InitClock (const struct Mcu_ClockConfigType * Mcu_pClockConfigPtr)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_InitClock (Mcu_pClockConfigPtr_2(D));
+  return;
+
+}
+
+
+Mcu_Ipw_Init (const struct Mcu_HwIPsConfigType * Mcu_pHwIPsConfigPtr)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Power_Ip_InitReset (Mcu_pHwIPsConfigPtr_2(D));
+  # DEBUG BEGIN_STMT
+  Power_Ip_InitPower (Mcu_pHwIPsConfigPtr_2(D));
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

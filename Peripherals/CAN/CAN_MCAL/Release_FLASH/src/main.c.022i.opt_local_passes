@@ -1,0 +1,125 @@
+main ()
+{
+  struct Can_PduType TxData;
+  Can_ControllerStateType ctrStateType;
+  Std_ReturnType ret;
+  <unnamed type> _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ctrStateType_4 = 1;
+  # DEBUG ctrStateType => ctrStateType_4
+  # DEBUG BEGIN_STMT
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+  # DEBUG BEGIN_STMT
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  Port_Init (0B);
+  # DEBUG BEGIN_STMT
+  TxData = *.LC0;
+  # DEBUG BEGIN_STMT
+  Can_Init (&Can_Config_BOARD_InitPeripherals);
+  # DEBUG BEGIN_STMT
+  ret_13 = Can_SetControllerMode (0, ctrStateType_4);
+  # DEBUG ret => ret_13
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_15 = Can_Write (1, &TxData);
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  Can_MainFunction_Write ();
+  # DEBUG BEGIN_STMT
+  TestDelay (1000000);
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+  long unsigned int DelayTimer.0_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.1_3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DelayTimer.0_1 ={v} DelayTimer;
+  _2 = DelayTimer.0_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  DelayTimer.1_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.1_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  DelayTimer ={v} 0;
+  return;
+
+}
+
+
+CanIf_ControllerBusOff (uint8 ControllerId)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType * PduInfoPtr)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+CanIf_TxConfirmation (PduIdType CanTxPduId)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+CanIf_ControllerModeIndication (uint8 ControllerId, Can_ControllerStateType ControllerMode)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

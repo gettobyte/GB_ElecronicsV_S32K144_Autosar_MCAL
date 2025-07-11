@@ -43,7 +43,15 @@
 
 
 uint8 dummyData[8] = {0,1,2,3,4,5,6,7};
+PduInfoType * localreceivedData;
+Can_HwType * mailBoxid;
+uint8 receivedData1[8];
+uint8 receivedData2[8];
+uint8 receivedData3[8];
+uint8 receivedData4[8];
 
+//Flexcan_Ip_StateType * state = flexcanState;
+Flexcan_Ip_StatusType status;
 
 volatile int exit_code = 0;
 
@@ -60,8 +68,43 @@ void CanIf_TxConfirmation(PduIdType CanTxPduId)
 
 void CanIf_RxIndication( const Can_HwType * Mailbox, const PduInfoType * PduInfoPtr )
 {
-	(void) Mailbox;
-	(void) PduInfoPtr;
+	mailBoxid = Mailbox;
+
+	uint32 can_id = mailBoxid -> CanId;
+	//mailBoxid -> CanId;
+//
+	if (can_id == 0x310)
+	{
+	    localreceivedData = PduInfoPtr;
+	    for (int i = 0; i < 8; i++) {
+	        receivedData1[i] = localreceivedData->SduDataPtr[i];
+	    }
+	}
+
+	if (can_id == 0x320)
+	{
+	    localreceivedData = PduInfoPtr;
+	    for (int i = 0; i < 8; i++) {
+	        receivedData2[i] = localreceivedData->SduDataPtr[i];
+	    }
+	}
+
+	if (can_id == 0x330)
+	{
+	    localreceivedData = PduInfoPtr;
+	    for (int i = 0; i < 8; i++) {
+	        receivedData3[i] = localreceivedData->SduDataPtr[i];
+	    }
+	}
+
+	if (can_id == 0x340)
+	{
+	    localreceivedData = PduInfoPtr;
+	    for (int i = 0; i < 8; i++) {
+	        receivedData4[i] = localreceivedData->SduDataPtr[i];
+	    }
+	}
+
 }
 void CanIf_ControllerBusOff(uint8 ControllerId)
 {
@@ -119,11 +162,16 @@ int main(void)
     {
     	  ret = Can_Write(CanHardwareObject_1, &TxData);
     	        //CanHardwareObject_1 from CAN_Cfg.h file in generate file
-    		    Can_MainFunction_Write();
-    		    TestDelay(1000000);
 
+
+    	        Can_MainFunction_Write();
+    		    TestDelay(1000000);
     		    Can_MainFunction_Read();
-                TestDelay(1000000);
+//    		    if (FLEXCAN_MB_IDLE == state->mbs[mb_idx].state)
+//    		    {
+//    		    	status = FLEXCAN_STATUS_SUCCESS;
+//    		    }
+//               TestDelay(100000);
 
     }
     return 0;
