@@ -18,7 +18,7 @@
    <tools>
       <pins name="Pins" version="17.0" enabled="true" update_project_code="true">
          <generated_project_files>
-            <file path="board/Port_Ci_Port_Ip_Cfg.c" update_enabled="true"/>
+            <file path="board/Port_Ci_Port_Ip_Cfg.c" update_enabled="false"/>
             <file path="board/Port_Ci_Port_Ip_Cfg.h" update_enabled="true"/>
          </generated_project_files>
          <pins_profile>
@@ -284,11 +284,6 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
-            <dependency resourceType="Tool" resourceId="Clocks" description="The Clocks tool is required by the Peripherals tool, but it is disabled." problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data>true</data>
-               </feature>
-            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/Port_Ci_Port_Ip_Cfg.h" update_enabled="true"/>
@@ -486,7 +481,13 @@
                                  <array name="CanHwObjectUsesBlock"/>
                                  <setting name="CanHwObjectCount" value="1"/>
                                  <setting name="CanTimeStampEnable" value="false"/>
-                                 <array name="CanHwFilter"/>
+                                 <array name="CanHwFilter">
+                                    <struct name="0">
+                                       <setting name="Name" value="Can_aHwFilter_Object_0"/>
+                                       <setting name="CanHwFilterCode" value="0"/>
+                                       <setting name="CanHwFilterMask" value="0"/>
+                                    </struct>
+                                 </array>
                                  <array name="CanTTHardwareObjectTrigger"/>
                               </struct>
                            </array>
@@ -1163,7 +1164,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="CanIf_1" uuid="0639ca68-c062-4bd7-917d-f18ea66a8408" type="CanIf" type_id="CanIf" mode="general" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="CanIf_1" uuid="a4b1dec1-28a8-4c40-9303-cc8000b6fc1f" type="CanIf" type_id="CanIf" mode="general" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="CanIf" quick_selection="Default">
                         <setting name="Name" value="CanIf"/>
                         <array name="CanIfCtrlDrvCfg">

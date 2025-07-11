@@ -1,0 +1,606 @@
+Port_Ci_Port_Ip_SetGlobalPinControl (struct PORT_Type * const base, uint16 pins, uint16 value, Port_Ci_Port_Ip_PortGlobalControlPins halfPort)
+{
+  uint16 mask;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  mask_10 = 0;
+  # DEBUG mask => mask_10
+  # DEBUG BEGIN_STMT
+  mask_11 = mask_10 | 1;
+  # DEBUG mask => mask_11
+  # DEBUG BEGIN_STMT
+  mask_12 = mask_11 | 2;
+  # DEBUG mask => mask_12
+  # DEBUG BEGIN_STMT
+  mask_13 = mask_12 | 16;
+  # DEBUG mask => mask_13
+  # DEBUG BEGIN_STMT
+  mask_14 = mask_13 | 64;
+  # DEBUG mask => mask_14
+  # DEBUG BEGIN_STMT
+  mask_15 = mask_14 | 1792;
+  # DEBUG mask => mask_15
+  # DEBUG BEGIN_STMT
+  mask_16 = mask_15 | 32768;
+  # DEBUG mask => mask_16
+  # DEBUG BEGIN_STMT
+  mask_18 = mask_16 & value_17(D);
+  # DEBUG mask => mask_18
+  # DEBUG BEGIN_STMT
+  switch (halfPort_19(D)) <default: <L4> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) pins_21(D);
+  _2 = _1 << 16;
+  _3 = (long unsigned int) mask_18;
+  _4 = _2 | _3;
+  base_22(D)->GPCLR ={v} _4;
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _5 = (long unsigned int) pins_21(D);
+  _6 = _5 << 16;
+  _7 = (long unsigned int) mask_18;
+  _8 = _6 | _7;
+  base_22(D)->GPCHR ={v} _8;
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+<L4>:
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_ConfigDigitalFilter (struct PORT_Type * const base, const struct Port_Ci_Port_Ip_DigitalFilterConfigType * config)
+{
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned char _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_8(D)->u8Clock;
+  _2 = (long unsigned int) _1;
+  _3 = _2 & 1;
+  base_9(D)->DFCR ={v} _3;
+  # DEBUG BEGIN_STMT
+  _4 = config_8(D)->u8Width;
+  _5 = (long unsigned int) _4;
+  _6 = _5 & 31;
+  base_9(D)->DFWR ={v} _6;
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_DisableDigitalFilter (struct PORT_Type * const base, uint32 pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_7(D)->DFER;
+  _2 = 1 << pin_8(D);
+  _3 = ~_2;
+  _4 = _1 & _3;
+  base_7(D)->DFER ={v} _4;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_08 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_EnableDigitalFilter (struct PORT_Type * const base, uint32 pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_6(D)->DFER;
+  _2 = 1 << pin_7(D);
+  _3 = _1 | _2;
+  base_6(D)->DFER ={v} _3;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_07 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetMuxModeSel (struct PORT_Type * const base, uint32 pin, Port_Ci_Port_Ip_PortMux mux)
+{
+  uint32 regValue;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_06 ();
+  # DEBUG BEGIN_STMT
+  regValue_7 ={v} base_5(D)->PCR[pin_6(D)];
+  # DEBUG regValue => regValue_7
+  # DEBUG BEGIN_STMT
+  regValue_8 = regValue_7 & 4294965503;
+  # DEBUG regValue => regValue_8
+  # DEBUG BEGIN_STMT
+  _1 = mux_9(D) << 8;
+  _2 = _1 & 1792;
+  regValue_10 = regValue_8 | _2;
+  # DEBUG regValue => regValue_10
+  # DEBUG BEGIN_STMT
+  base_5(D)->PCR[pin_6(D)] ={v} regValue_10;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_06 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_Init (uint32 pinCount, const struct Port_Ci_Port_Ip_PinSettingsConfig * config)
+{
+  uint32 i;
+  long unsigned int _1;
+  const struct Port_Ci_Port_Ip_PinSettingsConfig * _2;
+  Port_Ci_Port_Ip_PortStatusType _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i_5 = 0;
+  # DEBUG i => i_5
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = i_3 * 40;
+  _2 = config_9(D) + _1;
+  Port_Ci_Port_Ip_PinInit (_2);
+  # DEBUG BEGIN_STMT
+  i_11 = i_3 + 1;
+  # DEBUG i => i_11
+
+  <bb 4> :
+  # i_3 = PHI <i_5(2), i_11(3)>
+  # DEBUG i => i_3
+  # DEBUG BEGIN_STMT
+  if (i_3 < pinCount_7(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _8 = 0;
+  return _8;
+
+}
+
+
+Port_Ci_Port_Ip_SetDFER (struct PORT_Type * base, uint32 pinMask)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_5(D)->DFER;
+  _2 = pinMask_6(D) | _1;
+  base_5(D)->DFER ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_05 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPIDR (struct GPIO_Type * base, uint32 Pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_5(D)->PIDR;
+  _2 = Pin_6(D) | _1;
+  base_5(D)->PIDR ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_ClearPDDR (struct GPIO_Type * base, uint32 Pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_6(D)->PDDR;
+  _2 = ~Pin_7(D);
+  _3 = _1 & _2;
+  base_6(D)->PDDR ={v} _3;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPDDR (struct GPIO_Type * base, uint32 Pin)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_5(D)->PDDR;
+  _2 = Pin_6(D) | _1;
+  base_5(D)->PDDR ={v} _2;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02 ();
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPCOR (struct GPIO_Type * base, uint32 Pin)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  base_2(D)->PCOR ={v} Pin_3(D);
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPSOR (struct GPIO_Type * base, uint32 Pin)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  base_2(D)->PSOR ={v} Pin_3(D);
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_SetPCR (struct PORT_Type * base, uint32 MscrInstance, uint32 value)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  base_2(D)->PCR[MscrInstance_3(D)] ={v} value_4(D);
+  return;
+
+}
+
+
+Port_Ci_Port_Ip_ReadPCR (const struct PORT_Type * base, uint32 MscrInstance)
+{
+  uint32 _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 ={v} base_2(D)->PCR[MscrInstance_3(D)];
+  return _4;
+
+}
+
+
+Port_Ci_Port_Ip_PinInit (const struct Port_Ci_Port_Ip_PinSettingsConfig * config)
+{
+  uint32 digitalFilters;
+  uint32 pinsValues;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  long unsigned int _3;
+  <unnamed type> _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  <unnamed type> _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  _Bool _10;
+  <unnamed type> _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  struct PORT_Type * _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  _Bool _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  struct PORT_Type * _21;
+  <unnamed type> _22;
+  <unnamed type> _23;
+  unsigned char _24;
+  struct GPIO_Type * _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  struct GPIO_Type * _29;
+  long unsigned int _30;
+  unsigned char _31;
+  struct GPIO_Type * _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  struct GPIO_Type * _36;
+  long unsigned int _37;
+  struct GPIO_Type * _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  struct GPIO_Type * _42;
+  long unsigned int _43;
+  struct GPIO_Type * _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  struct GPIO_Type * _49;
+  long unsigned int _50;
+  <unnamed type> _51;
+  struct GPIO_Type * _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  struct GPIO_Type * _56;
+  long unsigned int _57;
+  struct PORT_Type * _58;
+  long unsigned int _59;
+  long unsigned int iftmp.0_61;
+  long unsigned int iftmp.1_62;
+  long unsigned int iftmp.0_72;
+  long unsigned int iftmp.0_73;
+  long unsigned int iftmp.1_79;
+  long unsigned int iftmp.1_80;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pinsValues_65 = 0;
+  # DEBUG pinsValues => pinsValues_65
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_67(D)->pullConfig;
+  if (_1 != 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pinsValues_68 = pinsValues_65 | 2;
+  # DEBUG pinsValues => pinsValues_68
+  # DEBUG BEGIN_STMT
+  _2 = config_67(D)->pullConfig;
+  _3 = _2 & 1;
+  pinsValues_69 = pinsValues_68 | _3;
+  # DEBUG pinsValues => pinsValues_69
+
+  <bb 4> :
+  # pinsValues_60 = PHI <pinsValues_65(2), pinsValues_69(3)>
+  # DEBUG pinsValues => pinsValues_60
+  # DEBUG BEGIN_STMT
+  _4 = config_67(D)->driveStrength;
+  _5 = _4 << 6;
+  _6 = _5 & 64;
+  pinsValues_70 = pinsValues_60 | _6;
+  # DEBUG pinsValues => pinsValues_70
+  # DEBUG BEGIN_STMT
+  _7 = config_67(D)->lockRegister;
+  _8 = _7 << 15;
+  _9 = _8 & 65535;
+  pinsValues_71 = pinsValues_70 | _9;
+  # DEBUG pinsValues => pinsValues_71
+  # DEBUG BEGIN_STMT
+  _10 = config_67(D)->passiveFilter;
+  if (_10 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.0_73 = 16;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.0_72 = 0;
+
+  <bb 7> :
+  # iftmp.0_61 = PHI <iftmp.0_73(5), iftmp.0_72(6)>
+  pinsValues_74 = iftmp.0_61 | pinsValues_71;
+  # DEBUG pinsValues => pinsValues_74
+  # DEBUG BEGIN_STMT
+  _11 = config_67(D)->mux;
+  _12 = _11 << 8;
+  _13 = _12 & 1792;
+  pinsValues_75 = pinsValues_74 | _13;
+  # DEBUG pinsValues => pinsValues_75
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  _14 = config_67(D)->portBase;
+  digitalFilters_77 ={v} _14->DFER;
+  # DEBUG digitalFilters => digitalFilters_77
+  # DEBUG BEGIN_STMT
+  _15 = config_67(D)->pinPortIdx;
+  _16 = 1 << _15;
+  _17 = ~_16;
+  digitalFilters_78 = digitalFilters_77 & _17;
+  # DEBUG digitalFilters => digitalFilters_78
+  # DEBUG BEGIN_STMT
+  _18 = config_67(D)->digitalFilter;
+  if (_18 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.1_80 = 1;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.1_79 = 0;
+
+  <bb 10> :
+  # iftmp.1_62 = PHI <iftmp.1_80(8), iftmp.1_79(9)>
+  _19 = config_67(D)->pinPortIdx;
+  _20 = iftmp.1_62 << _19;
+  digitalFilters_81 = digitalFilters_78 | _20;
+  # DEBUG digitalFilters => digitalFilters_81
+  # DEBUG BEGIN_STMT
+  _21 = config_67(D)->portBase;
+  _21->DFER ={v} digitalFilters_81;
+  # DEBUG BEGIN_STMT
+  _22 = config_67(D)->mux;
+  if (_22 == 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _23 = config_67(D)->direction;
+  if (_23 == 2)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _24 = config_67(D)->initValue;
+  if (_24 == 1)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _25 = config_67(D)->gpioBase;
+  _26 ={v} _25->PSOR;
+  _27 = config_67(D)->pinPortIdx;
+  _28 = 1 << _27;
+  _29 = config_67(D)->gpioBase;
+  _30 = _26 | _28;
+  _29->PSOR ={v} _30;
+  goto <bb 16>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _31 = config_67(D)->initValue;
+  if (_31 == 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _32 = config_67(D)->gpioBase;
+  _33 ={v} _32->PCOR;
+  _34 = config_67(D)->pinPortIdx;
+  _35 = 1 << _34;
+  _36 = config_67(D)->gpioBase;
+  _37 = _33 | _35;
+  _36->PCOR ={v} _37;
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _38 = config_67(D)->gpioBase;
+  _39 ={v} _38->PDDR;
+  _40 = config_67(D)->pinPortIdx;
+  _41 = 1 << _40;
+  _42 = config_67(D)->gpioBase;
+  _43 = _39 | _41;
+  _42->PDDR ={v} _43;
+  goto <bb 19>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  _44 = config_67(D)->gpioBase;
+  _45 ={v} _44->PDDR;
+  _46 = config_67(D)->pinPortIdx;
+  _47 = 1 << _46;
+  _48 = ~_47;
+  _49 = config_67(D)->gpioBase;
+  _50 = _45 & _48;
+  _49->PDDR ={v} _50;
+  # DEBUG BEGIN_STMT
+  _51 = config_67(D)->direction;
+  if (_51 == 3)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  _52 = config_67(D)->gpioBase;
+  _53 ={v} _52->PIDR;
+  _54 = config_67(D)->pinPortIdx;
+  _55 = 1 << _54;
+  _56 = config_67(D)->gpioBase;
+  _57 = _53 | _55;
+  _56->PIDR ={v} _57;
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  _58 = config_67(D)->portBase;
+  _59 = config_67(D)->pinPortIdx;
+  _58->PCR[_59] ={v} pinsValues_75;
+  return;
+
+}
+
+

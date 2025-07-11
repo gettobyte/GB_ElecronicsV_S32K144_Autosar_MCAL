@@ -1,0 +1,62 @@
+Power_Ip_PMC_PowerInit (const struct Power_Ip_PMC_ConfigType * pConfigPtr)
+{
+  uint8 u8Tmp;
+  struct PMC_Type * _1;
+  unsigned char _2;
+  struct PMC_Type * _3;
+  struct PMC_Type * _4;
+  unsigned char _5;
+  struct PMC_Type * _6;
+  struct PMC_Type * _7;
+  unsigned char _8;
+  struct PMC_Type * _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074253824B;
+  u8Tmp_11 ={v} _1->LVDSC1;
+  # DEBUG u8Tmp => u8Tmp_11
+  # DEBUG BEGIN_STMT
+  u8Tmp_12 = u8Tmp_11 & 15;
+  # DEBUG u8Tmp => u8Tmp_12
+  # DEBUG BEGIN_STMT
+  _2 = pConfigPtr_13(D)->u8Lvdsc1;
+  u8Tmp_14 = u8Tmp_12 | _2;
+  # DEBUG u8Tmp => u8Tmp_14
+  # DEBUG BEGIN_STMT
+  _3 = 1074253824B;
+  _3->LVDSC1 ={v} u8Tmp_14;
+  # DEBUG BEGIN_STMT
+  _4 = 1074253824B;
+  u8Tmp_16 ={v} _4->LVDSC2;
+  # DEBUG u8Tmp => u8Tmp_16
+  # DEBUG BEGIN_STMT
+  u8Tmp_17 = u8Tmp_16 & 31;
+  # DEBUG u8Tmp => u8Tmp_17
+  # DEBUG BEGIN_STMT
+  _5 = pConfigPtr_13(D)->u8Lvdsc2;
+  u8Tmp_18 = u8Tmp_17 | _5;
+  # DEBUG u8Tmp => u8Tmp_18
+  # DEBUG BEGIN_STMT
+  _6 = 1074253824B;
+  _6->LVDSC2 ={v} u8Tmp_18;
+  # DEBUG BEGIN_STMT
+  _7 = 1074253824B;
+  u8Tmp_20 ={v} _7->REGSC;
+  # DEBUG u8Tmp => u8Tmp_20
+  # DEBUG BEGIN_STMT
+  u8Tmp_21 = u8Tmp_20 & 56;
+  # DEBUG u8Tmp => u8Tmp_21
+  # DEBUG BEGIN_STMT
+  _8 = pConfigPtr_13(D)->u8Regsc;
+  u8Tmp_22 = u8Tmp_21 | _8;
+  # DEBUG u8Tmp => u8Tmp_22
+  # DEBUG BEGIN_STMT
+  _9 = 1074253824B;
+  _9->REGSC ={v} u8Tmp_22;
+  return;
+
+}
+
+

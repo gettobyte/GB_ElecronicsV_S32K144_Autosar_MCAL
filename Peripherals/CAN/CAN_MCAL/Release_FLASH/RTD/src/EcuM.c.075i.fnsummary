@@ -1,0 +1,133 @@
+
+Analyzing function: EcuM_CheckWakeup/3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EcuM_CheckWakeup
+
+IPA function summary for EcuM_CheckWakeup/3 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: EcuM_ValidateWakeupEvent/2
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EcuM_ValidateWakeupEvent
+
+IPA function summary for EcuM_ValidateWakeupEvent/2 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: EcuM_SetWakeupEvent/1
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EcuM_SetWakeupEvent
+
+IPA function summary for EcuM_SetWakeupEvent/1 inlinable
+  global time:     3.000000
+  self size:       4
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:1.000000, time:1.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+Symbol table:
+
+EcuM_CheckWakeup/3 (EcuM_CheckWakeup) @05b9ad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EcuM_ValidateWakeupEvent/2 (1073741824 (estimated locally),1.00 per call) 
+EcuM_ValidateWakeupEvent/2 (EcuM_ValidateWakeupEvent) @05b9aa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: EcuM_CheckWakeup/3 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EcuM_SetWakeupEvent/1 (EcuM_SetWakeupEvent) @05b9a7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: EcuMLastWakeupEvent/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EcuMLastWakeupEvent/0 (EcuMLastWakeupEvent) @05b9b3f0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: EcuM_SetWakeupEvent/1 (write)
+  Availability: available
+  Varpool flags:
+EcuM_CheckWakeup (EcuM_WakeupSourceType wakeupSource)
+{
+  <bb 2> [local count: 1073741824]:
+  EcuM_ValidateWakeupEvent (wakeupSource_1(D)); [tail call]
+  return;
+
+}
+
+
+EcuM_ValidateWakeupEvent (EcuM_WakeupSourceType events)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EcuM_SetWakeupEvent (EcuM_WakeupSourceType events)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  EcuMLastWakeupEvent = events_2(D);
+  return;
+
+}
+
+

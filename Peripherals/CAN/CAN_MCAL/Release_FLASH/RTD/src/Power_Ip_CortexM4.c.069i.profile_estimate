@@ -1,0 +1,89 @@
+Histogram:
+Power_Ip_CM4_DisableDeepSleep ()
+{
+  uint32 tempValue;
+  struct Power_Ip_CM4_Type * pCM4.6_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG tempValue => 0
+  # DEBUG BEGIN_STMT
+  pCM4.6_1 = pCM4;
+  tempValue_3 ={v} pCM4.6_1->SCR;
+  # DEBUG tempValue => tempValue_3
+  # DEBUG BEGIN_STMT
+  tempValue_4 = tempValue_3 & 4294967291;
+  # DEBUG tempValue => tempValue_4
+  # DEBUG BEGIN_STMT
+  pCM4.6_1->SCR ={v} tempValue_4;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableDeepSleep ()
+{
+  uint32 tempValue;
+  struct Power_Ip_CM4_Type * pCM4.4_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG tempValue => 0
+  # DEBUG BEGIN_STMT
+  pCM4.4_1 = pCM4;
+  tempValue_3 ={v} pCM4.4_1->SCR;
+  # DEBUG tempValue => tempValue_3
+  # DEBUG BEGIN_STMT
+  tempValue_4 = tempValue_3 | 4;
+  # DEBUG tempValue => tempValue_4
+  # DEBUG BEGIN_STMT
+  pCM4.4_1->SCR ={v} tempValue_4;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableSleepOnExit ()
+{
+  uint32 tempValue;
+  struct Power_Ip_CM4_Type * pCM4.2_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG tempValue => 0
+  # DEBUG BEGIN_STMT
+  pCM4.2_1 = pCM4;
+  tempValue_3 ={v} pCM4.2_1->SCR;
+  # DEBUG tempValue => tempValue_3
+  # DEBUG BEGIN_STMT
+  tempValue_4 = tempValue_3 | 2;
+  # DEBUG tempValue => tempValue_4
+  # DEBUG BEGIN_STMT
+  pCM4.2_1->SCR ={v} tempValue_4;
+  return;
+
+}
+
+
+Power_Ip_CM4_DisableSleepOnExit ()
+{
+  uint32 tempValue;
+  struct Power_Ip_CM4_Type * pCM4.0_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG tempValue => 0
+  # DEBUG BEGIN_STMT
+  pCM4.0_1 = pCM4;
+  tempValue_3 ={v} pCM4.0_1->SCR;
+  # DEBUG tempValue => tempValue_3
+  # DEBUG BEGIN_STMT
+  tempValue_4 = tempValue_3 & 4294967293;
+  # DEBUG tempValue => tempValue_4
+  # DEBUG BEGIN_STMT
+  pCM4.0_1->SCR ={v} tempValue_4;
+  return;
+
+}
+
+

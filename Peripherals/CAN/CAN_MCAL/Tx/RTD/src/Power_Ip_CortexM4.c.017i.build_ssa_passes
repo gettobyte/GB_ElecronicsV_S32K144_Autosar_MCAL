@@ -1,0 +1,64 @@
+Power_Ip_CM4_DisableDeepSleep ()
+{
+  uint32 tempValue;
+
+  <bb 2> :
+  tempValue = 0;
+  pCM4.6_1 = pCM4;
+  tempValue = pCM4.6_1->SCR;
+  tempValue = tempValue & 4294967291;
+  pCM4.7_2 = pCM4;
+  pCM4.7_2->SCR = tempValue;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableDeepSleep ()
+{
+  uint32 tempValue;
+
+  <bb 2> :
+  tempValue = 0;
+  pCM4.4_1 = pCM4;
+  tempValue = pCM4.4_1->SCR;
+  tempValue = tempValue | 4;
+  pCM4.5_2 = pCM4;
+  pCM4.5_2->SCR = tempValue;
+  return;
+
+}
+
+
+Power_Ip_CM4_EnableSleepOnExit ()
+{
+  uint32 tempValue;
+
+  <bb 2> :
+  tempValue = 0;
+  pCM4.2_1 = pCM4;
+  tempValue = pCM4.2_1->SCR;
+  tempValue = tempValue | 2;
+  pCM4.3_2 = pCM4;
+  pCM4.3_2->SCR = tempValue;
+  return;
+
+}
+
+
+Power_Ip_CM4_DisableSleepOnExit ()
+{
+  uint32 tempValue;
+
+  <bb 2> :
+  tempValue = 0;
+  pCM4.0_1 = pCM4;
+  tempValue = pCM4.0_1->SCR;
+  tempValue = tempValue & 4294967293;
+  pCM4.1_2 = pCM4;
+  pCM4.1_2->SCR = tempValue;
+  return;
+
+}
+
+

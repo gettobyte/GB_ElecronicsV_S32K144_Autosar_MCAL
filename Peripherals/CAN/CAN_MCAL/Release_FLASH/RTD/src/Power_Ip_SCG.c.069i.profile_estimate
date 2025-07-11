@@ -1,0 +1,37 @@
+Histogram:
+Power_Ip_SCG_DisableSpllClock ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _2 = _1 & 4294967294;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _2;
+  return;
+
+}
+
+
+Power_Ip_SCG_DisableClockMonitors ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct SCG_Type *)1074151424B].SOSCCSR;
+  _2 = _1 & 4294901759;
+  MEM[(struct SCG_Type *)1074151424B].SOSCCSR ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct SCG_Type *)1074151424B].SPLLCSR;
+  _4 = _3 & 4294901759;
+  MEM[(struct SCG_Type *)1074151424B].SPLLCSR ={v} _4;
+  return;
+
+}
+
+

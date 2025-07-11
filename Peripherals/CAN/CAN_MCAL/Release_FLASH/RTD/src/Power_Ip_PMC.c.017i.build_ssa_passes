@@ -1,0 +1,44 @@
+Power_Ip_PMC_PowerInit (const struct Power_Ip_PMC_ConfigType * pConfigPtr)
+{
+  uint8 u8Tmp;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074253824B;
+  u8Tmp = _1->LVDSC1;
+  # DEBUG BEGIN_STMT
+  u8Tmp = u8Tmp & 15;
+  # DEBUG BEGIN_STMT
+  _2 = pConfigPtr->u8Lvdsc1;
+  u8Tmp = u8Tmp | _2;
+  # DEBUG BEGIN_STMT
+  _3 = 1074253824B;
+  _3->LVDSC1 = u8Tmp;
+  # DEBUG BEGIN_STMT
+  _4 = 1074253824B;
+  u8Tmp = _4->LVDSC2;
+  # DEBUG BEGIN_STMT
+  u8Tmp = u8Tmp & 31;
+  # DEBUG BEGIN_STMT
+  _5 = pConfigPtr->u8Lvdsc2;
+  u8Tmp = u8Tmp | _5;
+  # DEBUG BEGIN_STMT
+  _6 = 1074253824B;
+  _6->LVDSC2 = u8Tmp;
+  # DEBUG BEGIN_STMT
+  _7 = 1074253824B;
+  u8Tmp = _7->REGSC;
+  # DEBUG BEGIN_STMT
+  u8Tmp = u8Tmp & 56;
+  # DEBUG BEGIN_STMT
+  _8 = pConfigPtr->u8Regsc;
+  u8Tmp = u8Tmp | _8;
+  # DEBUG BEGIN_STMT
+  _9 = 1074253824B;
+  _9->REGSC = u8Tmp;
+  return;
+
+}
+
+

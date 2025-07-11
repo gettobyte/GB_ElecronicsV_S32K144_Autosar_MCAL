@@ -1,0 +1,235 @@
+main ()
+{
+  struct Can_PduType TxData;
+  Can_ControllerStateType ctrStateType;
+  Std_ReturnType ret;
+  int D.7538;
+  <unnamed type> _1;
+
+  <bb 2> :
+  ctrStateType_4 = 1;
+  Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
+
+  <bb 3> :
+  _1 = Clock_Ip_GetPllStatus ();
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  Clock_Ip_DistributePll ();
+  Port_Init (0B);
+  TxData = *.LC0;
+  Can_Init (&Can_Config_BOARD_InitPeripherals);
+  ret_13 = Can_SetControllerMode (0, ctrStateType_4);
+
+  <bb 5> :
+  ret_15 = Can_Write (1, &TxData);
+  Can_MainFunction_Write ();
+  TestDelay (1000000);
+  Can_MainFunction_Read ();
+  goto <bb 5>; [INV]
+
+}
+
+
+TestDelay (uint32 delay)
+{
+  static volatile uint32 DelayTimer = 0;
+  long unsigned int DelayTimer.9_1;
+  long unsigned int _2;
+  long unsigned int DelayTimer.10_3;
+
+  <bb 2> :
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  DelayTimer.9_1 ={v} DelayTimer;
+  _2 = DelayTimer.9_1 + 1;
+  DelayTimer ={v} _2;
+
+  <bb 4> :
+  DelayTimer.10_3 ={v} DelayTimer;
+  if (delay_6(D) > DelayTimer.10_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  DelayTimer ={v} 0;
+  return;
+
+}
+
+
+CanIf_ControllerBusOff (uint8 ControllerId)
+{
+  <bb 2> :
+  return;
+
+}
+
+
+CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType * PduInfoPtr)
+{
+  int i;
+  int i;
+  int i;
+  int i;
+  uint32 can_id;
+  struct Can_HwType * mailBoxid.0_1;
+  struct PduInfoType * localreceivedData.1_2;
+  uint8 * _3;
+  sizetype i.2_4;
+  uint8 * _5;
+  unsigned char _6;
+  struct PduInfoType * localreceivedData.3_7;
+  uint8 * _8;
+  sizetype i.4_9;
+  uint8 * _10;
+  unsigned char _11;
+  struct PduInfoType * localreceivedData.5_12;
+  uint8 * _13;
+  sizetype i.6_14;
+  uint8 * _15;
+  unsigned char _16;
+  struct PduInfoType * localreceivedData.7_17;
+  uint8 * _18;
+  sizetype i.8_19;
+  uint8 * _20;
+  unsigned char _21;
+
+  <bb 2> :
+  mailBoxid = Mailbox_35(D);
+  mailBoxid.0_1 = mailBoxid;
+  can_id_37 = mailBoxid.0_1->CanId;
+  if (can_id_37 == 784)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  localreceivedData = PduInfoPtr_38(D);
+  i_40 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  localreceivedData.1_2 = localreceivedData;
+  _3 = localreceivedData.1_2->SduDataPtr;
+  i.2_4 = (sizetype) i_22;
+  _5 = _3 + i.2_4;
+  _6 = *_5;
+  receivedData1[i_22] = _6;
+  i_42 = i_22 + 1;
+
+  <bb 5> :
+  # i_22 = PHI <i_40(3), i_42(4)>
+  if (i_22 <= 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  if (can_id_37 == 800)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  localreceivedData = PduInfoPtr_38(D);
+  i_44 = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  localreceivedData.3_7 = localreceivedData;
+  _8 = localreceivedData.3_7->SduDataPtr;
+  i.4_9 = (sizetype) i_23;
+  _10 = _8 + i.4_9;
+  _11 = *_10;
+  receivedData2[i_23] = _11;
+  i_46 = i_23 + 1;
+
+  <bb 9> :
+  # i_23 = PHI <i_44(7), i_46(8)>
+  if (i_23 <= 7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  if (can_id_37 == 816)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 11> :
+  localreceivedData = PduInfoPtr_38(D);
+  i_48 = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  localreceivedData.5_12 = localreceivedData;
+  _13 = localreceivedData.5_12->SduDataPtr;
+  i.6_14 = (sizetype) i_24;
+  _15 = _13 + i.6_14;
+  _16 = *_15;
+  receivedData3[i_24] = _16;
+  i_50 = i_24 + 1;
+
+  <bb 13> :
+  # i_24 = PHI <i_48(11), i_50(12)>
+  if (i_24 <= 7)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  if (can_id_37 == 832)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 15> :
+  localreceivedData = PduInfoPtr_38(D);
+  i_52 = 0;
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  localreceivedData.7_17 = localreceivedData;
+  _18 = localreceivedData.7_17->SduDataPtr;
+  i.8_19 = (sizetype) i_25;
+  _20 = _18 + i.8_19;
+  _21 = *_20;
+  receivedData4[i_25] = _21;
+  i_54 = i_25 + 1;
+
+  <bb 17> :
+  # i_25 = PHI <i_52(15), i_54(16)>
+  if (i_25 <= 7)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  return;
+
+}
+
+
+CanIf_TxConfirmation (PduIdType CanTxPduId)
+{
+  <bb 2> :
+  return;
+
+}
+
+
+CanIf_ControllerModeIndication (uint8 ControllerId, Can_ControllerStateType ControllerMode)
+{
+  <bb 2> :
+  return;
+
+}
+
+

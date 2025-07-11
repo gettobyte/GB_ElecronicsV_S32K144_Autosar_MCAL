@@ -1,0 +1,178 @@
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1
+
+Symbols to be put in SSA form
+{ D.6239 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 9
+Number of blocks to update: 8 ( 89%)
+
+
+sys_m4_cache_init.constprop ()
+{
+  uint8 RetValue;
+  uint8 cache;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  signed int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 8> [local count: 236223200]:
+  # DEBUG cache => 0
+
+  <bb 2> [local count: 236223200]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RetValue => 0
+  # DEBUG BEGIN_STMT
+  if (1 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 3> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct LMEM_Type *)3758628864B].PCCCR ={v} 83886080;
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct LMEM_Type *)3758628864B].PCCCR;
+  _2 = _1 | 2147483648;
+  MEM[(struct LMEM_Type *)3758628864B].PCCCR ={v} _2;
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct LMEM_Type *)3758628864B].PCCCR;
+  _4 = (signed int) _3;
+  if (_4 < 0)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 6>; [11.00%]
+
+  <bb 5> [local count: 955630223]:
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct LMEM_Type *)3758628864B].PCCCR;
+  _6 = _5 | 1;
+  MEM[(struct LMEM_Type *)3758628864B].PCCCR ={v} _6;
+
+  <bb 7> [local count: 236223201]:
+  # RetValue_7 = PHI <1(2), 0(6)>
+  # DEBUG RetValue => RetValue_7
+  # DEBUG BEGIN_STMT
+  return RetValue_7;
+
+}
+
+
+__attribute__((section (".systeminit")))
+SystemInit ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CPACR;
+  _2 = _1 | 15728640;
+  MEM[(struct S32_SCB_Type *)3758153728B].CPACR ={v} _2;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CCR;
+  _4 = _3 | 1;
+  MEM[(struct S32_SCB_Type *)3758153728B].CCR ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct S32_SCB_Type *)3758153728B].SHPR3;
+  _6 = _5 & 4278255615;
+  MEM[(struct S32_SCB_Type *)3758153728B].SHPR3 ={v} _6;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].MPRA ={v} 2004318071;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].PACRA ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].PACRB ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].PACRD ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[0] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[1] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[2] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[3] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[4] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[5] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[6] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[7] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[8] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[9] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[10] ={v} 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct AIPS_Type *)1073741824B].OPACR[11] ={v} 0;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  sys_m4_cache_init (0);
+  return;
+
+}
+
+
+Sys_GetCoreID ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+default_interrupt_routine ()
+{
+  <bb 2> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+}
+
+
+startup_go_to_user_mode ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

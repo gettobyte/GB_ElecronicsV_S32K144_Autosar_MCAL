@@ -1,0 +1,194 @@
+Power_Ip_InstallNotificationsCallback (void (*Power_Ip_ReportErrorsCallbackType) (Power_Ip_PowerReportErrorType, uint8) reportErrorsCallback)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  powerReportErrorsCallback = reportErrorsCallback_2(D);
+  return;
+
+}
+
+
+Power_Ip_EnableSleepOnExit ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Power_Ip_CM4_EnableSleepOnExit ();
+  return;
+
+}
+
+
+Power_Ip_DisableSleepOnExit ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Power_Ip_CM4_DisableSleepOnExit ();
+  return;
+
+}
+
+
+Power_Ip_InitPower (const struct Power_Ip_HwIPsConfigType * Power_Ip_pHwIPsConfigPtr)
+{
+  const struct Power_Ip_PMC_ConfigType * _1;
+  const struct Power_Ip_SMC_ConfigType * _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Power_Ip_pHwIPsConfigPtr_4(D)->PMC_pConfig;
+  Power_Ip_PMC_PowerInit (_1);
+  # DEBUG BEGIN_STMT
+  _2 = Power_Ip_pHwIPsConfigPtr_4(D)->SMC_pConfig;
+  Power_Ip_SMC_AllowedModesConfig (_2);
+  return;
+
+}
+
+
+Power_Ip_InitReset (const struct Power_Ip_HwIPsConfigType * Power_Ip_pHwIPsConfigPtr)
+{
+  const struct Power_Ip_RCM_ConfigType * _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Power_Ip_pHwIPsConfigPtr_3(D)->RCM_pConfig;
+  Power_Ip_RCM_ResetInit (_1);
+  return;
+
+}
+
+
+Power_Ip_GetResetRawValue ()
+{
+  Power_Ip_RawResetType ResetReason;
+  Power_Ip_RawResetType _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ResetReason_3 = Power_Ip_RCM_GetResetRawValue ();
+  # DEBUG ResetReason => ResetReason_3
+  # DEBUG BEGIN_STMT
+  _4 = ResetReason_3;
+  return _4;
+
+}
+
+
+Power_Ip_GetResetReason ()
+{
+  uint32 resetVal;
+  Power_Ip_ResetType eResetReason;
+  Power_Ip_ResetType _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eResetReason_1 = 14;
+  # DEBUG eResetReason => eResetReason_1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  resetVal_4 = Power_Ip_RCM_GetResetReason ();
+  # DEBUG resetVal => resetVal_4
+  # DEBUG BEGIN_STMT
+  eResetReason_6 = Power_Ip_ConvertIntergeToResetType (resetVal_4);
+  # DEBUG eResetReason => eResetReason_6
+  # DEBUG BEGIN_STMT
+  _7 = eResetReason_6;
+  return _7;
+
+}
+
+
+Power_Ip_ConvertIntergeToResetType (uint32 resetReasonIndex)
+{
+  static const Power_Ip_ResetType resetReasonArray[15] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+  Power_Ip_ResetType eResetReason;
+  <unnamed type> _1;
+  Power_Ip_ResetType _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eResetReason_3 = 12;
+  # DEBUG eResetReason => eResetReason_3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = resetReasonArray[resetReasonIndex_5(D)];
+  if (_1 <= 14)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  eResetReason_7 = resetReasonArray[resetReasonIndex_5(D)];
+  # DEBUG eResetReason => eResetReason_7
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  eResetReason_6 = 12;
+  # DEBUG eResetReason => eResetReason_6
+
+  <bb 5> :
+  # eResetReason_2 = PHI <eResetReason_7(3), eResetReason_6(4)>
+  # DEBUG eResetReason => eResetReason_2
+  # DEBUG BEGIN_STMT
+  _8 = eResetReason_2;
+  return _8;
+
+}
+
+
+Power_Ip_SetMode (const struct Power_Ip_ModeConfigType * Power_Ip_pModeConfigPtr)
+{
+  Power_Ip_PowerModeType ePowerMode;
+  uint32 ePowerSwitchMode;
+  <unnamed type> _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ePowerMode_7 = Power_Ip_pModeConfigPtr_6(D)->Power_Ip_ePowerMode;
+  # DEBUG ePowerMode => ePowerMode_7
+  # DEBUG BEGIN_STMT
+  _1 = Power_Ip_SMC_ModeCheckEntry (ePowerMode_7);
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ePowerSwitchMode_11 = 1;
+  # DEBUG ePowerSwitchMode => ePowerSwitchMode_11
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ePowerSwitchMode_10 = Power_Ip_SMC_ModeConfig (Power_Ip_pModeConfigPtr_6(D));
+  # DEBUG ePowerSwitchMode => ePowerSwitchMode_10
+
+  <bb 5> :
+  # ePowerSwitchMode_2 = PHI <ePowerSwitchMode_11(3), ePowerSwitchMode_10(4)>
+  # DEBUG ePowerSwitchMode => ePowerSwitchMode_2
+  # DEBUG BEGIN_STMT
+  if (ePowerSwitchMode_2 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ReportPowerErrors (3, 255);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

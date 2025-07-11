@@ -1,0 +1,1178 @@
+ResetClockConfiguration (const struct Clock_Ip_ClockConfigType * config)
+{
+  uint32 i;
+  uint32 callbackIndex;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config->selectorsCount;
+  i = (uint32) _1;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = i + 4294967295;
+  _3 = config->selectors[_2].name;
+  _4 = clockFeatures[_3][1];
+  _5 = (int) _4;
+  _6 = selectorCallbackIndex[_5];
+  callbackIndex = (uint32) _6;
+  # DEBUG BEGIN_STMT
+  _7 = selectorCallbacks[callbackIndex].Reset;
+  _8 = i + 4294967295;
+  _9 = &config->selectors[_8];
+  _7 (_9);
+  # DEBUG BEGIN_STMT
+  i = i + 4294967295;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (i != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _10 = config->fracDivsCount;
+  i = (uint32) _10;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _11 = i + 4294967295;
+  _12 = config->fracDivs[_11].name;
+  _13 = clockFeatures[_12][1];
+  _14 = (int) _13;
+  _15 = fractional_dividerCallbackIndex[_14];
+  callbackIndex = (uint32) _15;
+  # DEBUG BEGIN_STMT
+  _16 = fracDivCallbacks[callbackIndex].Reset;
+  _17 = i + 4294967295;
+  _18 = &config->fracDivs[_17];
+  _16 (_18);
+  # DEBUG BEGIN_STMT
+  i = i + 4294967295;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (i != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _19 = config->pllsCount;
+  i = (uint32) _19;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _20 = i + 4294967295;
+  _21 = config->plls[_20].name;
+  _22 = clockFeatures[_21][1];
+  _23 = (int) _22;
+  _24 = pllCallbackIndex[_23];
+  callbackIndex = (uint32) _24;
+  # DEBUG BEGIN_STMT
+  _25 = pllCallbacks[callbackIndex].Reset;
+  _26 = i + 4294967295;
+  _27 = &config->plls[_26];
+  _25 (_27);
+  # DEBUG BEGIN_STMT
+  i = i + 4294967295;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (i != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _28 = config->xoscsCount;
+  i = (uint32) _28;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _29 = i + 4294967295;
+  _30 = config->xoscs[_29].name;
+  _31 = clockFeatures[_30][1];
+  _32 = (int) _31;
+  _33 = xoscCallbackIndex[_32];
+  callbackIndex = (uint32) _33;
+  # DEBUG BEGIN_STMT
+  _34 = extOscCallbacks[callbackIndex].Reset;
+  _35 = i + 4294967295;
+  _36 = &config->xoscs[_35];
+  _34 (_36);
+  # DEBUG BEGIN_STMT
+  i = i + 4294967295;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  if (i != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  return;
+
+}
+
+
+CallEmptyCallbacks ()
+{
+  static boolean functionWasCalled = 0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  functionWasCalled.4_1 = functionWasCalled;
+  _2 = ~functionWasCalled.4_1;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  functionWasCalled = 1;
+  # DEBUG BEGIN_STMT
+  _3 = cmuCallbacks[0].Set;
+  _3 (0B);
+  # DEBUG BEGIN_STMT
+  _4 = cmuCallbacks[0].Disable;
+  _4 (87);
+  # DEBUG BEGIN_STMT
+  _5 = cmuCallbacks[0].Clear;
+  _5 (87);
+  # DEBUG BEGIN_STMT
+  _6 = cmuCallbacks[0].GetStatus;
+  _6 (87);
+  # DEBUG BEGIN_STMT
+  _7 = dividerCallbacks[0].Set;
+  _7 (0B);
+  # DEBUG BEGIN_STMT
+  _8 = dividerTriggerCallbacks[0].Configure;
+  _8 (0B);
+  # DEBUG BEGIN_STMT
+  _9 = extOscCallbacks[0].Reset;
+  _9 (0B);
+  # DEBUG BEGIN_STMT
+  _10 = fracDivCallbacks[0].Set;
+  _10 (0B);
+  # DEBUG BEGIN_STMT
+  _11 = fracDivCallbacks[0].Complete;
+  _11 (87);
+  # DEBUG BEGIN_STMT
+  _12 = gateCallbacks[0].Set;
+  _12 (0B);
+  # DEBUG BEGIN_STMT
+  _13 = gateCallbacks[0].Update;
+  _13 (87, 0);
+  # DEBUG BEGIN_STMT
+  _14 = intOscCallbacks[0].Set;
+  _14 (0B);
+  # DEBUG BEGIN_STMT
+  _15 = pllCallbacks[0].Set;
+  _15 (0B);
+  # DEBUG BEGIN_STMT
+  _16 = pllCallbacks[0].Complete;
+  _16 (87);
+  # DEBUG BEGIN_STMT
+  _17 = selectorCallbacks[0].Set;
+  _17 (0B);
+  # DEBUG BEGIN_STMT
+  _18 = pcfsCallbacks[0].Set;
+  _18 (0B);
+
+  <bb 4> :
+  return;
+
+}
+
+
+UpdateDriverContext (const struct Clock_Ip_ClockConfigType * config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockObjectsAreInitialized.3_1 = clockObjectsAreInitialized;
+  _2 = ~clockObjectsAreInitialized.3_1;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ClockInitializeObjects ();
+  # DEBUG BEGIN_STMT
+  clockObjectsAreInitialized = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  CallEmptyCallbacks ();
+  return;
+
+}
+
+
+ClockTimeoutExpired (uint32 * startTimeInOut, uint32 * elapsedTimeInOut, uint32 TimeoutTicks)
+{
+  boolean D.6262;
+  long unsigned int D.6261;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  D.6261 = OsIf_GetElapsed (startTimeInOut, 0);
+  _1 = *elapsedTimeInOut;
+  _2 = D.6261 + _1;
+  *elapsedTimeInOut = _2;
+  # DEBUG BEGIN_STMT
+  _3 = *elapsedTimeInOut;
+  D.6262 = TimeoutTicks <= _3;
+  return D.6262;
+
+}
+
+
+ClockStartTimeout (uint32 * startTimeOut, uint32 * elapsedTimeOut, uint32 * timeoutTicksOut, uint32 timeoutUs)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = OsIf_GetCounter (0);
+  *startTimeOut = _1;
+  # DEBUG BEGIN_STMT
+  *elapsedTimeOut = 0;
+  # DEBUG BEGIN_STMT
+  _2 = OsIf_MicrosToTicks (timeoutUs, 0);
+  *timeoutTicksOut = _2;
+  return;
+
+}
+
+
+ReportClockErrors (Clock_Ip_ClockNotificationType error, Clock_Ip_NameType clockName)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  clockNotificationsCallback.20_1 = clockNotificationsCallback;
+  clockNotificationsCallback.20_1 (error, clockName);
+  return;
+
+}
+
+
+ClockNotificatonsEmptyCallback (Clock_Ip_ClockNotificationType notification, Clock_Ip_NameType clockName)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Clock_Ip_EnableModuleClock (Clock_Ip_NameType clockName)
+{
+  uint32 callbackIndex;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = clockFeatures[clockName][1];
+  _2 = (int) _1;
+  _3 = gateCallbackIndex[_2];
+  callbackIndex = (uint32) _3;
+  # DEBUG BEGIN_STMT
+  _4 = gateCallbacks[callbackIndex].Update;
+  _4 (clockName, 0);
+  return;
+
+}
+
+
+Clock_Ip_DisableModuleClock (Clock_Ip_NameType clockName)
+{
+  uint32 callbackIndex;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = clockFeatures[clockName][1];
+  _2 = (int) _1;
+  _3 = gateCallbackIndex[_2];
+  callbackIndex = (uint32) _3;
+  # DEBUG BEGIN_STMT
+  _4 = gateCallbacks[callbackIndex].Update;
+  _4 (clockName, 1);
+  return;
+
+}
+
+
+Clock_Ip_InstallNotificationsCallback (void (*Clock_Ip_NotificationsCallbackType) (Clock_Ip_ClockNotificationType, Clock_Ip_NameType) callback)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockNotificationsCallback = callback;
+  return;
+
+}
+
+
+Clock_Ip_PowerModeChangeNotification (power_modes_t powerMode, power_notification_t notification)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  clockObjectsAreInitialized.19_1 = clockObjectsAreInitialized;
+  _2 = ~clockObjectsAreInitialized.19_1;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ClockInitializeObjects ();
+  # DEBUG BEGIN_STMT
+  clockObjectsAreInitialized = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ClockPowerModeChangeNotification (powerMode, notification);
+  return;
+
+}
+
+
+Clock_Ip_ClearClockMonitorStatus (Clock_Ip_NameType clockName)
+{
+  uint32 callbackIndex;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = clockFeatures[clockName][1];
+  _2 = (int) _1;
+  _3 = cmuCallbackIndex[_2];
+  callbackIndex = (uint32) _3;
+  # DEBUG BEGIN_STMT
+  _4 = cmuCallbacks[callbackIndex].Clear;
+  _4 (clockName);
+  return;
+
+}
+
+
+Clock_Ip_GetClockMonitorStatus (Clock_Ip_NameType clockName)
+{
+  uint32 callbackIndex;
+  Clock_Ip_CmuStatusType D.6257;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = clockFeatures[clockName][1];
+  _2 = (int) _1;
+  _3 = cmuCallbackIndex[_2];
+  callbackIndex = (uint32) _3;
+  # DEBUG BEGIN_STMT
+  _4 = cmuCallbacks[callbackIndex].GetStatus;
+  D.6257 = _4 (clockName);
+  return D.6257;
+
+}
+
+
+Clock_Ip_DisableClockMonitor (Clock_Ip_NameType clockName)
+{
+  uint32 callbackIndex;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = clockFeatures[clockName][1];
+  _2 = (int) _1;
+  _3 = cmuCallbackIndex[_2];
+  callbackIndex = (uint32) _3;
+  # DEBUG BEGIN_STMT
+  _4 = cmuCallbacks[callbackIndex].Disable;
+  _4 (clockName);
+  return;
+
+}
+
+
+Clock_Ip_DistributePll ()
+{
+  uint32 callbackIndex;
+  uint32 i;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockConfig.5_1 = clockConfig;
+  if (clockConfig.5_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  clockConfig.6_2 = clockConfig;
+  _3 = clockConfig.6_2->selectors[i].value;
+  _4 = sourceType_clockName[_3];
+  if (_4 == 3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  clockConfig.7_5 = clockConfig;
+  _6 = clockConfig.7_5->selectors[i].name;
+  _7 = clockFeatures[_6][1];
+  _8 = (int) _7;
+  _9 = selectorCallbackIndex[_8];
+  callbackIndex = (uint32) _9;
+  # DEBUG BEGIN_STMT
+  _10 = selectorCallbacks[callbackIndex].Set;
+  clockConfig.8_11 = clockConfig;
+  _12 = &clockConfig.8_11->selectors[i];
+  _10 (_12);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  clockConfig.9_13 = clockConfig;
+  _14 = clockConfig.9_13->selectorsCount;
+  _15 = (long unsigned int) _14;
+  if (i < _15)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  clockTreeIsConsumingPll.10_16 = clockTreeIsConsumingPll;
+  if (clockTreeIsConsumingPll.10_16 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  clockConfig.11_17 = clockConfig;
+  _18 = clockConfig.11_17->gates[i].name;
+  _19 = clockFeatures[_18][1];
+  _20 = (int) _19;
+  _21 = gateCallbackIndex[_20];
+  callbackIndex = (uint32) _21;
+  # DEBUG BEGIN_STMT
+  _22 = gateCallbacks[callbackIndex].Set;
+  clockConfig.12_23 = clockConfig;
+  _24 = &clockConfig.12_23->gates[i];
+  _22 (_24);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  clockConfig.13_25 = clockConfig;
+  _26 = clockConfig.13_25->gatesCount;
+  _27 = (long unsigned int) _26;
+  if (i < _27)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  clockConfig.14_28 = clockConfig;
+  _29 = &clockConfig.14_28->specificPeriphalConfiguration;
+  SpecificPeripheralClockInitialization (_29);
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  clockConfig.15_30 = clockConfig;
+  _31 = clockConfig.15_30->cmus[i].name;
+  _32 = clockFeatures[_31][1];
+  _33 = (int) _32;
+  _34 = cmuCallbackIndex[_33];
+  callbackIndex = (uint32) _34;
+  # DEBUG BEGIN_STMT
+  _35 = cmuCallbacks[callbackIndex].Enable;
+  clockConfig.16_36 = clockConfig;
+  _37 = &clockConfig.16_36->cmus[i];
+  _35 (_37);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  clockConfig.17_38 = clockConfig;
+  _39 = clockConfig.17_38->cmusCount;
+  _40 = (long unsigned int) _39;
+  if (i < _40)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  clockConfig.18_41 = clockConfig;
+  DisableSafeClock (clockConfig.18_41);
+
+  <bb 16> :
+  return;
+
+}
+
+
+Clock_Ip_GetPllStatus ()
+{
+  uint32 callbackIndex;
+  uint32 i;
+  clock_pll_status_t pllStatus;
+  Clock_Ip_PllStatusType retValue;
+  Clock_Ip_PllStatusType D.6249;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  retValue = 2;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = HwPllName[i];
+  _2 = clockFeatures[_1][1];
+  _3 = (int) _2;
+  _4 = pllCallbackIndex[_3];
+  callbackIndex = (uint32) _4;
+  # DEBUG BEGIN_STMT
+  _5 = pllCallbacks[callbackIndex].Complete;
+  _6 = HwPllName[i];
+  pllStatus = _5 (_6);
+  # DEBUG BEGIN_STMT
+  if (pllStatus == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  retValue = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (pllStatus == 2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  retValue = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (i == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  D.6249 = retValue;
+  return D.6249;
+
+}
+
+
+Clock_Ip_InitClock (const struct Clock_Ip_ClockConfigType * config)
+{
+  uint32 i;
+  uint32 callbackIndex;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  clockConfig.1_1 = clockConfig;
+  if (clockConfig.1_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = config->cmus[i].name;
+  _3 = clockFeatures[_2][1];
+  _4 = (int) _3;
+  _5 = cmuCallbackIndex[_4];
+  callbackIndex = (uint32) _5;
+  # DEBUG BEGIN_STMT
+  _6 = cmuCallbacks[callbackIndex].Reset;
+  _7 = &config->cmus[i];
+  _6 (_7);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _8 = config->cmusCount;
+  _9 = (long unsigned int) _8;
+  if (i < _9)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  clockConfig = config;
+  # DEBUG BEGIN_STMT
+  SpecificPlatformInitClock (config);
+  # DEBUG BEGIN_STMT
+  ResetClockConfiguration (config);
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _10 = config->ircoscs[i].name;
+  _11 = clockFeatures[_10][1];
+  _12 = (int) _11;
+  _13 = ircoscCallbackIndex[_12];
+  callbackIndex = (uint32) _13;
+  # DEBUG BEGIN_STMT
+  _14 = intOscCallbacks[callbackIndex].Set;
+  _15 = &config->ircoscs[i];
+  _14 (_15);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _16 = config->ircoscsCount;
+  _17 = (long unsigned int) _16;
+  if (i < _17)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _18 = config->xoscs[i].name;
+  _19 = clockFeatures[_18][1];
+  _20 = (int) _19;
+  _21 = xoscCallbackIndex[_20];
+  callbackIndex = (uint32) _21;
+  # DEBUG BEGIN_STMT
+  _22 = extOscCallbacks[callbackIndex].Set;
+  _23 = &config->xoscs[i];
+  _22 (_23);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _24 = config->xoscsCount;
+  _25 = (long unsigned int) _24;
+  if (i < _25)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  UpdateDriverContext (config);
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _26 = config->pcfs[i].name;
+  _27 = clockFeatures[_26][1];
+  _28 = (int) _27;
+  _29 = pcfsCallbackIndex[_28];
+  callbackIndex = (uint32) _29;
+  # DEBUG BEGIN_STMT
+  _30 = pcfsCallbacks[callbackIndex].Set;
+  _31 = &config->pcfs[i];
+  _30 (_31);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _32 = config->pcfsCount;
+  _33 = (long unsigned int) _32;
+  if (i < _33)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _34 = config->dividerTriggers[i].name;
+  _35 = clockFeatures[_34][1];
+  _36 = (int) _35;
+  _37 = dividertriggerCallbackIndex[_36];
+  callbackIndex = (uint32) _37;
+  # DEBUG BEGIN_STMT
+  _38 = dividerTriggerCallbacks[callbackIndex].Configure;
+  _39 = &config->dividerTriggers[i];
+  _38 (_39);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  _40 = config->dividerTriggersCount;
+  _41 = (long unsigned int) _40;
+  if (i < _41)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  _42 = config->dividers[i].name;
+  _43 = clockFeatures[_42][1];
+  _44 = (int) _43;
+  _45 = dividerCallbackIndex[_44];
+  callbackIndex = (uint32) _45;
+  # DEBUG BEGIN_STMT
+  _46 = dividerCallbacks[callbackIndex].Set;
+  _47 = &config->dividers[i];
+  _46 (_47);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  _48 = config->dividersCount;
+  _49 = (long unsigned int) _48;
+  if (i < _49)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  _50 = config->dividerTriggers[i].name;
+  _51 = clockFeatures[_50][1];
+  _52 = (int) _51;
+  _53 = dividertriggerCallbackIndex[_52];
+  callbackIndex = (uint32) _53;
+  # DEBUG BEGIN_STMT
+  _54 = dividerTriggerCallbacks[callbackIndex].TriggerUpdate;
+  _55 = &config->dividerTriggers[i];
+  _54 (_55);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  _56 = config->dividerTriggersCount;
+  _57 = (long unsigned int) _56;
+  if (i < _57)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 26>; [INV]
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  _58 = config->plls[i].name;
+  _59 = clockFeatures[_58][1];
+  _60 = (int) _59;
+  _61 = pllCallbackIndex[_60];
+  callbackIndex = (uint32) _61;
+  # DEBUG BEGIN_STMT
+  _62 = pllCallbacks[callbackIndex].Set;
+  _63 = &config->plls[i];
+  _62 (_63);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  _64 = config->pllsCount;
+  _65 = (long unsigned int) _64;
+  if (i < _65)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 27> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 29>; [INV]
+
+  <bb 28> :
+  # DEBUG BEGIN_STMT
+  _66 = config->cmus[i].name;
+  _67 = clockFeatures[_66][1];
+  _68 = (int) _67;
+  _69 = cmuCallbackIndex[_68];
+  callbackIndex = (uint32) _69;
+  # DEBUG BEGIN_STMT
+  _70 = cmuCallbacks[callbackIndex].Set;
+  _71 = &config->cmus[i];
+  _70 (_71);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 29> :
+  # DEBUG BEGIN_STMT
+  _72 = config->cmusCount;
+  _73 = (long unsigned int) _72;
+  if (i < _73)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 30> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 32>; [INV]
+
+  <bb 31> :
+  # DEBUG BEGIN_STMT
+  _74 = config->xoscs[i].name;
+  _75 = clockFeatures[_74][1];
+  _76 = (int) _75;
+  _77 = xoscCallbackIndex[_76];
+  callbackIndex = (uint32) _77;
+  # DEBUG BEGIN_STMT
+  _78 = extOscCallbacks[callbackIndex].Complete;
+  _79 = &config->xoscs[i];
+  _78 (_79);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 32> :
+  # DEBUG BEGIN_STMT
+  _80 = config->xoscsCount;
+  _81 = (long unsigned int) _80;
+  if (i < _81)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 33> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 35>; [INV]
+
+  <bb 34> :
+  # DEBUG BEGIN_STMT
+  _82 = config->plls[i].name;
+  _83 = clockFeatures[_82][1];
+  _84 = (int) _83;
+  _85 = pllCallbackIndex[_84];
+  callbackIndex = (uint32) _85;
+  # DEBUG BEGIN_STMT
+  _86 = pllCallbacks[callbackIndex].Enable;
+  _87 = &config->plls[i];
+  _86 (_87);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 35> :
+  # DEBUG BEGIN_STMT
+  _88 = config->pllsCount;
+  _89 = (long unsigned int) _88;
+  if (i < _89)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 36> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 38>; [INV]
+
+  <bb 37> :
+  # DEBUG BEGIN_STMT
+  _90 = config->fracDivs[i].name;
+  _91 = clockFeatures[_90][1];
+  _92 = (int) _91;
+  _93 = fractional_dividerCallbackIndex[_92];
+  callbackIndex = (uint32) _93;
+  # DEBUG BEGIN_STMT
+  _94 = fracDivCallbacks[callbackIndex].Set;
+  _95 = &config->fracDivs[i];
+  _94 (_95);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 38> :
+  # DEBUG BEGIN_STMT
+  _96 = config->fracDivsCount;
+  _97 = (long unsigned int) _96;
+  if (i < _97)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 39> :
+  # DEBUG BEGIN_STMT
+  clockTreeIsConsumingPll = 0;
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 44>; [INV]
+
+  <bb 40> :
+  # DEBUG BEGIN_STMT
+  _98 = config->selectors[i].value;
+  _99 = sourceType_clockName[_98];
+  if (_99 != 3)
+    goto <bb 41>; [INV]
+  else
+    goto <bb 42>; [INV]
+
+  <bb 41> :
+  # DEBUG BEGIN_STMT
+  _100 = config->selectors[i].name;
+  _101 = clockFeatures[_100][1];
+  _102 = (int) _101;
+  _103 = selectorCallbackIndex[_102];
+  callbackIndex = (uint32) _103;
+  # DEBUG BEGIN_STMT
+  _104 = selectorCallbacks[callbackIndex].Set;
+  _105 = &config->selectors[i];
+  _104 (_105);
+  goto <bb 43>; [INV]
+
+  <bb 42> :
+  # DEBUG BEGIN_STMT
+  clockTreeIsConsumingPll = 1;
+
+  <bb 43> :
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 44> :
+  # DEBUG BEGIN_STMT
+  _106 = config->selectorsCount;
+  _107 = (long unsigned int) _106;
+  if (i < _107)
+    goto <bb 40>; [INV]
+  else
+    goto <bb 45>; [INV]
+
+  <bb 45> :
+  # DEBUG BEGIN_STMT
+  clockTreeIsConsumingPll.2_108 = clockTreeIsConsumingPll;
+  _109 = ~clockTreeIsConsumingPll.2_108;
+  if (_109 != 0)
+    goto <bb 46>; [INV]
+  else
+    goto <bb 53>; [INV]
+
+  <bb 46> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 48>; [INV]
+
+  <bb 47> :
+  # DEBUG BEGIN_STMT
+  _110 = config->gates[i].name;
+  _111 = clockFeatures[_110][1];
+  _112 = (int) _111;
+  _113 = gateCallbackIndex[_112];
+  callbackIndex = (uint32) _113;
+  # DEBUG BEGIN_STMT
+  _114 = gateCallbacks[callbackIndex].Set;
+  _115 = &config->gates[i];
+  _114 (_115);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 48> :
+  # DEBUG BEGIN_STMT
+  _116 = config->gatesCount;
+  _117 = (long unsigned int) _116;
+  if (i < _117)
+    goto <bb 47>; [INV]
+  else
+    goto <bb 49>; [INV]
+
+  <bb 49> :
+  # DEBUG BEGIN_STMT
+  _118 = &config->specificPeriphalConfiguration;
+  SpecificPeripheralClockInitialization (_118);
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 51>; [INV]
+
+  <bb 50> :
+  # DEBUG BEGIN_STMT
+  _119 = config->cmus[i].name;
+  _120 = clockFeatures[_119][1];
+  _121 = (int) _120;
+  _122 = cmuCallbackIndex[_121];
+  callbackIndex = (uint32) _122;
+  # DEBUG BEGIN_STMT
+  _123 = cmuCallbacks[callbackIndex].Enable;
+  _124 = &config->cmus[i];
+  _123 (_124);
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 51> :
+  # DEBUG BEGIN_STMT
+  _125 = config->cmusCount;
+  _126 = (long unsigned int) _125;
+  if (i < _126)
+    goto <bb 50>; [INV]
+  else
+    goto <bb 52>; [INV]
+
+  <bb 52> :
+  # DEBUG BEGIN_STMT
+  DisableSafeClock (config);
+
+  <bb 53> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Clock_Ip_Init (const struct Clock_Ip_ClockConfigType * config)
+{
+  Clock_Ip_PllStatusType pllStatus;
+  Clock_Ip_StatusType clockStatus;
+  Clock_Ip_StatusType D.6231;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  clockStatus = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_InitClock (config);
+  # DEBUG BEGIN_STMT
+  clockTreeIsConsumingPll.0_1 = clockTreeIsConsumingPll;
+  if (clockTreeIsConsumingPll.0_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pllStatus = Clock_Ip_GetPllStatus ();
+  # DEBUG BEGIN_STMT
+  if (pllStatus == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_DistributePll ();
+  # DEBUG BEGIN_STMT
+  clockStatus = 0;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  clockStatus = 0;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  D.6231 = clockStatus;
+  return D.6231;
+
+}
+
+
