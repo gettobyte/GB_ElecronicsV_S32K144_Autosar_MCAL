@@ -696,6 +696,12 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 */
 #define PortConfigSet_CAN_Pins_PortPin_0 0
 #define PortConfigSet_CAN_Pins_PortPin_1 1
+#define PortConfigSet_ST7789_SPI_SPI_SCLK 2
+#define PortConfigSet_ST7789_SPI_SPI_SIN 3
+#define PortConfigSet_ST7789_SPI_SPI_OUT 4
+#define PortConfigSet_ST7789_SPI_SPI_PCS 5
+#define PortConfigSet_ST7789_SPI_PortPin_4 6
+#define PortConfigSet_ST7789_SPI_PortPin_5 7
 
 /**
 * @brief Number of available pad modes options
@@ -715,12 +721,12 @@ PORT_CONFIG_BOARD_InitPeripherals_PB \
 /**
 * @brief The maximum number of configured pins
 */
-#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)2)
+#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)8)
 
 /**
  * @brief Number of UnUsed pin array
 */
-#define PORT_MAX_UNUSED_PADS_U16    (82U)
+#define PORT_MAX_UNUSED_PADS_U16    (76U)
 
 /**
 * @brief Port driver Pre-Compile configuration switch

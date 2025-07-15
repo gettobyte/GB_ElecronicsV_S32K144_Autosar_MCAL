@@ -40,7 +40,19 @@
 #include "CanIf_Can.h"
 #include "string.h"
 
+#include "Lpspi_Ip.h"
+#include "Dio.h"
+#include "ST7789_low_level.h"
+#include "fonts.h"
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
 #define CanInstance0 0U
+
+const char* string1;
+uint8 CanData1[8] = {0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08};  // 8 Bytes of Data
 
 
 uint8 dummyData[8] = {0,1,2,3,4,5,6,7};
@@ -124,6 +136,32 @@ void TestDelay(uint32 delay)
    DelayTimer=0;
 }
 
+// function for converting CAN data into a string to print on LCD Screen
+const char* uint8_to_string(uint8 uint8_val[], size_t len)
+{
+//	char formattedString[len * 5];
+
+	char* formattedString = (char*) malloc(len *5);
+
+	char* ptr = formattedString;
+	for(size_t i = 0; i<len; i++)
+	{
+		if(i < len -1)
+		{
+			ptr += sprintf(ptr, "0x%02x, ", uint8_val[i]);
+		} else {
+			ptr += sprintf(ptr, "0x%02X", uint8_val[i]);
+		}
+	}
+
+	const char* constFormattedString = formattedString;
+
+	free(formattedString);
+
+	return constFormattedString;
+
+
+}
 
 int main(void)
 {
@@ -145,6 +183,17 @@ int main(void)
 
     /* Initialize all pins using the Port driver */
     Port_Init(NULL_PTR);
+
+    // SPI LCD Screen Code
+    Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_BOARD_InitPeripherals);
+   	GB_ST7789_Init();
+
+   	TestDelay(700000);
+   	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+   	ST7789_Fill_Color(ST77XX_RED);
+   	TestDelay(700000);
+
+   	// SPI LCD Screen Code
 
     Can_PduType TxData = {
 
@@ -171,6 +220,21 @@ int main(void)
 
     for(;;)
     {
+
+
+    	ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+    	    	    ST7789_Fill_Color(ST77XX_BLACK);
+
+    	    	    TestDelay(700000);
+
+    	    	    string1 = uint8_to_string(CanData1, 8);
+
+    	    	    ST7789_SetAddressWindow(ST7789_XStart,ST7789_YStart, ST7789_XEnd, ST7789_YEnd);
+
+    	    	    ST7789_WriteString(0, 80, string1, Font_16x26, ST77XX_NEON_GREEN, ST77XX_BLACK);
+
+
+
 
     	Can_MainFunction_Read();
 
