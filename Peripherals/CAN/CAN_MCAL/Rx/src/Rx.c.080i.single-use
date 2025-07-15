@@ -1,16 +1,21 @@
-Variable *.LC1/16 is used by single function
-Variable *.LC0/15 is used by single function
+Variable *.LC1/19 is used by single function
+Variable *.LC0/18 is used by single function
 main ()
 {
-  struct Can_PduType Ack;
+  struct Can_PduType RxAck;
   struct Can_PduType TxData;
   Can_ControllerStateType ctrStateType;
   Std_ReturnType ret;
-  int D.7805;
+  int D.7816;
   <unnamed type> _1;
+  _Bool Rx_Flag.6_2;
+  _Bool Rx_Flag.7_3;
+  _Bool _4;
+  _Bool Tx_Flag.8_5;
+  _Bool Rx_Flag.9_6;
 
   <bb 2> :
-  ctrStateType_4 = 1;
+  ctrStateType_12 = 1;
   Clock_Ip_Init (&Mcu_aClockConfigPB[0]);
 
   <bb 3> :
@@ -24,15 +29,62 @@ main ()
   Clock_Ip_DistributePll ();
   Port_Init (0B);
   TxData = *.LC0;
-  Ack = *.LC1;
+  RxAck = *.LC1;
   Can_Init (&Can_Config_BOARD_InitPeripherals);
-  ret_14 = Can_SetControllerMode (0, ctrStateType_4);
+  ret_22 = Can_SetControllerMode (0, ctrStateType_12);
 
   <bb 5> :
   Can_MainFunction_Read ();
+  Rx_Flag.6_2 = Rx_Flag;
+  if (Rx_Flag.6_2 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  ret_25 = Can_Write (4, &RxAck);
   TestDelay (100000);
-  ret_18 = Can_Write (4, &Ack);
   Can_MainFunction_Write ();
+  Rx_Flag = 0;
+  Tx_Flag = 1;
+
+  <bb 7> :
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  Can_MainFunction_Read ();
+  TestDelay (100000);
+
+  <bb 9> :
+  Rx_Flag.7_3 = Rx_Flag;
+  _4 = ~Rx_Flag.7_3;
+  if (_4 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  Tx_Flag.8_5 = Tx_Flag;
+  if (Tx_Flag.8_5 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  Rx_Flag.9_6 = Rx_Flag;
+  if (Rx_Flag.9_6 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  ret_33 = Can_Write (4, &TxData);
+  TestDelay (100000);
+  Can_MainFunction_Write ();
+  Tx_Flag = 0;
+  Rx_Flag = 0;
+
+  <bb 13> :
   goto <bb 5>; [INV]
 
 }
@@ -205,6 +257,7 @@ CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType 
     goto <bb 18>; [INV]
 
   <bb 18> :
+  Rx_Flag = 1;
   return;
 
 }
@@ -213,6 +266,7 @@ CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType 
 CanIf_TxConfirmation (PduIdType CanTxPduId)
 {
   <bb 2> :
+  Tx_Flag = 1;
   return;
 
 }

@@ -43,15 +43,17 @@
 
 
 uint8 dummyData[8] = {0,1,2,3,4,5,6,7};
-
+uint8 ackData[8] = {1,1,1,1,1,1,1,1};
 
 uint8 receivedData1[8];
 uint8 receivedData2[8];
-char receivedData3[8];
+uint8 receivedData3[8];
 uint8 receivedData4[8];
 
 //Flexcan_Ip_StateType * state = flexcanState;
-Flexcan_Ip_StatusType status;
+//Flexcan_Ip_StatusType status;
+boolean Rx_Flag = false;
+boolean Tx_Flag = false;
 
 volatile int exit_code = 0;
 
@@ -64,6 +66,7 @@ void CanIf_ControllerModeIndication( uint8 ControllerId, Can_ControllerStateType
 void CanIf_TxConfirmation(PduIdType CanTxPduId)
 {
     (void)CanTxPduId;
+    Tx_Flag = true;
 }
 
 void CanIf_RxIndication( const Can_HwType * Mailbox, const PduInfoType * PduInfoPtr )
@@ -101,7 +104,7 @@ void CanIf_RxIndication( const Can_HwType * Mailbox, const PduInfoType * PduInfo
 	        receivedData4[i] = PduInfoPtr->SduDataPtr[i];
 	    }
 	}
-
+    Rx_Flag = true;
 }
 void CanIf_ControllerBusOff(uint8 ControllerId)
 {
@@ -143,31 +146,65 @@ int main(void)
 
     Can_PduType TxData = {
 
-        .id = 0x350,
-        .swPduHandle = 2u,
+        .id = 0x310,
+        .swPduHandle = 1u,
         .length = 8u,
         .sdu = dummyData
 
     };
 
+    Can_PduType  Ack = {
+
+        .id = 0x330,
+        .swPduHandle = 3u,
+        .length = 8u,
+        .sdu = ackData
+
+    };
+
+
     Can_Init(&Can_Config_BOARD_InitPeripherals);
 
     ret = Can_SetControllerMode(CanInstance0, ctrStateType);
 
-	  ret = Can_Write(CanHardwareObject_4, &TxData);
-	        //CanHardwareObject_1 from CAN_Cfg.h file in generate file
-
-
-	        Can_MainFunction_Write();
-		    TestDelay(100000);
 
     for(;;)
     {
 
-//
-//
-    		    Can_MainFunction_Read();
+	        //CanHardwareObject_1 from CAN_Cfg.h file in generate file
 
+
+	  ret = Can_Write(CanHardwareObject_4, &TxData);
+		    TestDelay(100000);
+	        Can_MainFunction_Write();
+		 while(Rx_Flag == false)
+		 {
+    		    Can_MainFunction_Read();
+    		    TestDelay(100000);
+
+		 }
+
+
+        if (Rx_Flag == true)
+        {
+		 Can_Write(CanHardwareObject_4, &Ack);
+		 TestDelay(100000);
+		 Can_MainFunction_Write();
+
+        }
+
+		 while (Tx_Flag == true)
+		 {
+		 Can_MainFunction_Read();
+		 TestDelay(100000);
+
+		  if (Rx_Flag == true)
+		  {
+			 Tx_Flag = false;
+		  }
+		 }
+
+		 Rx_Flag=false;
 
 
     }

@@ -1,9 +1,10 @@
 main ()
 {
+  struct Can_PduType Ack;
   struct Can_PduType TxData;
   Can_ControllerStateType ctrStateType;
   Std_ReturnType ret;
-  int D.7537;
+  int D.7551;
 
   <bb 2> :
   ctrStateType = 1;
@@ -20,14 +21,64 @@ main ()
   Clock_Ip_DistributePll ();
   Port_Init (0B);
   TxData = *.LC0;
+  Ack = *.LC1;
   Can_Init (&Can_Config_BOARD_InitPeripherals);
   ret = Can_SetControllerMode (0, ctrStateType);
-  ret = Can_Write (4, &TxData);
-  Can_MainFunction_Write ();
-  TestDelay (100000);
 
   <bb 5> :
+  ret = Can_Write (4, &TxData);
+  TestDelay (100000);
+  Can_MainFunction_Write ();
+  goto <bb 7>; [INV]
+
+  <bb 6> :
   Can_MainFunction_Read ();
+  TestDelay (100000);
+
+  <bb 7> :
+  Rx_Flag.6_2 = Rx_Flag;
+  _3 = ~Rx_Flag.6_2;
+  if (_3 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  Rx_Flag.7_4 = Rx_Flag;
+  if (Rx_Flag.7_4 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  Can_Write (4, &Ack);
+  TestDelay (100000);
+  Can_MainFunction_Write ();
+
+  <bb 10> :
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  Can_MainFunction_Read ();
+  TestDelay (100000);
+  Rx_Flag.8_5 = Rx_Flag;
+  if (Rx_Flag.8_5 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  Tx_Flag = 0;
+
+  <bb 13> :
+  Tx_Flag.9_6 = Tx_Flag;
+  if (Tx_Flag.9_6 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  Rx_Flag = 0;
   goto <bb 5>; [INV]
 
 }
@@ -176,6 +227,7 @@ CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType 
     goto <bb 18>; [INV]
 
   <bb 18> :
+  Rx_Flag = 1;
   return;
 
 }
@@ -184,6 +236,7 @@ CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType 
 CanIf_TxConfirmation (PduIdType CanTxPduId)
 {
   <bb 2> :
+  Tx_Flag = 1;
   return;
 
 }
