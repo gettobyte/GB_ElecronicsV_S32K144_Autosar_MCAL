@@ -1,9 +1,10 @@
 main ()
 {
+  struct Can_PduType Ack;
   struct Can_PduType TxData;
   Can_ControllerStateType ctrStateType;
   Std_ReturnType ret;
-  int D.7506;
+  int D.7805;
 
   <bb 2> :
   ctrStateType = 1;
@@ -20,11 +21,15 @@ main ()
   Clock_Ip_DistributePll ();
   Port_Init (0B);
   TxData = *.LC0;
+  Ack = *.LC1;
   Can_Init (&Can_Config_BOARD_InitPeripherals);
   ret = Can_SetControllerMode (0, ctrStateType);
 
   <bb 5> :
   Can_MainFunction_Read ();
+  TestDelay (100000);
+  ret = Can_Write (4, &Ack);
+  Can_MainFunction_Write ();
   goto <bb 5>; [INV]
 
 }
@@ -38,13 +43,13 @@ TestDelay (uint32 delay)
   goto <bb 4>; [INV]
 
   <bb 3> :
-  DelayTimer.0_1 = DelayTimer;
-  _2 = DelayTimer.0_1 + 1;
+  DelayTimer.4_1 = DelayTimer;
+  _2 = DelayTimer.4_1 + 1;
   DelayTimer = _2;
 
   <bb 4> :
-  DelayTimer.1_3 = DelayTimer;
-  if (delay > DelayTimer.1_3)
+  DelayTimer.5_3 = DelayTimer;
+  if (delay > DelayTimer.5_3)
     goto <bb 3>; [INV]
   else
     goto <bb 5>; [INV]
@@ -66,7 +71,113 @@ CanIf_ControllerBusOff (uint8 ControllerId)
 
 CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType * PduInfoPtr)
 {
+  int i;
+  int i;
+  int i;
+  int i;
+  uint32 can_mb;
+  uint32 can_id;
+
   <bb 2> :
+  can_id = Mailbox->CanId;
+  _1 = Mailbox->Hoh;
+  can_mb = (uint32) _1;
+  if (can_id == 784)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  i = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _2 = PduInfoPtr->SduDataPtr;
+  i.0_3 = (sizetype) i;
+  _4 = _2 + i.0_3;
+  _5 = *_4;
+  receivedData1[i] = _5;
+  i = i + 1;
+
+  <bb 5> :
+  if (i <= 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  if (can_id == 800)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  i = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  _6 = PduInfoPtr->SduDataPtr;
+  i.1_7 = (sizetype) i;
+  _8 = _6 + i.1_7;
+  _9 = *_8;
+  receivedData2[i] = _9;
+  i = i + 1;
+
+  <bb 9> :
+  if (i <= 7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  if (can_id == 816)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 11> :
+  i = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _10 = PduInfoPtr->SduDataPtr;
+  i.2_11 = (sizetype) i;
+  _12 = _10 + i.2_11;
+  _13 = *_12;
+  receivedData3[i] = _13;
+  i = i + 1;
+
+  <bb 13> :
+  if (i <= 7)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  if (can_id == 832)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 15> :
+  i = 0;
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  _14 = PduInfoPtr->SduDataPtr;
+  i.3_15 = (sizetype) i;
+  _16 = _14 + i.3_15;
+  _17 = *_16;
+  receivedData4[i] = _17;
+  i = i + 1;
+
+  <bb 17> :
+  if (i <= 7)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
   return;
 
 }

@@ -38,11 +38,20 @@
 #include "Can.h"
 #include "CanIf.h"
 #include "CanIf_Can.h"
+#include "string.h"
 
 #define CanInstance0 0U
 
 
 uint8 dummyData[8] = {0,1,2,3,4,5,6,7};
+char ackData[8] = {'S', 'u', 'c', 'c', 'e', 's', 's', '\0'};
+
+
+
+uint8 receivedData1[8];
+uint8 receivedData2[8];
+uint8 receivedData3[8];
+uint8 receivedData4[8];
 
 
 volatile int exit_code = 0;
@@ -60,8 +69,40 @@ void CanIf_TxConfirmation(PduIdType CanTxPduId)
 
 void CanIf_RxIndication( const Can_HwType * Mailbox, const PduInfoType * PduInfoPtr )
 {
-	(void) Mailbox;
-	(void) PduInfoPtr;
+
+
+	uint32 can_id = Mailbox -> CanId;
+	uint32 can_mb = Mailbox -> Hoh;
+
+
+	if (can_id == 0x310)
+	{
+	    for (int i = 0; i < 8; i++) {
+	        receivedData1[i] = PduInfoPtr->SduDataPtr[i];
+	    }
+	}
+
+	if (can_id == 0x320)
+	{
+	    for (int i = 0; i < 8; i++) {
+	        receivedData2[i] = PduInfoPtr->SduDataPtr[i];
+	    }
+	}
+
+	if (can_id == 0x330)
+	{
+	    for (int i = 0; i < 8; i++) {
+	        receivedData3[i] = PduInfoPtr->SduDataPtr[i];
+	    }
+	}
+
+	if (can_id == 0x340)
+	{
+	    for (int i = 0; i < 8; i++) {
+	        receivedData4[i] = PduInfoPtr->SduDataPtr[i];
+	    }
+	}
+
 }
 void CanIf_ControllerBusOff(uint8 ControllerId)
 {
@@ -103,10 +144,19 @@ int main(void)
 
     Can_PduType TxData = {
 
-        .id = 800u,
-        .swPduHandle = 1u,
+        .id = 0x310u,
+        .swPduHandle = 2u,
         .length = 8u,
         .sdu = dummyData
+
+    };
+
+    Can_PduType Ack = {
+
+        .id = 0x330u,
+        .swPduHandle = 2u,
+        .length = 8u,
+        .sdu = ackData
 
     };
 
@@ -117,10 +167,22 @@ int main(void)
 
     for(;;)
     {
+//    	  ret = Can_Write(CanHardwareObject_4, &TxData);
+//    	        //CanHardwareObject_1 from CAN_Cfg.h file in generate file
+//
+//
+//    	        Can_MainFunction_Write();
+//
 
     		    Can_MainFunction_Read();
-    		   // TestDelay(1000000);
-
+    		    TestDelay(100000);
+    	ret = Can_Write(CanHardwareObject_4, &Ack);
+    	Can_MainFunction_Write();
+//    		    if (receivedData1[0] != 0x1)
+//
+//    		    {
+//    		    	ret = Can_Write(CanHardwareObject_4, &Ack);
+//    		    }
 
 
     }

@@ -248,7 +248,7 @@ extern "C"{
 /**
 *   @brief      Number Of HardwareObject Config
 */
-#define CAN_HWOBJECT_CONFIG_COUNT    ((Can_HwHandleType)2U)
+#define CAN_HWOBJECT_CONFIG_COUNT    ((Can_HwHandleType)5U)
 
 /**
 *   @brief      Symbolic Name generated for Can Controller
@@ -259,6 +259,9 @@ extern "C"{
 */
 #define CanHardwareObject_0    ((Can_HwHandleType)0U)
 #define CanHardwareObject_1    ((Can_HwHandleType)1U)
+#define CanHardwareObject_2    ((Can_HwHandleType)2U)
+#define CanHardwareObject_3    ((Can_HwHandleType)3U)
+#define CanHardwareObject_4    ((Can_HwHandleType)4U)
 /**
 *   @brief      Enable/Disable support  Can_CheckWakeup API
 */

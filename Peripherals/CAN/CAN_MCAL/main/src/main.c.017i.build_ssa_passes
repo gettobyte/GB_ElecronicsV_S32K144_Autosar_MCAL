@@ -3,7 +3,7 @@ main ()
   struct Can_PduType TxData;
   Can_ControllerStateType ctrStateType;
   Std_ReturnType ret;
-  int D.7538;
+  int D.7537;
 
   <bb 2> :
   ctrStateType = 1;
@@ -24,9 +24,9 @@ main ()
   ret = Can_SetControllerMode (0, ctrStateType);
 
   <bb 5> :
-  ret = Can_Write (1, &TxData);
+  ret = Can_Write (4, &TxData);
   Can_MainFunction_Write ();
-  TestDelay (1000000);
+  TestDelay (100000);
   Can_MainFunction_Read ();
   goto <bb 5>; [INV]
 
@@ -41,13 +41,13 @@ TestDelay (uint32 delay)
   goto <bb 4>; [INV]
 
   <bb 3> :
-  DelayTimer.9_1 = DelayTimer;
-  _2 = DelayTimer.9_1 + 1;
+  DelayTimer.4_1 = DelayTimer;
+  _2 = DelayTimer.4_1 + 1;
   DelayTimer = _2;
 
   <bb 4> :
-  DelayTimer.10_3 = DelayTimer;
-  if (delay > DelayTimer.10_3)
+  DelayTimer.5_3 = DelayTimer;
+  if (delay > DelayTimer.5_3)
     goto <bb 3>; [INV]
   else
     goto <bb 5>; [INV]
@@ -73,29 +73,28 @@ CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType 
   int i;
   int i;
   int i;
+  uint32 can_mb;
   uint32 can_id;
 
   <bb 2> :
-  mailBoxid = Mailbox;
-  mailBoxid.0_1 = mailBoxid;
-  can_id = mailBoxid.0_1->CanId;
+  can_id = Mailbox->CanId;
+  _1 = Mailbox->Hoh;
+  can_mb = (uint32) _1;
   if (can_id == 784)
     goto <bb 3>; [INV]
   else
     goto <bb 6>; [INV]
 
   <bb 3> :
-  localreceivedData = PduInfoPtr;
   i = 0;
   goto <bb 5>; [INV]
 
   <bb 4> :
-  localreceivedData.1_2 = localreceivedData;
-  _3 = localreceivedData.1_2->SduDataPtr;
-  i.2_4 = (sizetype) i;
-  _5 = _3 + i.2_4;
-  _6 = *_5;
-  receivedData1[i] = _6;
+  _2 = PduInfoPtr->SduDataPtr;
+  i.0_3 = (sizetype) i;
+  _4 = _2 + i.0_3;
+  _5 = *_4;
+  receivedData1[i] = _5;
   i = i + 1;
 
   <bb 5> :
@@ -111,17 +110,15 @@ CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType 
     goto <bb 10>; [INV]
 
   <bb 7> :
-  localreceivedData = PduInfoPtr;
   i = 0;
   goto <bb 9>; [INV]
 
   <bb 8> :
-  localreceivedData.3_7 = localreceivedData;
-  _8 = localreceivedData.3_7->SduDataPtr;
-  i.4_9 = (sizetype) i;
-  _10 = _8 + i.4_9;
-  _11 = *_10;
-  receivedData2[i] = _11;
+  _6 = PduInfoPtr->SduDataPtr;
+  i.1_7 = (sizetype) i;
+  _8 = _6 + i.1_7;
+  _9 = *_8;
+  receivedData2[i] = _9;
   i = i + 1;
 
   <bb 9> :
@@ -137,17 +134,15 @@ CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType 
     goto <bb 14>; [INV]
 
   <bb 11> :
-  localreceivedData = PduInfoPtr;
   i = 0;
   goto <bb 13>; [INV]
 
   <bb 12> :
-  localreceivedData.5_12 = localreceivedData;
-  _13 = localreceivedData.5_12->SduDataPtr;
-  i.6_14 = (sizetype) i;
-  _15 = _13 + i.6_14;
-  _16 = *_15;
-  receivedData3[i] = _16;
+  _10 = PduInfoPtr->SduDataPtr;
+  i.2_11 = (sizetype) i;
+  _12 = _10 + i.2_11;
+  _13 = *_12;
+  receivedData3[i] = _13;
   i = i + 1;
 
   <bb 13> :
@@ -163,17 +158,15 @@ CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType 
     goto <bb 18>; [INV]
 
   <bb 15> :
-  localreceivedData = PduInfoPtr;
   i = 0;
   goto <bb 17>; [INV]
 
   <bb 16> :
-  localreceivedData.7_17 = localreceivedData;
-  _18 = localreceivedData.7_17->SduDataPtr;
-  i.8_19 = (sizetype) i;
-  _20 = _18 + i.8_19;
-  _21 = *_20;
-  receivedData4[i] = _21;
+  _14 = PduInfoPtr->SduDataPtr;
+  i.3_15 = (sizetype) i;
+  _16 = _14 + i.3_15;
+  _17 = *_16;
+  receivedData4[i] = _17;
   i = i + 1;
 
   <bb 17> :

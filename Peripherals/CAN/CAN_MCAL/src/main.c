@@ -43,8 +43,8 @@
 
 
 uint8 dummyData[8] = {0,1,2,3,4,5,6,7};
-PduInfoType * localreceivedData;
-Can_HwType * mailBoxid;
+
+
 uint8 receivedData1[8];
 uint8 receivedData2[8];
 uint8 receivedData3[8];
@@ -68,40 +68,37 @@ void CanIf_TxConfirmation(PduIdType CanTxPduId)
 
 void CanIf_RxIndication( const Can_HwType * Mailbox, const PduInfoType * PduInfoPtr )
 {
-	mailBoxid = Mailbox;
 
-	uint32 can_id = mailBoxid -> CanId;
-	//mailBoxid -> CanId;
-//
+
+	uint32 can_id = Mailbox -> CanId;
+	uint32 can_mb = Mailbox -> Hoh;
+
+
 	if (can_id == 0x310)
 	{
-	    localreceivedData = PduInfoPtr;
 	    for (int i = 0; i < 8; i++) {
-	        receivedData1[i] = localreceivedData->SduDataPtr[i];
+	        receivedData1[i] = PduInfoPtr->SduDataPtr[i];
 	    }
 	}
 
 	if (can_id == 0x320)
 	{
-	    localreceivedData = PduInfoPtr;
 	    for (int i = 0; i < 8; i++) {
-	        receivedData2[i] = localreceivedData->SduDataPtr[i];
+	        receivedData2[i] = PduInfoPtr->SduDataPtr[i];
 	    }
 	}
 
 	if (can_id == 0x330)
 	{
-	    localreceivedData = PduInfoPtr;
 	    for (int i = 0; i < 8; i++) {
-	        receivedData3[i] = localreceivedData->SduDataPtr[i];
+	        receivedData3[i] = PduInfoPtr->SduDataPtr[i];
 	    }
 	}
 
 	if (can_id == 0x340)
 	{
-	    localreceivedData = PduInfoPtr;
 	    for (int i = 0; i < 8; i++) {
-	        receivedData4[i] = localreceivedData->SduDataPtr[i];
+	        receivedData4[i] = PduInfoPtr->SduDataPtr[i];
 	    }
 	}
 
@@ -147,7 +144,7 @@ int main(void)
     Can_PduType TxData = {
 
         .id = 800u,
-        .swPduHandle = 1u,
+        .swPduHandle = 2u,
         .length = 8u,
         .sdu = dummyData
 
@@ -160,18 +157,17 @@ int main(void)
 
     for(;;)
     {
-    	  ret = Can_Write(CanHardwareObject_1, &TxData);
+    	  ret = Can_Write(CanHardwareObject_4, &TxData);
     	        //CanHardwareObject_1 from CAN_Cfg.h file in generate file
 
 
     	        Can_MainFunction_Write();
-    		    TestDelay(1000000);
+    		    TestDelay(100000);
+
+
     		    Can_MainFunction_Read();
-//    		    if (FLEXCAN_MB_IDLE == state->mbs[mb_idx].state)
-//    		    {
-//    		    	status = FLEXCAN_STATUS_SUCCESS;
-//    		    }
-//               TestDelay(100000);
+
+
 
     }
     return 0;

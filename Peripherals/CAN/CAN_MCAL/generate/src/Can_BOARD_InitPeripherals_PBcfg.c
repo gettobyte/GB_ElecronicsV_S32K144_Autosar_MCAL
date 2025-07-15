@@ -177,10 +177,13 @@ extern "C"{
 /**
 *   @brief  Hardware Buffer Address of CanController_0
 */
-static const uint32 Can_au32HwBufferAddr_Ctrl0[2U] =
+static const uint32 Can_au32HwBufferAddr_Ctrl0[5U] =
 {
     (FLEXCAN_0_BASE + (uint32)0x80U),
-    (FLEXCAN_0_BASE + (uint32)0x90U)
+    (FLEXCAN_0_BASE + (uint32)0x90U),
+    (FLEXCAN_0_BASE + (uint32)0xa0U),
+    (FLEXCAN_0_BASE + (uint32)0xb0U),
+    (FLEXCAN_0_BASE + (uint32)0xc0U)
 };
 
 /**
@@ -188,8 +191,32 @@ static const uint32 Can_au32HwBufferAddr_Ctrl0[2U] =
 */
 static const Can_HwFilterType Can_aHwFilter_Object0=
 {
-    (uint32)0x0U,
-    (uint32)0xc0000000U
+    (uint32)0x310U,
+    (uint32)0xdffc0000U
+};
+/**
+*   @brief  Hardware Filter of CanHardwareObject_1
+*/
+static const Can_HwFilterType Can_aHwFilter_Object1=
+{
+    (uint32)0x320U,
+    (uint32)0xdffc0000U
+};
+/**
+*   @brief  Hardware Filter of CanHardwareObject_2
+*/
+static const Can_HwFilterType Can_aHwFilter_Object2=
+{
+    (uint32)0x330U,
+    (uint32)0xdffc0000U
+};
+/**
+*   @brief  Hardware Filter of CanHardwareObject_3
+*/
+static const Can_HwFilterType Can_aHwFilter_Object3=
+{
+    (uint32)0x340U,
+    (uint32)0xdffc0000U
 };
 
 #define CAN_STOP_SEC_CONFIG_DATA_32
@@ -212,6 +239,9 @@ static const uint8 Can_aCtrlOffsetToCtrlIDMap[CAN_HWCONTROLLER_SUPPORT]=
 */
 static const uint8 Can_aHwObjIDToCtrlIDMap[CAN_HWOBJECT_CONFIG_COUNT]=
 {
+    (uint8)0U,
+    (uint8)0U,
+    (uint8)0U,
     (uint8)0U,
     (uint8)0U
 };
@@ -270,6 +300,111 @@ static const Can_HwObjectConfigType Can_aHwObjectConfig[CAN_HWOBJECT_CONFIG_COUN
         /* Hardware Object ID */
         (Can_HwHandleType)1U,
         /* Hardware Object handle type */
+        CAN_RECEIVE,
+        /* ID Message type */
+        CAN_STANDARD,
+        /* Object uses polling */
+        (boolean)TRUE,
+        /* Object enable trigger transmit */
+        (boolean)FALSE,
+        /* Number of Hw Object used in one Hoh */
+        (uint8)1U,
+        /* MainFunction RW period reference */
+        (uint8)CanMainFunctionRWPeriods_0,
+        /* Data Payload length */
+        (uint8)8U,
+        /* Padding value */
+        (uint8)0U,
+        /* Hardware Filter Count */
+        (uint8)1U,
+        /* Hw Filter Config */
+        &Can_aHwFilter_Object1,
+        /* Message Buffer is Type */
+        CAN_RX_NORMAL,
+        /* Buffer Index in Message buffer ram */
+        (uint8)1U,
+        /* Message buffer address */
+        &Can_au32HwBufferAddr_Ctrl0[1U]
+        #if (CAN_TIMESTAMP_ENABLE == STD_ON)
+        /* Time Stamp Enable */
+        ,(boolean)FALSE
+        #endif
+    },
+    /* CanHardwareObject_2 of CanController_0 */
+    {
+        /* Hardware Object ID */
+        (Can_HwHandleType)2U,
+        /* Hardware Object handle type */
+        CAN_RECEIVE,
+        /* ID Message type */
+        CAN_STANDARD,
+        /* Object uses polling */
+        (boolean)TRUE,
+        /* Object enable trigger transmit */
+        (boolean)FALSE,
+        /* Number of Hw Object used in one Hoh */
+        (uint8)1U,
+        /* MainFunction RW period reference */
+        (uint8)CanMainFunctionRWPeriods_0,
+        /* Data Payload length */
+        (uint8)8U,
+        /* Padding value */
+        (uint8)0U,
+        /* Hardware Filter Count */
+        (uint8)1U,
+        /* Hw Filter Config */
+        &Can_aHwFilter_Object2,
+        /* Message Buffer is Type */
+        CAN_RX_NORMAL,
+        /* Buffer Index in Message buffer ram */
+        (uint8)2U,
+        /* Message buffer address */
+        &Can_au32HwBufferAddr_Ctrl0[2U]
+        #if (CAN_TIMESTAMP_ENABLE == STD_ON)
+        /* Time Stamp Enable */
+        ,(boolean)FALSE
+        #endif
+    },
+    /* CanHardwareObject_3 of CanController_0 */
+    {
+        /* Hardware Object ID */
+        (Can_HwHandleType)3U,
+        /* Hardware Object handle type */
+        CAN_RECEIVE,
+        /* ID Message type */
+        CAN_STANDARD,
+        /* Object uses polling */
+        (boolean)TRUE,
+        /* Object enable trigger transmit */
+        (boolean)FALSE,
+        /* Number of Hw Object used in one Hoh */
+        (uint8)1U,
+        /* MainFunction RW period reference */
+        (uint8)CanMainFunctionRWPeriods_0,
+        /* Data Payload length */
+        (uint8)8U,
+        /* Padding value */
+        (uint8)0U,
+        /* Hardware Filter Count */
+        (uint8)1U,
+        /* Hw Filter Config */
+        &Can_aHwFilter_Object3,
+        /* Message Buffer is Type */
+        CAN_RX_NORMAL,
+        /* Buffer Index in Message buffer ram */
+        (uint8)3U,
+        /* Message buffer address */
+        &Can_au32HwBufferAddr_Ctrl0[3U]
+        #if (CAN_TIMESTAMP_ENABLE == STD_ON)
+        /* Time Stamp Enable */
+        ,(boolean)FALSE
+        #endif
+    },
+    /* CanHardwareObject_4 of CanController_0 */
+    {
+        /* Hardware Object ID */
+        (Can_HwHandleType)4U,
+        /* Hardware Object handle type */
         CAN_TRANSMIT,
         /* ID Message type */
         CAN_STANDARD,
@@ -292,9 +427,9 @@ static const Can_HwObjectConfigType Can_aHwObjectConfig[CAN_HWOBJECT_CONFIG_COUN
         /* Message Buffer is Type */
         CAN_TX_NORMAL,
         /* Buffer Index in Message buffer ram */
-        (uint8)1U,
+        (uint8)4U,
         /* Message buffer address */
-        &Can_au32HwBufferAddr_Ctrl0[1U]
+        &Can_au32HwBufferAddr_Ctrl0[4U]
         #if (CAN_TIMESTAMP_ENABLE == STD_ON)
         /* Time Stamp Enable */
         ,(boolean)FALSE
@@ -351,10 +486,13 @@ static const Can_BaudrateConfigType Can_aBaudrateConfig_Ctrl0[1U]=
 /**
 *   @brief  HwObjects pointer structure of CanController_0
 */
-static const Can_HwObjectConfigType * const Can_apHwObject_Ctrl0[2U]=
+static const Can_HwObjectConfigType * const Can_apHwObject_Ctrl0[5U]=
 {
     &Can_aHwObjectConfig[0U],
-    &Can_aHwObjectConfig[1U]
+    &Can_aHwObjectConfig[1U],
+    &Can_aHwObjectConfig[2U],
+    &Can_aHwObjectConfig[3U],
+    &Can_aHwObjectConfig[4U]
 };
 
 CAN_IPW_EXT
@@ -408,7 +546,7 @@ static const Can_ControllerConfigType Can_aControllerConfig[CAN_CONTROLLER_CONFI
     /* Pointer to IPW structure to IP config */
     &CanIpwHwChannelConfig_BOARD_InitPeripherals0,
     /* Hw Object reference count */
-    (uint8)2U,
+    (uint8)5U,
     /* Pointer point to Group of Hw Object that refer to Controller */
         Can_apHwObject_Ctrl0
     }
@@ -430,7 +568,7 @@ const Can_ConfigType Can_Config_BOARD_InitPeripherals =
     /* Configuration Core ID */
     (uint32)0U,
     /* The HTH first Index after HRH consecutive */
-    (Can_HwHandleType)1U,
+    (Can_HwHandleType)4U,
     /* Mapping Controller ID to Controller Hw Offset */
     Can_aCtrlOffsetToCtrlIDMap,
     /* Mapping Controller ID to Hardware Object ID */

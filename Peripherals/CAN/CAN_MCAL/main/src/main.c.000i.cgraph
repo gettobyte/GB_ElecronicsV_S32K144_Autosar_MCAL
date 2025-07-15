@@ -1,238 +1,222 @@
-Trivially needed symbols: main TestDelay CanIf_ControllerBusOff CanIf_RxIndication CanIf_TxConfirmation CanIf_ControllerModeIndication exit_code status receivedData4 receivedData3 receivedData2 receivedData1 mailBoxid localreceivedData dummyData
+Trivially needed symbols: main TestDelay CanIf_ControllerBusOff CanIf_RxIndication CanIf_TxConfirmation CanIf_ControllerModeIndication exit_code status receivedData4 receivedData3 receivedData2 receivedData1 dummyData
 Trivially needed symbols: DelayTimer
 
 
 Initial Symbol table:
 
-Can_MainFunction_Read/28 (Can_MainFunction_Read) @064071c0
+Can_MainFunction_Read/26 (Can_MainFunction_Read) @06faee00
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_MainFunction_Write/27 (Can_MainFunction_Write) @064070e0
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @06faed20
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Write/26 (Can_Write) @06407000
+Can_Write/24 (Can_Write) @06faec40
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_SetControllerMode/25 (Can_SetControllerMode) @063a37e0
+Can_SetControllerMode/23 (Can_SetControllerMode) @06faeb60
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Config_BOARD_InitPeripherals/24 (Can_Config_BOARD_InitPeripherals) @06404828
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @06fb3678
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Can_Init/23 (Can_Init) @063a3ee0
+Can_Init/21 (Can_Init) @06faea80
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Port_Init/22 (Port_Init) @063a3e00
+Port_Init/20 (Port_Init) @06fae9a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_DistributePll/21 (Clock_Ip_DistributePll) @063a3d20
+Clock_Ip_DistributePll/19 (Clock_Ip_DistributePll) @06fae8c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_GetPllStatus/20 (Clock_Ip_GetPllStatus) @063a3c40
+Clock_Ip_GetPllStatus/18 (Clock_Ip_GetPllStatus) @06fae7e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Mcu_aClockConfigPB/19 (Mcu_aClockConfigPB) @064046c0
+Mcu_aClockConfigPB/17 (Mcu_aClockConfigPB) @06fb3510
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Clock_Ip_Init/18 (Clock_Ip_Init) @063a3b60
+Clock_Ip_Init/16 (Clock_Ip_Init) @06fae700
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-*.LC0/17 (*.LC0) @064042d0
+*.LC0/15 (*.LC0) @06fb3120
   Type: variable definition analyzed
   Visibility: no_reorder artificial
   Aux: @01733ea0
   References: dummyData/1 (addr)
-  Referring: main/15 (read)
+  Referring: main/13 (read)
   Availability: not-ready
   Varpool flags: initialized read-only const-value-known
-DelayTimer/16 (DelayTimer) @064041b0
+DelayTimer/14 (DelayTimer) @06fb3000
   Type: variable definition analyzed
   Visibility: force_output no_reorder
-  Aux: @063a31c0
+  Aux: @06f4fa80
   References: 
-  Referring: TestDelay/14 (read)TestDelay/14 (write)TestDelay/14 (read)TestDelay/14 (write)
+  Referring: TestDelay/12 (read)TestDelay/12 (write)TestDelay/12 (read)TestDelay/12 (write)
   Availability: not-ready
   Varpool flags: initialized
-main/15 (main) @063a31c0
+main/13 (main) @06f4fa80
   Type: function definition analyzed
   Visibility: force_output no_reorder public
   Aux: @01733ea0
-  References: Mcu_aClockConfigPB/19 (addr)*.LC0/17 (read)Can_Config_BOARD_InitPeripherals/24 (addr)
+  References: Mcu_aClockConfigPB/17 (addr)*.LC0/15 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
   Referring: 
   Function flags: body
   Called by: 
-  Calls: Can_MainFunction_Read/28 TestDelay/14 Can_MainFunction_Write/27 Can_Write/26 Can_SetControllerMode/25 Can_Init/23 Port_Init/22 Clock_Ip_DistributePll/21 Clock_Ip_GetPllStatus/20 Clock_Ip_Init/18 
-TestDelay/14 (TestDelay) @0639ee00
+  Calls: Can_MainFunction_Read/26 TestDelay/12 Can_MainFunction_Write/25 Can_Write/24 Can_SetControllerMode/23 Can_Init/21 Port_Init/20 Clock_Ip_DistributePll/19 Clock_Ip_GetPllStatus/18 Clock_Ip_Init/16 
+TestDelay/12 (TestDelay) @06f4f2a0
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @063a31c0
-  References: DelayTimer/16 (read)DelayTimer/16 (write)DelayTimer/16 (read)DelayTimer/16 (write)
+  Aux: @06f4fa80
+  References: DelayTimer/14 (read)DelayTimer/14 (write)DelayTimer/14 (read)DelayTimer/14 (write)
   Referring: 
   Function flags: body
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
+CanIf_ControllerBusOff/11 (CanIf_ControllerBusOff) @06f4fc40
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639ee00
+  Aux: @06f4f2a0
   References: 
   Referring: 
   Function flags: body
   Called by: 
   Calls: 
-CanIf_RxIndication/12 (CanIf_RxIndication) @0639ed20
+CanIf_RxIndication/10 (CanIf_RxIndication) @06f4f9a0
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639e620
-  References: mailBoxid/3 (write)mailBoxid/3 (read)localreceivedData/2 (write)localreceivedData/2 (read)receivedData1/4 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData2/5 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData3/6 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData4/7 (write)
+  Aux: @06f4fc40
+  References: receivedData1/2 (write)receivedData2/3 (write)receivedData3/4 (write)receivedData4/5 (write)
   Referring: 
   Function flags: body
   Called by: 
   Calls: 
-CanIf_TxConfirmation/11 (CanIf_TxConfirmation) @0639ea80
+CanIf_TxConfirmation/9 (CanIf_TxConfirmation) @06f4f700
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639ed20
+  Aux: @06f4f9a0
   References: 
   Referring: 
   Function flags: body
   Called by: 
   Calls: 
-CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
+CanIf_ControllerModeIndication/8 (CanIf_ControllerModeIndication) @06f4f460
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639ea80
+  Aux: @06f4f700
   References: 
   Referring: 
   Function flags: body
   Called by: 
   Calls: 
-exit_code/9 (exit_code) @0639ad80
+exit_code/7 (exit_code) @06f4acf0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639e7e0
+  Aux: @06f4f460
   References: 
   Referring: 
   Availability: not-ready
   Varpool flags: initialized
-status/8 (status) @0639acf0
+status/6 (status) @06f4ac60
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639ad80
+  Aux: @06f4acf0
   References: 
   Referring: 
   Availability: not-ready
   Varpool flags:
-receivedData4/7 (receivedData4) @0639ac60
+receivedData4/5 (receivedData4) @06f4abd0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639acf0
+  Aux: @06f4ac60
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData3/6 (receivedData3) @0639abd0
+receivedData3/4 (receivedData3) @06f4ab40
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639ac60
+  Aux: @06f4abd0
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData2/5 (receivedData2) @0639ab40
+receivedData2/3 (receivedData2) @06f4aab0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639abd0
+  Aux: @06f4ab40
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData1/4 (receivedData1) @0639aab0
+receivedData1/2 (receivedData1) @06f4aa20
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639ab40
+  Aux: @06f4aab0
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-mailBoxid/3 (mailBoxid) @0639aa20
+dummyData/1 (dummyData) @06f4a990
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
-  Aux: @0639aab0
+  Aux: @06f4aa20
   References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: not-ready
-  Varpool flags:
-localreceivedData/2 (localreceivedData) @0639a990
-  Type: variable definition analyzed
-  Visibility: force_output no_reorder public
-  Aux: @0639aa20
-  References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: not-ready
-  Varpool flags:
-dummyData/1 (dummyData) @0639a900
-  Type: variable definition analyzed
-  Visibility: force_output no_reorder public
-  Aux: @0639a990
-  References: 
-  Referring: *.LC0/17 (addr)
+  Referring: *.LC0/15 (addr)
   Availability: not-ready
   Varpool flags: initialized
-DevAssert/0 (DevAssert) @05e650e0
+DevAssert/0 (DevAssert) @06a050e0
   Type: function definition
   Visibility: no_reorder
   References: 
@@ -245,123 +229,123 @@ Removing unused symbols: DevAssert
 
 Reclaimed Symbol table:
 
-Can_MainFunction_Read/28 (Can_MainFunction_Read) @064071c0
+Can_MainFunction_Read/26 (Can_MainFunction_Read) @06faee00
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_MainFunction_Write/27 (Can_MainFunction_Write) @064070e0
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @06faed20
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Write/26 (Can_Write) @06407000
+Can_Write/24 (Can_Write) @06faec40
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_SetControllerMode/25 (Can_SetControllerMode) @063a37e0
+Can_SetControllerMode/23 (Can_SetControllerMode) @06faeb60
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Config_BOARD_InitPeripherals/24 (Can_Config_BOARD_InitPeripherals) @06404828
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @06fb3678
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Can_Init/23 (Can_Init) @063a3ee0
+Can_Init/21 (Can_Init) @06faea80
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Port_Init/22 (Port_Init) @063a3e00
+Port_Init/20 (Port_Init) @06fae9a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_DistributePll/21 (Clock_Ip_DistributePll) @063a3d20
+Clock_Ip_DistributePll/19 (Clock_Ip_DistributePll) @06fae8c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_GetPllStatus/20 (Clock_Ip_GetPllStatus) @063a3c40
+Clock_Ip_GetPllStatus/18 (Clock_Ip_GetPllStatus) @06fae7e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Mcu_aClockConfigPB/19 (Mcu_aClockConfigPB) @064046c0
+Mcu_aClockConfigPB/17 (Mcu_aClockConfigPB) @06fb3510
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Clock_Ip_Init/18 (Clock_Ip_Init) @063a3b60
+Clock_Ip_Init/16 (Clock_Ip_Init) @06fae700
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-*.LC0/17 (*.LC0) @064042d0
+*.LC0/15 (*.LC0) @06fb3120
   Type: variable definition analyzed
   Visibility: no_reorder artificial
   References: dummyData/1 (addr)
-  Referring: main/15 (read)
+  Referring: main/13 (read)
   Availability: not-ready
   Varpool flags: initialized read-only const-value-known
-DelayTimer/16 (DelayTimer) @064041b0
+DelayTimer/14 (DelayTimer) @06fb3000
   Type: variable definition analyzed
   Visibility: force_output no_reorder
   References: 
-  Referring: TestDelay/14 (read)TestDelay/14 (write)TestDelay/14 (read)TestDelay/14 (write)
+  Referring: TestDelay/12 (read)TestDelay/12 (write)TestDelay/12 (read)TestDelay/12 (write)
   Availability: not-ready
   Varpool flags: initialized
-main/15 (main) @063a31c0
+main/13 (main) @06f4fa80
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: Mcu_aClockConfigPB/19 (addr)*.LC0/17 (read)Can_Config_BOARD_InitPeripherals/24 (addr)
+  References: Mcu_aClockConfigPB/17 (addr)*.LC0/15 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
   Referring: 
   Function flags: body
   Called by: 
-  Calls: Can_MainFunction_Read/28 TestDelay/14 Can_MainFunction_Write/27 Can_Write/26 Can_SetControllerMode/25 Can_Init/23 Port_Init/22 Clock_Ip_DistributePll/21 Clock_Ip_GetPllStatus/20 Clock_Ip_Init/18 
-TestDelay/14 (TestDelay) @0639ee00
+  Calls: Can_MainFunction_Read/26 TestDelay/12 Can_MainFunction_Write/25 Can_Write/24 Can_SetControllerMode/23 Can_Init/21 Port_Init/20 Clock_Ip_DistributePll/19 Clock_Ip_GetPllStatus/18 Clock_Ip_Init/16 
+TestDelay/12 (TestDelay) @06f4f2a0
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: DelayTimer/16 (read)DelayTimer/16 (write)DelayTimer/16 (read)DelayTimer/16 (write)
+  References: DelayTimer/14 (read)DelayTimer/14 (write)DelayTimer/14 (read)DelayTimer/14 (write)
   Referring: 
   Function flags: body
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
+CanIf_ControllerBusOff/11 (CanIf_ControllerBusOff) @06f4fc40
   Type: function definition analyzed
   Visibility: force_output no_reorder public
   References: 
@@ -369,23 +353,15 @@ CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
   Function flags: body
   Called by: 
   Calls: 
-CanIf_RxIndication/12 (CanIf_RxIndication) @0639ed20
+CanIf_RxIndication/10 (CanIf_RxIndication) @06f4f9a0
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: mailBoxid/3 (write)mailBoxid/3 (read)localreceivedData/2 (write)localreceivedData/2 (read)receivedData1/4 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData2/5 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData3/6 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData4/7 (write)
+  References: receivedData1/2 (write)receivedData2/3 (write)receivedData3/4 (write)receivedData4/5 (write)
   Referring: 
   Function flags: body
   Called by: 
   Calls: 
-CanIf_TxConfirmation/11 (CanIf_TxConfirmation) @0639ea80
-  Type: function definition analyzed
-  Visibility: force_output no_reorder public
-  References: 
-  Referring: 
-  Function flags: body
-  Called by: 
-  Calls: 
-CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
+CanIf_TxConfirmation/9 (CanIf_TxConfirmation) @06f4f700
   Type: function definition analyzed
   Visibility: force_output no_reorder public
   References: 
@@ -393,190 +369,184 @@ CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
   Function flags: body
   Called by: 
   Calls: 
-exit_code/9 (exit_code) @0639ad80
+CanIf_ControllerModeIndication/8 (CanIf_ControllerModeIndication) @06f4f460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+exit_code/7 (exit_code) @06f4acf0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
   Referring: 
   Availability: not-ready
   Varpool flags: initialized
-status/8 (status) @0639acf0
+status/6 (status) @06f4ac60
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
   Referring: 
   Availability: not-ready
   Varpool flags:
-receivedData4/7 (receivedData4) @0639ac60
+receivedData4/5 (receivedData4) @06f4abd0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData3/6 (receivedData3) @0639abd0
+receivedData3/4 (receivedData3) @06f4ab40
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData2/5 (receivedData2) @0639ab40
+receivedData2/3 (receivedData2) @06f4aab0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData1/4 (receivedData1) @0639aab0
+receivedData1/2 (receivedData1) @06f4aa20
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-mailBoxid/3 (mailBoxid) @0639aa20
+dummyData/1 (dummyData) @06f4a990
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: not-ready
-  Varpool flags:
-localreceivedData/2 (localreceivedData) @0639a990
-  Type: variable definition analyzed
-  Visibility: force_output no_reorder public
-  References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: not-ready
-  Varpool flags:
-dummyData/1 (dummyData) @0639a900
-  Type: variable definition analyzed
-  Visibility: force_output no_reorder public
-  References: 
-  Referring: *.LC0/17 (addr)
+  Referring: *.LC0/15 (addr)
   Availability: not-ready
   Varpool flags: initialized
 
 
 Initial Symbol table:
 
-Can_MainFunction_Read/28 (Can_MainFunction_Read) @064071c0
+Can_MainFunction_Read/26 (Can_MainFunction_Read) @06faee00
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_MainFunction_Write/27 (Can_MainFunction_Write) @064070e0
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @06faed20
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Write/26 (Can_Write) @06407000
+Can_Write/24 (Can_Write) @06faec40
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_SetControllerMode/25 (Can_SetControllerMode) @063a37e0
+Can_SetControllerMode/23 (Can_SetControllerMode) @06faeb60
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Config_BOARD_InitPeripherals/24 (Can_Config_BOARD_InitPeripherals) @06404828
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @06fb3678
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Can_Init/23 (Can_Init) @063a3ee0
+Can_Init/21 (Can_Init) @06faea80
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Port_Init/22 (Port_Init) @063a3e00
+Port_Init/20 (Port_Init) @06fae9a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_DistributePll/21 (Clock_Ip_DistributePll) @063a3d20
+Clock_Ip_DistributePll/19 (Clock_Ip_DistributePll) @06fae8c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_GetPllStatus/20 (Clock_Ip_GetPllStatus) @063a3c40
+Clock_Ip_GetPllStatus/18 (Clock_Ip_GetPllStatus) @06fae7e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Mcu_aClockConfigPB/19 (Mcu_aClockConfigPB) @064046c0
+Mcu_aClockConfigPB/17 (Mcu_aClockConfigPB) @06fb3510
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Clock_Ip_Init/18 (Clock_Ip_Init) @063a3b60
+Clock_Ip_Init/16 (Clock_Ip_Init) @06fae700
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-*.LC0/17 (*.LC0) @064042d0
+*.LC0/15 (*.LC0) @06fb3120
   Type: variable definition analyzed
   Visibility: no_reorder artificial
   References: dummyData/1 (addr)
-  Referring: main/15 (read)
+  Referring: main/13 (read)
   Availability: not-ready
   Varpool flags: initialized read-only const-value-known
-DelayTimer.7511/16 (DelayTimer) @064041b0
+DelayTimer.7510/14 (DelayTimer) @06fb3000
   Type: variable definition analyzed
   Visibility: force_output no_reorder
   References: 
-  Referring: TestDelay/14 (read)TestDelay/14 (write)TestDelay/14 (read)TestDelay/14 (write)
+  Referring: TestDelay/12 (read)TestDelay/12 (write)TestDelay/12 (read)TestDelay/12 (write)
   Availability: not-ready
   Varpool flags: initialized
-main/15 (main) @063a31c0
+main/13 (main) @06f4fa80
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: Mcu_aClockConfigPB/19 (addr)*.LC0/17 (read)Can_Config_BOARD_InitPeripherals/24 (addr)
+  References: Mcu_aClockConfigPB/17 (addr)*.LC0/15 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
   Referring: 
   Function flags: body
   Called by: 
-  Calls: Can_MainFunction_Read/28 TestDelay/14 Can_MainFunction_Write/27 Can_Write/26 Can_SetControllerMode/25 Can_Init/23 Port_Init/22 Clock_Ip_DistributePll/21 Clock_Ip_GetPllStatus/20 Clock_Ip_Init/18 
-TestDelay/14 (TestDelay) @0639ee00
+  Calls: Can_MainFunction_Read/26 TestDelay/12 Can_MainFunction_Write/25 Can_Write/24 Can_SetControllerMode/23 Can_Init/21 Port_Init/20 Clock_Ip_DistributePll/19 Clock_Ip_GetPllStatus/18 Clock_Ip_Init/16 
+TestDelay/12 (TestDelay) @06f4f2a0
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: DelayTimer.7511/16 (read)DelayTimer.7511/16 (write)DelayTimer.7511/16 (read)DelayTimer.7511/16 (write)
+  References: DelayTimer.7510/14 (read)DelayTimer.7510/14 (write)DelayTimer.7510/14 (read)DelayTimer.7510/14 (write)
   Referring: 
   Function flags: body
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
+CanIf_ControllerBusOff/11 (CanIf_ControllerBusOff) @06f4fc40
   Type: function definition analyzed
   Visibility: force_output no_reorder public
   References: 
@@ -584,23 +554,15 @@ CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
   Function flags: body
   Called by: 
   Calls: 
-CanIf_RxIndication/12 (CanIf_RxIndication) @0639ed20
+CanIf_RxIndication/10 (CanIf_RxIndication) @06f4f9a0
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: mailBoxid/3 (write)mailBoxid/3 (read)localreceivedData/2 (write)localreceivedData/2 (read)receivedData1/4 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData2/5 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData3/6 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData4/7 (write)
+  References: receivedData1/2 (write)receivedData2/3 (write)receivedData3/4 (write)receivedData4/5 (write)
   Referring: 
   Function flags: body
   Called by: 
   Calls: 
-CanIf_TxConfirmation/11 (CanIf_TxConfirmation) @0639ea80
-  Type: function definition analyzed
-  Visibility: force_output no_reorder public
-  References: 
-  Referring: 
-  Function flags: body
-  Called by: 
-  Calls: 
-CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
+CanIf_TxConfirmation/9 (CanIf_TxConfirmation) @06f4f700
   Type: function definition analyzed
   Visibility: force_output no_reorder public
   References: 
@@ -608,67 +570,61 @@ CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
   Function flags: body
   Called by: 
   Calls: 
-exit_code/9 (exit_code) @0639ad80
+CanIf_ControllerModeIndication/8 (CanIf_ControllerModeIndication) @06f4f460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+exit_code/7 (exit_code) @06f4acf0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
   Referring: 
   Availability: not-ready
   Varpool flags: initialized
-status/8 (status) @0639acf0
+status/6 (status) @06f4ac60
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
   Referring: 
   Availability: not-ready
   Varpool flags:
-receivedData4/7 (receivedData4) @0639ac60
+receivedData4/5 (receivedData4) @06f4abd0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData3/6 (receivedData3) @0639abd0
+receivedData3/4 (receivedData3) @06f4ab40
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData2/5 (receivedData2) @0639ab40
+receivedData2/3 (receivedData2) @06f4aab0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData1/4 (receivedData1) @0639aab0
+receivedData1/2 (receivedData1) @06f4aa20
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-mailBoxid/3 (mailBoxid) @0639aa20
+dummyData/1 (dummyData) @06f4a990
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: not-ready
-  Varpool flags:
-localreceivedData/2 (localreceivedData) @0639a990
-  Type: variable definition analyzed
-  Visibility: force_output no_reorder public
-  References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: not-ready
-  Varpool flags:
-dummyData/1 (dummyData) @0639a900
-  Type: variable definition analyzed
-  Visibility: force_output no_reorder public
-  References: 
-  Referring: *.LC0/17 (addr)
+  Referring: *.LC0/15 (addr)
   Availability: not-ready
   Varpool flags: initialized
 
@@ -676,123 +632,123 @@ Removing unused symbols:
 
 Reclaimed Symbol table:
 
-Can_MainFunction_Read/28 (Can_MainFunction_Read) @064071c0
+Can_MainFunction_Read/26 (Can_MainFunction_Read) @06faee00
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_MainFunction_Write/27 (Can_MainFunction_Write) @064070e0
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @06faed20
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Write/26 (Can_Write) @06407000
+Can_Write/24 (Can_Write) @06faec40
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_SetControllerMode/25 (Can_SetControllerMode) @063a37e0
+Can_SetControllerMode/23 (Can_SetControllerMode) @06faeb60
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Config_BOARD_InitPeripherals/24 (Can_Config_BOARD_InitPeripherals) @06404828
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @06fb3678
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Can_Init/23 (Can_Init) @063a3ee0
+Can_Init/21 (Can_Init) @06faea80
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Port_Init/22 (Port_Init) @063a3e00
+Port_Init/20 (Port_Init) @06fae9a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_DistributePll/21 (Clock_Ip_DistributePll) @063a3d20
+Clock_Ip_DistributePll/19 (Clock_Ip_DistributePll) @06fae8c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_GetPllStatus/20 (Clock_Ip_GetPllStatus) @063a3c40
+Clock_Ip_GetPllStatus/18 (Clock_Ip_GetPllStatus) @06fae7e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Mcu_aClockConfigPB/19 (Mcu_aClockConfigPB) @064046c0
+Mcu_aClockConfigPB/17 (Mcu_aClockConfigPB) @06fb3510
   Type: variable
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not-ready
   Varpool flags: read-only
-Clock_Ip_Init/18 (Clock_Ip_Init) @063a3b60
+Clock_Ip_Init/16 (Clock_Ip_Init) @06fae700
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-*.LC0/17 (*.LC0) @064042d0
+*.LC0/15 (*.LC0) @06fb3120
   Type: variable definition analyzed
   Visibility: no_reorder artificial
   References: dummyData/1 (addr)
-  Referring: main/15 (read)
+  Referring: main/13 (read)
   Availability: not-ready
   Varpool flags: initialized read-only const-value-known
-DelayTimer.7511/16 (DelayTimer) @064041b0
+DelayTimer.7510/14 (DelayTimer) @06fb3000
   Type: variable definition analyzed
   Visibility: force_output no_reorder
   References: 
-  Referring: TestDelay/14 (read)TestDelay/14 (write)TestDelay/14 (read)TestDelay/14 (write)
+  Referring: TestDelay/12 (read)TestDelay/12 (write)TestDelay/12 (read)TestDelay/12 (write)
   Availability: not-ready
   Varpool flags: initialized
-main/15 (main) @063a31c0
+main/13 (main) @06f4fa80
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: Mcu_aClockConfigPB/19 (addr)*.LC0/17 (read)Can_Config_BOARD_InitPeripherals/24 (addr)
+  References: Mcu_aClockConfigPB/17 (addr)*.LC0/15 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
   Referring: 
   Function flags: body
   Called by: 
-  Calls: Can_MainFunction_Read/28 TestDelay/14 Can_MainFunction_Write/27 Can_Write/26 Can_SetControllerMode/25 Can_Init/23 Port_Init/22 Clock_Ip_DistributePll/21 Clock_Ip_GetPllStatus/20 Clock_Ip_Init/18 
-TestDelay/14 (TestDelay) @0639ee00
+  Calls: Can_MainFunction_Read/26 TestDelay/12 Can_MainFunction_Write/25 Can_Write/24 Can_SetControllerMode/23 Can_Init/21 Port_Init/20 Clock_Ip_DistributePll/19 Clock_Ip_GetPllStatus/18 Clock_Ip_Init/16 
+TestDelay/12 (TestDelay) @06f4f2a0
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: DelayTimer.7511/16 (read)DelayTimer.7511/16 (write)DelayTimer.7511/16 (read)DelayTimer.7511/16 (write)
+  References: DelayTimer.7510/14 (read)DelayTimer.7510/14 (write)DelayTimer.7510/14 (read)DelayTimer.7510/14 (write)
   Referring: 
   Function flags: body
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
+CanIf_ControllerBusOff/11 (CanIf_ControllerBusOff) @06f4fc40
   Type: function definition analyzed
   Visibility: force_output no_reorder public
   References: 
@@ -800,23 +756,15 @@ CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
   Function flags: body
   Called by: 
   Calls: 
-CanIf_RxIndication/12 (CanIf_RxIndication) @0639ed20
+CanIf_RxIndication/10 (CanIf_RxIndication) @06f4f9a0
   Type: function definition analyzed
   Visibility: force_output no_reorder public
-  References: mailBoxid/3 (write)mailBoxid/3 (read)localreceivedData/2 (write)localreceivedData/2 (read)receivedData1/4 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData2/5 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData3/6 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData4/7 (write)
+  References: receivedData1/2 (write)receivedData2/3 (write)receivedData3/4 (write)receivedData4/5 (write)
   Referring: 
   Function flags: body
   Called by: 
   Calls: 
-CanIf_TxConfirmation/11 (CanIf_TxConfirmation) @0639ea80
-  Type: function definition analyzed
-  Visibility: force_output no_reorder public
-  References: 
-  Referring: 
-  Function flags: body
-  Called by: 
-  Calls: 
-CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
+CanIf_TxConfirmation/9 (CanIf_TxConfirmation) @06f4f700
   Type: function definition analyzed
   Visibility: force_output no_reorder public
   References: 
@@ -824,67 +772,61 @@ CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
   Function flags: body
   Called by: 
   Calls: 
-exit_code/9 (exit_code) @0639ad80
+CanIf_ControllerModeIndication/8 (CanIf_ControllerModeIndication) @06f4f460
+  Type: function definition analyzed
+  Visibility: force_output no_reorder public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: 
+exit_code/7 (exit_code) @06f4acf0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
   Referring: 
   Availability: not-ready
   Varpool flags: initialized
-status/8 (status) @0639acf0
+status/6 (status) @06f4ac60
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
   Referring: 
   Availability: not-ready
   Varpool flags:
-receivedData4/7 (receivedData4) @0639ac60
+receivedData4/5 (receivedData4) @06f4abd0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData3/6 (receivedData3) @0639abd0
+receivedData3/4 (receivedData3) @06f4ab40
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData2/5 (receivedData2) @0639ab40
+receivedData2/3 (receivedData2) @06f4aab0
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-receivedData1/4 (receivedData1) @0639aab0
+receivedData1/2 (receivedData1) @06f4aa20
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: not-ready
   Varpool flags:
-mailBoxid/3 (mailBoxid) @0639aa20
+dummyData/1 (dummyData) @06f4a990
   Type: variable definition analyzed
   Visibility: force_output no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: not-ready
-  Varpool flags:
-localreceivedData/2 (localreceivedData) @0639a990
-  Type: variable definition analyzed
-  Visibility: force_output no_reorder public
-  References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: not-ready
-  Varpool flags:
-dummyData/1 (dummyData) @0639a900
-  Type: variable definition analyzed
-  Visibility: force_output no_reorder public
-  References: 
-  Referring: *.LC0/17 (addr)
+  Referring: *.LC0/15 (addr)
   Availability: not-ready
   Varpool flags: initialized
 
@@ -893,136 +835,136 @@ Reclaiming variables:
 Clearing address taken flags:
 Optimized Symbol table:
 
-Can_MainFunction_Read/28 (Can_MainFunction_Read) @064071c0
+Can_MainFunction_Read/26 (Can_MainFunction_Read) @06faee00
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_MainFunction_Write/27 (Can_MainFunction_Write) @064070e0
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @06faed20
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Write/26 (Can_Write) @06407000
+Can_Write/24 (Can_Write) @06faec40
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_SetControllerMode/25 (Can_SetControllerMode) @063a37e0
+Can_SetControllerMode/23 (Can_SetControllerMode) @06faeb60
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Can_Config_BOARD_InitPeripherals/24 (Can_Config_BOARD_InitPeripherals) @06404828
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @06fb3678
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not_available
   Varpool flags: read-only
-Can_Init/23 (Can_Init) @063a3ee0
+Can_Init/21 (Can_Init) @06faea80
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Port_Init/22 (Port_Init) @063a3e00
+Port_Init/20 (Port_Init) @06fae9a0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_DistributePll/21 (Clock_Ip_DistributePll) @063a3d20
+Clock_Ip_DistributePll/19 (Clock_Ip_DistributePll) @06fae8c0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Clock_Ip_GetPllStatus/20 (Clock_Ip_GetPllStatus) @063a3c40
+Clock_Ip_GetPllStatus/18 (Clock_Ip_GetPllStatus) @06fae7e0
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-Mcu_aClockConfigPB/19 (Mcu_aClockConfigPB) @064046c0
+Mcu_aClockConfigPB/17 (Mcu_aClockConfigPB) @06fb3510
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
   References: 
-  Referring: main/15 (addr)
+  Referring: main/13 (addr)
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_Init/18 (Clock_Ip_Init) @063a3b60
+Clock_Ip_Init/16 (Clock_Ip_Init) @06fae700
   Type: function
   Visibility: external public
   References: 
   Referring: 
   Availability: not_available
   Function flags:
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-*.LC0/17 (*.LC0) @064042d0
+*.LC0/15 (*.LC0) @06fb3120
   Type: variable definition analyzed
   Visibility: no_reorder prevailing_def_ironly artificial
   References: dummyData/1 (addr)
-  Referring: main/15 (read)
+  Referring: main/13 (read)
   Availability: available
   Varpool flags: initialized used-by-single-function read-only const-value-known
-DelayTimer.7511/16 (DelayTimer) @064041b0
+DelayTimer.7510/14 (DelayTimer) @06fb3000
   Type: variable definition analyzed
   Visibility: force_output no_reorder prevailing_def_ironly
   References: 
-  Referring: TestDelay/14 (read)TestDelay/14 (write)TestDelay/14 (read)TestDelay/14 (write)
+  Referring: TestDelay/12 (read)TestDelay/12 (write)TestDelay/12 (read)TestDelay/12 (write)
   Availability: available
   Varpool flags: initialized
-main/15 (main) @063a31c0
+main/13 (main) @06f4fa80
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
-  References: Mcu_aClockConfigPB/19 (addr)*.LC0/17 (read)Can_Config_BOARD_InitPeripherals/24 (addr)
+  References: Mcu_aClockConfigPB/17 (addr)*.LC0/15 (read)Can_Config_BOARD_InitPeripherals/22 (addr)
   Referring: 
   Availability: available
   Function flags: body
   Called by: 
-  Calls: Can_MainFunction_Read/28 TestDelay/14 Can_MainFunction_Write/27 Can_Write/26 Can_SetControllerMode/25 Can_Init/23 Port_Init/22 Clock_Ip_DistributePll/21 Clock_Ip_GetPllStatus/20 Clock_Ip_Init/18 
-TestDelay/14 (TestDelay) @0639ee00
+  Calls: Can_MainFunction_Read/26 TestDelay/12 Can_MainFunction_Write/25 Can_Write/24 Can_SetControllerMode/23 Can_Init/21 Port_Init/20 Clock_Ip_DistributePll/19 Clock_Ip_GetPllStatus/18 Clock_Ip_Init/16 
+TestDelay/12 (TestDelay) @06f4f2a0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
-  References: DelayTimer.7511/16 (read)DelayTimer.7511/16 (write)DelayTimer.7511/16 (read)DelayTimer.7511/16 (write)
+  References: DelayTimer.7510/14 (read)DelayTimer.7510/14 (write)DelayTimer.7510/14 (read)DelayTimer.7510/14 (write)
   Referring: 
   Availability: available
   Function flags: body
-  Called by: main/15 
+  Called by: main/13 
   Calls: 
-CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
+CanIf_ControllerBusOff/11 (CanIf_ControllerBusOff) @06f4fc40
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -1031,25 +973,16 @@ CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
   Function flags: body
   Called by: 
   Calls: 
-CanIf_RxIndication/12 (CanIf_RxIndication) @0639ed20
+CanIf_RxIndication/10 (CanIf_RxIndication) @06f4f9a0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
-  References: mailBoxid/3 (write)mailBoxid/3 (read)localreceivedData/2 (write)localreceivedData/2 (read)receivedData1/4 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData2/5 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData3/6 (write)localreceivedData/2 (write)localreceivedData/2 (read)receivedData4/7 (write)
+  References: receivedData1/2 (write)receivedData2/3 (write)receivedData3/4 (write)receivedData4/5 (write)
   Referring: 
   Availability: available
   Function flags: body
   Called by: 
   Calls: 
-CanIf_TxConfirmation/11 (CanIf_TxConfirmation) @0639ea80
-  Type: function definition analyzed
-  Visibility: force_output externally_visible no_reorder public
-  References: 
-  Referring: 
-  Availability: available
-  Function flags: body
-  Called by: 
-  Calls: 
-CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
+CanIf_TxConfirmation/9 (CanIf_TxConfirmation) @06f4f700
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
@@ -1058,67 +991,62 @@ CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
   Function flags: body
   Called by: 
   Calls: 
-exit_code/9 (exit_code) @0639ad80
+CanIf_ControllerModeIndication/8 (CanIf_ControllerModeIndication) @06f4f460
+  Type: function definition analyzed
+  Visibility: force_output externally_visible no_reorder public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body
+  Called by: 
+  Calls: 
+exit_code/7 (exit_code) @06f4acf0
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
   Referring: 
   Availability: available
   Varpool flags: initialized
-status/8 (status) @0639acf0
+status/6 (status) @06f4ac60
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
   Referring: 
   Availability: available
   Varpool flags:
-receivedData4/7 (receivedData4) @0639ac60
+receivedData4/5 (receivedData4) @06f4abd0
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: available
   Varpool flags:
-receivedData3/6 (receivedData3) @0639abd0
+receivedData3/4 (receivedData3) @06f4ab40
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: available
   Varpool flags:
-receivedData2/5 (receivedData2) @0639ab40
+receivedData2/3 (receivedData2) @06f4aab0
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: available
   Varpool flags:
-receivedData1/4 (receivedData1) @0639aab0
+receivedData1/2 (receivedData1) @06f4aa20
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)
+  Referring: CanIf_RxIndication/10 (write)
   Availability: available
   Varpool flags:
-mailBoxid/3 (mailBoxid) @0639aa20
+dummyData/1 (dummyData) @06f4a990
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder public
   References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: available
-  Varpool flags:
-localreceivedData/2 (localreceivedData) @0639a990
-  Type: variable definition analyzed
-  Visibility: force_output externally_visible no_reorder public
-  References: 
-  Referring: CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)CanIf_RxIndication/12 (write)CanIf_RxIndication/12 (read)
-  Availability: available
-  Varpool flags:
-dummyData/1 (dummyData) @0639a900
-  Type: variable definition analyzed
-  Visibility: force_output externally_visible no_reorder public
-  References: 
-  Referring: *.LC0/17 (addr)
+  Referring: *.LC0/15 (addr)
   Availability: available
   Varpool flags: initialized
 Materializing clones
@@ -1127,12 +1055,12 @@ Materialization Call site updates done.
 Reclaiming functions:
 Reclaiming variables:
 Clearing address taken flags:
-Trivially needed variables: *.LC0 DelayTimer.7511 exit_code status receivedData4 receivedData3 receivedData2 receivedData1 mailBoxid localreceivedData dummyData
+Trivially needed variables: *.LC0 DelayTimer.7510 exit_code status receivedData4 receivedData3 receivedData2 receivedData1 dummyData
 Removing variables:
 
 Final Symbol table:
 
-Can_MainFunction_Read/28 (Can_MainFunction_Read) @064071c0
+Can_MainFunction_Read/26 (Can_MainFunction_Read) @06faee00
   Type: function
   Visibility: external public
   References: 
@@ -1141,7 +1069,7 @@ Can_MainFunction_Read/28 (Can_MainFunction_Read) @064071c0
   Function flags:
   Called by: 
   Calls: 
-Can_MainFunction_Write/27 (Can_MainFunction_Write) @064070e0
+Can_MainFunction_Write/25 (Can_MainFunction_Write) @06faed20
   Type: function
   Visibility: external public
   References: 
@@ -1150,7 +1078,7 @@ Can_MainFunction_Write/27 (Can_MainFunction_Write) @064070e0
   Function flags:
   Called by: 
   Calls: 
-Can_Write/26 (Can_Write) @06407000
+Can_Write/24 (Can_Write) @06faec40
   Type: function
   Visibility: external public
   References: 
@@ -1159,7 +1087,7 @@ Can_Write/26 (Can_Write) @06407000
   Function flags:
   Called by: 
   Calls: 
-Can_SetControllerMode/25 (Can_SetControllerMode) @063a37e0
+Can_SetControllerMode/23 (Can_SetControllerMode) @06faeb60
   Type: function
   Visibility: external public
   References: 
@@ -1168,7 +1096,7 @@ Can_SetControllerMode/25 (Can_SetControllerMode) @063a37e0
   Function flags:
   Called by: 
   Calls: 
-Can_Config_BOARD_InitPeripherals/24 (Can_Config_BOARD_InitPeripherals) @06404828
+Can_Config_BOARD_InitPeripherals/22 (Can_Config_BOARD_InitPeripherals) @06fb3678
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -1176,7 +1104,7 @@ Can_Config_BOARD_InitPeripherals/24 (Can_Config_BOARD_InitPeripherals) @06404828
   Referring: 
   Availability: not_available
   Varpool flags: read-only
-Can_Init/23 (Can_Init) @063a3ee0
+Can_Init/21 (Can_Init) @06faea80
   Type: function
   Visibility: external public
   References: 
@@ -1185,7 +1113,7 @@ Can_Init/23 (Can_Init) @063a3ee0
   Function flags:
   Called by: 
   Calls: 
-Port_Init/22 (Port_Init) @063a3e00
+Port_Init/20 (Port_Init) @06fae9a0
   Type: function
   Visibility: external public
   References: 
@@ -1194,7 +1122,7 @@ Port_Init/22 (Port_Init) @063a3e00
   Function flags:
   Called by: 
   Calls: 
-Clock_Ip_DistributePll/21 (Clock_Ip_DistributePll) @063a3d20
+Clock_Ip_DistributePll/19 (Clock_Ip_DistributePll) @06fae8c0
   Type: function
   Visibility: external public
   References: 
@@ -1203,7 +1131,7 @@ Clock_Ip_DistributePll/21 (Clock_Ip_DistributePll) @063a3d20
   Function flags:
   Called by: 
   Calls: 
-Clock_Ip_GetPllStatus/20 (Clock_Ip_GetPllStatus) @063a3c40
+Clock_Ip_GetPllStatus/18 (Clock_Ip_GetPllStatus) @06fae7e0
   Type: function
   Visibility: external public
   References: 
@@ -1212,7 +1140,7 @@ Clock_Ip_GetPllStatus/20 (Clock_Ip_GetPllStatus) @063a3c40
   Function flags:
   Called by: 
   Calls: 
-Mcu_aClockConfigPB/19 (Mcu_aClockConfigPB) @064046c0
+Mcu_aClockConfigPB/17 (Mcu_aClockConfigPB) @06fb3510
   Type: variable
   Body removed by symtab_remove_unreachable_nodes
   Visibility: external public
@@ -1220,7 +1148,7 @@ Mcu_aClockConfigPB/19 (Mcu_aClockConfigPB) @064046c0
   Referring: 
   Availability: not_available
   Varpool flags: read-only
-Clock_Ip_Init/18 (Clock_Ip_Init) @063a3b60
+Clock_Ip_Init/16 (Clock_Ip_Init) @06fae700
   Type: function
   Visibility: external public
   References: 
@@ -1229,7 +1157,7 @@ Clock_Ip_Init/18 (Clock_Ip_Init) @063a3b60
   Function flags:
   Called by: 
   Calls: 
-*.LC0/17 (*.LC0) @064042d0
+*.LC0/15 (*.LC0) @06fb3120
   Type: variable definition analyzed
   Visibility: no_reorder prevailing_def_ironly asm_written artificial
   Aux: @00000001
@@ -1237,15 +1165,15 @@ Clock_Ip_Init/18 (Clock_Ip_Init) @063a3b60
   Referring: 
   Availability: available
   Varpool flags: initialized used-by-single-function read-only const-value-known
-DelayTimer.7511/16 (DelayTimer) @064041b0
+DelayTimer.7510/14 (DelayTimer) @06fb3000
   Type: variable definition analyzed
   Visibility: force_output no_reorder prevailing_def_ironly asm_written
-  Aux: @064042d0
+  Aux: @06fb3120
   References: 
   Referring: 
   Availability: available
   Varpool flags: initialized
-main/15 (main) @063a31c0
+main/13 (main) @06f4fa80
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
   References: 
@@ -1254,7 +1182,7 @@ main/15 (main) @063a31c0
   Function flags:
   Called by: 
   Calls: 
-TestDelay/14 (TestDelay) @0639ee00
+TestDelay/12 (TestDelay) @06f4f2a0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
   References: 
@@ -1263,7 +1191,7 @@ TestDelay/14 (TestDelay) @0639ee00
   Function flags:
   Called by: 
   Calls: 
-CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
+CanIf_ControllerBusOff/11 (CanIf_ControllerBusOff) @06f4fc40
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
   References: 
@@ -1272,7 +1200,7 @@ CanIf_ControllerBusOff/13 (CanIf_ControllerBusOff) @0639e620
   Function flags:
   Called by: 
   Calls: 
-CanIf_RxIndication/12 (CanIf_RxIndication) @0639ed20
+CanIf_RxIndication/10 (CanIf_RxIndication) @06f4f9a0
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
   References: 
@@ -1281,7 +1209,7 @@ CanIf_RxIndication/12 (CanIf_RxIndication) @0639ed20
   Function flags:
   Called by: 
   Calls: 
-CanIf_TxConfirmation/11 (CanIf_TxConfirmation) @0639ea80
+CanIf_TxConfirmation/9 (CanIf_TxConfirmation) @06f4f700
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
   References: 
@@ -1290,7 +1218,7 @@ CanIf_TxConfirmation/11 (CanIf_TxConfirmation) @0639ea80
   Function flags:
   Called by: 
   Calls: 
-CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
+CanIf_ControllerModeIndication/8 (CanIf_ControllerModeIndication) @06f4f460
   Type: function definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
   References: 
@@ -1299,75 +1227,59 @@ CanIf_ControllerModeIndication/10 (CanIf_ControllerModeIndication) @0639e7e0
   Function flags:
   Called by: 
   Calls: 
-exit_code/9 (exit_code) @0639ad80
+exit_code/7 (exit_code) @06f4acf0
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @064041b0
+  Aux: @06fb3000
   References: 
   Referring: 
   Availability: available
   Varpool flags: initialized
-status/8 (status) @0639acf0
+status/6 (status) @06f4ac60
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @0639ad80
+  Aux: @06f4acf0
   References: 
   Referring: 
   Availability: available
   Varpool flags:
-receivedData4/7 (receivedData4) @0639ac60
+receivedData4/5 (receivedData4) @06f4abd0
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @0639acf0
+  Aux: @06f4ac60
   References: 
   Referring: 
   Availability: available
   Varpool flags:
-receivedData3/6 (receivedData3) @0639abd0
+receivedData3/4 (receivedData3) @06f4ab40
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @0639ac60
+  Aux: @06f4abd0
   References: 
   Referring: 
   Availability: available
   Varpool flags:
-receivedData2/5 (receivedData2) @0639ab40
+receivedData2/3 (receivedData2) @06f4aab0
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @0639abd0
+  Aux: @06f4ab40
   References: 
   Referring: 
   Availability: available
   Varpool flags:
-receivedData1/4 (receivedData1) @0639aab0
+receivedData1/2 (receivedData1) @06f4aa20
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @0639ab40
+  Aux: @06f4aab0
   References: 
   Referring: 
   Availability: available
   Varpool flags:
-mailBoxid/3 (mailBoxid) @0639aa20
+dummyData/1 (dummyData) @06f4a990
   Type: variable definition analyzed
   Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @0639aab0
+  Aux: @06f4aa20
   References: 
-  Referring: 
-  Availability: available
-  Varpool flags:
-localreceivedData/2 (localreceivedData) @0639a990
-  Type: variable definition analyzed
-  Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @0639aa20
-  References: 
-  Referring: 
-  Availability: available
-  Varpool flags:
-dummyData/1 (dummyData) @0639a900
-  Type: variable definition analyzed
-  Visibility: force_output externally_visible no_reorder asm_written public
-  Aux: @0639a990
-  References: 
-  Referring: *.LC0/17 (addr)
+  Referring: *.LC0/15 (addr)
   Availability: available
   Varpool flags: initialized
