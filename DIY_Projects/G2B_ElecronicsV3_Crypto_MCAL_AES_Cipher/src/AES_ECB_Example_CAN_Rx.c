@@ -34,6 +34,9 @@
 #include "Crypto.h"
 #include "Clock_Ip.h"
 #include "Comman.h"
+#include "ST7789_low_level.h"
+#include "fonts.h"
+
 
 volatile int exit_code = 0;
 /* User includes */

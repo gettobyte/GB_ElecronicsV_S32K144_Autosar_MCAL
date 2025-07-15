@@ -34,6 +34,8 @@
 #include "Crypto.h"
 #include "Clock_Ip.h"
 #include "Comman.h"
+#include "ST7789_low_level.h"
+#include "fonts.h"
 
 volatile int exit_code = 0;
 /* User includes */
@@ -244,8 +246,16 @@ int main(void)
     	RetVal = Crypto_KeySetValid(APP_AES128_KEY_ID);
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
 
+
+        //Encrypting the original message
     	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_ECB_Encrypt_ProcessJob);
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
+
+
+        //sending the encrypted data and original message
+
+
+
 
     	RetVal = Crypto_ProcessJob(APP_AES128_CDO_ID, &G2B_AES128_ECB_Decrypt_ProcessJob);
         App_SetSuccessStatus((Std_ReturnType)E_OK == RetVal);
