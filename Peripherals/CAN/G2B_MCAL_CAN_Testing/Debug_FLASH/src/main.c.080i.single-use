@@ -6,7 +6,7 @@ main ()
   StatusType stauts;
   Std_ReturnType status;
   Clock_Ip_StatusType clockStatus;
-  int D.7367;
+  int D.7373;
   <unnamed type> _1;
   unsigned char u8TimeOut.7_2;
   _Bool CanIf_bTxFlag.8_3;
@@ -156,9 +156,21 @@ DummyDelay (volatile uint16 ticks)
 
 CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType * PduInfoPtr)
 {
+  uint8 f;
+  uint8 e;
+  uint8 d;
+  uint8 c;
+  uint8 b;
+  uint8 a;
   unsigned char CanIf_u8RxIndicationCnt.2_1;
   unsigned char CanIf_u8RxIndicationCnt.3_2;
   unsigned char _3;
+  uint8 * _4;
+  uint8 * _5;
+  uint8 * _6;
+  uint8 * _7;
+  uint8 * _8;
+  uint8 * _9;
 
   <bb 2> :
   CanIf_u8RxIndicationCnt.2_1 = CanIf_u8RxIndicationCnt;
@@ -166,6 +178,18 @@ CanIf_RxIndication (const struct Can_HwType * Mailbox, const struct PduInfoType 
   _3 = CanIf_u8RxIndicationCnt.3_2 + 1;
   CanIf_u8RxIndicationCnt = _3;
   CanIf_bRxFlag = 1;
+  _4 = PduInfoPtr_13(D)->SduDataPtr;
+  a_14 = *_4;
+  _5 = PduInfoPtr_13(D)->SduDataPtr;
+  b_15 = MEM[(uint8 *)_5 + 1B];
+  _6 = PduInfoPtr_13(D)->SduDataPtr;
+  c_16 = MEM[(uint8 *)_6 + 2B];
+  _7 = PduInfoPtr_13(D)->SduDataPtr;
+  d_17 = MEM[(uint8 *)_7 + 3B];
+  _8 = PduInfoPtr_13(D)->SduDataPtr;
+  e_18 = MEM[(uint8 *)_8 + 4B];
+  _9 = PduInfoPtr_13(D)->SduDataPtr;
+  f_19 = MEM[(uint8 *)_9 + 5B];
   return;
 
 }

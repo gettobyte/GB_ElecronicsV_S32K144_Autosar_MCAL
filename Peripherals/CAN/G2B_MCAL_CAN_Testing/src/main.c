@@ -66,8 +66,15 @@ void CanIf_RxIndication(const Can_HwType* Mailbox, const PduInfoType* PduInfoPtr
 {
     CanIf_u8RxIndicationCnt++;
     CanIf_bRxFlag = TRUE;
-    (void)Mailbox;
-    (void)PduInfoPtr;
+
+   uint8 a = PduInfoPtr->SduDataPtr[0];
+   uint8 b = PduInfoPtr->SduDataPtr[1];
+   uint8 c = PduInfoPtr->SduDataPtr[2];
+   uint8 d = PduInfoPtr->SduDataPtr[3];
+   uint8 e = PduInfoPtr->SduDataPtr[4];
+   uint8 f = PduInfoPtr->SduDataPtr[5];
+
+   (void)Mailbox;
 }
 
 void DummyDelay(volatile uint16 ticks)

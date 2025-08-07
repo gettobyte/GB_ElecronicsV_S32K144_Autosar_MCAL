@@ -33,7 +33,7 @@ G2B_MCAL_CAN_Testing.siz \
 all: G2B_MCAL_CAN_Testing.elf secondary-outputs
 
 # Tool invocations
-G2B_MCAL_CAN_Testing.elf: $(OBJS) C:/Users/Rohan/workspaceS32DS.3.4/G2B_MCAL_CAN_Testing/Project_Settings/Linker_Files/linker_flash_s32k144.ld $(USER_OBJS)
+G2B_MCAL_CAN_Testing.elf: $(OBJS) D:/GB_ElecronicsV_S32K144_Autosar_MCAL/Peripherals/CAN/G2B_MCAL_CAN_Testing/Project_Settings/Linker_Files/linker_flash_s32k144.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Standard S32DS C Linker'
 	arm-none-eabi-gcc -o "G2B_MCAL_CAN_Testing.elf" "@G2B_MCAL_CAN_Testing.args"  $(USER_OBJS)
