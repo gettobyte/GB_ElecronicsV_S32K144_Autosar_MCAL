@@ -22,46 +22,38 @@ functionalGroups:
 /*******************************************************************************
  * Included files 
  ******************************************************************************/
-#include "peripherals_adc_config_1.h"
+#include "peripherals_lptmr_1.h"
 
 /*******************************************************************************
- * adc_config_1 initialization code
+ * lptmr_1 initialization code
  ******************************************************************************/
 /* clang-format off */
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 instance:
-- name: 'adc_config_1'
-- type: 'adc_config'
+- name: 'lptmr_1'
+- type: 'lptmr'
 - mode: 'general'
 - custom_name_enabled: 'false'
-- type_id: 'adc'
+- type_id: 'lptmr'
 - functional_group: 'BOARD_InitPeripherals'
-- peripheral: 'ADC_0'
+- peripheral: 'LPTMR_0'
 - config_sets:
-  - adc:
-    - adcConverterCfg:
+  - lptmr:
+    - lptmrConfig:
       - 0:
-        - name: 'adc_config_1_ConvConfig0'
-        - readonly: 'true'
-        - clockDivide: 'ADC_CLK_DIVIDE_1'
-        - sampleTime: '255'
-        - resolution: 'ADC_RESOLUTION_8BIT'
-        - inputClock: 'ADC_CLK_ALT_1'
-        - trigger: 'ADC_TRIGGER_SOFTWARE'
-        - pretriggerSel: 'ADC_PRETRIGGER_SEL_PDB'
-        - triggerSel: 'ADC_TRIGGER_SEL_PDB'
-        - dmaEnable: 'false'
-        - voltageRef: 'ADC_VOLTAGEREF_VREF'
-        - continuousConvEnable: 'false'
-        - supplyMonitoringEnable: 'false'
-    - adcCompareCfg: []
-    - adcAverageCfg: []
-    - adcChanCfg:
-      - 0:
-        - name: 'adc_config_1_ChnConfig0'
-        - readonly: 'true'
-        - interruptEnable: 'false'
-        - channel: 'ADC_INPUTCHAN_EXT12'
+        - name: 'lptmr_1_config0'
+        - readOnly: 'true'
+        - workMode: 'LPTMR_WORKMODE_TIMER'
+        - dmaRequest: 'false'
+        - interruptEnable: 'true'
+        - freeRun: 'false'
+        - compareValue: '1999'
+        - counterUnits: 'LPTMR_COUNTER_UNITS_TICKS'
+        - clockSelect: 'LPTMR_CLOCKSOURCE_PCC'
+        - prescaler: 'LPTMR_PRESCALE_2'
+        - bypassPrescaler: 'false'
+        - pinSelect: 'LPTMR_PINSELECT_TRGMUX'
+        - pinPolarity: 'LPTMR_PINPOLARITY_RISING'
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 
@@ -74,23 +66,19 @@ instance:
  *
  */
 
-const adc_converter_config_t adc_config_1_ConvConfig0 = {
-  .clockDivide = ADC_CLK_DIVIDE_1,
-  .sampleTime = 255U,
-  .resolution = ADC_RESOLUTION_8BIT,
-  .inputClock = ADC_CLK_ALT_1,
-  .trigger = ADC_TRIGGER_SOFTWARE,
-  .pretriggerSel = ADC_PRETRIGGER_SEL_PDB,
-  .triggerSel = ADC_TRIGGER_SEL_PDB,
-  .dmaEnable = false,
-  .voltageRef = ADC_VOLTAGEREF_VREF,
-  .continuousConvEnable = false,
-  .supplyMonitoringEnable = false
-};
-
-const adc_chan_config_t adc_config_1_ChnConfig0 = {
-  .interruptEnable = false,
-  .channel = ADC_INPUTCHAN_EXT12
+/* LPTMR configuration structure 0 */
+const lptmr_config_t  lptmr_1_config0 = {
+  .workMode = LPTMR_WORKMODE_TIMER,
+  .dmaRequest = false,
+  .interruptEnable = true,
+  .freeRun = false,
+  .compareValue = 1999UL,
+  .counterUnits = LPTMR_COUNTER_UNITS_TICKS,
+  .clockSelect = LPTMR_CLOCKSOURCE_PCC,
+  .prescaler = LPTMR_PRESCALE_2,
+  .bypassPrescaler = false,
+  .pinSelect = LPTMR_PINSELECT_TRGMUX,
+  .pinPolarity = LPTMR_PINPOLARITY_RISING
 };
 
 

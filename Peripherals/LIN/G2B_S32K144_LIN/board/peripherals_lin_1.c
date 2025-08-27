@@ -43,11 +43,19 @@ instance:
       - linStateStructure: 'lin2_State'
       - linConfiguration:
         - 0:
-          - name: 'lin2_InitConfig0'
+          - name: 'lin2_MasterConfig'
           - baudRate: '9600'
           - nodeFunction: '(bool)MASTER'
           - autobaudEnable: '0'
-          - timerGetTimeIntervalCallback: 'NULL'
+          - timerGetTimeIntervalCallback: 'G2B_TimeIntervalCallback0'
+          - classicPidType: 'Classic'
+          - numOfClassicPID: []
+        - 1:
+          - name: 'lin2_SlaveConfig'
+          - baudRate: '9600'
+          - nodeFunction: '(bool)SLAVE'
+          - autobaudEnable: '0'
+          - timerGetTimeIntervalCallback: 'G2B_TimeIntervalCallback1'
           - classicPidType: 'Classic'
           - numOfClassicPID: []
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
@@ -66,13 +74,24 @@ instance:
 lin_state_t lin2_State;
 
 /*! @brief LIN User Configurations structure */
-/*! @brief LIN configuration lin2_InitConfig0 */
-lin_user_config_t lin2_InitConfig0 = 
+/*! @brief LIN configuration lin2_MasterConfig */
+lin_user_config_t lin2_MasterConfig = 
 {
     .baudRate                     = 9600UL,                        /* LPUART baudRate */
     .nodeFunction                 = (bool)MASTER,                    /* true - MASTER, false - SLAVE */
     .autobaudEnable               = false,                          /* Disable auto baudRate */
-    .timerGetTimeIntervalCallback = NULL,
+    .timerGetTimeIntervalCallback = G2B_TimeIntervalCallback0,
+    .classicPID                   = NULL,                               /* ClassicPID */
+    .numOfClassicPID              = 255U                                /* Number of classicPID */
+};
+
+/*! @brief LIN configuration lin2_SlaveConfig */
+lin_user_config_t lin2_SlaveConfig = 
+{
+    .baudRate                     = 9600UL,                        /* LPUART baudRate */
+    .nodeFunction                 = (bool)SLAVE,                    /* true - MASTER, false - SLAVE */
+    .autobaudEnable               = false,                                    /* true - Enbale auto baudRate; false - Disable auto baudRate*/
+    .timerGetTimeIntervalCallback = G2B_TimeIntervalCallback1,
     .classicPID                   = NULL,                               /* ClassicPID */
     .numOfClassicPID              = 255U                                /* Number of classicPID */
 };

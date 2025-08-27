@@ -3,8 +3,8 @@
  * will be overwritten if the respective S32 Config Tools is used to update this file.
  **********************************************************************************************************************/
 
-#ifndef adc_config_1_H
-#define adc_config_1_H
+#ifndef flexTimer_pwm_1_H
+#define flexTimer_pwm_1_H
 
 /**
  * @page misra_violations MISRA-C:2012 violations
@@ -17,27 +17,31 @@
 /*******************************************************************************
  * Included files 
  ******************************************************************************/
-#include "adc_driver.h"
+#include "ftm_pwm_driver.h"
 
 /*******************************************************************************
  * Definitions 
  ******************************************************************************/
+/*! @brief Device instance number */
+#define INST_FLEXTIMER_PWM_1  0U
 
-/*Device instance number */
-#define INST_ADC_CONFIG_1  (0U)
 
 /*******************************************************************************
  * Global variables 
  ******************************************************************************/
 
-/* User configurations */
+/* Fault configuration structure for flexTimer_pwm_1 */
+extern ftm_pwm_fault_param_t flexTimer_pwm_1_FaultConfig;
 
-/* Converter configuration 0 */
-extern const adc_converter_config_t adc_config_1_ConvConfig0;
+/* PWM configuration for flexTimer_pwm_1 */
+extern ftm_pwm_param_t flexTimer_pwm_1_PwmConfig;
 
-/* Channel configuration 0 */
-extern const adc_chan_config_t adc_config_1_ChnConfig0;
+/* Channels configuration structure for the independent channels */
+extern ftm_independent_ch_param_t flexTimer_pwm_1_IndependentChannelsConfig[2];
+
+/* Global configuration of flexTimer */
+extern ftm_user_config_t flexTimer_pwm_1_InitConfig;
 
 
 
-#endif /* adc_config_1_H */
+#endif /* flexTimer_pwm_1_H */

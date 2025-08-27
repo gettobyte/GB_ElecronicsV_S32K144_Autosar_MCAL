@@ -3,8 +3,8 @@
  * will be overwritten if the respective S32 Config Tools is used to update this file.
  **********************************************************************************************************************/
 
-#ifndef adc_config_1_H
-#define adc_config_1_H
+#ifndef lptmr_1_H
+#define lptmr_1_H
 
 /**
  * @page misra_violations MISRA-C:2012 violations
@@ -17,27 +17,20 @@
 /*******************************************************************************
  * Included files 
  ******************************************************************************/
-#include "adc_driver.h"
+#include "lptmr_driver.h"
 
 /*******************************************************************************
  * Definitions 
  ******************************************************************************/
-
-/*Device instance number */
-#define INST_ADC_CONFIG_1  (0U)
+#define INST_LPTMR_1  (0U)
 
 /*******************************************************************************
  * Global variables 
  ******************************************************************************/
 
-/* User configurations */
-
-/* Converter configuration 0 */
-extern const adc_converter_config_t adc_config_1_ConvConfig0;
-
-/* Channel configuration 0 */
-extern const adc_chan_config_t adc_config_1_ChnConfig0;
+/* LPTMR Configuration 0 */
+extern const lptmr_config_t lptmr_1_config0;
 
 
 
-#endif /* adc_config_1_H */
+#endif /* lptmr_1_H */

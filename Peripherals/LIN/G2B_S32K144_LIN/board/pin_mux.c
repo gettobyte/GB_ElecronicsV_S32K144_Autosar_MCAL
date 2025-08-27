@@ -7,6 +7,15 @@ processor: S32K144
 package_id: S32K144_LQFP100
 mcu_data: s32sdk_s32k1xx_rtm_403
 processor_version: 0.0.0
+pin_labels:
+- {pin_num: '31', pin_signal: PTD7, label: LIN TX}
+- {pin_num: '32', pin_signal: PTD6, label: LIN RX}
+- {pin_num: '23', pin_signal: PTE9, label: LIN SLEEP}
+- {pin_num: '46', pin_signal: PTC14, label: Potentiometer}
+- {pin_num: '4', pin_signal: PTD0, label: LED 1}
+- {pin_num: '22', pin_signal: PTD15, label: LED 2}
+- {pin_num: '54', pin_signal: PTB0, label: Open Drain 1}
+- {pin_num: '53', pin_signal: PTB1, label: Open Drain 2}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
@@ -40,6 +49,10 @@ BOARD_InitPins:
   - {pin_num: '32', peripheral: LPUART2, signal: rxd, pin_signal: PTD6}
   - {pin_num: '23', peripheral: PORTE, signal: 'port, 9', pin_signal: PTE9, direction: OUTPUT}
   - {pin_num: '46', peripheral: ADC0, signal: 'se, 12', pin_signal: PTC14}
+  - {pin_num: '4', peripheral: FTM0, signal: 'ch, 2', pin_signal: PTD0, direction: OUTPUT, DSE: state_0}
+  - {pin_num: '22', peripheral: FTM0, signal: 'ch, 0', pin_signal: PTD15, direction: OUTPUT}
+  - {pin_num: '54', peripheral: PORTB, signal: 'port, 0', pin_signal: PTB0, direction: OUTPUT}
+  - {pin_num: '53', peripheral: PORTB, signal: 'port, 1', pin_signal: PTB1, direction: OUTPUT}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
@@ -47,12 +60,68 @@ BOARD_InitPins:
 /* Generate array of configured pin structures */
 pin_settings_config_t g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS0] = {
     {
+        .base            = PORTB,
+        .pinPortIdx      = 0U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveSelect     = PORT_LOW_DRIVE_STRENGTH,
+        .passiveFilter   = false,
+        .mux             = PORT_MUX_AS_GPIO,
+        .pinLock         = false,
+        .intConfig       = PORT_DMA_INT_DISABLED,
+        .clearIntFlag    = false,
+        .gpioBase        = PTB,
+        .direction       = GPIO_OUTPUT_DIRECTION,
+        .digitalFilter   = false,
+        .initValue       = 0U,
+    },
+    {
+        .base            = PORTB,
+        .pinPortIdx      = 1U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveSelect     = PORT_LOW_DRIVE_STRENGTH,
+        .passiveFilter   = false,
+        .mux             = PORT_MUX_AS_GPIO,
+        .pinLock         = false,
+        .intConfig       = PORT_DMA_INT_DISABLED,
+        .clearIntFlag    = false,
+        .gpioBase        = PTB,
+        .direction       = GPIO_OUTPUT_DIRECTION,
+        .digitalFilter   = false,
+        .initValue       = 0U,
+    },
+    {
         .base            = PORTC,
         .pinPortIdx      = 14U,
         .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
         .driveSelect     = PORT_LOW_DRIVE_STRENGTH,
         .passiveFilter   = false,
         .mux             = PORT_PIN_DISABLED,
+        .pinLock         = false,
+        .intConfig       = PORT_DMA_INT_DISABLED,
+        .clearIntFlag    = false,
+        .gpioBase        = NULL,
+        .digitalFilter   = false,
+    },
+    {
+        .base            = PORTD,
+        .pinPortIdx      = 0U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveSelect     = PORT_LOW_DRIVE_STRENGTH,
+        .passiveFilter   = false,
+        .mux             = PORT_MUX_ALT2,
+        .pinLock         = false,
+        .intConfig       = PORT_DMA_INT_DISABLED,
+        .clearIntFlag    = false,
+        .gpioBase        = NULL,
+        .digitalFilter   = false,
+    },
+    {
+        .base            = PORTD,
+        .pinPortIdx      = 15U,
+        .pullConfig      = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveSelect     = PORT_LOW_DRIVE_STRENGTH,
+        .passiveFilter   = false,
+        .mux             = PORT_MUX_ALT2,
         .pinLock         = false,
         .intConfig       = PORT_DMA_INT_DISABLED,
         .clearIntFlag    = false,

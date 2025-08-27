@@ -35,8 +35,14 @@
 extern lin_state_t lin2_State;
 
 /*! @brief Extern LIN user configuration structure */
-/*! @brief Extern LIN configuration lin2_InitConfig0 */
-extern lin_user_config_t lin2_InitConfig0;
+/*! @brief Extern LIN configuration lin2_MasterConfig */
+extern lin_user_config_t lin2_MasterConfig;
+/*! @brief Extern LIN configuration lin2_SlaveConfig */
+extern lin_user_config_t lin2_SlaveConfig;
+/*! @brief Extern Timer get time interval callback function0 */
+extern uint32_t  G2B_TimeIntervalCallback0(uint32_t *ns);
+/*! @brief Extern Timer get time interval callback function1 */
+extern uint32_t  G2B_TimeIntervalCallback1(uint32_t *ns);
 
 
 

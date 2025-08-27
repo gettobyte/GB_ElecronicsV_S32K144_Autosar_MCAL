@@ -24,6 +24,16 @@
          <pins_profile>
             <processor_version>0.0.0</processor_version>
             <power_domains/>
+            <pin_labels>
+               <pin_label pin_num="31" pin_signal="PTD7" label="LIN TX"/>
+               <pin_label pin_num="32" pin_signal="PTD6" label="LIN RX"/>
+               <pin_label pin_num="23" pin_signal="PTE9" label="LIN SLEEP"/>
+               <pin_label pin_num="46" pin_signal="PTC14" label="Potentiometer"/>
+               <pin_label pin_num="4" pin_signal="PTD0" label="LED 1"/>
+               <pin_label pin_num="22" pin_signal="PTD15" label="LED 2"/>
+               <pin_label pin_num="54" pin_signal="PTB0" label="Open Drain 1"/>
+               <pin_label pin_num="53" pin_signal="PTB1" label="Open Drain 2"/>
+            </pin_labels>
          </pins_profile>
          <functions_list>
             <function name="BOARD_InitPins">
@@ -46,6 +56,27 @@
                      </pin_features>
                   </pin>
                   <pin peripheral="ADC0" signal="se, 12" pin_num="46" pin_signal="PTC14"/>
+                  <pin peripheral="FTM0" signal="ch, 2" pin_num="4" pin_signal="PTD0">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                        <pin_feature name="DSE" value="state_0"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="FTM0" signal="ch, 0" pin_num="22" pin_signal="PTD15">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="PORTB" signal="port, 0" pin_num="54" pin_signal="PTB0">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="PORTB" signal="port, 1" pin_num="53" pin_signal="PTB1">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
                </pins>
             </function>
          </functions_list>
@@ -242,12 +273,36 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.lptmr" description="LPTMR Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.lptmr" description="Unsupported version of the LPTMR Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.ftm_pwm" description="FTM_PWM Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.ftm_pwm" description="Unsupported version of the FTM_PWM Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/peripherals_adc_config_1.c" update_enabled="true"/>
             <file path="board/peripherals_adc_config_1.h" update_enabled="true"/>
+            <file path="board/peripherals_flexTimer_pwm_1.c" update_enabled="true"/>
+            <file path="board/peripherals_flexTimer_pwm_1.h" update_enabled="true"/>
             <file path="board/peripherals_lin_1.c" update_enabled="true"/>
             <file path="board/peripherals_lin_1.h" update_enabled="true"/>
+            <file path="board/peripherals_lptmr_1.c" update_enabled="true"/>
+            <file path="board/peripherals_lptmr_1.h" update_enabled="true"/>
             <file path="board/sdk_project_config.h" update_enabled="true"/>
          </generated_project_files>
          <peripherals_profile>
@@ -265,11 +320,20 @@
                            <setting name="linStateStructure" value="lin2_State"/>
                            <array name="linConfiguration">
                               <struct name="0">
-                                 <setting name="name" value="lin2_InitConfig0"/>
+                                 <setting name="name" value="lin2_MasterConfig"/>
                                  <setting name="baudRate" value="9600"/>
                                  <setting name="nodeFunction" value="(bool)MASTER"/>
                                  <setting name="autobaudEnable" value="0"/>
-                                 <setting name="timerGetTimeIntervalCallback" value="NULL"/>
+                                 <setting name="timerGetTimeIntervalCallback" value="G2B_TimeIntervalCallback0"/>
+                                 <setting name="classicPidType" value="Classic"/>
+                                 <array name="numOfClassicPID"/>
+                              </struct>
+                              <struct name="1">
+                                 <setting name="name" value="lin2_SlaveConfig"/>
+                                 <setting name="baudRate" value="9600"/>
+                                 <setting name="nodeFunction" value="(bool)SLAVE"/>
+                                 <setting name="autobaudEnable" value="0"/>
+                                 <setting name="timerGetTimeIntervalCallback" value="G2B_TimeIntervalCallback1"/>
                                  <setting name="classicPidType" value="Classic"/>
                                  <array name="numOfClassicPID"/>
                               </struct>
@@ -277,22 +341,22 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="adc_config_1" uuid="cf8b9fa6-d697-4b00-8a05-40a7def08517" type="adc_config" type_id="adc" mode="general" peripheral="ADC_0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="adc_config_1" uuid="cbe46993-93ec-40d7-90d9-46f85372e208" type="adc_config" type_id="adc" mode="general" peripheral="ADC_0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="adc">
                         <array name="adcConverterCfg">
                            <struct name="0">
                               <setting name="name" value="adc_config_1_ConvConfig0"/>
-                              <setting name="readonly" value="false"/>
+                              <setting name="readonly" value="true"/>
                               <setting name="clockDivide" value="ADC_CLK_DIVIDE_1"/>
                               <setting name="sampleTime" value="255"/>
-                              <setting name="resolution" value="ADC_RESOLUTION_12BIT"/>
+                              <setting name="resolution" value="ADC_RESOLUTION_8BIT"/>
                               <setting name="inputClock" value="ADC_CLK_ALT_1"/>
                               <setting name="trigger" value="ADC_TRIGGER_SOFTWARE"/>
                               <setting name="pretriggerSel" value="ADC_PRETRIGGER_SEL_PDB"/>
                               <setting name="triggerSel" value="ADC_TRIGGER_SEL_PDB"/>
                               <setting name="dmaEnable" value="false"/>
                               <setting name="voltageRef" value="ADC_VOLTAGEREF_VREF"/>
-                              <setting name="continuousConvEnable" value="true"/>
+                              <setting name="continuousConvEnable" value="false"/>
                               <setting name="supplyMonitoringEnable" value="false"/>
                            </struct>
                         </array>
@@ -301,11 +365,130 @@
                         <array name="adcChanCfg">
                            <struct name="0">
                               <setting name="name" value="adc_config_1_ChnConfig0"/>
-                              <setting name="readonly" value="false"/>
+                              <setting name="readonly" value="true"/>
                               <setting name="interruptEnable" value="false"/>
                               <setting name="channel" value="ADC_INPUTCHAN_EXT12"/>
                            </struct>
                         </array>
+                     </config_set>
+                  </instance>
+                  <instance name="lptmr_1" uuid="8c7ab13c-a826-458e-b514-1b50e8f1d43d" type="lptmr" type_id="lptmr" mode="general" peripheral="LPTMR_0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="lptmr">
+                        <array name="lptmrConfig">
+                           <struct name="0">
+                              <setting name="name" value="lptmr_1_config0"/>
+                              <setting name="readOnly" value="true"/>
+                              <setting name="workMode" value="LPTMR_WORKMODE_TIMER"/>
+                              <setting name="dmaRequest" value="false"/>
+                              <setting name="interruptEnable" value="true"/>
+                              <setting name="freeRun" value="false"/>
+                              <setting name="compareValue" value="1999"/>
+                              <setting name="counterUnits" value="LPTMR_COUNTER_UNITS_TICKS"/>
+                              <setting name="clockSelect" value="LPTMR_CLOCKSOURCE_PCC"/>
+                              <setting name="prescaler" value="LPTMR_PRESCALE_2"/>
+                              <setting name="bypassPrescaler" value="false"/>
+                              <setting name="pinSelect" value="LPTMR_PINSELECT_TRGMUX"/>
+                              <setting name="pinPolarity" value="LPTMR_PINPOLARITY_RISING"/>
+                           </struct>
+                        </array>
+                     </config_set>
+                  </instance>
+                  <instance name="flexTimer_pwm_1" uuid="981f0bdf-6046-44fd-acd2-39ca3167f0a1" type="flexTimer_pwm" type_id="ftm_pwm" mode="general" peripheral="FTM_0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="ftm_pwm">
+                        <struct name="ftmPwmUserConfig">
+                           <struct name="ftmPwmInitConfig">
+                              <struct name="ftmPwmClkCfg">
+                                 <setting name="ClockSource" value="FTM_CLOCK_SOURCE_EXTERNALCLK"/>
+                                 <setting name="ftmprescaler" value="1"/>
+                              </struct>
+                              <struct name="ftmPwmGlobalCfg">
+                                 <setting name="ftmMode" value="FTM_MODE_EDGE_ALIGNED_PWM"/>
+                                 <setting name="debugMode" value="FTM_BDM_MODE_11"/>
+                                 <setting name="timerOverInter" value="false"/>
+                                 <setting name="initTrigger" value="false"/>
+                              </struct>
+                              <struct name="ftmPwmRegSyncCfg">
+                                 <setting name="softTrigger" value="true"/>
+                                 <setting name="hardwareTrigger1" value="false"/>
+                                 <setting name="hardwareTrigger2" value="false"/>
+                                 <setting name="hardwareTrigger3" value="false"/>
+                                 <setting name="ftmSyncPoint" value="FTM_UPDATE_NOW"/>
+                                 <setting name="maxload" value="false"/>
+                                 <setting name="minload" value="false"/>
+                                 <setting name="AutoTrigClear" value="false"/>
+                                 <setting name="ftmRegisterUpdate" value="FTM_PWM_SYNC"/>
+                                 <setting name="ftmSoftwareOutControl" value="FTM_PWM_SYNC"/>
+                                 <setting name="ftmOutMaskSync" value="FTM_PWM_SYNC"/>
+                                 <setting name="ftmCounterInitSync" value="FTM_PWM_SYNC"/>
+                              </struct>
+                           </struct>
+                           <struct name="ftmPwmConfiguration">
+                              <struct name="ftmPwmGeneralCfg">
+                                 <setting name="periodInFreq" value="200"/>
+                                 <setting name="deadTimeValue" value="0"/>
+                                 <setting name="deadTimePrescaler" value="FTM_DEADTIME_DIVID_BY_1"/>
+                              </struct>
+                              <struct name="FtmPwmConfigArr">
+                                 <struct name="faultConfig">
+                                    <setting name="faultMode" value="FTM_FAULT_CONTROL_DISABLED"/>
+                                    <setting name="pwmFaultInterrupt" value="false"/>
+                                    <setting name="faultFilterValue" value="0"/>
+                                    <setting name="pwmOutputStateOnFault" value="false"/>
+                                    <array name="ftmFaultChannelParam">
+                                       <struct name="0">
+                                          <setting name="faultChannelEnabled" value="false"/>
+                                          <setting name="faultFilterEnabled" value="false"/>
+                                          <setting name="ftmFaultPinPolarity" value="FTM_POLARITY_LOW"/>
+                                       </struct>
+                                       <struct name="1">
+                                          <setting name="faultChannelEnabled" value="false"/>
+                                          <setting name="faultFilterEnabled" value="false"/>
+                                          <setting name="ftmFaultPinPolarity" value="FTM_POLARITY_LOW"/>
+                                       </struct>
+                                       <struct name="2">
+                                          <setting name="faultChannelEnabled" value="false"/>
+                                          <setting name="faultFilterEnabled" value="false"/>
+                                          <setting name="ftmFaultPinPolarity" value="FTM_POLARITY_LOW"/>
+                                       </struct>
+                                       <struct name="3">
+                                          <setting name="faultChannelEnabled" value="false"/>
+                                          <setting name="faultFilterEnabled" value="false"/>
+                                          <setting name="ftmFaultPinPolarity" value="FTM_POLARITY_LOW"/>
+                                       </struct>
+                                    </array>
+                                 </struct>
+                                 <struct name="ftmPwmIndptChnCfg">
+                                    <array name="pwmIndependentChannelConfig">
+                                       <struct name="0">
+                                          <setting name="ftmpwmIndptName" value="flexTimer_pwm_1_IndependentChannelConfig0"/>
+                                          <setting name="ftmPwmIndptHwChnId" value="0"/>
+                                          <setting name="polarity" value="FTM_POLARITY_LOW"/>
+                                          <setting name="uDutyCyclePercent" value="0"/>
+                                          <setting name="enableExternalTrigger" value="false"/>
+                                          <setting name="safeState" value="FTM_LOW_STATE"/>
+                                          <setting name="enableSecondChannelOutput" value="false"/>
+                                          <setting name="secondChannelPolarity" value="FTM_MAIN_INVERTED"/>
+                                          <setting name="IndptdeadTimeEn" value="false"/>
+                                       </struct>
+                                       <struct name="1">
+                                          <setting name="ftmpwmIndptName" value="flexTimer_pwm_1_IndependentChannelConfig1"/>
+                                          <setting name="ftmPwmIndptHwChnId" value="2"/>
+                                          <setting name="polarity" value="FTM_POLARITY_LOW"/>
+                                          <setting name="uDutyCyclePercent" value="0"/>
+                                          <setting name="enableExternalTrigger" value="false"/>
+                                          <setting name="safeState" value="FTM_LOW_STATE"/>
+                                          <setting name="enableSecondChannelOutput" value="false"/>
+                                          <setting name="secondChannelPolarity" value="FTM_MAIN_INVERTED"/>
+                                          <setting name="IndptdeadTimeEn" value="false"/>
+                                       </struct>
+                                    </array>
+                                 </struct>
+                                 <struct name="ftmPwmCombChnCfg">
+                                    <array name="pwmCombinedChannelConfig"/>
+                                 </struct>
+                              </struct>
+                           </struct>
+                        </struct>
                      </config_set>
                   </instance>
                </instances>
