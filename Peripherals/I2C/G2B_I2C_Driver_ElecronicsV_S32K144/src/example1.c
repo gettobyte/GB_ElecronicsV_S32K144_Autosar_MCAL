@@ -52,7 +52,7 @@ Lpi2c_Ip_StatusType x,y;
 
 uint8_t tx_buff[10] = "Kunal Gupta";
 I2c_RequestType Bno055 = {
-		0x28,
+		0x29,
 		false,
 		false,
 		false,

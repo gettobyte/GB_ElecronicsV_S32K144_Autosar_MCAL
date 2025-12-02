@@ -142,7 +142,7 @@ const Lpi2c_Ip_BaudRateType baudrateParams0_BOARD_InitPeripherals =
 const Lpi2c_Ip_MasterConfigType I2c_Lpi2cMasterChannel0_BOARD_InitPeripherals =
 {
     /* Slave address */
-    40U,
+    41U,
     /*10-bit address */
     FALSE,
     /* Operating Mode */
